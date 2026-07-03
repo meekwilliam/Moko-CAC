@@ -1,0 +1,27 @@
+2026-06-22 00:04:41.519 DermApp[47061:976809] 📱 WebView: Finished loading index.html
+2026-06-22 00:04:41.522 DermApp[47061:976809] 📱 WebView Debug State: {"activeId":"screen-home","activeClasses":"screen active","activeStyles":{"display":"flex","opacity":"1","visibility":"visible","transform":"matrix(1, 0, 0, 1, 0, 0)","zIndex":"2"},"activeRect":{"width":402,"height":874,"top":0,"left":0},"cardStyles":{"display":"flex","opacity":"1","visibility":"hidden","transform":"matrix(1, 0, 0, 1, 0, 0)","zIndex":"2"},"cardRect":{"width":402,"height":874,"top":0,"left":0}}
+2026-06-22 00:04:42.996 DermApp[47061:976809] 📱 JS Console: LOG: ACTIVE BUTTON: <button class="nav-item active" data-screen="screen-progress">
+      <svg viewBox="0 0 24 24" width="24" height="24">
+        <!-- Chart Bars -->
+        <rect x="3" y="14" width="3" height="7" rx="0.8" class="icon-fill"></rect>
+        <rect x="8" y="10" width="3" height="11" rx="0.8" class="icon-f
+2026-06-22 00:04:42.997 DermApp[47061:976809] 📱 JS Console: LOG: icon-fill computed fill: rgb(74, 137, 243)
+2026-06-22 00:04:42.997 DermApp[47061:976809] 📱 JS Console: LOG: mascot-part computed fill: rgb(74, 137, 243)
+2026-06-22 00:05:08.716 DermApp[47139:977805] 📱 WebView: Finished loading index.html
+2026-06-22 00:05:08.719 DermApp[47139:977805] 📱 WebView Debug State: {"activeId":"screen-home","activeClasses":"screen active","activeStyles":{"display":"flex","opacity":"1","visibility":"visible","transform":"matrix(1, 0, 0, 1, 0, 0)","zIndex":"2"},"activeRect":{"width":402,"height":874,"top":0,"left":0},"cardStyles":{"display":"flex","opacity":"1","visibility":"hidden","transform":"matrix(1, 0, 0, 1, 0, 0)","zIndex":"2"},"cardRect":{"width":402,"height":874,"top":0,"left":0}}
+2026-06-22 00:05:10.193 DermApp[47139:977805] 📱 JS Console: LOG: ACTIVE BUTTON: <button class="nav-item active" data-screen="screen-profile">
+      <svg viewBox="0 0 24 24" width="24" height="24">
+        <!-- User Outline -->
+        <path d="M4,20 C4,16 8,14.5 12,14.5 C16,14.5 20,16 20,20" fill="none" class="icon-stroke" stroke-width="2" stroke-linecap="round"></path>
+       
+2026-06-22 00:05:10.193 DermApp[47139:977805] 📱 JS Console: LOG: icon-stroke computed stroke: rgb(74, 137, 243)
+2026-06-22 00:05:10.193 DermApp[47139:977805] 📱 JS Console: LOG: mascot-part computed fill: rgb(74, 137, 243)
+2026-06-22 00:06:26.657 DermApp[47316:980400] 📱 WebView: Finished loading index.html
+2026-06-22 00:06:26.659 DermApp[47316:980400] 📱 WebView Debug State: {"activeId":"screen-home","activeClasses":"screen active","activeStyles":{"display":"flex","opacity":"1","visibility":"visible","transform":"matrix(1, 0, 0, 1, 0, 0)","zIndex":"2"},"activeRect":{"width":402,"height":874,"top":0,"left":0},"cardStyles":{"display":"flex","opacity":"1","visibility":"hidden","transform":"matrix(1, 0, 0, 1, 0, 0)","zIndex":"2"},"cardRect":{"width":402,"height":874,"top":0,"left":0}}
+2026-06-22 00:06:28.130 DermApp[47316:980400] 📱 JS Console: LOG: ACTIVE BUTTON: <button class="nav-item active" data-screen="screen-profile">
+      <svg viewBox="0 0 24 24" width="24" height="24">
+        <!-- User Outline -->
+        <path d="M4,20 C4,16 8,14.5 12,14.5 C16,14.5 20,16 20,20" fill="none" class="icon-stroke" stroke-width="2" stroke-linecap="round"></path>
+       
+2026-06-22 00:06:28.131 DermApp[47316:980400] 📱 JS Console: LOG: icon-stroke computed stroke: rgb(88, 166, 255)
+2026-06-22 00:06:28.131 DermApp[47316:980400] 📱 JS Console: LOG: mascot-part computed fill: rgb(88, 166, 255)

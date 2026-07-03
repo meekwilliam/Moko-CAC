@@ -1,0 +1,39 @@
+<svg width="117" height="50" viewBox="0 0 117 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- Rounded biscuit face: light top → dark bottom -->
+    <linearGradient id="treatFace" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#A55E17"/>
+      <stop offset="1" stop-color="#6E3600"/>
+    </linearGradient>
+    <!-- Glossy top-edge highlight -->
+    <linearGradient id="treatGloss" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ffffff" stop-opacity="0.35"/>
+      <stop offset="0.5" stop-color="#ffffff" stop-opacity="0"/>
+    </linearGradient>
+    <!-- The bone silhouette, reused for slab / face / gloss -->
+    <g id="bone">
+      <rect x="5" y="5" width="100" height="35"/>
+      <ellipse cx="9.5" cy="11" rx="9.5" ry="11"/>
+      <ellipse cx="9.5" cy="31" rx="9.5" ry="11"/>
+      <ellipse cx="107.5" cy="12" rx="9.5" ry="11"/>
+      <ellipse cx="107.5" cy="32" rx="9.5" ry="11"/>
+    </g>
+  </defs>
+
+  <!-- Base slab (the 3D underside) -->
+  <use href="#bone" fill="#3D2100" transform="translate(0, 7)"/>
+  <!-- Shaded top face -->
+  <use href="#bone" fill="url(#treatFace)"/>
+  <!-- Top-edge gloss, slightly inset from the top -->
+  <use href="#bone" fill="url(#treatGloss)" transform="translate(3.5, 1.3) scale(0.94, 0.5)"/>
+
+  <!-- Texture dots -->
+  <g fill="#4A2400">
+    <ellipse cx="22" cy="21.5" rx="3" ry="1.5"/>
+    <ellipse cx="36" cy="21.5" rx="3" ry="1.5"/>
+    <ellipse cx="50" cy="21.5" rx="3" ry="1.5"/>
+    <ellipse cx="64" cy="21.5" rx="3" ry="1.5"/>
+    <ellipse cx="78" cy="21.5" rx="3" ry="1.5"/>
+    <ellipse cx="91" cy="21.5" rx="3" ry="1.5"/>
+  </g>
+</svg>

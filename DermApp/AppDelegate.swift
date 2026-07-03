@@ -1,4 +1,4 @@
-//
+	//
 //  AppDelegate.swift
 //  DermApp
 //
@@ -6,15 +6,24 @@
 //
 
 import UIKit
+import CoreText
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
-
-
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        registerBundledFonts()
         return true
+    }
+
+    /// Register the bundled DIN Round Pro faces so SwiftUI can use them by name
+    /// (matches the web app's typeface instead of the SF Rounded stand-in).
+    private func registerBundledFonts() {
+        let urls = Bundle.main.urls(forResourcesWithExtension: "otf", subdirectory: nil) ?? []
+        let nested = Bundle.main.urls(forResourcesWithExtension: "otf", subdirectory: "fonts") ?? []
+        for url in Set(urls + nested) {
+            CTFontManagerRegisterFontsForURL(url as CFURL, .process, nil)
+        }
     }
 
     // MARK: UISceneSession Lifecycle

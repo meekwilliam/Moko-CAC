@@ -1,0 +1,87 @@
+{
+  "identifier" : "DermAppStoreKit",
+  "nonConsumables" : [
+
+  ],
+  "products" : [
+    {
+      "displayPrice" : "0.99",
+      "familyShareable" : false,
+      "internalID" : "10ScansPackID",
+      "localizations" : [
+        {
+          "description" : "Pack of 10 skin scans",
+          "displayName" : "10 Scans Pack",
+          "locale" : "en_US"
+        }
+      ],
+      "productID" : "meeko.DermApp.scans_10",
+      "referenceName" : "10 Scans Pack",
+      "type" : "Consumable"
+    },
+    {
+      "displayPrice" : "2.99",
+      "familyShareable" : false,
+      "internalID" : "50ScansPackID",
+      "localizations" : [
+        {
+          "description" : "Pack of 50 skin scans",
+          "displayName" : "50 Scans Pack",
+          "locale" : "en_US"
+        }
+      ],
+      "productID" : "meeko.DermApp.scans_50",
+      "referenceName" : "50 Scans Pack",
+      "type" : "Consumable"
+    }
+  ],
+  "settings" : {
+    "_askToBuyEnabled" : false,
+    "_billingGracePeriodEnabled" : false,
+    "_timeRate" : 0
+  },
+  "subscriptionGroups" : [
+    {
+      "id" : "PremiumGroupSubscriptionID",
+      "localizations" : [
+        {
+          "description" : "Access to premium features.",
+          "displayName" : "Premium Subscription",
+          "locale" : "en_US"
+        }
+      ],
+      "name" : "Premium Group",
+      "subscriptions" : [
+        {
+          "adHocOffers" : [
+
+          ],
+          "codeOffers" : [
+
+          ],
+          "displayPrice" : "9.99",
+          "familyShareable" : false,
+          "groupNumber" : 1,
+          "internalID" : "PremiumSubID",
+          "introductoryOffer" : null,
+          "localizations" : [
+            {
+              "description" : "Monthly access to Glowo Premium",
+              "displayName" : "Monthly Premium",
+              "locale" : "en_US"
+            }
+          ],
+          "productID" : "meeko.DermApp.premium_sub",
+          "recurringSubscriptionPeriod" : "P1M",
+          "referenceName" : "Monthly Premium",
+          "subscriptionGroupID" : "PremiumGroupSubscriptionID",
+          "type" : "RecurringSubscription"
+        }
+      ]
+    }
+  ],
+  "version" : {
+    "major" : 3,
+    "minor" : 0
+  }
+}
