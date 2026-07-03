@@ -98,7 +98,7 @@
 					};
 				};
 			};
-			buildConfigurationList = F1D128512FE78CE100A74F58 /* Build configuration list for PBXProject "DermApp" */;
+			buildConfigurationList = F1D128512FE78CE100A74F58 /* Build configuration list for PBXProject "GlowoV2" */;
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -145,6 +145,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = R6ST8TD6GM;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = DermApp/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -176,6 +177,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = R6ST8TD6GM;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = DermApp/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -322,7 +324,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		F1D128512FE78CE100A74F58 /* Build configuration list for PBXProject "DermApp" */ = {
+		F1D128512FE78CE100A74F58 /* Build configuration list for PBXProject "GlowoV2" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				F1D1286C2FE78CE200A74F58 /* Debug */,

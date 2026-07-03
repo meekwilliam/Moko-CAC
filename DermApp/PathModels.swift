@@ -1,0 +1,148 @@
+import SwiftUI
+import Combine
+
+// MARK: - Path payload (decoded from the JS bridge)
+// index.html serializes the current progress, the 9 section banners, and the
+// 45 node icons (as inline SVG) so the native path stays visually identical and
+// content stays single-sourced in the web layer.
+
+struct PathStats: Decodable {
+    let xp: Int
+    let treats: Int
+    let streak: Int
+    let hearts: Int
+    let energy: Int
+}
+
+struct PathSectionData: Decodable {
+    let index: Int      // 0-based section order
+    let eyebrow: String // "SECTION 1"
+    let title: String
+    let bg: String      // hex
+    let slab: String    // hex (darker slab / shadow)
+}
+
+struct PathNodeData: Decodable {
+    let num: Int
+    let svg: String
+    let title: String?
+}
+
+struct PathPayload: Decodable {
+    let stats: PathStats
+    let completed: [Int]
+    let sections: [PathSectionData]
+    let nodes: [PathNodeData]
+    let inProgressNode: Int?
+}
+
+/// Lightweight progress refresh pushed back after a lesson completes.
+struct PathState: Decodable {
+    let completed: [Int]
+    let xp: Int
+    let streak: Int
+    let inProgressNode: Int?
+}
+
+// MARK: - Node model (icon parsed once)
+
+enum NodeState { case done, active, locked }
+
+struct PathNode: Identifiable {
+    let num: Int
+    let icon: SVGImage
+    let title: String
+    var id: Int { num }
+
+    /// 0-based section this node belongs to (5 nodes per section).
+    var sectionIndex: Int { (num - 1) / 5 }
+    /// Row position within its section, 0..4.
+    var rowInSection: Int { (num - 1) % 5 }
+
+    /// Smooth continuous S-curve sway (Duolingo-style), out to the side and back
+    /// over an 8-node period — each node at a distinct horizontal position.
+    var xOffset: CGFloat {
+        let amplitude: CGFloat = 70
+        return -amplitude * CGFloat(sin(Double(num - 1) * .pi / 4.0))
+    }
+}
+
+// MARK: - Store
+
+final class PathStore: ObservableObject {
+    @Published var completed: Set<Int>
+    @Published var xp: Int
+    @Published var treats: Int
+    @Published var streak: Int
+    @Published var hearts: Int
+    @Published var energy: Int
+    @Published var inProgressNode: Int?
+
+    let sections: [PathSectionData]
+    let nodes: [PathNode]
+    let totalNodes: Int
+
+    init(payload: PathPayload) {
+        self.completed = Set(payload.completed)
+        self.xp = payload.stats.xp
+        self.treats = payload.stats.treats
+        self.streak = payload.stats.streak
+        self.hearts = payload.stats.hearts
+        self.energy = payload.stats.energy
+        self.inProgressNode = payload.inProgressNode
+        self.sections = payload.sections.sorted { $0.index < $1.index }
+        self.nodes = payload.nodes
+            .sorted { $0.num < $1.num }
+            .map { PathNode(num: $0.num, icon: SVGParser.parse($0.svg), title: $0.title ?? "Lesson \($0.num)") }
+        self.totalNodes = self.nodes.count
+    }
+
+    /// Longest unbroken completed run from node 1 — the unlock frontier.
+    var frontier: Int {
+        var f = 0
+        while completed.contains(f + 1) { f += 1 }
+        return f
+    }
+
+    /// The single unlocked-but-unfinished node, or nil if everything is done.
+    var activeNode: Int? {
+        let f = frontier
+        return f < totalNodes ? f + 1 : nil
+    }
+
+    func state(for num: Int) -> NodeState {
+        let f = frontier
+        if num <= f { return .done }
+        if num == activeNode { return .active }
+        return .locked
+    }
+
+    /// done/active nodes take the unit color; locked nodes are muted slate.
+    func colors(for num: Int, state: NodeState) -> (main: Color, dark: Color) {
+        if state == .locked {
+            return (Color(hex: "#3a6080"), Color(hex: "#1a3a50"))
+        }
+        let c = Theme.unitColor(num)
+        return (c.main, c.dark)
+    }
+
+    func section(_ index: Int) -> PathSectionData? {
+        sections.first { $0.index == index }
+    }
+
+    func nodes(inSection index: Int) -> [PathNode] {
+        nodes.filter { $0.sectionIndex == index }
+    }
+
+    var sectionCount: Int {
+        (totalNodes + 4) / 5
+    }
+
+    func update(completed: [Int], xp: Int, treats: Int, streak: Int, inProgressNode: Int?) {
+        self.completed = Set(completed)
+        self.xp = xp
+        self.treats = treats
+        self.streak = streak
+        self.inProgressNode = inProgressNode
+    }
+}

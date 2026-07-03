@@ -1,0 +1,5754 @@
+{
+ "lessons": [
+  {
+   "node": 1,
+   "title": "Skin Anatomy 101",
+   "celebration": "You've mastered the layers of your skin!",
+   "screens": [
+    {
+     "type": "intro",
+     "title": "The Three Layers",
+     "text": "Your skin is a living organ with three main layers: the epidermis (top shield), dermis (middle engine), and hypodermis (bottom cushion)."
+    },
+    {
+     "type": "true_false",
+     "question": "The epidermis is the deepest layer of your skin.",
+     "correct": false,
+     "explanation": "The epidermis is the outermost layer that you can actually see and touch."
+    },
+    {
+     "type": "fill_blank",
+     "question": "The [___] contains your collagen, elastin, and sweat glands.",
+     "options": [
+      "dermis",
+      "epidermis",
+      "hypodermis"
+     ],
+     "correct": 0,
+     "explanation": "The dermis is the structural engine room of your skin."
+    },
+    {
+     "type": "multiple_choice",
+     "question": "Which layer of the skin is primarily made of fat to insulate the body?",
+     "options": [
+      "Hypodermis",
+      "Epidermis",
+      "Dermis"
+     ],
+     "correct": 0,
+     "explanation": "The hypodermis is the bottom fatty layer that acts as a shock absorber."
+    },
+    {
+     "type": "matching",
+     "question": "Match the skin layer to its main function.",
+     "pairs": [
+      [
+       "Epidermis",
+       "Protects against the outside world"
+      ],
+      [
+       "Dermis",
+       "Provides structural support and elasticity"
+      ],
+      [
+       "Hypodermis",
+       "Insulates and cushions"
+      ]
+     ],
+     "explanation": "Each layer has a distinct biological job to support your body."
+    },
+    {
+     "type": "fill_blank_multi",
+     "template": "The [__1__] acts as your shield, while the [__2__] gives your skin its bounce.",
+     "blanks": [
+      {
+       "options": [
+        "epidermis",
+        "dermis",
+        "hypodermis"
+       ],
+       "correct": 0
+      },
+      {
+       "options": [
+        "dermis",
+        "epidermis",
+        "acid mantle"
+       ],
+       "correct": 0
+      }
+     ],
+     "explanation": "Collagen in the dermis provides bounce, while the epidermis takes the environmental hits."
+    },
+    {
+     "type": "sequence_builder",
+     "question": "Arrange the skin layers from the outside of your body to the inside.",
+     "items": [
+      "Epidermis",
+      "Dermis",
+      "Hypodermis"
+     ],
+     "correct_order": [
+      "Epidermis",
+      "Dermis",
+      "Hypodermis"
+     ],
+     "explanation": "Skincare mostly targets the epidermis and the very top of the dermis."
+    },
+    {
+     "type": "ingredient_match",
+     "question": "Which structural protein lives in the dermis and keeps skin firm?",
+     "options": [
+      {
+       "label": "Collagen",
+       "correct": true,
+       "detail": "The main structural protein"
+      },
+      {
+       "label": "Keratin",
+       "correct": false,
+       "detail": "Surface protein",
+       "wrong_explanation": "Keratin is mostly in the epidermis, hair, and nails."
+      },
+      {
+       "label": "Melanin",
+       "correct": false,
+       "detail": "Pigment",
+       "wrong_explanation": "Melanin provides color, not structural firmness."
+      }
+     ],
+     "concern": "Sagging skin",
+     "explanation": "Collagen acts like the scaffolding holding your skin up."
+    },
+    {
+     "type": "spot_mistake",
+     "scenario": "A friend buys a thick cream, claiming it will reach the hypodermis to melt fat.",
+     "question": "What is the mistake?",
+     "options": [
+      "Most cosmetic products cannot reach the hypodermis.",
+      "The hypodermis doesn't contain fat.",
+      "Creams only melt fat in the epidermis."
+     ],
+     "correct": 0,
+     "explanation": "Most topical skincare products cannot penetrate that deep into the skin's layers."
+    }
+   ]
+  },
+  {
+   "node": 2,
+   "title": "The Skin Barrier",
+   "celebration": "You've built a solid foundation!",
+   "screens": [
+    {
+     "type": "intro",
+     "title": "The Brick Wall",
+     "text": "The skin barrier is like a brick wall. Dead skin cells are the bricks, and lipids (fats/ceramides) are the mortar holding it together."
+    },
+    {
+     "type": "true_false",
+     "question": "A damaged skin barrier lets water escape and bacteria enter.",
+     "correct": true,
+     "explanation": "When the mortar breaks down, your skin loses its protective seal."
+    },
+    {
+     "type": "fill_blank",
+     "question": "Ceramides act as the [___] in your skin's brick wall.",
+     "options": [
+      "mortar",
+      "bricks",
+      "foundation"
+     ],
+     "correct": 0,
+     "explanation": "Ceramides are natural lipids that help hold your skin cells together."
+    },
+    {
+     "type": "multiple_choice",
+     "question": "What is a common sign of a damaged skin barrier?",
+     "options": [
+      "Stinging when applying plain water or gentle lotion",
+      "Zero visible pores",
+      "Extreme oiliness with no flaking"
+     ],
+     "correct": 0,
+     "explanation": "Stinging often means microscopic cracks have exposed your nerve endings."
+    },
+    {
+     "type": "matching",
+     "question": "Match the barrier component to its analogy.",
+     "pairs": [
+      [
+       "Skin cells (Corneocytes)",
+       "The bricks"
+      ],
+      [
+       "Lipids (Ceramides, Cholesterol)",
+       "The mortar"
+      ],
+      [
+       "Skin barrier",
+       "The security wall"
+      ]
+     ],
+     "explanation": "Protecting this wall is a primary goal of basic skincare."
+    },
+    {
+     "type": "fill_blank_multi",
+     "template": "A strong barrier helps trap [__1__] inside and blocks [__2__] from entering.",
+     "blanks": [
+      {
+       "options": [
+        "water",
+        "bacteria",
+        "dirt"
+       ],
+       "correct": 0
+      },
+      {
+       "options": [
+        "irritants",
+        "moisture",
+        "collagen"
+       ],
+       "correct": 0
+      }
+     ],
+     "explanation": "This is the dual biological purpose of a healthy barrier."
+    },
+    {
+     "type": "sequence_builder",
+     "question": "Rank these actions from gentlest to harshest on your barrier.",
+     "items": [
+      "Splashing with water",
+      "Using a gentle foaming cleanser",
+      "Scrubbing with crushed walnut shells"
+     ],
+     "correct_order": [
+      "Splashing with water",
+      "Using a gentle foaming cleanser",
+      "Scrubbing with crushed walnut shells"
+     ],
+     "explanation": "Physical friction can disrupt the delicate lipid mortar."
+    },
+    {
+     "type": "ingredient_match",
+     "question": "Which ingredient directly replenishes the skin's natural mortar?",
+     "options": [
+      {
+       "label": "Ceramides",
+       "correct": true,
+       "detail": "Natural skin lipids"
+      },
+      {
+       "label": "Vitamin C",
+       "correct": false,
+       "detail": "Antioxidant",
+       "wrong_explanation": "Can sometimes sting a compromised barrier."
+      },
+      {
+       "label": "AHA Exfoliant",
+       "correct": false,
+       "detail": "Acid",
+       "wrong_explanation": "Exfoliants may further irritate a weak barrier."
+      }
+     ],
+     "concern": "Compromised barrier",
+     "explanation": "Ceramides are identical to the fats already found in your skin."
+    },
+    {
+     "type": "spot_mistake",
+     "scenario": "Your face is red, tight, and stings after using a new scrub.",
+     "question": "What is your next move?",
+     "options": [
+      "Stop all exfoliation and use a simple moisturizer.",
+      "Use the scrub again to build tolerance.",
+      "Apply a strong acid serum to clear the redness."
+     ],
+     "correct": 0,
+     "explanation": "Stinging means the barrier is compromised. Pause strong treatments and hydrate."
+    }
+   ]
+  },
+  {
+   "node": 3,
+   "title": "The Acid Mantle",
+   "celebration": "You're perfectly balanced!",
+   "screens": [
+    {
+     "type": "intro",
+     "title": "Your Acidic Shield",
+     "text": "Skin naturally has a slightly acidic pH (~5.5). This invisible film is called the acid mantle, and it supports a healthy skin microbiome."
+    },
+    {
+     "type": "true_false",
+     "question": "Healthy skin should have a perfectly neutral pH of 7.0.",
+     "correct": false,
+     "explanation": "Skin needs to be slightly acidic (around 5.5) to discourage many harmful microbes."
+    },
+    {
+     "type": "fill_blank",
+     "question": "The acid mantle is a mix of natural oils and [___].",
+     "options": [
+      "sweat",
+      "blood",
+      "collagen"
+     ],
+     "correct": 0,
+     "explanation": "Sebum and sweat combine on the surface to create this chemical environment."
+    },
+    {
+     "type": "multiple_choice",
+     "question": "What happens if you disrupt your acid mantle with highly alkaline soap?",
+     "options": [
+      "Many harmful microbes may grow more easily when the skin's pH is disrupted.",
+      "Your skin becomes instantly hydrated.",
+      "Your pores permanently shrink."
+     ],
+     "correct": 0,
+     "explanation": "A healthy, acidic pH discourages the overgrowth of problematic bacteria."
+    },
+    {
+     "type": "matching",
+     "question": "Match the pH level to the substance.",
+     "pairs": [
+      [
+       "pH 5.5",
+       "Healthy skin"
+      ],
+      [
+       "pH 7.0",
+       "Pure water"
+      ],
+      [
+       "pH 9.0+",
+       "Traditional bar soap"
+      ]
+     ],
+     "explanation": "Using high-pH soap can disrupt your skin's natural acidic defense."
+    },
+    {
+     "type": "fill_blank_multi",
+     "template": "To protect the acid mantle, use [__1__] cleansers instead of [__2__] soaps.",
+     "blanks": [
+      {
+       "options": [
+        "low-pH",
+        "alkaline",
+        "harsh"
+       ],
+       "correct": 0
+      },
+      {
+       "options": [
+        "alkaline",
+        "acidic",
+        "gentle"
+       ],
+       "correct": 0
+      }
+     ],
+     "explanation": "A cleanser matched to your skin's pH helps maintain microbiome balance."
+    },
+    {
+     "type": "sequence_builder",
+     "question": "Place these from most acidic (lowest pH) to most alkaline (highest pH).",
+     "items": [
+      "Lemon juice",
+      "Healthy skin",
+      "Traditional bar soap"
+     ],
+     "correct_order": [
+      "Lemon juice",
+      "Healthy skin",
+      "Traditional bar soap"
+     ],
+     "explanation": "Skin sits comfortably in the middle-acidic range."
+    },
+    {
+     "type": "ingredient_match",
+     "question": "Which ingredient helps maintain the skin's slightly acidic nature?",
+     "options": [
+      {
+       "label": "Lactic Acid",
+       "correct": true,
+       "detail": "Gentle AHA"
+      },
+      {
+       "label": "Baking Soda",
+       "correct": false,
+       "detail": "Alkaline powder",
+       "wrong_explanation": "Too alkaline for facial skin."
+      },
+      {
+       "label": "True Soap",
+       "correct": false,
+       "detail": "Saponified oils",
+       "wrong_explanation": "True soap often has a pH of 9-10."
+      }
+     ],
+     "concern": "pH imbalance",
+     "explanation": "Mild acids help reinforce the mantle, while alkaline bases disrupt it."
+    },
+    {
+     "type": "spot_mistake",
+     "scenario": "A friend washes their face with baking soda (pH 9) to clear acne.",
+     "question": "What is the mistake?",
+     "options": [
+      "Baking soda disrupts the acid mantle, which can worsen acne.",
+      "Baking soda is too expensive.",
+      "Baking soda doesn't lather enough."
+     ],
+     "correct": 0,
+     "explanation": "Disrupting the acid mantle makes it harder for the skin to defend itself."
+    }
+   ]
+  },
+  {
+   "node": 4,
+   "title": "Know Your Skin Type",
+   "celebration": "You've diagnosed your skin correctly!",
+   "screens": [
+    {
+     "type": "intro",
+     "title": "Genetics and Beyond",
+     "text": "Skin type (oily, dry, combination) is largely influenced by genetics, but can also be affected by hormones, age, environment, and skincare habits."
+    },
+    {
+     "type": "true_false",
+     "question": "Your genetic skin type remains completely unchanged throughout your life.",
+     "correct": false,
+     "explanation": "Sebum production changes over time due to puberty, aging, and environmental factors."
+    },
+    {
+     "type": "fill_blank",
+     "question": "[___] skin produces very little natural sebum (oil).",
+     "options": [
+      "Dry",
+      "Oily",
+      "Dehydrated"
+     ],
+     "correct": 0,
+     "explanation": "Dryness is defined by a lack of oil production."
+    },
+    {
+     "type": "multiple_choice",
+     "question": "Which skin type features an oily T-zone (forehead, nose) but dry cheeks?",
+     "options": [
+      "Combination",
+      "Dry",
+      "Normal"
+     ],
+     "correct": 0,
+     "explanation": "Combination skin has a mix of more active and less active sebaceous glands."
+    },
+    {
+     "type": "matching",
+     "question": "Match the skin type to its primary characteristic.",
+     "pairs": [
+      [
+       "Dry",
+       "Lacks natural oil production"
+      ],
+      [
+       "Oily",
+       "Overproduces sebum generally"
+      ],
+      [
+       "Combination",
+       "Oily in the center, drier on the edges"
+      ]
+     ],
+     "explanation": "Knowing your baseline helps you choose the right product textures."
+    },
+    {
+     "type": "fill_blank_multi",
+     "template": "Dry skin lacks [__1__], while dehydrated skin lacks [__2__].",
+     "blanks": [
+      {
+       "options": [
+        "oil",
+        "water",
+        "sweat"
+       ],
+       "correct": 0
+      },
+      {
+       "options": [
+        "water",
+        "oil",
+        "sebum"
+       ],
+       "correct": 0
+      }
+     ],
+     "explanation": "This is a crucial distinction when choosing moisturizers versus hydrators."
+    },
+    {
+     "type": "sequence_builder",
+     "question": "Rank these skin types by typical pore visibility (smallest to largest).",
+     "items": [
+      "Dry",
+      "Normal",
+      "Oily"
+     ],
+     "correct_order": [
+      "Dry",
+      "Normal",
+      "Oily"
+     ],
+     "explanation": "Higher oil production can make pores appear larger."
+    },
+    {
+     "type": "ingredient_match",
+     "question": "Which ingredient texture is generally best for truly dry skin?",
+     "options": [
+      {
+       "label": "Heavy Creams & Oils",
+       "correct": true,
+       "detail": "Adds missing lipids"
+      },
+      {
+       "label": "Water-based Gels",
+       "correct": false,
+       "detail": "Adds water",
+       "wrong_explanation": "Gels may not provide enough oil for dry skin."
+      },
+      {
+       "label": "Astringent Toners",
+       "correct": false,
+       "detail": "Removes oil",
+       "wrong_explanation": "Dry skin needs to retain its oil."
+      }
+     ],
+     "concern": "Flaky, dry skin",
+     "explanation": "Dry skin needs you to supply the oil it isn't making itself."
+    },
+    {
+     "type": "spot_mistake",
+     "scenario": "Your nose is oily by noon, so you stop using all moisturizer.",
+     "question": "What is the mistake?",
+     "options": [
+      "Skipping moisturizer can lead to dehydration, which may worsen oiliness.",
+      "Oily skin only needs water, not moisturizer.",
+      "You need to wash your face at noon instead."
+     ],
+     "correct": 0,
+     "explanation": "Oily skin still needs hydration to stay balanced and healthy."
+    }
+   ]
+  },
+  {
+   "node": 5,
+   "title": "Cell Turnover & Renewal",
+   "celebration": "You understand the clockwork of your skin!",
+   "screens": [
+    {
+     "type": "intro",
+     "title": "The Turnover Cycle",
+     "text": "Skin constantly creates new cells. It takes around 28 days in young adults (and longer in older adults) for them to travel to the surface and shed off."
+    },
+    {
+     "type": "true_false",
+     "question": "A new skincare product can permanently erase wrinkles overnight.",
+     "correct": false,
+     "explanation": "Cellular changes take at least one full turnover cycle to become visible."
+    },
+    {
+     "type": "fill_blank",
+     "question": "The process of dead skin cells naturally falling off is called [___].",
+     "options": [
+      "desquamation",
+      "hydration",
+      "glycation"
+     ],
+     "correct": 0,
+     "explanation": "Desquamation is your body's natural, invisible exfoliation."
+    },
+    {
+     "type": "multiple_choice",
+     "question": "What happens to cell turnover as we age?",
+     "options": [
+      "It slows down, which can contribute to dullness.",
+      "It speeds up, causing redness.",
+      "It stops completely at age 40."
+     ],
+     "correct": 0,
+     "explanation": "A slower cycle means dead cells shed less quickly, affecting skin radiance."
+    },
+    {
+     "type": "matching",
+     "question": "Match the timeline to the cellular reality.",
+     "pairs": [
+      [
+       "Babies",
+       "Turnover is very fast"
+      ],
+      [
+       "Young Adults",
+       "Turnover in around 28 days"
+      ],
+      [
+       "Older Adults",
+       "Turnover slows down significantly"
+      ]
+     ],
+     "explanation": "This slowdown is why gentle exfoliation often becomes more helpful with age."
+    },
+    {
+     "type": "fill_blank_multi",
+     "template": "Chemical exfoliants help speed up [__1__] to reveal [__2__] skin underneath.",
+     "blanks": [
+      {
+       "options": [
+        "turnover",
+        "hydration",
+        "sebum"
+       ],
+       "correct": 0
+      },
+      {
+       "options": [
+        "brighter",
+        "thicker",
+        "older"
+       ],
+       "correct": 0
+      }
+     ],
+     "explanation": "Exfoliants help unglue dead cells so fresh ones can surface."
+    },
+    {
+     "type": "sequence_builder",
+     "question": "Trace the lifecycle of a skin cell.",
+     "items": [
+      "Born at the bottom of the epidermis",
+      "Travels upward, flattening out",
+      "Reaches the surface and eventually flakes off"
+     ],
+     "correct_order": [
+      "Born at the bottom of the epidermis",
+      "Travels upward, flattening out",
+      "Reaches the surface and eventually flakes off"
+     ],
+     "explanation": "The surface of your skin is composed of these older, protective cells."
+    },
+    {
+     "type": "ingredient_match",
+     "question": "Which active ingredient helps speed up cellular turnover?",
+     "options": [
+      {
+       "label": "Retinol",
+       "correct": true,
+       "detail": "Vitamin A derivative"
+      },
+      {
+       "label": "Hyaluronic Acid",
+       "correct": false,
+       "detail": "Hydrator",
+       "wrong_explanation": "Hydrates but does not speed cell division."
+      },
+      {
+       "label": "Ceramides",
+       "correct": false,
+       "detail": "Barrier repair",
+       "wrong_explanation": "Supports the barrier but does not speed turnover."
+      }
+     ],
+     "concern": "Sluggish, dull skin",
+     "explanation": "Retinoids encourage cells to divide and renew more efficiently."
+    },
+    {
+     "type": "spot_mistake",
+     "scenario": "You try a new dark-spot serum for 3 days and see no difference.",
+     "question": "What is the mistake?",
+     "options": [
+      "It takes time for pigmented cells to reach the surface and shed.",
+      "The serum is expired.",
+      "You need to apply it three times a day."
+     ],
+     "correct": 0,
+     "explanation": "You must give products time to align with your natural cellular turnover cycle."
+    }
+   ]
+  },
+  {
+   "node": 6,
+   "title": "Humectants",
+   "celebration": "You are a hydration magnet!",
+   "screens": [
+    {
+     "type": "intro",
+     "title": "The Water Magnets",
+     "text": "Humectants act like sponges. They attract water from the environment or from deeper within your skin to the surface."
+    },
+    {
+     "type": "true_false",
+     "question": "Humectants contain pure water inside them.",
+     "correct": false,
+     "explanation": "Humectants are molecules that bind water, but they don't natively provide it."
+    },
+    {
+     "type": "fill_blank",
+     "question": "Hyaluronic Acid is a powerful humectant that can bind [___] amounts of water.",
+     "options": [
+      "large",
+      "small",
+      "zero"
+     ],
+     "correct": 0,
+     "explanation": "This strong binding capacity helps plump the skin's surface."
+    },
+    {
+     "type": "multiple_choice",
+     "question": "What may happen if you apply a humectant in a very dry room without sealing it?",
+     "options": [
+      "In very dry environments, it may draw water from deeper layers if not sealed.",
+      "It creates water out of thin air.",
+      "It permanently cures dry skin."
+     ],
+     "correct": 0,
+     "explanation": "Sponges need a water source; if the air is dry, they pull from your skin."
+    },
+    {
+     "type": "matching",
+     "question": "Match the popular humectant to its profile.",
+     "pairs": [
+      [
+       "Glycerin",
+       "A highly stable, incredibly effective classic"
+      ],
+      [
+       "Hyaluronic Acid",
+       "A popular, high-capacity water magnet"
+      ],
+      [
+       "Aloe Vera",
+       "A soothing, plant-based hydrator"
+      ]
+     ],
+     "explanation": "They all do the same basic job: attract and bind water."
+    },
+    {
+     "type": "fill_blank_multi",
+     "template": "Always apply humectants to [__1__] skin, then apply moisturizer to [__2__] it.",
+     "blanks": [
+      {
+       "options": [
+        "damp",
+        "dry",
+        "dirty"
+       ],
+       "correct": 0
+      },
+      {
+       "options": [
+        "seal",
+        "wash",
+        "exfoliate"
+       ],
+       "correct": 0
+      }
+     ],
+     "explanation": "Give the humectant water to hold, then lock it in."
+    },
+    {
+     "type": "sequence_builder",
+     "question": "What is a good application sequence for hydration?",
+     "items": [
+      "Wash face",
+      "Leave skin slightly damp",
+      "Apply humectant serum",
+      "Apply a moisturizer to seal"
+     ],
+     "correct_order": [
+      "Wash face",
+      "Leave skin slightly damp",
+      "Apply humectant serum",
+      "Apply a moisturizer to seal"
+     ],
+     "explanation": "This helps ensure the humectant traps water rather than losing it."
+    },
+    {
+     "type": "ingredient_match",
+     "question": "Which is a highly reliable, non-irritating humectant?",
+     "options": [
+      {
+       "label": "Glycerin",
+       "correct": true,
+       "detail": "The gold standard hydrator"
+      },
+      {
+       "label": "Squalane",
+       "correct": false,
+       "detail": "Oil",
+       "wrong_explanation": "Squalane is an emollient, not a humectant."
+      },
+      {
+       "label": "Glycolic Acid",
+       "correct": false,
+       "detail": "AHA",
+       "wrong_explanation": "This exfoliates, it doesn't hydrate."
+      }
+     ],
+     "concern": "Surface dehydration",
+     "explanation": "Glycerin is affordable, well-tolerated, and performs excellently in most climates."
+    },
+    {
+     "type": "spot_mistake",
+     "scenario": "You apply a hyaluronic acid serum and go to sleep without moisturizer.",
+     "question": "What is the mistake?",
+     "options": [
+      "The water can evaporate, potentially leaving your skin feeling drier.",
+      "Hyaluronic acid only works in the morning.",
+      "The serum will clog your pores."
+     ],
+     "correct": 0,
+     "explanation": "Humectants gather water, but they need an occlusive seal to trap it."
+    }
+   ]
+  },
+  {
+   "node": 7,
+   "title": "Emollients & Occlusives",
+   "celebration": "You've locked it all down!",
+   "screens": [
+    {
+     "type": "intro",
+     "title": "Smooth and Seal",
+     "text": "Emollients help soften the skin. Occlusives create a physical shield to trap water inside and reduce evaporation."
+    },
+    {
+     "type": "true_false",
+     "question": "Occlusives add intense water hydration to the skin.",
+     "correct": false,
+     "explanation": "Occlusives don't contain water; they only help lock in the water that's already there."
+    },
+    {
+     "type": "fill_blank",
+     "question": "Applying a heavy occlusive over your face at night is popularly called [___].",
+     "options": [
+      "slugging",
+      "scrubbing",
+      "purging"
+     ],
+     "correct": 0,
+     "explanation": "Slugging creates a strong barrier to help minimize overnight water loss."
+    },
+    {
+     "type": "multiple_choice",
+     "question": "What is the primary job of an emollient?",
+     "options": [
+      "To soften the skin and help it feel smooth and pliable.",
+      "To attract water from the air.",
+      "To dissolve blackheads."
+     ],
+     "correct": 0,
+     "explanation": "Emollients fill in gaps between cells to improve skin texture and softness."
+    },
+    {
+     "type": "matching",
+     "question": "Match the ingredient to its primary category.",
+     "pairs": [
+      [
+       "Plant Oils & Squalane",
+       "Emollients (Smoothers)"
+      ],
+      [
+       "Petrolatum (Vaseline)",
+       "Occlusives (Sealers)"
+      ],
+      [
+       "Glycerin",
+       "Humectants (Magnets)"
+      ]
+     ],
+     "explanation": "Most moisturizers are a blend of all three to hydrate, soften, and seal."
+    },
+    {
+     "type": "fill_blank_multi",
+     "template": "[__1__] make the skin feel soft, while [__2__] form a physical barrier to lock in moisture.",
+     "blanks": [
+      {
+       "options": [
+        "Emollients",
+        "Occlusives",
+        "Acids"
+       ],
+       "correct": 0
+      },
+      {
+       "options": [
+        "Occlusives",
+        "Emollients",
+        "Humectants"
+       ],
+       "correct": 0
+      }
+     ],
+     "explanation": "Softening and sealing are two different but complementary actions."
+    },
+    {
+     "type": "sequence_builder",
+     "question": "Rank these textures from lightest (least occlusive) to heaviest (most occlusive).",
+     "items": [
+      "Water-based gel",
+      "Lotion",
+      "Thick cream",
+      "Ointment / Balm"
+     ],
+     "correct_order": [
+      "Water-based gel",
+      "Lotion",
+      "Thick cream",
+      "Ointment / Balm"
+     ],
+     "explanation": "Choose your texture based on how much moisture your skin needs to retain."
+    },
+    {
+     "type": "ingredient_match",
+     "question": "Which ingredient is highly effective at reducing water loss?",
+     "options": [
+      {
+       "label": "Petrolatum",
+       "correct": true,
+       "detail": "Can reduce water loss by around 98%"
+      },
+      {
+       "label": "Rosehip Oil",
+       "correct": false,
+       "detail": "Emollient",
+       "wrong_explanation": "Softens, but doesn't block evaporation as strongly."
+      },
+      {
+       "label": "Aloe Vera",
+       "correct": false,
+       "detail": "Humectant",
+       "wrong_explanation": "Water-based, evaporates quickly."
+      }
+     ],
+     "concern": "Extreme moisture loss",
+     "explanation": "Petrolatum is the gold standard for sealing and protecting a weak barrier."
+    },
+    {
+     "type": "spot_mistake",
+     "scenario": "You have dry skin, so you rub pure Vaseline on your dry face without hydrating first.",
+     "question": "What is the mistake?",
+     "options": [
+      "You sealed an empty surface. You should apply hydration before sealing it.",
+      "Vaseline causes chemical burns.",
+      "Vaseline is only for lips."
+     ],
+     "correct": 0,
+     "explanation": "An occlusive applied over dry skin just locks the dryness in."
+    }
+   ]
+  },
+  {
+   "node": 8,
+   "title": "Dry vs Dehydrated",
+   "celebration": "You know exactly what your skin is thirsty for!",
+   "screens": [
+    {
+     "type": "intro",
+     "title": "Oil vs. Water",
+     "text": "Dry skin is associated with low sebum and/or impaired lipid barrier function. Dehydrated skin lacks water. Knowing the difference helps you choose the right products."
+    },
+    {
+     "type": "true_false",
+     "question": "Dehydrated skin can sometimes appear quite oily.",
+     "correct": true,
+     "explanation": "Skin may produce excess oil in an attempt to compensate for a lack of water."
+    },
+    {
+     "type": "fill_blank",
+     "question": "Dry skin can feel rough or flaky because it naturally lacks [___].",
+     "options": [
+      "oil",
+      "water",
+      "sweat"
+     ],
+     "correct": 0,
+     "explanation": "Without enough oil, the skin surface struggles to stay lubricated and smooth."
+    },
+    {
+     "type": "multiple_choice",
+     "question": "How can you help improve dehydrated skin?",
+     "options": [
+      "Add humectants (like hyaluronic acid or glycerin) applied to damp skin.",
+      "Add thick facial oils alone.",
+      "Wash your face more often."
+     ],
+     "correct": 0,
+     "explanation": "Dehydration means a lack of water; humectants help attract and bind water."
+    },
+    {
+     "type": "matching",
+     "question": "Match the condition to a helpful approach.",
+     "pairs": [
+      [
+       "Dry Skin (Low Sebum)",
+       "Use richer creams and facial oils"
+      ],
+      [
+       "Dehydrated Skin (Lacks Water)",
+       "Use water-based humectants and seal lightly"
+      ],
+      [
+       "Oily Skin (Excess Oil)",
+       "Use lightweight, fluid hydration"
+      ]
+     ],
+     "explanation": "You want to feed the skin exactly what it is missing."
+    },
+    {
+     "type": "fill_blank_multi",
+     "template": "If your skin is [__1__], it may benefit from more oils. If it is [__2__], it needs more water.",
+     "blanks": [
+      {
+       "options": [
+        "dry",
+        "dehydrated",
+        "oily"
+       ],
+       "correct": 0
+      },
+      {
+       "options": [
+        "dehydrated",
+        "dry",
+        "combination"
+       ],
+       "correct": 0
+      }
+     ],
+     "explanation": "Oil and water serve different requirements in skin health."
+    },
+    {
+     "type": "sequence_builder",
+     "question": "A good routine to help dehydrated, oily skin:",
+     "items": [
+      "Cleanse with a gentle, non-stripping wash",
+      "Apply a hydrating water-based serum to damp skin",
+      "Seal with a lightweight moisturizer"
+     ],
+     "correct_order": [
+      "Cleanse with a gentle, non-stripping wash",
+      "Apply a hydrating water-based serum to damp skin",
+      "Seal with a lightweight moisturizer"
+     ],
+     "explanation": "Stop stripping, add water, and lock it in lightly."
+    },
+    {
+     "type": "ingredient_match",
+     "question": "Which ingredient texture is often helpful for truly DRY (low sebum) skin?",
+     "options": [
+      {
+       "label": "Shea Butter",
+       "correct": true,
+       "detail": "Rich plant lipid"
+      },
+      {
+       "label": "Hyaluronic Acid",
+       "correct": false,
+       "detail": "Water magnet",
+       "wrong_explanation": "Adds water, but dry skin also needs oil."
+      },
+      {
+       "label": "Salicylic Acid",
+       "correct": false,
+       "detail": "Oil-soluble acid",
+       "wrong_explanation": "May dry the skin out further."
+      }
+     ],
+     "concern": "Flaky, unlubricated skin",
+     "explanation": "Rich lipids help replace the oil your skin isn't producing naturally."
+    },
+    {
+     "type": "spot_mistake",
+     "scenario": "Your skin produces a lot of oil, but feels incredibly tight when you smile.",
+     "question": "What is the mistake?",
+     "options": [
+      "You may be dehydrated. Tightness underneath oil is a classic sign of water loss.",
+      "You are dry. Apply a heavy oil.",
+      "You are too oily. Wash your face three times a day."
+     ],
+     "correct": 0,
+     "explanation": "Oily skin still needs water to feel comfortable and balanced."
+    }
+   ]
+  },
+  {
+   "node": 9,
+   "title": "The Moisture Triangle",
+   "celebration": "You've mastered the ultimate hydration equation!",
+   "screens": [
+    {
+     "type": "intro",
+     "title": "The Golden Ratio",
+     "text": "A well-rounded moisturizer uses a mix of Humectants (water), Emollients (softness), and Occlusives (seal)."
+    },
+    {
+     "type": "true_false",
+     "question": "A good moisturizer only needs one single ingredient to work perfectly for everyone.",
+     "correct": false,
+     "explanation": "Water alone evaporates, and oil alone doesn't provide hydration. A blend is best."
+    },
+    {
+     "type": "fill_blank",
+     "question": "A moisturizer's texture—from light gel to thick cream—often depends on its amount of [___].",
+     "options": [
+      "occlusives",
+      "humectants",
+      "water"
+     ],
+     "correct": 0,
+     "explanation": "More occlusives and rich lipids make a product thicker and heavier."
+    },
+    {
+     "type": "multiple_choice",
+     "question": "Why do many oily skin types prefer gel moisturizers?",
+     "options": [
+      "Gels are higher in water and humectants but low in heavy occlusives.",
+      "Gels strip oil away.",
+      "Gels contain alcohol to dry the skin."
+     ],
+     "correct": 0,
+     "explanation": "Oily skin already has its own natural occlusives; it usually just needs hydration."
+    },
+    {
+     "type": "matching",
+     "question": "Match the skin type to an often ideal moisturizer texture.",
+     "pairs": [
+      [
+       "Oily Skin",
+       "Lightweight Gel or Fluid"
+      ],
+      [
+       "Normal Skin",
+       "Balanced Lotion"
+      ],
+      [
+       "Dry Skin",
+       "Thick Cream or Balm"
+      ]
+     ],
+     "explanation": "Adjust the heaviness based on your natural oil production."
+    },
+    {
+     "type": "fill_blank_multi",
+     "template": "[__1__] moisturizers are mostly water-based, while [__2__] moisturizers contain more heavy fats.",
+     "blanks": [
+      {
+       "options": [
+        "Gel",
+        "Cream",
+        "Ointment"
+       ],
+       "correct": 0
+      },
+      {
+       "options": [
+        "Cream",
+        "Gel",
+        "Serum"
+       ],
+       "correct": 0
+      }
+     ],
+     "explanation": "The base formulation dictates how heavy the product feels."
+    },
+    {
+     "type": "sequence_builder",
+     "question": "Rank these products by how much water they typically contain (highest to lowest).",
+     "items": [
+      "Water-based Toner",
+      "Gel Moisturizer",
+      "Thick Night Cream",
+      "Pure Facial Oil"
+     ],
+     "correct_order": [
+      "Water-based Toner",
+      "Gel Moisturizer",
+      "Thick Night Cream",
+      "Pure Facial Oil"
+     ],
+     "explanation": "Oils and waxes contain virtually zero water."
+    },
+    {
+     "type": "ingredient_match",
+     "question": "Which combination makes a comprehensive moisturizer?",
+     "options": [
+      {
+       "label": "Glycerin + Squalane + Dimethicone",
+       "correct": true,
+       "detail": "Humectant + Emollient + Occlusive"
+      },
+      {
+       "label": "Hyaluronic Acid + Water",
+       "correct": false,
+       "detail": "Magnets only",
+       "wrong_explanation": "Missing a seal, water may evaporate."
+      },
+      {
+       "label": "Shea Butter + Beeswax",
+       "correct": false,
+       "detail": "Sealers only",
+       "wrong_explanation": "Missing the water component."
+      }
+     ],
+     "concern": "Daily maintenance",
+     "explanation": "A complete formula generally uses all three components to hydrate and protect."
+    },
+    {
+     "type": "spot_mistake",
+     "scenario": "You buy a pure Rosehip Oil and use it as your only moisturizer, but your skin still feels tight.",
+     "question": "What is the mistake?",
+     "options": [
+      "Oils contain no water. You softened the skin, but gave it no hydration.",
+      "Rosehip oil is too light.",
+      "Oils cause dehydration."
+     ],
+     "correct": 0,
+     "explanation": "Facial oils are great for softening and sealing, but they don't hydrate on their own."
+    }
+   ]
+  },
+  {
+   "node": 10,
+   "title": "TEWL & Sealing Water In",
+   "celebration": "You've helped stop the leak!",
+   "screens": [
+    {
+     "type": "intro",
+     "title": "The Enemy: TEWL",
+     "text": "Transepidermal Water Loss (TEWL) is the process of water evaporating from your skin into the air. Managing it is key to hydrated skin."
+    },
+    {
+     "type": "true_false",
+     "question": "TEWL happens most rapidly in hot, humid environments.",
+     "correct": false,
+     "explanation": "TEWL is typically higher in dry, cold, or indoor air-conditioned environments."
+    },
+    {
+     "type": "fill_blank",
+     "question": "Helping reduce TEWL requires a layer of [___] ingredients.",
+     "options": [
+      "occlusive",
+      "humectant",
+      "exfoliating"
+     ],
+     "correct": 0,
+     "explanation": "Occlusives form a physical shield that slows evaporation."
+    },
+    {
+     "type": "multiple_choice",
+     "question": "What can increase the rate of TEWL?",
+     "options": [
+      "A disrupted skin barrier, which allows water to escape more easily.",
+      "Drinking 8 glasses of water.",
+      "Applying moisturizer to damp skin."
+     ],
+     "correct": 0,
+     "explanation": "When the skin's protective lipid layer is weakened, moisture evaporates faster."
+    },
+    {
+     "type": "matching",
+     "question": "Match the environment to its general TEWL risk.",
+     "pairs": [
+      [
+       "Heated indoor air in winter",
+       "High TEWL risk (dry air pulls water)"
+      ],
+      [
+       "Cold winter wind",
+       "High TEWL risk (can disrupt barrier lipids)"
+      ],
+      [
+       "Humid tropical climate",
+       "Lower TEWL risk (ambient moisture helps)"
+      ]
+     ],
+     "explanation": "Your environment heavily influences how much moisture your skin loses."
+    },
+    {
+     "type": "fill_blank_multi",
+     "template": "When TEWL is high, skin often feels [__1__] and fine lines may look more [__2__].",
+     "blanks": [
+      {
+       "options": [
+        "tight",
+        "oily",
+        "hydrated"
+       ],
+       "correct": 0
+      },
+      {
+       "options": [
+        "prominent",
+        "invisible",
+        "plump"
+       ],
+       "correct": 0
+      }
+     ],
+     "explanation": "Water loss temporarily deflates the upper layers of the skin."
+    },
+    {
+     "type": "sequence_builder",
+     "question": "Steps to help minimize TEWL at night:",
+     "items": [
+      "Wash with a gentle cleanser",
+      "Apply hydrating serum to damp skin",
+      "Apply a moisturizer",
+      "Optionally add a thin layer of an occlusive ointment over dry patches"
+     ],
+     "correct_order": [
+      "Wash with a gentle cleanser",
+      "Apply hydrating serum to damp skin",
+      "Apply a moisturizer",
+      "Optionally add a thin layer of an occlusive ointment over dry patches"
+     ],
+     "explanation": "This helps lock moisture into the skin while you sleep."
+    },
+    {
+     "type": "ingredient_match",
+     "question": "Which ingredient acts to help prevent TEWL?",
+     "options": [
+      {
+       "label": "Dimethicone",
+       "correct": true,
+       "detail": "A breathable silicone seal"
+      },
+      {
+       "label": "Glycerin",
+       "correct": false,
+       "detail": "Humectant",
+       "wrong_explanation": "Attracts water, but doesn't strongly stop evaporation."
+      },
+      {
+       "label": "Lactic Acid",
+       "correct": false,
+       "detail": "AHA",
+       "wrong_explanation": "Has no sealing properties."
+      }
+     ],
+     "concern": "Rapid evaporation",
+     "explanation": "Silicones like dimethicone form a protective film to help retain moisture."
+    },
+    {
+     "type": "spot_mistake",
+     "scenario": "It's winter, the indoor heat is on, and you're only using a light gel. Your face feels dry.",
+     "question": "What is the mistake?",
+     "options": [
+      "A gel may not provide enough occlusives to slow TEWL in very dry air.",
+      "You need to use more gel.",
+      "You should stop using all moisturizer."
+     ],
+     "correct": 0,
+     "explanation": "Dry environments often require richer creams to properly seal in hydration."
+    }
+   ]
+  },
+  {
+   "node": 11,
+   "title": "Cleanser Types",
+   "celebration": "You're officially a cleansing pro!",
+   "screens": [
+    {
+     "type": "intro",
+     "title": "The Cleanup Crew",
+     "text": "Not all cleansers are equal. Using a very harsh surfactant (cleansing agent) is a quick way to disrupt your skin barrier."
+    },
+    {
+     "type": "true_false",
+     "question": "If your face doesn't feel tight and squeaky after washing, it's not clean.",
+     "correct": false,
+     "explanation": "Squeaky often means stripped. Clean skin should feel comfortable and soft."
+    },
+    {
+     "type": "fill_blank",
+     "question": "Foaming cleansers are often a good match for [___] skin types.",
+     "options": [
+      "oily",
+      "dry",
+      "flaky"
+     ],
+     "correct": 0,
+     "explanation": "Foaming surfactants are often more effective at cutting through excess sebum."
+    },
+    {
+     "type": "multiple_choice",
+     "question": "Why are cream or lotion cleansers often preferred for dry skin?",
+     "options": [
+      "They clean more gently and help preserve the skin's natural lipids.",
+      "They bubble more.",
+      "They have a higher pH."
+     ],
+     "correct": 0,
+     "explanation": "Dry skin benefits from cleansers that don't aggressively strip away oil."
+    },
+    {
+     "type": "matching",
+     "question": "Match the cleanser texture to a common use case.",
+     "pairs": [
+      [
+       "Foaming / Gel",
+       "Oily or acne-prone skin"
+      ],
+      [
+       "Cream / Lotion",
+       "Dry or sensitive skin"
+      ],
+      [
+       "Oil / Balm",
+       "Breaking down heavy makeup and SPF"
+      ]
+     ],
+     "explanation": "Match the cleansing power to your skin's needs."
+    },
+    {
+     "type": "fill_blank_multi",
+     "template": "[__1__] cleansers are efficient at removing oil, while [__2__] cleansers are more moisturizing.",
+     "blanks": [
+      {
+       "options": [
+        "Foaming",
+        "Cream",
+        "Oil"
+       ],
+       "correct": 0
+      },
+      {
+       "options": [
+        "Cream",
+        "Foaming",
+        "Bar"
+       ],
+       "correct": 0
+      }
+     ],
+     "explanation": "Selecting the right texture helps maintain your skin's balance."
+    },
+    {
+     "type": "sequence_builder",
+     "question": "Rank these general cleanser categories from most potentially stripping to gentlest.",
+     "items": [
+      "Traditional Bar Soap",
+      "Foaming Gel Cleanser",
+      "Cream/Lotion Cleanser"
+     ],
+     "correct_order": [
+      "Traditional Bar Soap",
+      "Foaming Gel Cleanser",
+      "Cream/Lotion Cleanser"
+     ],
+     "explanation": "Traditional bar soaps often use harsh surfactants that disrupt the acid mantle."
+    },
+    {
+     "type": "ingredient_match",
+     "question": "Which cleansing agent is known for being quite strong and potentially drying?",
+     "options": [
+      {
+       "label": "Sodium Lauryl Sulfate (SLS)",
+       "correct": true,
+       "detail": "Strong surfactant"
+      },
+      {
+       "label": "Glycerin",
+       "correct": false,
+       "detail": "Hydrator",
+       "wrong_explanation": "Adds moisture during the wash."
+      },
+      {
+       "label": "Coco-Betaine",
+       "correct": false,
+       "detail": "Gentle surfactant",
+       "wrong_explanation": "A milder cleansing agent."
+      }
+     ],
+     "concern": "Tight, dry skin after washing",
+     "explanation": "SLS is a strong surfactant that can be drying for some people's facial skin."
+    },
+    {
+     "type": "spot_mistake",
+     "scenario": "You have dry skin but use a strong foaming acne wash twice a day.",
+     "question": "What is the mistake?",
+     "options": [
+      "Strong foaming washes can strip lipids, which may aggravate dry skin.",
+      "You aren't leaving the foam on long enough.",
+      "Foam causes acne."
+     ],
+     "correct": 0,
+     "explanation": "It is best to match your cleanser's strength to your skin's moisture levels."
+    }
+   ]
+  },
+  {
+   "node": 12,
+   "title": "pH Balance",
+   "celebration": "You've restored the balance!",
+   "screens": [
+    {
+     "type": "intro",
+     "title": "The pH Scale",
+     "text": "The pH scale measures acidity. Healthy skin generally does best with a mildly acidic cleanser (around pH 4.5–5.5)."
+    },
+    {
+     "type": "true_false",
+     "question": "Water has a neutral pH of 7.0, which means it perfectly matches your skin's pH.",
+     "correct": false,
+     "explanation": "Skin sits around 5.5. Water is neutral, meaning it is slightly more alkaline than the skin."
+    },
+    {
+     "type": "fill_blank",
+     "question": "High-pH (alkaline) soaps can disrupt the skin's [___].",
+     "options": [
+      "acid mantle",
+      "collagen",
+      "melanin"
+     ],
+     "correct": 0,
+     "explanation": "Alkaline formulas can alter the slightly acidic environment skin needs."
+    },
+    {
+     "type": "multiple_choice",
+     "question": "What may happen when your skin's pH is raised too high by harsh soap?",
+     "options": [
+      "It can disrupt the barrier and create an environment where harmful microbes grow more easily.",
+      "Your skin becomes immune to the sun.",
+      "Your pores permanently close."
+     ],
+     "correct": 0,
+     "explanation": "The acid mantle helps keep the skin microbiome balanced."
+    },
+    {
+     "type": "matching",
+     "question": "Match the substance to its approximate pH.",
+     "pairs": [
+      [
+       "Healthy Skin",
+       "pH 4.5 - 5.5 (Slightly Acidic)"
+      ],
+      [
+       "Pure Water",
+       "pH 7.0 (Neutral)"
+      ],
+      [
+       "Traditional Bar Soap",
+       "pH 9.0+ (Alkaline)"
+      ]
+     ],
+     "explanation": "Using products closer to your skin's natural pH is generally gentler."
+    },
+    {
+     "type": "fill_blank_multi",
+     "template": "To help support the microbiome, skin should stay slightly [__1__]. Soaps that are too [__2__] can disrupt this.",
+     "blanks": [
+      {
+       "options": [
+        "acidic",
+        "alkaline",
+        "neutral"
+       ],
+       "correct": 0
+      },
+      {
+       "options": [
+        "alkaline",
+        "acidic",
+        "gentle"
+       ],
+       "correct": 0
+      }
+     ],
+     "explanation": "Acidity is part of your skin's natural defense system."
+    },
+    {
+     "type": "sequence_builder",
+     "question": "What happens when you wash with a highly alkaline bar soap?",
+     "items": [
+      "High alkaline soap contacts the skin",
+      "The acid mantle's pH is temporarily altered",
+      "Skin may feel tight and dry",
+      "The microbiome balance is temporarily disrupted"
+     ],
+     "correct_order": [
+      "High alkaline soap contacts the skin",
+      "The acid mantle's pH is temporarily altered",
+      "Skin may feel tight and dry",
+      "The microbiome balance is temporarily disrupted"
+     ],
+     "explanation": "This is why pH-balanced facial cleansers are usually recommended."
+    },
+    {
+     "type": "ingredient_match",
+     "question": "Which ingredient might formulators use to lower a cleanser's pH?",
+     "options": [
+      {
+       "label": "Citric Acid",
+       "correct": true,
+       "detail": "pH adjuster"
+      },
+      {
+       "label": "Sodium Hydroxide",
+       "correct": false,
+       "detail": "Alkaline base",
+       "wrong_explanation": "This raises pH."
+      },
+      {
+       "label": "Baking Soda",
+       "correct": false,
+       "detail": "Alkaline powder",
+       "wrong_explanation": "This is alkaline."
+      }
+     ],
+     "concern": "pH balance",
+     "explanation": "Tiny amounts of acids are added to bring formulas into a skin-friendly range."
+    },
+    {
+     "type": "spot_mistake",
+     "scenario": "A brand markets a \"pH 9.0 Deep Cleanse Soap\" for daily use.",
+     "question": "What is the mistake?",
+     "options": [
+      "pH 9.0 is highly alkaline, which can disrupt the skin barrier with daily use.",
+      "pH 9.0 is too acidic.",
+      "Acne needs a pH of 10."
+     ],
+     "correct": 0,
+     "explanation": "Consistently high-pH cleansing can compromise skin health over time."
+    }
+   ]
+  },
+  {
+   "node": 13,
+   "title": "Double Cleansing",
+   "celebration": "You've mastered the ultimate cleanse!",
+   "screens": [
+    {
+     "type": "intro",
+     "title": "Like Dissolves Like",
+     "text": "Double Cleansing is a PM routine: an oil-based cleanser to melt makeup/SPF, followed by a water-based cleanser to finish the job."
+    },
+    {
+     "type": "true_false",
+     "question": "Double cleansing is absolutely mandatory every single morning.",
+     "correct": false,
+     "explanation": "It is typically only useful at night to remove water-resistant layers like SPF or makeup."
+    },
+    {
+     "type": "fill_blank",
+     "question": "The concept that makes oil cleansers work well on makeup is \"like dissolves [___].\"",
+     "options": [
+      "like",
+      "water",
+      "acid"
+     ],
+     "correct": 0,
+     "explanation": "Oil is very effective at breaking down other oils and silicones."
+    },
+    {
+     "type": "multiple_choice",
+     "question": "Why use an oil cleanser first?",
+     "options": [
+      "It efficiently grabs onto the oil and silicone in SPF/makeup to melt it.",
+      "Water-based cleansers kill bacteria better.",
+      "Oil cleansers are colder."
+     ],
+     "correct": 0,
+     "explanation": "Water can struggle to break down water-resistant formulas."
+    },
+    {
+     "type": "matching",
+     "question": "Match the step to its specific job.",
+     "pairs": [
+      [
+       "Step 1: Oil Cleanser / Balm",
+       "Melts SPF, makeup, and sebum"
+      ],
+      [
+       "Step 2: Water-based Cleanser",
+       "Cleans the skin surface after the oil cleanser"
+      ],
+      [
+       "Both Steps Together",
+       "The Double Cleanse"
+      ]
+     ],
+     "explanation": "Two gentle steps are often better than scrubbing aggressively once."
+    },
+    {
+     "type": "fill_blank_multi",
+     "template": "Apply cleansing balm to a [__1__] face, massage, then rinse before using a [__2__] cleanser.",
+     "blanks": [
+      {
+       "options": [
+        "dry",
+        "wet",
+        "soapy"
+       ],
+       "correct": 0
+      },
+      {
+       "options": [
+        "water-based",
+        "second oil",
+        "scrub"
+       ],
+       "correct": 0
+      }
+     ],
+     "explanation": "Water can repel the oil cleanser before it has a chance to melt the makeup."
+    },
+    {
+     "type": "sequence_builder",
+     "question": "Assemble a standard Double Cleanse.",
+     "items": [
+      "Apply cleansing balm/oil to dry skin and massage",
+      "Add a splash of water to emulsify (turn milky) and rinse",
+      "Apply water-based cleanser",
+      "Rinse completely"
+     ],
+     "correct_order": [
+      "Apply cleansing balm/oil to dry skin and massage",
+      "Add a splash of water to emulsify (turn milky) and rinse",
+      "Apply water-based cleanser",
+      "Rinse completely"
+     ],
+     "explanation": "This helps ensure a clean surface without excessive friction."
+    },
+    {
+     "type": "ingredient_match",
+     "question": "What allows an oil cleanser to rinse off without leaving a heavy residue?",
+     "options": [
+      {
+       "label": "Emulsifiers",
+       "correct": true,
+       "detail": "Binds oil to water"
+      },
+      {
+       "label": "Pure Coconut Oil",
+       "correct": false,
+       "detail": "Natural oil",
+       "wrong_explanation": "Lacks emulsifiers, may leave a film."
+      },
+      {
+       "label": "Fragrance",
+       "correct": false,
+       "detail": "Scent",
+       "wrong_explanation": "Does nothing for cleansing."
+      }
+     ],
+     "concern": "Greasy residue",
+     "explanation": "Emulsifiers act as a bridge, allowing oil to mix with water and wash away."
+    },
+    {
+     "type": "spot_mistake",
+     "scenario": "You wear water-resistant sunscreen. You wash with a gentle gel at night, but feel buildup.",
+     "question": "What is the mistake?",
+     "options": [
+      "A gentle gel may not fully break down water-resistant SPF. An oil cleanser helps.",
+      "You aren't scrubbing hard enough.",
+      "You need a stronger gel."
+     ],
+     "correct": 0,
+     "explanation": "Water-resistant formulas are designed to repel water-based products."
+    }
+   ]
+  },
+  {
+   "node": 14,
+   "title": "Over-Washing & Stripping",
+   "celebration": "You know when to step away from the sink!",
+   "screens": [
+    {
+     "type": "intro",
+     "title": "The Squeaky Clean Myth",
+     "text": "Over-washing is a common cause of barrier damage and can worsen acne. Squeaky clean often means stripped."
+    },
+    {
+     "type": "true_false",
+     "question": "Washing your face three times a day will reliably cure acne faster.",
+     "correct": false,
+     "explanation": "Excessive washing can irritate the skin and may worsen acne in many people."
+    },
+    {
+     "type": "fill_blank",
+     "question": "A tight, \"squeaky\" feeling after washing suggests you may have disrupted your acid [___].",
+     "options": [
+      "mantle",
+      "collagen",
+      "water"
+     ],
+     "correct": 0,
+     "explanation": "Cleansing should leave skin feeling clean, not tight and uncomfortable."
+    },
+    {
+     "type": "multiple_choice",
+     "question": "Why do some people prefer to skip cleanser in the morning?",
+     "options": [
+      "A splash of water may be enough to refresh the skin without stripping it.",
+      "Cleansers expire overnight.",
+      "Water kills more bacteria than soap."
+     ],
+     "correct": 0,
+     "explanation": "You don't get very dirty while you sleep; a full cleanse isn't always necessary."
+    },
+    {
+     "type": "matching",
+     "question": "Match the symptom to a possible consequence of over-washing.",
+     "pairs": [
+      [
+       "Sudden excess oil",
+       "Skin may overproduce sebum to compensate for dryness"
+      ],
+      [
+       "Stinging moisturizer",
+       "Barrier may be compromised"
+      ],
+      [
+       "Tight, shiny forehead",
+       "Surface lipids may be stripped"
+      ]
+     ],
+     "explanation": "Your skin will often signal when it is being treated too harshly."
+    },
+    {
+     "type": "fill_blank_multi",
+     "template": "Over-washing can cause [__1__] skin to flake, and may cause [__2__] skin to feel oily yet tight.",
+     "blanks": [
+      {
+       "options": [
+        "dry",
+        "oily",
+        "normal"
+       ],
+       "correct": 0
+      },
+      {
+       "options": [
+        "oily",
+        "dry",
+        "sensitive"
+       ],
+       "correct": 0
+      }
+     ],
+     "explanation": "Stripping the barrier affects different skin types in different ways."
+    },
+    {
+     "type": "sequence_builder",
+     "question": "A possible cascade of over-washing:",
+     "items": [
+      "Washing too frequently with strong cleansers",
+      "Natural lipids are stripped from the barrier",
+      "Transepidermal Water Loss (TEWL) increases",
+      "Skin becomes irritated, which may worsen breakouts"
+     ],
+     "correct_order": [
+      "Washing too frequently with strong cleansers",
+      "Natural lipids are stripped from the barrier",
+      "Transepidermal Water Loss (TEWL) increases",
+      "Skin becomes irritated, which may worsen breakouts"
+     ],
+     "explanation": "Gentle cleansing is foundational to maintaining healthy skin."
+    },
+    {
+     "type": "ingredient_match",
+     "question": "Which ingredient type should you be cautious with if you are over-washing?",
+     "options": [
+      {
+       "label": "Strong Sulfates (like SLS)",
+       "correct": true,
+       "detail": "Aggressive surfactants"
+      },
+      {
+       "label": "Glycerin",
+       "correct": false,
+       "detail": "Hydrator",
+       "wrong_explanation": "Helpful for stripped skin."
+      },
+      {
+       "label": "Ceramides",
+       "correct": false,
+       "detail": "Barrier repair",
+       "wrong_explanation": "Helpful for healing."
+      }
+     ],
+     "concern": "Stripped barrier",
+     "explanation": "Strong surfactants can be too efficient at removing necessary oils."
+    },
+    {
+     "type": "spot_mistake",
+     "scenario": "You want your skin very clean, so you use a foaming scrub and a face brush twice a day.",
+     "question": "What is the mistake?",
+     "options": [
+      "Heavy physical and chemical exfoliation daily can damage the barrier.",
+      "You should do it three times a day.",
+      "The brush needs to spin faster."
+     ],
+     "correct": 0,
+     "explanation": "Excessive friction and cleansing usually leads to irritation, not clearer skin."
+    }
+   ]
+  },
+  {
+   "node": 15,
+   "title": "Micellar & Oil Cleansers",
+   "celebration": "You've mastered the alternative cleansers!",
+   "screens": [
+    {
+     "type": "intro",
+     "title": "Beyond Soap",
+     "text": "Micellar water and Cleansing Oils use chemistry to lift dirt and makeup without relying on harsh foaming agents."
+    },
+    {
+     "type": "true_false",
+     "question": "Micellar water is just regular tap water in a bottle.",
+     "correct": false,
+     "explanation": "It contains micelles—tiny clusters of mild cleansing molecules suspended in water."
+    },
+    {
+     "type": "fill_blank",
+     "question": "A micelle has a tail that attracts oil and a head that attracts [___].",
+     "options": [
+      "water",
+      "acid",
+      "collagen"
+     ],
+     "correct": 0,
+     "explanation": "The oil-loving tail grabs makeup, and the water-loving head helps it wash away."
+    },
+    {
+     "type": "multiple_choice",
+     "question": "When might micellar water be a particularly good choice?",
+     "options": [
+      "When you need a quick cleanse, like post-workout or on a low-energy night.",
+      "When you want to exfoliate.",
+      "When you need to cure cystic acne."
+     ],
+     "correct": 0,
+     "explanation": "A quick swipe is better than sleeping in makeup or sweat."
+    },
+    {
+     "type": "matching",
+     "question": "Match the cleanser to a common use case.",
+     "pairs": [
+      [
+       "Micellar Water",
+       "Quick makeup removal, gym bag"
+      ],
+      [
+       "Cleansing Balm/Oil",
+       "Melting heavy waterproof SPF and makeup"
+      ],
+      [
+       "Foaming Gel",
+       "Washing the skin surface after makeup removal"
+      ]
+     ],
+     "explanation": "Match your cleanser type to how much you need to remove."
+    },
+    {
+     "type": "fill_blank_multi",
+     "template": "[__1__] cleansers are solid in the jar but melt on the skin, while [__2__] waters look clear but contain cleansing molecules.",
+     "blanks": [
+      {
+       "options": [
+        "Balm",
+        "Foaming",
+        "Cream"
+       ],
+       "correct": 0
+      },
+      {
+       "options": [
+        "Micellar",
+        "Tonic",
+        "Hard"
+       ],
+       "correct": 0
+      }
+     ],
+     "explanation": "Both are effective at removing makeup but offer different textures."
+    },
+    {
+     "type": "sequence_builder",
+     "question": "A good way to use Micellar Water for makeup:",
+     "items": [
+      "Soak a cotton pad",
+      "Press it gently to the skin/eye for a few seconds",
+      "Swipe away the dissolved makeup gently",
+      "Rinse with water if desired"
+     ],
+     "correct_order": [
+      "Soak a cotton pad",
+      "Press it gently to the skin/eye for a few seconds",
+      "Swipe away the dissolved makeup gently",
+      "Rinse with water if desired"
+     ],
+     "explanation": "Pressing gives the micelles a moment to attract the makeup, reducing friction."
+    },
+    {
+     "type": "ingredient_match",
+     "question": "What helps an oil cleanser rinse off without leaving a heavy residue?",
+     "options": [
+      {
+       "label": "Emulsifiers",
+       "correct": true,
+       "detail": "Binds oil to water"
+      },
+      {
+       "label": "Pure Coconut Oil",
+       "correct": false,
+       "detail": "Natural oil",
+       "wrong_explanation": "Lacks emulsifiers, may leave a film."
+      },
+      {
+       "label": "Fragrance",
+       "correct": false,
+       "detail": "Scent",
+       "wrong_explanation": "Does nothing for cleansing."
+      }
+     ],
+     "concern": "Leaving a greasy film",
+     "explanation": "Emulsifiers act as a bridge, allowing oil to mix with water and wash away."
+    },
+    {
+     "type": "spot_mistake",
+     "scenario": "You try to remove waterproof mascara by aggressively rubbing your eyes with a micellar pad.",
+     "question": "What is the mistake?",
+     "options": [
+      "Rubbing causes friction. Press and hold the pad to let the micelles work.",
+      "You should use soap on your eyes.",
+      "Micellar water doesn't work on mascara."
+     ],
+     "correct": 0,
+     "explanation": "Let the chemistry do the work to protect delicate eye skin."
+    }
+   ]
+  },
+  {
+   "node": 16,
+   "title": "AHAs",
+   "celebration": "You've unlocked the surface glow!",
+   "screens": [
+    {
+     "type": "intro",
+     "title": "Alpha Hydroxy Acids",
+     "text": "AHAs (like Glycolic and Lactic acid) are water-soluble exfoliants. They help loosen dead skin cells on the surface to improve texture."
+    },
+    {
+     "type": "true_false",
+     "question": "AHAs are oil-soluble and dive deep inside the pore to dissolve sebum.",
+     "correct": false,
+     "explanation": "AHAs are water-soluble, so they work primarily on the skin's surface."
+    },
+    {
+     "type": "fill_blank",
+     "question": "AHAs work by helping to dissolve the bonds holding [___] skin cells together.",
+     "options": [
+      "dead",
+      "living",
+      "collagen"
+     ],
+     "correct": 0,
+     "explanation": "This allows dull, older cells to shed more easily."
+    },
+    {
+     "type": "multiple_choice",
+     "question": "Which of these is a major benefit of using an AHA?",
+     "options": [
+      "Smoothing surface texture and helping to fade the look of dark spots.",
+      "Clearing deep cystic acne.",
+      "Building a thicker stratum corneum."
+     ],
+     "correct": 0,
+     "explanation": "By encouraging surface turnover, skin can appear brighter and smoother."
+    },
+    {
+     "type": "matching",
+     "question": "Match the specific AHA to its general profile.",
+     "pairs": [
+      [
+       "Glycolic Acid",
+       "Smallest molecule, very effective but can be irritating"
+      ],
+      [
+       "Lactic Acid",
+       "Larger molecule, gentler, has some hydrating properties"
+      ],
+      [
+       "Mandelic Acid",
+       "Largest molecule, very gentle, good for sensitive skin"
+      ]
+     ],
+     "explanation": "You can choose an acid based on your skin's tolerance."
+    },
+    {
+     "type": "fill_blank_multi",
+     "template": "[__1__] acid tends to be stronger due to its size, while [__2__] acid is generally gentler.",
+     "blanks": [
+      {
+       "options": [
+        "Glycolic",
+        "Lactic",
+        "Salicylic"
+       ],
+       "correct": 0
+      },
+      {
+       "options": [
+        "Lactic",
+        "Glycolic",
+        "Citric"
+       ],
+       "correct": 0
+      }
+     ],
+     "explanation": "Molecule size influences how quickly the acid penetrates the skin."
+    },
+    {
+     "type": "sequence_builder",
+     "question": "Rank these AHAs by molecule size (smallest/deepest penetrating to largest/gentlest).",
+     "items": [
+      "Glycolic Acid",
+      "Lactic Acid",
+      "Mandelic Acid"
+     ],
+     "correct_order": [
+      "Glycolic Acid",
+      "Lactic Acid",
+      "Mandelic Acid"
+     ],
+     "explanation": "Smaller molecules penetrate faster, which can increase effectiveness but also irritation."
+    },
+    {
+     "type": "ingredient_match",
+     "question": "Which ingredient can make your skin more sensitive to the sun?",
+     "options": [
+      {
+       "label": "Glycolic Acid",
+       "correct": true,
+       "detail": "AHA that removes the protective dead cell layer"
+      },
+      {
+       "label": "Ceramides",
+       "correct": false,
+       "detail": "Barrier repair",
+       "wrong_explanation": "Supports the barrier."
+      },
+      {
+       "label": "Niacinamide",
+       "correct": false,
+       "detail": "Vitamin B3",
+       "wrong_explanation": "Does not increase sun sensitivity."
+      }
+     ],
+     "concern": "Sunburn risk",
+     "explanation": "AHAs reveal fresher skin cells that are more vulnerable to UV damage."
+    },
+    {
+     "type": "spot_mistake",
+     "scenario": "You use a strong 10% Glycolic Acid serum every single morning and night.",
+     "question": "What is the mistake?",
+     "options": [
+      "Overusing AHAs can disrupt the moisture barrier and cause irritation.",
+      "Glycolic acid must be 20% to work.",
+      "AHAs only work on weekends."
+     ],
+     "correct": 0,
+     "explanation": "Chemical exfoliation is usually best done a few times a week, not twice daily."
+    }
+   ]
+  },
+  {
+   "node": 17,
+   "title": "BHAs",
+   "celebration": "You've learned how to clear pores!",
+   "screens": [
+    {
+     "type": "intro",
+     "title": "Beta Hydroxy Acids",
+     "text": "BHAs (like Salicylic Acid) are oil-soluble exfoliants. Because they mix with oil, they can help clear inside the pore."
+    },
+    {
+     "type": "true_false",
+     "question": "BHAs and AHAs work exactly the same way.",
+     "correct": false,
+     "explanation": "AHAs are water-soluble (surface), while BHAs are oil-soluble (can penetrate sebum)."
+    },
+    {
+     "type": "fill_blank",
+     "question": "The most common BHA used in skincare is [___] acid.",
+     "options": [
+      "salicylic",
+      "glycolic",
+      "lactic"
+     ],
+     "correct": 0,
+     "explanation": "Salicylic acid is widely used to help manage breakouts and congestion."
+    },
+    {
+     "type": "multiple_choice",
+     "question": "Why is BHA often recommended for blackheads?",
+     "options": [
+      "Its oil-solubility allows it to help dissolve sebum and debris inside the pore.",
+      "It acts like a physical scrub.",
+      "It shrinks the pore permanently."
+     ],
+     "correct": 0,
+     "explanation": "Water-soluble ingredients struggle to penetrate the oily environment of a pore."
+    },
+    {
+     "type": "matching",
+     "question": "Match the acid type to its primary working area.",
+     "pairs": [
+      [
+       "AHA (Glycolic/Lactic)",
+       "The surface (texture, superficial dullness)"
+      ],
+      [
+       "BHA (Salicylic)",
+       "Inside the pore (blackheads, congestion)"
+      ]
+     ],
+     "explanation": "Choose your exfoliant based on where your skin concerns are located."
+    },
+    {
+     "type": "fill_blank_multi",
+     "template": "For dry skin with rough surface texture, an [__1__] is often preferred. For oily skin with clogged pores, a [__2__] is usually better.",
+     "blanks": [
+      {
+       "options": [
+        "AHA",
+        "BHA",
+        "SPF"
+       ],
+       "correct": 0
+      },
+      {
+       "options": [
+        "BHA",
+        "AHA",
+        "Ceramide"
+       ],
+       "correct": 0
+      }
+     ],
+     "explanation": "Match the solubility of the acid to your skin type and concern."
+    },
+    {
+     "type": "sequence_builder",
+     "question": "A general process of how BHA helps a clogged pore:",
+     "items": [
+      "Applied to the skin",
+      "Mixes with surface oil",
+      "Penetrates into the pore",
+      "Helps loosen the sebum and dead skin clog"
+     ],
+     "correct_order": [
+      "Applied to the skin",
+      "Mixes with surface oil",
+      "Penetrates into the pore",
+      "Helps loosen the sebum and dead skin clog"
+     ],
+     "explanation": "Salicylic acid also has mild soothing properties which help with redness."
+    },
+    {
+     "type": "ingredient_match",
+     "question": "Which ingredient is oil-soluble and commonly used for breakouts?",
+     "options": [
+      {
+       "label": "Salicylic Acid",
+       "correct": true,
+       "detail": "BHA"
+      },
+      {
+       "label": "Lactic Acid",
+       "correct": false,
+       "detail": "AHA",
+       "wrong_explanation": "Water soluble, mainly for the surface."
+      },
+      {
+       "label": "Glycerin",
+       "correct": false,
+       "detail": "Humectant",
+       "wrong_explanation": "Hydrates, doesn't clear pores."
+      }
+     ],
+     "concern": "Clogged pores",
+     "explanation": "Salicylic acid is effective at navigating the oily environment of a clogged pore."
+    },
+    {
+     "type": "spot_mistake",
+     "scenario": "You have blackheads, so you aggressively scrub your nose with a harsh physical scrub daily.",
+     "question": "What is the mistake?",
+     "options": [
+      "Scrubs only treat the surface. You may need a BHA to help clear inside the pore.",
+      "Scrubs cause blackheads.",
+      "You should use a scrub and a BHA together daily."
+     ],
+     "correct": 0,
+     "explanation": "Physical friction cannot easily reach or dissolve a deep pore clog."
+    }
+   ]
+  },
+  {
+   "node": 18,
+   "title": "Retinoids",
+   "celebration": "You've met a standard in anti-aging!",
+   "screens": [
+    {
+     "type": "intro",
+     "title": "The Communicators",
+     "text": "Retinoids (Vitamin A derivatives) are well-researched ingredients that encourage cell turnover and support collagen production."
+    },
+    {
+     "type": "true_false",
+     "question": "Retinoids only exfoliate the surface of the skin like an AHA.",
+     "correct": false,
+     "explanation": "Retinoids work by prompting cells to renew more efficiently from deeper within the epidermis."
+    },
+    {
+     "type": "fill_blank",
+     "question": "A potent prescription retinoid often used by dermatologists is [___].",
+     "options": [
+      "tretinoin",
+      "retinol",
+      "bakuchiol"
+     ],
+     "correct": 0,
+     "explanation": "Tretinoin is pure retinoic acid and is highly effective."
+    },
+    {
+     "type": "multiple_choice",
+     "question": "What is the \"Retinization\" or purging phase?",
+     "options": [
+      "A temporary period of potential flaking, redness, or breakouts as skin adjusts.",
+      "A permanent allergic reaction.",
+      "A sign the product is expired."
+     ],
+     "correct": 0,
+     "explanation": "As cell turnover speeds up, skin can experience temporary irritation or purging."
+    },
+    {
+     "type": "matching",
+     "question": "Match the retinoid to its general characteristic.",
+     "pairs": [
+      [
+       "Retinol",
+       "Over-the-counter, takes time to convert to active form"
+      ],
+      [
+       "Retinaldehyde (Retinal)",
+       "Stronger OTC option, requires fewer conversions"
+      ],
+      [
+       "Tretinoin",
+       "Prescription strength, works directly without needing conversion"
+      ]
+     ],
+     "explanation": "Different forms have different strengths and irritation potentials."
+    },
+    {
+     "type": "fill_blank_multi",
+     "template": "Retinoids are typically used at [__1__], and you should wear [__2__] the next day.",
+     "blanks": [
+      {
+       "options": [
+        "night",
+        "morning",
+        "noon"
+       ],
+       "correct": 0
+      },
+      {
+       "options": [
+        "SPF",
+        "makeup",
+        "oil"
+       ],
+       "correct": 0
+      }
+     ],
+     "explanation": "Many retinoids can degrade in sunlight, and renewing skin needs protection."
+    },
+    {
+     "type": "sequence_builder",
+     "question": "A method to help introduce Retinol safely (The Sandwich Method):",
+     "items": [
+      "Apply a light layer of moisturizer",
+      "Apply a small amount of retinol",
+      "Apply a second layer of moisturizer"
+     ],
+     "correct_order": [
+      "Apply a light layer of moisturizer",
+      "Apply a small amount of retinol",
+      "Apply a second layer of moisturizer"
+     ],
+     "explanation": "This buffers the retinol, which can help reduce early irritation."
+    },
+    {
+     "type": "ingredient_match",
+     "question": "Which ingredient is strongly proven to support new collagen production?",
+     "options": [
+      {
+       "label": "Retinol",
+       "correct": true,
+       "detail": "Vitamin A derivative"
+      },
+      {
+       "label": "Hyaluronic Acid",
+       "correct": false,
+       "detail": "Hydrator",
+       "wrong_explanation": "Plumps temporarily with water."
+      },
+      {
+       "label": "Niacinamide",
+       "correct": false,
+       "detail": "Vitamin B3",
+       "wrong_explanation": "Supports barrier, but retinol is stronger for collagen."
+      }
+     ],
+     "concern": "Fine lines",
+     "explanation": "Retinoids have decades of research backing their anti-aging benefits."
+    },
+    {
+     "type": "spot_mistake",
+     "scenario": "You buy your first retinol and apply a large amount every single night.",
+     "question": "What is the mistake?",
+     "options": [
+      "Starting too fast can damage the barrier. Start with a pea-sized amount, 1-2 times a week.",
+      "Retinol should only be used in the morning.",
+      "You need to use AHA at the same time."
+     ],
+     "correct": 0,
+     "explanation": "Retinoids require an adjustment period to minimize redness and peeling."
+    }
+   ]
+  },
+  {
+   "node": 19,
+   "title": "Vitamin C",
+   "celebration": "You've armored up with antioxidants!",
+   "screens": [
+    {
+     "type": "intro",
+     "title": "The Morning Shield",
+     "text": "Vitamin C is a powerful antioxidant. It helps neutralize free radicals (from pollution/UV) and can brighten the skin."
+    },
+    {
+     "type": "true_false",
+     "question": "Vitamin C can be used as a replacement for daily sunscreen.",
+     "correct": false,
+     "explanation": "It doesn't block UV rays; it acts as a secondary defense against the damage they cause."
+    },
+    {
+     "type": "fill_blank",
+     "question": "A potent, but somewhat unstable, form of Vitamin C is L-[___] Acid.",
+     "options": [
+      "ascorbic",
+      "salicylic",
+      "hyaluronic"
+     ],
+     "correct": 0,
+     "explanation": "L-Ascorbic Acid is highly effective but can degrade when exposed to light and air."
+    },
+    {
+     "type": "multiple_choice",
+     "question": "What does it mean when an L-Ascorbic Acid serum turns dark orange or brown?",
+     "options": [
+      "It has likely oxidized and may be less effective.",
+      "It is getting stronger.",
+      "It is ready to use."
+     ],
+     "correct": 0,
+     "explanation": "Pure Vitamin C oxidizes over time, changing color as it degrades."
+    },
+    {
+     "type": "matching",
+     "question": "Match the Vitamin C benefit to its general action.",
+     "pairs": [
+      [
+       "Brightens tone",
+       "Helps inhibit excess melanin production"
+      ],
+      [
+       "Fights environmental damage",
+       "Neutralizes free radicals"
+      ],
+      [
+       "Supports firmness",
+       "Acts as a co-factor in collagen synthesis"
+      ]
+     ],
+     "explanation": "It is a versatile ingredient often recommended for morning use."
+    },
+    {
+     "type": "fill_blank_multi",
+     "template": "Vitamin C is popular in the [__1__] routine, applied under your [__2__].",
+     "blanks": [
+      {
+       "options": [
+        "morning",
+        "evening",
+        "shower"
+       ],
+       "correct": 0
+      },
+      {
+       "options": [
+        "SPF",
+        "retinol",
+        "cleanser"
+       ],
+       "correct": 0
+      }
+     ],
+     "explanation": "It pairs well with sunscreen to help defend the skin during the day."
+    },
+    {
+     "type": "sequence_builder",
+     "question": "Tips to help store pure L-Ascorbic Acid (Vitamin C) to keep it fresh:",
+     "items": [
+      "Keep it in an opaque or dark bottle",
+      "Store it in a cool place away from direct sunlight",
+      "Close the lid tightly immediately after use"
+     ],
+     "correct_order": [
+      "Keep it in an opaque or dark bottle",
+      "Store it in a cool place away from direct sunlight",
+      "Close the lid tightly immediately after use"
+     ],
+     "explanation": "Light, heat, and air can accelerate the oxidation process."
+    },
+    {
+     "type": "ingredient_match",
+     "question": "Which ingredient pairs well with SPF to support daytime protection?",
+     "options": [
+      {
+       "label": "Vitamin C",
+       "correct": true,
+       "detail": "Antioxidant"
+      },
+      {
+       "label": "Retinol",
+       "correct": false,
+       "detail": "Vitamin A",
+       "wrong_explanation": "Often degrades in sunlight."
+      },
+      {
+       "label": "Glycolic Acid",
+       "correct": false,
+       "detail": "AHA",
+       "wrong_explanation": "Does not act as an antioxidant shield."
+      }
+     ],
+     "concern": "Environmental stressors",
+     "explanation": "Antioxidants and UV filters offer complementary daytime defense."
+    },
+    {
+     "type": "spot_mistake",
+     "scenario": "You aggressively layer a low-pH Vitamin C serum with a strong AHA daily.",
+     "question": "What is the mistake?",
+     "options": [
+      "Mixing strong acids can increase irritation, especially for sensitive skin.",
+      "Vitamin C only works with Retinol.",
+      "It will bleach your skin."
+     ],
+     "correct": 0,
+     "explanation": "Both ingredients can be irritating; using them together requires caution."
+    }
+   ]
+  },
+  {
+   "node": 20,
+   "title": "Niacinamide",
+   "celebration": "You've met the ultimate team player!",
+   "screens": [
+    {
+     "type": "intro",
+     "title": "The Multi-Tasker (Vitamin B3)",
+     "text": "Niacinamide is a versatile ingredient. It helps support the skin barrier, regulate oil appearance, and improve tone."
+    },
+    {
+     "type": "true_false",
+     "question": "Niacinamide is an exfoliating acid.",
+     "correct": false,
+     "explanation": "It is Vitamin B3, a supportive ingredient that doesn't exfoliate."
+    },
+    {
+     "type": "fill_blank",
+     "question": "Niacinamide is known to help regulate the appearance of [___], making it popular for oily skin.",
+     "options": [
+      "sebum",
+      "sweat",
+      "melanin"
+     ],
+     "correct": 0,
+     "explanation": "It can help skin look less greasy throughout the day."
+    },
+    {
+     "type": "multiple_choice",
+     "question": "Why do formulators include Niacinamide in so many products?",
+     "options": [
+      "It plays nicely with most ingredients and is generally well-tolerated.",
+      "It is a strong preservative.",
+      "It foams up nicely."
+     ],
+     "correct": 0,
+     "explanation": "It is stable, gentle, and offers multiple benefits for the barrier."
+    },
+    {
+     "type": "matching",
+     "question": "Match the Niacinamide benefit to a related skin concern.",
+     "pairs": [
+      [
+       "Oily Appearance",
+       "Helps balance sebum production"
+      ],
+      [
+       "Compromised Barrier",
+       "Helps support natural ceramide production"
+      ],
+      [
+       "Uneven Tone",
+       "Can help brighten and even out skin color"
+      ]
+     ],
+     "explanation": "It is a universal ingredient that addresses several issues at once."
+    },
+    {
+     "type": "fill_blank_multi",
+     "template": "Most people benefit from Niacinamide concentrations between [__1__] and [__2__] percent.",
+     "blanks": [
+      {
+       "options": [
+        "2",
+        "20",
+        "50"
+       ],
+       "correct": 0
+      },
+      {
+       "options": [
+        "10",
+        "1",
+        "100"
+       ],
+       "correct": 0
+      }
+     ],
+     "explanation": "Higher concentrations (like 20%) exist but may increase the risk of irritation."
+    },
+    {
+     "type": "sequence_builder",
+     "question": "General effects of using Niacinamide:",
+     "items": [
+      "Applied to the skin",
+      "Supports natural ceramide and lipid production",
+      "Skin barrier becomes more resilient",
+      "Overall hydration and tone may improve"
+     ],
+     "correct_order": [
+      "Applied to the skin",
+      "Supports natural ceramide and lipid production",
+      "Skin barrier becomes more resilient",
+      "Overall hydration and tone may improve"
+     ],
+     "explanation": "It works by supporting the skin's own natural functions."
+    },
+    {
+     "type": "ingredient_match",
+     "question": "Which ingredient is good for supporting the barrier while helping with oiliness?",
+     "options": [
+      {
+       "label": "Niacinamide",
+       "correct": true,
+       "detail": "Vitamin B3"
+      },
+      {
+       "label": "Glycolic Acid",
+       "correct": false,
+       "detail": "AHA",
+       "wrong_explanation": "Can sometimes irritate sensitive skin."
+      },
+      {
+       "label": "Vitamin C",
+       "correct": false,
+       "detail": "L-Ascorbic Acid",
+       "wrong_explanation": "Can sometimes sting if the barrier is weak."
+      }
+     ],
+     "concern": "Oily but sensitive skin",
+     "explanation": "Niacinamide uniquely supports barrier health without being heavy or greasy."
+    },
+    {
+     "type": "spot_mistake",
+     "scenario": "You buy a serum with 20% Niacinamide, assuming higher is always better, but experience redness.",
+     "question": "What is the mistake?",
+     "options": [
+      "Concentrations above 10% can increase the risk of irritation for some people.",
+      "Niacinamide always causes rashes.",
+      "You didn't use an acid with it."
+     ],
+     "correct": 0,
+     "explanation": "Effective results are often seen at lower, gentler percentages."
+    }
+   ]
+  },
+  {
+   "node": 21,
+   "title": "UVA vs UVB",
+   "celebration": "You've cracked the light spectrum!",
+   "screens": [
+    {
+     "type": "intro",
+     "title": "Aging vs. Burning",
+     "text": "The sun emits harmful rays: UVA (Aging) and UVB (Burning). Both can damage DNA and contribute to skin cancer."
+    },
+    {
+     "type": "true_false",
+     "question": "You don't need sunscreen if it's cloudy outside.",
+     "correct": false,
+     "explanation": "Clouds block some UVB rays, but UVA rays can still penetrate them."
+    },
+    {
+     "type": "fill_blank",
+     "question": "[___] rays can penetrate more deeply into the dermis and contribute to wrinkles.",
+     "options": [
+      "UVA",
+      "UVB",
+      "UVC"
+     ],
+     "correct": 0,
+     "explanation": "UVA is often associated with Aging and deep structural changes."
+    },
+    {
+     "type": "multiple_choice",
+     "question": "How does window glass affect UV rays?",
+     "options": [
+      "Glass blocks most UVB rays, but UVA rays can pass through.",
+      "Glass blocks all UVA and UVB rays.",
+      "Glass blocks nothing."
+     ],
+     "correct": 0,
+     "explanation": "You are less likely to sunburn indoors, but UVA exposure can still occur."
+    },
+    {
+     "type": "matching",
+     "question": "Match the UV ray to a helpful mnemonic.",
+     "pairs": [
+      [
+       "UVA",
+       "A for Aging (Wrinkles, dark spots)"
+      ],
+      [
+       "UVB",
+       "B for Burning (Surface sunburns)"
+      ],
+      [
+       "UVC",
+       "Mostly blocked by the earth's atmosphere"
+      ]
+     ],
+     "explanation": "Knowing the difference highlights the need for daily, broad-spectrum protection."
+    },
+    {
+     "type": "fill_blank_multi",
+     "template": "SPF primarily measures protection against [__1__] rays, while \"Broad Spectrum\" indicates protection against [__2__] rays as well.",
+     "blanks": [
+      {
+       "options": [
+        "UVB",
+        "UVA",
+        "infrared"
+       ],
+       "correct": 0
+      },
+      {
+       "options": [
+        "UVA",
+        "UVB",
+        "visible"
+       ],
+       "correct": 0
+      }
+     ],
+     "explanation": "You should look for \"Broad Spectrum\" to help prevent both burning and aging."
+    },
+    {
+     "type": "sequence_builder",
+     "question": "Rank these from generally deepest skin penetration to shallowest.",
+     "items": [
+      "UVA rays",
+      "UVB rays",
+      "Topical skincare products"
+     ],
+     "correct_order": [
+      "UVA rays",
+      "UVB rays",
+      "Topical skincare products"
+     ],
+     "explanation": "UVA's deeper penetration is why it is heavily linked to collagen breakdown."
+    },
+    {
+     "type": "ingredient_match",
+     "question": "What must a sunscreen label say to indicate protection against both UVA and UVB?",
+     "options": [
+      {
+       "label": "Broad Spectrum",
+       "correct": true,
+       "detail": "Indicates coverage for both ray types"
+      },
+      {
+       "label": "SPF 100",
+       "correct": false,
+       "detail": "High burn protection",
+       "wrong_explanation": "SPF alone primarily measures UVB."
+      },
+      {
+       "label": "Water Resistant",
+       "correct": false,
+       "detail": "Won't sweat off easily",
+       "wrong_explanation": "Relates to wear time, not ray types."
+      }
+     ],
+     "concern": "Complete UV protection",
+     "explanation": "\"Broad Spectrum\" is the standardized term for comprehensive UV protection."
+    },
+    {
+     "type": "spot_mistake",
+     "scenario": "You sit by a sunny window all day, so you skip sunscreen because you won't get a sunburn.",
+     "question": "What is the mistake?",
+     "options": [
+      "UVA rays can pass through glass and contribute to premature aging.",
+      "Windows magnify UVB rays.",
+      "You only need SPF outside."
+     ],
+     "correct": 0,
+     "explanation": "If daylight is hitting your skin, UV exposure is likely happening."
+    }
+   ]
+  },
+  {
+   "node": 22,
+   "title": "SPF Types & Application",
+   "celebration": "You've mastered your daily armor!",
+   "screens": [
+    {
+     "type": "intro",
+     "title": "Mineral vs. Chemical",
+     "text": "Mineral sunscreens primarily absorb UV radiation and scatter some light. Chemical sunscreens form a thin film on the skin and absorb UV energy."
+    },
+    {
+     "type": "true_false",
+     "question": "SPF 30 provides exactly half the protection of SPF 60.",
+     "correct": false,
+     "explanation": "SPF 30 blocks ~97% of UVB rays, while SPF 60 blocks ~98%."
+    },
+    {
+     "type": "fill_blank",
+     "question": "A common recommendation for applying sunscreen to the face and neck is about [___] finger-lengths.",
+     "options": [
+      "two",
+      "one",
+      "four"
+     ],
+     "correct": 0,
+     "explanation": "Applying an adequate amount is necessary to get the SPF protection listed on the label."
+    },
+    {
+     "type": "multiple_choice",
+     "question": "Why do mineral sunscreens sometimes leave a \"white cast\"?",
+     "options": [
+      "They contain Zinc Oxide or Titanium Dioxide, which are white mineral powders.",
+      "They bleach the skin.",
+      "They contain expired ingredients."
+     ],
+     "correct": 0,
+     "explanation": "These minerals can be visible on the skin, especially on darker skin tones."
+    },
+    {
+     "type": "matching",
+     "question": "Match the sunscreen filter type to its characteristic.",
+     "pairs": [
+      [
+       "Mineral (Zinc/Titanium)",
+       "Primarily absorbs and scatters UV, can leave a cast"
+      ],
+      [
+       "Chemical (Avobenzone, etc.)",
+       "Forms a film to absorb UV energy, usually clear"
+      ],
+      [
+       "Tinted SPF",
+       "Often contains iron oxides to help reduce white cast"
+      ]
+     ],
+     "explanation": "The best sunscreen is the one you enjoy wearing every day in the correct amount."
+    },
+    {
+     "type": "fill_blank_multi",
+     "template": "Mineral sunscreens work once evenly applied, while [__1__] sunscreens should usually be applied [__2__] minutes before exposure.",
+     "blanks": [
+      {
+       "options": [
+        "chemical",
+        "mineral",
+        "gel"
+       ],
+       "correct": 0
+      },
+      {
+       "options": [
+        "15",
+        "60",
+        "2"
+       ],
+       "correct": 0
+      }
+     ],
+     "explanation": "Applying chemical sunscreen about 15 minutes before sun exposure allows it to form an even protective film."
+    },
+    {
+     "type": "sequence_builder",
+     "question": "A general order for a morning routine:",
+     "items": [
+      "Moisturizer",
+      "Sunscreen (Allow it time to set)",
+      "Makeup (Apply gently over SPF)"
+     ],
+     "correct_order": [
+      "Moisturizer",
+      "Sunscreen (Allow it time to set)",
+      "Makeup (Apply gently over SPF)"
+     ],
+     "explanation": "Sunscreen usually goes on as the last skincare step to form a protective layer."
+    },
+    {
+     "type": "ingredient_match",
+     "question": "Which UV filter is often recommended for sensitive skin?",
+     "options": [
+      {
+       "label": "Zinc Oxide",
+       "correct": true,
+       "detail": "Mineral filter"
+      },
+      {
+       "label": "Avobenzone",
+       "correct": false,
+       "detail": "Chemical filter",
+       "wrong_explanation": "Can sometimes irritate sensitive skin."
+      },
+      {
+       "label": "Oxybenzone",
+       "correct": false,
+       "detail": "Chemical filter",
+       "wrong_explanation": "A known allergen for some people."
+      }
+     ],
+     "concern": "Irritation from sunscreen",
+     "explanation": "Mineral filters are generally well-tolerated by reactive skin types."
+    },
+    {
+     "type": "spot_mistake",
+     "scenario": "You mix a few drops of sunscreen into your moisturizer in your palm before applying.",
+     "question": "What is the mistake?",
+     "options": [
+      "Mixing SPF can dilute the filters and disrupt the protective film.",
+      "It makes the moisturizer too greasy.",
+      "Moisturizer already has enough SPF."
+     ],
+     "correct": 0,
+     "explanation": "Sunscreen should be applied in an even, unbroken layer for proper protection."
+    }
+   ]
+  },
+  {
+   "node": 23,
+   "title": "Photoaging",
+   "celebration": "You know the major cause of visible aging!",
+   "screens": [
+    {
+     "type": "intro",
+     "title": "Time vs. The Sun",
+     "text": "Photoaging is premature aging caused by UV exposure. Many visible signs of premature facial aging are caused by cumulative UV exposure."
+    },
+    {
+     "type": "true_false",
+     "question": "If you avoid the sun entirely, your skin will look exactly the same at 60 as it did at 20.",
+     "correct": false,
+     "explanation": "Intrinsic aging still occurs naturally over time, though it looks different than photoaging."
+    },
+    {
+     "type": "fill_blank",
+     "question": "UV rays contribute to photoaging by generating [___] radicals in the skin.",
+     "options": [
+      "free",
+      "stable",
+      "oxygen"
+     ],
+     "correct": 0,
+     "explanation": "Free radicals can damage cellular structures and DNA."
+    },
+    {
+     "type": "multiple_choice",
+     "question": "What can chronic photoaging look like over time?",
+     "options": [
+      "Deep wrinkles, uneven pigmentation, and a loss of elasticity.",
+      "Perfectly smooth skin with a slight tan.",
+      "Large, cystic acne breakouts."
+     ],
+     "correct": 0,
+     "explanation": "UV exposure accelerates changes to the skin's texture and tone."
+    },
+    {
+     "type": "matching",
+     "question": "Match the type of aging to its primary driver.",
+     "pairs": [
+      [
+       "Intrinsic Aging",
+       "Genetics, passing time, natural hormonal shifts"
+      ],
+      [
+       "Extrinsic Aging (Photoaging)",
+       "Sun exposure, environmental factors"
+      ]
+     ],
+     "explanation": "You cannot stop time, but you can minimize extrinsic aging."
+    },
+    {
+     "type": "fill_blank_multi",
+     "template": "Intrinsic aging causes natural changes, but [__1__] can lead to more severe [__2__] and discoloration.",
+     "blanks": [
+      {
+       "options": [
+        "photoaging",
+        "washing",
+        "sleeping"
+       ],
+       "correct": 0
+      },
+      {
+       "options": [
+        "wrinkles",
+        "invisible",
+        "soft"
+       ],
+       "correct": 0
+      }
+     ],
+     "explanation": "Sun damage compounds over decades."
+    },
+    {
+     "type": "sequence_builder",
+     "question": "A simplified process of photoaging:",
+     "items": [
+      "UV rays penetrate the skin",
+      "Free radicals are generated",
+      "Collagen and elastin fibers are damaged",
+      "Skin gradually loses firmness and develops wrinkles"
+     ],
+     "correct_order": [
+      "UV rays penetrate the skin",
+      "Free radicals are generated",
+      "Collagen and elastin fibers are damaged",
+      "Skin gradually loses firmness and develops wrinkles"
+     ],
+     "explanation": "Many visible signs of aging are linked to this gradual UV damage over time."
+    },
+    {
+     "type": "ingredient_match",
+     "question": "What is the most effective topical product to help prevent photoaging?",
+     "options": [
+      {
+       "label": "Broad Spectrum SPF",
+       "correct": true,
+       "detail": "Helps block UV rays"
+      },
+      {
+       "label": "Retinol",
+       "correct": false,
+       "detail": "Vitamin A",
+       "wrong_explanation": "Helps address existing signs of aging."
+      },
+      {
+       "label": "Vitamin C",
+       "correct": false,
+       "detail": "Antioxidant",
+       "wrong_explanation": "Provides secondary defense, but SPF is primary."
+      }
+     ],
+     "concern": "Long-term visible aging",
+     "explanation": "Preventing UV damage is more effective than trying to reverse it later."
+    },
+    {
+     "type": "spot_mistake",
+     "scenario": "A person spends heavily on anti-aging serums but tans frequently without SPF.",
+     "question": "What is the mistake?",
+     "options": [
+      "Tanning causes UV damage that serums cannot fully undo.",
+      "They need a stronger serum.",
+      "They should use tanning beds instead."
+     ],
+     "correct": 0,
+     "explanation": "A tan is a sign of UV exposure, which directly contributes to photoaging."
+    }
+   ]
+  },
+  {
+   "node": 24,
+   "title": "Collagen & Elastin",
+   "celebration": "You understand your skin's scaffolding!",
+   "screens": [
+    {
+     "type": "intro",
+     "title": "The Mattress",
+     "text": "Collagen provides structural firmness. Elastin provides bounce and recoil. Together, they keep skin looking youthful."
+    },
+    {
+     "type": "true_false",
+     "question": "You can permanently rebuild collagen just by drinking lots of water.",
+     "correct": false,
+     "explanation": "Hydration is important, but it doesn't manufacture new structural proteins."
+    },
+    {
+     "type": "fill_blank",
+     "question": "When you pinch your skin and it snaps back, that is [___] at work.",
+     "options": [
+      "elastin",
+      "collagen",
+      "keratin"
+     ],
+     "correct": 0,
+     "explanation": "Elastin provides the elastic properties of the skin."
+    },
+    {
+     "type": "multiple_choice",
+     "question": "Why don't topical \"Collagen Creams\" directly add collagen into your dermis?",
+     "options": [
+      "The collagen molecule is generally too large to penetrate deeply into the skin.",
+      "They are made entirely of water.",
+      "They evaporate immediately."
+     ],
+     "correct": 0,
+     "explanation": "Topical collagen acts primarily as a surface moisturizer."
+    },
+    {
+     "type": "matching",
+     "question": "Match the protein to a helpful analogy.",
+     "pairs": [
+      [
+       "Collagen",
+       "The dense foam stuffing (firmness)"
+      ],
+      [
+       "Elastin",
+       "The metal coil springs (bounce/recoil)"
+      ],
+      [
+       "Epidermis",
+       "The mattress cover (outer protection)"
+      ]
+     ],
+     "explanation": "UV rays can degrade both the \"stuffing\" and the \"springs.\""
+    },
+    {
+     "type": "fill_blank_multi",
+     "template": "To help support collagen, you can use ingredients that encourage skin [__1__], like [__2__].",
+     "blanks": [
+      {
+       "options": [
+        "renewal",
+        "hydration",
+        "scrubbing"
+       ],
+       "correct": 0
+      },
+      {
+       "options": [
+        "retinoids",
+        "glycerin",
+        "water"
+       ],
+       "correct": 0
+      }
+     ],
+     "explanation": "You typically have to encourage the skin to produce collagen itself."
+    },
+    {
+     "type": "sequence_builder",
+     "question": "Rank these by their general evidence for supporting collagen production.",
+     "items": [
+      "Prescription Tretinoin",
+      "Over-the-counter Retinol",
+      "Topical Collagen Moisturizer"
+     ],
+     "correct_order": [
+      "Prescription Tretinoin",
+      "Over-the-counter Retinol",
+      "Topical Collagen Moisturizer"
+     ],
+     "explanation": "Retinoids have substantial research supporting their effect on collagen."
+    },
+    {
+     "type": "ingredient_match",
+     "question": "Which daily habit helps protect existing collagen from breaking down?",
+     "options": [
+      {
+       "label": "Applying Broad Spectrum SPF",
+       "correct": true,
+       "detail": "Reduces UV-induced damage"
+      },
+      {
+       "label": "Applying Collagen Cream",
+       "correct": false,
+       "detail": "Moisturizer",
+       "wrong_explanation": "Only hydrates the surface."
+      },
+      {
+       "label": "Using Salicylic Acid",
+       "correct": false,
+       "detail": "BHA",
+       "wrong_explanation": "Clears pores, does not protect collagen."
+      }
+     ],
+     "concern": "Protecting firmness",
+     "explanation": "Sunscreen helps prevent UV rays from activating enzymes that degrade collagen."
+    },
+    {
+     "type": "spot_mistake",
+     "scenario": "You buy a \"Collagen Infusion\" serum expecting it to permanently fill deep wrinkles.",
+     "question": "What is the mistake?",
+     "options": [
+      "Topical collagen mainly hydrates the surface; it doesn't fuse with your skin's collagen.",
+      "You need to rub it in harder.",
+      "You didn't use enough."
+     ],
+     "correct": 0,
+     "explanation": "It is an excellent moisturizer, but not a structural filler."
+    }
+   ]
+  },
+  {
+   "node": 25,
+   "title": "Antioxidants",
+   "celebration": "You've added a layer of defense!",
+   "screens": [
+    {
+     "type": "intro",
+     "title": "The Neutralizers",
+     "text": "Environmental factors generate free radicals. Antioxidants help neutralize these unstable molecules before they can damage cells."
+    },
+    {
+     "type": "true_false",
+     "question": "Antioxidants are only useful at night.",
+     "correct": false,
+     "explanation": "They are very helpful during the day to defend against environmental exposure."
+    },
+    {
+     "type": "fill_blank",
+     "question": "Antioxidants help protect the skin by neutralizing free [___].",
+     "options": [
+      "radicals",
+      "atoms",
+      "acids"
+     ],
+     "correct": 0,
+     "explanation": "Neutralizing them helps prevent cellular damage."
+    },
+    {
+     "type": "multiple_choice",
+     "question": "What can happen to some antioxidants (like pure Vitamin C) when exposed to air and light?",
+     "options": [
+      "They can oxidize and become less effective.",
+      "They get stronger and more potent.",
+      "They turn into an exfoliant."
+     ],
+     "correct": 0,
+     "explanation": "Antioxidants are often delicate and need careful packaging."
+    },
+    {
+     "type": "matching",
+     "question": "Match the antioxidant to its common name or source.",
+     "pairs": [
+      [
+       "Ascorbic Acid",
+       "Vitamin C"
+      ],
+      [
+       "Tocopherol",
+       "Vitamin E"
+      ],
+      [
+       "Resveratrol",
+       "Often derived from grapes/berries"
+      ]
+     ],
+     "explanation": "Using a variety of antioxidants can provide broad protection."
+    },
+    {
+     "type": "fill_blank_multi",
+     "template": "Free radicals can contribute to [__1__], while antioxidants help provide [__2__].",
+     "blanks": [
+      {
+       "options": [
+        "damage",
+        "hydration",
+        "sleep"
+       ],
+       "correct": 0
+      },
+      {
+       "options": [
+        "defense",
+        "oil",
+        "bacteria"
+       ],
+       "correct": 0
+      }
+     ],
+     "explanation": "Antioxidants support the skin's ability to handle environmental stress."
+    },
+    {
+     "type": "sequence_builder",
+     "question": "A conceptual view of antioxidant defense:",
+     "items": [
+      "UV/Pollution hits the skin",
+      "Free radicals are generated",
+      "Antioxidants help neutralize the free radicals",
+      "Potential cellular damage is reduced"
+     ],
+     "correct_order": [
+      "UV/Pollution hits the skin",
+      "Free radicals are generated",
+      "Antioxidants help neutralize the free radicals",
+      "Potential cellular damage is reduced"
+     ],
+     "explanation": "This is why layering an antioxidant under SPF is popular."
+    },
+    {
+     "type": "ingredient_match",
+     "question": "Which combination is known for providing a stable antioxidant defense?",
+     "options": [
+      {
+       "label": "Vitamin C + Vitamin E + Ferulic Acid",
+       "correct": true,
+       "detail": "A well-researched trio"
+      },
+      {
+       "label": "Pure Vitamin C in an open jar",
+       "correct": false,
+       "detail": "Unstable",
+       "wrong_explanation": "May oxidize rapidly."
+      },
+      {
+       "label": "Niacinamide + AHA",
+       "correct": false,
+       "detail": "Exfoliating mix",
+       "wrong_explanation": "Not a primary antioxidant shield."
+      }
+     ],
+     "concern": "Environmental exposure",
+     "explanation": "Vitamin E and Ferulic Acid help stabilize Vitamin C and improve its efficacy."
+    },
+    {
+     "type": "spot_mistake",
+     "scenario": "You buy a pure Vitamin C cream packaged in a wide, open jar.",
+     "question": "What is the mistake?",
+     "options": [
+      "Exposure to air and light each time you open it can degrade the antioxidant.",
+      "The jar is too heavy.",
+      "Antioxidants need to be kept warm."
+     ],
+     "correct": 0,
+     "explanation": "Packaging matters for unstable ingredients; opaque pumps or droppers are usually better."
+    }
+   ]
+  },
+  {
+   "node": 26,
+   "title": "Acne Basics",
+   "celebration": "You've demystified breakouts!",
+   "screens": [
+    {
+     "type": "intro",
+     "title": "The Clogged Pore",
+     "text": "Acne usually develops when excess oil, dead skin cells, bacteria, and inflammation combine in a pore."
+    },
+    {
+     "type": "true_false",
+     "question": "Eating greasy food like pizza directly causes oil to physically leak out of your pores.",
+     "correct": false,
+     "explanation": "Oil production is primarily driven by hormones, not the fat content of your food."
+    },
+    {
+     "type": "fill_blank",
+     "question": "The bacteria associated with acne (C. acnes) is naturally found on [___] skin.",
+     "options": [
+      "everyone's",
+      "dirty",
+      "oily"
+     ],
+     "correct": 0,
+     "explanation": "It is part of the normal microbiome but can overgrow in clogged pores."
+    },
+    {
+     "type": "multiple_choice",
+     "question": "What is a blackhead?",
+     "options": [
+      "A pore clogged with oil and dead skin that has oxidized (turned dark) upon exposure to air.",
+      "Dirt trapped in a pore.",
+      "A tiny hair growing inward."
+     ],
+     "correct": 0,
+     "explanation": "Blackheads look like dirt, but they are just oxidized sebum and cells."
+    },
+    {
+     "type": "matching",
+     "question": "Match the acne type to its general description.",
+     "pairs": [
+      [
+       "Blackhead",
+       "Open comedone, oxidized and dark"
+      ],
+      [
+       "Whitehead",
+       "Closed comedone, covered by a thin layer of skin"
+      ],
+      [
+       "Cystic Acne",
+       "Deep, tender, inflamed bumps"
+      ]
+     ],
+     "explanation": "Different types of acne may respond better to different treatments."
+    },
+    {
+     "type": "fill_blank_multi",
+     "template": "[__1__] acid helps dissolve oil in pores, while [__2__] helps target acne bacteria.",
+     "blanks": [
+      {
+       "options": [
+        "Salicylic",
+        "Glycolic",
+        "Hyaluronic"
+       ],
+       "correct": 0
+      },
+      {
+       "options": [
+        "Benzoyl Peroxide",
+        "Ceramides",
+        "Water"
+       ],
+       "correct": 0
+      }
+     ],
+     "explanation": "BHA helps clear the clog; BP targets the microbes."
+    },
+    {
+     "type": "sequence_builder",
+     "question": "A common progression of a pimple:",
+     "items": [
+      "Excess oil and dead cells mix",
+      "The mixture creates a plug in the pore",
+      "C. acnes bacteria multiply within the clogged pore",
+      "Inflammation occurs, creating a red bump"
+     ],
+     "correct_order": [
+      "Excess oil and dead cells mix",
+      "The mixture creates a plug in the pore",
+      "C. acnes bacteria multiply within the clogged pore",
+      "Inflammation occurs, creating a red bump"
+     ],
+     "explanation": "Acne treatments aim to interrupt different stages of this process."
+    },
+    {
+     "type": "ingredient_match",
+     "question": "Which ingredient creates an oxygen-rich environment that reduces C. acnes?",
+     "options": [
+      {
+       "label": "Benzoyl Peroxide",
+       "correct": true,
+       "detail": "Antibacterial properties"
+      },
+      {
+       "label": "Salicylic Acid",
+       "correct": false,
+       "detail": "Exfoliant",
+       "wrong_explanation": "Unclogs pores, but is not primarily antibacterial."
+      },
+      {
+       "label": "Niacinamide",
+       "correct": false,
+       "detail": "Soother",
+       "wrong_explanation": "Calms skin, but doesn't target the bacteria directly."
+      }
+     ],
+     "concern": "Inflamed breakouts",
+     "explanation": "Benzoyl peroxide creates an oxygen-rich environment that reduces C. acnes."
+    },
+    {
+     "type": "spot_mistake",
+     "scenario": "You get a deep, tender cyst and squeeze it forcefully to pop it.",
+     "question": "What is the mistake?",
+     "options": [
+      "Squeezing can push the inflammation deeper and increase the risk of scarring.",
+      "You didn't use a hot needle.",
+      "You should use a pore strip instead."
+     ],
+     "correct": 0,
+     "explanation": "Deep cysts rarely have a direct surface connection to safely extract."
+    }
+   ]
+  },
+  {
+   "node": 27,
+   "title": "Hyperpigmentation",
+   "celebration": "You've shed light on dark spots!",
+   "screens": [
+    {
+     "type": "intro",
+     "title": "The Pigment Factory",
+     "text": "Hyperpigmentation happens when cells (melanocytes) overproduce melanin in response to sun, inflammation, or hormones."
+    },
+    {
+     "type": "true_false",
+     "question": "A dark mark left behind after a pimple heals is a permanent scar.",
+     "correct": false,
+     "explanation": "It is usually Post-Inflammatory Hyperpigmentation (PIH), which typically fades over time."
+    },
+    {
+     "type": "fill_blank",
+     "question": "The enzyme that plays a key role in melanin production is called [___].",
+     "options": [
+      "tyrosinase",
+      "collagen",
+      "sebum"
+     ],
+     "correct": 0,
+     "explanation": "Many brightening ingredients work by inhibiting this enzyme."
+    },
+    {
+     "type": "multiple_choice",
+     "question": "What is an essential step when trying to fade hyperpigmentation?",
+     "options": [
+      "Wearing Broad Spectrum SPF consistently.",
+      "Using a strong physical scrub daily.",
+      "Drinking lemon water."
+     ],
+     "correct": 0,
+     "explanation": "UV rays stimulate melanin production, which can darken existing spots."
+    },
+    {
+     "type": "matching",
+     "question": "Match the type of pigmentation to a common cause.",
+     "pairs": [
+      [
+       "Sun Spots",
+       "Accumulation of UV exposure over time"
+      ],
+      [
+       "Post-Inflammatory (PIH)",
+       "The dark mark left after skin trauma or a pimple"
+      ],
+      [
+       "Melasma",
+       "Often influenced by hormonal changes and UV/heat"
+      ]
+     ],
+     "explanation": "Identifying the cause can help guide the treatment approach."
+    },
+    {
+     "type": "fill_blank_multi",
+     "template": "[__1__] helps prevent dark spots from worsening, while [__2__] helps encourage cellular turnover.",
+     "blanks": [
+      {
+       "options": [
+        "SPF",
+        "AHA",
+        "Cleanser"
+       ],
+       "correct": 0
+      },
+      {
+       "options": [
+        "AHA",
+        "SPF",
+        "Moisturizer"
+       ],
+       "correct": 0
+      }
+     ],
+     "explanation": "A combination of protection and gentle exfoliation is often effective."
+    },
+    {
+     "type": "sequence_builder",
+     "question": "A general approach to managing a dark spot:",
+     "items": [
+      "Use SPF to help prevent further darkening",
+      "Apply ingredients (like Vitamin C) that help inhibit melanin production",
+      "Use gentle exfoliants to help shed pigmented surface cells",
+      "Allow several weeks or months for the spot to fade"
+     ],
+     "correct_order": [
+      "Use SPF to help prevent further darkening",
+      "Apply ingredients (like Vitamin C) that help inhibit melanin production",
+      "Use gentle exfoliants to help shed pigmented surface cells",
+      "Allow several weeks or months for the spot to fade"
+     ],
+     "explanation": "Fading pigment requires a consistent routine and patience."
+    },
+    {
+     "type": "ingredient_match",
+     "question": "Which ingredient is known to help inhibit tyrosinase?",
+     "options": [
+      {
+       "label": "Vitamin C / Tranexamic Acid",
+       "correct": true,
+       "detail": "Brightening agents"
+      },
+      {
+       "label": "Hyaluronic Acid",
+       "correct": false,
+       "detail": "Hydrator",
+       "wrong_explanation": "Does nothing for pigment."
+      },
+      {
+       "label": "Benzoyl Peroxide",
+       "correct": false,
+       "detail": "Acne treatment",
+       "wrong_explanation": "Treats breakouts, not the pigment itself."
+      }
+     ],
+     "concern": "Stubborn dark spots",
+     "explanation": "These ingredients help tell the skin to slow down excess pigment production."
+    },
+    {
+     "type": "spot_mistake",
+     "scenario": "You use a brightening serum at night but spend time in the sun without SPF.",
+     "question": "What is the mistake?",
+     "options": [
+      "UV exposure can re-darken the spot, counteracting the serum's effects.",
+      "The serum will wash off in the sun.",
+      "You should use the serum at the beach."
+     ],
+     "correct": 0,
+     "explanation": "Sun protection is the foundation of any hyperpigmentation routine."
+    }
+   ]
+  },
+  {
+   "node": 28,
+   "title": "Redness & Rosacea",
+   "celebration": "You've calmed the flush!",
+   "screens": [
+    {
+     "type": "intro",
+     "title": "The Reactive Barrier",
+     "text": "Chronic redness or Rosacea involves vascular reactivity and inflammation. The skin is often highly sensitive to triggers."
+    },
+    {
+     "type": "true_false",
+     "question": "You can cure rosacea by aggressively scrubbing the red areas.",
+     "correct": false,
+     "explanation": "Friction causes inflammation, which can trigger severe rosacea flare-ups."
+    },
+    {
+     "type": "fill_blank",
+     "question": "Rosacea is often triggered by heat, spicy foods, alcohol, and [___] exposure.",
+     "options": [
+      "sun",
+      "water",
+      "sleep"
+     ],
+     "correct": 0,
+     "explanation": "UV exposure is a very common trigger for rosacea flare-ups."
+    },
+    {
+     "type": "multiple_choice",
+     "question": "What is a general rule for managing red, reactive skin?",
+     "options": [
+      "Focus on soothing the barrier, avoiding known triggers, and keeping the routine simple.",
+      "Use strong AHAs to peel away the redness.",
+      "Wash with hot water to clean the pores."
+     ],
+     "correct": 0,
+     "explanation": "Reactive skin needs gentle care, not harsh active ingredients."
+    },
+    {
+     "type": "matching",
+     "question": "Match the potential trigger to a rosacea-prone skin reaction.",
+     "pairs": [
+      [
+       "Sun exposure",
+       "Can aggravate redness and inflammation"
+      ],
+      [
+       "Hot showers",
+       "Can cause blood vessels to dilate (flushing)"
+      ],
+      [
+       "Harsh Scrubs",
+       "Can disrupt the barrier and increase irritation"
+      ]
+     ],
+     "explanation": "Managing rosacea relies heavily on trigger avoidance and gentle habits."
+    },
+    {
+     "type": "fill_blank_multi",
+     "template": "Reactive skin often benefits from ingredients that [__1__] the barrier, rather than those that [__2__] it.",
+     "blanks": [
+      {
+       "options": [
+        "soothe",
+        "strip",
+        "burn"
+       ],
+       "correct": 0
+      },
+      {
+       "options": [
+        "exfoliate",
+        "hydrate",
+        "protect"
+       ],
+       "correct": 0
+      }
+     ],
+     "explanation": "Calming the skin is usually the priority before attempting other treatments."
+    },
+    {
+     "type": "sequence_builder",
+     "question": "A gentle routine approach for rosacea-prone skin:",
+     "items": [
+      "Cleanse with a mild, non-foaming lotion",
+      "Apply a soothing ingredient (like Azelaic Acid or Centella)",
+      "Moisturize to support the barrier",
+      "Apply a gentle mineral SPF"
+     ],
+     "correct_order": [
+      "Cleanse with a mild, non-foaming lotion",
+      "Apply a soothing ingredient (like Azelaic Acid or Centella)",
+      "Moisturize to support the barrier",
+      "Apply a gentle mineral SPF"
+     ],
+     "explanation": "This minimizes irritation while providing necessary protection."
+    },
+    {
+     "type": "ingredient_match",
+     "question": "Which ingredient is often recommended for helping with rosacea redness and bumps?",
+     "options": [
+      {
+       "label": "Azelaic Acid",
+       "correct": true,
+       "detail": "Has anti-inflammatory properties"
+      },
+      {
+       "label": "Glycolic Acid",
+       "correct": false,
+       "detail": "AHA",
+       "wrong_explanation": "Often too irritating for rosacea."
+      },
+      {
+       "label": "Strong Fragrance",
+       "correct": false,
+       "detail": "Scent",
+       "wrong_explanation": "Can trigger flare-ups."
+      }
+     ],
+     "concern": "Rosacea bumps and flushing",
+     "explanation": "Azelaic acid can help calm the specific inflammation associated with rosacea."
+    },
+    {
+     "type": "spot_mistake",
+     "scenario": "Your face is flushed, so you apply a \"tingling\" mint-eucalyptus face mask to cool it.",
+     "question": "What is the mistake?",
+     "options": [
+      "Menthol and essential oils can severely irritate and inflame reactive skin.",
+      "The mask isn't cold enough.",
+      "You should use a scrub first."
+     ],
+     "correct": 0,
+     "explanation": "Tingling often equals irritation. Reactive skin prefers bland, soothing hydration."
+    }
+   ]
+  },
+  {
+   "node": 29,
+   "title": "Sensitivity & Eczema",
+   "celebration": "You've mastered gentle care!",
+   "screens": [
+    {
+     "type": "intro",
+     "title": "The Leaky Roof",
+     "text": "Eczema and severe sensitivity often involve a compromised skin barrier that struggles to retain moisture and keep irritants out."
+    },
+    {
+     "type": "true_false",
+     "question": "Sensitive skin is just a marketing term; anyone can use any product without issue.",
+     "correct": false,
+     "explanation": "Sensitivity often means the skin barrier is more easily compromised or reactive."
+    },
+    {
+     "type": "fill_blank",
+     "question": "Eczema-prone skin often struggles with dry, itchy patches and may lack sufficient [___].",
+     "options": [
+      "ceramides",
+      "sweat",
+      "blood"
+     ],
+     "correct": 0,
+     "explanation": "Lower lipid levels make it harder for the skin to retain moisture."
+    },
+    {
+     "type": "multiple_choice",
+     "question": "What is a very common trigger for contact dermatitis in skincare?",
+     "options": [
+      "Synthetic fragrances and essential oils.",
+      "Water.",
+      "Glycerin."
+     ],
+     "correct": 0,
+     "explanation": "Fragrance components are among the most common allergens in cosmetics."
+    },
+    {
+     "type": "matching",
+     "question": "Match the condition to its general description.",
+     "pairs": [
+      [
+       "Eczema (Atopic Dermatitis)",
+       "Often presents as dry, itchy, inflamed patches"
+      ],
+      [
+       "Contact Dermatitis",
+       "An allergic or irritant reaction where a product was applied"
+      ],
+      [
+       "Compromised Barrier",
+       "Can cause stinging and tightness from harsh routines"
+      ]
+     ],
+     "explanation": "All generally require scaling back to a simple, gentle routine."
+    },
+    {
+     "type": "fill_blank_multi",
+     "template": "Highly sensitive skin often does best with a [__1__] routine focused on [__2__].",
+     "blanks": [
+      {
+       "options": [
+        "minimal",
+        "10-step",
+        "complex"
+       ],
+       "correct": 0
+      },
+      {
+       "options": [
+        "hydration",
+        "exfoliation",
+        "scrubbing"
+       ],
+       "correct": 0
+      }
+     ],
+     "explanation": "Fewer ingredients mean fewer chances for a reaction."
+    },
+    {
+     "type": "sequence_builder",
+     "question": "A general approach during an eczema or sensitivity flare-up:",
+     "items": [
+      "Pause strong active ingredients (Acids, Retinoids)",
+      "Cleanse with a very mild wash or just water",
+      "Apply a bland, rich moisturizer or ointment",
+      "Wait for the barrier to calm down and heal"
+     ],
+     "correct_order": [
+      "Pause strong active ingredients (Acids, Retinoids)",
+      "Cleanse with a very mild wash or just water",
+      "Apply a bland, rich moisturizer or ointment",
+      "Wait for the barrier to calm down and heal"
+     ],
+     "explanation": "Removing potential irritants gives the skin a chance to recover."
+    },
+    {
+     "type": "ingredient_match",
+     "question": "Which ingredient is recognized for helping to soothe itchy, irritated skin?",
+     "options": [
+      {
+       "label": "Colloidal Oatmeal",
+       "correct": true,
+       "detail": "A known skin protectant and soother"
+      },
+      {
+       "label": "Fragrance",
+       "correct": false,
+       "detail": "Scent",
+       "wrong_explanation": "Can increase irritation."
+      },
+      {
+       "label": "Retinol",
+       "correct": false,
+       "detail": "Vitamin A",
+       "wrong_explanation": "Likely to aggravate a flare-up."
+      }
+     ],
+     "concern": "Itchy, inflamed skin",
+     "explanation": "Colloidal oatmeal has properties that can help calm itchiness and redness."
+    },
+    {
+     "type": "spot_mistake",
+     "scenario": "You have an itchy eczema patch and scrub it with a loofah in a hot shower.",
+     "question": "What is the mistake?",
+     "options": [
+      "Heat and friction can further damage the barrier and worsen eczema.",
+      "You didn't use soap on the loofah.",
+      "You should use a chemical peel instead."
+     ],
+     "correct": 0,
+     "explanation": "Eczema requires gentle care and moisturization, never aggressive scrubbing."
+    }
+   ]
+  },
+  {
+   "node": 30,
+   "title": "Texture & Pores",
+   "celebration": "You've smoothed things over!",
+   "screens": [
+    {
+     "type": "intro",
+     "title": "The Pore Myth",
+     "text": "Pores are structural openings. They do not have muscles. You cannot permanently \"open and close\" them with hot and cold water."
+    },
+    {
+     "type": "true_false",
+     "question": "You can permanently shrink your pores so they disappear completely.",
+     "correct": false,
+     "explanation": "Pore size is largely genetic. You can only minimize their appearance by keeping them clear."
+    },
+    {
+     "type": "fill_blank",
+     "question": "Pores may appear larger when they are filled with excess [___] and dead skin.",
+     "options": [
+      "oil",
+      "water",
+      "collagen"
+     ],
+     "correct": 0,
+     "explanation": "A pore filled with debris can stretch slightly, making it more visible."
+    },
+    {
+     "type": "multiple_choice",
+     "question": "What often causes skin texture to feel rough or bumpy?",
+     "options": [
+      "A buildup of dead skin cells on the surface.",
+      "Drinking too much water.",
+      "Your pores closing."
+     ],
+     "correct": 0,
+     "explanation": "When the natural shedding process slows, the surface can feel uneven."
+    },
+    {
+     "type": "matching",
+     "question": "Match the texture concern to a common helpful approach.",
+     "pairs": [
+      [
+       "Clogged pores",
+       "BHA (Salicylic Acid) to help dissolve oil"
+      ],
+      [
+       "Rough, flaky surface",
+       "AHA to help encourage surface cell shedding"
+      ],
+      [
+       "Loss of firmness around pores",
+       "Retinoids to help support collagen"
+      ]
+     ],
+     "explanation": "Addressing the specific cause helps improve the overall texture."
+    },
+    {
+     "type": "fill_blank_multi",
+     "template": "[__1__] water can soften sebum for cleansing, but [__2__] water does not permanently close pores.",
+     "blanks": [
+      {
+       "options": [
+        "Warm",
+        "Scalding",
+        "Freezing"
+       ],
+       "correct": 0
+      },
+      {
+       "options": [
+        "cold",
+        "warm",
+        "hot"
+       ],
+       "correct": 0
+      }
+     ],
+     "explanation": "Cold water may temporarily reduce swelling, but it doesn't change pore structure."
+    },
+    {
+     "type": "sequence_builder",
+     "question": "A reasonable routine approach for minimizing the appearance of pores:",
+     "items": [
+      "Cleanse well to remove daily oil and debris",
+      "Use a BHA liquid occasionally to help keep pores clear",
+      "Keep the skin appropriately moisturized"
+     ],
+     "correct_order": [
+      "Cleanse well to remove daily oil and debris",
+      "Use a BHA liquid occasionally to help keep pores clear",
+      "Keep the skin appropriately moisturized"
+     ],
+     "explanation": "Consistent, gentle maintenance helps pores look their best."
+    },
+    {
+     "type": "ingredient_match",
+     "question": "What ingredient type is often used for rough, uneven surface texture?",
+     "options": [
+      {
+       "label": "Glycolic Acid (AHA)",
+       "correct": true,
+       "detail": "Helps loosen dead surface cells"
+      },
+      {
+       "label": "Thick Ointment",
+       "correct": false,
+       "detail": "Occlusive",
+       "wrong_explanation": "May not resolve the buildup of dead cells."
+      },
+      {
+       "label": "Vitamin C",
+       "correct": false,
+       "detail": "Antioxidant",
+       "wrong_explanation": "Brightens, but is less effective for physical texture."
+      }
+     ],
+     "concern": "Rough, dull surface",
+     "explanation": "AHAs help encourage the shedding of the uneven top layer of skin."
+    },
+    {
+     "type": "spot_mistake",
+     "scenario": "You rub ice cubes on your face every morning to permanently shrink your pores.",
+     "question": "What is the mistake?",
+     "options": [
+      "Ice may temporarily reduce redness/swelling, but pores cannot permanently shrink.",
+      "Ice causes acne.",
+      "You should use dry ice instead."
+     ],
+     "correct": 0,
+     "explanation": "Pores are not doors; extreme cold doesn't change their anatomical size."
+    }
+   ]
+  },
+  {
+   "node": 31,
+   "title": "The AM Routine",
+   "celebration": "You've mastered the morning defense!",
+   "screens": [
+    {
+     "type": "intro",
+     "title": "Armor Up",
+     "text": "The morning routine generally focuses on Defense. You are aiming to protect your skin from UV rays and environmental stressors."
+    },
+    {
+     "type": "true_false",
+     "question": "You must do a 7-step routine every morning for healthy skin.",
+     "correct": false,
+     "explanation": "A simple routine (Cleanse, Moisturize, SPF) is often plenty if done consistently."
+    },
+    {
+     "type": "fill_blank",
+     "question": "The most crucial, protective step of the morning routine is [___].",
+     "options": [
+      "sunscreen",
+      "toner",
+      "serum"
+     ],
+     "correct": 0,
+     "explanation": "Sunscreen helps defend against the primary cause of premature aging."
+    },
+    {
+     "type": "multiple_choice",
+     "question": "Why do some people prefer to skip cleanser in the morning?",
+     "options": [
+      "A splash of water may be enough to refresh the skin without stripping it.",
+      "Cleansers expire overnight.",
+      "Water kills more bacteria."
+     ],
+     "correct": 0,
+     "explanation": "Depending on your skin type, a full cleanse isn't always necessary upon waking."
+    },
+    {
+     "type": "matching",
+     "question": "Match the common AM step to its general purpose.",
+     "pairs": [
+      [
+       "Cleanser / Water Rinse",
+       "Preps the skin for the day"
+      ],
+      [
+       "Antioxidant (e.g., Vitamin C)",
+       "Helps neutralize environmental free radicals"
+      ],
+      [
+       "SPF",
+       "Provides defense against UV radiation"
+      ]
+     ],
+     "explanation": "Each step contributes to daytime protection."
+    },
+    {
+     "type": "fill_blank_multi",
+     "template": "The AM routine often focuses on [__1__], while the PM routine focuses more on [__2__].",
+     "blanks": [
+      {
+       "options": [
+        "defense",
+        "repair",
+        "sleep"
+       ],
+       "correct": 0
+      },
+      {
+       "options": [
+        "repair",
+        "defense",
+        "sun"
+       ],
+       "correct": 0
+      }
+     ],
+     "explanation": "Aligning products with your day/night cycle can be beneficial."
+    },
+    {
+     "type": "sequence_builder",
+     "question": "A standard order for an AM Routine:",
+     "items": [
+      "Gentle Cleanser or Water Splash",
+      "Antioxidant Serum (optional)",
+      "Moisturizer (if needed)",
+      "Sunscreen"
+     ],
+     "correct_order": [
+      "Gentle Cleanser or Water Splash",
+      "Antioxidant Serum (optional)",
+      "Moisturizer (if needed)",
+      "Sunscreen"
+     ],
+     "explanation": "Apply products generally from thinnest to thickest, ending with sun protection."
+    },
+    {
+     "type": "ingredient_match",
+     "question": "Which ingredient is usually better suited for the PM routine due to sunlight sensitivity?",
+     "options": [
+      {
+       "label": "Retinol",
+       "correct": true,
+       "detail": "Vitamin A derivative"
+      },
+      {
+       "label": "Vitamin C",
+       "correct": false,
+       "detail": "Antioxidant",
+       "wrong_explanation": "Often used in the AM for defense."
+      },
+      {
+       "label": "Glycerin",
+       "correct": false,
+       "detail": "Humectant",
+       "wrong_explanation": "Great for AM hydration."
+      }
+     ],
+     "concern": "Routine timing",
+     "explanation": "Many retinoids can degrade when exposed to UV light."
+    },
+    {
+     "type": "spot_mistake",
+     "scenario": "You apply sunscreen and then immediately rub a water-based foundation vigorously over it.",
+     "question": "What is the mistake?",
+     "options": [
+      "Vigorously rubbing immediately can disrupt the SPF film. Allow the sunscreen a moment to set.",
+      "You should mix the foundation into the sunscreen.",
+      "Foundation blocks sunscreen from working."
+     ],
+     "correct": 0,
+     "explanation": "Sunscreen needs to form an even layer to provide optimal protection."
+    }
+   ]
+  },
+  {
+   "node": 32,
+   "title": "The PM Routine",
+   "celebration": "You've set the stage for overnight repair!",
+   "screens": [
+    {
+     "type": "intro",
+     "title": "The Night Shift",
+     "text": "The PM routine is about cleaning away the day and providing ingredients that support the skin's natural repair processes."
+    },
+    {
+     "type": "true_false",
+     "question": "Sleeping in makeup once in a while is harmless.",
+     "correct": false,
+     "explanation": "Leaving makeup and daily grime on can contribute to clogged pores and irritation."
+    },
+    {
+     "type": "fill_blank",
+     "question": "A [___] cleanse is a popular way to ensure SPF and makeup are fully removed at night.",
+     "options": [
+      "double",
+      "single",
+      "water"
+     ],
+     "correct": 0,
+     "explanation": "Using an oil-based cleanser first helps break down stubborn products."
+    },
+    {
+     "type": "multiple_choice",
+     "question": "What is a primary focus of the PM routine?",
+     "options": [
+      "Cleansing the skin well and applying treatments or richer moisturizers.",
+      "Applying antioxidants specifically to fight the sun.",
+      "Drying the skin out completely."
+     ],
+     "correct": 0,
+     "explanation": "Nighttime is a good opportunity to use targeted treatments without sun exposure concerns."
+    },
+    {
+     "type": "matching",
+     "question": "Match the PM step to its general role.",
+     "pairs": [
+      [
+       "Oil Cleanser (Step 1)",
+       "Helps melt away SPF and makeup"
+      ],
+      [
+       "Targeted Treatment (e.g., Retinol)",
+       "Supports cell turnover or targets concerns"
+      ],
+      [
+       "Night Cream",
+       "Helps seal in moisture and prevent TEWL"
+      ]
+     ],
+     "explanation": "The PM routine cleans, treats, and moisturizes."
+    },
+    {
+     "type": "fill_blank_multi",
+     "template": "Double cleansing uses an [__1__] cleanser first, often followed by a [__2__] cleanser.",
+     "blanks": [
+      {
+       "options": [
+        "oil-based",
+        "water-based",
+        "acid"
+       ],
+       "correct": 0
+      },
+      {
+       "options": [
+        "water-based",
+        "oil-based",
+        "toner"
+       ],
+       "correct": 0
+      }
+     ],
+     "explanation": "This combination effectively removes different types of debris."
+    },
+    {
+     "type": "sequence_builder",
+     "question": "A standard order for a PM Routine:",
+     "items": [
+      "Makeup Removal / Oil Cleanse",
+      "Water-based Cleanser",
+      "Treatment Serum (if using)",
+      "Moisturizer"
+     ],
+     "correct_order": [
+      "Makeup Removal / Oil Cleanse",
+      "Water-based Cleanser",
+      "Treatment Serum (if using)",
+      "Moisturizer"
+     ],
+     "explanation": "Clean the skin, apply the actives, and seal it all in."
+    },
+    {
+     "type": "ingredient_match",
+     "question": "Which ingredient is commonly featured in PM routines for its anti-aging benefits?",
+     "options": [
+      {
+       "label": "Retinol",
+       "correct": true,
+       "detail": "Vitamin A"
+      },
+      {
+       "label": "SPF",
+       "correct": false,
+       "detail": "Sun filter",
+       "wrong_explanation": "Not needed at night."
+      },
+      {
+       "label": "Vitamin C",
+       "correct": false,
+       "detail": "Antioxidant",
+       "wrong_explanation": "Often preferred in the AM."
+      }
+     ],
+     "concern": "Overnight routine",
+     "explanation": "Nighttime use avoids the issue of retinoids degrading in sunlight."
+    },
+    {
+     "type": "spot_mistake",
+     "scenario": "You are exhausted, so you skip your routine and sleep in your makeup.",
+     "question": "What is the mistake?",
+     "options": [
+      "Sleeping in makeup can lead to breakouts. Using micellar water is a quick alternative.",
+      "You should sleep face down.",
+      "You must do a full 10-step routine."
+     ],
+     "correct": 0,
+     "explanation": "An \"Emergency Minimum\" cleanse is much better than nothing."
+    }
+   ]
+  },
+  {
+   "node": 33,
+   "title": "Layering Order",
+   "celebration": "You're a master mixologist!",
+   "screens": [
+    {
+     "type": "intro",
+     "title": "Thinnest to Thickest",
+     "text": "A general rule for skincare layering is thinnest to thickest. Watery products usually go first, heavier creams last."
+    },
+    {
+     "type": "true_false",
+     "question": "You should generally apply a heavy face oil before your watery serums.",
+     "correct": false,
+     "explanation": "Oils can create a barrier that makes it harder for watery serums to absorb."
+    },
+    {
+     "type": "fill_blank",
+     "question": "A good rule of thumb is to apply products from the most [___] to the most occlusive.",
+     "options": [
+      "watery",
+      "expensive",
+      "fragrant"
+     ],
+     "correct": 0,
+     "explanation": "This helps each product absorb effectively."
+    },
+    {
+     "type": "multiple_choice",
+     "question": "Why does layering order generally matter?",
+     "options": [
+      "Heavier, occlusive products can hinder the absorption of lighter, water-based ingredients applied afterward.",
+      "It changes the color of the products.",
+      "It makes the products expire faster."
+     ],
+     "correct": 0,
+     "explanation": "You want your treatments to reach the skin before you seal it."
+    },
+    {
+     "type": "matching",
+     "question": "Match the product texture to its typical layering position.",
+     "pairs": [
+      [
+       "Toner / Essence",
+       "Step 1: Very lightweight, absorbs quickly"
+      ],
+      [
+       "Serum",
+       "Step 2: Slightly thicker, concentrated ingredients"
+      ],
+      [
+       "Cream",
+       "Step 3: Heavier texture, helps seal in previous layers"
+      ]
+     ],
+     "explanation": "Following the consistency of the products usually yields the best feel."
+    },
+    {
+     "type": "fill_blank_multi",
+     "template": "Apply [__1__] products earlier in the routine, and [__2__] products later to seal.",
+     "blanks": [
+      {
+       "options": [
+        "water-based",
+        "oil-based",
+        "heavy"
+       ],
+       "correct": 0
+      },
+      {
+       "options": [
+        "oil-based",
+        "water-based",
+        "watery"
+       ],
+       "correct": 0
+      }
+     ],
+     "explanation": "This aligns with how ingredients interact with the skin barrier."
+    },
+    {
+     "type": "sequence_builder",
+     "question": "Rank these products in a typical application order:",
+     "items": [
+      "Liquid Exfoliant or Toner",
+      "Lightweight Hydrating Serum",
+      "Moisturizing Cream",
+      "Facial Oil (optional)"
+     ],
+     "correct_order": [
+      "Liquid Exfoliant or Toner",
+      "Lightweight Hydrating Serum",
+      "Moisturizing Cream",
+      "Facial Oil (optional)"
+     ],
+     "explanation": "Moving from liquid to oil helps ensure proper layering."
+    },
+    {
+     "type": "ingredient_match",
+     "question": "Which product dictates that it MUST be the final step of a morning routine?",
+     "options": [
+      {
+       "label": "Sunscreen (SPF)",
+       "correct": true,
+       "detail": "The protective shield"
+      },
+      {
+       "label": "Vitamin C Serum",
+       "correct": false,
+       "detail": "Watery antioxidant",
+       "wrong_explanation": "Goes under moisturizer and SPF."
+      },
+      {
+       "label": "Moisturizer",
+       "correct": false,
+       "detail": "Emollient",
+       "wrong_explanation": "Usually goes under SPF."
+      }
+     ],
+     "concern": "Proper AM layering",
+     "explanation": "Sunscreen needs to form an even, undisturbed layer on top of your skincare."
+    },
+    {
+     "type": "spot_mistake",
+     "scenario": "You apply a thick layer of petrolatum ointment, then try to apply a watery serum over it.",
+     "question": "What is the mistake?",
+     "options": [
+      "The ointment is occlusive; the watery serum will likely just sit on top.",
+      "You need to rub the serum in harder.",
+      "Ointment and serum shouldn't be used on the same day."
+     ],
+     "correct": 0,
+     "explanation": "Water-based products struggle to penetrate heavy occlusives."
+    }
+   ]
+  },
+  {
+   "node": 34,
+   "title": "Mixing Rules",
+   "celebration": "You've avoided a skincare clash!",
+   "screens": [
+    {
+     "type": "intro",
+     "title": "Playing it Safe",
+     "text": "Layering too many strong active ingredients (like Retinol and exfoliating Acids) at once can increase irritation and compromise the barrier."
+    },
+    {
+     "type": "true_false",
+     "question": "Using 5 different active serums at the same time will usually give you faster, better results.",
+     "correct": false,
+     "explanation": "Overloading the skin with actives often leads to irritation and barrier damage."
+    },
+    {
+     "type": "fill_blank",
+     "question": "It is generally advised not to use strong exfoliating acids in the exact same routine as [___].",
+     "options": [
+      "Retinol",
+      "Moisturizer",
+      "Ceramides"
+     ],
+     "correct": 0,
+     "explanation": "Using multiple strong exfoliators or cell-communicators at once can overwhelm the skin."
+    },
+    {
+     "type": "multiple_choice",
+     "question": "Why should you be cautious mixing pure Vitamin C with strong AHAs?",
+     "options": [
+      "Both can be irritating, and using them together may cause redness or stinging, especially for sensitive skin.",
+      "They cancel each other out entirely.",
+      "They act as a bleaching agent."
+     ],
+     "correct": 0,
+     "explanation": "Layering multiple acidic or potent ingredients increases the risk of a reaction."
+    },
+    {
+     "type": "matching",
+     "question": "Match the combination to its general advice.",
+     "pairs": [
+      [
+       "Retinol + AHA/BHA",
+       "Often too harsh for the same routine; alternate them"
+      ],
+      [
+       "Retinol + Moisturizer",
+       "A good pairing; helps reduce potential dryness"
+      ],
+      [
+       "Vitamin C + Sunscreen",
+       "A recommended pairing for daytime defense"
+      ]
+     ],
+     "explanation": "Knowing what to mix helps you get benefits without the burn."
+    },
+    {
+     "type": "fill_blank_multi",
+     "template": "[__1__] and [__2__] are both potent ingredients and are often best used on different nights.",
+     "blanks": [
+      {
+       "options": [
+        "Retinol",
+        "Hyaluronic Acid",
+        "Ceramides"
+       ],
+       "correct": 0
+      },
+      {
+       "options": [
+        "AHAs",
+        "Glycerin",
+        "Peptides"
+       ],
+       "correct": 0
+      }
+     ],
+     "explanation": "Spacing out strong actives gives the skin time to recover."
+    },
+    {
+     "type": "sequence_builder",
+     "question": "A popular method for cycling strong actives (Skin Cycling):",
+     "items": [
+      "Night 1: Exfoliating Acid (AHA/BHA)",
+      "Night 2: Retinoid",
+      "Night 3: Focus on Hydration and Barrier Repair",
+      "Night 4: Focus on Hydration and Barrier Repair"
+     ],
+     "correct_order": [
+      "Night 1: Exfoliating Acid (AHA/BHA)",
+      "Night 2: Retinoid",
+      "Night 3: Focus on Hydration and Barrier Repair",
+      "Night 4: Focus on Hydration and Barrier Repair"
+     ],
+     "explanation": "This method builds in \"rest days\" to minimize irritation."
+    },
+    {
+     "type": "ingredient_match",
+     "question": "Which type of ingredient is generally safe to mix with strong actives to help calm the skin?",
+     "options": [
+      {
+       "label": "Ceramides or Glycerin",
+       "correct": true,
+       "detail": "Hydrating and barrier-supporting"
+      },
+      {
+       "label": "Glycolic Acid",
+       "correct": false,
+       "detail": "Exfoliant",
+       "wrong_explanation": "Adds to the irritation."
+      },
+      {
+       "label": "Benzoyl Peroxide",
+       "correct": false,
+       "detail": "Acne treatment",
+       "wrong_explanation": "Can be drying and irritating."
+      }
+     ],
+     "concern": "Calming a routine",
+     "explanation": "Hydrators and barrier-supporting ingredients pair well with almost anything."
+    },
+    {
+     "type": "spot_mistake",
+     "scenario": "You apply an AHA peel, a BHA liquid, and a Retinol all on the same night for glowing skin.",
+     "question": "What is the mistake?",
+     "options": [
+      "This combination is highly likely to cause significant irritation and barrier damage.",
+      "You forgot to add Vitamin C.",
+      "You should do this twice a day."
+     ],
+     "correct": 0,
+     "explanation": "More is not always better when it comes to strong active ingredients."
+    }
+   ]
+  },
+  {
+   "node": 35,
+   "title": "Patch Testing",
+   "celebration": "You've played it safe and smart!",
+   "screens": [
+    {
+     "type": "intro",
+     "title": "The Isolation Rule",
+     "text": "Patch testing and the Isolation Rule mean introducing only ONE new product at a time to see how your skin reacts."
+    },
+    {
+     "type": "true_false",
+     "question": "If a product says \"Hypoallergenic,\" it is impossible to be allergic to it.",
+     "correct": false,
+     "explanation": "\"Hypoallergenic\" is not a strictly regulated term; you can still have an allergy to its ingredients."
+    },
+    {
+     "type": "fill_blank",
+     "question": "The isolation rule suggests you should introduce [___] new product at a time.",
+     "options": [
+      "one",
+      "three",
+      "five"
+     ],
+     "correct": 0,
+     "explanation": "If you introduce multiple products and have a reaction, you won't know which one caused it."
+    },
+    {
+     "type": "multiple_choice",
+     "question": "Where is a common place to patch test a product for an allergic reaction?",
+     "options": [
+      "The inner forearm or behind the ear.",
+      "Directly in the center of your forehead.",
+      "On your eyelids."
+     ],
+     "correct": 0,
+     "explanation": "These areas have sensitive skin but are less visible if a reaction occurs."
+    },
+    {
+     "type": "matching",
+     "question": "Match the skin reaction to its likely meaning.",
+     "pairs": [
+      [
+       "Red, itchy rash shortly after applying",
+       "Possible allergic reaction or contact dermatitis"
+      ],
+      [
+       "Breakouts in usual spots after starting BHA",
+       "Possible purging (temporary)"
+      ],
+      [
+       "Stinging upon application",
+       "Possible barrier compromise or product irritation"
+      ]
+     ],
+     "explanation": "Interpreting the reaction helps you decide whether to stop or continue."
+    },
+    {
+     "type": "fill_blank_multi",
+     "template": "A [__1__] often appears as red, itchy bumps in new areas. A [__2__] typically occurs in areas you normally break out.",
+     "blanks": [
+      {
+       "options": [
+        "allergic reaction",
+        "purge",
+        "glow"
+       ],
+       "correct": 0
+      },
+      {
+       "options": [
+        "purge",
+        "allergic reaction",
+        "rash"
+       ],
+       "correct": 0
+      }
+     ],
+     "explanation": "Purging is related to increased cell turnover; allergies are an immune response."
+    },
+    {
+     "type": "sequence_builder",
+     "question": "A cautious way to introduce a new skincare routine:",
+     "items": [
+      "Patch test the cleanser on your arm",
+      "Use only the new cleanser on your face for a week",
+      "Introduce the new moisturizer and monitor for a week",
+      "Finally, introduce any active serums one at a time"
+     ],
+     "correct_order": [
+      "Patch test the cleanser on your arm",
+      "Use only the new cleanser on your face for a week",
+      "Introduce the new moisturizer and monitor for a week",
+      "Finally, introduce any active serums one at a time"
+     ],
+     "explanation": "This slow approach helps isolate any potential issues."
+    },
+    {
+     "type": "ingredient_match",
+     "question": "Which ingredient category is a very common trigger for contact dermatitis?",
+     "options": [
+      {
+       "label": "Fragrances and Essential Oils",
+       "correct": true,
+       "detail": "Complex mixtures that can trigger allergies"
+      },
+      {
+       "label": "Glycerin",
+       "correct": false,
+       "detail": "Humectant",
+       "wrong_explanation": "Very rarely causes allergies."
+      },
+      {
+       "label": "Petrolatum",
+       "correct": false,
+       "detail": "Occlusive",
+       "wrong_explanation": "Generally well-tolerated."
+      }
+     ],
+     "concern": "Allergic reactions",
+     "explanation": "Many people are sensitive to the compounds found in fragrances."
+    },
+    {
+     "type": "spot_mistake",
+     "scenario": "You buy a 5-piece skincare set and start using all 5 products on your face the first night.",
+     "question": "What is the mistake?",
+     "options": [
+      "If you experience a breakout or rash, you won't know which product is responsible.",
+      "You didn't use a 6th product.",
+      "You should use them in the morning instead."
+     ],
+     "correct": 0,
+     "explanation": "Introducing products one at a time is the most reliable way to test them."
+    }
+   ]
+  },
+  {
+   "node": 36,
+   "title": "Diet & Sugar (Glycation)",
+   "celebration": "You understand the gut-skin connection!",
+   "screens": [
+    {
+     "type": "intro",
+     "title": "The Sugar Factor",
+     "text": "High-sugar diets can contribute to glycation, a process where sugar molecules affect collagen, and may influence breakouts in some people."
+    },
+    {
+     "type": "true_false",
+     "question": "Drinking plenty of water completely negates the effects of a high-sugar diet on the skin.",
+     "correct": false,
+     "explanation": "While water is healthy, it doesn't prevent the chemical process of glycation."
+    },
+    {
+     "type": "fill_blank",
+     "question": "Glycation can affect [___], making it stiffer and less elastic over time.",
+     "options": [
+      "collagen",
+      "sweat",
+      "melanin"
+     ],
+     "correct": 0,
+     "explanation": "This process can contribute to premature signs of aging."
+    },
+    {
+     "type": "multiple_choice",
+     "question": "How might diet influence acne in certain individuals?",
+     "options": [
+      "High-glycemic diets or certain dairy products may influence hormones that affect sebum production.",
+      "Dairy clogs pores directly from the outside.",
+      "High-sugar diets dry the skin out."
+     ],
+     "correct": 0,
+     "explanation": "Diet doesn't cause acne in everyone, but it can be a contributing factor for some."
+    },
+    {
+     "type": "matching",
+     "question": "Match the dietary factor to a potential skin impact.",
+     "pairs": [
+      [
+       "High Sugar / High Glycemic",
+       "May influence sebum production and glycation"
+      ],
+      [
+       "Omega-3 Fatty Acids",
+       "May help support overall skin health"
+      ],
+      [
+       "Adequate Water Intake",
+       "Supports general body hydration"
+      ]
+     ],
+     "explanation": "Nutrition plays a supporting role in skin health."
+    },
+    {
+     "type": "fill_blank_multi",
+     "template": "High-glycemic foods can influence [__1__] levels, which may in turn affect [__2__] production.",
+     "blanks": [
+      {
+       "options": [
+        "insulin",
+        "collagen",
+        "water"
+       ],
+       "correct": 0
+      },
+      {
+       "options": [
+        "sebum",
+        "sweat",
+        "acid"
+       ],
+       "correct": 0
+      }
+     ],
+     "explanation": "These internal fluctuations can sometimes manifest as breakouts."
+    },
+    {
+     "type": "sequence_builder",
+     "question": "A possible link between diet and breakouts for some individuals:",
+     "items": [
+      "Consume foods that quickly spike blood sugar",
+      "Insulin levels rise in response",
+      "Hormonal pathways are influenced, potentially increasing oil production",
+      "Excess oil contributes to a clogged pore"
+     ],
+     "correct_order": [
+      "Consume foods that quickly spike blood sugar",
+      "Insulin levels rise in response",
+      "Hormonal pathways are influenced, potentially increasing oil production",
+      "Excess oil contributes to a clogged pore"
+     ],
+     "explanation": "This explains why some dermatologists discuss diet for stubborn acne."
+    },
+    {
+     "type": "ingredient_match",
+     "question": "Which dietary component is often associated with supporting skin health?",
+     "options": [
+      {
+       "label": "Healthy Fats (e.g., from fish or nuts)",
+       "correct": true,
+       "detail": "Support cell membranes"
+      },
+      {
+       "label": "Refined Sugar",
+       "correct": false,
+       "detail": "Simple carbohydrate",
+       "wrong_explanation": "Associated with glycation."
+      },
+      {
+       "label": "Excessive Caffeine",
+       "correct": false,
+       "detail": "Stimulant",
+       "wrong_explanation": "May not directly support the skin barrier."
+      }
+     ],
+     "concern": "General skin maintenance",
+     "explanation": "Dietary lipids are important for overall body and skin function."
+    },
+    {
+     "type": "spot_mistake",
+     "scenario": "You suffer from acne and rely only on topical creams while consuming a very high-sugar diet.",
+     "question": "What is the mistake?",
+     "options": [
+      "Diet may influence acne in some individuals; addressing internal factors can sometimes help topicals work better.",
+      "You need to drink more soda.",
+      "You should wash your face with the soda."
+     ],
+     "correct": 0,
+     "explanation": "A holistic approach considering lifestyle and topicals is often most effective."
+    }
+   ]
+  },
+  {
+   "node": 37,
+   "title": "Sleep & Cortisol",
+   "celebration": "You've mastered beauty sleep!",
+   "screens": [
+    {
+     "type": "intro",
+     "title": "The Stress Factor",
+     "text": "Lack of sleep and high stress can elevate cortisol. This can influence skin health and may exacerbate conditions like acne."
+    },
+    {
+     "type": "true_false",
+     "question": "\"Beauty sleep\" is just a phrase with no biological backing.",
+     "correct": false,
+     "explanation": "Sleep is a critical time for the body, including the skin, to undergo repair processes."
+    },
+    {
+     "type": "fill_blank",
+     "question": "High stress levels are associated with an increase in the hormone [___].",
+     "options": [
+      "cortisol",
+      "estrogen",
+      "melatonin"
+     ],
+     "correct": 0,
+     "explanation": "Cortisol can influence various bodily functions, including those affecting the skin."
+    },
+    {
+     "type": "multiple_choice",
+     "question": "How might chronic high stress and elevated cortisol affect the skin?",
+     "options": [
+      "It may impair barrier function and contribute to inflammatory breakouts.",
+      "It makes the skin perfectly smooth.",
+      "It stops all oil production permanently."
+     ],
+     "correct": 0,
+     "explanation": "Stress can alter the skin's ability to defend and repair itself."
+    },
+    {
+     "type": "matching",
+     "question": "Match the lifestyle factor to a general skin benefit/issue.",
+     "pairs": [
+      [
+       "Adequate Sleep",
+       "Supports natural cellular repair processes"
+      ],
+      [
+       "Chronic Stress",
+       "May increase oiliness and breakouts"
+      ],
+      [
+       "Dehydration",
+       "Can make fine lines appear more prominent"
+      ]
+     ],
+     "explanation": "Lifestyle habits significantly impact your skin's appearance."
+    },
+    {
+     "type": "fill_blank_multi",
+     "template": "During adequate sleep, [__1__] levels are generally lower, and cellular [__2__] can occur optimally.",
+     "blanks": [
+      {
+       "options": [
+        "cortisol",
+        "hydration",
+        "oil"
+       ],
+       "correct": 0
+      },
+      {
+       "options": [
+        "repair",
+        "damage",
+        "shedding"
+       ],
+       "correct": 0
+      }
+     ],
+     "explanation": "Sleep provides the necessary downtime for bodily maintenance."
+    },
+    {
+     "type": "sequence_builder",
+     "question": "A potential cascade of stress on the skin:",
+     "items": [
+      "Periods of high stress or poor sleep occur",
+      "Cortisol levels rise",
+      "Inflammation may increase and barrier function may weaken",
+      "Skin may experience flare-ups of acne or sensitivity"
+     ],
+     "correct_order": [
+      "Periods of high stress or poor sleep occur",
+      "Cortisol levels rise",
+      "Inflammation may increase and barrier function may weaken",
+      "Skin may experience flare-ups of acne or sensitivity"
+     ],
+     "explanation": "Managing stress is often a component of a comprehensive skincare approach."
+    },
+    {
+     "type": "ingredient_match",
+     "question": "Which \"habit\" is highly beneficial for supporting natural skin repair?",
+     "options": [
+      {
+       "label": "Getting 7-9 Hours of Sleep",
+       "correct": true,
+       "detail": "Essential for body repair"
+      },
+      {
+       "label": "Using Caffeine Eye Creams",
+       "correct": false,
+       "detail": "Topical fix",
+       "wrong_explanation": "Temporary cosmetic effect."
+      },
+      {
+       "label": "Applying Exfoliants",
+       "correct": false,
+       "detail": "Removes dead cells",
+       "wrong_explanation": "Doesn't replace the benefits of sleep."
+      }
+     ],
+     "concern": "Dull, stressed skin",
+     "explanation": "Sleep facilitates physiological repair that skincare products cannot replicate."
+    },
+    {
+     "type": "spot_mistake",
+     "scenario": "You are highly stressed, sleep very little, and buy an expensive cream to fix sudden breakouts.",
+     "question": "What is the mistake?",
+     "options": [
+      "A cream may not fully resolve breakouts that are heavily influenced by internal stress and lack of sleep.",
+      "The cream isn't expensive enough.",
+      "You need to scrub your face harder."
+     ],
+     "correct": 0,
+     "explanation": "Skincare is supportive, but it can't always override significant lifestyle factors."
+    }
+   ]
+  },
+  {
+   "node": 38,
+   "title": "Hormones & Skin",
+   "celebration": "You've decoded internal influences!",
+   "screens": [
+    {
+     "type": "intro",
+     "title": "The Monthly Cycle",
+     "text": "Hormones are the main driver of oil production. Fluctuations can significantly impact your skin's behavior."
+    },
+    {
+     "type": "true_false",
+     "question": "Acne driven by hormonal fluctuations always appears only on the forehead.",
+     "correct": false,
+     "explanation": "Hormonal acne is very frequently observed along the jawline, chin, and lower face."
+    },
+    {
+     "type": "fill_blank",
+     "question": "An increase in [___] hormones (like testosterone) can stimulate oil glands to produce more sebum.",
+     "options": [
+      "androgen",
+      "melatonin",
+      "serotonin"
+     ],
+     "correct": 0,
+     "explanation": "This is common during puberty or certain phases of the menstrual cycle."
+    },
+    {
+     "type": "multiple_choice",
+     "question": "Why do some people experience breakouts before their period?",
+     "options": [
+      "Hormonal shifts can increase sebum production and influence pore clogging.",
+      "They forget to wash their face.",
+      "They eat too much sugar."
+     ],
+     "correct": 0,
+     "explanation": "The change in hormone ratios creates an environment more prone to acne."
+    },
+    {
+     "type": "matching",
+     "question": "Match the breakout location to a potential common trigger.",
+     "pairs": [
+      [
+       "Jawline and Chin",
+       "Often associated with hormonal fluctuations"
+      ],
+      [
+       "Forehead",
+       "Sometimes related to hair products or sweat"
+      ],
+      [
+       "Cheeks",
+       "Dirty pillowcases or phones may contribute to irritation or breakouts in some people"
+      ]
+     ],
+     "explanation": "Location can sometimes offer clues, though it's not a strict rule."
+    },
+    {
+     "type": "fill_blank_multi",
+     "template": "Hormonal breakouts are often [__1__] and tender, frequently appearing on the [__2__].",
+     "blanks": [
+      {
+       "options": [
+        "deep",
+        "superficial",
+        "tiny"
+       ],
+       "correct": 0
+      },
+      {
+       "options": [
+        "jawline",
+        "forehead",
+        "nose"
+       ],
+       "correct": 0
+      }
+     ],
+     "explanation": "These breakouts are often more inflammatory than simple surface blackheads."
+    },
+    {
+     "type": "sequence_builder",
+     "question": "A typical pattern for menstruators:",
+     "items": [
+      "Hormone levels fluctuate throughout the month",
+      "Oil production may increase during certain phases",
+      "Pores can become clogged more easily",
+      "A breakout may occur just before or during the period"
+     ],
+     "correct_order": [
+      "Hormone levels fluctuate throughout the month",
+      "Oil production may increase during certain phases",
+      "Pores can become clogged more easily",
+      "A breakout may occur just before or during the period"
+     ],
+     "explanation": "Understanding this cycle helps anticipate when the skin might need different care."
+    },
+    {
+     "type": "ingredient_match",
+     "question": "Which over-the-counter ingredient is often used to help manage the appearance of deep breakouts?",
+     "options": [
+      {
+       "label": "Salicylic Acid (BHA)",
+       "correct": true,
+       "detail": "Helps keep pores clear of excess oil"
+      },
+      {
+       "label": "Physical Scrub",
+       "correct": false,
+       "detail": "Abrasive",
+       "wrong_explanation": "May irritate tender breakouts."
+      },
+      {
+       "label": "Heavy Facial Oils",
+       "correct": false,
+       "detail": "Emollient",
+       "wrong_explanation": "May not be helpful for oily, acne-prone areas."
+      }
+     ],
+     "concern": "Stubborn breakouts",
+     "explanation": "BHAs are useful for penetrating and clearing oil-rich environments."
+    },
+    {
+     "type": "spot_mistake",
+     "scenario": "You get a deep, tender bump on your chin and try to aggressively pop it.",
+     "question": "What is the mistake?",
+     "options": [
+      "Deep, tender bumps often lack a surface connection; squeezing can worsen inflammation and lead to scarring.",
+      "You didn't use a hot needle.",
+      "You should use a pore strip instead."
+     ],
+     "correct": 0,
+     "explanation": "Inflamed, deep breakouts require gentle treatment and patience, not physical trauma."
+    }
+   ]
+  },
+  {
+   "node": 39,
+   "title": "Reading Ingredient Labels",
+   "celebration": "You're a label-reading detective!",
+   "screens": [
+    {
+     "type": "intro",
+     "title": "The Fine Print",
+     "text": "The front of the package is marketing; the back is the ingredient list. Ingredients are typically listed in order of highest concentration to lowest."
+    },
+    {
+     "type": "true_false",
+     "question": "If a product is named \"Hyaluronic Acid Lotion,\" it guarantees hyaluronic acid is the main ingredient.",
+     "correct": false,
+     "explanation": "The name is marketing; the ingredient could be present in a very small amount."
+    },
+    {
+     "type": "fill_blank",
+     "question": "The first few ingredients on a label usually make up the [___] of the product.",
+     "options": [
+      "majority",
+      "minority",
+      "preservatives"
+     ],
+     "correct": 0,
+     "explanation": "Ingredients at the very end of the list are present in much smaller concentrations."
+    },
+    {
+     "type": "multiple_choice",
+     "question": "Why is \"Aqua\" (Water) frequently the first ingredient in a lotion?",
+     "options": [
+      "It acts as the primary solvent and base for the formula.",
+      "It is the only ingredient that hydrates.",
+      "It makes the product expire faster."
+     ],
+     "correct": 0,
+     "explanation": "Water provides the spreadable, liquid base for most emulsions."
+    },
+    {
+     "type": "matching",
+     "question": "Match the INCI (scientific) name to its common purpose.",
+     "pairs": [
+      [
+       "Tocopherol",
+       "Vitamin E (Antioxidant)"
+      ],
+      [
+       "Sodium Hyaluronate",
+       "A salt form of Hyaluronic Acid (Humectant)"
+      ],
+      [
+       "Ascorbic Acid",
+       "Vitamin C (Antioxidant / Brightener)"
+      ]
+     ],
+     "explanation": "Knowing common INCI names helps you understand what you are actually buying."
+    },
+    {
+     "type": "fill_blank_multi",
+     "template": "Ingredients present at less than [__1__] percent can often be listed in [__2__] order at the end of the list.",
+     "blanks": [
+      {
+       "options": [
+        "1",
+        "50",
+        "10"
+       ],
+       "correct": 0
+      },
+      {
+       "options": [
+        "any",
+        "alphabetical",
+        "reverse"
+       ],
+       "correct": 0
+      }
+     ],
+     "explanation": "The top of the list gives you the best idea of what the product mostly contains."
+    },
+    {
+     "type": "sequence_builder",
+     "question": "A helpful approach to evaluating a new product:",
+     "items": [
+      "Look past the marketing claims on the front",
+      "Turn the product over and read the first few ingredients",
+      "Check for any ingredients you know you are sensitive to",
+      "Consider if the formula matches your skin's needs"
+     ],
+     "correct_order": [
+      "Look past the marketing claims on the front",
+      "Turn the product over and read the first few ingredients",
+      "Check for any ingredients you know you are sensitive to",
+      "Consider if the formula matches your skin's needs"
+     ],
+     "explanation": "This helps you make decisions based on the formulation, not just the packaging."
+    },
+    {
+     "type": "ingredient_match",
+     "question": "Which ingredient high on an ingredient list might be drying for some skin types?",
+     "options": [
+      {
+       "label": "Alcohol Denat. (Denatured Alcohol)",
+       "correct": true,
+       "detail": "Can act as a drying solvent"
+      },
+      {
+       "label": "Glycerin",
+       "correct": false,
+       "detail": "Humectant",
+       "wrong_explanation": "Usually very hydrating."
+      },
+      {
+       "label": "Ceramides",
+       "correct": false,
+       "detail": "Lipids",
+       "wrong_explanation": "Helpful for moisture retention."
+      }
+     ],
+     "concern": "Potential dryness",
+     "explanation": "High amounts of denatured alcohol can affect the skin barrier in dry or sensitive types."
+    },
+    {
+     "type": "spot_mistake",
+     "scenario": "You buy an expensive \"Retinol Cream,\" but Retinol is listed after the preservatives at the very end.",
+     "question": "What is the mistake?",
+     "options": [
+      "The concentration of retinol may be very low, meaning it might not provide strong benefits.",
+      "Retinol should always be the last ingredient.",
+      "Preservatives cancel out retinol."
+     ],
+     "correct": 0,
+     "explanation": "Ingredients listed after preservatives are usually present in very small amounts."
+    }
+   ]
+  },
+  {
+   "node": 40,
+   "title": "Marketing Myths & Reality",
+   "celebration": "You are immune to the hype!",
+   "screens": [
+    {
+     "type": "intro",
+     "title": "Beyond the Buzzwords",
+     "text": "Skincare marketing often uses buzzwords. Terms like \"Medical Grade\" or \"Chemical-Free\" are largely marketing tools."
+    },
+    {
+     "type": "true_false",
+     "question": "\"Dermatologist Tested\" guarantees that a product will not cause any irritation.",
+     "correct": false,
+     "explanation": "It means the product was tested by or under the supervision of a dermatologist, but does not guarantee it will work for everyone."
+    },
+    {
+     "type": "fill_blank",
+     "question": "\"Medical Grade\" skincare is a [___] term without a strict legal definition in the cosmetics industry.",
+     "options": [
+      "marketing",
+      "scientific",
+      "pharmaceutical"
+     ],
+     "correct": 0,
+     "explanation": "Products are generally classified as either cosmetics or prescription drugs."
+    },
+    {
+     "type": "multiple_choice",
+     "question": "What does it mean when a skincare product claims to be \"Chemical-Free\"?",
+     "options": [
+      "It is a marketing term; everything, including water, is made of chemicals.",
+      "It is perfectly safe for all skin.",
+      "It was made without any machinery."
+     ],
+     "correct": 0,
+     "explanation": "\"Chemical-free\" is scientifically inaccurate."
+    },
+    {
+     "type": "matching",
+     "question": "Match the marketing buzzword to a realistic interpretation.",
+     "pairs": [
+      [
+       "Hypoallergenic",
+       "Designed to be less likely to cause allergies, but not a guarantee"
+      ],
+      [
+       "Clean Beauty",
+       "A term defined differently by various brands; not strictly regulated"
+      ],
+      [
+       "Non-Comedogenic",
+       "Formulated to avoid clogging pores, but individual reactions vary"
+      ]
+     ],
+     "explanation": "Understanding these terms helps you shop more realistically."
+    },
+    {
+     "type": "fill_blank_multi",
+     "template": "[__1__] ingredients are not automatically safe, and [__2__] ingredients are not automatically harmful.",
+     "blanks": [
+      {
+       "options": [
+        "Natural",
+        "Synthetic",
+        "Hydrating"
+       ],
+       "correct": 0
+      },
+      {
+       "options": [
+        "Synthetic",
+        "Natural",
+        "Gentle"
+       ],
+       "correct": 0
+      }
+     ],
+     "explanation": "Safety depends on the specific ingredient and formulation, not whether it is found in nature."
+    },
+    {
+     "type": "sequence_builder",
+     "question": "A sensible hierarchy for a skincare routine:",
+     "items": [
+      "Establish a baseline: Cleanse, Moisturize, SPF",
+      "Maintain consistency over time",
+      "Introduce targeted treatments if needed (e.g., Vitamin C, Retinoids)",
+      "Consider professional treatments if desired"
+     ],
+     "correct_order": [
+      "Establish a baseline: Cleanse, Moisturize, SPF",
+      "Maintain consistency over time",
+      "Introduce targeted treatments if needed (e.g., Vitamin C, Retinoids)",
+      "Consider professional treatments if desired"
+     ],
+     "explanation": "A consistent, protective baseline is necessary before advanced treatments."
+    },
+    {
+     "type": "ingredient_match",
+     "question": "Which DIY trend can be overly harsh and disrupt the skin's pH?",
+     "options": [
+      {
+       "label": "Lemon Juice & Baking Soda",
+       "correct": true,
+       "detail": "Highly acidic and highly alkaline, respectively"
+      },
+      {
+       "label": "Colloidal Oatmeal",
+       "correct": false,
+       "detail": "Soothing",
+       "wrong_explanation": "Gentle and often helpful."
+      },
+      {
+       "label": "Plain Yogurt",
+       "correct": false,
+       "detail": "Mild",
+       "wrong_explanation": "Generally safe for skin."
+      }
+     ],
+     "concern": "DIY Skincare irritation",
+     "explanation": "Household items like lemon juice and baking soda are not formulated for the skin's delicate pH."
+    },
+    {
+     "type": "spot_mistake",
+     "scenario": "An influencer claims a 12-step routine is the only way to achieve perfect skin.",
+     "question": "What is the mistake?",
+     "options": [
+      "Healthy skin can often be maintained with a simple, consistent routine; 12 steps aren't mandatory.",
+      "You need 15 steps.",
+      "They are using the wrong brand."
+     ],
+     "correct": 0,
+     "explanation": "Elaborate routines are a choice, not a necessity for everyone."
+    }
+   ]
+  }
+ ],
+ "sections": [
+  {
+   "index": 0,
+   "eyebrow": "UNIT 1",
+   "title": "Skin Foundations",
+   "bg": "#2B70C9",
+   "slab": "#0369a1"
+  },
+  {
+   "index": 1,
+   "eyebrow": "UNIT 2",
+   "title": "Hydration Science",
+   "bg": "#14B8A6",
+   "slab": "#0c5d52"
+  },
+  {
+   "index": 2,
+   "eyebrow": "UNIT 3",
+   "title": "Cleansing & pH",
+   "bg": "#7C3AED",
+   "slab": "#2e0f6e"
+  },
+  {
+   "index": 3,
+   "eyebrow": "UNIT 4",
+   "title": "Actives 101",
+   "bg": "#10B981",
+   "slab": "#024d37"
+  },
+  {
+   "index": 4,
+   "eyebrow": "UNIT 5",
+   "title": "Sun & Aging",
+   "bg": "#F59E0B",
+   "slab": "#703b08"
+  },
+  {
+   "index": 5,
+   "eyebrow": "UNIT 6",
+   "title": "Common Concerns",
+   "bg": "#0891b2",
+   "slab": "#0a2e4a"
+  },
+  {
+   "index": 6,
+   "eyebrow": "UNIT 7",
+   "title": "Routines & Layering",
+   "bg": "#4f46e5",
+   "slab": "#231e7a"
+  },
+  {
+   "index": 7,
+   "eyebrow": "UNIT 8",
+   "title": "Lifestyle & Myths",
+   "bg": "#db2777",
+   "slab": "#6b0b30"
+  }
+ ],
+ "nodes": [
+  {
+   "num": 1,
+   "svg": "<svg width=\"34\" height=\"34\" viewBox=\"0 0 32 32\" fill=\"white\">\n              <path d=\"M16 3 L28.5 9 L28.5 19 C28.5 26.5 23 30.5 16 32 C9 30.5 3.5 26.5 3.5 19 L3.5 9 Z\"/>\n            </svg>",
+   "title": "Skin Anatomy 101",
+   "sectionIndex": 0
+  },
+  {
+   "num": 2,
+   "svg": "<svg width=\"34\" height=\"34\" viewBox=\"0 0 32 32\" fill=\"rgba(255,255,255,0.65)\">\n              <path d=\"M16 4 C16 4 6 14 6 21 A10 10 0 0 0 26 21 C26 14 16 4 16 4Z\"/>\n            </svg>",
+   "title": "The Skin Barrier",
+   "sectionIndex": 0
+  },
+  {
+   "num": 3,
+   "svg": "<svg width=\"34\" height=\"34\" viewBox=\"0 0 32 32\" fill=\"rgba(255,255,255,0.65)\">\n              <circle cx=\"16\" cy=\"16\" r=\"12\" fill=\"none\" stroke=\"rgba(255,255,255,0.65)\" stroke-width=\"2.5\"/>\n              <rect x=\"14.8\" y=\"7\" width=\"2.4\" height=\"9\" rx=\"1.2\"/>\n              <rect x=\"14.8\" y=\"14.5\" width=\"6.5\" height=\"2.4\" rx=\"1.2\"/>\n            </svg>",
+   "title": "The Acid Mantle",
+   "sectionIndex": 0
+  },
+  {
+   "num": 4,
+   "svg": "<svg width=\"34\" height=\"34\" viewBox=\"0 0 32 32\" fill=\"rgba(255,255,255,0.65)\">\n              <rect x=\"9\" y=\"15\" width=\"14\" height=\"11\" rx=\"3\"/>\n              <rect x=\"11\" y=\"11\" width=\"10\" height=\"5\" rx=\"2\"/>\n              <rect x=\"8\" y=\"9\" width=\"16\" height=\"3\" rx=\"1.5\"/>\n            </svg>",
+   "title": "Know Your Skin Type",
+   "sectionIndex": 0
+  },
+  {
+   "num": 5,
+   "svg": "<svg width=\"34\" height=\"34\" viewBox=\"0 0 32 32\" fill=\"rgba(255,255,255,0.65)\">\n              <circle cx=\"16\" cy=\"16\" r=\"5.5\"/>\n              <rect x=\"14.5\" y=\"1\" width=\"3\" height=\"6\" rx=\"1.5\"/>\n              <rect x=\"14.5\" y=\"1\" width=\"3\" height=\"6\" rx=\"1.5\" transform=\"rotate(45 16 16)\"/>\n              <rect x=\"14.5\" y=\"1\" width=\"3\" height=\"6\" rx=\"1.5\" transform=\"rotate(90 16 16)\"/>\n              <rect x=\"14.5\" y=\"1\" width=\"3\" height=\"6\" rx=\"1.5\" transform=\"rotate(135 16 16)\"/>\n              <rect x=\"14.5\" y=\"1\" width=\"3\" height=\"6\" rx=\"1.5\" transform=\"rotate(180 16 16)\"/>\n              <rect x=\"14.5\" y=\"1\" width=\"3\" height=\"6\" rx=\"1.5\" transform=\"rotate(225 16 16)\"/>\n              <rect x=\"14.5\" y=\"1\" width=\"3\" height=\"6\" rx=\"1.5\" transform=\"rotate(270 16 16)\"/>\n              <rect x=\"14.5\" y=\"1\" width=\"3\" height=\"6\" rx=\"1.5\" transform=\"rotate(315 16 16)\"/>\n            </svg>",
+   "title": "Cell Turnover & Renewal",
+   "sectionIndex": 0
+  },
+  {
+   "num": 6,
+   "svg": "<svg width=\"34\" height=\"34\" viewBox=\"0 0 32 32\" fill=\"rgba(255,255,255,0.65)\">\n              <circle cx=\"16\" cy=\"10\" r=\"6.5\"/>\n              <path d=\"M3 31 C3 22 8.8 17 16 17 C23.2 17 29 22 29 31Z\"/>\n            </svg>",
+   "title": "Humectants",
+   "sectionIndex": 1
+  },
+  {
+   "num": 7,
+   "svg": "<svg width=\"34\" height=\"34\" viewBox=\"0 0 32 32\" fill=\"rgba(255,255,255,0.65)\">\n              <path d=\"M16 3 L28.5 9 L28.5 19 C28.5 26.5 23 30.5 16 32 C9 30.5 3.5 26.5 3.5 19 L3.5 9 Z\"/>\n            </svg>",
+   "title": "Emollients & Occlusives",
+   "sectionIndex": 1
+  },
+  {
+   "num": 8,
+   "svg": "<svg width=\"34\" height=\"34\" viewBox=\"0 0 32 32\" fill=\"rgba(255,255,255,0.65)\">\n              <circle cx=\"16\" cy=\"16\" r=\"5.5\"/>\n              <rect x=\"14.5\" y=\"1\" width=\"3\" height=\"6\" rx=\"1.5\"/>\n              <rect x=\"14.5\" y=\"1\" width=\"3\" height=\"6\" rx=\"1.5\" transform=\"rotate(45 16 16)\"/>\n              <rect x=\"14.5\" y=\"1\" width=\"3\" height=\"6\" rx=\"1.5\" transform=\"rotate(90 16 16)\"/>\n              <rect x=\"14.5\" y=\"1\" width=\"3\" height=\"6\" rx=\"1.5\" transform=\"rotate(135 16 16)\"/>\n              <rect x=\"14.5\" y=\"1\" width=\"3\" height=\"6\" rx=\"1.5\" transform=\"rotate(180 16 16)\"/>\n              <rect x=\"14.5\" y=\"1\" width=\"3\" height=\"6\" rx=\"1.5\" transform=\"rotate(225 16 16)\"/>\n              <rect x=\"14.5\" y=\"1\" width=\"3\" height=\"6\" rx=\"1.5\" transform=\"rotate(270 16 16)\"/>\n              <rect x=\"14.5\" y=\"1\" width=\"3\" height=\"6\" rx=\"1.5\" transform=\"rotate(315 16 16)\"/>\n            </svg>",
+   "title": "Dry vs Dehydrated",
+   "sectionIndex": 1
+  },
+  {
+   "num": 9,
+   "svg": "<svg width=\"34\" height=\"34\" viewBox=\"0 0 32 32\" fill=\"rgba(255,255,255,0.65)\">\n              <path d=\"M16 3 L19 11.5 L28 12.5 L21.5 18.5 L23.5 27.5 L16 23.5 L8.5 27.5 L10.5 18.5 L4 12.5 L13 11.5 Z\"/>\n            </svg>",
+   "title": "The Moisture Triangle",
+   "sectionIndex": 1
+  },
+  {
+   "num": 10,
+   "svg": "<svg width=\"34\" height=\"34\" viewBox=\"0 0 32 32\" fill=\"rgba(255,255,255,0.65)\">\n              <rect x=\"13\" y=\"2\" width=\"6\" height=\"10\" rx=\"3\"/>\n              <path d=\"M10 12 L7 28 C6.5 30 8 31 16 31 C24 31 25.5 30 25 28 L22 12 Z\"/>\n              <rect x=\"9\" y=\"10\" width=\"14\" height=\"4\" rx=\"2\"/>\n            </svg>",
+   "title": "TEWL & Sealing Water In",
+   "sectionIndex": 1
+  },
+  {
+   "num": 11,
+   "svg": "<svg width=\"34\" height=\"34\" viewBox=\"0 0 32 32\" fill=\"rgba(255,255,255,0.65)\">\n              <rect x=\"13\" y=\"2\" width=\"6\" height=\"10\" rx=\"3\"/>\n              <path d=\"M10 12 L7 28 C6.5 30 8 31 16 31 C24 31 25.5 30 25 28 L22 12 Z\"/>\n              <rect x=\"9\" y=\"10\" width=\"14\" height=\"4\" rx=\"2\"/>\n            </svg>",
+   "title": "Cleanser Types",
+   "sectionIndex": 2
+  },
+  {
+   "num": 12,
+   "svg": "<svg width=\"34\" height=\"34\" viewBox=\"0 0 32 32\" fill=\"rgba(255,255,255,0.65)\">\n              <path d=\"M10 3 C14 7 18 7 22 3\" fill=\"none\" stroke=\"rgba(255,255,255,0.65)\" stroke-width=\"2.5\" stroke-linecap=\"round\"/>\n              <path d=\"M10 10 C14 14 18 14 22 10\" fill=\"none\" stroke=\"rgba(255,255,255,0.65)\" stroke-width=\"2.5\" stroke-linecap=\"round\"/>\n              <path d=\"M10 17 C14 21 18 21 22 17\" fill=\"none\" stroke=\"rgba(255,255,255,0.65)\" stroke-width=\"2.5\" stroke-linecap=\"round\"/>\n              <path d=\"M10 24 C14 28 18 28 22 24\" fill=\"none\" stroke=\"rgba(255,255,255,0.65)\" stroke-width=\"2.5\" stroke-linecap=\"round\"/>\n              <line x1=\"10\" y1=\"3\" x2=\"10\" y2=\"29\" stroke=\"rgba(255,255,255,0.65)\" stroke-width=\"2.5\" stroke-linecap=\"round\"/>\n              <line x1=\"22\" y1=\"3\" x2=\"22\" y2=\"29\" stroke=\"rgba(255,255,255,0.65)\" stroke-width=\"2.5\" stroke-linecap=\"round\"/>\n            </svg>",
+   "title": "pH Balance",
+   "sectionIndex": 2
+  },
+  {
+   "num": 13,
+   "svg": "<svg width=\"34\" height=\"34\" viewBox=\"0 0 32 32\" fill=\"rgba(255,255,255,0.65)\">\n              <path d=\"M16 3 L19 11.5 L28 12.5 L21.5 18.5 L23.5 27.5 L16 23.5 L8.5 27.5 L10.5 18.5 L4 12.5 L13 11.5 Z\"/>\n            </svg>",
+   "title": "Double Cleansing",
+   "sectionIndex": 2
+  },
+  {
+   "num": 14,
+   "svg": "<svg width=\"34\" height=\"34\" viewBox=\"0 0 32 32\" fill=\"rgba(255,255,255,0.65)\">\n              <path d=\"M16 4 C16 4 6 14 6 21 A10 10 0 0 0 26 21 C26 14 16 4 16 4Z\"/>\n            </svg>",
+   "title": "Over-Washing & Stripping",
+   "sectionIndex": 2
+  },
+  {
+   "num": 15,
+   "svg": "<svg width=\"34\" height=\"34\" viewBox=\"0 0 32 32\" fill=\"rgba(255,255,255,0.65)\">\n              <circle cx=\"7\" cy=\"16\" r=\"4.5\" fill=\"none\" stroke=\"rgba(255,255,255,0.65)\" stroke-width=\"2.5\"/>\n              <circle cx=\"7\" cy=\"16\" r=\"2\"/>\n              <circle cx=\"16\" cy=\"16\" r=\"4.5\" fill=\"none\" stroke=\"rgba(255,255,255,0.65)\" stroke-width=\"2.5\"/>\n              <circle cx=\"16\" cy=\"16\" r=\"2\"/>\n              <circle cx=\"25\" cy=\"16\" r=\"4.5\" fill=\"none\" stroke=\"rgba(255,255,255,0.65)\" stroke-width=\"2.5\"/>\n              <circle cx=\"25\" cy=\"16\" r=\"2\"/>\n            </svg>",
+   "title": "Micellar & Oil Cleansers",
+   "sectionIndex": 2
+  },
+  {
+   "num": 16,
+   "svg": "<svg width=\"34\" height=\"34\" viewBox=\"0 0 32 32\" fill=\"rgba(255,255,255,0.65)\">\n              <circle cx=\"13\" cy=\"13\" r=\"9\"/>\n              <rect x=\"19.5\" y=\"20.5\" width=\"4\" height=\"9\" rx=\"2\" transform=\"rotate(-45 19.5 20.5)\"/>\n            </svg>",
+   "title": "AHAs",
+   "sectionIndex": 3
+  },
+  {
+   "num": 17,
+   "svg": "<svg width=\"34\" height=\"34\" viewBox=\"0 0 32 32\" fill=\"rgba(255,255,255,0.65)\">\n              <path d=\"M16 27 C16 27 3 19 3 10 A6 6 0 0 1 16 8 A6 6 0 0 1 29 10 C29 19 16 27 16 27Z\"/>\n            </svg>",
+   "title": "BHAs",
+   "sectionIndex": 3
+  },
+  {
+   "num": 18,
+   "svg": "<svg width=\"34\" height=\"34\" viewBox=\"0 0 32 32\" fill=\"rgba(255,255,255,0.65)\">\n              <circle cx=\"16\" cy=\"16\" r=\"11\"/>\n              <circle cx=\"16\" cy=\"16\" r=\"6\" fill=\"rgba(0,0,0,0.2)\"/>\n              <circle cx=\"16\" cy=\"16\" r=\"2.5\" fill=\"rgba(0,0,0,0.35)\"/>\n            </svg>",
+   "title": "Retinoids",
+   "sectionIndex": 3
+  },
+  {
+   "num": 19,
+   "svg": "<svg width=\"34\" height=\"34\" viewBox=\"0 0 32 32\" fill=\"rgba(255,255,255,0.65)\">\n              <path d=\"M16 4 C16 4 6 14 6 21 A10 10 0 0 0 26 21 C26 14 16 4 16 4Z\"/>\n            </svg>",
+   "title": "Vitamin C",
+   "sectionIndex": 3
+  },
+  {
+   "num": 20,
+   "svg": "<svg width=\"34\" height=\"34\" viewBox=\"0 0 32 32\" fill=\"rgba(255,255,255,0.65)\">\n              <path d=\"M16 3 L28.5 9 L28.5 19 C28.5 26.5 23 30.5 16 32 C9 30.5 3.5 26.5 3.5 19 L3.5 9 Z\"/>\n            </svg>",
+   "title": "Niacinamide",
+   "sectionIndex": 3
+  },
+  {
+   "num": 21,
+   "svg": "<svg width=\"34\" height=\"34\" viewBox=\"0 0 32 32\" fill=\"rgba(255,255,255,0.65)\">\n              <rect x=\"7\" y=\"4\" width=\"18\" height=\"24\" rx=\"3\"/>\n              <rect x=\"10\" y=\"9\" width=\"12\" height=\"2.5\" rx=\"1.25\" fill=\"rgba(0,0,0,0.25)\"/>\n              <rect x=\"10\" y=\"14\" width=\"9\" height=\"2.5\" rx=\"1.25\" fill=\"rgba(0,0,0,0.25)\"/>\n              <rect x=\"10\" y=\"19\" width=\"11\" height=\"2.5\" rx=\"1.25\" fill=\"rgba(0,0,0,0.25)\"/>\n            </svg>",
+   "title": "UVA vs UVB",
+   "sectionIndex": 4
+  },
+  {
+   "num": 22,
+   "svg": "<svg width=\"34\" height=\"34\" viewBox=\"0 0 32 32\" fill=\"rgba(255,255,255,0.65)\">\n              <circle cx=\"16\" cy=\"16\" r=\"12\"/>\n              <path d=\"M16 4 C16 4 20 8 20 16 C20 24 16 28 16 28\" fill=\"rgba(0,0,0,0.18)\"/>\n              <path d=\"M16 4 C16 4 12 8 12 16 C12 24 16 28 16 28\" fill=\"rgba(0,0,0,0.10)\"/>\n              <circle cx=\"16\" cy=\"16\" r=\"2.5\" fill=\"rgba(0,0,0,0.3)\"/>\n            </svg>",
+   "title": "SPF Types & Application",
+   "sectionIndex": 4
+  },
+  {
+   "num": 23,
+   "svg": "<svg width=\"34\" height=\"34\" viewBox=\"0 0 32 32\" fill=\"rgba(255,255,255,0.65)\">\n              <rect x=\"7\" y=\"4\" width=\"18\" height=\"24\" rx=\"3\"/>\n              <rect x=\"10\" y=\"9\" width=\"12\" height=\"2.5\" rx=\"1.25\" fill=\"rgba(0,0,0,0.25)\"/>\n              <rect x=\"10\" y=\"14\" width=\"9\" height=\"2.5\" rx=\"1.25\" fill=\"rgba(0,0,0,0.25)\"/>\n              <rect x=\"10\" y=\"19\" width=\"11\" height=\"2.5\" rx=\"1.25\" fill=\"rgba(0,0,0,0.25)\"/>\n            </svg>",
+   "title": "Photoaging",
+   "sectionIndex": 4
+  },
+  {
+   "num": 24,
+   "svg": "<svg width=\"34\" height=\"34\" viewBox=\"0 0 32 32\" fill=\"rgba(255,255,255,0.65)\">\n              <path d=\"M16 3 L19 11.5 L28 12.5 L21.5 18.5 L23.5 27.5 L16 23.5 L8.5 27.5 L10.5 18.5 L4 12.5 L13 11.5 Z\"/>\n            </svg>",
+   "title": "Collagen & Elastin",
+   "sectionIndex": 4
+  },
+  {
+   "num": 25,
+   "svg": "<svg width=\"34\" height=\"34\" viewBox=\"0 0 32 32\" fill=\"rgba(255,255,255,0.65)\">\n              <circle cx=\"16\" cy=\"16\" r=\"12\" fill=\"none\" stroke=\"rgba(255,255,255,0.65)\" stroke-width=\"2.5\"/>\n              <rect x=\"14.8\" y=\"7\" width=\"2.4\" height=\"9\" rx=\"1.2\"/>\n              <rect x=\"14.8\" y=\"14.5\" width=\"6.5\" height=\"2.4\" rx=\"1.2\"/>\n            </svg>",
+   "title": "Antioxidants",
+   "sectionIndex": 4
+  },
+  {
+   "num": 26,
+   "svg": "<svg width=\"34\" height=\"34\" viewBox=\"0 0 32 32\" fill=\"rgba(255,255,255,0.65)\">\n              <path d=\"M16 4 C16 4 6 14 6 21 A10 10 0 0 0 26 21 C26 14 16 4 16 4Z\"/>\n            </svg>",
+   "title": "Acne Basics",
+   "sectionIndex": 5
+  },
+  {
+   "num": 27,
+   "svg": "<svg width=\"34\" height=\"34\" viewBox=\"0 0 32 32\" fill=\"rgba(255,255,255,0.65)\">\n              <rect x=\"14.5\" y=\"2\" width=\"3\" height=\"28\" rx=\"1.5\"/>\n              <rect x=\"14.5\" y=\"2\" width=\"3\" height=\"28\" rx=\"1.5\" transform=\"rotate(60 16 16)\"/>\n              <rect x=\"14.5\" y=\"2\" width=\"3\" height=\"28\" rx=\"1.5\" transform=\"rotate(120 16 16)\"/>\n            </svg>",
+   "title": "Hyperpigmentation",
+   "sectionIndex": 5
+  },
+  {
+   "num": 28,
+   "svg": "<svg width=\"34\" height=\"34\" viewBox=\"0 0 32 32\" fill=\"rgba(255,255,255,0.65)\">\n              <circle cx=\"13\" cy=\"13\" r=\"9\"/>\n              <rect x=\"19.5\" y=\"20.5\" width=\"4\" height=\"9\" rx=\"2\" transform=\"rotate(-45 19.5 20.5)\"/>\n            </svg>",
+   "title": "Redness & Rosacea",
+   "sectionIndex": 5
+  },
+  {
+   "num": 29,
+   "svg": "<svg width=\"34\" height=\"34\" viewBox=\"0 0 32 32\" fill=\"rgba(255,255,255,0.65)\">\n              <circle cx=\"16\" cy=\"16\" r=\"5.5\"/>\n              <rect x=\"14.5\" y=\"1\" width=\"3\" height=\"6\" rx=\"1.5\"/>\n              <rect x=\"14.5\" y=\"1\" width=\"3\" height=\"6\" rx=\"1.5\" transform=\"rotate(45 16 16)\"/>\n              <rect x=\"14.5\" y=\"1\" width=\"3\" height=\"6\" rx=\"1.5\" transform=\"rotate(90 16 16)\"/>\n              <rect x=\"14.5\" y=\"1\" width=\"3\" height=\"6\" rx=\"1.5\" transform=\"rotate(135 16 16)\"/>\n              <rect x=\"14.5\" y=\"1\" width=\"3\" height=\"6\" rx=\"1.5\" transform=\"rotate(180 16 16)\"/>\n              <rect x=\"14.5\" y=\"1\" width=\"3\" height=\"6\" rx=\"1.5\" transform=\"rotate(225 16 16)\"/>\n              <rect x=\"14.5\" y=\"1\" width=\"3\" height=\"6\" rx=\"1.5\" transform=\"rotate(270 16 16)\"/>\n              <rect x=\"14.5\" y=\"1\" width=\"3\" height=\"6\" rx=\"1.5\" transform=\"rotate(315 16 16)\"/>\n            </svg>",
+   "title": "Sensitivity & Eczema",
+   "sectionIndex": 5
+  },
+  {
+   "num": 30,
+   "svg": "<svg width=\"34\" height=\"34\" viewBox=\"0 0 32 32\" fill=\"rgba(255,255,255,0.65)\">\n              <path d=\"M16 3 L19 11.5 L28 12.5 L21.5 18.5 L23.5 27.5 L16 23.5 L8.5 27.5 L10.5 18.5 L4 12.5 L13 11.5 Z\"/>\n            </svg>",
+   "title": "Texture & Pores",
+   "sectionIndex": 5
+  },
+  {
+   "num": 31,
+   "svg": "<svg width=\"34\" height=\"34\" viewBox=\"0 0 32 32\" fill=\"rgba(255,255,255,0.65)\">\n              <circle cx=\"16\" cy=\"16\" r=\"12\" fill=\"none\" stroke=\"rgba(255,255,255,0.65)\" stroke-width=\"2.5\"/>\n              <rect x=\"14.8\" y=\"7\" width=\"2.4\" height=\"9\" rx=\"1.2\"/>\n              <rect x=\"14.8\" y=\"14.5\" width=\"6.5\" height=\"2.4\" rx=\"1.2\"/>\n            </svg>",
+   "title": "The AM Routine",
+   "sectionIndex": 6
+  },
+  {
+   "num": 32,
+   "svg": "<svg width=\"34\" height=\"34\" viewBox=\"0 0 32 32\" fill=\"rgba(255,255,255,0.65)\">\n              <rect x=\"7\" y=\"4\" width=\"18\" height=\"24\" rx=\"3\"/>\n              <rect x=\"10\" y=\"9\" width=\"12\" height=\"2.5\" rx=\"1.25\" fill=\"rgba(0,0,0,0.25)\"/>\n              <rect x=\"10\" y=\"14\" width=\"9\" height=\"2.5\" rx=\"1.25\" fill=\"rgba(0,0,0,0.25)\"/>\n              <rect x=\"10\" y=\"19\" width=\"11\" height=\"2.5\" rx=\"1.25\" fill=\"rgba(0,0,0,0.25)\"/>\n            </svg>",
+   "title": "The PM Routine",
+   "sectionIndex": 6
+  },
+  {
+   "num": 33,
+   "svg": "<svg width=\"34\" height=\"34\" viewBox=\"0 0 32 32\" fill=\"rgba(255,255,255,0.65)\">\n              <rect x=\"13\" y=\"2\" width=\"6\" height=\"10\" rx=\"3\"/>\n              <path d=\"M10 12 L7 28 C6.5 30 8 31 16 31 C24 31 25.5 30 25 28 L22 12 Z\"/>\n              <rect x=\"9\" y=\"10\" width=\"14\" height=\"4\" rx=\"2\"/>\n            </svg>",
+   "title": "Layering Order",
+   "sectionIndex": 6
+  },
+  {
+   "num": 34,
+   "svg": "<svg width=\"34\" height=\"34\" viewBox=\"0 0 32 32\" fill=\"rgba(255,255,255,0.65)\">\n              <circle cx=\"13\" cy=\"13\" r=\"9\"/>\n              <rect x=\"19.5\" y=\"20.5\" width=\"4\" height=\"9\" rx=\"2\" transform=\"rotate(-45 19.5 20.5)\"/>\n            </svg>",
+   "title": "Mixing Rules",
+   "sectionIndex": 6
+  },
+  {
+   "num": 35,
+   "svg": "<svg width=\"34\" height=\"34\" viewBox=\"0 0 32 32\" fill=\"rgba(255,255,255,0.65)\">\n              <path d=\"M16 3 L19 11.5 L28 12.5 L21.5 18.5 L23.5 27.5 L16 23.5 L8.5 27.5 L10.5 18.5 L4 12.5 L13 11.5 Z\"/>\n            </svg>",
+   "title": "Patch Testing",
+   "sectionIndex": 6
+  },
+  {
+   "num": 36,
+   "svg": "<svg width=\"34\" height=\"34\" viewBox=\"0 0 32 32\" fill=\"rgba(255,255,255,0.65)\">\n              <path d=\"M10 3 C14 7 18 7 22 3\" fill=\"none\" stroke=\"rgba(255,255,255,0.65)\" stroke-width=\"2.5\" stroke-linecap=\"round\"/>\n              <path d=\"M10 10 C14 14 18 14 22 10\" fill=\"none\" stroke=\"rgba(255,255,255,0.65)\" stroke-width=\"2.5\" stroke-linecap=\"round\"/>\n              <path d=\"M10 17 C14 21 18 21 22 17\" fill=\"none\" stroke=\"rgba(255,255,255,0.65)\" stroke-width=\"2.5\" stroke-linecap=\"round\"/>\n              <path d=\"M10 24 C14 28 18 28 22 24\" fill=\"none\" stroke=\"rgba(255,255,255,0.65)\" stroke-width=\"2.5\" stroke-linecap=\"round\"/>\n              <line x1=\"10\" y1=\"3\" x2=\"10\" y2=\"29\" stroke=\"rgba(255,255,255,0.65)\" stroke-width=\"2.5\" stroke-linecap=\"round\"/>\n              <line x1=\"22\" y1=\"3\" x2=\"22\" y2=\"29\" stroke=\"rgba(255,255,255,0.65)\" stroke-width=\"2.5\" stroke-linecap=\"round\"/>\n            </svg>",
+   "title": "Diet & Sugar (Glycation)",
+   "sectionIndex": 7
+  },
+  {
+   "num": 37,
+   "svg": "<svg width=\"34\" height=\"34\" viewBox=\"0 0 32 32\" fill=\"rgba(255,255,255,0.65)\">\n              <circle cx=\"16\" cy=\"10\" r=\"6.5\"/>\n              <path d=\"M3 31 C3 22 8.8 17 16 17 C23.2 17 29 22 29 31Z\"/>\n            </svg>",
+   "title": "Sleep & Cortisol",
+   "sectionIndex": 7
+  },
+  {
+   "num": 38,
+   "svg": "<svg width=\"34\" height=\"34\" viewBox=\"0 0 32 32\" fill=\"rgba(255,255,255,0.65)\">\n              <circle cx=\"7\" cy=\"16\" r=\"4.5\" fill=\"none\" stroke=\"rgba(255,255,255,0.65)\" stroke-width=\"2.5\"/>\n              <circle cx=\"7\" cy=\"16\" r=\"2\"/>\n              <circle cx=\"16\" cy=\"16\" r=\"4.5\" fill=\"none\" stroke=\"rgba(255,255,255,0.65)\" stroke-width=\"2.5\"/>\n              <circle cx=\"16\" cy=\"16\" r=\"2\"/>\n              <circle cx=\"25\" cy=\"16\" r=\"4.5\" fill=\"none\" stroke=\"rgba(255,255,255,0.65)\" stroke-width=\"2.5\"/>\n              <circle cx=\"25\" cy=\"16\" r=\"2\"/>\n            </svg>",
+   "title": "Hormones & Skin",
+   "sectionIndex": 7
+  },
+  {
+   "num": 39,
+   "svg": "<svg width=\"34\" height=\"34\" viewBox=\"0 0 32 32\" fill=\"rgba(255,255,255,0.65)\">\n              <circle cx=\"16\" cy=\"16\" r=\"5.5\"/>\n              <rect x=\"14.5\" y=\"1\" width=\"3\" height=\"6\" rx=\"1.5\"/>\n              <rect x=\"14.5\" y=\"1\" width=\"3\" height=\"6\" rx=\"1.5\" transform=\"rotate(45 16 16)\"/>\n              <rect x=\"14.5\" y=\"1\" width=\"3\" height=\"6\" rx=\"1.5\" transform=\"rotate(90 16 16)\"/>\n              <rect x=\"14.5\" y=\"1\" width=\"3\" height=\"6\" rx=\"1.5\" transform=\"rotate(135 16 16)\"/>\n              <rect x=\"14.5\" y=\"1\" width=\"3\" height=\"6\" rx=\"1.5\" transform=\"rotate(180 16 16)\"/>\n              <rect x=\"14.5\" y=\"1\" width=\"3\" height=\"6\" rx=\"1.5\" transform=\"rotate(225 16 16)\"/>\n              <rect x=\"14.5\" y=\"1\" width=\"3\" height=\"6\" rx=\"1.5\" transform=\"rotate(270 16 16)\"/>\n              <rect x=\"14.5\" y=\"1\" width=\"3\" height=\"6\" rx=\"1.5\" transform=\"rotate(315 16 16)\"/>\n            </svg>",
+   "title": "Reading Ingredient Labels",
+   "sectionIndex": 7
+  },
+  {
+   "num": 40,
+   "svg": "<svg width=\"34\" height=\"34\" viewBox=\"0 0 32 32\" fill=\"rgba(255,255,255,0.65)\">\n              <path d=\"M10 3 C14 7 18 7 22 3\" fill=\"none\" stroke=\"rgba(255,255,255,0.65)\" stroke-width=\"2.5\" stroke-linecap=\"round\"/>\n              <path d=\"M10 10 C14 14 18 14 22 10\" fill=\"none\" stroke=\"rgba(255,255,255,0.65)\" stroke-width=\"2.5\" stroke-linecap=\"round\"/>\n              <path d=\"M10 17 C14 21 18 21 22 17\" fill=\"none\" stroke=\"rgba(255,255,255,0.65)\" stroke-width=\"2.5\" stroke-linecap=\"round\"/>\n              <path d=\"M10 24 C14 28 18 28 22 24\" fill=\"none\" stroke=\"rgba(255,255,255,0.65)\" stroke-width=\"2.5\" stroke-linecap=\"round\"/>\n              <line x1=\"10\" y1=\"3\" x2=\"10\" y2=\"29\" stroke=\"rgba(255,255,255,0.65)\" stroke-width=\"2.5\" stroke-linecap=\"round\"/>\n              <line x1=\"22\" y1=\"3\" x2=\"22\" y2=\"29\" stroke=\"rgba(255,255,255,0.65)\" stroke-width=\"2.5\" stroke-linecap=\"round\"/>\n            </svg>",
+   "title": "Marketing Myths & Reality",
+   "sectionIndex": 7
+  }
+ ],
+ "legal": {
+  "privacy": {
+   "title": "Privacy Policy",
+   "date": "Last Updated: June 24, 2026",
+   "sections": [
+    {
+     "heading": "1. Data Collection & Storage",
+     "body": "This application operates strictly on a \"local-first\" architecture. All application states, learning progress, score logs, streak calendars, daily quest data, and checklist metrics are stored locally and exclusively inside the sandboxed hardware storage of your individual physical device. No personal identifiable data, biometric profiles, account credentials, or network logs are collected, stored, tracked, or transmitted by this software or its developers."
+    },
+    {
+     "heading": "2. Third-Party Disclosures",
+     "body": "We do not utilize remote server networks, cloud database buckets, advertising analytics, or user behavior tracking pixels. No data is harvested, shared, or sold to third-party entities."
+    },
+    {
+     "heading": "3. Your Rights & Purging Data",
+     "body": "Because all application states reside entirely on your personal physical hardware, you maintain total ownership of your information. Deleting the application from your device permanently purges all stored statistics, records, and history from your system memory."
+    },
+    {
+     "heading": "1. Educational Purpose Only",
+     "body": "This application is designed solely as an interactive textbook simulator and gamified reference resource concerning general skincare hygiene, daily cosmetic habits, and standard cosmetic ingredient science."
+    },
+    {
+     "heading": "2. No Medical Advice or Diagnosis",
+     "body": ""
+    }
+   ]
+  },
+  "terms": {
+   "title": "Terms of Service / Legal Disclaimer",
+   "date": "Last Updated: June 24, 2026",
+   "sections": [
+    {
+     "heading": "1. Educational Purpose Only",
+     "body": "This application is designed solely as an interactive textbook simulator and gamified reference resource concerning general skincare hygiene, daily cosmetic habits, and standard cosmetic ingredient science."
+    },
+    {
+     "heading": "2. No Medical Advice or Diagnosis",
+     "body": "<strong>THE MATERIAL PRESENTED WITHIN THIS SOFTWARE DOES NOT CONSTITUTE MEDICAL ADVICE, CLINICAL DIAGNOSIS, PROGNOSIS, OR PERSONALIZED MEDICAL TREATMENT PLANNING.</strong> This software does not analyze, diagnose, prevent, or treat specific medical or pathological dermatological conditions. The content should never be used as a substitute for, or replacement of, professional medical advice, consultation, or treatment from a certified dermatologist, doctor, or healthcare provider."
+    },
+    {
+     "heading": "3. Complete Absolution & Limitation of Liability",
+     "body": "<strong>BY USING THIS APPLICATION, YOU EXPLICITLY AGREE THAT THE DEVELOPERS AND OWNERS ASSUME ABSOLUTELY ZERO LIABILITY AND NO LEGAL RESPONSIBILITY FOR ANY INDEPENDENT REAL-WORLD DECISIONS MADE, ACTIONS TAKEN, SKINCARE HYGIENE ADJUSTMENTS ATTEMPTED, OR TOPICAL COSMETIC PRODUCTS PURCHASED BY YOU BASED UPON THE GENERAL INFORMATION LEARNED WITHIN THE GAME LOOPS.</strong>"
+    }
+   ]
+  }
+ }
+}

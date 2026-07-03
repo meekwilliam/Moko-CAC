@@ -1,0 +1,23 @@
+# macOS
+.DS_Store
+
+# Xcode build artifacts
+build/
+DerivedData/
+*.xcuserstate
+*.xcscmblueprint
+xcuserdata/
+
+# Swift Package Manager
+.build/
+.swiftpm/
+
+# Backups / temp
+*.bak
+*.orig
+
+# Signing (never commit these)
+*.p12
+*.mobileprovision
+*.cer
+.env
