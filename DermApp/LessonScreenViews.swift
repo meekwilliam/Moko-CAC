@@ -18,12 +18,43 @@ struct LessonScreenRouter: View {
             IngredientMatchView(player: player, ink: ink)
         case "sequence_builder", "drag_order":
             OrderBuilderView(player: player, ink: ink)
+        case "tap_candle":
+            TapCandleView(player: player, ink: ink)
+        case "tap_candles":
+            TapCandlesView(player: player, ink: ink)
+        case "mark_level":
+            MarkLevelView(player: player, ink: ink)
         default:
             // true_false / multiple_choice / fill_blank / spot_mistake
             ChoiceView(player: player, ink: ink)
         }
         // Re-key so per-screen @State resets when the step changes.
         // (id applied by parent via player.index)
+    }
+}
+
+// A stable, per-screen seed so each question's chart is its own variation of the
+// pattern (different from the intro's and from other questions), but consistent
+// across redraws of the same screen. Derived from the screen's UUID (FNV-1a).
+func chartSeed(_ screen: LessonScreen) -> UInt64 {
+    let u = screen.id.uuid
+    let bytes = [u.0, u.1, u.2, u.3, u.4, u.5, u.6, u.7, u.8, u.9, u.10, u.11, u.12, u.13, u.14, u.15]
+    var seed: UInt64 = 0xcbf29ce484222325
+    for b in bytes { seed = (seed ^ UInt64(b)) &* 0x100000001b3 }
+    return seed
+}
+
+// MARK: - Shared question chart
+// Any question type can attach a `CHART: <scenario>` line; this renders it above
+// the prompt so the learner reads the chart to answer (used by every view below).
+struct QuestionChart: View {
+    let key: String?
+    var height: CGFloat = 150
+    var seed: UInt64 = UInt64.random(in: .min ... .max)
+    var body: some View {
+        if let key, let scenario = ChartScenario(rawValue: key) {
+            ScenarioChartView(scenario: scenario, height: height, seed: seed)
+        }
     }
 }
 
@@ -48,9 +79,225 @@ struct IntroView: View {
                     .lineSpacing(4)
                     .fixedSize(horizontal: false, vertical: true)
             }
+
+            if let key = player.screen.chart, let scenario = ChartScenario(rawValue: key) {
+                ScenarioChartView(scenario: scenario, seed: chartSeed(player.screen))
+            }
         }
         .frame(maxWidth: .infinity, alignment: .leading)
         .padding(.top, 10)
+    }
+}
+
+// MARK: - Tap the candle (interactive)
+// Shows a chart and asks the learner to tap a specific candle. The tapped candle
+// gets a blue ring; on reveal the correct candle rings green (and a wrong pick red).
+
+struct TapCandleView: View {
+    @ObservedObject var player: LessonPlayer
+    var ink: Color
+
+    private var s: LessonScreen { player.screen }
+    private var scenario: ChartScenario? { s.chart.flatMap { ChartScenario(rawValue: $0) } }
+
+    var body: some View {
+        VStack(alignment: .leading, spacing: 16) {
+            Text(RichText.attributed(s.question ?? "Tap the candle.",
+                                     base: Theme.font(21, .heavy),
+                                     bold: Theme.font(21, .black), color: ink))
+                .fixedSize(horizontal: false, vertical: true)
+
+            if let sc = scenario {
+                let m = sc.model(seed: chartSeed(s))
+                CandlestickChart(
+                    candles: m.candles,
+                    supportLevel: m.support,
+                    resistanceLevel: m.resistance,
+                    highlightIndex: nil,   // never pre-highlight — that's the answer
+                    chosenIndex: player.selectedIndex,
+                    revealTarget: player.revealed ? s.target : nil,
+                    onTapCandle: { i in
+                        guard !player.revealed else { return }
+                        Haptics.selection()
+                        player.selectedIndex = i
+                    }
+                )
+                .frame(height: 210)
+                .padding(.horizontal, 6).padding(.vertical, 14)
+                .background(
+                    RoundedRectangle(cornerRadius: 16, style: .continuous)
+                        .fill(Color.white.opacity(0.04))
+                        .overlay(RoundedRectangle(cornerRadius: 16, style: .continuous)
+                            .strokeBorder(Color.white.opacity(0.08), lineWidth: 1.5))
+                )
+
+                if player.selectedIndex == nil {
+                    Label("Tap a candle on the chart", systemImage: "hand.tap.fill")
+                        .font(Theme.font(13, .bold))
+                        .foregroundColor(Theme.muted)
+                        .frame(maxWidth: .infinity, alignment: .center)
+                }
+            }
+        }
+        .frame(maxWidth: .infinity, alignment: .leading)
+    }
+}
+
+// MARK: - Tap multiple candles (interactive multi-select)
+// "Tap every bearish candle / both peaks." Tapping toggles a candle in/out of the
+// selection; Check compares the set to the targets (green = right, orange = missed,
+// red = wrong).
+
+struct TapCandlesView: View {
+    @ObservedObject var player: LessonPlayer
+    var ink: Color
+
+    private var s: LessonScreen { player.screen }
+    private var scenario: ChartScenario? { s.chart.flatMap { ChartScenario(rawValue: $0) } }
+
+    var body: some View {
+        VStack(alignment: .leading, spacing: 16) {
+            Text(RichText.attributed(s.question ?? "Tap the candles.",
+                                     base: Theme.font(21, .heavy),
+                                     bold: Theme.font(21, .black), color: ink))
+                .fixedSize(horizontal: false, vertical: true)
+
+            if let sc = scenario {
+                let m = sc.model(seed: chartSeed(s))
+                CandlestickChart(
+                    candles: m.candles,
+                    supportLevel: m.support, resistanceLevel: m.resistance,
+                    highlightIndex: nil,
+                    chosenSet: player.selectedSet,
+                    revealTargets: player.revealed ? Set(s.targets ?? []) : nil,
+                    onTapCandle: { i in
+                        guard !player.revealed else { return }
+                        Haptics.selection()
+                        if player.selectedSet.contains(i) { player.selectedSet.remove(i) }
+                        else { player.selectedSet.insert(i) }
+                    }
+                )
+                .frame(height: 210)
+                .padding(.horizontal, 6).padding(.vertical, 14)
+                .background(
+                    RoundedRectangle(cornerRadius: 16, style: .continuous)
+                        .fill(Color.white.opacity(0.04))
+                        .overlay(RoundedRectangle(cornerRadius: 16, style: .continuous)
+                            .strokeBorder(Color.white.opacity(0.08), lineWidth: 1.5))
+                )
+
+                Label(player.selectedSet.isEmpty ? "Tap all the candles that match" : "\(player.selectedSet.count) selected — tap Check when done",
+                      systemImage: "hand.tap.fill")
+                    .font(Theme.font(13, .bold))
+                    .foregroundColor(Theme.muted)
+                    .frame(maxWidth: .infinity, alignment: .center)
+            }
+        }
+        .frame(maxWidth: .infinity, alignment: .leading)
+    }
+}
+
+// MARK: - Mark the level (interactive) — drag a horizontal line to support/resistance
+
+struct MarkLevelView: View {
+    @ObservedObject var player: LessonPlayer
+    var ink: Color
+    @State private var lineY: CGFloat = 105   // starts mid-chart
+    @State private var didInit = false
+
+    private let chartHeight: CGFloat = 210
+    private var s: LessonScreen { player.screen }
+    private var scenario: ChartScenario? { s.chart.flatMap { ChartScenario(rawValue: $0) } }
+
+    var body: some View {
+        VStack(alignment: .leading, spacing: 16) {
+            Text(RichText.attributed(s.question ?? "Drag the line to the level.",
+                                     base: Theme.font(21, .heavy),
+                                     bold: Theme.font(21, .black), color: ink))
+                .fixedSize(horizontal: false, vertical: true)
+
+            if let sc = scenario {
+                let m = sc.model(seed: chartSeed(s))
+                let (lo, range) = priceRange(m.candles)
+                let isResistance = (s.levelKind == "resistance")
+                let truth = (isResistance ? m.resistance : m.support) ?? (lo + range / 2)
+                let tol = range * 0.06
+
+                ZStack(alignment: .topLeading) {
+                    // Chart WITHOUT the level drawn (that's the answer).
+                    CandlestickChart(candles: m.candles, highlightIndex: nil)
+                        .frame(height: chartHeight)
+
+                    // The user's draggable line.
+                    let userColor = player.revealed
+                        ? (abs(price(lineY, lo, range) - truth) <= tol ? Color(hex: "#22C55E") : Color(hex: "#EF4444"))
+                        : Color(hex: "#38bdf8")
+                    levelLine(y: lineY, color: userColor, label: player.revealed ? "You" : "Drag me")
+
+                    // On reveal, show the true level too.
+                    if player.revealed {
+                        let ty = yFor(truth, lo, range)
+                        levelLine(y: ty, color: Color(hex: "#22C55E"),
+                                  label: isResistance ? "Resistance" : "Support", dashed: true)
+                    }
+                }
+                .frame(height: chartHeight)
+                .contentShape(Rectangle())
+                .gesture(
+                    DragGesture(minimumDistance: 0).onChanged { g in
+                        guard !player.revealed else { return }
+                        lineY = min(max(g.location.y, 0), chartHeight)
+                        player.markedLevel = price(lineY, lo, range)
+                    }
+                )
+                .padding(.horizontal, 6).padding(.vertical, 14)
+                .background(
+                    RoundedRectangle(cornerRadius: 16, style: .continuous)
+                        .fill(Color.white.opacity(0.04))
+                        .overlay(RoundedRectangle(cornerRadius: 16, style: .continuous)
+                            .strokeBorder(Color.white.opacity(0.08), lineWidth: 1.5))
+                )
+                .onAppear {
+                    player.markTrueLevel = truth
+                    player.markTolerance = tol
+                    if !didInit { player.markedLevel = price(lineY, lo, range); didInit = true }
+                }
+
+                Label("Drag the blue line onto the level, then Check",
+                      systemImage: "hand.draw.fill")
+                    .font(Theme.font(13, .bold))
+                    .foregroundColor(Theme.muted)
+                    .frame(maxWidth: .infinity, alignment: .center)
+            }
+        }
+        .frame(maxWidth: .infinity, alignment: .leading)
+    }
+
+    // Chart's exact price↔y mapping (candles only, matching CandlestickChart).
+    private func priceRange(_ candles: [Candle]) -> (lo: Double, range: Double) {
+        let values = candles.flatMap { [$0.high, $0.low] }
+        let maxV = values.max() ?? 1, minV = values.min() ?? 0
+        let pad = max(maxV - minV, 0.0001) * 0.1
+        let lo = minV - pad, hi = maxV + pad
+        return (lo, max(hi - lo, 0.0001))
+    }
+    private func price(_ y: CGFloat, _ lo: Double, _ range: Double) -> Double {
+        lo + (1 - Double(y / chartHeight)) * range
+    }
+    private func yFor(_ v: Double, _ lo: Double, _ range: Double) -> CGFloat {
+        chartHeight * CGFloat(1 - (v - lo) / range)
+    }
+
+    private func levelLine(y: CGFloat, color: Color, label: String, dashed: Bool = false) -> some View {
+        ZStack(alignment: .topTrailing) {
+            Path { p in p.move(to: CGPoint(x: 0, y: y)); p.addLine(to: CGPoint(x: 5000, y: y)) }
+                .stroke(color, style: StrokeStyle(lineWidth: 2.5, dash: dashed ? [5, 4] : []))
+            Text(label.uppercased())
+                .font(Theme.font(9, .black)).foregroundColor(.white)
+                .padding(.horizontal, 5).padding(.vertical, 2)
+                .background(Capsule().fill(color))
+                .offset(y: y - 18)
+        }
     }
 }
 
@@ -65,6 +312,12 @@ struct ChoiceView: View {
 
     var body: some View {
         VStack(alignment: .leading, spacing: 18) {
+            // A question can attach a chart (e.g. "what's the trend here?")
+            // regardless of its underlying type (MC / TF / etc).
+            if let key = s.chart, let scenario = ChartScenario(rawValue: key) {
+                ScenarioChartView(scenario: scenario, height: 130, seed: chartSeed(player.screen))
+            }
+
             if s.type == "spot_mistake", let scenario = s.scenario {
                 scenarioCard(scenario)
             }
@@ -187,6 +440,7 @@ struct MatchingView: View {
 
     var body: some View {
         VStack(alignment: .leading, spacing: 18) {
+            QuestionChart(key: player.screen.chart, height: 130, seed: chartSeed(player.screen))
             Text(RichText.attributed(question.isEmpty ? "Match the pairs:" : question,
                                      base: Theme.font(21, .heavy),
                                      bold: Theme.font(21, .black), color: ink))
@@ -283,6 +537,7 @@ struct FillBlankMultiView: View {
 
     var body: some View {
         VStack(alignment: .leading, spacing: 20) {
+            QuestionChart(key: player.screen.chart, height: 130, seed: chartSeed(player.screen))
             Text(RichText.attributed(filledTemplate(),
                                      base: Theme.font(20, .heavy),
                                      bold: Theme.font(20, .black), color: ink))
@@ -383,6 +638,7 @@ struct IngredientMatchView: View {
 
     var body: some View {
         VStack(alignment: .leading, spacing: 18) {
+            QuestionChart(key: s.chart, height: 130, seed: chartSeed(player.screen))
             if let concern = s.concern {
                 VStack(alignment: .leading, spacing: 6) {
                     Text("THE CONCERN")
@@ -485,6 +741,7 @@ struct OrderBuilderView: View {
 
     var body: some View {
         VStack(alignment: .leading, spacing: 18) {
+            QuestionChart(key: player.screen.chart, height: 130, seed: chartSeed(player.screen))
             Text(RichText.attributed(question,
                                      base: Theme.font(21, .heavy),
                                      bold: Theme.font(21, .black), color: ink))

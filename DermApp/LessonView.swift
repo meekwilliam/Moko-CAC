@@ -7,6 +7,7 @@ final class LessonPlayer: ObservableObject {
     let lesson: Lesson
     let unit: (main: Color, dark: Color)
     let isReplay: Bool                   // already completed → reward shows +25 XP
+    let unitBonusEligible: Bool          // completing this lesson finishes its whole unit
 
     /// Live queue of screens; a missed question is re-appended so you must get
     /// it right to finish (mirrors the web LessonEngine).
@@ -19,6 +20,10 @@ final class LessonPlayer: ObservableObject {
 
     // Single-choice selection (true_false / multiple_choice / fill_blank / spot_mistake / ingredient_match)
     @Published var selectedIndex: Int? = nil
+    @Published var selectedSet: Set<Int> = []          // tap_candles multi-select
+    @Published var markedLevel: Double? = nil          // mark_level: the price the user marked
+    var markTrueLevel: Double? = nil                   // the correct level (set by the view)
+    var markTolerance: Double = 0                      // acceptable distance for mark_level
     // fill_blank_multi
     @Published var multiSelections: [Int?] = []
     // sequence_builder / drag_order
@@ -29,11 +34,16 @@ final class LessonPlayer: ObservableObject {
     /// native lesson can persist mid-lesson progress (resume on reopen).
     var onAdvance: ((Int) -> Void)?
 
-    init(lesson: Lesson, startIndex: Int = 0, isReplay: Bool = false) {
+    init(lesson: Lesson, startIndex: Int = 0, isReplay: Bool = false,
+         unitColor: (main: Color, dark: Color)? = nil, unitBonusEligible: Bool = false) {
         self.lesson = lesson
         self.isReplay = isReplay
+        self.unitBonusEligible = unitBonusEligible
         self.screens = lesson.screens
-        self.unit = Theme.unitColor(lesson.node)
+        // Prefer the caller-supplied unit color (the lesson's real unit banner
+        // color, works for any unit size); fall back to the legacy node-range
+        // guess only if the caller doesn't have section data on hand.
+        self.unit = unitColor ?? Theme.unitColor(lesson.node)
         self.index = min(max(0, startIndex), max(0, lesson.screens.count - 1))
         if self.index > 0 { resetForScreen() }
     }
@@ -67,6 +77,10 @@ final class LessonPlayer: ObservableObject {
             return multiSelections.count == n && !multiSelections.contains(where: { $0 == nil })
         case "sequence_builder", "drag_order":
             return !builtOrder.isEmpty && builtOrder.count == (screen.items?.count ?? 0)
+        case "tap_candles":
+            return !selectedSet.isEmpty
+        case "mark_level":
+            return markedLevel != nil
         default:
             return selectedIndex != nil
         }
@@ -74,6 +88,9 @@ final class LessonPlayer: ObservableObject {
 
     func resetForScreen() {
         selectedIndex = nil
+        selectedSet = []
+        markedLevel = nil
+        markTrueLevel = nil
         revealed = false
         lastCorrect = false
         builtOrder = []
@@ -97,6 +114,14 @@ final class LessonPlayer: ObservableObject {
             }
         case "sequence_builder", "drag_order":
             correct = (builtOrder == (screen.correctOrder ?? []))
+        case "tap_candle":
+            correct = (selectedIndex == screen.target)
+        case "tap_candles":
+            correct = (selectedSet == Set(screen.targets ?? []))
+        case "mark_level":
+            if let marked = markedLevel, let truth = markTrueLevel {
+                correct = abs(marked - truth) <= markTolerance
+            } else { correct = false }
         default:
             correct = (selectedIndex == currentCorrectIndex)
         }
@@ -143,10 +168,13 @@ struct LessonView: View {
     var onComplete: (Int) -> Void   // node number
 
     init(lesson: Lesson, startIndex: Int = 0, isReplay: Bool = false,
+         unitColor: (main: Color, dark: Color)? = nil,
+         unitBonusEligible: Bool = false,
          onClose: @escaping () -> Void,
          onComplete: @escaping (Int) -> Void,
          onSaveProgress: @escaping (Int) -> Void = { _ in }) {
-        let p = LessonPlayer(lesson: lesson, startIndex: startIndex, isReplay: isReplay)
+        let p = LessonPlayer(lesson: lesson, startIndex: startIndex, isReplay: isReplay,
+                             unitColor: unitColor, unitBonusEligible: unitBonusEligible)
         p.onAdvance = onSaveProgress
         _player = StateObject(wrappedValue: p)
         self.onClose = onClose
@@ -245,9 +273,10 @@ struct LessonView: View {
 
     private var footer: some View {
         VStack(spacing: 0) {
-            if player.revealed && !player.isIntro && !player.isMatching {
+            if player.revealed && !player.isIntro {
                 // The feedback card carries its own WHY? / Got It / Continue
-                // buttons, so it replaces the primary button entirely.
+                // buttons, so it replaces the primary button entirely. Matching
+                // can't be gotten wrong, but still shows its WHY? explanation.
                 FeedbackBanner(player: player) { withAnimation { player.advance() } }
                     .transition(.move(edge: .bottom)
                         .combined(with: .opacity)
@@ -261,7 +290,7 @@ struct LessonView: View {
         }
         .background(
             theme.palette.base
-                .opacity(player.revealed && !player.isIntro && !player.isMatching ? 1 : 0)
+                .opacity(player.revealed && !player.isIntro ? 1 : 0)
                 .ignoresSafeArea(edges: .bottom)
         )
         // Bouncy overshoot pop, like the web's speechPop.
@@ -431,7 +460,7 @@ struct ExitDialog: View {
             VStack(spacing: 0) {
                 Image(systemName: "info.circle")
                     .font(.system(size: 38, weight: .regular))
-                    .foregroundColor(Color(hex: "#38bdf8"))
+                    .foregroundColor(Color(hex: "#2B70C9"))
                     .padding(.bottom, 12)
                 Text("Quit this lesson?")
                     .font(Theme.font(18, .black)).foregroundColor(.white)
@@ -443,7 +472,7 @@ struct ExitDialog: View {
                     .padding(.bottom, 22)
                 VStack(spacing: 10) {
                     Button("Keep Going") { onKeepGoing() }
-                        .buttonStyle(Chunky3DStyle(fill: Color(hex: "#38bdf8"), slab: Color(hex: "#0284c7"),
+                        .buttonStyle(Chunky3DStyle(fill: Color(hex: "#2B70C9"), slab: Color(hex: "#1C4A85"),
                                                    depth: 4, radius: 14, font: Theme.font(15, .black)))
                     Button("Exit") { onExit() }
                         .buttonStyle(Chunky3DStyle(fill: Color(hex: "#2A3648"), slab: Color(hex: "#1A2434"),
@@ -510,10 +539,10 @@ struct RewardView: View {
     }
 
     // Treats earned this completion: 1 per new lesson, +3 more when it finishes
-    // a unit (every 5th node); replays award none.
+    // the whole unit (any unit size); replays award none.
     private var treatsEarned: Int {
         guard !player.isReplay else { return 0 }
-        return 1 + (player.lesson.node % 5 == 0 ? 3 : 0)
+        return 1 + (player.unitBonusEligible ? 3 : 0)
     }
 
     private func xpPill(text: String) -> some View {

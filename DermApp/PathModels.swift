@@ -20,12 +20,14 @@ struct PathSectionData: Decodable {
     let title: String
     let bg: String      // hex
     let slab: String    // hex (darker slab / shadow)
+    let tier: String?   // "Beginner" / "Intermediate" / … (optional grouping)
 }
 
 struct PathNodeData: Decodable {
     let num: Int
     let svg: String
     let title: String?
+    let sectionIndex: Int   // which unit this node belongs to — units can be any size
 }
 
 struct PathPayload: Decodable {
@@ -52,12 +54,10 @@ struct PathNode: Identifiable {
     let num: Int
     let icon: SVGImage
     let title: String
+    /// 0-based unit this node belongs to — units can be any size, this comes
+    /// straight from the content data, not a fixed node-count assumption.
+    let sectionIndex: Int
     var id: Int { num }
-
-    /// 0-based section this node belongs to (5 nodes per section).
-    var sectionIndex: Int { (num - 1) / 5 }
-    /// Row position within its section, 0..4.
-    var rowInSection: Int { (num - 1) % 5 }
 
     /// Smooth continuous S-curve sway (Duolingo-style), out to the side and back
     /// over an 8-node period — each node at a distinct horizontal position.
@@ -75,6 +75,7 @@ final class PathStore: ObservableObject {
     @Published var treats: Int
     @Published var streak: Int
     @Published var hearts: Int
+    @Published var isUnlimitedHearts: Bool = false
     @Published var energy: Int
     @Published var inProgressNode: Int?
 
@@ -93,7 +94,8 @@ final class PathStore: ObservableObject {
         self.sections = payload.sections.sorted { $0.index < $1.index }
         self.nodes = payload.nodes
             .sorted { $0.num < $1.num }
-            .map { PathNode(num: $0.num, icon: SVGParser.parse($0.svg), title: $0.title ?? "Lesson \($0.num)") }
+            .map { PathNode(num: $0.num, icon: SVGParser.parse($0.svg),
+                            title: $0.title ?? "Lesson \($0.num)", sectionIndex: $0.sectionIndex) }
         self.totalNodes = self.nodes.count
     }
 
@@ -117,13 +119,18 @@ final class PathStore: ObservableObject {
         return .locked
     }
 
-    /// done/active nodes take the unit color; locked nodes are muted slate.
+    /// done/active nodes take their unit's own banner color (from the
+    /// section data — works for any unit size); locked nodes are muted slate.
     func colors(for num: Int, state: NodeState) -> (main: Color, dark: Color) {
         if state == .locked {
             return (Color(hex: "#3a6080"), Color(hex: "#1a3a50"))
         }
-        let c = Theme.unitColor(num)
-        return (c.main, c.dark)
+        guard let node = nodes.first(where: { $0.num == num }),
+              let sec = section(node.sectionIndex) else {
+            let c = Theme.unitColor(num)   // fallback for any missing section data
+            return (c.main, c.dark)
+        }
+        return (Color(hex: sec.bg), Color(hex: sec.slab))
     }
 
     func section(_ index: Int) -> PathSectionData? {
@@ -135,7 +142,7 @@ final class PathStore: ObservableObject {
     }
 
     var sectionCount: Int {
-        (totalNodes + 4) / 5
+        sections.count
     }
 
     func update(completed: [Int], xp: Int, treats: Int, streak: Int, inProgressNode: Int?) {
