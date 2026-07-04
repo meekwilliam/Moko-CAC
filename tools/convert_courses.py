@@ -84,6 +84,7 @@ ADVANCED_UNITS = [
     "Risk Management", "Strategy Types",
     "Position Sizing & R", "Expectancy & Edge", "Market Condition Classification",
     "Moving Averages", "Oscillators: RSI & MACD", "Trade Planning & Process",
+    "VWAP & Bollinger Bands", "Drawdowns & Losing Streaks", "Journaling & Review",
 ]
 EXPERT_UNITS = [
     "Trading Psychology", "Full Simulation Training",
