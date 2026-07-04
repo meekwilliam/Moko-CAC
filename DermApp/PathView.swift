@@ -12,6 +12,7 @@ struct PathView: View {
     var onSelectNode: (Int) -> Void
     var onHome: () -> Void
     var onOpenHearts: () -> Void = {}
+    var onOpenCourses: () -> Void = {}
 
     @State private var visibleSection = 0
     @State private var didInitialScroll = false
@@ -108,31 +109,38 @@ struct PathView: View {
             metric(system: "flame.fill", color: Color(hex: "#FF9500"), value: store.streak)
             Spacer()
             HStack(spacing: 6) {
-                TreatIcon(height: 15)
+                TreatIcon(height: 24)
                 Text("\(store.treats)").font(Theme.font(18, .heavy)).foregroundColor(theme.palette.ink)
             }
             Spacer()
             Button(action: { Haptics.selection(); onOpenHearts() }) {
                 HStack(spacing: 6) {
                     HeartBadge(filled: true, size: 22)
-                    Text("\(store.hearts)").font(Theme.font(18, .heavy)).foregroundColor(theme.palette.ink)
+                    if store.isUnlimitedHearts {
+                        Image(systemName: "infinity")
+                            .font(.system(size: 16, weight: .black))
+                            .foregroundColor(theme.palette.ink)
+                    } else {
+                        Text("\(store.hearts)").font(Theme.font(18, .heavy)).foregroundColor(theme.palette.ink)
+                    }
                 }
             }
             .buttonStyle(RowPressStyle())
         }
     }
 
-    // Top-left slot — reserved for a future feature.
+    // Top-left slot — opens the course switcher (like Duolingo's flag).
     private var placeholderButton: some View {
-        Button(action: { Haptics.selection() }) {
-            Image(systemName: "plus")
-                .font(.system(size: 15, weight: .black))
-                .foregroundColor(theme.palette.muted)
+        Button(action: { Haptics.selection(); onOpenCourses() }) {
+            Image(systemName: "square.grid.2x2.fill")
+                .font(.system(size: 16, weight: .black))
+                .foregroundColor(theme.palette.ink)
                 .frame(width: 38, height: 38)
                 .background(
                     RoundedRectangle(cornerRadius: 12, style: .continuous)
-                        .strokeBorder(theme.palette.muted.opacity(0.45),
-                                      style: StrokeStyle(lineWidth: 2, dash: [5, 4]))
+                        .fill(Color.white.opacity(0.06))
+                        .overlay(RoundedRectangle(cornerRadius: 12, style: .continuous)
+                            .strokeBorder(theme.palette.muted.opacity(0.35), lineWidth: 1.5))
                 )
         }
         .buttonStyle(RowPressStyle())
@@ -140,7 +148,14 @@ struct PathView: View {
 
     private func metric(system: String, color: Color, value: Int) -> some View {
         HStack(spacing: 6) {
-            Image(systemName: system).font(.system(size: 22)).foregroundColor(color)
+            if system == "flame.fill" {
+                // Custom-drawn flame instead of the SF Symbol — guarantees the
+                // inner layer renders as a lighter orange/yellow, rather than
+                // relying on SF Symbols' inconsistent multicolor fallback.
+                FlameIcon(outer: color, inner: Color(hex: "#FFD166"), size: 22)
+            } else {
+                Image(systemName: system).font(.system(size: 22)).foregroundColor(color)
+            }
             Text("\(value)").font(Theme.font(18, .heavy)).foregroundColor(theme.palette.ink)
         }
     }
@@ -169,18 +184,29 @@ struct PathView: View {
         let sec = store.section(visibleSection) ?? store.sections.first
         let bgc = Color(hex: sec?.bg ?? "#2B70C9")
         let slab = Color(hex: sec?.slab ?? "#0369a1")
-        return VStack(alignment: .leading, spacing: 2) {
-            Text(sec?.eyebrow ?? "UNIT 1")
-                .font(Theme.font(11, .heavy)).tracking(1.4)
-                .foregroundColor(Color.white.opacity(0.65))
-            Text(sec?.title ?? "")
-                .font(Theme.font(17, .black)).foregroundColor(.white)
-                .lineLimit(1).minimumScaleFactor(0.7)
+        // Tapping the banner opens the level picker (Beginner → Expert).
+        return Button(action: { Haptics.selection(); onOpenCourses() }) {
+            HStack(spacing: 12) {
+                VStack(alignment: .leading, spacing: 2) {
+                    Text(sec?.eyebrow ?? "UNIT 1")
+                        .font(Theme.font(11, .heavy)).tracking(1.4)
+                        .foregroundColor(Color.white.opacity(0.65))
+                    Text(sec?.title ?? "")
+                        .font(Theme.font(17, .black)).foregroundColor(.white)
+                        .lineLimit(1).minimumScaleFactor(0.7)
+                }
+                Spacer(minLength: 0)
+                Image(systemName: "square.stack.3d.up.fill")
+                    .font(.system(size: 17, weight: .bold))
+                    .foregroundColor(.white.opacity(0.85))
+            }
+            .frame(maxWidth: .infinity, alignment: .leading)
+            .padding(.vertical, 18).padding(.horizontal, 20)   // ~12% taller
+            .background(RoundedRectangle(cornerRadius: 18, style: .continuous).fill(bgc))
+            .background(RoundedRectangle(cornerRadius: 18, style: .continuous).fill(slab).offset(y: 5))
+            .contentShape(RoundedRectangle(cornerRadius: 18, style: .continuous))
         }
-        .frame(maxWidth: .infinity, alignment: .leading)
-        .padding(.vertical, 18).padding(.horizontal, 20)   // ~12% taller
-        .background(RoundedRectangle(cornerRadius: 18, style: .continuous).fill(bgc))
-        .background(RoundedRectangle(cornerRadius: 18, style: .continuous).fill(slab).offset(y: 5))
+        .buttonStyle(SinkButtonStyle(depth: 5))
     }
 
     // MARK: Section divider
@@ -239,9 +265,6 @@ struct PathView: View {
     private func nodeButton(_ node: PathNode) -> some View {
         let state = store.state(for: node.num)
         let c = store.colors(for: node.num, state: state)
-        // Active / completed nodes get a bright white icon; not-yet-reached
-        // (locked) nodes are greyed out.
-        let iconColor: Color = state == .locked ? Color.white.opacity(0.32) : .white
 
         return ZStack {
             // Animated halo around the lesson you're on. Offset down + tilted
@@ -262,13 +285,21 @@ struct PathView: View {
                 // button style so the face sinks onto it on press.
                 ZStack {
                     Circle().fill(c.main).frame(width: nodeSize, height: nodeSize)
+                        // Glossy shine highlight, like the heart / gem.
+                        .overlay(
+                            Ellipse()
+                                .fill(Color.white.opacity(state == .locked ? 0.16 : 0.42))
+                                .frame(width: nodeSize * 0.5, height: nodeSize * 0.26)
+                                .rotationEffect(.degrees(-28))
+                                .offset(x: -nodeSize * 0.14, y: -nodeSize * 0.18)
+                                .blur(radius: 2)
+                        )
                         .overlay(
                             Circle().stroke(Color.black.opacity(0.18), lineWidth: 3)
                                 .padding(1).mask(
                                     LinearGradient(colors: [.clear, .black], startPoint: .top, endPoint: .bottom))
                         )
-                    SVGIconView(svg: recolored(node.icon, to: iconColor))
-                        .frame(width: nodeSize * 0.46, height: nodeSize * 0.46)
+                        .clipShape(Circle())
                 }
                 .contentShape(Circle())
             }

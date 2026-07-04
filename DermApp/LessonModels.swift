@@ -48,6 +48,9 @@ struct LessonScreen: Decodable, Identifiable {
     // intro
     let screenTitle: String?
     let text: String?
+    // Optional named ChartScenario key (e.g. "doji", "uptrend") to illustrate
+    // an intro card with a small candlestick chart.
+    let chart: String?
 
     // shared question fields
     let question: String?
@@ -79,9 +82,18 @@ struct LessonScreen: Decodable, Identifiable {
     let items: [String]?
     let correctOrder: [String]?
 
+    // tap_candle → index of the candle the learner must tap on the attached chart
+    let target: Int?
+    // tap_candles → set of candle indices the learner must select (multi-tap)
+    let targets: [Int]?
+    // mark_level → the price level to mark, and whether it's support/resistance
+    let level: Double?
+    let levelKind: String?
+
     enum CodingKeys: String, CodingKey {
         case type, text, question, explanation, options, pairs, scenario, template, blanks
-        case concern, items
+        case concern, items, chart, target, targets, level
+        case levelKind = "level_kind"
         case screenTitle = "title"
         case correct
         case wrongExplanations = "wrong_explanations"
@@ -93,6 +105,7 @@ struct LessonScreen: Decodable, Identifiable {
         type = try c.decode(String.self, forKey: .type)
         screenTitle = try c.decodeIfPresent(String.self, forKey: .screenTitle)
         text = try c.decodeIfPresent(String.self, forKey: .text)
+        chart = try c.decodeIfPresent(String.self, forKey: .chart)
         question = try c.decodeIfPresent(String.self, forKey: .question)
         explanation = try c.decodeIfPresent(String.self, forKey: .explanation)
         // `options` is [String] for most types, but [IngredientOption] for
@@ -106,6 +119,10 @@ struct LessonScreen: Decodable, Identifiable {
         blanks = try c.decodeIfPresent([Blank].self, forKey: .blanks)
         items = try c.decodeIfPresent([String].self, forKey: .items)
         correctOrder = try c.decodeIfPresent([String].self, forKey: .correctOrder)
+        target = try c.decodeIfPresent(Int.self, forKey: .target)
+        targets = try c.decodeIfPresent([Int].self, forKey: .targets)
+        level = try c.decodeIfPresent(Double.self, forKey: .level)
+        levelKind = try c.decodeIfPresent(String.self, forKey: .levelKind)
 
         // wrong_explanations may contain nulls
         wrongExplanations = (try? c.decodeIfPresent([String?].self, forKey: .wrongExplanations)) ?? nil

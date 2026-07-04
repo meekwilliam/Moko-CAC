@@ -7,10 +7,11 @@ enum AppScreen {
     case lesson
     case legal(LegalDoc)
     case hearts        // hearts / regeneration screen
+    case courses       // course picker (like Duolingo's language switcher)
 }
 
 enum MainTab: Hashable {
-    case home, quest, leaderboard, profile
+    case home, quest, simulation, leaderboard, premium, profile
 }
 
 final class AppRouter: ObservableObject {
@@ -22,6 +23,11 @@ final class AppRouter: ObservableObject {
     @Published var currentLesson: Lesson?
     @Published var currentLessonStartIndex: Int = 0
     @Published var currentLessonIsReplay: Bool = false
+    // The lesson's own unit banner color (from section data) — works for any
+    // unit size, rather than guessing from the node number.
+    @Published var currentLessonUnitColor: (main: Color, dark: Color)? = nil
+    // Whether completing the current lesson finishes its whole unit (any size).
+    @Published var currentLessonBonusEligible: Bool = false
 
     // Callbacks to JS bridge
     var onToggleReminders: ((Bool) -> Void)?
@@ -34,11 +40,25 @@ final class AppRouter: ObservableObject {
     var onRequestProfile: (() -> Void)?
     var onOpenHearts: (() -> Void)?
     var onUnlockAll: (() -> Void)?
+    var onGrantTestTreats: (() -> Void)?
+    var onOpenCourses: (() -> Void)?
+    var onSelectCourse: ((String) -> Void)?
+    var onRefillHearts: (() -> Void)?
+    var onInviteFriend: (() -> Void)?
+    var onStartUnlimitedTrial: (() -> Void)?
+    var onRestorePurchases: (() -> Void)?
+    var onPurchaseSubscription: ((String) -> Void)?
     var requestLegalDoc: ((String) -> Void)?
 
     // Live heart state for the UI (mirrors ProgressStore).
     @Published var hearts: Int = ProgressStore.maxHearts
     @Published var secondsUntilNextHeart: Int? = nil
+    @Published var isUnlimitedHearts: Bool = false
+    @Published var treats: Int = 0
+    // Which course is active (mirrors ProgressStore.currentCourse).
+    @Published var currentCourseId: String = Game.defaultCourseId
+    // Completed-lesson count per course id (for the switcher).
+    @Published var courseLessonsDone: [String: Int] = [:]
 }
 
 struct AppRouterView: View {
@@ -72,6 +92,8 @@ struct AppRouterView: View {
                         lesson: lesson,
                         startIndex: router.currentLessonStartIndex,
                         isReplay: router.currentLessonIsReplay,
+                        unitColor: router.currentLessonUnitColor,
+                        unitBonusEligible: router.currentLessonBonusEligible,
                         onClose: {
                             if let exit = router.onExitLesson {
                                 exit()
@@ -105,6 +127,14 @@ struct AppRouterView: View {
             case .hearts:
                 HeartsView(router: router,
                            onClose: { withAnimation(.easeInOut(duration: 0.28)) { router.currentScreen = .main } })
+                    .transition(.move(edge: .bottom))
+                    .zIndex(20)
+
+            case .courses:
+                CourseSwitcherView(
+                    router: router,
+                    onPick: { id in router.onSelectCourse?(id) },
+                    onClose: { withAnimation(.easeInOut(duration: 0.28)) { router.currentScreen = .main } })
                     .transition(.move(edge: .bottom))
                     .zIndex(20)
             }

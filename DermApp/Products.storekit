@@ -1,56 +1,45 @@
 {
+  "appPolicies" : {
+    "eula" : "",
+    "policies" : [
+      {
+        "locale" : "en_US",
+        "policyText" : "",
+        "policyURL" : ""
+      }
+    ]
+  },
   "identifier" : "DermAppStoreKit",
   "nonConsumables" : [
 
   ],
+  "nonRenewingSubscriptions" : [
+
+  ],
   "products" : [
-    {
-      "displayPrice" : "0.99",
-      "familyShareable" : false,
-      "internalID" : "10ScansPackID",
-      "localizations" : [
-        {
-          "description" : "Pack of 10 skin scans",
-          "displayName" : "10 Scans Pack",
-          "locale" : "en_US"
-        }
-      ],
-      "productID" : "meeko.DermApp.scans_10",
-      "referenceName" : "10 Scans Pack",
-      "type" : "Consumable"
-    },
-    {
-      "displayPrice" : "2.99",
-      "familyShareable" : false,
-      "internalID" : "50ScansPackID",
-      "localizations" : [
-        {
-          "description" : "Pack of 50 skin scans",
-          "displayName" : "50 Scans Pack",
-          "locale" : "en_US"
-        }
-      ],
-      "productID" : "meeko.DermApp.scans_50",
-      "referenceName" : "50 Scans Pack",
-      "type" : "Consumable"
-    }
+
   ],
   "settings" : {
     "_askToBuyEnabled" : false,
     "_billingGracePeriodEnabled" : false,
+    "_billingIssuesEnabled" : false,
+    "_disableDialogs" : false,
+    "_failTransactionsEnabled" : false,
+    "_locale" : "en_US",
+    "_renewalBillingIssuesEnabled" : false,
+    "_storefront" : "USA",
+    "_storeKitErrors" : [
+
+    ],
     "_timeRate" : 0
   },
   "subscriptionGroups" : [
     {
-      "id" : "PremiumGroupSubscriptionID",
+      "id" : "21700000000001",
       "localizations" : [
-        {
-          "description" : "Access to premium features.",
-          "displayName" : "Premium Subscription",
-          "locale" : "en_US"
-        }
+
       ],
-      "name" : "Premium Group",
+      "name" : "Moko Plus",
       "subscriptions" : [
         {
           "adHocOffers" : [
@@ -62,26 +51,57 @@
           "displayPrice" : "9.99",
           "familyShareable" : false,
           "groupNumber" : 1,
-          "internalID" : "PremiumSubID",
+          "internalID" : "21700000000002",
           "introductoryOffer" : null,
           "localizations" : [
             {
-              "description" : "Monthly access to Glowo Premium",
-              "displayName" : "Monthly Premium",
+              "description" : "Unlimited hearts — never wait to keep learning.",
+              "displayName" : "Super (Monthly)",
               "locale" : "en_US"
             }
           ],
-          "productID" : "meeko.DermApp.premium_sub",
+          "productID" : "com.meeko.moko.unlimitedhearts.monthly",
           "recurringSubscriptionPeriod" : "P1M",
-          "referenceName" : "Monthly Premium",
-          "subscriptionGroupID" : "PremiumGroupSubscriptionID",
-          "type" : "RecurringSubscription"
+          "referenceName" : "Super Monthly",
+          "subscriptionGroupID" : "21700000000001",
+          "type" : "RecurringSubscription",
+          "winbackOffers" : [
+
+          ]
+        },
+        {
+          "adHocOffers" : [
+
+          ],
+          "codeOffers" : [
+
+          ],
+          "displayPrice" : "59.99",
+          "familyShareable" : false,
+          "groupNumber" : 1,
+          "internalID" : "21700000000003",
+          "introductoryOffer" : null,
+          "localizations" : [
+            {
+              "description" : "Unlimited hearts for a full year — best value.",
+              "displayName" : "Super (Yearly)",
+              "locale" : "en_US"
+            }
+          ],
+          "productID" : "com.meeko.moko.unlimitedhearts.yearly",
+          "recurringSubscriptionPeriod" : "P1Y",
+          "referenceName" : "Super Yearly",
+          "subscriptionGroupID" : "21700000000001",
+          "type" : "RecurringSubscription",
+          "winbackOffers" : [
+
+          ]
         }
       ]
     }
   ],
   "version" : {
-    "major" : 3,
+    "major" : 5,
     "minor" : 0
   }
 }

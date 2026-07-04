@@ -4,23 +4,44 @@ import Combine
 // MARK: - Native progress engine (replaces the web LessonEngine + localStorage)
 // Single source of truth for completion / XP / streak / mid-lesson resume,
 // persisted in UserDefaults. Mirrors LessonEngine.recordCompletion exactly.
+//
+// XP, treats, streak, and hearts are GLOBAL — they carry across every course,
+// like a single Duolingo profile. Only which lessons are completed (and any
+// in-progress lesson) is tracked per course, since node numbers overlap
+// between courses (node 1 in Skincare and node 1 in Finance are different
+// lessons and must unlock independently).
 
 final class ProgressStore: ObservableObject {
     static let shared = ProgressStore()
 
-    private struct Snapshot: Codable {
+    // Per-course unlock/resume state only.
+    struct CourseProgress: Codable {
         var completed: [Int] = []
+        var inProgressNode: Int? = nil
+        var inProgressScreen: Int = 0
+    }
+
+    private struct Snapshot: Codable {
+        var courses: [String: CourseProgress] = [:]
+        var currentCourse: String = "skincare"
+        var userName: String = "Guest"
+        var reminderOn: Bool = true
+
+        // Global stats — shared across every course.
         var xp: Int = 0
         var treats: Int = 0
         var streak: Int = 0
         var lastLessonDate: String? = nil
-        var inProgressNode: Int? = nil
-        var inProgressScreen: Int = 0
-        var userName: String = "Guest"
-        var reminderOn: Bool = true
-        // Hearts: a lesson costs 1; regenerate 1/hour up to `maxHearts`.
+        // Hearts are global too: a lesson costs 1; regen 1/hour.
         var hearts: Int = 5
-        var heartAnchor: Date? = nil   // when the current regen hour started
+        var heartAnchor: Date? = nil
+        // Prototype monetization: mock "unlimited hearts" subscription state.
+        var unlimitedHearts: Bool = false
+
+        // Legacy flat fields (pre-multi-course) — used once to migrate.
+        var completed: [Int]? = nil
+        var inProgressNode: Int? = nil
+        var inProgressScreen: Int? = nil
     }
 
     static let maxHearts = 5
@@ -36,7 +57,32 @@ final class ProgressStore: ObservableObject {
         } else {
             s = Snapshot()
         }
+        // One-time migration: fold any legacy flat progress into the skincare course.
+        if s.courses.isEmpty, let done = s.completed {
+            s.courses["skincare"] = CourseProgress(
+                completed: done, inProgressNode: s.inProgressNode,
+                inProgressScreen: s.inProgressScreen ?? 0)
+        }
+        s.completed = nil; s.inProgressNode = nil; s.inProgressScreen = nil
     }
+
+    // MARK: Course selection
+
+    var currentCourse: String { s.currentCourse }
+
+    func switchCourse(_ id: String) { s.currentCourse = id }
+
+    /// The current course's unlock/resume bucket (created on first access).
+    private var cur: CourseProgress {
+        get { s.courses[s.currentCourse] ?? CourseProgress() }
+        set { s.courses[s.currentCourse] = newValue }
+    }
+
+    /// Completed-lesson count for any single course (drives the switcher's progress text).
+    func lessonsDone(course: String) -> Int { s.courses[course]?.completed.count ?? 0 }
+
+    /// Total completed lessons across every course.
+    var totalLessonsDone: Int { s.courses.values.reduce(0) { $0 + $1.completed.count } }
 
     private func persist() {
         if let data = try? JSONEncoder().encode(s) {
@@ -46,13 +92,13 @@ final class ProgressStore: ObservableObject {
 
     // MARK: Reads
 
-    var completed: [Int] { s.completed }
+    var completed: [Int] { cur.completed }
     var xp: Int { s.xp }
     var treats: Int { s.treats }
     var streak: Int { s.streak }
     var userName: String { s.userName }
     var reminderOn: Bool { s.reminderOn }
-    var lessonsDone: Int { s.completed.count }
+    var lessonsDone: Int { totalLessonsDone }
     let energy: Int = 25
 
     // MARK: Hearts
@@ -60,8 +106,11 @@ final class ProgressStore: ObservableObject {
     /// Current hearts, after applying any regeneration that has accrued.
     var hearts: Int { reconcileHearts(); return s.hearts }
 
+    /// Prototype "Super" subscription: unlimited hearts, no gating or regen countdown.
+    var isUnlimitedHearts: Bool { s.unlimitedHearts }
+
     /// Whether the user has a heart to spend on a lesson.
-    var canStartLesson: Bool { hearts > 0 }
+    var canStartLesson: Bool { isUnlimitedHearts || hearts > 0 }
 
     /// Seconds until the next heart regenerates, or nil when already full.
     var secondsUntilNextHeart: Int? {
@@ -94,6 +143,7 @@ final class ProgressStore: ObservableObject {
     /// at full. Returns false if there were none to spend.
     @discardableResult
     func useHeart() -> Bool {
+        guard !isUnlimitedHearts else { return true }   // Super: never spend hearts
         reconcileHearts()
         guard s.hearts > 0 else { return false }
         let wasFull = s.hearts == Self.maxHearts
@@ -102,31 +152,71 @@ final class ProgressStore: ObservableObject {
         return true
     }
 
+    // MARK: Monetization (prototype — no real payments; local mock state only)
+
+    /// Spend treats. Returns false (no-op) if the balance is insufficient.
+    @discardableResult
+    func spendTreats(_ amount: Int) -> Bool {
+        guard s.treats >= amount else { return false }
+        s.treats -= amount
+        return true
+    }
+
+    /// Refill to full hearts for a treat cost. Returns false if treats were insufficient.
+    @discardableResult
+    func refillHearts(cost: Int) -> Bool {
+        guard s.hearts < Self.maxHearts else { return false }   // nothing to refill
+        guard spendTreats(cost) else { return false }
+        s.hearts = Self.maxHearts
+        s.heartAnchor = nil
+        return true
+    }
+
+    /// Grant bonus hearts (e.g. inviting a friend), capped at the max.
+    func grantBonusHearts(_ n: Int) {
+        reconcileHearts()
+        s.hearts = min(Self.maxHearts, s.hearts + n)
+        if s.hearts >= Self.maxHearts { s.heartAnchor = nil }
+    }
+
+    /// Toggle the mock "Super" unlimited-hearts subscription.
+    func setUnlimitedHearts(_ on: Bool) { s.unlimitedHearts = on }
+
     /// The node with saved mid-lesson progress (drives the "CONTINUE" tooltip).
-    var inProgressNode: Int? { (s.inProgressScreen > 0) ? s.inProgressNode : nil }
+    /// Note: screen 0 still counts as "in progress" — a heart was already spent
+    /// the moment the lesson opened, even if the learner quit on the intro card.
+    var inProgressNode: Int? { cur.inProgressNode }
 
     func resumeScreen(node: Int) -> Int {
-        (s.inProgressNode == node && s.inProgressScreen > 0) ? s.inProgressScreen : 0
+        cur.inProgressNode == node ? cur.inProgressScreen : 0
     }
+
+    /// Whether this lesson already has a saved attempt (a heart was already
+    /// spent on it) — used to avoid charging a second heart on re-open.
+    func hasInProgress(node: Int) -> Bool { cur.inProgressNode == node }
 
     // MARK: Writes
 
     /// Mirrors LessonEngine.recordCompletion: +100 for a new node (with streak
-    /// bookkeeping), +25 for a replay.
-    func recordCompletion(node: Int) {
-        let isNew = !s.completed.contains(node)
+    /// bookkeeping), +25 for a replay. Completion state is per-course; XP,
+    /// treats, and streak are global.
+    /// `unitNodes` — every node number sharing this node's unit (any size),
+    /// supplied by the caller since ProgressStore has no knowledge of course
+    /// content structure. Defaults to just the node itself if not given.
+    func recordCompletion(node: Int, unitNodes: [Int] = []) {
+        var c = cur
+        let isNew = !c.completed.contains(node)
         let today = Self.dateString(Date())
         if !isNew {
             s.xp += 25
         } else {
-            s.completed.append(node)
+            c.completed.append(node)
             s.xp += 100
-            // Treats: 1 per new lesson, plus 3 more when this finishes a unit
-            // (all 5 nodes of the section now complete).
+            // Treats: 1 per new lesson, plus 3 more when this finishes the
+            // whole unit (every node in that unit is now complete).
             s.treats += 1
-            let unitStart = ((node - 1) / 5) * 5 + 1
-            let unitNodes = Array(unitStart...(unitStart + 4))
-            if unitNodes.allSatisfy({ s.completed.contains($0) }) {
+            let group = unitNodes.isEmpty ? [node] : unitNodes
+            if group.allSatisfy({ c.completed.contains($0) }) {
                 s.treats += 3
             }
             let yesterday = Self.dateString(Calendar.current.date(byAdding: .day, value: -1, to: Date()) ?? Date())
@@ -139,16 +229,15 @@ final class ProgressStore: ObservableObject {
             }
             s.lastLessonDate = today
         }
+        cur = c
     }
 
     func saveInProgress(node: Int, screen: Int) {
-        s.inProgressNode = node
-        s.inProgressScreen = screen
+        var c = cur; c.inProgressNode = node; c.inProgressScreen = screen; cur = c
     }
 
     func clearInProgress() {
-        s.inProgressNode = nil
-        s.inProgressScreen = 0
+        var c = cur; c.inProgressNode = nil; c.inProgressScreen = 0; cur = c
     }
 
     func setReminder(_ on: Bool) { s.reminderOn = on }
@@ -160,7 +249,12 @@ final class ProgressStore: ObservableObject {
 
     /// Testing helper: mark every node complete so all lessons are unlocked.
     func unlockAll(totalNodes: Int) {
-        s.completed = Array(1...max(1, totalNodes))
+        var c = cur; c.completed = Array(1...max(1, totalNodes)); cur = c
+    }
+
+    /// Testing helper: top up treats so you can freely test refills/shop flows.
+    func grantTestTreats(_ amount: Int = 9999) {
+        s.treats += amount
     }
 
     private static func dateString(_ date: Date) -> String {

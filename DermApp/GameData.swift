@@ -1,13 +1,22 @@
 import Foundation
 
-// MARK: - Bundled game content (replaces the web ALL_LESSONS_DATA / DOM data)
-// Exported once from index.html into GameData.json, decoded natively so the app
-// no longer needs the WKWebView as a data source.
+// MARK: - Bundled game content (multi-course)
+// GameData.json holds several courses (Skincare, Personal Finance, …), each with
+// its own units / nodes / lessons — like Duolingo's language courses. Legal docs
+// are shared across courses.
 
-struct GameData: Decodable {
-    let lessons: [Lesson]
+struct Course: Decodable, Identifiable {
+    let id: String
+    let name: String
+    let color: String            // accent hex for the course
+    let level: Int?              // difficulty level (1=Beginner … 4=Expert), if tiered
     let sections: [PathSectionData]
     let nodes: [PathNodeData]
+    let lessons: [Lesson]
+}
+
+struct GameData: Decodable {
+    let courses: [Course]
     let legal: [String: LegalDoc]
 }
 
@@ -21,11 +30,18 @@ enum Game {
         return decoded
     }()
 
-    static func lesson(node: Int) -> Lesson? {
-        data.lessons.first { $0.node == node }
+    static var courses: [Course] { data.courses }
+    static var defaultCourseId: String { data.courses.first?.id ?? "skincare" }
+
+    static func course(_ id: String) -> Course {
+        data.courses.first { $0.id == id } ?? data.courses[0]
     }
 
-    static var totalNodes: Int { data.nodes.count }
+    static func lesson(course: String, node: Int) -> Lesson? {
+        Self.course(course).lessons.first { $0.node == node }
+    }
+
+    static func totalNodes(course: String) -> Int { Self.course(course).nodes.count }
 
     static func legalDoc(_ kind: String) -> LegalDoc? { data.legal[kind] }
 }

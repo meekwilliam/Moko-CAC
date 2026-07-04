@@ -13,6 +13,7 @@ struct ProfileView: View {
     var onOpenLegal: (String) -> Void
     var onClearData: () -> Void
     var onUnlockAll: () -> Void = {}
+    var onGrantTestTreats: () -> Void = {}
 
     @EnvironmentObject var theme: ThemeManager
 
@@ -131,6 +132,10 @@ struct ProfileView: View {
                 prefButton(iconSystem: "lock.open.fill", iconColor: Color(hex: "#34C759"),
                            iconBg: Color(hex: "#34C759").opacity(0.12), label: "Unlock All Lessons (Test)") {
                     onUnlockAll()
+                }
+                prefButton(iconSystem: "bone.fill", iconColor: Color(hex: "#F59E0B"),
+                           iconBg: Color(hex: "#F59E0B").opacity(0.12), label: "Give Unlimited Bones (Test)") {
+                    onGrantTestTreats()
                 }
                 prefButton(iconSystem: "trash.fill", iconColor: Color(hex: "#D6536D"),
                            iconBg: Color(hex: "#D6536D").opacity(0.12), label: "Clear Application Data",
