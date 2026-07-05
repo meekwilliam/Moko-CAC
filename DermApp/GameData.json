@@ -24205,6 +24205,13 @@
      "title": "Relative Volume (RVOL)",
      "bg": "#8B5CF6",
      "slab": "#6D28D9"
+    },
+    {
+     "index": 13,
+     "eyebrow": "SECTION 3 · UNIT 14",
+     "title": "Opening Range",
+     "bg": "#8B5CF6",
+     "slab": "#6D28D9"
     }
    ],
    "nodes": [
@@ -24705,6 +24712,36 @@
      "svg": "<svg width=\"34\" height=\"34\" viewBox=\"0 0 32 32\" fill=\"rgba(255,255,255,0.65)\">\n              <circle cx=\"7\" cy=\"16\" r=\"4.5\" fill=\"none\" stroke=\"rgba(255,255,255,0.65)\" stroke-width=\"2.5\"/>\n              <circle cx=\"7\" cy=\"16\" r=\"2\"/>\n              <circle cx=\"16\" cy=\"16\" r=\"4.5\" fill=\"none\" stroke=\"rgba(255,255,255,0.65)\" stroke-width=\"2.5\"/>\n              <circle cx=\"16\" cy=\"16\" r=\"2\"/>\n              <circle cx=\"25\" cy=\"16\" r=\"4.5\" fill=\"none\" stroke=\"rgba(255,255,255,0.65)\" stroke-width=\"2.5\"/>\n              <circle cx=\"25\" cy=\"16\" r=\"2\"/>\n            </svg>",
      "title": "RVOL Review",
      "sectionIndex": 12
+    },
+    {
+     "num": 84,
+     "svg": "<svg width=\"34\" height=\"34\" viewBox=\"0 0 32 32\" fill=\"rgba(255,255,255,0.65)\">\n              <circle cx=\"16\" cy=\"16\" r=\"5.5\"/>\n              <rect x=\"14.5\" y=\"1\" width=\"3\" height=\"6\" rx=\"1.5\"/>\n              <rect x=\"14.5\" y=\"1\" width=\"3\" height=\"6\" rx=\"1.5\" transform=\"rotate(45 16 16)\"/>\n              <rect x=\"14.5\" y=\"1\" width=\"3\" height=\"6\" rx=\"1.5\" transform=\"rotate(90 16 16)\"/>\n              <rect x=\"14.5\" y=\"1\" width=\"3\" height=\"6\" rx=\"1.5\" transform=\"rotate(135 16 16)\"/>\n              <rect x=\"14.5\" y=\"1\" width=\"3\" height=\"6\" rx=\"1.5\" transform=\"rotate(180 16 16)\"/>\n              <rect x=\"14.5\" y=\"1\" width=\"3\" height=\"6\" rx=\"1.5\" transform=\"rotate(225 16 16)\"/>\n              <rect x=\"14.5\" y=\"1\" width=\"3\" height=\"6\" rx=\"1.5\" transform=\"rotate(270 16 16)\"/>\n              <rect x=\"14.5\" y=\"1\" width=\"3\" height=\"6\" rx=\"1.5\" transform=\"rotate(315 16 16)\"/>\n            </svg>",
+     "title": "What Is the Opening Range?",
+     "sectionIndex": 13
+    },
+    {
+     "num": 85,
+     "svg": "<svg width=\"34\" height=\"34\" viewBox=\"0 0 32 32\" fill=\"rgba(255,255,255,0.65)\">\n              <path d=\"M10 3 C14 7 18 7 22 3\" fill=\"none\" stroke=\"rgba(255,255,255,0.65)\" stroke-width=\"2.5\" stroke-linecap=\"round\"/>\n              <path d=\"M10 10 C14 14 18 14 22 10\" fill=\"none\" stroke=\"rgba(255,255,255,0.65)\" stroke-width=\"2.5\" stroke-linecap=\"round\"/>\n              <path d=\"M10 17 C14 21 18 21 22 17\" fill=\"none\" stroke=\"rgba(255,255,255,0.65)\" stroke-width=\"2.5\" stroke-linecap=\"round\"/>\n              <path d=\"M10 24 C14 28 18 28 22 24\" fill=\"none\" stroke=\"rgba(255,255,255,0.65)\" stroke-width=\"2.5\" stroke-linecap=\"round\"/>\n              <line x1=\"10\" y1=\"3\" x2=\"10\" y2=\"29\" stroke=\"rgba(255,255,255,0.65)\" stroke-width=\"2.5\" stroke-linecap=\"round\"/>\n              <line x1=\"22\" y1=\"3\" x2=\"22\" y2=\"29\" stroke=\"rgba(255,255,255,0.65)\" stroke-width=\"2.5\" stroke-linecap=\"round\"/>\n            </svg>",
+     "title": "Opening Range Breaks",
+     "sectionIndex": 13
+    },
+    {
+     "num": 86,
+     "svg": "<svg width=\"34\" height=\"34\" viewBox=\"0 0 32 32\" fill=\"rgba(255,255,255,0.65)\">\n              <path d=\"M19 3 L10 17 L16 17 L13 29 L22 15 L16 15 Z\"/>\n            </svg>",
+     "title": "Opening Range and False Breaks",
+     "sectionIndex": 13
+    },
+    {
+     "num": 87,
+     "svg": "<svg width=\"34\" height=\"34\" viewBox=\"0 0 32 32\" fill=\"rgba(255,255,255,0.65)\">\n              <path d=\"M16 27 C16 27 3 19 3 10 A6 6 0 0 1 16 8 A6 6 0 0 1 29 10 C29 19 16 27 16 27Z\"/>\n            </svg>",
+     "title": "Opening Range and Volatility",
+     "sectionIndex": 13
+    },
+    {
+     "num": 88,
+     "svg": "<svg width=\"34\" height=\"34\" viewBox=\"0 0 32 32\" fill=\"rgba(255,255,255,0.65)\">\n              <circle cx=\"16\" cy=\"16\" r=\"12\" fill=\"none\" stroke=\"rgba(255,255,255,0.65)\" stroke-width=\"2.5\"/>\n              <rect x=\"14.8\" y=\"7\" width=\"2.4\" height=\"9\" rx=\"1.2\"/>\n              <rect x=\"14.8\" y=\"14.5\" width=\"6.5\" height=\"2.4\" rx=\"1.2\"/>\n            </svg>",
+     "title": "Opening Range Review",
+     "sectionIndex": 13
     }
    ],
    "lessons": [
@@ -32842,6 +32879,500 @@
        "explanation": "Like every indicator in this course, RVOL is descriptive context, never a trade signal."
       }
      ]
+    },
+    {
+     "node": 84,
+     "title": "What Is the Opening Range?",
+     "celebration": "You understand what the opening range is!",
+     "screens": [
+      {
+       "type": "intro",
+       "title": "The First Few Minutes",
+       "text": "The opening range refers to the high and low price established during a defined early window after the market opens, commonly the first five, fifteen, or thirty minutes.",
+       "chart": "volatile"
+      },
+      {
+       "type": "multiple_choice",
+       "question": "The opening range is defined by...",
+       "options": [
+        "The high and low price during a set early window after the open.",
+        "The average price over the entire prior week.",
+        "The closing price from the prior day."
+       ],
+       "correct": 0,
+       "explanation": "The opening range is specifically about the high/low formed in an early defined window, not prior-day or weekly data."
+      },
+      {
+       "type": "true_false",
+       "question": "The opening range window is commonly the first five, fifteen, or thirty minutes of the session.",
+       "correct": true,
+       "explanation": "Different traders use different defined windows, but these are common choices."
+      },
+      {
+       "type": "fill_blank",
+       "question": "The opening range is the high and low formed during a [___] early window.",
+       "options": [
+        "random",
+        "defined",
+        "year-long"
+       ],
+       "correct": 1,
+       "explanation": "The window is a specific, defined stretch of time, not an arbitrary or extended one."
+      },
+      {
+       "type": "matching",
+       "question": "Match the term to its focus.",
+       "pairs": [
+        [
+         "Opening range",
+         "High/low during an early defined window"
+        ],
+        [
+         "Opening range high",
+         "The top of that early window's range"
+        ],
+        [
+         "Opening range low",
+         "The bottom of that early window's range"
+        ]
+       ],
+       "explanation": "The opening range establishes a reference high and low from the earliest minutes of trading."
+      },
+      {
+       "type": "ingredient_match",
+       "question": "Why might traders pay attention to the opening range?",
+       "options": [
+        {
+         "label": "It guarantees the day's exact high and low",
+         "correct": false,
+         "detail": "Overstates certainty",
+         "wrong_explanation": "The opening range is an early reference, not a guarantee of the day's extremes."
+        },
+        {
+         "label": "It's an early reference level formed from the session's first activity",
+         "correct": true,
+         "detail": "An early reference point"
+        },
+        {
+         "label": "It only matters for the last hour of trading",
+         "correct": false,
+         "detail": "Incorrect",
+         "wrong_explanation": "The opening range is defined by early, not late, price action."
+        }
+       ],
+       "concern": "Understanding the tool",
+       "explanation": "The opening range gives an early reference level built from the session's first few minutes.",
+       "chart": "volatile"
+      },
+      {
+       "type": "spot_mistake",
+       "scenario": "Someone assumes the opening range guarantees the day's final high and low.",
+       "question": "What is the mistake?",
+       "options": [
+        "The opening range has no relationship to the rest of the day.",
+        "The opening range always matches the day's final high and low exactly.",
+        "The opening range is an early reference level, not a guarantee of the full day's eventual high or low."
+       ],
+       "correct": 2,
+       "explanation": "Price can move well beyond the opening range as the day continues.",
+       "chart": "volatile"
+      }
+     ]
+    },
+    {
+     "node": 85,
+     "title": "Opening Range Breaks",
+     "celebration": "You can describe an opening range break!",
+     "screens": [
+      {
+       "type": "intro",
+       "title": "Trading Above or Below the Range",
+       "text": "When price moves above the opening range high or below the opening range low, that's commonly described as breaking out of the opening range.",
+       "chart": "breakout"
+      },
+      {
+       "type": "multiple_choice",
+       "question": "Price closing above the opening range high is commonly described as...",
+       "options": [
+        "Breaking out of the opening range to the upside.",
+        "Staying inside the opening range.",
+        "Breaking down through support from last week."
+       ],
+       "correct": 0,
+       "explanation": "Moving beyond the opening range high is the defining description of an upside break of that range."
+      },
+      {
+       "type": "true_false",
+       "question": "Price can also break below the opening range low, described as breaking down out of the range.",
+       "correct": true,
+       "explanation": "Breaks can occur in either direction relative to the established range."
+      },
+      {
+       "type": "fill_blank",
+       "question": "Moving beyond the opening range boundary is commonly called [___] the range.",
+       "options": [
+        "inventing",
+        "breaking",
+        "erasing"
+       ],
+       "correct": 1,
+       "explanation": "This is simply the descriptive term for price moving past the established opening range boundary."
+      },
+      {
+       "type": "matching",
+       "question": "Match the scenario to its description.",
+       "pairs": [
+        [
+         "Price above range high",
+         "Breaking out to the upside"
+        ],
+        [
+         "Price below range low",
+         "Breaking down"
+        ],
+        [
+         "Price between the two",
+         "Still inside the opening range"
+        ]
+       ],
+       "explanation": "These are the three basic descriptive states relative to the opening range."
+      },
+      {
+       "type": "ingredient_match",
+       "question": "What does an opening range break describe, on its own?",
+       "options": [
+        {
+         "label": "That price has moved beyond an early reference level, nothing more by itself",
+         "correct": true,
+         "detail": "A descriptive observation"
+        },
+        {
+         "label": "A guaranteed continuation for the rest of the day",
+         "correct": false,
+         "detail": "Overstates certainty",
+         "wrong_explanation": "A break describes a boundary crossing, not a guaranteed continuation."
+        },
+        {
+         "label": "Confirmation that a reversal is now impossible",
+         "correct": false,
+         "detail": "Overstates certainty",
+         "wrong_explanation": "Price can reverse after any break."
+        }
+       ],
+       "concern": "Staying descriptive",
+       "explanation": "An opening range break is a descriptive observation about crossing an early reference level, not a guarantee of what follows.",
+       "chart": "breakout"
+      },
+      {
+       "type": "spot_mistake",
+       "scenario": "Someone treats an opening range break as guaranteed to continue trending the rest of the day.",
+       "question": "What is the mistake?",
+       "options": [
+        "Price never reverses after breaking the opening range.",
+        "Every opening range break continues in the same direction all day.",
+        "A break describes crossing the range boundary, it doesn't guarantee the rest of the day's direction."
+       ],
+       "correct": 2,
+       "explanation": "Like any breakout, a range break can continue, stall, or reverse afterward.",
+       "chart": "breakout"
+      }
+     ]
+    },
+    {
+     "node": 86,
+     "title": "Opening Range and False Breaks",
+     "celebration": "You understand opening range false breaks!",
+     "screens": [
+      {
+       "type": "intro",
+       "title": "When a Break Doesn't Hold",
+       "text": "Sometimes price breaks the opening range briefly and then moves back inside it, commonly described as a false break of the opening range, echoing the false breakout concept from earlier units.",
+       "chart": "breakoutRetest"
+      },
+      {
+       "type": "multiple_choice",
+       "question": "Price briefly moving above the opening range high and then falling back inside is commonly described as...",
+       "options": [
+        "Proof the opening range was calculated incorrectly.",
+        "A guaranteed reversal signal.",
+        "A false break of the opening range."
+       ],
+       "correct": 2,
+       "explanation": "This is the same false-break/failed-breakout idea covered earlier, applied specifically to the opening range."
+      },
+      {
+       "type": "true_false",
+       "question": "A false break of the opening range echoes the false breakout concept covered in the Breakouts & Retests unit.",
+       "correct": true,
+       "explanation": "The underlying idea, price failing to hold beyond a level, is the same concept applied to this specific reference range."
+      },
+      {
+       "type": "fill_blank",
+       "question": "A break that doesn't hold and returns inside the range is commonly called a [___] break.",
+       "options": [
+        "guaranteed",
+        "final",
+        "false"
+       ],
+       "correct": 2,
+       "explanation": "This mirrors the \"false breakout\" terminology already established earlier in the course."
+      },
+      {
+       "type": "matching",
+       "question": "Match the concept to its connection.",
+       "pairs": [
+        [
+         "False opening range break",
+         "Echoes the general false breakout concept"
+        ],
+        [
+         "Held opening range break",
+         "Price stays beyond the boundary"
+        ],
+        [
+         "Opening range itself",
+         "The specific reference level being tested"
+        ]
+       ],
+       "explanation": "The opening range is simply one more level that can be broken, held, or falsely broken."
+      },
+      {
+       "type": "ingredient_match",
+       "question": "Why is it useful to recognize a false break of the opening range?",
+       "options": [
+        {
+         "label": "Because false breaks of the opening range never happen",
+         "correct": false,
+         "detail": "Incorrect",
+         "wrong_explanation": "They can and do occur, same as any other breakout."
+        },
+        {
+         "label": "Because it reinforces that any break, including this one, can fail to hold",
+         "correct": true,
+         "detail": "Consistent with breakout concepts"
+        },
+        {
+         "label": "Because it means the opening range concept doesn't apply here",
+         "correct": false,
+         "detail": "Incorrect",
+         "wrong_explanation": "The opening range concept still applies, it just didn't hold."
+        }
+       ],
+       "concern": "Applying prior concepts",
+       "explanation": "Recognizing false breaks keeps the opening range concept consistent with the broader breakout/retest ideas taught earlier.",
+       "chart": "breakoutRetest"
+      },
+      {
+       "type": "spot_mistake",
+       "scenario": "Someone assumes every opening range break automatically holds and never fails.",
+       "question": "What is the mistake?",
+       "options": [
+        "Opening range breaks are a completely different phenomenon from regular breakouts.",
+        "Opening range breaks can fail to hold, just like any other breakout covered earlier in the course.",
+        "False breaks are impossible once price crosses the opening range boundary."
+       ],
+       "correct": 1,
+       "explanation": "The opening range is one more level subject to the same false-breakout dynamics taught earlier.",
+       "chart": "breakoutRetest"
+      }
+     ]
+    },
+    {
+     "node": 87,
+     "title": "Opening Range and Volatility",
+     "celebration": "You can connect opening range width to volatility!",
+     "screens": [
+      {
+       "type": "intro",
+       "title": "Wide Range vs. Narrow Range",
+       "text": "A wider opening range commonly reflects more volatile early trading, while a narrower opening range commonly reflects calmer early trading, connecting back to the ATR and volatility concepts.",
+       "chart": "volatile"
+      },
+      {
+       "type": "multiple_choice",
+       "question": "A wider opening range commonly reflects...",
+       "options": [
+        "Lower trading volume for the whole day.",
+        "More volatile early trading.",
+        "A guaranteed downtrend."
+       ],
+       "correct": 1,
+       "explanation": "A wide early range simply reflects larger early price swings, similar to a higher ATR reading."
+      },
+      {
+       "type": "true_false",
+       "question": "A narrower opening range commonly reflects calmer early trading.",
+       "correct": true,
+       "explanation": "A tight range in the early minutes reflects smaller early price swings."
+      },
+      {
+       "type": "fill_blank",
+       "question": "Opening range width connects to the same idea as [___], covered earlier in this course.",
+       "options": [
+        "ATR",
+        "company earnings",
+        "account balance"
+       ],
+       "correct": 0,
+       "explanation": "Both opening range width and ATR describe the size of recent price movement, just over different windows."
+      },
+      {
+       "type": "matching",
+       "question": "Match the range width to its commonly cited meaning.",
+       "pairs": [
+        [
+         "Wide opening range",
+         "More volatile early trading"
+        ],
+        [
+         "Narrow opening range",
+         "Calmer early trading"
+        ],
+        [
+         "Range width itself",
+         "A volatility descriptor, like ATR but for the open specifically"
+        ]
+       ],
+       "explanation": "This ties the opening range back to volatility concepts taught earlier in the course."
+      },
+      {
+       "type": "ingredient_match",
+       "question": "How does opening range width add to reading a session?",
+       "options": [
+        {
+         "label": "It replaces the need for ATR throughout the rest of the day",
+         "correct": false,
+         "detail": "Overstates it",
+         "wrong_explanation": "Opening range width is one added data point, not a replacement."
+        },
+        {
+         "label": "It gives an early descriptive read on volatility, similar to ATR but specific to the open",
+         "correct": true,
+         "detail": "Confluence with volatility"
+        },
+        {
+         "label": "It has no relationship to volatility",
+         "correct": false,
+         "detail": "Incorrect",
+         "wrong_explanation": "Range width directly reflects early volatility."
+        }
+       ],
+       "concern": "Connecting concepts",
+       "explanation": "Opening range width is simply a volatility read specific to the earliest minutes of the session.",
+       "chart": "volatile"
+      },
+      {
+       "type": "spot_mistake",
+       "scenario": "Someone assumes a wide opening range guarantees a volatile day for the remaining hours.",
+       "question": "What is the mistake?",
+       "options": [
+        "A wide opening range describes early volatility, it doesn't guarantee how the rest of the day unfolds.",
+        "Opening range width always predicts the entire day's volatility.",
+        "Opening range width has no connection to volatility at all."
+       ],
+       "correct": 0,
+       "explanation": "The opening range only describes the earliest window, not a guarantee for the rest of the session.",
+       "chart": "volatile"
+      }
+     ]
+    },
+    {
+     "node": 88,
+     "title": "Opening Range Review",
+     "celebration": "You've completed the Opening Range unit!",
+     "screens": [
+      {
+       "type": "intro",
+       "title": "Bringing It Together",
+       "text": "A final review of what the opening range is, breaks of the range, false breaks, and how range width connects to volatility."
+      },
+      {
+       "type": "true_false",
+       "question": "The opening range is the high and low formed during a defined early window after the open.",
+       "correct": true,
+       "explanation": "That's the core, consistent idea across this whole unit."
+      },
+      {
+       "type": "fill_blank",
+       "question": "A break that doesn't hold and returns inside the range is called a [___] break.",
+       "options": [
+        "permanent",
+        "false",
+        "guaranteed"
+       ],
+       "correct": 1,
+       "explanation": "A recap of the false-break terminology covered in this unit."
+      },
+      {
+       "type": "multiple_choice",
+       "question": "How should an opening range break be treated on its own?",
+       "options": [
+        "As confirmation a reversal is now impossible.",
+        "As a guaranteed continuation for the rest of the day.",
+        "As a descriptive observation about crossing an early reference level, nothing more."
+       ],
+       "correct": 2,
+       "explanation": "A recap of the descriptive, non-predictive framing used throughout the course."
+      },
+      {
+       "type": "matching",
+       "question": "Match the term to its one-line meaning.",
+       "pairs": [
+        [
+         "Opening range",
+         "High/low from an early defined window"
+        ],
+        [
+         "Range break",
+         "Price moving beyond that range's boundary"
+        ],
+        [
+         "False break",
+         "A break that doesn't hold and reverses back inside"
+        ]
+       ],
+       "explanation": "A quick recap of the unit's core vocabulary."
+      },
+      {
+       "type": "ingredient_match",
+       "question": "Which best summarizes this unit?",
+       "options": [
+        {
+         "label": "The opening range is unrelated to volatility",
+         "correct": false,
+         "detail": "Incorrect",
+         "wrong_explanation": "Range width directly reflects early volatility."
+        },
+        {
+         "label": "The opening range guarantees the day's final high and low",
+         "correct": false,
+         "detail": "Overstates certainty",
+         "wrong_explanation": "It's an early reference, not a guarantee of the full day's range."
+        },
+        {
+         "label": "The opening range is an early, descriptive reference level, useful for context, not prediction",
+         "correct": true,
+         "detail": "The central theme"
+        }
+       ],
+       "concern": "Reviewing the big picture",
+       "explanation": "The opening range's value is as descriptive early context, not a predictive guarantee.",
+       "chart": "volatile"
+      },
+      {
+       "type": "spot_mistake",
+       "scenario": "Someone finishes this unit and starts trading every opening range break as an automatic signal.",
+       "question": "What is the mistake?",
+       "options": [
+        "The opening range has no descriptive value at all.",
+        "Every opening range break should be traded automatically.",
+        "The opening range describes an early reference level, it's not an automatic buy or sell signal."
+       ],
+       "correct": 2,
+       "explanation": "Like every concept in this course, the opening range is descriptive context, never a trade signal.",
+       "chart": "volatile"
+      }
+     ]
     }
    ]
   },
@@ -32980,20 +33511,20 @@
        "type": "fill_blank",
        "question": "The urge to jump into a trade purely because price is already moving fast is commonly called [___].",
        "options": [
-        "FOMO",
         "a drawdown",
-        "a stop-loss"
+        "a stop-loss",
+        "FOMO"
        ],
-       "correct": 0,
+       "correct": 2,
        "explanation": "\"FOMO\" (fear of missing out) is the standard term for this urge."
       },
       {
        "type": "multiple_choice",
        "question": "What commonly characterizes a FOMO-driven trade entry?",
        "options": [
-        "Entering only after a calm, pre-planned checklist is satisfied.",
+        "Entering after carefully calculating position size in advance.",
         "Entering because of urgency about a fast-moving price, without a clear pre-existing plan.",
-        "Entering after carefully calculating position size in advance."
+        "Entering only after a calm, pre-planned checklist is satisfied."
        ],
        "correct": 1,
        "explanation": "FOMO entries are commonly described as reactive and plan-less, driven by urgency."
@@ -33023,19 +33554,19 @@
        "blanks": [
         {
          "options": [
-          "planned",
           "emotional",
-          "mathematical"
+          "mathematical",
+          "planned"
          ],
-         "correct": 1
+         "correct": 0
         },
         {
          "options": [
           "random",
-          "emotional",
-          "planned"
+          "planned",
+          "emotional"
          ],
-         "correct": 2
+         "correct": 1
         }
        ],
        "explanation": "FOMO is commonly framed as emotional urgency, in contrast to a calm, planned entry."
@@ -33088,11 +33619,11 @@
        "scenario": "Someone sees a stock moving up quickly and buys immediately, without any plan, purely because they're afraid of missing further gains.",
        "question": "What is the mistake?",
        "options": [
-        "They should have bought even more, even faster.",
         "Entering purely from urgency about missing a move, without a plan, is a commonly described FOMO reaction.",
-        "They should never look at fast-moving prices again."
+        "They should never look at fast-moving prices again.",
+        "They should have bought even more, even faster."
        ],
-       "correct": 1,
+       "correct": 0,
        "explanation": "Acting from fear of missing out, without a plan, is the commonly described core of a FOMO-driven mistake.",
        "chart": "breakout"
       },
@@ -33136,22 +33667,22 @@
        "type": "fill_blank",
        "question": "Entering a trade quickly after a loss, mainly to try to \"win it back,\" is commonly called [___] trading.",
        "options": [
-        "patient",
+        "revenge",
         "planned",
-        "revenge"
+        "patient"
        ],
-       "correct": 2,
+       "correct": 0,
        "explanation": "\"Revenge trading\" is the standard term for this reactive pattern."
       },
       {
        "type": "multiple_choice",
        "question": "What commonly characterizes a revenge trade?",
        "options": [
-        "It always uses a smaller position size than usual.",
         "It's driven by a carefully pre-planned checklist unrelated to the prior loss.",
-        "It's driven mainly by the urge to recover a recent loss quickly, rather than a fresh, planned setup."
+        "It's driven mainly by the urge to recover a recent loss quickly, rather than a fresh, planned setup.",
+        "It always uses a smaller position size than usual."
        ],
-       "correct": 2,
+       "correct": 1,
        "explanation": "Revenge trades are commonly described as reactive attempts to immediately recover a loss."
       },
       {
@@ -33179,19 +33710,19 @@
        "blanks": [
         {
          "options": [
-          "planned",
+          "emotional",
           "random",
-          "emotional"
+          "planned"
          ],
-         "correct": 2
+         "correct": 0
         },
         {
          "options": [
-          "emotional",
           "planned",
-          "guaranteed"
+          "guaranteed",
+          "emotional"
          ],
-         "correct": 1
+         "correct": 0
         }
        ],
        "explanation": "The reactive, emotional nature of revenge trading is commonly contrasted with a calm, planned entry."
@@ -33218,6 +33749,12 @@
        "question": "Which best describes \"revenge trading\"?",
        "options": [
         {
+         "label": "A guarantee that the next trade will be profitable",
+         "correct": false,
+         "detail": "Overstates certainty",
+         "wrong_explanation": "Revenge trading describes a motivation, not a guaranteed outcome."
+        },
+        {
          "label": "Reviewing a loss calmly before deciding what to do next",
          "correct": false,
          "detail": "This describes a measured response, not revenge trading",
@@ -33227,12 +33764,6 @@
          "label": "Entering a new trade quickly after a loss, driven by the urge to recover it immediately",
          "correct": true,
          "detail": "A reactive pattern tied to a recent loss"
-        },
-        {
-         "label": "A guarantee that the next trade will be profitable",
-         "correct": false,
-         "detail": "Overstates certainty",
-         "wrong_explanation": "Revenge trading describes a motivation, not a guaranteed outcome."
         }
        ],
        "concern": "Understanding this specific term",
@@ -33245,10 +33776,10 @@
        "question": "What is the mistake?",
        "options": [
         "They should stop looking at charts entirely from now on.",
-        "Increasing size specifically to recover a loss quickly is a commonly described sign of revenge trading, adding risk on top of an emotional reaction.",
-        "They should double their size again after the next loss too."
+        "They should double their size again after the next loss too.",
+        "Increasing size specifically to recover a loss quickly is a commonly described sign of revenge trading, adding risk on top of an emotional reaction."
        ],
-       "correct": 1,
+       "correct": 2,
        "explanation": "Sizing decisions driven by the urge to recover a loss quickly are a commonly cited revenge-trading pattern.",
        "chart": "downtrend"
       },
@@ -33292,22 +33823,22 @@
        "type": "fill_blank",
        "question": "Taking a much higher number of trades than a plan calls for is commonly called [___].",
        "options": [
+        "hedging",
         "position sizing",
-        "overtrading",
-        "hedging"
+        "overtrading"
        ],
-       "correct": 1,
+       "correct": 2,
        "explanation": "\"Overtrading\" is the standard term for this pattern."
       },
       {
        "type": "multiple_choice",
        "question": "What is commonly cited as a driver of overtrading?",
        "options": [
-        "Boredom, restlessness, or urgency to \"do something,\" rather than a fresh, planned setup appearing.",
+        "A calendar reminder to review account performance.",
         "A carefully followed plan that specifies exactly how many trades to take.",
-        "A calendar reminder to review account performance."
+        "Boredom, restlessness, or urgency to \"do something,\" rather than a fresh, planned setup appearing."
        ],
-       "correct": 0,
+       "correct": 2,
        "explanation": "Overtrading is commonly linked to emotional urges rather than an increase in genuinely planned setups."
       },
       {
@@ -33335,19 +33866,19 @@
        "blanks": [
         {
          "options": [
-          "patience",
+          "discipline",
           "boredom",
-          "discipline"
+          "patience"
          ],
          "correct": 1
         },
         {
          "options": [
+          "planned",
           "guaranteed",
-          "random",
-          "planned"
+          "random"
          ],
-         "correct": 2
+         "correct": 0
         }
        ],
        "explanation": "The commonly cited driver behind overtrading is emotional restlessness, not a genuine rise in valid setups."
@@ -33380,15 +33911,15 @@
          "wrong_explanation": "Overtrading describes frequency, not a guaranteed result."
         },
         {
+         "label": "Taking a much higher number of trades than a plan calls for, often from boredom or urgency",
+         "correct": true,
+         "detail": "A frequency mismatch driven by emotion"
+        },
+        {
          "label": "Taking trades only when a pre-planned setup appears",
          "correct": false,
          "detail": "This describes selective, disciplined trading, not overtrading",
          "wrong_explanation": "That's the opposite pattern from overtrading."
-        },
-        {
-         "label": "Taking a much higher number of trades than a plan calls for, often from boredom or urgency",
-         "correct": true,
-         "detail": "A frequency mismatch driven by emotion"
         }
        ],
        "concern": "Understanding this specific term",
@@ -33401,10 +33932,10 @@
        "question": "What is the mistake?",
        "options": [
         "They should stop having any plan at all.",
-        "They should aim for an even higher number of trades tomorrow.",
-        "Taking far more trades than the plan calls for, driven by boredom rather than genuine setups, is a commonly described overtrading pattern."
+        "Taking far more trades than the plan calls for, driven by boredom rather than genuine setups, is a commonly described overtrading pattern.",
+        "They should aim for an even higher number of trades tomorrow."
        ],
-       "correct": 2,
+       "correct": 1,
        "explanation": "A large gap between planned frequency and actual frequency, driven by emotion, is the commonly cited core of overtrading.",
        "chart": "sideways"
       },
@@ -33413,10 +33944,10 @@
        "question": "Overtrading means taking far more trades than a plan calls for, often from [___].",
        "options": [
         "patience",
-        "a solid plan",
-        "boredom"
+        "boredom",
+        "a solid plan"
        ],
-       "correct": 2,
+       "correct": 1,
        "explanation": "Boredom or restlessness is commonly cited as driving overtrading."
       },
       {
@@ -33448,22 +33979,22 @@
        "type": "fill_blank",
        "question": "Skipping normal risk steps after a string of wins is commonly linked to [___].",
        "options": [
+        "capital preservation",
         "diversification",
-        "overconfidence",
-        "capital preservation"
+        "overconfidence"
        ],
-       "correct": 1,
+       "correct": 2,
        "explanation": "\"Overconfidence\" is the commonly cited term for this pattern following a hot streak."
       },
       {
        "type": "multiple_choice",
        "question": "What is a commonly cited risk of overconfidence after a string of wins?",
        "options": [
-        "Skipping normal risk management steps, like sizing or stop-loss placement, because recent wins feel like proof of skill.",
         "Reducing position size out of caution.",
-        "Becoming more careful and conservative than before the winning streak."
+        "Becoming more careful and conservative than before the winning streak.",
+        "Skipping normal risk management steps, like sizing or stop-loss placement, because recent wins feel like proof of skill."
        ],
-       "correct": 0,
+       "correct": 2,
        "explanation": "Overconfidence commonly leads to relaxing the very risk steps that were followed before the streak."
       },
       {
@@ -33491,11 +34022,11 @@
        "blanks": [
         {
          "options": [
-          "trades",
           "wins",
-          "losses"
+          "losses",
+          "trades"
          ],
-         "correct": 1
+         "correct": 0
         },
         {
          "options": [
@@ -33535,16 +34066,16 @@
          "detail": "A commonly described emotional pattern"
         },
         {
-         "label": "A guarantee that the next trade will also win",
-         "correct": false,
-         "detail": "Overstates certainty",
-         "wrong_explanation": "Overconfidence describes a mindset, not a guaranteed outcome."
-        },
-        {
          "label": "Becoming more cautious and reducing size after wins",
          "correct": false,
          "detail": "This describes the opposite pattern",
          "wrong_explanation": "That describes increased caution, not overconfidence."
+        },
+        {
+         "label": "A guarantee that the next trade will also win",
+         "correct": false,
+         "detail": "Overstates certainty",
+         "wrong_explanation": "Overconfidence describes a mindset, not a guaranteed outcome."
         }
        ],
        "concern": "Understanding this specific pattern",
@@ -33556,11 +34087,11 @@
        "scenario": "Someone removes their stop-loss on their next trade because they've \"been on a roll\" for the past week.",
        "question": "What is the mistake?",
        "options": [
-        "Removing a normal risk step because of a recent winning streak is a commonly described overconfidence pattern, recent wins don't remove future risk.",
         "They should remove stop-losses on every trade from now on.",
+        "Removing a normal risk step because of a recent winning streak is a commonly described overconfidence pattern, recent wins don't remove future risk.",
         "They should assume the winning streak guarantees future wins."
        ],
-       "correct": 0,
+       "correct": 1,
        "explanation": "A recent streak of wins doesn't change the underlying risk of a new trade, per this commonly cited concern.",
        "chart": "uptrend"
       },
@@ -33569,8 +34100,8 @@
        "question": "Overconfidence after wins can lead to [___] normal risk steps.",
        "options": [
         "skipping",
-        "doubling",
-        "following"
+        "following",
+        "doubling"
        ],
        "correct": 0,
        "explanation": "Feeling emboldened by recent wins can lead to skipping steps like sizing or stops."
@@ -33605,21 +34136,21 @@
        "question": "Hesitating on a genuinely planned setup because of recent losses is commonly linked to [___].",
        "options": [
         "overconfidence",
-        "fear",
-        "leverage"
+        "leverage",
+        "fear"
        ],
-       "correct": 1,
+       "correct": 2,
        "explanation": "\"Fear\" (following losses) is the commonly cited driver of this hesitation pattern."
       },
       {
        "type": "multiple_choice",
        "question": "What is a commonly cited effect of fear following a string of losses?",
        "options": [
+        "Becoming more willing to take on larger, riskier positions.",
         "Hesitating on or skipping a genuinely planned setup, or exiting a plan earlier than intended.",
-        "No change in behavior at all.",
-        "Becoming more willing to take on larger, riskier positions."
+        "No change in behavior at all."
        ],
-       "correct": 0,
+       "correct": 1,
        "explanation": "Fear following losses is commonly linked to hesitation or premature exits, not increased risk-taking."
       },
       {
@@ -33647,19 +34178,19 @@
        "blanks": [
         {
          "options": [
-          "skipping",
           "ignoring",
-          "doubling"
+          "doubling",
+          "skipping"
          ],
-         "correct": 0
+         "correct": 2
         },
         {
          "options": [
+          "plan",
           "doji",
-          "streak",
-          "plan"
+          "streak"
          ],
-         "correct": 2
+         "correct": 0
         }
        ],
        "explanation": "The commonly described effect of fear is deviating from the plan out of hesitation."
@@ -33712,11 +34243,11 @@
        "scenario": "Someone skips a setup that matches their plan exactly, purely because they're afraid after a few recent losses.",
        "question": "What is the mistake?",
        "options": [
-        "Skipping a genuinely planned setup purely from fear after recent losses is a commonly described pattern where emotion overrides the plan.",
         "They should double their position size to make up for the losses.",
-        "They should abandon their plan permanently."
+        "They should abandon their plan permanently.",
+        "Skipping a genuinely planned setup purely from fear after recent losses is a commonly described pattern where emotion overrides the plan."
        ],
-       "correct": 0,
+       "correct": 2,
        "explanation": "Letting fear override a genuinely planned setup, rather than reviewing the plan calmly, is the commonly cited concern here.",
        "chart": "downtrend"
       },
@@ -33724,11 +34255,11 @@
        "type": "fill_blank",
        "question": "Fear after losses can lead to [___] a genuinely planned setup.",
        "options": [
-        "doubling",
         "following",
-        "skipping"
+        "skipping",
+        "doubling"
        ],
-       "correct": 2,
+       "correct": 1,
        "explanation": "Fear can cause hesitation or skipping a setup that otherwise matches the plan."
       },
       {
@@ -33761,10 +34292,10 @@
        "question": "Acting on an in-the-moment feeling rather than a pre-set plan is commonly called an [___].",
        "options": [
         "average",
-        "order",
-        "impulse"
+        "impulse",
+        "order"
        ],
-       "correct": 2,
+       "correct": 1,
        "explanation": "\"Impulse\" describes acting from a feeling in the moment, rather than following a plan."
       },
       {
@@ -33772,10 +34303,10 @@
        "question": "What commonly distinguishes a disciplined decision from an impulsive one?",
        "options": [
         "An impulsive decision always follows a written checklist.",
-        "A disciplined decision follows a pre-set plan; an impulsive one is driven by an in-the-moment feeling.",
-        "A disciplined decision is always more profitable, guaranteed."
+        "A disciplined decision is always more profitable, guaranteed.",
+        "A disciplined decision follows a pre-set plan; an impulsive one is driven by an in-the-moment feeling."
        ],
-       "correct": 1,
+       "correct": 2,
        "explanation": "The distinction is about following a plan versus reacting to a feeling, not about guaranteed outcomes."
       },
       {
@@ -33803,19 +34334,19 @@
        "blanks": [
         {
          "options": [
-          "plan",
           "streak",
-          "impulse"
+          "impulse",
+          "plan"
          ],
-         "correct": 0
+         "correct": 2
         },
         {
          "options": [
-          "chart",
           "feeling",
+          "chart",
           "plan"
          ],
-         "correct": 1
+         "correct": 0
         }
        ],
        "explanation": "This captures the core tension discipline is meant to resolve."
@@ -33842,15 +34373,15 @@
        "question": "Which best describes \"discipline,\" in this context?",
        "options": [
         {
+         "label": "Following a pre-set plan consistently, even when a feeling suggests otherwise",
+         "correct": true,
+         "detail": "Plan-following despite momentary impulses"
+        },
+        {
          "label": "A guarantee that the plan will always be correct",
          "correct": false,
          "detail": "Overstates certainty",
          "wrong_explanation": "Discipline is about consistency, not a guarantee the plan is flawless."
-        },
-        {
-         "label": "Following a pre-set plan consistently, even when a feeling suggests otherwise",
-         "correct": true,
-         "detail": "Plan-following despite momentary impulses"
         },
         {
          "label": "Acting immediately on whatever feels right at the moment",
@@ -33880,11 +34411,11 @@
        "type": "fill_blank",
        "question": "Discipline means following a pre-set [___] consistently.",
        "options": [
-        "feeling",
+        "plan",
         "impulse",
-        "plan"
+        "feeling"
        ],
-       "correct": 2,
+       "correct": 0,
        "explanation": "Discipline is defined as consistent plan-following, even against momentary feelings."
       },
       {
@@ -33917,15 +34448,15 @@
          "wrong_explanation": "Discipline describes plan-following, not this reactive urgency."
         },
         {
+         "label": "FOMO",
+         "correct": true,
+         "detail": "Urgency-driven entry with no plan"
+        },
+        {
          "label": "Capital preservation",
          "correct": false,
          "detail": "A different concept",
          "wrong_explanation": "Capital preservation is about protecting capital, not urgency-driven entries."
-        },
-        {
-         "label": "FOMO",
-         "correct": true,
-         "detail": "Urgency-driven entry with no plan"
         }
        ],
        "concern": "Identifying a psychological pattern",
@@ -33942,22 +34473,22 @@
        "type": "multiple_choice",
        "question": "Which best describes revenge trading?",
        "options": [
-        "Entering a new trade quickly after a loss, driven by the urge to recover it immediately.",
         "Calmly reviewing a loss before deciding on next steps.",
+        "Entering a new trade quickly after a loss, driven by the urge to recover it immediately.",
         "Sticking to the same position size regardless of recent results."
        ],
-       "correct": 0,
+       "correct": 1,
        "explanation": "Revenge trading specifically describes a reactive attempt to immediately recover a recent loss."
       },
       {
        "type": "fill_blank",
        "question": "Following a pre-set plan consistently, even when a feeling suggests otherwise, is commonly called [___].",
        "options": [
-        "discipline",
         "overleveraging",
-        "a drawdown"
+        "a drawdown",
+        "discipline"
        ],
-       "correct": 0,
+       "correct": 2,
        "explanation": "Reviewing the core term for consistent plan-following from earlier in this unit."
       },
       {
@@ -33985,8 +34516,8 @@
        "question": "Which pattern does this best describe?",
        "options": [
         "Fear-driven hesitation, where recent losses caused them to skip a genuinely planned setup.",
-        "Overconfidence, since they felt very certain about the decision.",
-        "Capital preservation, since they avoided a trade."
+        "Capital preservation, since they avoided a trade.",
+        "Overconfidence, since they felt very certain about the decision."
        ],
        "correct": 0,
        "explanation": "Skipping a valid, planned setup specifically due to fear after losses is the fear-driven hesitation pattern.",
@@ -33996,11 +34527,11 @@
        "type": "fill_blank",
        "question": "This drill practices identifying psychological [___] in hypothetical situations.",
        "options": [
-        "guarantees",
         "patterns",
+        "guarantees",
         "random events"
        ],
-       "correct": 1,
+       "correct": 0,
        "explanation": "The drill applies pattern recognition to psychology, without judging specific trades."
       },
       {
@@ -34032,22 +34563,22 @@
        "type": "fill_blank",
        "question": "Acting on an in-the-moment feeling rather than a pre-set plan is commonly called an [___].",
        "options": [
-        "impulse",
         "spread",
+        "impulse",
         "average"
        ],
-       "correct": 0,
+       "correct": 1,
        "explanation": "Reviewing the core term from earlier in this unit."
       },
       {
        "type": "multiple_choice",
        "question": "What do FOMO, revenge trading, and overtrading all have in common?",
        "options": [
+        "They're all commonly described as emotionally reactive patterns that pull behavior away from a pre-set plan.",
         "They all guarantee larger losses every time.",
-        "They only apply to traders using leverage.",
-        "They're all commonly described as emotionally reactive patterns that pull behavior away from a pre-set plan."
+        "They only apply to traders using leverage."
        ],
-       "correct": 2,
+       "correct": 0,
        "explanation": "Each is an emotionally reactive pattern, not a guaranteed outcome or a leverage-specific issue."
       },
       {
@@ -34075,19 +34606,19 @@
        "blanks": [
         {
          "options": [
+          "leverage",
           "impulse",
-          "discipline",
-          "leverage"
+          "discipline"
          ],
-         "correct": 1
+         "correct": 2
         },
         {
          "options": [
           "risk",
-          "discipline",
-          "impulse"
+          "impulse",
+          "discipline"
          ],
-         "correct": 2
+         "correct": 1
         }
        ],
        "explanation": "Awareness of the pattern is commonly framed as the starting point for a more disciplined response."
@@ -34114,15 +34645,15 @@
        "question": "Which best summarizes the overall theme of this unit?",
        "options": [
         {
-         "label": "Recognizing emotional patterns is a step toward following a pre-set plan consistently",
-         "correct": true,
-         "detail": "The central theme throughout"
-        },
-        {
          "label": "Following impulses is just as reliable as following a plan",
          "correct": false,
          "detail": "Contradicts the unit",
          "wrong_explanation": "This unit consistently favored discipline over impulse."
+        },
+        {
+         "label": "Recognizing emotional patterns is a step toward following a pre-set plan consistently",
+         "correct": true,
+         "detail": "The central theme throughout"
         },
         {
          "label": "Emotions should be eliminated entirely before trading",
@@ -34141,10 +34672,10 @@
        "question": "What is the mistake?",
        "options": [
         "They should assume impulsive decisions no longer carry any risk.",
-        "They should stop thinking about psychology from now on since it can't guarantee anything.",
-        "Knowing a pattern's name doesn't automatically prevent it from happening, recognizing it in the moment still takes practice."
+        "Knowing a pattern's name doesn't automatically prevent it from happening, recognizing it in the moment still takes practice.",
+        "They should stop thinking about psychology from now on since it can't guarantee anything."
        ],
-       "correct": 2,
+       "correct": 1,
        "explanation": "This unit builds awareness of patterns, not a guarantee that they'll never occur again.",
        "chart": "sideways"
       },
@@ -34152,11 +34683,11 @@
        "type": "fill_blank",
        "question": "This review ties together FOMO, revenge trading, overtrading, and [___].",
        "options": [
-        "random guesses",
         "company names",
-        "discipline"
+        "discipline",
+        "random guesses"
        ],
-       "correct": 2,
+       "correct": 1,
        "explanation": "All the core patterns from this unit are reviewed together here."
       },
       {
@@ -34188,22 +34719,22 @@
        "type": "multiple_choice",
        "question": "Which chart description commonly matches a \"trending\" classification?",
        "options": [
-        "Price bouncing repeatedly between the same two levels with no progress either way.",
         "A series of higher highs and higher lows (or lower highs and lower lows) over time.",
-        "A single candle with almost no wick on either side."
+        "A single candle with almost no wick on either side.",
+        "Price bouncing repeatedly between the same two levels with no progress either way."
        ],
-       "correct": 1,
+       "correct": 0,
        "explanation": "A sustained sequence of higher (or lower) highs and lows is the commonly cited hallmark of a trend."
       },
       {
        "type": "fill_blank",
        "question": "A market showing a sustained move in one general direction is commonly classified as [___].",
        "options": [
-        "range-bound",
         "trending",
-        "choppy"
+        "choppy",
+        "range-bound"
        ],
-       "correct": 1,
+       "correct": 0,
        "explanation": "\"Trending\" is the standard classification term for this kind of sustained directional move."
       },
       {
@@ -34273,11 +34804,11 @@
        "scenario": "Someone classifies a market as \"trending\" after seeing just a single candle, with no broader context.",
        "question": "What is the mistake?",
        "options": [
+        "A trending classification is commonly based on a sustained sequence of highs and lows over time, not a single candle.",
         "They should ignore the sequence of highs and lows entirely.",
-        "They should classify every single candle as its own trend.",
-        "A trending classification is commonly based on a sustained sequence of highs and lows over time, not a single candle."
+        "They should classify every single candle as its own trend."
        ],
-       "correct": 2,
+       "correct": 0,
        "explanation": "A single candle doesn't provide the sustained sequence commonly needed to classify a trend.",
        "chart": "uptrend"
       },
@@ -34321,22 +34852,22 @@
        "type": "multiple_choice",
        "question": "Which chart description commonly matches a \"choppy\" classification?",
        "options": [
+        "A long, uninterrupted sequence of higher highs and higher lows.",
         "Price oscillating within a range with no clear sustained progress in either direction.",
-        "A single sharp, one-directional move with no pullbacks at all.",
-        "A long, uninterrupted sequence of higher highs and higher lows."
+        "A single sharp, one-directional move with no pullbacks at all."
        ],
-       "correct": 0,
+       "correct": 1,
        "explanation": "Oscillation with no sustained progress is the commonly cited hallmark of a choppy market."
       },
       {
        "type": "fill_blank",
        "question": "A market moving back and forth with no clear sustained direction is commonly classified as [___].",
        "options": [
-        "breaking out",
         "choppy",
+        "breaking out",
         "trending"
        ],
-       "correct": 1,
+       "correct": 0,
        "explanation": "\"Choppy\" is the standard classification term for this kind of directionless movement."
       },
       {
@@ -34406,9 +34937,9 @@
        "scenario": "Someone classifies a market as \"choppy\" after seeing a long, clear sequence of higher highs and higher lows.",
        "question": "What is the mistake?",
        "options": [
-        "They should ignore the sequence of highs and lows entirely.",
+        "They should look for even more oscillation to confirm it's choppy.",
         "A sustained sequence of higher highs and higher lows is commonly described as trending, not choppy.",
-        "They should look for even more oscillation to confirm it's choppy."
+        "They should ignore the sequence of highs and lows entirely."
        ],
        "correct": 1,
        "explanation": "The described pattern matches a trending classification, not a choppy one.",
@@ -34466,8 +34997,8 @@
        "question": "A market showing unusually large or fast price swings is commonly classified as [___].",
        "options": [
         "volatile",
-        "flat",
-        "range-bound"
+        "range-bound",
+        "flat"
        ],
        "correct": 0,
        "explanation": "\"Volatile\" is the standard classification term for this kind of large or fast movement."
@@ -34513,9 +35044,10 @@
        "question": "Which best describes a \"volatile\" market classification?",
        "options": [
         {
-         "label": "Unusually large or fast price swings, in either direction",
-         "correct": true,
-         "detail": "A descriptive classification based on swing size and speed"
+         "label": "A guarantee that price will keep swinging forever",
+         "correct": false,
+         "detail": "Overstates certainty",
+         "wrong_explanation": "Volatile describes recent behavior, not a guarantee about the future."
         },
         {
          "label": "A slow, steady drift with very small changes",
@@ -34524,10 +35056,9 @@
          "wrong_explanation": "That description is closer to the opposite of a volatile classification."
         },
         {
-         "label": "A guarantee that price will keep swinging forever",
-         "correct": false,
-         "detail": "Overstates certainty",
-         "wrong_explanation": "Volatile describes recent behavior, not a guarantee about the future."
+         "label": "Unusually large or fast price swings, in either direction",
+         "correct": true,
+         "detail": "A descriptive classification based on swing size and speed"
         }
        ],
        "concern": "Understanding this specific classification",
@@ -34551,11 +35082,11 @@
        "type": "fill_blank",
        "question": "A volatile market shows unusually large or fast [___].",
        "options": [
+        "volumes only",
         "swings",
-        "colors",
-        "volumes only"
+        "colors"
        ],
-       "correct": 0,
+       "correct": 1,
        "explanation": "Large or fast price swings define a volatile classification."
       },
       {
@@ -34587,22 +35118,22 @@
        "type": "multiple_choice",
        "question": "Which chart description commonly matches a \"fakeout\" classification?",
        "options": [
-        "Price stays well within a range the entire time, never approaching any level.",
+        "Price briefly clears a level, then quickly reverses back rather than continuing.",
         "Price clears a level and continues steadily in that direction afterward.",
-        "Price briefly clears a level, then quickly reverses back rather than continuing."
+        "Price stays well within a range the entire time, never approaching any level."
        ],
-       "correct": 2,
+       "correct": 0,
        "explanation": "A brief move beyond a level followed by a quick reversal is the commonly cited hallmark of a fakeout."
       },
       {
        "type": "fill_blank",
        "question": "A price move beyond a level that quickly reverses, rather than continuing, is commonly called a [___].",
        "options": [
+        "breakout",
         "drawdown",
-        "fakeout",
-        "breakout"
+        "fakeout"
        ],
-       "correct": 1,
+       "correct": 2,
        "explanation": "\"Fakeout\" is the standard term for this reversal-after-clearing pattern."
       },
       {
@@ -34652,15 +35183,15 @@
          "wrong_explanation": "A fakeout describes a specific completed pattern, not a rule about every breakout."
         },
         {
-         "label": "A price move beyond a level that quickly reverses, rather than continuing",
-         "correct": true,
-         "detail": "A reversal-after-clearing pattern"
-        },
-        {
          "label": "A price move beyond a level that continues steadily afterward",
          "correct": false,
          "detail": "This describes a breakout, not a fakeout",
          "wrong_explanation": "That description matches the commonly described idea of a breakout instead."
+        },
+        {
+         "label": "A price move beyond a level that quickly reverses, rather than continuing",
+         "correct": true,
+         "detail": "A reversal-after-clearing pattern"
         }
        ],
        "concern": "Understanding this specific pattern",
@@ -34672,11 +35203,11 @@
        "scenario": "Someone labels a move a \"fakeout\" the instant price clears a level, before waiting to see what happens next.",
        "question": "What is the mistake?",
        "options": [
-        "They should ignore what happens after price clears a level.",
         "A fakeout is commonly classified only after price clears a level and then quickly reverses. It can't be confirmed at the moment of clearing alone.",
-        "They should label every single clearing of a level a fakeout immediately."
+        "They should label every single clearing of a level a fakeout immediately.",
+        "They should ignore what happens after price clears a level."
        ],
-       "correct": 1,
+       "correct": 0,
        "explanation": "Classifying a fakeout requires observing the reversal after the clearing, not just the initial move.",
        "chart": "resistanceRejection"
       },
@@ -34684,11 +35215,11 @@
        "type": "fill_blank",
        "question": "A fakeout is a price move beyond a level that quickly [___].",
        "options": [
-        "disappears",
         "reverses",
-        "continues"
+        "continues",
+        "disappears"
        ],
-       "correct": 1,
+       "correct": 0,
        "explanation": "A quick reversal after clearing a level is what defines a fakeout."
       },
       {
@@ -34720,11 +35251,11 @@
        "type": "multiple_choice",
        "question": "Which response to a losing streak is commonly described as disciplined?",
        "options": [
-        "Pausing to review whether the plan was followed, without making an immediate emotional overhaul.",
         "Abandoning the plan permanently after the very first loss in the streak.",
-        "Immediately doubling position size to recover the losses as fast as possible."
+        "Immediately doubling position size to recover the losses as fast as possible.",
+        "Pausing to review whether the plan was followed, without making an immediate emotional overhaul."
        ],
-       "correct": 0,
+       "correct": 2,
        "explanation": "A calm, process-focused review is commonly cited as the disciplined response, in contrast to reactive extremes."
       },
       {
@@ -34750,11 +35281,11 @@
        "type": "fill_blank",
        "question": "A calm review of whether a plan was actually followed, without an emotional overhaul, is commonly described as a [___] response.",
        "options": [
-        "disciplined",
         "revenge",
+        "disciplined",
         "random"
        ],
-       "correct": 0,
+       "correct": 1,
        "explanation": "\"Disciplined\" is the commonly cited term for this calm, process-focused response."
       },
       {
@@ -34785,15 +35316,15 @@
          "wrong_explanation": "A disciplined response describes a process, not a guaranteed outcome."
         },
         {
+         "label": "A calm review of whether the plan was followed, without an emotional overhaul",
+         "correct": true,
+         "detail": "A process-focused, level-headed response"
+        },
+        {
          "label": "Immediately abandoning the plan after the very first loss",
          "correct": false,
          "detail": "This describes an overreactive response, not a disciplined one",
          "wrong_explanation": "That's closer to an overreaction than a disciplined review."
-        },
-        {
-         "label": "A calm review of whether the plan was followed, without an emotional overhaul",
-         "correct": true,
-         "detail": "A process-focused, level-headed response"
         }
        ],
        "concern": "Understanding this specific concept",
@@ -34805,11 +35336,11 @@
        "scenario": "Someone responds to three losses in a row by immediately doubling their position size to \"make it back.\"",
        "question": "What is the mistake?",
        "options": [
-        "Immediately increasing size to recover losses quickly is commonly described as a revenge-trading response, not a disciplined one.",
+        "They should double their size again after the next loss too.",
         "They should assume this response guarantees recovering the losses.",
-        "They should double their size again after the next loss too."
+        "Immediately increasing size to recover losses quickly is commonly described as a revenge-trading response, not a disciplined one."
        ],
-       "correct": 0,
+       "correct": 2,
        "explanation": "This response matches the commonly described revenge-trading pattern rather than a calm, disciplined review.",
        "chart": "downtrend"
       },
@@ -34817,11 +35348,11 @@
        "type": "fill_blank",
        "question": "A disciplined response to a losing streak is a calm review of the [___].",
        "options": [
-        "process",
         "random guesses",
-        "account balance"
+        "account balance",
+        "process"
        ],
-       "correct": 0,
+       "correct": 2,
        "explanation": "Reviewing whether the process was followed is the disciplined response."
       },
       {
@@ -34848,12 +35379,6 @@
        "question": "Given a chart showing a long sequence of higher highs and higher lows, which classification best fits?",
        "options": [
         {
-         "label": "Choppy",
-         "correct": false,
-         "detail": "Doesn't match this description",
-         "wrong_explanation": "Choppy describes oscillation with no net progress, not sustained higher highs and lows."
-        },
-        {
          "label": "Trending",
          "correct": true,
          "detail": "Matches the sustained-direction description"
@@ -34863,6 +35388,12 @@
          "correct": false,
          "detail": "Describes swing size, not direction",
          "wrong_explanation": "Volatile describes swing size/speed, not necessarily a sustained direction."
+        },
+        {
+         "label": "Choppy",
+         "correct": false,
+         "detail": "Doesn't match this description",
+         "wrong_explanation": "Choppy describes oscillation with no net progress, not sustained higher highs and lows."
         }
        ],
        "concern": "Classifying a market condition",
@@ -34879,11 +35410,11 @@
        "type": "multiple_choice",
        "question": "Which best describes a disciplined process response after a string of losses?",
        "options": [
-        "Pausing to calmly review whether the plan was actually followed.",
         "Abandoning the plan permanently after a single loss.",
+        "Pausing to calmly review whether the plan was actually followed.",
         "Immediately doubling position size to recover the losses."
        ],
-       "correct": 0,
+       "correct": 1,
        "explanation": "A calm, process-focused review is the commonly described disciplined response."
       },
       {
@@ -34891,8 +35422,8 @@
        "question": "A market moving back and forth with no clear sustained direction is commonly classified as [___].",
        "options": [
         "choppy",
-        "volatile",
-        "trending"
+        "trending",
+        "volatile"
        ],
        "correct": 0,
        "explanation": "Reviewing the classification term from earlier in this unit."
@@ -34969,11 +35500,11 @@
        "type": "multiple_choice",
        "question": "What is the common thread across every unit in this course?",
        "options": [
-        "Providing a guaranteed, step-by-step system for winning every trade.",
+        "Building descriptive, educational vocabulary and classification skills, not providing specific trade signals.",
         "Focusing exclusively on one single strategy type as the only valid approach.",
-        "Building descriptive, educational vocabulary and classification skills, not providing specific trade signals."
+        "Providing a guaranteed, step-by-step system for winning every trade."
        ],
-       "correct": 2,
+       "correct": 0,
        "explanation": "Every unit built descriptive understanding and classification skill, not a signals system or a single mandated approach."
       },
       {
@@ -35000,8 +35531,8 @@
        "question": "A calm review of whether a plan was actually followed, without an emotional overhaul, is commonly called a [___] response.",
        "options": [
         "disciplined",
-        "revenge",
-        "random"
+        "random",
+        "revenge"
        ],
        "correct": 0,
        "explanation": "Reviewing a key term from the Trading Psychology and Full Simulation units."
@@ -35028,12 +35559,6 @@
        "question": "Which best summarizes the overall theme of this course?",
        "options": [
         {
-         "label": "This course is only useful for people who already trade professionally",
-         "correct": false,
-         "detail": "Overstates it",
-         "wrong_explanation": "The course was built as general, descriptive education."
-        },
-        {
          "label": "This course guarantees consistent profits if followed exactly",
          "correct": false,
          "detail": "Overstates certainty",
@@ -35043,6 +35568,12 @@
          "label": "This course builds descriptive, educational understanding of markets, not a system for specific trade decisions",
          "correct": true,
          "detail": "The central theme throughout"
+        },
+        {
+         "label": "This course is only useful for people who already trade professionally",
+         "correct": false,
+         "detail": "Overstates it",
+         "wrong_explanation": "The course was built as general, descriptive education."
         }
        ],
        "concern": "Reviewing the big picture",
@@ -35066,11 +35597,11 @@
        "type": "fill_blank",
        "question": "This course builds descriptive, educational vocabulary, not a system for specific [___] decisions.",
        "options": [
+        "random",
         "guaranteed",
-        "trade",
-        "random"
+        "trade"
        ],
-       "correct": 1,
+       "correct": 2,
        "explanation": "The whole course stays descriptive and educational, never a trade-decision system."
       },
       {
