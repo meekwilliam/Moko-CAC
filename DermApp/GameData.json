@@ -21419,6 +21419,16 @@
        "chart": "doubleTop"
       },
       {
+       "type": "tap_candles",
+       "question": "Tap both peaks that make up the pattern half of this confluence.",
+       "targets": [
+        1,
+        3
+       ],
+       "explanation": "Candles 2 and 4 are the double top's two peaks, the pattern reinforcing the resistance level.",
+       "chart": "doubleTop"
+      },
+      {
        "type": "true_false",
        "question": "A pattern at a key level is stronger evidence than the same pattern in empty space.",
        "correct": true,
@@ -28877,6 +28887,14 @@
        "chart": "lowerHighsDowntrend"
       },
       {
+       "type": "draw_trendline",
+       "question": "Drag to connect the lower highs that confirm this trending condition.",
+       "target_start": 0,
+       "target_end": 2,
+       "explanation": "Candles 1 and 3 mark the falling sequence of lower highs that define a trending condition here.",
+       "chart": "lowerHighsDowntrend"
+      },
+      {
        "type": "fill_blank",
        "question": "A trending condition has a clear [___] in one direction.",
        "options": [
@@ -28933,6 +28951,14 @@
        "question": "Drag the line to the range's resistance.",
        "level_kind": "resistance",
        "explanation": "The ceiling of the range is its resistance.",
+       "chart": "range"
+      },
+      {
+       "type": "mark_consolidation",
+       "question": "Drag across every candle bounded inside this ranging condition.",
+       "target_lo": 0,
+       "target_hi": 5,
+       "explanation": "All six candles here stay bounded between support and resistance, the ranging condition itself.",
        "chart": "range"
       },
       {
