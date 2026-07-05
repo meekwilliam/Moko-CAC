@@ -3893,7 +3893,346 @@ High volume always guarantees success.
 Volume has no relationship to move quality at all.
 WHY: This unit consistently frames volume as descriptive context, never a guarantee.
 
-UNIT 7 — Trends & Structure
+UNIT 7 — Price Action Vocabulary
+NODE 1
+TITLE: Swing Highs & Swing Lows
+CELEBRATION: You understand swing highs and lows!
+
+INTRO
+TITLE: The Turning Points
+TEXT: A swing high is a peak where price turned down; a swing low is a trough where price turned up. These turning points are the raw building blocks behind trend and structure.
+CHART: pullbackUptrend
+
+[MC] A "swing high" is...
+A peak where price turned down afterward.
+A trough where price turned up afterward.
+Any random candle on the chart.
+WHY: A swing high specifically marks a turning point where price reversed downward.
+
+[TF] A swing low is a trough where price turned up afterward.
+ANSWER: True
+WHY: That's the standard definition of a swing low.
+
+[FILL] Swing highs and lows are the raw building blocks behind [___] and structure.
+trend
+volume
+color
+WHY: These turning points are what trend/structure classification is built from.
+
+[TAPCANDLE] Tap the swing high on this chart.
+CHART: pullbackUptrend
+TARGET: 1
+WHY: The 1st candle's peak, right before the pullback, is a swing high.
+
+[MATCH] Match the term to its meaning.
+Swing high => A peak where price turned down
+Swing low => A trough where price turned up
+Turning point => The general term for either one
+WHY: These are the basic vocabulary for describing price's ups and downs.
+
+[PICK] Why are swing highs and lows described as "raw building blocks"?
+CHART: pullbackUptrend
+CONCERN: Understanding their role
+Trend and structure classifications are built by comparing sequences of them | detail: Foundational vocabulary
+They have no relationship to trend classification | detail: Backwards | wrong: Trend classification is built directly from comparing these points.
+They only apply to downtrends | detail: Incomplete | wrong: Swing highs/lows apply to any market condition.
+WHY: Comparing sequences of swing highs/lows is literally how trend structure gets classified.
+
+[SPOT] Someone tries to classify a trend without ever identifying any swing highs or lows.
+CHART: pullbackUptrend
+QUESTION: What is the mistake?
+Trend classification is built from comparing swing highs and lows — skipping them removes the basis for the read.
+Swing highs and lows are unnecessary for trend reading.
+Any single candle can replace a full swing sequence.
+WHY: Swing highs/lows are the foundational vocabulary trend classification relies on.
+
+NODE 2
+TITLE: Impulses & Corrections
+CELEBRATION: You understand impulses and corrections!
+
+INTRO
+TITLE: The Push and the Pause
+TEXT: An impulse is a strong, decisive move in the trend's direction. A correction is the smaller counter-move that follows — the same idea as a pullback, named differently.
+CHART: pullbackUptrend
+
+[MC] An "impulse" is...
+A strong, decisive move in the trend's direction.
+A small counter-move against the trend.
+A single candle with no body.
+WHY: Impulse describes the strong, decisive leg of a trend.
+
+[TF] A correction is the same basic idea as a pullback, just a different name.
+ANSWER: True
+WHY: "Correction" and "pullback" both describe a temporary counter-move within a trend.
+
+[FILL] An impulse moves [___] with the trend; a correction moves against it.
+in line
+opposite
+sideways only
+WHY: Impulse legs align with the trend direction; corrections move against it temporarily.
+
+[MATCH] Match the term to its role.
+Impulse => The strong, decisive leg in the trend's direction
+Correction => The smaller counter-move that follows
+Impulse-correction cycle => The repeating pattern that builds a trend
+WHY: Trends are commonly described as a repeating cycle of impulses and corrections.
+
+[PICK] How does an impulse differ from a correction?
+CHART: pullbackUptrend
+CONCERN: Telling them apart
+An impulse is the strong move with the trend; a correction is the smaller pause against it | detail: Direction and size both differ
+They are exactly the same thing | detail: Incorrect | wrong: One moves with the trend, the other against it.
+Impulses only happen in downtrends | detail: Incomplete | wrong: Impulses occur in either direction, aligned with whichever trend is in play.
+WHY: Direction (with vs. against the trend) is what separates an impulse from a correction.
+
+[SPOT] Someone labels every single candle in an uptrend as an "impulse," including the pullbacks.
+CHART: pullbackUptrend
+QUESTION: What is the mistake?
+Only the strong, trend-aligned legs are impulses — the counter-trend dips are corrections, not impulses.
+Impulses and corrections are the same label for everything.
+Corrections don't exist as a separate concept.
+WHY: Impulses and corrections describe two distinct, alternating phases within a trend.
+
+NODE 3
+TITLE: Compression & Expansion
+CELEBRATION: You understand compression and expansion!
+
+INTRO
+TITLE: Squeezing and Releasing
+TEXT: Compression describes price ranges narrowing (like inside a triangle or tight consolidation). Expansion describes ranges widening out again, often after a squeeze.
+CHART: symmetricalTriangle
+
+[MC] "Compression" describes...
+Price ranges narrowing over time.
+Price ranges widening dramatically.
+A single candle's exact color.
+WHY: Compression specifically describes a narrowing price range.
+
+[TF] Expansion describes price ranges widening, often after a period of compression.
+ANSWER: True
+WHY: Expansion is commonly described as the release that follows a compressed, narrowing range.
+
+[FILL] A symmetrical triangle is a chart example of [___].
+compression
+expansion
+neither
+WHY: The narrowing, converging structure of a triangle is a form of compression.
+
+[MATCH] Match the term to its description.
+Compression => Price ranges narrowing
+Expansion => Price ranges widening, often after compression
+Squeeze => Another common term for compression
+WHY: These terms describe the narrowing-then-widening rhythm commonly seen in price.
+
+[PICK] What commonly follows a period of compression?
+CHART: symmetricalTriangle
+CONCERN: Reading the rhythm
+Expansion — the range widening out again | detail: A commonly observed rhythm
+Compression always continues forever | detail: Overstates it | wrong: Compression is commonly described as temporary, resolving eventually.
+Nothing ever follows compression | detail: Incorrect | wrong: Expansion is the commonly cited follow-through.
+WHY: Compression is commonly read as a temporary squeeze that resolves into expansion.
+
+[SPOT] Someone assumes a compressed, narrowing range will stay narrow forever.
+CHART: symmetricalTriangle
+QUESTION: What is the mistake?
+Compression is commonly described as temporary, eventually resolving into expansion.
+Compression never resolves into anything else.
+Expansion has no relationship to compression.
+WHY: The narrowing-then-widening rhythm is a commonly cited pattern, not a permanent state.
+
+NODE 4
+TITLE: Rejection & Acceptance
+CELEBRATION: You understand rejection and acceptance!
+
+INTRO
+TITLE: Testing a Level
+TEXT: Rejection describes price testing a level and getting pushed back (like a long wick). Acceptance describes price testing a level and then holding there, trading through it comfortably.
+CHART: rejectionWickUp
+
+[MC] "Rejection" at a level describes...
+Price testing the level and getting pushed back.
+Price testing the level and comfortably holding there.
+A candle with no wicks at all.
+WHY: Rejection specifically describes a failed test that gets pushed back.
+
+[TF] "Acceptance" describes price testing a level and then comfortably holding or trading through it.
+ANSWER: True
+WHY: Acceptance is the opposite of rejection — the level is absorbed rather than pushed back from.
+
+[FILL] A long wick at a level is commonly read as a sign of [___].
+rejection
+acceptance
+neither
+WHY: A long wick shows a level was tested and pushed back from — rejection.
+
+[MATCH] Match the term to its description.
+Rejection => Price tested a level and got pushed back
+Acceptance => Price tested a level and comfortably held there
+Both => Ways of describing how price behaves at a tested level
+WHY: Rejection and acceptance are two contrasting ways price can behave at the same level.
+
+[PICK] How would you describe price that breaks a level and then holds calmly above it?
+CHART: breakoutRetest
+CONCERN: Reading level behavior
+Acceptance — the level was tested and comfortably held through | detail: Calm holding above the level
+Rejection — the level pushed price back | detail: Opposite behavior | wrong: Rejection describes a push-back, not a calm hold.
+Neither term applies here | detail: Incomplete | wrong: Acceptance specifically describes this calm-holding behavior.
+WHY: Calmly holding through a level, rather than being pushed back, is acceptance.
+
+[SPOT] Someone calls a long-wick rejection candle an example of "acceptance."
+CHART: rejectionWickUp
+QUESTION: What is the mistake?
+A long wick shows price was pushed back — that's rejection, not the calm holding that defines acceptance.
+Rejection and acceptance mean the same thing.
+Wick length has no relationship to rejection or acceptance.
+WHY: A pushed-back wick is rejection; acceptance describes a level being calmly held or traded through instead.
+
+NODE 5
+TITLE: Continuation & Exhaustion
+CELEBRATION: You understand continuation and exhaustion!
+
+INTRO
+TITLE: Keep Going or Run Out of Steam
+TEXT: Continuation describes a move persisting in its existing direction. Exhaustion describes signs a move may be running out of steam, like shrinking bodies or rejected pushes.
+CHART: pullbackUptrend
+
+[MC] "Continuation" describes...
+A move persisting in its existing direction.
+A move suddenly reversing direction.
+A candle with no body.
+WHY: Continuation specifically describes the existing direction persisting.
+
+[TF] Exhaustion describes signs a move may be running out of steam.
+ANSWER: True
+WHY: Shrinking bodies or rejected pushes are commonly cited exhaustion signs.
+
+[FILL] Shrinking candle bodies late in a move are a commonly cited sign of [___].
+exhaustion
+continuation
+acceptance
+WHY: Smaller bodies suggest weakening momentum — a commonly cited exhaustion sign.
+
+[MATCH] Match the term to its description.
+Continuation => The existing move persisting
+Exhaustion => Signs the move may be running out of steam
+Both => Contrasting reads of an ongoing trend's health
+WHY: Continuation and exhaustion are contrasting ways to read whether a move still has strength.
+
+[PICK] How should exhaustion signs be read?
+CHART: pullbackUptrend
+CONCERN: Reading them honestly
+As a descriptive clue the move may be weakening, not a guaranteed end | detail: Descriptive, not certain
+As a guarantee the move ends immediately | detail: Overstates certainty | wrong: Exhaustion signs are clues, not guarantees.
+As proof continuation is impossible from here | detail: Overstates it | wrong: The move can still continue despite exhaustion signs.
+WHY: Exhaustion signs are descriptive clues about weakening momentum, not a certain ending.
+
+[SPOT] Someone treats a single small-bodied candle as guaranteed proof the whole trend is over.
+CHART: pullbackUptrend
+QUESTION: What is the mistake?
+One candle is a clue, not a guarantee — exhaustion signs describe a possibility, not a certainty.
+A single candle always ends a trend for certain.
+Exhaustion signs never mean anything at all.
+WHY: Exhaustion signs are descriptive context, read alongside everything else, not a standalone guarantee.
+
+NODE 6
+TITLE: Reading Context
+CELEBRATION: You understand reading context!
+
+INTRO
+TITLE: The Same Vocabulary, Different Meaning
+TEXT: Context — where a candle or move sits relative to the broader trend, level, and recent structure — changes how every term in this unit should be read.
+CHART: breakoutRetest
+
+[MC] Why does "context" matter so much in price action reading?
+The same shape or move can mean different things depending on the surrounding trend and levels.
+Context never changes how anything should be read.
+Context only matters for the very first candle on a chart.
+WHY: The surrounding trend and levels can change the meaning of an identical shape or move.
+
+[TF] An impulse in an uptrend and an impulse in a downtrend describe the same underlying idea, just in different directions.
+ANSWER: True
+WHY: Impulse describes a strong, trend-aligned move regardless of which direction the trend runs.
+
+[FILL] Reading price action well means combining vocabulary with [___].
+context
+guesswork
+random guessing
+WHY: Context is what turns raw vocabulary into a meaningful read.
+
+[MATCH] Match the price-action term to why context matters for it.
+Rejection => Reads differently depending on the level it happens at
+Continuation vs. exhaustion => Depends on where the move sits in its overall structure
+Compression => Read differently depending on the broader trend surrounding it
+WHY: Every term in this unit changes meaning depending on the surrounding context.
+
+[PICK] Which best captures why context matters in price action reading?
+CHART: breakoutRetest
+CONCERN: Tying vocabulary to context
+The same term or shape means different things depending on the surrounding trend and levels | detail: Context shapes meaning
+Context never affects how a term should be read | detail: Backwards | wrong: This lesson's whole point is that it does.
+Only the exact vocabulary word matters, never the surroundings | detail: Incomplete | wrong: The surroundings are what make the vocabulary meaningful.
+WHY: Combining vocabulary with context is what makes price-action reading useful.
+
+[SPOT] Someone memorizes every term in this unit but never once considers the surrounding trend or level.
+CHART: breakoutRetest
+QUESTION: What is the mistake?
+Vocabulary without context misses the surrounding trend and levels that actually give each term its meaning.
+Memorizing terms is the only skill that matters here.
+Context has no relationship to price-action vocabulary.
+WHY: Context is what turns raw vocabulary into a meaningful, applied reading skill.
+
+NODE 7
+TITLE: Price Action Vocabulary Review
+CELEBRATION: You've completed the Price Action Vocabulary unit!
+
+INTRO
+TITLE: Bringing the Vocabulary Together
+TEXT: A final review of swing highs/lows, impulses/corrections, compression/expansion, rejection/acceptance, continuation/exhaustion, and context.
+
+[TF] Every term in this unit describes price action descriptively, not as a guaranteed signal.
+ANSWER: True
+WHY: That's the common thread across every lesson in this unit.
+
+[FILL] A peak where price turned down is called a swing [___].
+high
+low
+average
+WHY: Reviewing the term from earlier in this unit.
+
+[MC] What do impulse/correction and compression/expansion have in common?
+Both are pairs of contrasting price-action phases.
+Both describe the exact same single idea.
+Neither has any relationship to price behavior.
+WHY: Each pair describes two contrasting phases within price's ongoing rhythm.
+
+[MATCH] Match each term to its one-line meaning.
+Swing high/low => A turning point in price
+Impulse/correction => The strong move and its counter-pause
+Compression/expansion => Narrowing and widening price ranges
+WHY: A quick recap of the unit's core vocabulary.
+
+[FILL2] Price-action vocabulary is most useful when combined with [1], since the same term can mean different things depending on [2].
+BLANK1: *context | guesswork | random chance
+BLANK2: *surroundings | color | volume only
+WHY: Context is what gives meaning to this vocabulary, as covered in the previous lesson.
+
+[PICK] Which best summarizes this unit?
+CHART: pullbackUptrend
+CONCERN: Reviewing the big picture
+A shared vocabulary for describing price behavior, most useful combined with context | detail: The central theme
+A set of guaranteed trading signals | detail: Overstates certainty | wrong: This contradicts the whole unit.
+Vocabulary unrelated to earlier units in the course | detail: Backwards | wrong: This vocabulary describes ideas already covered, just named precisely.
+WHY: Shared, context-dependent vocabulary is the throughline of this unit.
+
+[SPOT] Someone finishes this unit and starts using these terms as guaranteed trade signals.
+CHART: pullbackUptrend
+QUESTION: What is the mistake?
+This vocabulary is descriptive — useful for communication and reading charts, not a guaranteed signal system.
+These terms guarantee specific trading outcomes.
+This vocabulary has no practical use at all.
+WHY: Like the rest of this course, this vocabulary supports descriptive reading, not guaranteed signals.
+
+UNIT 8 — Trends & Structure
 NODE 1
 TITLE: Uptrend Basics
 CELEBRATION: You understand uptrends!
@@ -4788,7 +5127,7 @@ WHY: Descriptive clarity, not predictive certainty, has been the throughline.
 ANSWER: True
 WHY: These concepts complement each other rather than standing alone.
 
-UNIT 8 — Support & Resistance
+UNIT 9 — Support & Resistance
 NODE 1
 TITLE: What Is Support?
 CELEBRATION: You understand support levels!
@@ -5546,7 +5885,7 @@ WHY: Descriptive, not predictive, framing has been the throughline of this unit.
 ANSWER: True
 WHY: Both describe possible outcomes once a level has been broken.
 
-UNIT 9 — Double Tops & Bottoms
+UNIT 10 — Double Tops & Bottoms
 NODE 1
 TITLE: What Is a Double Top?
 CELEBRATION: You can spot a double top on a chart!
@@ -6310,7 +6649,7 @@ CHART: doubleBottom
 LEVEL: support
 WHY: Support runs across the bottoms of the two troughs.
 
-UNIT 10 — Head & Shoulders
+UNIT 11 — Head & Shoulders
 NODE 1
 TITLE: What Is a Head & Shoulders?
 CELEBRATION: You can spot a head & shoulders on a chart!
@@ -6967,7 +7306,7 @@ Memorizing one exact price forever.
 Ignoring the neckline entirely.
 WHY: Combining structure and confirmation is the core skill from this unit.
 
-UNIT 11 — Triangles
+UNIT 12 — Triangles
 NODE 1
 TITLE: What Is an Ascending Triangle?
 CELEBRATION: You can spot an ascending triangle!
@@ -7321,7 +7660,7 @@ WHY: All three triangle types are reviewed together in this final lesson.
 ANSWER: True
 WHY: This remains true throughout — triangles inform a bias, never a guarantee.
 
-UNIT 12 — Flags & Pennants
+UNIT 13 — Flags & Pennants
 NODE 1
 TITLE: What Is a Bull Flag?
 CELEBRATION: You can spot a bull flag!
@@ -7619,7 +7958,7 @@ WHY: All three continuation patterns are reviewed together here.
 ANSWER: True
 WHY: This remains true throughout — flags and pennants suggest a tendency, never a guarantee.
 
-UNIT 13 — Wedges & Channels
+UNIT 14 — Wedges & Channels
 NODE 1
 TITLE: What Is a Rising Wedge?
 CELEBRATION: You can spot a rising wedge!
@@ -7916,7 +8255,7 @@ WHY: All the structures from this unit are reviewed together here.
 ANSWER: True
 WHY: As with other patterns, wedges suggest a bias, never a guaranteed outcome.
 
-UNIT 14 — Trendlines
+UNIT 15 — Trendlines
 NODE 1
 TITLE: What Is a Trendline?
 CELEBRATION: You understand trendlines!
@@ -8218,7 +8557,7 @@ Drawing random diagonal lines anywhere on the chart.
 Ignoring trendlines entirely.
 WHY: Grounding trendlines in actual turning points, then reading touches/breaks, is the core skill.
 
-UNIT 15 — Ranges & Consolidation
+UNIT 16 — Ranges & Consolidation
 NODE 1
 TITLE: What Is a Range?
 CELEBRATION: You can spot a range!
@@ -8533,7 +8872,7 @@ Assuming every range lasts forever.
 Assuming every breakout is guaranteed to continue.
 WHY: Reading boundaries plus healthy skepticism about breaks is the core skill here.
 
-UNIT 16 — Breakouts & Retests
+UNIT 17 — Breakouts & Retests
 NODE 1
 TITLE: What Is a Breakout?
 CELEBRATION: You can spot a breakout!
@@ -8836,7 +9175,7 @@ Assuming every breakout is guaranteed to hold.
 Ignoring breakouts entirely.
 WHY: Healthy skepticism paired with reading the retest is the core skill here.
 
-UNIT 17 — Pullbacks & Continuation
+UNIT 18 — Pullbacks & Continuation
 NODE 1
 TITLE: What Is a Pullback?
 CELEBRATION: You understand pullbacks!
@@ -9130,7 +9469,7 @@ Assuming every pullback is a full reversal.
 Ignoring pullbacks entirely.
 WHY: Checking whether the structure holds is the core skill from this unit.
 
-UNIT 18 — Momentum & Exhaustion
+UNIT 19 — Momentum & Exhaustion
 NODE 1
 TITLE: Reading Momentum From Bodies
 CELEBRATION: You can read momentum off a chart!
@@ -9418,7 +9757,7 @@ Only ever looking at candle color.
 Ignoring candle shape entirely.
 WHY: Combining body and wick reads is the core skill from this unit.
 
-UNIT 19 — Confluence
+UNIT 20 — Confluence
 NODE 1
 TITLE: What Is Confluence?
 CELEBRATION: You understand confluence!
@@ -9717,7 +10056,7 @@ Acting on a single isolated signal as if it were certain.
 Ignoring levels, patterns, and trend entirely.
 WHY: Seeking agreement across factors (without assuming certainty) is the core skill here.
 
-UNIT 20 — Gaps
+UNIT 21 — Gaps
 NODE 1
 TITLE: What Is a Gap?
 CELEBRATION: You can spot a gap!
@@ -9962,7 +10301,7 @@ Assuming every gap fills immediately.
 Ignoring gaps entirely.
 WHY: Reading gaps descriptively, without assuming a guaranteed fill, is the core skill here.
 
-UNIT 21 — Multi-Timeframe Basics
+UNIT 22 — Multi-Timeframe Basics
 NODE 1
 TITLE: What Is a Timeframe?
 CELEBRATION: You understand timeframes!
@@ -10255,7 +10594,7 @@ Only ever looking at one single timeframe forever.
 Ignoring timeframes entirely.
 WHY: Top-down, context-first reading across timeframes is the core skill here.
 
-UNIT 22 — Chart-Reading Mastery
+UNIT 23 — Chart-Reading Mastery
 NODE 1
 TITLE: Pattern Speed Round
 CELEBRATION: You can name any pattern fast!
@@ -10614,7 +10953,7 @@ Memorizing one guaranteed rule for every situation.
 Ignoring charts entirely and guessing.
 WHY: Combining multiple descriptive reads is the core Intermediate-level skill.
 
-UNIT 23 — Risk Management
+UNIT 24 — Risk Management
 NODE 1
 TITLE: What Is Risk Per Trade?
 CELEBRATION: You understand risk per trade!
@@ -11303,7 +11642,7 @@ WHY: All the core ideas from this unit are reviewed together here.
 ANSWER: False
 WHY: Risk management limits the damage from losses; it doesn't eliminate losses entirely.
 
-UNIT 24 — Strategy Types
+UNIT 25 — Strategy Types
 NODE 1
 TITLE: What Is Scalping?
 CELEBRATION: You understand scalping!
@@ -11852,7 +12191,7 @@ WHY: All six strategy types from this unit are reviewed together here.
 ANSWER: True
 WHY: This has been the throughline — descriptive categories, never guaranteed signals.
 
-UNIT 25 — Position Sizing & R
+UNIT 26 — Position Sizing & R
 NODE 1
 TITLE: Risk Per Trade
 CELEBRATION: You understand risk per trade!
@@ -12129,7 +12468,7 @@ WHY: All four core ideas from this unit are reviewed together here.
 ANSWER: True
 WHY: Measuring in R (multiples of risk) makes results comparable regardless of size.
 
-UNIT 26 — Expectancy & Edge
+UNIT 27 — Expectancy & Edge
 NODE 1
 TITLE: Win Rate Isn't Everything
 CELEBRATION: You understand why win rate alone misleads!
@@ -12388,7 +12727,7 @@ WHY: All four core ideas from this unit are reviewed together here.
 ANSWER: True
 WHY: This has been the throughline — combine frequency and size, over enough trades.
 
-UNIT 27 — Market Condition Classification
+UNIT 28 — Market Condition Classification
 NODE 1
 TITLE: Trending, Ranging, or Volatile?
 CELEBRATION: You can classify market conditions!
@@ -12660,7 +12999,7 @@ WHY: All three broad conditions from this unit are reviewed together here.
 ANSWER: True
 WHY: This has been the throughline — condition-first reading, framing everything else.
 
-UNIT 28 — Moving Averages
+UNIT 29 — Moving Averages
 NODE 1
 TITLE: What Is a Moving Average?
 CELEBRATION: You understand moving averages!
@@ -12956,7 +13295,7 @@ WHY: All the core ideas from this unit are reviewed together here.
 ANSWER: True
 WHY: This has been the throughline — smoothed, lagging, descriptive trend reading.
 
-UNIT 29 — Oscillators: RSI & MACD
+UNIT 30 — Oscillators: RSI & MACD
 NODE 1
 TITLE: What Is an Oscillator?
 CELEBRATION: You understand oscillators!
@@ -13207,7 +13546,7 @@ WHY: All the core ideas from this unit are reviewed together here.
 ANSWER: True
 WHY: This has been the throughline — descriptive, derived, lagging, never guaranteed.
 
-UNIT 30 — Trade Planning & Process
+UNIT 31 — Trade Planning & Process
 NODE 1
 TITLE: What Is a Trade Plan?
 CELEBRATION: You understand trade plans!
@@ -13460,7 +13799,7 @@ WHY: All the core ideas from this unit are reviewed together here.
 ANSWER: True
 WHY: This has been true throughout — plan ahead, then actually follow it.
 
-UNIT 31 — VWAP & Bollinger Bands
+UNIT 32 — VWAP & Bollinger Bands
 NODE 1
 TITLE: What Is VWAP?
 CELEBRATION: You understand VWAP!
@@ -13712,7 +14051,7 @@ WHY: Both tools from this unit are reviewed together here.
 ANSWER: True
 WHY: This has been the throughline — descriptive, average-based context, never guaranteed signals.
 
-UNIT 32 — Drawdowns & Losing Streaks
+UNIT 33 — Drawdowns & Losing Streaks
 NODE 1
 TITLE: What Is a Drawdown?
 CELEBRATION: You understand drawdowns!
@@ -13970,7 +14309,7 @@ WHY: All the core ideas from this unit are reviewed together here.
 ANSWER: True
 WHY: This has been the throughline — normal variance, plus recovery math driving preservation.
 
-UNIT 33 — Journaling & Review
+UNIT 34 — Journaling & Review
 NODE 1
 TITLE: Why Journal?
 CELEBRATION: You understand journaling!
@@ -14223,7 +14562,7 @@ WHY: All the core ideas from this unit are reviewed together here.
 ANSWER: True
 WHY: This has been true throughout — honest records, process focus, and the improvement loop.
 
-UNIT 34 — Trading Psychology
+UNIT 35 — Trading Psychology
 NODE 1
 TITLE: What Is FOMO?
 CELEBRATION: You understand FOMO!
@@ -14772,7 +15111,7 @@ WHY: All the core patterns from this unit are reviewed together here.
 ANSWER: True
 WHY: This has been the throughline — emotional patterns pulling away from disciplined plan-following.
 
-UNIT 35 — Full Simulation Training
+UNIT 36 — Full Simulation Training
 NODE 1
 TITLE: Classifying Trending Markets
 CELEBRATION: You can classify a trending market!

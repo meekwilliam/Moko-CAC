@@ -64,7 +64,7 @@ BEGINNER_UNITS = [
     "Trading Terminology", "Market Foundations", "Candlesticks", "Orders & Execution", "Market Mechanics",
 ]
 INTERMEDIATE_UNITS = [
-    "Volume Analysis",
+    "Volume Analysis", "Price Action Vocabulary",
     "Trends & Structure", "Support & Resistance",
     "Double Tops & Bottoms",
     "Head & Shoulders",
