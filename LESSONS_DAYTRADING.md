@@ -5944,6 +5944,23 @@ A guaranteed breakout up | detail: Overstates certainty | wrong: Triangles can b
 That the top is falling | detail: Backwards | wrong: The top is flat, not falling.
 WHY: An ascending triangle describes a squeeze — context, not certainty.
 
+
+[FILL] An ascending triangle has a flat [___] on top.
+resistance
+support
+neckline
+WHY: The flat top of an ascending triangle is the resistance being tested.
+
+[TF] An ascending triangle's lows are commonly described as rising.
+ANSWER: True
+WHY: Rising lows squeezing up under a flat top is the ascending triangle shape.
+
+[MC] What is squeezing together in an ascending triangle?
+Price, between a flat resistance and rising lows.
+Two flat, unmoving lines.
+Nothing — it's a random shape.
+WHY: Price is squeezed between the flat top and the rising lows.
+
 NODE 2
 TITLE: What Is a Descending Triangle?
 CELEBRATION: You can spot a descending triangle!
@@ -5983,6 +6000,23 @@ The two triangles are the same.
 The flat side doesn't matter.
 WHY: Which side is flat (top vs bottom) separates ascending from descending.
 
+
+[FILL] A descending triangle has a flat [___] on the bottom.
+support
+resistance
+neckline
+WHY: The flat bottom of a descending triangle is the support being tested.
+
+[TF] A descending triangle's highs are commonly described as falling.
+ANSWER: True
+WHY: Falling highs squeezing down onto a flat bottom is the descending triangle shape.
+
+[MC] What is squeezing together in a descending triangle?
+Price, between falling highs and a flat support.
+Two flat, unmoving lines.
+Nothing — it's a random shape.
+WHY: Price is squeezed between the falling highs and the flat bottom.
+
 NODE 3
 TITLE: What Is a Symmetrical Triangle?
 CELEBRATION: You can spot a symmetrical triangle!
@@ -6017,6 +6051,23 @@ They are identical | detail: Incorrect | wrong: One has a flat side, the other d
 A symmetrical triangle only has rising lows | detail: Incomplete | wrong: It has lower highs too, both converging.
 WHY: A symmetrical triangle converges on both sides; ascending/descending have one flat side.
 
+
+[FILL] A symmetrical triangle has [___] flat side(s).
+zero
+one
+two
+WHY: Both sides converge in a symmetrical triangle — neither is flat.
+
+[TF] A symmetrical triangle can break either upward or downward.
+ANSWER: True
+WHY: Without a flat side biasing one direction, a symmetrical triangle can resolve either way.
+
+[MC] What distinguishes a symmetrical triangle from ascending/descending ones?
+Neither side is flat — both converge toward a point.
+It always breaks upward.
+It has no lower boundary at all.
+WHY: Lacking a flat side is what makes it "symmetrical" rather than ascending or descending.
+
 NODE 4
 TITLE: The Flat Side Is the Level
 CELEBRATION: You can find the level in a triangle!
@@ -6050,6 +6101,17 @@ WHY: The flat top of an ascending triangle is a resistance being retested.
 ANSWER: True
 WHY: The flat bottom of a descending triangle is a support being retested.
 
+
+[FILL] The flat side of an ascending or descending triangle is being tested [___] over time.
+repeatedly
+once only
+never
+WHY: Repeated tests of the flat side is what makes it a meaningful level.
+
+[TF] Marking the flat side of a triangle is the same skill as marking any other support/resistance level.
+ANSWER: True
+WHY: The flat side of a triangle is simply a support or resistance level, read the same way.
+
 NODE 5
 TITLE: Which Way Does It Break?
 CELEBRATION: You can read triangles without over-predicting!
@@ -6082,6 +6144,17 @@ An ascending triangle is associated with an upward break but doesn't guarantee i
 Ascending triangles always break up.
 Break direction is fully predictable.
 WHY: A bias isn't a guarantee; triangles can and do break either way.
+
+
+[FILL] A triangle's expected break direction is described as a [___], not a guarantee.
+bias
+certainty
+rule
+WHY: Even a commonly associated direction is just a bias, not a promise.
+
+[TF] A descending triangle can still break upward, despite the commonly cited downward bias.
+ANSWER: True
+WHY: Bias describes a tendency, not a guarantee — any triangle can break either way.
 
 NODE 6
 TITLE: Triangle Identification Drill
@@ -6121,6 +6194,17 @@ WHY: The flat top is the resistance.
 CHART: descendingTriangle
 ANSWER: False
 WHY: This is a descending triangle (flat bottom), not a symmetrical one.
+
+
+[FILL] Fast identification drills help build quicker [___] recognition.
+pattern
+random
+zero
+WHY: Repetition across mixed triangle charts builds faster recognition.
+
+[TF] All three triangle types share the idea of price squeezing into a narrower range.
+ANSWER: True
+WHY: Squeezing into a narrowing range is the shared idea across ascending, descending, and symmetrical triangles.
 
 NODE 7
 TITLE: Triangles Review
@@ -6163,6 +6247,17 @@ Any sideways movement is a triangle.
 Converging lines don't matter.
 WHY: Triangles have specific converging structure; random drift doesn't qualify.
 
+
+[FILL] This review ties together ascending, descending, and [___] triangles.
+symmetrical
+random
+flat-only
+WHY: All three triangle types are reviewed together in this final lesson.
+
+[TF] Even after this review, a triangle's break direction should be read as a bias, not a certainty.
+ANSWER: True
+WHY: This remains true throughout — triangles inform a bias, never a guarantee.
+
 UNIT 9 — Flags & Pennants
 NODE 1
 TITLE: What Is a Bull Flag?
@@ -6203,6 +6298,23 @@ A guaranteed continuation | detail: Overstates certainty | wrong: It's a common 
 A reversal down | detail: Backwards | wrong: A bull flag is a continuation-up pattern, not a reversal.
 WHY: A bull flag describes a pause in an up-move that often continues — context, not certainty.
 
+
+[FILL] The strong initial move in a bull flag is called the [___].
+pole
+flag
+neckline
+WHY: "Pole" is the sharp initial up-move before the small pause.
+
+[TF] A bull flag's pause commonly drifts down or sideways, against the pole.
+ANSWER: True
+WHY: The flag portion drifts gently against the pole's direction before often continuing.
+
+[MC] What commonly happens after a clean bull flag's pause?
+Price often continues in the pole's original (upward) direction.
+Price always reverses down permanently.
+Nothing — the chart stops updating.
+WHY: Continuation of the pole's direction is the commonly cited tendency after a flag.
+
 NODE 2
 TITLE: What Is a Bear Flag?
 CELEBRATION: You can spot a bear flag!
@@ -6242,6 +6354,23 @@ Flags don't depend on direction.
 Bull and bear flags are the same.
 WHY: The pole's direction (up vs down) names the flag.
 
+
+[FILL] The strong initial move in a bear flag is called the [___].
+pole
+flag
+neckline
+WHY: "Pole" is the sharp initial down-move before the small pause.
+
+[TF] A bear flag's pause commonly drifts up, against the pole.
+ANSWER: True
+WHY: The flag portion drifts gently against the pole's direction (up, in a bear flag) before often continuing.
+
+[MC] What commonly happens after a clean bear flag's pause?
+Price often continues in the pole's original (downward) direction.
+Price always reverses up permanently.
+Nothing — the chart stops updating.
+WHY: Continuation of the pole's direction is the commonly cited tendency after a flag.
+
 NODE 3
 TITLE: Pole and Flag
 CELEBRATION: You can read the parts of a flag!
@@ -6278,6 +6407,17 @@ WHY: The flag consolidates gently against the pole before continuing.
 ANSWER: False
 WHY: The flag is a small pause; the pole is the large, strong move.
 
+
+[FILL] The flag portion is [___] than the pole.
+much smaller
+much larger
+identical in size
+WHY: The flag is a brief, small pause compared to the larger pole move.
+
+[TF] Both the pole and the flag are essential parts of this pattern.
+ANSWER: True
+WHY: The pattern needs both the strong pole and the smaller pause (flag) to be complete.
+
 NODE 4
 TITLE: Pennants
 CELEBRATION: You understand pennants!
@@ -6308,6 +6448,17 @@ WHY: Flag vs pennant differ in the pause's shape, not the overall idea.
 [TF] A pennant is a reversal pattern, unlike a flag.
 ANSWER: False
 WHY: Both flags and pennants are continuation pauses, not reversals.
+
+
+[FILL] A pennant's pause forms a small [___] instead of a rectangle.
+symmetrical triangle
+double top
+neckline
+WHY: A pennant's consolidation converges like a small symmetrical triangle, unlike a flag's rectangle shape.
+
+[TF] A pennant follows the same strong-pole-then-pause idea as a flag.
+ANSWER: True
+WHY: Pennants and flags share the same underlying pole-then-pause structure, just different pause shapes.
 
 NODE 5
 TITLE: Continuation, Not Reversal
@@ -6341,6 +6492,17 @@ A flag's continuation is a tendency, not a guarantee — it can fail and break t
 Flags always continue the trend.
 Continuation is fully certain.
 WHY: Continuation patterns are clues, not guarantees.
+
+
+[FILL] Flags and pennants are classified as [___] patterns.
+continuation
+reversal
+random
+WHY: Both are read as pauses that often continue the prior move, not reverse it.
+
+[TF] A flag or pennant is guaranteed to continue the prior trend.
+ANSWER: False
+WHY: Continuation is a common tendency, not a guarantee — the pattern can still fail.
 
 NODE 6
 TITLE: Flags & Pennants Review
@@ -6383,6 +6545,17 @@ Any sideways move is a flag.
 The pole doesn't matter.
 WHY: A flag needs a strong pole and a small pause; a big slow range isn't one.
 
+
+[FILL] This review ties together bull flags, bear flags, and [___].
+pennants
+neck lines
+random shapes
+WHY: All three continuation patterns are reviewed together here.
+
+[TF] Even after this review, continuation should be read as a tendency, not a certainty.
+ANSWER: True
+WHY: This remains true throughout — flags and pennants suggest a tendency, never a guarantee.
+
 UNIT 10 — Wedges & Channels
 NODE 1
 TITLE: What Is a Rising Wedge?
@@ -6418,6 +6591,23 @@ It has no highs or lows | detail: Incorrect | wrong: It has both; they just conv
 It always goes straight up forever | detail: Overstates | wrong: The converging shape is the point.
 WHY: Convergence distinguishes a wedge from a parallel trend.
 
+
+[FILL] A rising wedge's lines [___] rather than staying parallel.
+converge
+diverge
+stay flat
+WHY: Converging (narrowing) lines are what define a wedge, unlike a parallel channel.
+
+[TF] A rising wedge is commonly read as a possible reversal downward, despite price rising.
+ANSWER: True
+WHY: The converging structure is commonly read as weakening, even though price is rising.
+
+[MC] What happens to the space between the two lines in a rising wedge?
+It narrows over time.
+It widens over time.
+It stays exactly the same.
+WHY: Converging lines narrow the space between them as the wedge progresses.
+
 NODE 2
 TITLE: What Is a Falling Wedge?
 CELEBRATION: You can spot a falling wedge!
@@ -6452,6 +6642,23 @@ A wedge and a plain downtrend are identical.
 Convergence doesn't matter.
 WHY: The converging shape is what distinguishes a wedge from a plain trend.
 
+
+[FILL] A falling wedge's lines [___] rather than staying parallel.
+converge
+diverge
+stay flat
+WHY: Converging (narrowing) lines are what define a wedge, unlike a parallel channel.
+
+[TF] A falling wedge is commonly read as a possible reversal upward, despite price falling.
+ANSWER: True
+WHY: The converging structure is commonly read as a possible up reversal, even though price is falling.
+
+[MC] What happens to the space between the two lines in a falling wedge?
+It narrows over time.
+It widens over time.
+It stays exactly the same.
+WHY: Converging lines narrow the space between them as the wedge progresses.
+
 NODE 3
 TITLE: What Is a Channel?
 CELEBRATION: You can spot a channel!
@@ -6483,6 +6690,23 @@ Wedge => Converging (narrowing) lines
 Channel => Parallel lines
 Triangle => Converging (or one flat) lines
 WHY: Parallel vs converging is the key structural difference.
+
+
+[FILL] A channel's boundary lines stay [___] to each other.
+parallel
+converging
+crossing
+WHY: Parallel lines (not converging) define a channel.
+
+[TF] A channel can trend either upward (ascending) or downward (descending).
+ANSWER: True
+WHY: Both ascending and descending channels are trends bounded by parallel lines.
+
+[MC] What is the key visual difference between a wedge and a channel?
+A wedge's lines converge; a channel's lines stay parallel.
+A wedge only ever goes up; a channel only ever goes down.
+There is no difference at all.
+WHY: Converging vs. parallel lines is the defining structural difference.
 
 NODE 4
 TITLE: Wedge vs. Channel
@@ -6521,6 +6745,17 @@ channel — parallel lines | detail: Wrong structure | wrong: These lines conver
 triangle with a flat side | detail: Not quite | wrong: Both lines move; neither is flat here.
 WHY: Converging trendlines make it a wedge, not a channel.
 
+
+[FILL] The single question that separates a wedge from a channel is whether the lines [___].
+converge or stay parallel
+are red or green
+are drawn quickly
+WHY: This one structural read is the deciding factor between the two.
+
+[TF] A wedge and a channel can never be confused if you check convergence versus parallel lines.
+ANSWER: True
+WHY: Checking whether the lines converge or stay parallel reliably tells the two apart.
+
 NODE 5
 TITLE: Wedges & Channels Identification Drill
 CELEBRATION: You can classify wedges and channels!
@@ -6554,6 +6789,17 @@ WHY: A rising trend within parallel boundaries is an ascending channel.
 CHART: downtrend
 ANSWER: False
 WHY: This is a descending channel (parallel), not a converging falling wedge.
+
+
+[FILL] This drill practices telling wedges and channels apart by checking [___].
+convergence vs. parallel lines
+candle color
+account size
+WHY: Convergence versus parallel lines is the key read this drill practices.
+
+[TF] Repeated practice with mixed charts builds faster, more reliable structure recognition.
+ANSWER: True
+WHY: Like other identification drills in this course, repetition builds recognition speed.
 
 NODE 6
 TITLE: Wedges & Channels Review
@@ -6595,6 +6841,17 @@ A rising wedge specifically has converging lines; a plain rising trend within pa
 Any rising chart is a wedge.
 Convergence doesn't matter.
 WHY: The converging structure — not just rising — is what makes a wedge.
+
+
+[FILL] This review ties together rising wedges, falling wedges, and [___].
+channels
+neck lines
+random shapes
+WHY: All the structures from this unit are reviewed together here.
+
+[TF] Even after this review, a wedge's implied reversal remains a bias, not a certainty.
+ANSWER: True
+WHY: As with other patterns, wedges suggest a bias, never a guaranteed outcome.
 
 UNIT 11 — Trendlines
 NODE 1
