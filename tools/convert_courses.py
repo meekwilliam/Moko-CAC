@@ -87,6 +87,7 @@ ADVANCED_UNITS = [
     "Moving Averages", "Oscillators: RSI & MACD", "Trade Planning & Process",
     "VWAP & Bollinger Bands", "Drawdowns & Losing Streaks", "Journaling & Review",
     "Average True Range (ATR)", "Relative Volume (RVOL)", "Opening Range",
+    "Sector & Index Strength",
 ]
 EXPERT_UNITS = [
     "Trading Psychology", "Full Simulation Training",
