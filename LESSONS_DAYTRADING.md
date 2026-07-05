@@ -1111,15 +1111,15 @@ WHY: A doji is one of the most commonly referenced single-candle patterns.
 CHART: doji
 QUESTION: What is the mistake?
 No single candlestick can reliably predict future price with certainty.
-They should have looked at an even longer wick.
-They should have used a different-colored candle.
+A longer wick on the candle would have made it a valid prediction.
+A doji specifically predicts an up move next.
 WHY: Candlesticks describe what already happened. They aren't guarantees about what happens next.
 
 
 [MC] What does a candlestick's wick represent?
 The high and/or low price reached during that period.
-The exact trading volume for that period.
-The company's name.
+The open and close prices for that period.
+The average price for that period.
 WHY: Wicks mark the extreme high and low prices reached, beyond the body.
 
 [TF] Every single candlestick must have at least one visible wick.
@@ -1225,8 +1225,8 @@ WHY: "Gap" is the standard term for this kind of jump.
 
 [MC] Why do gaps commonly occur between trading sessions?
 News or events can shift buyer/seller sentiment while the market is closed.
-The chart software resets randomly overnight.
-Volume always drops to zero between sessions.
+Overnight trading slowly walks price to the new open.
+The bid-ask spread widening is what creates the gap.
 WHY: News overnight or over a weekend is a common reason expectations shift before the next open.
 
 [MATCH] Match the gap type to its description.
@@ -1264,8 +1264,8 @@ WHY: Treating "gaps always fill" as a certainty overstates what is really just a
 
 [MC] Which scenario would most likely cause a stock to gap up at the next open?
 Strong positive news released after the market closed.
-No news at all overnight.
-The market staying open continuously.
+A wide bid-ask spread at the prior close.
+Unusually low volume during the prior session.
 WHY: News released while the market is closed is a common cause of a gap at the next open.
 
 [TF] A "gap down" means the next candle opens noticeably higher than the prior close.
@@ -2294,8 +2294,8 @@ WHY: These reads are descriptive clues, never guarantees about the future.
 
 [MC] Reading a rejection wick's "suggestion" means considering...
 what the wick implies about buyer/seller behavior that period.
-only the wick's exact pixel length.
-the account balance.
+only which side the body closed on.
+the total volume traded that period.
 WHY: The suggestion is about behavior (who got rejected), not a measurement exercise.
 
 [FILL] Moving from naming a shape to reading its suggestion adds a layer of [___].
@@ -3467,7 +3467,7 @@ WHY: This ties the "why" mechanics (order flow, supply/demand) back to the "what
 CHART: resistanceRejection
 QUESTION: What is the mistake?
 Both trace back to shifts in the same underlying supply/demand and order-flow mechanics covered in this unit.
-Reversals and breakouts have no mechanical explanation at all.
+Only reversals have a mechanical cause, not breakouts.
 Only breakouts have a mechanical cause, not reversals.
 WHY: This unit's whole point is that both events trace back to the same underlying mechanics.
 
@@ -3502,8 +3502,8 @@ Auction theory => Price as a continuous search for an agreed level
 WHY: A quick recap of the unit's core mechanics.
 
 [FILL2] This unit explains the [1] behind price behavior, connecting back to candles, trends, and [2] from earlier units.
-BLANK1: *mechanics | color | random guesses
-BLANK2: *breakouts | company names | random events
+BLANK1: *mechanics | psychology | volume
+BLANK2: *breakouts | oscillators | divergence
 WHY: This unit ties the underlying mechanics to concepts already covered, candles, trends, and breakouts.
 
 [PICK] Which best summarizes this unit?
@@ -3819,8 +3819,8 @@ WHY: Volume adds context that can change how a candle's shape is interpreted.
 
 [FILL] Combining candle shape with volume is an example of [___] from an earlier unit.
 confluence
-random guessing
-guaranteed prediction
+a single isolated signal
+a lagging indicator
 WHY: This is the same confluence idea, multiple agreeing factors, applied to candles and volume.
 
 [MATCH] Match the combination to its commonly cited read.
@@ -4158,8 +4158,8 @@ WHY: Impulse describes a strong, trend-aligned move regardless of which directio
 
 [FILL] Reading price action well means combining vocabulary with [___].
 context
-guesswork
-random guessing
+a single indicator
+exact price targets
 WHY: Context is what turns raw vocabulary into a meaningful read.
 
 [MATCH] Match the price-action term to why context matters for it.
@@ -4257,8 +4257,8 @@ WHY: Higher lows stepping up is part of the classic uptrend description.
 
 [MC] What would commonly lead a chart reader to classify a chart as an uptrend?
 A pattern of higher swing highs and higher swing lows.
-A single green candle appearing anywhere on the chart.
-The asset's name containing a positive-sounding word.
+A single large green candle after a decline.
+More green candles than red on the chart.
 WHY: Classification is based on the pattern of swings, not one candle or the name.
 
 [MATCH] Match the trend feature to its role in an uptrend.
@@ -4327,8 +4327,8 @@ WHY: Lower highs stepping down is part of the classic downtrend description.
 
 [MC] What would commonly lead a chart reader to classify a chart as a downtrend?
 A pattern of lower swing highs and lower swing lows.
-A single red candle appearing anywhere on the chart.
-The asset's name containing a negative-sounding word.
+A single large red candle after a rally.
+More red candles than green on the chart.
 WHY: Classification is based on the pattern of swings, not one candle or the name.
 
 [MATCH] Match the trend feature to its role in a downtrend.
@@ -4472,8 +4472,8 @@ WHY: "Higher high" specifically means it exceeds the prior swing high.
 
 [MC] Why does a rising sequence of swing lows matter for an uptrend?
 It shows pullbacks are holding at progressively higher levels.
-It shows the asset is about to be delisted.
-It has no relationship to trend classification.
+It guarantees price will keep rising from here.
+It matters only for downtrends, not uptrends.
 WHY: Rising swing lows are part of the defining structure of an uptrend.
 
 [MATCH] Match the swing sequence to its label.
@@ -4542,8 +4542,8 @@ WHY: "Lower low" specifically means it falls below the prior swing low.
 
 [MC] Why does a falling sequence of swing highs matter for a downtrend?
 It shows rallies are failing at progressively lower levels.
-It shows the asset is about to be delisted.
-It has no relationship to trend classification.
+It guarantees price will keep falling from here.
+It matters only for uptrends, not downtrends.
 WHY: Falling swing highs are part of the defining structure of a downtrend.
 
 [MATCH] Match the swing sequence to its label.
@@ -4612,8 +4612,8 @@ WHY: "Strong" commonly describes a trend with consistent, sizable moves in one d
 
 [MC] What might commonly suggest a trend is weakening?
 Swings becoming smaller or less consistent than before.
-The chart changing to a different color scheme.
-The asset's name being mentioned in the news.
+Swings becoming larger and more one-directional.
+Price making a new, stronger high in the trend direction.
 WHY: Smaller, less consistent swings are commonly read as a sign of weakening momentum.
 
 [MATCH] Match the trend description to its common reading.
@@ -5163,7 +5163,7 @@ WHY: The floor price keeps reacting off of is the support level.
 [MC] Why might a chart reader mark a support level on a chart?
 To note a price area where price has reacted in the past, for reference.
 To guarantee price will bounce there again in the future.
-To change the color of the candles.
+To mark the single lowest price the chart has ever reached.
 WHY: Support levels are historical reference points, not guarantees of future behavior.
 
 [MATCH] Match the term to its common description.
@@ -5238,7 +5238,7 @@ WHY: The ceiling price keeps reacting off of is the resistance level.
 [MC] Why might a chart reader mark a resistance level on a chart?
 To note a price area where price has reacted in the past, for reference.
 To guarantee price will fall there again in the future.
-To change the color of the candles.
+To mark the single highest price the chart has ever reached.
 WHY: Resistance levels are historical reference points, not guarantees of future behavior.
 
 [MATCH] Match the term to its common description.
@@ -5317,7 +5317,7 @@ Level "memory" => Traders responding similarly to prices that mattered before
 WHY: These are commonly cited behavioral explanations, not guaranteed mechanisms.
 
 [FILL2] These explanations are [1], not [2] laws of how markets must behave.
-BLANK1: *commonly cited theories | proven guarantees | random guesses
+BLANK1: *commonly cited theories | proven guarantees | mechanical certainties
 BLANK2: *guaranteed laws | commonly cited theories | proven facts
 WHY: These are useful, widely discussed explanations, not iron-clad rules.
 
@@ -6285,8 +6285,8 @@ WHY: The "double" read depends on the two peaks being at about the same level.
 
 [FILL] Judging whether two peaks are "roughly equal" is a matter of [___], not exact math.
 degree
-guaranteed certainty
-random guessing
+exact measurement
+a fixed percentage rule
 WHY: "About the same" is a practical, descriptive judgment, not a strict formula.
 
 [TF] A second peak noticeably lower than the first also weakens the double top read.
@@ -6349,8 +6349,8 @@ WHY: The "double" read depends on the two troughs being at about the same level.
 
 [FILL] Judging whether two troughs are "roughly equal" is a matter of [___], not exact math.
 degree
-guaranteed certainty
-random guessing
+exact measurement
+a fixed percentage rule
 WHY: "About the same" is a practical, descriptive judgment, not a strict formula.
 
 [TF] A second trough noticeably higher than the first also weakens the double bottom read.
@@ -6478,8 +6478,8 @@ WHY: This is a single support bounce (one touch), not a two-touch double bottom.
 
 [FILL] This drill practices spotting [___] before naming a pattern.
 touch count
-candle color
-company name
+wick length
+gap size
 WHY: Counting touches at a level is the first step to correctly naming these patterns.
 
 [TF] Speed drills like this one help build faster, more consistent pattern recognition.
@@ -6969,8 +6969,8 @@ WHY: The defining feature is a head that stands above both shoulders.
 
 [FILL] Judging shoulder symmetry is about [___], not exact precision.
 degree
-guaranteed certainty
-random guessing
+exact measurement
+a fixed percentage rule
 WHY: "About the same" height is a practical, descriptive judgment.
 
 [TF] A lopsided head & shoulders (very unequal shoulders) is read as a weaker version of the pattern.
@@ -7274,8 +7274,8 @@ WHY: In the inverse pattern, the neckline runs along the two peaks.
 
 [FILL] Mixed recognition combines naming the shape with reading its [___].
 level context
-candle color
-company name
+wick length
+gap size
 WHY: This lesson mixes pattern identification with reading the surrounding level context.
 
 [TF] Practicing mixed recognition helps reinforce everything covered earlier in the unit.
@@ -8626,8 +8626,8 @@ WHY: Higher lows for up, lower highs for down.
 
 [MC] What makes a trendline more meaningful?
 More touches, showing price respects the line.
-A brighter color.
-Being perfectly vertical.
+Being drawn on a shorter timeframe.
+Connecting only a single price point.
 WHY: Multiple touches are the evidence a line matters.
 
 [PICK] Which best summarizes trendlines?
@@ -8641,8 +8641,8 @@ WHY: Descriptive diagonal guides, validity from touches, is the throughline.
 
 [FILL] This review ties together uptrend lines, downtrend lines, touches, and [___].
 breaks
-random guesses
-company names
+moving averages
+gap fills
 WHY: All four core ideas from this unit are reviewed together here.
 
 [TF] Trendlines are diagonal guides that gain meaning from repeated touches, not fixed rules.
@@ -8814,8 +8814,8 @@ WHY: Support is the range's floor, so price commonly bounces up from it.
 
 [MC] Reading a range's boundaries means identifying...
 where support and resistance sit.
-the exact company name.
-the account's total balance.
+the average price across the range.
+the single highest-volume candle.
 WHY: The range's floor (support) and ceiling (resistance) are what define its boundaries.
 
 NODE 4
@@ -8962,8 +8962,8 @@ WHY: A range is sideways between levels; a trend makes directional progress.
 
 [FILL] This review ties together ranges, boundaries, breakouts, and [___].
 false breakouts
-random guesses
-company names
+moving averages
+divergence
 WHY: All four core ideas from this unit are reviewed together here.
 
 [TF] A range eventually resolves into a breakout in one direction or another.
@@ -9169,8 +9169,8 @@ WHY: The flip works both ways: broken support can later act as resistance.
 
 [MC] What is being tested during a retest?
 Whether the flipped role (support/resistance) holds.
-The account's total balance.
-The candle's exact color.
+Whether volume is higher than the prior session.
+Whether a moving average has crossed.
 WHY: A retest specifically tests whether the newly flipped role holds.
 
 NODE 5
@@ -9271,8 +9271,8 @@ WHY: Breakouts are descriptive clues that can fail or retest, not guarantees.
 
 [FILL] This review ties together breakouts, breakdowns, retests, and the level [___].
 flip
-random guess
-company name
+moving averages
+divergence
 WHY: All four core ideas from this unit are reviewed together here.
 
 [TF] A retest can fail, with price breaking back through the flipped level.
@@ -9577,8 +9577,8 @@ WHY: Structure-preserving pauses with likely (not guaranteed) continuation is th
 
 [FILL] This review ties together pullbacks, higher lows/lower highs, and [___].
 continuation
-random guesses
-company names
+gap fills
+divergence
 WHY: All three core ideas from this unit are reviewed together here.
 
 [TF] Even after this review, continuation after a pullback should be read as a tendency, not a certainty.
@@ -9865,8 +9865,8 @@ WHY: Descriptive candle-strength reading is the throughline.
 
 [FILL] This review ties together momentum (bodies), exhaustion (wicks), and [___] (small bodies).
 indecision
-random guesses
-company names
+gap fills
+volume spikes
 WHY: All three core reads from this unit are reviewed together here.
 
 [TF] Reading momentum and exhaustion from candles is descriptive context, not a guarantee.
@@ -9973,8 +9973,8 @@ WHY: The level and the candle agreeing (confluence) is stronger than the candle 
 
 [MC] What two factors combine in "level + candle signal" confluence?
 A support/resistance level and a candle signal like a bounce wick.
-Two unrelated candle colors.
-The account balance and the time of day.
+Two moving averages crossing each other.
+The gap size and the trading volume.
 WHY: A level plus a candle signal agreeing is this specific type of confluence.
 
 NODE 3
@@ -10072,8 +10072,8 @@ WHY: Only an aligned, structure-preserving pullback adds confluence; a broken on
 
 [MC] What two factors combine in "trend + pullback" confluence?
 The overall trend direction and an aligned, healthy pullback.
-Two unrelated candle colors.
-The account balance and volume.
+A support level and a bounce candle at it.
+An overbought RSI reading on its own.
 WHY: Trend direction plus an aligned pullback is this specific type of confluence.
 
 NODE 5
@@ -10289,8 +10289,8 @@ TEXT: Gaps commonly form when price can't trade continuously, overnight between 
 
 [MC] Gaps commonly form because of...
 session breaks or news, when trading isn't continuous.
-the color of the candles.
-the number of wicks.
+a widening of the bid-ask spread intraday.
+a moving average crossover.
 WHY: When price can't trade continuously (overnight, news), the next price can be far away, a gap.
 
 [TF] Gaps commonly appear between sessions or around news.
@@ -10414,8 +10414,8 @@ WHY: Cause + a fill tendency (not guarantee) is the throughline.
 
 [FILL] This review ties together gap direction, causes, and [___].
 gap fills
-random guesses
-company names
+moving averages
+divergence
 WHY: All three core ideas from this unit are reviewed together here.
 
 [TF] Even after this review, a gap fill should be read as a tendency, not a certainty.
@@ -10440,8 +10440,8 @@ CHART: uptrend
 
 [MC] A "timeframe" describes...
 how much time each candle represents.
-the color of the candles.
-the number of candles only.
+the total number of candles shown.
+the price range each candle covers.
 WHY: Timeframe is the duration each candle covers (1m, 1h, 1d, …).
 
 [TF] The same market can look different on different timeframes.
@@ -10707,8 +10707,8 @@ WHY: Context-first reading with alignment as confluence (not certainty) is the t
 
 [FILL] This review ties together timeframes, higher vs lower, and [___].
 alignment
-random guesses
-company names
+moving averages
+divergence
 WHY: All the core ideas from this unit are reviewed together here.
 
 [TF] Even after this review, timeframe alignment should be read as added confluence, not a guarantee.
@@ -12192,8 +12192,8 @@ WHY: This unit builds a planning and acceptance mindset, not a guarantee against
 
 [FILL] This review ties together risk per trade, sizing, risk/reward, and [___].
 capital preservation
-random guesses
-company names
+win rate
+expectancy
 WHY: All the core ideas from this unit are reviewed together here.
 
 [TF] Sound risk management guarantees a trader will never have a losing trade.
@@ -12760,8 +12760,8 @@ TEXT: Risk per trade is commonly expressed as a <b>percent of the account</b> yo
 
 [MC] Risk per trade is commonly expressed as a...
 percent of the account.
-guess with no method.
-fixed number of candles.
+a fixed number of shares every time.
+a percent of the day's price range.
 WHY: Risk per trade is commonly set as a small percent of the account.
 
 [FILL] Keeping risk per trade [___] and consistent is a common approach.
@@ -12785,7 +12785,7 @@ WHY: Small consistent risk limits the damage any one loss can do.
 [FILL] Risk per trade is commonly expressed as a [___] of the account.
 percent
 fixed dollar rule
-random guess
+fixed share count
 WHY: Risk per trade is commonly set as a small, consistent percent of the account.
 
 [TF] Keeping risk per trade small and consistent is a commonly recommended habit.
@@ -12794,8 +12794,8 @@ WHY: Small, consistent risk per trade limits damage from any single loss.
 
 [MC] Why keep risk per trade small?
 So a single loss can't do outsized damage to the account.
-So every trade is guaranteed to win.
-So position size never has to be calculated.
+So win rate automatically increases.
+So a wider stop-loss can be used every time.
 WHY: Small risk per trade limits the impact of any one loss, without guaranteeing outcomes.
 
 NODE 2
@@ -13018,8 +13018,8 @@ WHY: Consistent percent risk, stop-based sizing, and R measurement is the throug
 
 [FILL] This review ties together risk per trade, dollar risk, R, and [___].
 position sizing
-random guesses
-company names
+win rate
+expectancy
 WHY: All four core ideas from this unit are reviewed together here.
 
 [TF] R lets you compare trade results across different position sizes.
@@ -13037,8 +13037,8 @@ TEXT: Win rate is how <b>often</b> you win. But it ignores how <b>much</b> you w
 
 [MC] Win rate measures...
 how often trades win.
-how much each trade wins.
-the account size.
+how much each winning trade makes.
+the average risk/reward ratio.
 WHY: Win rate is the frequency of wins, not their size.
 
 [TF] A high win rate always means a profitable system.
@@ -13120,7 +13120,7 @@ TEXT: Expectancy is the <b>average result per trade</b>, measured in R, over man
 [MC] Expectancy is the...
 average result per trade (in R) over many trades.
 result of a single trade.
-account balance.
+the percentage of trades that win.
 WHY: Expectancy is the long-run average result per trade.
 
 [TF] A positive expectancy means the average trade, over many trades, gains R.
@@ -13277,8 +13277,8 @@ WHY: Expectancy needs a large sample; a couple of wins prove nothing.
 
 [FILL] This review ties together win rate, average R, expectancy, and [___].
 sample size
-random guesses
-company names
+position sizing
+stop distance
 WHY: All four core ideas from this unit are reviewed together here.
 
 [TF] Judging a system honestly requires combining win rate and average R over a large sample.
@@ -13580,8 +13580,8 @@ TEXT: A moving average (MA) is the <b>average of the last N prices</b>, recalcul
 
 [MC] A moving average is the...
 average of the last N prices, updated each candle.
-single highest price ever.
-account balance.
+the single highest price over the period.
+the difference between the high and low.
 WHY: An MA averages the most recent N prices and updates as new ones arrive.
 
 [FILL] A 20-period moving average averages the last [___] prices.
@@ -13861,8 +13861,8 @@ WHY: A recap of the unit's core ideas.
 
 [MC] What does an MA's slope reflect?
 The trend direction.
-The account balance.
-The candle color.
+The trading volume.
+The bid-ask spread.
 WHY: Slope up/down/flat mirrors the trend.
 
 [FILL2] A moving average [1] price and [2] the current price (it's lagging).
@@ -13881,8 +13881,8 @@ WHY: Smoothed, lagging, descriptive trend reading is the throughline.
 
 [FILL] This review ties together what an MA is, smoothing, slope, and [___].
 crossovers
-random guesses
-company names
+divergence
+gap fills
 WHY: All the core ideas from this unit are reviewed together here.
 
 [TF] Moving averages are descriptive and lagging, not predictive.
@@ -13900,8 +13900,8 @@ TEXT: An oscillator is an indicator <b>derived from price</b> that moves within 
 
 [MC] An oscillator is...
 a price-derived measure that moves in a bounded range.
-the raw price line.
-the account balance.
+the raw price line itself.
+a moving average of volume.
 WHY: Oscillators are derived measures bounded within a range (e.g., 0–100).
 
 [FILL] An oscillator is [___] from price, not the price itself.
@@ -13941,8 +13941,8 @@ TEXT: RSI (Relative Strength Index) is an oscillator from <b>0 to 100</b> that m
 
 [MC] RSI measures the...
 speed and size of recent price moves, on a 0–100 scale.
-account balance.
-number of candles.
+the relationship between two moving averages.
+the total volume over the session.
 WHY: RSI summarizes recent up vs down move strength from 0 to 100.
 
 [FILL] RSI is bounded between 0 and [___].
@@ -14024,8 +14024,8 @@ TEXT: MACD is built from the <b>relationship between two moving averages</b> (a 
 
 [MC] MACD is derived from...
 the relationship between two moving averages.
-the account balance.
-the candle color.
+the speed of moves on a 0–100 scale.
+the volume-weighted average price.
 WHY: MACD tracks how a fast and slow MA relate, a momentum read.
 
 [TF] MACD is built from moving averages, so it is also lagging.
@@ -14132,8 +14132,8 @@ WHY: Descriptive, derived, lagging, never guaranteed, is the throughline.
 
 [FILL] This review ties together oscillators, RSI, its zones, MACD, and [___].
 divergence
-random guesses
-company names
+moving averages
+gap fills
 WHY: All the core ideas from this unit are reviewed together here.
 
 [TF] RSI and MACD are both derived, lagging indicators, not guarantees.
@@ -14385,8 +14385,8 @@ WHY: Plan-in-advance plus disciplined process is the throughline.
 
 [FILL] This review ties together plans, invalidation, process, and [___].
 discipline
-random guesses
-company names
+position sizing
+win rate
 WHY: All the core ideas from this unit are reviewed together here.
 
 [TF] Plan-in-advance plus disciplined follow-through is the throughline of this unit.
@@ -14920,8 +14920,8 @@ WHY: Normal variance plus recovery math driving preservation is the throughline.
 
 [FILL] This review ties together drawdowns, recovery math, and losing [___].
 streaks
-random guesses
-company names
+position sizing
+win rate
 WHY: All the core ideas from this unit are reviewed together here.
 
 [TF] Drawdowns and losing streaks are normal, and recovery math makes limiting them essential.
@@ -14963,8 +14963,8 @@ WHY: An honest written record beats biased memory for improvement.
 
 [FILL] A journal records what you did and [___], so you can review and improve.
 why
-guaranteed profit
-random guesses
+the market's next move
+other traders' entries
 WHY: Recording the reasoning, not just the result, is what makes a journal useful.
 
 [TF] Memory alone is a reliable record of your trading decisions.
@@ -15794,8 +15794,8 @@ WHY: A tight range in the early minutes reflects smaller early price swings.
 
 [FILL] Opening range width connects to the same idea as [___], covered earlier in this course.
 ATR
-company earnings
-account balance
+RSI
+VWAP
 WHY: Both opening range width and ATR describe the size of recent price movement, just over different windows.
 
 [MATCH] Match the range width to its commonly cited meaning.
@@ -16779,8 +16779,8 @@ WHY: Skipping a valid, planned setup specifically due to fear after losses is th
 
 [FILL] This drill practices identifying psychological [___] in hypothetical situations.
 patterns
-guarantees
-random events
+indicators
+price targets
 WHY: The drill applies pattern recognition to psychology, without judging specific trades.
 
 [TF] Recognizing a psychological pattern is a step toward discipline over impulse.
@@ -16849,8 +16849,8 @@ WHY: This unit builds awareness of patterns, not a guarantee that they'll never 
 
 [FILL] This review ties together FOMO, revenge trading, overtrading, and [___].
 discipline
-random guesses
-company names
+position sizing
+expectancy
 WHY: All the core patterns from this unit are reviewed together here.
 
 [TF] Every pattern in this unit describes emotion pulling behavior away from a plan.
@@ -17175,8 +17175,8 @@ WHY: This response matches the commonly described revenge-trading pattern rather
 
 [FILL] A disciplined response to a losing streak is a calm review of the [___].
 process
-account balance
-random guesses
+the account balance
+the next day's news
 WHY: Reviewing whether the process was followed is the disciplined response.
 
 [TF] Immediately doubling position size after a loss is a disciplined response.

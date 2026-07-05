@@ -2865,9 +2865,9 @@
        "scenario": "Someone says \"this one candle proves price will definitely go up next.\"",
        "question": "What is the mistake?",
        "options": [
-        "They should have used a different-colored candle.",
+        "A doji specifically predicts an up move next.",
         "No single candlestick can reliably predict future price with certainty.",
-        "They should have looked at an even longer wick."
+        "A longer wick on the candle would have made it a valid prediction."
        ],
        "correct": 1,
        "explanation": "Candlesticks describe what already happened. They aren't guarantees about what happens next.",
@@ -2877,9 +2877,9 @@
        "type": "multiple_choice",
        "question": "What does a candlestick's wick represent?",
        "options": [
-        "The company's name.",
+        "The average price for that period.",
         "The high and/or low price reached during that period.",
-        "The exact trading volume for that period."
+        "The open and close prices for that period."
        ],
        "correct": 1,
        "explanation": "Wicks mark the extreme high and low prices reached, beyond the body."
@@ -3099,8 +3099,8 @@
        "question": "Why do gaps commonly occur between trading sessions?",
        "options": [
         "News or events can shift buyer/seller sentiment while the market is closed.",
-        "The chart software resets randomly overnight.",
-        "Volume always drops to zero between sessions."
+        "Overnight trading slowly walks price to the new open.",
+        "The bid-ask spread widening is what creates the gap."
        ],
        "correct": 0,
        "explanation": "News overnight or over a weekend is a common reason expectations shift before the next open."
@@ -3205,8 +3205,8 @@
        "type": "multiple_choice",
        "question": "Which scenario would most likely cause a stock to gap up at the next open?",
        "options": [
-        "No news at all overnight.",
-        "The market staying open continuously.",
+        "A wide bid-ask spread at the prior close.",
+        "Unusually low volume during the prior session.",
         "Strong positive news released after the market closed."
        ],
        "correct": 2,
@@ -5138,9 +5138,9 @@
        "type": "multiple_choice",
        "question": "Reading a rejection wick's \"suggestion\" means considering...",
        "options": [
-        "only the wick's exact pixel length.",
+        "only which side the body closed on.",
         "what the wick implies about buyer/seller behavior that period.",
-        "the account balance."
+        "the total volume traded that period."
        ],
        "correct": 1,
        "explanation": "The suggestion is about behavior (who got rejected), not a measurement exercise."
@@ -7601,7 +7601,7 @@
        "options": [
         "Only breakouts have a mechanical cause, not reversals.",
         "Both trace back to shifts in the same underlying supply/demand and order-flow mechanics covered in this unit.",
-        "Reversals and breakouts have no mechanical explanation at all."
+        "Only reversals have a mechanical cause, not breakouts."
        ],
        "correct": 1,
        "explanation": "This unit's whole point is that both events trace back to the same underlying mechanics.",
@@ -7672,17 +7672,17 @@
        "blanks": [
         {
          "options": [
-          "color",
+          "psychology",
           "mechanics",
-          "random guesses"
+          "volume"
          ],
          "correct": 1
         },
         {
          "options": [
-          "random events",
+          "divergence",
           "breakouts",
-          "company names"
+          "oscillators"
          ],
          "correct": 1
         }
@@ -9356,9 +9356,9 @@
        "type": "fill_blank",
        "question": "Combining candle shape with volume is an example of [___] from an earlier unit.",
        "options": [
-        "guaranteed prediction",
+        "a lagging indicator",
         "confluence",
-        "random guessing"
+        "a single isolated signal"
        ],
        "correct": 1,
        "explanation": "This is the same confluence idea, multiple agreeing factors, applied to candles and volume."
@@ -10078,9 +10078,9 @@
        "type": "fill_blank",
        "question": "Reading price action well means combining vocabulary with [___].",
        "options": [
-        "guesswork",
+        "a single indicator",
         "context",
-        "random guessing"
+        "exact price targets"
        ],
        "correct": 1,
        "explanation": "Context is what turns raw vocabulary into a meaningful read."
@@ -10298,8 +10298,8 @@
        "type": "multiple_choice",
        "question": "What would commonly lead a chart reader to classify a chart as an uptrend?",
        "options": [
-        "A single green candle appearing anywhere on the chart.",
-        "The asset's name containing a positive-sounding word.",
+        "A single large green candle after a decline.",
+        "More green candles than red on the chart.",
         "A pattern of higher swing highs and higher swing lows."
        ],
        "correct": 2,
@@ -10455,8 +10455,8 @@
        "question": "What would commonly lead a chart reader to classify a chart as a downtrend?",
        "options": [
         "A pattern of lower swing highs and lower swing lows.",
-        "The asset's name containing a negative-sounding word.",
-        "A single red candle appearing anywhere on the chart."
+        "More red candles than green on the chart.",
+        "A single large red candle after a rally."
        ],
        "correct": 0,
        "explanation": "Classification is based on the pattern of swings, not one candle or the name."
@@ -10777,8 +10777,8 @@
        "question": "Why does a rising sequence of swing lows matter for an uptrend?",
        "options": [
         "It shows pullbacks are holding at progressively higher levels.",
-        "It has no relationship to trend classification.",
-        "It shows the asset is about to be delisted."
+        "It matters only for downtrends, not uptrends.",
+        "It guarantees price will keep rising from here."
        ],
        "correct": 0,
        "explanation": "Rising swing lows are part of the defining structure of an uptrend."
@@ -10932,9 +10932,9 @@
        "type": "multiple_choice",
        "question": "Why does a falling sequence of swing highs matter for a downtrend?",
        "options": [
-        "It has no relationship to trend classification.",
+        "It matters only for uptrends, not downtrends.",
         "It shows rallies are failing at progressively lower levels.",
-        "It shows the asset is about to be delisted."
+        "It guarantees price will keep falling from here."
        ],
        "correct": 1,
        "explanation": "Falling swing highs are part of the defining structure of a downtrend."
@@ -11089,8 +11089,8 @@
        "question": "What might commonly suggest a trend is weakening?",
        "options": [
         "Swings becoming smaller or less consistent than before.",
-        "The chart changing to a different color scheme.",
-        "The asset's name being mentioned in the news."
+        "Swings becoming larger and more one-directional.",
+        "Price making a new, stronger high in the trend direction."
        ],
        "correct": 0,
        "explanation": "Smaller, less consistent swings are commonly read as a sign of weakening momentum."
@@ -12281,7 +12281,7 @@
        "type": "multiple_choice",
        "question": "Why might a chart reader mark a support level on a chart?",
        "options": [
-        "To change the color of the candles.",
+        "To mark the single lowest price the chart has ever reached.",
         "To guarantee price will bounce there again in the future.",
         "To note a price area where price has reacted in the past, for reference."
        ],
@@ -12446,7 +12446,7 @@
        "options": [
         "To guarantee price will fall there again in the future.",
         "To note a price area where price has reacted in the past, for reference.",
-        "To change the color of the candles."
+        "To mark the single highest price the chart has ever reached."
        ],
        "correct": 1,
        "explanation": "Resistance levels are historical reference points, not guarantees of future behavior."
@@ -12633,7 +12633,7 @@
          "options": [
           "commonly cited theories",
           "proven guarantees",
-          "random guesses"
+          "mechanical certainties"
          ],
          "correct": 0
         },
@@ -14681,9 +14681,9 @@
        "type": "fill_blank",
        "question": "Judging whether two peaks are \"roughly equal\" is a matter of [___], not exact math.",
        "options": [
-        "guaranteed certainty",
+        "exact measurement",
         "degree",
-        "random guessing"
+        "a fixed percentage rule"
        ],
        "correct": 1,
        "explanation": "\"About the same\" is a practical, descriptive judgment, not a strict formula."
@@ -14796,9 +14796,9 @@
        "type": "fill_blank",
        "question": "Judging whether two troughs are \"roughly equal\" is a matter of [___], not exact math.",
        "options": [
-        "random guessing",
+        "a fixed percentage rule",
         "degree",
-        "guaranteed certainty"
+        "exact measurement"
        ],
        "correct": 1,
        "explanation": "\"About the same\" is a practical, descriptive judgment, not a strict formula."
@@ -15014,8 +15014,8 @@
        "question": "This drill practices spotting [___] before naming a pattern.",
        "options": [
         "touch count",
-        "candle color",
-        "company name"
+        "wick length",
+        "gap size"
        ],
        "correct": 0,
        "explanation": "Counting touches at a level is the first step to correctly naming these patterns."
@@ -15947,8 +15947,8 @@
        "question": "Judging shoulder symmetry is about [___], not exact precision.",
        "options": [
         "degree",
-        "random guessing",
-        "guaranteed certainty"
+        "a fixed percentage rule",
+        "exact measurement"
        ],
        "correct": 0,
        "explanation": "\"About the same\" height is a practical, descriptive judgment."
@@ -16530,9 +16530,9 @@
        "type": "fill_blank",
        "question": "Mixed recognition combines naming the shape with reading its [___].",
        "options": [
-        "company name",
+        "gap size",
         "level context",
-        "candle color"
+        "wick length"
        ],
        "correct": 1,
        "explanation": "This lesson mixes pattern identification with reading the surrounding level context."
@@ -19030,9 +19030,9 @@
        "type": "multiple_choice",
        "question": "What makes a trendline more meaningful?",
        "options": [
-        "A brighter color.",
+        "Being drawn on a shorter timeframe.",
         "More touches, showing price respects the line.",
-        "Being perfectly vertical."
+        "Connecting only a single price point."
        ],
        "correct": 1,
        "explanation": "Multiple touches are the evidence a line matters."
@@ -19067,8 +19067,8 @@
        "type": "fill_blank",
        "question": "This review ties together uptrend lines, downtrend lines, touches, and [___].",
        "options": [
-        "random guesses",
-        "company names",
+        "moving averages",
+        "gap fills",
         "breaks"
        ],
        "correct": 2,
@@ -19355,8 +19355,8 @@
        "type": "multiple_choice",
        "question": "Reading a range's boundaries means identifying...",
        "options": [
-        "the exact company name.",
-        "the account's total balance.",
+        "the average price across the range.",
+        "the single highest-volume candle.",
         "where support and resistance sit."
        ],
        "correct": 2,
@@ -19632,8 +19632,8 @@
        "question": "This review ties together ranges, boundaries, breakouts, and [___].",
        "options": [
         "false breakouts",
-        "company names",
-        "random guesses"
+        "divergence",
+        "moving averages"
        ],
        "correct": 0,
        "explanation": "All four core ideas from this unit are reviewed together here."
@@ -19962,9 +19962,9 @@
        "type": "multiple_choice",
        "question": "What is being tested during a retest?",
        "options": [
-        "The account's total balance.",
+        "Whether volume is higher than the prior session.",
         "Whether the flipped role (support/resistance) holds.",
-        "The candle's exact color."
+        "Whether a moving average has crossed."
        ],
        "correct": 1,
        "explanation": "A retest specifically tests whether the newly flipped role holds."
@@ -20165,9 +20165,9 @@
        "type": "fill_blank",
        "question": "This review ties together breakouts, breakdowns, retests, and the level [___].",
        "options": [
-        "random guess",
+        "moving averages",
         "flip",
-        "company name"
+        "divergence"
        ],
        "correct": 1,
        "explanation": "All four core ideas from this unit are reviewed together here."
@@ -20710,8 +20710,8 @@
        "type": "fill_blank",
        "question": "This review ties together pullbacks, higher lows/lower highs, and [___].",
        "options": [
-        "company names",
-        "random guesses",
+        "divergence",
+        "gap fills",
         "continuation"
        ],
        "correct": 2,
@@ -21227,9 +21227,9 @@
        "type": "fill_blank",
        "question": "This review ties together momentum (bodies), exhaustion (wicks), and [___] (small bodies).",
        "options": [
-        "company names",
+        "volume spikes",
         "indecision",
-        "random guesses"
+        "gap fills"
        ],
        "correct": 1,
        "explanation": "All three core reads from this unit are reviewed together here."
@@ -21416,8 +21416,8 @@
        "question": "What two factors combine in \"level + candle signal\" confluence?",
        "options": [
         "A support/resistance level and a candle signal like a bounce wick.",
-        "Two unrelated candle colors.",
-        "The account balance and the time of day."
+        "Two moving averages crossing each other.",
+        "The gap size and the trading volume."
        ],
        "correct": 0,
        "explanation": "A level plus a candle signal agreeing is this specific type of confluence."
@@ -21578,8 +21578,8 @@
        "question": "What two factors combine in \"trend + pullback\" confluence?",
        "options": [
         "The overall trend direction and an aligned, healthy pullback.",
-        "The account balance and volume.",
-        "Two unrelated candle colors."
+        "An overbought RSI reading on its own.",
+        "A support level and a bounce candle at it."
        ],
        "correct": 0,
        "explanation": "Trend direction plus an aligned pullback is this specific type of confluence."
@@ -21979,9 +21979,9 @@
        "type": "multiple_choice",
        "question": "Gaps commonly form because of...",
        "options": [
-        "the color of the candles.",
+        "a widening of the bid-ask spread intraday.",
         "session breaks or news, when trading isn't continuous.",
-        "the number of wicks."
+        "a moving average crossover."
        ],
        "correct": 1,
        "explanation": "When price can't trade continuously (overnight, news), the next price can be far away, a gap."
@@ -22218,8 +22218,8 @@
        "type": "fill_blank",
        "question": "This review ties together gap direction, causes, and [___].",
        "options": [
-        "company names",
-        "random guesses",
+        "divergence",
+        "moving averages",
         "gap fills"
        ],
        "correct": 2,
@@ -22259,9 +22259,9 @@
        "type": "multiple_choice",
        "question": "A \"timeframe\" describes...",
        "options": [
-        "the number of candles only.",
+        "the price range each candle covers.",
         "how much time each candle represents.",
-        "the color of the candles."
+        "the total number of candles shown."
        ],
        "correct": 1,
        "explanation": "Timeframe is the duration each candle covers (1m, 1h, 1d, …)."
@@ -22758,8 +22758,8 @@
        "question": "This review ties together timeframes, higher vs lower, and [___].",
        "options": [
         "alignment",
-        "random guesses",
-        "company names"
+        "moving averages",
+        "divergence"
        ],
        "correct": 0,
        "explanation": "All the core ideas from this unit are reviewed together here."
@@ -26546,8 +26546,8 @@
        "question": "This review ties together risk per trade, sizing, risk/reward, and [___].",
        "options": [
         "capital preservation",
-        "random guesses",
-        "company names"
+        "win rate",
+        "expectancy"
        ],
        "correct": 0,
        "explanation": "All the core ideas from this unit are reviewed together here."
@@ -27790,8 +27790,8 @@
        "type": "multiple_choice",
        "question": "Risk per trade is commonly expressed as a...",
        "options": [
-        "guess with no method.",
-        "fixed number of candles.",
+        "a fixed number of shares every time.",
+        "a percent of the day's price range.",
         "percent of the account."
        ],
        "correct": 2,
@@ -27844,7 +27844,7 @@
        "question": "Risk per trade is commonly expressed as a [___] of the account.",
        "options": [
         "percent",
-        "random guess",
+        "fixed share count",
         "fixed dollar rule"
        ],
        "correct": 0,
@@ -27860,9 +27860,9 @@
        "type": "multiple_choice",
        "question": "Why keep risk per trade small?",
        "options": [
-        "So position size never has to be calculated.",
+        "So a wider stop-loss can be used every time.",
         "So a single loss can't do outsized damage to the account.",
-        "So every trade is guaranteed to win."
+        "So win rate automatically increases."
        ],
        "correct": 1,
        "explanation": "Small risk per trade limits the impact of any one loss, without guaranteeing outcomes."
@@ -28272,9 +28272,9 @@
        "type": "fill_blank",
        "question": "This review ties together risk per trade, dollar risk, R, and [___].",
        "options": [
-        "random guesses",
+        "win rate",
         "position sizing",
-        "company names"
+        "expectancy"
        ],
        "correct": 1,
        "explanation": "All four core ideas from this unit are reviewed together here."
@@ -28301,8 +28301,8 @@
        "type": "multiple_choice",
        "question": "Win rate measures...",
        "options": [
-        "how much each trade wins.",
-        "the account size.",
+        "how much each winning trade makes.",
+        "the average risk/reward ratio.",
         "how often trades win."
        ],
        "correct": 2,
@@ -28464,7 +28464,7 @@
        "question": "Expectancy is the...",
        "options": [
         "average result per trade (in R) over many trades.",
-        "account balance.",
+        "the percentage of trades that win.",
         "result of a single trade."
        ],
        "correct": 0,
@@ -28787,8 +28787,8 @@
        "question": "This review ties together win rate, average R, expectancy, and [___].",
        "options": [
         "sample size",
-        "random guesses",
-        "company names"
+        "position sizing",
+        "stop distance"
        ],
        "correct": 0,
        "explanation": "All four core ideas from this unit are reviewed together here."
@@ -29303,9 +29303,9 @@
        "type": "multiple_choice",
        "question": "A moving average is the...",
        "options": [
-        "account balance.",
+        "the difference between the high and low.",
         "average of the last N prices, updated each candle.",
-        "single highest price ever."
+        "the single highest price over the period."
        ],
        "correct": 1,
        "explanation": "An MA averages the most recent N prices and updates as new ones arrive."
@@ -29802,8 +29802,8 @@
        "question": "What does an MA's slope reflect?",
        "options": [
         "The trend direction.",
-        "The candle color.",
-        "The account balance."
+        "The bid-ask spread.",
+        "The trading volume."
        ],
        "correct": 0,
        "explanation": "Slope up/down/flat mirrors the trend."
@@ -29861,8 +29861,8 @@
        "type": "fill_blank",
        "question": "This review ties together what an MA is, smoothing, slope, and [___].",
        "options": [
-        "random guesses",
-        "company names",
+        "divergence",
+        "gap fills",
         "crossovers"
        ],
        "correct": 2,
@@ -29891,8 +29891,8 @@
        "question": "An oscillator is...",
        "options": [
         "a price-derived measure that moves in a bounded range.",
-        "the account balance.",
-        "the raw price line."
+        "a moving average of volume.",
+        "the raw price line itself."
        ],
        "correct": 0,
        "explanation": "Oscillators are derived measures bounded within a range (e.g., 0–100)."
@@ -29958,8 +29958,8 @@
        "type": "multiple_choice",
        "question": "RSI measures the...",
        "options": [
-        "account balance.",
-        "number of candles.",
+        "the relationship between two moving averages.",
+        "the total volume over the session.",
         "speed and size of recent price moves, on a 0–100 scale."
        ],
        "correct": 2,
@@ -30096,8 +30096,8 @@
        "question": "MACD is derived from...",
        "options": [
         "the relationship between two moving averages.",
-        "the candle color.",
-        "the account balance."
+        "the volume-weighted average price.",
+        "the speed of moves on a 0–100 scale."
        ],
        "correct": 0,
        "explanation": "MACD tracks how a fast and slow MA relate, a momentum read."
@@ -30324,8 +30324,8 @@
        "question": "This review ties together oscillators, RSI, its zones, MACD, and [___].",
        "options": [
         "divergence",
-        "random guesses",
-        "company names"
+        "moving averages",
+        "gap fills"
        ],
        "correct": 0,
        "explanation": "All the core ideas from this unit are reviewed together here."
@@ -30800,8 +30800,8 @@
        "type": "fill_blank",
        "question": "This review ties together plans, invalidation, process, and [___].",
        "options": [
-        "company names",
-        "random guesses",
+        "win rate",
+        "position sizing",
         "discipline"
        ],
        "correct": 2,
@@ -31783,9 +31783,9 @@
        "type": "fill_blank",
        "question": "This review ties together drawdowns, recovery math, and losing [___].",
        "options": [
-        "random guesses",
+        "position sizing",
         "streaks",
-        "company names"
+        "win rate"
        ],
        "correct": 1,
        "explanation": "All the core ideas from this unit are reviewed together here."
@@ -31865,8 +31865,8 @@
        "type": "fill_blank",
        "question": "A journal records what you did and [___], so you can review and improve.",
        "options": [
-        "random guesses",
-        "guaranteed profit",
+        "other traders' entries",
+        "the market's next move",
         "why"
        ],
        "correct": 2,
@@ -33586,8 +33586,8 @@
        "question": "Opening range width connects to the same idea as [___], covered earlier in this course.",
        "options": [
         "ATR",
-        "company earnings",
-        "account balance"
+        "RSI",
+        "VWAP"
        ],
        "correct": 0,
        "explanation": "Both opening range width and ATR describe the size of recent price movement, just over different windows."
@@ -35863,9 +35863,9 @@
        "type": "fill_blank",
        "question": "This drill practices identifying psychological [___] in hypothetical situations.",
        "options": [
-        "guarantees",
+        "indicators",
         "patterns",
-        "random events"
+        "price targets"
        ],
        "correct": 1,
        "explanation": "The drill applies pattern recognition to psychology, without judging specific trades."
@@ -36019,9 +36019,9 @@
        "type": "fill_blank",
        "question": "This review ties together FOMO, revenge trading, overtrading, and [___].",
        "options": [
-        "random guesses",
+        "position sizing",
         "discipline",
-        "company names"
+        "expectancy"
        ],
        "correct": 1,
        "explanation": "All the core patterns from this unit are reviewed together here."
@@ -36684,8 +36684,8 @@
        "type": "fill_blank",
        "question": "A disciplined response to a losing streak is a calm review of the [___].",
        "options": [
-        "account balance",
-        "random guesses",
+        "the account balance",
+        "the next day's news",
         "process"
        ],
        "correct": 2,
