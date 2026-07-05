@@ -864,26 +864,6 @@ struct IngredientMatchView: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 18) {
             QuestionChart(key: s.chart, height: 130, seed: chartSeed(player.screen))
-            if let concern = s.concern {
-                VStack(alignment: .leading, spacing: 6) {
-                    Text("THE CONCERN")
-                        .font(Theme.font(11, .black))
-                        .foregroundColor(.white.opacity(0.7))
-                        .tracking(1.2)
-                    Text(RichText.attributed(concern,
-                                             base: Theme.font(15.5, .semibold),
-                                             bold: Theme.font(15.5, .black), color: .white))
-                        .fixedSize(horizontal: false, vertical: true)
-                }
-                .frame(maxWidth: .infinity, alignment: .leading)
-                .padding(18)
-                .background(
-                    RoundedRectangle(cornerRadius: 18, style: .continuous)
-                        .fill(Color(hex: "#0891b2"))
-                        .background(RoundedRectangle(cornerRadius: 18, style: .continuous)
-                            .fill(Color(hex: "#0e4a6e")).offset(y: 5))
-                )
-            }
 
             Text(RichText.attributed(s.question ?? "",
                                      base: Theme.font(21, .heavy),
@@ -927,7 +907,10 @@ struct IngredientMatchView: View {
             HStack(alignment: .top, spacing: 10) {
                 VStack(alignment: .leading, spacing: 3) {
                     Text(opt.label).font(Theme.font(16, .black)).foregroundColor(textColor)
-                    if let detail = opt.detail {
+                    // Only reveal the detail subtitle after checking — showing it up
+                    // front (e.g. "Overstates certainty" on a wrong option) gives
+                    // away the answer before the learner picks.
+                    if revealed, let detail = opt.detail {
                         Text(detail).font(Theme.font(13, .semibold)).foregroundColor(subColor)
                     }
                 }
