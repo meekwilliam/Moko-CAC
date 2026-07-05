@@ -14,8 +14,8 @@ def shuffle_choices(options, wrong=None, correct_idx=0):
     new_correct = order.index(correct_idx)
     return new_opts, new_wrong, new_correct
 
-DOC = "/Users/williammeek/Derm/DermApp_v2/ARCHIVED_COURSES/LESSONS_FILLED.md"
-GAME = "/Users/williammeek/Derm/DermApp_v2/DermApp/GameData.json"
+DOC = "/Users/williammeek/Moko/ARCHIVED_COURSES/LESSONS_FILLED.md"
+GAME = "/Users/williammeek/Moko/DermApp/GameData.json"
 
 META_PREFIXES = ("TITLE:", "CELEBRATION:", "TEXT:", "CHART:", "WHY:", "ANSWER:",
                  "QUESTION:", "CONCERN:", "BLANK1:", "BLANK2:", "BLANK3:", "WRONG (")
