@@ -41,7 +41,13 @@ struct PathView: View {
                         VStack(spacing: 0) {
                             Color.clear.frame(height: headerHeight - 8)
                             ForEach(0..<store.sectionCount, id: \.self) { s in
-                                if s > 0 { sectionDivider(s) }
+                                if s > 0 {
+                                    sectionDivider(s)
+                                        // Always draw below node content, so an overflowing
+                                        // tooltip from the previous section's last node (which
+                                        // sits just above this divider) never gets painted over.
+                                        .zIndex(-1)
+                                }
                                 sectionColumn(s, width: width)
                                     .id("sec-\(s)")
                                     .background(sectionAnchor(s))
