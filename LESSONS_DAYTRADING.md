@@ -7804,6 +7804,23 @@ surge
 gap
 WHY: A pullback in an uptrend is a small dip against the up-move.
 
+
+[FILL] A pullback is a [___] counter-move within a trend.
+temporary
+permanent
+guaranteed
+WHY: A pullback is described as temporary, not a permanent change in direction.
+
+[TF] A pullback within an uptrend commonly resolves as the trend resuming.
+ANSWER: True
+WHY: The commonly cited tendency is for the trend to resume after a healthy pullback.
+
+[MC] What is a pullback, in simple terms?
+A small counter-trend dip or bounce within an ongoing trend.
+A full trend reversal.
+A candle with no wicks.
+WHY: A pullback describes a temporary pause, not a full reversal.
+
 NODE 2
 TITLE: Higher Lows Continue the Uptrend
 CELEBRATION: You can read a healthy uptrend!
@@ -7833,6 +7850,23 @@ WHY: Higher lows keep the uptrend structure intact.
 [TF] If a pullback makes a LOWER low than the previous one, the uptrend structure is weakening.
 ANSWER: True
 WHY: A lower low breaks the higher-low pattern, commonly read as weakening.
+
+
+[FILL] A healthy uptrend's pullbacks bottom at [___] lows each time.
+higher
+lower
+identical
+WHY: Higher lows through the pullbacks is what keeps an uptrend structurally healthy.
+
+[TF] A lower low during a pullback can be an early sign the uptrend structure is weakening.
+ANSWER: True
+WHY: Breaking the higher-low pattern is commonly read as a possible early warning sign.
+
+[MC] What keeps an uptrend's structure intact through its pullbacks?
+Each pullback holding above the prior low.
+Each pullback breaking below the prior low.
+Pullbacks never happening at all.
+WHY: Holding above the prior low (a higher low) keeps the uptrend structure intact.
 
 NODE 3
 TITLE: Lower Highs Continue the Downtrend
@@ -7868,6 +7902,23 @@ Higher highs keep a downtrend healthy.
 The highs don't matter in a downtrend.
 WHY: Lower highs keep a downtrend intact; a higher high weakens it.
 
+
+[FILL] A healthy downtrend's bounces top at [___] highs each time.
+lower
+higher
+identical
+WHY: Lower highs through the bounces is what keeps a downtrend structurally healthy.
+
+[TF] A higher high during a bounce can be an early sign the downtrend structure is weakening.
+ANSWER: True
+WHY: Breaking the lower-high pattern is commonly read as a possible early warning sign.
+
+[MC] What keeps a downtrend's structure intact through its bounces?
+Each bounce staying below the prior high.
+Each bounce breaking above the prior high.
+Bounces never happening at all.
+WHY: Staying below the prior high (a lower high) keeps the downtrend structure intact.
+
 NODE 4
 TITLE: Pullback vs. Reversal
 CELEBRATION: You can tell a pullback from a reversal!
@@ -7898,6 +7949,23 @@ WHY: That's the core difference — structure intact (pullback) vs broken (rever
 BLANK1: *pullback | reversal | gap
 BLANK2: *reversal | pullback | bounce
 WHY: Pullbacks preserve structure; reversals break it.
+
+
+[FILL] A pullback keeps the trend's [___] intact; a reversal breaks it.
+structure
+color
+volume
+WHY: Structure (higher lows / lower highs) staying intact is what separates a pullback from a reversal.
+
+[TF] It's often unclear in the moment whether a counter-move is a pullback or the start of a reversal.
+ANSWER: True
+WHY: This distinction is frequently only clear in hindsight.
+
+[MC] What is the key difference between a pullback and a reversal?
+A pullback preserves trend structure; a reversal breaks it.
+They are exactly the same thing.
+A reversal always happens faster than a pullback.
+WHY: Preserved vs. broken structure is the defining difference.
 
 NODE 5
 TITLE: Continuation After a Pullback
@@ -7932,6 +8000,23 @@ Every pullback always continues.
 Structure never matters.
 WHY: Continuation is likely after a healthy pullback but not guaranteed, especially if structure breaks.
 
+
+[FILL] Continuation after a healthy pullback is a [___], not a guarantee.
+tendency
+certainty
+rule
+WHY: "Often, not always" describes a tendency, not a certainty.
+
+[TF] Continuation is guaranteed after every healthy pullback.
+ANSWER: False
+WHY: It's a common tendency, not a guarantee — the trend can still fail to continue.
+
+[MC] How should "the trend often continues after a pullback" be read?
+As a commonly observed tendency, not a certainty.
+As an absolute, guaranteed rule.
+As something that never happens.
+WHY: This course consistently frames such patterns as tendencies, not guarantees.
+
 NODE 6
 TITLE: Pullbacks Review
 CELEBRATION: You've mastered pullbacks & continuation!
@@ -7965,6 +8050,23 @@ Pullbacks that guarantee continuation | detail: Overstates certainty | wrong: Co
 Pullbacks identical to full reversals | detail: Wrong | wrong: Pullbacks keep structure; reversals break it.
 WHY: Structure-preserving pauses with likely (not guaranteed) continuation is the throughline.
 
+
+[FILL] This review ties together pullbacks, higher lows/lower highs, and [___].
+continuation
+random guesses
+company names
+WHY: All three core ideas from this unit are reviewed together here.
+
+[TF] Even after this review, continuation after a pullback should be read as a tendency, not a certainty.
+ANSWER: True
+WHY: This remains true throughout — a tendency, never a guarantee.
+
+[MC] What is the single most useful habit from this unit?
+Checking whether pullback structure (higher lows/lower highs) is holding.
+Assuming every pullback is a full reversal.
+Ignoring pullbacks entirely.
+WHY: Checking whether the structure holds is the core skill from this unit.
+
 UNIT 15 — Momentum & Exhaustion
 NODE 1
 TITLE: Reading Momentum From Bodies
@@ -7996,6 +8098,23 @@ WHY: Bigger bodies reflect stronger, more one-sided moves.
 ANSWER: True
 WHY: The full body shows price pushed one way and held.
 
+
+[FILL] A large candle body reflects [___] in that period.
+momentum
+indecision
+volume only
+WHY: A large body shows price moved decisively one way — that's momentum.
+
+[TF] Reading body size is a quick way to gauge how strong a move looks.
+ANSWER: True
+WHY: Body size is a simple, descriptive read of a period's momentum.
+
+[MC] What does a large, decisive candle body suggest?
+Strong momentum in one direction that period.
+Deep indecision.
+No price movement at all.
+WHY: A large body reflects a decisive, one-sided move — momentum.
+
 NODE 2
 TITLE: Exhaustion: Long Wicks
 CELEBRATION: You can read exhaustion from wicks!
@@ -8026,6 +8145,23 @@ WHY: A rejected push suggests the move may be running out of steam there.
 CHART: rejectionWickDown
 ANSWER: True
 WHY: A long lower wick shows sellers were rejected and buyers recovered price.
+
+
+[FILL] A long wick shows a push that got [___].
+rejected
+confirmed
+guaranteed
+WHY: The wick marks a level price touched but couldn't hold — a rejection.
+
+[TF] A long wick can be a sign a move is running out of steam at that extreme.
+ANSWER: True
+WHY: Rejection at an extreme is commonly read as a possible sign of exhaustion there.
+
+[MC] What does a long wick suggest, descriptively?
+A push to an extreme that was rejected before the close.
+Guaranteed continuation in that direction.
+Zero price movement that period.
+WHY: A long wick describes a rejected push, not a guarantee of what's next.
 
 NODE 3
 TITLE: Indecision: Doji & Spinning Top
@@ -8060,6 +8196,23 @@ surging
 doubling
 WHY: A small body means neither side pushed decisively — momentum stalling.
 
+
+[FILL] A doji or spinning top reflects [___], not decisive momentum.
+indecision
+strong momentum
+guaranteed reversal
+WHY: Small bodies on both these shapes reflect a balanced, indecisive period.
+
+[TF] A doji and a spinning top both have relatively small bodies.
+ANSWER: True
+WHY: Small body size is what both shapes share, reflecting indecision.
+
+[MC] What do doji and spinning top candles have in common?
+Both reflect indecision through a small body.
+Both reflect strong, one-sided momentum.
+Both always guarantee a reversal.
+WHY: Small bodies on both shapes point to indecision, not decisive momentum.
+
 NODE 4
 TITLE: Strong vs. Weak Candles
 CELEBRATION: You can compare candle strength!
@@ -8087,6 +8240,23 @@ WHY: Body size is a quick read of momentum vs hesitation.
 [TF] Reading candle strength is descriptive context, not a guaranteed prediction.
 ANSWER: True
 WHY: Strength informs the read; it doesn't guarantee what comes next.
+
+
+[FILL] Comparing candles helps read [___] strength between them.
+relative
+guaranteed
+random
+WHY: Comparing body sizes is about relative, descriptive strength, not certainty.
+
+[TF] A strong (large-bodied) candle guarantees the next candle will also be strong.
+ANSWER: False
+WHY: Reading strength is descriptive context for that period — it doesn't guarantee the next one.
+
+[MC] Comparing a marubozu to a doji, which reflects more momentum?
+The marubozu (big body).
+The doji (tiny body).
+They reflect identical momentum.
+WHY: A marubozu's large body reflects far more momentum than a doji's tiny one.
 
 NODE 5
 TITLE: Momentum Into a Level
@@ -8117,6 +8287,23 @@ exhaustion
 continuation
 volume
 WHY: A rejected push at a level commonly reads as exhaustion there.
+
+
+[FILL] A strong push into resistance that then rejects is a common [___] read.
+exhaustion
+continuation
+volume
+WHY: A rejected push at a level is commonly read as possible exhaustion there.
+
+[TF] A rejection at resistance guarantees price will fall from there.
+ANSWER: False
+WHY: A rejection is descriptive context about that push, not a guarantee of what follows.
+
+[MC] What does momentum meeting resistance and getting rejected commonly suggest?
+Possible exhaustion of that push at the level.
+A guaranteed breakout.
+No information at all.
+WHY: A rejected push at a level is commonly read as a possible exhaustion signal.
 
 NODE 6
 TITLE: Momentum Review
@@ -8150,6 +8337,23 @@ Read momentum, exhaustion, and indecision from candle shape — descriptively | 
 Candle shape guarantees the next move | detail: Overstates certainty | wrong: Contradicts the unit.
 Candle shape tells you nothing | detail: Backwards | wrong: Shape reflects momentum and exhaustion.
 WHY: Descriptive candle-strength reading is the throughline.
+
+
+[FILL] This review ties together momentum (bodies), exhaustion (wicks), and [___] (small bodies).
+indecision
+random guesses
+company names
+WHY: All three core reads from this unit are reviewed together here.
+
+[TF] Reading momentum and exhaustion from candles is descriptive context, not a guarantee.
+ANSWER: True
+WHY: This has been the throughline — descriptive candle reads, never certainties.
+
+[MC] What is the single most useful habit from this unit?
+Reading body size and wick length together for momentum and exhaustion clues.
+Only ever looking at candle color.
+Ignoring candle shape entirely.
+WHY: Combining body and wick reads is the core skill from this unit.
 
 UNIT 16 — Confluence
 NODE 1
@@ -8185,6 +8389,23 @@ It guarantees the outcome | detail: Overstates certainty | wrong: More agreement
 It replaces reading the chart | detail: Backwards | wrong: Confluence IS reading several chart factors together.
 WHY: Confluence stacks evidence — stronger, but never a guarantee.
 
+
+[FILL] Confluence is [___] or more readings agreeing at the same spot.
+two
+zero
+exactly one
+WHY: Confluence requires at least two agreeing factors at one spot.
+
+[TF] More agreeing factors make a read stronger, but never guarantee the outcome.
+ANSWER: True
+WHY: Agreement strengthens the read; it doesn't make it a certainty.
+
+[MC] What is confluence, in simple terms?
+Multiple readings pointing the same way at once.
+A single isolated signal.
+A guaranteed trading outcome.
+WHY: Confluence describes multiple agreeing factors, not a lone signal or a certainty.
+
 NODE 2
 TITLE: Level + Candle Signal
 CELEBRATION: You can read level-plus-candle confluence!
@@ -8214,6 +8435,23 @@ confluence
 coincidence
 volume
 WHY: Two agreeing factors at one spot is confluence.
+
+
+[FILL] A support level plus a bounce candle together is an example of [___].
+confluence
+coincidence
+volume
+WHY: Two agreeing factors (level + candle) at one spot is confluence.
+
+[TF] A bounce candle at a support level is stronger evidence than the same candle with no nearby level.
+ANSWER: True
+WHY: The level and the candle agreeing (confluence) is stronger than the candle alone.
+
+[MC] What two factors combine in "level + candle signal" confluence?
+A support/resistance level and a candle signal like a bounce wick.
+Two unrelated candle colors.
+The account balance and the time of day.
+WHY: A level plus a candle signal agreeing is this specific type of confluence.
 
 NODE 3
 TITLE: Level + Pattern
@@ -8245,6 +8483,23 @@ color
 gap
 WHY: The resistance level plus the double top pattern is confluence.
 
+
+[FILL] A pattern forming at a key level is an example of [___] confluence.
+level + pattern
+random
+guaranteed
+WHY: The pattern and the level reinforcing each other is this type of confluence.
+
+[TF] A pattern in empty space (with no nearby level) is generally weaker evidence than the same pattern at a level.
+ANSWER: True
+WHY: A pattern reinforced by a level (confluence) is stronger than the pattern alone.
+
+[MC] What two factors combine in "level + pattern" confluence?
+A key level and a chart pattern forming there.
+Two unrelated timeframes.
+Candle color and account size.
+WHY: A pattern reinforced by a level is this specific type of confluence.
+
 NODE 4
 TITLE: Trend + Pullback
 CELEBRATION: You can read trend-plus-pullback confluence!
@@ -8274,6 +8529,23 @@ WHY: The pullback and the trend agree — they're aligned (confluence).
 [TF] A pullback that agrees with the trend adds confluence to an up-bias read.
 ANSWER: True
 WHY: Trend plus an aligned pullback is two factors agreeing — confluence.
+
+
+[FILL] A healthy pullback within a trend is an example of [___] confluence.
+trend + pullback
+random
+guaranteed
+WHY: The trend direction and the pullback's structure agreeing is this type of confluence.
+
+[TF] A pullback that breaks the trend's structure would NOT add confluence to the trend's bias.
+ANSWER: True
+WHY: Only an aligned, structure-preserving pullback adds confluence; a broken one doesn't.
+
+[MC] What two factors combine in "trend + pullback" confluence?
+The overall trend direction and an aligned, healthy pullback.
+Two unrelated candle colors.
+The account balance and volume.
+WHY: Trend direction plus an aligned pullback is this specific type of confluence.
 
 NODE 5
 TITLE: More Confluence, Stronger Read
@@ -8306,6 +8578,23 @@ Even strong confluence isn't a guarantee — treating it as "can't fail" oversta
 More confluence makes it certain.
 Confluence removes all risk.
 WHY: Confluence improves the read's odds but never removes uncertainty.
+
+
+[FILL] Confluence stacks [___], not certainty.
+probability
+guarantees
+volume
+WHY: More agreeing factors raise the odds in the read, never guaranteeing an outcome.
+
+[TF] Enough confluence can eventually make an outcome fully guaranteed.
+ANSWER: False
+WHY: No amount of confluence removes uncertainty entirely — it only stacks probability.
+
+[MC] What is the honest limit of confluence, even with many agreeing factors?
+It strengthens the read but never guarantees the outcome.
+It eventually guarantees the outcome.
+It has no effect on the read at all.
+WHY: Confluence improves the odds of a read without ever making it certain.
 
 NODE 6
 TITLE: Confluence Review
@@ -8347,6 +8636,23 @@ Confluence needs two or more agreeing readings — a single signal on its own is
 One signal is always full confluence.
 The number of factors doesn't matter.
 WHY: Confluence requires multiple agreeing factors, not a lone signal.
+
+
+[FILL] This review ties together the idea of stacking [___] readings.
+agreeing
+random
+guaranteed
+WHY: Stacking multiple agreeing readings is the throughline of this unit.
+
+[TF] Confluence is about combining chart factors, not ignoring them.
+ANSWER: True
+WHY: Confluence specifically means reading several chart factors together, not skipping analysis.
+
+[MC] What is the single most useful habit from this unit?
+Looking for multiple agreeing factors before treating a read as stronger.
+Acting on a single isolated signal as if it were certain.
+Ignoring levels, patterns, and trend entirely.
+WHY: Seeking agreement across factors (without assuming certainty) is the core skill here.
 
 UNIT 17 — Gaps
 NODE 1
