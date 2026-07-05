@@ -16653,6 +16653,17 @@
        "chart": "ascendingTriangle"
       },
       {
+       "type": "tap_candles",
+       "question": "Tap every candle that closes at one of the rising lows.",
+       "targets": [
+        0,
+        1,
+        3
+       ],
+       "explanation": "Candles 1, 2, and 4 mark the sequence of rising lows squeezing up under the flat top.",
+       "chart": "ascendingTriangle"
+      },
+      {
        "type": "true_false",
        "question": "An ascending triangle has rising lows underneath a flat resistance.",
        "correct": true,
@@ -16753,6 +16764,17 @@
        "question": "Drag the line to the flat support the lows keep testing.",
        "level_kind": "support",
        "explanation": "The flat bottom of a descending triangle is the support being tested repeatedly.",
+       "chart": "descendingTriangle"
+      },
+      {
+       "type": "tap_candles",
+       "question": "Tap every candle that closes at one of the falling highs.",
+       "targets": [
+        0,
+        1,
+        3
+       ],
+       "explanation": "Candles 1, 2, and 4 mark the sequence of falling highs squeezing down over the flat bottom.",
        "chart": "descendingTriangle"
       },
       {
@@ -18504,6 +18526,14 @@
        "chart": "pullbackUptrend"
       },
       {
+       "type": "draw_trendline",
+       "question": "Drag to connect the two higher lows that define this uptrend line.",
+       "target_start": 0,
+       "target_end": 2,
+       "explanation": "The uptrend line runs from the first low through the pullback's higher low, candles 1 and 3.",
+       "chart": "pullbackUptrend"
+      },
+      {
        "type": "multiple_choice",
        "question": "An uptrend line stays intact as long as pullbacks make...",
        "options": [
@@ -18577,6 +18607,14 @@
        "question": "Tap the lower high (the bounce that failed below the prior high).",
        "target": 2,
        "explanation": "The 3rd candle is the bounce that made a lower high, keeping the downtrend intact.",
+       "chart": "lowerHighsDowntrend"
+      },
+      {
+       "type": "draw_trendline",
+       "question": "Drag to connect the two lower highs that define this downtrend line.",
+       "target_start": 0,
+       "target_end": 2,
+       "explanation": "The downtrend line runs from the first high through the bounce's lower high, candles 1 and 3.",
        "chart": "lowerHighsDowntrend"
       },
       {
@@ -18972,6 +19010,14 @@
        "question": "Drag the line to the support (the floor) of this range.",
        "level_kind": "support",
        "explanation": "The bottom of the range is the support price keeps bouncing from.",
+       "chart": "range"
+      },
+      {
+       "type": "mark_consolidation",
+       "question": "Drag across every candle that's part of this range's consolidation.",
+       "target_lo": 0,
+       "target_hi": 5,
+       "explanation": "All six candles here stay bounded between the support and resistance, the whole chart is the consolidation.",
        "chart": "range"
       },
       {

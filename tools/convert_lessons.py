@@ -114,6 +114,14 @@ def parse_doc(text):
             q["meta"]["target"] = s[len("TARGET:"):].strip(); continue
         if s.startswith("LEVEL:"):
             q["meta"]["level"] = s[len("LEVEL:"):].strip(); continue
+        if s.startswith("TARGET_START:"):
+            q["meta"]["target_start"] = s[len("TARGET_START:"):].strip(); continue
+        if s.startswith("TARGET_END:"):
+            q["meta"]["target_end"] = s[len("TARGET_END:"):].strip(); continue
+        if s.startswith("TARGET_LO:"):
+            q["meta"]["target_lo"] = s[len("TARGET_LO:"):].strip(); continue
+        if s.startswith("TARGET_HI:"):
+            q["meta"]["target_hi"] = s[len("TARGET_HI:"):].strip(); continue
         m2 = re.match(r"^BLANK(\d):\s*(.*)$", s)
         if m2:
             q["meta"].setdefault("blanks", {})[int(m2.group(1))] = m2.group(2).strip(); continue
@@ -164,6 +172,22 @@ def build_screen(qtype, q):
         # The true level comes from the chart at render time; author just says which.
         kind = q["meta"].get("level", "support").strip().lower()
         s = {"type": "mark_level", "question": head, "level_kind": kind}
+        if why: s["explanation"] = why
+        return s
+    if qtype == "TRENDLINE":
+        # Interactive: drag between two candles to connect them along a trendline.
+        # TARGET_START/TARGET_END are 1-based candle numbers; stored 0-based.
+        ts = int(q["meta"].get("target_start", "1")) - 1
+        te = int(q["meta"].get("target_end", "2")) - 1
+        s = {"type": "draw_trendline", "question": head, "target_start": ts, "target_end": te}
+        if why: s["explanation"] = why
+        return s
+    if qtype == "CONSOLIDATION":
+        # Interactive: drag across the candles that make up a consolidation/range zone.
+        # TARGET_LO/TARGET_HI are 1-based inclusive candle numbers; stored 0-based.
+        tlo = int(q["meta"].get("target_lo", "1")) - 1
+        thi = int(q["meta"].get("target_hi", "2")) - 1
+        s = {"type": "mark_consolidation", "question": head, "target_lo": tlo, "target_hi": thi}
         if why: s["explanation"] = why
         return s
     if qtype == "MC":
