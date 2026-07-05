@@ -90,10 +90,21 @@ struct LessonScreen: Decodable, Identifiable {
     let level: Double?
     let levelKind: String?
 
+    // draw_trendline → the two candle indices the learner must connect
+    let targetStart: Int?
+    let targetEnd: Int?
+    // mark_consolidation → the contiguous candle-index range the learner must select
+    let targetLo: Int?
+    let targetHi: Int?
+
     enum CodingKeys: String, CodingKey {
         case type, text, question, explanation, options, pairs, scenario, template, blanks
         case concern, items, chart, target, targets, level
         case levelKind = "level_kind"
+        case targetStart = "target_start"
+        case targetEnd = "target_end"
+        case targetLo = "target_lo"
+        case targetHi = "target_hi"
         case screenTitle = "title"
         case correct
         case wrongExplanations = "wrong_explanations"
@@ -123,6 +134,10 @@ struct LessonScreen: Decodable, Identifiable {
         targets = try c.decodeIfPresent([Int].self, forKey: .targets)
         level = try c.decodeIfPresent(Double.self, forKey: .level)
         levelKind = try c.decodeIfPresent(String.self, forKey: .levelKind)
+        targetStart = try c.decodeIfPresent(Int.self, forKey: .targetStart)
+        targetEnd = try c.decodeIfPresent(Int.self, forKey: .targetEnd)
+        targetLo = try c.decodeIfPresent(Int.self, forKey: .targetLo)
+        targetHi = try c.decodeIfPresent(Int.self, forKey: .targetHi)
 
         // wrong_explanations may contain nulls
         wrongExplanations = (try? c.decodeIfPresent([String?].self, forKey: .wrongExplanations)) ?? nil

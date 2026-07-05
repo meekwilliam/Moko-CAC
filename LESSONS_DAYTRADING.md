@@ -7327,6 +7327,11 @@ CHART: ascendingTriangle
 LEVEL: resistance
 WHY: The flat top of an ascending triangle is the resistance being tested repeatedly.
 
+[TAPCANDLES] Tap every candle that closes at one of the rising lows.
+CHART: ascendingTriangle
+TARGETS: 1, 2, 4
+WHY: Candles 1, 2, and 4 mark the sequence of rising lows squeezing up under the flat top.
+
 [TF] An ascending triangle has rising lows underneath a flat resistance.
 CHART: ascendingTriangle
 ANSWER: True
@@ -7382,6 +7387,11 @@ WHY: A flat support with falling highs is the descending triangle shape.
 CHART: descendingTriangle
 LEVEL: support
 WHY: The flat bottom of a descending triangle is the support being tested repeatedly.
+
+[TAPCANDLES] Tap every candle that closes at one of the falling highs.
+CHART: descendingTriangle
+TARGETS: 1, 2, 4
+WHY: Candles 1, 2, and 4 mark the sequence of falling highs squeezing down over the flat bottom.
 
 [FILL] The highs of a descending triangle are commonly [___] while the bottom stays flat.
 falling
@@ -8325,6 +8335,12 @@ CHART: pullbackUptrend
 TARGET: 3
 WHY: The 3rd candle is the pullback that made a higher low, keeping the uptrend intact.
 
+[TRENDLINE] Drag to connect the two higher lows that define this uptrend line.
+CHART: pullbackUptrend
+TARGET_START: 1
+TARGET_END: 3
+WHY: The uptrend line runs from the first low through the pullback's higher low, candles 1 and 3.
+
 [MC] An uptrend line stays intact as long as pullbacks make...
 higher lows (holding above the line).
 lower lows (breaking the line).
@@ -8371,6 +8387,12 @@ CHART: lowerHighsDowntrend
 CHART: lowerHighsDowntrend
 TARGET: 3
 WHY: The 3rd candle is the bounce that made a lower high, keeping the downtrend intact.
+
+[TRENDLINE] Drag to connect the two lower highs that define this downtrend line.
+CHART: lowerHighsDowntrend
+TARGET_START: 1
+TARGET_END: 3
+WHY: The downtrend line runs from the first high through the bounce's lower high, candles 1 and 3.
 
 [MC] A downtrend line stays intact as long as bounces make...
 lower highs (staying below the line).
@@ -8582,6 +8604,12 @@ WHY: The top of the range is the resistance price keeps failing to break.
 CHART: range
 LEVEL: support
 WHY: The bottom of the range is the support price keeps bouncing from.
+
+[CONSOLIDATION] Drag across every candle that's part of this range's consolidation.
+CHART: range
+TARGET_LO: 1
+TARGET_HI: 6
+WHY: All six candles here stay bounded between the support and resistance, the whole chart is the consolidation.
 
 [FILL] A range is bounded by a support below and a [___] above.
 resistance

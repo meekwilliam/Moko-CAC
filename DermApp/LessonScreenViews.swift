@@ -24,6 +24,10 @@ struct LessonScreenRouter: View {
             TapCandlesView(player: player, ink: ink)
         case "mark_level":
             MarkLevelView(player: player, ink: ink)
+        case "draw_trendline":
+            TrendlineView(player: player, ink: ink)
+        case "mark_consolidation":
+            ConsolidationView(player: player, ink: ink)
         default:
             // true_false / multiple_choice / fill_blank / spot_mistake
             ChoiceView(player: player, ink: ink)
@@ -298,6 +302,215 @@ struct MarkLevelView: View {
                 .background(Capsule().fill(color))
                 .offset(y: y - 18)
         }
+    }
+}
+
+// MARK: - Draw a trendline (interactive) — drag between two candles to connect them
+
+struct TrendlineView: View {
+    @ObservedObject var player: LessonPlayer
+    var ink: Color
+
+    private let chartHeight: CGFloat = 210
+    private var s: LessonScreen { player.screen }
+    private var scenario: ChartScenario? { s.chart.flatMap { ChartScenario(rawValue: $0) } }
+
+    var body: some View {
+        VStack(alignment: .leading, spacing: 16) {
+            Text(RichText.attributed(s.question ?? "Drag to connect the two points on the chart.",
+                                     base: Theme.font(21, .heavy),
+                                     bold: Theme.font(21, .black), color: ink))
+                .fixedSize(horizontal: false, vertical: true)
+
+            if let sc = scenario {
+                let m = sc.model(seed: chartSeed(s))
+                let (lo, range) = priceRange(m.candles)
+                let n = max(m.candles.count, 1)
+
+                GeometryReader { geo in
+                    let slot = geo.size.width / CGFloat(n)
+                    let correct = isCorrect
+
+                    ZStack(alignment: .topLeading) {
+                        CandlestickChart(candles: m.candles, highlightIndex: nil)
+                            .frame(width: geo.size.width, height: chartHeight)
+
+                        if let a = player.trendStart, let b = player.trendEnd {
+                            let color: Color = player.revealed
+                                ? (correct ? Color(hex: "#22C55E") : Color(hex: "#EF4444"))
+                                : Color(hex: "#38bdf8")
+                            trendLine(a, b, m.candles, slot, lo, range, color: color)
+                        }
+
+                        if player.revealed, let ts = s.targetStart, let te = s.targetEnd, !correct {
+                            trendLine(ts, te, m.candles, slot, lo, range, color: Color(hex: "#22C55E"), dashed: true)
+                        }
+
+                        Rectangle().fill(Color.white.opacity(0.001))
+                            .frame(width: geo.size.width, height: chartHeight)
+                            .gesture(
+                                DragGesture(minimumDistance: 0)
+                                    .onChanged { g in
+                                        guard !player.revealed else { return }
+                                        if player.trendStart == nil {
+                                            player.trendStart = indexFor(g.startLocation.x, slot, n)
+                                        }
+                                        player.trendEnd = indexFor(g.location.x, slot, n)
+                                    }
+                            )
+                    }
+                }
+                .frame(height: chartHeight)
+                .padding(.horizontal, 6).padding(.vertical, 14)
+                .background(
+                    RoundedRectangle(cornerRadius: 16, style: .continuous)
+                        .fill(Color.white.opacity(0.04))
+                        .overlay(RoundedRectangle(cornerRadius: 16, style: .continuous)
+                            .strokeBorder(Color.white.opacity(0.08), lineWidth: 1.5))
+                )
+
+                Label(player.trendStart == nil ? "Drag from one point to the other" : "Adjust or tap Check",
+                      systemImage: "hand.draw.fill")
+                    .font(Theme.font(13, .bold))
+                    .foregroundColor(Theme.muted)
+                    .frame(maxWidth: .infinity, alignment: .center)
+            }
+        }
+        .frame(maxWidth: .infinity, alignment: .leading)
+    }
+
+    private var isCorrect: Bool {
+        guard let a = player.trendStart, let b = player.trendEnd,
+              let ts = s.targetStart, let te = s.targetEnd else { return false }
+        let chosen = Set([a, b]), target = Set([ts, te])
+        return chosen.count == 2 && target.count == 2 &&
+            abs(chosen.min()! - target.min()!) <= 1 && abs(chosen.max()! - target.max()!) <= 1
+    }
+
+    private func indexFor(_ x: CGFloat, _ slot: CGFloat, _ n: Int) -> Int {
+        min(max(Int(x / max(slot, 1)), 0), n - 1)
+    }
+
+    private func priceRange(_ candles: [Candle]) -> (lo: Double, range: Double) {
+        let values = candles.flatMap { [$0.high, $0.low] }
+        let maxV = values.max() ?? 1, minV = values.min() ?? 0
+        let pad = max(maxV - minV, 0.0001) * 0.1
+        let lo = minV - pad, hi = maxV + pad
+        return (lo, max(hi - lo, 0.0001))
+    }
+
+    private func yFor(_ v: Double, _ lo: Double, _ range: Double) -> CGFloat {
+        chartHeight * CGFloat(1 - (v - lo) / range)
+    }
+
+    @ViewBuilder
+    private func trendLine(_ a: Int, _ b: Int, _ candles: [Candle], _ slot: CGFloat,
+                            _ lo: Double, _ range: Double, color: Color, dashed: Bool = false) -> some View {
+        if candles.indices.contains(a) && candles.indices.contains(b) {
+            let ax = slot * (CGFloat(a) + 0.5), bx = slot * (CGFloat(b) + 0.5)
+            let av = (candles[a].open + candles[a].close) / 2
+            let bv = (candles[b].open + candles[b].close) / 2
+            Path { p in
+                p.move(to: CGPoint(x: ax, y: yFor(av, lo, range)))
+                p.addLine(to: CGPoint(x: bx, y: yFor(bv, lo, range)))
+            }
+            .stroke(color, style: StrokeStyle(lineWidth: 2.5, lineCap: .round, dash: dashed ? [5, 4] : []))
+        }
+    }
+}
+
+// MARK: - Mark a consolidation area (interactive) — drag across candles to select a range
+
+struct ConsolidationView: View {
+    @ObservedObject var player: LessonPlayer
+    var ink: Color
+
+    private let chartHeight: CGFloat = 210
+    private var s: LessonScreen { player.screen }
+    private var scenario: ChartScenario? { s.chart.flatMap { ChartScenario(rawValue: $0) } }
+
+    var body: some View {
+        VStack(alignment: .leading, spacing: 16) {
+            Text(RichText.attributed(s.question ?? "Drag across the consolidation area.",
+                                     base: Theme.font(21, .heavy),
+                                     bold: Theme.font(21, .black), color: ink))
+                .fixedSize(horizontal: false, vertical: true)
+
+            if let sc = scenario {
+                let m = sc.model(seed: chartSeed(s))
+                let n = max(m.candles.count, 1)
+
+                GeometryReader { geo in
+                    let slot = geo.size.width / CGFloat(n)
+                    let correct = isCorrect
+
+                    ZStack(alignment: .topLeading) {
+                        CandlestickChart(candles: m.candles, highlightIndex: nil)
+                            .frame(width: geo.size.width, height: chartHeight)
+
+                        if let lo = player.consolidationLo, let hi = player.consolidationHi {
+                            let color: Color = player.revealed
+                                ? (correct ? Color(hex: "#22C55E") : Color(hex: "#EF4444"))
+                                : Color(hex: "#38bdf8")
+                            areaRect(lo, hi, slot, geo.size.height, color: color)
+                        }
+
+                        if player.revealed, let tlo = s.targetLo, let thi = s.targetHi, !correct {
+                            areaRect(tlo, thi, slot, geo.size.height, color: Color(hex: "#22C55E"), dashed: true)
+                        }
+
+                        Rectangle().fill(Color.white.opacity(0.001))
+                            .frame(width: geo.size.width, height: chartHeight)
+                            .gesture(
+                                DragGesture(minimumDistance: 0)
+                                    .onChanged { g in
+                                        guard !player.revealed else { return }
+                                        let a = indexFor(g.startLocation.x, slot, n)
+                                        let b = indexFor(g.location.x, slot, n)
+                                        player.consolidationLo = min(a, b)
+                                        player.consolidationHi = max(a, b)
+                                    }
+                            )
+                    }
+                }
+                .frame(height: chartHeight)
+                .padding(.horizontal, 6).padding(.vertical, 14)
+                .background(
+                    RoundedRectangle(cornerRadius: 16, style: .continuous)
+                        .fill(Color.white.opacity(0.04))
+                        .overlay(RoundedRectangle(cornerRadius: 16, style: .continuous)
+                            .strokeBorder(Color.white.opacity(0.08), lineWidth: 1.5))
+                )
+
+                Label(player.consolidationLo == nil ? "Drag across the candles that fit" : "Adjust or tap Check",
+                      systemImage: "hand.draw.fill")
+                    .font(Theme.font(13, .bold))
+                    .foregroundColor(Theme.muted)
+                    .frame(maxWidth: .infinity, alignment: .center)
+            }
+        }
+        .frame(maxWidth: .infinity, alignment: .leading)
+    }
+
+    private var isCorrect: Bool {
+        guard let lo = player.consolidationLo, let hi = player.consolidationHi,
+              let tlo = s.targetLo, let thi = s.targetHi else { return false }
+        return abs(lo - tlo) <= 1 && abs(hi - thi) <= 1
+    }
+
+    private func indexFor(_ x: CGFloat, _ slot: CGFloat, _ n: Int) -> Int {
+        min(max(Int(x / max(slot, 1)), 0), n - 1)
+    }
+
+    private func areaRect(_ lo: Int, _ hi: Int, _ slot: CGFloat, _ height: CGFloat,
+                           color: Color, dashed: Bool = false) -> some View {
+        let x = slot * CGFloat(lo)
+        let width = slot * CGFloat(hi - lo + 1)
+        return RoundedRectangle(cornerRadius: 6, style: .continuous)
+            .strokeBorder(color, style: StrokeStyle(lineWidth: 2, dash: dashed ? [5, 4] : []))
+            .background(RoundedRectangle(cornerRadius: 6, style: .continuous).fill(color.opacity(dashed ? 0 : 0.14)))
+            .frame(width: width, height: height - 4)
+            .position(x: x + width / 2, y: height / 2)
     }
 }
 

@@ -24,6 +24,12 @@ final class LessonPlayer: ObservableObject {
     @Published var markedLevel: Double? = nil          // mark_level: the price the user marked
     var markTrueLevel: Double? = nil                   // the correct level (set by the view)
     var markTolerance: Double = 0                      // acceptable distance for mark_level
+    // draw_trendline: the two candle indices the learner dragged between
+    @Published var trendStart: Int? = nil
+    @Published var trendEnd: Int? = nil
+    // mark_consolidation: the contiguous candle-index range the learner dragged across
+    @Published var consolidationLo: Int? = nil
+    @Published var consolidationHi: Int? = nil
     // fill_blank_multi
     @Published var multiSelections: [Int?] = []
     // sequence_builder / drag_order
@@ -81,6 +87,10 @@ final class LessonPlayer: ObservableObject {
             return !selectedSet.isEmpty
         case "mark_level":
             return markedLevel != nil
+        case "draw_trendline":
+            return trendStart != nil && trendEnd != nil && trendStart != trendEnd
+        case "mark_consolidation":
+            return consolidationLo != nil && consolidationHi != nil
         default:
             return selectedIndex != nil
         }
@@ -91,6 +101,10 @@ final class LessonPlayer: ObservableObject {
         selectedSet = []
         markedLevel = nil
         markTrueLevel = nil
+        trendStart = nil
+        trendEnd = nil
+        consolidationLo = nil
+        consolidationHi = nil
         revealed = false
         lastCorrect = false
         builtOrder = []
@@ -121,6 +135,18 @@ final class LessonPlayer: ObservableObject {
         case "mark_level":
             if let marked = markedLevel, let truth = markTrueLevel {
                 correct = abs(marked - truth) <= markTolerance
+            } else { correct = false }
+        case "draw_trendline":
+            if let a = trendStart, let b = trendEnd,
+               let ts = screen.targetStart, let te = screen.targetEnd {
+                let chosen = Set([a, b]), target = Set([ts, te])
+                correct = chosen.count == 2 && target.count == 2 &&
+                    abs(chosen.min()! - target.min()!) <= 1 && abs(chosen.max()! - target.max()!) <= 1
+            } else { correct = false }
+        case "mark_consolidation":
+            if let lo = consolidationLo, let hi = consolidationHi,
+               let tlo = screen.targetLo, let thi = screen.targetHi {
+                correct = abs(lo - tlo) <= 1 && abs(hi - thi) <= 1
             } else { correct = false }
         default:
             correct = (selectedIndex == currentCorrectIndex)
