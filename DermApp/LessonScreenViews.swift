@@ -119,7 +119,10 @@ struct TapCandleView: View {
                     resistanceLevel: m.resistance,
                     highlightIndex: nil,   // never pre-highlight — that's the answer
                     maLine: m.maLine,
+                    maLineLabel: sc.maLabel,
                     maLine2: m.maLine2,
+                    bandUpper: m.bandUpper,
+                    bandLower: m.bandLower,
                     chosenIndex: player.selectedIndex,
                     revealTarget: player.revealed ? s.target : nil,
                     onTapCandle: { i in
@@ -176,6 +179,8 @@ struct TapCandlesView: View {
                     highlightIndex: nil,
                     maLine: m.maLine,
                     maLine2: m.maLine2,
+                    bandUpper: m.bandUpper,
+                    bandLower: m.bandLower,
                     chosenSet: player.selectedSet,
                     revealTargets: player.revealed ? Set(s.targets ?? []) : nil,
                     onTapCandle: { i in

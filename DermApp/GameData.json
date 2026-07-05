@@ -30856,7 +30856,22 @@
       {
        "type": "intro",
        "title": "Above or Below Fair Value",
-       "text": "Price trading <b>above</b> VWAP is commonly described as trading above the session's average (relative strength); <b>below</b> as relative weakness. It's descriptive context, not a signal."
+       "text": "Price trading <b>above</b> VWAP is commonly described as trading above the session's average (relative strength); <b>below</b> as relative weakness. It's descriptive context, not a signal.",
+       "chart": "priceAboveVWAP"
+      },
+      {
+       "type": "tap_candle",
+       "question": "Tap the candle where price crosses above VWAP.",
+       "target": 3,
+       "explanation": "The 4th candle is where price closes back above VWAP, the crossing point.",
+       "chart": "priceAboveVWAP"
+      },
+      {
+       "type": "tap_candle",
+       "question": "Tap the candle where price crosses below VWAP.",
+       "target": 3,
+       "explanation": "The 4th candle is where price closes back below VWAP, the crossing point.",
+       "chart": "priceBelowVWAP"
       },
       {
        "type": "multiple_choice",
@@ -30994,7 +31009,7 @@
        "type": "intro",
        "title": "Width Reflects Volatility",
        "text": "When volatility rises, the bands <b>widen</b>; when it's calm, they <b>narrow</b>. Band width is a quick read of how volatile price is right now.",
-       "chart": "volatile"
+       "chart": "bandsWidening"
       },
       {
        "type": "multiple_choice",
@@ -31005,7 +31020,8 @@
         "low volatility."
        ],
        "correct": 1,
-       "explanation": "Bigger deviations (volatility) push the bands wider."
+       "explanation": "Bigger deviations (volatility) push the bands wider, as shown widening left to right above.",
+       "chart": "bandsWidening"
       },
       {
        "type": "multiple_choice",
@@ -31016,7 +31032,8 @@
         "a guaranteed breakout."
        ],
        "correct": 0,
-       "explanation": "Small deviations (calm) pull the bands narrow."
+       "explanation": "Small deviations (calm) pull the bands narrow, as shown squeezing left to right above.",
+       "chart": "bandsNarrowing"
       },
       {
        "type": "true_false",
@@ -31074,7 +31091,22 @@
       {
        "type": "intro",
        "title": "Touching a Band Isn't a Signal",
-       "text": "Price touching the upper or lower band shows it's stretched far from its average. But in a strong trend, price can \"ride\" a band for a long time. It's descriptive, not a reversal signal."
+       "text": "Price touching the upper or lower band shows it's stretched far from its average. But in a strong trend, price can \"ride\" a band for a long time. It's descriptive, not a reversal signal.",
+       "chart": "touchUpperBand"
+      },
+      {
+       "type": "tap_candle",
+       "question": "Tap the candle that stretches out to touch the upper band.",
+       "target": 4,
+       "explanation": "The 5th candle is where price stretches out to touch the upper band.",
+       "chart": "touchUpperBand"
+      },
+      {
+       "type": "tap_candle",
+       "question": "Tap the candle that stretches out to touch the lower band.",
+       "target": 4,
+       "explanation": "The 5th candle is where price stretches out to touch the lower band.",
+       "chart": "touchLowerBand"
       },
       {
        "type": "multiple_choice",
@@ -31085,7 +31117,8 @@
         "guaranteed to reverse down."
        ],
        "correct": 1,
-       "explanation": "An upper-band touch means price is far above the moving-average center."
+       "explanation": "An upper-band touch means price is far above the moving-average center.",
+       "chart": "touchUpperBand"
       },
       {
        "type": "true_false",

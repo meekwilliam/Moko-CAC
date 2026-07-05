@@ -14422,6 +14422,17 @@ CELEBRATION: You can read price against VWAP!
 INTRO
 TITLE: Above or Below Fair Value
 TEXT: Price trading <b>above</b> VWAP is commonly described as trading above the session's average (relative strength); <b>below</b> as relative weakness. It's descriptive context, not a signal.
+CHART: priceAboveVWAP
+
+[TAPCANDLE] Tap the candle where price crosses above VWAP.
+CHART: priceAboveVWAP
+TARGET: 4
+WHY: The 4th candle is where price closes back above VWAP, the crossing point.
+
+[TAPCANDLE] Tap the candle where price crosses below VWAP.
+CHART: priceBelowVWAP
+TARGET: 4
+WHY: The 4th candle is where price closes back below VWAP, the crossing point.
 
 [MC] Price above VWAP is commonly described as...
 trading above the session average (relative strength).
@@ -14505,19 +14516,21 @@ CELEBRATION: You can read band width!
 INTRO
 TITLE: Width Reflects Volatility
 TEXT: When volatility rises, the bands <b>widen</b>; when it's calm, they <b>narrow</b>. Band width is a quick read of how volatile price is right now.
-CHART: volatile
+CHART: bandsWidening
 
 [MC] Wide Bollinger Bands reflect...
+CHART: bandsWidening
 high volatility.
 low volatility.
 no price movement.
-WHY: Bigger deviations (volatility) push the bands wider.
+WHY: Bigger deviations (volatility) push the bands wider, as shown widening left to right above.
 
 [MC] Narrow ("squeezing") Bollinger Bands reflect...
+CHART: bandsNarrowing
 low volatility.
 high volatility.
 a guaranteed breakout.
-WHY: Small deviations (calm) pull the bands narrow.
+WHY: Small deviations (calm) pull the bands narrow, as shown squeezing left to right above.
 
 [TF] Band width is a quick read of current volatility.
 ANSWER: True
@@ -14546,8 +14559,20 @@ CELEBRATION: You can read price at the bands honestly!
 INTRO
 TITLE: Touching a Band Isn't a Signal
 TEXT: Price touching the upper or lower band shows it's stretched far from its average. But in a strong trend, price can "ride" a band for a long time. It's descriptive, not a reversal signal.
+CHART: touchUpperBand
+
+[TAPCANDLE] Tap the candle that stretches out to touch the upper band.
+CHART: touchUpperBand
+TARGET: 5
+WHY: The 5th candle is where price stretches out to touch the upper band.
+
+[TAPCANDLE] Tap the candle that stretches out to touch the lower band.
+CHART: touchLowerBand
+TARGET: 5
+WHY: The 5th candle is where price stretches out to touch the lower band.
 
 [MC] Price touching the upper band means price is...
+CHART: touchUpperBand
 stretched far above its average.
 guaranteed to reverse down.
 below its average.
