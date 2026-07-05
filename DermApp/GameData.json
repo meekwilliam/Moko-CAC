@@ -24191,6 +24191,13 @@
      "title": "Journaling & Review",
      "bg": "#8B5CF6",
      "slab": "#6D28D9"
+    },
+    {
+     "index": 11,
+     "eyebrow": "SECTION 3 · UNIT 12",
+     "title": "Average True Range (ATR)",
+     "bg": "#8B5CF6",
+     "slab": "#6D28D9"
     }
    ],
    "nodes": [
@@ -24631,6 +24638,36 @@
      "svg": "<svg width=\"34\" height=\"34\" viewBox=\"0 0 32 32\" fill=\"rgba(255,255,255,0.65)\">\n              <circle cx=\"13\" cy=\"13\" r=\"9\"/>\n              <rect x=\"19.5\" y=\"20.5\" width=\"4\" height=\"9\" rx=\"2\" transform=\"rotate(-45 19.5 20.5)\"/>\n            </svg>",
      "title": "Journaling Review",
      "sectionIndex": 10
+    },
+    {
+     "num": 74,
+     "svg": "<svg width=\"34\" height=\"34\" viewBox=\"0 0 32 32\" fill=\"rgba(255,255,255,0.65)\">\n              <circle cx=\"16\" cy=\"16\" r=\"5.5\"/>\n              <rect x=\"14.5\" y=\"1\" width=\"3\" height=\"6\" rx=\"1.5\"/>\n              <rect x=\"14.5\" y=\"1\" width=\"3\" height=\"6\" rx=\"1.5\" transform=\"rotate(45 16 16)\"/>\n              <rect x=\"14.5\" y=\"1\" width=\"3\" height=\"6\" rx=\"1.5\" transform=\"rotate(90 16 16)\"/>\n              <rect x=\"14.5\" y=\"1\" width=\"3\" height=\"6\" rx=\"1.5\" transform=\"rotate(135 16 16)\"/>\n              <rect x=\"14.5\" y=\"1\" width=\"3\" height=\"6\" rx=\"1.5\" transform=\"rotate(180 16 16)\"/>\n              <rect x=\"14.5\" y=\"1\" width=\"3\" height=\"6\" rx=\"1.5\" transform=\"rotate(225 16 16)\"/>\n              <rect x=\"14.5\" y=\"1\" width=\"3\" height=\"6\" rx=\"1.5\" transform=\"rotate(270 16 16)\"/>\n              <rect x=\"14.5\" y=\"1\" width=\"3\" height=\"6\" rx=\"1.5\" transform=\"rotate(315 16 16)\"/>\n            </svg>",
+     "title": "What Is ATR?",
+     "sectionIndex": 11
+    },
+    {
+     "num": 75,
+     "svg": "<svg width=\"34\" height=\"34\" viewBox=\"0 0 32 32\" fill=\"rgba(255,255,255,0.65)\">\n              <path d=\"M16 3 L19 11.5 L28 12.5 L21.5 18.5 L23.5 27.5 L16 23.5 L8.5 27.5 L10.5 18.5 L4 12.5 L13 11.5 Z\"/>\n            </svg>",
+     "title": "Higher ATR vs. Lower ATR",
+     "sectionIndex": 11
+    },
+    {
+     "num": 76,
+     "svg": "<svg width=\"34\" height=\"34\" viewBox=\"0 0 32 32\" fill=\"rgba(255,255,255,0.65)\">\n              <circle cx=\"16\" cy=\"16\" r=\"12\" fill=\"none\" stroke=\"rgba(255,255,255,0.65)\" stroke-width=\"2.5\"/>\n              <rect x=\"14.8\" y=\"7\" width=\"2.4\" height=\"9\" rx=\"1.2\"/>\n              <rect x=\"14.8\" y=\"14.5\" width=\"6.5\" height=\"2.4\" rx=\"1.2\"/>\n            </svg>",
+     "title": "ATR and Position Sizing",
+     "sectionIndex": 11
+    },
+    {
+     "num": 77,
+     "svg": "<svg width=\"34\" height=\"34\" viewBox=\"0 0 32 32\" fill=\"rgba(255,255,255,0.65)\">\n              <rect x=\"7\" y=\"4\" width=\"18\" height=\"24\" rx=\"3\"/>\n              <rect x=\"10\" y=\"9\" width=\"12\" height=\"2.5\" rx=\"1.25\" fill=\"rgba(0,0,0,0.25)\"/>\n              <rect x=\"10\" y=\"14\" width=\"9\" height=\"2.5\" rx=\"1.25\" fill=\"rgba(0,0,0,0.25)\"/>\n              <rect x=\"10\" y=\"19\" width=\"11\" height=\"2.5\" rx=\"1.25\" fill=\"rgba(0,0,0,0.25)\"/>\n            </svg>",
+     "title": "ATR Across Market Conditions",
+     "sectionIndex": 11
+    },
+    {
+     "num": 78,
+     "svg": "<svg width=\"34\" height=\"34\" viewBox=\"0 0 32 32\" fill=\"rgba(255,255,255,0.65)\">\n              <rect x=\"13\" y=\"2\" width=\"6\" height=\"10\" rx=\"3\"/>\n              <path d=\"M10 12 L7 28 C6.5 30 8 31 16 31 C24 31 25.5 30 25 28 L22 12 Z\"/>\n              <rect x=\"9\" y=\"10\" width=\"14\" height=\"4\" rx=\"2\"/>\n            </svg>",
+     "title": "ATR Review",
+     "sectionIndex": 11
     }
    ],
    "lessons": [
@@ -31800,6 +31837,494 @@
        "explanation": "This has been true throughout, honest records, process focus, and the improvement loop."
       }
      ]
+    },
+    {
+     "node": 74,
+     "title": "What Is ATR?",
+     "celebration": "You understand what ATR measures!",
+     "screens": [
+      {
+       "type": "intro",
+       "title": "A Volatility Yardstick",
+       "text": "ATR (Average True Range) is an indicator that measures the average size of price movement over a recent period. It's expressed in price, not as a bounded 0-100 oscillator.",
+       "chart": "volatile"
+      },
+      {
+       "type": "multiple_choice",
+       "question": "ATR measures...",
+       "options": [
+        "The average size of price movement over a recent period.",
+        "The exact direction price will move next.",
+        "The company's total trading volume."
+       ],
+       "correct": 0,
+       "explanation": "ATR is a volatility measure based on the average size of recent price movement."
+      },
+      {
+       "type": "true_false",
+       "question": "ATR is expressed in price terms, not as a bounded 0-100 scale.",
+       "correct": true,
+       "explanation": "Unlike RSI, ATR is expressed in the asset's own price units."
+      },
+      {
+       "type": "fill_blank",
+       "question": "ATR measures the average [___] of price movement.",
+       "options": [
+        "size",
+        "direction",
+        "color"
+       ],
+       "correct": 0,
+       "explanation": "ATR is specifically about size (range) of movement, not direction."
+      },
+      {
+       "type": "matching",
+       "question": "Match the term to its focus.",
+       "pairs": [
+        [
+         "ATR",
+         "Average size of price movement"
+        ],
+        [
+         "RSI",
+         "Speed/strength of recent moves, bounded 0-100"
+        ],
+        [
+         "Volatility",
+         "The broader concept ATR is one way of measuring"
+        ]
+       ],
+       "explanation": "ATR is one specific, price-based way of quantifying volatility."
+      },
+      {
+       "type": "ingredient_match",
+       "question": "Which best describes what ATR tells you?",
+       "options": [
+        {
+         "label": "How large price moves have typically been recently, in price terms",
+         "correct": true,
+         "detail": "A volatility yardstick"
+        },
+        {
+         "label": "Whether price is overbought or oversold",
+         "correct": false,
+         "detail": "Different concept",
+         "wrong_explanation": "That's closer to RSI's role, not ATR's."
+        },
+        {
+         "label": "The exact next price target",
+         "correct": false,
+         "detail": "Overstates certainty",
+         "wrong_explanation": "ATR describes typical move size, not a target."
+        }
+       ],
+       "concern": "Understanding the tool",
+       "explanation": "ATR is a descriptive measure of typical recent move size, not a price target or overbought/oversold read.",
+       "chart": "volatile"
+      },
+      {
+       "type": "spot_mistake",
+       "scenario": "Someone treats ATR as a signal for market direction.",
+       "question": "What is the mistake?",
+       "options": [
+        "ATR predicts the next candle's color.",
+        "ATR measures size of movement, not direction.",
+        "ATR always points up when volatility rises."
+       ],
+       "correct": 1,
+       "explanation": "ATR describes magnitude of movement, not which way price is heading.",
+       "chart": "volatile"
+      }
+     ]
+    },
+    {
+     "node": 75,
+     "title": "Higher ATR vs. Lower ATR",
+     "celebration": "You can compare ATR readings!",
+     "screens": [
+      {
+       "type": "intro",
+       "title": "Bigger Swings, Smaller Swings",
+       "text": "A higher ATR reading means recent price swings have been larger; a lower ATR means they've been smaller and calmer."
+      },
+      {
+       "type": "multiple_choice",
+       "question": "A rising ATR reading commonly reflects...",
+       "options": [
+        "Larger recent price swings.",
+        "Lower trading volume.",
+        "A guaranteed reversal."
+       ],
+       "correct": 0,
+       "explanation": "Rising ATR reflects bigger recent price movement, nothing about direction or volume specifically."
+      },
+      {
+       "type": "true_false",
+       "question": "A falling ATR reading reflects calmer, smaller recent price swings.",
+       "correct": true,
+       "explanation": "Lower ATR commonly reflects reduced volatility."
+      },
+      {
+       "type": "fill_blank",
+       "question": "Comparing ATR over time helps gauge whether volatility is [___] or shrinking.",
+       "options": [
+        "random",
+        "guaranteed",
+        "expanding"
+       ],
+       "correct": 2,
+       "explanation": "ATR trends up when volatility expands and down when it contracts."
+      },
+      {
+       "type": "matching",
+       "question": "Match the ATR reading to its meaning.",
+       "pairs": [
+        [
+         "Rising ATR",
+         "Volatility expanding"
+        ],
+        [
+         "Falling ATR",
+         "Volatility contracting"
+        ],
+        [
+         "Flat ATR",
+         "Volatility staying roughly steady"
+        ]
+       ],
+       "explanation": "ATR's direction over time reflects whether typical move size is growing or shrinking."
+      },
+      {
+       "type": "ingredient_match",
+       "question": "Why compare current ATR to its recent history rather than a fixed number?",
+       "options": [
+        {
+         "label": "Because \"high\" or \"low\" ATR is relative to that asset's own typical range",
+         "correct": true,
+         "detail": "A relative judgment, like volume"
+        },
+        {
+         "label": "Because ATR never changes over time",
+         "correct": false,
+         "detail": "Incorrect",
+         "wrong_explanation": "ATR moves as volatility expands and contracts."
+        },
+        {
+         "label": "Because ATR has one universal threshold for every asset",
+         "correct": false,
+         "detail": "Incorrect",
+         "wrong_explanation": "Typical ATR varies by asset, just like volume."
+        }
+       ],
+       "concern": "Reading it relatively",
+       "explanation": "Like volume, ATR is judged relative to what's typical for that specific asset."
+      },
+      {
+       "type": "spot_mistake",
+       "scenario": "Someone assumes a specific ATR number is universally \"high\" for every single asset.",
+       "question": "What is the mistake?",
+       "options": [
+        "ATR is judged relative to that asset's own typical range, not one fixed universal number.",
+        "Every asset shares the identical ATR scale.",
+        "ATR values never vary between assets."
+       ],
+       "correct": 0,
+       "explanation": "ATR readings are relative to each asset's own typical volatility."
+      }
+     ]
+    },
+    {
+     "node": 76,
+     "title": "ATR and Position Sizing",
+     "celebration": "You understand how ATR connects to position sizing!",
+     "screens": [
+      {
+       "type": "intro",
+       "title": "Sizing to Typical Movement",
+       "text": "Some traders use ATR to help gauge a reasonable stop distance, sizing positions around how much an asset typically moves rather than an arbitrary number."
+      },
+      {
+       "type": "multiple_choice",
+       "question": "How might ATR be used alongside position sizing?",
+       "options": [
+        "To help gauge a reasonable stop distance based on typical movement.",
+        "To guarantee a winning trade.",
+        "To replace the need for any stop-loss at all."
+       ],
+       "correct": 0,
+       "explanation": "ATR can inform how far a stop might reasonably need to sit given typical movement, connecting back to the Position Sizing unit."
+      },
+      {
+       "type": "true_false",
+       "question": "A wider ATR (more typical movement) might call for a wider stop distance to avoid being caught by normal noise.",
+       "correct": true,
+       "explanation": "A stop set too tight relative to typical movement risks getting triggered by ordinary volatility."
+      },
+      {
+       "type": "fill_blank",
+       "question": "Using ATR for stops means basing distance on typical [___], not an arbitrary number.",
+       "options": [
+        "movement",
+        "color",
+        "volume"
+       ],
+       "correct": 0,
+       "explanation": "ATR-based stops are grounded in the asset's own typical price movement."
+      },
+      {
+       "type": "matching",
+       "question": "Match the concept to how it connects to ATR.",
+       "pairs": [
+        [
+         "Stop-loss placement",
+         "Can be informed by typical movement (ATR)"
+        ],
+        [
+         "Position sizing",
+         "Still derived from dollar risk and stop distance"
+        ],
+        [
+         "Both",
+         "Connect back to the Risk Management and Position Sizing units"
+        ]
+       ],
+       "explanation": "ATR is one more input into the same risk-management process covered earlier in the course."
+      },
+      {
+       "type": "ingredient_match",
+       "question": "Why might a stop based on ATR make sense?",
+       "options": [
+        {
+         "label": "It guarantees the stop is never hit",
+         "correct": false,
+         "detail": "Overstates certainty",
+         "wrong_explanation": "No stop placement guarantees anything."
+        },
+        {
+         "label": "It's sized to typical movement, reducing the chance normal noise triggers it",
+         "correct": true,
+         "detail": "Grounded in actual volatility"
+        },
+        {
+         "label": "It removes the need for position sizing entirely",
+         "correct": false,
+         "detail": "Incorrect",
+         "wrong_explanation": "Sizing is still calculated from risk and stop distance."
+        }
+       ],
+       "concern": "Connecting risk concepts",
+       "explanation": "ATR-informed stops are grounded in typical movement, not a guarantee against being stopped out."
+      },
+      {
+       "type": "spot_mistake",
+       "scenario": "Someone sets a stop far tighter than the asset's typical ATR and is surprised it gets hit by normal noise.",
+       "question": "What is the mistake?",
+       "options": [
+        "Stop distance should never consider typical movement.",
+        "ATR has no relationship to stop placement.",
+        "A stop set well inside typical movement (ATR) can get triggered by ordinary volatility, not a meaningful shift."
+       ],
+       "correct": 2,
+       "explanation": "This connects back to the earlier Stop-Loss Placement Logic lesson — a stop too tight for normal movement risks getting hit by noise."
+      }
+     ]
+    },
+    {
+     "node": 77,
+     "title": "ATR Across Market Conditions",
+     "celebration": "You can read ATR across different conditions!",
+     "screens": [
+      {
+       "type": "intro",
+       "title": "Trending, Ranging, and ATR",
+       "text": "ATR commonly rises during volatile or strongly trending conditions and commonly falls during quiet ranges or consolidation.",
+       "chart": "range"
+      },
+      {
+       "type": "multiple_choice",
+       "question": "ATR commonly does what during a tight, quiet range?",
+       "options": [
+        "Rises sharply.",
+        "Has no relationship to market condition.",
+        "Falls, reflecting smaller typical movement."
+       ],
+       "correct": 2,
+       "explanation": "Quiet, range-bound conditions commonly show lower ATR readings."
+      },
+      {
+       "type": "true_false",
+       "question": "ATR commonly rises during volatile or strongly trending conditions.",
+       "correct": true,
+       "explanation": "Bigger typical moves during volatile/trending conditions commonly push ATR higher."
+      },
+      {
+       "type": "fill_blank",
+       "question": "ATR connects back to the Market Condition Classification unit by [___] typical movement size.",
+       "options": [
+        "quantifying",
+        "ignoring",
+        "guessing"
+       ],
+       "correct": 0,
+       "explanation": "ATR gives a numeric way to describe how much price typically moves in a given condition."
+      },
+      {
+       "type": "matching",
+       "question": "Match the market condition to its commonly cited ATR behavior.",
+       "pairs": [
+        [
+         "Range-bound",
+         "Lower ATR"
+        ],
+        [
+         "Volatile/trending",
+         "Higher ATR"
+        ],
+        [
+         "ATR itself",
+         "A way to quantify this difference numerically"
+        ]
+       ],
+       "explanation": "ATR gives numeric texture to the trending/ranging/volatile classifications from earlier in the course."
+      },
+      {
+       "type": "ingredient_match",
+       "question": "How does ATR add to market condition classification?",
+       "options": [
+        {
+         "label": "It replaces classifying trending vs. ranging entirely",
+         "correct": false,
+         "detail": "Overstates it",
+         "wrong_explanation": "ATR adds to, not replaces, that classification."
+        },
+        {
+         "label": "It gives a numeric read on how much price is typically moving, reinforcing the classification",
+         "correct": true,
+         "detail": "Confluence with condition"
+        },
+        {
+         "label": "It has no relationship to market condition",
+         "correct": false,
+         "detail": "Incorrect",
+         "wrong_explanation": "ATR commonly shifts with condition."
+        }
+       ],
+       "concern": "Connecting the concepts",
+       "explanation": "ATR is one more piece of confluence alongside the condition classification skill from Advanced.",
+       "chart": "range"
+      },
+      {
+       "type": "spot_mistake",
+       "scenario": "Someone assumes ATR always stays exactly the same number no matter the market condition.",
+       "question": "What is the mistake?",
+       "options": [
+        "ATR never changes regardless of condition.",
+        "ATR commonly rises in volatile/trending conditions and falls in quiet ranges — it isn't fixed.",
+        "Market condition has no bearing on ATR."
+       ],
+       "correct": 1,
+       "explanation": "ATR moves with the underlying volatility of the current condition.",
+       "chart": "range"
+      }
+     ]
+    },
+    {
+     "node": 78,
+     "title": "ATR Review",
+     "celebration": "You've completed the Average True Range unit!",
+     "screens": [
+      {
+       "type": "intro",
+       "title": "Bringing It Together",
+       "text": "A final review of what ATR measures, comparing readings, ATR and position sizing, and ATR across market conditions."
+      },
+      {
+       "type": "true_false",
+       "question": "ATR measures typical size of price movement, not direction.",
+       "correct": true,
+       "explanation": "That's the core, consistent idea across this whole unit."
+      },
+      {
+       "type": "fill_blank",
+       "question": "ATR is judged [___] to what's typical for that specific asset.",
+       "options": [
+        "relative",
+        "random",
+        "absolute"
+       ],
+       "correct": 0,
+       "explanation": "Like volume, ATR readings are relative, not a single universal number."
+      },
+      {
+       "type": "multiple_choice",
+       "question": "How does ATR commonly connect to risk management?",
+       "options": [
+        "It has no relationship to stops or sizing.",
+        "It guarantees a specific trade outcome.",
+        "It can inform a reasonable stop distance based on typical movement."
+       ],
+       "correct": 2,
+       "explanation": "ATR is commonly used as one input into stop placement, connecting back to earlier Risk Management lessons."
+      },
+      {
+       "type": "matching",
+       "question": "Match the term to its one-line meaning.",
+       "pairs": [
+        [
+         "ATR",
+         "Average size of recent price movement"
+        ],
+        [
+         "Rising ATR",
+         "Expanding volatility"
+        ],
+        [
+         "Falling ATR",
+         "Contracting volatility"
+        ]
+       ],
+       "explanation": "A quick recap of the unit's core vocabulary."
+      },
+      {
+       "type": "ingredient_match",
+       "question": "Which best summarizes this unit?",
+       "options": [
+        {
+         "label": "ATR guarantees the next price direction",
+         "correct": false,
+         "detail": "Overstates certainty",
+         "wrong_explanation": "ATR describes size, not direction or certainty."
+        },
+        {
+         "label": "ATR quantifies typical movement size, connecting to stops, sizing, and market condition",
+         "correct": true,
+         "detail": "The central theme"
+        },
+        {
+         "label": "ATR is unrelated to risk management",
+         "correct": false,
+         "detail": "Backwards",
+         "wrong_explanation": "It connects directly to stop placement and sizing."
+        }
+       ],
+       "concern": "Reviewing the big picture",
+       "explanation": "ATR quantifying typical movement, connected to risk concepts already taught, is the throughline of this unit.",
+       "chart": "volatile"
+      },
+      {
+       "type": "spot_mistake",
+       "scenario": "Someone finishes this unit and starts using ATR as a buy/sell signal.",
+       "question": "What is the mistake?",
+       "options": [
+        "ATR always tells you when to buy or sell.",
+        "ATR describes typical movement size, it's not a buy or sell signal.",
+        "ATR has no descriptive value at all."
+       ],
+       "correct": 1,
+       "explanation": "Like every indicator in this course, ATR is descriptive context, never a trade signal.",
+       "chart": "volatile"
+      }
+     ]
     }
    ]
   },
@@ -31938,22 +32463,22 @@
        "type": "fill_blank",
        "question": "The urge to jump into a trade purely because price is already moving fast is commonly called [___].",
        "options": [
-        "FOMO",
         "a stop-loss",
-        "a drawdown"
+        "a drawdown",
+        "FOMO"
        ],
-       "correct": 0,
+       "correct": 2,
        "explanation": "\"FOMO\" (fear of missing out) is the standard term for this urge."
       },
       {
        "type": "multiple_choice",
        "question": "What commonly characterizes a FOMO-driven trade entry?",
        "options": [
-        "Entering because of urgency about a fast-moving price, without a clear pre-existing plan.",
         "Entering only after a calm, pre-planned checklist is satisfied.",
+        "Entering because of urgency about a fast-moving price, without a clear pre-existing plan.",
         "Entering after carefully calculating position size in advance."
        ],
-       "correct": 0,
+       "correct": 1,
        "explanation": "FOMO entries are commonly described as reactive and plan-less, driven by urgency."
       },
       {
@@ -31989,9 +32514,9 @@
         },
         {
          "options": [
-          "random",
+          "emotional",
           "planned",
-          "emotional"
+          "random"
          ],
          "correct": 1
         }
@@ -32047,10 +32572,10 @@
        "question": "What is the mistake?",
        "options": [
         "They should never look at fast-moving prices again.",
-        "They should have bought even more, even faster.",
-        "Entering purely from urgency about missing a move, without a plan, is a commonly described FOMO reaction."
+        "Entering purely from urgency about missing a move, without a plan, is a commonly described FOMO reaction.",
+        "They should have bought even more, even faster."
        ],
-       "correct": 2,
+       "correct": 1,
        "explanation": "Acting from fear of missing out, without a plan, is the commonly described core of a FOMO-driven mistake.",
        "chart": "breakout"
       },
@@ -32058,11 +32583,11 @@
        "type": "fill_blank",
        "question": "FOMO describes urgency about [___] a fast-moving price.",
        "options": [
-        "missing",
         "random",
-        "guaranteed"
+        "guaranteed",
+        "missing"
        ],
-       "correct": 0,
+       "correct": 2,
        "explanation": "FOMO is the urgency to jump in purely because price is already moving."
       },
       {
@@ -32094,11 +32619,11 @@
        "type": "fill_blank",
        "question": "Entering a trade quickly after a loss, mainly to try to \"win it back,\" is commonly called [___] trading.",
        "options": [
-        "revenge",
+        "patient",
         "planned",
-        "patient"
+        "revenge"
        ],
-       "correct": 0,
+       "correct": 2,
        "explanation": "\"Revenge trading\" is the standard term for this reactive pattern."
       },
       {
@@ -32106,8 +32631,8 @@
        "question": "What commonly characterizes a revenge trade?",
        "options": [
         "It's driven mainly by the urge to recover a recent loss quickly, rather than a fresh, planned setup.",
-        "It's driven by a carefully pre-planned checklist unrelated to the prior loss.",
-        "It always uses a smaller position size than usual."
+        "It always uses a smaller position size than usual.",
+        "It's driven by a carefully pre-planned checklist unrelated to the prior loss."
        ],
        "correct": 0,
        "explanation": "Revenge trades are commonly described as reactive attempts to immediately recover a loss."
@@ -32137,19 +32662,19 @@
        "blanks": [
         {
          "options": [
-          "emotional",
+          "random",
           "planned",
-          "random"
+          "emotional"
          ],
-         "correct": 0
+         "correct": 2
         },
         {
          "options": [
-          "emotional",
           "planned",
+          "emotional",
           "guaranteed"
          ],
-         "correct": 1
+         "correct": 0
         }
        ],
        "explanation": "The reactive, emotional nature of revenge trading is commonly contrasted with a calm, planned entry."
@@ -32176,12 +32701,6 @@
        "question": "Which best describes \"revenge trading\"?",
        "options": [
         {
-         "label": "Reviewing a loss calmly before deciding what to do next",
-         "correct": false,
-         "detail": "This describes a measured response, not revenge trading",
-         "wrong_explanation": "A calm review is the opposite of revenge trading."
-        },
-        {
          "label": "A guarantee that the next trade will be profitable",
          "correct": false,
          "detail": "Overstates certainty",
@@ -32191,6 +32710,12 @@
          "label": "Entering a new trade quickly after a loss, driven by the urge to recover it immediately",
          "correct": true,
          "detail": "A reactive pattern tied to a recent loss"
+        },
+        {
+         "label": "Reviewing a loss calmly before deciding what to do next",
+         "correct": false,
+         "detail": "This describes a measured response, not revenge trading",
+         "wrong_explanation": "A calm review is the opposite of revenge trading."
         }
        ],
        "concern": "Understanding this specific term",
@@ -32203,10 +32728,10 @@
        "question": "What is the mistake?",
        "options": [
         "They should double their size again after the next loss too.",
-        "They should stop looking at charts entirely from now on.",
-        "Increasing size specifically to recover a loss quickly is a commonly described sign of revenge trading, adding risk on top of an emotional reaction."
+        "Increasing size specifically to recover a loss quickly is a commonly described sign of revenge trading, adding risk on top of an emotional reaction.",
+        "They should stop looking at charts entirely from now on."
        ],
-       "correct": 2,
+       "correct": 1,
        "explanation": "Sizing decisions driven by the urge to recover a loss quickly are a commonly cited revenge-trading pattern.",
        "chart": "downtrend"
       },
@@ -32214,11 +32739,11 @@
        "type": "fill_blank",
        "question": "Revenge trading is driven by the urge to [___] a recent loss quickly.",
        "options": [
-        "recover",
         "ignore",
+        "recover",
         "celebrate"
        ],
-       "correct": 0,
+       "correct": 1,
        "explanation": "The urgency to immediately win back a loss defines revenge trading."
       },
       {
@@ -32250,9 +32775,9 @@
        "type": "fill_blank",
        "question": "Taking a much higher number of trades than a plan calls for is commonly called [___].",
        "options": [
-        "position sizing",
+        "hedging",
         "overtrading",
-        "hedging"
+        "position sizing"
        ],
        "correct": 1,
        "explanation": "\"Overtrading\" is the standard term for this pattern."
@@ -32261,11 +32786,11 @@
        "type": "multiple_choice",
        "question": "What is commonly cited as a driver of overtrading?",
        "options": [
+        "A calendar reminder to review account performance.",
         "A carefully followed plan that specifies exactly how many trades to take.",
-        "Boredom, restlessness, or urgency to \"do something,\" rather than a fresh, planned setup appearing.",
-        "A calendar reminder to review account performance."
+        "Boredom, restlessness, or urgency to \"do something,\" rather than a fresh, planned setup appearing."
        ],
-       "correct": 1,
+       "correct": 2,
        "explanation": "Overtrading is commonly linked to emotional urges rather than an increase in genuinely planned setups."
       },
       {
@@ -32293,19 +32818,19 @@
        "blanks": [
         {
          "options": [
+          "patience",
           "boredom",
-          "discipline",
-          "patience"
+          "discipline"
          ],
-         "correct": 0
+         "correct": 1
         },
         {
          "options": [
-          "guaranteed",
           "random",
-          "planned"
+          "planned",
+          "guaranteed"
          ],
-         "correct": 2
+         "correct": 1
         }
        ],
        "explanation": "The commonly cited driver behind overtrading is emotional restlessness, not a genuine rise in valid setups."
@@ -32358,11 +32883,11 @@
        "scenario": "Someone takes twenty trades in a single day out of boredom, despite their plan calling for only a couple of genuinely planned setups.",
        "question": "What is the mistake?",
        "options": [
+        "They should stop having any plan at all.",
         "They should aim for an even higher number of trades tomorrow.",
-        "Taking far more trades than the plan calls for, driven by boredom rather than genuine setups, is a commonly described overtrading pattern.",
-        "They should stop having any plan at all."
+        "Taking far more trades than the plan calls for, driven by boredom rather than genuine setups, is a commonly described overtrading pattern."
        ],
-       "correct": 1,
+       "correct": 2,
        "explanation": "A large gap between planned frequency and actual frequency, driven by emotion, is the commonly cited core of overtrading.",
        "chart": "sideways"
       },
@@ -32370,11 +32895,11 @@
        "type": "fill_blank",
        "question": "Overtrading means taking far more trades than a plan calls for, often from [___].",
        "options": [
-        "a solid plan",
+        "boredom",
         "patience",
-        "boredom"
+        "a solid plan"
        ],
-       "correct": 2,
+       "correct": 0,
        "explanation": "Boredom or restlessness is commonly cited as driving overtrading."
       },
       {
@@ -32417,11 +32942,11 @@
        "type": "multiple_choice",
        "question": "What is a commonly cited risk of overconfidence after a string of wins?",
        "options": [
+        "Becoming more careful and conservative than before the winning streak.",
         "Skipping normal risk management steps, like sizing or stop-loss placement, because recent wins feel like proof of skill.",
-        "Reducing position size out of caution.",
-        "Becoming more careful and conservative than before the winning streak."
+        "Reducing position size out of caution."
        ],
-       "correct": 0,
+       "correct": 1,
        "explanation": "Overconfidence commonly leads to relaxing the very risk steps that were followed before the streak."
       },
       {
@@ -32449,17 +32974,17 @@
        "blanks": [
         {
          "options": [
+          "trades",
           "losses",
-          "wins",
-          "trades"
+          "wins"
          ],
-         "correct": 1
+         "correct": 2
         },
         {
          "options": [
           "guarantee",
-          "calculate",
-          "increase"
+          "increase",
+          "calculate"
          ],
          "correct": 0
         }
@@ -32488,10 +33013,10 @@
        "question": "Which best describes overconfidence following a string of wins?",
        "options": [
         {
-         "label": "A guarantee that the next trade will also win",
+         "label": "Becoming more cautious and reducing size after wins",
          "correct": false,
-         "detail": "Overstates certainty",
-         "wrong_explanation": "Overconfidence describes a mindset, not a guaranteed outcome."
+         "detail": "This describes the opposite pattern",
+         "wrong_explanation": "That describes increased caution, not overconfidence."
         },
         {
          "label": "Feeling emboldened enough to skip normal risk steps, because recent wins feel like proof of skill",
@@ -32499,10 +33024,10 @@
          "detail": "A commonly described emotional pattern"
         },
         {
-         "label": "Becoming more cautious and reducing size after wins",
+         "label": "A guarantee that the next trade will also win",
          "correct": false,
-         "detail": "This describes the opposite pattern",
-         "wrong_explanation": "That describes increased caution, not overconfidence."
+         "detail": "Overstates certainty",
+         "wrong_explanation": "Overconfidence describes a mindset, not a guaranteed outcome."
         }
        ],
        "concern": "Understanding this specific pattern",
@@ -32514,11 +33039,11 @@
        "scenario": "Someone removes their stop-loss on their next trade because they've \"been on a roll\" for the past week.",
        "question": "What is the mistake?",
        "options": [
-        "They should assume the winning streak guarantees future wins.",
+        "Removing a normal risk step because of a recent winning streak is a commonly described overconfidence pattern, recent wins don't remove future risk.",
         "They should remove stop-losses on every trade from now on.",
-        "Removing a normal risk step because of a recent winning streak is a commonly described overconfidence pattern, recent wins don't remove future risk."
+        "They should assume the winning streak guarantees future wins."
        ],
-       "correct": 2,
+       "correct": 0,
        "explanation": "A recent streak of wins doesn't change the underlying risk of a new trade, per this commonly cited concern.",
        "chart": "uptrend"
       },
@@ -32562,19 +33087,19 @@
        "type": "fill_blank",
        "question": "Hesitating on a genuinely planned setup because of recent losses is commonly linked to [___].",
        "options": [
-        "fear",
         "leverage",
-        "overconfidence"
+        "overconfidence",
+        "fear"
        ],
-       "correct": 0,
+       "correct": 2,
        "explanation": "\"Fear\" (following losses) is the commonly cited driver of this hesitation pattern."
       },
       {
        "type": "multiple_choice",
        "question": "What is a commonly cited effect of fear following a string of losses?",
        "options": [
-        "No change in behavior at all.",
         "Becoming more willing to take on larger, riskier positions.",
+        "No change in behavior at all.",
         "Hesitating on or skipping a genuinely planned setup, or exiting a plan earlier than intended."
        ],
        "correct": 2,
@@ -32605,17 +33130,17 @@
        "blanks": [
         {
          "options": [
-          "skipping",
           "doubling",
+          "skipping",
           "ignoring"
          ],
-         "correct": 0
+         "correct": 1
         },
         {
          "options": [
-          "doji",
+          "streak",
           "plan",
-          "streak"
+          "doji"
          ],
          "correct": 1
         }
@@ -32644,10 +33169,10 @@
        "question": "Which best describes fear-driven hesitation following a string of losses?",
        "options": [
         {
-         "label": "Taking on larger risk to compensate for recent losses",
+         "label": "A guarantee that the next trade will also lose",
          "correct": false,
-         "detail": "This describes a different pattern (revenge trading)",
-         "wrong_explanation": "That's closer to revenge trading, not fear-driven hesitation."
+         "detail": "Overstates certainty",
+         "wrong_explanation": "Fear describes a reaction, not a guaranteed outcome."
         },
         {
          "label": "Hesitating on or skipping a genuinely planned setup because of recent losses",
@@ -32655,10 +33180,10 @@
          "detail": "A commonly described emotional response"
         },
         {
-         "label": "A guarantee that the next trade will also lose",
+         "label": "Taking on larger risk to compensate for recent losses",
          "correct": false,
-         "detail": "Overstates certainty",
-         "wrong_explanation": "Fear describes a reaction, not a guaranteed outcome."
+         "detail": "This describes a different pattern (revenge trading)",
+         "wrong_explanation": "That's closer to revenge trading, not fear-driven hesitation."
         }
        ],
        "concern": "Understanding this specific pattern",
@@ -32670,11 +33195,11 @@
        "scenario": "Someone skips a setup that matches their plan exactly, purely because they're afraid after a few recent losses.",
        "question": "What is the mistake?",
        "options": [
-        "They should abandon their plan permanently.",
         "Skipping a genuinely planned setup purely from fear after recent losses is a commonly described pattern where emotion overrides the plan.",
-        "They should double their position size to make up for the losses."
+        "They should double their position size to make up for the losses.",
+        "They should abandon their plan permanently."
        ],
-       "correct": 1,
+       "correct": 0,
        "explanation": "Letting fear override a genuinely planned setup, rather than reviewing the plan calmly, is the commonly cited concern here.",
        "chart": "downtrend"
       },
@@ -32682,9 +33207,9 @@
        "type": "fill_blank",
        "question": "Fear after losses can lead to [___] a genuinely planned setup.",
        "options": [
-        "doubling",
+        "following",
         "skipping",
-        "following"
+        "doubling"
        ],
        "correct": 1,
        "explanation": "Fear can cause hesitation or skipping a setup that otherwise matches the plan."
@@ -32718,11 +33243,11 @@
        "type": "fill_blank",
        "question": "Acting on an in-the-moment feeling rather than a pre-set plan is commonly called an [___].",
        "options": [
-        "average",
+        "impulse",
         "order",
-        "impulse"
+        "average"
        ],
-       "correct": 2,
+       "correct": 0,
        "explanation": "\"Impulse\" describes acting from a feeling in the moment, rather than following a plan."
       },
       {
@@ -32761,19 +33286,19 @@
        "blanks": [
         {
          "options": [
+          "streak",
           "impulse",
-          "plan",
-          "streak"
+          "plan"
          ],
-         "correct": 1
+         "correct": 2
         },
         {
          "options": [
+          "chart",
           "plan",
-          "feeling",
-          "chart"
+          "feeling"
          ],
-         "correct": 1
+         "correct": 2
         }
        ],
        "explanation": "This captures the core tension discipline is meant to resolve."
@@ -32826,11 +33351,11 @@
        "scenario": "Someone has a clear, pre-set plan but abandons it mid-trade because of a sudden feeling that \"this time is different.\"",
        "question": "What is the mistake?",
        "options": [
-        "Abandoning a pre-set plan due to an in-the-moment feeling is a commonly described impulse overriding discipline.",
         "They should never make plans in the first place.",
-        "They should have felt even more strongly before abandoning the plan."
+        "They should have felt even more strongly before abandoning the plan.",
+        "Abandoning a pre-set plan due to an in-the-moment feeling is a commonly described impulse overriding discipline."
        ],
-       "correct": 0,
+       "correct": 2,
        "explanation": "Following a feeling over a pre-set plan is the commonly described core of an impulsive deviation.",
        "chart": "doji"
       },
@@ -32838,9 +33363,9 @@
        "type": "fill_blank",
        "question": "Discipline means following a pre-set [___] consistently.",
        "options": [
-        "feeling",
+        "impulse",
         "plan",
-        "impulse"
+        "feeling"
        ],
        "correct": 1,
        "explanation": "Discipline is defined as consistent plan-following, even against momentary feelings."
@@ -32869,12 +33394,6 @@
        "question": "Someone buys immediately after seeing a stock spike, with no plan, purely from urgency about missing further gains. Which pattern does this describe?",
        "options": [
         {
-         "label": "Capital preservation",
-         "correct": false,
-         "detail": "A different concept",
-         "wrong_explanation": "Capital preservation is about protecting capital, not urgency-driven entries."
-        },
-        {
          "label": "FOMO",
          "correct": true,
          "detail": "Urgency-driven entry with no plan"
@@ -32884,6 +33403,12 @@
          "correct": false,
          "detail": "Opposite pattern",
          "wrong_explanation": "Discipline describes plan-following, not this reactive urgency."
+        },
+        {
+         "label": "Capital preservation",
+         "correct": false,
+         "detail": "A different concept",
+         "wrong_explanation": "Capital preservation is about protecting capital, not urgency-driven entries."
         }
        ],
        "concern": "Identifying a psychological pattern",
@@ -32901,10 +33426,10 @@
        "question": "Which best describes revenge trading?",
        "options": [
         "Sticking to the same position size regardless of recent results.",
-        "Calmly reviewing a loss before deciding on next steps.",
-        "Entering a new trade quickly after a loss, driven by the urge to recover it immediately."
+        "Entering a new trade quickly after a loss, driven by the urge to recover it immediately.",
+        "Calmly reviewing a loss before deciding on next steps."
        ],
-       "correct": 2,
+       "correct": 1,
        "explanation": "Revenge trading specifically describes a reactive attempt to immediately recover a recent loss."
       },
       {
@@ -32942,11 +33467,11 @@
        "scenario": "Someone feels afraid after two losses and skips a setup that matches their plan exactly, then later feels regret.",
        "question": "Which pattern does this best describe?",
        "options": [
-        "Overconfidence, since they felt very certain about the decision.",
         "Fear-driven hesitation, where recent losses caused them to skip a genuinely planned setup.",
-        "Capital preservation, since they avoided a trade."
+        "Capital preservation, since they avoided a trade.",
+        "Overconfidence, since they felt very certain about the decision."
        ],
-       "correct": 1,
+       "correct": 0,
        "explanation": "Skipping a valid, planned setup specifically due to fear after losses is the fear-driven hesitation pattern.",
        "chart": "uptrend"
       },
@@ -32990,22 +33515,22 @@
        "type": "fill_blank",
        "question": "Acting on an in-the-moment feeling rather than a pre-set plan is commonly called an [___].",
        "options": [
-        "spread",
+        "impulse",
         "average",
-        "impulse"
+        "spread"
        ],
-       "correct": 2,
+       "correct": 0,
        "explanation": "Reviewing the core term from earlier in this unit."
       },
       {
        "type": "multiple_choice",
        "question": "What do FOMO, revenge trading, and overtrading all have in common?",
        "options": [
-        "They only apply to traders using leverage.",
         "They all guarantee larger losses every time.",
-        "They're all commonly described as emotionally reactive patterns that pull behavior away from a pre-set plan."
+        "They're all commonly described as emotionally reactive patterns that pull behavior away from a pre-set plan.",
+        "They only apply to traders using leverage."
        ],
-       "correct": 2,
+       "correct": 1,
        "explanation": "Each is an emotionally reactive pattern, not a guaranteed outcome or a leverage-specific issue."
       },
       {
@@ -33033,19 +33558,19 @@
        "blanks": [
         {
          "options": [
-          "impulse",
+          "discipline",
           "leverage",
-          "discipline"
+          "impulse"
          ],
-         "correct": 2
+         "correct": 0
         },
         {
          "options": [
-          "discipline",
           "impulse",
-          "risk"
+          "risk",
+          "discipline"
          ],
-         "correct": 1
+         "correct": 0
         }
        ],
        "explanation": "Awareness of the pattern is commonly framed as the starting point for a more disciplined response."
@@ -33072,6 +33597,12 @@
        "question": "Which best summarizes the overall theme of this unit?",
        "options": [
         {
+         "label": "Following impulses is just as reliable as following a plan",
+         "correct": false,
+         "detail": "Contradicts the unit",
+         "wrong_explanation": "This unit consistently favored discipline over impulse."
+        },
+        {
          "label": "Emotions should be eliminated entirely before trading",
          "correct": false,
          "detail": "Overstates it",
@@ -33081,12 +33612,6 @@
          "label": "Recognizing emotional patterns is a step toward following a pre-set plan consistently",
          "correct": true,
          "detail": "The central theme throughout"
-        },
-        {
-         "label": "Following impulses is just as reliable as following a plan",
-         "correct": false,
-         "detail": "Contradicts the unit",
-         "wrong_explanation": "This unit consistently favored discipline over impulse."
         }
        ],
        "concern": "Reviewing the big picture",
@@ -33099,10 +33624,10 @@
        "question": "What is the mistake?",
        "options": [
         "They should assume impulsive decisions no longer carry any risk.",
-        "Knowing a pattern's name doesn't automatically prevent it from happening, recognizing it in the moment still takes practice.",
-        "They should stop thinking about psychology from now on since it can't guarantee anything."
+        "They should stop thinking about psychology from now on since it can't guarantee anything.",
+        "Knowing a pattern's name doesn't automatically prevent it from happening, recognizing it in the moment still takes practice."
        ],
-       "correct": 1,
+       "correct": 2,
        "explanation": "This unit builds awareness of patterns, not a guarantee that they'll never occur again.",
        "chart": "sideways"
       },
@@ -33146,22 +33671,22 @@
        "type": "multiple_choice",
        "question": "Which chart description commonly matches a \"trending\" classification?",
        "options": [
+        "A single candle with almost no wick on either side.",
         "Price bouncing repeatedly between the same two levels with no progress either way.",
-        "A series of higher highs and higher lows (or lower highs and lower lows) over time.",
-        "A single candle with almost no wick on either side."
+        "A series of higher highs and higher lows (or lower highs and lower lows) over time."
        ],
-       "correct": 1,
+       "correct": 2,
        "explanation": "A sustained sequence of higher (or lower) highs and lows is the commonly cited hallmark of a trend."
       },
       {
        "type": "fill_blank",
        "question": "A market showing a sustained move in one general direction is commonly classified as [___].",
        "options": [
-        "trending",
+        "range-bound",
         "choppy",
-        "range-bound"
+        "trending"
        ],
-       "correct": 0,
+       "correct": 2,
        "explanation": "\"Trending\" is the standard classification term for this kind of sustained directional move."
       },
       {
@@ -33205,10 +33730,10 @@
        "question": "Which best describes a \"trending\" market classification?",
        "options": [
         {
-         "label": "A guarantee that the direction will continue indefinitely",
+         "label": "Price bouncing between the same two levels repeatedly",
          "correct": false,
-         "detail": "Overstates certainty",
-         "wrong_explanation": "Classification describes what has happened, not what will happen next."
+         "detail": "This describes range-bound, not trending",
+         "wrong_explanation": "That description matches a range-bound classification instead."
         },
         {
          "label": "A sustained move in one general direction over time",
@@ -33216,10 +33741,10 @@
          "detail": "A descriptive classification of price behavior"
         },
         {
-         "label": "Price bouncing between the same two levels repeatedly",
+         "label": "A guarantee that the direction will continue indefinitely",
          "correct": false,
-         "detail": "This describes range-bound, not trending",
-         "wrong_explanation": "That description matches a range-bound classification instead."
+         "detail": "Overstates certainty",
+         "wrong_explanation": "Classification describes what has happened, not what will happen next."
         }
        ],
        "concern": "Understanding this specific classification",
@@ -33231,11 +33756,11 @@
        "scenario": "Someone classifies a market as \"trending\" after seeing just a single candle, with no broader context.",
        "question": "What is the mistake?",
        "options": [
+        "A trending classification is commonly based on a sustained sequence of highs and lows over time, not a single candle.",
         "They should ignore the sequence of highs and lows entirely.",
-        "They should classify every single candle as its own trend.",
-        "A trending classification is commonly based on a sustained sequence of highs and lows over time, not a single candle."
+        "They should classify every single candle as its own trend."
        ],
-       "correct": 2,
+       "correct": 0,
        "explanation": "A single candle doesn't provide the sustained sequence commonly needed to classify a trend.",
        "chart": "uptrend"
       },
@@ -33244,10 +33769,10 @@
        "question": "A trending market is classified by a sustained move in one general [___].",
        "options": [
         "volume",
-        "color",
-        "direction"
+        "direction",
+        "color"
        ],
-       "correct": 2,
+       "correct": 1,
        "explanation": "Sustained directional progress defines a trending classification."
       },
       {
@@ -33280,10 +33805,10 @@
        "question": "Which chart description commonly matches a \"choppy\" classification?",
        "options": [
         "A single sharp, one-directional move with no pullbacks at all.",
-        "A long, uninterrupted sequence of higher highs and higher lows.",
-        "Price oscillating within a range with no clear sustained progress in either direction."
+        "Price oscillating within a range with no clear sustained progress in either direction.",
+        "A long, uninterrupted sequence of higher highs and higher lows."
        ],
-       "correct": 2,
+       "correct": 1,
        "explanation": "Oscillation with no sustained progress is the commonly cited hallmark of a choppy market."
       },
       {
@@ -33291,10 +33816,10 @@
        "question": "A market moving back and forth with no clear sustained direction is commonly classified as [___].",
        "options": [
         "breaking out",
-        "trending",
-        "choppy"
+        "choppy",
+        "trending"
        ],
-       "correct": 2,
+       "correct": 1,
        "explanation": "\"Choppy\" is the standard classification term for this kind of directionless movement."
       },
       {
@@ -33338,6 +33863,12 @@
        "question": "Which best describes a \"choppy\" market classification?",
        "options": [
         {
+         "label": "A sustained move consistently in one direction",
+         "correct": false,
+         "detail": "This describes trending, not choppy",
+         "wrong_explanation": "That description matches a trending classification instead."
+        },
+        {
          "label": "A guarantee that price will never move again",
          "correct": false,
          "detail": "Overstates certainty",
@@ -33347,12 +33878,6 @@
          "label": "Moving back and forth with no clear sustained direction",
          "correct": true,
          "detail": "A descriptive classification of directionless price behavior"
-        },
-        {
-         "label": "A sustained move consistently in one direction",
-         "correct": false,
-         "detail": "This describes trending, not choppy",
-         "wrong_explanation": "That description matches a trending classification instead."
         }
        ],
        "concern": "Understanding this specific classification",
@@ -33364,11 +33889,11 @@
        "scenario": "Someone classifies a market as \"choppy\" after seeing a long, clear sequence of higher highs and higher lows.",
        "question": "What is the mistake?",
        "options": [
-        "A sustained sequence of higher highs and higher lows is commonly described as trending, not choppy.",
         "They should ignore the sequence of highs and lows entirely.",
-        "They should look for even more oscillation to confirm it's choppy."
+        "They should look for even more oscillation to confirm it's choppy.",
+        "A sustained sequence of higher highs and higher lows is commonly described as trending, not choppy."
        ],
-       "correct": 0,
+       "correct": 2,
        "explanation": "The described pattern matches a trending classification, not a choppy one.",
        "chart": "sideways"
       },
@@ -33376,11 +33901,11 @@
        "type": "fill_blank",
        "question": "A choppy market moves back and forth with no clear sustained [___].",
        "options": [
-        "color",
         "direction",
-        "volume"
+        "volume",
+        "color"
        ],
-       "correct": 1,
+       "correct": 0,
        "explanation": "Directionless oscillation defines a choppy classification."
       },
       {
@@ -33424,8 +33949,8 @@
        "question": "A market showing unusually large or fast price swings is commonly classified as [___].",
        "options": [
         "volatile",
-        "flat",
-        "range-bound"
+        "range-bound",
+        "flat"
        ],
        "correct": 0,
        "explanation": "\"Volatile\" is the standard classification term for this kind of large or fast movement."
@@ -33471,15 +33996,15 @@
        "question": "Which best describes a \"volatile\" market classification?",
        "options": [
         {
-         "label": "Unusually large or fast price swings, in either direction",
-         "correct": true,
-         "detail": "A descriptive classification based on swing size and speed"
-        },
-        {
          "label": "A slow, steady drift with very small changes",
          "correct": false,
          "detail": "This describes low volatility, not high volatility",
          "wrong_explanation": "That description is closer to the opposite of a volatile classification."
+        },
+        {
+         "label": "Unusually large or fast price swings, in either direction",
+         "correct": true,
+         "detail": "A descriptive classification based on swing size and speed"
         },
         {
          "label": "A guarantee that price will keep swinging forever",
@@ -33498,8 +34023,8 @@
        "question": "What is the mistake?",
        "options": [
         "A slow, steady drift with small changes is commonly described as low volatility, not volatile.",
-        "They should look for even smaller price changes to confirm it's volatile.",
-        "They should ignore the size of price swings entirely."
+        "They should ignore the size of price swings entirely.",
+        "They should look for even smaller price changes to confirm it's volatile."
        ],
        "correct": 0,
        "explanation": "The described pattern contradicts the commonly cited hallmark of a volatile classification.",
@@ -33510,10 +34035,10 @@
        "question": "A volatile market shows unusually large or fast [___].",
        "options": [
         "colors",
-        "swings",
-        "volumes only"
+        "volumes only",
+        "swings"
        ],
-       "correct": 1,
+       "correct": 2,
        "explanation": "Large or fast price swings define a volatile classification."
       },
       {
@@ -33545,22 +34070,22 @@
        "type": "multiple_choice",
        "question": "Which chart description commonly matches a \"fakeout\" classification?",
        "options": [
+        "Price clears a level and continues steadily in that direction afterward.",
         "Price briefly clears a level, then quickly reverses back rather than continuing.",
-        "Price stays well within a range the entire time, never approaching any level.",
-        "Price clears a level and continues steadily in that direction afterward."
+        "Price stays well within a range the entire time, never approaching any level."
        ],
-       "correct": 0,
+       "correct": 1,
        "explanation": "A brief move beyond a level followed by a quick reversal is the commonly cited hallmark of a fakeout."
       },
       {
        "type": "fill_blank",
        "question": "A price move beyond a level that quickly reverses, rather than continuing, is commonly called a [___].",
        "options": [
-        "fakeout",
         "drawdown",
-        "breakout"
+        "breakout",
+        "fakeout"
        ],
-       "correct": 0,
+       "correct": 2,
        "explanation": "\"Fakeout\" is the standard term for this reversal-after-clearing pattern."
       },
       {
@@ -33604,6 +34129,11 @@
        "question": "Which best describes a \"fakeout,\" as commonly defined?",
        "options": [
         {
+         "label": "A price move beyond a level that quickly reverses, rather than continuing",
+         "correct": true,
+         "detail": "A reversal-after-clearing pattern"
+        },
+        {
          "label": "A guarantee that every breakout will eventually reverse",
          "correct": false,
          "detail": "Overstates certainty",
@@ -33614,11 +34144,6 @@
          "correct": false,
          "detail": "This describes a breakout, not a fakeout",
          "wrong_explanation": "That description matches the commonly described idea of a breakout instead."
-        },
-        {
-         "label": "A price move beyond a level that quickly reverses, rather than continuing",
-         "correct": true,
-         "detail": "A reversal-after-clearing pattern"
         }
        ],
        "concern": "Understanding this specific pattern",
@@ -33642,11 +34167,11 @@
        "type": "fill_blank",
        "question": "A fakeout is a price move beyond a level that quickly [___].",
        "options": [
-        "reverses",
         "continues",
-        "disappears"
+        "disappears",
+        "reverses"
        ],
-       "correct": 0,
+       "correct": 2,
        "explanation": "A quick reversal after clearing a level is what defines a fakeout."
       },
       {
@@ -33678,11 +34203,11 @@
        "type": "multiple_choice",
        "question": "Which response to a losing streak is commonly described as disciplined?",
        "options": [
-        "Abandoning the plan permanently after the very first loss in the streak.",
         "Immediately doubling position size to recover the losses as fast as possible.",
-        "Pausing to review whether the plan was followed, without making an immediate emotional overhaul."
+        "Pausing to review whether the plan was followed, without making an immediate emotional overhaul.",
+        "Abandoning the plan permanently after the very first loss in the streak."
        ],
-       "correct": 2,
+       "correct": 1,
        "explanation": "A calm, process-focused review is commonly cited as the disciplined response, in contrast to reactive extremes."
       },
       {
@@ -33709,10 +34234,10 @@
        "question": "A calm review of whether a plan was actually followed, without an emotional overhaul, is commonly described as a [___] response.",
        "options": [
         "random",
-        "revenge",
-        "disciplined"
+        "disciplined",
+        "revenge"
        ],
-       "correct": 2,
+       "correct": 1,
        "explanation": "\"Disciplined\" is the commonly cited term for this calm, process-focused response."
       },
       {
@@ -33743,15 +34268,15 @@
          "wrong_explanation": "A disciplined response describes a process, not a guaranteed outcome."
         },
         {
-         "label": "A calm review of whether the plan was followed, without an emotional overhaul",
-         "correct": true,
-         "detail": "A process-focused, level-headed response"
-        },
-        {
          "label": "Immediately abandoning the plan after the very first loss",
          "correct": false,
          "detail": "This describes an overreactive response, not a disciplined one",
          "wrong_explanation": "That's closer to an overreaction than a disciplined review."
+        },
+        {
+         "label": "A calm review of whether the plan was followed, without an emotional overhaul",
+         "correct": true,
+         "detail": "A process-focused, level-headed response"
         }
        ],
        "concern": "Understanding this specific concept",
@@ -33763,11 +34288,11 @@
        "scenario": "Someone responds to three losses in a row by immediately doubling their position size to \"make it back.\"",
        "question": "What is the mistake?",
        "options": [
-        "Immediately increasing size to recover losses quickly is commonly described as a revenge-trading response, not a disciplined one.",
         "They should assume this response guarantees recovering the losses.",
-        "They should double their size again after the next loss too."
+        "They should double their size again after the next loss too.",
+        "Immediately increasing size to recover losses quickly is commonly described as a revenge-trading response, not a disciplined one."
        ],
-       "correct": 0,
+       "correct": 2,
        "explanation": "This response matches the commonly described revenge-trading pattern rather than a calm, disciplined review.",
        "chart": "downtrend"
       },
@@ -33775,11 +34300,11 @@
        "type": "fill_blank",
        "question": "A disciplined response to a losing streak is a calm review of the [___].",
        "options": [
-        "random guesses",
         "process",
+        "random guesses",
         "account balance"
        ],
-       "correct": 1,
+       "correct": 0,
        "explanation": "Reviewing whether the process was followed is the disciplined response."
       },
       {
@@ -33806,15 +34331,15 @@
        "question": "Given a chart showing a long sequence of higher highs and higher lows, which classification best fits?",
        "options": [
         {
+         "label": "Trending",
+         "correct": true,
+         "detail": "Matches the sustained-direction description"
+        },
+        {
          "label": "Volatile",
          "correct": false,
          "detail": "Describes swing size, not direction",
          "wrong_explanation": "Volatile describes swing size/speed, not necessarily a sustained direction."
-        },
-        {
-         "label": "Trending",
-         "correct": true,
-         "detail": "Matches the sustained-direction description"
         },
         {
          "label": "Choppy",
@@ -33848,11 +34373,11 @@
        "type": "fill_blank",
        "question": "A market moving back and forth with no clear sustained direction is commonly classified as [___].",
        "options": [
-        "trending",
+        "choppy",
         "volatile",
-        "choppy"
+        "trending"
        ],
-       "correct": 2,
+       "correct": 0,
        "explanation": "Reviewing the classification term from earlier in this unit."
       },
       {
@@ -33880,10 +34405,10 @@
        "question": "What is the mistake?",
        "options": [
         "They should ignore the size of the swings entirely.",
-        "They should assume trending and volatile always mean the same thing.",
-        "A strong sustained trend with normal-sized swings matches a trending classification, not necessarily a volatile one. Those describe different traits."
+        "A strong sustained trend with normal-sized swings matches a trending classification, not necessarily a volatile one. Those describe different traits.",
+        "They should assume trending and volatile always mean the same thing."
        ],
-       "correct": 2,
+       "correct": 1,
        "explanation": "Trending describes sustained direction, while volatile specifically describes unusually large or fast swings. They're distinct classifications.",
        "chart": "breakout"
       },
@@ -33891,11 +34416,11 @@
        "type": "fill_blank",
        "question": "This practice round applies classification to [___] chart conditions.",
        "options": [
-        "hypothetical",
         "guaranteed",
+        "hypothetical",
         "random"
        ],
-       "correct": 0,
+       "correct": 1,
        "explanation": "The practice round applies classification skills without making trade decisions."
       },
       {
@@ -33927,11 +34452,11 @@
        "type": "multiple_choice",
        "question": "What is the common thread across every unit in this course?",
        "options": [
-        "Building descriptive, educational vocabulary and classification skills, not providing specific trade signals.",
         "Providing a guaranteed, step-by-step system for winning every trade.",
-        "Focusing exclusively on one single strategy type as the only valid approach."
+        "Focusing exclusively on one single strategy type as the only valid approach.",
+        "Building descriptive, educational vocabulary and classification skills, not providing specific trade signals."
        ],
-       "correct": 0,
+       "correct": 2,
        "explanation": "Every unit built descriptive understanding and classification skill, not a signals system or a single mandated approach."
       },
       {
@@ -33958,8 +34483,8 @@
        "question": "A calm review of whether a plan was actually followed, without an emotional overhaul, is commonly called a [___] response.",
        "options": [
         "disciplined",
-        "revenge",
-        "random"
+        "random",
+        "revenge"
        ],
        "correct": 0,
        "explanation": "Reviewing a key term from the Trading Psychology and Full Simulation units."
@@ -33986,15 +34511,15 @@
        "question": "Which best summarizes the overall theme of this course?",
        "options": [
         {
+         "label": "This course builds descriptive, educational understanding of markets, not a system for specific trade decisions",
+         "correct": true,
+         "detail": "The central theme throughout"
+        },
+        {
          "label": "This course guarantees consistent profits if followed exactly",
          "correct": false,
          "detail": "Overstates certainty",
          "wrong_explanation": "This directly contradicts what every unit emphasized."
-        },
-        {
-         "label": "This course builds descriptive, educational understanding of markets, not a system for specific trade decisions",
-         "correct": true,
-         "detail": "The central theme throughout"
         },
         {
          "label": "This course is only useful for people who already trade professionally",
@@ -34012,11 +34537,11 @@
        "scenario": "Someone finishes this course and assumes it has taught them exactly which trades to make going forward.",
        "question": "What is the mistake?",
        "options": [
-        "This course builds descriptive, educational vocabulary and classification skills, not a system for making specific trade decisions.",
         "They should skip risk management now that they've finished the course.",
+        "This course builds descriptive, educational vocabulary and classification skills, not a system for making specific trade decisions.",
         "They should assume every concept guarantees a specific trading outcome."
        ],
-       "correct": 0,
+       "correct": 1,
        "explanation": "This course is educational and descriptive by design, not a signal system for specific trades, real trading decisions carry real risk beyond this course's scope.",
        "chart": "uptrend"
       },
@@ -34024,11 +34549,11 @@
        "type": "fill_blank",
        "question": "This course builds descriptive, educational vocabulary, not a system for specific [___] decisions.",
        "options": [
+        "trade",
         "random",
-        "guaranteed",
-        "trade"
+        "guaranteed"
        ],
-       "correct": 2,
+       "correct": 0,
        "explanation": "The whole course stays descriptive and educational, never a trade-decision system."
       },
       {
