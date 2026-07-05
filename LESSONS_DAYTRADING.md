@@ -4532,6 +4532,22 @@ A double top only needs a single peak to count.
 The number of peaks doesn't matter for a double top.
 WHY: The pattern is defined by two peaks at a similar level, not one.
 
+
+[FILL] A double top forms after an [___] move, at resistance.
+up
+down
+sideways
+WHY: The double top's "M" shape forms after price has risen into resistance.
+
+[TF] A double top's two peaks must be exactly identical to the cent.
+ANSWER: False
+WHY: "About the same" level is the practical standard, not perfect equality.
+
+[TAPCANDLE] Tap the first peak of the double top.
+CHART: doubleTop
+TARGET: 2
+WHY: The 2nd candle is the first peak, testing resistance for the first time.
+
 NODE 2
 TITLE: What Is a Double Bottom?
 CELEBRATION: You can spot a double bottom on a chart!
@@ -4578,6 +4594,22 @@ Two troughs at support form a double bottom (a "W"), not a double top.
 Any two turning points always make a double top.
 Double tops and double bottoms are the same thing.
 WHY: Direction matters — troughs at support is a double bottom, peaks at resistance is a double top.
+
+
+[FILL] A double bottom forms after a [___] move, at support.
+down
+up
+sideways
+WHY: The "W" shape forms after price has fallen into support.
+
+[TF] A double bottom's two troughs must be exactly identical to the cent.
+ANSWER: False
+WHY: "About the same" level is the practical standard, not perfect equality.
+
+[TAPCANDLE] Tap the first trough of the double bottom.
+CHART: doubleBottom
+TARGET: 2
+WHY: The 2nd candle is the first trough, testing support for the first time.
 
 NODE 3
 TITLE: The Neckline
@@ -4626,6 +4658,23 @@ The neckline never matters for a double top.
 A double top is always complete at the first peak.
 WHY: The neckline break is the commonly cited confirmation, so calling it complete early skips that step.
 
+
+[FILL] In a double bottom, the neckline sits at the [___] between the two troughs.
+bounce peak
+lowest point
+midpoint of the wicks
+WHY: The neckline in a double bottom runs along the bounce high between the two troughs.
+
+[TF] The neckline is the same idea in both a double top and a double bottom, just mirrored.
+ANSWER: True
+WHY: Both patterns share the neckline-confirmation idea, just on opposite sides.
+
+[MC] What happens if price never breaks the neckline after the second peak or trough?
+The pattern isn't commonly considered confirmed yet.
+The pattern is automatically confirmed anyway.
+The neckline moves to a random new level.
+WHY: Confirmation is tied specifically to the neckline break.
+
 NODE 4
 TITLE: Double Top vs. Resistance Rejection
 CELEBRATION: You can tell these two apart!
@@ -4672,6 +4721,24 @@ Two peaks at the same level is a double top, not a single rejection — they und
 The number of touches never matters.
 A double top and a single rejection are identical.
 WHY: The count of tests at the level is exactly what distinguishes the two.
+
+
+[FILL] Counting how many times a level was tested is the key to telling these two [___] apart.
+patterns
+colors
+timeframes
+WHY: Test count (one vs two) is exactly what separates a rejection from a double top.
+
+[TF] A single resistance rejection can still be a valid, meaningful chart event on its own.
+ANSWER: True
+WHY: A single rejection is still meaningful — it's just not a double top by itself.
+
+
+[FILL] A single touch of a level is a rejection; a second touch at the same level upgrades it to a [___].
+double top
+triple bottom
+random pattern
+WHY: The second test at the same level is what makes it a double top rather than a single rejection.
 
 NODE 5
 TITLE: Double Bottom vs. Support Bounce
@@ -4720,6 +4787,24 @@ Counting touches never matters at support.
 A double bottom and a single bounce are identical.
 WHY: The count of tests at support is what distinguishes the two.
 
+
+[FILL] Counting how many times support was tested is the key to telling these two [___] apart.
+patterns
+colors
+timeframes
+WHY: Test count (one vs two) is exactly what separates a bounce from a double bottom.
+
+[TF] A single support bounce can still be a valid, meaningful chart event on its own.
+ANSWER: True
+WHY: A single bounce is still meaningful — it's just not a double bottom by itself.
+
+
+[FILL] A single touch of support is a bounce; a second touch at the same level upgrades it to a [___].
+double bottom
+triple top
+random pattern
+WHY: The second test at the same level is what makes it a double bottom rather than a single bounce.
+
 NODE 6
 TITLE: Reading the Two Peaks
 CELEBRATION: You can judge whether the peaks match!
@@ -4767,6 +4852,28 @@ Peak heights never matter for a double top.
 A higher second peak always makes a stronger double top.
 WHY: The "double" read depends on the two peaks being at about the same level.
 
+
+[FILL] Judging whether two peaks are "roughly equal" is a matter of [___], not exact math.
+degree
+guaranteed certainty
+random guessing
+WHY: "About the same" is a practical, descriptive judgment, not a strict formula.
+
+[TF] A second peak noticeably lower than the first also weakens the double top read.
+ANSWER: True
+WHY: Either a much higher OR much lower second peak weakens the "roughly equal" read.
+
+
+[FILL] The "double" in double top refers to the number of times the [___] was tested.
+level
+candle color
+timeframe
+WHY: "Double" specifically counts the tests of the resistance level.
+
+[TF] A double top with two clearly unequal peaks is generally considered a cleaner pattern than one with equal peaks.
+ANSWER: False
+WHY: Roughly equal peaks make for a cleaner double top read, not unequal ones.
+
 NODE 7
 TITLE: Reading the Two Troughs
 CELEBRATION: You can judge whether the troughs match!
@@ -4809,6 +4916,28 @@ Trough depth never matters.
 A lower second trough always strengthens the pattern.
 WHY: The "double" read depends on the two troughs being at about the same level.
 
+
+[FILL] Judging whether two troughs are "roughly equal" is a matter of [___], not exact math.
+degree
+guaranteed certainty
+random guessing
+WHY: "About the same" is a practical, descriptive judgment, not a strict formula.
+
+[TF] A second trough noticeably higher than the first also weakens the double bottom read.
+ANSWER: True
+WHY: Either a much higher OR much lower second trough weakens the "roughly equal" read.
+
+
+[FILL] The "double" in double bottom refers to the number of times the [___] was tested.
+level
+candle color
+timeframe
+WHY: "Double" specifically counts the tests of the support level.
+
+[TF] A double bottom with two clearly unequal troughs is generally considered a cleaner pattern than one with equal troughs.
+ANSWER: False
+WHY: Roughly equal troughs make for a cleaner double bottom read, not unequal ones.
+
 NODE 8
 TITLE: When the Pattern Fails
 CELEBRATION: You understand failed double patterns!
@@ -4849,6 +4978,28 @@ Price broke up through the level — the double top failed. Treating it as certa
 A double top can never fail.
 Breaking upward confirms the double top.
 WHY: When price breaks up instead of down, the double top has failed — patterns aren't guarantees.
+
+
+[FILL] A failed double top is one commonly cited reason to treat patterns as [___], not certainties.
+clues
+guarantees
+laws
+WHY: Failure is exactly why patterns are read as probability-shaped clues.
+
+[TF] A double bottom can also fail, in the opposite way (breaking down through support).
+ANSWER: True
+WHY: Just as a double top can fail by breaking up, a double bottom can fail by breaking down.
+
+
+[FILL] Whether a double top "fails" or "confirms" is only known [___] the fact.
+after
+before
+without regard to
+WHY: You need to see how price actually resolves to know if the pattern held or failed.
+
+[TF] A failed pattern is still useful to recognize, even though it didn't play out as expected.
+ANSWER: True
+WHY: Recognizing failures builds a more honest, complete understanding of how patterns behave.
 
 NODE 9
 TITLE: Identification Drill: Tops vs. Bottoms
@@ -4894,6 +5045,24 @@ CHART: supportBounce
 ANSWER: False
 WHY: This is a single support bounce (one touch), not a two-touch double bottom.
 
+
+[FILL] This drill practices spotting [___] before naming a pattern.
+touch count
+candle color
+company name
+WHY: Counting touches at a level is the first step to correctly naming these patterns.
+
+[TF] Speed drills like this one help build faster, more consistent pattern recognition.
+ANSWER: True
+WHY: Repetition is how recognition speed improves.
+
+
+[FILL] Fast identification drills like this one build [___] recognition speed.
+pattern
+random
+zero
+WHY: Repetition across mixed charts builds faster pattern recognition.
+
 NODE 10
 TITLE: What the Pattern Suggests
 CELEBRATION: You can read what double patterns suggest!
@@ -4934,6 +5103,24 @@ The descriptive read and a guaranteed buy are the same thing.
 Patterns are always trade commands.
 WHY: A descriptive read isn't a guaranteed signal; treating it as one overstates certainty.
 
+
+[FILL] "What a pattern suggests" always stays [___], never a certainty.
+descriptive
+guaranteed
+random
+WHY: This unit consistently frames pattern reads as descriptive, not certain.
+
+[TF] A failed double top suggests something different than a confirmed one.
+ANSWER: True
+WHY: A confirmed pattern suggests the reversal played out; a failed one suggests it didn't.
+
+
+[FILL] Reading "what a pattern suggests" adds [___] on top of simply naming the shape.
+interpretation
+guesswork
+volume
+WHY: Interpreting the pattern's implication goes beyond just identifying its shape.
+
 NODE 11
 TITLE: Mixed Pattern Recognition
 CELEBRATION: You can read double patterns in any context!
@@ -4972,6 +5159,24 @@ Two peaks at resistance, "M" => Double top
 Two troughs at support, "W" => Double bottom
 Price breaks up through resistance => Failed double top / breakout
 WHY: Recognizing the shape and the level behavior together is the intermediate skill.
+
+
+[FILL] Mixing pattern recognition with level reading builds a [___] chart-reading skill.
+fuller
+narrower
+random
+WHY: Combining both skills gives a more complete picture than either alone.
+
+[TF] Recognizing the shape and reading the level behavior are two separate skills combined in this lesson.
+ANSWER: True
+WHY: This lesson explicitly combines identification with level-behavior reading.
+
+
+[FILL] "Mixed" recognition means combining pattern identification with [___] reading.
+level
+color
+timeframe-only
+WHY: This lesson mixes shape identification with reading the level's behavior.
 
 NODE 12
 TITLE: Double Patterns Review
