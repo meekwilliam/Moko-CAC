@@ -5950,6 +5950,11 @@ CHART: doubleTop
 TARGET: 2
 WHY: The 2nd candle is the first peak, testing resistance for the first time.
 
+[TAPCANDLES] Tap both peaks that test the same resistance level.
+CHART: doubleTop
+TARGETS: 2, 4
+WHY: Candles 2 and 4 are the two peaks stalling at about the same level, the "M" shape.
+
 NODE 2
 TITLE: What Is a Double Bottom?
 CELEBRATION: You can spot a double bottom on a chart!
@@ -6012,6 +6017,11 @@ WHY: "About the same" level is the practical standard, not perfect equality.
 CHART: doubleBottom
 TARGET: 2
 WHY: The 2nd candle is the first trough, testing support for the first time.
+
+[TAPCANDLES] Tap both troughs that test the same support level.
+CHART: doubleBottom
+TARGETS: 2, 4
+WHY: Candles 2 and 4 are the two troughs holding at about the same level, the "W" shape.
 
 NODE 3
 TITLE: The Neckline
@@ -6784,6 +6794,12 @@ CHART: headShoulders
 LEVEL: support
 WHY: The neckline runs along the lows between the shoulders and head.
 
+[TRENDLINE] Drag to connect the two troughs that form the neckline.
+CHART: headShoulders
+TARGET_START: 3
+TARGET_END: 5
+WHY: Candles 3 and 5 are the troughs on either side of the head, connected by the neckline.
+
 [MC] Why is the neckline important in a head & shoulders?
 The pattern is commonly said to complete only when price breaks the neckline.
 The neckline guarantees the next candle's direction.
@@ -6854,6 +6870,12 @@ WHY: The 4th candle is the head, the lowest of the three troughs.
 CHART: inverseHeadShoulders
 LEVEL: resistance
 WHY: In an inverse head & shoulders, the neckline runs along the peaks between the troughs.
+
+[TRENDLINE] Drag to connect the two peaks that form the neckline.
+CHART: inverseHeadShoulders
+TARGET_START: 3
+TARGET_END: 5
+WHY: Candles 3 and 5 are the peaks on either side of the head, connected by the neckline.
 
 [PICK] How does an inverse head & shoulders differ from the regular one?
 CHART: inverseHeadShoulders
@@ -7691,6 +7713,12 @@ CHART: bullFlag
 TARGET: 1
 WHY: The 1st candle begins the strong up move, the pole.
 
+[CONSOLIDATION] Drag across the candles that make up the flag (the small pause after the pole).
+CHART: bullFlag
+TARGET_LO: 3
+TARGET_HI: 4
+WHY: Candles 3 and 4 are the small downward drift after the pole, the flag itself.
+
 [FILL] In a bull flag, the strong initial up-move is called the [___].
 pole
 flag
@@ -7746,6 +7774,12 @@ WHY: A strong down pole plus a small upward flag is a bear flag.
 CHART: bearFlag
 TARGET: 1
 WHY: The 1st candle begins the strong down move, the pole.
+
+[CONSOLIDATION] Drag across the candles that make up the flag (the small pause after the pole).
+CHART: bearFlag
+TARGET_LO: 3
+TARGET_HI: 4
+WHY: Candles 3 and 4 are the small upward drift after the pole, the flag itself.
 
 [TF] A bear flag drifts slightly UP against a strong down-move.
 CHART: bearFlag
@@ -8020,6 +8054,12 @@ It widens over time.
 It stays exactly the same.
 WHY: Converging lines narrow the space between them as the wedge progresses.
 
+[TRENDLINE] Drag to connect the two highs that form the wedge's upper line.
+CHART: risingWedge
+TARGET_START: 1
+TARGET_END: 5
+WHY: Candles 1 and 5 mark the upper line, rising but converging with the line below it.
+
 NODE 2
 TITLE: What Is a Falling Wedge?
 CELEBRATION: You can spot a falling wedge!
@@ -8070,6 +8110,12 @@ It narrows over time.
 It widens over time.
 It stays exactly the same.
 WHY: Converging lines narrow the space between them as the wedge progresses.
+
+[TRENDLINE] Drag to connect the two lows that form the wedge's lower line.
+CHART: fallingWedge
+TARGET_START: 1
+TARGET_END: 5
+WHY: Candles 1 and 5 mark the lower line, falling but converging with the line above it.
 
 NODE 3
 TITLE: What Is a Channel?
@@ -9009,6 +9055,12 @@ CHART: breakoutRetest
 CHART: breakoutRetest
 TARGET: 4
 WHY: The 4th candle pulls back to retest the level that was just broken.
+
+[CONSOLIDATION] Drag across the candles that form the base before the breakout.
+CHART: breakoutRetest
+TARGET_LO: 1
+TARGET_HI: 2
+WHY: Candles 1 and 2 are the base building up against resistance, right before the breakout candle.
 
 [MC] A retest is when price, after a breakout...
 returns to the broken level before continuing.
