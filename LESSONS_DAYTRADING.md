@@ -11629,6 +11629,17 @@ A guarantee of the next price
 The exact future value
 WHY: An MA smooths recent price into a line; it doesn't predict the future.
 
+
+[FILL] A moving average is the average of the last [___] prices, updated each candle.
+N
+one
+zero
+WHY: An MA averages a set number (N) of recent prices, recalculating with each new one.
+
+[TF] A moving average predicts future prices with certainty.
+ANSWER: False
+WHY: An MA summarizes recent price into a smoothed line — it doesn't guarantee the future.
+
 NODE 2
 TITLE: Smoothing Out Noise
 CELEBRATION: You understand smoothing!
@@ -11658,6 +11669,17 @@ direction
 color
 volume
 WHY: With less noise, the general direction is clearer.
+
+
+[FILL] Averaging recent prices makes a moving average [___] than raw candles.
+smoother
+more jagged
+identical
+WHY: Averaging reduces candle-to-candle jitter, producing a smoother line.
+
+[TF] A longer moving average is generally smoother than a shorter one.
+ANSWER: True
+WHY: Averaging more prices smooths more, making longer MAs steadier.
 
 NODE 3
 TITLE: The Slope Reflects Trend
@@ -11692,6 +11714,17 @@ color
 width
 WHY: The slope (up/down/flat) mirrors the trend.
 
+
+[FILL] A moving average's slope reflects the [___].
+trend
+color
+volume
+WHY: Rising, falling, or flat slope mirrors the underlying trend direction.
+
+[TF] A flat moving average most likely reflects a strong trend.
+ANSWER: False
+WHY: A flat MA more likely reflects a range, not a strong trend.
+
 NODE 4
 TITLE: Price Above vs. Below the MA
 CELEBRATION: You can read price against the MA!
@@ -11723,6 +11756,17 @@ It's always an automatic buy.
 The MA guarantees the next move.
 WHY: An MA read is descriptive context, never a guaranteed signal.
 
+
+[FILL] Price holding above a rising MA is commonly described as relative [___].
+strength
+weakness
+randomness
+WHY: Staying above a rising MA is commonly read as strength.
+
+[TF] Price vs the MA is a guaranteed signal to act on.
+ANSWER: False
+WHY: It's a descriptive strength/weakness read, not a guaranteed signal.
+
 NODE 5
 TITLE: Short vs. Long MAs
 CELEBRATION: You understand fast vs slow MAs!
@@ -11751,6 +11795,17 @@ WHY: Short = fast reaction; long = slow, smooth.
 [TF] A short MA hugs price more closely than a long MA.
 ANSWER: True
 WHY: Reacting faster, the short MA tracks price more tightly.
+
+
+[FILL] A short-period MA is [___] — it reacts quickly to price.
+fast
+slow
+unrelated
+WHY: Fewer periods means quicker reaction, making it a "fast" MA.
+
+[TF] A long-period MA hugs price more closely than a short-period MA.
+ANSWER: False
+WHY: A SHORT MA hugs price more closely; a long MA is smoother and slower.
 
 NODE 6
 TITLE: MA Crossovers
@@ -11782,6 +11837,17 @@ As a descriptive, lagging trend cue — not a guaranteed signal | detail: Laggin
 As a guaranteed entry | detail: Overstates certainty | wrong: Crossovers lag and can whipsaw.
 As a leading predictor of price | detail: Backwards | wrong: MAs lag; they don't lead.
 WHY: A crossover is a lagging, descriptive cue, never a guarantee.
+
+
+[FILL] Moving averages are [___] because they're built from past prices.
+lagging
+leading
+predictive
+WHY: Averaging past prices makes MAs lag current price, rather than lead it.
+
+[TF] An MA crossover is a guaranteed trading signal.
+ANSWER: False
+WHY: A crossover is a descriptive, lagging cue — not a guarantee.
 
 NODE 7
 TITLE: Moving Averages Review
@@ -11816,6 +11882,17 @@ A predictor of the next price | detail: Overstates | wrong: MAs lag, they don't 
 Unrelated to price | detail: Wrong | wrong: An MA is built directly from price.
 WHY: Smoothed, lagging, descriptive trend reading is the throughline.
 
+
+[FILL] This review ties together what an MA is, smoothing, slope, and [___].
+crossovers
+random guesses
+company names
+WHY: All the core ideas from this unit are reviewed together here.
+
+[TF] Moving averages are descriptive and lagging, not predictive.
+ANSWER: True
+WHY: This has been the throughline — smoothed, lagging, descriptive trend reading.
+
 UNIT 26 — Oscillators: RSI & MACD
 NODE 1
 TITLE: What Is an Oscillator?
@@ -11847,6 +11924,17 @@ infinite
 negative-only
 WHY: Oscillators are bounded (e.g., 0–100 for RSI).
 
+
+[FILL] An oscillator is [___] from price and moves within a bounded range.
+derived
+independent
+random
+WHY: Oscillators are calculated from price data, bounded within a fixed range.
+
+[TF] An oscillator shows the raw price directly.
+ANSWER: False
+WHY: It shows a derived measure about price, not the price line itself.
+
 NODE 2
 TITLE: What RSI Measures
 CELEBRATION: You understand RSI!
@@ -11876,6 +11964,17 @@ oscillator (bounded, derived measure).
 raw price line.
 support level.
 WHY: RSI is a bounded, price-derived oscillator.
+
+
+[FILL] RSI runs from [___] to 100.
+0
+-100
+50
+WHY: RSI is bounded between 0 and 100.
+
+[TF] A higher RSI reflects stronger recent up-moves.
+ANSWER: True
+WHY: RSI rises when recent gains dominate recent losses.
 
 NODE 3
 TITLE: Overbought & Oversold Zones
@@ -11908,6 +12007,17 @@ Overbought always means an immediate reversal.
 RSI zones are guaranteed signals.
 WHY: Zones describe RSI; they don't guarantee a reversal.
 
+
+[FILL] "Overbought" and "oversold" are descriptive [___], not signals.
+labels
+guarantees
+trades
+WHY: These are labels describing an RSI zone, not automatic trade signals.
+
+[TF] "Overbought" is a guaranteed sell signal.
+ANSWER: False
+WHY: A strong uptrend can stay overbought a long time — it's a label, not a guarantee.
+
 NODE 4
 TITLE: What MACD Shows
 CELEBRATION: You understand MACD!
@@ -11937,6 +12047,17 @@ lagging (derived from past prices).
 a leading predictor.
 unrelated to price.
 WHY: MA-based indicators lag price.
+
+
+[FILL] MACD tracks the relationship between two [___] averages.
+moving
+random
+fixed
+WHY: MACD is built from a fast and slow moving average's relationship.
+
+[TF] Because MACD is built from moving averages, it is also lagging.
+ANSWER: True
+WHY: MA-based indicators lag price, and MACD is no exception.
 
 NODE 5
 TITLE: Divergence
@@ -11968,6 +12089,17 @@ As a descriptive disagreement worth noting — not a guarantee | detail: A clue
 As a guaranteed reversal | detail: Overstates certainty | wrong: Divergence can persist without a reversal.
 As proof the data is broken | detail: Wrong | wrong: It's a normal, valid reading.
 WHY: Divergence is a descriptive clue, not a guaranteed signal.
+
+
+[FILL] Divergence is price and an oscillator [___] on direction.
+disagreeing
+agreeing
+identical
+WHY: Divergence specifically describes price and the oscillator moving in different directions.
+
+[TF] Divergence guarantees a reversal.
+ANSWER: False
+WHY: It's a descriptive disagreement — a clue, never a guarantee.
 
 NODE 6
 TITLE: Oscillators Review
@@ -12001,6 +12133,17 @@ Oscillators are guaranteed signal generators | detail: Overstates certainty | wr
 Oscillators lead price | detail: Backwards | wrong: They're derived and lagging.
 WHY: Descriptive, derived, lagging — never guaranteed — is the throughline.
 
+
+[FILL] This review ties together oscillators, RSI, its zones, MACD, and [___].
+divergence
+random guesses
+company names
+WHY: All the core ideas from this unit are reviewed together here.
+
+[TF] RSI and MACD are both derived, lagging indicators, not guarantees.
+ANSWER: True
+WHY: This has been the throughline — descriptive, derived, lagging, never guaranteed.
+
 UNIT 27 — Trade Planning & Process
 NODE 1
 TITLE: What Is a Trade Plan?
@@ -12031,6 +12174,17 @@ WHY: The point of a plan is deciding in advance.
 [TF] A trade plan includes where the idea would be proven wrong.
 ANSWER: True
 WHY: Invalidation — where you're wrong — is a core part of a plan.
+
+
+[FILL] A trade plan decides the key things [___] entering.
+before
+after
+without
+WHY: Planning ahead keeps decisions out of the emotional moment.
+
+[TF] A trade plan includes where the idea would be proven wrong.
+ANSWER: True
+WHY: Invalidation is a core part of a plan.
 
 NODE 2
 TITLE: Invalidation
@@ -12063,6 +12217,17 @@ Invalidation is unnecessary.
 A trade never needs a wrong-point.
 WHY: A defined invalidation is what makes risk manageable and the idea testable.
 
+
+[FILL] Invalidation is where the trade idea is proven [___].
+wrong
+guaranteed
+doubled
+WHY: Invalidation marks where the reasoning no longer holds.
+
+[TF] A stop is commonly based on where the idea is invalidated, not a random number.
+ANSWER: True
+WHY: Tying the stop to invalidation gives it a clear, reasoned basis.
+
 NODE 3
 TITLE: Process Over Prediction
 CELEBRATION: You understand process over prediction!
@@ -12093,6 +12258,17 @@ Because the edge shows over many trades, not any single one | detail: Long-run t
 Because outcomes are fully controllable | detail: Wrong | wrong: You can't control a single result.
 Because process never matters | detail: Backwards | wrong: Process is the controllable edge.
 WHY: Process is what you control; the edge appears over a large sample.
+
+
+[FILL] You control the [___], not the outcome of any single trade.
+process
+result
+market
+WHY: Process is the controllable part; outcomes vary trade to trade.
+
+[TF] A good process can still produce a losing trade.
+ANSWER: True
+WHY: Any single outcome is uncertain; process is judged over many trades.
 
 NODE 4
 TITLE: A Pre-Trade Checklist
@@ -12125,6 +12301,17 @@ WHY: Repeating the same checks each time builds consistency.
 ANSWER: False
 WHY: It brings consistency to the process; it can't guarantee outcomes.
 
+
+[FILL] A pre-trade checklist brings [___] to the process.
+consistency
+randomness
+luck
+WHY: Repeating the same checks each time builds consistency.
+
+[TF] A checklist guarantees profitable trades.
+ANSWER: False
+WHY: It brings consistency; it can't guarantee outcomes.
+
 NODE 5
 TITLE: Sticking to the Plan
 CELEBRATION: You understand plan discipline!
@@ -12155,6 +12342,17 @@ Moving the stop past invalidation abandons the plan and lets a small planned los
 Moving the stop is following the plan.
 Invalidation is optional once you're in.
 WHY: Honoring invalidation is core discipline; moving it undoes the plan.
+
+
+[FILL] A trade plan only helps if you [___] it.
+follow
+ignore
+rewrite constantly
+WHY: Following the plan is what gives it value.
+
+[TF] Widening your stop mid-trade to avoid a loss undermines the plan.
+ANSWER: True
+WHY: Moving the stop breaks the invalidation the plan was built on.
 
 NODE 6
 TITLE: Trade Planning Review
@@ -12187,6 +12385,17 @@ Plan the idea, invalidation, target, and size in advance — then follow the pro
 Predict each outcome and control it | detail: Overstates control | wrong: You can't control single outcomes.
 Wing it and hope | detail: No method | wrong: The unit is about a repeatable process.
 WHY: Plan-in-advance plus disciplined process is the throughline.
+
+
+[FILL] This review ties together plans, invalidation, process, and [___].
+discipline
+random guesses
+company names
+WHY: All the core ideas from this unit are reviewed together here.
+
+[TF] Plan-in-advance plus disciplined follow-through is the throughline of this unit.
+ANSWER: True
+WHY: This has been true throughout — plan ahead, then actually follow it.
 
 UNIT 28 — VWAP & Bollinger Bands
 NODE 1
