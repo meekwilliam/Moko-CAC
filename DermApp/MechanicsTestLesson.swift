@@ -114,6 +114,35 @@ enum MechanicsTestLesson {
                 "target_hi": 5,
                 "explanation": "mark_consolidation: drag across a contiguous range of candles.",
             ],
+            [
+                "type": "tap_candle",
+                "question": "Tap the candle where price crosses above the VWAP line.",
+                "chart": "priceAboveVWAP",
+                "target": 3,
+                "explanation": "Chart overlay check: single VWAP line, labeled \"VWAP\" not \"MA\".",
+            ],
+            [
+                "type": "tap_candle",
+                "question": "Tap the candle where the fast MA crosses above the slow MA.",
+                "chart": "maCrossUp",
+                "target": 3,
+                "explanation": "Chart overlay check: two overlay lines (fast + slow MA) crossing.",
+            ],
+            [
+                "type": "multiple_choice",
+                "question": "Chart overlay check: do the Bollinger Bands look like they're widening here?",
+                "chart": "bandsWidening",
+                "options": ["Yes, they widen left to right", "No, they narrow", "There are no bands shown"],
+                "correct": 0,
+                "explanation": "Chart overlay check: shaded band between two lines, widening.",
+            ],
+            [
+                "type": "tap_candle",
+                "question": "Tap the candle that stretches out to touch the upper Bollinger Band.",
+                "chart": "touchUpperBand",
+                "target": 4,
+                "explanation": "Chart overlay check: price touching the upper band, mid MA line visible.",
+            ],
         ]
 
         let data = try! JSONSerialization.data(withJSONObject: screens)
