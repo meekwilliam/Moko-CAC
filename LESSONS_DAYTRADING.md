@@ -14975,7 +14975,236 @@ WHY: All the core ideas from this unit are reviewed together here.
 ANSWER: True
 WHY: This has been true throughout, honest records, process focus, and the improvement loop.
 
-UNIT 36 — Trading Psychology
+UNIT 36 — Average True Range (ATR)
+NODE 1
+TITLE: What Is ATR?
+CELEBRATION: You understand what ATR measures!
+
+INTRO
+TITLE: A Volatility Yardstick
+TEXT: ATR (Average True Range) is an indicator that measures the average size of price movement over a recent period. It's expressed in price, not as a bounded 0-100 oscillator.
+CHART: volatile
+
+[MC] ATR measures...
+The average size of price movement over a recent period.
+The exact direction price will move next.
+The company's total trading volume.
+WHY: ATR is a volatility measure based on the average size of recent price movement.
+
+[TF] ATR is expressed in price terms, not as a bounded 0-100 scale.
+ANSWER: True
+WHY: Unlike RSI, ATR is expressed in the asset's own price units.
+
+[FILL] ATR measures the average [___] of price movement.
+size
+direction
+color
+WHY: ATR is specifically about size (range) of movement, not direction.
+
+[MATCH] Match the term to its focus.
+ATR => Average size of price movement
+RSI => Speed/strength of recent moves, bounded 0-100
+Volatility => The broader concept ATR is one way of measuring
+WHY: ATR is one specific, price-based way of quantifying volatility.
+
+[PICK] Which best describes what ATR tells you?
+CHART: volatile
+CONCERN: Understanding the tool
+How large price moves have typically been recently, in price terms | detail: A volatility yardstick
+The exact next price target | detail: Overstates certainty | wrong: ATR describes typical move size, not a target.
+Whether price is overbought or oversold | detail: Different concept | wrong: That's closer to RSI's role, not ATR's.
+WHY: ATR is a descriptive measure of typical recent move size, not a price target or overbought/oversold read.
+
+[SPOT] Someone treats ATR as a signal for market direction.
+CHART: volatile
+QUESTION: What is the mistake?
+ATR measures size of movement, not direction.
+ATR always points up when volatility rises.
+ATR predicts the next candle's color.
+WHY: ATR describes magnitude of movement, not which way price is heading.
+
+NODE 2
+TITLE: Higher ATR vs. Lower ATR
+CELEBRATION: You can compare ATR readings!
+
+INTRO
+TITLE: Bigger Swings, Smaller Swings
+TEXT: A higher ATR reading means recent price swings have been larger; a lower ATR means they've been smaller and calmer.
+
+[MC] A rising ATR reading commonly reflects...
+Larger recent price swings.
+A guaranteed reversal.
+Lower trading volume.
+WHY: Rising ATR reflects bigger recent price movement, nothing about direction or volume specifically.
+
+[TF] A falling ATR reading reflects calmer, smaller recent price swings.
+ANSWER: True
+WHY: Lower ATR commonly reflects reduced volatility.
+
+[FILL] Comparing ATR over time helps gauge whether volatility is [___] or shrinking.
+expanding
+guaranteed
+random
+WHY: ATR trends up when volatility expands and down when it contracts.
+
+[MATCH] Match the ATR reading to its meaning.
+Rising ATR => Volatility expanding
+Falling ATR => Volatility contracting
+Flat ATR => Volatility staying roughly steady
+WHY: ATR's direction over time reflects whether typical move size is growing or shrinking.
+
+[PICK] Why compare current ATR to its recent history rather than a fixed number?
+CONCERN: Reading it relatively
+Because "high" or "low" ATR is relative to that asset's own typical range | detail: A relative judgment, like volume
+Because ATR has one universal threshold for every asset | detail: Incorrect | wrong: Typical ATR varies by asset, just like volume.
+Because ATR never changes over time | detail: Incorrect | wrong: ATR moves as volatility expands and contracts.
+WHY: Like volume, ATR is judged relative to what's typical for that specific asset.
+
+[SPOT] Someone assumes a specific ATR number is universally "high" for every single asset.
+QUESTION: What is the mistake?
+ATR is judged relative to that asset's own typical range, not one fixed universal number.
+Every asset shares the identical ATR scale.
+ATR values never vary between assets.
+WHY: ATR readings are relative to each asset's own typical volatility.
+
+NODE 3
+TITLE: ATR and Position Sizing
+CELEBRATION: You understand how ATR connects to position sizing!
+
+INTRO
+TITLE: Sizing to Typical Movement
+TEXT: Some traders use ATR to help gauge a reasonable stop distance, sizing positions around how much an asset typically moves rather than an arbitrary number.
+
+[MC] How might ATR be used alongside position sizing?
+To help gauge a reasonable stop distance based on typical movement.
+To guarantee a winning trade.
+To replace the need for any stop-loss at all.
+WHY: ATR can inform how far a stop might reasonably need to sit given typical movement, connecting back to the Position Sizing unit.
+
+[TF] A wider ATR (more typical movement) might call for a wider stop distance to avoid being caught by normal noise.
+ANSWER: True
+WHY: A stop set too tight relative to typical movement risks getting triggered by ordinary volatility.
+
+[FILL] Using ATR for stops means basing distance on typical [___], not an arbitrary number.
+movement
+color
+volume
+WHY: ATR-based stops are grounded in the asset's own typical price movement.
+
+[MATCH] Match the concept to how it connects to ATR.
+Stop-loss placement => Can be informed by typical movement (ATR)
+Position sizing => Still derived from dollar risk and stop distance
+Both => Connect back to the Risk Management and Position Sizing units
+WHY: ATR is one more input into the same risk-management process covered earlier in the course.
+
+[PICK] Why might a stop based on ATR make sense?
+CONCERN: Connecting risk concepts
+It's sized to typical movement, reducing the chance normal noise triggers it | detail: Grounded in actual volatility
+It guarantees the stop is never hit | detail: Overstates certainty | wrong: No stop placement guarantees anything.
+It removes the need for position sizing entirely | detail: Incorrect | wrong: Sizing is still calculated from risk and stop distance.
+WHY: ATR-informed stops are grounded in typical movement, not a guarantee against being stopped out.
+
+[SPOT] Someone sets a stop far tighter than the asset's typical ATR and is surprised it gets hit by normal noise.
+QUESTION: What is the mistake?
+A stop set well inside typical movement (ATR) can get triggered by ordinary volatility, not a meaningful shift.
+Stop distance should never consider typical movement.
+ATR has no relationship to stop placement.
+WHY: This connects back to the earlier Stop-Loss Placement Logic lesson — a stop too tight for normal movement risks getting hit by noise.
+
+NODE 4
+TITLE: ATR Across Market Conditions
+CELEBRATION: You can read ATR across different conditions!
+
+INTRO
+TITLE: Trending, Ranging, and ATR
+TEXT: ATR commonly rises during volatile or strongly trending conditions and commonly falls during quiet ranges or consolidation.
+CHART: range
+
+[MC] ATR commonly does what during a tight, quiet range?
+Falls, reflecting smaller typical movement.
+Rises sharply.
+Has no relationship to market condition.
+WHY: Quiet, range-bound conditions commonly show lower ATR readings.
+
+[TF] ATR commonly rises during volatile or strongly trending conditions.
+ANSWER: True
+WHY: Bigger typical moves during volatile/trending conditions commonly push ATR higher.
+
+[FILL] ATR connects back to the Market Condition Classification unit by [___] typical movement size.
+quantifying
+guessing
+ignoring
+WHY: ATR gives a numeric way to describe how much price typically moves in a given condition.
+
+[MATCH] Match the market condition to its commonly cited ATR behavior.
+Range-bound => Lower ATR
+Volatile/trending => Higher ATR
+ATR itself => A way to quantify this difference numerically
+WHY: ATR gives numeric texture to the trending/ranging/volatile classifications from earlier in the course.
+
+[PICK] How does ATR add to market condition classification?
+CHART: range
+CONCERN: Connecting the concepts
+It gives a numeric read on how much price is typically moving, reinforcing the classification | detail: Confluence with condition
+It replaces classifying trending vs. ranging entirely | detail: Overstates it | wrong: ATR adds to, not replaces, that classification.
+It has no relationship to market condition | detail: Incorrect | wrong: ATR commonly shifts with condition.
+WHY: ATR is one more piece of confluence alongside the condition classification skill from Advanced.
+
+[SPOT] Someone assumes ATR always stays exactly the same number no matter the market condition.
+CHART: range
+QUESTION: What is the mistake?
+ATR commonly rises in volatile/trending conditions and falls in quiet ranges — it isn't fixed.
+ATR never changes regardless of condition.
+Market condition has no bearing on ATR.
+WHY: ATR moves with the underlying volatility of the current condition.
+
+NODE 5
+TITLE: ATR Review
+CELEBRATION: You've completed the Average True Range unit!
+
+INTRO
+TITLE: Bringing It Together
+TEXT: A final review of what ATR measures, comparing readings, ATR and position sizing, and ATR across market conditions.
+
+[TF] ATR measures typical size of price movement, not direction.
+ANSWER: True
+WHY: That's the core, consistent idea across this whole unit.
+
+[FILL] ATR is judged [___] to what's typical for that specific asset.
+relative
+absolute
+random
+WHY: Like volume, ATR readings are relative, not a single universal number.
+
+[MC] How does ATR commonly connect to risk management?
+It can inform a reasonable stop distance based on typical movement.
+It guarantees a specific trade outcome.
+It has no relationship to stops or sizing.
+WHY: ATR is commonly used as one input into stop placement, connecting back to earlier Risk Management lessons.
+
+[MATCH] Match the term to its one-line meaning.
+ATR => Average size of recent price movement
+Rising ATR => Expanding volatility
+Falling ATR => Contracting volatility
+WHY: A quick recap of the unit's core vocabulary.
+
+[PICK] Which best summarizes this unit?
+CHART: volatile
+CONCERN: Reviewing the big picture
+ATR quantifies typical movement size, connecting to stops, sizing, and market condition | detail: The central theme
+ATR guarantees the next price direction | detail: Overstates certainty | wrong: ATR describes size, not direction or certainty.
+ATR is unrelated to risk management | detail: Backwards | wrong: It connects directly to stop placement and sizing.
+WHY: ATR quantifying typical movement, connected to risk concepts already taught, is the throughline of this unit.
+
+[SPOT] Someone finishes this unit and starts using ATR as a buy/sell signal.
+CHART: volatile
+QUESTION: What is the mistake?
+ATR describes typical movement size, it's not a buy or sell signal.
+ATR always tells you when to buy or sell.
+ATR has no descriptive value at all.
+WHY: Like every indicator in this course, ATR is descriptive context, never a trade signal.
+
+UNIT 37 — Trading Psychology
 NODE 1
 TITLE: What Is FOMO?
 CELEBRATION: You understand FOMO!
@@ -15524,7 +15753,7 @@ WHY: All the core patterns from this unit are reviewed together here.
 ANSWER: True
 WHY: This has been the throughline, emotional patterns pulling away from disciplined plan-following.
 
-UNIT 37 — Full Simulation Training
+UNIT 38 — Full Simulation Training
 NODE 1
 TITLE: Classifying Trending Markets
 CELEBRATION: You can classify a trending market!
