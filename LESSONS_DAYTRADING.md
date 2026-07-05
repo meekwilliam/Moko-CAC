@@ -55,6 +55,23 @@ They should buy even more shares to get more control.
 They should contact the company to request a job.
 WHY: Day-to-day operations are run by management, not by individual shareholders.
 
+
+[MC] Which of these is an example of equity ownership, like a stock?
+A share representing partial ownership in a company.
+A savings account deposit.
+A gym membership.
+WHY: Equity ownership means owning a stake in the business, unlike a deposit or membership.
+
+[TF] All shareholders of a company automatically get an equal say in daily decisions.
+ANSWER: False
+WHY: Ownership doesn't equal management control; influence often scales with how many shares are owned and formal voting processes.
+
+[FILL] A person or entity that owns at least one share is called a [___].
+shareholder
+employee
+creditor
+WHY: "Shareholder" is the standard term for anyone owning stock in a company.
+
 NODE 2
 TITLE: What Is a Chart?
 CELEBRATION: You can read what a chart actually shows!
@@ -114,6 +131,23 @@ They should look at an even shorter timeframe instead.
 They should ignore the chart entirely from now on.
 WHY: Charts are one useful tool, but they don't capture everything about a company.
 
+
+[MC] If you wanted to see the very first data point on a chart, where would you look?
+The leftmost edge of the chart.
+The rightmost edge of the chart.
+The top of the chart only.
+WHY: Charts are typically read left-to-right as time progressing forward.
+
+[TF] A chart can only display one single timeframe and can never be adjusted.
+ANSWER: False
+WHY: Most charting tools let you switch between many different timeframes for the same asset.
+
+[FILL] The vertical axis of a standard price chart represents [___].
+price
+volume only
+company size
+WHY: The Y-axis (vertical) shows price; the X-axis (horizontal) shows time.
+
 NODE 3
 TITLE: Why Prices Move
 CELEBRATION: You understand the tug-of-war behind every price!
@@ -169,6 +203,23 @@ Price emerges from many buyers and sellers trading, not one person's decision.
 They should ask a different employee instead.
 They should assume the price is fixed once set.
 WHY: No individual sets the price directly — it comes from collective trading activity.
+
+
+[MC] What would you expect if buying and selling pressure were perfectly balanced?
+Price would tend to stay relatively steady.
+Price would spike upward immediately.
+Trading would stop entirely.
+WHY: Balanced pressure between buyers and sellers tends to produce calmer, steadier price behavior.
+
+[TF] A single large seller entering the market can shift the balance toward more selling pressure.
+ANSWER: True
+WHY: Any participant's buying or selling activity contributes to the overall balance driving price.
+
+[FILL] Price is often described as emerging from the ongoing [___] between buyers and sellers.
+negotiation
+company decision
+government rule
+WHY: No single authority sets price — it comes from continuous trading activity.
 
 NODE 4
 TITLE: What Is Volume?
@@ -226,6 +277,23 @@ They should only look at volume and ignore price entirely.
 They should stop looking at charts altogether.
 WHY: Volume adds useful context; the mistake is dismissing it entirely, not the reverse.
 
+
+[MC] Which of these would most likely show HIGH volume?
+A widely-traded, popular stock during active market hours.
+An obscure stock with almost no interested traders.
+A market that is currently closed.
+WHY: Popular assets during active trading hours commonly see more shares change hands.
+
+[TF] Volume and price are actually the same measurement, just displayed differently.
+ANSWER: False
+WHY: Volume counts shares traded; price measures the level shares traded at — two separate dimensions.
+
+[FILL] A sudden, unusually large increase in volume is often called a volume [___].
+spike
+gap
+wick
+WHY: "Volume spike" is the standard term for a sudden jump in trading activity.
+
 NODE 5
 TITLE: What Is Liquidity?
 CELEBRATION: You understand how easily a market can be traded!
@@ -281,6 +349,23 @@ Low liquidity can make it harder to exit a large position without affecting the 
 They should have bought an even larger position.
 They should have ignored the bid/ask spread entirely.
 WHY: Illiquid markets can make large trades harder to exit cleanly at the expected price.
+
+
+[MC] Which is a more likely sign of HIGH liquidity?
+Many active buyers and sellers with a tight bid/ask spread.
+Very few participants and a wide bid/ask spread.
+A market that hasn't traded in days.
+WHY: Active participation with tight spreads is a hallmark of high liquidity.
+
+[TF] Liquidity has no effect on how much a large trade might move the price.
+ANSWER: False
+WHY: Lower liquidity generally means large trades can move price more noticeably.
+
+[FILL] An asset that's easy to buy or sell without moving its price much is described as highly [___].
+liquid
+volatile
+closed
+WHY: "Liquid" specifically describes ease of trading without big price impact.
 
 NODE 6
 TITLE: Bid vs Ask
@@ -338,6 +423,23 @@ The chart itself must be broken.
 They should refresh the page many times instead.
 WHY: A small gap between the last trade and the current bid/ask is a normal part of how markets work.
 
+
+[MC] If the bid is $10.00 and the ask is $10.05, what is the spread?
+$0.05
+$10.00
+$10.05
+WHY: The spread is simply the difference between the ask and the bid.
+
+[TF] A market order will typically fill near the current bid or ask, not necessarily the last traded price.
+ANSWER: True
+WHY: Market orders match against the best currently available bid or ask, which can differ slightly from the last trade.
+
+[FILL] The price sellers are currently willing to accept is called the [___].
+ask
+bid
+spread
+WHY: "Ask" is the price sellers want; "bid" is what buyers offer.
+
 NODE 7
 TITLE: Market vs Limit Orders (Intro)
 CELEBRATION: You understand the two basic order types!
@@ -393,6 +495,23 @@ If the market price never reached their limit, the order simply remained unfille
 They should have set an even lower limit price regardless of the market.
 Limit orders must be broken and shouldn't be used.
 WHY: An unfilled limit order usually just means price never reached that level.
+
+
+[MC] Which order type guarantees a specific price (or better), but not necessarily a fill?
+A limit order.
+A market order.
+Neither order type.
+WHY: A limit order only executes at your specified price or better, which means it might not fill at all.
+
+[TF] A market order guarantees the price you'll pay, down to the exact cent.
+ANSWER: False
+WHY: A market order guarantees speed of execution, not an exact guaranteed price.
+
+[FILL] An order designed to execute immediately at the best available price is called a [___] order.
+market
+limit
+pending
+WHY: "Market" orders prioritize speed over price certainty.
 
 NODE 8
 TITLE: What Is Volatility?
@@ -453,6 +572,23 @@ They should assume volatility always means an uptrend.
 They should assume volatility always means a downtrend.
 WHY: A highly volatile market can move sharply in either direction — volatility alone doesn't determine direction.
 
+
+[MC] Which market condition would most likely be described as "volatile"?
+Large, fast price swings in a short period.
+Small, slow, steady movement.
+A market that's completely closed.
+WHY: Volatility is about the size and speed of price movement, regardless of direction.
+
+[TF] Volatility can be high even if a market is trending strongly upward.
+ANSWER: True
+WHY: A strong uptrend can still include large, fast swings — volatility measures movement size, not direction.
+
+[FILL] Markets with small, slow price movement are often described as having [___] volatility.
+low
+high
+zero
+WHY: "Low volatility" describes calmer, smaller price movement.
+
 NODE 9
 TITLE: Market Hours
 CELEBRATION: You understand when markets are actually open!
@@ -508,6 +644,23 @@ Lower liquidity outside standard hours can lead to bigger differences between ex
 The trading platform must be broken.
 Extended hours should have identical liquidity to standard hours.
 WHY: Thinner participation outside standard hours is a commonly cited reason for wider price gaps on fills.
+
+
+[MC] Which is more likely true of pre-market trading hours?
+Typically thinner liquidity than the standard session.
+Always identical liquidity to standard hours.
+Guaranteed higher volume than standard hours.
+WHY: Extended hours commonly see fewer active participants than the standard session.
+
+[TF] Some markets are completely closed on certain holidays.
+ANSWER: True
+WHY: Most stock exchanges observe scheduled holidays when regular trading doesn't occur.
+
+[FILL] Trading hours before the standard session opens are often called [___]-market hours.
+pre
+post
+mid
+WHY: "Pre-market" describes the extended session before the standard open.
 
 NODE 10
 TITLE: Timeframes
@@ -568,6 +721,23 @@ They should have used an even shorter timeframe instead.
 They should have ignored the chart entirely.
 WHY: Judging the bigger picture usually calls for checking a longer timeframe as well.
 
+
+[MC] Which timeframe would show the LEAST detail per candle, but the MOST overall historical context?
+A long timeframe, like a weekly or monthly chart.
+A very short timeframe, like a 1-minute chart.
+No timeframe shows any context.
+WHY: Longer timeframes compress more history into each candle, showing less granular detail but more overall context.
+
+[TF] Switching timeframes changes how much time a single candlestick represents.
+ANSWER: True
+WHY: Each timeframe defines what period of time one candle summarizes.
+
+[FILL] A very short timeframe, like 1-minute, shows [___] detail over a shorter period.
+more
+less
+zero
+WHY: Shorter timeframes zoom in, offering finer detail over a smaller total window.
+
 NODE 11
 TITLE: Candlestick Basics (Intro)
 CELEBRATION: You can read a single candlestick!
@@ -627,6 +797,23 @@ They should have looked at an even longer wick.
 They should have used a different-colored candle.
 WHY: Candlesticks describe what already happened — they aren't guarantees about what happens next.
 
+
+[MC] What does a candlestick's wick represent?
+The high and/or low price reached during that period.
+The exact trading volume for that period.
+The company's name.
+WHY: Wicks mark the extreme high and low prices reached, beyond the body.
+
+[TF] Every single candlestick must have at least one visible wick.
+ANSWER: False
+WHY: A candle can have a tiny or nonexistent wick if price barely moved beyond the open/close range.
+
+[FILL] The colored, thick part of a candlestick between the open and close is called the [___].
+body
+wick
+spread
+WHY: "Body" specifically refers to the open-to-close range.
+
 NODE 12
 TITLE: Open, High, Low, Close
 CELEBRATION: You know your OHLC!
@@ -683,6 +870,23 @@ They should assume close always equals the low instead.
 They should ignore the close value entirely.
 WHY: A candle can close well below its high if price pulled back before the period ended.
 
+
+[MC] Which value marks the LOWEST price reached during a candle's period?
+The low.
+The open.
+The close.
+WHY: "Low" specifically marks the lowest price touched during that period.
+
+[TF] The open and close values are always the same as the high and low values.
+ANSWER: False
+WHY: Open/close and high/low are often different; a candle's body and wicks can differ in position.
+
+[FILL] The very last traded price within a candle's period is called the [___].
+close
+open
+high
+WHY: "Close" refers to the final price of that period.
+
 NODE 13
 TITLE: Why Gaps Happen
 CELEBRATION: You understand price gaps!
@@ -738,6 +942,23 @@ Not every gap gets filled — some do, some don't; there's no guarantee either w
 They should assume no gap is ever filled instead.
 They should ignore gaps entirely from now on.
 WHY: Treating "gaps always fill" as a certainty overstates what is really just a commonly observed tendency, not a rule.
+
+
+[MC] Which scenario would most likely cause a stock to gap up at the next open?
+Strong positive news released after the market closed.
+No news at all overnight.
+The market staying open continuously.
+WHY: News released while the market is closed is a common cause of a gap at the next open.
+
+[TF] A "gap down" means the next candle opens noticeably higher than the prior close.
+ANSWER: False
+WHY: A gap down means the next open is noticeably LOWER than the prior close, not higher.
+
+[FILL] Price later trading back through a gap's skipped range is called a gap [___].
+fill
+spread
+wick
+WHY: "Gap fill" describes price retracing back through the previously skipped range.
 
 NODE 14
 TITLE: What "Trend" Means
@@ -797,6 +1018,23 @@ A trend describes what has already happened — it doesn't guarantee it will con
 They should have used a shorter timeframe instead.
 They should have looked at a totally different asset.
 WHY: Trends can and do change; treating a past trend as a permanent guarantee is a common misconception.
+
+
+[MC] Which best describes a "sideways" or range-bound market?
+Price moving without a clear overall upward or downward direction.
+Price moving strongly and consistently higher.
+Price moving strongly and consistently lower.
+WHY: Sideways/range describes a lack of clear directional progress, unlike an uptrend or downtrend.
+
+[TF] A downtrend can eventually turn into an uptrend over time.
+ANSWER: True
+WHY: Trends can and do change; a past trend doesn't lock in the future direction forever.
+
+[FILL] Price generally moving from higher levels to lower levels over time is called a [___].
+downtrend
+uptrend
+spread
+WHY: "Downtrend" describes an overall pattern of declining price.
 
 NODE 15
 TITLE: Mini Simulation: Identify Direction
@@ -860,6 +1098,23 @@ This drill practices describing direction that has already happened — it doesn
 They should have practiced on an even smaller chart.
 They should have skipped straight to a real account instead.
 WHY: This is a literacy exercise in reading what already happened, not a predictive skill.
+
+
+[MC] What's the most reliable first step when classifying a chart's direction?
+Compare where price started versus where it ended over the period.
+Guess based on the chart's color scheme.
+Ignore the chart and check the news instead.
+WHY: Comparing the start and end points is a simple, direct way to gauge overall direction.
+
+[TF] Classifying a chart's direction is the same thing as predicting its next move.
+ANSWER: False
+WHY: Classification describes what has already happened; it is not a prediction of the future.
+
+[FILL] A chart bouncing within a similar band with no clear direction is classified as [___].
+sideways
+uptrend
+downtrend
+WHY: "Sideways" (or range-bound) is the classification for directionless bouncing.
 
 UNIT 2 — Candlesticks
 NODE 1
