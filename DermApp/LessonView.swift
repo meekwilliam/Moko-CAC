@@ -30,6 +30,10 @@ final class LessonPlayer: ObservableObject {
     // mark_consolidation: the contiguous candle-index range the learner dragged across
     @Published var consolidationLo: Int? = nil
     @Published var consolidationHi: Int? = nil
+    // ohlc_label: which label (0=Open,1=High,2=Low,3=Close) sits in each slot
+    // (0=top wick, 1=body top, 2=body bottom, 3=bottom wick), and the correct map.
+    @Published var ohlcPlacement: [Int: Int] = [:]
+    var ohlcExpected: [Int: Int] = [:]
     // fill_blank_multi
     @Published var multiSelections: [Int?] = []
     // sequence_builder / drag_order
@@ -91,6 +95,8 @@ final class LessonPlayer: ObservableObject {
             return trendStart != nil && trendEnd != nil && trendStart != trendEnd
         case "mark_consolidation":
             return consolidationLo != nil && consolidationHi != nil
+        case "ohlc_label":
+            return ohlcPlacement.count == 4
         default:
             return selectedIndex != nil
         }
@@ -105,6 +111,8 @@ final class LessonPlayer: ObservableObject {
         trendEnd = nil
         consolidationLo = nil
         consolidationHi = nil
+        ohlcPlacement = [:]
+        ohlcExpected = [:]
         revealed = false
         lastCorrect = false
         builtOrder = []
@@ -148,6 +156,8 @@ final class LessonPlayer: ObservableObject {
                let tlo = screen.targetLo, let thi = screen.targetHi {
                 correct = abs(lo - tlo) <= 1 && abs(hi - thi) <= 1
             } else { correct = false }
+        case "ohlc_label":
+            correct = !ohlcExpected.isEmpty && ohlcPlacement == ohlcExpected
         default:
             correct = (selectedIndex == currentCorrectIndex)
         }

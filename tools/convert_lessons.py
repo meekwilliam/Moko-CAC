@@ -190,6 +190,13 @@ def build_screen(qtype, q):
         s = {"type": "mark_consolidation", "question": head, "target_lo": tlo, "target_hi": thi}
         if why: s["explanation"] = why
         return s
+    if qtype == "OHLC":
+        # Interactive: drag Open/High/Low/Close labels onto a candle's four
+        # levels. Candle direction + correct mapping are decided at render time
+        # from the screen seed, so the author just supplies the prompt + WHY.
+        s = {"type": "ohlc_label", "question": head}
+        if why: s["explanation"] = why
+        return s
     if qtype == "MC":
         o2, wa, c2 = shuffle_choices(opts, wrong_arr(opts), 0)
         s = {"type": "multiple_choice", "question": head, "options": o2, "correct": c2}

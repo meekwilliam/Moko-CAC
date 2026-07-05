@@ -115,6 +115,11 @@ enum MechanicsTestLesson {
                 "explanation": "mark_consolidation: drag across a contiguous range of candles.",
             ],
             [
+                "type": "ohlc_label",
+                "question": "Drag Open, High, Low, Close onto the matching part of the candle.",
+                "explanation": "ohlc_label: drag 4 labels onto a candle's four levels.",
+            ],
+            [
                 "type": "tap_candle",
                 "question": "Tap the candle where price crosses above the VWAP line.",
                 "chart": "priceAboveVWAP",

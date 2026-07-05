@@ -1469,6 +1469,9 @@ Upper wick => The high reached above the body
 Lower wick => The low reached below the body
 WHY: Body and wicks together tell the full story of the period.
 
+[OHLC] Drag Open, High, Low, and Close onto the matching part of this candle.
+WHY: High is the top wick and Low is the bottom wick. On a green candle the close is the body top and the open is the body bottom; on a red candle it's reversed.
+
 [PICK] The highlighted candle has a large body and almost no wicks. What does that shape suggest?
 CHART: marubozu
 CONCERN: Reading a big-body candle

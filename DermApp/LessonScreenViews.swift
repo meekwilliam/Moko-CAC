@@ -28,6 +28,8 @@ struct LessonScreenRouter: View {
             TrendlineView(player: player, ink: ink)
         case "mark_consolidation":
             ConsolidationView(player: player, ink: ink)
+        case "ohlc_label":
+            OHLCLabelView(player: player, ink: ink)
         default:
             // true_false / multiple_choice / fill_blank / spot_mistake
             ChoiceView(player: player, ink: ink)
@@ -523,6 +525,185 @@ struct ConsolidationView: View {
             .background(RoundedRectangle(cornerRadius: 6, style: .continuous).fill(color.opacity(dashed ? 0 : 0.14)))
             .frame(width: width, height: height - 4)
             .position(x: x + width / 2, y: height / 2)
+    }
+}
+
+// MARK: - Label the candle (interactive) — drag Open/High/Low/Close onto a candle
+// Four draggable chips, four slots at the candle's key levels (top wick, body
+// top, body bottom, bottom wick). Which label belongs to which body edge depends
+// on whether the candle is bullish or bearish (chosen by the screen's seed).
+
+struct OHLCLabelView: View {
+    @ObservedObject var player: LessonPlayer
+    var ink: Color
+
+    private var s: LessonScreen { player.screen }
+    private let areaH: CGFloat = 250
+    // Label ids: 0 = Open, 1 = High, 2 = Low, 3 = Close.
+    private let labelNames = ["Open", "High", "Low", "Close"]
+    // Slots: 0 = top wick, 1 = body top, 2 = body bottom, 3 = bottom wick.
+
+    @State private var slotFrames: [Int: CGRect] = [:]
+    @State private var dragging: Int? = nil
+    @State private var dragPoint: CGPoint = .zero
+    @State private var didInit = false
+
+    /// Bullish (green) candle chosen by the stable per-screen seed. On a bullish
+    /// candle the close is the body top and the open is the body bottom; bearish
+    /// is the reverse. High is always the top wick, Low always the bottom wick.
+    private var bullish: Bool { chartSeed(s) % 2 == 0 }
+    private var expected: [Int: Int] {
+        bullish ? [0: 1, 1: 3, 2: 0, 3: 2]    // top=High, bodyTop=Close, bodyBot=Open, bottom=Low
+                : [0: 1, 1: 0, 2: 3, 3: 2]    // top=High, bodyTop=Open,  bodyBot=Close, bottom=Low
+    }
+    private var trayLabels: [Int] {
+        (0..<4).filter { lbl in !player.ohlcPlacement.values.contains(lbl) }
+    }
+
+    var body: some View {
+        VStack(alignment: .leading, spacing: 18) {
+            Text(RichText.attributed(s.question ?? "Drag each label onto the matching part of the candle.",
+                                     base: Theme.font(21, .heavy),
+                                     bold: Theme.font(21, .black), color: ink))
+                .fixedSize(horizontal: false, vertical: true)
+
+            candleArea
+            tray
+        }
+        .coordinateSpace(name: "ohlc")
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .onPreferenceChange(OHLCSlotKey.self) { slotFrames = $0 }
+        .onAppear { if !didInit { player.ohlcExpected = expected; didInit = true } }
+        .overlay(alignment: .topLeading) {
+            if let d = dragging {
+                chip(label: d, tint: Color(hex: "#38bdf8"))
+                    .position(dragPoint)
+                    .allowsHitTesting(false)
+            }
+        }
+    }
+
+    // MARK: Candle + slots
+
+    private var candleArea: some View {
+        GeometryReader { geo in
+            let w = geo.size.width
+            let cx = w * 0.26
+            let ys: [CGFloat] = [areaH * 0.08, areaH * 0.34, areaH * 0.66, areaH * 0.92]
+            let slotX = w * 0.66
+            let candleColor = bullish ? Color(hex: "#22C55E") : Color(hex: "#EF4444")
+
+            ZStack(alignment: .topLeading) {
+                // Wick
+                Path { p in p.move(to: CGPoint(x: cx, y: ys[0])); p.addLine(to: CGPoint(x: cx, y: ys[3])) }
+                    .stroke(candleColor, lineWidth: 3)
+                // Body
+                RoundedRectangle(cornerRadius: 3, style: .continuous)
+                    .fill(candleColor)
+                    .frame(width: 48, height: ys[2] - ys[1])
+                    .position(x: cx, y: (ys[1] + ys[2]) / 2)
+
+                ForEach(0..<4, id: \.self) { i in
+                    // Dashed connector from the candle level to its slot.
+                    Path { p in p.move(to: CGPoint(x: cx + 26, y: ys[i])); p.addLine(to: CGPoint(x: slotX - 42, y: ys[i])) }
+                        .stroke(Color.white.opacity(0.25), style: StrokeStyle(lineWidth: 1.5, dash: [4, 3]))
+                    slotBox(i).position(x: slotX, y: ys[i])
+                }
+            }
+            .frame(width: w, height: areaH)
+        }
+        .frame(height: areaH)
+    }
+
+    private func slotBox(_ i: Int) -> some View {
+        let placed = player.ohlcPlacement[i]
+        let tint: Color = {
+            guard player.revealed else { return Color(hex: "#38bdf8") }
+            return player.ohlcPlacement[i] == expected[i] ? Color(hex: "#22C55E") : Color(hex: "#EF4444")
+        }()
+        return ZStack {
+            if let label = placed {
+                chip(label: label, tint: tint)
+                    .opacity(dragging == label ? 0 : 1)
+                    .gesture(dragGesture(for: label))
+            } else {
+                RoundedRectangle(cornerRadius: 10, style: .continuous)
+                    .strokeBorder(Color.white.opacity(0.3), style: StrokeStyle(lineWidth: 1.5, dash: [4, 3]))
+                    .frame(width: 84, height: 34)
+                    .overlay(Text("?").font(Theme.font(15, .black)).foregroundColor(Color.white.opacity(0.35)))
+            }
+        }
+        .frame(width: 88, height: 38)
+        .background(GeometryReader { g in
+            Color.clear.preference(key: OHLCSlotKey.self, value: [i: g.frame(in: .named("ohlc"))])
+        })
+    }
+
+    // MARK: Tray
+
+    private var tray: some View {
+        HStack(spacing: 10) {
+            ForEach(trayLabels, id: \.self) { label in
+                chip(label: label, tint: Color(hex: "#1E293B"))
+                    .opacity(dragging == label ? 0 : 1)
+                    .gesture(dragGesture(for: label))
+            }
+            if trayLabels.isEmpty {
+                Text("Drag a label back here to move it")
+                    .font(Theme.font(12, .bold)).foregroundColor(Theme.muted)
+            }
+        }
+        .frame(maxWidth: .infinity, minHeight: 44, alignment: .center)
+    }
+
+    private func chip(label: Int, tint: Color) -> some View {
+        Text(labelNames[label])
+            .font(Theme.font(14, .black)).foregroundColor(.white)
+            .padding(.horizontal, 14).padding(.vertical, 9)
+            .background(
+                Capsule().fill(tint)
+                    .overlay(Capsule().strokeBorder(Color.white.opacity(0.18), lineWidth: 1))
+            )
+    }
+
+    // MARK: Drag handling
+
+    private func dragGesture(for label: Int) -> some Gesture {
+        DragGesture(coordinateSpace: .named("ohlc"))
+            .onChanged { g in
+                guard !player.revealed else { return }
+                if dragging == nil { Haptics.selection() }
+                dragging = label
+                dragPoint = g.location
+            }
+            .onEnded { g in
+                guard !player.revealed else { return }
+                drop(label: label, at: g.location)
+                dragging = nil
+            }
+    }
+
+    private func drop(label: Int, at pt: CGPoint) {
+        // Lift the label out of any slot it currently occupies.
+        var placement = player.ohlcPlacement.filter { $0.value != label }
+        // Snap to the nearest slot within range; otherwise it returns to the tray.
+        if let nearest = slotFrames.min(by: { dist($0.value, pt) < dist($1.value, pt) }),
+           dist(nearest.value, pt) < 64 {
+            placement[nearest.key] = label   // any displaced label falls back to the tray
+        }
+        player.ohlcPlacement = placement
+    }
+
+    private func dist(_ rect: CGRect, _ pt: CGPoint) -> CGFloat {
+        let dx = rect.midX - pt.x, dy = rect.midY - pt.y
+        return (dx * dx + dy * dy).squareRoot()
+    }
+}
+
+private struct OHLCSlotKey: PreferenceKey {
+    static var defaultValue: [Int: CGRect] = [:]
+    static func reduce(value: inout [Int: CGRect], nextValue: () -> [Int: CGRect]) {
+        value.merge(nextValue(), uniquingKeysWith: { _, new in new })
     }
 }
 
