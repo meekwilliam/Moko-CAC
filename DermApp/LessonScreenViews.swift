@@ -250,7 +250,7 @@ struct MarkLevelView: View {
                     // The user's draggable line.
                     let userColor = player.revealed
                         ? (abs(price(lineY, lo, range) - truth) <= tol ? Color(hex: "#22C55E") : Color(hex: "#EF4444"))
-                        : Color(hex: "#38bdf8")
+                        : Theme.answer
                     levelLine(y: lineY, color: userColor, label: player.revealed ? "You" : "Drag me")
 
                     // On reveal, show the true level too.
@@ -354,7 +354,7 @@ struct TrendlineView: View {
                         if let a = player.trendStart, let b = player.trendEnd {
                             let color: Color = player.revealed
                                 ? (correct ? Color(hex: "#22C55E") : Color(hex: "#EF4444"))
-                                : Color(hex: "#38bdf8")
+                                : Theme.answer
                             trendLine(a, b, m.candles, slot, lo, range, color: color)
                         }
 
@@ -469,7 +469,7 @@ struct ConsolidationView: View {
                         if let lo = player.consolidationLo, let hi = player.consolidationHi {
                             let color: Color = player.revealed
                                 ? (correct ? Color(hex: "#22C55E") : Color(hex: "#EF4444"))
-                                : Color(hex: "#38bdf8")
+                                : Theme.answer
                             areaRect(lo, hi, slot, geo.size.height, color: color)
                         }
 
@@ -580,7 +580,7 @@ struct OHLCLabelView: View {
         .onAppear { if !didInit { player.ohlcExpected = expected; didInit = true } }
         .overlay(alignment: .topLeading) {
             if let d = dragging {
-                chip(label: d, tint: Color(hex: "#38bdf8"))
+                chip(label: d, tint: Theme.answer)
                     .position(dragPoint)
                     .allowsHitTesting(false)
             }
@@ -622,7 +622,7 @@ struct OHLCLabelView: View {
     private func slotBox(_ i: Int) -> some View {
         let placed = player.ohlcPlacement[i]
         let tint: Color = {
-            guard player.revealed else { return Color(hex: "#38bdf8") }
+            guard player.revealed else { return Theme.answer }
             return player.ohlcPlacement[i] == expected[i] ? Color(hex: "#22C55E") : Color(hex: "#EF4444")
         }()
         return ZStack {
@@ -803,7 +803,7 @@ struct ChoiceView: View {
                 fill = Theme.incorrect; border = Theme.incorrectDark; slab = Theme.incorrectDark; textColor = .white
             }
         } else if selected {
-            fill = Color(hex: "#38bdf8"); border = Color(hex: "#0284c7"); slab = Color(hex: "#0369a1"); textColor = .white
+            fill = Theme.answer; border = Theme.answerDark; slab = Theme.answerDark; textColor = .white
         }
 
         return Button {
@@ -895,7 +895,7 @@ struct MatchingView: View {
         } else if isWrong {
             fill = Theme.incorrect; border = Theme.incorrectDark; slab = Theme.incorrectDark; textColor = .white
         } else if selected {
-            fill = Color(hex: "#38bdf8"); border = Color(hex: "#0284c7"); slab = Color(hex: "#0369a1"); textColor = .white
+            fill = Theme.answer; border = Theme.answerDark; slab = Theme.answerDark; textColor = .white
         }
 
         return Button {
@@ -1020,7 +1020,7 @@ struct FlowChips: View {
         } else if revealed && isSel {
             fill = Theme.incorrect; border = Theme.incorrectDark; textColor = .white
         } else if isSel {
-            fill = Color(hex: "#38bdf8"); border = Color(hex: "#0284c7"); textColor = .white
+            fill = Theme.answer; border = Theme.answerDark; textColor = .white
         }
         return Button { onTap(idx) } label: {
             Text(label).font(Theme.font(14, .bold)).foregroundColor(textColor)
@@ -1081,7 +1081,7 @@ struct IngredientMatchView: View {
             if isCorrect { fill = Theme.correct; border = Theme.correctDark; slab = Theme.correctDark; textColor = .white; subColor = .white.opacity(0.85) }
             else if selected { fill = Theme.incorrect; border = Theme.incorrectDark; slab = Theme.incorrectDark; textColor = .white; subColor = .white.opacity(0.85) }
         } else if selected {
-            fill = Color(hex: "#38bdf8"); border = Color(hex: "#0284c7"); slab = Color(hex: "#0369a1"); textColor = .white; subColor = .white.opacity(0.85)
+            fill = Theme.answer; border = Theme.answerDark; slab = Theme.answerDark; textColor = .white; subColor = .white.opacity(0.85)
         }
 
         return Button {

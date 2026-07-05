@@ -57,7 +57,7 @@ struct CandlestickChart: View {
     private let bullish = Color(hex: "#3FB77E")
     private let bearish = Color(hex: "#E15C5C")
     private let lineColor = Color(hex: "#8B5CF6")
-    private let selectBlue = Color(hex: "#38bdf8")
+    private let selectBlue = Theme.answer
     private let gridColor = Color.white.opacity(0.07)
     private let axisText = Color.white.opacity(0.42)
 
