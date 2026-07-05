@@ -361,11 +361,8 @@ struct PathView: View {
                         Text(label)
                     }
                 }
-                // Start / Replay / Continue use the shared answer blue; locked
-                // keeps the muted slate so it still reads as unavailable.
-                .buttonStyle(Chunky3DStyle(fill: locked ? color.main : Theme.answer,
-                                           slab: locked ? color.dark : Theme.answerDark,
-                                           depth: 4, radius: 12, font: Theme.font(14, .black)))
+                .buttonStyle(Chunky3DStyle(fill: color.main, slab: color.dark, depth: 4, radius: 12,
+                                           font: Theme.font(14, .black)))
             }
             .padding(18)
             .frame(width: 220)
