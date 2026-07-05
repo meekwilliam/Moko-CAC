@@ -79,7 +79,7 @@ INTERMEDIATE_UNITS = [
     "Confluence",
     "Gaps",
     "Multi-Timeframe Basics",
-    "Chart-Reading Mastery",
+    "Chart-Reading Mastery", "Trading Sessions & News",
 ]
 ADVANCED_UNITS = [
     "Risk Management", "Strategy Types",
