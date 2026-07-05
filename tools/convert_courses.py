@@ -61,7 +61,7 @@ for _ in raw:
 # Level membership is by unit TITLE (robust as units are added). Units must
 # appear in the doc grouped by level and in level order (Beginner→Expert).
 BEGINNER_UNITS = [
-    "Market Foundations", "Candlesticks", "Orders & Execution",
+    "Trading Terminology", "Market Foundations", "Candlesticks", "Orders & Execution",
 ]
 INTERMEDIATE_UNITS = [
     "Trends & Structure", "Support & Resistance",
