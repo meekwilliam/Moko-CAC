@@ -223,8 +223,8 @@ struct LessonView: View {
     // Answer-interaction accent: a fixed blue for the progress bar, Check /
     // Got It buttons and selected options — consistent regardless of the unit's
     // own (now per-unit) button color on the path.
-    private let accent = Color(hex: "#38bdf8")
-    private let accentDark = Color(hex: "#0369a1")
+    private let accent = Theme.answer
+    private let accentDark = Theme.answerDark
 
     var body: some View {
         ZStack {

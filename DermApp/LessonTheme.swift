@@ -30,6 +30,12 @@ enum Theme {
     static let incorrect = Color(hex: "#f43f5e")
     static let incorrectDark = Color(hex: "#be123c")
 
+    /// The accent used for answering: selected options, the Check / Got It
+    /// buttons, the progress bar, and interactive selections/drawings. Matches
+    /// the "Keep Going" button blue so the whole answer flow is one blue.
+    static let answer = Color(hex: "#2B70C9")
+    static let answerDark = Color(hex: "#1C4A85")
+
     /// Mirrors `lessonUnitColor(nodeNum)` in index.html.
     static func unitColor(_ node: Int) -> (main: Color, dark: Color) {
         switch node {
