@@ -15425,7 +15425,242 @@ RVOL always tells you when to buy or sell.
 RVOL has no descriptive value at all.
 WHY: Like every indicator in this course, RVOL is descriptive context, never a trade signal.
 
-UNIT 38 — Trading Psychology
+UNIT 38 — Opening Range
+NODE 1
+TITLE: What Is the Opening Range?
+CELEBRATION: You understand what the opening range is!
+
+INTRO
+TITLE: The First Few Minutes
+TEXT: The opening range refers to the high and low price established during a defined early window after the market opens, commonly the first five, fifteen, or thirty minutes.
+CHART: volatile
+
+[MC] The opening range is defined by...
+The high and low price during a set early window after the open.
+The closing price from the prior day.
+The average price over the entire prior week.
+WHY: The opening range is specifically about the high/low formed in an early defined window, not prior-day or weekly data.
+
+[TF] The opening range window is commonly the first five, fifteen, or thirty minutes of the session.
+ANSWER: True
+WHY: Different traders use different defined windows, but these are common choices.
+
+[FILL] The opening range is the high and low formed during a [___] early window.
+defined
+random
+year-long
+WHY: The window is a specific, defined stretch of time, not an arbitrary or extended one.
+
+[MATCH] Match the term to its focus.
+Opening range => High/low during an early defined window
+Opening range high => The top of that early window's range
+Opening range low => The bottom of that early window's range
+WHY: The opening range establishes a reference high and low from the earliest minutes of trading.
+
+[PICK] Why might traders pay attention to the opening range?
+CHART: volatile
+CONCERN: Understanding the tool
+It's an early reference level formed from the session's first activity | detail: An early reference point
+It guarantees the day's exact high and low | detail: Overstates certainty | wrong: The opening range is an early reference, not a guarantee of the day's extremes.
+It only matters for the last hour of trading | detail: Incorrect | wrong: The opening range is defined by early, not late, price action.
+WHY: The opening range gives an early reference level built from the session's first few minutes.
+
+[SPOT] Someone assumes the opening range guarantees the day's final high and low.
+CHART: volatile
+QUESTION: What is the mistake?
+The opening range is an early reference level, not a guarantee of the full day's eventual high or low.
+The opening range always matches the day's final high and low exactly.
+The opening range has no relationship to the rest of the day.
+WHY: Price can move well beyond the opening range as the day continues.
+
+NODE 2
+TITLE: Opening Range Breaks
+CELEBRATION: You can describe an opening range break!
+
+INTRO
+TITLE: Trading Above or Below the Range
+TEXT: When price moves above the opening range high or below the opening range low, that's commonly described as breaking out of the opening range.
+CHART: breakout
+
+[MC] Price closing above the opening range high is commonly described as...
+Breaking out of the opening range to the upside.
+Staying inside the opening range.
+Breaking down through support from last week.
+WHY: Moving beyond the opening range high is the defining description of an upside break of that range.
+
+[TF] Price can also break below the opening range low, described as breaking down out of the range.
+ANSWER: True
+WHY: Breaks can occur in either direction relative to the established range.
+
+[FILL] Moving beyond the opening range boundary is commonly called [___] the range.
+breaking
+inventing
+erasing
+WHY: This is simply the descriptive term for price moving past the established opening range boundary.
+
+[MATCH] Match the scenario to its description.
+Price above range high => Breaking out to the upside
+Price below range low => Breaking down
+Price between the two => Still inside the opening range
+WHY: These are the three basic descriptive states relative to the opening range.
+
+[PICK] What does an opening range break describe, on its own?
+CHART: breakout
+CONCERN: Staying descriptive
+That price has moved beyond an early reference level, nothing more by itself | detail: A descriptive observation
+A guaranteed continuation for the rest of the day | detail: Overstates certainty | wrong: A break describes a boundary crossing, not a guaranteed continuation.
+Confirmation that a reversal is now impossible | detail: Overstates certainty | wrong: Price can reverse after any break.
+WHY: An opening range break is a descriptive observation about crossing an early reference level, not a guarantee of what follows.
+
+[SPOT] Someone treats an opening range break as guaranteed to continue trending the rest of the day.
+CHART: breakout
+QUESTION: What is the mistake?
+A break describes crossing the range boundary, it doesn't guarantee the rest of the day's direction.
+Every opening range break continues in the same direction all day.
+Price never reverses after breaking the opening range.
+WHY: Like any breakout, a range break can continue, stall, or reverse afterward.
+
+NODE 3
+TITLE: Opening Range and False Breaks
+CELEBRATION: You understand opening range false breaks!
+
+INTRO
+TITLE: When a Break Doesn't Hold
+TEXT: Sometimes price breaks the opening range briefly and then moves back inside it, commonly described as a false break of the opening range, echoing the false breakout concept from earlier units.
+CHART: breakoutRetest
+
+[MC] Price briefly moving above the opening range high and then falling back inside is commonly described as...
+A false break of the opening range.
+A guaranteed reversal signal.
+Proof the opening range was calculated incorrectly.
+WHY: This is the same false-break/failed-breakout idea covered earlier, applied specifically to the opening range.
+
+[TF] A false break of the opening range echoes the false breakout concept covered in the Breakouts & Retests unit.
+ANSWER: True
+WHY: The underlying idea, price failing to hold beyond a level, is the same concept applied to this specific reference range.
+
+[FILL] A break that doesn't hold and returns inside the range is commonly called a [___] break.
+false
+guaranteed
+final
+WHY: This mirrors the "false breakout" terminology already established earlier in the course.
+
+[MATCH] Match the concept to its connection.
+False opening range break => Echoes the general false breakout concept
+Held opening range break => Price stays beyond the boundary
+Opening range itself => The specific reference level being tested
+WHY: The opening range is simply one more level that can be broken, held, or falsely broken.
+
+[PICK] Why is it useful to recognize a false break of the opening range?
+CHART: breakoutRetest
+CONCERN: Applying prior concepts
+Because it reinforces that any break, including this one, can fail to hold | detail: Consistent with breakout concepts
+Because false breaks of the opening range never happen | detail: Incorrect | wrong: They can and do occur, same as any other breakout.
+Because it means the opening range concept doesn't apply here | detail: Incorrect | wrong: The opening range concept still applies, it just didn't hold.
+WHY: Recognizing false breaks keeps the opening range concept consistent with the broader breakout/retest ideas taught earlier.
+
+[SPOT] Someone assumes every opening range break automatically holds and never fails.
+CHART: breakoutRetest
+QUESTION: What is the mistake?
+Opening range breaks can fail to hold, just like any other breakout covered earlier in the course.
+Opening range breaks are a completely different phenomenon from regular breakouts.
+False breaks are impossible once price crosses the opening range boundary.
+WHY: The opening range is one more level subject to the same false-breakout dynamics taught earlier.
+
+NODE 4
+TITLE: Opening Range and Volatility
+CELEBRATION: You can connect opening range width to volatility!
+
+INTRO
+TITLE: Wide Range vs. Narrow Range
+TEXT: A wider opening range commonly reflects more volatile early trading, while a narrower opening range commonly reflects calmer early trading, connecting back to the ATR and volatility concepts.
+CHART: volatile
+
+[MC] A wider opening range commonly reflects...
+More volatile early trading.
+A guaranteed downtrend.
+Lower trading volume for the whole day.
+WHY: A wide early range simply reflects larger early price swings, similar to a higher ATR reading.
+
+[TF] A narrower opening range commonly reflects calmer early trading.
+ANSWER: True
+WHY: A tight range in the early minutes reflects smaller early price swings.
+
+[FILL] Opening range width connects to the same idea as [___], covered earlier in this course.
+ATR
+company earnings
+account balance
+WHY: Both opening range width and ATR describe the size of recent price movement, just over different windows.
+
+[MATCH] Match the range width to its commonly cited meaning.
+Wide opening range => More volatile early trading
+Narrow opening range => Calmer early trading
+Range width itself => A volatility descriptor, like ATR but for the open specifically
+WHY: This ties the opening range back to volatility concepts taught earlier in the course.
+
+[PICK] How does opening range width add to reading a session?
+CHART: volatile
+CONCERN: Connecting concepts
+It gives an early descriptive read on volatility, similar to ATR but specific to the open | detail: Confluence with volatility
+It replaces the need for ATR throughout the rest of the day | detail: Overstates it | wrong: Opening range width is one added data point, not a replacement.
+It has no relationship to volatility | detail: Incorrect | wrong: Range width directly reflects early volatility.
+WHY: Opening range width is simply a volatility read specific to the earliest minutes of the session.
+
+[SPOT] Someone assumes a wide opening range guarantees a volatile day for the remaining hours.
+CHART: volatile
+QUESTION: What is the mistake?
+A wide opening range describes early volatility, it doesn't guarantee how the rest of the day unfolds.
+Opening range width always predicts the entire day's volatility.
+Opening range width has no connection to volatility at all.
+WHY: The opening range only describes the earliest window, not a guarantee for the rest of the session.
+
+NODE 5
+TITLE: Opening Range Review
+CELEBRATION: You've completed the Opening Range unit!
+
+INTRO
+TITLE: Bringing It Together
+TEXT: A final review of what the opening range is, breaks of the range, false breaks, and how range width connects to volatility.
+
+[TF] The opening range is the high and low formed during a defined early window after the open.
+ANSWER: True
+WHY: That's the core, consistent idea across this whole unit.
+
+[FILL] A break that doesn't hold and returns inside the range is called a [___] break.
+false
+permanent
+guaranteed
+WHY: A recap of the false-break terminology covered in this unit.
+
+[MC] How should an opening range break be treated on its own?
+As a descriptive observation about crossing an early reference level, nothing more.
+As a guaranteed continuation for the rest of the day.
+As confirmation a reversal is now impossible.
+WHY: A recap of the descriptive, non-predictive framing used throughout the course.
+
+[MATCH] Match the term to its one-line meaning.
+Opening range => High/low from an early defined window
+Range break => Price moving beyond that range's boundary
+False break => A break that doesn't hold and reverses back inside
+WHY: A quick recap of the unit's core vocabulary.
+
+[PICK] Which best summarizes this unit?
+CHART: volatile
+CONCERN: Reviewing the big picture
+The opening range is an early, descriptive reference level, useful for context, not prediction | detail: The central theme
+The opening range guarantees the day's final high and low | detail: Overstates certainty | wrong: It's an early reference, not a guarantee of the full day's range.
+The opening range is unrelated to volatility | detail: Incorrect | wrong: Range width directly reflects early volatility.
+WHY: The opening range's value is as descriptive early context, not a predictive guarantee.
+
+[SPOT] Someone finishes this unit and starts trading every opening range break as an automatic signal.
+CHART: volatile
+QUESTION: What is the mistake?
+The opening range describes an early reference level, it's not an automatic buy or sell signal.
+Every opening range break should be traded automatically.
+The opening range has no descriptive value at all.
+WHY: Like every concept in this course, the opening range is descriptive context, never a trade signal.
+
+UNIT 39 — Trading Psychology
 NODE 1
 TITLE: What Is FOMO?
 CELEBRATION: You understand FOMO!
@@ -15974,7 +16209,7 @@ WHY: All the core patterns from this unit are reviewed together here.
 ANSWER: True
 WHY: This has been the throughline, emotional patterns pulling away from disciplined plan-following.
 
-UNIT 39 — Full Simulation Training
+UNIT 40 — Full Simulation Training
 NODE 1
 TITLE: Classifying Trending Markets
 CELEBRATION: You can classify a trending market!
