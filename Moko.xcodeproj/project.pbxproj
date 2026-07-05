@@ -11,7 +11,7 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
-		F1D128682FE78CE200A74F58 /* Exceptions for "DermApp" folder in "DermApp" target */ = {
+		F1D128682FE78CE200A74F58 /* Exceptions for "DermApp" folder in "Moko" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
 				Info.plist,
@@ -21,10 +21,10 @@
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		F1D128582FE78CE100A74F58 /* Moko */ = {
+		F1D128582FE78CE100A74F58 /* DermApp */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			exceptions = (
-				F1D128682FE78CE200A74F58 /* Exceptions for "DermApp" folder in "DermApp" target */,
+				F1D128682FE78CE200A74F58 /* Exceptions for "DermApp" folder in "Moko" target */,
 			);
 			path = DermApp;
 			sourceTree = "<group>";
@@ -45,7 +45,7 @@
 		F1D1284D2FE78CE100A74F58 = {
 			isa = PBXGroup;
 			children = (
-				F1D128582FE78CE100A74F58 /* Moko */,
+				F1D128582FE78CE100A74F58 /* DermApp */,
 				F1D128572FE78CE100A74F58 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -74,7 +74,7 @@
 			dependencies = (
 			);
 			fileSystemSynchronizedGroups = (
-				F1D128582FE78CE100A74F58 /* Moko */,
+				F1D128582FE78CE100A74F58 /* DermApp */,
 			);
 			name = Moko;
 			packageProductDependencies = (

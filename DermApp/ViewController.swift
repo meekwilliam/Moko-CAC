@@ -76,6 +76,7 @@ class ViewController: UIViewController {
             self.refreshPathState()
             Haptics.impact(.medium)
         }
+        appRouter.onOpenMechanicsTest = { [weak self] in self?.openMechanicsTestLesson() }
         appRouter.onGrantTestTreats = { [weak self] in
             guard let self = self else { return }
             self.progress.grantTestTreats()
@@ -362,6 +363,16 @@ class ViewController: UIViewController {
     private func isLastNodeInUnit(_ node: Int) -> Bool {
         let group = unitNodes(forNode: node)
         return group.filter { $0 != node }.allSatisfy { progress.completed.contains($0) }
+    }
+
+    /// Debug: opens a synthetic lesson with one screen per question mechanic,
+    /// bypassing hearts/progress entirely (isTestLesson skips both on exit).
+    private func openMechanicsTestLesson() {
+        appRouter.currentLessonIsReplay = false
+        appRouter.currentLessonUnitColor = (Color(hex: "#8B5CF6"), Color(hex: "#6D28D9"))
+        appRouter.currentLessonBonusEligible = false
+        appRouter.isTestLesson = true
+        presentNativeLesson(lesson: MechanicsTestLesson.build(), startIndex: 0)
     }
 
     private func presentNativeLesson(lesson: Lesson, startIndex: Int) {
