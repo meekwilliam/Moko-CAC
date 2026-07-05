@@ -8686,6 +8686,23 @@ CHART: gapUp
 ANSWER: True
 WHY: A gap up jumps above the prior candle, leaving space below the new open.
 
+
+[FILL] A gap leaves an empty space with no [___] in between.
+trading
+color
+volume only
+WHY: Price jumped, so no trades happened across the gap.
+
+[TF] A gap can occur between one candle's close and the next candle's open.
+ANSWER: True
+WHY: That jump between close and next open is the defining feature of a gap.
+
+[MC] What best describes a gap?
+A jump where price opens well away from the prior candle, leaving empty space.
+A candle with a tiny body and long wicks.
+A level tested twice by price.
+WHY: A gap is specifically about a jump in price, leaving no trading in between.
+
 NODE 2
 TITLE: Gap Up vs. Gap Down
 CELEBRATION: You can tell gap direction!
@@ -8715,6 +8732,23 @@ WHY: A gap down jumps below the prior candle.
 BLANK1: *up | down | flat
 BLANK2: *down | up | flat
 WHY: Up = above prior high; down = below prior low.
+
+
+[FILL] A gap up opens [___] the prior candle's high.
+above
+below
+exactly at
+WHY: Opening above the prior high is what defines a gap up.
+
+[TF] A gap down opens below the prior candle's low.
+ANSWER: True
+WHY: Opening below the prior low is what defines a gap down.
+
+[MC] What separates a gap up from a gap down?
+The direction of the jump — above the prior high, or below the prior low.
+The candle's color only.
+The exact time of day.
+WHY: Direction of the jump is what separates the two gap types.
 
 NODE 3
 TITLE: Why Gaps Happen
@@ -8747,6 +8781,23 @@ Gaps commonly have causes — session breaks or news — not pure randomness.
 Gaps never have any cause.
 Gaps only depend on candle color.
 WHY: Gaps usually reflect non-continuous trading (sessions/news), not randomness.
+
+
+[FILL] Gaps commonly form when trading isn't [___].
+continuous
+colorful
+random
+WHY: Discontinuous trading (overnight/news) lets price jump, forming a gap.
+
+[TF] News released while the market is closed is a commonly cited cause of gaps.
+ANSWER: True
+WHY: Overnight or weekend news is a commonly cited reason for the next open to jump.
+
+[MC] Why do gaps commonly form between trading sessions?
+Trading isn't continuous, so news can shift sentiment before the next open.
+The chart software resets randomly.
+Volume always hits zero overnight.
+WHY: Non-continuous trading is the commonly cited reason gaps form between sessions.
 
 NODE 4
 TITLE: The Gap Fill
@@ -8781,6 +8832,23 @@ As a certainty every time | detail: Overstates certainty | wrong: Not every gap 
 As something that never happens | detail: Backwards | wrong: Gap fills are common, just not guaranteed.
 WHY: "Often fills" is a descriptive tendency, never a guarantee.
 
+
+[FILL] A gap fill happens [___], not always.
+often
+never
+instantly
+WHY: Gap fills are a common tendency, not a certainty.
+
+[TF] Every gap is guaranteed to eventually fill.
+ANSWER: False
+WHY: Gaps fill often but not always — it's a tendency, not a guarantee.
+
+[MC] What is a "gap fill," in simple terms?
+Price later trading back through the gap's empty space.
+A gap that never gets touched again.
+A candle with no wicks.
+WHY: A gap fill specifically describes price retracing back through the skipped range.
+
 NODE 5
 TITLE: Gaps Review
 CELEBRATION: You've mastered gaps!
@@ -8814,6 +8882,23 @@ Gaps that always fill immediately | detail: Overstates certainty | wrong: Not ev
 Random marks with no cause | detail: Wrong | wrong: Gaps usually have a cause.
 WHY: Cause + a fill tendency (not guarantee) is the throughline.
 
+
+[FILL] This review ties together gap direction, causes, and [___].
+gap fills
+random guesses
+company names
+WHY: All three core ideas from this unit are reviewed together here.
+
+[TF] Even after this review, a gap fill should be read as a tendency, not a certainty.
+ANSWER: True
+WHY: This remains true throughout — a common tendency, never a guarantee.
+
+[MC] What is the single most useful habit from this unit?
+Reading gap direction and cause, without assuming a fill is guaranteed.
+Assuming every gap fills immediately.
+Ignoring gaps entirely.
+WHY: Reading gaps descriptively, without assuming a guaranteed fill, is the core skill here.
+
 UNIT 18 — Multi-Timeframe Basics
 NODE 1
 TITLE: What Is a Timeframe?
@@ -8846,6 +8931,23 @@ The 1-minute chart.
 They are the same.
 WHY: Higher timeframes cover more time per candle (daily > hourly > 1-minute).
 
+
+[FILL] A timeframe describes how much [___] each candle represents.
+time
+volume
+color
+WHY: Timeframe defines the duration each candle covers.
+
+[TF] The same market can look different across different timeframes.
+ANSWER: True
+WHY: A move that's a blip on a daily chart can look like a full trend on a 1-minute chart.
+
+[MC] What determines what a single candle represents?
+The chosen timeframe.
+The candle's color.
+The number of wicks.
+WHY: Timeframe determines the duration each candle summarizes.
+
 NODE 2
 TITLE: Higher vs. Lower Timeframe
 CELEBRATION: You can compare timeframes!
@@ -8874,6 +8976,23 @@ WHY: Higher = zoomed out (big picture); lower = zoomed in (detail).
 [TF] Higher and lower timeframes describe the same market at different scales.
 ANSWER: True
 WHY: They're the same price data viewed zoomed out vs zoomed in.
+
+
+[FILL] A higher timeframe shows the [___] picture.
+zoomed-out, big
+zoomed-in, small
+identical
+WHY: Higher timeframes compress more history into each candle — the big picture.
+
+[TF] A lower timeframe shows more fine-grained detail over a shorter period.
+ANSWER: True
+WHY: Lower timeframes zoom in, offering finer detail over less total time.
+
+[MC] What do higher and lower timeframes have in common?
+Both describe the same market, just at different scales.
+They describe two entirely unrelated markets.
+Only one of them is ever accurate.
+WHY: They're the same underlying price data, viewed at different zoom levels.
 
 NODE 3
 TITLE: Trends Can Differ by Timeframe
@@ -8908,6 +9027,23 @@ The higher timeframe never matters.
 Only the 1-minute chart matters.
 WHY: The higher-timeframe context frames what the lower-timeframe move means.
 
+
+[FILL] A pullback on a higher timeframe can look like a full [___] on a lower one.
+downtrend
+uptrend
+gap
+WHY: Zooming into a higher-timeframe pullback can reveal what looks like a complete small downtrend.
+
+[TF] Trend direction can differ depending on which timeframe you're viewing.
+ANSWER: True
+WHY: The same market can trend one way on one timeframe and differently on another.
+
+[MC] Why might a chart look like it's trending down on a 1-minute chart but up on the daily?
+The lower timeframe may just be showing a pullback within the larger uptrend.
+The two timeframes are showing completely different assets.
+Timeframes never affect how a trend appears.
+WHY: A higher-timeframe pullback can appear as its own trend when zoomed in.
+
 NODE 4
 TITLE: Top-Down Reading
 CELEBRATION: You understand top-down reading!
@@ -8938,6 +9074,23 @@ context
 color
 volume
 WHY: The higher timeframe provides the context to read the detail within.
+
+
+[FILL] Top-down reading checks the [___] timeframe first.
+higher
+lower
+smallest possible
+WHY: Top-down means starting with the big picture (higher timeframe) before zooming in.
+
+[TF] Top-down reading means checking the lower timeframe before the higher one.
+ANSWER: False
+WHY: Top-down specifically means higher timeframe first, then lower for detail.
+
+[MC] What is the point of checking a higher timeframe before a lower one?
+It sets big-picture context before looking at fine detail.
+It replaces the need to ever look at a lower timeframe.
+It has no real purpose.
+WHY: Context from the higher timeframe frames how the lower-timeframe detail is read.
 
 NODE 5
 TITLE: Timeframe Alignment
@@ -8972,6 +9125,23 @@ Agreement makes it certain.
 Alignment removes all risk.
 WHY: Even aligned timeframes only stack probability, not certainty.
 
+
+[FILL] Timeframes agreeing with each other is a form of [___].
+confluence
+contradiction
+randomness
+WHY: Multiple timeframes pointing the same way is an example of confluence.
+
+[TF] Timeframe alignment guarantees the trade idea will work out.
+ANSWER: False
+WHY: Alignment strengthens the read but never guarantees the outcome.
+
+[MC] What happens when the higher and lower timeframe both point the same direction?
+That agreement is read as a stronger, more confluent signal.
+It automatically guarantees success.
+It has no added meaning at all.
+WHY: Agreement across timeframes adds confluence — stronger, but not certain.
+
 NODE 6
 TITLE: Multi-Timeframe Review
 CELEBRATION: You've mastered multi-timeframe basics!
@@ -9004,6 +9174,23 @@ Read big-picture context first, then detail — alignment adds confluence, not c
 Only the lowest timeframe matters | detail: Too narrow | wrong: Context comes from higher timeframes.
 Timeframe agreement guarantees the outcome | detail: Overstates certainty | wrong: Alignment isn't a guarantee.
 WHY: Context-first reading with alignment as confluence (not certainty) is the throughline.
+
+
+[FILL] This review ties together timeframes, higher vs lower, and [___].
+alignment
+random guesses
+company names
+WHY: All the core ideas from this unit are reviewed together here.
+
+[TF] Even after this review, timeframe alignment should be read as added confluence, not a guarantee.
+ANSWER: True
+WHY: This remains true throughout — stronger evidence, never a certainty.
+
+[MC] What is the single most useful habit from this unit?
+Reading the higher timeframe for context before zooming into the lower one.
+Only ever looking at one single timeframe forever.
+Ignoring timeframes entirely.
+WHY: Top-down, context-first reading across timeframes is the core skill here.
 
 UNIT 19 — Chart-Reading Mastery
 NODE 1
@@ -9049,6 +9236,26 @@ Rising wedge.
 Ascending channel.
 WHY: Falling and converging is a falling wedge.
 
+
+[MC] Which pattern is shown on the chart above?
+CHART: inverseHeadShoulders
+Inverse head & shoulders.
+Head & shoulders (regular).
+Bull flag.
+WHY: Three troughs with a lower middle is an inverse head & shoulders.
+
+[MC] Which pattern is shown on the chart above?
+CHART: descendingTriangle
+Descending triangle.
+Ascending triangle.
+Symmetrical triangle.
+WHY: A flat bottom with falling highs is a descending triangle.
+
+[TF] The chart above shows a symmetrical triangle.
+CHART: symmetricalTriangle
+ANSWER: True
+WHY: Lower highs and higher lows converging, with no flat side, is a symmetrical triangle.
+
 NODE 2
 TITLE: Level Reading Round
 CELEBRATION: You can mark levels anywhere!
@@ -9081,6 +9288,21 @@ WHY: The floor of the range is the support.
 CHART: headShoulders
 LEVEL: support
 WHY: The neckline runs along the two troughs of the head & shoulders.
+
+
+[MARKLEVEL] Drag the line to the support in this range.
+CHART: range
+LEVEL: support
+WHY: The floor of the range is its support.
+
+[MARKLEVEL] Drag the line to the resistance in this breakout chart.
+CHART: breakout
+LEVEL: resistance
+WHY: The level price cleared with momentum is the resistance being broken out of.
+
+[TF] Marking a level is a matter of judgment, not an exact science.
+ANSWER: True
+WHY: Support and resistance are estimated zones based on past reactions, not precise fixed lines.
 
 NODE 3
 TITLE: Candle Reading Round
@@ -9115,6 +9337,21 @@ CHART: marubozu
 TARGET: 2
 WHY: The big-bodied, near-wickless candle is the momentum (marubozu) candle.
 
+
+[TAPCANDLE] Tap the spinning top.
+CHART: spinningTop
+TARGET: 2
+WHY: The small body with even wicks on both sides is the spinning top.
+
+[TAPCANDLE] Tap the inverted hammer.
+CHART: invertedHammer
+TARGET: 3
+WHY: A long upper wick with a small low body after a decline is the inverted hammer.
+
+[TF] Reading candles well means considering both body and wicks together.
+ANSWER: True
+WHY: Body and wicks together tell the fuller story of a candle's period.
+
 NODE 4
 TITLE: Multi-Candle Round
 CELEBRATION: You can tap groups of candles!
@@ -9142,6 +9379,16 @@ WHY: The 2nd and 6th candles are the left and right shoulders.
 CHART: ascendingTriangle
 TARGETS: 1, 3, 5
 WHY: The 1st, 3rd, and 5th candles push into the flat resistance.
+
+
+[TAPCANDLES] Tap the three touches of the flat support in this descending triangle.
+CHART: descendingTriangle
+TARGETS: 1, 3, 5
+WHY: The 1st, 3rd, and 5th candles push down into the flat support.
+
+[TF] Multi-select questions ask you to identify more than one matching candle at once.
+ANSWER: True
+WHY: That's the defining feature of this question type, unlike single tap-the-candle questions.
 
 NODE 5
 TITLE: Reversal or Continuation?
@@ -9182,6 +9429,17 @@ WHY: Reversal shapes suggest a turn; continuation shapes suggest a resume.
 ANSWER: False
 WHY: Categories describe tendencies; nothing is guaranteed.
 
+
+[MC] Is a triangle commonly read as continuation, reversal, or either?
+Either — it can break in either direction, though flat sides add a bias.
+Always continuation.
+Always reversal.
+WHY: Triangles can break either way, though ascending/descending triangles carry a directional bias.
+
+[TF] Wedges are commonly read as reversal shapes despite their sloped direction.
+ANSWER: True
+WHY: A rising wedge (despite rising) and falling wedge (despite falling) are both commonly read as reversal-biased.
+
 NODE 6
 TITLE: Putting It All Together
 CELEBRATION: You can read a full chart!
@@ -9219,6 +9477,21 @@ A full read combines pattern, level, trend, and candles — not one factor in is
 Only the pattern ever matters.
 Context never helps.
 WHY: The strongest reads combine several agreeing factors, not a lone signal.
+
+
+[TAPCANDLES] Tap BOTH shoulders of this head & shoulders.
+CHART: headShoulders
+TARGETS: 2, 6
+WHY: The 2nd and 6th candles are the left and right shoulders.
+
+[MARKLEVEL] Drag the line to the neckline of this head & shoulders.
+CHART: headShoulders
+LEVEL: support
+WHY: The neckline runs along the two troughs framing the head.
+
+[TF] Combining pattern, level, and candle reads gives a fuller picture than any one alone.
+ANSWER: True
+WHY: This unit's core lesson is that combining reads (confluence) is stronger than a single factor.
 
 NODE 7
 TITLE: Intermediate Mastery Review
@@ -9260,6 +9533,23 @@ Everything here is a descriptive clue read with context — never a guaranteed t
 Patterns are guaranteed once learned.
 Context stops mattering after this level.
 WHY: The whole level teaches probability-minded, descriptive reading — not guarantees.
+
+
+[FILL] This level's core skill is combining pattern, level, and candle reads through [___].
+confluence
+guesswork
+random chance
+WHY: Confluence — combining multiple agreeing factors — has been the throughline of this level.
+
+[TF] Everything in the Intermediate level stays descriptive, never a guaranteed signal.
+ANSWER: True
+WHY: This has been true across every unit in this level — description, not guarantees.
+
+[MC] What's the single biggest skill gained across this entire level?
+Reading charts by combining patterns, levels, and candles as descriptive, probability-based clues.
+Memorizing one guaranteed rule for every situation.
+Ignoring charts entirely and guessing.
+WHY: Combining multiple descriptive reads is the core Intermediate-level skill.
 
 UNIT 20 — Risk Management
 NODE 1
