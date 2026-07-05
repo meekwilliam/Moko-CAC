@@ -9977,6 +9977,11 @@ CHART: doubleTop
 LEVEL: resistance
 WHY: The resistance the two peaks test is the level reinforcing the pattern.
 
+[TAPCANDLES] Tap both peaks that make up the pattern half of this confluence.
+CHART: doubleTop
+TARGETS: 2, 4
+WHY: Candles 2 and 4 are the double top's two peaks, the pattern reinforcing the resistance level.
+
 [TF] A pattern at a key level is stronger evidence than the same pattern in empty space.
 ANSWER: True
 WHY: The pattern plus the level (confluence) is stronger than the pattern alone.
@@ -13332,6 +13337,12 @@ CHART: lowerHighsDowntrend
 TARGET: 3
 WHY: The 3rd candle is the bounce that made a lower high, confirming the downtrend.
 
+[TRENDLINE] Drag to connect the lower highs that confirm this trending condition.
+CHART: lowerHighsDowntrend
+TARGET_START: 1
+TARGET_END: 3
+WHY: Candles 1 and 3 mark the falling sequence of lower highs that define a trending condition here.
+
 [FILL] A trending condition has a clear [___] in one direction.
 progression
 absence
@@ -13368,6 +13379,12 @@ WHY: Sideways between two levels is ranging.
 CHART: range
 LEVEL: resistance
 WHY: The ceiling of the range is its resistance.
+
+[CONSOLIDATION] Drag across every candle bounded inside this ranging condition.
+CHART: range
+TARGET_LO: 1
+TARGET_HI: 6
+WHY: All six candles here stay bounded between support and resistance, the ranging condition itself.
 
 [TF] A ranging market makes strong directional progress.
 CHART: range
