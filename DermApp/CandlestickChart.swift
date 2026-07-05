@@ -557,6 +557,19 @@ private struct Gen {
     }
 }
 
+/// A real trailing simple moving average — used so overlay lines (MA, VWAP,
+/// Bollinger midline) actually curve with price instead of sitting flat.
+/// Expands the window at the start (fewer than `window` prior values available).
+private func simpleMovingAverage(_ values: [Double], window: Int) -> [Double] {
+    var out: [Double] = []
+    for i in values.indices {
+        let start = max(0, i - window + 1)
+        let slice = values[start...i]
+        out.append(slice.reduce(0, +) / Double(slice.count))
+    }
+    return out
+}
+
 extension ChartScenario {
     func model(seed: UInt64) -> ChartModel {
         var g = Gen(rng: SeededRNG(seed: seed))
@@ -889,30 +902,23 @@ extension ChartScenario {
             return ChartModel(candles: out)
 
         case .priceAboveMA:
-            // Price starts below a roughly flat MA, then crosses above it and
-            // holds — the crossing candle (index 3) is the structurally fixed target.
-            let ma = base + 1.0
-            var out: [Candle] = []; var p = base
-            out.append(g.c(open: p, close: ma - g.u(0.6, 1.0), wick: 0.25)); p = out.last!.close
-            out.append(g.c(open: p, close: ma - g.u(0.3, 0.6), wick: 0.25)); p = out.last!.close
-            out.append(g.c(open: p, close: ma - g.u(0.05, 0.25), wick: 0.2)); p = out.last!.close
-            out.append(g.c(open: p, close: ma + g.u(0.3, 0.6), wick: 0.25)); p = out.last!.close  // crosses above
-            out.append(g.c(open: p, close: ma + g.u(0.6, 1.0), wick: 0.25)); p = out.last!.close
-            out.append(g.c(open: p, close: ma + g.u(0.9, 1.4), wick: 0.25))
-            let line = out.indices.map { _ in ma + g.u(-0.08, 0.08) }
-            return ChartModel(candles: out, highlight: 3, maLine: line)
+            // A real trailing moving average computed from these closes: price
+            // dips first (so the average lags below), then rallies to reclaim
+            // it. The MA curves with price rather than sitting flat — the
+            // crossing lands at index 3 as a consequence of the shape, not a
+            // hardcoded line position.
+            let deltas = [0.0, -0.6, -1.2, -0.5, 0.9, 1.6]
+            var out: [Candle] = []; var p = base + deltas[0] - 0.3
+            for d in deltas { let cl = base + d; out.append(g.c(open: p, close: cl, wick: 0.2)); p = cl }
+            let mid = simpleMovingAverage(deltas.map { base + $0 }, window: 3)
+            return ChartModel(candles: out, highlight: 3, maLine: mid)
         case .priceBelowMA:
-            // Mirror: price starts above a roughly flat MA, then crosses below and holds.
-            let ma = base + 1.0
-            var out: [Candle] = []; var p = base + 2.0
-            out.append(g.c(open: p, close: ma + g.u(0.6, 1.0), wick: 0.25)); p = out.last!.close
-            out.append(g.c(open: p, close: ma + g.u(0.3, 0.6), wick: 0.25)); p = out.last!.close
-            out.append(g.c(open: p, close: ma + g.u(0.05, 0.25), wick: 0.2)); p = out.last!.close
-            out.append(g.c(open: p, close: ma - g.u(0.3, 0.6), wick: 0.25)); p = out.last!.close  // crosses below
-            out.append(g.c(open: p, close: ma - g.u(0.6, 1.0), wick: 0.25)); p = out.last!.close
-            out.append(g.c(open: p, close: ma - g.u(0.9, 1.4), wick: 0.25))
-            let line = out.indices.map { _ in ma + g.u(-0.08, 0.08) }
-            return ChartModel(candles: out, highlight: 3, maLine: line)
+            // Mirror: price rallies first (MA lags above), then sells off to lose it.
+            let deltas = [0.0, 0.6, 1.2, 0.5, -0.9, -1.6]
+            var out: [Candle] = []; var p = base + deltas[0] + 0.3
+            for d in deltas { let cl = base + d; out.append(g.c(open: p, close: cl, wick: 0.2)); p = cl }
+            let mid = simpleMovingAverage(deltas.map { base + $0 }, window: 3)
+            return ChartModel(candles: out, highlight: 3, maLine: mid)
 
         case .priceAboveVWAP:
             return ChartScenario.priceAboveMA.model(seed: seed)
@@ -920,84 +926,94 @@ extension ChartScenario {
             return ChartScenario.priceBelowMA.model(seed: seed)
 
         case .maCrossUp:
-            // A fast MA rising from below a roughly flat slow MA to above it —
-            // the crossover candle (index 3) is the structurally fixed target.
-            let slowLevel = base + 1.0
-            var out: [Candle] = []; var p = base + 0.3
-            for _ in 0..<6 { let cl = p + g.u(0.15, 0.45); out.append(g.c(open: p, close: cl, wick: 0.2)); p = cl }
-            let slow = out.indices.map { _ in slowLevel + g.u(-0.06, 0.06) }
-            let fastStart = slowLevel - g.u(0.9, 1.2), fastEnd = slowLevel + g.u(0.9, 1.2)
-            let fast = (0..<6).map { i -> Double in
-                let t = Double(i) / 5.0
-                return fastStart + (fastEnd - fastStart) * t
-            }
+            // Two real moving averages of the same closes: a fast one (short
+            // window, hugs price) and a slow one (long window, lags). The dip-
+            // then-rally shape makes the fast line cross up through the slow
+            // line at index 3, the same way an actual crossover would form.
+            let deltas = [0.0, -0.6, -1.2, -0.5, 0.9, 1.6]
+            var out: [Candle] = []; var p = base + deltas[0] - 0.3
+            for d in deltas { let cl = base + d; out.append(g.c(open: p, close: cl, wick: 0.2)); p = cl }
+            let closes = deltas.map { base + $0 }
+            let fast = simpleMovingAverage(closes, window: 1)
+            let slow = simpleMovingAverage(closes, window: 4)
             return ChartModel(candles: out, highlight: 3, maLine: slow, maLine2: fast)
         case .maCrossDown:
-            // Mirror: a fast MA falling from above a roughly flat slow MA to below it.
-            let slowLevel = base + 1.0
-            var out: [Candle] = []; var p = base + 1.7
-            for _ in 0..<6 { let cl = p - g.u(0.15, 0.45); out.append(g.c(open: p, close: cl, wick: 0.2)); p = cl }
-            let slow = out.indices.map { _ in slowLevel + g.u(-0.06, 0.06) }
-            let fastStart = slowLevel + g.u(0.9, 1.2), fastEnd = slowLevel - g.u(0.9, 1.2)
-            let fast = (0..<6).map { i -> Double in
-                let t = Double(i) / 5.0
-                return fastStart + (fastEnd - fastStart) * t
-            }
+            // Mirror: fast line crosses down through the slow line at index 3.
+            let deltas = [0.0, 0.6, 1.2, 0.5, -0.9, -1.6]
+            var out: [Candle] = []; var p = base + deltas[0] + 0.3
+            for d in deltas { let cl = base + d; out.append(g.c(open: p, close: cl, wick: 0.2)); p = cl }
+            let closes = deltas.map { base + $0 }
+            let fast = simpleMovingAverage(closes, window: 1)
+            let slow = simpleMovingAverage(closes, window: 4)
             return ChartModel(candles: out, highlight: 3, maLine: slow, maLine2: fast)
 
         case .bandsWidening:
-            // Bands start tight (calm), then widen as candle ranges grow (volatility rising).
-            var out: [Candle] = []; var p = base + 1.0
+            // Bands widen as candle ranges grow (volatility rising). The
+            // middle line is a real moving average of these same closes, so
+            // it curves with price instead of sitting flat; band half-width
+            // still trends wider but with per-candle jitter, not a ruler edge.
+            var out: [Candle] = []; var p = base + 1.0; var closes: [Double] = []
             let wicks = [0.15, 0.2, 0.3, 0.5, 0.7, 0.9]
-            for w in wicks { let cl = p + g.u(-0.3, 0.3); out.append(g.c(open: p, close: cl, wick: w)); p = cl }
-            let mid = out.indices.map { _ in base + 1.0 + g.u(-0.05, 0.05) }
-            let halfWidths = [0.3, 0.45, 0.65, 0.95, 1.3, 1.7]
+            for w in wicks { let cl = p + g.u(-0.3, 0.3); out.append(g.c(open: p, close: cl, wick: w)); closes.append(cl); p = cl }
+            let mid = simpleMovingAverage(closes, window: 3)
+            let halfWidths = [0.3, 0.45, 0.65, 0.95, 1.3, 1.7].map { $0 + g.u(-0.08, 0.08) }
             let upper = zip(mid, halfWidths).map { $0 + $1 }
             let lower = zip(mid, halfWidths).map { $0 - $1 }
             return ChartModel(candles: out, maLine: mid, bandUpper: upper, bandLower: lower)
         case .bandsNarrowing:
-            // Mirror: bands start wide (volatile), then squeeze as ranges shrink (calming down).
-            var out: [Candle] = []; var p = base + 1.0
+            // Mirror: bands squeeze as candle ranges shrink (calming down).
+            var out: [Candle] = []; var p = base + 1.0; var closes: [Double] = []
             let wicks = [0.9, 0.7, 0.5, 0.3, 0.2, 0.15]
-            for w in wicks { let cl = p + g.u(-0.3, 0.3); out.append(g.c(open: p, close: cl, wick: w)); p = cl }
-            let mid = out.indices.map { _ in base + 1.0 + g.u(-0.05, 0.05) }
-            let halfWidths = [1.7, 1.3, 0.95, 0.65, 0.45, 0.3]
+            for w in wicks { let cl = p + g.u(-0.3, 0.3); out.append(g.c(open: p, close: cl, wick: w)); closes.append(cl); p = cl }
+            let mid = simpleMovingAverage(closes, window: 3)
+            let halfWidths = [1.7, 1.3, 0.95, 0.65, 0.45, 0.3].map { $0 + g.u(-0.08, 0.08) }
             let upper = zip(mid, halfWidths).map { $0 + $1 }
             let lower = zip(mid, halfWidths).map { $0 - $1 }
             return ChartModel(candles: out, maLine: mid, bandUpper: upper, bandLower: lower)
 
         case .touchUpperBand:
-            // Price rallies and touches/exceeds the upper band on a fixed candle (index 4).
-            let mid = base + 1.0; var out: [Candle] = []; var p = base
-            out.append(g.c(open: p, close: mid - g.u(0.6, 0.9), wick: 0.2)); p = out.last!.close
-            out.append(g.c(open: p, close: mid - g.u(0.2, 0.4), wick: 0.2)); p = out.last!.close
-            out.append(g.c(open: p, close: mid + g.u(0.1, 0.3), wick: 0.2)); p = out.last!.close
-            out.append(g.c(open: p, close: mid + g.u(0.5, 0.7), wick: 0.2)); p = out.last!.close
-            let stretchOpen = p, stretchClose = mid + 1.1 + g.u(0.1, 0.3)
-            out.append(Candle(open: stretchOpen, high: stretchClose + g.u(0.05, 0.15),
-                              low: stretchOpen - g.u(0.05, 0.15), close: stretchClose))
-            p = stretchClose
-            out.append(g.c(open: p, close: mid + g.u(0.6, 0.9), wick: 0.2))
-            let midLine = out.indices.map { _ in mid + g.u(-0.05, 0.05) }
-            let upper = midLine.map { $0 + 1.1 }
-            let lower = midLine.map { $0 - 1.1 }
-            return ChartModel(candles: out, highlight: 4, maLine: midLine, bandUpper: upper, bandLower: lower)
+            // Price consolidates, then stretches out on a fixed candle (index 4)
+            // to touch the upper band. The band's middle is a real moving
+            // average of these closes, so it curves with the consolidation
+            // rather than being a flat reference the price ignores.
+            let deltas = [0.0, 0.3, 0.6, 0.9, 1.9, 1.3]
+            let mid = simpleMovingAverage(deltas.map { base + $0 }, window: 3)
+            let halfWidths = (0..<6).map { _ in 0.85 + g.u(-0.05, 0.05) }
+            var out: [Candle] = []; var p = base + deltas[0] - 0.2
+            for i in 0..<6 {
+                let close = base + deltas[i]
+                if i == 4 {
+                    let upperHere = mid[i] + halfWidths[i]
+                    out.append(Candle(open: p, high: upperHere + g.u(0.05, 0.15),
+                                      low: min(p, close) - g.u(0.05, 0.15), close: close))
+                } else {
+                    out.append(g.c(open: p, close: close, wick: 0.2))
+                }
+                p = close
+            }
+            let upper = zip(mid, halfWidths).map { $0 + $1 }
+            let lower = zip(mid, halfWidths).map { $0 - $1 }
+            return ChartModel(candles: out, highlight: 4, maLine: mid, bandUpper: upper, bandLower: lower)
         case .touchLowerBand:
-            // Mirror: price sells off and touches/exceeds the lower band on a fixed candle.
-            let mid = base + 1.0; var out: [Candle] = []; var p = base + 2.0
-            out.append(g.c(open: p, close: mid + g.u(0.6, 0.9), wick: 0.2)); p = out.last!.close
-            out.append(g.c(open: p, close: mid + g.u(0.2, 0.4), wick: 0.2)); p = out.last!.close
-            out.append(g.c(open: p, close: mid - g.u(0.1, 0.3), wick: 0.2)); p = out.last!.close
-            out.append(g.c(open: p, close: mid - g.u(0.5, 0.7), wick: 0.2)); p = out.last!.close
-            let stretchOpen = p, stretchClose = mid - 1.1 - g.u(0.1, 0.3)
-            out.append(Candle(open: stretchOpen, high: stretchOpen + g.u(0.05, 0.15),
-                              low: stretchClose - g.u(0.05, 0.15), close: stretchClose))
-            p = stretchClose
-            out.append(g.c(open: p, close: mid - g.u(0.6, 0.9), wick: 0.2))
-            let midLine = out.indices.map { _ in mid + g.u(-0.05, 0.05) }
-            let upper = midLine.map { $0 + 1.1 }
-            let lower = midLine.map { $0 - 1.1 }
-            return ChartModel(candles: out, highlight: 4, maLine: midLine, bandUpper: upper, bandLower: lower)
+            // Mirror: price stretches down to touch the lower band on a fixed candle.
+            let deltas = [0.0, -0.3, -0.6, -0.9, -1.9, -1.3]
+            let mid = simpleMovingAverage(deltas.map { base + $0 }, window: 3)
+            let halfWidths = (0..<6).map { _ in 0.85 + g.u(-0.05, 0.05) }
+            var out: [Candle] = []; var p = base + deltas[0] + 0.2
+            for i in 0..<6 {
+                let close = base + deltas[i]
+                if i == 4 {
+                    let lowerHere = mid[i] - halfWidths[i]
+                    out.append(Candle(open: p, high: max(p, close) + g.u(0.05, 0.15),
+                                      low: lowerHere - g.u(0.05, 0.15), close: close))
+                } else {
+                    out.append(g.c(open: p, close: close, wick: 0.2))
+                }
+                p = close
+            }
+            let upper = zip(mid, halfWidths).map { $0 + $1 }
+            let lower = zip(mid, halfWidths).map { $0 - $1 }
+            return ChartModel(candles: out, highlight: 4, maLine: mid, bandUpper: upper, bandLower: lower)
         }
     }
 }
