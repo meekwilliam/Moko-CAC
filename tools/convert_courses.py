@@ -29,9 +29,26 @@ def build_lesson(L):
         screens.append(screen)
     return screens
 
-def build_level(cid, name, level_num, unit_indices, bg, slab, raw, doc_units, lesson_unit):
+# Each unit (section) gets its own button color, cycling this palette across the
+# whole course so adjacent units differ (Duolingo-style). (bg, darker slab).
+UNIT_PALETTE = [
+    ("#22C55E", "#15803D"),  # green
+    ("#3B82F6", "#1D4ED8"),  # blue
+    ("#8B5CF6", "#6D28D9"),  # purple
+    ("#F59E0B", "#B45309"),  # amber
+    ("#EF4444", "#B91C1C"),  # red
+    ("#14B8A6", "#0F766E"),  # teal
+    ("#EC4899", "#BE185D"),  # pink
+    ("#6366F1", "#4338CA"),  # indigo
+    ("#F97316", "#C2410C"),  # orange
+    ("#10B981", "#047857"),  # emerald
+]
+
+def build_level(cid, name, level_num, unit_indices, bg, slab, raw, doc_units, lesson_unit, color_start=0):
     """Build one difficulty level as a self-contained course: the given units,
-    with node numbers and section indices restarting at 1/0 within the level."""
+    with node numbers and section indices restarting at 1/0 within the level.
+    Each unit gets a distinct color from UNIT_PALETTE (offset by color_start so
+    colors keep advancing across levels)."""
     idx_map = {u: i for i, u in enumerate(unit_indices)}
     unit_titles = [u["title"] for u in doc_units]
     lessons, nodes, node_i = [], [], 0
@@ -43,9 +60,12 @@ def build_level(cid, name, level_num, unit_indices, bg, slab, raw, doc_units, le
                         "celebration": L["celebration"], "screens": build_lesson(L)})
         nodes.append({"num": node_i, "svg": default_icon(node_i),
                       "title": L["title"], "sectionIndex": idx_map[lesson_unit[k]]})
-    sections = [{"index": i, "eyebrow": f"SECTION {level_num} · UNIT {i+1}",
-                 "title": unit_titles[u], "bg": bg, "slab": slab}
-                for i, u in enumerate(unit_indices)]
+    sections = []
+    for i, u in enumerate(unit_indices):
+        ubg, uslab = UNIT_PALETTE[(color_start + i) % len(UNIT_PALETTE)]
+        sections.append({"index": i, "eyebrow": f"SECTION {level_num} · UNIT {i+1}",
+                         "title": unit_titles[u], "bg": ubg, "slab": uslab})
+    # Course-level `color` stays the level's own color (used by the level picker).
     return {"id": cid, "name": name, "level": level_num, "color": bg,
             "sections": sections, "nodes": nodes, "lessons": lessons}
 
@@ -103,9 +123,11 @@ LEVELS = [
 
 unit_title_to_index = {u["title"]: i for i, u in enumerate(doc_units)}
 courses = []
+color_start = 0
 for i, (cid, name, titles, bg, slab) in enumerate(LEVELS):
     idxs = [unit_title_to_index[t] for t in titles if t in unit_title_to_index]
-    courses.append(build_level(cid, name, i + 1, idxs, bg, slab, raw, doc_units, lesson_unit))
+    courses.append(build_level(cid, name, i + 1, idxs, bg, slab, raw, doc_units, lesson_unit, color_start))
+    color_start += len(idxs)   # keep colors advancing so levels don't all start green
 
 out = {"courses": courses, "legal": legal}
 json.dump(out, open(GAME, "w"), ensure_ascii=False, indent=1)

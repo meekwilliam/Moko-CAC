@@ -220,6 +220,12 @@ struct LessonView: View {
     private var bg: Color { theme.palette.base }   // same source as the path background
     private var ink: Color { scheme == .dark ? Theme.inkDark : Theme.ink }
 
+    // Answer-interaction accent: a fixed blue for the progress bar, Check /
+    // Got It buttons and selected options — consistent regardless of the unit's
+    // own (now per-unit) button color on the path.
+    private let accent = Color(hex: "#38bdf8")
+    private let accentDark = Color(hex: "#0369a1")
+
     var body: some View {
         ZStack {
             bg.ignoresSafeArea()
@@ -289,7 +295,7 @@ struct LessonView: View {
             GeometryReader { geo in
                 ZStack(alignment: .leading) {
                     Capsule().fill(scheme == .dark ? Color.white.opacity(0.12) : Color.black.opacity(0.10))
-                    Capsule().fill(player.unit.main)
+                    Capsule().fill(accent)
                         .frame(width: max(12, geo.size.width * player.progress))
                         .overlay(
                             Capsule().fill(Color.white.opacity(0.35))
@@ -339,12 +345,12 @@ struct LessonView: View {
             EmptyView()  // matching advances itself; no button until solved
         } else if player.isIntro {
             Button("Got It") { withAnimation { player.advance() } }
-                .buttonStyle(Chunky3DStyle(fill: player.unit.main, slab: player.unit.dark))
+                .buttonStyle(Chunky3DStyle(fill: accent, slab: accentDark))
         } else if !player.revealed {
             Button("Check") { withAnimation { player.check() } }
                 .buttonStyle(Chunky3DStyle(
-                    fill: player.canCheck ? player.unit.main : Color.gray.opacity(0.4),
-                    slab: player.canCheck ? player.unit.dark : Color.gray.opacity(0.55)))
+                    fill: player.canCheck ? accent : Color.gray.opacity(0.4),
+                    slab: player.canCheck ? accentDark : Color.gray.opacity(0.55)))
                 .disabled(!player.canCheck)
         } else {
             Button(player.isLastScreen ? "Finish" : "Continue") { withAnimation { player.advance() } }

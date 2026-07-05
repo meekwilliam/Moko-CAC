@@ -48,21 +48,29 @@ struct CandlestickChart: View {
     var revealTargets: Set<Int>? = nil
     /// Called with the tapped candle index; when nil the chart is non-interactive.
     var onTapCandle: ((Int) -> Void)? = nil
+    /// Draw a price grid + x/y axis labels (display charts). Left OFF for the
+    /// interactive draw-on-chart views, which overlay their own full-bleed
+    /// geometry and expect candles to span the entire frame.
+    var showsAxes: Bool = false
 
-    private let bullish = Color(hex: "#22C55E")
-    private let bearish = Color(hex: "#EF4444")
+    // Reference-matched candle tones: a muted leaf green / coral red.
+    private let bullish = Color(hex: "#3FB77E")
+    private let bearish = Color(hex: "#E15C5C")
     private let lineColor = Color(hex: "#8B5CF6")
     private let selectBlue = Color(hex: "#38bdf8")
+    private let gridColor = Color.white.opacity(0.07)
+    private let axisText = Color.white.opacity(0.42)
 
-    /// Maps a price value to a y-coordinate within a given chart height.
+    /// Maps a price value to a y-coordinate within the plot area's height.
     private struct ValueMapper {
         let lo: Double
         let range: Double
         let height: CGFloat
         func y(_ v: Double) -> CGFloat { height * (1 - CGFloat((v - lo) / range)) }
+        func value(_ y: CGFloat) -> Double { lo + Double(1 - y / height) * range }
     }
 
-    private func mapper(for geo: GeometryProxy) -> ValueMapper {
+    private func mapper(height: CGFloat) -> ValueMapper {
         let values = candles.flatMap { [$0.high, $0.low] } + [supportLevel, resistanceLevel].compactMap { $0 }
             + (maLine ?? []) + (maLine2 ?? []) + (bandUpper ?? []) + (bandLower ?? [])
         let maxV = values.max() ?? 1
@@ -70,25 +78,31 @@ struct CandlestickChart: View {
         // A little vertical breathing room so wicks don't touch the frame edges.
         let pad = max(maxV - minV, 0.0001) * 0.1
         let hi = maxV + pad, lo = minV - pad
-        return ValueMapper(lo: lo, range: max(hi - lo, 0.0001), height: geo.size.height)
+        return ValueMapper(lo: lo, range: max(hi - lo, 0.0001), height: height)
     }
 
     var body: some View {
         GeometryReader { geo in
-            let m = mapper(for: geo)
+            let leftG: CGFloat = showsAxes ? 34 : 0
+            let botG: CGFloat = showsAxes ? 15 : 0
+            let plotW = geo.size.width - leftG
+            let plotH = geo.size.height - botG
+            let m = mapper(height: plotH)
             let n = max(candles.count, 1)
-            let slot = geo.size.width / CGFloat(n)
+            let slot = plotW / CGFloat(n)
             let bodyWidth = slot * 0.55
 
             ZStack(alignment: .topLeading) {
-                if let s = supportLevel { levelLine(y: m.y(s), label: "Support", color: bullish, geo: geo) }
-                if let r = resistanceLevel { levelLine(y: m.y(r), label: "Resistance", color: bearish, geo: geo) }
-                if let upper = bandUpper, let lower = bandLower { bollingerBand(upper, lower, slot: slot, mapper: m) }
-                if let line = maLine { overlayLine(line, slot: slot, mapper: m, color: Color(hex: "#F59E0B"), label: maLineLabel) }
-                if let line = maLine2 { overlayLine(line, slot: slot, mapper: m, color: Color(hex: "#38bdf8"), label: maLine2Label) }
+                if showsAxes { gridAndAxes(m: m, n: n, leftG: leftG, plotW: plotW, plotH: plotH) }
+
+                if let s = supportLevel { levelLine(y: m.y(s), label: "Support", color: bullish, x0: leftG, x1: geo.size.width) }
+                if let r = resistanceLevel { levelLine(y: m.y(r), label: "Resistance", color: bearish, x0: leftG, x1: geo.size.width) }
+                if let upper = bandUpper, let lower = bandLower { bollingerBand(upper, lower, slot: slot, x0: leftG, mapper: m) }
+                if let line = maLine { overlayLine(line, slot: slot, x0: leftG, mapper: m, color: Color(hex: "#F59E0B"), label: maLineLabel) }
+                if let line = maLine2 { overlayLine(line, slot: slot, x0: leftG, mapper: m, color: Color(hex: "#38bdf8"), label: maLine2Label) }
 
                 ForEach(Array(candles.enumerated()), id: \.offset) { i, c in
-                    let cx = slot * (CGFloat(i) + 0.5)
+                    let cx = leftG + slot * (CGFloat(i) + 0.5)
                     let color = c.isBullish ? bullish : bearish
                     let dimmed = highlightIndex != nil && highlightIndex != i
 
@@ -98,14 +112,14 @@ struct CandlestickChart: View {
                             p.move(to: CGPoint(x: cx, y: m.y(c.high)))
                             p.addLine(to: CGPoint(x: cx, y: m.y(c.low)))
                         }
-                        .stroke(color, lineWidth: 2)
+                        .stroke(color, lineWidth: 1.5)
 
                         // Body
                         let top = m.y(max(c.open, c.close))
                         let bottom = m.y(min(c.open, c.close))
-                        RoundedRectangle(cornerRadius: 2, style: .continuous)
+                        RoundedRectangle(cornerRadius: 1.5, style: .continuous)
                             .fill(color)
-                            .frame(width: bodyWidth, height: max(bottom - top, 2.5))
+                            .frame(width: bodyWidth, height: max(bottom - top, 2))
                             .position(x: cx, y: (top + bottom) / 2)
                     }
                     .opacity(dimmed ? 0.3 : 1)
@@ -115,20 +129,47 @@ struct CandlestickChart: View {
                 if onTapCandle != nil || chosenIndex != nil || revealTarget != nil
                     || !chosenSet.isEmpty || revealTargets != nil {
                     ForEach(candles.indices, id: \.self) { i in
-                        let cx = slot * (CGFloat(i) + 0.5)
+                        let cx = leftG + slot * (CGFloat(i) + 0.5)
                         ringColor(for: i).map { ring in
                             RoundedRectangle(cornerRadius: 6, style: .continuous)
                                 .strokeBorder(ring, lineWidth: 2.5)
-                                .frame(width: slot * 0.86, height: geo.size.height - 4)
-                                .position(x: cx, y: geo.size.height / 2)
+                                .frame(width: slot * 0.86, height: plotH - 4)
+                                .position(x: cx, y: plotH / 2)
                         }
                         Rectangle()
                             .fill(Color.white.opacity(0.001))
-                            .frame(width: slot, height: geo.size.height)
-                            .position(x: cx, y: geo.size.height / 2)
+                            .frame(width: slot, height: plotH)
+                            .position(x: cx, y: plotH / 2)
                             .onTapGesture { onTapCandle?(i) }
                     }
                 }
+            }
+        }
+    }
+
+    // MARK: Grid + axes (display charts only)
+
+    private func gridAndAxes(m: ValueMapper, n: Int, leftG: CGFloat, plotW: CGFloat, plotH: CGFloat) -> some View {
+        let rows = 4   // horizontal price gridlines
+        return ZStack(alignment: .topLeading) {
+            // Horizontal price gridlines + y-axis labels.
+            ForEach(0...rows, id: \.self) { r in
+                let y = plotH * CGFloat(r) / CGFloat(rows)
+                Path { p in p.move(to: CGPoint(x: leftG, y: y)); p.addLine(to: CGPoint(x: leftG + plotW, y: y)) }
+                    .stroke(gridColor, lineWidth: 1)
+                Text(String(format: "%.1f", m.value(y)))
+                    .font(Theme.font(8, .bold)).foregroundColor(axisText)
+                    .frame(width: leftG - 5, alignment: .trailing)
+                    .position(x: (leftG - 5) / 2, y: y)
+            }
+            // Vertical gridlines at slot boundaries + x-axis candle numbers.
+            ForEach(0..<n, id: \.self) { i in
+                let cx = leftG + plotW * (CGFloat(i) + 0.5) / CGFloat(n)
+                Path { p in p.move(to: CGPoint(x: cx, y: 0)); p.addLine(to: CGPoint(x: cx, y: plotH)) }
+                    .stroke(gridColor, lineWidth: 1)
+                Text("\(i + 1)")
+                    .font(Theme.font(8, .bold)).foregroundColor(axisText)
+                    .position(x: cx, y: plotH + 8)
             }
         }
     }
@@ -158,44 +199,48 @@ struct CandlestickChart: View {
         return i == chosenIndex ? selectBlue : nil
     }
 
-    private func levelLine(y: CGFloat, label: String, color: Color, geo: GeometryProxy) -> some View {
+    /// A raised, solid 3D pill for level / line labels (matches the app's chunky
+    /// button styling) rather than a flat translucent tag.
+    private func pill(_ label: String, color: Color) -> some View {
+        Text(label.uppercased())
+            .font(Theme.font(9, .black))
+            .foregroundColor(.white)
+            .padding(.horizontal, 6).padding(.vertical, 3)
+            .background(
+                Capsule().fill(color)
+                    .overlay(Capsule().strokeBorder(Color.white.opacity(0.25), lineWidth: 1))
+                    .background(Capsule().fill(Color.black.opacity(0.45)).offset(y: 2.5))
+            )
+    }
+
+    private func levelLine(y: CGFloat, label: String, color: Color, x0: CGFloat, x1: CGFloat) -> some View {
         ZStack(alignment: .topTrailing) {
             Path { p in
-                p.move(to: CGPoint(x: 0, y: y))
-                p.addLine(to: CGPoint(x: geo.size.width, y: y))
+                p.move(to: CGPoint(x: x0, y: y))
+                p.addLine(to: CGPoint(x: x1, y: y))
             }
-            .stroke(color.opacity(0.55), style: StrokeStyle(lineWidth: 1.5, dash: [5, 4]))
+            .stroke(color.opacity(0.6), style: StrokeStyle(lineWidth: 1.5, dash: [5, 4]))
 
-            Text(label.uppercased())
-                .font(Theme.font(9, .black))
-                .foregroundColor(color)
-                .padding(.horizontal, 5).padding(.vertical, 2)
-                .background(Capsule().fill(color.opacity(0.16)))
-                .offset(y: y - 20)
+            pill(label, color: color).offset(x: -4, y: y - 20)
         }
     }
 
     /// A sloped overlay line (moving average, VWAP, …), one value per candle,
     /// connected candle-center to candle-center — unlike the flat, dashed
     /// support/resistance line.
-    private func overlayLine(_ values: [Double], slot: CGFloat, mapper m: ValueMapper,
+    private func overlayLine(_ values: [Double], slot: CGFloat, x0: CGFloat, mapper m: ValueMapper,
                               color: Color, label: String) -> some View {
         ZStack(alignment: .topTrailing) {
             Path { p in
                 for (i, v) in values.enumerated() {
-                    let pt = CGPoint(x: slot * (CGFloat(i) + 0.5), y: m.y(v))
+                    let pt = CGPoint(x: x0 + slot * (CGFloat(i) + 0.5), y: m.y(v))
                     if i == 0 { p.move(to: pt) } else { p.addLine(to: pt) }
                 }
             }
             .stroke(color, style: StrokeStyle(lineWidth: 2, lineCap: .round, lineJoin: .round))
 
             if let last = values.last {
-                Text(label.uppercased())
-                    .font(Theme.font(9, .black))
-                    .foregroundColor(color)
-                    .padding(.horizontal, 5).padding(.vertical, 2)
-                    .background(Capsule().fill(color.opacity(0.16)))
-                    .offset(x: -4, y: m.y(last) - 20)
+                pill(label, color: color).offset(x: -4, y: m.y(last) - 20)
             }
         }
     }
@@ -203,39 +248,34 @@ struct CandlestickChart: View {
     /// A Bollinger-style band: upper/lower lines with the area between shaded,
     /// so widening/narrowing (volatility) reads at a glance.
     private let bandColor = Color(hex: "#A78BFA")
-    private func bollingerBand(_ upper: [Double], _ lower: [Double], slot: CGFloat, mapper m: ValueMapper) -> some View {
+    private func bollingerBand(_ upper: [Double], _ lower: [Double], slot: CGFloat, x0: CGFloat, mapper m: ValueMapper) -> some View {
         ZStack(alignment: .topTrailing) {
             Path { p in
                 guard !upper.isEmpty else { return }
                 for (i, v) in upper.enumerated() {
-                    let pt = CGPoint(x: slot * (CGFloat(i) + 0.5), y: m.y(v))
+                    let pt = CGPoint(x: x0 + slot * (CGFloat(i) + 0.5), y: m.y(v))
                     if i == 0 { p.move(to: pt) } else { p.addLine(to: pt) }
                 }
                 for i in stride(from: lower.count - 1, through: 0, by: -1) {
-                    p.addLine(to: CGPoint(x: slot * (CGFloat(i) + 0.5), y: m.y(lower[i])))
+                    p.addLine(to: CGPoint(x: x0 + slot * (CGFloat(i) + 0.5), y: m.y(lower[i])))
                 }
                 p.closeSubpath()
             }
             .fill(bandColor.opacity(0.10))
 
-            overlayLineStroke(upper, slot: slot, mapper: m, color: bandColor.opacity(0.7))
-            overlayLineStroke(lower, slot: slot, mapper: m, color: bandColor.opacity(0.7))
+            overlayLineStroke(upper, slot: slot, x0: x0, mapper: m, color: bandColor.opacity(0.7))
+            overlayLineStroke(lower, slot: slot, x0: x0, mapper: m, color: bandColor.opacity(0.7))
 
             if let last = upper.last {
-                Text(bandLabel)
-                    .font(Theme.font(9, .black))
-                    .foregroundColor(bandColor)
-                    .padding(.horizontal, 5).padding(.vertical, 2)
-                    .background(Capsule().fill(bandColor.opacity(0.16)))
-                    .offset(x: -4, y: m.y(last) - 20)
+                pill(bandLabel, color: bandColor).offset(x: -4, y: m.y(last) - 20)
             }
         }
     }
 
-    private func overlayLineStroke(_ values: [Double], slot: CGFloat, mapper m: ValueMapper, color: Color) -> some View {
+    private func overlayLineStroke(_ values: [Double], slot: CGFloat, x0: CGFloat, mapper m: ValueMapper, color: Color) -> some View {
         Path { p in
             for (i, v) in values.enumerated() {
-                let pt = CGPoint(x: slot * (CGFloat(i) + 0.5), y: m.y(v))
+                let pt = CGPoint(x: x0 + slot * (CGFloat(i) + 0.5), y: m.y(v))
                 if i == 0 { p.move(to: pt) } else { p.addLine(to: pt) }
             }
         }
@@ -510,7 +550,8 @@ struct ScenarioChartView: View {
                          maLine2: m.maLine2,
                          bandUpper: m.bandUpper,
                          bandLower: m.bandLower,
-                         bandLabel: m.bandLabel)
+                         bandLabel: m.bandLabel,
+                         showsAxes: true)
             .frame(height: height)
             .padding(.horizontal, 10).padding(.vertical, 14)
             .background(

@@ -132,7 +132,8 @@ struct TapCandleView: View {
                         guard !player.revealed else { return }
                         Haptics.selection()
                         player.selectedIndex = i
-                    }
+                    },
+                    showsAxes: true
                 )
                 .frame(height: 210)
                 .padding(.horizontal, 6).padding(.vertical, 14)
@@ -192,7 +193,8 @@ struct TapCandlesView: View {
                         Haptics.selection()
                         if player.selectedSet.contains(i) { player.selectedSet.remove(i) }
                         else { player.selectedSet.insert(i) }
-                    }
+                    },
+                    showsAxes: true
                 )
                 .frame(height: 210)
                 .padding(.horizontal, 6).padding(.vertical, 14)
