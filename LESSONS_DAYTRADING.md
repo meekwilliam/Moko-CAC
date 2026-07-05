@@ -11275,7 +11275,7 @@ CELEBRATION: You understand session-based differences in chart behavior!
 INTRO
 TITLE: Same Asset, Different Rhythm
 TEXT: The same chart can behave differently depending on the session — thinner, choppier moves in pre/after-hours; different rhythms across the open, midday, and power hour.
-CHART: choppy
+CHART: volatile
 
 [MC] Why might a chart look different during pre-market versus the standard open?
 Liquidity and participation commonly differ by session, changing the chart's rhythm.
@@ -11300,7 +11300,7 @@ Midday => Often a quieter, calmer stretch
 WHY: A recap of the session-based rhythm differences covered across this unit.
 
 [PICK] Why combine session awareness with everything else you've learned?
-CHART: choppy
+CHART: volatile
 CONCERN: Tying it all together
 Because it's one more piece of context that can change how a chart's move should be read | detail: Adds to the full picture
 Because session timing replaces the need for any other analysis | detail: Overstates it | wrong: It's one added factor, not a replacement for everything else.
@@ -11308,7 +11308,7 @@ Because session timing has no bearing on reading a chart | detail: Backwards | w
 WHY: Session context is one more descriptive factor to combine with the rest of your reading skills.
 
 [SPOT] Someone reads a choppy, thin pre-market move exactly the same way as an identical-looking move during the standard open.
-CHART: choppy
+CHART: volatile
 QUESTION: What is the mistake?
 Session context (liquidity, participation) commonly changes how the same-looking move should be read.
 Session timing never matters for reading a chart.
