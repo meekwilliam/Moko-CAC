@@ -52,7 +52,8 @@ struct MainTabView: View {
                     onOpenLegal: { router.requestLegalDoc?($0) },
                     onClearData: { router.onClearData?() },
                     onUnlockAll: { router.onUnlockAll?() },
-                    onGrantTestTreats: { router.onGrantTestTreats?() }
+                    onGrantTestTreats: { router.onGrantTestTreats?() },
+                    onTestMechanics: { router.onOpenMechanicsTest?() }
                 )
             } else {
                 Color(hex: "#0F172A").ignoresSafeArea()

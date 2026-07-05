@@ -28,6 +28,9 @@ final class AppRouter: ObservableObject {
     @Published var currentLessonUnitColor: (main: Color, dark: Color)? = nil
     // Whether completing the current lesson finishes its whole unit (any size).
     @Published var currentLessonBonusEligible: Bool = false
+    // True while a debug/mechanics-test lesson is open — completing or exiting
+    // it must NOT touch real progress (no recordCompletion, no saveInProgress).
+    @Published var isTestLesson: Bool = false
 
     // Callbacks to JS bridge
     var onToggleReminders: ((Bool) -> Void)?
@@ -40,6 +43,7 @@ final class AppRouter: ObservableObject {
     var onRequestProfile: (() -> Void)?
     var onOpenHearts: (() -> Void)?
     var onUnlockAll: (() -> Void)?
+    var onOpenMechanicsTest: (() -> Void)?
     var onGrantTestTreats: (() -> Void)?
     var onOpenCourses: (() -> Void)?
     var onSelectCourse: ((String) -> Void)?
@@ -95,16 +99,25 @@ struct AppRouterView: View {
                         unitColor: router.currentLessonUnitColor,
                         unitBonusEligible: router.currentLessonBonusEligible,
                         onClose: {
-                            if let exit = router.onExitLesson {
+                            if router.isTestLesson {
+                                router.isTestLesson = false
+                                withAnimation(.easeInOut(duration: 0.28)) { router.currentScreen = .main }
+                            } else if let exit = router.onExitLesson {
                                 exit()
                             } else {
                                 withAnimation(.easeInOut(duration: 0.28)) { router.currentScreen = .main }
                             }
                         },
                         onComplete: { nodeNum in
-                            router.onCompleteLesson?(nodeNum)
+                            if router.isTestLesson {
+                                router.isTestLesson = false
+                                withAnimation(.easeInOut(duration: 0.28)) { router.currentScreen = .main }
+                            } else {
+                                router.onCompleteLesson?(nodeNum)
+                            }
                         },
                         onSaveProgress: { screen in
+                            guard !router.isTestLesson else { return }
                             router.onSaveLessonProgress?(screen)
                         }
                     )

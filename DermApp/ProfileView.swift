@@ -14,6 +14,7 @@ struct ProfileView: View {
     var onClearData: () -> Void
     var onUnlockAll: () -> Void = {}
     var onGrantTestTreats: () -> Void = {}
+    var onTestMechanics: () -> Void = {}
 
     @EnvironmentObject var theme: ThemeManager
 
@@ -136,6 +137,10 @@ struct ProfileView: View {
                 prefButton(iconSystem: "bone.fill", iconColor: Color(hex: "#F59E0B"),
                            iconBg: Color(hex: "#F59E0B").opacity(0.12), label: "Give Unlimited Bones (Test)") {
                     onGrantTestTreats()
+                }
+                prefButton(iconSystem: "hammer.fill", iconColor: Color(hex: "#8B5CF6"),
+                           iconBg: Color(hex: "#8B5CF6").opacity(0.12), label: "Test All Question Mechanics") {
+                    onTestMechanics()
                 }
                 prefButton(iconSystem: "trash.fill", iconColor: Color(hex: "#D6536D"),
                            iconBg: Color(hex: "#D6536D").opacity(0.12), label: "Clear Application Data",
