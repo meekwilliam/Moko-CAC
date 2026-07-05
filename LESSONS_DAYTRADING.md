@@ -13220,6 +13220,17 @@ They should have bought even more, even faster.
 They should never look at fast-moving prices again.
 WHY: Acting from fear of missing out, without a plan, is the commonly described core of a FOMO-driven mistake.
 
+
+[FILL] FOMO describes urgency about [___] a fast-moving price.
+missing
+guaranteed
+random
+WHY: FOMO is the urgency to jump in purely because price is already moving.
+
+[TF] FOMO entries are commonly described as reactive and plan-less.
+ANSWER: True
+WHY: FOMO is driven by urgency, not a pre-existing plan.
+
 NODE 2
 TITLE: Revenge Trading
 CELEBRATION: You understand revenge trading!
@@ -13278,6 +13289,17 @@ Increasing size specifically to recover a loss quickly is a commonly described s
 They should double their size again after the next loss too.
 They should stop looking at charts entirely from now on.
 WHY: Sizing decisions driven by the urge to recover a loss quickly are a commonly cited revenge-trading pattern.
+
+
+[FILL] Revenge trading is driven by the urge to [___] a recent loss quickly.
+recover
+celebrate
+ignore
+WHY: The urgency to immediately win back a loss defines revenge trading.
+
+[TF] Revenge trading is commonly linked to emotional decision-making.
+ANSWER: True
+WHY: Reactive, emotional decisions (not a fresh plan) drive revenge trading.
 
 NODE 3
 TITLE: Overtrading
@@ -13338,6 +13360,17 @@ They should aim for an even higher number of trades tomorrow.
 They should stop having any plan at all.
 WHY: A large gap between planned frequency and actual frequency, driven by emotion, is the commonly cited core of overtrading.
 
+
+[FILL] Overtrading means taking far more trades than a plan calls for, often from [___].
+boredom
+a solid plan
+patience
+WHY: Boredom or restlessness is commonly cited as driving overtrading.
+
+[TF] Overtrading reflects a genuine rise in valid setups.
+ANSWER: False
+WHY: Overtrading is commonly linked to emotion, not an actual increase in valid setups.
+
 NODE 4
 TITLE: Confidence After Wins
 CELEBRATION: You understand overconfidence after wins!
@@ -13396,6 +13429,17 @@ Removing a normal risk step because of a recent winning streak is a commonly des
 They should remove stop-losses on every trade from now on.
 They should assume the winning streak guarantees future wins.
 WHY: A recent streak of wins doesn't change the underlying risk of a new trade, per this commonly cited concern.
+
+
+[FILL] Overconfidence after wins can lead to [___] normal risk steps.
+skipping
+doubling
+following
+WHY: Feeling emboldened by recent wins can lead to skipping steps like sizing or stops.
+
+[TF] A recent string of wins guarantees the next trade will also win.
+ANSWER: False
+WHY: Recent wins don't remove the risk of a future loss.
 
 NODE 5
 TITLE: Fear After Losses
@@ -13456,6 +13500,17 @@ They should double their position size to make up for the losses.
 They should abandon their plan permanently.
 WHY: Letting fear override a genuinely planned setup, rather than reviewing the plan calmly, is the commonly cited concern here.
 
+
+[FILL] Fear after losses can lead to [___] a genuinely planned setup.
+skipping
+following
+doubling
+WHY: Fear can cause hesitation or skipping a setup that otherwise matches the plan.
+
+[TF] Fear after a losing streak can lead to exiting a plan earlier than intended.
+ANSWER: True
+WHY: Fear-driven hesitation can cause premature exits from an otherwise sound plan.
+
 NODE 6
 TITLE: Discipline vs. Impulse
 CELEBRATION: You understand discipline vs. impulse!
@@ -13515,6 +13570,17 @@ They should have felt even more strongly before abandoning the plan.
 They should never make plans in the first place.
 WHY: Following a feeling over a pre-set plan is the commonly described core of an impulsive deviation.
 
+
+[FILL] Discipline means following a pre-set [___] consistently.
+plan
+feeling
+impulse
+WHY: Discipline is defined as consistent plan-following, even against momentary feelings.
+
+[TF] An impulse is acting on an in-the-moment feeling rather than the plan.
+ANSWER: True
+WHY: That's the definition of impulse, contrasted with discipline.
+
 NODE 7
 TITLE: Psychology Drill
 CELEBRATION: You can identify psychological patterns!
@@ -13561,6 +13627,17 @@ Fear-driven hesitation, where recent losses caused them to skip a genuinely plan
 Overconfidence, since they felt very certain about the decision.
 Capital preservation, since they avoided a trade.
 WHY: Skipping a valid, planned setup specifically due to fear after losses is the fear-driven hesitation pattern.
+
+
+[FILL] This drill practices identifying psychological [___] in hypothetical situations.
+patterns
+guarantees
+random events
+WHY: The drill applies pattern recognition to psychology, without judging specific trades.
+
+[TF] Recognizing a psychological pattern is a step toward discipline over impulse.
+ANSWER: True
+WHY: Awareness of a pattern is commonly framed as the starting point for a disciplined response.
 
 NODE 8
 TITLE: Trading Psychology Review
@@ -13621,6 +13698,17 @@ They should stop thinking about psychology from now on since it can't guarantee 
 They should assume impulsive decisions no longer carry any risk.
 WHY: This unit builds awareness of patterns, not a guarantee that they'll never occur again.
 
+
+[FILL] This review ties together FOMO, revenge trading, overtrading, and [___].
+discipline
+random guesses
+company names
+WHY: All the core patterns from this unit are reviewed together here.
+
+[TF] Every pattern in this unit describes emotion pulling behavior away from a plan.
+ANSWER: True
+WHY: This has been the throughline — emotional patterns pulling away from disciplined plan-following.
+
 UNIT 32 — Full Simulation Training
 NODE 1
 TITLE: Classifying Trending Markets
@@ -13676,6 +13764,17 @@ They should classify every single candle as its own trend.
 They should ignore the sequence of highs and lows entirely.
 WHY: A single candle doesn't provide the sustained sequence commonly needed to classify a trend.
 
+
+[FILL] A trending market is classified by a sustained move in one general [___].
+direction
+color
+volume
+WHY: Sustained directional progress defines a trending classification.
+
+[TF] A single candle is enough to classify a market as trending.
+ANSWER: False
+WHY: Classification needs a sustained sequence of highs and lows, not one candle.
+
 NODE 2
 TITLE: Classifying Choppy Markets
 CELEBRATION: You can classify a choppy market!
@@ -13729,6 +13828,17 @@ A sustained sequence of higher highs and higher lows is commonly described as tr
 They should look for even more oscillation to confirm it's choppy.
 They should ignore the sequence of highs and lows entirely.
 WHY: The described pattern matches a trending classification, not a choppy one.
+
+
+[FILL] A choppy market moves back and forth with no clear sustained [___].
+direction
+volume
+color
+WHY: Directionless oscillation defines a choppy classification.
+
+[TF] A choppy market shows a clear, sustained directional progress.
+ANSWER: False
+WHY: Choppy specifically describes the ABSENCE of sustained directional progress.
 
 NODE 3
 TITLE: Classifying Volatile Markets
@@ -13784,6 +13894,17 @@ They should look for even smaller price changes to confirm it's volatile.
 They should ignore the size of price swings entirely.
 WHY: The described pattern contradicts the commonly cited hallmark of a volatile classification.
 
+
+[FILL] A volatile market shows unusually large or fast [___].
+swings
+colors
+volumes only
+WHY: Large or fast price swings define a volatile classification.
+
+[TF] Volatile describes swing size and speed, not necessarily direction.
+ANSWER: True
+WHY: A volatile market can swing sharply in either direction — direction isn't the point.
+
 NODE 4
 TITLE: Recognizing a Fakeout
 CELEBRATION: You understand fakeout patterns!
@@ -13837,6 +13958,17 @@ A fakeout is commonly classified only after price clears a level and then quickl
 They should label every single clearing of a level a fakeout immediately.
 They should ignore what happens after price clears a level.
 WHY: Classifying a fakeout requires observing the reversal after the clearing, not just the initial move.
+
+
+[FILL] A fakeout is a price move beyond a level that quickly [___].
+reverses
+continues
+disappears
+WHY: A quick reversal after clearing a level is what defines a fakeout.
+
+[TF] A fakeout can be confirmed the instant price clears a level, before waiting to see what happens next.
+ANSWER: False
+WHY: Confirming a fakeout requires observing the reversal after the clearing.
 
 NODE 5
 TITLE: Reviewing a Loss Streak Response
@@ -13892,6 +14024,17 @@ They should double their size again after the next loss too.
 They should assume this response guarantees recovering the losses.
 WHY: This response matches the commonly described revenge-trading pattern rather than a calm, disciplined review.
 
+
+[FILL] A disciplined response to a losing streak is a calm review of the [___].
+process
+account balance
+random guesses
+WHY: Reviewing whether the process was followed is the disciplined response.
+
+[TF] Immediately doubling position size after a loss is a disciplined response.
+ANSWER: False
+WHY: That's a revenge-trading response, not a disciplined one.
+
 NODE 6
 TITLE: Simulation Practice
 CELEBRATION: You can apply classification concepts to hypothetical charts!
@@ -13938,6 +14081,17 @@ A strong sustained trend with normal-sized swings matches a trending classificat
 They should assume trending and volatile always mean the same thing.
 They should ignore the size of the swings entirely.
 WHY: Trending describes sustained direction, while volatile specifically describes unusually large or fast swings — they're distinct classifications.
+
+
+[FILL] This practice round applies classification to [___] chart conditions.
+hypothetical
+guaranteed
+random
+WHY: The practice round applies classification skills without making trade decisions.
+
+[TF] Trending and volatile describe the same thing.
+ANSWER: False
+WHY: Trending describes sustained direction; volatile describes swing size/speed — distinct classifications.
 
 NODE 7
 TITLE: Full Course Review
@@ -13992,3 +14146,14 @@ This course builds descriptive, educational vocabulary and classification skills
 They should assume every concept guarantees a specific trading outcome.
 They should skip risk management now that they've finished the course.
 WHY: This course is educational and descriptive by design, not a signal system for specific trades — real trading decisions carry real risk beyond this course's scope.
+
+
+[FILL] This course builds descriptive, educational vocabulary, not a system for specific [___] decisions.
+trade
+random
+guaranteed
+WHY: The whole course stays descriptive and educational, never a trade-decision system.
+
+[TF] This course guarantees consistent profits if followed exactly.
+ANSWER: False
+WHY: This directly contradicts the course's throughline — nothing here is a guarantee.
