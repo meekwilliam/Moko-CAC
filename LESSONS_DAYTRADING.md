@@ -1,4 +1,322 @@
-UNIT 1 — Market Foundations
+UNIT 1 — Trading Terminology
+NODE 1
+TITLE: Long vs. Short
+CELEBRATION: You understand going long vs. short!
+
+INTRO
+TITLE: Two Directions to Trade
+TEXT: Going <b>long</b> means buying first, hoping to sell later at a higher price. Going <b>short</b> means selling first (borrowing shares), hoping to buy back later at a lower price.
+CHART: uptrend
+
+[MC] "Going long" means...
+Buying first, hoping to sell later at a higher price.
+Selling first, hoping to buy back lower.
+Never trading at all.
+WHY: Long describes buying first, profiting if price rises.
+
+[TF] "Going short" means selling first and hoping to buy back at a lower price.
+ANSWER: True
+WHY: Short positions profit if price falls, since you buy back cheaper than you sold.
+
+[FILL] A long position profits if price moves [___].
+up
+down
+sideways only
+WHY: A long position was bought first, so it benefits from price rising.
+
+[FILL] A short position profits if price moves [___].
+down
+up
+sideways only
+WHY: A short position was sold first, so it benefits from price falling.
+
+[MATCH] Match the position type to its profit direction.
+Long => Profits if price rises
+Short => Profits if price falls
+Position => A general term for either a long or short trade
+WHY: Long and short are the two basic directions a trade can take.
+
+[FILL2] Long is [1] first, then sell; short is [2] first, then buy back.
+BLANK1: *buy | sell | hold
+BLANK2: *sell | buy | hold
+WHY: The order of buying and selling is what separates long from short.
+
+[PICK] Which best describes a "short" position?
+CONCERN: Understanding this specific term
+Selling first, hoping to buy back at a lower price later | detail: Profits from a decline
+Buying first, hoping to sell higher later | detail: That's a long position | wrong: That describes going long, not short.
+Holding cash with no position at all | detail: Incorrect | wrong: A short is an active position, not being in cash.
+WHY: Short describes selling first and profiting from a decline.
+
+[SPOT] Someone says "going short" means buying shares to hold for the long term.
+QUESTION: What is the mistake?
+"Short" describes selling first hoping for a price decline — it has nothing to do with a long-term buy-and-hold.
+Short always means holding for years.
+Long and short are the same thing.
+WHY: "Short" and "long-term" are unrelated ideas that happen to share a similar-sounding word.
+
+NODE 2
+TITLE: Position, Fill, and Size
+CELEBRATION: You understand position, fill, and size!
+
+INTRO
+TITLE: The Vocabulary of an Open Trade
+TEXT: A <b>position</b> is an open trade you're currently holding. A <b>fill</b> is the price at which your order actually executed. <b>Size</b> is how much (shares/contracts) you're holding.
+
+[MC] A "position" refers to...
+A trade you currently have open.
+The exact time of day you traded.
+A candle's wick length.
+WHY: Position describes an open, active trade.
+
+[TF] A "fill" is the price at which your order actually executed.
+ANSWER: True
+WHY: Fill specifically refers to the actual executed price, which can differ from the expected one.
+
+[FILL] The amount of shares or contracts you're holding is called your [___].
+size
+color
+timeframe
+WHY: "Size" describes how much of a position you're holding.
+
+[FILL] Once you buy or sell, you now have an open [___].
+position
+gap
+spread
+WHY: An open trade is referred to as a position.
+
+[MATCH] Match the term to its meaning.
+Position => A currently open trade
+Fill => The actual executed price
+Size => How much you're holding
+WHY: These three terms describe the basic mechanics of holding a trade.
+
+[PICK] Which best describes a "fill"?
+CONCERN: Understanding this specific term
+The actual price your order executed at | detail: Can differ slightly from what was expected
+The exact price shown on the chart at all times | detail: Overstates it | wrong: The fill can differ from the displayed chart price.
+A synonym for position size | detail: Incorrect | wrong: Fill refers to price, not amount held.
+WHY: Fill is specifically the executed price, not the position's size.
+
+[SPOT] Someone assumes their "fill" price will always exactly match the last price shown on the chart.
+QUESTION: What is the mistake?
+Fills can differ slightly from the displayed chart price due to spread, slippage, and order type.
+Fills always match the chart exactly.
+Fills have nothing to do with price at all.
+WHY: As covered in prior lessons, several factors can make a fill differ from the chart's displayed price.
+
+NODE 3
+TITLE: Unrealized vs. Realized P&L
+CELEBRATION: You understand unrealized vs. realized P&L!
+
+INTRO
+TITLE: On Paper vs. Locked In
+TEXT: <b>Unrealized P&L</b> (profit & loss) is the paper gain/loss on a position still open. <b>Realized P&L</b> is the actual gain/loss once the position is closed.
+
+[MC] "Unrealized P&L" refers to...
+The paper gain or loss on a position that's still open.
+The gain/loss only after closing a trade.
+The company's stated earnings.
+WHY: Unrealized P&L reflects an open position's current paper value, not yet locked in.
+
+[TF] Realized P&L only exists after a position has been closed.
+ANSWER: True
+WHY: Realized P&L is the actual, locked-in result once a trade is closed.
+
+[FILL] Profit or loss on a still-open position is called [___] P&L.
+unrealized
+realized
+guaranteed
+WHY: "Unrealized" describes a paper gain/loss that hasn't been locked in yet.
+
+[FILL] Profit or loss once a position is closed is called [___] P&L.
+realized
+unrealized
+random
+WHY: "Realized" describes the actual, final result once closed.
+
+[MATCH] Match the P&L term to its meaning.
+Unrealized P&L => Paper gain/loss on an open position
+Realized P&L => Actual gain/loss after closing
+P&L => Shorthand for "profit and loss"
+WHY: These terms describe the difference between an open trade's paper value and its final locked-in result.
+
+[FILL2] Unrealized P&L can [1] before a position closes; realized P&L is [2] once locked in.
+BLANK1: *change | never change | guarantee
+BLANK2: *fixed | changeable | random
+WHY: An open position's paper value can move until it's closed and the result becomes fixed.
+
+[PICK] Which best describes unrealized P&L?
+CONCERN: Understanding this specific term
+A paper gain/loss that can still change while the position stays open | detail: Not yet locked in
+A final, unchangeable result | detail: Describes realized P&L instead | wrong: That describes realized P&L, not unrealized.
+The company's total revenue | detail: Unrelated | wrong: P&L describes a trade's result, not company revenue.
+WHY: Unrealized P&L is a paper value that can still move until the position closes.
+
+[SPOT] Someone treats their unrealized P&L as a final, guaranteed result before closing the position.
+QUESTION: What is the mistake?
+Unrealized P&L can still change until the position is actually closed — it isn't locked in yet.
+Unrealized and realized P&L are identical.
+Once a position is open, its P&L never changes.
+WHY: Only realized P&L (after closing) is the final, locked-in result.
+
+NODE 4
+TITLE: Market Cap: Large vs. Small
+CELEBRATION: You understand market cap!
+
+INTRO
+TITLE: The Size of a Company
+TEXT: Market capitalization ("market cap") is a company's total share price multiplied by its total shares outstanding — a common way to describe company size.
+
+[MC] Market cap is calculated as...
+Share price multiplied by total shares outstanding.
+The company's yearly revenue.
+The number of employees.
+WHY: Market cap specifically multiplies price by total shares outstanding.
+
+[TF] A "large cap" company is generally bigger, by market cap, than a "small cap" company.
+ANSWER: True
+WHY: "Large cap" and "small cap" are labels describing relative company size by market cap.
+
+[FILL] Market cap stands for market [___].
+capitalization
+capacity
+category
+WHY: "Capitalization" reflects the total value of a company's shares.
+
+[FILL] A company with a very large market cap is often called a [___] cap.
+large
+small
+zero
+WHY: "Large cap" describes companies with the biggest market capitalizations.
+
+[MATCH] Match the term to its meaning.
+Market cap => Share price × total shares outstanding
+Large cap => A company with a large market cap
+Small cap => A company with a small market cap
+WHY: These terms describe company size using the same underlying calculation.
+
+[PICK] Which best describes "market cap"?
+CONCERN: Understanding this specific term
+A measure of company size based on share price and shares outstanding | detail: A sizing metric
+The company's total cash on hand | detail: Incorrect | wrong: Market cap is about share value, not cash reserves.
+A guarantee of future stock performance | detail: Overstates certainty | wrong: Market cap describes size, not future performance.
+WHY: Market cap is a size metric calculated from price and shares outstanding.
+
+[SPOT] Someone assumes market cap measures a company's cash reserves.
+QUESTION: What is the mistake?
+Market cap is share price times shares outstanding — it's a size metric, not a cash measurement.
+Market cap and cash reserves are the same thing.
+Market cap has nothing to do with share price.
+WHY: Market cap is specifically calculated from share price and share count, not cash on hand.
+
+NODE 5
+TITLE: Float
+CELEBRATION: You understand float!
+
+INTRO
+TITLE: Shares Available to Trade
+TEXT: "Float" describes the number of shares actually available for public trading — excluding shares held by insiders or locked up.
+
+[MC] A stock's "float" refers to...
+Shares actually available for public trading.
+The company's total revenue.
+The exact time the market opens.
+WHY: Float specifically counts shares available to the public, not the company's revenue or schedule.
+
+[TF] Shares held by company insiders are commonly excluded from the float.
+ANSWER: True
+WHY: Float commonly excludes insider-held or locked-up shares from the public trading count.
+
+[FILL] A stock with a very small float is often called a "low [___]" stock.
+float
+volume
+market
+WHY: "Low float" describes a stock with relatively few shares available for public trading.
+
+[MC] Why might a low-float stock commonly show larger price swings?
+Fewer shares available can mean relatively small trades move the price more.
+Low float guarantees the price never moves.
+Low float has no relationship to price behavior.
+WHY: With fewer shares available, the same order size can have a bigger relative impact on price.
+
+[MATCH] Match the float description to its common trait.
+High float => Many shares available; often steadier price moves
+Low float => Few shares available; often larger price swings
+Float => Total shares available for public trading
+WHY: Float size is commonly linked to how much a given trade size can move price.
+
+[PICK] Which best describes "float"?
+CONCERN: Understanding this specific term
+The number of shares actually available for public trading | detail: Excludes insider/locked shares
+The company's total shares ever issued, including insider holdings | detail: Overcounts it | wrong: Float specifically excludes insider/locked shares.
+A synonym for market cap | detail: Different concept | wrong: Float counts available shares; market cap measures total value.
+WHY: Float specifically counts publicly tradeable shares, distinct from total shares issued or market cap.
+
+[SPOT] Someone assumes a low-float stock will always have small, steady price moves.
+QUESTION: What is the mistake?
+Low-float stocks are commonly associated with LARGER price swings, not smaller ones, since fewer shares are available.
+Low float always means calmer price action.
+Float has no relationship to price behavior at all.
+WHY: Fewer available shares commonly means relatively bigger price impact per trade, not steadier action.
+
+NODE 6
+TITLE: Terminology Review
+CELEBRATION: You've completed the Trading Terminology unit!
+
+INTRO
+TITLE: Bringing the Vocabulary Together
+TEXT: A final review of long/short, position/fill/size, unrealized/realized P&L, market cap, and float.
+
+[TF] Going long profits from a rising price; going short profits from a falling price.
+ANSWER: True
+WHY: That's the core distinction between the two basic trade directions.
+
+[FILL] Profit or loss on a position that's still open is called [___] P&L.
+unrealized
+realized
+guaranteed
+WHY: Reviewing the term from earlier in this unit.
+
+[MC] What do market cap and float have in common?
+Both describe aspects of a company's shares (total value vs. shares available to trade).
+Both measure the exact same thing.
+Neither has any relationship to a company's shares.
+WHY: Market cap measures total share value; float measures shares available — related but distinct share-based metrics.
+
+[MATCH] Match each term to its one-line meaning.
+Long => Buy first, profit if price rises
+Short => Sell first, profit if price falls
+Fill => The actual executed price
+WHY: A quick recap of the unit's core vocabulary.
+
+[FILL2] A position's [1] P&L can still change; its [2] P&L is locked in after closing.
+BLANK1: *unrealized | realized | guaranteed
+BLANK2: *realized | unrealized | random
+WHY: Unrealized P&L moves until the position closes; realized P&L is final.
+
+[ORDER] A simple way to describe an open long trade using this unit's vocabulary:
+Identify it as a long position (bought first)
+Note its size (how much is held)
+Track its unrealized P&L while it stays open
+Note the fill price once it's eventually closed, locking in realized P&L
+WHY: This sequence uses the full vocabulary from this unit to describe one trade's lifecycle.
+
+[PICK] Which best summarizes this unit?
+CONCERN: Reviewing the big picture
+Core trading vocabulary — long/short, position mechanics, P&L, and company size terms | detail: The building blocks for everything else
+A set of guaranteed trading rules | detail: Overstates it | wrong: This unit is vocabulary, not rules or guarantees.
+Advanced strategy concepts | detail: Too advanced | wrong: This unit covers foundational terms, not advanced strategy.
+WHY: This unit builds the foundational vocabulary used throughout the rest of the course.
+
+[SPOT] Someone finishes this unit and still confuses "short" with "long-term holding."
+QUESTION: What is the mistake?
+"Short" describes selling first to profit from a decline — it's unrelated to how long a trade is held.
+Short and long-term are synonyms.
+Vocabulary from this unit doesn't matter going forward.
+WHY: Precise use of this vocabulary matters, since the rest of the course builds on these exact terms.
+
+UNIT 2 — Market Foundations
 NODE 1
 TITLE: What Is a Stock?
 CELEBRATION: You understand what a share actually is!
@@ -1116,7 +1434,7 @@ uptrend
 downtrend
 WHY: "Sideways" (or range-bound) is the classification for directionless bouncing.
 
-UNIT 2 — Candlesticks
+UNIT 3 — Candlesticks
 NODE 1
 TITLE: What Is a Candlestick?
 CELEBRATION: You can read the anatomy of a candle off a chart!
@@ -2269,7 +2587,7 @@ Forgetting candles entirely.
 Repeating this exact unit forever.
 WHY: Single-candle reading is a foundation for reading multi-candle patterns and levels next.
 
-UNIT 3 — Orders & Execution
+UNIT 4 — Orders & Execution
 NODE 1
 TITLE: Market Orders (Deep Dive)
 CELEBRATION: You understand market orders in depth!
@@ -2830,7 +3148,7 @@ WHY: Speed, price control, and risk are the three dimensions each order type tra
 ANSWER: True
 WHY: Different situations call for different trade-offs, which is why multiple order types exist.
 
-UNIT 4 — Trends & Structure
+UNIT 5 — Trends & Structure
 NODE 1
 TITLE: Uptrend Basics
 CELEBRATION: You understand uptrends!
@@ -3725,7 +4043,7 @@ WHY: Descriptive clarity, not predictive certainty, has been the throughline.
 ANSWER: True
 WHY: These concepts complement each other rather than standing alone.
 
-UNIT 5 — Support & Resistance
+UNIT 6 — Support & Resistance
 NODE 1
 TITLE: What Is Support?
 CELEBRATION: You understand support levels!
@@ -4483,7 +4801,7 @@ WHY: Descriptive, not predictive, framing has been the throughline of this unit.
 ANSWER: True
 WHY: Both describe possible outcomes once a level has been broken.
 
-UNIT 6 — Double Tops & Bottoms
+UNIT 7 — Double Tops & Bottoms
 NODE 1
 TITLE: What Is a Double Top?
 CELEBRATION: You can spot a double top on a chart!
@@ -5247,7 +5565,7 @@ CHART: doubleBottom
 LEVEL: support
 WHY: Support runs across the bottoms of the two troughs.
 
-UNIT 7 — Head & Shoulders
+UNIT 8 — Head & Shoulders
 NODE 1
 TITLE: What Is a Head & Shoulders?
 CELEBRATION: You can spot a head & shoulders on a chart!
@@ -5904,7 +6222,7 @@ Memorizing one exact price forever.
 Ignoring the neckline entirely.
 WHY: Combining structure and confirmation is the core skill from this unit.
 
-UNIT 8 — Triangles
+UNIT 9 — Triangles
 NODE 1
 TITLE: What Is an Ascending Triangle?
 CELEBRATION: You can spot an ascending triangle!
@@ -6258,7 +6576,7 @@ WHY: All three triangle types are reviewed together in this final lesson.
 ANSWER: True
 WHY: This remains true throughout — triangles inform a bias, never a guarantee.
 
-UNIT 9 — Flags & Pennants
+UNIT 10 — Flags & Pennants
 NODE 1
 TITLE: What Is a Bull Flag?
 CELEBRATION: You can spot a bull flag!
@@ -6556,7 +6874,7 @@ WHY: All three continuation patterns are reviewed together here.
 ANSWER: True
 WHY: This remains true throughout — flags and pennants suggest a tendency, never a guarantee.
 
-UNIT 10 — Wedges & Channels
+UNIT 11 — Wedges & Channels
 NODE 1
 TITLE: What Is a Rising Wedge?
 CELEBRATION: You can spot a rising wedge!
@@ -6853,7 +7171,7 @@ WHY: All the structures from this unit are reviewed together here.
 ANSWER: True
 WHY: As with other patterns, wedges suggest a bias, never a guaranteed outcome.
 
-UNIT 11 — Trendlines
+UNIT 12 — Trendlines
 NODE 1
 TITLE: What Is a Trendline?
 CELEBRATION: You understand trendlines!
@@ -7155,7 +7473,7 @@ Drawing random diagonal lines anywhere on the chart.
 Ignoring trendlines entirely.
 WHY: Grounding trendlines in actual turning points, then reading touches/breaks, is the core skill.
 
-UNIT 12 — Ranges & Consolidation
+UNIT 13 — Ranges & Consolidation
 NODE 1
 TITLE: What Is a Range?
 CELEBRATION: You can spot a range!
@@ -7470,7 +7788,7 @@ Assuming every range lasts forever.
 Assuming every breakout is guaranteed to continue.
 WHY: Reading boundaries plus healthy skepticism about breaks is the core skill here.
 
-UNIT 13 — Breakouts & Retests
+UNIT 14 — Breakouts & Retests
 NODE 1
 TITLE: What Is a Breakout?
 CELEBRATION: You can spot a breakout!
@@ -7773,7 +8091,7 @@ Assuming every breakout is guaranteed to hold.
 Ignoring breakouts entirely.
 WHY: Healthy skepticism paired with reading the retest is the core skill here.
 
-UNIT 14 — Pullbacks & Continuation
+UNIT 15 — Pullbacks & Continuation
 NODE 1
 TITLE: What Is a Pullback?
 CELEBRATION: You understand pullbacks!
@@ -8067,7 +8385,7 @@ Assuming every pullback is a full reversal.
 Ignoring pullbacks entirely.
 WHY: Checking whether the structure holds is the core skill from this unit.
 
-UNIT 15 — Momentum & Exhaustion
+UNIT 16 — Momentum & Exhaustion
 NODE 1
 TITLE: Reading Momentum From Bodies
 CELEBRATION: You can read momentum off a chart!
@@ -8355,7 +8673,7 @@ Only ever looking at candle color.
 Ignoring candle shape entirely.
 WHY: Combining body and wick reads is the core skill from this unit.
 
-UNIT 16 — Confluence
+UNIT 17 — Confluence
 NODE 1
 TITLE: What Is Confluence?
 CELEBRATION: You understand confluence!
@@ -8654,7 +8972,7 @@ Acting on a single isolated signal as if it were certain.
 Ignoring levels, patterns, and trend entirely.
 WHY: Seeking agreement across factors (without assuming certainty) is the core skill here.
 
-UNIT 17 — Gaps
+UNIT 18 — Gaps
 NODE 1
 TITLE: What Is a Gap?
 CELEBRATION: You can spot a gap!
@@ -8899,7 +9217,7 @@ Assuming every gap fills immediately.
 Ignoring gaps entirely.
 WHY: Reading gaps descriptively, without assuming a guaranteed fill, is the core skill here.
 
-UNIT 18 — Multi-Timeframe Basics
+UNIT 19 — Multi-Timeframe Basics
 NODE 1
 TITLE: What Is a Timeframe?
 CELEBRATION: You understand timeframes!
@@ -9192,7 +9510,7 @@ Only ever looking at one single timeframe forever.
 Ignoring timeframes entirely.
 WHY: Top-down, context-first reading across timeframes is the core skill here.
 
-UNIT 19 — Chart-Reading Mastery
+UNIT 20 — Chart-Reading Mastery
 NODE 1
 TITLE: Pattern Speed Round
 CELEBRATION: You can name any pattern fast!
@@ -9551,7 +9869,7 @@ Memorizing one guaranteed rule for every situation.
 Ignoring charts entirely and guessing.
 WHY: Combining multiple descriptive reads is the core Intermediate-level skill.
 
-UNIT 20 — Risk Management
+UNIT 21 — Risk Management
 NODE 1
 TITLE: What Is Risk Per Trade?
 CELEBRATION: You understand risk per trade!
@@ -10240,7 +10558,7 @@ WHY: All the core ideas from this unit are reviewed together here.
 ANSWER: False
 WHY: Risk management limits the damage from losses; it doesn't eliminate losses entirely.
 
-UNIT 21 — Strategy Types
+UNIT 22 — Strategy Types
 NODE 1
 TITLE: What Is Scalping?
 CELEBRATION: You understand scalping!
@@ -10789,7 +11107,7 @@ WHY: All six strategy types from this unit are reviewed together here.
 ANSWER: True
 WHY: This has been the throughline — descriptive categories, never guaranteed signals.
 
-UNIT 22 — Position Sizing & R
+UNIT 23 — Position Sizing & R
 NODE 1
 TITLE: Risk Per Trade
 CELEBRATION: You understand risk per trade!
@@ -11066,7 +11384,7 @@ WHY: All four core ideas from this unit are reviewed together here.
 ANSWER: True
 WHY: Measuring in R (multiples of risk) makes results comparable regardless of size.
 
-UNIT 23 — Expectancy & Edge
+UNIT 24 — Expectancy & Edge
 NODE 1
 TITLE: Win Rate Isn't Everything
 CELEBRATION: You understand why win rate alone misleads!
@@ -11325,7 +11643,7 @@ WHY: All four core ideas from this unit are reviewed together here.
 ANSWER: True
 WHY: This has been the throughline — combine frequency and size, over enough trades.
 
-UNIT 24 — Market Condition Classification
+UNIT 25 — Market Condition Classification
 NODE 1
 TITLE: Trending, Ranging, or Volatile?
 CELEBRATION: You can classify market conditions!
@@ -11597,7 +11915,7 @@ WHY: All three broad conditions from this unit are reviewed together here.
 ANSWER: True
 WHY: This has been the throughline — condition-first reading, framing everything else.
 
-UNIT 25 — Moving Averages
+UNIT 26 — Moving Averages
 NODE 1
 TITLE: What Is a Moving Average?
 CELEBRATION: You understand moving averages!
@@ -11893,7 +12211,7 @@ WHY: All the core ideas from this unit are reviewed together here.
 ANSWER: True
 WHY: This has been the throughline — smoothed, lagging, descriptive trend reading.
 
-UNIT 26 — Oscillators: RSI & MACD
+UNIT 27 — Oscillators: RSI & MACD
 NODE 1
 TITLE: What Is an Oscillator?
 CELEBRATION: You understand oscillators!
@@ -12144,7 +12462,7 @@ WHY: All the core ideas from this unit are reviewed together here.
 ANSWER: True
 WHY: This has been the throughline — descriptive, derived, lagging, never guaranteed.
 
-UNIT 27 — Trade Planning & Process
+UNIT 28 — Trade Planning & Process
 NODE 1
 TITLE: What Is a Trade Plan?
 CELEBRATION: You understand trade plans!
@@ -12397,7 +12715,7 @@ WHY: All the core ideas from this unit are reviewed together here.
 ANSWER: True
 WHY: This has been true throughout — plan ahead, then actually follow it.
 
-UNIT 28 — VWAP & Bollinger Bands
+UNIT 29 — VWAP & Bollinger Bands
 NODE 1
 TITLE: What Is VWAP?
 CELEBRATION: You understand VWAP!
@@ -12649,7 +12967,7 @@ WHY: Both tools from this unit are reviewed together here.
 ANSWER: True
 WHY: This has been the throughline — descriptive, average-based context, never guaranteed signals.
 
-UNIT 29 — Drawdowns & Losing Streaks
+UNIT 30 — Drawdowns & Losing Streaks
 NODE 1
 TITLE: What Is a Drawdown?
 CELEBRATION: You understand drawdowns!
@@ -12907,7 +13225,7 @@ WHY: All the core ideas from this unit are reviewed together here.
 ANSWER: True
 WHY: This has been the throughline — normal variance, plus recovery math driving preservation.
 
-UNIT 30 — Journaling & Review
+UNIT 31 — Journaling & Review
 NODE 1
 TITLE: Why Journal?
 CELEBRATION: You understand journaling!
@@ -13160,7 +13478,7 @@ WHY: All the core ideas from this unit are reviewed together here.
 ANSWER: True
 WHY: This has been true throughout — honest records, process focus, and the improvement loop.
 
-UNIT 31 — Trading Psychology
+UNIT 32 — Trading Psychology
 NODE 1
 TITLE: What Is FOMO?
 CELEBRATION: You understand FOMO!
@@ -13709,7 +14027,7 @@ WHY: All the core patterns from this unit are reviewed together here.
 ANSWER: True
 WHY: This has been the throughline — emotional patterns pulling away from disciplined plan-following.
 
-UNIT 32 — Full Simulation Training
+UNIT 33 — Full Simulation Training
 NODE 1
 TITLE: Classifying Trending Markets
 CELEBRATION: You can classify a trending market!
