@@ -24219,6 +24219,13 @@
      "title": "Sector & Index Strength",
      "bg": "#8B5CF6",
      "slab": "#6D28D9"
+    },
+    {
+     "index": 15,
+     "eyebrow": "SECTION 3 · UNIT 16",
+     "title": "Level II & Order Book Awareness",
+     "bg": "#8B5CF6",
+     "slab": "#6D28D9"
     }
    ],
    "nodes": [
@@ -24779,6 +24786,36 @@
      "svg": "<svg width=\"34\" height=\"34\" viewBox=\"0 0 32 32\" fill=\"rgba(255,255,255,0.65)\">\n              <circle cx=\"16\" cy=\"16\" r=\"12\" fill=\"none\" stroke=\"rgba(255,255,255,0.65)\" stroke-width=\"2.5\"/>\n              <rect x=\"14.8\" y=\"7\" width=\"2.4\" height=\"9\" rx=\"1.2\"/>\n              <rect x=\"14.8\" y=\"14.5\" width=\"6.5\" height=\"2.4\" rx=\"1.2\"/>\n            </svg>",
      "title": "Sector & Index Strength Review",
      "sectionIndex": 14
+    },
+    {
+     "num": 94,
+     "svg": "<svg width=\"34\" height=\"34\" viewBox=\"0 0 32 32\" fill=\"rgba(255,255,255,0.65)\">\n              <rect x=\"9\" y=\"15\" width=\"14\" height=\"11\" rx=\"3\"/>\n              <rect x=\"11\" y=\"11\" width=\"10\" height=\"5\" rx=\"2\"/>\n              <rect x=\"8\" y=\"9\" width=\"16\" height=\"3\" rx=\"1.5\"/>\n            </svg>",
+     "title": "What Is Level II?",
+     "sectionIndex": 15
+    },
+    {
+     "num": 95,
+     "svg": "<svg width=\"34\" height=\"34\" viewBox=\"0 0 32 32\" fill=\"rgba(255,255,255,0.65)\">\n              <circle cx=\"16\" cy=\"16\" r=\"5.5\"/>\n              <rect x=\"14.5\" y=\"1\" width=\"3\" height=\"6\" rx=\"1.5\"/>\n              <rect x=\"14.5\" y=\"1\" width=\"3\" height=\"6\" rx=\"1.5\" transform=\"rotate(45 16 16)\"/>\n              <rect x=\"14.5\" y=\"1\" width=\"3\" height=\"6\" rx=\"1.5\" transform=\"rotate(90 16 16)\"/>\n              <rect x=\"14.5\" y=\"1\" width=\"3\" height=\"6\" rx=\"1.5\" transform=\"rotate(135 16 16)\"/>\n              <rect x=\"14.5\" y=\"1\" width=\"3\" height=\"6\" rx=\"1.5\" transform=\"rotate(180 16 16)\"/>\n              <rect x=\"14.5\" y=\"1\" width=\"3\" height=\"6\" rx=\"1.5\" transform=\"rotate(225 16 16)\"/>\n              <rect x=\"14.5\" y=\"1\" width=\"3\" height=\"6\" rx=\"1.5\" transform=\"rotate(270 16 16)\"/>\n              <rect x=\"14.5\" y=\"1\" width=\"3\" height=\"6\" rx=\"1.5\" transform=\"rotate(315 16 16)\"/>\n            </svg>",
+     "title": "Bids, Asks, and the Spread",
+     "sectionIndex": 15
+    },
+    {
+     "num": 96,
+     "svg": "<svg width=\"34\" height=\"34\" viewBox=\"0 0 32 32\" fill=\"rgba(255,255,255,0.65)\">\n              <circle cx=\"16\" cy=\"10\" r=\"6.5\"/>\n              <path d=\"M3 31 C3 22 8.8 17 16 17 C23.2 17 29 22 29 31Z\"/>\n            </svg>",
+     "title": "Order Book Depth",
+     "sectionIndex": 15
+    },
+    {
+     "num": 97,
+     "svg": "<svg width=\"34\" height=\"34\" viewBox=\"0 0 32 32\" fill=\"rgba(255,255,255,0.65)\">\n              <path d=\"M16 3 L28.5 9 L28.5 19 C28.5 26.5 23 30.5 16 32 C9 30.5 3.5 26.5 3.5 19 L3.5 9 Z\"/>\n            </svg>",
+     "title": "Limitations of Level II Awareness",
+     "sectionIndex": 15
+    },
+    {
+     "num": 98,
+     "svg": "<svg width=\"34\" height=\"34\" viewBox=\"0 0 32 32\" fill=\"rgba(255,255,255,0.65)\">\n              <circle cx=\"16\" cy=\"16\" r=\"5.5\"/>\n              <rect x=\"14.5\" y=\"1\" width=\"3\" height=\"6\" rx=\"1.5\"/>\n              <rect x=\"14.5\" y=\"1\" width=\"3\" height=\"6\" rx=\"1.5\" transform=\"rotate(45 16 16)\"/>\n              <rect x=\"14.5\" y=\"1\" width=\"3\" height=\"6\" rx=\"1.5\" transform=\"rotate(90 16 16)\"/>\n              <rect x=\"14.5\" y=\"1\" width=\"3\" height=\"6\" rx=\"1.5\" transform=\"rotate(135 16 16)\"/>\n              <rect x=\"14.5\" y=\"1\" width=\"3\" height=\"6\" rx=\"1.5\" transform=\"rotate(180 16 16)\"/>\n              <rect x=\"14.5\" y=\"1\" width=\"3\" height=\"6\" rx=\"1.5\" transform=\"rotate(225 16 16)\"/>\n              <rect x=\"14.5\" y=\"1\" width=\"3\" height=\"6\" rx=\"1.5\" transform=\"rotate(270 16 16)\"/>\n              <rect x=\"14.5\" y=\"1\" width=\"3\" height=\"6\" rx=\"1.5\" transform=\"rotate(315 16 16)\"/>\n            </svg>",
+     "title": "Level II Review",
+     "sectionIndex": 15
     }
    ],
    "lessons": [
@@ -33890,6 +33927,486 @@
        "explanation": "Like every concept in this course, sector and index context is descriptive confluence, never a standalone signal."
       }
      ]
+    },
+    {
+     "node": 94,
+     "title": "What Is Level II?",
+     "celebration": "You understand what Level II data shows!",
+     "screens": [
+      {
+       "type": "intro",
+       "title": "Beyond the Last Price",
+       "text": "Level II data displays a list of current buy orders (bids) and sell orders (asks) at different price levels, sometimes called the order book, rather than just the single last traded price."
+      },
+      {
+       "type": "multiple_choice",
+       "question": "Level II data displays...",
+       "options": [
+        "A company's quarterly earnings report.",
+        "A list of current bid and ask orders at different price levels.",
+        "Only the single most recent traded price."
+       ],
+       "correct": 1,
+       "explanation": "Level II is specifically about the order book, current bids and asks, not a single last-price figure or fundamentals report."
+      },
+      {
+       "type": "true_false",
+       "question": "Level II data is sometimes called the order book.",
+       "correct": true,
+       "explanation": "\"Order book\" and \"Level II\" commonly refer to the same underlying concept."
+      },
+      {
+       "type": "fill_blank",
+       "question": "Level II shows current buy and sell [___] at different price levels.",
+       "options": [
+        "earnings",
+        "dividends",
+        "orders"
+       ],
+       "correct": 2,
+       "explanation": "Level II is fundamentally a list of orders, not financial statements."
+      },
+      {
+       "type": "matching",
+       "question": "Match the term to its focus.",
+       "pairs": [
+        [
+         "Bid",
+         "A current buy order, and its price"
+        ],
+        [
+         "Ask",
+         "A current sell order, and its price"
+        ],
+        [
+         "Level II",
+         "The full list of bids and asks at various levels"
+        ]
+       ],
+       "explanation": "Level II aggregates many individual bid and ask orders into one view."
+      },
+      {
+       "type": "ingredient_match",
+       "question": "What does Level II data add beyond a simple last-price quote?",
+       "options": [
+        {
+         "label": "A complete history of the company's past decade of earnings",
+         "correct": false,
+         "detail": "Unrelated",
+         "wrong_explanation": "Level II is about current orders, not historical financials."
+        },
+        {
+         "label": "A guarantee of exactly what price comes next",
+         "correct": false,
+         "detail": "Overstates certainty",
+         "wrong_explanation": "Level II shows current orders, not a guaranteed next price."
+        },
+        {
+         "label": "Visibility into current buy and sell orders waiting at various price levels",
+         "correct": true,
+         "detail": "Order book depth"
+        }
+       ],
+       "concern": "Understanding the tool",
+       "explanation": "Level II adds a view of standing orders that a simple last-price quote doesn't show."
+      },
+      {
+       "type": "spot_mistake",
+       "scenario": "Someone assumes Level II data tells you exactly what price will print next.",
+       "question": "What is the mistake?",
+       "options": [
+        "Level II shows current standing orders, it doesn't guarantee the exact next traded price.",
+        "Level II always predicts the very next trade price precisely.",
+        "Level II has no relationship to bids and asks at all."
+       ],
+       "correct": 0,
+       "explanation": "Level II is a descriptive snapshot of current orders, not a guaranteed prediction of the next trade."
+      }
+     ]
+    },
+    {
+     "node": 95,
+     "title": "Bids, Asks, and the Spread",
+     "celebration": "You understand bids, asks, and the spread!",
+     "screens": [
+      {
+       "type": "intro",
+       "title": "The Gap Between Buyers and Sellers",
+       "text": "The bid is the highest price a buyer is currently willing to pay; the ask is the lowest price a seller is currently willing to accept. The gap between them is called the spread."
+      },
+      {
+       "type": "multiple_choice",
+       "question": "The bid represents...",
+       "options": [
+        "The highest price a buyer is currently willing to pay.",
+        "The lowest price a seller is currently willing to accept.",
+        "The average price over the past year."
+       ],
+       "correct": 0,
+       "explanation": "The bid and ask represent opposite sides of the current order book, buyers versus sellers."
+      },
+      {
+       "type": "true_false",
+       "question": "The spread is the gap between the current bid and ask price.",
+       "correct": true,
+       "explanation": "This is the standard definition of the bid-ask spread."
+      },
+      {
+       "type": "fill_blank",
+       "question": "The ask is the lowest price a [___] is currently willing to accept.",
+       "options": [
+        "seller",
+        "buyer",
+        "regulator"
+       ],
+       "correct": 0,
+       "explanation": "The ask specifically reflects the seller side of the order book."
+      },
+      {
+       "type": "matching",
+       "question": "Match the term to its definition.",
+       "pairs": [
+        [
+         "Bid",
+         "Highest price a buyer will currently pay"
+        ],
+        [
+         "Ask",
+         "Lowest price a seller will currently accept"
+        ],
+        [
+         "Spread",
+         "The gap between the bid and ask"
+        ]
+       ],
+       "explanation": "These three terms together describe the basic structure of the order book at any moment."
+      },
+      {
+       "type": "ingredient_match",
+       "question": "Why might the size of the spread be worth noting descriptively?",
+       "options": [
+        {
+         "label": "Because the spread guarantees a specific profit on every trade",
+         "correct": false,
+         "detail": "Overstates it",
+         "wrong_explanation": "Spread size doesn't guarantee any profit outcome."
+        },
+        {
+         "label": "A wider or narrower spread can reflect differing levels of current trading activity",
+         "correct": true,
+         "detail": "Descriptive context"
+        },
+        {
+         "label": "Because the spread never changes throughout the day",
+         "correct": false,
+         "detail": "Incorrect",
+         "wrong_explanation": "Spreads can widen or narrow as conditions change."
+        }
+       ],
+       "concern": "Reading the order book",
+       "explanation": "Spread width is simply one more descriptive detail about current market conditions, not a profit guarantee."
+      },
+      {
+       "type": "spot_mistake",
+       "scenario": "Someone assumes the bid-ask spread guarantees a certain profit if crossed.",
+       "question": "What is the mistake?",
+       "options": [
+        "The spread describes the current gap between buy and sell orders, it doesn't guarantee any profit.",
+        "The spread has no relationship to buyers and sellers.",
+        "Crossing the spread always guarantees a profitable outcome."
+       ],
+       "correct": 0,
+       "explanation": "The spread is a descriptive snapshot of order book conditions, not a profit guarantee."
+      }
+     ]
+    },
+    {
+     "node": 96,
+     "title": "Order Book Depth",
+     "celebration": "You understand order book depth!",
+     "screens": [
+      {
+       "type": "intro",
+       "title": "How Much Is Waiting at Each Level",
+       "text": "Order book depth refers to the number of shares represented by orders waiting at each price level, giving a descriptive sense of how much buying or selling interest exists nearby."
+      },
+      {
+       "type": "multiple_choice",
+       "question": "Order book depth describes...",
+       "options": [
+        "The company's total shares outstanding.",
+        "A guaranteed direction for the next price move.",
+        "How many shares are represented by orders waiting at each price level."
+       ],
+       "correct": 2,
+       "explanation": "Depth is specifically about the size of orders waiting at various levels, not company-wide share counts or predictions."
+      },
+      {
+       "type": "true_false",
+       "question": "Deeper order book levels commonly reflect more resting orders at that price.",
+       "correct": true,
+       "explanation": "More depth simply means a larger number of shares represented in waiting orders at that level."
+      },
+      {
+       "type": "fill_blank",
+       "question": "Order book depth gives a descriptive sense of buying or selling [___] nearby.",
+       "options": [
+        "guarantee",
+        "interest",
+        "history"
+       ],
+       "correct": 1,
+       "explanation": "Depth reflects current interest represented by resting orders, not a guarantee of future action."
+      },
+      {
+       "type": "matching",
+       "question": "Match the term to its focus.",
+       "pairs": [
+        [
+         "Depth",
+         "Size of orders waiting at each price level"
+        ],
+        [
+         "Bid depth",
+         "Resting buy orders at various price levels"
+        ],
+        [
+         "Ask depth",
+         "Resting sell orders at various price levels"
+        ]
+       ],
+       "explanation": "Depth can be considered separately on the buy side and the sell side of the book."
+      },
+      {
+       "type": "ingredient_match",
+       "question": "How should order book depth be treated conceptually?",
+       "options": [
+        {
+         "label": "As proof of exactly what will happen to price next",
+         "correct": false,
+         "detail": "Overstates certainty",
+         "wrong_explanation": "Depth describes current orders, not a guaranteed outcome."
+        },
+        {
+         "label": "As a fixed, permanent measure that never changes",
+         "correct": false,
+         "detail": "Incorrect",
+         "wrong_explanation": "Resting orders can be added, canceled, or filled at any time."
+        },
+        {
+         "label": "As a descriptive snapshot of current resting orders, which can change at any moment",
+         "correct": true,
+         "detail": "A snapshot, not a guarantee"
+        }
+       ],
+       "concern": "Staying descriptive",
+       "explanation": "Order book depth is a constantly shifting descriptive snapshot, not a fixed or predictive figure."
+      },
+      {
+       "type": "spot_mistake",
+       "scenario": "Someone treats a large order sitting at one price level as a permanent, unchangeable wall.",
+       "question": "What is the mistake?",
+       "options": [
+        "Resting orders in the book can be modified or canceled at any moment, they aren't necessarily permanent.",
+        "Order book depth has no relationship to buying or selling interest.",
+        "Orders in the book can never be canceled once placed."
+       ],
+       "correct": 0,
+       "explanation": "The order book is a live, constantly shifting snapshot, not a fixed structure."
+      }
+     ]
+    },
+    {
+     "node": 97,
+     "title": "Limitations of Level II Awareness",
+     "celebration": "You understand Level II's limitations!",
+     "screens": [
+      {
+       "type": "intro",
+       "title": "A Snapshot, Not a Crystal Ball",
+       "text": "Level II shows a real-time snapshot of orders, but those orders can be added, changed, or canceled at any moment, and Level II alone doesn't reveal the intentions behind them."
+      },
+      {
+       "type": "multiple_choice",
+       "question": "A key limitation of Level II data is that...",
+       "options": [
+        "It replaces the need for any other form of analysis.",
+        "It always accurately predicts the next ten trades.",
+        "Displayed orders can be added, changed, or canceled at any moment."
+       ],
+       "correct": 2,
+       "explanation": "The order book is a live, changeable snapshot, not a locked-in prediction of future trades."
+      },
+      {
+       "type": "true_false",
+       "question": "Level II alone doesn't reveal the underlying intentions behind any specific order.",
+       "correct": true,
+       "explanation": "An order's presence in the book doesn't explain the trader's underlying strategy or intent."
+      },
+      {
+       "type": "fill_blank",
+       "question": "Level II should be treated as a real-time [___], not a guarantee of what happens next.",
+       "options": [
+        "guarantee",
+        "prophecy",
+        "snapshot"
+       ],
+       "correct": 2,
+       "explanation": "This is the core, consistent framing for order book data throughout this unit."
+      },
+      {
+       "type": "matching",
+       "question": "Match the limitation to its description.",
+       "pairs": [
+        [
+         "Orders can vanish",
+         "Resting orders may be canceled before they're filled"
+        ],
+        [
+         "Intentions are hidden",
+         "The book doesn't reveal why an order was placed"
+        ],
+        [
+         "Level II overall",
+         "A descriptive snapshot, not a predictive tool"
+        ]
+       ],
+       "explanation": "Recognizing these limitations keeps Level II awareness properly descriptive rather than predictive."
+      },
+      {
+       "type": "ingredient_match",
+       "question": "How should a beginner-level understanding of Level II be framed?",
+       "options": [
+        {
+         "label": "As a tool that guarantees knowing exactly what happens next",
+         "correct": false,
+         "detail": "Overstates certainty",
+         "wrong_explanation": "Level II has real limitations and doesn't guarantee outcomes."
+        },
+        {
+         "label": "As descriptive awareness of the order book, with real limitations, not a predictive edge",
+         "correct": true,
+         "detail": "A cautious, descriptive frame"
+        },
+        {
+         "label": "As something irrelevant to understand at all",
+         "correct": false,
+         "detail": "Understates it",
+         "wrong_explanation": "Conceptual awareness of the order book is still useful context."
+        }
+       ],
+       "concern": "Setting expectations",
+       "explanation": "This course frames Level II as useful conceptual awareness, with clear limitations, never a predictive guarantee."
+      },
+      {
+       "type": "spot_mistake",
+       "scenario": "Someone assumes Level II removes all uncertainty about what will happen next in a stock.",
+       "question": "What is the mistake?",
+       "options": [
+        "Level II has no limitations worth understanding.",
+        "Level II is a live, changeable snapshot with real limitations, not a tool that removes uncertainty.",
+        "Level II guarantees full certainty about every future trade."
+       ],
+       "correct": 1,
+       "explanation": "Order book data is descriptive and limited, not a certainty-removing tool."
+      }
+     ]
+    },
+    {
+     "node": 98,
+     "title": "Level II Review",
+     "celebration": "You've completed the Level II & Order Book Awareness unit!",
+     "screens": [
+      {
+       "type": "intro",
+       "title": "Bringing It Together",
+       "text": "A final review of what Level II shows, bids/asks/spread, order book depth, and the real limitations of this kind of data."
+      },
+      {
+       "type": "true_false",
+       "question": "Level II displays current buy and sell orders at various price levels, sometimes called the order book.",
+       "correct": true,
+       "explanation": "That's the core, consistent idea across this whole unit."
+      },
+      {
+       "type": "fill_blank",
+       "question": "The gap between the current bid and ask is called the [___].",
+       "options": [
+        "snapshot",
+        "depth",
+        "spread"
+       ],
+       "correct": 2,
+       "explanation": "A recap of the spread terminology covered in this unit."
+      },
+      {
+       "type": "multiple_choice",
+       "question": "How should Level II data be treated conceptually?",
+       "options": [
+        "As something with no descriptive value at all.",
+        "As a tool that guarantees the next trade price.",
+        "As a real-time, changeable snapshot with real limitations, not a predictive guarantee."
+       ],
+       "correct": 2,
+       "explanation": "A recap of the cautious, descriptive framing used throughout this unit."
+      },
+      {
+       "type": "matching",
+       "question": "Match the term to its one-line meaning.",
+       "pairs": [
+        [
+         "Bid",
+         "Highest current buy order price"
+        ],
+        [
+         "Ask",
+         "Lowest current sell order price"
+        ],
+        [
+         "Depth",
+         "Size of orders waiting at each level"
+        ]
+       ],
+       "explanation": "A quick recap of the unit's core vocabulary."
+      },
+      {
+       "type": "ingredient_match",
+       "question": "Which best summarizes this unit?",
+       "options": [
+        {
+         "label": "Level II offers descriptive awareness of the order book, with real limitations, never a certainty",
+         "correct": true,
+         "detail": "The central theme"
+        },
+        {
+         "label": "Level II is unrelated to bids, asks, or depth",
+         "correct": false,
+         "detail": "Incorrect",
+         "wrong_explanation": "Those are exactly what Level II displays."
+        },
+        {
+         "label": "Level II guarantees exact knowledge of every future trade",
+         "correct": false,
+         "detail": "Overstates certainty",
+         "wrong_explanation": "Level II has real, acknowledged limitations."
+        }
+       ],
+       "concern": "Reviewing the big picture",
+       "explanation": "This unit's throughline is conceptual, descriptive awareness of the order book, with honest limitations."
+      },
+      {
+       "type": "spot_mistake",
+       "scenario": "Someone finishes this unit and starts treating Level II alone as a complete trading edge.",
+       "question": "What is the mistake?",
+       "options": [
+        "Level II is descriptive, limited context, it's not a complete standalone trading edge.",
+        "Level II has no descriptive value at all.",
+        "Level II alone is sufficient for guaranteed success."
+       ],
+       "correct": 0,
+       "explanation": "Like every concept in this course, Level II awareness is descriptive context, never a guaranteed edge."
+      }
+     ]
     }
    ]
   },
@@ -34039,11 +34556,11 @@
        "type": "multiple_choice",
        "question": "What commonly characterizes a FOMO-driven trade entry?",
        "options": [
-        "Entering only after a calm, pre-planned checklist is satisfied.",
+        "Entering because of urgency about a fast-moving price, without a clear pre-existing plan.",
         "Entering after carefully calculating position size in advance.",
-        "Entering because of urgency about a fast-moving price, without a clear pre-existing plan."
+        "Entering only after a calm, pre-planned checklist is satisfied."
        ],
-       "correct": 2,
+       "correct": 0,
        "explanation": "FOMO entries are commonly described as reactive and plan-less, driven by urgency."
       },
       {
@@ -34072,18 +34589,18 @@
         {
          "options": [
           "mathematical",
-          "planned",
-          "emotional"
+          "emotional",
+          "planned"
          ],
-         "correct": 2
+         "correct": 1
         },
         {
          "options": [
-          "planned",
           "emotional",
+          "planned",
           "random"
          ],
-         "correct": 0
+         "correct": 1
         }
        ],
        "explanation": "FOMO is commonly framed as emotional urgency, in contrast to a calm, planned entry."
@@ -34110,11 +34627,6 @@
        "question": "Which best describes a FOMO-driven trade entry?",
        "options": [
         {
-         "label": "Entering because of urgency about a fast-moving price, without a clear plan",
-         "correct": true,
-         "detail": "An emotionally reactive entry"
-        },
-        {
          "label": "Entering after a pre-set plan's specific conditions are met",
          "correct": false,
          "detail": "This describes a planned entry, not FOMO",
@@ -34125,6 +34637,11 @@
          "correct": false,
          "detail": "Overstates certainty",
          "wrong_explanation": "FOMO describes a motivation for entering, not an outcome."
+        },
+        {
+         "label": "Entering because of urgency about a fast-moving price, without a clear plan",
+         "correct": true,
+         "detail": "An emotionally reactive entry"
         }
        ],
        "concern": "Understanding this specific term",
@@ -34137,8 +34654,8 @@
        "question": "What is the mistake?",
        "options": [
         "Entering purely from urgency about missing a move, without a plan, is a commonly described FOMO reaction.",
-        "They should have bought even more, even faster.",
-        "They should never look at fast-moving prices again."
+        "They should never look at fast-moving prices again.",
+        "They should have bought even more, even faster."
        ],
        "correct": 0,
        "explanation": "Acting from fear of missing out, without a plan, is the commonly described core of a FOMO-driven mistake.",
@@ -34148,11 +34665,11 @@
        "type": "fill_blank",
        "question": "FOMO describes urgency about [___] a fast-moving price.",
        "options": [
-        "guaranteed",
         "missing",
+        "guaranteed",
         "random"
        ],
-       "correct": 1,
+       "correct": 0,
        "explanation": "FOMO is the urgency to jump in purely because price is already moving."
       },
       {
@@ -34184,22 +34701,22 @@
        "type": "fill_blank",
        "question": "Entering a trade quickly after a loss, mainly to try to \"win it back,\" is commonly called [___] trading.",
        "options": [
-        "revenge",
         "patient",
+        "revenge",
         "planned"
        ],
-       "correct": 0,
+       "correct": 1,
        "explanation": "\"Revenge trading\" is the standard term for this reactive pattern."
       },
       {
        "type": "multiple_choice",
        "question": "What commonly characterizes a revenge trade?",
        "options": [
+        "It's driven mainly by the urge to recover a recent loss quickly, rather than a fresh, planned setup.",
         "It's driven by a carefully pre-planned checklist unrelated to the prior loss.",
-        "It always uses a smaller position size than usual.",
-        "It's driven mainly by the urge to recover a recent loss quickly, rather than a fresh, planned setup."
+        "It always uses a smaller position size than usual."
        ],
-       "correct": 2,
+       "correct": 0,
        "explanation": "Revenge trades are commonly described as reactive attempts to immediately recover a loss."
       },
       {
@@ -34227,19 +34744,19 @@
        "blanks": [
         {
          "options": [
+          "random",
           "planned",
-          "emotional",
-          "random"
+          "emotional"
          ],
-         "correct": 1
+         "correct": 2
         },
         {
          "options": [
           "guaranteed",
-          "emotional",
-          "planned"
+          "planned",
+          "emotional"
          ],
-         "correct": 2
+         "correct": 1
         }
        ],
        "explanation": "The reactive, emotional nature of revenge trading is commonly contrasted with a calm, planned entry."
@@ -34266,15 +34783,15 @@
        "question": "Which best describes \"revenge trading\"?",
        "options": [
         {
-         "label": "Entering a new trade quickly after a loss, driven by the urge to recover it immediately",
-         "correct": true,
-         "detail": "A reactive pattern tied to a recent loss"
-        },
-        {
          "label": "A guarantee that the next trade will be profitable",
          "correct": false,
          "detail": "Overstates certainty",
          "wrong_explanation": "Revenge trading describes a motivation, not a guaranteed outcome."
+        },
+        {
+         "label": "Entering a new trade quickly after a loss, driven by the urge to recover it immediately",
+         "correct": true,
+         "detail": "A reactive pattern tied to a recent loss"
         },
         {
          "label": "Reviewing a loss calmly before deciding what to do next",
@@ -34293,10 +34810,10 @@
        "question": "What is the mistake?",
        "options": [
         "They should stop looking at charts entirely from now on.",
-        "They should double their size again after the next loss too.",
-        "Increasing size specifically to recover a loss quickly is a commonly described sign of revenge trading, adding risk on top of an emotional reaction."
+        "Increasing size specifically to recover a loss quickly is a commonly described sign of revenge trading, adding risk on top of an emotional reaction.",
+        "They should double their size again after the next loss too."
        ],
-       "correct": 2,
+       "correct": 1,
        "explanation": "Sizing decisions driven by the urge to recover a loss quickly are a commonly cited revenge-trading pattern.",
        "chart": "downtrend"
       },
@@ -34304,11 +34821,11 @@
        "type": "fill_blank",
        "question": "Revenge trading is driven by the urge to [___] a recent loss quickly.",
        "options": [
-        "celebrate",
         "ignore",
-        "recover"
+        "recover",
+        "celebrate"
        ],
-       "correct": 2,
+       "correct": 1,
        "explanation": "The urgency to immediately win back a loss defines revenge trading."
       },
       {
@@ -34340,22 +34857,22 @@
        "type": "fill_blank",
        "question": "Taking a much higher number of trades than a plan calls for is commonly called [___].",
        "options": [
-        "position sizing",
         "overtrading",
-        "hedging"
+        "hedging",
+        "position sizing"
        ],
-       "correct": 1,
+       "correct": 0,
        "explanation": "\"Overtrading\" is the standard term for this pattern."
       },
       {
        "type": "multiple_choice",
        "question": "What is commonly cited as a driver of overtrading?",
        "options": [
-        "A calendar reminder to review account performance.",
         "Boredom, restlessness, or urgency to \"do something,\" rather than a fresh, planned setup appearing.",
-        "A carefully followed plan that specifies exactly how many trades to take."
+        "A carefully followed plan that specifies exactly how many trades to take.",
+        "A calendar reminder to review account performance."
        ],
-       "correct": 1,
+       "correct": 0,
        "explanation": "Overtrading is commonly linked to emotional urges rather than an increase in genuinely planned setups."
       },
       {
@@ -34391,11 +34908,11 @@
         },
         {
          "options": [
+          "planned",
           "guaranteed",
-          "random",
-          "planned"
+          "random"
          ],
-         "correct": 2
+         "correct": 0
         }
        ],
        "explanation": "The commonly cited driver behind overtrading is emotional restlessness, not a genuine rise in valid setups."
@@ -34448,11 +34965,11 @@
        "scenario": "Someone takes twenty trades in a single day out of boredom, despite their plan calling for only a couple of genuinely planned setups.",
        "question": "What is the mistake?",
        "options": [
+        "They should aim for an even higher number of trades tomorrow.",
         "Taking far more trades than the plan calls for, driven by boredom rather than genuine setups, is a commonly described overtrading pattern.",
-        "They should stop having any plan at all.",
-        "They should aim for an even higher number of trades tomorrow."
+        "They should stop having any plan at all."
        ],
-       "correct": 0,
+       "correct": 1,
        "explanation": "A large gap between planned frequency and actual frequency, driven by emotion, is the commonly cited core of overtrading.",
        "chart": "sideways"
       },
@@ -34460,11 +34977,11 @@
        "type": "fill_blank",
        "question": "Overtrading means taking far more trades than a plan calls for, often from [___].",
        "options": [
-        "patience",
         "boredom",
+        "patience",
         "a solid plan"
        ],
-       "correct": 1,
+       "correct": 0,
        "explanation": "Boredom or restlessness is commonly cited as driving overtrading."
       },
       {
@@ -34507,9 +35024,9 @@
        "type": "multiple_choice",
        "question": "What is a commonly cited risk of overconfidence after a string of wins?",
        "options": [
-        "Reducing position size out of caution.",
+        "Becoming more careful and conservative than before the winning streak.",
         "Skipping normal risk management steps, like sizing or stop-loss placement, because recent wins feel like proof of skill.",
-        "Becoming more careful and conservative than before the winning streak."
+        "Reducing position size out of caution."
        ],
        "correct": 1,
        "explanation": "Overconfidence commonly leads to relaxing the very risk steps that were followed before the streak."
@@ -34583,16 +35100,16 @@
          "detail": "A commonly described emotional pattern"
         },
         {
-         "label": "A guarantee that the next trade will also win",
-         "correct": false,
-         "detail": "Overstates certainty",
-         "wrong_explanation": "Overconfidence describes a mindset, not a guaranteed outcome."
-        },
-        {
          "label": "Becoming more cautious and reducing size after wins",
          "correct": false,
          "detail": "This describes the opposite pattern",
          "wrong_explanation": "That describes increased caution, not overconfidence."
+        },
+        {
+         "label": "A guarantee that the next trade will also win",
+         "correct": false,
+         "detail": "Overstates certainty",
+         "wrong_explanation": "Overconfidence describes a mindset, not a guaranteed outcome."
         }
        ],
        "concern": "Understanding this specific pattern",
@@ -34604,11 +35121,11 @@
        "scenario": "Someone removes their stop-loss on their next trade because they've \"been on a roll\" for the past week.",
        "question": "What is the mistake?",
        "options": [
-        "Removing a normal risk step because of a recent winning streak is a commonly described overconfidence pattern, recent wins don't remove future risk.",
+        "They should assume the winning streak guarantees future wins.",
         "They should remove stop-losses on every trade from now on.",
-        "They should assume the winning streak guarantees future wins."
+        "Removing a normal risk step because of a recent winning streak is a commonly described overconfidence pattern, recent wins don't remove future risk."
        ],
-       "correct": 0,
+       "correct": 2,
        "explanation": "A recent streak of wins doesn't change the underlying risk of a new trade, per this commonly cited concern.",
        "chart": "uptrend"
       },
@@ -34652,22 +35169,22 @@
        "type": "fill_blank",
        "question": "Hesitating on a genuinely planned setup because of recent losses is commonly linked to [___].",
        "options": [
+        "leverage",
         "fear",
-        "overconfidence",
-        "leverage"
+        "overconfidence"
        ],
-       "correct": 0,
+       "correct": 1,
        "explanation": "\"Fear\" (following losses) is the commonly cited driver of this hesitation pattern."
       },
       {
        "type": "multiple_choice",
        "question": "What is a commonly cited effect of fear following a string of losses?",
        "options": [
-        "No change in behavior at all.",
+        "Hesitating on or skipping a genuinely planned setup, or exiting a plan earlier than intended.",
         "Becoming more willing to take on larger, riskier positions.",
-        "Hesitating on or skipping a genuinely planned setup, or exiting a plan earlier than intended."
+        "No change in behavior at all."
        ],
-       "correct": 2,
+       "correct": 0,
        "explanation": "Fear following losses is commonly linked to hesitation or premature exits, not increased risk-taking."
       },
       {
@@ -34695,19 +35212,19 @@
        "blanks": [
         {
          "options": [
+          "doubling",
           "ignoring",
-          "skipping",
-          "doubling"
+          "skipping"
          ],
-         "correct": 1
+         "correct": 2
         },
         {
          "options": [
           "doji",
-          "plan",
-          "streak"
+          "streak",
+          "plan"
          ],
-         "correct": 1
+         "correct": 2
         }
        ],
        "explanation": "The commonly described effect of fear is deviating from the plan out of hesitation."
@@ -34734,12 +35251,6 @@
        "question": "Which best describes fear-driven hesitation following a string of losses?",
        "options": [
         {
-         "label": "A guarantee that the next trade will also lose",
-         "correct": false,
-         "detail": "Overstates certainty",
-         "wrong_explanation": "Fear describes a reaction, not a guaranteed outcome."
-        },
-        {
          "label": "Hesitating on or skipping a genuinely planned setup because of recent losses",
          "correct": true,
          "detail": "A commonly described emotional response"
@@ -34749,6 +35260,12 @@
          "correct": false,
          "detail": "This describes a different pattern (revenge trading)",
          "wrong_explanation": "That's closer to revenge trading, not fear-driven hesitation."
+        },
+        {
+         "label": "A guarantee that the next trade will also lose",
+         "correct": false,
+         "detail": "Overstates certainty",
+         "wrong_explanation": "Fear describes a reaction, not a guaranteed outcome."
         }
        ],
        "concern": "Understanding this specific pattern",
@@ -34760,11 +35277,11 @@
        "scenario": "Someone skips a setup that matches their plan exactly, purely because they're afraid after a few recent losses.",
        "question": "What is the mistake?",
        "options": [
-        "They should abandon their plan permanently.",
         "Skipping a genuinely planned setup purely from fear after recent losses is a commonly described pattern where emotion overrides the plan.",
-        "They should double their position size to make up for the losses."
+        "They should double their position size to make up for the losses.",
+        "They should abandon their plan permanently."
        ],
-       "correct": 1,
+       "correct": 0,
        "explanation": "Letting fear override a genuinely planned setup, rather than reviewing the plan calmly, is the commonly cited concern here.",
        "chart": "downtrend"
       },
@@ -34772,11 +35289,11 @@
        "type": "fill_blank",
        "question": "Fear after losses can lead to [___] a genuinely planned setup.",
        "options": [
-        "skipping",
         "doubling",
-        "following"
+        "following",
+        "skipping"
        ],
-       "correct": 0,
+       "correct": 2,
        "explanation": "Fear can cause hesitation or skipping a setup that otherwise matches the plan."
       },
       {
@@ -34808,11 +35325,11 @@
        "type": "fill_blank",
        "question": "Acting on an in-the-moment feeling rather than a pre-set plan is commonly called an [___].",
        "options": [
-        "impulse",
         "order",
+        "impulse",
         "average"
        ],
-       "correct": 0,
+       "correct": 1,
        "explanation": "\"Impulse\" describes acting from a feeling in the moment, rather than following a plan."
       },
       {
@@ -34820,10 +35337,10 @@
        "question": "What commonly distinguishes a disciplined decision from an impulsive one?",
        "options": [
         "An impulsive decision always follows a written checklist.",
-        "A disciplined decision is always more profitable, guaranteed.",
-        "A disciplined decision follows a pre-set plan; an impulsive one is driven by an in-the-moment feeling."
+        "A disciplined decision follows a pre-set plan; an impulsive one is driven by an in-the-moment feeling.",
+        "A disciplined decision is always more profitable, guaranteed."
        ],
-       "correct": 2,
+       "correct": 1,
        "explanation": "The distinction is about following a plan versus reacting to a feeling, not about guaranteed outcomes."
       },
       {
@@ -34851,19 +35368,19 @@
        "blanks": [
         {
          "options": [
-          "plan",
+          "impulse",
           "streak",
-          "impulse"
+          "plan"
          ],
-         "correct": 0
+         "correct": 2
         },
         {
          "options": [
-          "feeling",
           "chart",
-          "plan"
+          "plan",
+          "feeling"
          ],
-         "correct": 0
+         "correct": 2
         }
        ],
        "explanation": "This captures the core tension discipline is meant to resolve."
@@ -34890,12 +35407,6 @@
        "question": "Which best describes \"discipline,\" in this context?",
        "options": [
         {
-         "label": "Acting immediately on whatever feels right at the moment",
-         "correct": false,
-         "detail": "This describes impulse, not discipline",
-         "wrong_explanation": "That's the definition of impulse, the opposite of discipline."
-        },
-        {
          "label": "Following a pre-set plan consistently, even when a feeling suggests otherwise",
          "correct": true,
          "detail": "Plan-following despite momentary impulses"
@@ -34905,6 +35416,12 @@
          "correct": false,
          "detail": "Overstates certainty",
          "wrong_explanation": "Discipline is about consistency, not a guarantee the plan is flawless."
+        },
+        {
+         "label": "Acting immediately on whatever feels right at the moment",
+         "correct": false,
+         "detail": "This describes impulse, not discipline",
+         "wrong_explanation": "That's the definition of impulse, the opposite of discipline."
         }
        ],
        "concern": "Understanding this specific term",
@@ -34916,11 +35433,11 @@
        "scenario": "Someone has a clear, pre-set plan but abandons it mid-trade because of a sudden feeling that \"this time is different.\"",
        "question": "What is the mistake?",
        "options": [
-        "Abandoning a pre-set plan due to an in-the-moment feeling is a commonly described impulse overriding discipline.",
         "They should never make plans in the first place.",
+        "Abandoning a pre-set plan due to an in-the-moment feeling is a commonly described impulse overriding discipline.",
         "They should have felt even more strongly before abandoning the plan."
        ],
-       "correct": 0,
+       "correct": 1,
        "explanation": "Following a feeling over a pre-set plan is the commonly described core of an impulsive deviation.",
        "chart": "doji"
       },
@@ -34929,8 +35446,8 @@
        "question": "Discipline means following a pre-set [___] consistently.",
        "options": [
         "plan",
-        "impulse",
-        "feeling"
+        "feeling",
+        "impulse"
        ],
        "correct": 0,
        "explanation": "Discipline is defined as consistent plan-following, even against momentary feelings."
@@ -35001,11 +35518,11 @@
        "type": "fill_blank",
        "question": "Following a pre-set plan consistently, even when a feeling suggests otherwise, is commonly called [___].",
        "options": [
-        "overleveraging",
+        "discipline",
         "a drawdown",
-        "discipline"
+        "overleveraging"
        ],
-       "correct": 2,
+       "correct": 0,
        "explanation": "Reviewing the core term for consistent plan-following from earlier in this unit."
       },
       {
@@ -35033,8 +35550,8 @@
        "question": "Which pattern does this best describe?",
        "options": [
         "Fear-driven hesitation, where recent losses caused them to skip a genuinely planned setup.",
-        "Overconfidence, since they felt very certain about the decision.",
-        "Capital preservation, since they avoided a trade."
+        "Capital preservation, since they avoided a trade.",
+        "Overconfidence, since they felt very certain about the decision."
        ],
        "correct": 0,
        "explanation": "Skipping a valid, planned setup specifically due to fear after losses is the fear-driven hesitation pattern.",
@@ -35044,11 +35561,11 @@
        "type": "fill_blank",
        "question": "This drill practices identifying psychological [___] in hypothetical situations.",
        "options": [
-        "random events",
         "guarantees",
-        "patterns"
+        "patterns",
+        "random events"
        ],
-       "correct": 2,
+       "correct": 1,
        "explanation": "The drill applies pattern recognition to psychology, without judging specific trades."
       },
       {
@@ -35091,11 +35608,11 @@
        "type": "multiple_choice",
        "question": "What do FOMO, revenge trading, and overtrading all have in common?",
        "options": [
+        "They all guarantee larger losses every time.",
         "They only apply to traders using leverage.",
-        "They're all commonly described as emotionally reactive patterns that pull behavior away from a pre-set plan.",
-        "They all guarantee larger losses every time."
+        "They're all commonly described as emotionally reactive patterns that pull behavior away from a pre-set plan."
        ],
-       "correct": 1,
+       "correct": 2,
        "explanation": "Each is an emotionally reactive pattern, not a guaranteed outcome or a leverage-specific issue."
       },
       {
@@ -35131,11 +35648,11 @@
         },
         {
          "options": [
-          "discipline",
           "risk",
-          "impulse"
+          "impulse",
+          "discipline"
          ],
-         "correct": 2
+         "correct": 1
         }
        ],
        "explanation": "Awareness of the pattern is commonly framed as the starting point for a more disciplined response."
@@ -35162,10 +35679,9 @@
        "question": "Which best summarizes the overall theme of this unit?",
        "options": [
         {
-         "label": "Following impulses is just as reliable as following a plan",
-         "correct": false,
-         "detail": "Contradicts the unit",
-         "wrong_explanation": "This unit consistently favored discipline over impulse."
+         "label": "Recognizing emotional patterns is a step toward following a pre-set plan consistently",
+         "correct": true,
+         "detail": "The central theme throughout"
         },
         {
          "label": "Emotions should be eliminated entirely before trading",
@@ -35174,9 +35690,10 @@
          "wrong_explanation": "This unit is about recognizing patterns, not eliminating emotion entirely."
         },
         {
-         "label": "Recognizing emotional patterns is a step toward following a pre-set plan consistently",
-         "correct": true,
-         "detail": "The central theme throughout"
+         "label": "Following impulses is just as reliable as following a plan",
+         "correct": false,
+         "detail": "Contradicts the unit",
+         "wrong_explanation": "This unit consistently favored discipline over impulse."
         }
        ],
        "concern": "Reviewing the big picture",
@@ -35188,11 +35705,11 @@
        "scenario": "Someone finishes this unit and assumes that simply knowing these terms means they'll never act impulsively again.",
        "question": "What is the mistake?",
        "options": [
+        "They should assume impulsive decisions no longer carry any risk.",
         "Knowing a pattern's name doesn't automatically prevent it from happening, recognizing it in the moment still takes practice.",
-        "They should stop thinking about psychology from now on since it can't guarantee anything.",
-        "They should assume impulsive decisions no longer carry any risk."
+        "They should stop thinking about psychology from now on since it can't guarantee anything."
        ],
-       "correct": 0,
+       "correct": 1,
        "explanation": "This unit builds awareness of patterns, not a guarantee that they'll never occur again.",
        "chart": "sideways"
       },
@@ -35200,11 +35717,11 @@
        "type": "fill_blank",
        "question": "This review ties together FOMO, revenge trading, overtrading, and [___].",
        "options": [
-        "discipline",
         "random guesses",
+        "discipline",
         "company names"
        ],
-       "correct": 0,
+       "correct": 1,
        "explanation": "All the core patterns from this unit are reviewed together here."
       },
       {
@@ -35236,20 +35753,20 @@
        "type": "multiple_choice",
        "question": "Which chart description commonly matches a \"trending\" classification?",
        "options": [
-        "A single candle with almost no wick on either side.",
         "Price bouncing repeatedly between the same two levels with no progress either way.",
-        "A series of higher highs and higher lows (or lower highs and lower lows) over time."
+        "A series of higher highs and higher lows (or lower highs and lower lows) over time.",
+        "A single candle with almost no wick on either side."
        ],
-       "correct": 2,
+       "correct": 1,
        "explanation": "A sustained sequence of higher (or lower) highs and lows is the commonly cited hallmark of a trend."
       },
       {
        "type": "fill_blank",
        "question": "A market showing a sustained move in one general direction is commonly classified as [___].",
        "options": [
-        "choppy",
+        "range-bound",
         "trending",
-        "range-bound"
+        "choppy"
        ],
        "correct": 1,
        "explanation": "\"Trending\" is the standard classification term for this kind of sustained directional move."
@@ -35295,6 +35812,12 @@
        "question": "Which best describes a \"trending\" market classification?",
        "options": [
         {
+         "label": "A guarantee that the direction will continue indefinitely",
+         "correct": false,
+         "detail": "Overstates certainty",
+         "wrong_explanation": "Classification describes what has happened, not what will happen next."
+        },
+        {
          "label": "Price bouncing between the same two levels repeatedly",
          "correct": false,
          "detail": "This describes range-bound, not trending",
@@ -35304,12 +35827,6 @@
          "label": "A sustained move in one general direction over time",
          "correct": true,
          "detail": "A descriptive classification of price behavior"
-        },
-        {
-         "label": "A guarantee that the direction will continue indefinitely",
-         "correct": false,
-         "detail": "Overstates certainty",
-         "wrong_explanation": "Classification describes what has happened, not what will happen next."
         }
        ],
        "concern": "Understanding this specific classification",
@@ -35322,10 +35839,10 @@
        "question": "What is the mistake?",
        "options": [
         "They should classify every single candle as its own trend.",
-        "They should ignore the sequence of highs and lows entirely.",
-        "A trending classification is commonly based on a sustained sequence of highs and lows over time, not a single candle."
+        "A trending classification is commonly based on a sustained sequence of highs and lows over time, not a single candle.",
+        "They should ignore the sequence of highs and lows entirely."
        ],
-       "correct": 2,
+       "correct": 1,
        "explanation": "A single candle doesn't provide the sustained sequence commonly needed to classify a trend.",
        "chart": "uptrend"
       },
@@ -35333,11 +35850,11 @@
        "type": "fill_blank",
        "question": "A trending market is classified by a sustained move in one general [___].",
        "options": [
+        "direction",
         "volume",
-        "color",
-        "direction"
+        "color"
        ],
-       "correct": 2,
+       "correct": 0,
        "explanation": "Sustained directional progress defines a trending classification."
       },
       {
@@ -35369,11 +35886,11 @@
        "type": "multiple_choice",
        "question": "Which chart description commonly matches a \"choppy\" classification?",
        "options": [
-        "Price oscillating within a range with no clear sustained progress in either direction.",
         "A single sharp, one-directional move with no pullbacks at all.",
-        "A long, uninterrupted sequence of higher highs and higher lows."
+        "A long, uninterrupted sequence of higher highs and higher lows.",
+        "Price oscillating within a range with no clear sustained progress in either direction."
        ],
-       "correct": 0,
+       "correct": 2,
        "explanation": "Oscillation with no sustained progress is the commonly cited hallmark of a choppy market."
       },
       {
@@ -35428,11 +35945,6 @@
        "question": "Which best describes a \"choppy\" market classification?",
        "options": [
         {
-         "label": "Moving back and forth with no clear sustained direction",
-         "correct": true,
-         "detail": "A descriptive classification of directionless price behavior"
-        },
-        {
          "label": "A sustained move consistently in one direction",
          "correct": false,
          "detail": "This describes trending, not choppy",
@@ -35443,6 +35955,11 @@
          "correct": false,
          "detail": "Overstates certainty",
          "wrong_explanation": "Choppy describes a pattern of movement, not an absence of movement."
+        },
+        {
+         "label": "Moving back and forth with no clear sustained direction",
+         "correct": true,
+         "detail": "A descriptive classification of directionless price behavior"
         }
        ],
        "concern": "Understanding this specific classification",
@@ -35455,10 +35972,10 @@
        "question": "What is the mistake?",
        "options": [
         "They should look for even more oscillation to confirm it's choppy.",
-        "A sustained sequence of higher highs and higher lows is commonly described as trending, not choppy.",
-        "They should ignore the sequence of highs and lows entirely."
+        "They should ignore the sequence of highs and lows entirely.",
+        "A sustained sequence of higher highs and higher lows is commonly described as trending, not choppy."
        ],
-       "correct": 1,
+       "correct": 2,
        "explanation": "The described pattern matches a trending classification, not a choppy one.",
        "chart": "sideways"
       },
@@ -35502,11 +36019,11 @@
        "type": "multiple_choice",
        "question": "Which chart description commonly matches a \"volatile\" classification?",
        "options": [
-        "Unusually large or fast price swings, without necessarily implying a sustained direction.",
         "A single flat candle with almost no range at all.",
+        "Unusually large or fast price swings, without necessarily implying a sustained direction.",
         "A slow, steady drift with very small price changes over a long period."
        ],
-       "correct": 0,
+       "correct": 1,
        "explanation": "Large or fast swings, regardless of direction, are the commonly cited hallmark of volatility."
       },
       {
@@ -35587,11 +36104,11 @@
        "scenario": "Someone classifies a market as \"volatile\" after seeing a long, slow, steady drift with very small price changes.",
        "question": "What is the mistake?",
        "options": [
+        "They should look for even smaller price changes to confirm it's volatile.",
         "They should ignore the size of price swings entirely.",
-        "A slow, steady drift with small changes is commonly described as low volatility, not volatile.",
-        "They should look for even smaller price changes to confirm it's volatile."
+        "A slow, steady drift with small changes is commonly described as low volatility, not volatile."
        ],
-       "correct": 1,
+       "correct": 2,
        "explanation": "The described pattern contradicts the commonly cited hallmark of a volatile classification.",
        "chart": "breakout"
       },
@@ -35599,11 +36116,11 @@
        "type": "fill_blank",
        "question": "A volatile market shows unusually large or fast [___].",
        "options": [
-        "colors",
         "volumes only",
-        "swings"
+        "swings",
+        "colors"
        ],
-       "correct": 2,
+       "correct": 1,
        "explanation": "Large or fast price swings define a volatile classification."
       },
       {
@@ -35699,16 +36216,16 @@
          "detail": "A reversal-after-clearing pattern"
         },
         {
-         "label": "A price move beyond a level that continues steadily afterward",
-         "correct": false,
-         "detail": "This describes a breakout, not a fakeout",
-         "wrong_explanation": "That description matches the commonly described idea of a breakout instead."
-        },
-        {
          "label": "A guarantee that every breakout will eventually reverse",
          "correct": false,
          "detail": "Overstates certainty",
          "wrong_explanation": "A fakeout describes a specific completed pattern, not a rule about every breakout."
+        },
+        {
+         "label": "A price move beyond a level that continues steadily afterward",
+         "correct": false,
+         "detail": "This describes a breakout, not a fakeout",
+         "wrong_explanation": "That description matches the commonly described idea of a breakout instead."
         }
        ],
        "concern": "Understanding this specific pattern",
@@ -35721,10 +36238,10 @@
        "question": "What is the mistake?",
        "options": [
         "They should ignore what happens after price clears a level.",
-        "A fakeout is commonly classified only after price clears a level and then quickly reverses. It can't be confirmed at the moment of clearing alone.",
-        "They should label every single clearing of a level a fakeout immediately."
+        "They should label every single clearing of a level a fakeout immediately.",
+        "A fakeout is commonly classified only after price clears a level and then quickly reverses. It can't be confirmed at the moment of clearing alone."
        ],
-       "correct": 1,
+       "correct": 2,
        "explanation": "Classifying a fakeout requires observing the reversal after the clearing, not just the initial move.",
        "chart": "resistanceRejection"
       },
@@ -35732,9 +36249,9 @@
        "type": "fill_blank",
        "question": "A fakeout is a price move beyond a level that quickly [___].",
        "options": [
-        "continues",
+        "disappears",
         "reverses",
-        "disappears"
+        "continues"
        ],
        "correct": 1,
        "explanation": "A quick reversal after clearing a level is what defines a fakeout."
@@ -35798,11 +36315,11 @@
        "type": "fill_blank",
        "question": "A calm review of whether a plan was actually followed, without an emotional overhaul, is commonly described as a [___] response.",
        "options": [
-        "random",
         "disciplined",
-        "revenge"
+        "revenge",
+        "random"
        ],
-       "correct": 1,
+       "correct": 0,
        "explanation": "\"Disciplined\" is the commonly cited term for this calm, process-focused response."
       },
       {
@@ -35865,11 +36382,11 @@
        "type": "fill_blank",
        "question": "A disciplined response to a losing streak is a calm review of the [___].",
        "options": [
-        "process",
+        "account balance",
         "random guesses",
-        "account balance"
+        "process"
        ],
-       "correct": 0,
+       "correct": 2,
        "explanation": "Reviewing whether the process was followed is the disciplined response."
       },
       {
@@ -35896,6 +36413,11 @@
        "question": "Given a chart showing a long sequence of higher highs and higher lows, which classification best fits?",
        "options": [
         {
+         "label": "Trending",
+         "correct": true,
+         "detail": "Matches the sustained-direction description"
+        },
+        {
          "label": "Volatile",
          "correct": false,
          "detail": "Describes swing size, not direction",
@@ -35906,11 +36428,6 @@
          "correct": false,
          "detail": "Doesn't match this description",
          "wrong_explanation": "Choppy describes oscillation with no net progress, not sustained higher highs and lows."
-        },
-        {
-         "label": "Trending",
-         "correct": true,
-         "detail": "Matches the sustained-direction description"
         }
        ],
        "concern": "Classifying a market condition",
@@ -35927,11 +36444,11 @@
        "type": "multiple_choice",
        "question": "Which best describes a disciplined process response after a string of losses?",
        "options": [
-        "Abandoning the plan permanently after a single loss.",
         "Pausing to calmly review whether the plan was actually followed.",
+        "Abandoning the plan permanently after a single loss.",
         "Immediately doubling position size to recover the losses."
        ],
-       "correct": 1,
+       "correct": 0,
        "explanation": "A calm, process-focused review is the commonly described disciplined response."
       },
       {
@@ -35939,10 +36456,10 @@
        "question": "A market moving back and forth with no clear sustained direction is commonly classified as [___].",
        "options": [
         "trending",
-        "volatile",
-        "choppy"
+        "choppy",
+        "volatile"
        ],
-       "correct": 2,
+       "correct": 1,
        "explanation": "Reviewing the classification term from earlier in this unit."
       },
       {
@@ -35970,10 +36487,10 @@
        "question": "What is the mistake?",
        "options": [
         "They should assume trending and volatile always mean the same thing.",
-        "They should ignore the size of the swings entirely.",
-        "A strong sustained trend with normal-sized swings matches a trending classification, not necessarily a volatile one. Those describe different traits."
+        "A strong sustained trend with normal-sized swings matches a trending classification, not necessarily a volatile one. Those describe different traits.",
+        "They should ignore the size of the swings entirely."
        ],
-       "correct": 2,
+       "correct": 1,
        "explanation": "Trending describes sustained direction, while volatile specifically describes unusually large or fast swings. They're distinct classifications.",
        "chart": "breakout"
       },
@@ -36017,11 +36534,11 @@
        "type": "multiple_choice",
        "question": "What is the common thread across every unit in this course?",
        "options": [
-        "Focusing exclusively on one single strategy type as the only valid approach.",
         "Building descriptive, educational vocabulary and classification skills, not providing specific trade signals.",
+        "Focusing exclusively on one single strategy type as the only valid approach.",
         "Providing a guaranteed, step-by-step system for winning every trade."
        ],
-       "correct": 1,
+       "correct": 0,
        "explanation": "Every unit built descriptive understanding and classification skill, not a signals system or a single mandated approach."
       },
       {
@@ -36048,8 +36565,8 @@
        "question": "A calm review of whether a plan was actually followed, without an emotional overhaul, is commonly called a [___] response.",
        "options": [
         "disciplined",
-        "random",
-        "revenge"
+        "revenge",
+        "random"
        ],
        "correct": 0,
        "explanation": "Reviewing a key term from the Trading Psychology and Full Simulation units."
@@ -36076,15 +36593,15 @@
        "question": "Which best summarizes the overall theme of this course?",
        "options": [
         {
+         "label": "This course builds descriptive, educational understanding of markets, not a system for specific trade decisions",
+         "correct": true,
+         "detail": "The central theme throughout"
+        },
+        {
          "label": "This course guarantees consistent profits if followed exactly",
          "correct": false,
          "detail": "Overstates certainty",
          "wrong_explanation": "This directly contradicts what every unit emphasized."
-        },
-        {
-         "label": "This course builds descriptive, educational understanding of markets, not a system for specific trade decisions",
-         "correct": true,
-         "detail": "The central theme throughout"
         },
         {
          "label": "This course is only useful for people who already trade professionally",
@@ -36102,11 +36619,11 @@
        "scenario": "Someone finishes this course and assumes it has taught them exactly which trades to make going forward.",
        "question": "What is the mistake?",
        "options": [
-        "They should assume every concept guarantees a specific trading outcome.",
         "They should skip risk management now that they've finished the course.",
-        "This course builds descriptive, educational vocabulary and classification skills, not a system for making specific trade decisions."
+        "This course builds descriptive, educational vocabulary and classification skills, not a system for making specific trade decisions.",
+        "They should assume every concept guarantees a specific trading outcome."
        ],
-       "correct": 2,
+       "correct": 1,
        "explanation": "This course is educational and descriptive by design, not a signal system for specific trades, real trading decisions carry real risk beyond this course's scope.",
        "chart": "uptrend"
       },

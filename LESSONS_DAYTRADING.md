@@ -15881,7 +15881,228 @@ Sector strength alone is a complete and sufficient trading system.
 Sector context has no descriptive value at all.
 WHY: Like every concept in this course, sector and index context is descriptive confluence, never a standalone signal.
 
-UNIT 40 — Trading Psychology
+UNIT 40 — Level II & Order Book Awareness
+NODE 1
+TITLE: What Is Level II?
+CELEBRATION: You understand what Level II data shows!
+
+INTRO
+TITLE: Beyond the Last Price
+TEXT: Level II data displays a list of current buy orders (bids) and sell orders (asks) at different price levels, sometimes called the order book, rather than just the single last traded price.
+
+[MC] Level II data displays...
+A list of current bid and ask orders at different price levels.
+Only the single most recent traded price.
+A company's quarterly earnings report.
+WHY: Level II is specifically about the order book, current bids and asks, not a single last-price figure or fundamentals report.
+
+[TF] Level II data is sometimes called the order book.
+ANSWER: True
+WHY: "Order book" and "Level II" commonly refer to the same underlying concept.
+
+[FILL] Level II shows current buy and sell [___] at different price levels.
+orders
+earnings
+dividends
+WHY: Level II is fundamentally a list of orders, not financial statements.
+
+[MATCH] Match the term to its focus.
+Bid => A current buy order, and its price
+Ask => A current sell order, and its price
+Level II => The full list of bids and asks at various levels
+WHY: Level II aggregates many individual bid and ask orders into one view.
+
+[PICK] What does Level II data add beyond a simple last-price quote?
+CONCERN: Understanding the tool
+Visibility into current buy and sell orders waiting at various price levels | detail: Order book depth
+A guarantee of exactly what price comes next | detail: Overstates certainty | wrong: Level II shows current orders, not a guaranteed next price.
+A complete history of the company's past decade of earnings | detail: Unrelated | wrong: Level II is about current orders, not historical financials.
+WHY: Level II adds a view of standing orders that a simple last-price quote doesn't show.
+
+[SPOT] Someone assumes Level II data tells you exactly what price will print next.
+QUESTION: What is the mistake?
+Level II shows current standing orders, it doesn't guarantee the exact next traded price.
+Level II always predicts the very next trade price precisely.
+Level II has no relationship to bids and asks at all.
+WHY: Level II is a descriptive snapshot of current orders, not a guaranteed prediction of the next trade.
+
+NODE 2
+TITLE: Bids, Asks, and the Spread
+CELEBRATION: You understand bids, asks, and the spread!
+
+INTRO
+TITLE: The Gap Between Buyers and Sellers
+TEXT: The bid is the highest price a buyer is currently willing to pay; the ask is the lowest price a seller is currently willing to accept. The gap between them is called the spread.
+
+[MC] The bid represents...
+The highest price a buyer is currently willing to pay.
+The lowest price a seller is currently willing to accept.
+The average price over the past year.
+WHY: The bid and ask represent opposite sides of the current order book, buyers versus sellers.
+
+[TF] The spread is the gap between the current bid and ask price.
+ANSWER: True
+WHY: This is the standard definition of the bid-ask spread.
+
+[FILL] The ask is the lowest price a [___] is currently willing to accept.
+seller
+buyer
+regulator
+WHY: The ask specifically reflects the seller side of the order book.
+
+[MATCH] Match the term to its definition.
+Bid => Highest price a buyer will currently pay
+Ask => Lowest price a seller will currently accept
+Spread => The gap between the bid and ask
+WHY: These three terms together describe the basic structure of the order book at any moment.
+
+[PICK] Why might the size of the spread be worth noting descriptively?
+CONCERN: Reading the order book
+A wider or narrower spread can reflect differing levels of current trading activity | detail: Descriptive context
+Because the spread guarantees a specific profit on every trade | detail: Overstates it | wrong: Spread size doesn't guarantee any profit outcome.
+Because the spread never changes throughout the day | detail: Incorrect | wrong: Spreads can widen or narrow as conditions change.
+WHY: Spread width is simply one more descriptive detail about current market conditions, not a profit guarantee.
+
+[SPOT] Someone assumes the bid-ask spread guarantees a certain profit if crossed.
+QUESTION: What is the mistake?
+The spread describes the current gap between buy and sell orders, it doesn't guarantee any profit.
+Crossing the spread always guarantees a profitable outcome.
+The spread has no relationship to buyers and sellers.
+WHY: The spread is a descriptive snapshot of order book conditions, not a profit guarantee.
+
+NODE 3
+TITLE: Order Book Depth
+CELEBRATION: You understand order book depth!
+
+INTRO
+TITLE: How Much Is Waiting at Each Level
+TEXT: Order book depth refers to the number of shares represented by orders waiting at each price level, giving a descriptive sense of how much buying or selling interest exists nearby.
+
+[MC] Order book depth describes...
+How many shares are represented by orders waiting at each price level.
+The company's total shares outstanding.
+A guaranteed direction for the next price move.
+WHY: Depth is specifically about the size of orders waiting at various levels, not company-wide share counts or predictions.
+
+[TF] Deeper order book levels commonly reflect more resting orders at that price.
+ANSWER: True
+WHY: More depth simply means a larger number of shares represented in waiting orders at that level.
+
+[FILL] Order book depth gives a descriptive sense of buying or selling [___] nearby.
+interest
+guarantee
+history
+WHY: Depth reflects current interest represented by resting orders, not a guarantee of future action.
+
+[MATCH] Match the term to its focus.
+Depth => Size of orders waiting at each price level
+Bid depth => Resting buy orders at various price levels
+Ask depth => Resting sell orders at various price levels
+WHY: Depth can be considered separately on the buy side and the sell side of the book.
+
+[PICK] How should order book depth be treated conceptually?
+CONCERN: Staying descriptive
+As a descriptive snapshot of current resting orders, which can change at any moment | detail: A snapshot, not a guarantee
+As a fixed, permanent measure that never changes | detail: Incorrect | wrong: Resting orders can be added, canceled, or filled at any time.
+As proof of exactly what will happen to price next | detail: Overstates certainty | wrong: Depth describes current orders, not a guaranteed outcome.
+WHY: Order book depth is a constantly shifting descriptive snapshot, not a fixed or predictive figure.
+
+[SPOT] Someone treats a large order sitting at one price level as a permanent, unchangeable wall.
+QUESTION: What is the mistake?
+Resting orders in the book can be modified or canceled at any moment, they aren't necessarily permanent.
+Orders in the book can never be canceled once placed.
+Order book depth has no relationship to buying or selling interest.
+WHY: The order book is a live, constantly shifting snapshot, not a fixed structure.
+
+NODE 4
+TITLE: Limitations of Level II Awareness
+CELEBRATION: You understand Level II's limitations!
+
+INTRO
+TITLE: A Snapshot, Not a Crystal Ball
+TEXT: Level II shows a real-time snapshot of orders, but those orders can be added, changed, or canceled at any moment, and Level II alone doesn't reveal the intentions behind them.
+
+[MC] A key limitation of Level II data is that...
+Displayed orders can be added, changed, or canceled at any moment.
+It always accurately predicts the next ten trades.
+It replaces the need for any other form of analysis.
+WHY: The order book is a live, changeable snapshot, not a locked-in prediction of future trades.
+
+[TF] Level II alone doesn't reveal the underlying intentions behind any specific order.
+ANSWER: True
+WHY: An order's presence in the book doesn't explain the trader's underlying strategy or intent.
+
+[FILL] Level II should be treated as a real-time [___], not a guarantee of what happens next.
+snapshot
+guarantee
+prophecy
+WHY: This is the core, consistent framing for order book data throughout this unit.
+
+[MATCH] Match the limitation to its description.
+Orders can vanish => Resting orders may be canceled before they're filled
+Intentions are hidden => The book doesn't reveal why an order was placed
+Level II overall => A descriptive snapshot, not a predictive tool
+WHY: Recognizing these limitations keeps Level II awareness properly descriptive rather than predictive.
+
+[PICK] How should a beginner-level understanding of Level II be framed?
+CONCERN: Setting expectations
+As descriptive awareness of the order book, with real limitations, not a predictive edge | detail: A cautious, descriptive frame
+As a tool that guarantees knowing exactly what happens next | detail: Overstates certainty | wrong: Level II has real limitations and doesn't guarantee outcomes.
+As something irrelevant to understand at all | detail: Understates it | wrong: Conceptual awareness of the order book is still useful context.
+WHY: This course frames Level II as useful conceptual awareness, with clear limitations, never a predictive guarantee.
+
+[SPOT] Someone assumes Level II removes all uncertainty about what will happen next in a stock.
+QUESTION: What is the mistake?
+Level II is a live, changeable snapshot with real limitations, not a tool that removes uncertainty.
+Level II guarantees full certainty about every future trade.
+Level II has no limitations worth understanding.
+WHY: Order book data is descriptive and limited, not a certainty-removing tool.
+
+NODE 5
+TITLE: Level II Review
+CELEBRATION: You've completed the Level II & Order Book Awareness unit!
+
+INTRO
+TITLE: Bringing It Together
+TEXT: A final review of what Level II shows, bids/asks/spread, order book depth, and the real limitations of this kind of data.
+
+[TF] Level II displays current buy and sell orders at various price levels, sometimes called the order book.
+ANSWER: True
+WHY: That's the core, consistent idea across this whole unit.
+
+[FILL] The gap between the current bid and ask is called the [___].
+spread
+depth
+snapshot
+WHY: A recap of the spread terminology covered in this unit.
+
+[MC] How should Level II data be treated conceptually?
+As a real-time, changeable snapshot with real limitations, not a predictive guarantee.
+As a tool that guarantees the next trade price.
+As something with no descriptive value at all.
+WHY: A recap of the cautious, descriptive framing used throughout this unit.
+
+[MATCH] Match the term to its one-line meaning.
+Bid => Highest current buy order price
+Ask => Lowest current sell order price
+Depth => Size of orders waiting at each level
+WHY: A quick recap of the unit's core vocabulary.
+
+[PICK] Which best summarizes this unit?
+CONCERN: Reviewing the big picture
+Level II offers descriptive awareness of the order book, with real limitations, never a certainty | detail: The central theme
+Level II guarantees exact knowledge of every future trade | detail: Overstates certainty | wrong: Level II has real, acknowledged limitations.
+Level II is unrelated to bids, asks, or depth | detail: Incorrect | wrong: Those are exactly what Level II displays.
+WHY: This unit's throughline is conceptual, descriptive awareness of the order book, with honest limitations.
+
+[SPOT] Someone finishes this unit and starts treating Level II alone as a complete trading edge.
+QUESTION: What is the mistake?
+Level II is descriptive, limited context, it's not a complete standalone trading edge.
+Level II alone is sufficient for guaranteed success.
+Level II has no descriptive value at all.
+WHY: Like every concept in this course, Level II awareness is descriptive context, never a guaranteed edge.
+
+UNIT 41 — Trading Psychology
 NODE 1
 TITLE: What Is FOMO?
 CELEBRATION: You understand FOMO!
@@ -16430,7 +16651,7 @@ WHY: All the core patterns from this unit are reviewed together here.
 ANSWER: True
 WHY: This has been the throughline, emotional patterns pulling away from disciplined plan-following.
 
-UNIT 41 — Full Simulation Training
+UNIT 42 — Full Simulation Training
 NODE 1
 TITLE: Classifying Trending Markets
 CELEBRATION: You can classify a trending market!
