@@ -118,6 +118,8 @@ struct TapCandleView: View {
                     supportLevel: m.support,
                     resistanceLevel: m.resistance,
                     highlightIndex: nil,   // never pre-highlight — that's the answer
+                    maLine: m.maLine,
+                    maLine2: m.maLine2,
                     chosenIndex: player.selectedIndex,
                     revealTarget: player.revealed ? s.target : nil,
                     onTapCandle: { i in
@@ -172,6 +174,8 @@ struct TapCandlesView: View {
                     candles: m.candles,
                     supportLevel: m.support, resistanceLevel: m.resistance,
                     highlightIndex: nil,
+                    maLine: m.maLine,
+                    maLine2: m.maLine2,
                     chosenSet: player.selectedSet,
                     revealTargets: player.revealed ? Set(s.targets ?? []) : nil,
                     onTapCandle: { i in

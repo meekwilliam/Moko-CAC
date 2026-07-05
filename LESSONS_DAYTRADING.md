@@ -13684,6 +13684,12 @@ CELEBRATION: You can read price against the MA!
 INTRO
 TITLE: Which Side Is Price On?
 TEXT: Price trading <b>above</b> a rising MA is commonly described as strength; <b>below</b> a falling MA as weakness. It's a descriptive read, not a signal to act.
+CHART: priceAboveMA
+
+[TAPCANDLE] Tap the candle where price crosses above the MA line.
+CHART: priceAboveMA
+TARGET: 4
+WHY: The 4th candle is where price closes back above the MA, the crossing point.
 
 [MC] Price holding above a rising moving average is commonly described as...
 relative strength.
@@ -13701,7 +13707,13 @@ guaranteed
 random
 WHY: It describes strength/weakness; it isn't an automatic buy/sell.
 
+[TAPCANDLE] Tap the candle where price crosses below the MA line.
+CHART: priceBelowMA
+TARGET: 4
+WHY: The 4th candle is where price closes back below the MA, the crossing point.
+
 [SPOT] Someone treats "price above the MA" as an automatic, guaranteed buy signal.
+CHART: priceAboveMA
 QUESTION: What is the mistake?
 Price above the MA is a descriptive strength read, not a guaranteed signal to act on.
 It's always an automatic buy.
@@ -13766,6 +13778,12 @@ CELEBRATION: You understand MA crossovers!
 INTRO
 TITLE: When Fast Crosses Slow
 TEXT: A "crossover" is when a fast MA crosses a slow MA. It's commonly used as a descriptive trend cue. But MAs are <b>lagging</b> (built from past prices), so crossovers are not guaranteed signals.
+CHART: maCrossUp
+
+[TAPCANDLE] Tap the candle where the fast MA crosses above the slow MA.
+CHART: maCrossUp
+TARGET: 4
+WHY: The 4th candle is where the fast (blue) MA crosses above the slow (amber) MA, a bullish crossover.
 
 [MC] An MA crossover is when...
 a fast MA crosses a slow MA.
@@ -13783,7 +13801,13 @@ leading
 predictive
 WHY: Averaging past prices makes MAs lag, not lead.
 
+[TAPCANDLE] Tap the candle where the fast MA crosses below the slow MA.
+CHART: maCrossDown
+TARGET: 4
+WHY: The 4th candle is where the fast (blue) MA crosses below the slow (amber) MA, a bearish crossover.
+
 [PICK] How should a crossover be read?
+CHART: maCrossUp
 CONCERN: Reading it honestly
 As a descriptive, lagging trend cue, not a guaranteed signal | detail: Lagging context
 As a guaranteed entry | detail: Overstates certainty | wrong: Crossovers lag and can whipsaw.
