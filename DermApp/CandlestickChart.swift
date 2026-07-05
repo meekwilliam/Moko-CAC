@@ -30,6 +30,11 @@ struct CandlestickChart: View {
     var maLine2: [Double]? = nil
     var maLine2Label: String = "Fast MA"
 
+    // Bollinger-style band: upper/lower lines, one value per candle, with the
+    // area between them shaded — unlike the single overlay lines above.
+    var bandUpper: [Double]? = nil
+    var bandLower: [Double]? = nil
+
     // Interactive "tap a candle" support.
     /// The candle the learner has tapped (draws a selection ring).
     var chosenIndex: Int? = nil
@@ -57,7 +62,7 @@ struct CandlestickChart: View {
 
     private func mapper(for geo: GeometryProxy) -> ValueMapper {
         let values = candles.flatMap { [$0.high, $0.low] } + [supportLevel, resistanceLevel].compactMap { $0 }
-            + (maLine ?? []) + (maLine2 ?? [])
+            + (maLine ?? []) + (maLine2 ?? []) + (bandUpper ?? []) + (bandLower ?? [])
         let maxV = values.max() ?? 1
         let minV = values.min() ?? 0
         // A little vertical breathing room so wicks don't touch the frame edges.
@@ -76,6 +81,7 @@ struct CandlestickChart: View {
             ZStack(alignment: .topLeading) {
                 if let s = supportLevel { levelLine(y: m.y(s), label: "Support", color: bullish, geo: geo) }
                 if let r = resistanceLevel { levelLine(y: m.y(r), label: "Resistance", color: bearish, geo: geo) }
+                if let upper = bandUpper, let lower = bandLower { bollingerBand(upper, lower, slot: slot, mapper: m) }
                 if let line = maLine { overlayLine(line, slot: slot, mapper: m, color: Color(hex: "#F59E0B"), label: maLineLabel) }
                 if let line = maLine2 { overlayLine(line, slot: slot, mapper: m, color: Color(hex: "#38bdf8"), label: maLine2Label) }
 
@@ -191,6 +197,48 @@ struct CandlestickChart: View {
             }
         }
     }
+
+    /// A Bollinger-style band: upper/lower lines with the area between shaded,
+    /// so widening/narrowing (volatility) reads at a glance.
+    private let bandColor = Color(hex: "#A78BFA")
+    private func bollingerBand(_ upper: [Double], _ lower: [Double], slot: CGFloat, mapper m: ValueMapper) -> some View {
+        ZStack(alignment: .topTrailing) {
+            Path { p in
+                guard !upper.isEmpty else { return }
+                for (i, v) in upper.enumerated() {
+                    let pt = CGPoint(x: slot * (CGFloat(i) + 0.5), y: m.y(v))
+                    if i == 0 { p.move(to: pt) } else { p.addLine(to: pt) }
+                }
+                for i in stride(from: lower.count - 1, through: 0, by: -1) {
+                    p.addLine(to: CGPoint(x: slot * (CGFloat(i) + 0.5), y: m.y(lower[i])))
+                }
+                p.closeSubpath()
+            }
+            .fill(bandColor.opacity(0.10))
+
+            overlayLineStroke(upper, slot: slot, mapper: m, color: bandColor.opacity(0.7))
+            overlayLineStroke(lower, slot: slot, mapper: m, color: bandColor.opacity(0.7))
+
+            if let last = upper.last {
+                Text("BANDS")
+                    .font(Theme.font(9, .black))
+                    .foregroundColor(bandColor)
+                    .padding(.horizontal, 5).padding(.vertical, 2)
+                    .background(Capsule().fill(bandColor.opacity(0.16)))
+                    .offset(x: -4, y: m.y(last) - 20)
+            }
+        }
+    }
+
+    private func overlayLineStroke(_ values: [Double], slot: CGFloat, mapper m: ValueMapper, color: Color) -> some View {
+        Path { p in
+            for (i, v) in values.enumerated() {
+                let pt = CGPoint(x: slot * (CGFloat(i) + 0.5), y: m.y(v))
+                if i == 0 { p.move(to: pt) } else { p.addLine(to: pt) }
+            }
+        }
+        .stroke(color, style: StrokeStyle(lineWidth: 1.5, lineCap: .round, lineJoin: .round, dash: [4, 3]))
+    }
 }
 
 // MARK: - Scenario presets
@@ -211,7 +259,19 @@ enum ChartScenario: String {
     case gapUp, gapDown
     case volatile
     case priceAboveMA, priceBelowMA
+    case priceAboveVWAP, priceBelowVWAP
     case maCrossUp, maCrossDown
+    case bandsWidening, bandsNarrowing
+    case touchUpperBand, touchLowerBand
+
+    /// Label for the single overlay line — "MA" for moving-average scenarios,
+    /// "VWAP" for the VWAP-specific variants (same underlying geometry).
+    var maLabel: String {
+        switch self {
+        case .priceAboveVWAP, .priceBelowVWAP: return "VWAP"
+        default: return "MA"
+        }
+    }
 
     var candles: [Candle] {
         switch self {
@@ -443,7 +503,10 @@ struct ScenarioChartView: View {
                          resistanceLevel: m.resistance,
                          highlightIndex: m.highlight,
                          maLine: m.maLine,
-                         maLine2: m.maLine2)
+                         maLineLabel: scenario.maLabel,
+                         maLine2: m.maLine2,
+                         bandUpper: m.bandUpper,
+                         bandLower: m.bandLower)
             .frame(height: height)
             .padding(.horizontal, 10).padding(.vertical, 14)
             .background(
@@ -469,6 +532,9 @@ struct ChartModel {
     // Overlay lines (moving average, VWAP, …): one value per candle.
     var maLine: [Double]? = nil
     var maLine2: [Double]? = nil
+    // Bollinger-style band: upper/lower lines, one value per candle.
+    var bandUpper: [Double]? = nil
+    var bandLower: [Double]? = nil
 }
 
 /// Small, fast, deterministic RNG (xorshift64) so a seed reproduces a chart.
@@ -848,6 +914,11 @@ extension ChartScenario {
             let line = out.indices.map { _ in ma + g.u(-0.08, 0.08) }
             return ChartModel(candles: out, highlight: 3, maLine: line)
 
+        case .priceAboveVWAP:
+            return ChartScenario.priceAboveMA.model(seed: seed)
+        case .priceBelowVWAP:
+            return ChartScenario.priceBelowMA.model(seed: seed)
+
         case .maCrossUp:
             // A fast MA rising from below a roughly flat slow MA to above it —
             // the crossover candle (index 3) is the structurally fixed target.
@@ -873,6 +944,60 @@ extension ChartScenario {
                 return fastStart + (fastEnd - fastStart) * t
             }
             return ChartModel(candles: out, highlight: 3, maLine: slow, maLine2: fast)
+
+        case .bandsWidening:
+            // Bands start tight (calm), then widen as candle ranges grow (volatility rising).
+            var out: [Candle] = []; var p = base + 1.0
+            let wicks = [0.15, 0.2, 0.3, 0.5, 0.7, 0.9]
+            for w in wicks { let cl = p + g.u(-0.3, 0.3); out.append(g.c(open: p, close: cl, wick: w)); p = cl }
+            let mid = out.indices.map { _ in base + 1.0 + g.u(-0.05, 0.05) }
+            let halfWidths = [0.3, 0.45, 0.65, 0.95, 1.3, 1.7]
+            let upper = zip(mid, halfWidths).map { $0 + $1 }
+            let lower = zip(mid, halfWidths).map { $0 - $1 }
+            return ChartModel(candles: out, maLine: mid, bandUpper: upper, bandLower: lower)
+        case .bandsNarrowing:
+            // Mirror: bands start wide (volatile), then squeeze as ranges shrink (calming down).
+            var out: [Candle] = []; var p = base + 1.0
+            let wicks = [0.9, 0.7, 0.5, 0.3, 0.2, 0.15]
+            for w in wicks { let cl = p + g.u(-0.3, 0.3); out.append(g.c(open: p, close: cl, wick: w)); p = cl }
+            let mid = out.indices.map { _ in base + 1.0 + g.u(-0.05, 0.05) }
+            let halfWidths = [1.7, 1.3, 0.95, 0.65, 0.45, 0.3]
+            let upper = zip(mid, halfWidths).map { $0 + $1 }
+            let lower = zip(mid, halfWidths).map { $0 - $1 }
+            return ChartModel(candles: out, maLine: mid, bandUpper: upper, bandLower: lower)
+
+        case .touchUpperBand:
+            // Price rallies and touches/exceeds the upper band on a fixed candle (index 4).
+            let mid = base + 1.0; var out: [Candle] = []; var p = base
+            out.append(g.c(open: p, close: mid - g.u(0.6, 0.9), wick: 0.2)); p = out.last!.close
+            out.append(g.c(open: p, close: mid - g.u(0.2, 0.4), wick: 0.2)); p = out.last!.close
+            out.append(g.c(open: p, close: mid + g.u(0.1, 0.3), wick: 0.2)); p = out.last!.close
+            out.append(g.c(open: p, close: mid + g.u(0.5, 0.7), wick: 0.2)); p = out.last!.close
+            let stretchOpen = p, stretchClose = mid + 1.1 + g.u(0.1, 0.3)
+            out.append(Candle(open: stretchOpen, high: stretchClose + g.u(0.05, 0.15),
+                              low: stretchOpen - g.u(0.05, 0.15), close: stretchClose))
+            p = stretchClose
+            out.append(g.c(open: p, close: mid + g.u(0.6, 0.9), wick: 0.2))
+            let midLine = out.indices.map { _ in mid + g.u(-0.05, 0.05) }
+            let upper = midLine.map { $0 + 1.1 }
+            let lower = midLine.map { $0 - 1.1 }
+            return ChartModel(candles: out, highlight: 4, maLine: midLine, bandUpper: upper, bandLower: lower)
+        case .touchLowerBand:
+            // Mirror: price sells off and touches/exceeds the lower band on a fixed candle.
+            let mid = base + 1.0; var out: [Candle] = []; var p = base + 2.0
+            out.append(g.c(open: p, close: mid + g.u(0.6, 0.9), wick: 0.2)); p = out.last!.close
+            out.append(g.c(open: p, close: mid + g.u(0.2, 0.4), wick: 0.2)); p = out.last!.close
+            out.append(g.c(open: p, close: mid - g.u(0.1, 0.3), wick: 0.2)); p = out.last!.close
+            out.append(g.c(open: p, close: mid - g.u(0.5, 0.7), wick: 0.2)); p = out.last!.close
+            let stretchOpen = p, stretchClose = mid - 1.1 - g.u(0.1, 0.3)
+            out.append(Candle(open: stretchOpen, high: stretchOpen + g.u(0.05, 0.15),
+                              low: stretchClose - g.u(0.05, 0.15), close: stretchClose))
+            p = stretchClose
+            out.append(g.c(open: p, close: mid - g.u(0.6, 0.9), wick: 0.2))
+            let midLine = out.indices.map { _ in mid + g.u(-0.05, 0.05) }
+            let upper = midLine.map { $0 + 1.1 }
+            let lower = midLine.map { $0 - 1.1 }
+            return ChartModel(candles: out, highlight: 4, maLine: midLine, bandUpper: upper, bandLower: lower)
         }
     }
 }
