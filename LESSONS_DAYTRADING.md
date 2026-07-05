@@ -3148,7 +3148,377 @@ WHY: Speed, price control, and risk are the three dimensions each order type tra
 ANSWER: True
 WHY: Different situations call for different trade-offs, which is why multiple order types exist.
 
-UNIT 5 — Trends & Structure
+UNIT 5 — Market Mechanics
+NODE 1
+TITLE: Order Flow (Simplified)
+CELEBRATION: You understand order flow at a basic level!
+
+INTRO
+TITLE: The Stream of Buy and Sell Orders
+TEXT: Order flow describes the ongoing stream of buy and sell orders hitting the market. Watching which side is more aggressive, in simple terms, is the basic idea behind reading order flow.
+
+[MC] "Order flow" refers to...
+The ongoing stream of buy and sell orders hitting the market.
+The company's quarterly earnings report.
+A single candle's wick length.
+WHY: Order flow describes the continuous stream of incoming buy/sell orders.
+
+[TF] Order flow describes a single trade, not an ongoing stream of orders.
+ANSWER: False
+WHY: Order flow specifically describes the ongoing, continuous stream — not one isolated trade.
+
+[FILL] Order flow is commonly described as which side is more [___] at a given moment.
+aggressive
+colorful
+random
+WHY: Reading order flow, simply put, means noticing which side (buyers or sellers) is pushing harder.
+
+[MATCH] Match the term to its simplified meaning.
+Order flow => The ongoing stream of buy/sell orders
+Aggressive buying => Buyers pushing to get filled quickly
+Aggressive selling => Sellers pushing to get filled quickly
+WHY: These terms describe the basic push-and-pull behind order flow.
+
+[PICK] Why do some chart readers pay attention to order flow?
+CONCERN: Understanding the basic idea
+It's one simplified way to gauge which side currently has more pressure | detail: Descriptive, not predictive
+It guarantees the next price move | detail: Overstates certainty | wrong: Order flow describes current pressure, not a guaranteed outcome.
+It replaces the need to look at price at all | detail: Incomplete | wrong: Order flow is read alongside price, not instead of it.
+WHY: Order flow is a descriptive read of current buy/sell pressure, not a guaranteed prediction.
+
+[SPOT] Someone believes reading order flow lets them know the exact next price with certainty.
+QUESTION: What is the mistake?
+Order flow describes current buy/sell pressure — it doesn't guarantee the exact next price.
+Order flow guarantees perfect predictions every time.
+Order flow has no relationship to price at all.
+WHY: Order flow is descriptive context about pressure, not a certainty about the future.
+
+NODE 2
+TITLE: Supply vs. Demand
+CELEBRATION: You understand supply and demand in markets!
+
+INTRO
+TITLE: The Basic Economic Engine
+TEXT: Just like any market, price reflects the balance of supply (sellers willing to sell) and demand (buyers willing to buy) at each price level.
+CHART: uptrend
+
+[MC] When demand exceeds supply at a price, price commonly tends to...
+Rise.
+Fall.
+Stay perfectly fixed forever.
+WHY: More buying demand than available supply commonly pushes price up.
+
+[TF] When supply exceeds demand at a price, price commonly tends to fall.
+ANSWER: True
+WHY: More sellers willing to sell than buyers willing to buy commonly pushes price down.
+
+[FILL] Price is commonly described as reflecting the balance of supply and [___].
+demand
+volume
+color
+WHY: Supply and demand together are the basic economic engine behind price.
+
+[MATCH] Match the imbalance to its commonly cited price effect.
+More demand than supply => Price tends to rise
+More supply than demand => Price tends to fall
+Balanced supply and demand => Price tends to stay steadier
+WHY: This is the same buyer/seller balance idea from earlier lessons, framed as supply and demand.
+
+[PICK] Which best describes how supply and demand relate to price?
+CHART: uptrend
+CONCERN: Understanding the basic mechanism
+Price commonly reflects the shifting balance between supply and demand | detail: A foundational economic idea
+Supply and demand have no relationship to price at all | detail: Incorrect | wrong: This is the basic mechanism behind price moves.
+Supply and demand guarantee a specific future price | detail: Overstates certainty | wrong: It's a descriptive mechanism, not a guarantee.
+WHY: Supply and demand together are commonly described as the basic engine behind price.
+
+[SPOT] Someone claims supply and demand have nothing to do with why a stock's price changes.
+QUESTION: What is the mistake?
+Supply and demand are commonly described as the basic economic engine behind price changes.
+Price changes for reasons totally unrelated to buyers and sellers.
+Supply and demand only apply to physical goods, never stocks.
+WHY: This mechanism applies to stocks (and most markets) just as it does to other goods.
+
+NODE 3
+TITLE: Market Makers (Simple Explanation)
+CELEBRATION: You understand market makers, simply!
+
+INTRO
+TITLE: Standing Ready to Trade
+TEXT: A market maker is a participant who commonly stands ready to buy and sell continuously, helping keep a market liquid by always offering a bid and ask.
+
+[MC] What does a market maker commonly do?
+Stand ready to continuously buy and sell, helping keep the market liquid.
+Set the company's stock price by decree.
+Only trade once per year.
+WHY: Market makers commonly provide continuous liquidity by standing ready to trade.
+
+[TF] Market makers commonly help keep a market liquid.
+ANSWER: True
+WHY: Their continuous willingness to buy and sell adds liquidity to the market.
+
+[FILL] A market maker commonly profits from the [___] between the bid and ask they quote.
+spread
+volume
+timeframe
+WHY: The bid/ask spread is commonly cited as a source of market maker profit.
+
+[MATCH] Match the term to its simplified role.
+Market maker => Stands ready to continuously buy and sell
+Liquidity => What market makers commonly help provide
+Spread => What a market maker commonly profits from
+WHY: These three ideas are commonly discussed together when explaining market makers simply.
+
+[PICK] Why are market makers commonly discussed alongside liquidity?
+CONCERN: Understanding the simplified role
+Their continuous buying/selling commonly adds liquidity to the market | detail: A liquidity-providing role
+They guarantee a stock will never crash | detail: Overstates certainty | wrong: Market makers add liquidity; they don't guarantee price outcomes.
+They set official company policy | detail: Incorrect | wrong: Market makers facilitate trading, not company decisions.
+WHY: Market makers are commonly described as liquidity providers, not price-outcome guarantors.
+
+[SPOT] Someone believes market makers guarantee a stock can never crash.
+QUESTION: What is the mistake?
+Market makers commonly provide liquidity — they don't guarantee against price declines.
+Market makers control all price outcomes.
+Market makers have no role in markets at all.
+WHY: Providing liquidity is a commonly cited role, distinct from guaranteeing any price outcome.
+
+NODE 4
+TITLE: Auction Theory Basics
+CELEBRATION: You understand basic auction theory!
+
+INTRO
+TITLE: Markets as a Continuous Auction
+TEXT: A market can be simply described as a continuous auction, where price moves to the level where buyers and sellers are willing to transact.
+
+[MC] Thinking of a market as an "auction" simply means...
+Price moves to where buyers and sellers are currently willing to transact.
+Only one seller sets the price for everyone.
+Prices are fixed and never move.
+WHY: The auction framing describes price as constantly seeking a level both sides accept.
+
+[TF] In this simplified auction view, price seeks a level where trade actually happens.
+ANSWER: True
+WHY: Price gravitates to levels where a buyer and seller are both willing to transact.
+
+[FILL] A market can be simply described as a continuous [___].
+auction
+guarantee
+company decision
+WHY: "Continuous auction" is a common simplified way to describe ongoing price discovery.
+
+[MATCH] Match the auction-theory term to its simplified meaning.
+Continuous auction => Price constantly seeking a level both sides accept
+Price discovery => The ongoing process of finding that agreed level
+Transaction => A trade where a buyer and seller actually agree
+WHY: These terms describe the basic auction-like process behind price formation.
+
+[PICK] Which best captures this simplified "auction" view of markets?
+CONCERN: Understanding the basic framing
+Price is constantly seeking a level where trade actually happens | detail: An ongoing, ever-shifting search
+Price is permanently fixed by a single authority | detail: Incorrect | wrong: The auction view describes constant, shifting negotiation.
+This view guarantees where price ends up | detail: Overstates certainty | wrong: It's descriptive, not predictive.
+WHY: The continuous-auction framing describes ongoing price discovery, not a fixed or guaranteed outcome.
+
+[SPOT] Someone believes a single company employee sets the price under this "auction" framing.
+QUESTION: What is the mistake?
+The auction framing describes price emerging from many participants, not one person's decision.
+One person sets the auction price for everyone.
+Auctions have no relationship to how markets work.
+WHY: This is the same idea revisited from earlier lessons — price emerges from many participants, not one.
+
+NODE 5
+TITLE: Why Candles Form
+CELEBRATION: You understand why candles form the shapes they do!
+
+INTRO
+TITLE: The Mechanics Behind a Candle's Shape
+TEXT: A candle's shape reflects the underlying order flow and supply/demand tug-of-war during that period — big bodies from decisive pressure, long wicks from rejected pushes.
+CHART: hammer
+
+[MC] Why might a candle end up with a long lower wick, mechanically?
+Sellers pushed price down, but buying pressure pushed it back up before the close.
+The chart software randomly added a wick.
+Wicks are unrelated to buying and selling pressure.
+WHY: A long lower wick reflects a mechanical tug-of-war: a push down that got reversed by buying pressure.
+
+[TF] A candle's shape reflects the underlying supply/demand tug-of-war during that period.
+ANSWER: True
+WHY: Body size and wick length are mechanical traces of that period's buying/selling pressure.
+
+[FILL] A large candle body reflects [___], decisive pressure from one side.
+strong
+weak
+random
+WHY: A big body mechanically reflects one side dominating that period.
+
+[MATCH] Match the candle feature to its underlying mechanical cause.
+Large body => Decisive, one-sided pressure that period
+Long wick => A push that was mechanically reversed before the close
+Tiny body => Roughly balanced pressure between both sides
+WHY: Candle shapes are mechanical traces of the underlying order flow.
+
+[PICK] Why do candle shapes connect back to order flow and supply/demand?
+CHART: hammer
+CONCERN: Connecting mechanics to shape
+Because body and wick size are mechanical traces of that period's buy/sell pressure | detail: Shape reflects underlying mechanics
+Because candle shapes are randomly generated | detail: Incorrect | wrong: Shapes reflect real trading activity, not randomness.
+Because order flow has no relationship to candles | detail: Backwards | wrong: This lesson's whole point is that they're connected.
+WHY: This connects the "why" (mechanics) to the "what" (candle shapes) taught earlier in the course.
+
+[SPOT] Someone believes candle shapes are unrelated to actual buying and selling activity.
+CHART: hammer
+QUESTION: What is the mistake?
+Candle shapes are mechanical traces of real order flow and supply/demand pressure during that period.
+Candles are drawn randomly with no connection to trading.
+Only the color of a candle matters, not its shape.
+WHY: Body and wick size directly reflect the underlying buy/sell pressure for that period.
+
+NODE 6
+TITLE: Why Trends Accelerate
+CELEBRATION: You understand why trends can accelerate!
+
+INTRO
+TITLE: Momentum Feeding on Itself
+TEXT: A trend can accelerate when order flow and sentiment feed on themselves — more participants join a move already in progress, adding to the existing pressure.
+CHART: breakout
+
+[MC] Why might a trend commonly accelerate?
+More participants join a move already in progress, adding to existing pressure.
+Acceleration happens for no describable reason.
+Every trend accelerates at exactly the same fixed rate.
+WHY: More participants adding to an existing move is a commonly cited reason trends can accelerate.
+
+[TF] A trend can accelerate when more participants join an already-moving direction.
+ANSWER: True
+WHY: Additional participants adding pressure in the same direction can speed up a trend.
+
+[FILL] Trend acceleration is commonly linked to momentum [___] on itself.
+feeding
+disappearing
+freezing
+WHY: "Feeding on itself" describes how added participation can compound an existing move.
+
+[MC] Does every trend accelerate the same way?
+No — acceleration varies and isn't guaranteed for every trend.
+Yes, every trend accelerates identically.
+Trends never accelerate under any circumstances.
+WHY: Acceleration is a commonly observed tendency, not a guaranteed or uniform feature of every trend.
+
+[PICK] Which best describes why a trend might accelerate?
+CHART: breakout
+CONCERN: Understanding this mechanism
+Added participants joining an existing move can compound the pressure | detail: A mechanical, descriptive explanation
+Acceleration is entirely random with no cause | detail: Overcorrects | wrong: There's a commonly cited mechanical explanation.
+Acceleration is guaranteed once a trend starts | detail: Overstates certainty | wrong: Acceleration is a tendency, not guaranteed.
+WHY: Added participation compounding existing pressure is the commonly cited mechanism, without guaranteeing it happens every time.
+
+[SPOT] Someone assumes every trend must accelerate at some predictable, fixed point.
+CHART: breakout
+QUESTION: What is the mistake?
+Acceleration is a commonly observed tendency, not a guaranteed or perfectly predictable feature.
+All trends accelerate at the exact same point.
+Trends never accelerate at all.
+WHY: Acceleration can happen, but it's not a fixed, guaranteed pattern.
+
+NODE 7
+TITLE: Why Reversals and Breakouts Happen
+CELEBRATION: You understand the mechanics behind reversals and breakouts!
+
+INTRO
+TITLE: When the Balance Shifts
+TEXT: A reversal happens when the supply/demand balance shifts enough to overpower the prior trend. A breakout happens when demand (or supply) finally overwhelms a level that had been holding.
+CHART: resistanceRejection
+
+[MC] A reversal is commonly linked to...
+A shift in the supply/demand balance strong enough to overpower the prior trend.
+A single random candle appearing on the chart.
+The chart's software resetting.
+WHY: A reversal reflects a mechanical shift in the underlying balance of pressure.
+
+[TF] A breakout happens when demand or supply finally overwhelms a level that had been holding.
+ANSWER: True
+WHY: A breakout mechanically reflects one side finally overpowering a previously respected level.
+
+[FILL] A reversal reflects a [___] in the underlying supply/demand balance.
+shift
+guarantee
+random event
+WHY: A shift strong enough to overpower the prior trend is what mechanically produces a reversal.
+
+[MATCH] Match the event to its underlying mechanical cause.
+Reversal => A shift in balance strong enough to overpower the prior trend
+Breakout => One side finally overwhelming a level that had been holding
+Order flow => The ongoing stream of pressure behind both events
+WHY: Both reversals and breakouts trace back to the same underlying order flow and supply/demand mechanics.
+
+[PICK] Which best connects breakouts back to earlier mechanics lessons in this unit?
+CHART: resistanceRejection
+CONCERN: Tying mechanics together
+A breakout reflects demand or supply finally overwhelming a level, via the same order-flow mechanics | detail: Connects mechanism to event
+A breakout has no relationship to supply, demand, or order flow | detail: Backwards | wrong: This lesson's point is exactly that connection.
+A breakout guarantees the new direction continues forever | detail: Overstates certainty | wrong: As covered earlier, breakouts can still fail.
+WHY: This ties the "why" mechanics (order flow, supply/demand) back to the "what" (breakouts, reversals) from earlier units.
+
+[SPOT] Someone treats reversals and breakouts as totally random events with no underlying mechanism.
+CHART: resistanceRejection
+QUESTION: What is the mistake?
+Both trace back to shifts in the same underlying supply/demand and order-flow mechanics covered in this unit.
+Reversals and breakouts have no mechanical explanation at all.
+Only breakouts have a mechanical cause, not reversals.
+WHY: This unit's whole point is that both events trace back to the same underlying mechanics.
+
+NODE 8
+TITLE: Market Mechanics Review
+CELEBRATION: You've completed the Market Mechanics unit!
+
+INTRO
+TITLE: Bringing the "Why" Together
+TEXT: A final review of order flow, supply/demand, market makers, auction theory, and how they explain candles, trends, reversals, and breakouts.
+
+[TF] Everything in this unit connects back to the underlying supply/demand and order-flow mechanics.
+ANSWER: True
+WHY: That's the common thread tying every lesson in this unit together.
+
+[FILL] Price is commonly described as reflecting the balance of supply and [___].
+demand
+volume
+color
+WHY: Reviewing the core mechanism from earlier in this unit.
+
+[MC] What do order flow, supply/demand, and auction theory all have in common?
+They're all simplified explanations for why and how price actually moves.
+They all guarantee a specific future price.
+They only apply to bonds, never stocks.
+WHY: Each is a descriptive mechanism explaining price behavior, not a guarantee about the future.
+
+[MATCH] Match the mechanic to what it explains.
+Order flow => The ongoing stream of buy/sell pressure
+Market makers => Continuous liquidity provision
+Auction theory => Price as a continuous search for an agreed level
+WHY: A quick recap of the unit's core mechanics.
+
+[FILL2] This unit explains the [1] behind price behavior, connecting back to candles, trends, and [2] from earlier units.
+BLANK1: *mechanics | color | random guesses
+BLANK2: *breakouts | company names | random events
+WHY: This unit ties the underlying mechanics to concepts already covered — candles, trends, and breakouts.
+
+[PICK] Which best summarizes this unit?
+CHART: breakout
+CONCERN: Reviewing the big picture
+The underlying mechanics (order flow, supply/demand) explain why candles, trends, and breakouts behave as they do | detail: The central theme
+This unit provides guaranteed trading signals | detail: Overstates certainty | wrong: This contradicts the descriptive nature of every lesson.
+This unit is unrelated to earlier units in the course | detail: Backwards | wrong: It explicitly connects back to candles, trends, and levels.
+WHY: Connecting underlying mechanics to previously taught concepts is the throughline of this unit.
+
+[SPOT] Someone finishes this unit and claims market mechanics now let them predict every future price with certainty.
+QUESTION: What is the mistake?
+This unit explains descriptive mechanics behind price behavior — it doesn't grant predictive certainty.
+Market mechanics guarantee perfect predictions.
+This unit teaches nothing useful at all.
+WHY: Like the rest of this course, this unit builds descriptive understanding, not predictive certainty.
+
+UNIT 6 — Trends & Structure
 NODE 1
 TITLE: Uptrend Basics
 CELEBRATION: You understand uptrends!
@@ -4043,7 +4413,7 @@ WHY: Descriptive clarity, not predictive certainty, has been the throughline.
 ANSWER: True
 WHY: These concepts complement each other rather than standing alone.
 
-UNIT 6 — Support & Resistance
+UNIT 7 — Support & Resistance
 NODE 1
 TITLE: What Is Support?
 CELEBRATION: You understand support levels!
@@ -4801,7 +5171,7 @@ WHY: Descriptive, not predictive, framing has been the throughline of this unit.
 ANSWER: True
 WHY: Both describe possible outcomes once a level has been broken.
 
-UNIT 7 — Double Tops & Bottoms
+UNIT 8 — Double Tops & Bottoms
 NODE 1
 TITLE: What Is a Double Top?
 CELEBRATION: You can spot a double top on a chart!
@@ -5565,7 +5935,7 @@ CHART: doubleBottom
 LEVEL: support
 WHY: Support runs across the bottoms of the two troughs.
 
-UNIT 8 — Head & Shoulders
+UNIT 9 — Head & Shoulders
 NODE 1
 TITLE: What Is a Head & Shoulders?
 CELEBRATION: You can spot a head & shoulders on a chart!
@@ -6222,7 +6592,7 @@ Memorizing one exact price forever.
 Ignoring the neckline entirely.
 WHY: Combining structure and confirmation is the core skill from this unit.
 
-UNIT 9 — Triangles
+UNIT 10 — Triangles
 NODE 1
 TITLE: What Is an Ascending Triangle?
 CELEBRATION: You can spot an ascending triangle!
@@ -6576,7 +6946,7 @@ WHY: All three triangle types are reviewed together in this final lesson.
 ANSWER: True
 WHY: This remains true throughout — triangles inform a bias, never a guarantee.
 
-UNIT 10 — Flags & Pennants
+UNIT 11 — Flags & Pennants
 NODE 1
 TITLE: What Is a Bull Flag?
 CELEBRATION: You can spot a bull flag!
@@ -6874,7 +7244,7 @@ WHY: All three continuation patterns are reviewed together here.
 ANSWER: True
 WHY: This remains true throughout — flags and pennants suggest a tendency, never a guarantee.
 
-UNIT 11 — Wedges & Channels
+UNIT 12 — Wedges & Channels
 NODE 1
 TITLE: What Is a Rising Wedge?
 CELEBRATION: You can spot a rising wedge!
@@ -7171,7 +7541,7 @@ WHY: All the structures from this unit are reviewed together here.
 ANSWER: True
 WHY: As with other patterns, wedges suggest a bias, never a guaranteed outcome.
 
-UNIT 12 — Trendlines
+UNIT 13 — Trendlines
 NODE 1
 TITLE: What Is a Trendline?
 CELEBRATION: You understand trendlines!
@@ -7473,7 +7843,7 @@ Drawing random diagonal lines anywhere on the chart.
 Ignoring trendlines entirely.
 WHY: Grounding trendlines in actual turning points, then reading touches/breaks, is the core skill.
 
-UNIT 13 — Ranges & Consolidation
+UNIT 14 — Ranges & Consolidation
 NODE 1
 TITLE: What Is a Range?
 CELEBRATION: You can spot a range!
@@ -7788,7 +8158,7 @@ Assuming every range lasts forever.
 Assuming every breakout is guaranteed to continue.
 WHY: Reading boundaries plus healthy skepticism about breaks is the core skill here.
 
-UNIT 14 — Breakouts & Retests
+UNIT 15 — Breakouts & Retests
 NODE 1
 TITLE: What Is a Breakout?
 CELEBRATION: You can spot a breakout!
@@ -8091,7 +8461,7 @@ Assuming every breakout is guaranteed to hold.
 Ignoring breakouts entirely.
 WHY: Healthy skepticism paired with reading the retest is the core skill here.
 
-UNIT 15 — Pullbacks & Continuation
+UNIT 16 — Pullbacks & Continuation
 NODE 1
 TITLE: What Is a Pullback?
 CELEBRATION: You understand pullbacks!
@@ -8385,7 +8755,7 @@ Assuming every pullback is a full reversal.
 Ignoring pullbacks entirely.
 WHY: Checking whether the structure holds is the core skill from this unit.
 
-UNIT 16 — Momentum & Exhaustion
+UNIT 17 — Momentum & Exhaustion
 NODE 1
 TITLE: Reading Momentum From Bodies
 CELEBRATION: You can read momentum off a chart!
@@ -8673,7 +9043,7 @@ Only ever looking at candle color.
 Ignoring candle shape entirely.
 WHY: Combining body and wick reads is the core skill from this unit.
 
-UNIT 17 — Confluence
+UNIT 18 — Confluence
 NODE 1
 TITLE: What Is Confluence?
 CELEBRATION: You understand confluence!
@@ -8972,7 +9342,7 @@ Acting on a single isolated signal as if it were certain.
 Ignoring levels, patterns, and trend entirely.
 WHY: Seeking agreement across factors (without assuming certainty) is the core skill here.
 
-UNIT 18 — Gaps
+UNIT 19 — Gaps
 NODE 1
 TITLE: What Is a Gap?
 CELEBRATION: You can spot a gap!
@@ -9217,7 +9587,7 @@ Assuming every gap fills immediately.
 Ignoring gaps entirely.
 WHY: Reading gaps descriptively, without assuming a guaranteed fill, is the core skill here.
 
-UNIT 19 — Multi-Timeframe Basics
+UNIT 20 — Multi-Timeframe Basics
 NODE 1
 TITLE: What Is a Timeframe?
 CELEBRATION: You understand timeframes!
@@ -9510,7 +9880,7 @@ Only ever looking at one single timeframe forever.
 Ignoring timeframes entirely.
 WHY: Top-down, context-first reading across timeframes is the core skill here.
 
-UNIT 20 — Chart-Reading Mastery
+UNIT 21 — Chart-Reading Mastery
 NODE 1
 TITLE: Pattern Speed Round
 CELEBRATION: You can name any pattern fast!
@@ -9869,7 +10239,7 @@ Memorizing one guaranteed rule for every situation.
 Ignoring charts entirely and guessing.
 WHY: Combining multiple descriptive reads is the core Intermediate-level skill.
 
-UNIT 21 — Risk Management
+UNIT 22 — Risk Management
 NODE 1
 TITLE: What Is Risk Per Trade?
 CELEBRATION: You understand risk per trade!
@@ -10558,7 +10928,7 @@ WHY: All the core ideas from this unit are reviewed together here.
 ANSWER: False
 WHY: Risk management limits the damage from losses; it doesn't eliminate losses entirely.
 
-UNIT 22 — Strategy Types
+UNIT 23 — Strategy Types
 NODE 1
 TITLE: What Is Scalping?
 CELEBRATION: You understand scalping!
@@ -11107,7 +11477,7 @@ WHY: All six strategy types from this unit are reviewed together here.
 ANSWER: True
 WHY: This has been the throughline — descriptive categories, never guaranteed signals.
 
-UNIT 23 — Position Sizing & R
+UNIT 24 — Position Sizing & R
 NODE 1
 TITLE: Risk Per Trade
 CELEBRATION: You understand risk per trade!
@@ -11384,7 +11754,7 @@ WHY: All four core ideas from this unit are reviewed together here.
 ANSWER: True
 WHY: Measuring in R (multiples of risk) makes results comparable regardless of size.
 
-UNIT 24 — Expectancy & Edge
+UNIT 25 — Expectancy & Edge
 NODE 1
 TITLE: Win Rate Isn't Everything
 CELEBRATION: You understand why win rate alone misleads!
@@ -11643,7 +12013,7 @@ WHY: All four core ideas from this unit are reviewed together here.
 ANSWER: True
 WHY: This has been the throughline — combine frequency and size, over enough trades.
 
-UNIT 25 — Market Condition Classification
+UNIT 26 — Market Condition Classification
 NODE 1
 TITLE: Trending, Ranging, or Volatile?
 CELEBRATION: You can classify market conditions!
@@ -11915,7 +12285,7 @@ WHY: All three broad conditions from this unit are reviewed together here.
 ANSWER: True
 WHY: This has been the throughline — condition-first reading, framing everything else.
 
-UNIT 26 — Moving Averages
+UNIT 27 — Moving Averages
 NODE 1
 TITLE: What Is a Moving Average?
 CELEBRATION: You understand moving averages!
@@ -12211,7 +12581,7 @@ WHY: All the core ideas from this unit are reviewed together here.
 ANSWER: True
 WHY: This has been the throughline — smoothed, lagging, descriptive trend reading.
 
-UNIT 27 — Oscillators: RSI & MACD
+UNIT 28 — Oscillators: RSI & MACD
 NODE 1
 TITLE: What Is an Oscillator?
 CELEBRATION: You understand oscillators!
@@ -12462,7 +12832,7 @@ WHY: All the core ideas from this unit are reviewed together here.
 ANSWER: True
 WHY: This has been the throughline — descriptive, derived, lagging, never guaranteed.
 
-UNIT 28 — Trade Planning & Process
+UNIT 29 — Trade Planning & Process
 NODE 1
 TITLE: What Is a Trade Plan?
 CELEBRATION: You understand trade plans!
@@ -12715,7 +13085,7 @@ WHY: All the core ideas from this unit are reviewed together here.
 ANSWER: True
 WHY: This has been true throughout — plan ahead, then actually follow it.
 
-UNIT 29 — VWAP & Bollinger Bands
+UNIT 30 — VWAP & Bollinger Bands
 NODE 1
 TITLE: What Is VWAP?
 CELEBRATION: You understand VWAP!
@@ -12967,7 +13337,7 @@ WHY: Both tools from this unit are reviewed together here.
 ANSWER: True
 WHY: This has been the throughline — descriptive, average-based context, never guaranteed signals.
 
-UNIT 30 — Drawdowns & Losing Streaks
+UNIT 31 — Drawdowns & Losing Streaks
 NODE 1
 TITLE: What Is a Drawdown?
 CELEBRATION: You understand drawdowns!
@@ -13225,7 +13595,7 @@ WHY: All the core ideas from this unit are reviewed together here.
 ANSWER: True
 WHY: This has been the throughline — normal variance, plus recovery math driving preservation.
 
-UNIT 31 — Journaling & Review
+UNIT 32 — Journaling & Review
 NODE 1
 TITLE: Why Journal?
 CELEBRATION: You understand journaling!
@@ -13478,7 +13848,7 @@ WHY: All the core ideas from this unit are reviewed together here.
 ANSWER: True
 WHY: This has been true throughout — honest records, process focus, and the improvement loop.
 
-UNIT 32 — Trading Psychology
+UNIT 33 — Trading Psychology
 NODE 1
 TITLE: What Is FOMO?
 CELEBRATION: You understand FOMO!
@@ -14027,7 +14397,7 @@ WHY: All the core patterns from this unit are reviewed together here.
 ANSWER: True
 WHY: This has been the throughline — emotional patterns pulling away from disciplined plan-following.
 
-UNIT 33 — Full Simulation Training
+UNIT 34 — Full Simulation Training
 NODE 1
 TITLE: Classifying Trending Markets
 CELEBRATION: You can classify a trending market!
