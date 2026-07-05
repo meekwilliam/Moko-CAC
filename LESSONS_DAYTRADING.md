@@ -9611,6 +9611,17 @@ They should have felt even more confident before risking that much.
 They should have risked their entire account instead.
 WHY: Confidence in an outcome doesn't remove risk — a single loss at that size could be very damaging.
 
+
+[FILL] Risk per trade is commonly kept [___] and consistent across trades.
+small
+large
+random
+WHY: Small, consistent risk per trade is a commonly recommended habit.
+
+[TF] Risking a large percent of the account on one trade is generally considered lower risk than a small percent.
+ANSWER: False
+WHY: A larger percentage at risk is generally considered higher, not lower, risk.
+
 NODE 2
 TITLE: Position Sizing Basics
 CELEBRATION: You understand position sizing!
@@ -9669,6 +9680,17 @@ A fixed position size regardless of stop distance means dollar risk varies unpre
 They should always use an even bigger position size instead.
 They should remove stop-losses to simplify things.
 WHY: Adjusting position size to the stop-loss distance is how consistent dollar risk is commonly maintained.
+
+
+[FILL] Position size is commonly derived from your risk amount and [___] distance.
+stop
+volume
+timeframe
+WHY: Position size is worked backward from your dollar risk and stop distance.
+
+[TF] A wider stop generally calls for a larger position size to keep the same dollar risk.
+ANSWER: False
+WHY: A wider stop calls for a SMALLER position size to keep the same dollar risk, not larger.
 
 NODE 3
 TITLE: Risk/Reward Ratio
@@ -9729,6 +9751,17 @@ They should look for an even higher ratio to be sure.
 They should ignore risk/reward ratios entirely.
 WHY: Risk/reward is about the shape of possible outcomes, not a certainty about which one happens.
 
+
+[FILL] A higher risk/reward ratio means more potential reward for the same [___] taken.
+risk
+color
+volume
+WHY: A higher ratio means a bigger potential payoff relative to the risk.
+
+[TF] A 1:3 risk/reward ratio means the potential reward is three times the potential risk.
+ANSWER: True
+WHY: 1:3 (risk:reward) means the reward is three times the risk.
+
 NODE 4
 TITLE: Stop-Loss Placement Logic
 CELEBRATION: You understand where stop-losses are commonly placed!
@@ -9787,6 +9820,17 @@ A stop placed too close with no reasoning can get triggered by normal price nois
 They should remove the stop-loss entirely instead.
 They should place it even closer for extra safety.
 WHY: Stop-loss placement is commonly tied to a specific, reasoned level rather than an arbitrarily tight distance.
+
+
+[FILL] Stop-loss placement is commonly tied to a specific [___], not a random number.
+reason
+color
+guess
+WHY: A reasoned placement (like just beyond a level) is commonly recommended over an arbitrary stop.
+
+[TF] A stop-loss placed too close to entry can get triggered by normal price noise.
+ANSWER: True
+WHY: A too-tight stop risks getting hit by ordinary fluctuations, not a meaningful shift.
 
 NODE 5
 TITLE: Overleveraging Danger
@@ -9847,6 +9891,17 @@ They should use even higher leverage next time to be consistent.
 They should assume high leverage always works out.
 WHY: One favorable past outcome doesn't change the underlying amplified risk that leverage carries.
 
+
+[FILL] Leverage amplifies both potential gains and potential [___].
+losses
+guarantees
+volume
+WHY: Leverage cuts both ways — bigger potential gains AND bigger potential losses.
+
+[TF] Overleveraging means using leverage that fits your risk tolerance well.
+ANSWER: False
+WHY: Overleveraging specifically means using MORE leverage than fits your risk tolerance.
+
 NODE 6
 TITLE: Drawdowns
 CELEBRATION: You understand drawdowns!
@@ -9905,6 +9960,17 @@ Drawdowns are a normal, expected part of most account histories, even ones that 
 They should assume every drawdown means immediate, permanent failure.
 They should avoid ever checking their account value again.
 WHY: A single drawdown doesn't by itself indicate a permanent failure of an overall approach.
+
+
+[FILL] A drawdown measures decline from a prior [___].
+peak
+starting deposit
+best trade
+WHY: Drawdown specifically measures decline from the account's prior peak value.
+
+[TF] Even profitable trading accounts commonly experience some drawdowns along the way.
+ANSWER: True
+WHY: Drawdowns are a normal part of most account histories, even profitable ones.
 
 NODE 7
 TITLE: Losing Streaks Are Normal
@@ -9965,6 +10031,17 @@ They should have taken on much more risk instead.
 They should never review their plan under any circumstances.
 WHY: A short losing streak alone is often not enough evidence to conclude a reasonable plan has failed.
 
+
+[FILL] A losing streak can happen even with a [___] approach, purely by chance.
+reasonable
+guaranteed
+perfect
+WHY: Even a sound approach can see a losing streak by chance alone.
+
+[TF] A losing streak automatically proves a trading approach is broken.
+ANSWER: False
+WHY: Streaks can happen by chance; they don't automatically prove the approach has failed.
+
 NODE 8
 TITLE: Capital Preservation Mindset
 CELEBRATION: You understand capital preservation!
@@ -10024,6 +10101,17 @@ They should take on the maximum possible risk on every trade instead.
 They should ignore risk management entirely from now on.
 WHY: Capital preservation is commonly viewed as foundational to being able to keep participating and pursuing gains long-term.
 
+
+[FILL] Capital preservation means prioritizing [___] of existing capital.
+protection
+maximum growth
+random risk
+WHY: Capital preservation is about protecting what you already have.
+
+[TF] Capital preservation means avoiding all risk entirely, under every circumstance.
+ANSWER: False
+WHY: It means managing risk deliberately, not eliminating it entirely.
+
 NODE 9
 TITLE: Risk Management Drill
 CELEBRATION: You can apply risk concepts to hypothetical scenarios!
@@ -10070,6 +10158,17 @@ Increasing size without adjusting the plan can unintentionally increase dollar r
 They should increase their position size even further.
 They should remove their stop-loss to simplify things.
 WHY: Position size changes should stay tied to a consistent risk plan, not be driven by a recent win.
+
+
+[FILL] This drill applies risk concepts to [___] situations.
+hypothetical
+guaranteed
+random
+WHY: The drill practices applying risk concepts to hypothetical, illustrative scenarios.
+
+[TF] Position size, risk/reward, and stop placement are all part of a consistent risk plan.
+ANSWER: True
+WHY: These pieces work together as part of one overall risk management approach.
 
 NODE 10
 TITLE: Risk Management Review
@@ -10129,6 +10228,17 @@ Risk management is about limiting the damage from losses, not eliminating the po
 They should skip risk management from now on since it can't guarantee anything.
 They should only ever take trades with a 1:1 ratio.
 WHY: This unit builds a planning and acceptance mindset, not a guarantee against ever losing.
+
+
+[FILL] This review ties together risk per trade, sizing, risk/reward, and [___].
+capital preservation
+random guesses
+company names
+WHY: All the core ideas from this unit are reviewed together here.
+
+[TF] Sound risk management guarantees a trader will never have a losing trade.
+ANSWER: False
+WHY: Risk management limits the damage from losses; it doesn't eliminate losses entirely.
 
 UNIT 21 — Strategy Types
 NODE 1
@@ -10190,6 +10300,17 @@ They should hold it for even longer to make it a proper scalp.
 They should assume all approaches are basically the same.
 WHY: A six-month hold doesn't match the commonly described short-timeframe, high-frequency nature of scalping.
 
+
+[FILL] Scalping targets [___] price moves over very short timeframes.
+small
+large
+guaranteed
+WHY: Small price moves over short timeframes is the defining trait of scalping.
+
+[TF] Scalping commonly involves many trades per day.
+ANSWER: True
+WHY: High frequency, targeting small moves, is a commonly cited trait of scalping.
+
 NODE 2
 TITLE: What Is Swing Trading?
 CELEBRATION: You understand swing trading!
@@ -10248,6 +10369,17 @@ Swing trading is commonly described as spanning days to weeks, not thirty second
 They should hold it for even less time to make it a proper swing trade.
 They should assume timeframe doesn't matter when describing an approach.
 WHY: A thirty-second hold doesn't match the commonly described days-to-weeks nature of swing trading.
+
+
+[FILL] Swing trading commonly holds trades for [___] to a few weeks.
+several days
+a few seconds
+several months
+WHY: Days-to-weeks holding periods are commonly associated with swing trading.
+
+[TF] Swing trading targets a smaller price move than scalping.
+ANSWER: False
+WHY: Swing trading commonly targets a LARGER move than scalping, over a longer hold.
 
 NODE 3
 TITLE: Trend Following
@@ -10308,6 +10440,17 @@ They should bet against the move even earlier next time.
 They should assume all approaches describe the same idea.
 WHY: Betting against a sustained move contradicts the commonly described core idea of trend following.
 
+
+[FILL] Trend following aims to stay [___] with a sustained directional move.
+aligned
+opposed
+random
+WHY: Trend following means staying aligned with an existing direction, not betting against it.
+
+[TF] Trend following bets that a sustained move will reverse immediately.
+ANSWER: False
+WHY: Trend following aligns WITH the sustained move, rather than betting on its reversal.
+
 NODE 4
 TITLE: Mean Reversion
 CELEBRATION: You understand mean reversion!
@@ -10366,6 +10509,17 @@ Mean reversion is commonly described as expecting an eventual move back toward a
 They should expect it to move even further away to match the description.
 They should assume mean reversion has no relationship to an average level.
 WHY: This description contradicts the commonly cited core idea behind mean reversion.
+
+
+[FILL] Mean reversion expects price to move back toward its [___].
+average
+extreme
+random level
+WHY: Mean reversion specifically expects a return toward an average level.
+
+[TF] Mean reversion expects price to keep moving further away from its average indefinitely.
+ANSWER: False
+WHY: Mean reversion expects the OPPOSITE — an eventual move back toward average.
 
 NODE 5
 TITLE: Breakout Trading
@@ -10426,6 +10580,17 @@ They should expect a reversal even sooner to match the description.
 They should assume breakout trading has no relationship to a range at all.
 WHY: This description contradicts the commonly cited core idea behind breakout trading.
 
+
+[FILL] Breakout trading expects [___] after price clears an established range.
+continuation
+reversal
+no movement
+WHY: Breakout trading expects the move to continue once a range is cleared.
+
+[TF] Breakout trading expects price to reverse the instant it clears a range.
+ANSWER: False
+WHY: Breakout trading expects continuation, not an immediate reversal.
+
 NODE 6
 TITLE: Range Trading
 CELEBRATION: You understand range trading!
@@ -10485,6 +10650,17 @@ They should expect it to break through even more boundaries to match the descrip
 They should assume range trading has no relationship to support or resistance.
 WHY: This description contradicts the commonly cited core idea behind range trading.
 
+
+[FILL] Range trading expects price to stay [___] established boundaries.
+between
+outside of
+random compared to
+WHY: Range trading expects price to bounce within its boundaries, not break beyond them.
+
+[TF] Range trading expects price to break through every boundary and keep going.
+ANSWER: False
+WHY: That describes breakout trading — range trading expects price to stay bounded instead.
+
 NODE 7
 TITLE: Strategy Matching Drill
 CELEBRATION: You can match descriptions to strategy types!
@@ -10531,6 +10707,17 @@ Scalping is commonly described as very short-timeframe, not weeks-long — that 
 They should hold it for even longer to make it a proper scalp.
 They should assume all strategy types describe the same holding period.
 WHY: A weeks-long hold doesn't match the commonly described short-timeframe nature of scalping.
+
+
+[FILL] Matching a description to its strategy type is a [___] recognition skill.
+descriptive
+guaranteed
+random
+WHY: This drill practices recognizing strategy types from their descriptive traits.
+
+[TF] Fast matching drills like this help build quicker recognition of strategy traits.
+ANSWER: True
+WHY: Like other drills in this course, repetition builds recognition speed.
 
 NODE 8
 TITLE: Strategy Types Review
@@ -10590,6 +10777,17 @@ This unit builds descriptive vocabulary about common approaches, not a signal sy
 They should pick one strategy type and use it on every single trade going forward.
 They should assume strategy names guarantee an outcome.
 WHY: This unit is about descriptive categorization, not a system for making specific trade decisions.
+
+
+[FILL] This review ties together scalping, swing trading, trend following, mean reversion, breakout, and [___] trading.
+range
+random
+guaranteed
+WHY: All six strategy types from this unit are reviewed together here.
+
+[TF] These six strategy types are descriptive categories, not guaranteed signal systems.
+ANSWER: True
+WHY: This has been the throughline — descriptive categories, never guaranteed signals.
 
 UNIT 22 — Position Sizing & R
 NODE 1
