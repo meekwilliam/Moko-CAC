@@ -310,6 +310,7 @@ struct MarkLevelView: View {
 struct TrendlineView: View {
     @ObservedObject var player: LessonPlayer
     var ink: Color
+    @State private var dragActive = false
 
     private let chartHeight: CGFloat = 210
     private var s: LessonScreen { player.screen }
@@ -352,11 +353,13 @@ struct TrendlineView: View {
                                 DragGesture(minimumDistance: 0)
                                     .onChanged { g in
                                         guard !player.revealed else { return }
-                                        if player.trendStart == nil {
+                                        if !dragActive {
+                                            dragActive = true
                                             player.trendStart = indexFor(g.startLocation.x, slot, n)
                                         }
                                         player.trendEnd = indexFor(g.location.x, slot, n)
                                     }
+                                    .onEnded { _ in dragActive = false }
                             )
                     }
                 }
