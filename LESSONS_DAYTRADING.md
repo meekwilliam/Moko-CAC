@@ -10821,6 +10821,23 @@ So every trade is guaranteed to win | detail: Overstates certainty | wrong: Sizi
 So you never have to use a stop | detail: Unrelated | wrong: Sizing works with a stop, not instead of one.
 WHY: Small consistent risk limits the damage any one loss can do.
 
+
+[FILL] Risk per trade is commonly expressed as a [___] of the account.
+percent
+fixed dollar rule
+random guess
+WHY: Risk per trade is commonly set as a small, consistent percent of the account.
+
+[TF] Keeping risk per trade small and consistent is a commonly recommended habit.
+ANSWER: True
+WHY: Small, consistent risk per trade limits damage from any single loss.
+
+[MC] Why keep risk per trade small?
+So a single loss can't do outsized damage to the account.
+So every trade is guaranteed to win.
+So position size never has to be calculated.
+WHY: Small risk per trade limits the impact of any one loss, without guaranteeing outcomes.
+
 NODE 2
 TITLE: Calculating Dollar Risk
 CELEBRATION: You can calculate dollar risk!
@@ -10857,6 +10874,17 @@ WHY: 1% of $20,000 is $200.
 ANSWER: True
 WHY: The same percent of a bigger account is a bigger dollar amount.
 
+
+[FILL] Dollar risk equals account size multiplied by risk [___].
+percent
+color
+timeframe
+WHY: Multiplying account size by the risk percent gives the dollar risk amount.
+
+[TF] A larger account risking the same percent risks more dollars in absolute terms.
+ANSWER: True
+WHY: The same percent of a bigger account is a larger dollar amount.
+
 NODE 3
 TITLE: What Is 1R?
 CELEBRATION: You understand R!
@@ -10886,6 +10914,17 @@ WHY: 1R = the amount risked = $250.
 [TF] Measuring results in R lets you compare trades of different dollar sizes.
 ANSWER: True
 WHY: R normalizes results, so a "2R win" means the same regardless of position size.
+
+
+[FILL] "R" is shorthand for the amount [___] on a trade.
+risked
+made
+skipped
+WHY: R specifically represents the risk amount, used to measure results.
+
+[TF] Measuring results in R lets you compare trades of different sizes fairly.
+ANSWER: True
+WHY: R normalizes results across different position sizes.
 
 NODE 4
 TITLE: Reward in R
@@ -10923,6 +10962,17 @@ WHY: $600 gain on $200 risk is three times the risk — +3R.
 ANSWER: True
 WHY: Losing the whole risked amount is by definition −1R.
 
+
+[FILL] A gain of twice the amount risked is a [___] result.
++2R
++1R
+-1R
+WHY: Twice the risk gained is +2R, by definition.
+
+[TF] A full loss of the entire risked amount is described as -1R.
+ANSWER: True
+WHY: Losing exactly what was risked is, by definition, -1R.
+
 NODE 5
 TITLE: Position Size From Risk & Stop
 CELEBRATION: You understand position sizing!
@@ -10955,6 +11005,17 @@ A fixed size regardless of stop distance makes the dollar risk vary unpredictabl
 Size should never change.
 Stop distance never matters for sizing.
 WHY: Consistent dollar risk requires adjusting size to the stop distance.
+
+
+[FILL] Position size is worked [___] from your dollar risk and stop distance.
+backward
+forward
+randomly
+WHY: You start from the risk and stop, then solve for the position size.
+
+[TF] A wider stop distance calls for a larger position size to keep the same dollar risk.
+ANSWER: False
+WHY: A wider stop calls for a SMALLER size to keep the dollar risk the same, not larger.
 
 NODE 6
 TITLE: Position Sizing & R Review
@@ -10994,6 +11055,17 @@ Size randomly and hope | detail: No method | wrong: The unit is about a consiste
 Bigger size always means bigger profit | detail: Overstates | wrong: Size sets risk, not guaranteed profit.
 WHY: Consistent percent risk, stop-based sizing, and R measurement is the throughline.
 
+
+[FILL] This review ties together risk per trade, dollar risk, R, and [___].
+position sizing
+random guesses
+company names
+WHY: All four core ideas from this unit are reviewed together here.
+
+[TF] R lets you compare trade results across different position sizes.
+ANSWER: True
+WHY: Measuring in R (multiples of risk) makes results comparable regardless of size.
+
 UNIT 23 — Expectancy & Edge
 NODE 1
 TITLE: Win Rate Isn't Everything
@@ -11026,6 +11098,17 @@ Because it's always wrong | detail: Overstates | wrong: Win rate is useful, just
 Because winning never matters | detail: Backwards | wrong: Both how often and how much matter.
 WHY: You need both how often (win rate) and how much (R) to judge results.
 
+
+[FILL] Win rate measures how [___] you win, not how much.
+often
+much
+fast
+WHY: Win rate is purely a frequency measure, not a measure of size.
+
+[TF] A high win rate always means a profitable system.
+ANSWER: False
+WHY: Tiny wins and huge losses can still lose money overall, even with a high win rate.
+
 NODE 2
 TITLE: Combining Win Rate and R
 CELEBRATION: You can combine win rate and R!
@@ -11054,6 +11137,17 @@ profitable overall, thanks to the large average win.
 guaranteed to lose because win rate is under 50%.
 impossible to evaluate.
 WHY: Large average wins can more than offset frequent small losses.
+
+
+[FILL] Combining win rate with average [___] gives the honest picture.
+R
+color
+volume
+WHY: Frequency (win rate) plus size (average R) together tell the full story.
+
+[TF] A 40% win rate can still be profitable if the average win in R is large enough.
+ANSWER: True
+WHY: Large average wins can outweigh more frequent, smaller losses.
 
 NODE 3
 TITLE: What Is Expectancy?
@@ -11086,6 +11180,17 @@ Because it predicts the next trade exactly | detail: Overstates certainty | wron
 Because it ignores wins and losses | detail: Backwards | wrong: It's built from wins and losses.
 WHY: Expectancy is an average over many trades, not a promise about any single one.
 
+
+[FILL] Expectancy is the average [___] per trade, in R, over many trades.
+result
+guaranteed
+random
+WHY: Expectancy is a long-run average, measured in R.
+
+[TF] A positive expectancy means the average trade, over many trades, gains R.
+ANSWER: True
+WHY: That's the definition of positive expectancy.
+
 NODE 4
 TITLE: Winning With Under 50% Wins
 CELEBRATION: You understand how low win rates can still win!
@@ -11117,6 +11222,17 @@ Under 50% always means unprofitable.
 Average R never matters.
 WHY: Both win rate and average R matter; ignoring R misjudges the system.
 
+
+[FILL] A system can be profitable with a win rate below [___]%.
+50
+100
+0
+WHY: Sub-50% win rates can still be profitable if the average winner in R is large enough.
+
+[TF] You must win more than half your trades to be profitable.
+ANSWER: False
+WHY: With large enough winners in R, a sub-50% win rate can still profit overall.
+
 NODE 5
 TITLE: Sample Size Matters
 CELEBRATION: You understand sample size!
@@ -11147,6 +11263,17 @@ Because chance can make a few trades misleading in either direction | detail: Sm
 Because small samples are always accurate | detail: Backwards | wrong: They're the least reliable.
 Because sample size never matters | detail: Wrong | wrong: It's central to trusting an average.
 WHY: Small samples are dominated by luck, so they can badly mislead.
+
+
+[FILL] Expectancy is meaningful only over a [___] sample of trades.
+large
+tiny
+single
+WHY: A large sample is needed for averages like expectancy to be meaningful.
+
+[TF] Three winning trades in a row proves a system has positive expectancy.
+ANSWER: False
+WHY: A tiny sample can happen by chance; it doesn't prove long-run expectancy.
 
 NODE 6
 TITLE: Expectancy & Edge Review
@@ -11187,6 +11314,17 @@ Two wins prove a positive expectancy.
 Sample size is irrelevant.
 WHY: Expectancy needs a large sample; a couple of wins prove nothing.
 
+
+[FILL] This review ties together win rate, average R, expectancy, and [___].
+sample size
+random guesses
+company names
+WHY: All four core ideas from this unit are reviewed together here.
+
+[TF] Judging a system honestly requires combining win rate and average R over a large sample.
+ANSWER: True
+WHY: This has been the throughline — combine frequency and size, over enough trades.
+
 UNIT 24 — Market Condition Classification
 NODE 1
 TITLE: Trending, Ranging, or Volatile?
@@ -11223,6 +11361,17 @@ Ranging => Sideways between levels
 Volatile => Large, erratic swings
 WHY: These three broad conditions describe most markets.
 
+
+[FILL] Markets are commonly classified as trending, ranging, or [___].
+volatile
+guaranteed
+random
+WHY: Trending, ranging, and volatile are the three broad commonly cited conditions.
+
+[TF] Reading the market condition first frames how you read everything else.
+ANSWER: True
+WHY: Condition is commonly treated as the context for reading levels, patterns, and candles.
+
 NODE 2
 TITLE: Classifying a Trend
 CELEBRATION: You can classify a trend!
@@ -11254,6 +11403,17 @@ absence
 random walk
 WHY: Directional progression is what makes it a trend.
 
+
+[FILL] A trending condition shows directional [___] in the swings.
+progression
+absence
+randomness
+WHY: Directional progression (higher highs/lows or lower highs/lows) defines trending.
+
+[TF] Higher highs and higher lows describe a trending condition.
+ANSWER: True
+WHY: That progression is the defining structure of a trend.
+
 NODE 3
 TITLE: Classifying a Range
 CELEBRATION: You can classify a range!
@@ -11284,6 +11444,17 @@ sideways
 straight up
 straight down
 WHY: Sideways bounded movement is a range.
+
+
+[FILL] A ranging condition moves [___] between two levels.
+sideways
+straight up
+straight down
+WHY: Sideways movement between support and resistance defines a range.
+
+[TF] A ranging market makes strong directional progress.
+ANSWER: False
+WHY: A range is sideways — the opposite of directional progress.
 
 NODE 4
 TITLE: Classifying Volatile
@@ -11318,6 +11489,17 @@ Volatile and calm ranges are the same.
 Swing size doesn't matter.
 WHY: Volatile conditions have far larger, more erratic swings than a tidy range.
 
+
+[FILL] A volatile condition shows large, [___] swings.
+erratic
+tiny
+flat
+WHY: Large, erratic two-way swings define a volatile condition.
+
+[TF] Volatile conditions have larger, faster swings than a calm range.
+ANSWER: True
+WHY: Volatility means bigger, faster moves than a calm, tight range.
+
 NODE 5
 TITLE: Why Classification Matters
 CELEBRATION: You understand why condition matters!
@@ -11348,6 +11530,17 @@ It's the context you read first, before levels and patterns | detail: Context fi
 It's irrelevant to reading a chart | detail: Backwards | wrong: It's central context.
 It guarantees the next move | detail: Overstates certainty | wrong: It frames, it doesn't guarantee.
 WHY: Condition is the first-read context that frames every other read.
+
+
+[FILL] The market condition [___] how you read levels, patterns, and candles.
+frames
+ignores
+replaces
+WHY: Condition sets the context for every other read.
+
+[TF] The same level can behave differently in a range versus a volatile condition.
+ANSWER: True
+WHY: A level that holds calmly in a range can get blown through when volatile.
 
 NODE 6
 TITLE: Classification Drill & Review
@@ -11392,6 +11585,17 @@ Classify trending, ranging, or volatile first — it frames every other read | d
 Classification guarantees the next move | detail: Overstates certainty | wrong: It frames, not guarantees.
 Condition never matters | detail: Backwards | wrong: It's core context.
 WHY: Condition-first reading is the throughline.
+
+
+[FILL] This review ties together trending, ranging, and [___] classification.
+volatile
+random
+guaranteed
+WHY: All three broad conditions from this unit are reviewed together here.
+
+[TF] Classifying market condition is a first-read step that frames the rest of your analysis.
+ANSWER: True
+WHY: This has been the throughline — condition-first reading, framing everything else.
 
 UNIT 25 — Moving Averages
 NODE 1
