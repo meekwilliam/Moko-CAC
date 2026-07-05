@@ -23896,7 +23896,7 @@
        "type": "intro",
        "title": "Same Asset, Different Rhythm",
        "text": "The same chart can behave differently depending on the session — thinner, choppier moves in pre/after-hours; different rhythms across the open, midday, and power hour.",
-       "chart": "choppy"
+       "chart": "volatile"
       },
       {
        "type": "multiple_choice",
@@ -23969,7 +23969,7 @@
        ],
        "concern": "Tying it all together",
        "explanation": "Session context is one more descriptive factor to combine with the rest of your reading skills.",
-       "chart": "choppy"
+       "chart": "volatile"
       },
       {
        "type": "spot_mistake",
@@ -23982,7 +23982,7 @@
        ],
        "correct": 2,
        "explanation": "The same shape can carry different meaning depending on which session it happened in.",
-       "chart": "choppy"
+       "chart": "volatile"
       }
      ]
     },
