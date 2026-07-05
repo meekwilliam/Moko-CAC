@@ -5147,6 +5147,11 @@ ceiling
 wick
 WHY: The floor analogy is a common way to remember what support describes.
 
+[MARKLEVEL] Drag the line to the support this chart keeps bouncing from.
+CHART: supportBounce
+LEVEL: support
+WHY: The floor price keeps reacting off of is the support level.
+
 [MC] Why might a chart reader mark a support level on a chart?
 To note a price area where price has reacted in the past, for reference.
 To guarantee price will bounce there again in the future.
@@ -5216,6 +5221,11 @@ ceiling
 floor
 wick
 WHY: The ceiling analogy is a common way to remember what resistance describes.
+
+[MARKLEVEL] Drag the line to the resistance this chart keeps rejecting from.
+CHART: resistanceRejection
+LEVEL: resistance
+WHY: The ceiling price keeps reacting off of is the resistance level.
 
 [MC] Why might a chart reader mark a resistance level on a chart?
 To note a price area where price has reacted in the past, for reference.
@@ -9317,6 +9327,12 @@ CHART: pullbackUptrend
 TARGET: 3
 WHY: The 3rd candle makes a higher low, keeping the uptrend healthy.
 
+[TRENDLINE] Drag to connect the sequence of higher lows in this healthy uptrend.
+CHART: pullbackUptrend
+TARGET_START: 1
+TARGET_END: 3
+WHY: Candles 1 and 3 are the two higher lows, each pullback bottoming above the last.
+
 [MC] A healthy uptrend makes a series of...
 higher highs and higher lows.
 lower highs and lower lows.
@@ -9363,6 +9379,12 @@ CHART: lowerHighsDowntrend
 CHART: lowerHighsDowntrend
 TARGET: 3
 WHY: The 3rd candle makes a lower high, keeping the downtrend healthy.
+
+[TRENDLINE] Drag to connect the sequence of lower highs in this healthy downtrend.
+CHART: lowerHighsDowntrend
+TARGET_START: 1
+TARGET_END: 3
+WHY: Candles 1 and 3 are the two lower highs, each bounce topping below the last.
 
 [MC] A healthy downtrend makes a series of...
 lower highs and lower lows.
