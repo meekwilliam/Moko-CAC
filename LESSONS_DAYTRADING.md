@@ -3518,7 +3518,382 @@ Market mechanics guarantee perfect predictions.
 This unit teaches nothing useful at all.
 WHY: Like the rest of this course, this unit builds descriptive understanding, not predictive certainty.
 
-UNIT 6 — Trends & Structure
+UNIT 6 — Volume Analysis
+NODE 1
+TITLE: Reading Volume Bars
+CELEBRATION: You understand volume bars!
+
+INTRO
+TITLE: A Bar for Every Candle
+TEXT: Most charts show a volume bar beneath each candle — its height reflects how many shares traded during that period. Reading volume alongside price is a core intermediate skill.
+
+[MC] A volume bar's height reflects...
+How many shares traded during that period.
+The candle's exact color.
+The company's total revenue.
+WHY: Volume bar height specifically shows shares traded in that period.
+
+[TF] Volume bars are typically read alongside the price candle above them, not in isolation.
+ANSWER: True
+WHY: Volume adds context to the price action it sits beneath.
+
+[FILL] A taller volume bar means [___] shares traded that period.
+more
+fewer
+zero
+WHY: Height directly reflects the amount traded.
+
+[MATCH] Match the volume bar height to its meaning.
+Tall bar => More shares traded that period
+Short bar => Fewer shares traded that period
+Volume bar => A visual count of shares traded per period
+WHY: Bar height is a direct, visual read of trading activity.
+
+[PICK] Why read volume alongside price, rather than price alone?
+CONCERN: Understanding the value of volume
+Volume adds context about how much participation was behind a price move | detail: Participation context
+Volume replaces the need to look at price entirely | detail: Incomplete | wrong: Volume is read alongside price, not instead of it.
+Volume guarantees the next price move | detail: Overstates certainty | wrong: Volume is descriptive context, not a guarantee.
+WHY: Volume adds participation context to a price move — it doesn't replace or guarantee anything.
+
+[SPOT] Someone reads volume bars completely separately, without ever looking at the price candles above them.
+QUESTION: What is the mistake?
+Volume is commonly read alongside price for context, not in total isolation from it.
+Volume should always be read alone.
+Volume has no relationship to price at all.
+WHY: Volume and price are read together for a fuller picture.
+
+NODE 2
+TITLE: High vs. Low Volume
+CELEBRATION: You can classify high vs. low volume!
+
+INTRO
+TITLE: Compared to What's Typical
+TEXT: "High" or "low" volume is judged relative to what's typical for that asset — a big bar for one stock might be an ordinary bar for another.
+
+[MC] Volume is commonly judged as "high" or "low" relative to...
+What's typical for that specific asset.
+A single universal number for all stocks.
+The time of day only.
+WHY: High/low volume is a relative judgment, compared to that asset's own typical activity.
+
+[TF] A volume level that's "high" for one stock could be perfectly ordinary for a much more actively traded stock.
+ANSWER: True
+WHY: Volume is judged relative to each asset's own typical activity level, not a single universal threshold.
+
+[FILL] High or low volume is a [___] judgment, not a fixed universal number.
+relative
+absolute
+random
+WHY: Comparing to what's typical for that specific asset is the relative approach.
+
+[MC] Why might comparing volume to recent history matter?
+It helps judge whether current activity is unusually high or low for that asset.
+It has no bearing on reading volume at all.
+It only matters for the very first candle on a chart.
+WHY: Comparing to recent history gives a relative baseline for judging current volume.
+
+[PICK] How should "high volume" be judged?
+CONCERN: Reading volume relatively
+Relative to what's typical for that specific asset | detail: A comparison, not a fixed number
+Using one single universal volume number for every stock | detail: Overstates it | wrong: Typical volume varies widely between assets.
+Ignoring recent history entirely | detail: Incomplete | wrong: Recent history is exactly the baseline used for comparison.
+WHY: Volume is judged relative to that asset's typical activity, not a fixed universal figure.
+
+[SPOT] Someone assumes any stock trading 1 million shares must have "high" volume, without checking that stock's typical activity.
+QUESTION: What is the mistake?
+Without comparing to that stock's typical volume, there's no way to know if 1 million shares is high or low for it.
+Any large-sounding number is automatically high volume.
+Volume never needs a comparison point.
+WHY: A single number means nothing without comparing it to that asset's own typical activity.
+
+NODE 3
+TITLE: Volume on Breakouts
+CELEBRATION: You understand volume's role in breakouts!
+
+INTRO
+TITLE: Does the Move Have Backing?
+TEXT: A breakout on higher-than-typical volume is commonly read as having more participation behind it than one on quiet, typical volume.
+CHART: breakout
+
+[MC] A breakout on unusually high volume is commonly read as...
+Having more participation behind the move.
+Guaranteed to succeed.
+Identical in meaning to a low-volume breakout.
+WHY: Higher volume on a breakout is commonly read as more participation, without guaranteeing success.
+
+[TF] A breakout on very low, quiet volume is commonly read the same way as one on high volume.
+ANSWER: False
+WHY: Volume level is commonly read as a meaningful difference between the two, not identical.
+
+[FILL] A breakout with strong volume behind it is commonly described as having more [___].
+participation
+guarantee
+certainty
+WHY: Higher volume reflects more participants involved in that move.
+
+[MATCH] Match the breakout volume scenario to its commonly cited read.
+Breakout on high volume => More participation behind the move
+Breakout on low volume => Less participation, commonly read with more caution
+Volume confirming a breakout => A commonly cited form of confluence
+WHY: Volume is commonly combined with a breakout as a form of confluence.
+
+[PICK] Which best describes reading volume on a breakout?
+CHART: breakout
+CONCERN: Reading volume as context
+Higher volume suggests more participation, adding confluence to the breakout | detail: Descriptive, not a guarantee
+High volume on a breakout guarantees it continues | detail: Overstates certainty | wrong: Even high-volume breakouts can still fail.
+Volume has no relationship to breakouts | detail: Backwards | wrong: Volume is commonly read as added context on breakouts.
+WHY: Volume adds confluence to a breakout read, without guaranteeing the outcome.
+
+[SPOT] Someone assumes a low-volume breakout is exactly as convincing as a high-volume one.
+CHART: breakout
+QUESTION: What is the mistake?
+Volume level is commonly read as a meaningful difference — a low-volume breakout is commonly treated with more caution.
+Volume never matters for breakouts.
+All breakouts are read identically regardless of volume.
+WHY: Volume is commonly used to gauge how much participation is behind a breakout.
+
+NODE 4
+TITLE: Volume on Reversals
+CELEBRATION: You understand volume's role in reversals!
+
+INTRO
+TITLE: A Surge at the Turn
+TEXT: A reversal accompanied by a surge in volume is commonly read as more significant than one on quiet, typical volume.
+CHART: resistanceRejection
+
+[MC] A reversal on unusually high volume is commonly read as...
+Potentially more significant, given the added participation.
+Automatically fake.
+Identical in meaning to a quiet-volume reversal.
+WHY: Higher volume at a reversal is commonly read as adding significance, without guaranteeing anything.
+
+[TF] A reversal on very quiet volume is commonly read the same as one with a volume surge.
+ANSWER: False
+WHY: Volume level is commonly read as a meaningful difference at reversal points too.
+
+[FILL] A volume surge at a turning point is commonly read as adding [___] to that reversal.
+significance
+guarantee
+certainty
+WHY: More participation at the turn is commonly read as more meaningful, not certain.
+
+[MATCH] Match the reversal volume scenario to its commonly cited read.
+Reversal on high volume => Commonly read as potentially more significant
+Reversal on low volume => Commonly read with more caution
+Volume at a reversal => Another commonly cited form of confluence
+WHY: Volume is commonly combined with reversal patterns as a form of confluence, same idea as with breakouts.
+
+[PICK] Which best describes reading volume on a reversal?
+CHART: resistanceRejection
+CONCERN: Reading volume as context
+A volume surge adds confluence to a reversal read, without guaranteeing it | detail: Descriptive, not a guarantee
+High volume at a reversal guarantees the trend has permanently turned | detail: Overstates certainty | wrong: Even high-volume reversals can fail.
+Volume has no relationship to reversals | detail: Backwards | wrong: Volume is commonly read as added context at reversals.
+WHY: Volume adds confluence to a reversal read, without guaranteeing the outcome.
+
+[SPOT] Someone assumes every reversal, regardless of volume, is equally significant.
+CHART: resistanceRejection
+QUESTION: What is the mistake?
+Volume level is commonly used to gauge how significant a reversal might be — treating them all as identical ignores that context.
+Volume never matters for reversals.
+All reversals are read identically regardless of volume.
+WHY: Volume is commonly read as meaningful added context at a reversal point.
+
+NODE 5
+TITLE: Climactic Volume
+CELEBRATION: You understand climactic volume!
+
+INTRO
+TITLE: An Extreme Volume Spike
+TEXT: Climactic volume describes an extreme, sudden spike in volume — commonly noted near the end of a strong move, though not a guaranteed signal of an ending.
+CHART: volatile
+
+[MC] "Climactic volume" describes...
+An extreme, sudden spike in trading activity.
+A perfectly steady, average volume level.
+The complete absence of any trading.
+WHY: Climactic volume is specifically an extreme spike, not steady or absent activity.
+
+[TF] Climactic volume is commonly noted near the end of a strong move, though it doesn't guarantee an ending.
+ANSWER: True
+WHY: It's a commonly cited observation, not a guaranteed signal of an ending.
+
+[FILL] Climactic volume describes an extreme, sudden [___] in activity.
+spike
+absence
+average
+WHY: A spike, not an absence or an average level, defines climactic volume.
+
+[MATCH] Match the volume type to its description.
+Climactic volume => An extreme, sudden spike in activity
+Typical volume => Ordinary, expected activity for that asset
+Volume spike => Another term commonly used alongside "climactic"
+WHY: Climactic volume specifically describes an extreme spike, distinct from typical activity.
+
+[PICK] Why treat climactic volume as a clue rather than a certainty?
+CHART: volatile
+CONCERN: Reading it honestly
+Because a spike is commonly noted near move-endings, but doesn't guarantee one | detail: Descriptive tendency
+Because climactic volume always guarantees the move ends immediately | detail: Overstates certainty | wrong: It's a commonly cited tendency, not a guarantee.
+Because climactic volume has no relationship to move-endings at all | detail: Undersells it | wrong: It IS commonly cited context, just not certain.
+WHY: Like other volume reads, climactic volume is descriptive context, not a guarantee.
+
+[SPOT] Someone assumes every climactic volume spike guarantees the current move is about to end.
+CHART: volatile
+QUESTION: What is the mistake?
+Climactic volume is commonly noted near endings, but it doesn't guarantee one — the move can still continue.
+Every volume spike guarantees an immediate ending.
+Climactic volume never relates to move-endings at all.
+WHY: This is a commonly cited tendency, not a certainty.
+
+NODE 6
+TITLE: Dry-Up Volume
+CELEBRATION: You understand dry-up volume!
+
+INTRO
+TITLE: When Activity Fades
+TEXT: "Dry-up" volume describes an unusually quiet period, often noted during consolidation or a pause — commonly read as reduced participation, not any specific direction.
+CHART: sideways
+
+[MC] "Dry-up" volume describes...
+An unusually quiet period of trading activity.
+An extreme spike in activity.
+Trading that has completely and permanently stopped.
+WHY: Dry-up volume specifically describes unusually low, quiet activity.
+
+[TF] Dry-up volume is commonly noted during consolidation or a pause in the move.
+ANSWER: True
+WHY: Quiet volume commonly accompanies sideways, pausing price action.
+
+[FILL] Dry-up volume reflects reduced [___], not a specific price direction.
+participation
+guarantee
+color
+WHY: It describes lower participation, without implying up or down on its own.
+
+[MATCH] Match the volume type to its description.
+Climactic volume => An extreme spike, often near a strong move's end
+Dry-up volume => Unusually quiet activity, often during a pause
+Typical volume => Ordinary activity for that asset
+WHY: Climactic and dry-up volume are commonly discussed as opposite extremes.
+
+[PICK] What does dry-up volume suggest, on its own?
+CHART: sideways
+CONCERN: Reading it descriptively
+Reduced participation during that period, without indicating a specific direction | detail: Descriptive, not directional
+A guarantee that a big move is about to happen | detail: Overstates certainty | wrong: Dry-up volume describes quietness, not a guaranteed next move.
+That trading has permanently stopped altogether | detail: Overstates it | wrong: Trading continues, just at reduced levels.
+WHY: Dry-up volume describes reduced activity, not a guaranteed next direction.
+
+[SPOT] Someone assumes dry-up volume always precedes a big upward move.
+CHART: sideways
+QUESTION: What is the mistake?
+Dry-up volume describes reduced participation generally — it doesn't specify or guarantee an upward move.
+Dry-up volume always means a big rally is coming.
+Dry-up volume always means a crash is coming.
+WHY: Dry-up volume is descriptive of quietness, not a directional guarantee either way.
+
+NODE 7
+TITLE: Comparing Candles and Volume
+CELEBRATION: You can combine candle and volume reads!
+
+INTRO
+TITLE: Two Reads Together
+TEXT: Combining a candle's shape with its volume gives a fuller picture — a big-bodied candle on high volume reads differently than the same shape on quiet volume.
+CHART: marubozu
+
+[MC] A large-bodied candle on unusually high volume is commonly read as...
+More significant, given the added participation behind it.
+Identical in meaning to the same candle on quiet volume.
+Meaningless, since volume never matters.
+WHY: Combining candle shape with volume level adds confluence to the read.
+
+[TF] The same candle shape can carry a different reading depending on the volume behind it.
+ANSWER: True
+WHY: Volume adds context that can change how a candle's shape is interpreted.
+
+[FILL] Combining candle shape with volume is an example of [___] from an earlier unit.
+confluence
+random guessing
+guaranteed prediction
+WHY: This is the same confluence idea — multiple agreeing factors — applied to candles and volume.
+
+[MATCH] Match the combination to its commonly cited read.
+Big body + high volume => Strong, well-participated move
+Big body + low volume => Less convincing, lower-participation move
+Small body + high volume => Notable indecision despite active participation
+WHY: Combining body size and volume gives a richer, more nuanced read than either alone.
+
+[PICK] Why combine candle shape with volume, rather than reading candles alone?
+CHART: marubozu
+CONCERN: Reading two factors together
+Volume adds participation context that can strengthen or weaken the candle's read | detail: A form of confluence
+Volume always contradicts what the candle shows | detail: Incorrect | wrong: Volume can agree with or add nuance to the candle, not just contradict it.
+Combining them guarantees the next move | detail: Overstates certainty | wrong: Combining factors is still descriptive, not a guarantee.
+WHY: Volume and candle shape together give a fuller, more confluent read.
+
+[SPOT] Someone reads a big-bodied candle as equally significant regardless of the volume behind it.
+CHART: marubozu
+QUESTION: What is the mistake?
+Volume level can meaningfully change how significant a candle's shape is read to be.
+Volume never changes how a candle should be read.
+Candle shape is the only thing that ever matters.
+WHY: Combining the two factors (confluence) gives a fuller picture than shape alone.
+
+NODE 8
+TITLE: Volume Analysis Review
+CELEBRATION: You've completed the Volume Analysis unit!
+
+INTRO
+TITLE: Bringing It Together
+TEXT: A final review of reading volume bars, high vs. low volume, volume on breakouts/reversals, climactic and dry-up volume, and combining candles with volume.
+
+[TF] Volume is commonly read alongside price and candle shape, not in isolation.
+ANSWER: True
+WHY: That's the common thread across every lesson in this unit.
+
+[FILL] High or low volume is judged [___] to what's typical for that asset.
+relative
+absolute
+without regard
+WHY: Reviewing the relative-judgment idea from earlier in this unit.
+
+[MC] What do climactic and dry-up volume have in common?
+Both are extremes (high or low) commonly noted at certain points, without guaranteeing an outcome.
+Both guarantee the exact same future price move.
+Neither has any relationship to price action.
+WHY: Both are descriptive extremes, read as context rather than guarantees.
+
+[MATCH] Match the term to its one-line meaning.
+Climactic volume => An extreme spike, often near a move's end
+Dry-up volume => Unusually quiet activity, often during a pause
+Volume + candle => Combining reads for a fuller, more confluent picture
+WHY: A quick recap of the unit's core vocabulary.
+
+[FILL2] Volume adds [1] to price reads, functioning as a form of [2] when combined with candles or levels.
+BLANK1: *context | guarantees | randomness
+BLANK2: *confluence | contradiction | color
+WHY: Volume is context that can add confluence, not a standalone guarantee.
+
+[PICK] Which best summarizes this unit?
+CHART: breakout
+CONCERN: Reviewing the big picture
+Volume adds participation context to price reads — descriptive, and stronger in combination | detail: The central theme
+Volume guarantees every price outcome | detail: Overstates certainty | wrong: This contradicts the whole unit.
+Volume has no relationship to price action | detail: Backwards | wrong: Volume is a core, descriptive companion to price.
+WHY: Descriptive, confluence-adding volume reading is the throughline of this unit.
+
+[SPOT] Someone finishes this unit and starts treating every high-volume move as a guaranteed success.
+CHART: breakout
+QUESTION: What is the mistake?
+Volume adds context and confluence — it never guarantees a move's success.
+High volume always guarantees success.
+Volume has no relationship to move quality at all.
+WHY: This unit consistently frames volume as descriptive context, never a guarantee.
+
+UNIT 7 — Trends & Structure
 NODE 1
 TITLE: Uptrend Basics
 CELEBRATION: You understand uptrends!
@@ -4413,7 +4788,7 @@ WHY: Descriptive clarity, not predictive certainty, has been the throughline.
 ANSWER: True
 WHY: These concepts complement each other rather than standing alone.
 
-UNIT 7 — Support & Resistance
+UNIT 8 — Support & Resistance
 NODE 1
 TITLE: What Is Support?
 CELEBRATION: You understand support levels!
@@ -5171,7 +5546,7 @@ WHY: Descriptive, not predictive, framing has been the throughline of this unit.
 ANSWER: True
 WHY: Both describe possible outcomes once a level has been broken.
 
-UNIT 8 — Double Tops & Bottoms
+UNIT 9 — Double Tops & Bottoms
 NODE 1
 TITLE: What Is a Double Top?
 CELEBRATION: You can spot a double top on a chart!
@@ -5935,7 +6310,7 @@ CHART: doubleBottom
 LEVEL: support
 WHY: Support runs across the bottoms of the two troughs.
 
-UNIT 9 — Head & Shoulders
+UNIT 10 — Head & Shoulders
 NODE 1
 TITLE: What Is a Head & Shoulders?
 CELEBRATION: You can spot a head & shoulders on a chart!
@@ -6592,7 +6967,7 @@ Memorizing one exact price forever.
 Ignoring the neckline entirely.
 WHY: Combining structure and confirmation is the core skill from this unit.
 
-UNIT 10 — Triangles
+UNIT 11 — Triangles
 NODE 1
 TITLE: What Is an Ascending Triangle?
 CELEBRATION: You can spot an ascending triangle!
@@ -6946,7 +7321,7 @@ WHY: All three triangle types are reviewed together in this final lesson.
 ANSWER: True
 WHY: This remains true throughout — triangles inform a bias, never a guarantee.
 
-UNIT 11 — Flags & Pennants
+UNIT 12 — Flags & Pennants
 NODE 1
 TITLE: What Is a Bull Flag?
 CELEBRATION: You can spot a bull flag!
@@ -7244,7 +7619,7 @@ WHY: All three continuation patterns are reviewed together here.
 ANSWER: True
 WHY: This remains true throughout — flags and pennants suggest a tendency, never a guarantee.
 
-UNIT 12 — Wedges & Channels
+UNIT 13 — Wedges & Channels
 NODE 1
 TITLE: What Is a Rising Wedge?
 CELEBRATION: You can spot a rising wedge!
@@ -7541,7 +7916,7 @@ WHY: All the structures from this unit are reviewed together here.
 ANSWER: True
 WHY: As with other patterns, wedges suggest a bias, never a guaranteed outcome.
 
-UNIT 13 — Trendlines
+UNIT 14 — Trendlines
 NODE 1
 TITLE: What Is a Trendline?
 CELEBRATION: You understand trendlines!
@@ -7843,7 +8218,7 @@ Drawing random diagonal lines anywhere on the chart.
 Ignoring trendlines entirely.
 WHY: Grounding trendlines in actual turning points, then reading touches/breaks, is the core skill.
 
-UNIT 14 — Ranges & Consolidation
+UNIT 15 — Ranges & Consolidation
 NODE 1
 TITLE: What Is a Range?
 CELEBRATION: You can spot a range!
@@ -8158,7 +8533,7 @@ Assuming every range lasts forever.
 Assuming every breakout is guaranteed to continue.
 WHY: Reading boundaries plus healthy skepticism about breaks is the core skill here.
 
-UNIT 15 — Breakouts & Retests
+UNIT 16 — Breakouts & Retests
 NODE 1
 TITLE: What Is a Breakout?
 CELEBRATION: You can spot a breakout!
@@ -8461,7 +8836,7 @@ Assuming every breakout is guaranteed to hold.
 Ignoring breakouts entirely.
 WHY: Healthy skepticism paired with reading the retest is the core skill here.
 
-UNIT 16 — Pullbacks & Continuation
+UNIT 17 — Pullbacks & Continuation
 NODE 1
 TITLE: What Is a Pullback?
 CELEBRATION: You understand pullbacks!
@@ -8755,7 +9130,7 @@ Assuming every pullback is a full reversal.
 Ignoring pullbacks entirely.
 WHY: Checking whether the structure holds is the core skill from this unit.
 
-UNIT 17 — Momentum & Exhaustion
+UNIT 18 — Momentum & Exhaustion
 NODE 1
 TITLE: Reading Momentum From Bodies
 CELEBRATION: You can read momentum off a chart!
@@ -9043,7 +9418,7 @@ Only ever looking at candle color.
 Ignoring candle shape entirely.
 WHY: Combining body and wick reads is the core skill from this unit.
 
-UNIT 18 — Confluence
+UNIT 19 — Confluence
 NODE 1
 TITLE: What Is Confluence?
 CELEBRATION: You understand confluence!
@@ -9342,7 +9717,7 @@ Acting on a single isolated signal as if it were certain.
 Ignoring levels, patterns, and trend entirely.
 WHY: Seeking agreement across factors (without assuming certainty) is the core skill here.
 
-UNIT 19 — Gaps
+UNIT 20 — Gaps
 NODE 1
 TITLE: What Is a Gap?
 CELEBRATION: You can spot a gap!
@@ -9587,7 +9962,7 @@ Assuming every gap fills immediately.
 Ignoring gaps entirely.
 WHY: Reading gaps descriptively, without assuming a guaranteed fill, is the core skill here.
 
-UNIT 20 — Multi-Timeframe Basics
+UNIT 21 — Multi-Timeframe Basics
 NODE 1
 TITLE: What Is a Timeframe?
 CELEBRATION: You understand timeframes!
@@ -9880,7 +10255,7 @@ Only ever looking at one single timeframe forever.
 Ignoring timeframes entirely.
 WHY: Top-down, context-first reading across timeframes is the core skill here.
 
-UNIT 21 — Chart-Reading Mastery
+UNIT 22 — Chart-Reading Mastery
 NODE 1
 TITLE: Pattern Speed Round
 CELEBRATION: You can name any pattern fast!
@@ -10239,7 +10614,7 @@ Memorizing one guaranteed rule for every situation.
 Ignoring charts entirely and guessing.
 WHY: Combining multiple descriptive reads is the core Intermediate-level skill.
 
-UNIT 22 — Risk Management
+UNIT 23 — Risk Management
 NODE 1
 TITLE: What Is Risk Per Trade?
 CELEBRATION: You understand risk per trade!
@@ -10928,7 +11303,7 @@ WHY: All the core ideas from this unit are reviewed together here.
 ANSWER: False
 WHY: Risk management limits the damage from losses; it doesn't eliminate losses entirely.
 
-UNIT 23 — Strategy Types
+UNIT 24 — Strategy Types
 NODE 1
 TITLE: What Is Scalping?
 CELEBRATION: You understand scalping!
@@ -11477,7 +11852,7 @@ WHY: All six strategy types from this unit are reviewed together here.
 ANSWER: True
 WHY: This has been the throughline — descriptive categories, never guaranteed signals.
 
-UNIT 24 — Position Sizing & R
+UNIT 25 — Position Sizing & R
 NODE 1
 TITLE: Risk Per Trade
 CELEBRATION: You understand risk per trade!
@@ -11754,7 +12129,7 @@ WHY: All four core ideas from this unit are reviewed together here.
 ANSWER: True
 WHY: Measuring in R (multiples of risk) makes results comparable regardless of size.
 
-UNIT 25 — Expectancy & Edge
+UNIT 26 — Expectancy & Edge
 NODE 1
 TITLE: Win Rate Isn't Everything
 CELEBRATION: You understand why win rate alone misleads!
@@ -12013,7 +12388,7 @@ WHY: All four core ideas from this unit are reviewed together here.
 ANSWER: True
 WHY: This has been the throughline — combine frequency and size, over enough trades.
 
-UNIT 26 — Market Condition Classification
+UNIT 27 — Market Condition Classification
 NODE 1
 TITLE: Trending, Ranging, or Volatile?
 CELEBRATION: You can classify market conditions!
@@ -12285,7 +12660,7 @@ WHY: All three broad conditions from this unit are reviewed together here.
 ANSWER: True
 WHY: This has been the throughline — condition-first reading, framing everything else.
 
-UNIT 27 — Moving Averages
+UNIT 28 — Moving Averages
 NODE 1
 TITLE: What Is a Moving Average?
 CELEBRATION: You understand moving averages!
@@ -12581,7 +12956,7 @@ WHY: All the core ideas from this unit are reviewed together here.
 ANSWER: True
 WHY: This has been the throughline — smoothed, lagging, descriptive trend reading.
 
-UNIT 28 — Oscillators: RSI & MACD
+UNIT 29 — Oscillators: RSI & MACD
 NODE 1
 TITLE: What Is an Oscillator?
 CELEBRATION: You understand oscillators!
@@ -12832,7 +13207,7 @@ WHY: All the core ideas from this unit are reviewed together here.
 ANSWER: True
 WHY: This has been the throughline — descriptive, derived, lagging, never guaranteed.
 
-UNIT 29 — Trade Planning & Process
+UNIT 30 — Trade Planning & Process
 NODE 1
 TITLE: What Is a Trade Plan?
 CELEBRATION: You understand trade plans!
@@ -13085,7 +13460,7 @@ WHY: All the core ideas from this unit are reviewed together here.
 ANSWER: True
 WHY: This has been true throughout — plan ahead, then actually follow it.
 
-UNIT 30 — VWAP & Bollinger Bands
+UNIT 31 — VWAP & Bollinger Bands
 NODE 1
 TITLE: What Is VWAP?
 CELEBRATION: You understand VWAP!
@@ -13337,7 +13712,7 @@ WHY: Both tools from this unit are reviewed together here.
 ANSWER: True
 WHY: This has been the throughline — descriptive, average-based context, never guaranteed signals.
 
-UNIT 31 — Drawdowns & Losing Streaks
+UNIT 32 — Drawdowns & Losing Streaks
 NODE 1
 TITLE: What Is a Drawdown?
 CELEBRATION: You understand drawdowns!
@@ -13595,7 +13970,7 @@ WHY: All the core ideas from this unit are reviewed together here.
 ANSWER: True
 WHY: This has been the throughline — normal variance, plus recovery math driving preservation.
 
-UNIT 32 — Journaling & Review
+UNIT 33 — Journaling & Review
 NODE 1
 TITLE: Why Journal?
 CELEBRATION: You understand journaling!
@@ -13848,7 +14223,7 @@ WHY: All the core ideas from this unit are reviewed together here.
 ANSWER: True
 WHY: This has been true throughout — honest records, process focus, and the improvement loop.
 
-UNIT 33 — Trading Psychology
+UNIT 34 — Trading Psychology
 NODE 1
 TITLE: What Is FOMO?
 CELEBRATION: You understand FOMO!
@@ -14397,7 +14772,7 @@ WHY: All the core patterns from this unit are reviewed together here.
 ANSWER: True
 WHY: This has been the throughline — emotional patterns pulling away from disciplined plan-following.
 
-UNIT 34 — Full Simulation Training
+UNIT 35 — Full Simulation Training
 NODE 1
 TITLE: Classifying Trending Markets
 CELEBRATION: You can classify a trending market!
