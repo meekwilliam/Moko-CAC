@@ -10953,7 +10953,420 @@ Memorizing one guaranteed rule for every situation.
 Ignoring charts entirely and guessing.
 WHY: Combining multiple descriptive reads is the core Intermediate-level skill.
 
-UNIT 24 — Risk Management
+UNIT 24 — Trading Sessions & News
+NODE 1
+TITLE: Market Sessions Overview
+CELEBRATION: You understand the basic session structure!
+
+INTRO
+TITLE: Pre-Market and the Open
+TEXT: Before the standard session, "pre-market" trading happens with thinner liquidity. "The open" is the first stretch of the standard session, commonly the most active part of the day.
+
+[MC] "Pre-market" refers to...
+Trading before the standard session begins.
+Trading only on weekends.
+A period when markets are fully closed.
+WHY: Pre-market is the extended session before the standard open.
+
+[TF] Pre-market trading commonly has thinner liquidity than the standard session.
+ANSWER: True
+WHY: Fewer participants are commonly active during pre-market hours.
+
+[FILL] "The open" refers to the first stretch of the [___] session.
+standard
+pre-market
+after-hours
+WHY: "The open" describes the beginning of the standard trading session.
+
+[MATCH] Match the session period to its common trait.
+Pre-market => Thinner liquidity, before standard hours
+The open => Commonly the most active part of the day
+Standard session => The main trading hours most participants use
+WHY: Each session period commonly has a distinct liquidity and activity profile.
+
+[PICK] Why is "the open" commonly considered especially active?
+CONCERN: Understanding session structure
+Many participants who were waiting through pre-market act once standard hours begin | detail: A commonly cited pattern
+The open has no relationship to activity level | detail: Incorrect | wrong: The open is commonly one of the most active periods.
+Trading is impossible during the open | detail: Incorrect | wrong: The open is trading, just often the busiest part.
+WHY: Pent-up activity from pre-market commonly concentrates right at the open.
+
+[SPOT] Someone assumes pre-market liquidity is always identical to the standard session's.
+QUESTION: What is the mistake?
+Pre-market commonly has thinner liquidity than the standard session — treating them as identical ignores that difference.
+Pre-market always has more liquidity than standard hours.
+Session timing never affects liquidity.
+WHY: Liquidity commonly varies a lot by session, a pattern worth being aware of.
+
+NODE 2
+TITLE: Midday Lull and Power Hour
+CELEBRATION: You understand the midday lull and power hour!
+
+INTRO
+TITLE: The Quiet Middle, the Busy End
+TEXT: Midday ("lunch") is commonly a quieter stretch with reduced activity. "Power hour" is the final hour of the standard session, commonly picking activity back up.
+
+[MC] The midday period is commonly described as...
+Quieter, with reduced activity compared to the open or close.
+The single busiest period of the entire day.
+A period when the market is fully closed.
+WHY: Midday is commonly a lull in activity between the open and the close.
+
+[TF] "Power hour" refers to the final hour of the standard session.
+ANSWER: True
+WHY: That's the standard meaning of the term.
+
+[FILL] Power hour commonly sees activity [___] compared to the midday lull.
+pick back up
+disappear entirely
+stay identical
+WHY: Activity commonly increases again heading into the close.
+
+[MATCH] Match the session period to its common activity level.
+Midday lull => Reduced activity
+Power hour => Activity picking back up
+Standard session shape => Busy-quiet-busy across open, midday, and close
+WHY: Standard sessions commonly follow this busy-quiet-busy activity pattern.
+
+[PICK] Why might power hour commonly see increased activity?
+CONCERN: Understanding this session period
+Participants commonly position or adjust ahead of the session's close | detail: A commonly cited pattern
+Power hour has no relationship to activity level | detail: Incorrect | wrong: It's commonly one of the more active periods.
+The market briefly reopens during power hour | detail: Incorrect | wrong: Power hour is part of the same standard session, not a reopening.
+WHY: End-of-day positioning is a commonly cited reason for power hour's added activity.
+
+[SPOT] Someone assumes midday is always the busiest part of the trading day.
+QUESTION: What is the mistake?
+Midday is commonly the quieter lull, not the busiest period — that's more commonly the open or power hour.
+Midday is always busier than the open.
+Session timing has no effect on typical activity level.
+WHY: The open and power hour are more commonly cited as the busier periods, not midday.
+
+NODE 3
+TITLE: After-Hours Trading
+CELEBRATION: You understand after-hours trading!
+
+INTRO
+TITLE: After the Bell
+TEXT: "After-hours" trading happens once the standard session ends, commonly with thinner liquidity — similar in spirit to pre-market, just on the other side of the day.
+
+[MC] "After-hours" trading refers to...
+Trading after the standard session has ended.
+Trading only during the standard session.
+A period when no trading of any kind occurs.
+WHY: After-hours describes the extended session following the standard close.
+
+[TF] After-hours trading commonly has thinner liquidity, similar to pre-market.
+ANSWER: True
+WHY: Both extended sessions commonly see reduced participation compared to standard hours.
+
+[FILL] After-hours is the [___]-session counterpart to pre-market.
+extended
+standard
+identical
+WHY: Both are extended sessions, just on opposite sides of the standard hours.
+
+[MATCH] Match the extended session to its position relative to standard hours.
+Pre-market => Before standard hours
+After-hours => After standard hours
+Both => Commonly thinner liquidity than standard hours
+WHY: Pre-market and after-hours are the two extended sessions bookending the standard day.
+
+[PICK] Why might a large order have a bigger price impact after-hours?
+CONCERN: Applying the liquidity idea
+Thinner liquidity commonly means the same order size has more relative price impact | detail: A commonly cited pattern
+After-hours liquidity always exceeds standard-hours liquidity | detail: Incorrect | wrong: The reverse is more commonly true.
+Order size never affects price impact | detail: Incorrect | wrong: With thinner liquidity, size matters even more.
+WHY: This connects the liquidity idea from earlier units to the after-hours session specifically.
+
+[SPOT] Someone expects an after-hours fill to behave identically to a standard-hours fill.
+QUESTION: What is the mistake?
+Thinner after-hours liquidity can commonly lead to bigger gaps between expected and actual fill prices.
+After-hours fills always match standard-hours fills exactly.
+Liquidity has no relationship to fill behavior.
+WHY: As covered in the Orders & Execution unit, thinner liquidity commonly affects fill behavior.
+
+NODE 4
+TITLE: Earnings Reports
+CELEBRATION: You understand earnings reports!
+
+INTRO
+TITLE: A Scheduled Information Event
+TEXT: An earnings report is a company's scheduled release of financial results — commonly associated with sharply increased volatility around the release.
+CHART: gapUp
+
+[MC] An "earnings report" is...
+A company's scheduled release of financial results.
+A random, unscheduled event.
+A type of order.
+WHY: Earnings reports are scheduled releases of a company's financial performance.
+
+[TF] Earnings reports are commonly associated with increased volatility around the release.
+ANSWER: True
+WHY: New information hitting the market at once commonly produces sharper price swings.
+
+[FILL] Earnings reports are commonly [___] in advance, unlike random news.
+scheduled
+unpredictable
+irrelevant
+WHY: Being scheduled in advance is what distinguishes earnings from random breaking news.
+
+[MATCH] Match the event to its commonly cited trait.
+Earnings report => Scheduled, often volatile around the release
+Gap on earnings => A commonly cited example of a scheduling-driven gap
+Volatility spike => A commonly cited effect around the release
+WHY: Earnings connect directly back to the gaps and volatility concepts from earlier units.
+
+[PICK] Why are earnings reports commonly linked to gaps?
+CHART: gapUp
+CONCERN: Connecting concepts
+New information released while the market is closed can shift the next open sharply | detail: Connects to the Gaps unit
+Earnings reports never affect price at all | detail: Incorrect | wrong: They're commonly linked to some of the largest volatility events.
+Gaps only happen for reasons unrelated to earnings | detail: Incomplete | wrong: Earnings are a commonly cited gap driver.
+WHY: This ties the earlier Gaps unit directly to a commonly cited real-world cause.
+
+[SPOT] Someone assumes earnings reports have no relationship to price volatility.
+CHART: gapUp
+QUESTION: What is the mistake?
+Earnings reports are commonly associated with some of the sharpest volatility spikes around their release.
+Earnings reports never affect price behavior.
+Only random, unscheduled news can affect volatility.
+WHY: Scheduled information events like earnings are commonly cited volatility drivers.
+
+NODE 5
+TITLE: Economic Releases
+CELEBRATION: You understand economic releases!
+
+INTRO
+TITLE: Broader Information Events
+TEXT: Economic releases (like employment or inflation data) are scheduled reports about the broader economy — commonly associated with volatility across many assets at once, not just one company.
+
+[MC] Economic releases commonly affect...
+Many assets at once, since they describe the broader economy.
+Only one single company.
+Nothing at all in the markets.
+WHY: Broader economic data commonly moves many assets simultaneously, unlike company-specific earnings.
+
+[TF] Economic releases are commonly scheduled in advance, similar to earnings reports.
+ANSWER: True
+WHY: Both are commonly known events with a set release time.
+
+[FILL] Economic releases commonly affect [___] assets at once, unlike single-company earnings.
+many
+zero
+exactly one
+WHY: Broad economic data is commonly linked to market-wide moves, not one company alone.
+
+[MATCH] Match the event type to its commonly cited scope.
+Earnings report => One specific company
+Economic release => Many assets across the broader market
+Both => Scheduled events commonly linked to volatility
+WHY: Scope (one company vs. the broader market) is the key difference between these two event types.
+
+[PICK] Why might economic releases commonly cause broader market volatility?
+CONCERN: Understanding scope
+They describe the broader economy, which can affect sentiment across many assets at once | detail: A wide-reaching event
+They only ever affect a single company | detail: Incorrect | wrong: That describes earnings, not economic releases.
+They have no relationship to market behavior | detail: Incorrect | wrong: They're commonly cited as broad volatility drivers.
+WHY: Broad economic data commonly shifts sentiment market-wide, unlike a single company's earnings.
+
+[SPOT] Someone assumes economic releases only affect the specific company mentioned in the report.
+QUESTION: What is the mistake?
+Economic releases commonly affect many assets across the market, not just one specific company.
+Economic releases always affect only one company.
+Economic releases and earnings reports describe the same scope.
+WHY: Economic releases are commonly cited as broader, market-wide events.
+
+NODE 6
+TITLE: Why Volatility Spikes Around News
+CELEBRATION: You understand why volatility spikes around news!
+
+INTRO
+TITLE: New Information Hits at Once
+TEXT: Volatility commonly spikes around scheduled news because a lot of new information gets absorbed by the market all at once, rather than gradually.
+CHART: volatile
+
+[MC] Why does volatility commonly spike around scheduled news?
+New information gets absorbed by the market all at once, rather than gradually.
+News releases always calm the market down.
+Volatility has no relationship to news timing.
+WHY: A sudden burst of new information commonly produces sharper, faster price swings.
+
+[TF] Volatility spikes around news are commonly temporary, not a permanent state.
+ANSWER: True
+WHY: Volatility commonly settles back down after the initial reaction to new information.
+
+[FILL] Volatility spikes because information is absorbed all at [___], not gradually.
+once
+random
+no particular time
+WHY: A sudden burst of information, rather than a gradual release, is what commonly drives the spike.
+
+[MATCH] Match the concept to its commonly cited connection to news.
+Earnings/economic releases => Common sources of sudden new information
+Volatility spike => A commonly cited effect of that sudden information
+Gap => Another commonly cited effect around scheduled news
+WHY: These concepts connect back to ideas from Gaps and Market Mechanics earlier in the course.
+
+[PICK] Which best explains why news-driven volatility is commonly temporary?
+CHART: volatile
+CONCERN: Reading it honestly
+Once the market absorbs the new information, activity commonly settles back toward typical levels | detail: A commonly cited pattern
+News-driven volatility never settles back down | detail: Overstates it | wrong: It's commonly described as temporary, not permanent.
+Volatility has no relationship to how information gets absorbed | detail: Backwards | wrong: This lesson's core point is that connection.
+WHY: Volatility spikes are commonly read as a temporary reaction, not a lasting new state.
+
+[SPOT] Someone assumes volatility around a news event will stay permanently elevated forever.
+CHART: volatile
+QUESTION: What is the mistake?
+News-driven volatility is commonly temporary, settling back down once the information is absorbed.
+Volatility spikes always last permanently.
+News has no relationship to volatility at all.
+WHY: This is a commonly cited temporary pattern, not a permanent shift.
+
+NODE 7
+TITLE: Trading Around News
+CELEBRATION: You understand the cautious approach to trading around news!
+
+INTRO
+TITLE: Extra Caution, Not a Guarantee
+TEXT: Because of the added volatility and wider spreads commonly seen around news, many traders commonly apply extra caution — like reduced size or wider stops — rather than a rigid rule.
+
+[MC] A commonly cited approach around scheduled news is to...
+Apply extra caution, like reduced size or wider stops.
+Ignore risk management entirely during news.
+Always dramatically increase size right before news.
+WHY: Extra caution around the added volatility is a commonly cited approach, not a guaranteed rule.
+
+[TF] Spreads commonly widen around major scheduled news.
+ANSWER: True
+WHY: Increased uncertainty commonly widens the bid/ask spread around news events.
+
+[FILL] Extra caution around news is a commonly cited [___], not a rigid universal rule.
+approach
+guarantee
+requirement
+WHY: Different traders commonly apply this idea differently — it's a general approach, not one fixed rule.
+
+[MATCH] Match the news-related risk factor to its commonly cited behavior.
+Spread => Commonly widens around major news
+Volatility => Commonly spikes around major news
+Position sizing => Commonly reduced by some traders around news
+WHY: These three factors are commonly discussed together when planning around news events.
+
+[PICK] Why might someone reduce position size around scheduled news?
+CONCERN: Applying risk concepts to news
+Because added volatility and wider spreads can increase risk per trade around news | detail: Connects to risk management
+Because news guarantees a losing trade | detail: Overstates certainty | wrong: News doesn't guarantee an outcome, it adds uncertainty.
+Because position size never matters around news | detail: Incorrect | wrong: Size is exactly the risk lever some traders adjust.
+WHY: This connects the Risk Management unit's ideas directly to a real-world scenario.
+
+[SPOT] Someone dramatically increases their position size right before a major scheduled news release, assuming it's the same as any other moment.
+QUESTION: What is the mistake?
+News commonly brings added volatility and wider spreads — many traders apply extra caution, not more size, around it.
+News has no relationship to typical risk levels.
+Increasing size before news always leads to bigger profits.
+WHY: This ignores the commonly cited added risk around scheduled news events.
+
+NODE 8
+TITLE: Why Charts Behave Differently by Session
+CELEBRATION: You understand session-based differences in chart behavior!
+
+INTRO
+TITLE: Same Asset, Different Rhythm
+TEXT: The same chart can behave differently depending on the session — thinner, choppier moves in pre/after-hours; different rhythms across the open, midday, and power hour.
+CHART: choppy
+
+[MC] Why might a chart look different during pre-market versus the standard open?
+Liquidity and participation commonly differ by session, changing the chart's rhythm.
+Charts are always identical no matter the session.
+Session timing has no relationship to chart behavior.
+WHY: Session-specific liquidity differences are commonly cited as changing how a chart behaves.
+
+[TF] The open, midday, and power hour commonly have different typical rhythms within the same day.
+ANSWER: True
+WHY: Each session period commonly carries its own typical activity level, as covered earlier in this unit.
+
+[FILL] Session context is one more form of [___] to combine with everything else you've read.
+context
+guesswork
+random noise
+WHY: Like other context factors in this course, session timing adds to (not replaces) the full read.
+
+[MATCH] Match the session to a commonly cited chart trait.
+Pre/after-hours => Thinner, sometimes choppier moves
+The open => Often the most active, sometimes sharpest moves
+Midday => Often a quieter, calmer stretch
+WHY: A recap of the session-based rhythm differences covered across this unit.
+
+[PICK] Why combine session awareness with everything else you've learned?
+CHART: choppy
+CONCERN: Tying it all together
+Because it's one more piece of context that can change how a chart's move should be read | detail: Adds to the full picture
+Because session timing replaces the need for any other analysis | detail: Overstates it | wrong: It's one added factor, not a replacement for everything else.
+Because session timing has no bearing on reading a chart | detail: Backwards | wrong: This whole unit shows it commonly does.
+WHY: Session context is one more descriptive factor to combine with the rest of your reading skills.
+
+[SPOT] Someone reads a choppy, thin pre-market move exactly the same way as an identical-looking move during the standard open.
+CHART: choppy
+QUESTION: What is the mistake?
+Session context (liquidity, participation) commonly changes how the same-looking move should be read.
+Session timing never matters for reading a chart.
+Pre-market and the standard open always behave identically.
+WHY: The same shape can carry different meaning depending on which session it happened in.
+
+NODE 9
+TITLE: Trading Sessions & News Review
+CELEBRATION: You've completed the Trading Sessions & News unit!
+
+INTRO
+TITLE: Bringing It All Together
+TEXT: A final review of market sessions, earnings, economic releases, news-driven volatility, and reading session context.
+
+[TF] Every session and news concept in this unit adds context, rather than guaranteeing an outcome.
+ANSWER: True
+WHY: That's the common thread across every lesson in this unit.
+
+[FILL] After-hours is the extended-session counterpart to [___].
+pre-market
+power hour
+midday
+WHY: Reviewing the pairing from earlier in this unit.
+
+[MC] What do earnings reports and economic releases have in common?
+Both are scheduled information events commonly linked to increased volatility.
+Both are completely random and unscheduled.
+Neither has any relationship to price behavior.
+WHY: Both are scheduled events commonly tied to volatility, differing mainly in scope.
+
+[MATCH] Match the term to its one-line meaning.
+Pre-market/after-hours => Extended sessions with commonly thinner liquidity
+Earnings report => A scheduled, company-specific information event
+Economic release => A scheduled, broader-market information event
+WHY: A quick recap of the unit's core vocabulary.
+
+[FILL2] News commonly brings [1] volatility and [2] spreads, calling for extra caution.
+BLANK1: *higher | lower | identical
+BLANK2: *wider | narrower | identical
+WHY: Higher volatility and wider spreads are the commonly cited reasons for added caution around news.
+
+[PICK] Which best summarizes this unit?
+CHART: gapUp
+CONCERN: Reviewing the big picture
+Session and news context shape how charts behave — descriptive factors, not guarantees | detail: The central theme
+Sessions and news guarantee specific price outcomes | detail: Overstates certainty | wrong: This contradicts the whole unit.
+Session and news timing are irrelevant to reading a chart | detail: Backwards | wrong: This unit's whole point is that they matter.
+WHY: Descriptive, context-adding session and news awareness is the throughline of this unit.
+
+[SPOT] Someone finishes this unit and starts treating news events as guaranteed trading opportunities.
+CHART: volatile
+QUESTION: What is the mistake?
+News adds volatility and context, but never a guaranteed outcome — this unit has framed it as added risk to manage, not a guaranteed opportunity.
+News events guarantee profitable trades.
+Session and news context never matter after this unit.
+WHY: This unit consistently frames news as added context and risk, never a guaranteed opportunity.
+
+UNIT 25 — Risk Management
 NODE 1
 TITLE: What Is Risk Per Trade?
 CELEBRATION: You understand risk per trade!
@@ -11642,7 +12055,7 @@ WHY: All the core ideas from this unit are reviewed together here.
 ANSWER: False
 WHY: Risk management limits the damage from losses; it doesn't eliminate losses entirely.
 
-UNIT 25 — Strategy Types
+UNIT 26 — Strategy Types
 NODE 1
 TITLE: What Is Scalping?
 CELEBRATION: You understand scalping!
@@ -12191,7 +12604,7 @@ WHY: All six strategy types from this unit are reviewed together here.
 ANSWER: True
 WHY: This has been the throughline — descriptive categories, never guaranteed signals.
 
-UNIT 26 — Position Sizing & R
+UNIT 27 — Position Sizing & R
 NODE 1
 TITLE: Risk Per Trade
 CELEBRATION: You understand risk per trade!
@@ -12468,7 +12881,7 @@ WHY: All four core ideas from this unit are reviewed together here.
 ANSWER: True
 WHY: Measuring in R (multiples of risk) makes results comparable regardless of size.
 
-UNIT 27 — Expectancy & Edge
+UNIT 28 — Expectancy & Edge
 NODE 1
 TITLE: Win Rate Isn't Everything
 CELEBRATION: You understand why win rate alone misleads!
@@ -12727,7 +13140,7 @@ WHY: All four core ideas from this unit are reviewed together here.
 ANSWER: True
 WHY: This has been the throughline — combine frequency and size, over enough trades.
 
-UNIT 28 — Market Condition Classification
+UNIT 29 — Market Condition Classification
 NODE 1
 TITLE: Trending, Ranging, or Volatile?
 CELEBRATION: You can classify market conditions!
@@ -12999,7 +13412,7 @@ WHY: All three broad conditions from this unit are reviewed together here.
 ANSWER: True
 WHY: This has been the throughline — condition-first reading, framing everything else.
 
-UNIT 29 — Moving Averages
+UNIT 30 — Moving Averages
 NODE 1
 TITLE: What Is a Moving Average?
 CELEBRATION: You understand moving averages!
@@ -13295,7 +13708,7 @@ WHY: All the core ideas from this unit are reviewed together here.
 ANSWER: True
 WHY: This has been the throughline — smoothed, lagging, descriptive trend reading.
 
-UNIT 30 — Oscillators: RSI & MACD
+UNIT 31 — Oscillators: RSI & MACD
 NODE 1
 TITLE: What Is an Oscillator?
 CELEBRATION: You understand oscillators!
@@ -13546,7 +13959,7 @@ WHY: All the core ideas from this unit are reviewed together here.
 ANSWER: True
 WHY: This has been the throughline — descriptive, derived, lagging, never guaranteed.
 
-UNIT 31 — Trade Planning & Process
+UNIT 32 — Trade Planning & Process
 NODE 1
 TITLE: What Is a Trade Plan?
 CELEBRATION: You understand trade plans!
@@ -13799,7 +14212,7 @@ WHY: All the core ideas from this unit are reviewed together here.
 ANSWER: True
 WHY: This has been true throughout — plan ahead, then actually follow it.
 
-UNIT 32 — VWAP & Bollinger Bands
+UNIT 33 — VWAP & Bollinger Bands
 NODE 1
 TITLE: What Is VWAP?
 CELEBRATION: You understand VWAP!
@@ -14051,7 +14464,7 @@ WHY: Both tools from this unit are reviewed together here.
 ANSWER: True
 WHY: This has been the throughline — descriptive, average-based context, never guaranteed signals.
 
-UNIT 33 — Drawdowns & Losing Streaks
+UNIT 34 — Drawdowns & Losing Streaks
 NODE 1
 TITLE: What Is a Drawdown?
 CELEBRATION: You understand drawdowns!
@@ -14309,7 +14722,7 @@ WHY: All the core ideas from this unit are reviewed together here.
 ANSWER: True
 WHY: This has been the throughline — normal variance, plus recovery math driving preservation.
 
-UNIT 34 — Journaling & Review
+UNIT 35 — Journaling & Review
 NODE 1
 TITLE: Why Journal?
 CELEBRATION: You understand journaling!
@@ -14562,7 +14975,7 @@ WHY: All the core ideas from this unit are reviewed together here.
 ANSWER: True
 WHY: This has been true throughout — honest records, process focus, and the improvement loop.
 
-UNIT 35 — Trading Psychology
+UNIT 36 — Trading Psychology
 NODE 1
 TITLE: What Is FOMO?
 CELEBRATION: You understand FOMO!
@@ -15111,7 +15524,7 @@ WHY: All the core patterns from this unit are reviewed together here.
 ANSWER: True
 WHY: This has been the throughline — emotional patterns pulling away from disciplined plan-following.
 
-UNIT 36 — Full Simulation Training
+UNIT 37 — Full Simulation Training
 NODE 1
 TITLE: Classifying Trending Markets
 CELEBRATION: You can classify a trending market!
