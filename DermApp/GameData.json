@@ -24198,6 +24198,13 @@
      "title": "Average True Range (ATR)",
      "bg": "#8B5CF6",
      "slab": "#6D28D9"
+    },
+    {
+     "index": 12,
+     "eyebrow": "SECTION 3 · UNIT 13",
+     "title": "Relative Volume (RVOL)",
+     "bg": "#8B5CF6",
+     "slab": "#6D28D9"
     }
    ],
    "nodes": [
@@ -24668,6 +24675,36 @@
      "svg": "<svg width=\"34\" height=\"34\" viewBox=\"0 0 32 32\" fill=\"rgba(255,255,255,0.65)\">\n              <rect x=\"13\" y=\"2\" width=\"6\" height=\"10\" rx=\"3\"/>\n              <path d=\"M10 12 L7 28 C6.5 30 8 31 16 31 C24 31 25.5 30 25 28 L22 12 Z\"/>\n              <rect x=\"9\" y=\"10\" width=\"14\" height=\"4\" rx=\"2\"/>\n            </svg>",
      "title": "ATR Review",
      "sectionIndex": 11
+    },
+    {
+     "num": 79,
+     "svg": "<svg width=\"34\" height=\"34\" viewBox=\"0 0 32 32\" fill=\"rgba(255,255,255,0.65)\">\n              <circle cx=\"13\" cy=\"13\" r=\"9\"/>\n              <rect x=\"19.5\" y=\"20.5\" width=\"4\" height=\"9\" rx=\"2\" transform=\"rotate(-45 19.5 20.5)\"/>\n            </svg>",
+     "title": "What Is Relative Volume?",
+     "sectionIndex": 12
+    },
+    {
+     "num": 80,
+     "svg": "<svg width=\"34\" height=\"34\" viewBox=\"0 0 32 32\" fill=\"rgba(255,255,255,0.65)\">\n              <path d=\"M16 3 L19 11.5 L28 12.5 L21.5 18.5 L23.5 27.5 L16 23.5 L8.5 27.5 L10.5 18.5 L4 12.5 L13 11.5 Z\"/>\n            </svg>",
+     "title": "Reading an RVOL Reading",
+     "sectionIndex": 12
+    },
+    {
+     "num": 81,
+     "svg": "<svg width=\"34\" height=\"34\" viewBox=\"0 0 32 32\" fill=\"rgba(255,255,255,0.65)\">\n              <path d=\"M10 3 C14 7 18 7 22 3\" fill=\"none\" stroke=\"rgba(255,255,255,0.65)\" stroke-width=\"2.5\" stroke-linecap=\"round\"/>\n              <path d=\"M10 10 C14 14 18 14 22 10\" fill=\"none\" stroke=\"rgba(255,255,255,0.65)\" stroke-width=\"2.5\" stroke-linecap=\"round\"/>\n              <path d=\"M10 17 C14 21 18 21 22 17\" fill=\"none\" stroke=\"rgba(255,255,255,0.65)\" stroke-width=\"2.5\" stroke-linecap=\"round\"/>\n              <path d=\"M10 24 C14 28 18 28 22 24\" fill=\"none\" stroke=\"rgba(255,255,255,0.65)\" stroke-width=\"2.5\" stroke-linecap=\"round\"/>\n              <line x1=\"10\" y1=\"3\" x2=\"10\" y2=\"29\" stroke=\"rgba(255,255,255,0.65)\" stroke-width=\"2.5\" stroke-linecap=\"round\"/>\n              <line x1=\"22\" y1=\"3\" x2=\"22\" y2=\"29\" stroke=\"rgba(255,255,255,0.65)\" stroke-width=\"2.5\" stroke-linecap=\"round\"/>\n            </svg>",
+     "title": "RVOL and News or Catalysts",
+     "sectionIndex": 12
+    },
+    {
+     "num": 82,
+     "svg": "<svg width=\"34\" height=\"34\" viewBox=\"0 0 32 32\" fill=\"rgba(255,255,255,0.65)\">\n              <circle cx=\"16\" cy=\"10\" r=\"6.5\"/>\n              <path d=\"M3 31 C3 22 8.8 17 16 17 C23.2 17 29 22 29 31Z\"/>\n            </svg>",
+     "title": "RVOL Across the Trading Day",
+     "sectionIndex": 12
+    },
+    {
+     "num": 83,
+     "svg": "<svg width=\"34\" height=\"34\" viewBox=\"0 0 32 32\" fill=\"rgba(255,255,255,0.65)\">\n              <circle cx=\"7\" cy=\"16\" r=\"4.5\" fill=\"none\" stroke=\"rgba(255,255,255,0.65)\" stroke-width=\"2.5\"/>\n              <circle cx=\"7\" cy=\"16\" r=\"2\"/>\n              <circle cx=\"16\" cy=\"16\" r=\"4.5\" fill=\"none\" stroke=\"rgba(255,255,255,0.65)\" stroke-width=\"2.5\"/>\n              <circle cx=\"16\" cy=\"16\" r=\"2\"/>\n              <circle cx=\"25\" cy=\"16\" r=\"4.5\" fill=\"none\" stroke=\"rgba(255,255,255,0.65)\" stroke-width=\"2.5\"/>\n              <circle cx=\"25\" cy=\"16\" r=\"2\"/>\n            </svg>",
+     "title": "RVOL Review",
+     "sectionIndex": 12
     }
    ],
    "lessons": [
@@ -32325,6 +32362,486 @@
        "chart": "volatile"
       }
      ]
+    },
+    {
+     "node": 79,
+     "title": "What Is Relative Volume?",
+     "celebration": "You understand what RVOL measures!",
+     "screens": [
+      {
+       "type": "intro",
+       "title": "Volume Compared to Normal",
+       "text": "Relative Volume (RVOL) compares today's volume to that same stock's typical volume at this point in the day. It answers \"is this unusually active, or a normal day?\""
+      },
+      {
+       "type": "multiple_choice",
+       "question": "RVOL compares today's volume to...",
+       "options": [
+        "The volume of every other stock in the market.",
+        "The stock's all-time high volume ever recorded.",
+        "That stock's own typical volume at this point in the day."
+       ],
+       "correct": 2,
+       "explanation": "RVOL is a same-stock, same-time-of-day comparison, not a cross-market ranking."
+      },
+      {
+       "type": "true_false",
+       "question": "RVOL is about comparing a stock's volume to its own typical pattern, not to other stocks.",
+       "correct": true,
+       "explanation": "RVOL is stock-specific and time-of-day-specific."
+      },
+      {
+       "type": "fill_blank",
+       "question": "RVOL helps answer whether today's volume is [___] for this stock.",
+       "options": [
+        "guaranteed",
+        "unusual",
+        "random"
+       ],
+       "correct": 1,
+       "explanation": "RVOL flags whether current activity is normal or standout compared to that stock's own history."
+      },
+      {
+       "type": "matching",
+       "question": "Match the term to its focus.",
+       "pairs": [
+        [
+         "RVOL",
+         "Comparing current volume to typical volume, same stock"
+        ],
+        [
+         "Raw volume",
+         "Total shares traded, no comparison built in"
+        ],
+        [
+         "High RVOL",
+         "Unusually active relative to normal"
+        ]
+       ],
+       "explanation": "RVOL adds context that raw volume alone doesn't provide."
+      },
+      {
+       "type": "ingredient_match",
+       "question": "Why might RVOL matter more than raw share volume alone?",
+       "options": [
+        {
+         "label": "Because raw volume alone doesn't say whether that's unusual for this particular stock",
+         "correct": true,
+         "detail": "Context matters"
+        },
+        {
+         "label": "Because RVOL replaces the need to look at price at all",
+         "correct": false,
+         "detail": "Incorrect",
+         "wrong_explanation": "RVOL is one added piece of context, not a replacement for price."
+        },
+        {
+         "label": "Because raw volume is always identical across all stocks",
+         "correct": false,
+         "detail": "Incorrect",
+         "wrong_explanation": "Typical volume varies enormously by stock."
+        }
+       ],
+       "concern": "Reading volume with context",
+       "explanation": "A million shares might be huge for one stock and tiny for another — RVOL adds that missing context."
+      },
+      {
+       "type": "spot_mistake",
+       "scenario": "Someone sees \"2 million shares traded\" and assumes that's automatically a big deal for every stock.",
+       "question": "What is the mistake?",
+       "options": [
+        "Raw share count means the same thing for every stock.",
+        "Whether 2 million shares is unusual depends on that stock's own typical volume, which RVOL captures.",
+        "Volume numbers never need any context."
+       ],
+       "correct": 1,
+       "explanation": "Without comparing to typical volume, a raw number alone doesn't reveal whether it's unusual."
+      }
+     ]
+    },
+    {
+     "node": 80,
+     "title": "Reading an RVOL Reading",
+     "celebration": "You can interpret RVOL readings!",
+     "screens": [
+      {
+       "type": "intro",
+       "title": "Above and Below \"Normal\"",
+       "text": "An RVOL reading is often expressed as a multiple of normal, for example \"2x\" meaning twice the typical volume for this time of day."
+      },
+      {
+       "type": "multiple_choice",
+       "question": "An RVOL reading of \"3x\" commonly means...",
+       "options": [
+        "Volume is roughly three times this stock's typical level.",
+        "The stock has three times as many shares outstanding.",
+        "Price has moved three points."
+       ],
+       "correct": 0,
+       "explanation": "RVOL multiples describe volume relative to typical, not price or share count."
+      },
+      {
+       "type": "true_false",
+       "question": "An RVOL below 1x commonly reflects quieter-than-usual volume.",
+       "correct": true,
+       "explanation": "A reading under 1x means volume is running below what's typical for that time."
+      },
+      {
+       "type": "fill_blank",
+       "question": "An RVOL reading is often expressed as a [___] of normal volume.",
+       "options": [
+        "guarantee",
+        "multiple",
+        "percentage of price"
+       ],
+       "correct": 1,
+       "explanation": "RVOL is commonly shown as a multiple (like 2x or 0.5x) of typical volume."
+      },
+      {
+       "type": "matching",
+       "question": "Match the RVOL reading to its meaning.",
+       "pairs": [
+        [
+         "Above 1x",
+         "Busier than typical"
+        ],
+        [
+         "Around 1x",
+         "Roughly typical"
+        ],
+        [
+         "Below 1x",
+         "Quieter than typical"
+        ]
+       ],
+       "explanation": "The 1x baseline represents this stock's own normal volume for that time of day."
+      },
+      {
+       "type": "ingredient_match",
+       "question": "Why compare RVOL to 1x rather than to a fixed universal number?",
+       "options": [
+        {
+         "label": "Because RVOL has no baseline at all",
+         "correct": false,
+         "detail": "Incorrect",
+         "wrong_explanation": "1x serves as the \"typical\" baseline."
+        },
+        {
+         "label": "Because 1x is a fixed number that means the same thing for every stock",
+         "correct": false,
+         "detail": "Incorrect",
+         "wrong_explanation": "1x is relative to each stock's own typical volume."
+        },
+        {
+         "label": "Because 1x represents this specific stock's own typical volume as the baseline",
+         "correct": true,
+         "detail": "A relative benchmark"
+        }
+       ],
+       "concern": "Reading it relatively",
+       "explanation": "The 1x baseline is specific to each stock, which is what makes RVOL a relative measure."
+      },
+      {
+       "type": "spot_mistake",
+       "scenario": "Someone assumes an RVOL of \"1.5x\" means the same absolute share count for every stock.",
+       "question": "What is the mistake?",
+       "options": [
+        "RVOL has no connection to that stock's own history.",
+        "1.5x always equals exactly the same number of shares everywhere.",
+        "1.5x is relative to that stock's own typical volume, which differs stock to stock."
+       ],
+       "correct": 2,
+       "explanation": "The multiple is anchored to each stock's own typical volume, not a shared absolute number."
+      }
+     ]
+    },
+    {
+     "node": 81,
+     "title": "RVOL and News or Catalysts",
+     "celebration": "You can connect RVOL to catalysts!",
+     "screens": [
+      {
+       "type": "intro",
+       "title": "A Clue, Not a Signal",
+       "text": "Unusually high RVOL sometimes coincides with news, earnings, or other catalysts, since more participants may be trading around the event. It's descriptive context, not a trade signal."
+      },
+      {
+       "type": "multiple_choice",
+       "question": "Elevated RVOL alongside news commonly reflects...",
+       "options": [
+        "More participants than usual trading around that event.",
+        "Confirmation that the news is accurate.",
+        "A guaranteed price direction."
+       ],
+       "correct": 0,
+       "explanation": "Elevated RVOL is a participation clue, not a guarantee of direction or of the news itself."
+      },
+      {
+       "type": "true_false",
+       "question": "High RVOL around a catalyst is context, not a buy or sell signal.",
+       "correct": true,
+       "explanation": "Like every indicator in this course, RVOL describes conditions rather than prescribing action."
+      },
+      {
+       "type": "fill_blank",
+       "question": "Elevated RVOL near news commonly reflects more [___] than usual.",
+       "options": [
+        "profit",
+        "certainty",
+        "participation"
+       ],
+       "correct": 2,
+       "explanation": "More shares changing hands reflects more participation, not certainty of outcome."
+      },
+      {
+       "type": "matching",
+       "question": "Match the scenario to what it commonly reflects.",
+       "pairs": [
+        [
+         "High RVOL, earnings day",
+         "More participants trading around the event"
+        ],
+        [
+         "Low RVOL, quiet day",
+         "Fewer participants, less activity"
+        ],
+        [
+         "High RVOL alone",
+         "Unusual activity worth noting as context"
+        ]
+       ],
+       "explanation": "RVOL by itself describes activity level, and pairing it with a known catalyst adds context."
+      },
+      {
+       "type": "ingredient_match",
+       "question": "How should elevated RVOL near a catalyst be treated?",
+       "options": [
+        {
+         "label": "As one piece of descriptive context about participation, not a signal",
+         "correct": true,
+         "detail": "Descriptive framing"
+        },
+        {
+         "label": "As a guarantee that price will move in a specific direction",
+         "correct": false,
+         "detail": "Overstates certainty",
+         "wrong_explanation": "RVOL says nothing about direction."
+        },
+        {
+         "label": "As proof the news itself is true",
+         "correct": false,
+         "detail": "Unrelated claim",
+         "wrong_explanation": "Volume doesn't verify news accuracy."
+        }
+       ],
+       "concern": "Avoiding overreach",
+       "explanation": "RVOL adds context about participation levels, never a directional or truth guarantee."
+      },
+      {
+       "type": "spot_mistake",
+       "scenario": "Someone sees high RVOL on earnings day and treats it as a guaranteed breakout signal.",
+       "question": "What is the mistake?",
+       "options": [
+        "Earnings always cause identical RVOL patterns.",
+        "High RVOL reflects participation, not a guaranteed direction or outcome.",
+        "RVOL always predicts a breakout on earnings days."
+       ],
+       "correct": 1,
+       "explanation": "RVOL is descriptive context about activity level, never a predictive signal."
+      }
+     ]
+    },
+    {
+     "node": 82,
+     "title": "RVOL Across the Trading Day",
+     "celebration": "You understand how RVOL shifts intraday!",
+     "screens": [
+      {
+       "type": "intro",
+       "title": "Time-of-Day Matters",
+       "text": "Because RVOL compares to typical volume at that specific time of day, a stock's expected volume in the first ten minutes differs from its expected volume midday, connecting back to the Trading Sessions unit."
+      },
+      {
+       "type": "multiple_choice",
+       "question": "Why does RVOL account for time of day rather than the whole day at once?",
+       "options": [
+        "Because volume is identical every minute of the day.",
+        "Because typical volume itself varies by time of day, like the open being busier than midday.",
+        "Because RVOL only applies after the market closes."
+       ],
+       "correct": 1,
+       "explanation": "This connects back to earlier lessons on how volume and activity vary across the trading session."
+      },
+      {
+       "type": "true_false",
+       "question": "Typical volume in the opening minutes commonly differs from typical volume at midday.",
+       "correct": true,
+       "explanation": "Sessions differ in typical activity level, which is why RVOL compares like-for-like time windows."
+      },
+      {
+       "type": "fill_blank",
+       "question": "RVOL compares current volume to what's typical for that same [___] of day.",
+       "options": [
+        "price",
+        "time",
+        "color"
+       ],
+       "correct": 1,
+       "explanation": "The comparison window matters since typical volume itself shifts through the session."
+      },
+      {
+       "type": "matching",
+       "question": "Match the session to a commonly cited RVOL consideration.",
+       "pairs": [
+        [
+         "Opening minutes",
+         "Typical volume is commonly higher"
+        ],
+        [
+         "Midday lull",
+         "Typical volume is commonly lower"
+        ],
+        [
+         "RVOL calculation",
+         "Accounts for this time-of-day baseline"
+        ]
+       ],
+       "explanation": "This ties RVOL directly back to the Trading Sessions & News unit's session-activity concepts."
+      },
+      {
+       "type": "ingredient_match",
+       "question": "Why does time-of-day matter for reading RVOL correctly?",
+       "options": [
+        {
+         "label": "Because every session has identical typical volume",
+         "correct": false,
+         "detail": "Incorrect",
+         "wrong_explanation": "Sessions commonly differ in typical activity."
+        },
+        {
+         "label": "Because comparing to the wrong time window could make normal activity look unusual, or vice versa",
+         "correct": true,
+         "detail": "Like-for-like comparison"
+        },
+        {
+         "label": "Because RVOL ignores time of day entirely",
+         "correct": false,
+         "detail": "Incorrect",
+         "wrong_explanation": "RVOL's baseline is specifically time-of-day aware."
+        }
+       ],
+       "concern": "Applying the concept accurately",
+       "explanation": "A meaningful RVOL reading depends on comparing against the right same-time-of-day baseline."
+      },
+      {
+       "type": "spot_mistake",
+       "scenario": "Someone compares midday volume directly to the opening-minutes baseline and calls it \"quiet.\"",
+       "question": "What is the mistake?",
+       "options": [
+        "RVOL has no relationship to time of day.",
+        "Volume is identical at every point in the trading day.",
+        "Comparing across mismatched time-of-day baselines can make normal midday volume look artificially low."
+       ],
+       "correct": 2,
+       "explanation": "RVOL's comparison should use the typical baseline for that same time window, not a different one."
+      }
+     ]
+    },
+    {
+     "node": 83,
+     "title": "RVOL Review",
+     "celebration": "You've completed the Relative Volume unit!",
+     "screens": [
+      {
+       "type": "intro",
+       "title": "Bringing It Together",
+       "text": "A final review of what RVOL measures, reading its readings, its relationship to catalysts, and how time of day factors in."
+      },
+      {
+       "type": "true_false",
+       "question": "RVOL compares current volume to that stock's own typical volume, not to other stocks.",
+       "correct": true,
+       "explanation": "That's the core, consistent idea across this whole unit."
+      },
+      {
+       "type": "fill_blank",
+       "question": "An RVOL reading is commonly expressed as a [___] of typical volume.",
+       "options": [
+        "guarantee",
+        "multiple",
+        "price target"
+       ],
+       "correct": 1,
+       "explanation": "A recap of the \"2x,\" \"0.5x\" style readings covered in this unit."
+      },
+      {
+       "type": "multiple_choice",
+       "question": "How should elevated RVOL near a catalyst be treated?",
+       "options": [
+        "As a guaranteed breakout.",
+        "As descriptive context about participation, not a trade signal.",
+        "As proof the catalyst news is accurate."
+       ],
+       "correct": 1,
+       "explanation": "A recap of the descriptive, non-predictive framing used throughout the course."
+      },
+      {
+       "type": "matching",
+       "question": "Match the term to its one-line meaning.",
+       "pairs": [
+        [
+         "RVOL",
+         "Volume relative to that stock's own typical level"
+        ],
+        [
+         "Above 1x",
+         "Busier than normal"
+        ],
+        [
+         "Below 1x",
+         "Quieter than normal"
+        ]
+       ],
+       "explanation": "A quick recap of the unit's core vocabulary."
+      },
+      {
+       "type": "ingredient_match",
+       "question": "Which best summarizes this unit?",
+       "options": [
+        {
+         "label": "RVOL guarantees the next price direction",
+         "correct": false,
+         "detail": "Overstates certainty",
+         "wrong_explanation": "RVOL describes participation, not direction."
+        },
+        {
+         "label": "RVOL adds relative, time-aware context to raw volume, without predicting direction",
+         "correct": true,
+         "detail": "The central theme"
+        },
+        {
+         "label": "RVOL is unrelated to time of day",
+         "correct": false,
+         "detail": "Incorrect",
+         "wrong_explanation": "The baseline itself is time-of-day specific."
+        }
+       ],
+       "concern": "Reviewing the big picture",
+       "explanation": "RVOL's value is the relative, time-aware context it adds to plain volume figures."
+      },
+      {
+       "type": "spot_mistake",
+       "scenario": "Someone finishes this unit and starts using RVOL alone as a buy/sell trigger.",
+       "question": "What is the mistake?",
+       "options": [
+        "RVOL has no descriptive value at all.",
+        "RVOL always tells you when to buy or sell.",
+        "RVOL describes relative participation, it's not a buy or sell signal on its own."
+       ],
+       "correct": 2,
+       "explanation": "Like every indicator in this course, RVOL is descriptive context, never a trade signal."
+      }
+     ]
     }
    ]
   },
@@ -32463,11 +32980,11 @@
        "type": "fill_blank",
        "question": "The urge to jump into a trade purely because price is already moving fast is commonly called [___].",
        "options": [
-        "a stop-loss",
+        "FOMO",
         "a drawdown",
-        "FOMO"
+        "a stop-loss"
        ],
-       "correct": 2,
+       "correct": 0,
        "explanation": "\"FOMO\" (fear of missing out) is the standard term for this urge."
       },
       {
@@ -32506,19 +33023,19 @@
        "blanks": [
         {
          "options": [
+          "planned",
           "emotional",
-          "mathematical",
-          "planned"
+          "mathematical"
          ],
-         "correct": 0
+         "correct": 1
         },
         {
          "options": [
+          "random",
           "emotional",
-          "planned",
-          "random"
+          "planned"
          ],
-         "correct": 1
+         "correct": 2
         }
        ],
        "explanation": "FOMO is commonly framed as emotional urgency, in contrast to a calm, planned entry."
@@ -32550,16 +33067,16 @@
          "detail": "An emotionally reactive entry"
         },
         {
-         "label": "A guarantee that the trade will be profitable",
-         "correct": false,
-         "detail": "Overstates certainty",
-         "wrong_explanation": "FOMO describes a motivation for entering, not an outcome."
-        },
-        {
          "label": "Entering after a pre-set plan's specific conditions are met",
          "correct": false,
          "detail": "This describes a planned entry, not FOMO",
          "wrong_explanation": "A planned entry is the opposite of what FOMO describes."
+        },
+        {
+         "label": "A guarantee that the trade will be profitable",
+         "correct": false,
+         "detail": "Overstates certainty",
+         "wrong_explanation": "FOMO describes a motivation for entering, not an outcome."
         }
        ],
        "concern": "Understanding this specific term",
@@ -32571,9 +33088,9 @@
        "scenario": "Someone sees a stock moving up quickly and buys immediately, without any plan, purely because they're afraid of missing further gains.",
        "question": "What is the mistake?",
        "options": [
-        "They should never look at fast-moving prices again.",
+        "They should have bought even more, even faster.",
         "Entering purely from urgency about missing a move, without a plan, is a commonly described FOMO reaction.",
-        "They should have bought even more, even faster."
+        "They should never look at fast-moving prices again."
        ],
        "correct": 1,
        "explanation": "Acting from fear of missing out, without a plan, is the commonly described core of a FOMO-driven mistake.",
@@ -32583,11 +33100,11 @@
        "type": "fill_blank",
        "question": "FOMO describes urgency about [___] a fast-moving price.",
        "options": [
-        "random",
+        "missing",
         "guaranteed",
-        "missing"
+        "random"
        ],
-       "correct": 2,
+       "correct": 0,
        "explanation": "FOMO is the urgency to jump in purely because price is already moving."
       },
       {
@@ -32630,11 +33147,11 @@
        "type": "multiple_choice",
        "question": "What commonly characterizes a revenge trade?",
        "options": [
-        "It's driven mainly by the urge to recover a recent loss quickly, rather than a fresh, planned setup.",
         "It always uses a smaller position size than usual.",
-        "It's driven by a carefully pre-planned checklist unrelated to the prior loss."
+        "It's driven by a carefully pre-planned checklist unrelated to the prior loss.",
+        "It's driven mainly by the urge to recover a recent loss quickly, rather than a fresh, planned setup."
        ],
-       "correct": 0,
+       "correct": 2,
        "explanation": "Revenge trades are commonly described as reactive attempts to immediately recover a loss."
       },
       {
@@ -32662,19 +33179,19 @@
        "blanks": [
         {
          "options": [
-          "random",
           "planned",
+          "random",
           "emotional"
          ],
          "correct": 2
         },
         {
          "options": [
-          "planned",
           "emotional",
+          "planned",
           "guaranteed"
          ],
-         "correct": 0
+         "correct": 1
         }
        ],
        "explanation": "The reactive, emotional nature of revenge trading is commonly contrasted with a calm, planned entry."
@@ -32701,10 +33218,10 @@
        "question": "Which best describes \"revenge trading\"?",
        "options": [
         {
-         "label": "A guarantee that the next trade will be profitable",
+         "label": "Reviewing a loss calmly before deciding what to do next",
          "correct": false,
-         "detail": "Overstates certainty",
-         "wrong_explanation": "Revenge trading describes a motivation, not a guaranteed outcome."
+         "detail": "This describes a measured response, not revenge trading",
+         "wrong_explanation": "A calm review is the opposite of revenge trading."
         },
         {
          "label": "Entering a new trade quickly after a loss, driven by the urge to recover it immediately",
@@ -32712,10 +33229,10 @@
          "detail": "A reactive pattern tied to a recent loss"
         },
         {
-         "label": "Reviewing a loss calmly before deciding what to do next",
+         "label": "A guarantee that the next trade will be profitable",
          "correct": false,
-         "detail": "This describes a measured response, not revenge trading",
-         "wrong_explanation": "A calm review is the opposite of revenge trading."
+         "detail": "Overstates certainty",
+         "wrong_explanation": "Revenge trading describes a motivation, not a guaranteed outcome."
         }
        ],
        "concern": "Understanding this specific term",
@@ -32727,9 +33244,9 @@
        "scenario": "Someone loses on a trade and immediately doubles their position size on the next trade to \"make it back fast.\"",
        "question": "What is the mistake?",
        "options": [
-        "They should double their size again after the next loss too.",
+        "They should stop looking at charts entirely from now on.",
         "Increasing size specifically to recover a loss quickly is a commonly described sign of revenge trading, adding risk on top of an emotional reaction.",
-        "They should stop looking at charts entirely from now on."
+        "They should double their size again after the next loss too."
        ],
        "correct": 1,
        "explanation": "Sizing decisions driven by the urge to recover a loss quickly are a commonly cited revenge-trading pattern.",
@@ -32739,11 +33256,11 @@
        "type": "fill_blank",
        "question": "Revenge trading is driven by the urge to [___] a recent loss quickly.",
        "options": [
-        "ignore",
         "recover",
-        "celebrate"
+        "celebrate",
+        "ignore"
        ],
-       "correct": 1,
+       "correct": 0,
        "explanation": "The urgency to immediately win back a loss defines revenge trading."
       },
       {
@@ -32775,9 +33292,9 @@
        "type": "fill_blank",
        "question": "Taking a much higher number of trades than a plan calls for is commonly called [___].",
        "options": [
-        "hedging",
+        "position sizing",
         "overtrading",
-        "position sizing"
+        "hedging"
        ],
        "correct": 1,
        "explanation": "\"Overtrading\" is the standard term for this pattern."
@@ -32786,11 +33303,11 @@
        "type": "multiple_choice",
        "question": "What is commonly cited as a driver of overtrading?",
        "options": [
-        "A calendar reminder to review account performance.",
+        "Boredom, restlessness, or urgency to \"do something,\" rather than a fresh, planned setup appearing.",
         "A carefully followed plan that specifies exactly how many trades to take.",
-        "Boredom, restlessness, or urgency to \"do something,\" rather than a fresh, planned setup appearing."
+        "A calendar reminder to review account performance."
        ],
-       "correct": 2,
+       "correct": 0,
        "explanation": "Overtrading is commonly linked to emotional urges rather than an increase in genuinely planned setups."
       },
       {
@@ -32826,11 +33343,11 @@
         },
         {
          "options": [
+          "guaranteed",
           "random",
-          "planned",
-          "guaranteed"
+          "planned"
          ],
-         "correct": 1
+         "correct": 2
         }
        ],
        "explanation": "The commonly cited driver behind overtrading is emotional restlessness, not a genuine rise in valid setups."
@@ -32857,6 +33374,12 @@
        "question": "Which best describes \"overtrading\"?",
        "options": [
         {
+         "label": "A guarantee of larger overall profits",
+         "correct": false,
+         "detail": "Overstates certainty",
+         "wrong_explanation": "Overtrading describes frequency, not a guaranteed result."
+        },
+        {
          "label": "Taking trades only when a pre-planned setup appears",
          "correct": false,
          "detail": "This describes selective, disciplined trading, not overtrading",
@@ -32866,12 +33389,6 @@
          "label": "Taking a much higher number of trades than a plan calls for, often from boredom or urgency",
          "correct": true,
          "detail": "A frequency mismatch driven by emotion"
-        },
-        {
-         "label": "A guarantee of larger overall profits",
-         "correct": false,
-         "detail": "Overstates certainty",
-         "wrong_explanation": "Overtrading describes frequency, not a guaranteed result."
         }
        ],
        "concern": "Understanding this specific term",
@@ -32895,11 +33412,11 @@
        "type": "fill_blank",
        "question": "Overtrading means taking far more trades than a plan calls for, often from [___].",
        "options": [
-        "boredom",
         "patience",
-        "a solid plan"
+        "a solid plan",
+        "boredom"
        ],
-       "correct": 0,
+       "correct": 2,
        "explanation": "Boredom or restlessness is commonly cited as driving overtrading."
       },
       {
@@ -32931,9 +33448,9 @@
        "type": "fill_blank",
        "question": "Skipping normal risk steps after a string of wins is commonly linked to [___].",
        "options": [
-        "capital preservation",
+        "diversification",
         "overconfidence",
-        "diversification"
+        "capital preservation"
        ],
        "correct": 1,
        "explanation": "\"Overconfidence\" is the commonly cited term for this pattern following a hot streak."
@@ -32942,11 +33459,11 @@
        "type": "multiple_choice",
        "question": "What is a commonly cited risk of overconfidence after a string of wins?",
        "options": [
-        "Becoming more careful and conservative than before the winning streak.",
         "Skipping normal risk management steps, like sizing or stop-loss placement, because recent wins feel like proof of skill.",
-        "Reducing position size out of caution."
+        "Reducing position size out of caution.",
+        "Becoming more careful and conservative than before the winning streak."
        ],
-       "correct": 1,
+       "correct": 0,
        "explanation": "Overconfidence commonly leads to relaxing the very risk steps that were followed before the streak."
       },
       {
@@ -32975,10 +33492,10 @@
         {
          "options": [
           "trades",
-          "losses",
-          "wins"
+          "wins",
+          "losses"
          ],
-         "correct": 2
+         "correct": 1
         },
         {
          "options": [
@@ -33013,12 +33530,6 @@
        "question": "Which best describes overconfidence following a string of wins?",
        "options": [
         {
-         "label": "Becoming more cautious and reducing size after wins",
-         "correct": false,
-         "detail": "This describes the opposite pattern",
-         "wrong_explanation": "That describes increased caution, not overconfidence."
-        },
-        {
          "label": "Feeling emboldened enough to skip normal risk steps, because recent wins feel like proof of skill",
          "correct": true,
          "detail": "A commonly described emotional pattern"
@@ -33028,6 +33539,12 @@
          "correct": false,
          "detail": "Overstates certainty",
          "wrong_explanation": "Overconfidence describes a mindset, not a guaranteed outcome."
+        },
+        {
+         "label": "Becoming more cautious and reducing size after wins",
+         "correct": false,
+         "detail": "This describes the opposite pattern",
+         "wrong_explanation": "That describes increased caution, not overconfidence."
         }
        ],
        "concern": "Understanding this specific pattern",
@@ -33051,11 +33568,11 @@
        "type": "fill_blank",
        "question": "Overconfidence after wins can lead to [___] normal risk steps.",
        "options": [
-        "following",
+        "skipping",
         "doubling",
-        "skipping"
+        "following"
        ],
-       "correct": 2,
+       "correct": 0,
        "explanation": "Feeling emboldened by recent wins can lead to skipping steps like sizing or stops."
       },
       {
@@ -33087,22 +33604,22 @@
        "type": "fill_blank",
        "question": "Hesitating on a genuinely planned setup because of recent losses is commonly linked to [___].",
        "options": [
-        "leverage",
         "overconfidence",
-        "fear"
+        "fear",
+        "leverage"
        ],
-       "correct": 2,
+       "correct": 1,
        "explanation": "\"Fear\" (following losses) is the commonly cited driver of this hesitation pattern."
       },
       {
        "type": "multiple_choice",
        "question": "What is a commonly cited effect of fear following a string of losses?",
        "options": [
-        "Becoming more willing to take on larger, riskier positions.",
+        "Hesitating on or skipping a genuinely planned setup, or exiting a plan earlier than intended.",
         "No change in behavior at all.",
-        "Hesitating on or skipping a genuinely planned setup, or exiting a plan earlier than intended."
+        "Becoming more willing to take on larger, riskier positions."
        ],
-       "correct": 2,
+       "correct": 0,
        "explanation": "Fear following losses is commonly linked to hesitation or premature exits, not increased risk-taking."
       },
       {
@@ -33130,19 +33647,19 @@
        "blanks": [
         {
          "options": [
-          "doubling",
           "skipping",
-          "ignoring"
+          "ignoring",
+          "doubling"
          ],
-         "correct": 1
+         "correct": 0
         },
         {
          "options": [
+          "doji",
           "streak",
-          "plan",
-          "doji"
+          "plan"
          ],
-         "correct": 1
+         "correct": 2
         }
        ],
        "explanation": "The commonly described effect of fear is deviating from the plan out of hesitation."
@@ -33175,15 +33692,15 @@
          "wrong_explanation": "Fear describes a reaction, not a guaranteed outcome."
         },
         {
-         "label": "Hesitating on or skipping a genuinely planned setup because of recent losses",
-         "correct": true,
-         "detail": "A commonly described emotional response"
-        },
-        {
          "label": "Taking on larger risk to compensate for recent losses",
          "correct": false,
          "detail": "This describes a different pattern (revenge trading)",
          "wrong_explanation": "That's closer to revenge trading, not fear-driven hesitation."
+        },
+        {
+         "label": "Hesitating on or skipping a genuinely planned setup because of recent losses",
+         "correct": true,
+         "detail": "A commonly described emotional response"
         }
        ],
        "concern": "Understanding this specific pattern",
@@ -33207,11 +33724,11 @@
        "type": "fill_blank",
        "question": "Fear after losses can lead to [___] a genuinely planned setup.",
        "options": [
+        "doubling",
         "following",
-        "skipping",
-        "doubling"
+        "skipping"
        ],
-       "correct": 1,
+       "correct": 2,
        "explanation": "Fear can cause hesitation or skipping a setup that otherwise matches the plan."
       },
       {
@@ -33243,20 +33760,20 @@
        "type": "fill_blank",
        "question": "Acting on an in-the-moment feeling rather than a pre-set plan is commonly called an [___].",
        "options": [
-        "impulse",
+        "average",
         "order",
-        "average"
+        "impulse"
        ],
-       "correct": 0,
+       "correct": 2,
        "explanation": "\"Impulse\" describes acting from a feeling in the moment, rather than following a plan."
       },
       {
        "type": "multiple_choice",
        "question": "What commonly distinguishes a disciplined decision from an impulsive one?",
        "options": [
-        "A disciplined decision is always more profitable, guaranteed.",
+        "An impulsive decision always follows a written checklist.",
         "A disciplined decision follows a pre-set plan; an impulsive one is driven by an in-the-moment feeling.",
-        "An impulsive decision always follows a written checklist."
+        "A disciplined decision is always more profitable, guaranteed."
        ],
        "correct": 1,
        "explanation": "The distinction is about following a plan versus reacting to a feeling, not about guaranteed outcomes."
@@ -33286,19 +33803,19 @@
        "blanks": [
         {
          "options": [
+          "plan",
           "streak",
-          "impulse",
-          "plan"
+          "impulse"
          ],
-         "correct": 2
+         "correct": 0
         },
         {
          "options": [
           "chart",
-          "plan",
-          "feeling"
+          "feeling",
+          "plan"
          ],
-         "correct": 2
+         "correct": 1
         }
        ],
        "explanation": "This captures the core tension discipline is meant to resolve."
@@ -33331,15 +33848,15 @@
          "wrong_explanation": "Discipline is about consistency, not a guarantee the plan is flawless."
         },
         {
+         "label": "Following a pre-set plan consistently, even when a feeling suggests otherwise",
+         "correct": true,
+         "detail": "Plan-following despite momentary impulses"
+        },
+        {
          "label": "Acting immediately on whatever feels right at the moment",
          "correct": false,
          "detail": "This describes impulse, not discipline",
          "wrong_explanation": "That's the definition of impulse, the opposite of discipline."
-        },
-        {
-         "label": "Following a pre-set plan consistently, even when a feeling suggests otherwise",
-         "correct": true,
-         "detail": "Plan-following despite momentary impulses"
         }
        ],
        "concern": "Understanding this specific term",
@@ -33352,10 +33869,10 @@
        "question": "What is the mistake?",
        "options": [
         "They should never make plans in the first place.",
-        "They should have felt even more strongly before abandoning the plan.",
-        "Abandoning a pre-set plan due to an in-the-moment feeling is a commonly described impulse overriding discipline."
+        "Abandoning a pre-set plan due to an in-the-moment feeling is a commonly described impulse overriding discipline.",
+        "They should have felt even more strongly before abandoning the plan."
        ],
-       "correct": 2,
+       "correct": 1,
        "explanation": "Following a feeling over a pre-set plan is the commonly described core of an impulsive deviation.",
        "chart": "doji"
       },
@@ -33363,11 +33880,11 @@
        "type": "fill_blank",
        "question": "Discipline means following a pre-set [___] consistently.",
        "options": [
+        "feeling",
         "impulse",
-        "plan",
-        "feeling"
+        "plan"
        ],
-       "correct": 1,
+       "correct": 2,
        "explanation": "Discipline is defined as consistent plan-following, even against momentary feelings."
       },
       {
@@ -33394,11 +33911,6 @@
        "question": "Someone buys immediately after seeing a stock spike, with no plan, purely from urgency about missing further gains. Which pattern does this describe?",
        "options": [
         {
-         "label": "FOMO",
-         "correct": true,
-         "detail": "Urgency-driven entry with no plan"
-        },
-        {
          "label": "Discipline",
          "correct": false,
          "detail": "Opposite pattern",
@@ -33409,6 +33921,11 @@
          "correct": false,
          "detail": "A different concept",
          "wrong_explanation": "Capital preservation is about protecting capital, not urgency-driven entries."
+        },
+        {
+         "label": "FOMO",
+         "correct": true,
+         "detail": "Urgency-driven entry with no plan"
         }
        ],
        "concern": "Identifying a psychological pattern",
@@ -33425,11 +33942,11 @@
        "type": "multiple_choice",
        "question": "Which best describes revenge trading?",
        "options": [
-        "Sticking to the same position size regardless of recent results.",
         "Entering a new trade quickly after a loss, driven by the urge to recover it immediately.",
-        "Calmly reviewing a loss before deciding on next steps."
+        "Calmly reviewing a loss before deciding on next steps.",
+        "Sticking to the same position size regardless of recent results."
        ],
-       "correct": 1,
+       "correct": 0,
        "explanation": "Revenge trading specifically describes a reactive attempt to immediately recover a recent loss."
       },
       {
@@ -33468,8 +33985,8 @@
        "question": "Which pattern does this best describe?",
        "options": [
         "Fear-driven hesitation, where recent losses caused them to skip a genuinely planned setup.",
-        "Capital preservation, since they avoided a trade.",
-        "Overconfidence, since they felt very certain about the decision."
+        "Overconfidence, since they felt very certain about the decision.",
+        "Capital preservation, since they avoided a trade."
        ],
        "correct": 0,
        "explanation": "Skipping a valid, planned setup specifically due to fear after losses is the fear-driven hesitation pattern.",
@@ -33479,11 +33996,11 @@
        "type": "fill_blank",
        "question": "This drill practices identifying psychological [___] in hypothetical situations.",
        "options": [
-        "patterns",
         "guarantees",
+        "patterns",
         "random events"
        ],
-       "correct": 0,
+       "correct": 1,
        "explanation": "The drill applies pattern recognition to psychology, without judging specific trades."
       },
       {
@@ -33516,8 +34033,8 @@
        "question": "Acting on an in-the-moment feeling rather than a pre-set plan is commonly called an [___].",
        "options": [
         "impulse",
-        "average",
-        "spread"
+        "spread",
+        "average"
        ],
        "correct": 0,
        "explanation": "Reviewing the core term from earlier in this unit."
@@ -33527,10 +34044,10 @@
        "question": "What do FOMO, revenge trading, and overtrading all have in common?",
        "options": [
         "They all guarantee larger losses every time.",
-        "They're all commonly described as emotionally reactive patterns that pull behavior away from a pre-set plan.",
-        "They only apply to traders using leverage."
+        "They only apply to traders using leverage.",
+        "They're all commonly described as emotionally reactive patterns that pull behavior away from a pre-set plan."
        ],
-       "correct": 1,
+       "correct": 2,
        "explanation": "Each is an emotionally reactive pattern, not a guaranteed outcome or a leverage-specific issue."
       },
       {
@@ -33558,19 +34075,19 @@
        "blanks": [
         {
          "options": [
+          "impulse",
           "discipline",
-          "leverage",
-          "impulse"
+          "leverage"
          ],
-         "correct": 0
+         "correct": 1
         },
         {
          "options": [
-          "impulse",
           "risk",
-          "discipline"
+          "discipline",
+          "impulse"
          ],
-         "correct": 0
+         "correct": 2
         }
        ],
        "explanation": "Awareness of the pattern is commonly framed as the starting point for a more disciplined response."
@@ -33597,6 +34114,11 @@
        "question": "Which best summarizes the overall theme of this unit?",
        "options": [
         {
+         "label": "Recognizing emotional patterns is a step toward following a pre-set plan consistently",
+         "correct": true,
+         "detail": "The central theme throughout"
+        },
+        {
          "label": "Following impulses is just as reliable as following a plan",
          "correct": false,
          "detail": "Contradicts the unit",
@@ -33607,11 +34129,6 @@
          "correct": false,
          "detail": "Overstates it",
          "wrong_explanation": "This unit is about recognizing patterns, not eliminating emotion entirely."
-        },
-        {
-         "label": "Recognizing emotional patterns is a step toward following a pre-set plan consistently",
-         "correct": true,
-         "detail": "The central theme throughout"
         }
        ],
        "concern": "Reviewing the big picture",
@@ -33635,11 +34152,11 @@
        "type": "fill_blank",
        "question": "This review ties together FOMO, revenge trading, overtrading, and [___].",
        "options": [
-        "discipline",
         "random guesses",
-        "company names"
+        "company names",
+        "discipline"
        ],
-       "correct": 0,
+       "correct": 2,
        "explanation": "All the core patterns from this unit are reviewed together here."
       },
       {
@@ -33671,11 +34188,11 @@
        "type": "multiple_choice",
        "question": "Which chart description commonly matches a \"trending\" classification?",
        "options": [
-        "A single candle with almost no wick on either side.",
         "Price bouncing repeatedly between the same two levels with no progress either way.",
-        "A series of higher highs and higher lows (or lower highs and lower lows) over time."
+        "A series of higher highs and higher lows (or lower highs and lower lows) over time.",
+        "A single candle with almost no wick on either side."
        ],
-       "correct": 2,
+       "correct": 1,
        "explanation": "A sustained sequence of higher (or lower) highs and lows is the commonly cited hallmark of a trend."
       },
       {
@@ -33683,10 +34200,10 @@
        "question": "A market showing a sustained move in one general direction is commonly classified as [___].",
        "options": [
         "range-bound",
-        "choppy",
-        "trending"
+        "trending",
+        "choppy"
        ],
-       "correct": 2,
+       "correct": 1,
        "explanation": "\"Trending\" is the standard classification term for this kind of sustained directional move."
       },
       {
@@ -33736,15 +34253,15 @@
          "wrong_explanation": "That description matches a range-bound classification instead."
         },
         {
-         "label": "A sustained move in one general direction over time",
-         "correct": true,
-         "detail": "A descriptive classification of price behavior"
-        },
-        {
          "label": "A guarantee that the direction will continue indefinitely",
          "correct": false,
          "detail": "Overstates certainty",
          "wrong_explanation": "Classification describes what has happened, not what will happen next."
+        },
+        {
+         "label": "A sustained move in one general direction over time",
+         "correct": true,
+         "detail": "A descriptive classification of price behavior"
         }
        ],
        "concern": "Understanding this specific classification",
@@ -33756,11 +34273,11 @@
        "scenario": "Someone classifies a market as \"trending\" after seeing just a single candle, with no broader context.",
        "question": "What is the mistake?",
        "options": [
-        "A trending classification is commonly based on a sustained sequence of highs and lows over time, not a single candle.",
         "They should ignore the sequence of highs and lows entirely.",
-        "They should classify every single candle as its own trend."
+        "They should classify every single candle as its own trend.",
+        "A trending classification is commonly based on a sustained sequence of highs and lows over time, not a single candle."
        ],
-       "correct": 0,
+       "correct": 2,
        "explanation": "A single candle doesn't provide the sustained sequence commonly needed to classify a trend.",
        "chart": "uptrend"
       },
@@ -33768,11 +34285,11 @@
        "type": "fill_blank",
        "question": "A trending market is classified by a sustained move in one general [___].",
        "options": [
-        "volume",
         "direction",
+        "volume",
         "color"
        ],
-       "correct": 1,
+       "correct": 0,
        "explanation": "Sustained directional progress defines a trending classification."
       },
       {
@@ -33804,11 +34321,11 @@
        "type": "multiple_choice",
        "question": "Which chart description commonly matches a \"choppy\" classification?",
        "options": [
-        "A single sharp, one-directional move with no pullbacks at all.",
         "Price oscillating within a range with no clear sustained progress in either direction.",
+        "A single sharp, one-directional move with no pullbacks at all.",
         "A long, uninterrupted sequence of higher highs and higher lows."
        ],
-       "correct": 1,
+       "correct": 0,
        "explanation": "Oscillation with no sustained progress is the commonly cited hallmark of a choppy market."
       },
       {
@@ -33863,10 +34380,9 @@
        "question": "Which best describes a \"choppy\" market classification?",
        "options": [
         {
-         "label": "A sustained move consistently in one direction",
-         "correct": false,
-         "detail": "This describes trending, not choppy",
-         "wrong_explanation": "That description matches a trending classification instead."
+         "label": "Moving back and forth with no clear sustained direction",
+         "correct": true,
+         "detail": "A descriptive classification of directionless price behavior"
         },
         {
          "label": "A guarantee that price will never move again",
@@ -33875,9 +34391,10 @@
          "wrong_explanation": "Choppy describes a pattern of movement, not an absence of movement."
         },
         {
-         "label": "Moving back and forth with no clear sustained direction",
-         "correct": true,
-         "detail": "A descriptive classification of directionless price behavior"
+         "label": "A sustained move consistently in one direction",
+         "correct": false,
+         "detail": "This describes trending, not choppy",
+         "wrong_explanation": "That description matches a trending classification instead."
         }
        ],
        "concern": "Understanding this specific classification",
@@ -33890,10 +34407,10 @@
        "question": "What is the mistake?",
        "options": [
         "They should ignore the sequence of highs and lows entirely.",
-        "They should look for even more oscillation to confirm it's choppy.",
-        "A sustained sequence of higher highs and higher lows is commonly described as trending, not choppy."
+        "A sustained sequence of higher highs and higher lows is commonly described as trending, not choppy.",
+        "They should look for even more oscillation to confirm it's choppy."
        ],
-       "correct": 2,
+       "correct": 1,
        "explanation": "The described pattern matches a trending classification, not a choppy one.",
        "chart": "sideways"
       },
@@ -33901,11 +34418,11 @@
        "type": "fill_blank",
        "question": "A choppy market moves back and forth with no clear sustained [___].",
        "options": [
-        "direction",
         "volume",
+        "direction",
         "color"
        ],
-       "correct": 0,
+       "correct": 1,
        "explanation": "Directionless oscillation defines a choppy classification."
       },
       {
@@ -33937,11 +34454,11 @@
        "type": "multiple_choice",
        "question": "Which chart description commonly matches a \"volatile\" classification?",
        "options": [
-        "Unusually large or fast price swings, without necessarily implying a sustained direction.",
         "A slow, steady drift with very small price changes over a long period.",
-        "A single flat candle with almost no range at all."
+        "A single flat candle with almost no range at all.",
+        "Unusually large or fast price swings, without necessarily implying a sustained direction."
        ],
-       "correct": 0,
+       "correct": 2,
        "explanation": "Large or fast swings, regardless of direction, are the commonly cited hallmark of volatility."
       },
       {
@@ -33949,8 +34466,8 @@
        "question": "A market showing unusually large or fast price swings is commonly classified as [___].",
        "options": [
         "volatile",
-        "range-bound",
-        "flat"
+        "flat",
+        "range-bound"
        ],
        "correct": 0,
        "explanation": "\"Volatile\" is the standard classification term for this kind of large or fast movement."
@@ -33996,15 +34513,15 @@
        "question": "Which best describes a \"volatile\" market classification?",
        "options": [
         {
+         "label": "Unusually large or fast price swings, in either direction",
+         "correct": true,
+         "detail": "A descriptive classification based on swing size and speed"
+        },
+        {
          "label": "A slow, steady drift with very small changes",
          "correct": false,
          "detail": "This describes low volatility, not high volatility",
          "wrong_explanation": "That description is closer to the opposite of a volatile classification."
-        },
-        {
-         "label": "Unusually large or fast price swings, in either direction",
-         "correct": true,
-         "detail": "A descriptive classification based on swing size and speed"
         },
         {
          "label": "A guarantee that price will keep swinging forever",
@@ -34022,11 +34539,11 @@
        "scenario": "Someone classifies a market as \"volatile\" after seeing a long, slow, steady drift with very small price changes.",
        "question": "What is the mistake?",
        "options": [
-        "A slow, steady drift with small changes is commonly described as low volatility, not volatile.",
         "They should ignore the size of price swings entirely.",
+        "A slow, steady drift with small changes is commonly described as low volatility, not volatile.",
         "They should look for even smaller price changes to confirm it's volatile."
        ],
-       "correct": 0,
+       "correct": 1,
        "explanation": "The described pattern contradicts the commonly cited hallmark of a volatile classification.",
        "chart": "breakout"
       },
@@ -34034,11 +34551,11 @@
        "type": "fill_blank",
        "question": "A volatile market shows unusually large or fast [___].",
        "options": [
+        "swings",
         "colors",
-        "volumes only",
-        "swings"
+        "volumes only"
        ],
-       "correct": 2,
+       "correct": 0,
        "explanation": "Large or fast price swings define a volatile classification."
       },
       {
@@ -34070,11 +34587,11 @@
        "type": "multiple_choice",
        "question": "Which chart description commonly matches a \"fakeout\" classification?",
        "options": [
+        "Price stays well within a range the entire time, never approaching any level.",
         "Price clears a level and continues steadily in that direction afterward.",
-        "Price briefly clears a level, then quickly reverses back rather than continuing.",
-        "Price stays well within a range the entire time, never approaching any level."
+        "Price briefly clears a level, then quickly reverses back rather than continuing."
        ],
-       "correct": 1,
+       "correct": 2,
        "explanation": "A brief move beyond a level followed by a quick reversal is the commonly cited hallmark of a fakeout."
       },
       {
@@ -34082,10 +34599,10 @@
        "question": "A price move beyond a level that quickly reverses, rather than continuing, is commonly called a [___].",
        "options": [
         "drawdown",
-        "breakout",
-        "fakeout"
+        "fakeout",
+        "breakout"
        ],
-       "correct": 2,
+       "correct": 1,
        "explanation": "\"Fakeout\" is the standard term for this reversal-after-clearing pattern."
       },
       {
@@ -34129,15 +34646,15 @@
        "question": "Which best describes a \"fakeout,\" as commonly defined?",
        "options": [
         {
-         "label": "A price move beyond a level that quickly reverses, rather than continuing",
-         "correct": true,
-         "detail": "A reversal-after-clearing pattern"
-        },
-        {
          "label": "A guarantee that every breakout will eventually reverse",
          "correct": false,
          "detail": "Overstates certainty",
          "wrong_explanation": "A fakeout describes a specific completed pattern, not a rule about every breakout."
+        },
+        {
+         "label": "A price move beyond a level that quickly reverses, rather than continuing",
+         "correct": true,
+         "detail": "A reversal-after-clearing pattern"
         },
         {
          "label": "A price move beyond a level that continues steadily afterward",
@@ -34156,10 +34673,10 @@
        "question": "What is the mistake?",
        "options": [
         "They should ignore what happens after price clears a level.",
-        "They should label every single clearing of a level a fakeout immediately.",
-        "A fakeout is commonly classified only after price clears a level and then quickly reverses. It can't be confirmed at the moment of clearing alone."
+        "A fakeout is commonly classified only after price clears a level and then quickly reverses. It can't be confirmed at the moment of clearing alone.",
+        "They should label every single clearing of a level a fakeout immediately."
        ],
-       "correct": 2,
+       "correct": 1,
        "explanation": "Classifying a fakeout requires observing the reversal after the clearing, not just the initial move.",
        "chart": "resistanceRejection"
       },
@@ -34167,11 +34684,11 @@
        "type": "fill_blank",
        "question": "A fakeout is a price move beyond a level that quickly [___].",
        "options": [
-        "continues",
         "disappears",
-        "reverses"
+        "reverses",
+        "continues"
        ],
-       "correct": 2,
+       "correct": 1,
        "explanation": "A quick reversal after clearing a level is what defines a fakeout."
       },
       {
@@ -34203,11 +34720,11 @@
        "type": "multiple_choice",
        "question": "Which response to a losing streak is commonly described as disciplined?",
        "options": [
-        "Immediately doubling position size to recover the losses as fast as possible.",
         "Pausing to review whether the plan was followed, without making an immediate emotional overhaul.",
-        "Abandoning the plan permanently after the very first loss in the streak."
+        "Abandoning the plan permanently after the very first loss in the streak.",
+        "Immediately doubling position size to recover the losses as fast as possible."
        ],
-       "correct": 1,
+       "correct": 0,
        "explanation": "A calm, process-focused review is commonly cited as the disciplined response, in contrast to reactive extremes."
       },
       {
@@ -34233,11 +34750,11 @@
        "type": "fill_blank",
        "question": "A calm review of whether a plan was actually followed, without an emotional overhaul, is commonly described as a [___] response.",
        "options": [
-        "random",
         "disciplined",
-        "revenge"
+        "revenge",
+        "random"
        ],
-       "correct": 1,
+       "correct": 0,
        "explanation": "\"Disciplined\" is the commonly cited term for this calm, process-focused response."
       },
       {
@@ -34288,11 +34805,11 @@
        "scenario": "Someone responds to three losses in a row by immediately doubling their position size to \"make it back.\"",
        "question": "What is the mistake?",
        "options": [
+        "Immediately increasing size to recover losses quickly is commonly described as a revenge-trading response, not a disciplined one.",
         "They should assume this response guarantees recovering the losses.",
-        "They should double their size again after the next loss too.",
-        "Immediately increasing size to recover losses quickly is commonly described as a revenge-trading response, not a disciplined one."
+        "They should double their size again after the next loss too."
        ],
-       "correct": 2,
+       "correct": 0,
        "explanation": "This response matches the commonly described revenge-trading pattern rather than a calm, disciplined review.",
        "chart": "downtrend"
       },
@@ -34331,6 +34848,12 @@
        "question": "Given a chart showing a long sequence of higher highs and higher lows, which classification best fits?",
        "options": [
         {
+         "label": "Choppy",
+         "correct": false,
+         "detail": "Doesn't match this description",
+         "wrong_explanation": "Choppy describes oscillation with no net progress, not sustained higher highs and lows."
+        },
+        {
          "label": "Trending",
          "correct": true,
          "detail": "Matches the sustained-direction description"
@@ -34340,12 +34863,6 @@
          "correct": false,
          "detail": "Describes swing size, not direction",
          "wrong_explanation": "Volatile describes swing size/speed, not necessarily a sustained direction."
-        },
-        {
-         "label": "Choppy",
-         "correct": false,
-         "detail": "Doesn't match this description",
-         "wrong_explanation": "Choppy describes oscillation with no net progress, not sustained higher highs and lows."
         }
        ],
        "concern": "Classifying a market condition",
@@ -34362,11 +34879,11 @@
        "type": "multiple_choice",
        "question": "Which best describes a disciplined process response after a string of losses?",
        "options": [
-        "Abandoning the plan permanently after a single loss.",
         "Pausing to calmly review whether the plan was actually followed.",
+        "Abandoning the plan permanently after a single loss.",
         "Immediately doubling position size to recover the losses."
        ],
-       "correct": 1,
+       "correct": 0,
        "explanation": "A calm, process-focused review is the commonly described disciplined response."
       },
       {
@@ -34404,9 +34921,9 @@
        "scenario": "Someone classifies a chart as \"volatile\" purely because it's trending strongly upward, with otherwise normal-sized swings.",
        "question": "What is the mistake?",
        "options": [
-        "They should ignore the size of the swings entirely.",
+        "They should assume trending and volatile always mean the same thing.",
         "A strong sustained trend with normal-sized swings matches a trending classification, not necessarily a volatile one. Those describe different traits.",
-        "They should assume trending and volatile always mean the same thing."
+        "They should ignore the size of the swings entirely."
        ],
        "correct": 1,
        "explanation": "Trending describes sustained direction, while volatile specifically describes unusually large or fast swings. They're distinct classifications.",
@@ -34483,8 +35000,8 @@
        "question": "A calm review of whether a plan was actually followed, without an emotional overhaul, is commonly called a [___] response.",
        "options": [
         "disciplined",
-        "random",
-        "revenge"
+        "revenge",
+        "random"
        ],
        "correct": 0,
        "explanation": "Reviewing a key term from the Trading Psychology and Full Simulation units."
@@ -34511,9 +35028,10 @@
        "question": "Which best summarizes the overall theme of this course?",
        "options": [
         {
-         "label": "This course builds descriptive, educational understanding of markets, not a system for specific trade decisions",
-         "correct": true,
-         "detail": "The central theme throughout"
+         "label": "This course is only useful for people who already trade professionally",
+         "correct": false,
+         "detail": "Overstates it",
+         "wrong_explanation": "The course was built as general, descriptive education."
         },
         {
          "label": "This course guarantees consistent profits if followed exactly",
@@ -34522,10 +35040,9 @@
          "wrong_explanation": "This directly contradicts what every unit emphasized."
         },
         {
-         "label": "This course is only useful for people who already trade professionally",
-         "correct": false,
-         "detail": "Overstates it",
-         "wrong_explanation": "The course was built as general, descriptive education."
+         "label": "This course builds descriptive, educational understanding of markets, not a system for specific trade decisions",
+         "correct": true,
+         "detail": "The central theme throughout"
         }
        ],
        "concern": "Reviewing the big picture",
@@ -34549,11 +35066,11 @@
        "type": "fill_blank",
        "question": "This course builds descriptive, educational vocabulary, not a system for specific [___] decisions.",
        "options": [
+        "guaranteed",
         "trade",
-        "random",
-        "guaranteed"
+        "random"
        ],
-       "correct": 0,
+       "correct": 1,
        "explanation": "The whole course stays descriptive and educational, never a trade-decision system."
       },
       {

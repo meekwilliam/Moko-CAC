@@ -15204,7 +15204,228 @@ ATR always tells you when to buy or sell.
 ATR has no descriptive value at all.
 WHY: Like every indicator in this course, ATR is descriptive context, never a trade signal.
 
-UNIT 37 — Trading Psychology
+UNIT 37 — Relative Volume (RVOL)
+NODE 1
+TITLE: What Is Relative Volume?
+CELEBRATION: You understand what RVOL measures!
+
+INTRO
+TITLE: Volume Compared to Normal
+TEXT: Relative Volume (RVOL) compares today's volume to that same stock's typical volume at this point in the day. It answers "is this unusually active, or a normal day?"
+
+[MC] RVOL compares today's volume to...
+That stock's own typical volume at this point in the day.
+The volume of every other stock in the market.
+The stock's all-time high volume ever recorded.
+WHY: RVOL is a same-stock, same-time-of-day comparison, not a cross-market ranking.
+
+[TF] RVOL is about comparing a stock's volume to its own typical pattern, not to other stocks.
+ANSWER: True
+WHY: RVOL is stock-specific and time-of-day-specific.
+
+[FILL] RVOL helps answer whether today's volume is [___] for this stock.
+unusual
+guaranteed
+random
+WHY: RVOL flags whether current activity is normal or standout compared to that stock's own history.
+
+[MATCH] Match the term to its focus.
+RVOL => Comparing current volume to typical volume, same stock
+Raw volume => Total shares traded, no comparison built in
+High RVOL => Unusually active relative to normal
+WHY: RVOL adds context that raw volume alone doesn't provide.
+
+[PICK] Why might RVOL matter more than raw share volume alone?
+CONCERN: Reading volume with context
+Because raw volume alone doesn't say whether that's unusual for this particular stock | detail: Context matters
+Because raw volume is always identical across all stocks | detail: Incorrect | wrong: Typical volume varies enormously by stock.
+Because RVOL replaces the need to look at price at all | detail: Incorrect | wrong: RVOL is one added piece of context, not a replacement for price.
+WHY: A million shares might be huge for one stock and tiny for another — RVOL adds that missing context.
+
+[SPOT] Someone sees "2 million shares traded" and assumes that's automatically a big deal for every stock.
+QUESTION: What is the mistake?
+Whether 2 million shares is unusual depends on that stock's own typical volume, which RVOL captures.
+Raw share count means the same thing for every stock.
+Volume numbers never need any context.
+WHY: Without comparing to typical volume, a raw number alone doesn't reveal whether it's unusual.
+
+NODE 2
+TITLE: Reading an RVOL Reading
+CELEBRATION: You can interpret RVOL readings!
+
+INTRO
+TITLE: Above and Below "Normal"
+TEXT: An RVOL reading is often expressed as a multiple of normal, for example "2x" meaning twice the typical volume for this time of day.
+
+[MC] An RVOL reading of "3x" commonly means...
+Volume is roughly three times this stock's typical level.
+Price has moved three points.
+The stock has three times as many shares outstanding.
+WHY: RVOL multiples describe volume relative to typical, not price or share count.
+
+[TF] An RVOL below 1x commonly reflects quieter-than-usual volume.
+ANSWER: True
+WHY: A reading under 1x means volume is running below what's typical for that time.
+
+[FILL] An RVOL reading is often expressed as a [___] of normal volume.
+multiple
+percentage of price
+guarantee
+WHY: RVOL is commonly shown as a multiple (like 2x or 0.5x) of typical volume.
+
+[MATCH] Match the RVOL reading to its meaning.
+Above 1x => Busier than typical
+Around 1x => Roughly typical
+Below 1x => Quieter than typical
+WHY: The 1x baseline represents this stock's own normal volume for that time of day.
+
+[PICK] Why compare RVOL to 1x rather than to a fixed universal number?
+CONCERN: Reading it relatively
+Because 1x represents this specific stock's own typical volume as the baseline | detail: A relative benchmark
+Because 1x is a fixed number that means the same thing for every stock | detail: Incorrect | wrong: 1x is relative to each stock's own typical volume.
+Because RVOL has no baseline at all | detail: Incorrect | wrong: 1x serves as the "typical" baseline.
+WHY: The 1x baseline is specific to each stock, which is what makes RVOL a relative measure.
+
+[SPOT] Someone assumes an RVOL of "1.5x" means the same absolute share count for every stock.
+QUESTION: What is the mistake?
+1.5x is relative to that stock's own typical volume, which differs stock to stock.
+1.5x always equals exactly the same number of shares everywhere.
+RVOL has no connection to that stock's own history.
+WHY: The multiple is anchored to each stock's own typical volume, not a shared absolute number.
+
+NODE 3
+TITLE: RVOL and News or Catalysts
+CELEBRATION: You can connect RVOL to catalysts!
+
+INTRO
+TITLE: A Clue, Not a Signal
+TEXT: Unusually high RVOL sometimes coincides with news, earnings, or other catalysts, since more participants may be trading around the event. It's descriptive context, not a trade signal.
+
+[MC] Elevated RVOL alongside news commonly reflects...
+More participants than usual trading around that event.
+A guaranteed price direction.
+Confirmation that the news is accurate.
+WHY: Elevated RVOL is a participation clue, not a guarantee of direction or of the news itself.
+
+[TF] High RVOL around a catalyst is context, not a buy or sell signal.
+ANSWER: True
+WHY: Like every indicator in this course, RVOL describes conditions rather than prescribing action.
+
+[FILL] Elevated RVOL near news commonly reflects more [___] than usual.
+participation
+certainty
+profit
+WHY: More shares changing hands reflects more participation, not certainty of outcome.
+
+[MATCH] Match the scenario to what it commonly reflects.
+High RVOL, earnings day => More participants trading around the event
+Low RVOL, quiet day => Fewer participants, less activity
+High RVOL alone => Unusual activity worth noting as context
+WHY: RVOL by itself describes activity level, and pairing it with a known catalyst adds context.
+
+[PICK] How should elevated RVOL near a catalyst be treated?
+CONCERN: Avoiding overreach
+As one piece of descriptive context about participation, not a signal | detail: Descriptive framing
+As a guarantee that price will move in a specific direction | detail: Overstates certainty | wrong: RVOL says nothing about direction.
+As proof the news itself is true | detail: Unrelated claim | wrong: Volume doesn't verify news accuracy.
+WHY: RVOL adds context about participation levels, never a directional or truth guarantee.
+
+[SPOT] Someone sees high RVOL on earnings day and treats it as a guaranteed breakout signal.
+QUESTION: What is the mistake?
+High RVOL reflects participation, not a guaranteed direction or outcome.
+RVOL always predicts a breakout on earnings days.
+Earnings always cause identical RVOL patterns.
+WHY: RVOL is descriptive context about activity level, never a predictive signal.
+
+NODE 4
+TITLE: RVOL Across the Trading Day
+CELEBRATION: You understand how RVOL shifts intraday!
+
+INTRO
+TITLE: Time-of-Day Matters
+TEXT: Because RVOL compares to typical volume at that specific time of day, a stock's expected volume in the first ten minutes differs from its expected volume midday, connecting back to the Trading Sessions unit.
+
+[MC] Why does RVOL account for time of day rather than the whole day at once?
+Because typical volume itself varies by time of day, like the open being busier than midday.
+Because volume is identical every minute of the day.
+Because RVOL only applies after the market closes.
+WHY: This connects back to earlier lessons on how volume and activity vary across the trading session.
+
+[TF] Typical volume in the opening minutes commonly differs from typical volume at midday.
+ANSWER: True
+WHY: Sessions differ in typical activity level, which is why RVOL compares like-for-like time windows.
+
+[FILL] RVOL compares current volume to what's typical for that same [___] of day.
+time
+color
+price
+WHY: The comparison window matters since typical volume itself shifts through the session.
+
+[MATCH] Match the session to a commonly cited RVOL consideration.
+Opening minutes => Typical volume is commonly higher
+Midday lull => Typical volume is commonly lower
+RVOL calculation => Accounts for this time-of-day baseline
+WHY: This ties RVOL directly back to the Trading Sessions & News unit's session-activity concepts.
+
+[PICK] Why does time-of-day matter for reading RVOL correctly?
+CONCERN: Applying the concept accurately
+Because comparing to the wrong time window could make normal activity look unusual, or vice versa | detail: Like-for-like comparison
+Because RVOL ignores time of day entirely | detail: Incorrect | wrong: RVOL's baseline is specifically time-of-day aware.
+Because every session has identical typical volume | detail: Incorrect | wrong: Sessions commonly differ in typical activity.
+WHY: A meaningful RVOL reading depends on comparing against the right same-time-of-day baseline.
+
+[SPOT] Someone compares midday volume directly to the opening-minutes baseline and calls it "quiet."
+QUESTION: What is the mistake?
+Comparing across mismatched time-of-day baselines can make normal midday volume look artificially low.
+Volume is identical at every point in the trading day.
+RVOL has no relationship to time of day.
+WHY: RVOL's comparison should use the typical baseline for that same time window, not a different one.
+
+NODE 5
+TITLE: RVOL Review
+CELEBRATION: You've completed the Relative Volume unit!
+
+INTRO
+TITLE: Bringing It Together
+TEXT: A final review of what RVOL measures, reading its readings, its relationship to catalysts, and how time of day factors in.
+
+[TF] RVOL compares current volume to that stock's own typical volume, not to other stocks.
+ANSWER: True
+WHY: That's the core, consistent idea across this whole unit.
+
+[FILL] An RVOL reading is commonly expressed as a [___] of typical volume.
+multiple
+guarantee
+price target
+WHY: A recap of the "2x," "0.5x" style readings covered in this unit.
+
+[MC] How should elevated RVOL near a catalyst be treated?
+As descriptive context about participation, not a trade signal.
+As a guaranteed breakout.
+As proof the catalyst news is accurate.
+WHY: A recap of the descriptive, non-predictive framing used throughout the course.
+
+[MATCH] Match the term to its one-line meaning.
+RVOL => Volume relative to that stock's own typical level
+Above 1x => Busier than normal
+Below 1x => Quieter than normal
+WHY: A quick recap of the unit's core vocabulary.
+
+[PICK] Which best summarizes this unit?
+CONCERN: Reviewing the big picture
+RVOL adds relative, time-aware context to raw volume, without predicting direction | detail: The central theme
+RVOL guarantees the next price direction | detail: Overstates certainty | wrong: RVOL describes participation, not direction.
+RVOL is unrelated to time of day | detail: Incorrect | wrong: The baseline itself is time-of-day specific.
+WHY: RVOL's value is the relative, time-aware context it adds to plain volume figures.
+
+[SPOT] Someone finishes this unit and starts using RVOL alone as a buy/sell trigger.
+QUESTION: What is the mistake?
+RVOL describes relative participation, it's not a buy or sell signal on its own.
+RVOL always tells you when to buy or sell.
+RVOL has no descriptive value at all.
+WHY: Like every indicator in this course, RVOL is descriptive context, never a trade signal.
+
+UNIT 38 — Trading Psychology
 NODE 1
 TITLE: What Is FOMO?
 CELEBRATION: You understand FOMO!
@@ -15753,7 +15974,7 @@ WHY: All the core patterns from this unit are reviewed together here.
 ANSWER: True
 WHY: This has been the throughline, emotional patterns pulling away from disciplined plan-following.
 
-UNIT 38 — Full Simulation Training
+UNIT 39 — Full Simulation Training
 NODE 1
 TITLE: Classifying Trending Markets
 CELEBRATION: You can classify a trending market!
