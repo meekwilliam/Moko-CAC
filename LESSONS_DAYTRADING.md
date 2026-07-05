@@ -50,7 +50,7 @@ WHY: Short describes selling first and profiting from a decline.
 
 [SPOT] Someone says "going short" means buying shares to hold for the long term.
 QUESTION: What is the mistake?
-"Short" describes selling first hoping for a price decline — it has nothing to do with a long-term buy-and-hold.
+"Short" describes selling first hoping for a price decline. It has nothing to do with a long-term buy-and-hold.
 Short always means holding for years.
 Long and short are the same thing.
 WHY: "Short" and "long-term" are unrelated ideas that happen to share a similar-sounding word.
@@ -155,7 +155,7 @@ WHY: Unrealized P&L is a paper value that can still move until the position clos
 
 [SPOT] Someone treats their unrealized P&L as a final, guaranteed result before closing the position.
 QUESTION: What is the mistake?
-Unrealized P&L can still change until the position is actually closed — it isn't locked in yet.
+Unrealized P&L can still change until the position is actually closed. It isn't locked in yet.
 Unrealized and realized P&L are identical.
 Once a position is open, its P&L never changes.
 WHY: Only realized P&L (after closing) is the final, locked-in result.
@@ -166,7 +166,7 @@ CELEBRATION: You understand market cap!
 
 INTRO
 TITLE: The Size of a Company
-TEXT: Market capitalization ("market cap") is a company's total share price multiplied by its total shares outstanding — a common way to describe company size.
+TEXT: Market capitalization ("market cap") is a company's total share price multiplied by its total shares outstanding, a common way to describe company size.
 
 [MC] Market cap is calculated as...
 Share price multiplied by total shares outstanding.
@@ -205,7 +205,7 @@ WHY: Market cap is a size metric calculated from price and shares outstanding.
 
 [SPOT] Someone assumes market cap measures a company's cash reserves.
 QUESTION: What is the mistake?
-Market cap is share price times shares outstanding — it's a size metric, not a cash measurement.
+Market cap is share price times shares outstanding. It's a size metric, not a cash measurement.
 Market cap and cash reserves are the same thing.
 Market cap has nothing to do with share price.
 WHY: Market cap is specifically calculated from share price and share count, not cash on hand.
@@ -216,7 +216,7 @@ CELEBRATION: You understand float!
 
 INTRO
 TITLE: Shares Available to Trade
-TEXT: "Float" describes the number of shares actually available for public trading — excluding shares held by insiders or locked up.
+TEXT: "Float" describes the number of shares actually available for public trading, excluding shares held by insiders or locked up.
 
 [MC] A stock's "float" refers to...
 Shares actually available for public trading.
@@ -282,7 +282,7 @@ WHY: Reviewing the term from earlier in this unit.
 Both describe aspects of a company's shares (total value vs. shares available to trade).
 Both measure the exact same thing.
 Neither has any relationship to a company's shares.
-WHY: Market cap measures total share value; float measures shares available — related but distinct share-based metrics.
+WHY: Market cap measures total share value; float measures shares available, related but distinct share-based metrics.
 
 [MATCH] Match each term to its one-line meaning.
 Long => Buy first, profit if price rises
@@ -304,14 +304,14 @@ WHY: This sequence uses the full vocabulary from this unit to describe one trade
 
 [PICK] Which best summarizes this unit?
 CONCERN: Reviewing the big picture
-Core trading vocabulary — long/short, position mechanics, P&L, and company size terms | detail: The building blocks for everything else
+Core trading vocabulary, long/short, position mechanics, P&L, and company size terms | detail: The building blocks for everything else
 A set of guaranteed trading rules | detail: Overstates it | wrong: This unit is vocabulary, not rules or guarantees.
 Advanced strategy concepts | detail: Too advanced | wrong: This unit covers foundational terms, not advanced strategy.
 WHY: This unit builds the foundational vocabulary used throughout the rest of the course.
 
 [SPOT] Someone finishes this unit and still confuses "short" with "long-term holding."
 QUESTION: What is the mistake?
-"Short" describes selling first to profit from a decline — it's unrelated to how long a trade is held.
+"Short" describes selling first to profit from a decline. It's unrelated to how long a trade is held.
 Short and long-term are synonyms.
 Vocabulary from this unit doesn't matter going forward.
 WHY: Precise use of this vocabulary matters, since the rest of the course builds on these exact terms.
@@ -364,7 +364,7 @@ CONCERN: Understanding basic ownership
 A small, fractional ownership stake in that company | detail: You own a tiny piece of the business
 A loan you gave the company | detail: Incorrect | wrong: Stock ownership isn't a loan; that's closer to a bond.
 A coupon for company products | detail: Incorrect | wrong: Owning stock doesn't entitle you to discounts or products.
-WHY: Stock ownership is equity — a piece of the business itself.
+WHY: Stock ownership is equity, a piece of the business itself.
 
 [SPOT] Someone believes owning one share means they help run the company's daily operations.
 QUESTION: What is the mistake?
@@ -396,7 +396,7 @@ CELEBRATION: You can read what a chart actually shows!
 
 INTRO
 TITLE: A Picture of Price Over Time
-TEXT: A chart is simply a visual plot of price against time — nothing more mysterious than that.
+TEXT: A chart is simply a visual plot of price against time. Nothing more mysterious than that.
 CHART: uptrend
 
 [TF] A chart is a visual plot of price over time.
@@ -472,7 +472,7 @@ CELEBRATION: You understand the tug-of-war behind every price!
 
 INTRO
 TITLE: Buyers vs. Sellers
-TEXT: Price moves because of an ongoing back-and-forth between buyers and sellers — not because of a single decision-maker.
+TEXT: Price moves because of an ongoing back-and-forth between buyers and sellers, not because of a single decision-maker.
 
 [TF] Price moves because of an ongoing negotiation between buyers and sellers.
 ANSWER: True
@@ -520,7 +520,7 @@ QUESTION: What is the mistake?
 Price emerges from many buyers and sellers trading, not one person's decision.
 They should ask a different employee instead.
 They should assume the price is fixed once set.
-WHY: No individual sets the price directly — it comes from collective trading activity.
+WHY: No individual sets the price directly. It comes from collective trading activity.
 
 
 [MC] What would you expect if buying and selling pressure were perfectly balanced?
@@ -537,7 +537,7 @@ WHY: Any participant's buying or selling activity contributes to the overall bal
 negotiation
 company decision
 government rule
-WHY: No single authority sets price — it comes from continuous trading activity.
+WHY: No single authority sets price. It comes from continuous trading activity.
 
 NODE 4
 TITLE: What Is Volume?
@@ -545,11 +545,11 @@ CELEBRATION: You understand what volume tells you!
 
 INTRO
 TITLE: How Much Traded, Not Where
-TEXT: Volume measures how many shares changed hands during a period — a separate idea from price itself.
+TEXT: Volume measures how many shares changed hands during a period, a separate idea from price itself.
 
 [TF] Volume measures how many shares changed hands during a period.
 ANSWER: True
-WHY: That's the definition of volume — a count of shares traded, not a price level.
+WHY: That's the definition of volume, a count of shares traded, not a price level.
 
 [FILL] Higher volume generally means more shares were [___].
 traded
@@ -604,7 +604,7 @@ WHY: Popular assets during active trading hours commonly see more shares change 
 
 [TF] Volume and price are actually the same measurement, just displayed differently.
 ANSWER: False
-WHY: Volume counts shares traded; price measures the level shares traded at — two separate dimensions.
+WHY: Volume counts shares traded; price measures the level shares traded at, two separate dimensions.
 
 [FILL] A sudden, unusually large increase in volume is often called a volume [___].
 spike
@@ -809,7 +809,7 @@ WHY: A limit order only fills if the market actually reaches your specified pric
 
 [SPOT] Someone is confused why their limit order never filled, even though they set a specific price.
 QUESTION: What is the mistake?
-If the market price never reached their limit, the order simply remained unfilled — that's expected behavior.
+If the market price never reached their limit, the order simply remained unfilled. That's expected behavior.
 They should have set an even lower limit price regardless of the market.
 Limit orders must be broken and shouldn't be used.
 WHY: An unfilled limit order usually just means price never reached that level.
@@ -837,7 +837,7 @@ CELEBRATION: You understand how "choppy" a market can be!
 
 INTRO
 TITLE: How Big and Fast the Swings Are
-TEXT: Volatility describes how much — and how quickly — price moves, in either direction.
+TEXT: Volatility describes how much, and how quickly, price moves, in either direction.
 CHART: breakout
 
 [TF] Volatility describes how much and how quickly price moves, regardless of direction.
@@ -888,7 +888,7 @@ QUESTION: What is the mistake?
 Volatility describes the size and speed of movement, not which direction it goes.
 They should assume volatility always means an uptrend.
 They should assume volatility always means a downtrend.
-WHY: A highly volatile market can move sharply in either direction — volatility alone doesn't determine direction.
+WHY: A highly volatile market can move sharply in either direction, volatility alone doesn't determine direction.
 
 
 [MC] Which market condition would most likely be described as "volatile"?
@@ -899,7 +899,7 @@ WHY: Volatility is about the size and speed of price movement, regardless of dir
 
 [TF] Volatility can be high even if a market is trending strongly upward.
 ANSWER: True
-WHY: A strong uptrend can still include large, fast swings — volatility measures movement size, not direction.
+WHY: A strong uptrend can still include large, fast swings, volatility measures movement size, not direction.
 
 [FILL] Markets with small, slow price movement are often described as having [___] volatility.
 low
@@ -1062,7 +1062,7 @@ CELEBRATION: You can read a single candlestick!
 
 INTRO
 TITLE: Reading a Candle
-TEXT: A candlestick is a compact picture of price during a fixed period of time — a preview before Unit 2 goes deeper.
+TEXT: A candlestick is a compact picture of price during a fixed period of time, a preview before Unit 2 goes deeper.
 CHART: doji
 
 [TF] A candlestick only shows the price at one single instant in time.
@@ -1104,7 +1104,7 @@ CHART: doji
 CONCERN: Reading indecision
 Doji | detail: Open and close are close together
 Hammer | detail: A specific single-wick shape | wrong: A hammer typically has one long wick, not two.
-Marubozu | detail: A candle with almost no wicks | wrong: This is the opposite — a marubozu has little to no wick.
+Marubozu | detail: A candle with almost no wicks | wrong: This is the opposite, a marubozu has little to no wick.
 WHY: A doji is one of the most commonly referenced single-candle patterns.
 
 [SPOT] Someone says "this one candle proves price will definitely go up next."
@@ -1113,7 +1113,7 @@ QUESTION: What is the mistake?
 No single candlestick can reliably predict future price with certainty.
 They should have looked at an even longer wick.
 They should have used a different-colored candle.
-WHY: Candlesticks describe what already happened — they aren't guarantees about what happens next.
+WHY: Candlesticks describe what already happened. They aren't guarantees about what happens next.
 
 
 [MC] What does a candlestick's wick represent?
@@ -1183,7 +1183,7 @@ WHY: The high specifically marks the peak price reached, regardless of where it 
 
 [SPOT] Someone assumes the "close" of a candle is always the same as its highest price.
 QUESTION: What is the mistake?
-The close and the high are often different values — the close is simply where price ended.
+The close and the high are often different values, the close is simply where price ended.
 They should assume close always equals the low instead.
 They should ignore the close value entirely.
 WHY: A candle can close well below its high if price pulled back before the period ended.
@@ -1256,7 +1256,7 @@ WHY: "Gap fill" specifically describes price retracing back through the skipped 
 
 [SPOT] Someone assumes every gap must always get filled eventually, as a guaranteed rule.
 QUESTION: What is the mistake?
-Not every gap gets filled — some do, some don't; there's no guarantee either way.
+Not every gap gets filled, some do, some don't; there's no guarantee either way.
 They should assume no gap is ever filled instead.
 They should ignore gaps entirely from now on.
 WHY: Treating "gaps always fill" as a certainty overstates what is really just a commonly observed tendency, not a rule.
@@ -1332,7 +1332,7 @@ WHY: "Trend" is a useful descriptive shorthand, not a promise about what happens
 [SPOT] Someone assumes that because a chart has trended upward for months, it can never turn downward.
 CHART: downtrend
 QUESTION: What is the mistake?
-A trend describes what has already happened — it doesn't guarantee it will continue forever.
+A trend describes what has already happened. It doesn't guarantee it will continue forever.
 They should have used a shorter timeframe instead.
 They should have looked at a totally different asset.
 WHY: Trends can and do change; treating a past trend as a permanent guarantee is a common misconception.
@@ -1360,26 +1360,26 @@ CELEBRATION: You can classify chart direction on sight!
 
 INTRO
 TITLE: Putting It Together
-TEXT: Let's practice classifying a chart's overall direction — purely a descriptive exercise, not a prediction of what comes next.
+TEXT: Let's practice classifying a chart's overall direction, purely a descriptive exercise, not a prediction of what comes next.
 CHART: uptrend
 
 [MC] What is the overall direction shown in this chart?
 CHART: uptrend
-An uptrend — price generally moving higher over time
-A downtrend — price generally moving lower over time
+An uptrend: price generally moving higher over time
+A downtrend: price generally moving lower over time
 A sideways range with no clear direction
 WHY: The overall shape here moves generally higher over the period shown.
 
 [MC] What is the overall direction shown in this chart?
 CHART: downtrend
-A downtrend — price generally moving lower over time
-An uptrend — price generally moving higher over time
+A downtrend: price generally moving lower over time
+An uptrend: price generally moving higher over time
 A sideways range with no clear direction
 WHY: The overall shape here moves generally lower over the period shown.
 
 [MC] How would you classify the price action in this chart?
 CHART: sideways
-A sideways range, without a clear overall direction
+A sideways range: without a clear overall direction
 A strong uptrend
 A strong downtrend
 WHY: Price here stays within a similar band rather than clearly trending.
@@ -1412,7 +1412,7 @@ WHY: This exercise builds descriptive chart-reading skill, not predictive or tra
 [SPOT] Someone finishes this drill and claims they can now predict every future chart's direction with certainty.
 CHART: uptrend
 QUESTION: What is the mistake?
-This drill practices describing direction that has already happened — it doesn't grant predictive certainty about the future.
+This drill practices describing direction that has already happened. It doesn't grant predictive certainty about the future.
 They should have practiced on an even smaller chart.
 They should have skipped straight to a real account instead.
 WHY: This is a literacy exercise in reading what already happened, not a predictive skill.
@@ -1480,7 +1480,7 @@ WHY: A big body with tiny wicks means price pushed one direction and stayed ther
 [SPOT] Someone glances at the chart and reads only the wicks, ignoring the bodies entirely.
 CHART: marubozu
 QUESTION: What is the mistake?
-The body and wicks are read together — the body shows the net move, the wicks the extremes.
+The body and wicks are read together, the body shows the net move, the wicks the extremes.
 They should ignore the wicks too and just guess.
 They should only ever look at the very first candle.
 WHY: Reading body and wick together gives a fuller picture than either alone.
@@ -1489,7 +1489,7 @@ WHY: Reading body and wick together gives a fuller picture than either alone.
 [TF] A candlestick with a small body and long wicks on both sides would generally NOT be called a marubozu.
 CHART: marubozu
 ANSWER: True
-WHY: A marubozu specifically needs a large body and almost no wicks — the opposite of that description.
+WHY: A marubozu specifically needs a large body and almost no wicks, the opposite of that description.
 
 [FILL] Wicks show the [___] and low reached during the period, beyond the body.
 high
@@ -1509,20 +1509,20 @@ CELEBRATION: You can spot a doji on a chart instantly!
 
 INTRO
 TITLE: When Neither Side Wins
-TEXT: A doji has a tiny body — open and close almost equal — with wicks on both sides. It's commonly read as a moment of balance. The highlighted candle below is a doji.
+TEXT: A doji has a tiny body, open and close almost equal, with wicks on both sides. It's commonly read as a moment of balance. The highlighted candle below is a doji.
 CHART: doji
 
 [MC] The highlighted candle above is best described as a...
 CHART: doji
-Doji — a tiny body with wicks on both sides.
-Marubozu — a large body with no wicks.
-Bullish engulfing — a big candle swallowing the one before it.
+Doji: a tiny body with wicks on both sides.
+Marubozu: a large body with no wicks.
+Bullish engulfing: a big candle swallowing the one before it.
 WHY: The near-nonexistent body is what makes the highlighted candle a doji.
 
 [TF] The chart above shows a candle with a large, decisive body.
 CHART: doji
 ANSWER: False
-WHY: The highlighted candle is a doji — its body is tiny, the opposite of decisive.
+WHY: The highlighted candle is a doji. Its body is tiny, the opposite of decisive.
 
 [FILL] The tiny body on the highlighted candle is commonly read as market [___] between buyers and sellers.
 CHART: doji
@@ -1542,7 +1542,7 @@ WHY: A doji describes balance in that period; it doesn't predict the next move b
 [SPOT] Looking at this chart, someone calls the highlighted doji a "100% guaranteed reversal."
 CHART: doji
 QUESTION: What is the mistake?
-A doji describes balance — no single candle is a guaranteed signal of what happens next.
+A doji describes balance. No single candle is a guaranteed signal of what happens next.
 The doji should have an even bigger body to count.
 A doji can only ever appear at the start of a chart.
 WHY: A doji is a useful descriptive clue, not a certainty.
@@ -1550,7 +1550,7 @@ WHY: A doji is a useful descriptive clue, not a certainty.
 [TAPCANDLE] Tap the doji on the chart.
 CHART: doji
 TARGET: 2
-WHY: The middle candle has an almost nonexistent body with wicks on both sides — that's the doji.
+WHY: The middle candle has an almost nonexistent body with wicks on both sides. That's the doji.
 
 [TF] A doji's open and close prices are nearly identical.
 CHART: doji
@@ -1577,7 +1577,7 @@ TITLE: A Long Lower Wick
 TEXT: A hammer has a small body near the top and a long lower wick, appearing after a down-move. The long wick shows price was pushed down, then recovered by the close. The highlighted candle is a hammer.
 CHART: hammer
 
-[MC] The highlighted candle above — small body up top, long lower wick, after a drop — is a...
+[MC] The highlighted candle above, small body up top, long lower wick, after a drop, is a...
 CHART: hammer
 Hammer.
 Shooting star.
@@ -1594,7 +1594,7 @@ WHY: The body finishing near the top means buyers pulled price back up before th
 [TF] The chart above shows a candle with a long <b>upper</b> wick and body near the bottom.
 CHART: hammer
 ANSWER: False
-WHY: This is a hammer — a long LOWER wick with the body near the top.
+WHY: This is a hammer, a long LOWER wick with the body near the top.
 
 [PICK] What does the hammer on the chart above describe?
 CHART: hammer
@@ -1613,7 +1613,7 @@ WHY: Shape plus context together define the hammer.
 [TAPCANDLE] Tap the hammer on the chart.
 CHART: hammer
 TARGET: 3
-WHY: The last candle has a small body up top and a long lower wick — the hammer.
+WHY: The last candle has a small body up top and a long lower wick, the hammer.
 
 [TF] A hammer's long wick points downward, below the body.
 CHART: hammer
@@ -1641,7 +1641,7 @@ TITLE: A Long Upper Wick
 TEXT: A shooting star is the hammer's mirror image: a small body near the bottom and a long upper wick, appearing after an up-move. Price was pushed up but slid back by the close. The highlighted candle is a shooting star.
 CHART: shootingStar
 
-[MC] The highlighted candle above — small body near the bottom, long upper wick, after a rise — is a...
+[MC] The highlighted candle above, small body near the bottom, long upper wick, after a rise, is a...
 CHART: shootingStar
 Shooting star.
 Hammer.
@@ -1658,7 +1658,7 @@ WHY: The body finishing near the low means the higher prices were rejected befor
 [TF] The chart above shows the same shape as a hammer.
 CHART: shootingStar
 ANSWER: False
-WHY: It's the mirror image — a long UPPER wick (shooting star), not a long lower wick (hammer).
+WHY: It's the mirror image, a long UPPER wick (shooting star), not a long lower wick (hammer).
 
 [PICK] What does the shooting star on the chart above describe?
 CHART: shootingStar
@@ -1671,7 +1671,7 @@ WHY: The shooting star describes an upward push that got rejected.
 [SPOT] Someone sees this chart and labels the highlighted candle a hammer.
 CHART: shootingStar
 QUESTION: What is the mistake?
-The long wick here is on top, after a rise — that's a shooting star, not a hammer.
+The long wick here is on top, after a rise. That's a shooting star, not a hammer.
 A shooting star and a hammer are the exact same shape.
 Wick direction doesn't matter when naming a candle.
 WHY: Which side the long wick is on (and the preceding move) is what separates the two.
@@ -1698,7 +1698,7 @@ WHY: Wick position (and preceding trend) is what names each shape.
 [SPOT] Someone assumes a shooting star's long wick means volume was extremely high.
 CHART: shootingStar
 QUESTION: What is the mistake?
-Wick length shows price extremes, not trading volume — they're two separate ideas.
+Wick length shows price extremes, not trading volume. They're two separate ideas.
 Wick length always equals volume.
 Volume can't be measured separately from wicks.
 WHY: Wicks describe price reach, not trading volume.
@@ -1706,7 +1706,7 @@ WHY: Wicks describe price reach, not trading volume.
 [MATCH] Match each shape to the trend it commonly follows.
 Hammer => A preceding decline
 Shooting star => A preceding rise
-Doji => Either — it just shows balance
+Doji => Either. It just shows balance
 WHY: Preceding trend is part of what gives each shape its common reading.
 
 NODE 5
@@ -1728,7 +1728,7 @@ WHY: A larger up-candle body swallowing the prior down candle is the bullish eng
 [TF] In a bullish engulfing like the one shown, the second (highlighted) candle's body is smaller than the first.
 CHART: bullishEngulfing
 ANSWER: False
-WHY: The whole point is the second body is LARGER — it engulfs the first.
+WHY: The whole point is the second body is LARGER. It engulfs the first.
 
 [FILL] A bullish engulfing pattern needs the up candle to fully [___] the prior candle's body.
 cover
@@ -1752,12 +1752,12 @@ WHY: The second candle's larger up body fully covers the prior down candle.
 [TF] A bullish engulfing pattern involves exactly two candles.
 CHART: bullishEngulfing
 ANSWER: True
-WHY: The pattern is specifically a two-candle relationship — a small one, then a larger engulfing one.
+WHY: The pattern is specifically a two-candle relationship, a small one, then a larger engulfing one.
 
 [MC] In a bullish engulfing, which candle comes first?
 The smaller down candle.
 The larger up candle.
-Neither — they're simultaneous.
+Neither. They're simultaneous.
 WHY: The smaller down candle is followed by the larger engulfing up candle.
 
 [FILL] The word "engulfing" describes one candle's body completely [___] another's.
@@ -1796,7 +1796,7 @@ WHY: A larger down-candle body swallowing the prior up candle is the bearish eng
 [TF] The chart above shows an up (green) candle engulfing a down candle.
 CHART: bearishEngulfing
 ANSWER: False
-WHY: Here a DOWN candle engulfs an up candle — that's bearish engulfing.
+WHY: Here a DOWN candle engulfs an up candle. That's bearish engulfing.
 
 [FILL] A bearish engulfing is commonly read as [___] taking over from buyers for that period.
 sellers
@@ -1813,7 +1813,7 @@ WHY: The engulfing direction depends on which candle swallows the other.
 [SPOT] Someone sees this chart and calls it bullish because "there's a big candle."
 CHART: bearishEngulfing
 QUESTION: What is the mistake?
-Size alone isn't the point — here the big candle is a DOWN candle engulfing an up one, which is bearish.
+Size alone isn't the point. Here the big candle is a DOWN candle engulfing an up one, which is bearish.
 A big candle always means bullish.
 The color of the engulfing candle never matters.
 WHY: Direction of the engulfing candle, not just its size, sets bullish vs bearish.
@@ -1827,7 +1827,7 @@ WHY: Like bullish engulfing, this is a two-candle relationship.
 [MC] In a bearish engulfing, which candle comes first?
 The smaller up candle.
 The larger down candle.
-Neither — they're simultaneous.
+Neither. They're simultaneous.
 WHY: The smaller up candle is followed by the larger engulfing down candle.
 
 [PICK] What does a bearish engulfing describe about that period?
@@ -1835,7 +1835,7 @@ CHART: bearishEngulfing
 CONCERN: Reading the pattern
 Sellers overwhelmed the prior up candle within one period | detail: A descriptive read
 A guaranteed downtrend forever | detail: Overstates certainty | wrong: A pattern describes, it doesn't guarantee.
-That both candles are the same color | detail: Incorrect | wrong: One is up, one is down — that's the point.
+That both candles are the same color | detail: Incorrect | wrong: One is up, one is down. That's the point.
 WHY: The pattern describes selling pressure taking over, not a guaranteed outcome.
 
 
@@ -1856,10 +1856,10 @@ CELEBRATION: You can identify a spinning top on a chart!
 
 INTRO
 TITLE: A Small Body, Wicks Both Sides
-TEXT: A spinning top has a small body with wicks of similar length on both sides — like a doji but with a slightly larger body. It's commonly read as hesitation. The highlighted candle is a spinning top.
+TEXT: A spinning top has a small body with wicks of similar length on both sides, like a doji but with a slightly larger body. It's commonly read as hesitation. The highlighted candle is a spinning top.
 CHART: spinningTop
 
-[MC] The highlighted candle — small body, similar wicks on both sides — is a...
+[MC] The highlighted candle, small body, similar wicks on both sides, is a...
 CHART: spinningTop
 Spinning top.
 Marubozu.
@@ -1869,7 +1869,7 @@ WHY: A small body centered between two similar wicks is the spinning top shape.
 [TF] The chart above shows a candle with a large body and no wicks.
 CHART: spinningTop
 ANSWER: False
-WHY: A spinning top has a SMALL body with wicks on both sides — the opposite of a marubozu.
+WHY: A spinning top has a SMALL body with wicks on both sides, the opposite of a marubozu.
 
 [FILL] A spinning top is commonly read as [___], with neither side clearly in control.
 hesitation
@@ -1924,10 +1924,10 @@ CELEBRATION: You can identify a marubozu on a chart!
 
 INTRO
 TITLE: All Body, No Wick
-TEXT: A marubozu has a large body and almost no wicks — price opened at one end, closed at the other, and barely looked back. The highlighted candle is a marubozu.
+TEXT: A marubozu has a large body and almost no wicks, price opened at one end, closed at the other, and barely looked back. The highlighted candle is a marubozu.
 CHART: marubozu
 
-[MC] The highlighted candle — big body, almost no wicks — is a...
+[MC] The highlighted candle, big body, almost no wicks, is a...
 CHART: marubozu
 Marubozu.
 Doji.
@@ -1943,7 +1943,7 @@ WHY: The full body with no wicks shows price moved one way and held.
 [TF] The chart above shows more hesitation than a spinning top would.
 CHART: marubozu
 ANSWER: False
-WHY: A marubozu shows decisiveness — far less hesitation than a small-bodied spinning top.
+WHY: A marubozu shows decisiveness, far less hesitation than a small-bodied spinning top.
 
 [MATCH] Match each candle to how decisive it looks.
 Marubozu => Very decisive (big body, no wick)
@@ -1954,7 +1954,7 @@ WHY: Body size is a quick read of how one-sided a period was.
 [SPOT] Someone treats a single marubozu on this chart as a promise the trend continues.
 CHART: marubozu
 QUESTION: What is the mistake?
-A marubozu describes one decisive period — it doesn't guarantee what the next candle does.
+A marubozu describes one decisive period. It doesn't guarantee what the next candle does.
 A marubozu can only appear once per chart.
 Big candles never mean anything at all.
 WHY: Even a decisive candle is descriptive, not a guarantee of the future.
@@ -1995,20 +1995,20 @@ CELEBRATION: You can read rejection wicks off a chart!
 
 INTRO
 TITLE: Where Price Got Pushed Back
-TEXT: A long wick is often called a "rejection" — price reached a level, then got pushed back before the close. The highlighted candle below has a long lower wick: a rejection of the lows.
+TEXT: A long wick is often called a "rejection", price reached a level, then got pushed back before the close. The highlighted candle below has a long lower wick: a rejection of the lows.
 CHART: rejectionWickDown
 
 [MC] The highlighted candle's long lower wick is commonly read as a rejection of the...
 CHART: rejectionWickDown
-lows — price dipped, then buyers pushed it back up.
-highs — price spiked, then sellers pushed it back down.
-volume — the number of shares traded.
+lows, price dipped, then buyers pushed it back up.
+highs, price spiked, then sellers pushed it back down.
+volume, the number of shares traded.
 WHY: A long LOWER wick means the low was rejected and price closed back up.
 
 [TF] A long upper wick is commonly read as a rejection of the highs.
 CHART: rejectionWickUp
 ANSWER: True
-WHY: Here the highlighted candle spiked up and got pushed back down — the highs were rejected.
+WHY: Here the highlighted candle spiked up and got pushed back down, the highs were rejected.
 
 [FILL] A rejection wick shows price [___] a level but failed to hold there into the close.
 reached
@@ -2019,10 +2019,10 @@ WHY: The wick marks a level price touched but couldn't sustain.
 [PICK] Reading the rejection wick on the chart above, what is the safe takeaway?
 CHART: rejectionWickUp
 CONCERN: Interpreting a rejection wick
-A level was tested and rejected that period — useful context, not a guarantee | detail: Descriptive read
+A level was tested and rejected that period, useful context, not a guarantee | detail: Descriptive read
 Price is certain to reverse now | detail: Overstates certainty | wrong: A rejection is a clue, not a promise.
 The wick shows the trading volume | detail: Incorrect | wrong: Wicks show price extremes, not volume.
-WHY: Rejection wicks describe where price failed to hold — context, not certainty.
+WHY: Rejection wicks describe where price failed to hold. Context, not certainty.
 
 
 [TF] A rejection wick shows price failed to hold at an extreme it briefly reached.
@@ -2062,50 +2062,50 @@ TEXT: Time to read charts fast. For each chart, identify the highlighted candle.
 
 [MC] Which candle is highlighted on the chart above?
 CHART: hammer
-Hammer — long lower wick, body up top.
-Shooting star — long upper wick, body down low.
-Doji — almost no body.
+Hammer: long lower wick, body up top.
+Shooting star: long upper wick, body down low.
+Doji: almost no body.
 WHY: Long lower wick with the body near the top is a hammer.
 
 [MC] Which candle is highlighted on the chart above?
 CHART: shootingStar
-Shooting star — long upper wick, body down low.
-Hammer — long lower wick, body up top.
-Marubozu — big body, no wick.
+Shooting star: long upper wick, body down low.
+Hammer: long lower wick, body up top.
+Marubozu: big body, no wick.
 WHY: Long upper wick with the body near the bottom is a shooting star.
 
 [MC] Which candle is highlighted on the chart above?
 CHART: invertedHammer
-Inverted hammer — small body low, long upper wick, after a drop.
-Marubozu — big body, no wick.
-Spinning top — small body, even wicks.
+Inverted hammer: small body low, long upper wick, after a drop.
+Marubozu: big body, no wick.
+Spinning top: small body, even wicks.
 WHY: A long upper wick with a small low body after a decline is an inverted hammer.
 
 [MC] Which candle is highlighted on the chart above?
 CHART: hangingMan
-Hanging man — small body up top, long lower wick, after a rise.
-Bullish engulfing — big up candle covering the last.
-Doji — almost no body.
+Hanging man: small body up top, long lower wick, after a rise.
+Bullish engulfing: big up candle covering the last.
+Doji: almost no body.
 WHY: A hammer shape appearing after a rise is called a hanging man.
 
 [TF] The chart above shows a doji.
 CHART: doji
 ANSWER: True
-WHY: Tiny body with wicks both sides — that's a doji.
+WHY: Tiny body with wicks both sides. That's a doji.
 
 [TAPCANDLE] Tap the shooting star on the chart.
 CHART: shootingStar
 TARGET: 3
-WHY: Long upper wick, small body near the bottom — the shooting star.
+WHY: Long upper wick, small body near the bottom, the shooting star.
 [TAPCANDLE] Tap the inverted hammer on the chart.
 CHART: invertedHammer
 TARGET: 3
-WHY: Long upper wick with a small low body after a drop — the inverted hammer.
+WHY: Long upper wick with a small low body after a drop, the inverted hammer.
 
 [TF] A hanging man and a hammer share the exact same candle shape.
 CHART: hangingMan
 ANSWER: True
-WHY: Same shape, different context — a hammer after a decline, a hanging man after a rise.
+WHY: Same shape, different context, a hammer after a decline, a hanging man after a rise.
 
 [MC] What separates a hanging man from a hammer?
 The trend context it appears in (a rise vs. a decline).
@@ -2117,7 +2117,7 @@ WHY: Both share the same shape; only the preceding trend differs.
 context
 color
 volume
-WHY: Shape alone isn't enough — the surrounding trend matters too.
+WHY: Shape alone isn't enough, the surrounding trend matters too.
 
 NODE 11
 TITLE: Identification Drill: Engulfing & Bodies
@@ -2129,36 +2129,36 @@ TEXT: These charts are all about body size and engulfing. Read each one.
 
 [MC] Which pattern is shown on the chart above?
 CHART: bullishEngulfing
-Bullish engulfing — big up candle covers the prior down candle.
-Bearish engulfing — big down candle covers the prior up candle.
-Spinning top — small body, even wicks.
+Bullish engulfing: big up candle covers the prior down candle.
+Bearish engulfing: big down candle covers the prior up candle.
+Spinning top: small body, even wicks.
 WHY: A larger up candle swallowing the prior down candle is bullish engulfing.
 
 [MC] Which pattern is shown on the chart above?
 CHART: bearishEngulfing
-Bearish engulfing — big down candle covers the prior up candle.
-Bullish engulfing — big up candle covers the prior down candle.
-Marubozu — one big body, no wicks.
+Bearish engulfing: big down candle covers the prior up candle.
+Bullish engulfing: big up candle covers the prior down candle.
+Marubozu: one big body, no wicks.
 WHY: A larger down candle swallowing the prior up candle is bearish engulfing.
 
 [MC] Which candle is highlighted on the chart above?
 CHART: marubozu
-Marubozu — big body, almost no wicks.
-Doji — almost no body.
-Hammer — long lower wick.
+Marubozu: big body, almost no wicks.
+Doji: almost no body.
+Hammer: long lower wick.
 WHY: A full body with virtually no wicks is a marubozu.
 
 [MC] Which candle is highlighted on the chart above?
 CHART: spinningTop
-Spinning top — small body, similar wicks both sides.
-Marubozu — big body, no wicks.
-Bearish engulfing — big down candle.
+Spinning top: small body, similar wicks both sides.
+Marubozu: big body, no wicks.
+Bearish engulfing: big down candle.
 WHY: A small body centered between two wicks is a spinning top.
 
 [TF] The chart above shows a bearish engulfing.
 CHART: bullishEngulfing
 ANSWER: False
-WHY: The big candle here is an UP candle engulfing a down one — that's bullish engulfing.
+WHY: The big candle here is an UP candle engulfing a down one. That's bullish engulfing.
 
 [TAPCANDLE] Tap the bearish engulfing candle.
 CHART: bearishEngulfing
@@ -2195,15 +2195,15 @@ TEXT: A mix of everything so far. Read each chart and name what you see.
 
 [MC] Which candle is highlighted on the chart above?
 CHART: doji
-Doji — tiny body, balanced wicks.
-Marubozu — big body, no wicks.
-Hammer — long lower wick.
+Doji: tiny body, balanced wicks.
+Marubozu: big body, no wicks.
+Hammer: long lower wick.
 WHY: A tiny body with wicks both sides is a doji.
 
 [TF] The chart above shows a shooting star.
 CHART: hammer
 ANSWER: False
-WHY: This is a hammer — the long wick is on the bottom, not the top.
+WHY: This is a hammer, the long wick is on the bottom, not the top.
 
 [MC] Which candle is highlighted on the chart above?
 CHART: bearishEngulfing
@@ -2212,10 +2212,10 @@ Bullish engulfing.
 Doji.
 WHY: A big down candle covering the prior up candle is bearish engulfing.
 
-[TF] The chart above shows a marubozu — a big body with almost no wicks.
+[TF] The chart above shows a marubozu, a big body with almost no wicks.
 CHART: marubozu
 ANSWER: True
-WHY: Full body, no meaningful wicks — that's a marubozu.
+WHY: Full body, no meaningful wicks. That's a marubozu.
 
 [MC] Which candle is highlighted on the chart above?
 CHART: shootingStar
@@ -2250,12 +2250,12 @@ zero
 WHY: Repeated practice speeds up pattern recognition.
 
 NODE 13
-TITLE: What This Candle Suggests — Rejection Shapes
+TITLE: What This Candle Suggests, Rejection Shapes
 CELEBRATION: You can read what a rejection candle suggests!
 
 INTRO
 TITLE: From Shape to Meaning
-TEXT: Now go past naming — read what each chart <b>suggests</b>, always descriptively.
+TEXT: Now go past naming, read what each chart <b>suggests</b>, always descriptively.
 
 [PICK] The highlighted candle on the chart above has a long lower wick. What does it suggest, descriptively?
 CHART: rejectionWickDown
@@ -2274,12 +2274,12 @@ WHY: A long upper wick describes an upward push that got rejected.
 [TF] The hammer on the chart above suggests sellers stayed fully in control into the close.
 CHART: hammer
 ANSWER: False
-WHY: The body closing back near the top shows BUYERS recovered the move — not sellers staying in control.
+WHY: The body closing back near the top shows BUYERS recovered the move, not sellers staying in control.
 
 [SPOT] Someone reads the rejection wick on this chart as a guaranteed reversal.
 CHART: rejectionWickDown
 QUESTION: What is the mistake?
-A rejection wick is descriptive context — it doesn't guarantee the direction of the next candle.
+A rejection wick is descriptive context. It doesn't guarantee the direction of the next candle.
 Rejection wicks always mean the trend reverses.
 The wick shows the exact future price.
 WHY: Rejection describes what happened at a level, not what happens next.
@@ -2315,7 +2315,7 @@ randomly
 WHY: All single-candle suggestions in this unit stay descriptive, not certain.
 
 NODE 14
-TITLE: What This Candle Suggests — In Trend Context
+TITLE: What This Candle Suggests, In Trend Context
 CELEBRATION: You can read a candle against its trend!
 
 INTRO
@@ -2379,7 +2379,7 @@ ANSWER: True
 WHY: Hammer/hanging man and shooting star/inverted hammer are examples of this.
 
 NODE 15
-TITLE: What This Candle Suggests — Reading Momentum
+TITLE: What This Candle Suggests, Reading Momentum
 CELEBRATION: You can read momentum from candle bodies!
 
 INTRO
@@ -2394,7 +2394,7 @@ That the market was closed.
 WHY: A marubozu's full body reads as decisive momentum.
 
 [MC] The small-bodied candle with wicks on both sides above suggests...
-Hesitation — neither side clearly won.
+Hesitation. Neither side clearly won.
 Overwhelming momentum in one direction.
 A guaranteed reversal.
 WHY: A spinning top's small body reads as indecision.
@@ -2412,7 +2412,7 @@ WHY: A doji's near-zero body suggests balance, not strong momentum.
 [SPOT] Someone reads a single big marubozu as a promise that momentum continues forever.
 CHART: marubozu
 QUESTION: What is the mistake?
-A big body describes one strong period — it doesn't guarantee momentum keeps going.
+A big body describes one strong period. It doesn't guarantee momentum keeps going.
 Momentum candles always repeat.
 Body size has nothing to do with momentum.
 WHY: A decisive candle is descriptive; it doesn't lock in the future.
@@ -2448,18 +2448,18 @@ a guaranteed reversal.
 WHY: Small bodies repeated over time suggest continued hesitation, not strong momentum.
 
 NODE 16
-TITLE: Mixed Candle Recognition — Round One
+TITLE: Mixed Candle Recognition, Round One
 CELEBRATION: You can read any single candle in context!
 
 INTRO
 TITLE: Put It All Together
-TEXT: A full mix — name the shape and read what it suggests.
+TEXT: A full mix, name the shape and read what it suggests.
 
 [MC] Which candle is highlighted on the chart above?
 CHART: hangingMan
-Hanging man — hammer shape after a rise.
-Inverted hammer — upper wick after a drop.
-Marubozu — big body, no wick.
+Hanging man: hammer shape after a rise.
+Inverted hammer: upper wick after a drop.
+Marubozu: big body, no wick.
 WHY: A small body up top with a long lower wick after a rise is a hanging man.
 
 [MC] Which pattern is shown on the chart above?
@@ -2516,18 +2516,18 @@ ANSWER: True
 WHY: Mixed review rounds reinforce and test everything taught so far.
 
 NODE 17
-TITLE: Mixed Candle Recognition — Round Two
+TITLE: Mixed Candle Recognition, Round Two
 CELEBRATION: You've mastered reading single candles!
 
 INTRO
 TITLE: Final Recognition Round
-TEXT: Last set — read each chart and lock in the skill.
+TEXT: Last set, read each chart and lock in the skill.
 
 [MC] Which candle is highlighted on the chart above?
 CHART: invertedHammer
-Inverted hammer — long upper wick, small low body, after a drop.
-Hanging man — long lower wick after a rise.
-Bearish engulfing — big down candle.
+Inverted hammer: long upper wick, small low body, after a drop.
+Hanging man: long lower wick after a rise.
+Bearish engulfing: big down candle.
 WHY: A long upper wick with a small low body after a decline is an inverted hammer.
 
 [TF] The chart above shows a bullish engulfing.
@@ -2537,17 +2537,17 @@ WHY: A big DOWN candle engulfing an up candle is bearish engulfing.
 
 [MC] Which candle is highlighted on the chart above?
 CHART: spinningTop
-Spinning top — small body, even wicks.
-Marubozu — big body, no wicks.
-Hammer — long lower wick.
+Spinning top: small body, even wicks.
+Marubozu: big body, no wicks.
+Hammer: long lower wick.
 WHY: A small body centered between two wicks is a spinning top.
 
 [PICK] Reading the shooting star on the chart above, the safe, descriptive takeaway is...
 CHART: shootingStar
-An upward push was rejected by the close — useful context | detail: Descriptive read
+An upward push was rejected by the close, useful context | detail: Descriptive read
 Price will definitely fall now | detail: Overstates certainty | wrong: Descriptive, not a promise.
 The candle shows trading volume | detail: Incorrect | wrong: Wicks show price extremes, not volume.
-WHY: The shooting star describes a rejected push up — context, not a guarantee.
+WHY: The shooting star describes a rejected push up. Context, not a guarantee.
 
 [SPOT] Someone names every candle correctly but never once looks at the surrounding chart.
 CHART: pullbackUptrend
@@ -2594,7 +2594,7 @@ CELEBRATION: You understand market orders in depth!
 
 INTRO
 TITLE: Prioritizing Speed
-TEXT: A market order executes immediately at the best currently available price — a deeper look at the order type introduced back in Unit 1.
+TEXT: A market order executes immediately at the best currently available price, a deeper look at the order type introduced back in Unit 1.
 CHART: uptrend
 
 [TF] A market order guarantees a specific, pre-chosen execution price.
@@ -2664,12 +2664,12 @@ CELEBRATION: You understand limit orders in depth!
 
 INTRO
 TITLE: Prioritizing Price
-TEXT: A limit order only executes at your chosen price or better — trading execution certainty for price control.
+TEXT: A limit order only executes at your chosen price or better, trading execution certainty for price control.
 CHART: resistanceRejection
 
 [TF] A limit order is guaranteed to execute immediately once placed.
 ANSWER: False
-WHY: A limit order only executes if the market reaches your specified price — it may never fill.
+WHY: A limit order only executes if the market reaches your specified price. It may never fill.
 
 [FILL] A limit order to buy will only execute at your set price or [___].
 lower
@@ -2712,7 +2712,7 @@ WHY: An unfilled limit order most commonly just reflects price never reaching th
 [SPOT] Someone is frustrated that their limit order didn't fill even though price came close to their level.
 CHART: resistanceRejection
 QUESTION: What is the mistake?
-"Close" isn't the same as reaching the exact specified price — the order was working as designed.
+"Close" isn't the same as reaching the exact specified price, the order was working as designed.
 The platform must have malfunctioned.
 Limit orders should always be replaced with market orders.
 WHY: A limit order requires the exact specified price (or better) to be reached, not just approached.
@@ -2751,7 +2751,7 @@ WHY: "Stop-loss" is the standard term for this kind of risk-defining order.
 To define, ahead of time, the price at which they'd exit if the position moves against them.
 To guarantee the exact fill price no matter what.
 To prevent the market from ever moving against them.
-WHY: A stop-loss is a plan set in advance — it defines a level, not a guaranteed price or outcome.
+WHY: A stop-loss is a plan set in advance. It defines a level, not a guaranteed price or outcome.
 
 [MATCH] Match the order concept to its description.
 Stop-loss order => Triggers an exit once a specific price level is reached
@@ -2782,7 +2782,7 @@ WHY: A stop-loss order is a planning tool, not a guarantee of outcome or price.
 [SPOT] Someone believes setting a stop-loss means they can never lose more than expected, no matter what.
 CHART: downtrend
 QUESTION: What is the mistake?
-Fast-moving markets can sometimes fill a triggered stop-loss at a worse price than expected — it isn't an absolute guarantee.
+Fast-moving markets can sometimes fill a triggered stop-loss at a worse price than expected. It isn't an absolute guarantee.
 They should have avoided using any stop-loss at all.
 They should have only used a stop-loss on weekends.
 WHY: A stop-loss defines an intended exit level, but the exact executed price can still vary in fast-moving conditions.
@@ -2821,7 +2821,7 @@ WHY: "Take-profit" describes exiting at a pre-planned favorable level.
 To define, ahead of time, a target price at which they'd be satisfied exiting.
 To guarantee the position will always reach that price.
 To prevent any further price movement from happening.
-WHY: A take-profit is a plan set in advance — it defines a target, not a guaranteed outcome.
+WHY: A take-profit is a plan set in advance. It defines a target, not a guaranteed outcome.
 
 [MATCH] Match the order type to its general purpose.
 Take-profit => Plans an exit at a favorable target level
@@ -2852,7 +2852,7 @@ WHY: A take-profit order is a planning tool for a target, not a guarantee that p
 [SPOT] Someone assumes setting a take-profit guarantees price will eventually reach that level.
 CHART: uptrend
 QUESTION: What is the mistake?
-Setting a target doesn't guarantee price will ever reach it — the order simply waits until (and unless) it does.
+Setting a target doesn't guarantee price will ever reach it, the order simply waits until (and unless) it does.
 They should set an even higher take-profit level instead.
 They should remove all take-profit orders from now on.
 WHY: A take-profit order defines an intended target; it doesn't guarantee that target will be reached.
@@ -2922,7 +2922,7 @@ WHY: The added price control comes with the risk of the order not filling in a f
 [SPOT] Someone is confused why their stop-limit order didn't fill during a very fast price drop.
 CHART: breakout
 QUESTION: What is the mistake?
-If price moved past the limit price too quickly, the order can remain unfilled — that's a known trade-off of this order type.
+If price moved past the limit price too quickly, the order can remain unfilled. That's a known trade-off of this order type.
 The platform must have a bug.
 Stop-limit orders always behave exactly like market orders.
 WHY: A fast move past the limit price is a well-known way a stop-limit order can fail to fill.
@@ -3014,7 +3014,7 @@ CELEBRATION: You understand why real fills can differ from the chart!
 
 INTRO
 TITLE: The Chart Isn't the Whole Story
-TEXT: Several factors — spread, slippage, and order type — can all cause your actual execution price to differ from what a chart displays.
+TEXT: Several factors, spread, slippage, and order type, can all cause your actual execution price to differ from what a chart displays.
 CHART: sideways
 
 [TF] The price shown on a chart always exactly matches every trader's actual execution price.
@@ -3056,13 +3056,13 @@ CHART: sideways
 CONCERN: Understanding the full picture
 Spread and potential slippage between placing and executing the order | detail: Multiple factors combine here
 The chart is always inaccurate and unreliable | detail: Overstates it | wrong: Charts are generally accurate; small execution gaps are a separate, normal phenomenon.
-Market orders never actually execute at all | detail: Incorrect | wrong: Market orders do execute — just not always at the exact last displayed price.
+Market orders never actually execute at all | detail: Incorrect | wrong: Market orders do execute, just not always at the exact last displayed price.
 WHY: Spread and slippage together are the most commonly cited reasons for this gap.
 
 [SPOT] Someone assumes any difference between chart price and their actual fill means the platform cheated them.
 CHART: sideways
 QUESTION: What is the mistake?
-Small differences between chart price and fills are commonly explained by spread, slippage, and order type — not platform wrongdoing.
+Small differences between chart price and fills are commonly explained by spread, slippage, and order type, not platform wrongdoing.
 They should assume all trading platforms are identical in this regard.
 They should stop using charts entirely.
 WHY: These small gaps are a normal, well-understood part of how markets and order types work.
@@ -3112,7 +3112,7 @@ WHY: A quick recap of the core order types from this unit.
 [FILL2] Reading order types well means understanding their [1], not expecting a [2] outcome from any of them.
 BLANK1: *trade-offs | guarantee | color
 BLANK2: *guaranteed | descriptive | random
-WHY: Each order type balances speed, price control, and risk differently — none is a guarantee.
+WHY: Each order type balances speed, price control, and risk differently, none is a guarantee.
 
 [ORDER] The general path this unit followed:
 Learn the basic trade-off between market and limit orders
@@ -3132,7 +3132,7 @@ WHY: This balanced view has been the throughline of every lesson in this unit.
 [SPOT] Someone finishes this unit and assumes there's one single "best" order type to use in every situation.
 CHART: doji
 QUESTION: What is the mistake?
-Different order types suit different situations — there's no single type that's best in every case.
+Different order types suit different situations, there's no single type that's best in every case.
 They should only ever use market orders from now on.
 They should only ever use limit orders from now on.
 WHY: This unit covered several order types precisely because each fits different situations and priorities.
@@ -3165,7 +3165,7 @@ WHY: Order flow describes the continuous stream of incoming buy/sell orders.
 
 [TF] Order flow describes a single trade, not an ongoing stream of orders.
 ANSWER: False
-WHY: Order flow specifically describes the ongoing, continuous stream — not one isolated trade.
+WHY: Order flow specifically describes the ongoing, continuous stream, not one isolated trade.
 
 [FILL] Order flow is commonly described as which side is more [___] at a given moment.
 aggressive
@@ -3188,7 +3188,7 @@ WHY: Order flow is a descriptive read of current buy/sell pressure, not a guaran
 
 [SPOT] Someone believes reading order flow lets them know the exact next price with certainty.
 QUESTION: What is the mistake?
-Order flow describes current buy/sell pressure — it doesn't guarantee the exact next price.
+Order flow describes current buy/sell pressure. It doesn't guarantee the exact next price.
 Order flow guarantees perfect predictions every time.
 Order flow has no relationship to price at all.
 WHY: Order flow is descriptive context about pressure, not a certainty about the future.
@@ -3278,7 +3278,7 @@ WHY: Market makers are commonly described as liquidity providers, not price-outc
 
 [SPOT] Someone believes market makers guarantee a stock can never crash.
 QUESTION: What is the mistake?
-Market makers commonly provide liquidity — they don't guarantee against price declines.
+Market makers commonly provide liquidity. They don't guarantee against price declines.
 Market makers control all price outcomes.
 Market makers have no role in markets at all.
 WHY: Providing liquidity is a commonly cited role, distinct from guaranteeing any price outcome.
@@ -3325,7 +3325,7 @@ QUESTION: What is the mistake?
 The auction framing describes price emerging from many participants, not one person's decision.
 One person sets the auction price for everyone.
 Auctions have no relationship to how markets work.
-WHY: This is the same idea revisited from earlier lessons — price emerges from many participants, not one.
+WHY: This is the same idea revisited from earlier lessons, price emerges from many participants, not one.
 
 NODE 5
 TITLE: Why Candles Form
@@ -3333,7 +3333,7 @@ CELEBRATION: You understand why candles form the shapes they do!
 
 INTRO
 TITLE: The Mechanics Behind a Candle's Shape
-TEXT: A candle's shape reflects the underlying order flow and supply/demand tug-of-war during that period — big bodies from decisive pressure, long wicks from rejected pushes.
+TEXT: A candle's shape reflects the underlying order flow and supply/demand tug-of-war during that period, big bodies from decisive pressure, long wicks from rejected pushes.
 CHART: hammer
 
 [MC] Why might a candle end up with a long lower wick, mechanically?
@@ -3380,7 +3380,7 @@ CELEBRATION: You understand why trends can accelerate!
 
 INTRO
 TITLE: Momentum Feeding on Itself
-TEXT: A trend can accelerate when order flow and sentiment feed on themselves — more participants join a move already in progress, adding to the existing pressure.
+TEXT: A trend can accelerate when order flow and sentiment feed on themselves, more participants join a move already in progress, adding to the existing pressure.
 CHART: breakout
 
 [MC] Why might a trend commonly accelerate?
@@ -3400,7 +3400,7 @@ freezing
 WHY: "Feeding on itself" describes how added participation can compound an existing move.
 
 [MC] Does every trend accelerate the same way?
-No — acceleration varies and isn't guaranteed for every trend.
+No, acceleration varies and isn't guaranteed for every trend.
 Yes, every trend accelerates identically.
 Trends never accelerate under any circumstances.
 WHY: Acceleration is a commonly observed tendency, not a guaranteed or uniform feature of every trend.
@@ -3501,7 +3501,7 @@ WHY: A quick recap of the unit's core mechanics.
 [FILL2] This unit explains the [1] behind price behavior, connecting back to candles, trends, and [2] from earlier units.
 BLANK1: *mechanics | color | random guesses
 BLANK2: *breakouts | company names | random events
-WHY: This unit ties the underlying mechanics to concepts already covered — candles, trends, and breakouts.
+WHY: This unit ties the underlying mechanics to concepts already covered, candles, trends, and breakouts.
 
 [PICK] Which best summarizes this unit?
 CHART: breakout
@@ -3513,7 +3513,7 @@ WHY: Connecting underlying mechanics to previously taught concepts is the throug
 
 [SPOT] Someone finishes this unit and claims market mechanics now let them predict every future price with certainty.
 QUESTION: What is the mistake?
-This unit explains descriptive mechanics behind price behavior — it doesn't grant predictive certainty.
+This unit explains descriptive mechanics behind price behavior. It doesn't grant predictive certainty.
 Market mechanics guarantee perfect predictions.
 This unit teaches nothing useful at all.
 WHY: Like the rest of this course, this unit builds descriptive understanding, not predictive certainty.
@@ -3525,7 +3525,7 @@ CELEBRATION: You understand volume bars!
 
 INTRO
 TITLE: A Bar for Every Candle
-TEXT: Most charts show a volume bar beneath each candle — its height reflects how many shares traded during that period. Reading volume alongside price is a core intermediate skill.
+TEXT: Most charts show a volume bar beneath each candle. Its height reflects how many shares traded during that period. Reading volume alongside price is a core intermediate skill.
 
 [MC] A volume bar's height reflects...
 How many shares traded during that period.
@@ -3554,7 +3554,7 @@ CONCERN: Understanding the value of volume
 Volume adds context about how much participation was behind a price move | detail: Participation context
 Volume replaces the need to look at price entirely | detail: Incomplete | wrong: Volume is read alongside price, not instead of it.
 Volume guarantees the next price move | detail: Overstates certainty | wrong: Volume is descriptive context, not a guarantee.
-WHY: Volume adds participation context to a price move — it doesn't replace or guarantee anything.
+WHY: Volume adds participation context to a price move. It doesn't replace or guarantee anything.
 
 [SPOT] Someone reads volume bars completely separately, without ever looking at the price candles above them.
 QUESTION: What is the mistake?
@@ -3569,7 +3569,7 @@ CELEBRATION: You can classify high vs. low volume!
 
 INTRO
 TITLE: Compared to What's Typical
-TEXT: "High" or "low" volume is judged relative to what's typical for that asset — a big bar for one stock might be an ordinary bar for another.
+TEXT: "High" or "low" volume is judged relative to what's typical for that asset, a big bar for one stock might be an ordinary bar for another.
 
 [MC] Volume is commonly judged as "high" or "low" relative to...
 What's typical for that specific asset.
@@ -3649,7 +3649,7 @@ WHY: Volume adds confluence to a breakout read, without guaranteeing the outcome
 [SPOT] Someone assumes a low-volume breakout is exactly as convincing as a high-volume one.
 CHART: breakout
 QUESTION: What is the mistake?
-Volume level is commonly read as a meaningful difference — a low-volume breakout is commonly treated with more caution.
+Volume level is commonly read as a meaningful difference, a low-volume breakout is commonly treated with more caution.
 Volume never matters for breakouts.
 All breakouts are read identically regardless of volume.
 WHY: Volume is commonly used to gauge how much participation is behind a breakout.
@@ -3696,7 +3696,7 @@ WHY: Volume adds confluence to a reversal read, without guaranteeing the outcome
 [SPOT] Someone assumes every reversal, regardless of volume, is equally significant.
 CHART: resistanceRejection
 QUESTION: What is the mistake?
-Volume level is commonly used to gauge how significant a reversal might be — treating them all as identical ignores that context.
+Volume level is commonly used to gauge how significant a reversal might be, treating them all as identical ignores that context.
 Volume never matters for reversals.
 All reversals are read identically regardless of volume.
 WHY: Volume is commonly read as meaningful added context at a reversal point.
@@ -3707,7 +3707,7 @@ CELEBRATION: You understand climactic volume!
 
 INTRO
 TITLE: An Extreme Volume Spike
-TEXT: Climactic volume describes an extreme, sudden spike in volume — commonly noted near the end of a strong move, though not a guaranteed signal of an ending.
+TEXT: Climactic volume describes an extreme, sudden spike in volume, commonly noted near the end of a strong move, though not a guaranteed signal of an ending.
 CHART: volatile
 
 [MC] "Climactic volume" describes...
@@ -3743,7 +3743,7 @@ WHY: Like other volume reads, climactic volume is descriptive context, not a gua
 [SPOT] Someone assumes every climactic volume spike guarantees the current move is about to end.
 CHART: volatile
 QUESTION: What is the mistake?
-Climactic volume is commonly noted near endings, but it doesn't guarantee one — the move can still continue.
+Climactic volume is commonly noted near endings, but it doesn't guarantee one. The move can still continue.
 Every volume spike guarantees an immediate ending.
 Climactic volume never relates to move-endings at all.
 WHY: This is a commonly cited tendency, not a certainty.
@@ -3754,7 +3754,7 @@ CELEBRATION: You understand dry-up volume!
 
 INTRO
 TITLE: When Activity Fades
-TEXT: "Dry-up" volume describes an unusually quiet period, often noted during consolidation or a pause — commonly read as reduced participation, not any specific direction.
+TEXT: "Dry-up" volume describes an unusually quiet period, often noted during consolidation or a pause, commonly read as reduced participation, not any specific direction.
 CHART: sideways
 
 [MC] "Dry-up" volume describes...
@@ -3790,7 +3790,7 @@ WHY: Dry-up volume describes reduced activity, not a guaranteed next direction.
 [SPOT] Someone assumes dry-up volume always precedes a big upward move.
 CHART: sideways
 QUESTION: What is the mistake?
-Dry-up volume describes reduced participation generally — it doesn't specify or guarantee an upward move.
+Dry-up volume describes reduced participation generally. It doesn't specify or guarantee an upward move.
 Dry-up volume always means a big rally is coming.
 Dry-up volume always means a crash is coming.
 WHY: Dry-up volume is descriptive of quietness, not a directional guarantee either way.
@@ -3801,7 +3801,7 @@ CELEBRATION: You can combine candle and volume reads!
 
 INTRO
 TITLE: Two Reads Together
-TEXT: Combining a candle's shape with its volume gives a fuller picture — a big-bodied candle on high volume reads differently than the same shape on quiet volume.
+TEXT: Combining a candle's shape with its volume gives a fuller picture, a big-bodied candle on high volume reads differently than the same shape on quiet volume.
 CHART: marubozu
 
 [MC] A large-bodied candle on unusually high volume is commonly read as...
@@ -3818,7 +3818,7 @@ WHY: Volume adds context that can change how a candle's shape is interpreted.
 confluence
 random guessing
 guaranteed prediction
-WHY: This is the same confluence idea — multiple agreeing factors — applied to candles and volume.
+WHY: This is the same confluence idea, multiple agreeing factors, applied to candles and volume.
 
 [MATCH] Match the combination to its commonly cited read.
 Big body + high volume => Strong, well-participated move
@@ -3880,7 +3880,7 @@ WHY: Volume is context that can add confluence, not a standalone guarantee.
 [PICK] Which best summarizes this unit?
 CHART: breakout
 CONCERN: Reviewing the big picture
-Volume adds participation context to price reads — descriptive, and stronger in combination | detail: The central theme
+Volume adds participation context to price reads, descriptive, and stronger in combination | detail: The central theme
 Volume guarantees every price outcome | detail: Overstates certainty | wrong: This contradicts the whole unit.
 Volume has no relationship to price action | detail: Backwards | wrong: Volume is a core, descriptive companion to price.
 WHY: Descriptive, confluence-adding volume reading is the throughline of this unit.
@@ -3888,7 +3888,7 @@ WHY: Descriptive, confluence-adding volume reading is the throughline of this un
 [SPOT] Someone finishes this unit and starts treating every high-volume move as a guaranteed success.
 CHART: breakout
 QUESTION: What is the mistake?
-Volume adds context and confluence — it never guarantees a move's success.
+Volume adds context and confluence. It never guarantees a move's success.
 High volume always guarantees success.
 Volume has no relationship to move quality at all.
 WHY: This unit consistently frames volume as descriptive context, never a guarantee.
@@ -3941,7 +3941,7 @@ WHY: Comparing sequences of swing highs/lows is literally how trend structure ge
 [SPOT] Someone tries to classify a trend without ever identifying any swing highs or lows.
 CHART: pullbackUptrend
 QUESTION: What is the mistake?
-Trend classification is built from comparing swing highs and lows — skipping them removes the basis for the read.
+Trend classification is built from comparing swing highs and lows, skipping them removes the basis for the read.
 Swing highs and lows are unnecessary for trend reading.
 Any single candle can replace a full swing sequence.
 WHY: Swing highs/lows are the foundational vocabulary trend classification relies on.
@@ -3952,7 +3952,7 @@ CELEBRATION: You understand impulses and corrections!
 
 INTRO
 TITLE: The Push and the Pause
-TEXT: An impulse is a strong, decisive move in the trend's direction. A correction is the smaller counter-move that follows — the same idea as a pullback, named differently.
+TEXT: An impulse is a strong, decisive move in the trend's direction. A correction is the smaller counter-move that follows, the same idea as a pullback, named differently.
 CHART: pullbackUptrend
 
 [MC] An "impulse" is...
@@ -3988,7 +3988,7 @@ WHY: Direction (with vs. against the trend) is what separates an impulse from a 
 [SPOT] Someone labels every single candle in an uptrend as an "impulse," including the pullbacks.
 CHART: pullbackUptrend
 QUESTION: What is the mistake?
-Only the strong, trend-aligned legs are impulses — the counter-trend dips are corrections, not impulses.
+Only the strong, trend-aligned legs are impulses. The counter-trend dips are corrections, not impulses.
 Impulses and corrections are the same label for everything.
 Corrections don't exist as a separate concept.
 WHY: Impulses and corrections describe two distinct, alternating phases within a trend.
@@ -4027,7 +4027,7 @@ WHY: These terms describe the narrowing-then-widening rhythm commonly seen in pr
 [PICK] What commonly follows a period of compression?
 CHART: symmetricalTriangle
 CONCERN: Reading the rhythm
-Expansion — the range widening out again | detail: A commonly observed rhythm
+Expansion, the range widening out again | detail: A commonly observed rhythm
 Compression always continues forever | detail: Overstates it | wrong: Compression is commonly described as temporary, resolving eventually.
 Nothing ever follows compression | detail: Incorrect | wrong: Expansion is the commonly cited follow-through.
 WHY: Compression is commonly read as a temporary squeeze that resolves into expansion.
@@ -4057,13 +4057,13 @@ WHY: Rejection specifically describes a failed test that gets pushed back.
 
 [TF] "Acceptance" describes price testing a level and then comfortably holding or trading through it.
 ANSWER: True
-WHY: Acceptance is the opposite of rejection — the level is absorbed rather than pushed back from.
+WHY: Acceptance is the opposite of rejection, the level is absorbed rather than pushed back from.
 
 [FILL] A long wick at a level is commonly read as a sign of [___].
 rejection
 acceptance
 neither
-WHY: A long wick shows a level was tested and pushed back from — rejection.
+WHY: A long wick shows a level was tested and pushed back from, rejection.
 
 [MATCH] Match the term to its description.
 Rejection => Price tested a level and got pushed back
@@ -4074,15 +4074,15 @@ WHY: Rejection and acceptance are two contrasting ways price can behave at the s
 [PICK] How would you describe price that breaks a level and then holds calmly above it?
 CHART: breakoutRetest
 CONCERN: Reading level behavior
-Acceptance — the level was tested and comfortably held through | detail: Calm holding above the level
-Rejection — the level pushed price back | detail: Opposite behavior | wrong: Rejection describes a push-back, not a calm hold.
+Acceptance, the level was tested and comfortably held through | detail: Calm holding above the level
+Rejection, the level pushed price back | detail: Opposite behavior | wrong: Rejection describes a push-back, not a calm hold.
 Neither term applies here | detail: Incomplete | wrong: Acceptance specifically describes this calm-holding behavior.
 WHY: Calmly holding through a level, rather than being pushed back, is acceptance.
 
 [SPOT] Someone calls a long-wick rejection candle an example of "acceptance."
 CHART: rejectionWickUp
 QUESTION: What is the mistake?
-A long wick shows price was pushed back — that's rejection, not the calm holding that defines acceptance.
+A long wick shows price was pushed back. That's rejection, not the calm holding that defines acceptance.
 Rejection and acceptance mean the same thing.
 Wick length has no relationship to rejection or acceptance.
 WHY: A pushed-back wick is rejection; acceptance describes a level being calmly held or traded through instead.
@@ -4110,7 +4110,7 @@ WHY: Shrinking bodies or rejected pushes are commonly cited exhaustion signs.
 exhaustion
 continuation
 acceptance
-WHY: Smaller bodies suggest weakening momentum — a commonly cited exhaustion sign.
+WHY: Smaller bodies suggest weakening momentum, a commonly cited exhaustion sign.
 
 [MATCH] Match the term to its description.
 Continuation => The existing move persisting
@@ -4129,7 +4129,7 @@ WHY: Exhaustion signs are descriptive clues about weakening momentum, not a cert
 [SPOT] Someone treats a single small-bodied candle as guaranteed proof the whole trend is over.
 CHART: pullbackUptrend
 QUESTION: What is the mistake?
-One candle is a clue, not a guarantee — exhaustion signs describe a possibility, not a certainty.
+One candle is a clue, not a guarantee. Exhaustion signs describe a possibility, not a certainty.
 A single candle always ends a trend for certain.
 Exhaustion signs never mean anything at all.
 WHY: Exhaustion signs are descriptive context, read alongside everything else, not a standalone guarantee.
@@ -4140,7 +4140,7 @@ CELEBRATION: You understand reading context!
 
 INTRO
 TITLE: The Same Vocabulary, Different Meaning
-TEXT: Context — where a candle or move sits relative to the broader trend, level, and recent structure — changes how every term in this unit should be read.
+TEXT: Context, where a candle or move sits relative to the broader trend, level, and recent structure, changes how every term in this unit should be read.
 CHART: breakoutRetest
 
 [MC] Why does "context" matter so much in price action reading?
@@ -4227,7 +4227,7 @@ WHY: Shared, context-dependent vocabulary is the throughline of this unit.
 [SPOT] Someone finishes this unit and starts using these terms as guaranteed trade signals.
 CHART: pullbackUptrend
 QUESTION: What is the mistake?
-This vocabulary is descriptive — useful for communication and reading charts, not a guaranteed signal system.
+This vocabulary is descriptive, useful for communication and reading charts, not a guaranteed signal system.
 These terms guarantee specific trading outcomes.
 This vocabulary has no practical use at all.
 WHY: Like the rest of this course, this vocabulary supports descriptive reading, not guaranteed signals.
@@ -4427,7 +4427,7 @@ WHY: Sideways action specifically describes bounded, directionless movement.
 [SPOT] Someone assumes a sideways market will stay sideways forever.
 CHART: sideways
 QUESTION: What is the mistake?
-Sideways periods are commonly followed by a move in one direction or another — they don't last forever.
+Sideways periods are commonly followed by a move in one direction or another. They don't last forever.
 They should have widened their definition of the range instead.
 They should have only looked at a shorter timeframe.
 WHY: Treating any market phase as permanent overstates what is really just a temporary description.
@@ -4589,7 +4589,7 @@ CELEBRATION: You can gauge how strong a trend looks!
 
 INTRO
 TITLE: Steep vs. Gradual
-TEXT: Trends aren't just "up" or "down" — they can look stronger or weaker depending on how steadily price is moving.
+TEXT: Trends aren't just "up" or "down". They can look stronger or weaker depending on how steadily price is moving.
 CHART: breakout
 
 [TF] All uptrends move at exactly the same speed and steepness.
@@ -4651,7 +4651,7 @@ WHY: Comparing recent swings to what's typical gives a rough sense of relative s
 
 [TF] A trend can remain in the same direction while getting weaker over time.
 ANSWER: True
-WHY: Direction and strength are separate ideas — a trend can persist in direction while losing steam.
+WHY: Direction and strength are separate ideas, a trend can persist in direction while losing steam.
 
 NODE 7
 TITLE: Momentum Basics
@@ -4676,7 +4676,7 @@ WHY: "Momentum" describes the speed and force of a current move.
 Momentum describes the current speed/force of movement; trend describes overall direction over time.
 They are exactly the same concept with different names.
 Momentum only applies to downtrends, never uptrends.
-WHY: Trend and momentum describe related but distinct ideas — direction versus speed/force.
+WHY: Trend and momentum describe related but distinct ideas, direction versus speed/force.
 
 [MATCH] Match the term to its focus.
 Trend => Overall direction over a period of time
@@ -4707,7 +4707,7 @@ WHY: Momentum specifically describes the intensity of a move, distinct from its 
 [SPOT] Someone assumes strong momentum today guarantees the same strong momentum tomorrow.
 CHART: breakout
 QUESTION: What is the mistake?
-Momentum can shift day to day — strong momentum now doesn't guarantee it continues at the same intensity.
+Momentum can shift day to day, strong momentum now doesn't guarantee it continues at the same intensity.
 They should assume momentum can only ever increase.
 They should assume momentum never changes once established.
 WHY: Momentum is a current, changeable reading, not a fixed guarantee going forward.
@@ -4729,7 +4729,7 @@ CELEBRATION: You understand pullbacks within a trend!
 
 INTRO
 TITLE: A Pause, Not Necessarily a Reversal
-TEXT: A pullback is a temporary move against the prevailing trend, commonly followed by a resumption of that trend — though not guaranteed.
+TEXT: A pullback is a temporary move against the prevailing trend, commonly followed by a resumption of that trend, though not guaranteed.
 CHART: uptrend
 
 [TF] A pullback means the overall trend has definitely and permanently reversed.
@@ -4769,15 +4769,15 @@ WHY: You typically can't be certain whether it's a pullback or reversal until af
 [PICK] Which best describes how to think about a fresh counter-trend move?
 CHART: uptrend
 CONCERN: Interpreting a possible pullback
-It could be a temporary pullback or the start of a reversal — often unclear at first | detail: Honest uncertainty in the moment
+It could be a temporary pullback or the start of a reversal, often unclear at first | detail: Honest uncertainty in the moment
 It's always guaranteed to be just a pullback | detail: Overstates certainty | wrong: Some counter-moves do turn into full reversals.
 It's always guaranteed to be a full reversal | detail: Overstates certainty | wrong: Many counter-moves are just temporary pullbacks.
-WHY: In the moment, it's often genuinely unclear which one you're seeing — that's honest uncertainty, not a flaw.
+WHY: In the moment, it's often genuinely unclear which one you're seeing. That's honest uncertainty, not a flaw.
 
 [SPOT] Someone labels every single counter-trend move a "pullback" no matter how it later plays out.
 CHART: uptrend
 QUESTION: What is the mistake?
-Some counter-trend moves do turn into full reversals — not every one stays a temporary pullback.
+Some counter-trend moves do turn into full reversals. Not every one stays a temporary pullback.
 They should label every counter-move a reversal instead.
 They should ignore counter-trend moves entirely.
 WHY: Whether something was a pullback or a reversal is really only clear in hindsight.
@@ -4842,12 +4842,12 @@ CONCERN: Understanding this specific term
 A tighter, sideways pause, often following a stronger directional move | detail: A temporary phase, not a permanent state
 A guarantee that price will break upward next | detail: Overstates certainty | wrong: Consolidation doesn't determine which direction it resolves.
 The exact same thing as a full reversal | detail: Conflates two ideas | wrong: Consolidation is a pause, not necessarily a reversal.
-WHY: Consolidation describes a temporary, tighter pause — not a certain outcome afterward.
+WHY: Consolidation describes a temporary, tighter pause, not a certain outcome afterward.
 
 [SPOT] Someone assumes consolidation always resolves in the same direction as the move that preceded it.
 CHART: sideways
 QUESTION: What is the mistake?
-Consolidation can resolve in either direction — it doesn't guarantee a continuation of the prior move.
+Consolidation can resolve in either direction. It doesn't guarantee a continuation of the prior move.
 They should assume it always reverses instead.
 They should ignore consolidation phases entirely.
 WHY: Which direction consolidation resolves in isn't something that can be assumed in advance.
@@ -4917,7 +4917,7 @@ WHY: A break of structure is a descriptive early clue, not a guaranteed outcome.
 [SPOT] Someone treats every single break of structure as a guaranteed, permanent trend reversal.
 CHART: breakout
 QUESTION: What is the mistake?
-Not every break of structure leads to a lasting trend change — some fail and the prior trend resumes.
+Not every break of structure leads to a lasting trend change, some fail and the prior trend resumes.
 They should look for an even bigger break to be sure.
 They should ignore breaks of structure entirely.
 WHY: A break of structure is commonly read as an early signal, not a guaranteed permanent shift.
@@ -4931,10 +4931,10 @@ WHY: It's read as an early clue that may or may not be confirmed by what follows
 
 [TF] A break of structure can fail, with the prior trend resuming afterward.
 ANSWER: True
-WHY: Not every structure break leads to a lasting change — some fail and the prior trend continues.
+WHY: Not every structure break leads to a lasting change, some fail and the prior trend continues.
 
 NODE 11
-TITLE: Trend & Structure Drill — Classifying Direction
+TITLE: Trend & Structure Drill, Classifying Direction
 CELEBRATION: You can classify direction and structure together!
 
 INTRO
@@ -4943,21 +4943,21 @@ TEXT: Practice classifying trend direction and structure across a mixed set of c
 
 [MC] How would this chart most likely be classified?
 CHART: uptrend
-An uptrend — higher swing highs and higher swing lows
-A downtrend — lower swing highs and lower swing lows
-A sideways range — no clear direction
+An uptrend: higher swing highs and higher swing lows
+A downtrend: lower swing highs and lower swing lows
+A sideways range: no clear direction
 WHY: The swings here step up over time, matching the standard uptrend description.
 
 [MC] How would this chart most likely be classified?
 CHART: downtrend
-A downtrend — lower swing highs and lower swing lows
-An uptrend — higher swing highs and higher swing lows
-A sideways range — no clear direction
+A downtrend: lower swing highs and lower swing lows
+An uptrend: higher swing highs and higher swing lows
+A sideways range: no clear direction
 WHY: The swings here step down over time, matching the standard downtrend description.
 
 [MC] How would this chart most likely be classified?
 CHART: sideways
-A sideways range — bouncing without a clear direction
+A sideways range: bouncing without a clear direction
 A strong uptrend
 A strong downtrend
 WHY: Swings here stay within a similar band rather than clearly trending.
@@ -4984,7 +4984,7 @@ CONCERN: Understanding the point of practice
 Building a consistent, descriptive habit for reading structure | detail: A practical, repeatable skill
 Predicting the exact next candle with certainty | detail: Overstates certainty | wrong: Classification describes the past, not a guaranteed future.
 Replacing the need to look at the chart at all | detail: Backwards | wrong: This drill is about looking more carefully, not skipping the chart.
-WHY: These drills build a consistent, descriptive habit — not predictive certainty.
+WHY: These drills build a consistent, descriptive habit, not predictive certainty.
 
 
 [FILL] Classifying direction requires comparing multiple [___], not a single candle.
@@ -4998,7 +4998,7 @@ ANSWER: False
 WHY: They build descriptive reading skill, not predictive certainty.
 
 NODE 12
-TITLE: Trend & Structure Drill — Momentum and Pauses
+TITLE: Trend & Structure Drill, Momentum and Pauses
 CELEBRATION: You can classify momentum-related phases!
 
 INTRO
@@ -5014,7 +5014,7 @@ WHY: The middle candles here are simply steps within the broader uptrend structu
 
 [MC] How would this chart's overall price action most likely be described?
 CHART: sideways
-Consolidation — a tighter, sideways pause
+Consolidation: a tighter, sideways pause
 A strong, fast uptrend
 A strong, fast downtrend
 WHY: The bounded, sideways movement here matches the description of consolidation.
@@ -5037,7 +5037,7 @@ WHY: A quick recap of three related but distinct phases covered in this unit.
 
 [PICK] Which best captures how to responsibly describe an in-progress counter-trend move?
 CONCERN: Interpreting an ongoing move
-"This could be a pullback or the start of a reversal — it's not yet clear" | detail: Honest, hedged framing
+"This could be a pullback or the start of a reversal. It's not yet clear" | detail: Honest, hedged framing
 "This is definitely just a pullback" | detail: Overstates certainty | wrong: Some counter-moves do become full reversals.
 "This is definitely a full reversal" | detail: Overstates certainty | wrong: Many counter-moves are just temporary pullbacks.
 WHY: Honest uncertainty in the moment is more accurate than a confident guess either way.
@@ -5058,7 +5058,7 @@ WHY: Patience is commonly needed since the distinction is often unclear in the m
 
 [TF] Consolidation and a pullback describe the exact same market phase.
 ANSWER: False
-WHY: A pullback is a counter-trend move; consolidation is a tighter sideways pause — related but distinct ideas.
+WHY: A pullback is a counter-trend move; consolidation is a tighter sideways pause, related but distinct ideas.
 
 NODE 13
 TITLE: Trend & Structure Review
@@ -5111,10 +5111,10 @@ WHY: This balanced view has been the throughline of every lesson in this unit.
 
 [SPOT] Someone finishes this unit and claims they can now predict every future swing with certainty.
 QUESTION: What is the mistake?
-Nothing in this unit was about certainty — it was about describing price structure more clearly.
+Nothing in this unit was about certainty. It was about describing price structure more clearly.
 They should have skipped straight to more advanced lessons.
 They should have only studied one single chart.
-WHY: This unit builds reading literacy, not a predictive guarantee — that distinction matters.
+WHY: This unit builds reading literacy, not a predictive guarantee, that distinction matters.
 
 
 [FILL] This unit's core skill is describing structure [___], not predicting it with certainty.
@@ -5185,7 +5185,7 @@ QUESTION: What is the mistake?
 No support level is unbreakable; price levels are historical tendencies, not permanent walls.
 They should have picked an even lower price level instead.
 They should have used a shorter timeframe only.
-WHY: Support levels get broken regularly — treating any level as absolute is a common misconception.
+WHY: Support levels get broken regularly, treating any level as absolute is a common misconception.
 
 
 [FILL] A support level is commonly viewed as more notable with [___] touches.
@@ -5196,7 +5196,7 @@ WHY: More reactions at a level commonly add to how notable it's viewed.
 
 [TF] Support can eventually be broken and stop acting as a floor.
 ANSWER: True
-WHY: No support level is permanent — breaks happen regularly.
+WHY: No support level is permanent, breaks happen regularly.
 
 NODE 2
 TITLE: What Is Resistance?
@@ -5255,7 +5255,7 @@ QUESTION: What is the mistake?
 No resistance level is unbreakable; price levels are historical tendencies, not permanent walls.
 They should have picked an even higher price level instead.
 They should have used a shorter timeframe only.
-WHY: Resistance levels get broken regularly — treating any level as absolute is a common misconception.
+WHY: Resistance levels get broken regularly, treating any level as absolute is a common misconception.
 
 
 [FILL] A resistance level is commonly viewed as more notable with [___] touches.
@@ -5266,7 +5266,7 @@ WHY: More reactions at a level commonly add to how notable it's viewed.
 
 [TF] Resistance can eventually be broken and stop acting as a ceiling.
 ANSWER: True
-WHY: No resistance level is permanent — breaks happen regularly.
+WHY: No resistance level is permanent, breaks happen regularly.
 
 NODE 3
 TITLE: Why Levels Form
@@ -5301,7 +5301,7 @@ WHY: These are commonly cited behavioral explanations, not guaranteed mechanisms
 [FILL2] These explanations are [1], not [2] laws of how markets must behave.
 BLANK1: *commonly cited theories | proven guarantees | random guesses
 BLANK2: *guaranteed laws | commonly cited theories | proven facts
-WHY: These are useful, widely discussed explanations — not iron-clad rules.
+WHY: These are useful, widely discussed explanations, not iron-clad rules.
 
 [ORDER] A simple way to think through why a level might matter:
 Note that price reacted at this level before
@@ -5314,12 +5314,12 @@ WHY: This keeps the explanation grounded as a theory rather than an assumed guar
 CONCERN: Explaining support/resistance
 "This is a commonly cited theory about trader behavior, not a guaranteed law" | detail: Balanced, accurate framing
 "This is a guaranteed law of how markets must behave" | detail: Overstates certainty | wrong: No such guarantee exists; it's a commonly cited theory.
-"There's no reason at all — it's pure coincidence" | detail: Overcorrects | wrong: There are commonly cited, reasonable explanations, even without certainty.
+"There's no reason at all. It's pure coincidence" | detail: Overcorrects | wrong: There are commonly cited, reasonable explanations, even without certainty.
 WHY: The balanced view treats this as a reasonable theory, not an absolute law.
 
 [SPOT] Someone insists there's a strict, universal rule guaranteeing why every level holds.
 QUESTION: What is the mistake?
-There's no strict, universal rule — these are commonly cited theories about trader behavior, not guarantees.
+There's no strict, universal rule. These are commonly cited theories about trader behavior, not guarantees.
 They should look for an even older price level instead.
 They should stop discussing why levels form at all.
 WHY: Treating a commonly cited theory as an absolute rule overstates what's actually known.
@@ -5459,10 +5459,10 @@ WHY: A breakout is a description of a past event, not a certainty about the futu
 [SPOT] Someone treats every single breakout as guaranteed to keep going in that direction.
 CHART: breakout
 QUESTION: What is the mistake?
-Breakouts sometimes fail and reverse — treating them as guaranteed outcomes overstates certainty.
+Breakouts sometimes fail and reverse, treating them as guaranteed outcomes overstates certainty.
 They should have used a shorter timeframe only.
 They should have picked a totally different asset instead.
-WHY: Not every breakout continues — some reverse back, commonly called a "false breakout."
+WHY: Not every breakout continues, some reverse back, commonly called a "false breakout."
 
 
 [FILL] A breakout is described [___] the fact, based on what actually happened.
@@ -5481,7 +5481,7 @@ CELEBRATION: You can recognize a false breakout!
 
 INTRO
 TITLE: When the Breakout Fails
-TEXT: A fakeout (false breakout) happens when price briefly moves past a level, then reverses back — the opposite of a confirmed break.
+TEXT: A fakeout (false breakout) happens when price briefly moves past a level, then reverses back, the opposite of a confirmed break.
 CHART: resistanceRejection
 
 [TF] A false breakout means price moved past a level and then reversed back, instead of continuing.
@@ -5529,10 +5529,10 @@ WHY: The reversal back is the defining feature of a false breakout.
 [SPOT] Someone assumes every breakout must be false and never trusts one at all.
 CHART: resistanceRejection
 QUESTION: What is the mistake?
-Some breakouts do continue — treating every single one as false is just as much an overstatement as treating every one as guaranteed.
+Some breakouts do continue, treating every single one as false is just as much an overstatement as treating every one as guaranteed.
 They should have only looked at longer wicks.
 They should have used a completely different chart type.
-WHY: Both extremes — assuming every breakout works, or assuming none do — overstate certainty in either direction.
+WHY: Both extremes, assuming every breakout works, or assuming none do, overstate certainty in either direction.
 
 
 [FILL] A false breakout can only be labeled [___] price has already reversed back.
@@ -5551,12 +5551,12 @@ CELEBRATION: You understand retests of broken levels!
 
 INTRO
 TITLE: Coming Back for a Second Look
-TEXT: After a level breaks, price sometimes returns to that same level from the other side before continuing — commonly called a retest.
+TEXT: After a level breaks, price sometimes returns to that same level from the other side before continuing, commonly called a retest.
 CHART: breakout
 
 [TF] A retest means price returns to a broken level from the other side.
 ANSWER: True
-WHY: That's the definition — revisiting the level after it was already broken.
+WHY: That's the definition, revisiting the level after it was already broken.
 
 [FILL] Old resistance that gets broken is sometimes described as becoming new [___].
 support
@@ -5579,7 +5579,7 @@ WHY: These terms are frequently used together when describing this kind of price
 [FILL2] A retest happens [1] the original breakout, when price revisits the [2] level.
 BLANK1: *after | before | during
 BLANK2: *same | opposite | random
-WHY: The order matters — a retest only makes sense once a level has already broken.
+WHY: The order matters, a retest only makes sense once a level has already broken.
 
 [ORDER] A simple way to describe a breakout-and-retest sequence:
 Price breaks clearly past a level
@@ -5599,7 +5599,7 @@ WHY: This is a commonly cited pattern, not a guaranteed rule.
 [SPOT] Someone assumes every retest of a broken level will always hold and bounce.
 CHART: breakout
 QUESTION: What is the mistake?
-Retests sometimes fail and price breaks back through — it isn't guaranteed to hold.
+Retests sometimes fail and price breaks back through. It isn't guaranteed to hold.
 They should have used a shorter timeframe only.
 They should have ignored the retest entirely.
 WHY: Like other chart concepts here, a retest describes a common pattern, not a certainty.
@@ -5669,7 +5669,7 @@ WHY: A trading range specifically describes bounded, repeated bouncing between t
 [SPOT] Someone assumes an established trading range will hold forever and never resolve into a breakout.
 CHART: sideways
 QUESTION: What is the mistake?
-Ranges are commonly followed eventually by a breakout in one direction or another — they don't last forever.
+Ranges are commonly followed eventually by a breakout in one direction or another. They don't last forever.
 They should have widened the range indefinitely instead.
 They should have only looked at a shorter timeframe.
 WHY: Treating any market phase as permanent overstates what is really just a temporary description.
@@ -5756,7 +5756,7 @@ ANSWER: True
 WHY: Conflicting context (level vs trend) is commonly treated as worth extra caution.
 
 NODE 10
-TITLE: Levels Drill — Support or Resistance?
+TITLE: Levels Drill, Support or Resistance?
 CELEBRATION: You can classify levels across a mixed set of charts!
 
 INTRO
@@ -5799,7 +5799,7 @@ CONCERN: Understanding the purpose of this drill
 Building a consistent habit for spotting these zones on any chart | detail: A practical, repeatable skill
 Guaranteeing exactly where price will react next | detail: Overstates certainty | wrong: Levels are historical references, not guarantees.
 Replacing the need to look at the trend entirely | detail: Incomplete | wrong: Levels are read alongside trend, not instead of it.
-WHY: This drill builds a consistent, descriptive habit — not predictive certainty.
+WHY: This drill builds a consistent, descriptive habit, not predictive certainty.
 
 
 [FILL] These drills build a consistent, [___] habit for spotting levels.
@@ -5810,7 +5810,7 @@ WHY: The goal is descriptive skill, not predictive certainty.
 
 [TF] Support and resistance can each act as the other after a level breaks.
 ANSWER: True
-WHY: A broken resistance can become support (and vice versa) — this flip is commonly discussed.
+WHY: A broken resistance can become support (and vice versa), this flip is commonly discussed.
 
 [MATCH] Match the drill focus to its skill.
 Spotting support => Identifying a floor level
@@ -5824,7 +5824,7 @@ CELEBRATION: You've completed the Support & Resistance unit!
 
 INTRO
 TITLE: Bringing It All Together
-TEXT: A final review of support, resistance, breakouts, fakeouts, and retests — all descriptive tools for reading key price zones.
+TEXT: A final review of support, resistance, breakouts, fakeouts, and retests, all descriptive tools for reading key price zones.
 
 [TF] Everything covered in this unit describes historical price behavior, not guaranteed future outcomes.
 ANSWER: True
@@ -5869,10 +5869,10 @@ WHY: This balanced view has been the throughline of every lesson in this unit.
 
 [SPOT] Someone finishes this unit and claims they can now predict every future price reaction with certainty.
 QUESTION: What is the mistake?
-Nothing in this unit was about certainty — it was about describing key price zones more clearly.
+Nothing in this unit was about certainty. It was about describing key price zones more clearly.
 They should have skipped straight to more advanced lessons.
 They should have only studied one single chart.
-WHY: This unit builds reading literacy, not a predictive guarantee — that distinction matters.
+WHY: This unit builds reading literacy, not a predictive guarantee, that distinction matters.
 
 
 [FILL] This unit treats levels as [___] tools, not guarantees.
@@ -5892,7 +5892,7 @@ CELEBRATION: You can spot a double top on a chart!
 
 INTRO
 TITLE: Two Peaks at the Same Level
-TEXT: A double top is commonly described as price rising to a level, pulling back, rising to about the <b>same</b> level again, then turning down — an "M" shape. It's read as a possible reversal after an up-move.
+TEXT: A double top is commonly described as price rising to a level, pulling back, rising to about the <b>same</b> level again, then turning down, an "M" shape. It's read as a possible reversal after an up-move.
 CHART: doubleTop
 
 [MC] The chart above shows two peaks stalling at about the same price. This shape is commonly called a...
@@ -5924,12 +5924,12 @@ CONCERN: Reading the pattern descriptively
 Price tested a level twice and failed to break above it | detail: A descriptive read, not a guarantee
 A guaranteed crash from here | detail: Overstates certainty | wrong: A pattern describes; it doesn't guarantee the next move.
 That both peaks are green candles | detail: Unrelated | wrong: Candle color isn't what defines the pattern.
-WHY: A double top describes a level tested twice and rejected — context, not certainty.
+WHY: A double top describes a level tested twice and rejected. Context, not certainty.
 
 [SPOT] Someone sees one peak and immediately calls it a "double top."
 CHART: resistanceRejection
 QUESTION: What is the mistake?
-A double top needs two peaks at about the same level — a single peak isn't one yet.
+A double top needs two peaks at about the same level, a single peak isn't one yet.
 A double top only needs a single peak to count.
 The number of peaks doesn't matter for a double top.
 WHY: The pattern is defined by two peaks at a similar level, not one.
@@ -5956,7 +5956,7 @@ CELEBRATION: You can spot a double bottom on a chart!
 
 INTRO
 TITLE: Two Troughs at the Same Level
-TEXT: A double bottom is the mirror image: price falls to a level, bounces, falls to about the <b>same</b> level again, then turns up — a "W" shape, read as a possible reversal after a down-move.
+TEXT: A double bottom is the mirror image: price falls to a level, bounces, falls to about the <b>same</b> level again, then turns up, a "W" shape, read as a possible reversal after a down-move.
 CHART: doubleBottom
 
 [MC] The chart above shows two troughs holding at about the same price. This shape is commonly called a...
@@ -5982,7 +5982,7 @@ CONCERN: Reading the pattern descriptively
 Price tested a level twice and held above it both times | detail: A descriptive read
 A guaranteed rally from here | detail: Overstates certainty | wrong: A pattern describes; it doesn't guarantee the outcome.
 That the chart data is broken | detail: Incorrect | wrong: A double bottom is a normal, valid shape.
-WHY: A double bottom describes support tested twice and held — context, not certainty.
+WHY: A double bottom describes support tested twice and held. Context, not certainty.
 
 [TF] The chart above shows an "M" shape.
 CHART: doubleBottom
@@ -5995,7 +5995,7 @@ QUESTION: What is the mistake?
 Two troughs at support form a double bottom (a "W"), not a double top.
 Any two turning points always make a double top.
 Double tops and double bottoms are the same thing.
-WHY: Direction matters — troughs at support is a double bottom, peaks at resistance is a double top.
+WHY: Direction matters, troughs at support is a double bottom, peaks at resistance is a double top.
 
 
 [FILL] A double bottom forms after a [___] move, at support.
@@ -6050,7 +6050,7 @@ CONCERN: Understanding confirmation
 A level whose break is commonly read as confirming the pattern | detail: A descriptive confirmation step
 A guarantee the pattern will play out | detail: Overstates certainty | wrong: A break is a clue, not a guarantee.
 The exact future price target | detail: Incorrect | wrong: The neckline is a level, not a price prediction.
-WHY: The neckline is the confirmation level, described — not a certainty.
+WHY: The neckline is the confirmation level, described, not a certainty.
 
 [SPOT] Someone treats a double top as complete even though price never broke the neckline.
 CHART: doubleTop
@@ -6111,7 +6111,7 @@ WHY: Counting the tests of the level is what separates the two reads.
 [PICK] Reading the chart above, which description fits?
 CHART: doubleTop
 CONCERN: Counting tests of the level
-Two tests of the same resistance — a double top | detail: Two touches, "M" shape
+Two tests of the same resistance, a double top | detail: Two touches, "M" shape
 A single test of resistance | detail: Undercounts | wrong: There are two peaks here, not one.
 A support bounce | detail: Wrong side | wrong: This is at resistance (top), not support.
 WHY: Two peaks at the same resistance is a double top, not a single rejection.
@@ -6119,7 +6119,7 @@ WHY: Two peaks at the same resistance is a double top, not a single rejection.
 [SPOT] Someone labels a two-peak "M" at resistance a "single rejection."
 CHART: doubleTop
 QUESTION: What is the mistake?
-Two peaks at the same level is a double top, not a single rejection — they undercounted the tests.
+Two peaks at the same level is a double top, not a single rejection. They undercounted the tests.
 The number of touches never matters.
 A double top and a single rejection are identical.
 WHY: The count of tests at the level is exactly what distinguishes the two.
@@ -6133,7 +6133,7 @@ WHY: Test count (one vs two) is exactly what separates a rejection from a double
 
 [TF] A single resistance rejection can still be a valid, meaningful chart event on its own.
 ANSWER: True
-WHY: A single rejection is still meaningful — it's just not a double top by itself.
+WHY: A single rejection is still meaningful. It's just not a double top by itself.
 
 
 [FILL] A single touch of a level is a rejection; a second touch at the same level upgrades it to a [___].
@@ -6148,7 +6148,7 @@ CELEBRATION: You can tell these two apart!
 
 INTRO
 TITLE: One Bounce or Two?
-TEXT: A single support bounce touches support <b>once</b>. A double bottom touches about the same support <b>twice</b>, with a bounce in between — the "W".
+TEXT: A single support bounce touches support <b>once</b>. A double bottom touches about the same support <b>twice</b>, with a bounce in between, the "W".
 
 [MC] The chart above shows price dipping to support and bouncing after a single touch. This is best described as...
 A support bounce.
@@ -6176,7 +6176,7 @@ WHY: Counting the tests of support is what separates the two reads.
 [PICK] Reading the chart above, which description fits?
 CHART: doubleBottom
 CONCERN: Counting tests of the level
-Two tests of the same support — a double bottom | detail: Two touches, "W" shape
+Two tests of the same support, a double bottom | detail: Two touches, "W" shape
 A single support bounce | detail: Undercounts | wrong: There are two troughs here, not one.
 A resistance rejection | detail: Wrong side | wrong: This is at support (bottom), not resistance.
 WHY: Two troughs at the same support is a double bottom, not a single bounce.
@@ -6184,7 +6184,7 @@ WHY: Two troughs at the same support is a double bottom, not a single bounce.
 [SPOT] Someone calls a two-trough "W" a "single bounce."
 CHART: doubleBottom
 QUESTION: What is the mistake?
-Two troughs at the same level is a double bottom, not a single bounce — they undercounted the tests.
+Two troughs at the same level is a double bottom, not a single bounce. They undercounted the tests.
 Counting touches never matters at support.
 A double bottom and a single bounce are identical.
 WHY: The count of tests at support is what distinguishes the two.
@@ -6198,7 +6198,7 @@ WHY: Test count (one vs two) is exactly what separates a bounce from a double bo
 
 [TF] A single support bounce can still be a valid, meaningful chart event on its own.
 ANSWER: True
-WHY: A single bounce is still meaningful — it's just not a double bottom by itself.
+WHY: A single bounce is still meaningful. It's just not a double bottom by itself.
 
 
 [FILL] A single touch of support is a bounce; a second touch at the same level upgrades it to a [___].
@@ -6222,9 +6222,9 @@ ANSWER: True
 WHY: Roughly-equal peaks are what make it a "double" top.
 
 [MC] If the second peak is much higher than the first, the double top read is...
-Weaker — the peaks aren't really at the same level.
-Stronger — higher is always better.
-Unchanged — peak height never matters.
+Weaker, the peaks aren't really at the same level.
+Stronger, higher is always better.
+Unchanged, peak height never matters.
 WHY: The pattern relies on the two peaks being at about the same level.
 
 [FILL] For a clean double top, the two peaks should be at [___] the same height.
@@ -6249,7 +6249,7 @@ WHY: The fourth candle is the second peak, stalling at the same resistance as th
 [SPOT] Someone calls it a clean double top even though the second peak is far higher than the first.
 CHART: breakout
 QUESTION: What is the mistake?
-If the second high is far above the first, the peaks aren't at the same level — it's a weaker "double" read (and may just be a breakout).
+If the second high is far above the first, the peaks aren't at the same level. It's a weaker "double" read (and may just be a breakout).
 Peak heights never matter for a double top.
 A higher second peak always makes a stronger double top.
 WHY: The "double" read depends on the two peaks being at about the same level.
@@ -6286,9 +6286,9 @@ TEXT: The same idea applies to a double bottom: two troughs at <b>about</b> the 
 CHART: doubleBottom
 
 [MC] If the second trough is much lower than the first, the double bottom read is...
-Weaker — the troughs aren't at the same level.
-Stronger — lower is always better.
-Unchanged — trough depth never matters.
+Weaker, the troughs aren't at the same level.
+Stronger, lower is always better.
+Unchanged, trough depth never matters.
 WHY: The pattern relies on the two troughs being at about the same level.
 
 [FILL] For a clean double bottom, the two troughs should be at [___] the same low.
@@ -6313,7 +6313,7 @@ WHY: Roughly-equal troughs strengthen the double bottom read, descriptively.
 [SPOT] Someone calls it a clean double bottom even though the second trough is far below the first.
 CHART: breakdown
 QUESTION: What is the mistake?
-If the second low is far below the first, the troughs aren't at the same level — a weaker "double" read (and may just be a breakdown).
+If the second low is far below the first, the troughs aren't at the same level, a weaker "double" read (and may just be a breakdown).
 Trough depth never matters.
 A lower second trough always strengthens the pattern.
 WHY: The "double" read depends on the two troughs being at about the same level.
@@ -6346,7 +6346,7 @@ CELEBRATION: You understand failed double patterns!
 
 INTRO
 TITLE: Not Every M or W Follows Through
-TEXT: Sometimes price forms two peaks but then breaks <b>up</b> through resistance instead of down — the double top "fails". Patterns are clues, never guarantees.
+TEXT: Sometimes price forms two peaks but then breaks <b>up</b> through resistance instead of down, the double top "fails". Patterns are clues, never guarantees.
 CHART: breakout
 
 [TF] Every double top is guaranteed to lead to a reversal down.
@@ -6363,7 +6363,7 @@ WHY: Breaking up through the level is the opposite of the expected reversal, so 
 fail
 guarantee
 predict exactly
-WHY: Any pattern can fail — that's why it's read as a clue, not a certainty.
+WHY: Any pattern can fail. That's why it's read as a clue, not a certainty.
 
 [PICK] Why treat a double top as a clue rather than a certainty?
 CHART: doubleTop
@@ -6376,10 +6376,10 @@ WHY: Any pattern can fail, so it's read as a probability-shaped clue, not a guar
 [SPOT] Someone assumes a double top means a reversal is certain and ignores that price broke upward.
 CHART: breakout
 QUESTION: What is the mistake?
-Price broke up through the level — the double top failed. Treating it as certain ignored that outcome.
+Price broke up through the level, the double top failed. Treating it as certain ignored that outcome.
 A double top can never fail.
 Breaking upward confirms the double top.
-WHY: When price breaks up instead of down, the double top has failed — patterns aren't guarantees.
+WHY: When price breaks up instead of down, the double top has failed. Patterns aren't guarantees.
 
 
 [FILL] A failed double top is one commonly cited reason to treat patterns as [___], not certainties.
@@ -6471,17 +6471,17 @@ CELEBRATION: You can read what double patterns suggest!
 
 INTRO
 TITLE: From Shape to Meaning
-TEXT: Read what each completed pattern <b>suggests</b> — always descriptively, never as a buy/sell instruction.
+TEXT: Read what each completed pattern <b>suggests</b>, always descriptively, never as a buy/sell instruction.
 
 [PICK] A double bottom on the chart above has held support twice. Descriptively, that suggests...
-Sellers failed to push below the level twice — buyers defended it | detail: A read of the two tests
+Sellers failed to push below the level twice, buyers defended it | detail: A read of the two tests
 A guaranteed rally | detail: Overstates certainty | wrong: Descriptive, not a promise.
 Nothing can be said about the level | detail: Undersells it | wrong: Two holds at a level is meaningful context.
 CHART: doubleBottom
 WHY: Two successful defenses of support is descriptive context, not a certainty.
 
 [PICK] A double top on the chart above has failed at resistance twice. Descriptively, that suggests...
-Buyers failed to push above the level twice — sellers defended it | detail: A read of the two tests
+Buyers failed to push above the level twice, sellers defended it | detail: A read of the two tests
 A guaranteed crash | detail: Overstates certainty | wrong: Descriptive, not a promise.
 That resistance no longer exists | detail: Backwards | wrong: The level held twice, so it's still relevant.
 CHART: doubleTop
@@ -6489,7 +6489,7 @@ WHY: Two failed pushes above resistance is descriptive context, not a certainty.
 
 [TF] Reading "what a pattern suggests" is about description, not a signal to act.
 ANSWER: True
-WHY: This whole course stays descriptive — patterns inform reading, not trade commands.
+WHY: This whole course stays descriptive, patterns inform reading, not trade commands.
 
 [MATCH] Match each pattern to its descriptive read.
 Double top => Resistance defended twice; buyers failed above it
@@ -6500,7 +6500,7 @@ WHY: Each is a descriptive read of how the level behaved.
 [SPOT] Someone turns "a double bottom suggests buyers defended support" into "definitely buy now."
 CHART: doubleBottom
 QUESTION: What is the mistake?
-That converts a descriptive read into a certainty and a trade command — the pattern is context, not a guaranteed signal.
+That converts a descriptive read into a certainty and a trade command. The pattern is context, not a guaranteed signal.
 The descriptive read and a guaranteed buy are the same thing.
 Patterns are always trade commands.
 WHY: A descriptive read isn't a guaranteed signal; treating it as one overstates certainty.
@@ -6529,7 +6529,7 @@ CELEBRATION: You can read double patterns in any context!
 
 INTRO
 TITLE: Put It Together
-TEXT: A full mix — identify the pattern and read the level behavior.
+TEXT: A full mix, identify the pattern and read the level behavior.
 
 [MC] Which pattern is shown on the chart above?
 CHART: doubleTop
@@ -6541,7 +6541,7 @@ WHY: Two peaks at the same resistance is a double top.
 [PICK] On the chart above, price tested support twice and held. Best description?
 CHART: doubleBottom
 CONCERN: Reading level behavior
-A double bottom — support defended twice | detail: Two holds at the level
+A double bottom, support defended twice | detail: Two holds at the level
 A guaranteed reversal | detail: Overstates certainty | wrong: Descriptive, not a guarantee.
 A single bounce | detail: Undercounts | wrong: There are two troughs, not one.
 WHY: Two holds at support form a double bottom, described.
@@ -6618,7 +6618,7 @@ WHY: The whole unit treats patterns as descriptive clues, not certainties.
 [PICK] Which best summarizes this unit?
 CHART: doubleBottom
 CONCERN: Reviewing the big picture
-Double patterns describe a level tested twice — useful context, not a guaranteed signal | detail: The central theme
+Double patterns describe a level tested twice, useful context, not a guaranteed signal | detail: The central theme
 Double patterns guarantee the next move | detail: Overstates certainty | wrong: This contradicts the whole unit.
 Double patterns replace looking at levels | detail: Backwards | wrong: They're read together with the level.
 WHY: This descriptive, level-aware reading is the throughline of the unit.
@@ -6626,7 +6626,7 @@ WHY: This descriptive, level-aware reading is the throughline of the unit.
 [SPOT] Someone finishes this unit and starts calling every two-bar wiggle a "double top."
 CHART: sideways
 QUESTION: What is the mistake?
-A double top needs two clear peaks at about the same resistance after an up-move — not any small wiggle.
+A double top needs two clear peaks at about the same resistance after an up-move, not any small wiggle.
 Any two candles form a double top.
 The level and context don't matter.
 WHY: The pattern has specific requirements (two equal peaks at resistance); random wiggles don't qualify.
@@ -6679,20 +6679,20 @@ WHY: Like other reversal patterns, it appears after price has risen into it.
 [TAPCANDLE] Tap the head (the highest peak).
 CHART: headShoulders
 TARGET: 4
-WHY: The 4th candle is the head — the tallest of the three peaks.
+WHY: The 4th candle is the head, the tallest of the three peaks.
 
 [PICK] What does a head & shoulders describe, on its own?
 CHART: headShoulders
 CONCERN: Reading the pattern descriptively
-Three peaks with a higher middle — a possible reversal shape | detail: Descriptive, not a guarantee
+Three peaks with a higher middle, a possible reversal shape | detail: Descriptive, not a guarantee
 A guaranteed crash | detail: Overstates certainty | wrong: A pattern describes; it doesn't guarantee the move.
 That the middle peak is the lowest | detail: Backwards | wrong: The head (middle) is the highest, not the lowest.
-WHY: A head & shoulders describes a three-peak shape — context, not certainty.
+WHY: A head & shoulders describes a three-peak shape. Context, not certainty.
 
 [SPOT] Someone calls a two-peak chart a "head & shoulders."
 CHART: doubleTop
 QUESTION: What is the mistake?
-A head & shoulders needs three peaks (with a higher middle) — two peaks is a double top.
+A head & shoulders needs three peaks (with a higher middle), two peaks is a double top.
 Two peaks is enough for a head & shoulders.
 The number of peaks doesn't matter.
 WHY: Head & shoulders is a three-peak pattern; two peaks is a double top.
@@ -6702,11 +6702,11 @@ WHY: Head & shoulders is a three-peak pattern; two peaks is a double top.
 three
 two
 four
-WHY: Left shoulder, head, right shoulder — three peaks total.
+WHY: Left shoulder, head, right shoulder, three peaks total.
 
 [TF] The head is the middle peak of the three.
 ANSWER: True
-WHY: Left shoulder, then the (highest) head, then the right shoulder — the head sits in the middle.
+WHY: Left shoulder, then the (highest) head, then the right shoulder, the head sits in the middle.
 
 [MC] Which best matches the order of peaks in a head & shoulders, left to right?
 Left shoulder, head, right shoulder.
@@ -6732,7 +6732,7 @@ WHY: Naming the three peaks in order is the core of reading the pattern.
 [TAPCANDLES] Tap BOTH shoulders (the outer two peaks).
 CHART: headShoulders
 TARGETS: 2, 6
-WHY: The 2nd and 6th candles are the left and right shoulders — the outer, lower peaks.
+WHY: The 2nd and 6th candles are the left and right shoulders, the outer, lower peaks.
 
 [FILL] The right shoulder is commonly at about the [___] height as the left shoulder.
 same
@@ -6749,7 +6749,7 @@ WHY: The head, in the middle, is the highest of the three.
 [TAPCANDLE] Tap the head.
 CHART: headShoulders
 TARGET: 4
-WHY: The 4th candle is the head — the tallest peak.
+WHY: The 4th candle is the head, the tallest peak.
 
 [SPOT] Someone says the right shoulder should be much taller than the head.
 CHART: headShoulders
@@ -6806,7 +6806,7 @@ CONCERN: Understanding confirmation
 A level whose break is commonly read as confirming the pattern | detail: A descriptive confirmation step
 A guarantee the pattern plays out | detail: Overstates certainty | wrong: A break is a clue, not a guarantee.
 The exact future price target | detail: Incorrect | wrong: The neckline is a level, not a prediction.
-WHY: The neckline is the confirmation level — described, not a certainty.
+WHY: The neckline is the confirmation level, described, not a certainty.
 
 
 [FILL] The neckline connects the two [___] between the peaks.
@@ -6848,7 +6848,7 @@ WHY: The inverse version appears after price has fallen into it.
 [TAPCANDLE] Tap the head (the lowest trough).
 CHART: inverseHeadShoulders
 TARGET: 4
-WHY: The 4th candle is the head — the lowest of the three troughs.
+WHY: The 4th candle is the head, the lowest of the three troughs.
 
 [MARKLEVEL] Drag the line to the neckline (along the two peaks).
 CHART: inverseHeadShoulders
@@ -6861,7 +6861,7 @@ CONCERN: Telling the two apart
 It's three troughs with the lowest in the middle, after a down-move | detail: The mirror image
 It's identical to the regular version | detail: Incorrect | wrong: One is peaks-up, the other troughs-down.
 It has only one trough | detail: Undercounts | wrong: It has three troughs, not one.
-WHY: The inverse is the upside-down mirror — three troughs with a lower head.
+WHY: The inverse is the upside-down mirror, three troughs with a lower head.
 
 [SPOT] Someone calls an inverse head & shoulders a "regular head & shoulders".
 CHART: inverseHeadShoulders
@@ -6906,7 +6906,7 @@ WHY: Roughly-equal shoulders below a clear head make the cleanest pattern.
 [TAPCANDLES] Tap BOTH shoulders.
 CHART: headShoulders
 TARGETS: 2, 6
-WHY: The 2nd and 6th candles are the two shoulders — read whether they're about equal.
+WHY: The 2nd and 6th candles are the two shoulders, read whether they're about equal.
 
 [FILL] The head should be clearly [___] both shoulders.
 above
@@ -6921,7 +6921,7 @@ WHY: The head must be the highest peak; if it isn't, it's not a clean head & sho
 [SPOT] Someone calls it a clean head & shoulders even though the middle peak is lower than both outer peaks.
 CHART: doubleTop
 QUESTION: What is the mistake?
-If the middle peak isn't the highest, it isn't a head & shoulders — the head must top both shoulders.
+If the middle peak isn't the highest, it isn't a head & shoulders. The head must top both shoulders.
 The head can be the lowest peak.
 Peak heights never matter.
 WHY: The defining feature is a head that stands above both shoulders.
@@ -6971,15 +6971,15 @@ WHY: Counting the peaks separates the two patterns.
 [PICK] Reading the chart above, which fits?
 CHART: headShoulders
 CONCERN: Counting the peaks
-Three peaks with a higher middle — a head & shoulders | detail: Three-peak pattern
-Two peaks — a double top | detail: Undercounts | wrong: There are three peaks here, not two.
+Three peaks with a higher middle, a head & shoulders | detail: Three-peak pattern
+Two peaks, a double top | detail: Undercounts | wrong: There are three peaks here, not two.
 No pattern at all | detail: Misses it | wrong: Three peaks with a higher middle is a recognizable pattern.
 WHY: Three peaks with a higher middle is a head & shoulders, not a double top.
 
 [SPOT] Someone labels a clear three-peak (higher middle) chart a "double top."
 CHART: headShoulders
 QUESTION: What is the mistake?
-Three peaks with a higher middle is a head & shoulders — they undercounted the peaks.
+Three peaks with a higher middle is a head & shoulders. They undercounted the peaks.
 Peak count never matters.
 A double top and head & shoulders are identical.
 WHY: The peak count (and the higher middle) is exactly what distinguishes them.
@@ -6993,7 +6993,7 @@ WHY: Two peaks = double top; three peaks with a higher middle = head & shoulders
 
 [TF] A head & shoulders and a double top can never be confused with each other.
 ANSWER: False
-WHY: Without carefully counting peaks, the two patterns can be mixed up — that's exactly the skill this lesson builds.
+WHY: Without carefully counting peaks, the two patterns can be mixed up. That's exactly the skill this lesson builds.
 
 NODE 7
 TITLE: Confirmation
@@ -7007,7 +7007,7 @@ CHART: headShoulders
 [MC] When is a head & shoulders commonly considered confirmed?
 When price breaks the neckline after the right shoulder.
 The instant the left shoulder forms.
-Never — it can't be confirmed.
+Never. It can't be confirmed.
 WHY: The neckline break after the right shoulder is the commonly cited confirmation.
 
 [TF] Before the neckline breaks, a head & shoulders is commonly described as still forming, not confirmed.
@@ -7019,7 +7019,7 @@ Left shoulder forms
 Head forms (higher)
 Right shoulder forms (about the shoulder height)
 Price breaks the neckline (confirmation)
-WHY: This order — shoulders, head, shoulder, then neckline break — is how the pattern is commonly read.
+WHY: This order, shoulders, head, shoulder, then neckline break, is how the pattern is commonly read.
 
 [PICK] Why wait for the neckline break before calling it confirmed?
 CHART: headShoulders
@@ -7043,7 +7043,7 @@ WHY: Confirmation is tied to the neckline breaking after the right shoulder, not
 [MC] What must happen for a head & shoulders to be considered confirmed?
 Price must break the neckline after the right shoulder forms.
 The left shoulder must be taller than the head.
-Nothing — it's confirmed immediately once three peaks appear.
+Nothing. It's confirmed immediately once three peaks appear.
 WHY: The neckline break after the right shoulder is the commonly cited confirmation step.
 
 NODE 8
@@ -7052,7 +7052,7 @@ CELEBRATION: You understand failed head & shoulders!
 
 INTRO
 TITLE: Not Every Pattern Follows Through
-TEXT: Sometimes a head & shoulders forms but price never breaks the neckline — or breaks back the other way. Patterns are clues, never guarantees.
+TEXT: Sometimes a head & shoulders forms but price never breaks the neckline, or breaks back the other way. Patterns are clues, never guarantees.
 CHART: headShoulders
 
 [TF] Every head & shoulders is guaranteed to lead to a reversal.
@@ -7069,7 +7069,7 @@ WHY: Not following through at the neckline is what makes the pattern fail.
 fail
 guarantee
 predict exactly
-WHY: Any pattern can fail — that's why it's read as a clue.
+WHY: Any pattern can fail. That's why it's read as a clue.
 
 [PICK] Why treat a head & shoulders as a clue rather than a certainty?
 CHART: headShoulders
@@ -7121,7 +7121,7 @@ WHY: Three troughs with a lower middle is an inverse head & shoulders.
 [TAPCANDLE] Tap the head of this head & shoulders.
 CHART: headShoulders
 TARGET: 4
-WHY: The 4th candle is the head — the tallest peak.
+WHY: The 4th candle is the head, the tallest peak.
 
 [TAPCANDLES] Tap BOTH shoulders.
 CHART: headShoulders
@@ -7150,7 +7150,7 @@ CELEBRATION: You can read what a head & shoulders suggests!
 
 INTRO
 TITLE: From Shape to Meaning
-TEXT: Read what a completed head & shoulders <b>suggests</b> — descriptively, never as a buy/sell command.
+TEXT: Read what a completed head & shoulders <b>suggests</b>, descriptively, never as a buy/sell command.
 
 [PICK] A head & shoulders has completed on the chart above (neckline broke). Descriptively, that suggests...
 Buyers made a higher high (head) but couldn't sustain it, and the level gave way | detail: A read of the structure
@@ -7168,12 +7168,12 @@ WHY: The failed lower low plus an upward neckline break is descriptive context.
 
 [TF] Reading "what a pattern suggests" is description, not a signal to act.
 ANSWER: True
-WHY: This course stays descriptive — patterns inform reading, not trade commands.
+WHY: This course stays descriptive, patterns inform reading, not trade commands.
 
 [SPOT] Someone turns "a head & shoulders suggests a failed higher high" into "definitely short it now."
 CHART: headShoulders
 QUESTION: What is the mistake?
-That converts a descriptive read into a certainty and a trade command — the pattern is context, not a guaranteed signal.
+That converts a descriptive read into a certainty and a trade command. The pattern is context, not a guaranteed signal.
 A descriptive read and a trade command are the same.
 Patterns are always trade commands.
 WHY: A descriptive read isn't a guaranteed signal; treating it as one overstates certainty.
@@ -7201,7 +7201,7 @@ CELEBRATION: You can read head & shoulders in any context!
 
 INTRO
 TITLE: Put It Together
-TEXT: A full mix — identify the pattern and its parts.
+TEXT: A full mix, identify the pattern and its parts.
 
 [MC] Which pattern is shown on the chart above?
 CHART: inverseHeadShoulders
@@ -7213,7 +7213,7 @@ WHY: Three troughs with a lower middle is an inverse head & shoulders.
 [TAPCANDLE] Tap the head (lowest trough) of this inverse head & shoulders.
 CHART: inverseHeadShoulders
 TARGET: 4
-WHY: The 4th candle is the head — the lowest trough.
+WHY: The 4th candle is the head, the lowest trough.
 
 [TF] The chart above shows a head & shoulders (three peaks, higher middle).
 CHART: headShoulders
@@ -7280,7 +7280,7 @@ WHY: The unit treats the pattern as a descriptive, confirmation-based clue.
 [PICK] Which best summarizes this unit?
 CHART: headShoulders
 CONCERN: Reviewing the big picture
-A three-peak reversal shape confirmed by a neckline break — useful context, not a guaranteed signal | detail: The central theme
+A three-peak reversal shape confirmed by a neckline break, useful context, not a guaranteed signal | detail: The central theme
 A pattern that guarantees the next move | detail: Overstates certainty | wrong: This contradicts the unit.
 A replacement for reading levels | detail: Backwards | wrong: It's read together with the neckline.
 WHY: This descriptive, confirmation-aware reading is the throughline of the unit.
@@ -7288,7 +7288,7 @@ WHY: This descriptive, confirmation-aware reading is the throughline of the unit
 [SPOT] Someone finishes this unit and starts calling every three-bar wiggle a "head & shoulders."
 CHART: sideways
 QUESTION: What is the mistake?
-A head & shoulders needs three clear peaks with a higher middle and a neckline — not any small wiggle.
+A head & shoulders needs three clear peaks with a higher middle and a neckline, not any small wiggle.
 Any three candles form a head & shoulders.
 The neckline and peak heights don't matter.
 WHY: The pattern has specific requirements (three peaks, higher middle, neckline); random wiggles don't qualify.
@@ -7313,7 +7313,7 @@ CELEBRATION: You can spot an ascending triangle!
 
 INTRO
 TITLE: Flat Top, Rising Lows
-TEXT: An ascending triangle is commonly described as a <b>flat resistance</b> on top with <b>rising lows</b> underneath — price squeezing up toward the level. It's read as a possible continuation upward.
+TEXT: An ascending triangle is commonly described as a <b>flat resistance</b> on top with <b>rising lows</b> underneath, price squeezing up toward the level. It's read as a possible continuation upward.
 CHART: ascendingTriangle
 
 [MC] The chart above has a flat top and rising lows. This is commonly called an...
@@ -7341,10 +7341,10 @@ WHY: Rising lows plus a flat top is the defining structure.
 [PICK] What does an ascending triangle describe, on its own?
 CHART: ascendingTriangle
 CONCERN: Reading the pattern descriptively
-Buyers pushing lows higher while sellers hold a flat level — a squeeze | detail: Descriptive, not a guarantee
+Buyers pushing lows higher while sellers hold a flat level, a squeeze | detail: Descriptive, not a guarantee
 A guaranteed breakout up | detail: Overstates certainty | wrong: Triangles can break either way; nothing is guaranteed.
 That the top is falling | detail: Backwards | wrong: The top is flat, not falling.
-WHY: An ascending triangle describes a squeeze — context, not certainty.
+WHY: An ascending triangle describes a squeeze. Context, not certainty.
 
 
 [FILL] An ascending triangle has a flat [___] on top.
@@ -7360,7 +7360,7 @@ WHY: Rising lows squeezing up under a flat top is the ascending triangle shape.
 [MC] What is squeezing together in an ascending triangle?
 Price, between a flat resistance and rising lows.
 Two flat, unmoving lines.
-Nothing — it's a random shape.
+Nothing. It's a random shape.
 WHY: Price is squeezed between the flat top and the rising lows.
 
 NODE 2
@@ -7369,7 +7369,7 @@ CELEBRATION: You can spot a descending triangle!
 
 INTRO
 TITLE: Flat Bottom, Falling Highs
-TEXT: A descending triangle is the mirror: a <b>flat support</b> on the bottom with <b>falling highs</b> above — price squeezing down toward the level. It's read as a possible continuation downward.
+TEXT: A descending triangle is the mirror: a <b>flat support</b> on the bottom with <b>falling highs</b> above, price squeezing down toward the level. It's read as a possible continuation downward.
 CHART: descendingTriangle
 
 [MC] The chart above has a flat bottom and falling highs. This is commonly called a...
@@ -7392,7 +7392,7 @@ WHY: Falling highs plus a flat bottom is the defining structure.
 [TF] The chart above shows a flat top with rising lows.
 CHART: descendingTriangle
 ANSWER: False
-WHY: A descending triangle has a flat BOTTOM with falling highs — the opposite.
+WHY: A descending triangle has a flat BOTTOM with falling highs, the opposite.
 
 [SPOT] Someone calls a flat-bottom, falling-highs chart an "ascending triangle."
 CHART: descendingTriangle
@@ -7416,7 +7416,7 @@ WHY: Falling highs squeezing down onto a flat bottom is the descending triangle 
 [MC] What is squeezing together in a descending triangle?
 Price, between falling highs and a flat support.
 Two flat, unmoving lines.
-Nothing — it's a random shape.
+Nothing. It's a random shape.
 WHY: Price is squeezed between the falling highs and the flat bottom.
 
 NODE 3
@@ -7425,7 +7425,7 @@ CELEBRATION: You can spot a symmetrical triangle!
 
 INTRO
 TITLE: Both Sides Converging
-TEXT: A symmetrical triangle has <b>lower highs and higher lows</b> converging toward a point — neither side is flat. It's read as a squeeze that can break either way.
+TEXT: A symmetrical triangle has <b>lower highs and higher lows</b> converging toward a point. Neither side is flat. It's read as a squeeze that can break either way.
 CHART: symmetricalTriangle
 
 [MC] The chart above has lower highs AND higher lows converging. This is commonly called a...
@@ -7443,7 +7443,7 @@ WHY: Lower highs and higher lows narrowing is the symmetrical shape.
 [TF] A symmetrical triangle has one perfectly flat side.
 CHART: symmetricalTriangle
 ANSWER: False
-WHY: Neither side is flat — both converge. A flat side would make it ascending or descending.
+WHY: Neither side is flat. Both converge. A flat side would make it ascending or descending.
 
 [PICK] How does a symmetrical triangle differ from an ascending one?
 CHART: symmetricalTriangle
@@ -7458,14 +7458,14 @@ WHY: A symmetrical triangle converges on both sides; ascending/descending have o
 zero
 one
 two
-WHY: Both sides converge in a symmetrical triangle — neither is flat.
+WHY: Both sides converge in a symmetrical triangle. Neither is flat.
 
 [TF] A symmetrical triangle can break either upward or downward.
 ANSWER: True
 WHY: Without a flat side biasing one direction, a symmetrical triangle can resolve either way.
 
 [MC] What distinguishes a symmetrical triangle from ascending/descending ones?
-Neither side is flat — both converge toward a point.
+Neither side is flat. Both converge toward a point.
 It always breaks upward.
 It has no lower boundary at all.
 WHY: Lacking a flat side is what makes it "symmetrical" rather than ascending or descending.
@@ -7520,12 +7520,12 @@ CELEBRATION: You can read triangles without over-predicting!
 
 INTRO
 TITLE: Bias, Not Certainty
-TEXT: Ascending triangles are commonly <b>associated</b> with an upward break and descending with a downward break — but triangles can break either way. It's a bias, never a guarantee.
+TEXT: Ascending triangles are commonly <b>associated</b> with an upward break and descending with a downward break. But triangles can break either way. It's a bias, never a guarantee.
 CHART: ascendingTriangle
 
 [TF] An ascending triangle guarantees an upward breakout.
 ANSWER: False
-WHY: It's commonly associated with an upward break, but nothing is guaranteed — it can break either way.
+WHY: It's commonly associated with an upward break, but nothing is guaranteed. It can break either way.
 
 [MC] What's the honest way to read an ascending triangle's direction?
 It's commonly associated with an upward break, but can still break down.
@@ -7542,7 +7542,7 @@ WHY: Descriptive bias, not a promise, is the honest read.
 [SPOT] Someone bets everything on an ascending triangle "definitely" breaking up.
 CHART: ascendingTriangle
 QUESTION: What is the mistake?
-An ascending triangle is associated with an upward break but doesn't guarantee it — treating it as certain overstates the read.
+An ascending triangle is associated with an upward break but doesn't guarantee it, treating it as certain overstates the read.
 Ascending triangles always break up.
 Break direction is fully predictable.
 WHY: A bias isn't a guarantee; triangles can and do break either way.
@@ -7556,7 +7556,7 @@ WHY: Even a commonly associated direction is just a bias, not a promise.
 
 [TF] A descending triangle can still break upward, despite the commonly cited downward bias.
 ANSWER: True
-WHY: Bias describes a tendency, not a guarantee — any triangle can break either way.
+WHY: Bias describes a tendency, not a guarantee, any triangle can break either way.
 
 NODE 6
 TITLE: Triangle Identification Drill
@@ -7636,7 +7636,7 @@ WHY: A converging squeeze is the shared idea; break direction isn't guaranteed.
 [PICK] Which best summarizes triangles?
 CHART: symmetricalTriangle
 CONCERN: Reviewing the big picture
-A squeeze into a narrowing range — with a break-direction bias, not a guarantee | detail: The central theme
+A squeeze into a narrowing range, with a break-direction bias, not a guarantee | detail: The central theme
 Patterns that guarantee the breakout direction | detail: Overstates certainty | wrong: Contradicts the unit.
 Shapes unrelated to support and resistance | detail: Backwards | wrong: The flat sides ARE levels.
 WHY: A squeeze with a bias (not a guarantee) is the throughline.
@@ -7644,7 +7644,7 @@ WHY: A squeeze with a bias (not a guarantee) is the throughline.
 [SPOT] Someone calls every little sideways wiggle a "triangle."
 CHART: sideways
 QUESTION: What is the mistake?
-A triangle needs converging (or one flat) trendlines — not just any sideways drift.
+A triangle needs converging (or one flat) trendlines, not just any sideways drift.
 Any sideways movement is a triangle.
 Converging lines don't matter.
 WHY: Triangles have specific converging structure; random drift doesn't qualify.
@@ -7658,7 +7658,7 @@ WHY: All three triangle types are reviewed together in this final lesson.
 
 [TF] Even after this review, a triangle's break direction should be read as a bias, not a certainty.
 ANSWER: True
-WHY: This remains true throughout — triangles inform a bias, never a guarantee.
+WHY: This remains true throughout, triangles inform a bias, never a guarantee.
 
 UNIT 13 — Flags & Pennants
 NODE 1
@@ -7667,7 +7667,7 @@ CELEBRATION: You can spot a bull flag!
 
 INTRO
 TITLE: Pole, Then a Pause
-TEXT: A bull flag is a strong up move (the <b>pole</b>) followed by a small, gentle pullback (the <b>flag</b>) that drifts down or sideways — then price often continues up. It's a continuation pattern.
+TEXT: A bull flag is a strong up move (the <b>pole</b>) followed by a small, gentle pullback (the <b>flag</b>) that drifts down or sideways, then price often continues up. It's a continuation pattern.
 CHART: bullFlag
 
 [MC] The chart above shows a sharp rise, a small drift down, then more rise. This is commonly called a...
@@ -7679,7 +7679,7 @@ WHY: A strong up pole plus a small downward flag is a bull flag.
 [TAPCANDLE] Tap the start of the pole (the first strong up candle).
 CHART: bullFlag
 TARGET: 1
-WHY: The 1st candle begins the strong up move — the pole.
+WHY: The 1st candle begins the strong up move, the pole.
 
 [FILL] In a bull flag, the strong initial up-move is called the [___].
 pole
@@ -7698,7 +7698,7 @@ CONCERN: Reading the pattern descriptively
 A strong move, a small pause, and often continuation the same way | detail: Descriptive continuation read
 A guaranteed continuation | detail: Overstates certainty | wrong: It's a common tendency, not a guarantee.
 A reversal down | detail: Backwards | wrong: A bull flag is a continuation-up pattern, not a reversal.
-WHY: A bull flag describes a pause in an up-move that often continues — context, not certainty.
+WHY: A bull flag describes a pause in an up-move that often continues. Context, not certainty.
 
 
 [FILL] The strong initial move in a bull flag is called the [___].
@@ -7714,7 +7714,7 @@ WHY: The flag portion drifts gently against the pole's direction before often co
 [MC] What commonly happens after a clean bull flag's pause?
 Price often continues in the pole's original (upward) direction.
 Price always reverses down permanently.
-Nothing — the chart stops updating.
+Nothing, the chart stops updating.
 WHY: Continuation of the pole's direction is the commonly cited tendency after a flag.
 
 NODE 2
@@ -7723,7 +7723,7 @@ CELEBRATION: You can spot a bear flag!
 
 INTRO
 TITLE: The Mirror Image
-TEXT: A bear flag is a strong down move (the pole) followed by a small drift up (the flag) — then price often continues down. It's the bull flag's mirror.
+TEXT: A bear flag is a strong down move (the pole) followed by a small drift up (the flag), then price often continues down. It's the bull flag's mirror.
 CHART: bearFlag
 
 [MC] The chart above shows a sharp drop, a small drift up, then more drop. This is commonly called a...
@@ -7735,12 +7735,12 @@ WHY: A strong down pole plus a small upward flag is a bear flag.
 [TAPCANDLE] Tap the start of the pole (the first strong down candle).
 CHART: bearFlag
 TARGET: 1
-WHY: The 1st candle begins the strong down move — the pole.
+WHY: The 1st candle begins the strong down move, the pole.
 
 [TF] A bear flag drifts slightly UP against a strong down-move.
 CHART: bearFlag
 ANSWER: True
-WHY: The flag drifts gently against the pole's direction — up, in a bear flag.
+WHY: The flag drifts gently against the pole's direction, up, in a bear flag.
 
 [FILL] A bear flag is commonly read as a [___] pattern.
 continuation
@@ -7770,7 +7770,7 @@ WHY: The flag portion drifts gently against the pole's direction (up, in a bear 
 [MC] What commonly happens after a clean bear flag's pause?
 Price often continues in the pole's original (downward) direction.
 Price always reverses up permanently.
-Nothing — the chart stops updating.
+Nothing, the chart stops updating.
 WHY: Continuation of the pole's direction is the commonly cited tendency after a flag.
 
 NODE 3
@@ -7789,7 +7789,7 @@ Continuation => Price often resuming the pole's direction
 WHY: Pole then flag then continuation is the commonly described sequence.
 
 [MC] Compared to the pole, the flag is...
-Much smaller — a brief pause.
+Much smaller, a brief pause.
 Much bigger than the pole.
 Exactly the same size.
 WHY: The flag is a small consolidation relative to the strong pole.
@@ -7868,12 +7868,12 @@ CELEBRATION: You can read flags without over-predicting!
 
 INTRO
 TITLE: A Pause, Then Often More
-TEXT: Flags and pennants are <b>continuation</b> patterns — a pause that often (not always) resumes the prior move. They're clues, never guarantees.
+TEXT: Flags and pennants are <b>continuation</b> patterns, a pause that often (not always) resumes the prior move. They're clues, never guarantees.
 CHART: bullFlag
 
 [TF] A bull flag guarantees price continues up.
 ANSWER: False
-WHY: Continuation is a common tendency, not a guarantee — the flag can fail.
+WHY: Continuation is a common tendency, not a guarantee, the flag can fail.
 
 [MC] The honest read of a bull flag is...
 A pause that often continues up, but can still fail.
@@ -7885,12 +7885,12 @@ WHY: Continuation is a tendency, not a certainty.
 continuation
 reversal
 random
-WHY: They describe a pause that often continues — descriptively.
+WHY: They describe a pause that often continues, descriptively.
 
 [SPOT] Someone treats a bull flag as a certain continuation and ignores that it broke down.
 CHART: bearFlag
 QUESTION: What is the mistake?
-A flag's continuation is a tendency, not a guarantee — it can fail and break the other way.
+A flag's continuation is a tendency, not a guarantee. It can fail and break the other way.
 Flags always continue the trend.
 Continuation is fully certain.
 WHY: Continuation patterns are clues, not guarantees.
@@ -7904,7 +7904,7 @@ WHY: Both are read as pauses that often continue the prior move, not reverse it.
 
 [TF] A flag or pennant is guaranteed to continue the prior trend.
 ANSWER: False
-WHY: Continuation is a common tendency, not a guarantee — the pattern can still fail.
+WHY: Continuation is a common tendency, not a guarantee, the pattern can still fail.
 
 NODE 6
 TITLE: Flags & Pennants Review
@@ -7934,7 +7934,7 @@ WHY: Pole first, then a continuation-style pause.
 [PICK] Which best summarizes flags and pennants?
 CHART: bullFlag
 CONCERN: Reviewing the big picture
-A brief pause after a strong move that often continues — a tendency, not a guarantee | detail: The central theme
+A brief pause after a strong move that often continues, a tendency, not a guarantee | detail: The central theme
 Patterns that guarantee continuation | detail: Overstates certainty | wrong: Contradicts the unit.
 Reversal patterns | detail: Wrong category | wrong: They're continuation patterns.
 WHY: A pause with a continuation tendency (not a guarantee) is the throughline.
@@ -7942,7 +7942,7 @@ WHY: A pause with a continuation tendency (not a guarantee) is the throughline.
 [SPOT] Someone calls a huge, slow sideways range a "bull flag."
 CHART: sideways
 QUESTION: What is the mistake?
-A flag is a small pause after a sharp pole — not a large, slow range with no pole.
+A flag is a small pause after a sharp pole, not a large, slow range with no pole.
 Any sideways move is a flag.
 The pole doesn't matter.
 WHY: A flag needs a strong pole and a small pause; a big slow range isn't one.
@@ -7956,7 +7956,7 @@ WHY: All three continuation patterns are reviewed together here.
 
 [TF] Even after this review, continuation should be read as a tendency, not a certainty.
 ANSWER: True
-WHY: This remains true throughout — flags and pennants suggest a tendency, never a guarantee.
+WHY: This remains true throughout, flags and pennants suggest a tendency, never a guarantee.
 
 UNIT 14 — Wedges & Channels
 NODE 1
@@ -7977,7 +7977,7 @@ WHY: Rising highs and lows that converge is a rising wedge.
 [TF] A rising wedge is commonly associated with a possible reversal downward, despite rising.
 CHART: risingWedge
 ANSWER: True
-WHY: Even though it rises, the converging structure is commonly read as weakening — a possible down reversal.
+WHY: Even though it rises, the converging structure is commonly read as weakening, a possible down reversal.
 
 [FILL] A rising wedge has higher highs and higher lows, but the lines [___].
 converge
@@ -8039,7 +8039,7 @@ WHY: Converging lines make it a wedge.
 [SPOT] Someone calls a falling wedge "just a downtrend, nothing more."
 CHART: fallingWedge
 QUESTION: What is the mistake?
-The converging (narrowing) lines make it a wedge — a specific structure, not just any downtrend.
+The converging (narrowing) lines make it a wedge, a specific structure, not just any downtrend.
 A wedge and a plain downtrend are identical.
 Convergence doesn't matter.
 WHY: The converging shape is what distinguishes a wedge from a plain trend.
@@ -8067,7 +8067,7 @@ CELEBRATION: You can spot a channel!
 
 INTRO
 TITLE: Parallel Lines
-TEXT: A channel is a trend where the highs and lows move within <b>parallel</b> lines — an ascending channel (up) or descending channel (down). Unlike a wedge, the lines stay parallel, not converging.
+TEXT: A channel is a trend where the highs and lows move within <b>parallel</b> lines, an ascending channel (up) or descending channel (down). Unlike a wedge, the lines stay parallel, not converging.
 CHART: uptrend
 
 [MC] The chart above rises within parallel boundaries. This is commonly called an...
@@ -8137,13 +8137,13 @@ WHY: Convergence vs parallel is the deciding read.
 
 [TF] A rising wedge and an ascending channel are the same thing.
 ANSWER: False
-WHY: A rising wedge converges; an ascending channel stays parallel — different structures.
+WHY: A rising wedge converges; an ascending channel stays parallel, different structures.
 
 [PICK] Reading the chart above, converging lines mean it's a...
 CHART: risingWedge
 CONCERN: Structure check
-wedge — the lines narrow | detail: Convergence = wedge
-channel — parallel lines | detail: Wrong structure | wrong: These lines converge, so it's a wedge.
+wedge, the lines narrow | detail: Convergence = wedge
+channel, parallel lines | detail: Wrong structure | wrong: These lines converge, so it's a wedge.
 triangle with a flat side | detail: Not quite | wrong: Both lines move; neither is flat here.
 WHY: Converging trendlines make it a wedge, not a channel.
 
@@ -8212,8 +8212,8 @@ TITLE: Bringing It Together
 TEXT: A final review of rising/falling wedges and channels, and the convergence-vs-parallel read.
 
 [MATCH] Match each structure to its description.
-Rising wedge => Rising, converging — often read as a down reversal
-Falling wedge => Falling, converging — often read as an up reversal
+Rising wedge => Rising, converging, often read as a down reversal
+Falling wedge => Falling, converging, often read as an up reversal
 Channel => A trend within parallel boundaries
 WHY: A quick recap of the unit's structures.
 
@@ -8231,7 +8231,7 @@ WHY: Converging vs parallel lines is the deciding structural read.
 [PICK] Which best summarizes this unit?
 CHART: fallingWedge
 CONCERN: Reviewing the big picture
-Wedges converge (with a reversal bias); channels stay parallel (a trend) — read descriptively | detail: The central theme
+Wedges converge (with a reversal bias); channels stay parallel (a trend), read descriptively | detail: The central theme
 Wedges and channels guarantee their next move | detail: Overstates certainty | wrong: Contradicts the unit.
 Wedges and channels are the same shape | detail: Wrong | wrong: One converges, the other is parallel.
 WHY: Converging-vs-parallel plus a descriptive bias is the throughline.
@@ -8242,7 +8242,7 @@ QUESTION: What is the mistake?
 A rising wedge specifically has converging lines; a plain rising trend within parallel lines is a channel.
 Any rising chart is a wedge.
 Convergence doesn't matter.
-WHY: The converging structure — not just rising — is what makes a wedge.
+WHY: The converging structure, not just rising, is what makes a wedge.
 
 
 [FILL] This review ties together rising wedges, falling wedges, and [___].
@@ -8355,7 +8355,7 @@ WHY: Breaking the line is commonly noted as an early sign the uptrend may be shi
 [MC] What happens if a pullback breaks clearly below the uptrend line?
 It's commonly read as a possible early sign of weakening structure.
 It automatically confirms a new, permanent downtrend.
-Nothing — trendlines have no relationship to structure.
+Nothing, trendlines have no relationship to structure.
 WHY: A break is a commonly cited early signal, not an automatic confirmation of a new trend.
 
 NODE 3
@@ -8406,7 +8406,7 @@ WHY: Breaking the line is commonly noted as an early sign the downtrend may be s
 [MC] What happens if a bounce breaks clearly above the downtrend line?
 It's commonly read as a possible early sign of weakening structure.
 It automatically confirms a new, permanent uptrend.
-Nothing — trendlines have no relationship to structure.
+Nothing, trendlines have no relationship to structure.
 WHY: A break is a commonly cited early signal, not an automatic confirmation of a new trend.
 
 NODE 4
@@ -8425,7 +8425,7 @@ WHY: Multiple touches make a trendline more established and meaningful.
 
 [TF] A line drawn through a single point is already a well-established trendline.
 ANSWER: False
-WHY: One point isn't enough — multiple touches are commonly needed to establish a line.
+WHY: One point isn't enough, multiple touches are commonly needed to establish a line.
 
 [FILL] More [___] generally make a trendline more meaningful.
 touches
@@ -8463,14 +8463,14 @@ CELEBRATION: You can read a trendline break!
 
 INTRO
 TITLE: When the Line Gives Way
-TEXT: A trendline "break" is commonly read as a possible shift in structure — but like any signal, it's descriptive, not a guarantee.
+TEXT: A trendline "break" is commonly read as a possible shift in structure. But like any signal, it's descriptive, not a guarantee.
 CHART: pullbackUptrend
 
 [MC] Breaking an uptrend line is commonly read as...
 a possible shift in the uptrend's structure.
 a guarantee the trend reverses.
 completely meaningless.
-WHY: A break is a commonly-cited possible shift — descriptive, not a guarantee.
+WHY: A break is a commonly-cited possible shift, descriptive, not a guarantee.
 
 [TF] A trendline break guarantees a full reversal.
 ANSWER: False
@@ -8485,7 +8485,7 @@ WHY: It's a descriptive, possible shift in structure.
 [SPOT] Someone treats a single trendline break as a guaranteed reversal and bets everything on it.
 CHART: pullbackUptrend
 QUESTION: What is the mistake?
-A trendline break is a possible shift, not a guaranteed reversal — treating it as certain overstates it.
+A trendline break is a possible shift, not a guaranteed reversal. Treating it as certain overstates it.
 A break always means a full reversal.
 Breaks are fully predictable.
 WHY: A break is descriptive context, not a guarantee.
@@ -8499,7 +8499,7 @@ WHY: Like other signals in this course, a break is descriptive, not a certainty.
 
 [TF] Every trendline break leads to a full trend reversal.
 ANSWER: False
-WHY: A break can also fail, with the prior trend resuming — it's not a guaranteed reversal.
+WHY: A break can also fail, with the prior trend resuming. It's not a guaranteed reversal.
 
 [MC] How should a trendline break be treated?
 As a possible, descriptive signal worth noting.
@@ -8549,7 +8549,7 @@ WHY: All four core ideas from this unit are reviewed together here.
 
 [TF] Trendlines are diagonal guides that gain meaning from repeated touches, not fixed rules.
 ANSWER: True
-WHY: This has been the throughline: diagonal, descriptive, and strengthened by repetition — never a fixed rule.
+WHY: This has been the throughline: diagonal, descriptive, and strengthened by repetition, never a fixed rule.
 
 [MC] What is the single most useful habit from this unit?
 Drawing trendlines along real turning points and reading their touches and breaks.
@@ -8564,7 +8564,7 @@ CELEBRATION: You can spot a range!
 
 INTRO
 TITLE: Between Two Levels
-TEXT: A range (or consolidation) is price moving sideways between a <b>support</b> below and a <b>resistance</b> above — bouncing between the two without a clear trend.
+TEXT: A range (or consolidation) is price moving sideways between a <b>support</b> below and a <b>resistance</b> above, bouncing between the two without a clear trend.
 CHART: range
 
 [MC] The chart above bounces between a floor and a ceiling. This is commonly called a...
@@ -8592,7 +8592,7 @@ WHY: Support below, resistance above, bound a range.
 [TF] A range has a clear, strong trend in one direction.
 CHART: range
 ANSWER: False
-WHY: A range is sideways — the opposite of a strong one-directional trend.
+WHY: A range is sideways, the opposite of a strong one-directional trend.
 
 
 [FILL] A range is bounded by support below and [___] above.
@@ -8603,7 +8603,7 @@ WHY: Support and resistance together bound a range from below and above.
 
 [TF] A range describes price making clear directional progress.
 ANSWER: False
-WHY: A range is sideways, bounded movement — the opposite of clear directional progress.
+WHY: A range is sideways, bounded movement, the opposite of clear directional progress.
 
 [MC] What does "consolidation" describe, in this context?
 Price moving sideways within a range.
@@ -8635,7 +8635,7 @@ WHY: Progress in one direction (higher highs/lows) is trending, not range-bound.
 
 [TF] A range-bound market and a trending market are read the same way.
 ANSWER: False
-WHY: They're different regimes — sideways vs directional — and read differently.
+WHY: They're different regimes, sideways vs directional, and read differently.
 
 [FILL2] A [1] market moves sideways between levels; a [2] market makes progress one way.
 BLANK1: *range-bound | trending | vertical
@@ -8645,7 +8645,7 @@ WHY: Range-bound = sideways; trending = directional.
 [SPOT] Someone treats a clearly sideways range as a strong uptrend.
 CHART: range
 QUESTION: What is the mistake?
-Bouncing sideways between levels is range-bound, not a strong uptrend — the regime was misread.
+Bouncing sideways between levels is range-bound, not a strong uptrend. The regime was misread.
 Any chart is always trending.
 Ranges and trends are identical.
 WHY: Reading the regime (range vs trend) correctly is the skill.
@@ -8720,7 +8720,7 @@ CELEBRATION: You understand range breakouts!
 
 INTRO
 TITLE: Leaving the Box
-TEXT: Eventually price often leaves the range by breaking above resistance or below support — a <b>breakout</b>. The direction isn't guaranteed in advance.
+TEXT: Eventually price often leaves the range by breaking above resistance or below support, a <b>breakout</b>. The direction isn't guaranteed in advance.
 CHART: breakout
 
 [MC] The chart above pushes above the range's resistance and keeps going. This is a...
@@ -8731,7 +8731,7 @@ WHY: Clearing resistance and continuing is a breakout from the range.
 
 [TF] You can always know in advance which way a range will break.
 ANSWER: False
-WHY: Break direction isn't guaranteed in advance — it's read as it happens.
+WHY: Break direction isn't guaranteed in advance. It's read as it happens.
 
 [FILL] Leaving a range by clearing a boundary is called a [___].
 breakout
@@ -8745,7 +8745,7 @@ CONCERN: Reading the move
 Price leaving the range by clearing a boundary | detail: Descriptive move
 A guaranteed big trend afterward | detail: Overstates certainty | wrong: Breakouts can also fail; nothing is guaranteed.
 That the range never existed | detail: Backwards | wrong: The breakout is defined relative to the range.
-WHY: A breakout describes price leaving the range — context, not a guaranteed trend.
+WHY: A breakout describes price leaving the range. Context, not a guaranteed trend.
 
 
 [FILL] Leaving a range by clearing a boundary is called a [___].
@@ -8756,7 +8756,7 @@ WHY: "Breakout" describes price clearing a range's boundary and continuing beyon
 
 [TF] The direction a range breaks out is known in advance with certainty.
 ANSWER: False
-WHY: Break direction isn't guaranteed in advance — it's read as it happens.
+WHY: Break direction isn't guaranteed in advance. It's read as it happens.
 
 [MC] What happens when price clears a range's resistance and keeps going?
 A breakout.
@@ -8770,7 +8770,7 @@ CELEBRATION: You can recognize a false breakout!
 
 INTRO
 TITLE: A Break That Doesn't Hold
-TEXT: Sometimes price pokes past a range boundary, then falls back inside — a <b>false breakout</b> (or fakeout). It's why a break isn't a guarantee.
+TEXT: Sometimes price pokes past a range boundary, then falls back inside, a <b>false breakout</b> (or fakeout). It's why a break isn't a guarantee.
 CHART: resistanceRejection
 
 [MC] The chart above pokes above resistance, then falls back inside the range. This is a...
@@ -8792,7 +8792,7 @@ WHY: "False breakout" (or fakeout) is the standard term.
 [SPOT] Someone treats every poke past resistance as a guaranteed breakout.
 CHART: resistanceRejection
 QUESTION: What is the mistake?
-Some pokes are false breakouts that fail back inside — a poke isn't a guaranteed breakout.
+Some pokes are false breakouts that fail back inside, a poke isn't a guaranteed breakout.
 Every poke past a level always continues.
 False breakouts don't exist.
 WHY: False breakouts are exactly why a break isn't a guarantee.
@@ -8842,7 +8842,7 @@ WHY: Sideways between two levels is the definition of a range.
 [PICK] Which best summarizes this unit?
 CHART: range
 CONCERN: Reviewing the big picture
-Price bouncing between levels until it breaks out — with breaks that can be false | detail: The central theme
+Price bouncing between levels until it breaks out, with breaks that can be false | detail: The central theme
 Ranges that guarantee their breakout direction | detail: Overstates certainty | wrong: Contradicts the unit.
 Ranges unrelated to support and resistance | detail: Backwards | wrong: The boundaries ARE support and resistance.
 WHY: Bounded sideways movement with non-guaranteed breaks is the throughline.
@@ -8879,7 +8879,7 @@ CELEBRATION: You can spot a breakout!
 
 INTRO
 TITLE: Clearing the Level
-TEXT: A breakout is price clearing a resistance (or support) with momentum and continuing past it. It's read as price escaping a level — not a guaranteed trend.
+TEXT: A breakout is price clearing a resistance (or support) with momentum and continuing past it. It's read as price escaping a level, not a guaranteed trend.
 CHART: breakout
 
 [MC] The chart above clears resistance with a strong candle and keeps going. This is a...
@@ -8891,7 +8891,7 @@ WHY: Clearing the level with momentum and continuing is a breakout.
 [TAPCANDLE] Tap the breakout candle (the strong one clearing the level).
 CHART: breakout
 TARGET: 4
-WHY: The 4th candle clears resistance with momentum — the breakout candle.
+WHY: The 4th candle clears resistance with momentum, the breakout candle.
 
 [FILL] A breakout is price [___] a level and continuing past it.
 clearing
@@ -8938,7 +8938,7 @@ WHY: Clearing support downward and continuing is a breakdown.
 [TAPCANDLE] Tap the breakdown candle (the one clearing support).
 CHART: breakdown
 TARGET: 4
-WHY: The 4th candle breaks below support — the breakdown candle.
+WHY: The 4th candle breaks below support, the breakdown candle.
 
 [TF] A breakdown clears a support level to the downside.
 CHART: breakdown
@@ -8974,7 +8974,7 @@ CELEBRATION: You understand the retest!
 
 INTRO
 TITLE: Coming Back to the Level
-TEXT: After a breakout, price often returns to <b>retest</b> the level it broke — the old resistance now acting as support — before continuing. The highlighted candle is the retest.
+TEXT: After a breakout, price often returns to <b>retest</b> the level it broke, the old resistance now acting as support, before continuing. The highlighted candle is the retest.
 CHART: breakoutRetest
 
 [TAPCANDLE] Tap the retest candle (where price returns to the broken level).
@@ -9008,7 +9008,7 @@ WHY: A retest only makes sense once a level has already broken.
 
 [TF] In a retest, the old resistance can act as new support.
 ANSWER: True
-WHY: This flip — old resistance becoming new support — is what a retest commonly tests.
+WHY: This flip, old resistance becoming new support, is what a retest commonly tests.
 
 [MC] What is a retest, in simple terms?
 Price returning to the broken level before (potentially) continuing.
@@ -9028,7 +9028,7 @@ CHART: breakoutRetest
 [MARKLEVEL] Drag the line to the level that was resistance and is now being retested as support.
 CHART: breakoutRetest
 LEVEL: resistance
-WHY: The broken level — old resistance, now support — is what price retests.
+WHY: The broken level, old resistance, now support, is what price retests.
 
 [MC] When resistance breaks and holds, it commonly becomes...
 support.
@@ -9038,7 +9038,7 @@ WHY: Broken resistance commonly flips to act as support.
 
 [TF] Broken support can commonly flip to act as resistance.
 ANSWER: True
-WHY: The flip works both ways — broken support often becomes resistance.
+WHY: The flip works both ways, broken support often becomes resistance.
 
 [FILL] A broken level commonly [___] its role (support ↔ resistance).
 flips
@@ -9051,7 +9051,7 @@ WHY: The level's role commonly flips after a clean break.
 flips
 stays the same
 disappears
-WHY: A broken level commonly flips — resistance becomes support, or vice versa.
+WHY: A broken level commonly flips, resistance becomes support, or vice versa.
 
 [TF] Broken support can flip to act as resistance afterward.
 ANSWER: True
@@ -9104,7 +9104,7 @@ WHY: A strong, decisive candle through the level reads as a cleaner breakout.
 
 [TF] Even a clean-looking breakout can still fail.
 ANSWER: True
-WHY: Strength is descriptive context, not a guarantee — any breakout can still fail.
+WHY: Strength is descriptive context, not a guarantee, any breakout can still fail.
 
 [MC] What describes a "weak" breakout?
 One that barely pokes through the level and struggles.
@@ -9145,15 +9145,15 @@ WHY: Clear the level, then retest that same level.
 [PICK] Which best summarizes this unit?
 CHART: breakoutRetest
 CONCERN: Reviewing the big picture
-Price clears a level, often retests it as a flipped role, and continues — read descriptively | detail: The central theme
+Price clears a level, often retests it as a flipped role, and continues, read descriptively | detail: The central theme
 Breakouts that guarantee a big move | detail: Overstates certainty | wrong: Contradicts the unit.
 Levels that never change roles | detail: Wrong | wrong: Broken levels commonly flip roles.
-WHY: Clear, retest, flip — descriptively — is the throughline.
+WHY: Clear, retest, flip, descriptively, is the throughline.
 
 [SPOT] Someone treats every breakout as a guaranteed trend and never watches for a retest or failure.
 CHART: resistanceRejection
 QUESTION: What is the mistake?
-Breakouts can fail or retest first — treating every one as a guaranteed trend ignores that.
+Breakouts can fail or retest first, treating every one as a guaranteed trend ignores that.
 Every breakout always trends immediately.
 Retests and failures never happen.
 WHY: Breakouts are descriptive clues that can fail or retest, not guarantees.
@@ -9167,7 +9167,7 @@ WHY: All four core ideas from this unit are reviewed together here.
 
 [TF] A retest can fail, with price breaking back through the flipped level.
 ANSWER: True
-WHY: Like other signals, retests aren't guaranteed to hold — they can fail too.
+WHY: Like other signals, retests aren't guaranteed to hold. They can fail too.
 
 [MC] What is the single most useful habit from this unit?
 Reading breakouts/breakdowns and their retests with healthy skepticism.
@@ -9182,7 +9182,7 @@ CELEBRATION: You understand pullbacks!
 
 INTRO
 TITLE: A Pause Against the Trend
-TEXT: A pullback is a temporary counter-move within a trend — a small dip in an uptrend, or a small bounce in a downtrend — before the trend often resumes.
+TEXT: A pullback is a temporary counter-move within a trend, a small dip in an uptrend, or a small bounce in a downtrend, before the trend often resumes.
 CHART: pullbackUptrend
 
 [MC] The chart above rises, dips briefly, then rises again. The brief dip is a...
@@ -9194,7 +9194,7 @@ WHY: A temporary counter-move within a trend is a pullback.
 [TAPCANDLE] Tap the pullback (the dip within the uptrend).
 CHART: pullbackUptrend
 TARGET: 3
-WHY: The 3rd candle is the brief dip — the pullback — before the uptrend resumes.
+WHY: The 3rd candle is the brief dip, the pullback, before the uptrend resumes.
 
 [TF] A pullback is a temporary move against the trend, not necessarily a reversal.
 ANSWER: True
@@ -9229,7 +9229,7 @@ CELEBRATION: You can read a healthy uptrend!
 
 INTRO
 TITLE: Each Dip Holds Higher
-TEXT: In a healthy uptrend, each pullback bottoms at a <b>higher low</b> than the last — the dips get bought before reaching the previous low.
+TEXT: In a healthy uptrend, each pullback bottoms at a <b>higher low</b> than the last, the dips get bought before reaching the previous low.
 CHART: pullbackUptrend
 
 [TAPCANDLE] Tap the higher low (the pullback that held above the prior low).
@@ -9276,7 +9276,7 @@ CELEBRATION: You can read a healthy downtrend!
 
 INTRO
 TITLE: Each Bounce Fails Lower
-TEXT: In a healthy downtrend, each bounce tops at a <b>lower high</b> than the last — the bounces get sold before reaching the previous high.
+TEXT: In a healthy downtrend, each bounce tops at a <b>lower high</b> than the last, the bounces get sold before reaching the previous high.
 CHART: lowerHighsDowntrend
 
 [TAPCANDLE] Tap the lower high (the bounce that failed below the prior high).
@@ -9299,7 +9299,7 @@ WHY: Lower highs keep the downtrend structure intact.
 [SPOT] Someone sees a bounce make a HIGHER high and still calls the downtrend perfectly healthy.
 CHART: lowerHighsDowntrend
 QUESTION: What is the mistake?
-A higher high breaks the lower-high pattern — that's commonly read as the downtrend weakening, not healthy.
+A higher high breaks the lower-high pattern. That's commonly read as the downtrend weakening, not healthy.
 Higher highs keep a downtrend healthy.
 The highs don't matter in a downtrend.
 WHY: Lower highs keep a downtrend intact; a higher high weakens it.
@@ -9341,11 +9341,11 @@ reversal / breakdown (structure broken).
 healthy pullback.
 continuation up.
 CHART: breakdown
-WHY: Breaking the prior low breaks the up-structure — closer to a reversal.
+WHY: Breaking the prior low breaks the up-structure, closer to a reversal.
 
 [TF] A pullback keeps the trend's structure; a reversal breaks it.
 ANSWER: True
-WHY: That's the core difference — structure intact (pullback) vs broken (reversal).
+WHY: That's the core difference, structure intact (pullback) vs broken (reversal).
 
 [FILL2] A [1] keeps higher lows intact; a [2] breaks them.
 BLANK1: *pullback | reversal | gap
@@ -9375,18 +9375,18 @@ CELEBRATION: You understand continuation!
 
 INTRO
 TITLE: The Trend Resumes
-TEXT: After a healthy pullback, the trend often <b>continues</b> in its original direction. "Often," not "always" — it's a tendency, not a guarantee.
+TEXT: After a healthy pullback, the trend often <b>continues</b> in its original direction. "Often," not "always". It's a tendency, not a guarantee.
 CHART: pullbackUptrend
 
 [MC] After a healthy pullback in an uptrend, price commonly...
 continues higher (though not guaranteed).
 always reverses down.
 stops moving forever.
-WHY: Continuation is the common tendency after a healthy pullback — not a guarantee.
+WHY: Continuation is the common tendency after a healthy pullback, not a guarantee.
 
 [TF] Continuation after a pullback is guaranteed.
 ANSWER: False
-WHY: It's a common tendency, not a certainty — the trend can still fail.
+WHY: It's a common tendency, not a certainty, the trend can still fail.
 
 [FILL] After a healthy pullback, the trend often [___] its original direction.
 resumes
@@ -9397,7 +9397,7 @@ WHY: The trend commonly resumes after a healthy pullback.
 [SPOT] Someone assumes every pullback is guaranteed to continue the trend and ignores a broken structure.
 CHART: breakdown
 QUESTION: What is the mistake?
-Continuation is a tendency, not a guarantee — a broken structure can mean a reversal instead.
+Continuation is a tendency, not a guarantee. A broken structure can mean a reversal instead.
 Every pullback always continues.
 Structure never matters.
 WHY: Continuation is likely after a healthy pullback but not guaranteed, especially if structure breaks.
@@ -9411,7 +9411,7 @@ WHY: "Often, not always" describes a tendency, not a certainty.
 
 [TF] Continuation is guaranteed after every healthy pullback.
 ANSWER: False
-WHY: It's a common tendency, not a guarantee — the trend can still fail to continue.
+WHY: It's a common tendency, not a guarantee, the trend can still fail to continue.
 
 [MC] How should "the trend often continues after a pullback" be read?
 As a commonly observed tendency, not a certainty.
@@ -9447,7 +9447,7 @@ WHY: Pullbacks preserve structure; continuation is a tendency.
 [PICK] Which best summarizes this unit?
 CHART: pullbackUptrend
 CONCERN: Reviewing the big picture
-Trends pause with pullbacks and often continue if structure holds — descriptively | detail: The central theme
+Trends pause with pullbacks and often continue if structure holds, descriptively | detail: The central theme
 Pullbacks that guarantee continuation | detail: Overstates certainty | wrong: Contradicts the unit.
 Pullbacks identical to full reversals | detail: Wrong | wrong: Pullbacks keep structure; reversals break it.
 WHY: Structure-preserving pauses with likely (not guaranteed) continuation is the throughline.
@@ -9461,7 +9461,7 @@ WHY: All three core ideas from this unit are reviewed together here.
 
 [TF] Even after this review, continuation after a pullback should be read as a tendency, not a certainty.
 ANSWER: True
-WHY: This remains true throughout — a tendency, never a guarantee.
+WHY: This remains true throughout, a tendency, never a guarantee.
 
 [MC] What is the single most useful habit from this unit?
 Checking whether pullback structure (higher lows/lower highs) is holding.
@@ -9476,7 +9476,7 @@ CELEBRATION: You can read momentum off a chart!
 
 INTRO
 TITLE: Big Bodies, Strong Moves
-TEXT: A large candle body reflects <b>momentum</b> — price moved decisively one way. Reading body size is a quick read of how strong a move is.
+TEXT: A large candle body reflects <b>momentum</b>, price moved decisively one way. Reading body size is a quick read of how strong a move is.
 CHART: marubozu
 
 [MC] The big, near-wickless candle highlighted above reflects...
@@ -9505,7 +9505,7 @@ WHY: The full body shows price pushed one way and held.
 momentum
 indecision
 volume only
-WHY: A large body shows price moved decisively one way — that's momentum.
+WHY: A large body shows price moved decisively one way. That's momentum.
 
 [TF] Reading body size is a quick way to gauge how strong a move looks.
 ANSWER: True
@@ -9515,7 +9515,7 @@ WHY: Body size is a simple, descriptive read of a period's momentum.
 Strong momentum in one direction that period.
 Deep indecision.
 No price movement at all.
-WHY: A large body reflects a decisive, one-sided move — momentum.
+WHY: A large body reflects a decisive, one-sided move, momentum.
 
 NODE 2
 TITLE: Exhaustion: Long Wicks
@@ -9523,7 +9523,7 @@ CELEBRATION: You can read exhaustion from wicks!
 
 INTRO
 TITLE: Pushed, Then Rejected
-TEXT: A long wick shows a push that got <b>rejected</b> — a sign a move may be running out of steam (exhaustion) at that extreme.
+TEXT: A long wick shows a push that got <b>rejected</b>, a sign a move may be running out of steam (exhaustion) at that extreme.
 CHART: rejectionWickUp
 
 [MC] The long upper wick highlighted above shows...
@@ -9553,7 +9553,7 @@ WHY: A long lower wick shows sellers were rejected and buyers recovered price.
 rejected
 confirmed
 guaranteed
-WHY: The wick marks a level price touched but couldn't hold — a rejection.
+WHY: The wick marks a level price touched but couldn't hold, a rejection.
 
 [TF] A long wick can be a sign a move is running out of steam at that extreme.
 ANSWER: True
@@ -9571,14 +9571,14 @@ CELEBRATION: You can read indecision candles!
 
 INTRO
 TITLE: Neither Side Wins
-TEXT: Small-bodied candles like the <b>doji</b> and <b>spinning top</b> reflect indecision — momentum stalling, with neither side in control.
+TEXT: Small-bodied candles like the <b>doji</b> and <b>spinning top</b> reflect indecision, momentum stalling, with neither side in control.
 CHART: doji
 
 [MC] The tiny-bodied candle highlighted above reflects...
 indecision (neither side in control).
 strong momentum.
 a guaranteed reversal.
-WHY: A doji's tiny body reflects a balance — indecision.
+WHY: A doji's tiny body reflects a balance, indecision.
 
 [MC] The small-bodied candle with wicks on both sides above reflects...
 indecision (a spinning top).
@@ -9590,13 +9590,13 @@ WHY: A spinning top's small body and balanced wicks reflect indecision.
 [TF] A doji reflects strong one-directional momentum.
 CHART: doji
 ANSWER: False
-WHY: A doji reflects balance/indecision — the opposite of strong momentum.
+WHY: A doji reflects balance/indecision, the opposite of strong momentum.
 
 [FILL] Small-bodied candles reflect momentum [___], not a strong move.
 stalling
 surging
 doubling
-WHY: A small body means neither side pushed decisively — momentum stalling.
+WHY: A small body means neither side pushed decisively, momentum stalling.
 
 
 [FILL] A doji or spinning top reflects [___], not decisive momentum.
@@ -9652,7 +9652,7 @@ WHY: Comparing body sizes is about relative, descriptive strength, not certainty
 
 [TF] A strong (large-bodied) candle guarantees the next candle will also be strong.
 ANSWER: False
-WHY: Reading strength is descriptive context for that period — it doesn't guarantee the next one.
+WHY: Reading strength is descriptive context for that period. It doesn't guarantee the next one.
 
 [MC] Comparing a marubozu to a doji, which reflects more momentum?
 The marubozu (big body).
@@ -9673,7 +9673,7 @@ CHART: resistanceRejection
 possible exhaustion at the level.
 guaranteed breakout.
 no information.
-WHY: A rejected push at resistance is a common exhaustion read — descriptive.
+WHY: A rejected push at resistance is a common exhaustion read, descriptive.
 
 [MARKLEVEL] Drag the line to the resistance the push was rejected at.
 CHART: resistanceRejection
@@ -9735,7 +9735,7 @@ WHY: Bodies read momentum; wicks read rejection/exhaustion.
 [PICK] Which best summarizes this unit?
 CHART: marubozu
 CONCERN: Reviewing the big picture
-Read momentum, exhaustion, and indecision from candle shape — descriptively | detail: The central theme
+Read momentum, exhaustion, and indecision from candle shape, descriptively | detail: The central theme
 Candle shape guarantees the next move | detail: Overstates certainty | wrong: Contradicts the unit.
 Candle shape tells you nothing | detail: Backwards | wrong: Shape reflects momentum and exhaustion.
 WHY: Descriptive candle-strength reading is the throughline.
@@ -9749,7 +9749,7 @@ WHY: All three core reads from this unit are reviewed together here.
 
 [TF] Reading momentum and exhaustion from candles is descriptive context, not a guarantee.
 ANSWER: True
-WHY: This has been the throughline — descriptive candle reads, never certainties.
+WHY: This has been the throughline, descriptive candle reads, never certainties.
 
 [MC] What is the single most useful habit from this unit?
 Reading body size and wick length together for momentum and exhaustion clues.
@@ -9764,7 +9764,7 @@ CELEBRATION: You understand confluence!
 
 INTRO
 TITLE: When Signals Line Up
-TEXT: Confluence is when <b>two or more</b> readings point the same way at the same spot — for example, a support level AND a bounce candle together. More agreement makes a stronger read (still not a guarantee).
+TEXT: Confluence is when <b>two or more</b> readings point the same way at the same spot, for example, a support level AND a bounce candle together. More agreement makes a stronger read (still not a guarantee).
 CHART: supportBounce
 
 [MC] Confluence means...
@@ -9789,7 +9789,7 @@ CONCERN: Reading multiple factors
 Several readings agreeing is stronger evidence than one alone | detail: More agreement, stronger read
 It guarantees the outcome | detail: Overstates certainty | wrong: More agreement isn't a guarantee.
 It replaces reading the chart | detail: Backwards | wrong: Confluence IS reading several chart factors together.
-WHY: Confluence stacks evidence — stronger, but never a guarantee.
+WHY: Confluence stacks evidence, stronger, but never a guarantee.
 
 
 [FILL] Confluence is [___] or more readings agreeing at the same spot.
@@ -9820,7 +9820,7 @@ CHART: supportBounce
 [MARKLEVEL] Drag the line to the support where price bounced.
 CHART: supportBounce
 LEVEL: support
-WHY: The level price bounced from is the support — one half of the confluence.
+WHY: The level price bounced from is the support, one half of the confluence.
 
 [MC] "Support level + a bounce candle there" is an example of...
 confluence (two factors agreeing).
@@ -9861,7 +9861,7 @@ CELEBRATION: You can read level-plus-pattern confluence!
 
 INTRO
 TITLE: A Pattern at a Level
-TEXT: Another confluence: a <b>pattern</b> forming right at a key level — like a double top forming at resistance. The pattern and the level reinforce each other.
+TEXT: Another confluence: a <b>pattern</b> forming right at a key level, like a double top forming at resistance. The pattern and the level reinforce each other.
 CHART: doubleTop
 
 [MC] A double top forming right at a resistance level is an example of...
@@ -9908,7 +9908,7 @@ CELEBRATION: You can read trend-plus-pullback confluence!
 
 INTRO
 TITLE: A Pullback in a Trend
-TEXT: Confluence also shows up as a healthy <b>pullback within a trend</b> — the trend direction and the higher-low pullback agree on the up-bias.
+TEXT: Confluence also shows up as a healthy <b>pullback within a trend</b>, the trend direction and the higher-low pullback agree on the up-bias.
 CHART: pullbackUptrend
 
 [TAPCANDLE] Tap the higher-low pullback that agrees with the uptrend.
@@ -9926,11 +9926,11 @@ WHY: The trend and the pullback both pointing up is confluence.
 aligned
 opposed
 unrelated
-WHY: The pullback and the trend agree — they're aligned (confluence).
+WHY: The pullback and the trend agree. They're aligned (confluence).
 
 [TF] A pullback that agrees with the trend adds confluence to an up-bias read.
 ANSWER: True
-WHY: Trend plus an aligned pullback is two factors agreeing — confluence.
+WHY: Trend plus an aligned pullback is two factors agreeing, confluence.
 
 
 [FILL] A healthy pullback within a trend is an example of [___] confluence.
@@ -9955,7 +9955,7 @@ CELEBRATION: You can weigh confluence honestly!
 
 INTRO
 TITLE: Stronger, Not Certain
-TEXT: The more independent readings that agree, the stronger the read — but even lots of confluence is <b>never a guarantee</b>. It stacks probability, not certainty.
+TEXT: The more independent readings that agree, the stronger the read. But even lots of confluence is <b>never a guarantee</b>. It stacks probability, not certainty.
 
 [MC] Stacking more agreeing readings makes a read...
 stronger, but still not guaranteed.
@@ -9965,7 +9965,7 @@ WHY: More agreement strengthens the read without guaranteeing it.
 
 [TF] Enough confluence eventually makes an outcome guaranteed.
 ANSWER: False
-WHY: Confluence stacks probability, never certainty — nothing is guaranteed.
+WHY: Confluence stacks probability, never certainty. Nothing is guaranteed.
 
 [FILL] Confluence stacks [___], not certainty.
 probability
@@ -9976,7 +9976,7 @@ WHY: More agreeing factors raise the odds in the read, not a guarantee.
 [SPOT] Someone finds three agreeing signals and bets everything, sure it "can't fail."
 CHART: resistanceRejection
 QUESTION: What is the mistake?
-Even strong confluence isn't a guarantee — treating it as "can't fail" overstates the read.
+Even strong confluence isn't a guarantee, treating it as "can't fail" overstates the read.
 More confluence makes it certain.
 Confluence removes all risk.
 WHY: Confluence improves the read's odds but never removes uncertainty.
@@ -9990,7 +9990,7 @@ WHY: More agreeing factors raise the odds in the read, never guaranteeing an out
 
 [TF] Enough confluence can eventually make an outcome fully guaranteed.
 ANSWER: False
-WHY: No amount of confluence removes uncertainty entirely — it only stacks probability.
+WHY: No amount of confluence removes uncertainty entirely. It only stacks probability.
 
 [MC] What is the honest limit of confluence, even with many agreeing factors?
 It strengthens the read but never guarantees the outcome.
@@ -10004,13 +10004,13 @@ CELEBRATION: You've mastered confluence!
 
 INTRO
 TITLE: Bringing It Together
-TEXT: A final review of confluence — stacking agreeing readings for a stronger (not certain) view.
+TEXT: A final review of confluence, stacking agreeing readings for a stronger (not certain) view.
 
 [MATCH] Match each example to the factors it combines.
 Support + bounce candle => Level + candle signal
 Double top at resistance => Pattern + level
 Uptrend + higher-low pullback => Trend + pullback
-WHY: Each is two factors agreeing — confluence.
+WHY: Each is two factors agreeing, confluence.
 
 [MC] What is the honest limit of confluence?
 It stacks probability but never guarantees an outcome.
@@ -10018,7 +10018,7 @@ It guarantees the outcome once you have enough.
 It has no effect on a read.
 WHY: Confluence strengthens the read without ever making it certain.
 
-[FILL2] Confluence combines [1] agreeing readings for a [2] read — never a guarantee.
+[FILL2] Confluence combines [1] agreeing readings for a [2] read, never a guarantee.
 BLANK1: *multiple | zero | single
 BLANK2: *stronger | weaker | certain
 WHY: Multiple agreeing factors make a stronger, not certain, read.
@@ -10034,7 +10034,7 @@ WHY: Stronger-but-never-certain, from agreeing factors, is the throughline.
 [SPOT] Someone treats one signal alone as if it were full confluence.
 CHART: doji
 QUESTION: What is the mistake?
-Confluence needs two or more agreeing readings — a single signal on its own isn't confluence.
+Confluence needs two or more agreeing readings, a single signal on its own isn't confluence.
 One signal is always full confluence.
 The number of factors doesn't matter.
 WHY: Confluence requires multiple agreeing factors, not a lone signal.
@@ -10063,7 +10063,7 @@ CELEBRATION: You can spot a gap!
 
 INTRO
 TITLE: A Jump With No Trading
-TEXT: A gap is a jump in price where one candle opens well away from the previous candle — leaving an empty space with no trading in between. It often happens between sessions or on news.
+TEXT: A gap is a jump in price where one candle opens well away from the previous candle, leaving an empty space with no trading in between. It often happens between sessions or on news.
 CHART: gapUp
 
 [MC] The chart above shows a candle opening well above the previous candle, leaving empty space. This is a...
@@ -10075,7 +10075,7 @@ WHY: A jump leaving empty space between candles is a gap.
 [TAPCANDLE] Tap the gap candle (the one that jumped away from the previous candle).
 CHART: gapUp
 TARGET: 3
-WHY: The 3rd candle opens above the prior candle's high — the gap candle.
+WHY: The 3rd candle opens above the prior candle's high, the gap candle.
 
 [FILL] A gap leaves an empty space with no [___] in between.
 trading
@@ -10123,7 +10123,7 @@ WHY: Opening below the prior low is a gap down.
 [TAPCANDLE] Tap the gap-down candle.
 CHART: gapDown
 TARGET: 3
-WHY: The 3rd candle opens below the prior candle's low — the gap down.
+WHY: The 3rd candle opens below the prior candle's low, the gap down.
 
 [TF] A gap down opens below the previous candle's low.
 CHART: gapDown
@@ -10147,7 +10147,7 @@ ANSWER: True
 WHY: Opening below the prior low is what defines a gap down.
 
 [MC] What separates a gap up from a gap down?
-The direction of the jump — above the prior high, or below the prior low.
+The direction of the jump, above the prior high, or below the prior low.
 The candle's color only.
 The exact time of day.
 WHY: Direction of the jump is what separates the two gap types.
@@ -10158,13 +10158,13 @@ CELEBRATION: You understand why gaps form!
 
 INTRO
 TITLE: News and Session Breaks
-TEXT: Gaps commonly form when price can't trade continuously — overnight between sessions, or when news hits and the next available price is far from the last.
+TEXT: Gaps commonly form when price can't trade continuously, overnight between sessions, or when news hits and the next available price is far from the last.
 
 [MC] Gaps commonly form because of...
 session breaks or news, when trading isn't continuous.
 the color of the candles.
 the number of wicks.
-WHY: When price can't trade continuously (overnight, news), the next price can be far away — a gap.
+WHY: When price can't trade continuously (overnight, news), the next price can be far away, a gap.
 
 [TF] Gaps commonly appear between sessions or around news.
 ANSWER: True
@@ -10179,7 +10179,7 @@ WHY: Discontinuous trading lets price jump, forming a gap.
 [SPOT] Someone assumes gaps only appear randomly for no reason.
 CHART: gapUp
 QUESTION: What is the mistake?
-Gaps commonly have causes — session breaks or news — not pure randomness.
+Gaps commonly have causes, session breaks or news, not pure randomness.
 Gaps never have any cause.
 Gaps only depend on candle color.
 WHY: Gaps usually reflect non-continuous trading (sessions/news), not randomness.
@@ -10207,7 +10207,7 @@ CELEBRATION: You understand gap fills!
 
 INTRO
 TITLE: Returning to the Gap
-TEXT: A "gap fill" is when price later returns to trade back through the empty gap space. It happens <b>often but not always</b> — a tendency, never a guarantee.
+TEXT: A "gap fill" is when price later returns to trade back through the empty gap space. It happens <b>often but not always</b>, a tendency, never a guarantee.
 CHART: gapUp
 
 [MC] A "gap fill" is when price...
@@ -10218,7 +10218,7 @@ WHY: Filling the gap means price comes back through the empty space.
 
 [TF] Every gap is guaranteed to fill.
 ANSWER: False
-WHY: Gaps fill often but not always — it's a tendency, not a guarantee.
+WHY: Gaps fill often but not always. It's a tendency, not a guarantee.
 
 [FILL] A gap fill happens [___], not always.
 often
@@ -10243,7 +10243,7 @@ WHY: Gap fills are a common tendency, not a certainty.
 
 [TF] Every gap is guaranteed to eventually fill.
 ANSWER: False
-WHY: Gaps fill often but not always — it's a tendency, not a guarantee.
+WHY: Gaps fill often but not always. It's a tendency, not a guarantee.
 
 [MC] What is a "gap fill," in simple terms?
 Price later trading back through the gap's empty space.
@@ -10271,7 +10271,7 @@ TARGET: 3
 WHY: The 3rd candle is the one that gapped away from the previous candle.
 
 [MC] What causes most gaps?
-Non-continuous trading — session breaks or news.
+Non-continuous trading, session breaks or news.
 The candles being green.
 Having too many wicks.
 WHY: Discontinuous trading is the common cause of gaps.
@@ -10293,7 +10293,7 @@ WHY: All three core ideas from this unit are reviewed together here.
 
 [TF] Even after this review, a gap fill should be read as a tendency, not a certainty.
 ANSWER: True
-WHY: This remains true throughout — a common tendency, never a guarantee.
+WHY: This remains true throughout, a common tendency, never a guarantee.
 
 [MC] What is the single most useful habit from this unit?
 Reading gap direction and cause, without assuming a fill is guaranteed.
@@ -10308,7 +10308,7 @@ CELEBRATION: You understand timeframes!
 
 INTRO
 TITLE: Each Candle's Duration
-TEXT: A timeframe is how much time each candle represents — a 1-minute candle, an hourly candle, a daily candle. The same market looks different on different timeframes.
+TEXT: A timeframe is how much time each candle represents, a 1-minute candle, an hourly candle, a daily candle. The same market looks different on different timeframes.
 CHART: uptrend
 
 [MC] A "timeframe" describes...
@@ -10384,7 +10384,7 @@ WHY: They're the same price data viewed zoomed out vs zoomed in.
 zoomed-out, big
 zoomed-in, small
 identical
-WHY: Higher timeframes compress more history into each candle — the big picture.
+WHY: Higher timeframes compress more history into each candle, the big picture.
 
 [TF] A lower timeframe shows more fine-grained detail over a shorter period.
 ANSWER: True
@@ -10465,7 +10465,7 @@ Check the higher timeframe for the big-picture trend
 Note the higher-timeframe key levels
 Zoom into a lower timeframe for detail
 Read the lower-timeframe move inside that context
-WHY: Context first (higher timeframe), then zoom in — that's top-down.
+WHY: Context first (higher timeframe), then zoom in. That's top-down.
 
 [TF] Top-down reading checks the big-picture timeframe before the detail one.
 ANSWER: True
@@ -10500,14 +10500,14 @@ CELEBRATION: You can read timeframe alignment!
 
 INTRO
 TITLE: When They Agree
-TEXT: When multiple timeframes point the same way — say, an uptrend on both the higher and lower timeframe — that agreement is a form of confluence. It's stronger, but still not a guarantee.
+TEXT: When multiple timeframes point the same way, say, an uptrend on both the higher and lower timeframe, that agreement is a form of confluence. It's stronger, but still not a guarantee.
 CHART: uptrend
 
 [MC] When the higher and lower timeframe both trend up, that agreement is a form of...
 confluence (a stronger read).
 contradiction.
 a gap.
-WHY: Agreement across timeframes is confluence — a stronger read.
+WHY: Agreement across timeframes is confluence, a stronger read.
 
 [TF] Timeframe agreement makes a read stronger but not guaranteed.
 ANSWER: True
@@ -10517,12 +10517,12 @@ WHY: Alignment stacks evidence (confluence), which is stronger but never certain
 confluence
 randomness
 volume
-WHY: Agreeing timeframes are another agreeing factor — confluence.
+WHY: Agreeing timeframes are another agreeing factor, confluence.
 
 [SPOT] Someone sees both timeframes agree and assumes the trade "can't lose."
 CHART: uptrend
 QUESTION: What is the mistake?
-Timeframe agreement is stronger evidence but never a guarantee — "can't lose" overstates it.
+Timeframe agreement is stronger evidence but never a guarantee, "can't lose" overstates it.
 Agreement makes it certain.
 Alignment removes all risk.
 WHY: Even aligned timeframes only stack probability, not certainty.
@@ -10542,7 +10542,7 @@ WHY: Alignment strengthens the read but never guarantees the outcome.
 That agreement is read as a stronger, more confluent signal.
 It automatically guarantees success.
 It has no added meaning at all.
-WHY: Agreement across timeframes adds confluence — stronger, but not certain.
+WHY: Agreement across timeframes adds confluence, stronger, but not certain.
 
 NODE 6
 TITLE: Multi-Timeframe Review
@@ -10561,7 +10561,7 @@ WHY: A quick recap of the unit's ideas.
 [FILL2] Read the [1] timeframe for context, then the [2] one for detail.
 BLANK1: *higher | lower | random
 BLANK2: *lower | higher | flat
-WHY: Higher for context, lower for detail — top-down.
+WHY: Higher for context, lower for detail, top-down.
 
 [MC] Why check more than one timeframe?
 The big picture frames what the short-term move means.
@@ -10572,7 +10572,7 @@ WHY: Context from the higher timeframe frames the lower-timeframe detail.
 [PICK] Which best summarizes multi-timeframe reading?
 CHART: pullbackUptrend
 CONCERN: Reviewing the big picture
-Read big-picture context first, then detail — alignment adds confluence, not certainty | detail: The central theme
+Read big-picture context first, then detail, alignment adds confluence, not certainty | detail: The central theme
 Only the lowest timeframe matters | detail: Too narrow | wrong: Context comes from higher timeframes.
 Timeframe agreement guarantees the outcome | detail: Overstates certainty | wrong: Alignment isn't a guarantee.
 WHY: Context-first reading with alignment as confluence (not certainty) is the throughline.
@@ -10586,7 +10586,7 @@ WHY: All the core ideas from this unit are reviewed together here.
 
 [TF] Even after this review, timeframe alignment should be read as added confluence, not a guarantee.
 ANSWER: True
-WHY: This remains true throughout — stronger evidence, never a certainty.
+WHY: This remains true throughout, stronger evidence, never a certainty.
 
 [MC] What is the single most useful habit from this unit?
 Reading the higher timeframe for context before zooming into the lower one.
@@ -10722,12 +10722,12 @@ WHY: The middle candle's tiny body with wicks both sides is the doji.
 [TAPCANDLE] Tap the hammer.
 CHART: hammer
 TARGET: 3
-WHY: The last candle — small body up top, long lower wick — is the hammer.
+WHY: The last candle, small body up top, long lower wick, is the hammer.
 
 [TAPCANDLE] Tap the shooting star.
 CHART: shootingStar
 TARGET: 3
-WHY: The last candle — small body down low, long upper wick — is the shooting star.
+WHY: The last candle, small body down low, long upper wick, is the shooting star.
 
 [TAPCANDLE] Tap the engulfing candle.
 CHART: bearishEngulfing
@@ -10798,7 +10798,7 @@ CELEBRATION: You can classify the setup type!
 
 INTRO
 TITLE: Turn or Keep Going?
-TEXT: Classify each chart as a reversal shape (a possible turn) or a continuation shape (a likely resume) — descriptively.
+TEXT: Classify each chart as a reversal shape (a possible turn) or a continuation shape (a likely resume), descriptively.
 
 [MC] Is a head & shoulders commonly read as a reversal or a continuation shape?
 Reversal (a possible turn after an up-move).
@@ -10833,7 +10833,7 @@ WHY: Categories describe tendencies; nothing is guaranteed.
 
 
 [MC] Is a triangle commonly read as continuation, reversal, or either?
-Either — it can break in either direction, though flat sides add a bias.
+Either. It can break in either direction, though flat sides add a bias.
 Always continuation.
 Always reversal.
 WHY: Triangles can break either way, though ascending/descending triangles carry a directional bias.
@@ -10848,15 +10848,15 @@ CELEBRATION: You can read a full chart!
 
 INTRO
 TITLE: Everything at Once
-TEXT: Combine pattern, level, and candle reads on each chart — the whole intermediate skillset.
+TEXT: Combine pattern, level, and candle reads on each chart, the whole intermediate skillset.
 
 [PICK] On the chart above, two peaks stall at resistance and roll over. Best read?
 CHART: doubleTop
 CONCERN: Full-chart read
-A double top at resistance — a reversal shape at a level (confluence) | detail: Pattern + level
+A double top at resistance, a reversal shape at a level (confluence) | detail: Pattern + level
 A guaranteed crash | detail: Overstates certainty | wrong: Confluence isn't a guarantee.
 A bull flag | detail: Wrong pattern | wrong: This is two peaks at resistance, not a pole-and-flag.
-WHY: Pattern + level agreeing is a confluent, descriptive read — not a guarantee.
+WHY: Pattern + level agreeing is a confluent, descriptive read, not a guarantee.
 
 [MARKLEVEL] Drag the line to the resistance in this double top.
 CHART: doubleTop
@@ -10870,12 +10870,12 @@ WHY: The 4th candle is the second peak at resistance.
 
 [TF] A pattern that lines up with a key level is stronger evidence than the pattern alone.
 ANSWER: True
-WHY: Pattern-plus-level is confluence — stronger than either alone.
+WHY: Pattern-plus-level is confluence, stronger than either alone.
 
 [SPOT] Someone reads one perfect pattern and ignores the level, the trend, and the candles around it.
 CHART: headShoulders
 QUESTION: What is the mistake?
-A full read combines pattern, level, trend, and candles — not one factor in isolation.
+A full read combines pattern, level, trend, and candles, not one factor in isolation.
 Only the pattern ever matters.
 Context never helps.
 WHY: The strongest reads combine several agreeing factors, not a lone signal.
@@ -10901,10 +10901,10 @@ CELEBRATION: You've completed the Intermediate level!
 
 INTRO
 TITLE: You Can Read Charts
-TEXT: You've learned patterns, levels, candles, structure, and confluence — and to read them all descriptively, never as guarantees. A final check.
+TEXT: You've learned patterns, levels, candles, structure, and confluence, and to read them all descriptively, never as guarantees. A final check.
 
 [MC] What ties this whole level together?
-Reading charts descriptively — patterns, levels, and candles as clues, not guarantees.
+Reading charts descriptively, patterns, levels, and candles as clues, not guarantees.
 Finding guaranteed signals.
 Ignoring context.
 WHY: Descriptive, context-aware chart reading is the throughline of the level.
@@ -10923,7 +10923,7 @@ WHY: Confluence is stronger but never a guarantee.
 [PICK] Which best summarizes the Intermediate level?
 CHART: breakoutRetest
 CONCERN: Reviewing the whole level
-Read patterns, levels, and candles together — descriptively, as probabilities, not certainties | detail: The central theme
+Read patterns, levels, and candles together, descriptively, as probabilities, not certainties | detail: The central theme
 A system of guaranteed signals | detail: Overstates certainty | wrong: Nothing here is guaranteed.
 A list of shapes with no context | detail: Backwards | wrong: Context and confluence are the point.
 WHY: Context-aware, descriptive, probability-minded reading is what this level built.
@@ -10931,21 +10931,21 @@ WHY: Context-aware, descriptive, probability-minded reading is what this level b
 [SPOT] Someone finishes this level and starts treating every pattern as a guaranteed trade.
 CHART: doubleTop
 QUESTION: What is the mistake?
-Everything here is a descriptive clue read with context — never a guaranteed trade.
+Everything here is a descriptive clue read with context, never a guaranteed trade.
 Patterns are guaranteed once learned.
 Context stops mattering after this level.
-WHY: The whole level teaches probability-minded, descriptive reading — not guarantees.
+WHY: The whole level teaches probability-minded, descriptive reading, not guarantees.
 
 
 [FILL] This level's core skill is combining pattern, level, and candle reads through [___].
 confluence
 guesswork
 random chance
-WHY: Confluence — combining multiple agreeing factors — has been the throughline of this level.
+WHY: Confluence, combining multiple agreeing factors, has been the throughline of this level.
 
 [TF] Everything in the Intermediate level stays descriptive, never a guaranteed signal.
 ANSWER: True
-WHY: This has been true across every unit in this level — description, not guarantees.
+WHY: This has been true across every unit in this level, description, not guarantees.
 
 [MC] What's the single biggest skill gained across this entire level?
 Reading charts by combining patterns, levels, and candles as descriptive, probability-based clues.
@@ -10993,7 +10993,7 @@ WHY: Pent-up activity from pre-market commonly concentrates right at the open.
 
 [SPOT] Someone assumes pre-market liquidity is always identical to the standard session's.
 QUESTION: What is the mistake?
-Pre-market commonly has thinner liquidity than the standard session — treating them as identical ignores that difference.
+Pre-market commonly has thinner liquidity than the standard session, treating them as identical ignores that difference.
 Pre-market always has more liquidity than standard hours.
 Session timing never affects liquidity.
 WHY: Liquidity commonly varies a lot by session, a pattern worth being aware of.
@@ -11037,7 +11037,7 @@ WHY: End-of-day positioning is a commonly cited reason for power hour's added ac
 
 [SPOT] Someone assumes midday is always the busiest part of the trading day.
 QUESTION: What is the mistake?
-Midday is commonly the quieter lull, not the busiest period — that's more commonly the open or power hour.
+Midday is commonly the quieter lull, not the busiest period. That's more commonly the open or power hour.
 Midday is always busier than the open.
 Session timing has no effect on typical activity level.
 WHY: The open and power hour are more commonly cited as the busier periods, not midday.
@@ -11048,7 +11048,7 @@ CELEBRATION: You understand after-hours trading!
 
 INTRO
 TITLE: After the Bell
-TEXT: "After-hours" trading happens once the standard session ends, commonly with thinner liquidity — similar in spirit to pre-market, just on the other side of the day.
+TEXT: "After-hours" trading happens once the standard session ends, commonly with thinner liquidity, similar in spirit to pre-market, just on the other side of the day.
 
 [MC] "After-hours" trading refers to...
 Trading after the standard session has ended.
@@ -11092,7 +11092,7 @@ CELEBRATION: You understand earnings reports!
 
 INTRO
 TITLE: A Scheduled Information Event
-TEXT: An earnings report is a company's scheduled release of financial results — commonly associated with sharply increased volatility around the release.
+TEXT: An earnings report is a company's scheduled release of financial results, commonly associated with sharply increased volatility around the release.
 CHART: gapUp
 
 [MC] An "earnings report" is...
@@ -11139,7 +11139,7 @@ CELEBRATION: You understand economic releases!
 
 INTRO
 TITLE: Broader Information Events
-TEXT: Economic releases (like employment or inflation data) are scheduled reports about the broader economy — commonly associated with volatility across many assets at once, not just one company.
+TEXT: Economic releases (like employment or inflation data) are scheduled reports about the broader economy, commonly associated with volatility across many assets at once, not just one company.
 
 [MC] Economic releases commonly affect...
 Many assets at once, since they describe the broader economy.
@@ -11230,7 +11230,7 @@ CELEBRATION: You understand the cautious approach to trading around news!
 
 INTRO
 TITLE: Extra Caution, Not a Guarantee
-TEXT: Because of the added volatility and wider spreads commonly seen around news, many traders commonly apply extra caution — like reduced size or wider stops — rather than a rigid rule.
+TEXT: Because of the added volatility and wider spreads commonly seen around news, many traders commonly apply extra caution, like reduced size or wider stops, rather than a rigid rule.
 
 [MC] A commonly cited approach around scheduled news is to...
 Apply extra caution, like reduced size or wider stops.
@@ -11246,7 +11246,7 @@ WHY: Increased uncertainty commonly widens the bid/ask spread around news events
 approach
 guarantee
 requirement
-WHY: Different traders commonly apply this idea differently — it's a general approach, not one fixed rule.
+WHY: Different traders commonly apply this idea differently. It's a general approach, not one fixed rule.
 
 [MATCH] Match the news-related risk factor to its commonly cited behavior.
 Spread => Commonly widens around major news
@@ -11263,7 +11263,7 @@ WHY: This connects the Risk Management unit's ideas directly to a real-world sce
 
 [SPOT] Someone dramatically increases their position size right before a major scheduled news release, assuming it's the same as any other moment.
 QUESTION: What is the mistake?
-News commonly brings added volatility and wider spreads — many traders apply extra caution, not more size, around it.
+News commonly brings added volatility and wider spreads. Many traders apply extra caution, not more size, around it.
 News has no relationship to typical risk levels.
 Increasing size before news always leads to bigger profits.
 WHY: This ignores the commonly cited added risk around scheduled news events.
@@ -11274,7 +11274,7 @@ CELEBRATION: You understand session-based differences in chart behavior!
 
 INTRO
 TITLE: Same Asset, Different Rhythm
-TEXT: The same chart can behave differently depending on the session — thinner, choppier moves in pre/after-hours; different rhythms across the open, midday, and power hour.
+TEXT: The same chart can behave differently depending on the session, thinner, choppier moves in pre/after-hours; different rhythms across the open, midday, and power hour.
 CHART: volatile
 
 [MC] Why might a chart look different during pre-market versus the standard open?
@@ -11353,7 +11353,7 @@ WHY: Higher volatility and wider spreads are the commonly cited reasons for adde
 [PICK] Which best summarizes this unit?
 CHART: gapUp
 CONCERN: Reviewing the big picture
-Session and news context shape how charts behave — descriptive factors, not guarantees | detail: The central theme
+Session and news context shape how charts behave, descriptive factors, not guarantees | detail: The central theme
 Sessions and news guarantee specific price outcomes | detail: Overstates certainty | wrong: This contradicts the whole unit.
 Session and news timing are irrelevant to reading a chart | detail: Backwards | wrong: This unit's whole point is that they matter.
 WHY: Descriptive, context-adding session and news awareness is the throughline of this unit.
@@ -11361,7 +11361,7 @@ WHY: Descriptive, context-adding session and news awareness is the throughline o
 [SPOT] Someone finishes this unit and starts treating news events as guaranteed trading opportunities.
 CHART: volatile
 QUESTION: What is the mistake?
-News adds volatility and context, but never a guaranteed outcome — this unit has framed it as added risk to manage, not a guaranteed opportunity.
+News adds volatility and context, but never a guaranteed outcome. This unit has framed it as added risk to manage, not a guaranteed opportunity.
 News events guarantee profitable trades.
 Session and news context never matter after this unit.
 WHY: This unit consistently frames news as added context and risk, never a guaranteed opportunity.
@@ -11424,7 +11424,7 @@ QUESTION: What is the mistake?
 Risking such a large portion of an account on one trade exposes it to severe damage from a single loss.
 They should have felt even more confident before risking that much.
 They should have risked their entire account instead.
-WHY: Confidence in an outcome doesn't remove risk — a single loss at that size could be very damaging.
+WHY: Confidence in an outcome doesn't remove risk, a single loss at that size could be very damaging.
 
 
 [FILL] Risk per trade is commonly kept [___] and consistent across trades.
@@ -11513,7 +11513,7 @@ CELEBRATION: You understand risk/reward ratios!
 
 INTRO
 TITLE: What You Could Lose vs. Gain
-TEXT: A risk/reward ratio compares the potential loss on a trade to its potential gain — pure math, not a signal.
+TEXT: A risk/reward ratio compares the potential loss on a trade to its potential gain, pure math, not a signal.
 CHART: breakout
 
 [TF] A "2:1 risk-to-reward ratio" means the potential reward is twice the potential risk.
@@ -11583,7 +11583,7 @@ CELEBRATION: You understand where stop-losses are commonly placed!
 
 INTRO
 TITLE: Not Just a Random Number
-TEXT: Stop-loss placement is commonly tied to a specific reason — like a nearby support/resistance level — rather than an arbitrary number.
+TEXT: Stop-loss placement is commonly tied to a specific reason, like a nearby support/resistance level, rather than an arbitrary number.
 CHART: supportBounce
 
 [TF] A stop-loss level is commonly chosen completely at random, with no specific reasoning.
@@ -11653,12 +11653,12 @@ CELEBRATION: You understand the danger of overleveraging!
 
 INTRO
 TITLE: Amplifying Both Directions
-TEXT: Leverage amplifies both potential gains and potential losses — overleveraging describes using more than a comfortable, risk-appropriate amount.
+TEXT: Leverage amplifies both potential gains and potential losses, overleveraging describes using more than a comfortable, risk-appropriate amount.
 CHART: downtrend
 
 [TF] Leverage only amplifies potential gains, never potential losses.
 ANSWER: False
-WHY: Leverage amplifies both directions — potential gains and potential losses alike.
+WHY: Leverage amplifies both directions, potential gains and potential losses alike.
 
 [FILL] Using more leverage than is appropriate for your risk tolerance is commonly called [___].
 overleveraging
@@ -11711,7 +11711,7 @@ WHY: One favorable past outcome doesn't change the underlying amplified risk tha
 losses
 guarantees
 volume
-WHY: Leverage cuts both ways — bigger potential gains AND bigger potential losses.
+WHY: Leverage cuts both ways, bigger potential gains AND bigger potential losses.
 
 [TF] Overleveraging means using leverage that fits your risk tolerance well.
 ANSWER: False
@@ -11723,7 +11723,7 @@ CELEBRATION: You understand drawdowns!
 
 INTRO
 TITLE: The Dip From a Peak
-TEXT: A drawdown measures how far an account has fallen from a prior peak value — a normal part of any trading account's history.
+TEXT: A drawdown measures how far an account has fallen from a prior peak value, a normal part of any trading account's history.
 CHART: downtrend
 
 [TF] A drawdown measures how far an account has fallen from its prior peak value.
@@ -11793,12 +11793,12 @@ CELEBRATION: You understand that losing streaks happen!
 
 INTRO
 TITLE: Even With a Sound Plan
-TEXT: A string of losing trades in a row can happen even to a reasonable, well-thought-out approach — it's a normal part of trading, not proof of failure.
+TEXT: A string of losing trades in a row can happen even to a reasonable, well-thought-out approach. It's a normal part of trading, not proof of failure.
 CHART: downtrend
 
 [TF] A losing streak automatically proves that a trading approach is fundamentally flawed.
 ANSWER: False
-WHY: Losing streaks can happen even with a reasonable approach — they don't automatically prove it's flawed.
+WHY: Losing streaks can happen even with a reasonable approach. They don't automatically prove it's flawed.
 
 [FILL] A string of consecutive losing trades is commonly called a losing [___].
 streak
@@ -11841,7 +11841,7 @@ WHY: The balanced view treats a losing streak as possible and worth reviewing, n
 [SPOT] Someone abandons a carefully planned approach entirely after just two losing trades in a row.
 CHART: downtrend
 QUESTION: What is the mistake?
-Two losses in a row can happen even with a reasonable approach — it doesn't necessarily mean the approach has failed.
+Two losses in a row can happen even with a reasonable approach. It doesn't necessarily mean the approach has failed.
 They should have taken on much more risk instead.
 They should never review their plan under any circumstances.
 WHY: A short losing streak alone is often not enough evidence to conclude a reasonable plan has failed.
@@ -11874,7 +11874,7 @@ WHY: That's the standard descriptive meaning of a capital preservation mindset.
 long
 short
 zero
-WHY: Without capital, there's nothing left to trade with — preservation supports staying in the game long-term.
+WHY: Without capital, there's nothing left to trade with, preservation supports staying in the game long-term.
 
 [MC] Why might capital preservation be commonly emphasized alongside potential gains?
 Without sufficient capital remaining, there's nothing left to trade with going forward.
@@ -11891,7 +11891,7 @@ WHY: These represent different general postures toward risk and capital.
 [FILL2] A capital preservation mindset is commonly linked to sound [1] management, not the complete avoidance of all [2].
 BLANK1: *risk | profit | color
 BLANK2: *risk | capital | doji
-WHY: Preservation doesn't mean avoiding all risk — it means managing it deliberately.
+WHY: Preservation doesn't mean avoiding all risk. It means managing it deliberately.
 
 [ORDER] A simple way to build a capital preservation mindset into a plan:
 Define an acceptable risk per trade in advance
@@ -11911,7 +11911,7 @@ WHY: Capital preservation is about deliberate protection, not the total avoidanc
 [SPOT] Someone dismisses capital preservation as unnecessary because they're only focused on maximizing potential gains.
 CHART: sideways
 QUESTION: What is the mistake?
-Without capital remaining, there's nothing left to generate future gains with — preservation and growth are commonly linked.
+Without capital remaining, there's nothing left to generate future gains with. Preservation and growth are commonly linked.
 They should take on the maximum possible risk on every trade instead.
 They should ignore risk management entirely from now on.
 WHY: Capital preservation is commonly viewed as foundational to being able to keep participating and pursuing gains long-term.
@@ -12334,7 +12334,7 @@ WHY: Mean reversion specifically expects a return toward an average level.
 
 [TF] Mean reversion expects price to keep moving further away from its average indefinitely.
 ANSWER: False
-WHY: Mean reversion expects the OPPOSITE — an eventual move back toward average.
+WHY: Mean reversion expects the OPPOSITE, an eventual move back toward average.
 
 NODE 5
 TITLE: Breakout Trading
@@ -12474,7 +12474,7 @@ WHY: Range trading expects price to bounce within its boundaries, not break beyo
 
 [TF] Range trading expects price to break through every boundary and keep going.
 ANSWER: False
-WHY: That describes breakout trading — range trading expects price to stay bounded instead.
+WHY: That describes breakout trading, range trading expects price to stay bounded instead.
 
 NODE 7
 TITLE: Strategy Matching Drill
@@ -12507,7 +12507,7 @@ WHY: A multi-week hold aimed at a broader move matches the commonly described de
 
 [TF] Trend following and mean reversion are commonly described as opposite core ideas about direction.
 ANSWER: True
-WHY: Trend following aligns with a sustained direction, while mean reversion expects a return toward average — commonly framed as contrasting ideas.
+WHY: Trend following aligns with a sustained direction, while mean reversion expects a return toward average, commonly framed as contrasting ideas.
 
 [FILL] An approach expecting price to move between established support and resistance boundaries is called [___].
 range trading
@@ -12518,7 +12518,7 @@ WHY: Reviewing the term from earlier in this unit.
 [SPOT] Someone describes scalping as "holding a position for several weeks."
 CHART: breakout
 QUESTION: What is the mistake?
-Scalping is commonly described as very short-timeframe, not weeks-long — that description matches swing trading instead.
+Scalping is commonly described as very short-timeframe, not weeks-long. That description matches swing trading instead.
 They should hold it for even longer to make it a proper scalp.
 They should assume all strategy types describe the same holding period.
 WHY: A weeks-long hold doesn't match the commonly described short-timeframe nature of scalping.
@@ -12602,7 +12602,7 @@ WHY: All six strategy types from this unit are reviewed together here.
 
 [TF] These six strategy types are descriptive categories, not guaranteed signal systems.
 ANSWER: True
-WHY: This has been the throughline — descriptive categories, never guaranteed signals.
+WHY: This has been the throughline, descriptive categories, never guaranteed signals.
 
 UNIT 27 — Position Sizing & R
 NODE 1
@@ -12611,7 +12611,7 @@ CELEBRATION: You understand risk per trade!
 
 INTRO
 TITLE: A Percent of the Account
-TEXT: Risk per trade is commonly expressed as a <b>percent of the account</b> you're willing to lose on one trade — often a small figure like 1%. Keeping it small and consistent is a common risk approach.
+TEXT: Risk per trade is commonly expressed as a <b>percent of the account</b> you're willing to lose on one trade, often a small figure like 1%. Keeping it small and consistent is a common risk approach.
 
 [MC] Risk per trade is commonly expressed as a...
 percent of the account.
@@ -12712,7 +12712,7 @@ TEXT: "R" is shorthand for the amount you risked on a trade. If you risk $100, t
 $100.
 $200.
 $50.
-WHY: 1R is simply the amount risked — here, $100.
+WHY: 1R is simply the amount risked, here, $100.
 
 [FILL] "R" stands for the amount you [___] on the trade.
 risked
@@ -12753,7 +12753,7 @@ TEXT: A win is measured in R too. If you risk $100 (1R) and gain $200, that's a 
 +2R.
 +1R.
 −1R.
-WHY: A $200 gain on $100 risk is twice the risk — +2R.
+WHY: A $200 gain on $100 risk is twice the risk, +2R.
 
 [MC] You risk $100 and the trade loses the full risk. That result is...
 −1R.
@@ -12771,7 +12771,7 @@ WHY: Three times the risk gained is +3R.
 +3R.
 +2R.
 +6R.
-WHY: $600 gain on $200 risk is three times the risk — +3R.
+WHY: $600 gain on $200 risk is three times the risk, +3R.
 
 [TF] A full loss is −1R, since you lost exactly the amount you risked.
 ANSWER: True
@@ -12844,7 +12844,7 @@ TEXT: A final review of risk per trade, dollar risk, R, and position sizing.
 $100 (which is 1R).
 $1,000.
 $10.
-WHY: 1% of $10,000 is $100 — that trade's 1R.
+WHY: 1% of $10,000 is $100, that trade's 1R.
 
 [MC] You risk $100 and gain $300. That's...
 +3R.
@@ -13032,7 +13032,7 @@ WHY: Larger winners in R can more than offset frequent small losses.
 
 [SPOT] Someone dismisses a system purely because its win rate is under 50%, without checking the average R.
 QUESTION: What is the mistake?
-Win rate alone isn't enough — a sub-50% system with large winners in R can still have positive expectancy.
+Win rate alone isn't enough, a sub-50% system with large winners in R can still have positive expectancy.
 Under 50% always means unprofitable.
 Average R never matters.
 WHY: Both win rate and average R matter; ignoring R misjudges the system.
@@ -13117,14 +13117,14 @@ WHY: Large winners in R can offset a lower win rate.
 
 [PICK] Which best summarizes this unit?
 CONCERN: Reviewing the big picture
-Judge a system by expectancy — win rate and R together, over a large sample | detail: The central theme
+Judge a system by expectancy, win rate and R together, over a large sample | detail: The central theme
 Judge a system by win rate alone | detail: Incomplete | wrong: Win rate alone can mislead.
 A few trades prove everything | detail: Wrong | wrong: Sample size matters.
 WHY: Expectancy (win rate × R over many trades) is the honest measure.
 
 [SPOT] Someone judges a brand-new system as "amazing" after two lucky wins.
 QUESTION: What is the mistake?
-Two trades is far too small a sample to judge expectancy — that's chance, not proof.
+Two trades is far too small a sample to judge expectancy. That's chance, not proof.
 Two wins prove a positive expectancy.
 Sample size is irrelevant.
 WHY: Expectancy needs a large sample; a couple of wins prove nothing.
@@ -13138,7 +13138,7 @@ WHY: All four core ideas from this unit are reviewed together here.
 
 [TF] Judging a system honestly requires combining win rate and average R over a large sample.
 ANSWER: True
-WHY: This has been the throughline — combine frequency and size, over enough trades.
+WHY: This has been the throughline, combine frequency and size, over enough trades.
 
 UNIT 29 — Market Condition Classification
 NODE 1
@@ -13193,7 +13193,7 @@ CELEBRATION: You can classify a trend!
 
 INTRO
 TITLE: Direction and Structure
-TEXT: A trending condition shows directional structure — higher highs and higher lows (up) or lower highs and lower lows (down).
+TEXT: A trending condition shows directional structure, higher highs and higher lows (up) or lower highs and lower lows (down).
 CHART: downtrend
 
 [MC] The chart above makes lower highs and lower lows. It is a...
@@ -13252,7 +13252,7 @@ WHY: The ceiling of the range is its resistance.
 [TF] A ranging market makes strong directional progress.
 CHART: range
 ANSWER: False
-WHY: Ranging is sideways — the opposite of directional progress.
+WHY: Ranging is sideways, the opposite of directional progress.
 
 [FILL] A range moves [___] between support and resistance.
 sideways
@@ -13269,7 +13269,7 @@ WHY: Sideways movement between support and resistance defines a range.
 
 [TF] A ranging market makes strong directional progress.
 ANSWER: False
-WHY: A range is sideways — the opposite of directional progress.
+WHY: A range is sideways, the opposite of directional progress.
 
 NODE 4
 TITLE: Classifying Volatile
@@ -13277,7 +13277,7 @@ CELEBRATION: You can classify volatile conditions!
 
 INTRO
 TITLE: Big, Erratic Swings
-TEXT: A volatile condition shows large, fast swings in both directions — big candles and long wicks — without a clean trend or tidy range.
+TEXT: A volatile condition shows large, fast swings in both directions, big candles and long wicks, without a clean trend or tidy range.
 CHART: volatile
 
 [MC] The chart above shows large swings both ways with no clean direction. It is...
@@ -13299,7 +13299,7 @@ WHY: Large erratic two-way swings define volatility.
 [SPOT] Someone treats a wildly volatile chart as a calm, tidy range.
 CHART: volatile
 QUESTION: What is the mistake?
-Big erratic swings are volatile, not a calm range — the condition was misread.
+Big erratic swings are volatile, not a calm range, the condition was misread.
 Volatile and calm ranges are the same.
 Swing size doesn't matter.
 WHY: Volatile conditions have far larger, more erratic swings than a tidy range.
@@ -13363,7 +13363,7 @@ CELEBRATION: You've mastered market classification!
 
 INTRO
 TITLE: Read the Condition
-TEXT: A final round — classify each chart's condition.
+TEXT: A final round, classify each chart's condition.
 
 [MC] Which condition is shown on the chart above?
 CHART: uptrend
@@ -13396,7 +13396,7 @@ WHY: Lower highs and lower lows is trending down.
 [PICK] Which best summarizes this unit?
 CHART: range
 CONCERN: Reviewing the big picture
-Classify trending, ranging, or volatile first — it frames every other read | detail: The central theme
+Classify trending, ranging, or volatile first. It frames every other read | detail: The central theme
 Classification guarantees the next move | detail: Overstates certainty | wrong: It frames, not guarantees.
 Condition never matters | detail: Backwards | wrong: It's core context.
 WHY: Condition-first reading is the throughline.
@@ -13410,7 +13410,7 @@ WHY: All three broad conditions from this unit are reviewed together here.
 
 [TF] Classifying market condition is a first-read step that frames the rest of your analysis.
 ANSWER: True
-WHY: This has been the throughline — condition-first reading, framing everything else.
+WHY: This has been the throughline, condition-first reading, framing everything else.
 
 UNIT 30 — Moving Averages
 NODE 1
@@ -13453,7 +13453,7 @@ WHY: An MA averages a set number (N) of recent prices, recalculating with each n
 
 [TF] A moving average predicts future prices with certainty.
 ANSWER: False
-WHY: An MA summarizes recent price into a smoothed line — it doesn't guarantee the future.
+WHY: An MA summarizes recent price into a smoothed line. It doesn't guarantee the future.
 
 NODE 2
 TITLE: Smoothing Out Noise
@@ -13509,19 +13509,19 @@ CHART: uptrend
 sloping up.
 sloping down.
 perfectly flat.
-WHY: In an uptrend, the average of recent prices rises — the MA slopes up.
+WHY: In an uptrend, the average of recent prices rises, the MA slopes up.
 
 [TF] A falling moving average reflects a downtrend.
 CHART: downtrend
 ANSWER: True
-WHY: When recent prices fall, their average falls — the MA slopes down.
+WHY: When recent prices fall, their average falls, the MA slopes down.
 
 [MC] A flat moving average most likely reflects a...
 range.
 strong uptrend.
 strong downtrend.
 CHART: range
-WHY: Sideways price keeps the average roughly flat — a range.
+WHY: Sideways price keeps the average roughly flat, a range.
 
 [FILL] A moving average's [___] reflects the trend direction.
 slope
@@ -13552,7 +13552,7 @@ TEXT: Price trading <b>above</b> a rising MA is commonly described as strength; 
 relative strength.
 relative weakness.
 a guaranteed reversal.
-WHY: Staying above a rising MA is commonly read as strength — descriptively.
+WHY: Staying above a rising MA is commonly read as strength, descriptively.
 
 [TF] Price below a falling MA is commonly described as relative weakness.
 ANSWER: True
@@ -13588,19 +13588,19 @@ CELEBRATION: You understand fast vs slow MAs!
 
 INTRO
 TITLE: Fast and Slow
-TEXT: A <b>short</b> MA (few periods) reacts quickly to price — it's "fast." A <b>long</b> MA (many periods) reacts slowly — it's "smooth and slow." Each shows a different scale of trend.
+TEXT: A <b>short</b> MA (few periods) reacts quickly to price. It's "fast." A <b>long</b> MA (many periods) reacts slowly. It's "smooth and slow." Each shows a different scale of trend.
 
 [MC] A short-period MA is...
-fast — it reacts quickly to price.
+fast. It reacts quickly to price.
 slow and very smooth.
 unrelated to price.
-WHY: Fewer periods means quicker reaction — a "fast" MA.
+WHY: Fewer periods means quicker reaction, a "fast" MA.
 
 [MC] A long-period MA is...
 slow and smooth.
 the fastest to react.
 identical to a short MA.
-WHY: More periods means slower reaction — a "slow," smooth MA.
+WHY: More periods means slower reaction, a "slow," smooth MA.
 
 [FILL2] A short MA is [1]; a long MA is [2].
 BLANK1: *fast | slow | flat
@@ -13612,7 +13612,7 @@ ANSWER: True
 WHY: Reacting faster, the short MA tracks price more tightly.
 
 
-[FILL] A short-period MA is [___] — it reacts quickly to price.
+[FILL] A short-period MA is [___]. It reacts quickly to price.
 fast
 slow
 unrelated
@@ -13628,7 +13628,7 @@ CELEBRATION: You understand MA crossovers!
 
 INTRO
 TITLE: When Fast Crosses Slow
-TEXT: A "crossover" is when a fast MA crosses a slow MA. It's commonly used as a descriptive trend cue — but MAs are <b>lagging</b> (built from past prices), so crossovers are not guaranteed signals.
+TEXT: A "crossover" is when a fast MA crosses a slow MA. It's commonly used as a descriptive trend cue. But MAs are <b>lagging</b> (built from past prices), so crossovers are not guaranteed signals.
 
 [MC] An MA crossover is when...
 a fast MA crosses a slow MA.
@@ -13648,7 +13648,7 @@ WHY: Averaging past prices makes MAs lag, not lead.
 
 [PICK] How should a crossover be read?
 CONCERN: Reading it honestly
-As a descriptive, lagging trend cue — not a guaranteed signal | detail: Lagging context
+As a descriptive, lagging trend cue, not a guaranteed signal | detail: Lagging context
 As a guaranteed entry | detail: Overstates certainty | wrong: Crossovers lag and can whipsaw.
 As a leading predictor of price | detail: Backwards | wrong: MAs lag; they don't lead.
 WHY: A crossover is a lagging, descriptive cue, never a guarantee.
@@ -13662,7 +13662,7 @@ WHY: Averaging past prices makes MAs lag current price, rather than lead it.
 
 [TF] An MA crossover is a guaranteed trading signal.
 ANSWER: False
-WHY: A crossover is a descriptive, lagging cue — not a guarantee.
+WHY: A crossover is a descriptive, lagging cue, not a guarantee.
 
 NODE 7
 TITLE: Moving Averages Review
@@ -13692,7 +13692,7 @@ WHY: MAs smooth and lag; they don't predict.
 [PICK] Which best summarizes moving averages?
 CHART: uptrend
 CONCERN: Reviewing the big picture
-A smoothed, lagging line whose slope reads the trend — descriptive, not predictive | detail: The central theme
+A smoothed, lagging line whose slope reads the trend, descriptive, not predictive | detail: The central theme
 A predictor of the next price | detail: Overstates | wrong: MAs lag, they don't predict.
 Unrelated to price | detail: Wrong | wrong: An MA is built directly from price.
 WHY: Smoothed, lagging, descriptive trend reading is the throughline.
@@ -13706,7 +13706,7 @@ WHY: All the core ideas from this unit are reviewed together here.
 
 [TF] Moving averages are descriptive and lagging, not predictive.
 ANSWER: True
-WHY: This has been the throughline — smoothed, lagging, descriptive trend reading.
+WHY: This has been the throughline, smoothed, lagging, descriptive trend reading.
 
 UNIT 31 — Oscillators: RSI & MACD
 NODE 1
@@ -13797,13 +13797,13 @@ CELEBRATION: You can read RSI zones honestly!
 
 INTRO
 TITLE: Labels, Not Signals
-TEXT: RSI above ~70 is commonly labeled "overbought" and below ~30 "oversold." These are <b>descriptive labels</b>, not buy/sell signals — a strong trend can stay "overbought" for a long time.
+TEXT: RSI above ~70 is commonly labeled "overbought" and below ~30 "oversold." These are <b>descriptive labels</b>, not buy/sell signals, a strong trend can stay "overbought" for a long time.
 
 [MC] RSI above ~70 is commonly labeled...
 overbought.
 oversold.
 neutral guaranteed.
-WHY: High RSI (~70+) is commonly labeled overbought — a description.
+WHY: High RSI (~70+) is commonly labeled overbought, a description.
 
 [TF] "Overbought" is a guaranteed sell signal.
 ANSWER: False
@@ -13817,7 +13817,7 @@ WHY: They describe RSI's zone; they aren't automatic trade signals.
 
 [SPOT] Someone shorts every time RSI hits "overbought," sure it must reverse.
 QUESTION: What is the mistake?
-"Overbought" is a label, not a signal — strong trends can stay overbought a long time.
+"Overbought" is a label, not a signal, strong trends can stay overbought a long time.
 Overbought always means an immediate reversal.
 RSI zones are guaranteed signals.
 WHY: Zones describe RSI; they don't guarantee a reversal.
@@ -13831,7 +13831,7 @@ WHY: These are labels describing an RSI zone, not automatic trade signals.
 
 [TF] "Overbought" is a guaranteed sell signal.
 ANSWER: False
-WHY: A strong uptrend can stay overbought a long time — it's a label, not a guarantee.
+WHY: A strong uptrend can stay overbought a long time. It's a label, not a guarantee.
 
 NODE 4
 TITLE: What MACD Shows
@@ -13839,13 +13839,13 @@ CELEBRATION: You understand MACD!
 
 INTRO
 TITLE: Two Moving Averages' Relationship
-TEXT: MACD is built from the <b>relationship between two moving averages</b> (a fast and a slow one). It summarizes momentum — how the fast MA is pulling away from or converging with the slow one.
+TEXT: MACD is built from the <b>relationship between two moving averages</b> (a fast and a slow one). It summarizes momentum, how the fast MA is pulling away from or converging with the slow one.
 
 [MC] MACD is derived from...
 the relationship between two moving averages.
 the account balance.
 the candle color.
-WHY: MACD tracks how a fast and slow MA relate — a momentum read.
+WHY: MACD tracks how a fast and slow MA relate, a momentum read.
 
 [TF] MACD is built from moving averages, so it is also lagging.
 ANSWER: True
@@ -13880,7 +13880,7 @@ CELEBRATION: You understand divergence!
 
 INTRO
 TITLE: When Price and Indicator Disagree
-TEXT: Divergence is when price and an oscillator move in <b>different directions</b> — e.g., price makes a higher high but RSI makes a lower high. It's a descriptive "disagreement," not a guaranteed reversal.
+TEXT: Divergence is when price and an oscillator move in <b>different directions</b>, e.g., price makes a higher high but RSI makes a lower high. It's a descriptive "disagreement," not a guaranteed reversal.
 
 [MC] Divergence is when price and the indicator...
 move in different directions.
@@ -13890,7 +13890,7 @@ WHY: Divergence is a disagreement between price and the oscillator.
 
 [TF] Divergence guarantees a reversal.
 ANSWER: False
-WHY: It's a descriptive disagreement — a clue, never a guarantee.
+WHY: It's a descriptive disagreement, a clue, never a guarantee.
 
 [FILL] Divergence is price and an oscillator [___] on direction.
 disagreeing
@@ -13900,7 +13900,7 @@ WHY: The two disagreeing on direction is divergence.
 
 [PICK] How should divergence be read?
 CONCERN: Reading it honestly
-As a descriptive disagreement worth noting — not a guarantee | detail: A clue
+As a descriptive disagreement worth noting, not a guarantee | detail: A clue
 As a guaranteed reversal | detail: Overstates certainty | wrong: Divergence can persist without a reversal.
 As proof the data is broken | detail: Wrong | wrong: It's a normal, valid reading.
 WHY: Divergence is a descriptive clue, not a guaranteed signal.
@@ -13914,7 +13914,7 @@ WHY: Divergence specifically describes price and the oscillator moving in differ
 
 [TF] Divergence guarantees a reversal.
 ANSWER: False
-WHY: It's a descriptive disagreement — a clue, never a guarantee.
+WHY: It's a descriptive disagreement, a clue, never a guarantee.
 
 NODE 6
 TITLE: Oscillators Review
@@ -13934,7 +13934,7 @@ WHY: A recap of the unit's core ideas.
 Both are indicators derived from price (and both lag it).
 Both are the raw price line.
 Both guarantee reversals.
-WHY: Both are derived, lagging indicators — not guarantees.
+WHY: Both are derived, lagging indicators, not guarantees.
 
 [FILL2] Oscillators are [1] from price and their extreme zones are [2], not signals.
 BLANK1: *derived | independent | random
@@ -13946,7 +13946,7 @@ CONCERN: Reviewing the big picture
 Oscillators derive momentum reads from price; their zones and divergence are descriptive, not guarantees | detail: The central theme
 Oscillators are guaranteed signal generators | detail: Overstates certainty | wrong: They describe, they don't guarantee.
 Oscillators lead price | detail: Backwards | wrong: They're derived and lagging.
-WHY: Descriptive, derived, lagging — never guaranteed — is the throughline.
+WHY: Descriptive, derived, lagging, never guaranteed, is the throughline.
 
 
 [FILL] This review ties together oscillators, RSI, its zones, MACD, and [___].
@@ -13957,7 +13957,7 @@ WHY: All the core ideas from this unit are reviewed together here.
 
 [TF] RSI and MACD are both derived, lagging indicators, not guarantees.
 ANSWER: True
-WHY: This has been the throughline — descriptive, derived, lagging, never guaranteed.
+WHY: This has been the throughline, descriptive, derived, lagging, never guaranteed.
 
 UNIT 32 — Trade Planning & Process
 NODE 1
@@ -13988,7 +13988,7 @@ WHY: The point of a plan is deciding in advance.
 
 [TF] A trade plan includes where the idea would be proven wrong.
 ANSWER: True
-WHY: Invalidation — where you're wrong — is a core part of a plan.
+WHY: Invalidation, where you're wrong, is a core part of a plan.
 
 
 [FILL] A trade plan decides the key things [___] entering.
@@ -14007,7 +14007,7 @@ CELEBRATION: You understand invalidation!
 
 INTRO
 TITLE: Where the Idea Is Wrong
-TEXT: Invalidation is the price/level where your trade idea is <b>proven wrong</b>. It's what a stop is commonly based on — not an arbitrary number.
+TEXT: Invalidation is the price/level where your trade idea is <b>proven wrong</b>. It's what a stop is commonly based on, not an arbitrary number.
 
 [MC] Invalidation is the point where...
 the trade idea is proven wrong.
@@ -14049,7 +14049,7 @@ CELEBRATION: You understand process over prediction!
 
 INTRO
 TITLE: You Control the Process, Not the Outcome
-TEXT: You can't control whether one trade wins — only whether you <b>followed your process</b>. Good process with a bad outcome is still good process; the edge shows over many trades.
+TEXT: You can't control whether one trade wins, only whether you <b>followed your process</b>. Good process with a bad outcome is still good process; the edge shows over many trades.
 
 [MC] In trading, you directly control...
 your process (following the plan).
@@ -14098,7 +14098,7 @@ Classify the market condition
 Identify the key level
 Look for a signal at that level
 Define the risk (invalidation and size)
-WHY: Condition, level, signal, risk — a repeatable pre-trade sequence.
+WHY: Condition, level, signal, risk, a repeatable pre-trade sequence.
 
 [MC] The point of a checklist is to...
 ask the same questions consistently every time.
@@ -14196,7 +14196,7 @@ WHY: Plan ahead, then follow it.
 
 [PICK] Which best summarizes this unit?
 CONCERN: Reviewing the big picture
-Plan the idea, invalidation, target, and size in advance — then follow the process | detail: The central theme
+Plan the idea, invalidation, target, and size in advance, then follow the process | detail: The central theme
 Predict each outcome and control it | detail: Overstates control | wrong: You can't control single outcomes.
 Wing it and hope | detail: No method | wrong: The unit is about a repeatable process.
 WHY: Plan-in-advance plus disciplined process is the throughline.
@@ -14210,7 +14210,7 @@ WHY: All the core ideas from this unit are reviewed together here.
 
 [TF] Plan-in-advance plus disciplined follow-through is the throughline of this unit.
 ANSWER: True
-WHY: This has been true throughout — plan ahead, then actually follow it.
+WHY: This has been true throughout, plan ahead, then actually follow it.
 
 UNIT 33 — VWAP & Bollinger Bands
 NODE 1
@@ -14219,7 +14219,7 @@ CELEBRATION: You understand VWAP!
 
 INTRO
 TITLE: The Volume-Weighted Average
-TEXT: VWAP is the <b>Volume-Weighted Average Price</b> — the average price over a session, weighted by how much volume traded at each price. It's commonly used intraday as a reference "fair value" line.
+TEXT: VWAP is the <b>Volume-Weighted Average Price</b>, the average price over a session, weighted by how much volume traded at each price. It's commonly used intraday as a reference "fair value" line.
 
 [MC] VWAP stands for...
 Volume-Weighted Average Price.
@@ -14360,7 +14360,7 @@ WHY: Small deviations (calm) pull the bands narrow.
 
 [TF] Band width is a quick read of current volatility.
 ANSWER: True
-WHY: Width tracks how far price is deviating — i.e., volatility.
+WHY: Width tracks how far price is deviating, i.e., volatility.
 
 [FILL2] Bands [1] when volatile and [2] when calm.
 BLANK1: *widen | narrow | vanish
@@ -14384,7 +14384,7 @@ CELEBRATION: You can read price at the bands honestly!
 
 INTRO
 TITLE: Touching a Band Isn't a Signal
-TEXT: Price touching the upper or lower band shows it's stretched far from its average — but in a strong trend, price can "ride" a band for a long time. It's descriptive, not a reversal signal.
+TEXT: Price touching the upper or lower band shows it's stretched far from its average. But in a strong trend, price can "ride" a band for a long time. It's descriptive, not a reversal signal.
 
 [MC] Price touching the upper band means price is...
 stretched far above its average.
@@ -14394,7 +14394,7 @@ WHY: An upper-band touch means price is far above the moving-average center.
 
 [TF] A band touch is a guaranteed reversal signal.
 ANSWER: False
-WHY: In a strong trend, price can ride a band for a long time — no guarantee.
+WHY: In a strong trend, price can ride a band for a long time, no guarantee.
 
 [FILL] A band touch shows price is [___] from its average, not a guaranteed reversal.
 stretched
@@ -14404,7 +14404,7 @@ WHY: It describes stretch/deviation, not an automatic turn.
 
 [SPOT] Someone sells every time price touches the upper band, sure it must revert.
 QUESTION: What is the mistake?
-Price can ride the upper band in a strong trend — a touch isn't a guaranteed reversal.
+Price can ride the upper band in a strong trend, a touch isn't a guaranteed reversal.
 An upper-band touch always reverses.
 Band touches are guaranteed signals.
 WHY: Band touches are descriptive stretch reads, not guaranteed reversals.
@@ -14418,7 +14418,7 @@ WHY: It describes stretch/deviation, not an automatic turn.
 
 [TF] A band touch is a guaranteed reversal signal.
 ANSWER: False
-WHY: In a strong trend, price can ride a band for a long time — no guarantee.
+WHY: In a strong trend, price can ride a band for a long time, no guarantee.
 
 NODE 6
 TITLE: VWAP & Bollinger Review
@@ -14438,7 +14438,7 @@ WHY: A recap of the unit's tools.
 Both are averages of price (with extra context), read descriptively.
 Both guarantee reversals.
 Both are the raw price line.
-WHY: Both are average-based, descriptive tools — not guarantees.
+WHY: Both are average-based, descriptive tools, not guarantees.
 
 [FILL2] VWAP weights price by [1]; Bollinger band width reflects [2].
 BLANK1: *volume | color | time-only
@@ -14448,10 +14448,10 @@ WHY: VWAP = volume-weighted average; band width = volatility.
 [PICK] Which best summarizes this unit?
 CHART: volatile
 CONCERN: Reviewing the big picture
-Average-based reference tools read descriptively — never guaranteed signals | detail: The central theme
+Average-based reference tools read descriptively, never guaranteed signals | detail: The central theme
 Tools that guarantee reversals at the bands | detail: Overstates certainty | wrong: Price can ride the bands.
 The raw price line themselves | detail: Wrong | wrong: They're derived averages, not raw price.
-WHY: Descriptive, average-based context — not signals — is the throughline.
+WHY: Descriptive, average-based context, not signals, is the throughline.
 
 
 [FILL] This review ties together VWAP and [___] Bands.
@@ -14462,7 +14462,7 @@ WHY: Both tools from this unit are reviewed together here.
 
 [TF] VWAP and Bollinger Bands are both average-based, descriptive tools.
 ANSWER: True
-WHY: This has been the throughline — descriptive, average-based context, never guaranteed signals.
+WHY: This has been the throughline, descriptive, average-based context, never guaranteed signals.
 
 UNIT 34 — Drawdowns & Losing Streaks
 NODE 1
@@ -14471,7 +14471,7 @@ CELEBRATION: You understand drawdowns!
 
 INTRO
 TITLE: The Drop From a Peak
-TEXT: A drawdown is the percentage decline from an account's peak value to a later low. Every account has drawdowns — they're a normal part of the equity curve.
+TEXT: A drawdown is the percentage decline from an account's peak value to a later low. Every account has drawdowns. They're a normal part of the equity curve.
 
 [MC] A drawdown measures the decline from an account's...
 peak value to a later low.
@@ -14518,7 +14518,7 @@ TEXT: A key fact: a loss needs a <b>larger</b> percentage gain to recover. A 50%
 100%.
 50%.
 25%.
-WHY: Halving your account means you must double what's left — a 100% gain.
+WHY: Halving your account means you must double what's left, a 100% gain.
 
 [MC] A 20% loss requires roughly what gain to break even?
 25%.
@@ -14560,10 +14560,10 @@ CELEBRATION: You understand losing streaks!
 
 INTRO
 TITLE: Even a Good System Loses in a Row
-TEXT: A string of losses in a row happens even with a positive-expectancy system — purely by chance. A losing streak alone doesn't prove the system is broken.
+TEXT: A string of losses in a row happens even with a positive-expectancy system, purely by chance. A losing streak alone doesn't prove the system is broken.
 
 [MC] A losing streak with a sound system is...
-normal — it can happen by chance.
+normal. It can happen by chance.
 proof the system is broken.
 impossible.
 WHY: Even a good system sees losing streaks by chance.
@@ -14586,7 +14586,7 @@ Because expectancy doesn't exist | detail: Backwards | wrong: Expectancy is the 
 WHY: Losing streaks are normal variance, not proof about the long-run edge.
 
 
-[FILL] A losing streak with a sound system is [___] — it can happen by chance.
+[FILL] A losing streak with a sound system is [___]. It can happen by chance.
 normal
 impossible
 proof of failure
@@ -14602,10 +14602,10 @@ CELEBRATION: You understand streaks and chance!
 
 INTRO
 TITLE: Short Runs Are Noisy
-TEXT: Over a <b>large sample</b>, expectancy shows through. But short runs are noisy — even a fair coin flips several heads (or tails) in a row sometimes.
+TEXT: Over a <b>large sample</b>, expectancy shows through. But short runs are noisy. Even a fair coin flips several heads (or tails) in a row sometimes.
 
 [MC] Short runs of results are...
-noisy — dominated by chance.
+noisy, dominated by chance.
 perfectly reliable.
 proof of the long-run average.
 WHY: Small samples are dominated by luck, not the true average.
@@ -14627,7 +14627,7 @@ the plan
 WHY: Small samples reflect luck more than the underlying edge.
 
 
-[FILL] Short runs of results are [___] — dominated by chance.
+[FILL] Short runs of results are [___], dominated by chance.
 noisy
 perfectly reliable
 guaranteed
@@ -14720,7 +14720,7 @@ WHY: All the core ideas from this unit are reviewed together here.
 
 [TF] Drawdowns and losing streaks are normal, and recovery math makes limiting them essential.
 ANSWER: True
-WHY: This has been the throughline — normal variance, plus recovery math driving preservation.
+WHY: This has been the throughline, normal variance, plus recovery math driving preservation.
 
 UNIT 35 — Journaling & Review
 NODE 1
@@ -14735,7 +14735,7 @@ TEXT: A trading journal records what you did and why, so you can <b>review and i
 record trades so you can review and improve.
 guarantee future profits.
 replace having a plan.
-WHY: Journaling creates a record to learn from — not a profit guarantee.
+WHY: Journaling creates a record to learn from, not a profit guarantee.
 
 [TF] Memory alone is a reliable record of your trading decisions.
 ANSWER: False
@@ -14812,7 +14812,7 @@ CELEBRATION: You can review the right thing!
 
 INTRO
 TITLE: Was the Process Good?
-TEXT: The best review asks "did I follow my process?" — separate from whether the trade won. A good process with a losing outcome is still good process.
+TEXT: The best review asks "did I follow my process?", separate from whether the trade won. A good process with a losing outcome is still good process.
 
 [MC] The most useful review question is...
 did I follow my process?
@@ -14832,7 +14832,7 @@ WHY: Reviewing process (not just the result) is what improves you.
 
 [SPOT] Someone only reviews winners and ignores whether they followed their process.
 QUESTION: What is the mistake?
-Reviewing outcomes alone misses whether the process was sound — the controllable part.
+Reviewing outcomes alone misses whether the process was sound, the controllable part.
 Only winners are worth reviewing.
 Process doesn't matter in review.
 WHY: The point of review is the process, which you control, not just outcomes.
@@ -14973,7 +14973,7 @@ WHY: All the core ideas from this unit are reviewed together here.
 
 [TF] Honest journaling and process review over many trades is the throughline of this unit.
 ANSWER: True
-WHY: This has been true throughout — honest records, process focus, and the improvement loop.
+WHY: This has been true throughout, honest records, process focus, and the improvement loop.
 
 UNIT 36 — Trading Psychology
 NODE 1
@@ -15240,7 +15240,7 @@ WHY: Overconfidence specifically describes skipping normal risk steps due to rec
 [SPOT] Someone removes their stop-loss on their next trade because they've "been on a roll" for the past week.
 CHART: uptrend
 QUESTION: What is the mistake?
-Removing a normal risk step because of a recent winning streak is a commonly described overconfidence pattern — recent wins don't remove future risk.
+Removing a normal risk step because of a recent winning streak is a commonly described overconfidence pattern, recent wins don't remove future risk.
 They should remove stop-losses on every trade from now on.
 They should assume the winning streak guarantees future wins.
 WHY: A recent streak of wins doesn't change the underlying risk of a new trade, per this commonly cited concern.
@@ -15508,7 +15508,7 @@ WHY: This unit's throughline is recognizing emotional patterns as a step toward 
 [SPOT] Someone finishes this unit and assumes that simply knowing these terms means they'll never act impulsively again.
 CHART: sideways
 QUESTION: What is the mistake?
-Knowing a pattern's name doesn't automatically prevent it from happening — recognizing it in the moment still takes practice.
+Knowing a pattern's name doesn't automatically prevent it from happening, recognizing it in the moment still takes practice.
 They should stop thinking about psychology from now on since it can't guarantee anything.
 They should assume impulsive decisions no longer carry any risk.
 WHY: This unit builds awareness of patterns, not a guarantee that they'll never occur again.
@@ -15522,7 +15522,7 @@ WHY: All the core patterns from this unit are reviewed together here.
 
 [TF] Every pattern in this unit describes emotion pulling behavior away from a plan.
 ANSWER: True
-WHY: This has been the throughline — emotional patterns pulling away from disciplined plan-following.
+WHY: This has been the throughline, emotional patterns pulling away from disciplined plan-following.
 
 UNIT 37 — Full Simulation Training
 NODE 1
@@ -15718,7 +15718,7 @@ WHY: Large or fast price swings define a volatile classification.
 
 [TF] Volatile describes swing size and speed, not necessarily direction.
 ANSWER: True
-WHY: A volatile market can swing sharply in either direction — direction isn't the point.
+WHY: A volatile market can swing sharply in either direction, direction isn't the point.
 
 NODE 4
 TITLE: Recognizing a Fakeout
@@ -15769,7 +15769,7 @@ WHY: A fakeout specifically describes a quick reversal after clearing a level, d
 [SPOT] Someone labels a move a "fakeout" the instant price clears a level, before waiting to see what happens next.
 CHART: resistanceRejection
 QUESTION: What is the mistake?
-A fakeout is commonly classified only after price clears a level and then quickly reverses — it can't be confirmed at the moment of clearing alone.
+A fakeout is commonly classified only after price clears a level and then quickly reverses. It can't be confirmed at the moment of clearing alone.
 They should label every single clearing of a level a fakeout immediately.
 They should ignore what happens after price clears a level.
 WHY: Classifying a fakeout requires observing the reversal after the clearing, not just the initial move.
@@ -15892,10 +15892,10 @@ WHY: These are commonly cited classifications for describing different general c
 [SPOT] Someone classifies a chart as "volatile" purely because it's trending strongly upward, with otherwise normal-sized swings.
 CHART: breakout
 QUESTION: What is the mistake?
-A strong sustained trend with normal-sized swings matches a trending classification, not necessarily a volatile one — those describe different traits.
+A strong sustained trend with normal-sized swings matches a trending classification, not necessarily a volatile one. Those describe different traits.
 They should assume trending and volatile always mean the same thing.
 They should ignore the size of the swings entirely.
-WHY: Trending describes sustained direction, while volatile specifically describes unusually large or fast swings — they're distinct classifications.
+WHY: Trending describes sustained direction, while volatile specifically describes unusually large or fast swings. They're distinct classifications.
 
 
 [FILL] This practice round applies classification to [___] chart conditions.
@@ -15906,7 +15906,7 @@ WHY: The practice round applies classification skills without making trade decis
 
 [TF] Trending and volatile describe the same thing.
 ANSWER: False
-WHY: Trending describes sustained direction; volatile describes swing size/speed — distinct classifications.
+WHY: Trending describes sustained direction; volatile describes swing size/speed, distinct classifications.
 
 NODE 7
 TITLE: Full Course Review
@@ -15960,7 +15960,7 @@ QUESTION: What is the mistake?
 This course builds descriptive, educational vocabulary and classification skills, not a system for making specific trade decisions.
 They should assume every concept guarantees a specific trading outcome.
 They should skip risk management now that they've finished the course.
-WHY: This course is educational and descriptive by design, not a signal system for specific trades — real trading decisions carry real risk beyond this course's scope.
+WHY: This course is educational and descriptive by design, not a signal system for specific trades, real trading decisions carry real risk beyond this course's scope.
 
 
 [FILL] This course builds descriptive, educational vocabulary, not a system for specific [___] decisions.
@@ -15971,4 +15971,4 @@ WHY: The whole course stays descriptive and educational, never a trade-decision 
 
 [TF] This course guarantees consistent profits if followed exactly.
 ANSWER: False
-WHY: This directly contradicts the course's throughline — nothing here is a guarantee.
+WHY: This directly contradicts the course's throughline. Nothing here is a guarantee.
