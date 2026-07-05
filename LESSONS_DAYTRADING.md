@@ -6887,6 +6887,28 @@ A guarantee price will follow it forever | detail: Overstates certainty | wrong:
 The exact future price | detail: Incorrect | wrong: It marks structure, not a prediction.
 WHY: A trendline is a descriptive guide along the trend's turns.
 
+
+[FILL] A trendline is a [___] line, not a flat horizontal level.
+diagonal
+horizontal
+vertical
+WHY: Trendlines slope with the trend, unlike a flat support/resistance level.
+
+[TF] A trendline in an uptrend connects the higher lows.
+ANSWER: True
+WHY: An uptrend line runs along the rising sequence of higher lows.
+
+[MC] What does a trendline in a downtrend connect?
+The lower highs.
+The higher lows.
+Neither highs nor lows.
+WHY: A downtrend line runs along the falling sequence of lower highs.
+
+[FILL2] Uptrend lines connect [1]; downtrend lines connect [2].
+BLANK1: *higher lows | lower highs | random points
+BLANK2: *lower highs | higher lows | random points
+WHY: Higher lows for uptrend lines; lower highs for downtrend lines.
+
 NODE 2
 TITLE: The Uptrend Line
 CELEBRATION: You can read an uptrend line!
@@ -6916,6 +6938,23 @@ WHY: The line connects the higher lows beneath price.
 [TF] If price makes a lower low that breaks below the uptrend line, that's commonly read as the line breaking.
 ANSWER: True
 WHY: A lower low breaking the line is commonly read as the uptrend structure weakening.
+
+
+[FILL] An uptrend line stays intact as long as pullbacks hold [___] the line.
+above
+below
+exactly on
+WHY: Holding above the line keeps the uptrend structure intact.
+
+[TF] A pullback that breaks below the uptrend line is commonly read as a possible weakening of structure.
+ANSWER: True
+WHY: Breaking the line is commonly noted as an early sign the uptrend may be shifting.
+
+[MC] What happens if a pullback breaks clearly below the uptrend line?
+It's commonly read as a possible early sign of weakening structure.
+It automatically confirms a new, permanent downtrend.
+Nothing — trendlines have no relationship to structure.
+WHY: A break is a commonly cited early signal, not an automatic confirmation of a new trend.
 
 NODE 3
 TITLE: The Downtrend Line
@@ -6951,6 +6990,23 @@ Downtrend lines go along the lows.
 It doesn't matter which points you connect.
 WHY: Downtrend lines connect the lower highs; uptrend lines connect the higher lows.
 
+
+[FILL] A downtrend line stays intact as long as bounces stay [___] the line.
+below
+above
+exactly on
+WHY: Staying below the line keeps the downtrend structure intact.
+
+[TF] A bounce that breaks clearly above the downtrend line is commonly read as a possible weakening of structure.
+ANSWER: True
+WHY: Breaking the line is commonly noted as an early sign the downtrend may be shifting.
+
+[MC] What happens if a bounce breaks clearly above the downtrend line?
+It's commonly read as a possible early sign of weakening structure.
+It automatically confirms a new, permanent uptrend.
+Nothing — trendlines have no relationship to structure.
+WHY: A break is a commonly cited early signal, not an automatic confirmation of a new trend.
+
 NODE 4
 TITLE: Touches Make It Valid
 CELEBRATION: You know what makes a trendline valid!
@@ -6981,6 +7037,23 @@ Repeated touches show price is respecting that line | detail: More evidence
 A single touch is always enough | detail: Undercounts | wrong: One point doesn't establish a line.
 Touches don't matter at all | detail: Incorrect | wrong: Touches are the evidence a line is meaningful.
 WHY: Multiple touches are the evidence that a trendline is being respected.
+
+
+[FILL] A trendline with only one touch is [___] established than one with several.
+less
+more
+equally
+WHY: More touches make a trendline more established and meaningful.
+
+[TF] A trendline needs at least two points to be drawn, but is considered more meaningful with more touches beyond that.
+ANSWER: True
+WHY: Two points can draw a line, but additional touches add to how meaningful it's considered.
+
+[MC] Why do more touches make a trendline more meaningful?
+They show price has repeatedly respected that line.
+They guarantee the line will never break.
+They have no effect on how the line is read.
+WHY: Repeated respect for the line is commonly cited evidence of its significance, without guaranteeing anything.
 
 NODE 5
 TITLE: Breaking a Trendline
@@ -7015,6 +7088,23 @@ A break always means a full reversal.
 Breaks are fully predictable.
 WHY: A break is descriptive context, not a guarantee.
 
+
+[FILL] A trendline break is read as a [___] shift, not a guaranteed one.
+possible
+guaranteed
+random
+WHY: Like other signals in this course, a break is descriptive, not a certainty.
+
+[TF] Every trendline break leads to a full trend reversal.
+ANSWER: False
+WHY: A break can also fail, with the prior trend resuming — it's not a guaranteed reversal.
+
+[MC] How should a trendline break be treated?
+As a possible, descriptive signal worth noting.
+As an absolute guarantee of reversal.
+As something to always ignore entirely.
+WHY: A balanced read treats a break as a notable but non-guaranteed signal.
+
 NODE 6
 TITLE: Trendlines Review
 CELEBRATION: You've mastered trendlines!
@@ -7047,6 +7137,23 @@ Diagonal guides along a trend's turns, more meaningful with more touches | detai
 Lines that guarantee where price goes | detail: Overstates certainty | wrong: Contradicts the unit.
 The same as horizontal support/resistance | detail: Wrong | wrong: Trendlines are diagonal, not flat.
 WHY: Descriptive diagonal guides, validity from touches, is the throughline.
+
+
+[FILL] This review ties together uptrend lines, downtrend lines, touches, and [___].
+breaks
+random guesses
+company names
+WHY: All four core ideas from this unit are reviewed together here.
+
+[TF] Trendlines are diagonal guides that gain meaning from repeated touches, not fixed rules.
+ANSWER: True
+WHY: This has been the throughline: diagonal, descriptive, and strengthened by repetition — never a fixed rule.
+
+[MC] What is the single most useful habit from this unit?
+Drawing trendlines along real turning points and reading their touches and breaks.
+Drawing random diagonal lines anywhere on the chart.
+Ignoring trendlines entirely.
+WHY: Grounding trendlines in actual turning points, then reading touches/breaks, is the core skill.
 
 UNIT 12 — Ranges & Consolidation
 NODE 1
@@ -7084,6 +7191,23 @@ WHY: Support below, resistance above, bound a range.
 CHART: range
 ANSWER: False
 WHY: A range is sideways — the opposite of a strong one-directional trend.
+
+
+[FILL] A range is bounded by support below and [___] above.
+resistance
+a trendline
+a gap
+WHY: Support and resistance together bound a range from below and above.
+
+[TF] A range describes price making clear directional progress.
+ANSWER: False
+WHY: A range is sideways, bounded movement — the opposite of clear directional progress.
+
+[MC] What does "consolidation" describe, in this context?
+Price moving sideways within a range.
+Price making a strong new high.
+Price gapping overnight.
+WHY: Consolidation is another common term for this sideways, range-bound behavior.
 
 NODE 2
 TITLE: Range-Bound vs. Trending
@@ -7124,6 +7248,23 @@ Any chart is always trending.
 Ranges and trends are identical.
 WHY: Reading the regime (range vs trend) correctly is the skill.
 
+
+[FILL] Reading whether a market is range-bound or [___] is a key first step.
+trending
+colored
+volatile-only
+WHY: Classifying the regime (range-bound vs trending) frames how everything else is read.
+
+[TF] The same chart can shift from range-bound to trending over time.
+ANSWER: True
+WHY: Market regimes change; a range can eventually resolve into a trend.
+
+[MC] What distinguishes range-bound from trending price action?
+Range-bound is sideways between levels; trending makes directional progress.
+There is no difference between them.
+Range-bound always lasts longer than trending.
+WHY: Sideways-bounded vs. directional-progress is the key distinction.
+
 NODE 3
 TITLE: Reading Range Boundaries
 CELEBRATION: You can read a range's boundaries!
@@ -7153,6 +7294,23 @@ WHY: Resistance caps the range; price bounces down from it.
 CHART: range
 ANSWER: True
 WHY: Support is the floor price bounces up from within the range.
+
+
+[FILL] In a range, price commonly bounces [___] from resistance.
+down
+up
+sideways only
+WHY: Resistance caps the range from above, so price commonly bounces down from it.
+
+[TF] In a range, price commonly bounces up from support.
+ANSWER: True
+WHY: Support is the range's floor, so price commonly bounces up from it.
+
+[MC] Reading a range's boundaries means identifying...
+where support and resistance sit.
+the exact company name.
+the account's total balance.
+WHY: The range's floor (support) and ceiling (resistance) are what define its boundaries.
 
 NODE 4
 TITLE: Breaking Out of a Range
@@ -7187,6 +7345,23 @@ A guaranteed big trend afterward | detail: Overstates certainty | wrong: Breakou
 That the range never existed | detail: Backwards | wrong: The breakout is defined relative to the range.
 WHY: A breakout describes price leaving the range — context, not a guaranteed trend.
 
+
+[FILL] Leaving a range by clearing a boundary is called a [___].
+breakout
+bounce
+gap
+WHY: "Breakout" describes price clearing a range's boundary and continuing beyond it.
+
+[TF] The direction a range breaks out is known in advance with certainty.
+ANSWER: False
+WHY: Break direction isn't guaranteed in advance — it's read as it happens.
+
+[MC] What happens when price clears a range's resistance and keeps going?
+A breakout.
+A false breakout.
+A pullback.
+WHY: Clearing resistance and continuing beyond it is the definition of a breakout.
+
 NODE 5
 TITLE: False Breakouts
 CELEBRATION: You can recognize a false breakout!
@@ -7219,6 +7394,23 @@ Some pokes are false breakouts that fail back inside — a poke isn't a guarante
 Every poke past a level always continues.
 False breakouts don't exist.
 WHY: False breakouts are exactly why a break isn't a guarantee.
+
+
+[FILL] A break that fails and falls back inside the range is called a [___] breakout.
+false
+confirmed
+guaranteed
+WHY: "False breakout" (or fakeout) describes a failed break that reverses back inside.
+
+[TF] False breakouts are one reason a boundary break isn't treated as a guarantee.
+ANSWER: True
+WHY: Because breaks can be false, they're read as clues, not certainties.
+
+[MC] What is a "fakeout," in simple terms?
+A poke past a level that reverses back inside.
+A guaranteed continuation past the level.
+A candle with no wicks.
+WHY: A fakeout is specifically a failed breakout that falls back inside.
 
 NODE 6
 TITLE: Ranges Review
@@ -7261,6 +7453,23 @@ Any chart is a range.
 Trends and ranges are the same.
 WHY: A range is sideways between levels; a trend makes directional progress.
 
+
+[FILL] This review ties together ranges, boundaries, breakouts, and [___].
+false breakouts
+random guesses
+company names
+WHY: All four core ideas from this unit are reviewed together here.
+
+[TF] A range eventually resolves into a breakout in one direction or another.
+ANSWER: True
+WHY: Ranges are commonly described as temporary, eventually resolving into a directional move.
+
+[MC] What is the single most useful habit from this unit?
+Reading a range's boundaries and treating any break with healthy skepticism.
+Assuming every range lasts forever.
+Assuming every breakout is guaranteed to continue.
+WHY: Reading boundaries plus healthy skepticism about breaks is the core skill here.
+
 UNIT 13 — Breakouts & Retests
 NODE 1
 TITLE: What Is a Breakout?
@@ -7291,6 +7500,23 @@ WHY: Clearing the level (not bouncing) is what makes a breakout.
 [TF] A breakout guarantees a large trend afterward.
 ANSWER: False
 WHY: Breakouts can fail; nothing after a breakout is guaranteed.
+
+
+[FILL] A breakout is price clearing a level with [___].
+momentum
+no volume
+zero movement
+WHY: Clearing the level with momentum, and continuing, defines a breakout.
+
+[TF] A breakout guarantees a large trend afterward.
+ANSWER: False
+WHY: Breakouts can fail; nothing after a breakout is guaranteed.
+
+[MC] What best describes a breakout?
+Price clearing a resistance with momentum and continuing past it.
+Price bouncing off a level and reversing.
+A candle with a tiny body and long wicks.
+WHY: Clearing and continuing past the level is the core of a breakout.
 
 NODE 2
 TITLE: What Is a Breakdown?
@@ -7323,6 +7549,23 @@ up
 flat
 WHY: A breakdown is the downside version of a breakout.
 
+
+[FILL] A breakdown is the [___] version of a breakout.
+downside
+identical
+random
+WHY: Breakdown mirrors breakout, but to the downside through support.
+
+[TF] A breakdown clears a support level and continues lower.
+ANSWER: True
+WHY: That's the defining description of a breakdown.
+
+[MC] What best describes a breakdown?
+Price clearing a support with momentum and continuing lower.
+Price bouncing off support and rallying.
+A candle with a tiny body and long wicks.
+WHY: Clearing support and continuing lower is the core of a breakdown.
+
 NODE 3
 TITLE: The Retest
 CELEBRATION: You understand the retest!
@@ -7354,6 +7597,23 @@ CHART: breakoutRetest
 ANSWER: True
 WHY: After breaking up, the old resistance commonly acts as new support on the retest.
 
+
+[FILL] A retest happens [___] the original breakout.
+after
+before
+without regard to
+WHY: A retest only makes sense once a level has already broken.
+
+[TF] In a retest, the old resistance can act as new support.
+ANSWER: True
+WHY: This flip — old resistance becoming new support — is what a retest commonly tests.
+
+[MC] What is a retest, in simple terms?
+Price returning to the broken level before (potentially) continuing.
+A brand new all-time high.
+Price gapping overnight.
+WHY: Retesting means revisiting the level that was already broken.
+
 NODE 4
 TITLE: Support/Resistance Flip
 CELEBRATION: You understand the level flip!
@@ -7383,6 +7643,23 @@ flips
 keeps
 doubles
 WHY: The level's role commonly flips after a clean break.
+
+
+[FILL] When a level breaks, its role commonly [___].
+flips
+stays the same
+disappears
+WHY: A broken level commonly flips — resistance becomes support, or vice versa.
+
+[TF] Broken support can flip to act as resistance afterward.
+ANSWER: True
+WHY: The flip works both ways: broken support can later act as resistance.
+
+[MC] What is being tested during a retest?
+Whether the flipped role (support/resistance) holds.
+The account's total balance.
+The candle's exact color.
+WHY: A retest specifically tests whether the newly flipped role holds.
 
 NODE 5
 TITLE: Clean vs. Weak Breakouts
@@ -7415,6 +7692,23 @@ descriptive
 guaranteed
 random
 WHY: It informs the read; it doesn't promise the outcome.
+
+
+[FILL] A clean breakout clears the level with a [___] candle.
+strong, decisive
+tiny, hesitant
+random
+WHY: A strong, decisive candle through the level reads as a cleaner breakout.
+
+[TF] Even a clean-looking breakout can still fail.
+ANSWER: True
+WHY: Strength is descriptive context, not a guarantee — any breakout can still fail.
+
+[MC] What describes a "weak" breakout?
+One that barely pokes through the level and struggles.
+One with a large, decisive candle.
+One that never approaches the level at all.
+WHY: A weak breakout barely clears the level and lacks conviction.
 
 NODE 6
 TITLE: Breakouts & Retests Review
@@ -7461,6 +7755,23 @@ Breakouts can fail or retest first — treating every one as a guaranteed trend 
 Every breakout always trends immediately.
 Retests and failures never happen.
 WHY: Breakouts are descriptive clues that can fail or retest, not guarantees.
+
+
+[FILL] This review ties together breakouts, breakdowns, retests, and the level [___].
+flip
+random guess
+company name
+WHY: All four core ideas from this unit are reviewed together here.
+
+[TF] A retest can fail, with price breaking back through the flipped level.
+ANSWER: True
+WHY: Like other signals, retests aren't guaranteed to hold — they can fail too.
+
+[MC] What is the single most useful habit from this unit?
+Reading breakouts/breakdowns and their retests with healthy skepticism.
+Assuming every breakout is guaranteed to hold.
+Ignoring breakouts entirely.
+WHY: Healthy skepticism paired with reading the retest is the core skill here.
 
 UNIT 14 — Pullbacks & Continuation
 NODE 1
