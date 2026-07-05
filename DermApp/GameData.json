@@ -22901,6 +22901,14 @@
        "chart": "breakout"
       },
       {
+       "type": "mark_consolidation",
+       "question": "Drag across every candle in this range's consolidation.",
+       "target_lo": 0,
+       "target_hi": 5,
+       "explanation": "All six candles here stay bounded between the support and resistance.",
+       "chart": "range"
+      },
+      {
        "type": "true_false",
        "question": "Marking a level is a matter of judgment, not an exact science.",
        "correct": true,
@@ -23036,6 +23044,22 @@
        ],
        "explanation": "The 1st, 3rd, and 5th candles push down into the flat support.",
        "chart": "descendingTriangle"
+      },
+      {
+       "type": "draw_trendline",
+       "question": "Drag to connect the two troughs that form this head & shoulders' neckline.",
+       "target_start": 2,
+       "target_end": 4,
+       "explanation": "Candles 3 and 5 are the troughs on either side of the head.",
+       "chart": "headShoulders"
+      },
+      {
+       "type": "mark_consolidation",
+       "question": "Drag across the candles that make up this bull flag's pause.",
+       "target_lo": 2,
+       "target_hi": 3,
+       "explanation": "Candles 3 and 4 are the small downward drift after the pole.",
+       "chart": "bullFlag"
       },
       {
        "type": "true_false",
