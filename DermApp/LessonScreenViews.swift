@@ -125,6 +125,7 @@ struct TapCandleView: View {
                     maLine2: m.maLine2,
                     bandUpper: m.bandUpper,
                     bandLower: m.bandLower,
+                    bandLabel: m.bandLabel,
                     chosenIndex: player.selectedIndex,
                     revealTarget: player.revealed ? s.target : nil,
                     onTapCandle: { i in
@@ -183,6 +184,7 @@ struct TapCandlesView: View {
                     maLine2: m.maLine2,
                     bandUpper: m.bandUpper,
                     bandLower: m.bandLower,
+                    bandLabel: m.bandLabel,
                     chosenSet: player.selectedSet,
                     revealTargets: player.revealed ? Set(s.targets ?? []) : nil,
                     onTapCandle: { i in

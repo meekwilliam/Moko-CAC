@@ -4455,6 +4455,11 @@ TITLE: The Uptrend's Signature
 TEXT: "Higher highs and higher lows" is the specific swing pattern behind every uptrend classification.
 CHART: uptrend
 
+[TAPCANDLES] Tap the two swing highs that make higher highs in this uptrend.
+CHART: pullbackUptrend
+TARGETS: 2, 4
+WHY: Candles 2 and 4 are the swing highs, each peaking higher than the last, the "higher highs" of the uptrend.
+
 [TF] "Higher highs and higher lows" describes the swing pattern behind an uptrend.
 ANSWER: True
 WHY: This phrase is the standard descriptive shorthand for uptrend structure.
@@ -8137,9 +8142,10 @@ CELEBRATION: You can spot a channel!
 INTRO
 TITLE: Parallel Lines
 TEXT: A channel is a trend where the highs and lows move within <b>parallel</b> lines, an ascending channel (up) or descending channel (down). Unlike a wedge, the lines stay parallel, not converging.
-CHART: uptrend
+CHART: ascendingChannel
 
 [MC] The chart above rises within parallel boundaries. This is commonly called an...
+CHART: ascendingChannel
 Ascending channel.
 Rising wedge.
 Symmetrical triangle.
@@ -8152,9 +8158,20 @@ crossing
 WHY: Parallel boundaries define a channel; converging ones define a wedge.
 
 [TF] The chart above shows a descending channel.
-CHART: downtrend
+CHART: descendingChannel
 ANSWER: True
 WHY: A falling trend within parallel boundaries is a descending channel.
+
+[TRENDLINE] Drag to draw the lower boundary of this ascending channel (connect the two pullback lows).
+CHART: ascendingChannel
+TARGET_START: 1
+TARGET_END: 5
+WHY: The lower boundary of the channel runs along the rising pullback lows, candles 1 and 5.
+
+[TAPCANDLES] Tap every candle that pushes up to the upper channel boundary.
+CHART: ascendingChannel
+TARGETS: 2, 4, 6
+WHY: Candles 2, 4, and 6 rally up to touch the rising upper boundary; the others pull back to the lower one.
 
 [MATCH] Match each to whether its lines converge or stay parallel.
 Wedge => Converging (narrowing) lines

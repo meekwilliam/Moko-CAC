@@ -31,9 +31,11 @@ struct CandlestickChart: View {
     var maLine2Label: String = "Fast MA"
 
     // Bollinger-style band: upper/lower lines, one value per candle, with the
-    // area between them shaded — unlike the single overlay lines above.
+    // area between them shaded — unlike the single overlay lines above. Also
+    // reused for channels (two parallel boundary lines).
     var bandUpper: [Double]? = nil
     var bandLower: [Double]? = nil
+    var bandLabel: String = "BANDS"
 
     // Interactive "tap a candle" support.
     /// The candle the learner has tapped (draws a selection ring).
@@ -220,7 +222,7 @@ struct CandlestickChart: View {
             overlayLineStroke(lower, slot: slot, mapper: m, color: bandColor.opacity(0.7))
 
             if let last = upper.last {
-                Text("BANDS")
+                Text(bandLabel)
                     .font(Theme.font(9, .black))
                     .foregroundColor(bandColor)
                     .padding(.horizontal, 5).padding(.vertical, 2)
@@ -263,6 +265,7 @@ enum ChartScenario: String {
     case maCrossUp, maCrossDown
     case bandsWidening, bandsNarrowing
     case touchUpperBand, touchLowerBand
+    case ascendingChannel, descendingChannel
 
     /// Label for the single overlay line — "MA" for moving-average scenarios,
     /// "VWAP" for the VWAP-specific variants (same underlying geometry).
@@ -506,7 +509,8 @@ struct ScenarioChartView: View {
                          maLineLabel: scenario.maLabel,
                          maLine2: m.maLine2,
                          bandUpper: m.bandUpper,
-                         bandLower: m.bandLower)
+                         bandLower: m.bandLower,
+                         bandLabel: m.bandLabel)
             .frame(height: height)
             .padding(.horizontal, 10).padding(.vertical, 14)
             .background(
@@ -532,9 +536,10 @@ struct ChartModel {
     // Overlay lines (moving average, VWAP, …): one value per candle.
     var maLine: [Double]? = nil
     var maLine2: [Double]? = nil
-    // Bollinger-style band: upper/lower lines, one value per candle.
+    // Bollinger-style band / channel: upper/lower lines, one value per candle.
     var bandUpper: [Double]? = nil
     var bandLower: [Double]? = nil
+    var bandLabel: String = "BANDS"
 }
 
 /// Small, fast, deterministic RNG (xorshift64) so a seed reproduces a chart.
@@ -1014,6 +1019,35 @@ extension ChartScenario {
             let upper = zip(mid, halfWidths).map { $0 + $1 }
             let lower = zip(mid, halfWidths).map { $0 - $1 }
             return ChartModel(candles: out, highlight: 4, maLine: mid, bandUpper: upper, bandLower: lower)
+
+        case .ascendingChannel:
+            // Price zig-zags UP between two rising, parallel boundaries. Even
+            // candles pull back to the lower boundary, odd candles push to the
+            // upper one — the two boundary lines stay a fixed distance apart.
+            let slope = 0.45
+            func lowerAt(_ i: Int) -> Double { base + slope * Double(i) }
+            func upperAt(_ i: Int) -> Double { base + 2.0 + slope * Double(i) }
+            var out: [Candle] = []; var p = lowerAt(0)
+            for i in 0..<6 {
+                let tgt = (i % 2 == 0) ? lowerAt(i) + g.u(0.0, 0.15) : upperAt(i) - g.u(0.0, 0.15)
+                out.append(g.c(open: p, close: tgt, wick: 0.12)); p = tgt
+            }
+            let lower = (0..<6).map { lowerAt($0) }
+            let upper = (0..<6).map { upperAt($0) }
+            return ChartModel(candles: out, bandUpper: upper, bandLower: lower, bandLabel: "CHANNEL")
+        case .descendingChannel:
+            // Mirror: price zig-zags DOWN between two falling, parallel boundaries.
+            let slope = -0.45
+            func lowerAt(_ i: Int) -> Double { base + slope * Double(i) }
+            func upperAt(_ i: Int) -> Double { base + 2.0 + slope * Double(i) }
+            var out: [Candle] = []; var p = upperAt(0)
+            for i in 0..<6 {
+                let tgt = (i % 2 == 0) ? upperAt(i) - g.u(0.0, 0.15) : lowerAt(i) + g.u(0.0, 0.15)
+                out.append(g.c(open: p, close: tgt, wick: 0.12)); p = tgt
+            }
+            let lower = (0..<6).map { lowerAt($0) }
+            let upper = (0..<6).map { upperAt($0) }
+            return ChartModel(candles: out, bandUpper: upper, bandLower: lower, bandLabel: "CHANNEL")
         }
     }
 }
