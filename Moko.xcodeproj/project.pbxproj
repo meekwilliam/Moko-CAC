@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXFileReference section */
-		F1D128562FE78CE100A74F58 /* DermApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DermApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		F1D128562FE78CE100A74F58 /* Moko.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Moko.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -16,12 +16,12 @@
 			membershipExceptions = (
 				Info.plist,
 			);
-			target = F1D128552FE78CE100A74F58 /* DermApp */;
+			target = F1D128552FE78CE100A74F58 /* Moko */;
 		};
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		F1D128582FE78CE100A74F58 /* DermApp */ = {
+		F1D128582FE78CE100A74F58 /* Moko */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			exceptions = (
 				F1D128682FE78CE200A74F58 /* Exceptions for "DermApp" folder in "DermApp" target */,
@@ -45,7 +45,7 @@
 		F1D1284D2FE78CE100A74F58 = {
 			isa = PBXGroup;
 			children = (
-				F1D128582FE78CE100A74F58 /* DermApp */,
+				F1D128582FE78CE100A74F58 /* Moko */,
 				F1D128572FE78CE100A74F58 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -53,7 +53,7 @@
 		F1D128572FE78CE100A74F58 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				F1D128562FE78CE100A74F58 /* DermApp.app */,
+				F1D128562FE78CE100A74F58 /* Moko.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -61,9 +61,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		F1D128552FE78CE100A74F58 /* DermApp */ = {
+		F1D128552FE78CE100A74F58 /* Moko */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = F1D128692FE78CE200A74F58 /* Build configuration list for PBXNativeTarget "DermApp" */;
+			buildConfigurationList = F1D128692FE78CE200A74F58 /* Build configuration list for PBXNativeTarget "Moko" */;
 			buildPhases = (
 				F1D128522FE78CE100A74F58 /* Sources */,
 				F1D128532FE78CE100A74F58 /* Frameworks */,
@@ -74,13 +74,13 @@
 			dependencies = (
 			);
 			fileSystemSynchronizedGroups = (
-				F1D128582FE78CE100A74F58 /* DermApp */,
+				F1D128582FE78CE100A74F58 /* Moko */,
 			);
-			name = DermApp;
+			name = Moko;
 			packageProductDependencies = (
 			);
-			productName = DermApp;
-			productReference = F1D128562FE78CE100A74F58 /* DermApp.app */;
+			productName = Moko;
+			productReference = F1D128562FE78CE100A74F58 /* Moko.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -98,7 +98,7 @@
 					};
 				};
 			};
-			buildConfigurationList = F1D128512FE78CE100A74F58 /* Build configuration list for PBXProject "GlowoV2" */;
+			buildConfigurationList = F1D128512FE78CE100A74F58 /* Build configuration list for PBXProject "Moko" */;
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -112,7 +112,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				F1D128552FE78CE100A74F58 /* DermApp */,
+				F1D128552FE78CE100A74F58 /* Moko */,
 			);
 		};
 /* End PBXProject section */
@@ -324,7 +324,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		F1D128512FE78CE100A74F58 /* Build configuration list for PBXProject "GlowoV2" */ = {
+		F1D128512FE78CE100A74F58 /* Build configuration list for PBXProject "Moko" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				F1D1286C2FE78CE200A74F58 /* Debug */,
@@ -333,7 +333,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		F1D128692FE78CE200A74F58 /* Build configuration list for PBXNativeTarget "DermApp" */ = {
+		F1D128692FE78CE200A74F58 /* Build configuration list for PBXNativeTarget "Moko" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				F1D1286A2FE78CE200A74F58 /* Debug */,

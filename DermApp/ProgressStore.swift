@@ -48,7 +48,7 @@ final class ProgressStore: ObservableObject {
     static let heartRegenSeconds: TimeInterval = 3600   // 1 hour
 
     private var s: Snapshot { didSet { persist() } }
-    private static let key = "glowo_progress_v1"
+    private static let key = "moko_progress_v1"
 
     private init() {
         if let data = UserDefaults.standard.data(forKey: Self.key),
