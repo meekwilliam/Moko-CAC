@@ -120,6 +120,14 @@ enum MechanicsTestLesson {
                 "explanation": "ohlc_label: drag 4 labels onto a candle's four levels.",
             ],
             [
+                "type": "draw_trendline",
+                "question": "Draw the lower boundary of this ascending channel.",
+                "chart": "ascendingChannel",
+                "target_start": 0,
+                "target_end": 4,
+                "explanation": "Chart check: parallel channel boundary lines (labeled CHANNEL).",
+            ],
+            [
                 "type": "tap_candle",
                 "question": "Tap the candle where price crosses above the VWAP line.",
                 "chart": "priceAboveVWAP",
