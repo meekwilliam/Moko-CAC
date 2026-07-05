@@ -12428,6 +12428,17 @@ It ignores price entirely.
 It only uses the highest price.
 WHY: VWAP weights by volume; a simple MA weights each period equally.
 
+
+[FILL] VWAP stands for Volume-[___] Average Price.
+Weighted
+Wide
+Weekly
+WHY: VWAP weights each price by the volume traded there.
+
+[TF] VWAP is commonly used as an intraday reference for average price.
+ANSWER: True
+WHY: VWAP is a common intraday "fair value" reference line.
+
 NODE 2
 TITLE: Reading Price vs. VWAP
 CELEBRATION: You can read price against VWAP!
@@ -12459,6 +12470,17 @@ It's always an automatic buy.
 VWAP guarantees the next move.
 WHY: VWAP context is descriptive, never a guaranteed signal.
 
+
+[FILL] Price above VWAP is commonly described as relative [___].
+strength
+weakness
+randomness
+WHY: Trading above the session's volume-weighted average reads as relative strength.
+
+[TF] Price below VWAP is commonly described as relative weakness.
+ANSWER: True
+WHY: Below the session average reads as relative weakness.
+
 NODE 3
 TITLE: What Are Bollinger Bands?
 CELEBRATION: You understand Bollinger Bands!
@@ -12488,6 +12510,17 @@ average.
 opening price only.
 all-time high.
 WHY: The bands quantify deviation from the moving-average center.
+
+
+[FILL] Bollinger Bands are built around a moving [___].
+average
+volume total
+random line
+WHY: The middle line is a moving average, with bands set by standard deviation.
+
+[TF] The middle Bollinger line is a moving average.
+ANSWER: True
+WHY: Bollinger Bands center on a moving average, with bands around it.
 
 NODE 4
 TITLE: Bands Widen and Narrow
@@ -12519,6 +12552,17 @@ BLANK1: *widen | narrow | vanish
 BLANK2: *narrow | widen | double
 WHY: Volatility widens the bands; calm narrows them.
 
+
+[FILL] Bollinger Bands [___] when volatility rises.
+widen
+narrow
+disappear
+WHY: Bigger price deviations (volatility) push the bands wider.
+
+[TF] Narrow ("squeezing") Bollinger Bands reflect low volatility.
+ANSWER: True
+WHY: Small deviations (calm markets) pull the bands narrow.
+
 NODE 5
 TITLE: Price at the Bands
 CELEBRATION: You can read price at the bands honestly!
@@ -12549,6 +12593,17 @@ Price can ride the upper band in a strong trend — a touch isn't a guaranteed r
 An upper-band touch always reverses.
 Band touches are guaranteed signals.
 WHY: Band touches are descriptive stretch reads, not guaranteed reversals.
+
+
+[FILL] A band touch shows price is [___] from its average, not a guaranteed reversal.
+stretched
+identical
+detached
+WHY: It describes stretch/deviation, not an automatic turn.
+
+[TF] A band touch is a guaranteed reversal signal.
+ANSWER: False
+WHY: In a strong trend, price can ride a band for a long time — no guarantee.
 
 NODE 6
 TITLE: VWAP & Bollinger Review
@@ -12583,6 +12638,17 @@ Tools that guarantee reversals at the bands | detail: Overstates certainty | wro
 The raw price line themselves | detail: Wrong | wrong: They're derived averages, not raw price.
 WHY: Descriptive, average-based context — not signals — is the throughline.
 
+
+[FILL] This review ties together VWAP and [___] Bands.
+Bollinger
+random
+guaranteed
+WHY: Both tools from this unit are reviewed together here.
+
+[TF] VWAP and Bollinger Bands are both average-based, descriptive tools.
+ANSWER: True
+WHY: This has been the throughline — descriptive, average-based context, never guaranteed signals.
+
 UNIT 29 — Drawdowns & Losing Streaks
 NODE 1
 TITLE: What Is a Drawdown?
@@ -12613,6 +12679,17 @@ prior peak.
 starting deposit.
 best single day.
 WHY: Drawdown is measured from the prior peak value.
+
+
+[FILL] A drawdown measures percent decline from an account's [___].
+peak
+starting deposit
+best trade
+WHY: Drawdown specifically measures decline from the prior peak value.
+
+[TF] Every account experiences drawdowns at some point.
+ANSWER: True
+WHY: Drawdowns are a normal part of any equity curve.
 
 NODE 2
 TITLE: Recovery Math
@@ -12651,6 +12728,17 @@ A 50% loss needs a 100% gain to recover, since you're rebuilding from a smaller 
 Recovery math doesn't apply.
 WHY: Recovering a loss requires a larger percent gain than the loss itself.
 
+
+[FILL] A 50% loss requires a [___]% gain to recover.
+100
+50
+25
+WHY: Halving your account means you must double what's left to break even.
+
+[TF] A loss needs a larger percentage gain than the loss itself to recover.
+ANSWER: True
+WHY: You're gaining on a smaller base, so the required percent is larger.
+
 NODE 3
 TITLE: Losing Streaks Are Normal
 CELEBRATION: You understand losing streaks!
@@ -12682,6 +12770,17 @@ Because systems never lose | detail: Wrong | wrong: All systems have losing trad
 Because expectancy doesn't exist | detail: Backwards | wrong: Expectancy is the long-run measure.
 WHY: Losing streaks are normal variance, not proof about the long-run edge.
 
+
+[FILL] A losing streak with a sound system is [___] — it can happen by chance.
+normal
+impossible
+proof of failure
+WHY: Even a good system sees losing streaks by chance.
+
+[TF] A few losses in a row proves a system has negative expectancy.
+ANSWER: False
+WHY: Short streaks happen by chance; they don't prove the long-run expectancy.
+
 NODE 4
 TITLE: Streaks and Sample Size
 CELEBRATION: You understand streaks and chance!
@@ -12711,6 +12810,17 @@ chance
 skill only
 the plan
 WHY: Small samples reflect luck more than the underlying edge.
+
+
+[FILL] Short runs of results are [___] — dominated by chance.
+noisy
+perfectly reliable
+guaranteed
+WHY: Small samples are dominated by luck, not the true average.
+
+[TF] Even a positive-expectancy system can have a rough short stretch.
+ANSWER: True
+WHY: Variance means good systems still have losing stretches short-term.
 
 NODE 5
 TITLE: Capital Preservation Mindset
@@ -12742,6 +12852,17 @@ Because staying in the game long-term requires not blowing up | detail: Survival
 Because it guarantees returns | detail: Overstates | wrong: It protects, it doesn't guarantee gains.
 Because losses don't matter | detail: Backwards | wrong: Losses are exactly what it manages.
 WHY: Preserving capital keeps you able to participate over the long run.
+
+
+[FILL] Capital preservation keeps [___] small to protect the account.
+drawdowns
+targets
+timeframes
+WHY: Limiting drawdowns is the core of capital preservation.
+
+[TF] A preserved account can keep participating; a blown-up one cannot.
+ANSWER: True
+WHY: Without capital, there's nothing left to trade with.
 
 NODE 6
 TITLE: Drawdowns Review
@@ -12775,6 +12896,17 @@ Losing streaks prove a broken system | detail: Wrong | wrong: They're normal var
 A 50% loss just needs 50% back | detail: Wrong math | wrong: It needs 100%.
 WHY: Normal variance plus recovery math driving preservation is the throughline.
 
+
+[FILL] This review ties together drawdowns, recovery math, and losing [___].
+streaks
+random guesses
+company names
+WHY: All the core ideas from this unit are reviewed together here.
+
+[TF] Drawdowns and losing streaks are normal, and recovery math makes limiting them essential.
+ANSWER: True
+WHY: This has been the throughline — normal variance, plus recovery math driving preservation.
+
 UNIT 30 — Journaling & Review
 NODE 1
 TITLE: Why Journal?
@@ -12807,6 +12939,17 @@ Because memory is perfect | detail: Wrong | wrong: Memory is unreliable.
 Because journaling guarantees profit | detail: Overstates | wrong: It aids learning, not a guarantee.
 WHY: An honest written record beats biased memory for improvement.
 
+
+[FILL] A journal records what you did and [___], so you can review and improve.
+why
+guaranteed profit
+random guesses
+WHY: Recording the reasoning, not just the result, is what makes a journal useful.
+
+[TF] Memory alone is a reliable record of your trading decisions.
+ANSWER: False
+WHY: Memory is biased and incomplete; a written journal is more honest.
+
 NODE 2
 TITLE: What to Log
 CELEBRATION: You know what to log!
@@ -12836,6 +12979,17 @@ WHY: Logging execution (did you follow the plan?) is key to reviewing process.
 [TF] Logging the outcome in R helps compare trades of different sizes.
 ANSWER: True
 WHY: R makes results comparable regardless of position size.
+
+
+[FILL] A useful entry logs setup, plan, execution, and [___].
+outcome
+color
+volume
+WHY: Setup, plan, execution, and outcome together make a complete journal entry.
+
+[TF] Recording the outcome in R lets you compare trades of different sizes fairly.
+ANSWER: True
+WHY: R normalizes results across different position sizes.
 
 NODE 3
 TITLE: Review Process, Not Just Outcome
@@ -12868,6 +13022,17 @@ Only winners are worth reviewing.
 Process doesn't matter in review.
 WHY: The point of review is the process, which you control, not just outcomes.
 
+
+[FILL] The most useful review question is: did I follow my [___]?
+process
+luck
+mood
+WHY: Process is what you control; reviewing it drives improvement.
+
+[TF] A losing trade can still be a well-executed, good-process trade.
+ANSWER: True
+WHY: Outcomes vary; a plan followed correctly is good process regardless.
+
 NODE 4
 TITLE: Finding Patterns in Your Trades
 CELEBRATION: You can learn from your journal!
@@ -12898,6 +13063,17 @@ Because reliable patterns need a large sample | detail: Sample size again
 Because one trade proves everything | detail: Wrong | wrong: One trade is noise.
 Because journaling guarantees improvement | detail: Overstates | wrong: It enables it, not guarantees.
 WHY: Reliable lessons come from patterns across many trades.
+
+
+[FILL] Reliable patterns in your trading data need a [___] sample.
+large
+tiny
+single
+WHY: A large sample is needed for reliable patterns to emerge.
+
+[TF] Reviewing many entries can reveal recurring mistakes to fix.
+ANSWER: True
+WHY: Patterns across a large sample surface habits worth changing.
 
 NODE 5
 TITLE: The Learning Loop
@@ -12930,6 +13106,17 @@ guess
 quit
 WHY: Review (via the journal) is the third step of the loop.
 
+
+[FILL] The learning loop is plan, do, [___], repeat.
+review
+guess
+quit
+WHY: Review (via the journal) is the third step of the improvement loop.
+
+[TF] Improvement comes from repeating the plan-do-review loop over time.
+ANSWER: True
+WHY: Consistent looping, not one trade, drives improvement.
+
 NODE 6
 TITLE: Journaling Review
 CELEBRATION: You've mastered journaling & review!
@@ -12961,6 +13148,17 @@ Journal honestly, review your process over many trades, and loop the lessons | d
 Journal to guarantee profits | detail: Overstates | wrong: It enables improvement, not guarantees.
 Only review winning trades | detail: Wrong | wrong: Process review covers all trades.
 WHY: Honest journaling, process review, and the learning loop is the throughline.
+
+
+[FILL] This review ties together journaling, process review, and the [___] loop.
+learning
+random
+guaranteed
+WHY: All the core ideas from this unit are reviewed together here.
+
+[TF] Honest journaling and process review over many trades is the throughline of this unit.
+ANSWER: True
+WHY: This has been true throughout — honest records, process focus, and the improvement loop.
 
 UNIT 31 — Trading Psychology
 NODE 1
