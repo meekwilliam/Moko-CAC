@@ -3825,12 +3825,12 @@
        "type": "multiple_choice",
        "question": "The highlighted candle above, small body up top, long lower wick, after a drop, is a...",
        "options": [
-        "Doji.",
+        "Shooting star.",
         "Hammer.",
-        "Shooting star."
+        "Inverted hammer."
        ],
        "correct": 1,
-       "explanation": "A long lower wick with the body near the top, after a decline, is the hammer shape.",
+       "explanation": "The long wick is on the BOTTOM, so it's a hammer. An inverted hammer and a shooting star both have their long wick on top, the opposite of this.",
        "chart": "hammer"
       },
       {
@@ -13960,11 +13960,11 @@
        "question": "The chart above shows two peaks stalling at about the same price. This shape is commonly called a...",
        "options": [
         "Double top.",
-        "Double bottom.",
-        "Breakout."
+        "Head & shoulders.",
+        "Ascending triangle."
        ],
        "correct": 0,
-       "explanation": "Two peaks at the same level forming an \"M\" is the double top shape."
+       "explanation": "Two peaks at the same level forming an \"M\" is a double top. A head & shoulders would have three peaks with a higher middle; an ascending triangle has a flat top with rising lows."
       },
       {
        "type": "true_false",
@@ -16704,11 +16704,11 @@
        "question": "The chart above has a flat top and rising lows. This is commonly called an...",
        "options": [
         "Ascending triangle.",
-        "Descending triangle.",
-        "Double top."
+        "Symmetrical triangle.",
+        "Rising wedge."
        ],
        "correct": 0,
-       "explanation": "A flat resistance with rising lows is the ascending triangle shape."
+       "explanation": "A FLAT top with rising lows is an ascending triangle. A symmetrical triangle has both lines converging; a rising wedge rises but its lines converge rather than one staying flat."
       },
       {
        "type": "mark_level",
@@ -17356,12 +17356,12 @@
        "type": "multiple_choice",
        "question": "The chart above shows a sharp rise, a small drift down, then more rise. This is commonly called a...",
        "options": [
-        "Bear flag.",
-        "Double top.",
+        "Ascending triangle.",
+        "Rising wedge.",
         "Bull flag."
        ],
        "correct": 2,
-       "explanation": "A strong up pole plus a small downward flag is a bull flag."
+       "explanation": "A strong pole then a small drift is a bull flag. An ascending triangle has a flat top with rising lows (no pole); a rising wedge is a converging drift, not a sharp pole plus pause."
       },
       {
        "type": "tap_candle",

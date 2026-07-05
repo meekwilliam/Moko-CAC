@@ -1583,9 +1583,9 @@ CHART: hammer
 [MC] The highlighted candle above, small body up top, long lower wick, after a drop, is a...
 CHART: hammer
 Hammer.
+Inverted hammer.
 Shooting star.
-Doji.
-WHY: A long lower wick with the body near the top, after a decline, is the hammer shape.
+WHY: The long wick is on the BOTTOM, so it's a hammer. An inverted hammer and a shooting star both have their long wick on top, the opposite of this.
 
 [FILL] The long lower wick on the highlighted candle shows price was pushed down but [___] by the close.
 CHART: hammer
@@ -5915,9 +5915,9 @@ CHART: doubleTop
 
 [MC] The chart above shows two peaks stalling at about the same price. This shape is commonly called a...
 Double top.
-Double bottom.
-Breakout.
-WHY: Two peaks at the same level forming an "M" is the double top shape.
+Head & shoulders.
+Ascending triangle.
+WHY: Two peaks at the same level forming an "M" is a double top. A head & shoulders would have three peaks with a higher middle; an ascending triangle has a flat top with rising lows.
 
 [TF] A double top is commonly described as forming after an up-move, at resistance.
 CHART: doubleTop
@@ -7358,9 +7358,9 @@ CHART: ascendingTriangle
 
 [MC] The chart above has a flat top and rising lows. This is commonly called an...
 Ascending triangle.
-Descending triangle.
-Double top.
-WHY: A flat resistance with rising lows is the ascending triangle shape.
+Symmetrical triangle.
+Rising wedge.
+WHY: A FLAT top with rising lows is an ascending triangle. A symmetrical triangle has both lines converging; a rising wedge rises but its lines converge rather than one staying flat.
 
 [MARKLEVEL] Drag the line to the flat resistance the highs keep testing.
 CHART: ascendingTriangle
@@ -7722,9 +7722,9 @@ CHART: bullFlag
 
 [MC] The chart above shows a sharp rise, a small drift down, then more rise. This is commonly called a...
 Bull flag.
-Bear flag.
-Double top.
-WHY: A strong up pole plus a small downward flag is a bull flag.
+Ascending triangle.
+Rising wedge.
+WHY: A strong pole then a small drift is a bull flag. An ascending triangle has a flat top with rising lows (no pole); a rising wedge is a converging drift, not a sharp pole plus pause.
 
 [TAPCANDLE] Tap the start of the pole (the first strong up candle).
 CHART: bullFlag
