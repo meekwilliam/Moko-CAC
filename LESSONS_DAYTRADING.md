@@ -1167,6 +1167,24 @@ They should ignore the wicks too and just guess.
 They should only ever look at the very first candle.
 WHY: Reading body and wick together gives a fuller picture than either alone.
 
+
+[TF] A candlestick with a small body and long wicks on both sides would generally NOT be called a marubozu.
+CHART: marubozu
+ANSWER: True
+WHY: A marubozu specifically needs a large body and almost no wicks — the opposite of that description.
+
+[FILL] Wicks show the [___] and low reached during the period, beyond the body.
+high
+volume
+color
+WHY: Wicks mark the high and low extremes; the body marks the open-to-close range.
+
+[MC] If a candle's open and close are far apart, its body will be...
+large.
+tiny.
+invisible.
+WHY: A bigger gap between open and close makes for a larger body.
+
 NODE 2
 TITLE: Reading a Doji
 CELEBRATION: You can spot a doji on a chart instantly!
@@ -1215,6 +1233,23 @@ WHY: A doji is a useful descriptive clue, not a certainty.
 CHART: doji
 TARGET: 2
 WHY: The middle candle has an almost nonexistent body with wicks on both sides — that's the doji.
+
+[TF] A doji's open and close prices are nearly identical.
+CHART: doji
+ANSWER: True
+WHY: The near-equal open and close is exactly what makes the tiny body of a doji.
+
+[MC] Which best describes what "indecision" means for a doji?
+Neither buyers nor sellers clearly won that period.
+The chart data is missing.
+The candle has no high or low.
+WHY: Indecision describes a balanced tug-of-war, not missing data.
+
+[FILL] A doji can appear at any point in a chart, [___] just at the very start.
+not
+only
+always
+
 NODE 3
 TITLE: Reading a Hammer
 CELEBRATION: You can identify a hammer on a chart!
@@ -1261,6 +1296,24 @@ WHY: Shape plus context together define the hammer.
 CHART: hammer
 TARGET: 3
 WHY: The last candle has a small body up top and a long lower wick — the hammer.
+
+[TF] A hammer's long wick points downward, below the body.
+CHART: hammer
+ANSWER: True
+WHY: The long lower wick is what defines the hammer shape.
+
+[MC] Where does a hammer's small body sit relative to the candle's overall range?
+Near the top.
+Near the bottom.
+Exactly in the middle.
+WHY: A hammer's body sits near the top, with the long wick trailing below it.
+
+[FILL] A hammer commonly appears after a [___] in price.
+decline
+rise
+gap
+WHY: The hammer shape is read in the context of a preceding down-move.
+
 NODE 4
 TITLE: Reading a Shooting Star
 CELEBRATION: You can identify a shooting star on a chart!
@@ -1305,6 +1358,39 @@ A shooting star and a hammer are the exact same shape.
 Wick direction doesn't matter when naming a candle.
 WHY: Which side the long wick is on (and the preceding move) is what separates the two.
 
+
+[TF] A shooting star's long wick points upward, above the body.
+CHART: shootingStar
+ANSWER: True
+WHY: The long upper wick is what defines the shooting star shape.
+
+[MC] A shooting star commonly appears after what kind of move?
+A preceding rise in price.
+A preceding decline in price.
+No preceding move at all.
+WHY: The shooting star is read in the context of a preceding up-move.
+
+[MATCH] Match each shape to its wick position.
+Hammer => Long wick below the body
+Shooting star => Long wick above the body
+Doji => Wicks on both sides, tiny body
+WHY: Wick position (and preceding trend) is what names each shape.
+
+
+[SPOT] Someone assumes a shooting star's long wick means volume was extremely high.
+CHART: shootingStar
+QUESTION: What is the mistake?
+Wick length shows price extremes, not trading volume — they're two separate ideas.
+Wick length always equals volume.
+Volume can't be measured separately from wicks.
+WHY: Wicks describe price reach, not trading volume.
+
+[MATCH] Match each shape to the trend it commonly follows.
+Hammer => A preceding decline
+Shooting star => A preceding rise
+Doji => Either — it just shows balance
+WHY: Preceding trend is part of what gives each shape its common reading.
+
 NODE 5
 TITLE: Reading Bullish Engulfing
 CELEBRATION: You can spot a bullish engulfing on a chart!
@@ -1344,6 +1430,35 @@ WHY: The pattern describes buyers taking over that period, nothing guaranteed.
 CHART: bullishEngulfing
 TARGET: 2
 WHY: The second candle's larger up body fully covers the prior down candle.
+
+[TF] A bullish engulfing pattern involves exactly two candles.
+CHART: bullishEngulfing
+ANSWER: True
+WHY: The pattern is specifically a two-candle relationship — a small one, then a larger engulfing one.
+
+[MC] In a bullish engulfing, which candle comes first?
+The smaller down candle.
+The larger up candle.
+Neither — they're simultaneous.
+WHY: The smaller down candle is followed by the larger engulfing up candle.
+
+[FILL] The word "engulfing" describes one candle's body completely [___] another's.
+covering
+ignoring
+matching
+WHY: "Engulfing" specifically means the second body fully covers the first.
+
+
+[FILL] The candle that gets engulfed in a bullish engulfing pattern is the [___] one.
+first (down)
+second (up)
+neither
+WHY: The smaller, earlier down candle is the one that gets engulfed.
+
+[TF] Bullish engulfing can only occur after an uptrend, never after a decline.
+ANSWER: False
+WHY: Bullish engulfing is commonly read in the context of a prior decline, not an uptrend.
+
 NODE 6
 TITLE: Reading Bearish Engulfing
 CELEBRATION: You can spot a bearish engulfing on a chart!
@@ -1385,6 +1500,38 @@ A big candle always means bullish.
 The color of the engulfing candle never matters.
 WHY: Direction of the engulfing candle, not just its size, sets bullish vs bearish.
 
+
+[TF] A bearish engulfing pattern involves exactly two candles.
+CHART: bearishEngulfing
+ANSWER: True
+WHY: Like bullish engulfing, this is a two-candle relationship.
+
+[MC] In a bearish engulfing, which candle comes first?
+The smaller up candle.
+The larger down candle.
+Neither — they're simultaneous.
+WHY: The smaller up candle is followed by the larger engulfing down candle.
+
+[PICK] What does a bearish engulfing describe about that period?
+CHART: bearishEngulfing
+CONCERN: Reading the pattern
+Sellers overwhelmed the prior up candle within one period | detail: A descriptive read
+A guaranteed downtrend forever | detail: Overstates certainty | wrong: A pattern describes, it doesn't guarantee.
+That both candles are the same color | detail: Incorrect | wrong: One is up, one is down — that's the point.
+WHY: The pattern describes selling pressure taking over, not a guaranteed outcome.
+
+
+[FILL] The candle that gets engulfed in a bearish engulfing pattern is the [___] one.
+first (up)
+second (down)
+neither
+WHY: The smaller, earlier up candle is the one that gets engulfed.
+
+[TAPCANDLE] Tap the engulfing candle on the chart.
+CHART: bearishEngulfing
+TARGET: 2
+WHY: The second, larger down candle is the one that engulfs the first.
+
 NODE 7
 TITLE: Reading a Spinning Top
 CELEBRATION: You can identify a spinning top on a chart!
@@ -1419,6 +1566,39 @@ The spinning top has a small body and wicks; a marubozu has a big body and almos
 They are exactly the same shape | detail: Incorrect | wrong: One shows hesitation, the other decisiveness.
 The spinning top has no body at all | detail: Incorrect | wrong: It has a small but visible body.
 WHY: Body size and wick presence are what separate hesitation from decisiveness.
+
+
+[TF] A spinning top has wicks of roughly similar length on both sides.
+CHART: spinningTop
+ANSWER: True
+WHY: Balanced wicks on both sides, with a small body, is the spinning top shape.
+
+[MC] Compared to a doji, a spinning top's body is...
+slightly larger, but still small.
+much larger.
+completely nonexistent.
+WHY: A spinning top has a bit more body than a doji, but still small overall.
+
+[SPOT] Someone claims a spinning top always signals an immediate reversal.
+CHART: spinningTop
+QUESTION: What is the mistake?
+A spinning top describes hesitation, not a guaranteed reversal signal.
+Spinning tops always reverse the trend immediately.
+Spinning tops only appear once per chart.
+WHY: Like other single candles, a spinning top is descriptive, not a certainty.
+
+
+[FILL] A spinning top's wicks are roughly [___] in length on both sides.
+equal
+opposite
+absent
+WHY: Balanced wick length on both sides is part of the spinning top's definition.
+
+[MC] Which is closest in meaning to a spinning top's "hesitation" reading?
+Neither buyers nor sellers clearly won that period.
+Buyers completely dominated.
+Sellers completely dominated.
+WHY: Hesitation means neither side won decisively.
 
 NODE 8
 TITLE: Reading a Marubozu
@@ -1461,6 +1641,36 @@ A marubozu can only appear once per chart.
 Big candles never mean anything at all.
 WHY: Even a decisive candle is descriptive, not a guarantee of the future.
 
+
+[TF] A marubozu has virtually no wicks on either side.
+CHART: marubozu
+ANSWER: True
+WHY: Almost no wick, with a large body, is exactly what defines a marubozu.
+
+[MC] Which best describes the price action inside a marubozu candle?
+Price moved in one direction steadily and closed near its extreme.
+Price bounced back and forth with no clear direction.
+Price didn't move at all.
+WHY: A marubozu reflects steady, one-directional movement through the period.
+
+[FILL] A marubozu's lack of wicks suggests neither side pushed price [___] before the close.
+back
+forward
+sideways
+WHY: With no meaningful wick, price wasn't pushed back from its extreme before closing.
+
+
+[FILL] A marubozu's open is at (or very near) one extreme, and its close is at the [___] extreme.
+opposite
+same
+random
+WHY: Opening at one extreme and closing at the other, with little wick, is the marubozu shape.
+
+[TAPCANDLE] Tap the marubozu on the chart.
+CHART: marubozu
+TARGET: 2
+WHY: The big-bodied, near-wickless candle is the marubozu.
+
 NODE 9
 TITLE: Rejection Wicks in Context
 CELEBRATION: You can read rejection wicks off a chart!
@@ -1495,6 +1705,34 @@ A level was tested and rejected that period — useful context, not a guarantee 
 Price is certain to reverse now | detail: Overstates certainty | wrong: A rejection is a clue, not a promise.
 The wick shows the trading volume | detail: Incorrect | wrong: Wicks show price extremes, not volume.
 WHY: Rejection wicks describe where price failed to hold — context, not certainty.
+
+
+[TF] A rejection wick shows price failed to hold at an extreme it briefly reached.
+CHART: rejectionWickDown
+ANSWER: True
+WHY: The wick marks a level price touched but couldn't sustain into the close.
+
+[MC] A long lower wick on a candle is commonly called a rejection of the...
+lows.
+highs.
+open price.
+WHY: A long lower wick specifically shows the lows were tested and rejected.
+
+[MATCH] Match the wick type to what it rejects.
+Long lower wick => Rejection of the lows
+Long upper wick => Rejection of the highs
+Small wick => Little rejection either way
+WHY: Wick length and direction show which extreme was tested and rejected.
+
+
+[FILL2] A rejection of the [1] shows a long lower wick; a rejection of the [2] shows a long upper wick.
+BLANK1: *lows | highs | open
+BLANK2: *highs | lows | close
+WHY: Lower wick = lows rejected; upper wick = highs rejected.
+
+[TF] A rejection wick can appear on candles of either color.
+ANSWER: True
+WHY: Rejection is about wick length/position, not the candle's overall color.
 
 NODE 10
 TITLE: Identification Drill: Reversal Shapes
@@ -1545,6 +1783,24 @@ WHY: Long upper wick, small body near the bottom — the shooting star.
 CHART: invertedHammer
 TARGET: 3
 WHY: Long upper wick with a small low body after a drop — the inverted hammer.
+
+[TF] A hanging man and a hammer share the exact same candle shape.
+CHART: hangingMan
+ANSWER: True
+WHY: Same shape, different context — a hammer after a decline, a hanging man after a rise.
+
+[MC] What separates a hanging man from a hammer?
+The trend context it appears in (a rise vs. a decline).
+The candle's color.
+The number of wicks.
+WHY: Both share the same shape; only the preceding trend differs.
+
+[FILL] Correctly identifying a candle shape means checking both its form and its [___].
+context
+color
+volume
+WHY: Shape alone isn't enough — the surrounding trend matters too.
+
 NODE 11
 TITLE: Identification Drill: Engulfing & Bodies
 CELEBRATION: You can classify body-driven candles fast!
@@ -1594,6 +1850,23 @@ WHY: The second candle's larger down body fully covers the prior up candle.
 CHART: marubozu
 TARGET: 2
 WHY: The big-bodied, near-wickless candle is the marubozu.
+
+[TF] Both bullish and bearish engulfing patterns involve one candle's body fully covering another's.
+ANSWER: True
+WHY: "Engulfing" means full coverage in both the bullish and bearish versions.
+
+[MC] What's the fastest way to tell bullish engulfing from bearish engulfing?
+Check which direction (up or down) the larger, engulfing candle closed.
+Check the candle's wick length.
+Check the candle's timeframe.
+WHY: The engulfing candle's direction (up vs down) names the pattern.
+
+[FILL] A marubozu is identified mainly by its [___] body and lack of wicks.
+large
+small
+missing
+WHY: A big body with almost no wick is the marubozu's defining feature.
+
 NODE 12
 TITLE: Identification Drill: Speed Round
 CELEBRATION: You crushed the mixed speed round!
@@ -1641,6 +1914,23 @@ WHY: The small body with even wicks on both sides is the spinning top.
 CHART: rejectionWickDown
 TARGET: 2
 WHY: The middle candle's long lower wick shows a rejection of the lows.
+
+[TF] Reading candlestick shapes quickly is a skill that improves with practice.
+ANSWER: True
+WHY: Like any pattern recognition, speed and accuracy build with repetition.
+
+[MC] A rejection wick and a long wick on a hammer describe a similar underlying idea. What is it?
+Price was pushed to an extreme, then didn't hold there.
+Price never moved during the period.
+The candle has no real body.
+WHY: Both describe a push to an extreme that then reversed before the close.
+
+[FILL] Speed rounds like this one build [___] recognition of common shapes.
+faster
+slower
+zero
+WHY: Repeated practice speeds up pattern recognition.
+
 NODE 13
 TITLE: What This Candle Suggests — Rejection Shapes
 CELEBRATION: You can read what a rejection candle suggests!
@@ -1676,6 +1966,36 @@ Rejection wicks always mean the trend reverses.
 The wick shows the exact future price.
 WHY: Rejection describes what happened at a level, not what happens next.
 
+
+[TF] "What a candle suggests" is always a certain, guaranteed prediction.
+ANSWER: False
+WHY: These reads are descriptive clues, never guarantees about the future.
+
+[MC] Reading a rejection wick's "suggestion" means considering...
+what the wick implies about buyer/seller behavior that period.
+only the wick's exact pixel length.
+the account balance.
+WHY: The suggestion is about behavior (who got rejected), not a measurement exercise.
+
+[FILL] Moving from naming a shape to reading its suggestion adds a layer of [___].
+interpretation
+certainty
+volume
+WHY: Interpreting what a shape implies goes beyond simply naming it.
+
+
+[MC] What's the difference between "naming" a candle and reading its "suggestion"?
+Naming identifies the shape; suggestion interprets what it implies about behavior.
+They are exactly the same task.
+Suggestion is about volume, naming is about color.
+WHY: Naming is identification; suggestion is interpretation of the shape's meaning.
+
+[FILL] A rejection wick's suggestion is read [___], not as a certainty.
+descriptively
+as a guarantee
+randomly
+WHY: All single-candle suggestions in this unit stay descriptive, not certain.
+
 NODE 14
 TITLE: What This Candle Suggests — In Trend Context
 CELEBRATION: You can read a candle against its trend!
@@ -1710,6 +2030,35 @@ The same shape can mean different things depending on what came before it | deta
 Because the trend never matters | detail: Incorrect | wrong: Context is central to reading candles.
 Because it guarantees the next move | detail: Overstates certainty | wrong: Context informs, it doesn't guarantee.
 WHY: Reading a candle in context is what turns a shape into a meaningful description.
+
+
+[TF] The same candle shape can carry a different name depending on the preceding trend.
+CHART: hangingMan
+ANSWER: True
+WHY: Hammer vs. hanging man, and shooting star vs. inverted hammer, are exactly this kind of pair.
+
+[MC] Which pair of shapes shares an identical form but different context-based names?
+Hammer and hanging man.
+Doji and marubozu.
+Spinning top and engulfing.
+WHY: Hammer/hanging man is the classic same-shape-different-context pair.
+
+[FILL] Reading candles "in context" means considering the trend that came [___] them.
+before
+after
+without regard to
+WHY: The preceding trend is the context that shapes a candle's meaning.
+
+
+[FILL] An inverted hammer appears after a [___], while a shooting star appears after a rise.
+decline
+rise
+gap
+WHY: Same upper-wick shape, but the inverted hammer's context is a preceding decline.
+
+[TF] Context can change a candle's name even when its shape stays identical.
+ANSWER: True
+WHY: Hammer/hanging man and shooting star/inverted hammer are examples of this.
 
 NODE 15
 TITLE: What This Candle Suggests — Reading Momentum
@@ -1750,6 +2099,36 @@ Momentum candles always repeat.
 Body size has nothing to do with momentum.
 WHY: A decisive candle is descriptive; it doesn't lock in the future.
 
+
+[TF] Reading momentum from candle bodies is one useful, descriptive tool among several.
+ANSWER: True
+WHY: Body-size reading is one piece of a broader chart-reading toolkit.
+
+[MC] A series of large bodies in the same direction would suggest...
+sustained momentum in that direction.
+sustained indecision.
+no price movement at all.
+WHY: Repeated large bodies in one direction reflect ongoing momentum.
+
+[FILL] Reading momentum from bodies is a [___] read, not a guaranteed forecast.
+descriptive
+guaranteed
+random
+WHY: Like other candle reads in this unit, it's descriptive context, not certainty.
+
+
+[FILL] Momentum reading pairs body size with the [___] of the move.
+direction
+volume
+timeframe
+WHY: Body size shows how one-sided the move was; direction shows which way.
+
+[MC] A series of small bodies would most likely suggest...
+ongoing hesitation or indecision.
+strong, sustained momentum.
+a guaranteed reversal.
+WHY: Small bodies repeated over time suggest continued hesitation, not strong momentum.
+
 NODE 16
 TITLE: Mixed Candle Recognition — Round One
 CELEBRATION: You can read any single candle in context!
@@ -1789,6 +2168,34 @@ Marubozu => Decisive, one-sided momentum
 Doji => Balanced, indecisive period
 Shooting star => Upward push that was rejected
 WHY: Naming the shape and reading it are two halves of the same skill.
+
+
+[TF] Combining shape recognition with contextual reading is more useful than either alone.
+ANSWER: True
+WHY: Naming the shape and reading its context together give the fullest picture.
+
+[MC] Which skill does this lesson combine?
+Naming a candle shape and reading what it suggests.
+Only naming shapes, with no interpretation.
+Only interpreting, without identifying any shape.
+WHY: This lesson explicitly combines identification with interpretation.
+
+[FILL] Round One mixes recognition with [___] to build a fuller reading skill.
+interpretation
+guessing
+memorization only
+WHY: Interpretation alongside recognition is the point of this mixed round.
+
+
+[FILL] "Round One" is meant to check both shape [___] and contextual reading together.
+recognition
+color
+volume
+WHY: This lesson combines identification with interpretation, as the title suggests.
+
+[TF] Reviewing mixed candles helps reinforce skills from earlier in the unit.
+ANSWER: True
+WHY: Mixed review rounds reinforce and test everything taught so far.
 
 NODE 17
 TITLE: Mixed Candle Recognition — Round Two
@@ -1831,6 +2238,36 @@ Candles are read alongside the surrounding trend and levels, not in total isolat
 Naming candles is the only thing that ever matters.
 The surrounding chart should always be ignored.
 WHY: Context from the surrounding chart is part of reading any single candle well.
+
+
+[TF] This final round is meant to lock in both shape recognition and context reading.
+ANSWER: True
+WHY: It's the capstone drill combining everything covered in this unit.
+
+[MC] What is the single most important habit this unit has emphasized?
+Reading candles together with their surrounding context.
+Memorizing shapes in total isolation.
+Ignoring the trend entirely.
+WHY: Context-aware reading has been the throughline of the whole unit.
+
+[FILL] Completing this unit means you can both name a shape and read its [___].
+suggestion
+color
+volume
+WHY: Both identification and interpretation are the two halves of this unit's skill.
+
+
+[FILL] Completing this final round means you can recognize shapes [___] read their context.
+and
+instead of
+without
+WHY: The unit's goal is combining recognition with contextual reading, not choosing one.
+
+[MC] What comes next after mastering single-candle reading?
+Applying this skill to multi-candle patterns and levels.
+Forgetting candles entirely.
+Repeating this exact unit forever.
+WHY: Single-candle reading is a foundation for reading multi-candle patterns and levels next.
 
 UNIT 3 — Orders & Execution
 NODE 1
@@ -1892,6 +2329,17 @@ The order must have been placed incorrectly.
 Market orders should never be used under any circumstances.
 WHY: This is a normal trade-off of the order type, not evidence of an error.
 
+
+[FILL] Once submitted, a market order typically executes [___] rather than waiting.
+right away
+after a delay
+never
+WHY: Immediate execution is the whole point of a market order.
+
+[TF] A market order can be used to both buy and sell.
+ANSWER: True
+WHY: Market orders apply to both buying and selling; speed of execution is the shared trait.
+
 NODE 2
 TITLE: Limit Orders (Deep Dive)
 CELEBRATION: You understand limit orders in depth!
@@ -1950,6 +2398,17 @@ QUESTION: What is the mistake?
 The platform must have malfunctioned.
 Limit orders should always be replaced with market orders.
 WHY: A limit order requires the exact specified price (or better) to be reached, not just approached.
+
+
+[FILL] A sell limit order will only execute at your set price or [___].
+higher
+lower
+random
+WHY: A sell limit order fills at your specified price or better (higher).
+
+[TF] A limit order can remain unfilled indefinitely if price never reaches it.
+ANSWER: True
+WHY: Without a time limit, a limit order simply waits until price reaches the specified level (or is cancelled).
 
 NODE 3
 TITLE: Stop-Loss Orders
@@ -2010,6 +2469,17 @@ They should have avoided using any stop-loss at all.
 They should have only used a stop-loss on weekends.
 WHY: A stop-loss defines an intended exit level, but the exact executed price can still vary in fast-moving conditions.
 
+
+[FILL] A stop-loss is commonly placed at a level that would [___] the original trade idea.
+invalidate
+guarantee
+double
+WHY: A stop-loss is commonly tied to the point where the reasoning for the trade no longer holds.
+
+[TF] Once triggered, a basic stop-loss order commonly behaves like a market order.
+ANSWER: True
+WHY: A triggered stop typically executes at the best available price, like a market order.
+
 NODE 4
 TITLE: Take-Profit Orders
 CELEBRATION: You understand take-profit orders!
@@ -2068,6 +2538,17 @@ Setting a target doesn't guarantee price will ever reach it — the order simply
 They should set an even higher take-profit level instead.
 They should remove all take-profit orders from now on.
 WHY: A take-profit order defines an intended target; it doesn't guarantee that target will be reached.
+
+
+[FILL] A take-profit order is commonly placed at a level considered a [___] outcome.
+satisfying
+guaranteed
+random
+WHY: The take-profit level represents a planned, satisfying exit point.
+
+[TF] A take-profit and a stop-loss can be used together on the same position.
+ANSWER: True
+WHY: Using both together is a common way to bracket a planned trade's range of outcomes.
 
 NODE 5
 TITLE: Stop-Limit Orders
@@ -2128,6 +2609,17 @@ The platform must have a bug.
 Stop-limit orders always behave exactly like market orders.
 WHY: A fast move past the limit price is a well-known way a stop-limit order can fail to fill.
 
+
+[FILL] Once a stop-limit's trigger price is hit, it converts into a [___] order.
+limit
+market
+stop
+WHY: The defining feature of a stop-limit is converting into a limit order once triggered.
+
+[TF] A stop-limit order guarantees a fill, just like a market order does.
+ANSWER: False
+WHY: Unlike a market order, a stop-limit may not fill if price moves past the limit price too fast.
+
 NODE 6
 TITLE: Slippage
 CELEBRATION: You understand slippage!
@@ -2186,6 +2678,17 @@ Ignoring slippage makes a plan look better on paper than it would likely perform
 They should use an even older chart instead.
 They should only look at longer wicks.
 WHY: A realistic picture accounts for costs like slippage beyond just the chart's displayed prices.
+
+
+[FILL] Slippage tends to be [___] in calm, liquid markets.
+smaller
+larger
+guaranteed
+WHY: Calmer, more liquid conditions are commonly linked to smaller slippage.
+
+[TF] Slippage can occur on both market and other order types once triggered.
+ANSWER: True
+WHY: Any order that ends up executing like a market order can experience slippage.
 
 NODE 7
 TITLE: Why Execution Differs From Chart Price
@@ -2246,6 +2749,17 @@ They should assume all trading platforms are identical in this regard.
 They should stop using charts entirely.
 WHY: These small gaps are a normal, well-understood part of how markets and order types work.
 
+
+[FILL] Order type is one of [___] factors that can explain a gap between chart price and fill price.
+several
+zero
+a single
+WHY: Spread, slippage, and order type together are commonly cited as the reasons for this gap.
+
+[TF] A limit order and a market order can behave differently around the very same price level.
+ANSWER: True
+WHY: A market order fills immediately regardless of exact price, while a limit order waits for a specific level.
+
 NODE 8
 TITLE: Orders & Execution Review
 CELEBRATION: You've completed the Orders & Execution unit!
@@ -2304,6 +2818,17 @@ Different order types suit different situations — there's no single type that'
 They should only ever use market orders from now on.
 They should only ever use limit orders from now on.
 WHY: This unit covered several order types precisely because each fits different situations and priorities.
+
+
+[FILL] This unit's order types each balance speed, price control, and [___] differently.
+risk
+color
+volume
+WHY: Speed, price control, and risk are the three dimensions each order type trades off.
+
+[TF] Knowing multiple order types lets you choose the one that fits a given situation.
+ANSWER: True
+WHY: Different situations call for different trade-offs, which is why multiple order types exist.
 
 UNIT 4 — Trends & Structure
 NODE 1
