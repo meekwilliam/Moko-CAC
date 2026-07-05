@@ -16,9 +16,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "F1D128552FE78CE100A74F58"
-               BuildableName = "DermApp.app"
-               BlueprintName = "DermApp"
-               ReferencedContainer = "container:GlowoV2.xcodeproj">
+               BuildableName = "Moko.app"
+               BlueprintName = "Moko"
+               ReferencedContainer = "container:Moko.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -46,9 +46,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "F1D128552FE78CE100A74F58"
-            BuildableName = "DermApp.app"
-            BlueprintName = "DermApp"
-            ReferencedContainer = "container:GlowoV2.xcodeproj">
+            BuildableName = "Moko.app"
+            BlueprintName = "Moko"
+            ReferencedContainer = "container:Moko.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <StoreKitConfigurationFileReference
@@ -66,9 +66,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "F1D128552FE78CE100A74F58"
-            BuildableName = "DermApp.app"
-            BlueprintName = "DermApp"
-            ReferencedContainer = "container:GlowoV2.xcodeproj">
+            BuildableName = "Moko.app"
+            BlueprintName = "Moko"
+            ReferencedContainer = "container:Moko.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>
