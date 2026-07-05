@@ -5295,6 +5295,23 @@ Two peaks is enough for a head & shoulders.
 The number of peaks doesn't matter.
 WHY: Head & shoulders is a three-peak pattern; two peaks is a double top.
 
+
+[FILL] A head & shoulders is a [___]-peak pattern.
+three
+two
+four
+WHY: Left shoulder, head, right shoulder — three peaks total.
+
+[TF] The head is the middle peak of the three.
+ANSWER: True
+WHY: Left shoulder, then the (highest) head, then the right shoulder — the head sits in the middle.
+
+[MC] Which best matches the order of peaks in a head & shoulders, left to right?
+Left shoulder, head, right shoulder.
+Head, left shoulder, right shoulder.
+Right shoulder, head, left shoulder.
+WHY: The name itself describes the left-to-right order: shoulder, head, shoulder.
+
 NODE 2
 TITLE: The Three Peaks
 CELEBRATION: You can name each peak of a head & shoulders!
@@ -5340,6 +5357,17 @@ The right shoulder is always the tallest.
 The head should be the shortest peak.
 WHY: The head is the highest peak; shoulders sit lower and are roughly equal.
 
+
+[FILL] The left and right shoulders are commonly at [___] height as each other.
+about the same
+wildly different
+exactly double the
+WHY: Roughly equal shoulder heights are part of a clean head & shoulders.
+
+[TF] The head is commonly the shortest of the three peaks.
+ANSWER: False
+WHY: The head is commonly the tallest of the three peaks, not the shortest.
+
 NODE 3
 TITLE: The Neckline
 CELEBRATION: You understand the neckline!
@@ -5377,6 +5405,23 @@ A level whose break is commonly read as confirming the pattern | detail: A descr
 A guarantee the pattern plays out | detail: Overstates certainty | wrong: A break is a clue, not a guarantee.
 The exact future price target | detail: Incorrect | wrong: The neckline is a level, not a prediction.
 WHY: The neckline is the confirmation level — described, not a certainty.
+
+
+[FILL] The neckline connects the two [___] between the peaks.
+troughs
+peaks
+wicks
+WHY: The neckline runs along the lows between the shoulders and head, not the peaks.
+
+[TF] Price breaking the neckline is commonly read as confirming the pattern.
+ANSWER: True
+WHY: The neckline break is the commonly cited confirmation step.
+
+[MC] What is the neckline, in simple terms?
+The level connecting the troughs between the three peaks.
+The tallest peak itself.
+A random line unrelated to the pattern.
+WHY: The neckline specifically connects the two troughs framing the head.
 
 NODE 4
 TITLE: Inverse Head & Shoulders
@@ -5424,6 +5469,23 @@ The two patterns are the same thing.
 Troughs and peaks don't change the name.
 WHY: Peaks-up is the regular pattern; troughs-down is the inverse.
 
+
+[FILL] An inverse head & shoulders has three [___] instead of three peaks.
+troughs
+wicks
+necklines
+WHY: The inverse version flips peaks into troughs.
+
+[TF] An inverse head & shoulders is commonly read as a possible reversal upward.
+ANSWER: True
+WHY: Forming after a down-move, it's commonly read as a possible upward reversal.
+
+[MC] In an inverse head & shoulders, which trough is the lowest?
+The head (middle trough).
+The left shoulder.
+The right shoulder.
+WHY: The head is the lowest of the three troughs in the inverse version.
+
 NODE 5
 TITLE: Reading Symmetry
 CELEBRATION: You can judge a head & shoulders' symmetry!
@@ -5461,6 +5523,17 @@ If the middle peak isn't the highest, it isn't a head & shoulders — the head m
 The head can be the lowest peak.
 Peak heights never matter.
 WHY: The defining feature is a head that stands above both shoulders.
+
+
+[FILL] Judging shoulder symmetry is about [___], not exact precision.
+degree
+guaranteed certainty
+random guessing
+WHY: "About the same" height is a practical, descriptive judgment.
+
+[TF] A lopsided head & shoulders (very unequal shoulders) is read as a weaker version of the pattern.
+ANSWER: True
+WHY: Unequal shoulders weaken the "clean" pattern read, though it can still count loosely.
 
 NODE 6
 TITLE: Head & Shoulders vs. Double Top
@@ -5509,6 +5582,17 @@ Peak count never matters.
 A double top and head & shoulders are identical.
 WHY: The peak count (and the higher middle) is exactly what distinguishes them.
 
+
+[FILL] Counting the [___] is the fastest way to tell a double top from a head & shoulders.
+peaks
+candle colors
+timeframes
+WHY: Two peaks = double top; three peaks with a higher middle = head & shoulders.
+
+[TF] A head & shoulders and a double top can never be confused with each other.
+ANSWER: False
+WHY: Without carefully counting peaks, the two patterns can be mixed up — that's exactly the skill this lesson builds.
+
 NODE 7
 TITLE: Confirmation
 CELEBRATION: You understand head & shoulders confirmation!
@@ -5543,6 +5627,23 @@ Because the pattern is always confirmed at the head | detail: Too early | wrong:
 Because confirmation guarantees the outcome | detail: Overstates certainty | wrong: Even a confirmed pattern can fail.
 WHY: The neckline break is the commonly cited confirmation; before it, the pattern can still fail.
 
+
+[FILL] Before the neckline breaks, a head & shoulders is still [___].
+forming
+confirmed
+guaranteed
+WHY: It remains a forming (not yet confirmed) pattern until the neckline breaks.
+
+[TF] Confirmation happens the moment the head forms, before the right shoulder.
+ANSWER: False
+WHY: Confirmation is tied to the neckline breaking after the right shoulder, not to the head alone.
+
+[MC] What must happen for a head & shoulders to be considered confirmed?
+Price must break the neckline after the right shoulder forms.
+The left shoulder must be taller than the head.
+Nothing — it's confirmed immediately once three peaks appear.
+WHY: The neckline break after the right shoulder is the commonly cited confirmation step.
+
 NODE 8
 TITLE: When It Fails
 CELEBRATION: You understand failed head & shoulders!
@@ -5575,6 +5676,23 @@ Because price can still fail to break the neckline | detail: Patterns fail somet
 Because patterns always work | detail: Overstates certainty | wrong: This is the overconfidence to avoid.
 Because the pattern controls price | detail: Incorrect | wrong: A pattern describes; it doesn't control the market.
 WHY: Any pattern can fail, so it's read as a probability-shaped clue, not a guarantee.
+
+
+[FILL] A head & shoulders can fail if price never breaks the [___].
+neckline
+head
+left shoulder
+WHY: Failing to break the neckline (or breaking back the other way) is how the pattern fails.
+
+[TF] A failed head & shoulders is still useful to recognize in hindsight.
+ANSWER: True
+WHY: Recognizing failures builds a more complete, honest understanding of the pattern.
+
+[MC] Why is a head & shoulders read as a clue rather than a certainty?
+Because it can fail to confirm, just like any chart pattern.
+Because it never fails once three peaks form.
+Because the neckline guarantees the outcome.
+WHY: Like other patterns in this course, it's a probability-shaped clue, not a guarantee.
 
 NODE 9
 TITLE: Identification Drill
@@ -5613,6 +5731,17 @@ CHART: headShoulders
 LEVEL: support
 WHY: The neckline runs along the two troughs.
 
+
+[FILL] This drill practices spotting the pattern's [___] quickly.
+parts
+color
+volume
+WHY: Naming the head, shoulders, and neckline quickly is the point of this drill.
+
+[TF] Fast identification drills build quicker pattern recognition over time.
+ANSWER: True
+WHY: Repetition across mixed charts speeds up recognition.
+
 NODE 10
 TITLE: What It Suggests
 CELEBRATION: You can read what a head & shoulders suggests!
@@ -5646,6 +5775,23 @@ That converts a descriptive read into a certainty and a trade command — the pa
 A descriptive read and a trade command are the same.
 Patterns are always trade commands.
 WHY: A descriptive read isn't a guaranteed signal; treating it as one overstates certainty.
+
+
+[FILL] "What it suggests" stays [___], never a certainty.
+descriptive
+guaranteed
+random
+WHY: This course consistently frames pattern reads as descriptive, not certain.
+
+[TF] A head & shoulders suggests something different depending on whether the neckline has broken yet.
+ANSWER: True
+WHY: A forming pattern (neckline unbroken) suggests something different than a confirmed one.
+
+[MC] What should "what it suggests" never be read as?
+A guaranteed trade signal.
+A descriptive clue.
+Useful context.
+WHY: This course treats pattern suggestions as descriptive context, never a guaranteed signal.
 
 NODE 11
 TITLE: Mixed Recognition
@@ -5682,6 +5828,17 @@ WHY: Recognizing shape plus the confirmation level is the intermediate skill.
 CHART: inverseHeadShoulders
 LEVEL: resistance
 WHY: In the inverse pattern, the neckline runs along the two peaks.
+
+
+[FILL] Mixed recognition combines naming the shape with reading its [___].
+level context
+candle color
+company name
+WHY: This lesson mixes pattern identification with reading the surrounding level context.
+
+[TF] Practicing mixed recognition helps reinforce everything covered earlier in the unit.
+ANSWER: True
+WHY: Mixed rounds reinforce and test the whole unit's skills together.
 
 NODE 12
 TITLE: Head & Shoulders Review
@@ -5733,6 +5890,19 @@ A head & shoulders needs three clear peaks with a higher middle and a neckline �
 Any three candles form a head & shoulders.
 The neckline and peak heights don't matter.
 WHY: The pattern has specific requirements (three peaks, higher middle, neckline); random wiggles don't qualify.
+
+
+[FILL] This unit treats head & shoulders as a [___] pattern, confirmed by the neckline.
+descriptive
+guaranteed
+random
+WHY: Descriptive, neckline-confirmed reading has been the throughline of this unit.
+
+[MC] What's the single biggest skill this unit builds?
+Reading a three-peak (or three-trough) structure and its confirmation level together.
+Memorizing one exact price forever.
+Ignoring the neckline entirely.
+WHY: Combining structure and confirmation is the core skill from this unit.
 
 UNIT 8 — Triangles
 NODE 1
