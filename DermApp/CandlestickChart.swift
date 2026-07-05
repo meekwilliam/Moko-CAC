@@ -23,6 +23,13 @@ struct CandlestickChart: View {
     /// 0-based index of a candle to visually call out (e.g. "look at this one").
     var highlightIndex: Int? = nil
 
+    // Overlay lines (moving averages, VWAP, …): one value per candle, drawn as
+    // a connected sloped line rather than a flat support/resistance level.
+    var maLine: [Double]? = nil
+    var maLineLabel: String = "MA"
+    var maLine2: [Double]? = nil
+    var maLine2Label: String = "Fast MA"
+
     // Interactive "tap a candle" support.
     /// The candle the learner has tapped (draws a selection ring).
     var chosenIndex: Int? = nil
@@ -50,6 +57,7 @@ struct CandlestickChart: View {
 
     private func mapper(for geo: GeometryProxy) -> ValueMapper {
         let values = candles.flatMap { [$0.high, $0.low] } + [supportLevel, resistanceLevel].compactMap { $0 }
+            + (maLine ?? []) + (maLine2 ?? [])
         let maxV = values.max() ?? 1
         let minV = values.min() ?? 0
         // A little vertical breathing room so wicks don't touch the frame edges.
@@ -68,6 +76,8 @@ struct CandlestickChart: View {
             ZStack(alignment: .topLeading) {
                 if let s = supportLevel { levelLine(y: m.y(s), label: "Support", color: bullish, geo: geo) }
                 if let r = resistanceLevel { levelLine(y: m.y(r), label: "Resistance", color: bearish, geo: geo) }
+                if let line = maLine { overlayLine(line, slot: slot, mapper: m, color: Color(hex: "#F59E0B"), label: maLineLabel) }
+                if let line = maLine2 { overlayLine(line, slot: slot, mapper: m, color: Color(hex: "#38bdf8"), label: maLine2Label) }
 
                 ForEach(Array(candles.enumerated()), id: \.offset) { i, c in
                     let cx = slot * (CGFloat(i) + 0.5)
@@ -156,6 +166,31 @@ struct CandlestickChart: View {
                 .offset(y: y - 20)
         }
     }
+
+    /// A sloped overlay line (moving average, VWAP, …), one value per candle,
+    /// connected candle-center to candle-center — unlike the flat, dashed
+    /// support/resistance line.
+    private func overlayLine(_ values: [Double], slot: CGFloat, mapper m: ValueMapper,
+                              color: Color, label: String) -> some View {
+        ZStack(alignment: .topTrailing) {
+            Path { p in
+                for (i, v) in values.enumerated() {
+                    let pt = CGPoint(x: slot * (CGFloat(i) + 0.5), y: m.y(v))
+                    if i == 0 { p.move(to: pt) } else { p.addLine(to: pt) }
+                }
+            }
+            .stroke(color, style: StrokeStyle(lineWidth: 2, lineCap: .round, lineJoin: .round))
+
+            if let last = values.last {
+                Text(label.uppercased())
+                    .font(Theme.font(9, .black))
+                    .foregroundColor(color)
+                    .padding(.horizontal, 5).padding(.vertical, 2)
+                    .background(Capsule().fill(color.opacity(0.16)))
+                    .offset(x: -4, y: m.y(last) - 20)
+            }
+        }
+    }
 }
 
 // MARK: - Scenario presets
@@ -175,6 +210,8 @@ enum ChartScenario: String {
     case range, breakoutRetest, breakdownRetest
     case gapUp, gapDown
     case volatile
+    case priceAboveMA, priceBelowMA
+    case maCrossUp, maCrossDown
 
     var candles: [Candle] {
         switch self {
@@ -404,7 +441,9 @@ struct ScenarioChartView: View {
         CandlestickChart(candles: m.candles,
                          supportLevel: m.support,
                          resistanceLevel: m.resistance,
-                         highlightIndex: m.highlight)
+                         highlightIndex: m.highlight,
+                         maLine: m.maLine,
+                         maLine2: m.maLine2)
             .frame(height: height)
             .padding(.horizontal, 10).padding(.vertical, 14)
             .background(
@@ -427,6 +466,9 @@ struct ChartModel {
     var support: Double? = nil
     var resistance: Double? = nil
     var highlight: Int? = nil
+    // Overlay lines (moving average, VWAP, …): one value per candle.
+    var maLine: [Double]? = nil
+    var maLine2: [Double]? = nil
 }
 
 /// Small, fast, deterministic RNG (xorshift64) so a seed reproduces a chart.
@@ -779,6 +821,58 @@ extension ChartScenario {
                 p = close + g.u(-0.4, 0.4)
             }
             return ChartModel(candles: out)
+
+        case .priceAboveMA:
+            // Price starts below a roughly flat MA, then crosses above it and
+            // holds — the crossing candle (index 3) is the structurally fixed target.
+            let ma = base + 1.0
+            var out: [Candle] = []; var p = base
+            out.append(g.c(open: p, close: ma - g.u(0.6, 1.0), wick: 0.25)); p = out.last!.close
+            out.append(g.c(open: p, close: ma - g.u(0.3, 0.6), wick: 0.25)); p = out.last!.close
+            out.append(g.c(open: p, close: ma - g.u(0.05, 0.25), wick: 0.2)); p = out.last!.close
+            out.append(g.c(open: p, close: ma + g.u(0.3, 0.6), wick: 0.25)); p = out.last!.close  // crosses above
+            out.append(g.c(open: p, close: ma + g.u(0.6, 1.0), wick: 0.25)); p = out.last!.close
+            out.append(g.c(open: p, close: ma + g.u(0.9, 1.4), wick: 0.25))
+            let line = out.indices.map { _ in ma + g.u(-0.08, 0.08) }
+            return ChartModel(candles: out, highlight: 3, maLine: line)
+        case .priceBelowMA:
+            // Mirror: price starts above a roughly flat MA, then crosses below and holds.
+            let ma = base + 1.0
+            var out: [Candle] = []; var p = base + 2.0
+            out.append(g.c(open: p, close: ma + g.u(0.6, 1.0), wick: 0.25)); p = out.last!.close
+            out.append(g.c(open: p, close: ma + g.u(0.3, 0.6), wick: 0.25)); p = out.last!.close
+            out.append(g.c(open: p, close: ma + g.u(0.05, 0.25), wick: 0.2)); p = out.last!.close
+            out.append(g.c(open: p, close: ma - g.u(0.3, 0.6), wick: 0.25)); p = out.last!.close  // crosses below
+            out.append(g.c(open: p, close: ma - g.u(0.6, 1.0), wick: 0.25)); p = out.last!.close
+            out.append(g.c(open: p, close: ma - g.u(0.9, 1.4), wick: 0.25))
+            let line = out.indices.map { _ in ma + g.u(-0.08, 0.08) }
+            return ChartModel(candles: out, highlight: 3, maLine: line)
+
+        case .maCrossUp:
+            // A fast MA rising from below a roughly flat slow MA to above it —
+            // the crossover candle (index 3) is the structurally fixed target.
+            let slowLevel = base + 1.0
+            var out: [Candle] = []; var p = base + 0.3
+            for _ in 0..<6 { let cl = p + g.u(0.15, 0.45); out.append(g.c(open: p, close: cl, wick: 0.2)); p = cl }
+            let slow = out.indices.map { _ in slowLevel + g.u(-0.06, 0.06) }
+            let fastStart = slowLevel - g.u(0.9, 1.2), fastEnd = slowLevel + g.u(0.9, 1.2)
+            let fast = (0..<6).map { i -> Double in
+                let t = Double(i) / 5.0
+                return fastStart + (fastEnd - fastStart) * t
+            }
+            return ChartModel(candles: out, highlight: 3, maLine: slow, maLine2: fast)
+        case .maCrossDown:
+            // Mirror: a fast MA falling from above a roughly flat slow MA to below it.
+            let slowLevel = base + 1.0
+            var out: [Candle] = []; var p = base + 1.7
+            for _ in 0..<6 { let cl = p - g.u(0.15, 0.45); out.append(g.c(open: p, close: cl, wick: 0.2)); p = cl }
+            let slow = out.indices.map { _ in slowLevel + g.u(-0.06, 0.06) }
+            let fastStart = slowLevel + g.u(0.9, 1.2), fastEnd = slowLevel - g.u(0.9, 1.2)
+            let fast = (0..<6).map { i -> Double in
+                let t = Double(i) / 5.0
+                return fastStart + (fastEnd - fastStart) * t
+            }
+            return ChartModel(candles: out, highlight: 3, maLine: slow, maLine2: fast)
         }
     }
 }

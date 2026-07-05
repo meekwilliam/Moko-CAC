@@ -29478,7 +29478,15 @@
       {
        "type": "intro",
        "title": "Which Side Is Price On?",
-       "text": "Price trading <b>above</b> a rising MA is commonly described as strength; <b>below</b> a falling MA as weakness. It's a descriptive read, not a signal to act."
+       "text": "Price trading <b>above</b> a rising MA is commonly described as strength; <b>below</b> a falling MA as weakness. It's a descriptive read, not a signal to act.",
+       "chart": "priceAboveMA"
+      },
+      {
+       "type": "tap_candle",
+       "question": "Tap the candle where price crosses above the MA line.",
+       "target": 3,
+       "explanation": "The 4th candle is where price closes back above the MA, the crossing point.",
+       "chart": "priceAboveMA"
       },
       {
        "type": "multiple_choice",
@@ -29509,6 +29517,13 @@
        "explanation": "It describes strength/weakness; it isn't an automatic buy/sell."
       },
       {
+       "type": "tap_candle",
+       "question": "Tap the candle where price crosses below the MA line.",
+       "target": 3,
+       "explanation": "The 4th candle is where price closes back below the MA, the crossing point.",
+       "chart": "priceBelowMA"
+      },
+      {
        "type": "spot_mistake",
        "scenario": "Someone treats \"price above the MA\" as an automatic, guaranteed buy signal.",
        "question": "What is the mistake?",
@@ -29518,7 +29533,8 @@
         "Price above the MA is a descriptive strength read, not a guaranteed signal to act on."
        ],
        "correct": 2,
-       "explanation": "An MA read is descriptive context, never a guaranteed signal."
+       "explanation": "An MA read is descriptive context, never a guaranteed signal.",
+       "chart": "priceAboveMA"
       },
       {
        "type": "fill_blank",
@@ -29627,7 +29643,15 @@
       {
        "type": "intro",
        "title": "When Fast Crosses Slow",
-       "text": "A \"crossover\" is when a fast MA crosses a slow MA. It's commonly used as a descriptive trend cue. But MAs are <b>lagging</b> (built from past prices), so crossovers are not guaranteed signals."
+       "text": "A \"crossover\" is when a fast MA crosses a slow MA. It's commonly used as a descriptive trend cue. But MAs are <b>lagging</b> (built from past prices), so crossovers are not guaranteed signals.",
+       "chart": "maCrossUp"
+      },
+      {
+       "type": "tap_candle",
+       "question": "Tap the candle where the fast MA crosses above the slow MA.",
+       "target": 3,
+       "explanation": "The 4th candle is where the fast (blue) MA crosses above the slow (amber) MA, a bullish crossover.",
+       "chart": "maCrossUp"
       },
       {
        "type": "multiple_choice",
@@ -29658,6 +29682,13 @@
        "explanation": "Averaging past prices makes MAs lag, not lead."
       },
       {
+       "type": "tap_candle",
+       "question": "Tap the candle where the fast MA crosses below the slow MA.",
+       "target": 3,
+       "explanation": "The 4th candle is where the fast (blue) MA crosses below the slow (amber) MA, a bearish crossover.",
+       "chart": "maCrossDown"
+      },
+      {
        "type": "ingredient_match",
        "question": "How should a crossover be read?",
        "options": [
@@ -29680,7 +29711,8 @@
         }
        ],
        "concern": "Reading it honestly",
-       "explanation": "A crossover is a lagging, descriptive cue, never a guarantee."
+       "explanation": "A crossover is a lagging, descriptive cue, never a guarantee.",
+       "chart": "maCrossUp"
       },
       {
        "type": "fill_blank",
