@@ -10746,6 +10746,16 @@
        "chart": "uptrend"
       },
       {
+       "type": "tap_candles",
+       "question": "Tap the two swing highs that make higher highs in this uptrend.",
+       "targets": [
+        1,
+        3
+       ],
+       "explanation": "Candles 2 and 4 are the swing highs, each peaking higher than the last, the \"higher highs\" of the uptrend.",
+       "chart": "pullbackUptrend"
+      },
+      {
        "type": "true_false",
        "question": "\"Higher highs and higher lows\" describes the swing pattern behind an uptrend.",
        "correct": true,
@@ -18097,7 +18107,7 @@
        "type": "intro",
        "title": "Parallel Lines",
        "text": "A channel is a trend where the highs and lows move within <b>parallel</b> lines, an ascending channel (up) or descending channel (down). Unlike a wedge, the lines stay parallel, not converging.",
-       "chart": "uptrend"
+       "chart": "ascendingChannel"
       },
       {
        "type": "multiple_choice",
@@ -18108,7 +18118,8 @@
         "Ascending channel."
        ],
        "correct": 2,
-       "explanation": "A rising trend within parallel lines is an ascending channel."
+       "explanation": "A rising trend within parallel lines is an ascending channel.",
+       "chart": "ascendingChannel"
       },
       {
        "type": "fill_blank",
@@ -18126,7 +18137,26 @@
        "question": "The chart above shows a descending channel.",
        "correct": true,
        "explanation": "A falling trend within parallel boundaries is a descending channel.",
-       "chart": "downtrend"
+       "chart": "descendingChannel"
+      },
+      {
+       "type": "draw_trendline",
+       "question": "Drag to draw the lower boundary of this ascending channel (connect the two pullback lows).",
+       "target_start": 0,
+       "target_end": 4,
+       "explanation": "The lower boundary of the channel runs along the rising pullback lows, candles 1 and 5.",
+       "chart": "ascendingChannel"
+      },
+      {
+       "type": "tap_candles",
+       "question": "Tap every candle that pushes up to the upper channel boundary.",
+       "targets": [
+        1,
+        3,
+        5
+       ],
+       "explanation": "Candles 2, 4, and 6 rally up to touch the rising upper boundary; the others pull back to the lower one.",
+       "chart": "ascendingChannel"
       },
       {
        "type": "matching",
