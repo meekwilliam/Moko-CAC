@@ -15660,7 +15660,228 @@ Every opening range break should be traded automatically.
 The opening range has no descriptive value at all.
 WHY: Like every concept in this course, the opening range is descriptive context, never a trade signal.
 
-UNIT 39 — Trading Psychology
+UNIT 39 — Sector & Index Strength
+NODE 1
+TITLE: Stocks Don't Move Alone
+CELEBRATION: You understand sector and index context!
+
+INTRO
+TITLE: The Bigger Picture
+TEXT: Individual stocks commonly move alongside their sector (a group of related companies) and the broader market indexes, rather than in complete isolation.
+
+[MC] Sector and index context describes...
+How a stock's movement commonly relates to its sector and the broader market.
+A guaranteed prediction of a stock's next move.
+A rule that stocks never share any common movement.
+WHY: Sector and index awareness is about relative context, not a prediction rule.
+
+[TF] Individual stocks commonly move somewhat alongside their sector and the broader market.
+ANSWER: True
+WHY: Shared macro and sector-wide forces commonly influence related stocks together.
+
+[FILL] A sector is a group of companies in the same [___] of business.
+type
+country
+color
+WHY: A sector groups companies by the type of business they're in, such as technology or energy.
+
+[MATCH] Match the term to its focus.
+Sector => A group of related companies by business type
+Index => A broader gauge tracking many stocks together
+Individual stock => One company, often influenced by both of the above
+WHY: These three layers, stock, sector, and index, are related but distinct levels of context.
+
+[PICK] Why consider sector and index context alongside an individual stock?
+CONCERN: Adding context
+Because shared forces commonly move related stocks together, adding useful context | detail: Broader context
+Because every stock always moves in perfect lockstep with its sector | detail: Overstates it | wrong: Correlation is common but not exact or guaranteed.
+Because sector and index context replaces looking at the individual stock | detail: Incorrect | wrong: It's added context, not a replacement.
+WHY: Sector and index context adds useful confluence without guaranteeing exact matching movement.
+
+[SPOT] Someone assumes a stock always moves in perfect lockstep with its sector.
+QUESTION: What is the mistake?
+Stocks commonly move somewhat together with their sector, but not in guaranteed lockstep.
+Every stock in a sector moves identically at all times.
+Sector context has no relationship to an individual stock at all.
+WHY: Correlation is common, not a guarantee, so individual stocks can diverge from their sector.
+
+NODE 2
+TITLE: Relative Strength and Weakness
+CELEBRATION: You can describe relative strength and weakness!
+
+INTRO
+TITLE: Outperforming or Lagging
+TEXT: When a stock moves more than its sector or index in the same direction, it's commonly described as showing relative strength; moving less, or opposite, is commonly described as relative weakness.
+
+[MC] A stock rising more than its sector on an up day is commonly described as showing...
+Relative strength.
+Relative weakness.
+A guaranteed reversal.
+WHY: Outperforming its peer group to the upside is the definition of relative strength in this context.
+
+[TF] A stock falling more than its sector on a down day, or rising less than its sector on an up day, is commonly described as relative weakness.
+ANSWER: True
+WHY: Underperforming the sector, in either direction, fits the relative weakness description.
+
+[FILL] Moving more than the sector/index in the same direction is commonly called relative [___].
+strength
+weakness
+volume
+WHY: This is simply the descriptive term used for outperformance versus a peer group.
+
+[MATCH] Match the scenario to its description.
+Stock up more than sector => Relative strength
+Stock down more than sector => Relative weakness
+Stock moving in line with sector => Neither notably strong nor weak
+WHY: Relative strength/weakness describes divergence from the sector's typical movement.
+
+[PICK] What does relative strength describe, on its own?
+CONCERN: Staying descriptive
+That a stock is outperforming its sector or index, nothing more by itself | detail: A descriptive comparison
+A guarantee that outperformance will continue | detail: Overstates certainty | wrong: Relative strength describes current comparison, not a guaranteed future.
+Proof that the stock has better fundamentals | detail: Different claim | wrong: Relative strength is a price comparison, not a fundamentals judgment.
+WHY: Relative strength is a descriptive comparison of price movement, not a guarantee or fundamentals claim.
+
+[SPOT] Someone treats relative strength today as a guarantee it continues tomorrow.
+QUESTION: What is the mistake?
+Relative strength describes current comparative movement, it doesn't guarantee future outperformance.
+Relative strength always continues indefinitely once observed.
+Relative strength has no meaning beyond a single day.
+WHY: Like any descriptive read, relative strength can shift from one period to the next.
+
+NODE 3
+TITLE: Sector Rotation
+CELEBRATION: You understand sector rotation as a concept!
+
+INTRO
+TITLE: Money Moving Between Sectors
+TEXT: Sector rotation describes a pattern where different sectors take turns showing relative strength or weakness over time, commonly discussed as shifting participation between areas of the market.
+
+[MC] Sector rotation describes...
+Different sectors taking turns showing relative strength or weakness over time.
+A guaranteed schedule of which sector rises next.
+A rule that only one sector ever trades at a time.
+WHY: Sector rotation is a descriptive pattern of shifting relative strength, not a fixed schedule.
+
+[TF] Sector rotation is discussed as a pattern, not a guaranteed or fixed schedule.
+ANSWER: True
+WHY: Like most concepts in this course, it's a descriptive pattern rather than a predictive rule.
+
+[FILL] Sector rotation describes sectors taking [___] showing relative strength over time.
+turns
+none
+identical
+WHY: The core idea is that which sector shows strength commonly shifts over time.
+
+[MATCH] Match the term to its focus.
+Sector rotation => Sectors taking turns showing relative strength
+Relative strength => One stock or sector outperforming a comparison
+Index => The broader backdrop sectors rotate within
+WHY: Sector rotation is really relative strength/weakness applied at the sector level over time.
+
+[PICK] How should sector rotation be treated as a concept?
+CONCERN: Framing it correctly
+As a descriptive pattern of shifting relative strength between sectors, not a fixed schedule | detail: Descriptive framing
+As a guaranteed calendar of which sector leads each month | detail: Overstates certainty | wrong: No fixed schedule is guaranteed.
+As a concept unrelated to relative strength | detail: Incorrect | wrong: It's relative strength/weakness applied over time at the sector level.
+WHY: Sector rotation is best understood as a descriptive, shifting pattern rather than a predictive schedule.
+
+[SPOT] Someone assumes sector rotation follows a fixed, guaranteed monthly schedule.
+QUESTION: What is the mistake?
+Sector rotation describes a shifting pattern over time, not a fixed guaranteed schedule.
+Sector rotation always follows an identical, predictable calendar.
+Sector rotation has no relationship to relative strength.
+WHY: Sector rotation is a descriptive pattern, not a guaranteed timetable.
+
+NODE 4
+TITLE: Confluence With Sector and Index Context
+CELEBRATION: You can connect sector context to broader analysis!
+
+INTRO
+TITLE: Adding One More Layer of Confluence
+TEXT: Sector and index context can add one more layer of confluence alongside chart patterns, volume, and other concepts covered earlier, echoing the Confluence unit's core idea.
+
+[MC] Considering sector and index context alongside a chart pattern is an example of...
+Adding another layer of confluence.
+Replacing the need to look at the chart at all.
+A guaranteed trade signal.
+WHY: This connects directly back to the Confluence unit, where multiple factors are considered together descriptively.
+
+[TF] Sector and index context is one more descriptive factor to weigh alongside others, not a standalone signal.
+ANSWER: True
+WHY: Consistent with how confluence was framed earlier in the course.
+
+[FILL] Weighing sector context alongside chart patterns is an example of building [___].
+confluence
+certainty
+a guarantee
+WHY: This is the same confluence concept from earlier, just adding a sector/index layer.
+
+[MATCH] Match the factor to its role in confluence.
+Chart pattern => One descriptive factor
+Volume/RVOL => Another descriptive factor
+Sector/index context => One more descriptive factor, not a replacement for the others
+WHY: Confluence means weighing multiple descriptive factors together, none of which alone is a guarantee.
+
+[PICK] How does sector/index context fit alongside other analysis tools from this course?
+CONCERN: Connecting concepts
+As one more descriptive factor to weigh, consistent with the Confluence unit | detail: Adds to confluence
+As a replacement for chart patterns and volume analysis | detail: Overstates it | wrong: It's additive context, not a replacement.
+As something entirely disconnected from the rest of the course | detail: Incorrect | wrong: It connects directly to the Confluence unit's framing.
+WHY: Sector and index context slots into the same multi-factor, descriptive confluence approach taught earlier.
+
+[SPOT] Someone uses sector strength alone, ignoring every other factor, as a complete trading system.
+QUESTION: What is the mistake?
+Sector context is one descriptive factor among several, not a complete standalone system.
+Sector strength alone is sufficient and no other factor matters.
+Sector context has no relationship to the Confluence unit's ideas.
+WHY: This echoes the Confluence unit's core lesson that no single factor should be relied on alone.
+
+NODE 5
+TITLE: Sector & Index Strength Review
+CELEBRATION: You've completed the Sector & Index Strength unit!
+
+INTRO
+TITLE: Bringing It Together
+TEXT: A final review of sector and index context, relative strength and weakness, sector rotation, and how it all connects to confluence.
+
+[TF] Individual stocks commonly move somewhat alongside their sector and the broader market, though not in guaranteed lockstep.
+ANSWER: True
+WHY: That's the core, consistent idea across this whole unit.
+
+[FILL] A stock outperforming its sector to the upside is commonly described as relative [___].
+strength
+weakness
+volume
+WHY: A recap of the relative strength/weakness terminology from this unit.
+
+[MC] How should sector rotation be understood?
+As a descriptive pattern of sectors taking turns showing relative strength over time.
+As a guaranteed fixed schedule.
+As something with no connection to relative strength.
+WHY: A recap of sector rotation as a descriptive, non-predictive concept.
+
+[MATCH] Match the term to its one-line meaning.
+Relative strength => Outperforming a sector/index comparison
+Relative weakness => Underperforming a sector/index comparison
+Sector rotation => Sectors taking turns showing strength over time
+WHY: A quick recap of the unit's core vocabulary.
+
+[PICK] Which best summarizes this unit?
+CONCERN: Reviewing the big picture
+Sector and index context adds descriptive confluence, without guaranteeing any stock's future movement | detail: The central theme
+Sector context guarantees which stocks will outperform going forward | detail: Overstates certainty | wrong: It's descriptive context, not a guarantee.
+Sector and index context is unrelated to confluence | detail: Incorrect | wrong: It connects directly to the Confluence unit's framing.
+WHY: Sector and index context is valuable as one more descriptive layer of confluence, not a predictive guarantee.
+
+[SPOT] Someone finishes this unit and starts trading based on sector strength alone as a complete signal.
+QUESTION: What is the mistake?
+Sector strength is one descriptive factor among several, not a standalone buy or sell signal.
+Sector strength alone is a complete and sufficient trading system.
+Sector context has no descriptive value at all.
+WHY: Like every concept in this course, sector and index context is descriptive confluence, never a standalone signal.
+
+UNIT 40 — Trading Psychology
 NODE 1
 TITLE: What Is FOMO?
 CELEBRATION: You understand FOMO!
@@ -16209,7 +16430,7 @@ WHY: All the core patterns from this unit are reviewed together here.
 ANSWER: True
 WHY: This has been the throughline, emotional patterns pulling away from disciplined plan-following.
 
-UNIT 40 — Full Simulation Training
+UNIT 41 — Full Simulation Training
 NODE 1
 TITLE: Classifying Trending Markets
 CELEBRATION: You can classify a trending market!

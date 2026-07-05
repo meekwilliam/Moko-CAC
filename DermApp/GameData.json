@@ -24212,6 +24212,13 @@
      "title": "Opening Range",
      "bg": "#8B5CF6",
      "slab": "#6D28D9"
+    },
+    {
+     "index": 14,
+     "eyebrow": "SECTION 3 · UNIT 15",
+     "title": "Sector & Index Strength",
+     "bg": "#8B5CF6",
+     "slab": "#6D28D9"
     }
    ],
    "nodes": [
@@ -24742,6 +24749,36 @@
      "svg": "<svg width=\"34\" height=\"34\" viewBox=\"0 0 32 32\" fill=\"rgba(255,255,255,0.65)\">\n              <circle cx=\"16\" cy=\"16\" r=\"12\" fill=\"none\" stroke=\"rgba(255,255,255,0.65)\" stroke-width=\"2.5\"/>\n              <rect x=\"14.8\" y=\"7\" width=\"2.4\" height=\"9\" rx=\"1.2\"/>\n              <rect x=\"14.8\" y=\"14.5\" width=\"6.5\" height=\"2.4\" rx=\"1.2\"/>\n            </svg>",
      "title": "Opening Range Review",
      "sectionIndex": 13
+    },
+    {
+     "num": 89,
+     "svg": "<svg width=\"34\" height=\"34\" viewBox=\"0 0 32 32\" fill=\"rgba(255,255,255,0.65)\">\n              <path d=\"M16 3 L28.5 9 L28.5 19 C28.5 26.5 23 30.5 16 32 C9 30.5 3.5 26.5 3.5 19 L3.5 9 Z\"/>\n            </svg>",
+     "title": "Stocks Don't Move Alone",
+     "sectionIndex": 14
+    },
+    {
+     "num": 90,
+     "svg": "<svg width=\"34\" height=\"34\" viewBox=\"0 0 32 32\" fill=\"rgba(255,255,255,0.65)\">\n              <circle cx=\"16\" cy=\"16\" r=\"12\"/>\n              <path d=\"M16 4 C16 4 20 8 20 16 C20 24 16 28 16 28\" fill=\"rgba(0,0,0,0.18)\"/>\n              <path d=\"M16 4 C16 4 12 8 12 16 C12 24 16 28 16 28\" fill=\"rgba(0,0,0,0.10)\"/>\n              <circle cx=\"16\" cy=\"16\" r=\"2.5\" fill=\"rgba(0,0,0,0.3)\"/>\n            </svg>",
+     "title": "Relative Strength and Weakness",
+     "sectionIndex": 14
+    },
+    {
+     "num": 91,
+     "svg": "<svg width=\"34\" height=\"34\" viewBox=\"0 0 32 32\" fill=\"white\">\n              <path d=\"M16 3 L28.5 9 L28.5 19 C28.5 26.5 23 30.5 16 32 C9 30.5 3.5 26.5 3.5 19 L3.5 9 Z\"/>\n            </svg>",
+     "title": "Sector Rotation",
+     "sectionIndex": 14
+    },
+    {
+     "num": 92,
+     "svg": "<svg width=\"34\" height=\"34\" viewBox=\"0 0 32 32\" fill=\"rgba(255,255,255,0.65)\">\n              <path d=\"M16 4 C16 4 6 14 6 21 A10 10 0 0 0 26 21 C26 14 16 4 16 4Z\"/>\n            </svg>",
+     "title": "Confluence With Sector and Index Context",
+     "sectionIndex": 14
+    },
+    {
+     "num": 93,
+     "svg": "<svg width=\"34\" height=\"34\" viewBox=\"0 0 32 32\" fill=\"rgba(255,255,255,0.65)\">\n              <circle cx=\"16\" cy=\"16\" r=\"12\" fill=\"none\" stroke=\"rgba(255,255,255,0.65)\" stroke-width=\"2.5\"/>\n              <rect x=\"14.8\" y=\"7\" width=\"2.4\" height=\"9\" rx=\"1.2\"/>\n              <rect x=\"14.8\" y=\"14.5\" width=\"6.5\" height=\"2.4\" rx=\"1.2\"/>\n            </svg>",
+     "title": "Sector & Index Strength Review",
+     "sectionIndex": 14
     }
    ],
    "lessons": [
@@ -33373,6 +33410,486 @@
        "chart": "volatile"
       }
      ]
+    },
+    {
+     "node": 89,
+     "title": "Stocks Don't Move Alone",
+     "celebration": "You understand sector and index context!",
+     "screens": [
+      {
+       "type": "intro",
+       "title": "The Bigger Picture",
+       "text": "Individual stocks commonly move alongside their sector (a group of related companies) and the broader market indexes, rather than in complete isolation."
+      },
+      {
+       "type": "multiple_choice",
+       "question": "Sector and index context describes...",
+       "options": [
+        "A rule that stocks never share any common movement.",
+        "A guaranteed prediction of a stock's next move.",
+        "How a stock's movement commonly relates to its sector and the broader market."
+       ],
+       "correct": 2,
+       "explanation": "Sector and index awareness is about relative context, not a prediction rule."
+      },
+      {
+       "type": "true_false",
+       "question": "Individual stocks commonly move somewhat alongside their sector and the broader market.",
+       "correct": true,
+       "explanation": "Shared macro and sector-wide forces commonly influence related stocks together."
+      },
+      {
+       "type": "fill_blank",
+       "question": "A sector is a group of companies in the same [___] of business.",
+       "options": [
+        "color",
+        "type",
+        "country"
+       ],
+       "correct": 1,
+       "explanation": "A sector groups companies by the type of business they're in, such as technology or energy."
+      },
+      {
+       "type": "matching",
+       "question": "Match the term to its focus.",
+       "pairs": [
+        [
+         "Sector",
+         "A group of related companies by business type"
+        ],
+        [
+         "Index",
+         "A broader gauge tracking many stocks together"
+        ],
+        [
+         "Individual stock",
+         "One company, often influenced by both of the above"
+        ]
+       ],
+       "explanation": "These three layers, stock, sector, and index, are related but distinct levels of context."
+      },
+      {
+       "type": "ingredient_match",
+       "question": "Why consider sector and index context alongside an individual stock?",
+       "options": [
+        {
+         "label": "Because shared forces commonly move related stocks together, adding useful context",
+         "correct": true,
+         "detail": "Broader context"
+        },
+        {
+         "label": "Because sector and index context replaces looking at the individual stock",
+         "correct": false,
+         "detail": "Incorrect",
+         "wrong_explanation": "It's added context, not a replacement."
+        },
+        {
+         "label": "Because every stock always moves in perfect lockstep with its sector",
+         "correct": false,
+         "detail": "Overstates it",
+         "wrong_explanation": "Correlation is common but not exact or guaranteed."
+        }
+       ],
+       "concern": "Adding context",
+       "explanation": "Sector and index context adds useful confluence without guaranteeing exact matching movement."
+      },
+      {
+       "type": "spot_mistake",
+       "scenario": "Someone assumes a stock always moves in perfect lockstep with its sector.",
+       "question": "What is the mistake?",
+       "options": [
+        "Sector context has no relationship to an individual stock at all.",
+        "Stocks commonly move somewhat together with their sector, but not in guaranteed lockstep.",
+        "Every stock in a sector moves identically at all times."
+       ],
+       "correct": 1,
+       "explanation": "Correlation is common, not a guarantee, so individual stocks can diverge from their sector."
+      }
+     ]
+    },
+    {
+     "node": 90,
+     "title": "Relative Strength and Weakness",
+     "celebration": "You can describe relative strength and weakness!",
+     "screens": [
+      {
+       "type": "intro",
+       "title": "Outperforming or Lagging",
+       "text": "When a stock moves more than its sector or index in the same direction, it's commonly described as showing relative strength; moving less, or opposite, is commonly described as relative weakness."
+      },
+      {
+       "type": "multiple_choice",
+       "question": "A stock rising more than its sector on an up day is commonly described as showing...",
+       "options": [
+        "Relative strength.",
+        "Relative weakness.",
+        "A guaranteed reversal."
+       ],
+       "correct": 0,
+       "explanation": "Outperforming its peer group to the upside is the definition of relative strength in this context."
+      },
+      {
+       "type": "true_false",
+       "question": "A stock falling more than its sector on a down day, or rising less than its sector on an up day, is commonly described as relative weakness.",
+       "correct": true,
+       "explanation": "Underperforming the sector, in either direction, fits the relative weakness description."
+      },
+      {
+       "type": "fill_blank",
+       "question": "Moving more than the sector/index in the same direction is commonly called relative [___].",
+       "options": [
+        "strength",
+        "volume",
+        "weakness"
+       ],
+       "correct": 0,
+       "explanation": "This is simply the descriptive term used for outperformance versus a peer group."
+      },
+      {
+       "type": "matching",
+       "question": "Match the scenario to its description.",
+       "pairs": [
+        [
+         "Stock up more than sector",
+         "Relative strength"
+        ],
+        [
+         "Stock down more than sector",
+         "Relative weakness"
+        ],
+        [
+         "Stock moving in line with sector",
+         "Neither notably strong nor weak"
+        ]
+       ],
+       "explanation": "Relative strength/weakness describes divergence from the sector's typical movement."
+      },
+      {
+       "type": "ingredient_match",
+       "question": "What does relative strength describe, on its own?",
+       "options": [
+        {
+         "label": "That a stock is outperforming its sector or index, nothing more by itself",
+         "correct": true,
+         "detail": "A descriptive comparison"
+        },
+        {
+         "label": "A guarantee that outperformance will continue",
+         "correct": false,
+         "detail": "Overstates certainty",
+         "wrong_explanation": "Relative strength describes current comparison, not a guaranteed future."
+        },
+        {
+         "label": "Proof that the stock has better fundamentals",
+         "correct": false,
+         "detail": "Different claim",
+         "wrong_explanation": "Relative strength is a price comparison, not a fundamentals judgment."
+        }
+       ],
+       "concern": "Staying descriptive",
+       "explanation": "Relative strength is a descriptive comparison of price movement, not a guarantee or fundamentals claim."
+      },
+      {
+       "type": "spot_mistake",
+       "scenario": "Someone treats relative strength today as a guarantee it continues tomorrow.",
+       "question": "What is the mistake?",
+       "options": [
+        "Relative strength describes current comparative movement, it doesn't guarantee future outperformance.",
+        "Relative strength always continues indefinitely once observed.",
+        "Relative strength has no meaning beyond a single day."
+       ],
+       "correct": 0,
+       "explanation": "Like any descriptive read, relative strength can shift from one period to the next."
+      }
+     ]
+    },
+    {
+     "node": 91,
+     "title": "Sector Rotation",
+     "celebration": "You understand sector rotation as a concept!",
+     "screens": [
+      {
+       "type": "intro",
+       "title": "Money Moving Between Sectors",
+       "text": "Sector rotation describes a pattern where different sectors take turns showing relative strength or weakness over time, commonly discussed as shifting participation between areas of the market."
+      },
+      {
+       "type": "multiple_choice",
+       "question": "Sector rotation describes...",
+       "options": [
+        "A guaranteed schedule of which sector rises next.",
+        "Different sectors taking turns showing relative strength or weakness over time.",
+        "A rule that only one sector ever trades at a time."
+       ],
+       "correct": 1,
+       "explanation": "Sector rotation is a descriptive pattern of shifting relative strength, not a fixed schedule."
+      },
+      {
+       "type": "true_false",
+       "question": "Sector rotation is discussed as a pattern, not a guaranteed or fixed schedule.",
+       "correct": true,
+       "explanation": "Like most concepts in this course, it's a descriptive pattern rather than a predictive rule."
+      },
+      {
+       "type": "fill_blank",
+       "question": "Sector rotation describes sectors taking [___] showing relative strength over time.",
+       "options": [
+        "turns",
+        "identical",
+        "none"
+       ],
+       "correct": 0,
+       "explanation": "The core idea is that which sector shows strength commonly shifts over time."
+      },
+      {
+       "type": "matching",
+       "question": "Match the term to its focus.",
+       "pairs": [
+        [
+         "Sector rotation",
+         "Sectors taking turns showing relative strength"
+        ],
+        [
+         "Relative strength",
+         "One stock or sector outperforming a comparison"
+        ],
+        [
+         "Index",
+         "The broader backdrop sectors rotate within"
+        ]
+       ],
+       "explanation": "Sector rotation is really relative strength/weakness applied at the sector level over time."
+      },
+      {
+       "type": "ingredient_match",
+       "question": "How should sector rotation be treated as a concept?",
+       "options": [
+        {
+         "label": "As a descriptive pattern of shifting relative strength between sectors, not a fixed schedule",
+         "correct": true,
+         "detail": "Descriptive framing"
+        },
+        {
+         "label": "As a concept unrelated to relative strength",
+         "correct": false,
+         "detail": "Incorrect",
+         "wrong_explanation": "It's relative strength/weakness applied over time at the sector level."
+        },
+        {
+         "label": "As a guaranteed calendar of which sector leads each month",
+         "correct": false,
+         "detail": "Overstates certainty",
+         "wrong_explanation": "No fixed schedule is guaranteed."
+        }
+       ],
+       "concern": "Framing it correctly",
+       "explanation": "Sector rotation is best understood as a descriptive, shifting pattern rather than a predictive schedule."
+      },
+      {
+       "type": "spot_mistake",
+       "scenario": "Someone assumes sector rotation follows a fixed, guaranteed monthly schedule.",
+       "question": "What is the mistake?",
+       "options": [
+        "Sector rotation has no relationship to relative strength.",
+        "Sector rotation always follows an identical, predictable calendar.",
+        "Sector rotation describes a shifting pattern over time, not a fixed guaranteed schedule."
+       ],
+       "correct": 2,
+       "explanation": "Sector rotation is a descriptive pattern, not a guaranteed timetable."
+      }
+     ]
+    },
+    {
+     "node": 92,
+     "title": "Confluence With Sector and Index Context",
+     "celebration": "You can connect sector context to broader analysis!",
+     "screens": [
+      {
+       "type": "intro",
+       "title": "Adding One More Layer of Confluence",
+       "text": "Sector and index context can add one more layer of confluence alongside chart patterns, volume, and other concepts covered earlier, echoing the Confluence unit's core idea."
+      },
+      {
+       "type": "multiple_choice",
+       "question": "Considering sector and index context alongside a chart pattern is an example of...",
+       "options": [
+        "A guaranteed trade signal.",
+        "Replacing the need to look at the chart at all.",
+        "Adding another layer of confluence."
+       ],
+       "correct": 2,
+       "explanation": "This connects directly back to the Confluence unit, where multiple factors are considered together descriptively."
+      },
+      {
+       "type": "true_false",
+       "question": "Sector and index context is one more descriptive factor to weigh alongside others, not a standalone signal.",
+       "correct": true,
+       "explanation": "Consistent with how confluence was framed earlier in the course."
+      },
+      {
+       "type": "fill_blank",
+       "question": "Weighing sector context alongside chart patterns is an example of building [___].",
+       "options": [
+        "confluence",
+        "certainty",
+        "a guarantee"
+       ],
+       "correct": 0,
+       "explanation": "This is the same confluence concept from earlier, just adding a sector/index layer."
+      },
+      {
+       "type": "matching",
+       "question": "Match the factor to its role in confluence.",
+       "pairs": [
+        [
+         "Chart pattern",
+         "One descriptive factor"
+        ],
+        [
+         "Volume/RVOL",
+         "Another descriptive factor"
+        ],
+        [
+         "Sector/index context",
+         "One more descriptive factor, not a replacement for the others"
+        ]
+       ],
+       "explanation": "Confluence means weighing multiple descriptive factors together, none of which alone is a guarantee."
+      },
+      {
+       "type": "ingredient_match",
+       "question": "How does sector/index context fit alongside other analysis tools from this course?",
+       "options": [
+        {
+         "label": "As something entirely disconnected from the rest of the course",
+         "correct": false,
+         "detail": "Incorrect",
+         "wrong_explanation": "It connects directly to the Confluence unit's framing."
+        },
+        {
+         "label": "As a replacement for chart patterns and volume analysis",
+         "correct": false,
+         "detail": "Overstates it",
+         "wrong_explanation": "It's additive context, not a replacement."
+        },
+        {
+         "label": "As one more descriptive factor to weigh, consistent with the Confluence unit",
+         "correct": true,
+         "detail": "Adds to confluence"
+        }
+       ],
+       "concern": "Connecting concepts",
+       "explanation": "Sector and index context slots into the same multi-factor, descriptive confluence approach taught earlier."
+      },
+      {
+       "type": "spot_mistake",
+       "scenario": "Someone uses sector strength alone, ignoring every other factor, as a complete trading system.",
+       "question": "What is the mistake?",
+       "options": [
+        "Sector context has no relationship to the Confluence unit's ideas.",
+        "Sector strength alone is sufficient and no other factor matters.",
+        "Sector context is one descriptive factor among several, not a complete standalone system."
+       ],
+       "correct": 2,
+       "explanation": "This echoes the Confluence unit's core lesson that no single factor should be relied on alone."
+      }
+     ]
+    },
+    {
+     "node": 93,
+     "title": "Sector & Index Strength Review",
+     "celebration": "You've completed the Sector & Index Strength unit!",
+     "screens": [
+      {
+       "type": "intro",
+       "title": "Bringing It Together",
+       "text": "A final review of sector and index context, relative strength and weakness, sector rotation, and how it all connects to confluence."
+      },
+      {
+       "type": "true_false",
+       "question": "Individual stocks commonly move somewhat alongside their sector and the broader market, though not in guaranteed lockstep.",
+       "correct": true,
+       "explanation": "That's the core, consistent idea across this whole unit."
+      },
+      {
+       "type": "fill_blank",
+       "question": "A stock outperforming its sector to the upside is commonly described as relative [___].",
+       "options": [
+        "volume",
+        "strength",
+        "weakness"
+       ],
+       "correct": 1,
+       "explanation": "A recap of the relative strength/weakness terminology from this unit."
+      },
+      {
+       "type": "multiple_choice",
+       "question": "How should sector rotation be understood?",
+       "options": [
+        "As a descriptive pattern of sectors taking turns showing relative strength over time.",
+        "As something with no connection to relative strength.",
+        "As a guaranteed fixed schedule."
+       ],
+       "correct": 0,
+       "explanation": "A recap of sector rotation as a descriptive, non-predictive concept."
+      },
+      {
+       "type": "matching",
+       "question": "Match the term to its one-line meaning.",
+       "pairs": [
+        [
+         "Relative strength",
+         "Outperforming a sector/index comparison"
+        ],
+        [
+         "Relative weakness",
+         "Underperforming a sector/index comparison"
+        ],
+        [
+         "Sector rotation",
+         "Sectors taking turns showing strength over time"
+        ]
+       ],
+       "explanation": "A quick recap of the unit's core vocabulary."
+      },
+      {
+       "type": "ingredient_match",
+       "question": "Which best summarizes this unit?",
+       "options": [
+        {
+         "label": "Sector and index context is unrelated to confluence",
+         "correct": false,
+         "detail": "Incorrect",
+         "wrong_explanation": "It connects directly to the Confluence unit's framing."
+        },
+        {
+         "label": "Sector and index context adds descriptive confluence, without guaranteeing any stock's future movement",
+         "correct": true,
+         "detail": "The central theme"
+        },
+        {
+         "label": "Sector context guarantees which stocks will outperform going forward",
+         "correct": false,
+         "detail": "Overstates certainty",
+         "wrong_explanation": "It's descriptive context, not a guarantee."
+        }
+       ],
+       "concern": "Reviewing the big picture",
+       "explanation": "Sector and index context is valuable as one more descriptive layer of confluence, not a predictive guarantee."
+      },
+      {
+       "type": "spot_mistake",
+       "scenario": "Someone finishes this unit and starts trading based on sector strength alone as a complete signal.",
+       "question": "What is the mistake?",
+       "options": [
+        "Sector context has no descriptive value at all.",
+        "Sector strength is one descriptive factor among several, not a standalone buy or sell signal.",
+        "Sector strength alone is a complete and sufficient trading system."
+       ],
+       "correct": 1,
+       "explanation": "Like every concept in this course, sector and index context is descriptive confluence, never a standalone signal."
+      }
+     ]
     }
    ]
   },
@@ -33512,21 +34029,21 @@
        "question": "The urge to jump into a trade purely because price is already moving fast is commonly called [___].",
        "options": [
         "a drawdown",
-        "a stop-loss",
-        "FOMO"
+        "FOMO",
+        "a stop-loss"
        ],
-       "correct": 2,
+       "correct": 1,
        "explanation": "\"FOMO\" (fear of missing out) is the standard term for this urge."
       },
       {
        "type": "multiple_choice",
        "question": "What commonly characterizes a FOMO-driven trade entry?",
        "options": [
+        "Entering only after a calm, pre-planned checklist is satisfied.",
         "Entering after carefully calculating position size in advance.",
-        "Entering because of urgency about a fast-moving price, without a clear pre-existing plan.",
-        "Entering only after a calm, pre-planned checklist is satisfied."
+        "Entering because of urgency about a fast-moving price, without a clear pre-existing plan."
        ],
-       "correct": 1,
+       "correct": 2,
        "explanation": "FOMO entries are commonly described as reactive and plan-less, driven by urgency."
       },
       {
@@ -33554,19 +34071,19 @@
        "blanks": [
         {
          "options": [
-          "emotional",
           "mathematical",
-          "planned"
-         ],
-         "correct": 0
-        },
-        {
-         "options": [
-          "random",
           "planned",
           "emotional"
          ],
-         "correct": 1
+         "correct": 2
+        },
+        {
+         "options": [
+          "planned",
+          "emotional",
+          "random"
+         ],
+         "correct": 0
         }
        ],
        "explanation": "FOMO is commonly framed as emotional urgency, in contrast to a calm, planned entry."
@@ -33620,8 +34137,8 @@
        "question": "What is the mistake?",
        "options": [
         "Entering purely from urgency about missing a move, without a plan, is a commonly described FOMO reaction.",
-        "They should never look at fast-moving prices again.",
-        "They should have bought even more, even faster."
+        "They should have bought even more, even faster.",
+        "They should never look at fast-moving prices again."
        ],
        "correct": 0,
        "explanation": "Acting from fear of missing out, without a plan, is the commonly described core of a FOMO-driven mistake.",
@@ -33631,11 +34148,11 @@
        "type": "fill_blank",
        "question": "FOMO describes urgency about [___] a fast-moving price.",
        "options": [
-        "missing",
         "guaranteed",
+        "missing",
         "random"
        ],
-       "correct": 0,
+       "correct": 1,
        "explanation": "FOMO is the urgency to jump in purely because price is already moving."
       },
       {
@@ -33668,8 +34185,8 @@
        "question": "Entering a trade quickly after a loss, mainly to try to \"win it back,\" is commonly called [___] trading.",
        "options": [
         "revenge",
-        "planned",
-        "patient"
+        "patient",
+        "planned"
        ],
        "correct": 0,
        "explanation": "\"Revenge trading\" is the standard term for this reactive pattern."
@@ -33679,10 +34196,10 @@
        "question": "What commonly characterizes a revenge trade?",
        "options": [
         "It's driven by a carefully pre-planned checklist unrelated to the prior loss.",
-        "It's driven mainly by the urge to recover a recent loss quickly, rather than a fresh, planned setup.",
-        "It always uses a smaller position size than usual."
+        "It always uses a smaller position size than usual.",
+        "It's driven mainly by the urge to recover a recent loss quickly, rather than a fresh, planned setup."
        ],
-       "correct": 1,
+       "correct": 2,
        "explanation": "Revenge trades are commonly described as reactive attempts to immediately recover a loss."
       },
       {
@@ -33710,19 +34227,19 @@
        "blanks": [
         {
          "options": [
+          "planned",
           "emotional",
-          "random",
-          "planned"
+          "random"
          ],
-         "correct": 0
+         "correct": 1
         },
         {
          "options": [
-          "planned",
           "guaranteed",
-          "emotional"
+          "emotional",
+          "planned"
          ],
-         "correct": 0
+         "correct": 2
         }
        ],
        "explanation": "The reactive, emotional nature of revenge trading is commonly contrasted with a calm, planned entry."
@@ -33749,6 +34266,11 @@
        "question": "Which best describes \"revenge trading\"?",
        "options": [
         {
+         "label": "Entering a new trade quickly after a loss, driven by the urge to recover it immediately",
+         "correct": true,
+         "detail": "A reactive pattern tied to a recent loss"
+        },
+        {
          "label": "A guarantee that the next trade will be profitable",
          "correct": false,
          "detail": "Overstates certainty",
@@ -33759,11 +34281,6 @@
          "correct": false,
          "detail": "This describes a measured response, not revenge trading",
          "wrong_explanation": "A calm review is the opposite of revenge trading."
-        },
-        {
-         "label": "Entering a new trade quickly after a loss, driven by the urge to recover it immediately",
-         "correct": true,
-         "detail": "A reactive pattern tied to a recent loss"
         }
        ],
        "concern": "Understanding this specific term",
@@ -33787,11 +34304,11 @@
        "type": "fill_blank",
        "question": "Revenge trading is driven by the urge to [___] a recent loss quickly.",
        "options": [
-        "recover",
         "celebrate",
-        "ignore"
+        "ignore",
+        "recover"
        ],
-       "correct": 0,
+       "correct": 2,
        "explanation": "The urgency to immediately win back a loss defines revenge trading."
       },
       {
@@ -33823,11 +34340,11 @@
        "type": "fill_blank",
        "question": "Taking a much higher number of trades than a plan calls for is commonly called [___].",
        "options": [
-        "hedging",
         "position sizing",
-        "overtrading"
+        "overtrading",
+        "hedging"
        ],
-       "correct": 2,
+       "correct": 1,
        "explanation": "\"Overtrading\" is the standard term for this pattern."
       },
       {
@@ -33835,10 +34352,10 @@
        "question": "What is commonly cited as a driver of overtrading?",
        "options": [
         "A calendar reminder to review account performance.",
-        "A carefully followed plan that specifies exactly how many trades to take.",
-        "Boredom, restlessness, or urgency to \"do something,\" rather than a fresh, planned setup appearing."
+        "Boredom, restlessness, or urgency to \"do something,\" rather than a fresh, planned setup appearing.",
+        "A carefully followed plan that specifies exactly how many trades to take."
        ],
-       "correct": 2,
+       "correct": 1,
        "explanation": "Overtrading is commonly linked to emotional urges rather than an increase in genuinely planned setups."
       },
       {
@@ -33867,18 +34384,18 @@
         {
          "options": [
           "discipline",
-          "boredom",
-          "patience"
+          "patience",
+          "boredom"
          ],
-         "correct": 1
+         "correct": 2
         },
         {
          "options": [
-          "planned",
           "guaranteed",
-          "random"
+          "random",
+          "planned"
          ],
-         "correct": 0
+         "correct": 2
         }
        ],
        "explanation": "The commonly cited driver behind overtrading is emotional restlessness, not a genuine rise in valid setups."
@@ -33905,15 +34422,15 @@
        "question": "Which best describes \"overtrading\"?",
        "options": [
         {
+         "label": "Taking a much higher number of trades than a plan calls for, often from boredom or urgency",
+         "correct": true,
+         "detail": "A frequency mismatch driven by emotion"
+        },
+        {
          "label": "A guarantee of larger overall profits",
          "correct": false,
          "detail": "Overstates certainty",
          "wrong_explanation": "Overtrading describes frequency, not a guaranteed result."
-        },
-        {
-         "label": "Taking a much higher number of trades than a plan calls for, often from boredom or urgency",
-         "correct": true,
-         "detail": "A frequency mismatch driven by emotion"
         },
         {
          "label": "Taking trades only when a pre-planned setup appears",
@@ -33931,11 +34448,11 @@
        "scenario": "Someone takes twenty trades in a single day out of boredom, despite their plan calling for only a couple of genuinely planned setups.",
        "question": "What is the mistake?",
        "options": [
-        "They should stop having any plan at all.",
         "Taking far more trades than the plan calls for, driven by boredom rather than genuine setups, is a commonly described overtrading pattern.",
+        "They should stop having any plan at all.",
         "They should aim for an even higher number of trades tomorrow."
        ],
-       "correct": 1,
+       "correct": 0,
        "explanation": "A large gap between planned frequency and actual frequency, driven by emotion, is the commonly cited core of overtrading.",
        "chart": "sideways"
       },
@@ -33979,11 +34496,11 @@
        "type": "fill_blank",
        "question": "Skipping normal risk steps after a string of wins is commonly linked to [___].",
        "options": [
-        "capital preservation",
+        "overconfidence",
         "diversification",
-        "overconfidence"
+        "capital preservation"
        ],
-       "correct": 2,
+       "correct": 0,
        "explanation": "\"Overconfidence\" is the commonly cited term for this pattern following a hot streak."
       },
       {
@@ -33991,10 +34508,10 @@
        "question": "What is a commonly cited risk of overconfidence after a string of wins?",
        "options": [
         "Reducing position size out of caution.",
-        "Becoming more careful and conservative than before the winning streak.",
-        "Skipping normal risk management steps, like sizing or stop-loss placement, because recent wins feel like proof of skill."
+        "Skipping normal risk management steps, like sizing or stop-loss placement, because recent wins feel like proof of skill.",
+        "Becoming more careful and conservative than before the winning streak."
        ],
-       "correct": 2,
+       "correct": 1,
        "explanation": "Overconfidence commonly leads to relaxing the very risk steps that were followed before the streak."
       },
       {
@@ -34022,19 +34539,19 @@
        "blanks": [
         {
          "options": [
-          "wins",
           "losses",
+          "wins",
           "trades"
          ],
-         "correct": 0
+         "correct": 1
         },
         {
          "options": [
-          "guarantee",
           "increase",
-          "calculate"
+          "calculate",
+          "guarantee"
          ],
-         "correct": 0
+         "correct": 2
         }
        ],
        "explanation": "Overconfidence is commonly described as a mismatch between recent results and the actual ongoing risk."
@@ -34066,16 +34583,16 @@
          "detail": "A commonly described emotional pattern"
         },
         {
-         "label": "Becoming more cautious and reducing size after wins",
-         "correct": false,
-         "detail": "This describes the opposite pattern",
-         "wrong_explanation": "That describes increased caution, not overconfidence."
-        },
-        {
          "label": "A guarantee that the next trade will also win",
          "correct": false,
          "detail": "Overstates certainty",
          "wrong_explanation": "Overconfidence describes a mindset, not a guaranteed outcome."
+        },
+        {
+         "label": "Becoming more cautious and reducing size after wins",
+         "correct": false,
+         "detail": "This describes the opposite pattern",
+         "wrong_explanation": "That describes increased caution, not overconfidence."
         }
        ],
        "concern": "Understanding this specific pattern",
@@ -34087,11 +34604,11 @@
        "scenario": "Someone removes their stop-loss on their next trade because they've \"been on a roll\" for the past week.",
        "question": "What is the mistake?",
        "options": [
-        "They should remove stop-losses on every trade from now on.",
         "Removing a normal risk step because of a recent winning streak is a commonly described overconfidence pattern, recent wins don't remove future risk.",
+        "They should remove stop-losses on every trade from now on.",
         "They should assume the winning streak guarantees future wins."
        ],
-       "correct": 1,
+       "correct": 0,
        "explanation": "A recent streak of wins doesn't change the underlying risk of a new trade, per this commonly cited concern.",
        "chart": "uptrend"
       },
@@ -34099,11 +34616,11 @@
        "type": "fill_blank",
        "question": "Overconfidence after wins can lead to [___] normal risk steps.",
        "options": [
-        "skipping",
         "following",
+        "skipping",
         "doubling"
        ],
-       "correct": 0,
+       "correct": 1,
        "explanation": "Feeling emboldened by recent wins can lead to skipping steps like sizing or stops."
       },
       {
@@ -34135,22 +34652,22 @@
        "type": "fill_blank",
        "question": "Hesitating on a genuinely planned setup because of recent losses is commonly linked to [___].",
        "options": [
+        "fear",
         "overconfidence",
-        "leverage",
-        "fear"
+        "leverage"
        ],
-       "correct": 2,
+       "correct": 0,
        "explanation": "\"Fear\" (following losses) is the commonly cited driver of this hesitation pattern."
       },
       {
        "type": "multiple_choice",
        "question": "What is a commonly cited effect of fear following a string of losses?",
        "options": [
+        "No change in behavior at all.",
         "Becoming more willing to take on larger, riskier positions.",
-        "Hesitating on or skipping a genuinely planned setup, or exiting a plan earlier than intended.",
-        "No change in behavior at all."
+        "Hesitating on or skipping a genuinely planned setup, or exiting a plan earlier than intended."
        ],
-       "correct": 1,
+       "correct": 2,
        "explanation": "Fear following losses is commonly linked to hesitation or premature exits, not increased risk-taking."
       },
       {
@@ -34179,18 +34696,18 @@
         {
          "options": [
           "ignoring",
-          "doubling",
-          "skipping"
+          "skipping",
+          "doubling"
          ],
-         "correct": 2
+         "correct": 1
         },
         {
          "options": [
-          "plan",
           "doji",
+          "plan",
           "streak"
          ],
-         "correct": 0
+         "correct": 1
         }
        ],
        "explanation": "The commonly described effect of fear is deviating from the plan out of hesitation."
@@ -34223,15 +34740,15 @@
          "wrong_explanation": "Fear describes a reaction, not a guaranteed outcome."
         },
         {
+         "label": "Hesitating on or skipping a genuinely planned setup because of recent losses",
+         "correct": true,
+         "detail": "A commonly described emotional response"
+        },
+        {
          "label": "Taking on larger risk to compensate for recent losses",
          "correct": false,
          "detail": "This describes a different pattern (revenge trading)",
          "wrong_explanation": "That's closer to revenge trading, not fear-driven hesitation."
-        },
-        {
-         "label": "Hesitating on or skipping a genuinely planned setup because of recent losses",
-         "correct": true,
-         "detail": "A commonly described emotional response"
         }
        ],
        "concern": "Understanding this specific pattern",
@@ -34243,11 +34760,11 @@
        "scenario": "Someone skips a setup that matches their plan exactly, purely because they're afraid after a few recent losses.",
        "question": "What is the mistake?",
        "options": [
-        "They should double their position size to make up for the losses.",
         "They should abandon their plan permanently.",
-        "Skipping a genuinely planned setup purely from fear after recent losses is a commonly described pattern where emotion overrides the plan."
+        "Skipping a genuinely planned setup purely from fear after recent losses is a commonly described pattern where emotion overrides the plan.",
+        "They should double their position size to make up for the losses."
        ],
-       "correct": 2,
+       "correct": 1,
        "explanation": "Letting fear override a genuinely planned setup, rather than reviewing the plan calmly, is the commonly cited concern here.",
        "chart": "downtrend"
       },
@@ -34255,11 +34772,11 @@
        "type": "fill_blank",
        "question": "Fear after losses can lead to [___] a genuinely planned setup.",
        "options": [
-        "following",
         "skipping",
-        "doubling"
+        "doubling",
+        "following"
        ],
-       "correct": 1,
+       "correct": 0,
        "explanation": "Fear can cause hesitation or skipping a setup that otherwise matches the plan."
       },
       {
@@ -34291,11 +34808,11 @@
        "type": "fill_blank",
        "question": "Acting on an in-the-moment feeling rather than a pre-set plan is commonly called an [___].",
        "options": [
-        "average",
         "impulse",
-        "order"
+        "order",
+        "average"
        ],
-       "correct": 1,
+       "correct": 0,
        "explanation": "\"Impulse\" describes acting from a feeling in the moment, rather than following a plan."
       },
       {
@@ -34334,11 +34851,11 @@
        "blanks": [
         {
          "options": [
+          "plan",
           "streak",
-          "impulse",
-          "plan"
+          "impulse"
          ],
-         "correct": 2
+         "correct": 0
         },
         {
          "options": [
@@ -34373,6 +34890,12 @@
        "question": "Which best describes \"discipline,\" in this context?",
        "options": [
         {
+         "label": "Acting immediately on whatever feels right at the moment",
+         "correct": false,
+         "detail": "This describes impulse, not discipline",
+         "wrong_explanation": "That's the definition of impulse, the opposite of discipline."
+        },
+        {
          "label": "Following a pre-set plan consistently, even when a feeling suggests otherwise",
          "correct": true,
          "detail": "Plan-following despite momentary impulses"
@@ -34382,12 +34905,6 @@
          "correct": false,
          "detail": "Overstates certainty",
          "wrong_explanation": "Discipline is about consistency, not a guarantee the plan is flawless."
-        },
-        {
-         "label": "Acting immediately on whatever feels right at the moment",
-         "correct": false,
-         "detail": "This describes impulse, not discipline",
-         "wrong_explanation": "That's the definition of impulse, the opposite of discipline."
         }
        ],
        "concern": "Understanding this specific term",
@@ -34399,11 +34916,11 @@
        "scenario": "Someone has a clear, pre-set plan but abandons it mid-trade because of a sudden feeling that \"this time is different.\"",
        "question": "What is the mistake?",
        "options": [
-        "They should never make plans in the first place.",
         "Abandoning a pre-set plan due to an in-the-moment feeling is a commonly described impulse overriding discipline.",
+        "They should never make plans in the first place.",
         "They should have felt even more strongly before abandoning the plan."
        ],
-       "correct": 1,
+       "correct": 0,
        "explanation": "Following a feeling over a pre-set plan is the commonly described core of an impulsive deviation.",
        "chart": "doji"
       },
@@ -34442,10 +34959,10 @@
        "question": "Someone buys immediately after seeing a stock spike, with no plan, purely from urgency about missing further gains. Which pattern does this describe?",
        "options": [
         {
-         "label": "Discipline",
+         "label": "Capital preservation",
          "correct": false,
-         "detail": "Opposite pattern",
-         "wrong_explanation": "Discipline describes plan-following, not this reactive urgency."
+         "detail": "A different concept",
+         "wrong_explanation": "Capital preservation is about protecting capital, not urgency-driven entries."
         },
         {
          "label": "FOMO",
@@ -34453,10 +34970,10 @@
          "detail": "Urgency-driven entry with no plan"
         },
         {
-         "label": "Capital preservation",
+         "label": "Discipline",
          "correct": false,
-         "detail": "A different concept",
-         "wrong_explanation": "Capital preservation is about protecting capital, not urgency-driven entries."
+         "detail": "Opposite pattern",
+         "wrong_explanation": "Discipline describes plan-following, not this reactive urgency."
         }
        ],
        "concern": "Identifying a psychological pattern",
@@ -34516,8 +35033,8 @@
        "question": "Which pattern does this best describe?",
        "options": [
         "Fear-driven hesitation, where recent losses caused them to skip a genuinely planned setup.",
-        "Capital preservation, since they avoided a trade.",
-        "Overconfidence, since they felt very certain about the decision."
+        "Overconfidence, since they felt very certain about the decision.",
+        "Capital preservation, since they avoided a trade."
        ],
        "correct": 0,
        "explanation": "Skipping a valid, planned setup specifically due to fear after losses is the fear-driven hesitation pattern.",
@@ -34527,11 +35044,11 @@
        "type": "fill_blank",
        "question": "This drill practices identifying psychological [___] in hypothetical situations.",
        "options": [
-        "patterns",
+        "random events",
         "guarantees",
-        "random events"
+        "patterns"
        ],
-       "correct": 0,
+       "correct": 2,
        "explanation": "The drill applies pattern recognition to psychology, without judging specific trades."
       },
       {
@@ -34574,11 +35091,11 @@
        "type": "multiple_choice",
        "question": "What do FOMO, revenge trading, and overtrading all have in common?",
        "options": [
+        "They only apply to traders using leverage.",
         "They're all commonly described as emotionally reactive patterns that pull behavior away from a pre-set plan.",
-        "They all guarantee larger losses every time.",
-        "They only apply to traders using leverage."
+        "They all guarantee larger losses every time."
        ],
-       "correct": 0,
+       "correct": 1,
        "explanation": "Each is an emotionally reactive pattern, not a guaranteed outcome or a leverage-specific issue."
       },
       {
@@ -34606,19 +35123,19 @@
        "blanks": [
         {
          "options": [
-          "leverage",
+          "discipline",
           "impulse",
-          "discipline"
+          "leverage"
          ],
-         "correct": 2
+         "correct": 0
         },
         {
          "options": [
+          "discipline",
           "risk",
-          "impulse",
-          "discipline"
+          "impulse"
          ],
-         "correct": 1
+         "correct": 2
         }
        ],
        "explanation": "Awareness of the pattern is commonly framed as the starting point for a more disciplined response."
@@ -34651,15 +35168,15 @@
          "wrong_explanation": "This unit consistently favored discipline over impulse."
         },
         {
-         "label": "Recognizing emotional patterns is a step toward following a pre-set plan consistently",
-         "correct": true,
-         "detail": "The central theme throughout"
-        },
-        {
          "label": "Emotions should be eliminated entirely before trading",
          "correct": false,
          "detail": "Overstates it",
          "wrong_explanation": "This unit is about recognizing patterns, not eliminating emotion entirely."
+        },
+        {
+         "label": "Recognizing emotional patterns is a step toward following a pre-set plan consistently",
+         "correct": true,
+         "detail": "The central theme throughout"
         }
        ],
        "concern": "Reviewing the big picture",
@@ -34671,11 +35188,11 @@
        "scenario": "Someone finishes this unit and assumes that simply knowing these terms means they'll never act impulsively again.",
        "question": "What is the mistake?",
        "options": [
-        "They should assume impulsive decisions no longer carry any risk.",
         "Knowing a pattern's name doesn't automatically prevent it from happening, recognizing it in the moment still takes practice.",
-        "They should stop thinking about psychology from now on since it can't guarantee anything."
+        "They should stop thinking about psychology from now on since it can't guarantee anything.",
+        "They should assume impulsive decisions no longer carry any risk."
        ],
-       "correct": 1,
+       "correct": 0,
        "explanation": "This unit builds awareness of patterns, not a guarantee that they'll never occur again.",
        "chart": "sideways"
       },
@@ -34683,11 +35200,11 @@
        "type": "fill_blank",
        "question": "This review ties together FOMO, revenge trading, overtrading, and [___].",
        "options": [
-        "company names",
         "discipline",
-        "random guesses"
+        "random guesses",
+        "company names"
        ],
-       "correct": 1,
+       "correct": 0,
        "explanation": "All the core patterns from this unit are reviewed together here."
       },
       {
@@ -34719,22 +35236,22 @@
        "type": "multiple_choice",
        "question": "Which chart description commonly matches a \"trending\" classification?",
        "options": [
-        "A series of higher highs and higher lows (or lower highs and lower lows) over time.",
         "A single candle with almost no wick on either side.",
-        "Price bouncing repeatedly between the same two levels with no progress either way."
+        "Price bouncing repeatedly between the same two levels with no progress either way.",
+        "A series of higher highs and higher lows (or lower highs and lower lows) over time."
        ],
-       "correct": 0,
+       "correct": 2,
        "explanation": "A sustained sequence of higher (or lower) highs and lows is the commonly cited hallmark of a trend."
       },
       {
        "type": "fill_blank",
        "question": "A market showing a sustained move in one general direction is commonly classified as [___].",
        "options": [
-        "trending",
         "choppy",
+        "trending",
         "range-bound"
        ],
-       "correct": 0,
+       "correct": 1,
        "explanation": "\"Trending\" is the standard classification term for this kind of sustained directional move."
       },
       {
@@ -34784,15 +35301,15 @@
          "wrong_explanation": "That description matches a range-bound classification instead."
         },
         {
+         "label": "A sustained move in one general direction over time",
+         "correct": true,
+         "detail": "A descriptive classification of price behavior"
+        },
+        {
          "label": "A guarantee that the direction will continue indefinitely",
          "correct": false,
          "detail": "Overstates certainty",
          "wrong_explanation": "Classification describes what has happened, not what will happen next."
-        },
-        {
-         "label": "A sustained move in one general direction over time",
-         "correct": true,
-         "detail": "A descriptive classification of price behavior"
         }
        ],
        "concern": "Understanding this specific classification",
@@ -34804,11 +35321,11 @@
        "scenario": "Someone classifies a market as \"trending\" after seeing just a single candle, with no broader context.",
        "question": "What is the mistake?",
        "options": [
-        "A trending classification is commonly based on a sustained sequence of highs and lows over time, not a single candle.",
+        "They should classify every single candle as its own trend.",
         "They should ignore the sequence of highs and lows entirely.",
-        "They should classify every single candle as its own trend."
+        "A trending classification is commonly based on a sustained sequence of highs and lows over time, not a single candle."
        ],
-       "correct": 0,
+       "correct": 2,
        "explanation": "A single candle doesn't provide the sustained sequence commonly needed to classify a trend.",
        "chart": "uptrend"
       },
@@ -34816,11 +35333,11 @@
        "type": "fill_blank",
        "question": "A trending market is classified by a sustained move in one general [___].",
        "options": [
-        "direction",
         "volume",
-        "color"
+        "color",
+        "direction"
        ],
-       "correct": 0,
+       "correct": 2,
        "explanation": "Sustained directional progress defines a trending classification."
       },
       {
@@ -34852,22 +35369,22 @@
        "type": "multiple_choice",
        "question": "Which chart description commonly matches a \"choppy\" classification?",
        "options": [
-        "A long, uninterrupted sequence of higher highs and higher lows.",
         "Price oscillating within a range with no clear sustained progress in either direction.",
-        "A single sharp, one-directional move with no pullbacks at all."
+        "A single sharp, one-directional move with no pullbacks at all.",
+        "A long, uninterrupted sequence of higher highs and higher lows."
        ],
-       "correct": 1,
+       "correct": 0,
        "explanation": "Oscillation with no sustained progress is the commonly cited hallmark of a choppy market."
       },
       {
        "type": "fill_blank",
        "question": "A market moving back and forth with no clear sustained direction is commonly classified as [___].",
        "options": [
-        "choppy",
         "breaking out",
+        "choppy",
         "trending"
        ],
-       "correct": 0,
+       "correct": 1,
        "explanation": "\"Choppy\" is the standard classification term for this kind of directionless movement."
       },
       {
@@ -34916,16 +35433,16 @@
          "detail": "A descriptive classification of directionless price behavior"
         },
         {
-         "label": "A guarantee that price will never move again",
-         "correct": false,
-         "detail": "Overstates certainty",
-         "wrong_explanation": "Choppy describes a pattern of movement, not an absence of movement."
-        },
-        {
          "label": "A sustained move consistently in one direction",
          "correct": false,
          "detail": "This describes trending, not choppy",
          "wrong_explanation": "That description matches a trending classification instead."
+        },
+        {
+         "label": "A guarantee that price will never move again",
+         "correct": false,
+         "detail": "Overstates certainty",
+         "wrong_explanation": "Choppy describes a pattern of movement, not an absence of movement."
         }
        ],
        "concern": "Understanding this specific classification",
@@ -34985,11 +35502,11 @@
        "type": "multiple_choice",
        "question": "Which chart description commonly matches a \"volatile\" classification?",
        "options": [
-        "A slow, steady drift with very small price changes over a long period.",
+        "Unusually large or fast price swings, without necessarily implying a sustained direction.",
         "A single flat candle with almost no range at all.",
-        "Unusually large or fast price swings, without necessarily implying a sustained direction."
+        "A slow, steady drift with very small price changes over a long period."
        ],
-       "correct": 2,
+       "correct": 0,
        "explanation": "Large or fast swings, regardless of direction, are the commonly cited hallmark of volatility."
       },
       {
@@ -34997,8 +35514,8 @@
        "question": "A market showing unusually large or fast price swings is commonly classified as [___].",
        "options": [
         "volatile",
-        "range-bound",
-        "flat"
+        "flat",
+        "range-bound"
        ],
        "correct": 0,
        "explanation": "\"Volatile\" is the standard classification term for this kind of large or fast movement."
@@ -35044,12 +35561,6 @@
        "question": "Which best describes a \"volatile\" market classification?",
        "options": [
         {
-         "label": "A guarantee that price will keep swinging forever",
-         "correct": false,
-         "detail": "Overstates certainty",
-         "wrong_explanation": "Volatile describes recent behavior, not a guarantee about the future."
-        },
-        {
          "label": "A slow, steady drift with very small changes",
          "correct": false,
          "detail": "This describes low volatility, not high volatility",
@@ -35059,6 +35570,12 @@
          "label": "Unusually large or fast price swings, in either direction",
          "correct": true,
          "detail": "A descriptive classification based on swing size and speed"
+        },
+        {
+         "label": "A guarantee that price will keep swinging forever",
+         "correct": false,
+         "detail": "Overstates certainty",
+         "wrong_explanation": "Volatile describes recent behavior, not a guarantee about the future."
         }
        ],
        "concern": "Understanding this specific classification",
@@ -35082,11 +35599,11 @@
        "type": "fill_blank",
        "question": "A volatile market shows unusually large or fast [___].",
        "options": [
+        "colors",
         "volumes only",
-        "swings",
-        "colors"
+        "swings"
        ],
-       "correct": 1,
+       "correct": 2,
        "explanation": "Large or fast price swings define a volatile classification."
       },
       {
@@ -35129,11 +35646,11 @@
        "type": "fill_blank",
        "question": "A price move beyond a level that quickly reverses, rather than continuing, is commonly called a [___].",
        "options": [
-        "breakout",
         "drawdown",
-        "fakeout"
+        "fakeout",
+        "breakout"
        ],
-       "correct": 2,
+       "correct": 1,
        "explanation": "\"Fakeout\" is the standard term for this reversal-after-clearing pattern."
       },
       {
@@ -35177,10 +35694,9 @@
        "question": "Which best describes a \"fakeout,\" as commonly defined?",
        "options": [
         {
-         "label": "A guarantee that every breakout will eventually reverse",
-         "correct": false,
-         "detail": "Overstates certainty",
-         "wrong_explanation": "A fakeout describes a specific completed pattern, not a rule about every breakout."
+         "label": "A price move beyond a level that quickly reverses, rather than continuing",
+         "correct": true,
+         "detail": "A reversal-after-clearing pattern"
         },
         {
          "label": "A price move beyond a level that continues steadily afterward",
@@ -35189,9 +35705,10 @@
          "wrong_explanation": "That description matches the commonly described idea of a breakout instead."
         },
         {
-         "label": "A price move beyond a level that quickly reverses, rather than continuing",
-         "correct": true,
-         "detail": "A reversal-after-clearing pattern"
+         "label": "A guarantee that every breakout will eventually reverse",
+         "correct": false,
+         "detail": "Overstates certainty",
+         "wrong_explanation": "A fakeout describes a specific completed pattern, not a rule about every breakout."
         }
        ],
        "concern": "Understanding this specific pattern",
@@ -35203,11 +35720,11 @@
        "scenario": "Someone labels a move a \"fakeout\" the instant price clears a level, before waiting to see what happens next.",
        "question": "What is the mistake?",
        "options": [
+        "They should ignore what happens after price clears a level.",
         "A fakeout is commonly classified only after price clears a level and then quickly reverses. It can't be confirmed at the moment of clearing alone.",
-        "They should label every single clearing of a level a fakeout immediately.",
-        "They should ignore what happens after price clears a level."
+        "They should label every single clearing of a level a fakeout immediately."
        ],
-       "correct": 0,
+       "correct": 1,
        "explanation": "Classifying a fakeout requires observing the reversal after the clearing, not just the initial move.",
        "chart": "resistanceRejection"
       },
@@ -35215,11 +35732,11 @@
        "type": "fill_blank",
        "question": "A fakeout is a price move beyond a level that quickly [___].",
        "options": [
-        "reverses",
         "continues",
+        "reverses",
         "disappears"
        ],
-       "correct": 0,
+       "correct": 1,
        "explanation": "A quick reversal after clearing a level is what defines a fakeout."
       },
       {
@@ -35251,11 +35768,11 @@
        "type": "multiple_choice",
        "question": "Which response to a losing streak is commonly described as disciplined?",
        "options": [
-        "Abandoning the plan permanently after the very first loss in the streak.",
         "Immediately doubling position size to recover the losses as fast as possible.",
-        "Pausing to review whether the plan was followed, without making an immediate emotional overhaul."
+        "Pausing to review whether the plan was followed, without making an immediate emotional overhaul.",
+        "Abandoning the plan permanently after the very first loss in the streak."
        ],
-       "correct": 2,
+       "correct": 1,
        "explanation": "A calm, process-focused review is commonly cited as the disciplined response, in contrast to reactive extremes."
       },
       {
@@ -35281,9 +35798,9 @@
        "type": "fill_blank",
        "question": "A calm review of whether a plan was actually followed, without an emotional overhaul, is commonly described as a [___] response.",
        "options": [
-        "revenge",
+        "random",
         "disciplined",
-        "random"
+        "revenge"
        ],
        "correct": 1,
        "explanation": "\"Disciplined\" is the commonly cited term for this calm, process-focused response."
@@ -35310,6 +35827,12 @@
        "question": "Which best describes a \"disciplined response\" to a losing streak, as commonly defined?",
        "options": [
         {
+         "label": "Immediately abandoning the plan after the very first loss",
+         "correct": false,
+         "detail": "This describes an overreactive response, not a disciplined one",
+         "wrong_explanation": "That's closer to an overreaction than a disciplined review."
+        },
+        {
          "label": "A guarantee that the losing streak will end immediately",
          "correct": false,
          "detail": "Overstates certainty",
@@ -35319,12 +35842,6 @@
          "label": "A calm review of whether the plan was followed, without an emotional overhaul",
          "correct": true,
          "detail": "A process-focused, level-headed response"
-        },
-        {
-         "label": "Immediately abandoning the plan after the very first loss",
-         "correct": false,
-         "detail": "This describes an overreactive response, not a disciplined one",
-         "wrong_explanation": "That's closer to an overreaction than a disciplined review."
         }
        ],
        "concern": "Understanding this specific concept",
@@ -35337,10 +35854,10 @@
        "question": "What is the mistake?",
        "options": [
         "They should double their size again after the next loss too.",
-        "They should assume this response guarantees recovering the losses.",
-        "Immediately increasing size to recover losses quickly is commonly described as a revenge-trading response, not a disciplined one."
+        "Immediately increasing size to recover losses quickly is commonly described as a revenge-trading response, not a disciplined one.",
+        "They should assume this response guarantees recovering the losses."
        ],
-       "correct": 2,
+       "correct": 1,
        "explanation": "This response matches the commonly described revenge-trading pattern rather than a calm, disciplined review.",
        "chart": "downtrend"
       },
@@ -35348,11 +35865,11 @@
        "type": "fill_blank",
        "question": "A disciplined response to a losing streak is a calm review of the [___].",
        "options": [
+        "process",
         "random guesses",
-        "account balance",
-        "process"
+        "account balance"
        ],
-       "correct": 2,
+       "correct": 0,
        "explanation": "Reviewing whether the process was followed is the disciplined response."
       },
       {
@@ -35379,11 +35896,6 @@
        "question": "Given a chart showing a long sequence of higher highs and higher lows, which classification best fits?",
        "options": [
         {
-         "label": "Trending",
-         "correct": true,
-         "detail": "Matches the sustained-direction description"
-        },
-        {
          "label": "Volatile",
          "correct": false,
          "detail": "Describes swing size, not direction",
@@ -35394,6 +35906,11 @@
          "correct": false,
          "detail": "Doesn't match this description",
          "wrong_explanation": "Choppy describes oscillation with no net progress, not sustained higher highs and lows."
+        },
+        {
+         "label": "Trending",
+         "correct": true,
+         "detail": "Matches the sustained-direction description"
         }
        ],
        "concern": "Classifying a market condition",
@@ -35421,11 +35938,11 @@
        "type": "fill_blank",
        "question": "A market moving back and forth with no clear sustained direction is commonly classified as [___].",
        "options": [
-        "choppy",
         "trending",
-        "volatile"
+        "volatile",
+        "choppy"
        ],
-       "correct": 0,
+       "correct": 2,
        "explanation": "Reviewing the classification term from earlier in this unit."
       },
       {
@@ -35453,10 +35970,10 @@
        "question": "What is the mistake?",
        "options": [
         "They should assume trending and volatile always mean the same thing.",
-        "A strong sustained trend with normal-sized swings matches a trending classification, not necessarily a volatile one. Those describe different traits.",
-        "They should ignore the size of the swings entirely."
+        "They should ignore the size of the swings entirely.",
+        "A strong sustained trend with normal-sized swings matches a trending classification, not necessarily a volatile one. Those describe different traits."
        ],
-       "correct": 1,
+       "correct": 2,
        "explanation": "Trending describes sustained direction, while volatile specifically describes unusually large or fast swings. They're distinct classifications.",
        "chart": "breakout"
       },
@@ -35500,11 +36017,11 @@
        "type": "multiple_choice",
        "question": "What is the common thread across every unit in this course?",
        "options": [
-        "Building descriptive, educational vocabulary and classification skills, not providing specific trade signals.",
         "Focusing exclusively on one single strategy type as the only valid approach.",
+        "Building descriptive, educational vocabulary and classification skills, not providing specific trade signals.",
         "Providing a guaranteed, step-by-step system for winning every trade."
        ],
-       "correct": 0,
+       "correct": 1,
        "explanation": "Every unit built descriptive understanding and classification skill, not a signals system or a single mandated approach."
       },
       {
@@ -35585,11 +36102,11 @@
        "scenario": "Someone finishes this course and assumes it has taught them exactly which trades to make going forward.",
        "question": "What is the mistake?",
        "options": [
+        "They should assume every concept guarantees a specific trading outcome.",
         "They should skip risk management now that they've finished the course.",
-        "This course builds descriptive, educational vocabulary and classification skills, not a system for making specific trade decisions.",
-        "They should assume every concept guarantees a specific trading outcome."
+        "This course builds descriptive, educational vocabulary and classification skills, not a system for making specific trade decisions."
        ],
-       "correct": 1,
+       "correct": 2,
        "explanation": "This course is educational and descriptive by design, not a signal system for specific trades, real trading decisions carry real risk beyond this course's scope.",
        "chart": "uptrend"
       },
@@ -35597,11 +36114,11 @@
        "type": "fill_blank",
        "question": "This course builds descriptive, educational vocabulary, not a system for specific [___] decisions.",
        "options": [
-        "random",
         "guaranteed",
-        "trade"
+        "trade",
+        "random"
        ],
-       "correct": 2,
+       "correct": 1,
        "explanation": "The whole course stays descriptive and educational, never a trade-decision system."
       },
       {
