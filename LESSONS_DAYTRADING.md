@@ -10804,6 +10804,12 @@ CHART: breakout
 LEVEL: resistance
 WHY: The level price cleared with momentum is the resistance being broken out of.
 
+[CONSOLIDATION] Drag across every candle in this range's consolidation.
+CHART: range
+TARGET_LO: 1
+TARGET_HI: 6
+WHY: All six candles here stay bounded between the support and resistance.
+
 [TF] Marking a level is a matter of judgment, not an exact science.
 ANSWER: True
 WHY: Support and resistance are estimated zones based on past reactions, not precise fixed lines.
@@ -10889,6 +10895,18 @@ WHY: The 1st, 3rd, and 5th candles push into the flat resistance.
 CHART: descendingTriangle
 TARGETS: 1, 3, 5
 WHY: The 1st, 3rd, and 5th candles push down into the flat support.
+
+[TRENDLINE] Drag to connect the two troughs that form this head & shoulders' neckline.
+CHART: headShoulders
+TARGET_START: 3
+TARGET_END: 5
+WHY: Candles 3 and 5 are the troughs on either side of the head.
+
+[CONSOLIDATION] Drag across the candles that make up this bull flag's pause.
+CHART: bullFlag
+TARGET_LO: 3
+TARGET_HI: 4
+WHY: Candles 3 and 4 are the small downward drift after the pole.
 
 [TF] Multi-select questions ask you to identify more than one matching candle at once.
 ANSWER: True
