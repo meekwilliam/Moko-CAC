@@ -2890,6 +2890,17 @@ They should have ignored the red candle's existence entirely.
 They should have switched to a totally different asset.
 WHY: Trend classification is based on the broader swing pattern, not any single candle.
 
+
+[FILL] Both the highs and the lows in an uptrend generally move [___] together.
+upward
+downward
+opposite
+WHY: Both swing highs and swing lows rising together is the defining structure.
+
+[TF] A single lower low automatically disqualifies an otherwise clear uptrend.
+ANSWER: False
+WHY: One isolated swing doesn't override the broader pattern; classification looks at the overall sequence.
+
 NODE 2
 TITLE: Downtrend Basics
 CELEBRATION: You understand downtrends!
@@ -2948,6 +2959,17 @@ One candle within an overall downtrend doesn't change the broader classification
 They should have ignored the green candle's existence entirely.
 They should have switched to a totally different asset.
 WHY: Trend classification is based on the broader swing pattern, not any single candle.
+
+
+[FILL] Both the highs and the lows in a downtrend generally move [___] together.
+downward
+upward
+sideways
+WHY: Both swing highs and swing lows falling together is the defining structure.
+
+[TF] A single higher high automatically disqualifies an otherwise clear downtrend.
+ANSWER: False
+WHY: One isolated swing doesn't override the broader pattern; classification looks at the overall sequence.
 
 NODE 3
 TITLE: Sideways Markets
@@ -3008,6 +3030,17 @@ They should have widened their definition of the range instead.
 They should have only looked at a shorter timeframe.
 WHY: Treating any market phase as permanent overstates what is really just a temporary description.
 
+
+[FILL] A sideways market is sometimes also called a [___].
+range
+breakout
+gap
+WHY: "Range" is a common alternate term for sideways price action.
+
+[TF] A sideways market can eventually break into either an uptrend or a downtrend.
+ANSWER: True
+WHY: Ranges are commonly described as temporary, eventually resolving in one direction or another.
+
 NODE 4
 TITLE: Higher Highs & Higher Lows
 CELEBRATION: You can spot the building blocks of an uptrend!
@@ -3066,6 +3099,17 @@ Confirming this structure requires checking both the swing highs AND the swing l
 They should check the swing highs twice instead.
 They should ignore swing lows entirely from now on.
 WHY: Both sequences need to be checked together to properly confirm this structure.
+
+
+[MC] Which best completes an uptrend's structure alongside higher highs?
+Higher lows.
+Lower lows.
+Equal lows.
+WHY: Higher highs paired with higher lows together define the uptrend structure.
+
+[TF] Checking only swing highs is enough to confirm an uptrend.
+ANSWER: False
+WHY: Both swing highs and swing lows need to be checked together.
 
 NODE 5
 TITLE: Lower Highs & Lower Lows
@@ -3126,6 +3170,17 @@ They should check the swing lows twice instead.
 They should ignore swing highs entirely from now on.
 WHY: Both sequences need to be checked together to properly confirm this structure.
 
+
+[MC] Which best completes a downtrend's structure alongside lower highs?
+Lower lows.
+Higher lows.
+Equal highs.
+WHY: Lower highs paired with lower lows together define the downtrend structure.
+
+[TF] Checking only swing lows is enough to confirm a downtrend.
+ANSWER: False
+WHY: Both swing highs and swing lows need to be checked together.
+
 NODE 6
 TITLE: Trend Strength
 CELEBRATION: You can gauge how strong a trend looks!
@@ -3184,6 +3239,17 @@ Trend strength exists on a spectrum, not as a simple two-option label.
 They should only ever describe trends as strong.
 They should only ever describe trends as weak.
 WHY: Treating strength as binary oversimplifies what's actually a matter of degree.
+
+
+[FILL] Trend strength is commonly judged by comparing swing size to what's [___] for that chart.
+typical
+colorful
+random
+WHY: Comparing recent swings to what's typical gives a rough sense of relative strength.
+
+[TF] A trend can remain in the same direction while getting weaker over time.
+ANSWER: True
+WHY: Direction and strength are separate ideas — a trend can persist in direction while losing steam.
 
 NODE 7
 TITLE: Momentum Basics
@@ -3244,6 +3310,17 @@ They should assume momentum can only ever increase.
 They should assume momentum never changes once established.
 WHY: Momentum is a current, changeable reading, not a fixed guarantee going forward.
 
+
+[FILL] Momentum is often gauged by how [___] price is covering distance.
+quickly
+colorfully
+randomly
+WHY: Speed of movement is central to reading momentum.
+
+[TF] Momentum and volatility describe the exact same thing.
+ANSWER: False
+WHY: Momentum is about directional speed/force; volatility is about the size and speed of swings generally, regardless of direction.
+
 NODE 8
 TITLE: Pullbacks
 CELEBRATION: You understand pullbacks within a trend!
@@ -3302,6 +3379,17 @@ Some counter-trend moves do turn into full reversals — not every one stays a t
 They should label every counter-move a reversal instead.
 They should ignore counter-trend moves entirely.
 WHY: Whether something was a pullback or a reversal is really only clear in hindsight.
+
+
+[FILL] Whether a counter-trend move is a pullback or reversal is often only clear in [___].
+hindsight
+advance
+theory
+WHY: You typically can't be certain which one it is until after it plays out.
+
+[TF] A pullback is generally smaller in scale than the trend it's occurring within.
+ANSWER: True
+WHY: Pullbacks are commonly described as smaller, temporary counter-moves relative to the larger trend.
 
 NODE 9
 TITLE: Consolidation
@@ -3362,6 +3450,17 @@ They should assume it always reverses instead.
 They should ignore consolidation phases entirely.
 WHY: Which direction consolidation resolves in isn't something that can be assumed in advance.
 
+
+[FILL] Consolidation is commonly described as tighter than the [___] that preceded it.
+move
+consolidation
+gap
+WHY: A consolidation range is typically narrower than the stronger move before it.
+
+[TF] Consolidation can only occur after an uptrend, never after a downtrend.
+ANSWER: False
+WHY: Consolidation can follow either an uptrend or a downtrend as a pause.
+
 NODE 10
 TITLE: Break of Structure (Intro)
 CELEBRATION: You understand the basics of a structure break!
@@ -3421,6 +3520,17 @@ They should look for an even bigger break to be sure.
 They should ignore breaks of structure entirely.
 WHY: A break of structure is commonly read as an early signal, not a guaranteed permanent shift.
 
+
+[FILL] A break of structure is commonly treated as an early, not [___], signal.
+confirmed
+random
+descriptive
+WHY: It's read as an early clue that may or may not be confirmed by what follows.
+
+[TF] A break of structure can fail, with the prior trend resuming afterward.
+ANSWER: True
+WHY: Not every structure break leads to a lasting change — some fail and the prior trend continues.
+
 NODE 11
 TITLE: Trend & Structure Drill — Classifying Direction
 CELEBRATION: You can classify direction and structure together!
@@ -3474,6 +3584,17 @@ Predicting the exact next candle with certainty | detail: Overstates certainty |
 Replacing the need to look at the chart at all | detail: Backwards | wrong: This drill is about looking more carefully, not skipping the chart.
 WHY: These drills build a consistent, descriptive habit — not predictive certainty.
 
+
+[FILL] Classifying direction requires comparing multiple [___], not a single candle.
+swings
+colors
+timeframes only
+WHY: Trend classification is based on comparing a sequence of swings.
+
+[TF] These classification drills are meant to build predictive certainty about the future.
+ANSWER: False
+WHY: They build descriptive reading skill, not predictive certainty.
+
 NODE 12
 TITLE: Trend & Structure Drill — Momentum and Pauses
 CELEBRATION: You can classify momentum-related phases!
@@ -3525,6 +3646,17 @@ Whether a counter-move is a pullback or a reversal is often only clear in hindsi
 They should have labeled it a reversal instead, with the same certainty.
 They should stop distinguishing between the two terms entirely.
 WHY: Confidently declaring an in-progress move one way or the other overstates what can actually be known at the time.
+
+
+[FILL] Distinguishing a pullback from a reversal often requires [___] for how it plays out.
+waiting
+guessing immediately
+ignoring the chart
+WHY: Patience is commonly needed since the distinction is often unclear in the moment.
+
+[TF] Consolidation and a pullback describe the exact same market phase.
+ANSWER: False
+WHY: A pullback is a counter-trend move; consolidation is a tighter sideways pause — related but distinct ideas.
 
 NODE 13
 TITLE: Trend & Structure Review
@@ -3581,6 +3713,17 @@ Nothing in this unit was about certainty — it was about describing price struc
 They should have skipped straight to more advanced lessons.
 They should have only studied one single chart.
 WHY: This unit builds reading literacy, not a predictive guarantee — that distinction matters.
+
+
+[FILL] This unit's core skill is describing structure [___], not predicting it with certainty.
+clearly
+randomly
+guaranteed
+WHY: Descriptive clarity, not predictive certainty, has been the throughline.
+
+[TF] Momentum, trend, and structure are all read together for a fuller picture.
+ANSWER: True
+WHY: These concepts complement each other rather than standing alone.
 
 UNIT 5 — Support & Resistance
 NODE 1
@@ -3642,6 +3785,17 @@ They should have picked an even lower price level instead.
 They should have used a shorter timeframe only.
 WHY: Support levels get broken regularly — treating any level as absolute is a common misconception.
 
+
+[FILL] A support level is commonly viewed as more notable with [___] touches.
+more
+fewer
+zero
+WHY: More reactions at a level commonly add to how notable it's viewed.
+
+[TF] Support can eventually be broken and stop acting as a floor.
+ANSWER: True
+WHY: No support level is permanent — breaks happen regularly.
+
 NODE 2
 TITLE: What Is Resistance?
 CELEBRATION: You understand resistance levels!
@@ -3701,6 +3855,17 @@ They should have picked an even higher price level instead.
 They should have used a shorter timeframe only.
 WHY: Resistance levels get broken regularly — treating any level as absolute is a common misconception.
 
+
+[FILL] A resistance level is commonly viewed as more notable with [___] touches.
+more
+fewer
+zero
+WHY: More reactions at a level commonly add to how notable it's viewed.
+
+[TF] Resistance can eventually be broken and stop acting as a ceiling.
+ANSWER: True
+WHY: No resistance level is permanent — breaks happen regularly.
+
 NODE 3
 TITLE: Why Levels Form
 CELEBRATION: You understand why support and resistance exist!
@@ -3756,6 +3921,17 @@ There's no strict, universal rule — these are commonly cited theories about tr
 They should look for an even older price level instead.
 They should stop discussing why levels form at all.
 WHY: Treating a commonly cited theory as an absolute rule overstates what's actually known.
+
+
+[FILL] The behavioral explanation for levels is a [___], not a proven law.
+theory
+guarantee
+rule
+WHY: It's commonly discussed as a reasonable theory, not an enforced law.
+
+[TF] Support and resistance levels are enforced by exchange rules.
+ANSWER: False
+WHY: They're informal, descriptive chart-reading concepts, not official exchange rules.
 
 NODE 4
 TITLE: Multiple Touches
@@ -3816,6 +3992,17 @@ They should wait for even more touches before considering it at all.
 They should stop counting touches entirely.
 WHY: Notability from repeated touches is not the same as a guarantee about future behavior.
 
+
+[FILL] Touch count is one simple way to compare the relative [___] of levels.
+notability
+color
+volume
+WHY: Comparing touch counts is a simple, descriptive way to judge relative notability.
+
+[TF] A level with many touches is mathematically certain to hold on the next test.
+ANSWER: False
+WHY: More touches add notability but never guarantee the next reaction.
+
 NODE 5
 TITLE: Breakouts
 CELEBRATION: You understand breakouts through levels!
@@ -3874,6 +4061,17 @@ Breakouts sometimes fail and reverse — treating them as guaranteed outcomes ov
 They should have used a shorter timeframe only.
 They should have picked a totally different asset instead.
 WHY: Not every breakout continues — some reverse back, commonly called a "false breakout."
+
+
+[FILL] A breakout is described [___] the fact, based on what actually happened.
+after
+before
+without regard to
+WHY: Confirming the move held is part of how breakouts are described in hindsight.
+
+[TF] A breakdown is the same concept as a breakout, just in the opposite direction.
+ANSWER: True
+WHY: Breakdown is simply the downside counterpart to breakout.
 
 NODE 6
 TITLE: Fakeouts
@@ -3934,6 +4132,17 @@ They should have only looked at longer wicks.
 They should have used a completely different chart type.
 WHY: Both extremes — assuming every breakout works, or assuming none do — overstate certainty in either direction.
 
+
+[FILL] A false breakout can only be labeled [___] price has already reversed back.
+after
+before
+without
+WHY: You need to see the reversal happen before calling it a false breakout.
+
+[TF] False breakouts are a reason many chart readers wait for confirmation before reacting.
+ANSWER: True
+WHY: The risk of a false breakout is commonly cited as a reason to wait for confirmation.
+
 NODE 7
 TITLE: Retests
 CELEBRATION: You understand retests of broken levels!
@@ -3992,6 +4201,17 @@ Retests sometimes fail and price breaks back through — it isn't guaranteed to 
 They should have used a shorter timeframe only.
 They should have ignored the retest entirely.
 WHY: Like other chart concepts here, a retest describes a common pattern, not a certainty.
+
+
+[FILL] A retest only makes sense once a level has already [___].
+broken
+formed
+disappeared
+WHY: Retesting implies revisiting a level after it was already broken.
+
+[TF] A retest is guaranteed to hold and never break back through.
+ANSWER: False
+WHY: Retests can also fail, with price breaking back through the level.
 
 NODE 8
 TITLE: Range Trading (Intro)
@@ -4052,6 +4272,17 @@ They should have widened the range indefinitely instead.
 They should have only looked at a shorter timeframe.
 WHY: Treating any market phase as permanent overstates what is really just a temporary description.
 
+
+[FILL] A trading range is bounded by consistent support [___] resistance levels.
+and
+or
+without
+WHY: Both a floor (support) and a ceiling (resistance) together define a range.
+
+[TF] A trading range can persist for a long time before finally breaking out.
+ANSWER: True
+WHY: Ranges are commonly described as lasting a while before eventually resolving.
+
 NODE 9
 TITLE: Combining Levels with Trend
 CELEBRATION: You can combine levels and trend context together!
@@ -4111,6 +4342,17 @@ They should ignore resistance levels entirely instead.
 They should only ever look at trend, never levels.
 WHY: Combining trend and level context together is more descriptive than looking at either alone.
 
+
+[FILL] Combining levels with trend gives a [___] picture than either alone.
+fuller
+narrower
+random
+WHY: Together, levels and trend context are commonly described as more complete than either alone.
+
+[TF] A level that goes against the broader trend is commonly read with extra caution.
+ANSWER: True
+WHY: Conflicting context (level vs trend) is commonly treated as worth extra caution.
+
 NODE 10
 TITLE: Levels Drill — Support or Resistance?
 CELEBRATION: You can classify levels across a mixed set of charts!
@@ -4156,6 +4398,23 @@ Building a consistent habit for spotting these zones on any chart | detail: A pr
 Guaranteeing exactly where price will react next | detail: Overstates certainty | wrong: Levels are historical references, not guarantees.
 Replacing the need to look at the trend entirely | detail: Incomplete | wrong: Levels are read alongside trend, not instead of it.
 WHY: This drill builds a consistent, descriptive habit — not predictive certainty.
+
+
+[FILL] These drills build a consistent, [___] habit for spotting levels.
+descriptive
+predictive
+random
+WHY: The goal is descriptive skill, not predictive certainty.
+
+[TF] Support and resistance can each act as the other after a level breaks.
+ANSWER: True
+WHY: A broken resistance can become support (and vice versa) — this flip is commonly discussed.
+
+[MATCH] Match the drill focus to its skill.
+Spotting support => Identifying a floor level
+Spotting resistance => Identifying a ceiling level
+Spotting a breakout => Noticing price clearing a level
+WHY: These are the three core skills this drill practices together.
 
 NODE 11
 TITLE: Support & Resistance Review
@@ -4212,6 +4471,17 @@ Nothing in this unit was about certainty — it was about describing key price z
 They should have skipped straight to more advanced lessons.
 They should have only studied one single chart.
 WHY: This unit builds reading literacy, not a predictive guarantee — that distinction matters.
+
+
+[FILL] This unit treats levels as [___] tools, not guarantees.
+descriptive
+predictive
+guaranteed
+WHY: Descriptive, not predictive, framing has been the throughline of this unit.
+
+[TF] Fakeouts and retests are both ways a level break can play out after the fact.
+ANSWER: True
+WHY: Both describe possible outcomes once a level has been broken.
 
 UNIT 6 — Double Tops & Bottoms
 NODE 1
