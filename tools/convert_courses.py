@@ -3,7 +3,7 @@ import json, sys
 sys.path.insert(0, __import__("os").path.dirname(__import__("os").path.abspath(__file__)))
 from convert_lessons import parse_doc, build_screen
 
-GAME = "/Users/williammeek/Derm/DermApp_v2/DermApp/GameData.json"
+GAME = "/Users/williammeek/Moko/DermApp/GameData.json"
 BACKUP = GAME + ".bak"   # original 45-node file: icons + legal
 
 icons = json.load(open(BACKUP))
@@ -15,7 +15,7 @@ def default_icon(num):
     # cycle through the available icons if a course has more nodes than icons
     return icon_nodes.get(((num - 1) % len(icon_nodes)) + 1, {}).get("svg", "")
 
-DOC = "/Users/williammeek/Derm/DermApp_v2/LESSONS_DAYTRADING.md"
+DOC = "/Users/williammeek/Moko/LESSONS_DAYTRADING.md"
 
 def build_lesson(L):
     intro = {"type": "intro", "title": L["introTitle"], "text": L["introText"]}
