@@ -12256,6 +12256,13 @@
        "explanation": "The floor analogy is a common way to remember what support describes."
       },
       {
+       "type": "mark_level",
+       "question": "Drag the line to the support this chart keeps bouncing from.",
+       "level_kind": "support",
+       "explanation": "The floor price keeps reacting off of is the support level.",
+       "chart": "supportBounce"
+      },
+      {
        "type": "multiple_choice",
        "question": "Why might a chart reader mark a support level on a chart?",
        "options": [
@@ -12410,6 +12417,13 @@
        ],
        "correct": 1,
        "explanation": "The ceiling analogy is a common way to remember what resistance describes."
+      },
+      {
+       "type": "mark_level",
+       "question": "Drag the line to the resistance this chart keeps rejecting from.",
+       "level_kind": "resistance",
+       "explanation": "The ceiling price keeps reacting off of is the resistance level.",
+       "chart": "resistanceRejection"
       },
       {
        "type": "multiple_choice",
@@ -20237,6 +20251,14 @@
        "chart": "pullbackUptrend"
       },
       {
+       "type": "draw_trendline",
+       "question": "Drag to connect the sequence of higher lows in this healthy uptrend.",
+       "target_start": 0,
+       "target_end": 2,
+       "explanation": "Candles 1 and 3 are the two higher lows, each pullback bottoming above the last.",
+       "chart": "pullbackUptrend"
+      },
+      {
        "type": "multiple_choice",
        "question": "A healthy uptrend makes a series of...",
        "options": [
@@ -20310,6 +20332,14 @@
        "question": "Tap the lower high (the bounce that failed below the prior high).",
        "target": 2,
        "explanation": "The 3rd candle makes a lower high, keeping the downtrend healthy.",
+       "chart": "lowerHighsDowntrend"
+      },
+      {
+       "type": "draw_trendline",
+       "question": "Drag to connect the sequence of lower highs in this healthy downtrend.",
+       "target_start": 0,
+       "target_end": 2,
+       "explanation": "Candles 1 and 3 are the two lower highs, each bounce topping below the last.",
        "chart": "lowerHighsDowntrend"
       },
       {
