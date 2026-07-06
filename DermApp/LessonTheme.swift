@@ -235,25 +235,24 @@ struct ChartCard: ViewModifier {
     var depth: CGFloat = 6
     var radius: CGFloat = 16
     func body(content: Content) -> some View {
-        content
-            .padding(.horizontal, 6).padding(.vertical, 14)
-            .background(Color.white.opacity(0.07))
-            // Clip the chart's own content (grid lines, candles) to the rounded
-            // shape BEFORE adding the border — otherwise the chart's square
-            // corners poke past the rounded card edge.
-            .clipShape(RoundedRectangle(cornerRadius: radius, style: .continuous))
-            .overlay(
-                RoundedRectangle(cornerRadius: radius, style: .continuous)
-                    .strokeBorder(Color(hex: "#334155"), lineWidth: 1.5)
-            )
-            .background(
-                // Slab matches the border color (the same neutral slate used by
-                // every answer option's outline), not a translucent black blend —
-                // that blended into the page background and read as flat. Added
-                // after the clip so it still peeks out below for depth.
-                RoundedRectangle(cornerRadius: radius, style: .continuous)
-                    .fill(Color(hex: "#334155"))
-                    .offset(y: depth)
-            )
+        // A plain ZStack instead of chained .background/.clipShape/.overlay —
+        // that chain rendered an extra ghosted rounded-rect edge at the top
+        // corners. Layer order here is explicit and unambiguous: slab at the
+        // bottom, the card fill+border above it, and the chart's own content
+        // clipped to the same rounded shape on top.
+        ZStack {
+            RoundedRectangle(cornerRadius: radius, style: .continuous)
+                .fill(Color(hex: "#334155"))
+                .offset(y: depth)
+            RoundedRectangle(cornerRadius: radius, style: .continuous)
+                .fill(Color.white.opacity(0.07))
+                .overlay(
+                    RoundedRectangle(cornerRadius: radius, style: .continuous)
+                        .strokeBorder(Color(hex: "#334155"), lineWidth: 1.5)
+                )
+            content
+                .padding(.horizontal, 6).padding(.vertical, 14)
+                .clipShape(RoundedRectangle(cornerRadius: radius, style: .continuous))
+        }
     }
 }
