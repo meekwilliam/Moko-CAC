@@ -511,8 +511,8 @@ WHY: Each new trade is the result of buyers and sellers finding common ground.
 [PICK] Which best explains a sudden, sharp price move?
 CONCERN: Interpreting price moves
 A shift in the balance between buyers and sellers | detail: More pressure on one side than the other
-The company changing its logo | detail: Unrelated | wrong: Branding changes don't directly move price like this.
-The chart being recalibrated | detail: Unrelated | wrong: Charts display real trades, not arbitrary recalibrations.
+A slow, quiet drift with no change in activity | detail: Not quite | wrong: A sharp move usually comes with a burst of activity, not a quiet drift.
+The bid-ask spread staying perfectly fixed | detail: Not quite | wrong: Sharp moves often coincide with the spread widening, not holding fixed.
 WHY: Price moves reflect shifts in buying and selling pressure.
 
 [SPOT] Someone believes a single company employee personally sets the stock's price each day.
@@ -585,7 +585,7 @@ WHY: Volume is usually read alongside price action, not in isolation.
 CONCERN: Reading volume in context
 A larger number of participants were involved in that particular move | detail: More activity accompanied the move
 A guarantee that the move will continue forever | detail: Overstates certainty | wrong: Volume describes activity, not a guaranteed future direction.
-A chart data error | detail: Unrelated | wrong: A volume spike is a normal, valid occurrence.
+Fewer participants than a normal candle | detail: Backwards | wrong: A volume spike means more participation, not less.
 WHY: Volume spikes are commonly read as a sign of increased participation, not a certainty about what happens next.
 
 [SPOT] Someone claims volume numbers are meaningless and should always be ignored.
@@ -1251,7 +1251,7 @@ WHY: A gap is identified by comparing two specific price points across the sessi
 CONCERN: Understanding gap terminology
 Price later trading back to the level before the gap occurred | detail: Closing the price space that was skipped
 A gap that never closes | detail: Opposite idea | wrong: That would simply be described as an unfilled gap.
-A candle with no wick | detail: Unrelated | wrong: That's a separate candlestick concept, not about gaps.
+A gap that keeps widening over time | detail: Opposite | wrong: A fill is price closing the gap, not the gap growing.
 WHY: "Gap fill" specifically describes price retracing back through the skipped range.
 
 [SPOT] Someone assumes every gap must always get filled eventually, as a guaranteed rule.
@@ -1539,7 +1539,7 @@ CHART: doji
 CONCERN: Interpreting a doji from the chart
 That buyers and sellers finished that period roughly balanced | detail: Descriptive, not predictive
 That a reversal is guaranteed next | detail: Overstates certainty | wrong: No single candle guarantees what comes next.
-That the market is closed | detail: Unrelated | wrong: A doji is a normal candle, not a closed market.
+That volume was unusually high that period | detail: Not shown | wrong: A doji is about the open and close being close, not about volume.
 WHY: A doji describes balance in that period; it doesn't predict the next move by itself.
 
 [SPOT] Looking at this chart, someone calls the highlighted doji a "100% guaranteed reversal."
@@ -1668,7 +1668,7 @@ CHART: shootingStar
 CONCERN: Reading the shooting star
 Buyers pushed price up, but it was rejected back down by the close | detail: A descriptive read of the upper wick
 A guarantee price falls from here | detail: Overstates certainty | wrong: The shape describes, it doesn't promise.
-The exact volume traded | detail: Unrelated | wrong: Candle shape doesn't show volume directly.
+That buyers stayed in control into the close | detail: Backwards | wrong: The upper wick shows buyers were rejected, not in control.
 WHY: The shooting star describes an upward push that got rejected.
 
 [SPOT] Someone sees this chart and labels the highlighted candle a hammer.
@@ -2417,7 +2417,7 @@ CHART: marubozu
 QUESTION: What is the mistake?
 A big body describes one strong period. It doesn't guarantee momentum keeps going.
 Momentum candles always repeat.
-Body size has nothing to do with momentum.
+A big body guarantees the very next candle is also big.
 WHY: A decisive candle is descriptive; it doesn't lock in the future.
 
 
@@ -2639,7 +2639,7 @@ CHART: uptrend
 CONCERN: Understanding execution risk
 In a fast-moving or thin-liquidity market | detail: Price can shift quickly with fewer participants
 In a very calm, highly liquid market | detail: Less likely | wrong: Calm, liquid markets tend to have smaller gaps between quote and fill.
-Only on public holidays | detail: Unrelated | wrong: Holiday scheduling isn't what drives this gap.
+Only when using a limit order | detail: Backwards | wrong: Limit orders cap the price; market orders are what can slip in fast conditions.
 WHY: Fast-moving or thin markets are where the gap between expected and actual fill price tends to be largest.
 
 [SPOT] Someone is surprised their market order filled at a noticeably different price during a very fast-moving moment.
@@ -2989,7 +2989,7 @@ CHART: breakout
 CONCERN: Understanding slippage conditions
 During fast-moving, low-liquidity conditions | detail: Bigger, quicker price changes with fewer participants
 During calm, highly liquid conditions | detail: Less likely | wrong: Calm, liquid conditions tend to have smaller slippage.
-Only during scheduled maintenance windows | detail: Unrelated | wrong: Maintenance windows aren't what drives slippage.
+Only when volume is unusually high and steady | detail: Not quite | wrong: Slippage is worst in thin, fast markets, not steady high-volume ones.
 WHY: Fast-moving, thin markets are where the gap between expected and actual price tends to be largest.
 
 [SPOT] Someone calculates a trading plan's results using only the exact prices shown on a chart, ignoring slippage entirely.
@@ -4639,7 +4639,7 @@ CHART: breakout
 CONCERN: Reading trend strength
 Swings becoming smaller and less consistent than before | detail: A commonly cited sign of fading momentum
 Swings becoming larger and more consistent | detail: Opposite description | wrong: That would more commonly be read as a strengthening trend.
-No candles forming at all | detail: Unrelated | wrong: A lack of candles isn't how trend strength is measured.
+Price gapping to a fresh, stronger high | detail: Not quite | wrong: A strong new high suggests strength, not a weakening trend.
 WHY: Smaller, less consistent swings are the commonly cited sign of a weakening trend.
 
 [SPOT] Someone assumes trend strength is either "fully strong" or "fully weak," with nothing in between.
@@ -4919,7 +4919,7 @@ CHART: breakout
 CONCERN: Understanding this specific term
 Price breaking the established pattern of recent swing highs/lows | detail: An early, descriptive signal
 A guarantee the trend has permanently reversed | detail: Overstates certainty | wrong: It's commonly read as an early signal, not a certainty.
-A completely random, meaningless event | detail: Overcorrects | wrong: It's a commonly cited, useful piece of context.
+The same thing as a single red candle | detail: Too narrow | wrong: It's about breaking the swing structure, not one candle.
 WHY: A break of structure is a descriptive early clue, not a guaranteed outcome.
 
 [SPOT] Someone treats every single break of structure as a guaranteed, permanent trend reversal.
@@ -5471,7 +5471,7 @@ CHART: breakout
 CONCERN: Interpreting a breakout accurately
 A description that price has moved clearly past a prior level | detail: Descriptive, not a guarantee
 A guarantee that price will keep moving in that direction forever | detail: Overstates certainty | wrong: Breakouts can fail and reverse.
-Proof that the prior level was drawn incorrectly | detail: Unrelated | wrong: A breakout doesn't mean the level was wrong.
+Proof the level will never matter again | detail: Overstates it | wrong: A broken level can flip roles and be retested, not vanish.
 WHY: A breakout is a description of a past event, not a certainty about the future.
 
 [SPOT] Someone treats every single breakout as guaranteed to keep going in that direction.
@@ -5541,7 +5541,7 @@ CHART: resistanceRejection
 CONCERN: Reading breakout follow-through
 Price moved past a level but then reversed back into the range | detail: The definition of a false breakout
 Price moved past a level and kept going for months | detail: Doesn't match | wrong: That would be a confirmed breakout.
-A candle with a small body and long wicks | detail: Unrelated | wrong: That describes a doji, not a false breakout.
+Price never reaching the level at all | detail: Doesn't match | wrong: A false breakout requires crossing the level first, then reversing.
 WHY: The reversal back is the defining feature of a false breakout.
 
 [SPOT] Someone assumes every breakout must be false and never trusts one at all.
@@ -5725,7 +5725,7 @@ WHY: Levels are commonly discussed in relation to the broader trend they sit wit
 [MC] Why might a support level be viewed differently during an uptrend versus a downtrend?
 The broader trend context can add to how a level is commonly interpreted.
 Support only exists during uptrends and never during downtrends.
-Trend and support have no relationship to each other at all.
+The trend has to be identified before any level can exist.
 WHY: Combining level and trend context is commonly described as giving a fuller picture than either alone.
 
 [MATCH] Match the combined context to a commonly cited description.
@@ -5941,7 +5941,7 @@ CHART: doubleTop
 CONCERN: Reading the pattern descriptively
 Price tested a level twice and failed to break above it | detail: A descriptive read, not a guarantee
 A guaranteed crash from here | detail: Overstates certainty | wrong: A pattern describes; it doesn't guarantee the next move.
-That both peaks are green candles | detail: Unrelated | wrong: Candle color isn't what defines the pattern.
+That the two peaks must match to the exact cent | detail: Too strict | wrong: 'About the same' level is the standard, not exact equality.
 WHY: A double top describes a level tested twice and rejected. Context, not certainty.
 
 [SPOT] Someone sees one peak and immediately calls it a "double top."
@@ -6059,7 +6059,7 @@ WHY: The neckline runs along the low of the pullback between the two peaks.
 [MC] Why is the neckline important when reading a double top?
 The pattern is commonly said to complete only when price breaks the neckline.
 The neckline guarantees the direction of the next candle.
-The neckline is unrelated to the pattern.
+The neckline marks the taller of the two peaks.
 WHY: Breaking the neckline is the commonly cited confirmation step, descriptively.
 
 [TF] A double top is commonly said to be "confirmed" the instant the second peak forms, before any neckline break.
@@ -6821,7 +6821,7 @@ WHY: Candles 3 and 5 are the troughs on either side of the head, connected by th
 [MC] Why is the neckline important in a head & shoulders?
 The pattern is commonly said to complete only when price breaks the neckline.
 The neckline guarantees the next candle's direction.
-The neckline is unrelated to the pattern.
+The neckline runs along the three peaks, not the troughs.
 WHY: Breaking the neckline is the commonly cited confirmation step, descriptively.
 
 [FILL] The neckline connects the two [___] between the peaks.
@@ -6855,8 +6855,8 @@ WHY: The neckline break is the commonly cited confirmation step.
 
 [MC] What is the neckline, in simple terms?
 The level connecting the troughs between the three peaks.
-The tallest peak itself.
-A random line unrelated to the pattern.
+The tallest peak (the head) itself.
+The line connecting the tops of the two shoulders.
 WHY: The neckline specifically connects the two troughs framing the head.
 
 NODE 4
@@ -7688,7 +7688,7 @@ CHART: symmetricalTriangle
 CONCERN: Reviewing the big picture
 A squeeze into a narrowing range, with a break-direction bias, not a guarantee | detail: The central theme
 Patterns that guarantee the breakout direction | detail: Overstates certainty | wrong: Contradicts the unit.
-Shapes unrelated to support and resistance | detail: Backwards | wrong: The flat sides ARE levels.
+Shapes that always break upward | detail: Too strong | wrong: Triangles can break either way; only a flat side hints at bias.
 WHY: A squeeze with a bias (not a guarantee) is the throughline.
 
 [SPOT] Someone calls every little sideways wiggle a "triangle."
@@ -8447,7 +8447,7 @@ WHY: Breaking the line is commonly noted as an early sign the uptrend may be shi
 [MC] What happens if a pullback breaks clearly below the uptrend line?
 It's commonly read as a possible early sign of weakening structure.
 It automatically confirms a new, permanent downtrend.
-Nothing, trendlines have no relationship to structure.
+It confirms the uptrend will simply resume unchanged.
 WHY: A break is a commonly cited early signal, not an automatic confirmation of a new trend.
 
 NODE 3
@@ -8504,7 +8504,7 @@ WHY: Breaking the line is commonly noted as an early sign the downtrend may be s
 [MC] What happens if a bounce breaks clearly above the downtrend line?
 It's commonly read as a possible early sign of weakening structure.
 It automatically confirms a new, permanent uptrend.
-Nothing, trendlines have no relationship to structure.
+It confirms the downtrend will simply resume unchanged.
 WHY: A break is a commonly cited early signal, not an automatic confirmation of a new trend.
 
 NODE 4
@@ -8948,7 +8948,7 @@ CHART: range
 CONCERN: Reviewing the big picture
 Price bouncing between levels until it breaks out, with breaks that can be false | detail: The central theme
 Ranges that guarantee their breakout direction | detail: Overstates certainty | wrong: Contradicts the unit.
-Ranges unrelated to support and resistance | detail: Backwards | wrong: The boundaries ARE support and resistance.
+Ranges that form only on the daily chart | detail: Too narrow | wrong: Ranges form on every timeframe.
 WHY: Bounded sideways movement with non-guaranteed breaks is the throughline.
 
 [SPOT] Someone calls a strong trending chart a "range."
@@ -9538,7 +9538,7 @@ WHY: It's a common tendency, not a guarantee, the trend can still fail to contin
 [MC] How should "the trend often continues after a pullback" be read?
 As a commonly observed tendency, not a certainty.
 As an absolute, guaranteed rule.
-As something that never happens.
+As a rule that applies only to downtrends.
 WHY: This course consistently frames such patterns as tendencies, not guarantees.
 
 NODE 6
@@ -10025,8 +10025,8 @@ WHY: A pattern reinforced by a level (confluence) is stronger than the pattern a
 
 [MC] What two factors combine in "level + pattern" confluence?
 A key level and a chart pattern forming there.
-Two unrelated timeframes.
-Candle color and account size.
+Two moving averages crossing each other.
+A single candlestick read on its own.
 WHY: A pattern reinforced by a level is this specific type of confluence.
 
 NODE 4
@@ -10122,7 +10122,7 @@ WHY: No amount of confluence removes uncertainty entirely. It only stacks probab
 [MC] What is the honest limit of confluence, even with many agreeing factors?
 It strengthens the read but never guarantees the outcome.
 It eventually guarantees the outcome.
-It has no effect on the read at all.
+It replaces the need to read price at all.
 WHY: Confluence improves the odds of a read without ever making it certain.
 
 NODE 6
@@ -10142,7 +10142,7 @@ WHY: Each is two factors agreeing, confluence.
 [MC] What is the honest limit of confluence?
 It stacks probability but never guarantees an outcome.
 It guarantees the outcome once you have enough.
-It has no effect on a read.
+It only works with exactly two factors.
 WHY: Confluence strengthens the read without ever making it certain.
 
 [FILL2] Confluence combines [1] agreeing readings for a [2] read, never a guarantee.
@@ -10358,7 +10358,7 @@ CHART: gapUp
 CONCERN: Managing expectations
 As a common tendency, not a guarantee | detail: Descriptive tendency
 As a certainty every time | detail: Overstates certainty | wrong: Not every gap fills.
-As something that never happens | detail: Backwards | wrong: Gap fills are common, just not guaranteed.
+As a precise date the gap will fill by | detail: Overstates it | wrong: 'Often' is a tendency, not a schedule.
 WHY: "Often fills" is a descriptive tendency, never a guarantee.
 
 
@@ -10519,7 +10519,7 @@ WHY: Lower timeframes zoom in, offering finer detail over less total time.
 
 [MC] What do higher and lower timeframes have in common?
 Both describe the same market, just at different scales.
-They describe two entirely unrelated markets.
+They each show a different stock entirely.
 Only one of them is ever accurate.
 WHY: They're the same underlying price data, viewed at different zoom levels.
 
@@ -11267,7 +11267,7 @@ CHART: gapUp
 CONCERN: Connecting concepts
 New information released while the market is closed can shift the next open sharply | detail: Connects to the Gaps unit
 Earnings only matter during standard trading hours | detail: Not quite | wrong: Earnings often land after the close, which is exactly why they gap the next open.
-Gaps only happen for reasons unrelated to earnings | detail: Incomplete | wrong: Earnings are a commonly cited gap driver.
+Gaps form only during standard trading hours | detail: Backwards | wrong: Gaps form between sessions, when earnings often land.
 WHY: This ties the earlier Gaps unit directly to a commonly cited real-world cause.
 
 [SPOT] Someone assumes earnings reports have no relationship to price volatility.
@@ -11744,7 +11744,7 @@ WHY: This is a commonly cited approach, among several, for placing a stop-loss w
 [MC] Why might a stop-loss be placed just beyond a nearby support level?
 If that level breaks, it may suggest the original reason for the trade no longer holds.
 It guarantees the stop will never be triggered.
-It has no relationship to the trade's original reasoning.
+It sets the stop a fixed dollar amount below entry, ignoring the level.
 WHY: Tying the stop to a meaningful level gives it a clear, describable reason.
 
 [MATCH] Match the stop-loss placement idea to its reasoning.
@@ -11769,7 +11769,7 @@ WHY: This ties the stop-loss to a specific reason rather than an arbitrary numbe
 CHART: supportBounce
 CONCERN: Understanding placement logic
 Tied to a level that would suggest the original trade idea no longer holds | detail: A reasoned, specific placement
-A completely random number with no logic behind it | detail: Contradicts the approach | wrong: This approach is specifically about having a clear reason.
+A fixed number of cents below entry, ignoring the level | detail: Not the idea | wrong: The point is tying the stop TO the level, not a fixed offset.
 A guarantee the position will never lose money | detail: Overstates certainty | wrong: A stop-loss limits risk; it doesn't guarantee no loss ever occurs.
 WHY: Tying the stop to a meaningful level gives it a clear, describable rationale.
 
@@ -11814,7 +11814,7 @@ WHY: "Overleveraging" describes taking on leverage beyond what fits your risk to
 [MC] Why is overleveraging commonly cited as a significant danger?
 It amplifies losses, potentially causing much larger damage from a single adverse move.
 It guarantees larger profits with no added risk.
-It has no effect on the size of potential losses.
+It reduces risk by spreading it across more trades.
 WHY: Amplified losses are the commonly cited core danger of overleveraging.
 
 [MATCH] Match the leverage concept to its description.
@@ -12024,7 +12024,7 @@ WHY: Without capital, there's nothing left to trade with, preservation supports 
 [MC] Why might capital preservation be commonly emphasized alongside potential gains?
 Without sufficient capital remaining, there's nothing left to trade with going forward.
 Preserving capital guarantees higher returns than any other approach.
-Capital preservation has no relationship to risk management.
+Capital preservation means avoiding trades entirely.
 WHY: Capital preservation is commonly linked to risk management, since capital is needed to keep participating at all.
 
 [MATCH] Match the mindset to its general focus.
@@ -12467,7 +12467,7 @@ CHART: doji
 QUESTION: What is the mistake?
 Mean reversion is commonly described as expecting an eventual move back toward average, not further away from it.
 They should expect it to move even further away to match the description.
-They should assume mean reversion has no relationship to an average level.
+Mean reversion and trend-following describe the same expectation.
 WHY: This description contradicts the commonly cited core idea behind mean reversion.
 
 
@@ -12537,7 +12537,7 @@ CHART: breakout
 QUESTION: What is the mistake?
 Breakout trading is commonly described as expecting continuation after a range clears, not an immediate reversal.
 They should expect a reversal even sooner to match the description.
-They should assume breakout trading has no relationship to a range at all.
+Breakout trading and range trading expect the same thing.
 WHY: This description contradicts the commonly cited core idea behind breakout trading.
 
 
@@ -12607,7 +12607,7 @@ CHART: sideways
 QUESTION: What is the mistake?
 Range trading is commonly described as expecting price to stay within boundaries, not break through them repeatedly.
 They should expect it to break through even more boundaries to match the description.
-They should assume range trading has no relationship to support or resistance.
+Range trading and breakout trading expect the same thing.
 WHY: This description contradicts the commonly cited core idea behind range trading.
 
 
@@ -12778,7 +12778,7 @@ WHY: A large percent at risk on one trade exposes the account to big damage from
 CONCERN: Understanding the approach
 So a single loss can't do outsized damage to the account | detail: Protects the account
 So every trade is guaranteed to win | detail: Overstates certainty | wrong: Sizing doesn't change win odds.
-So you never have to use a stop | detail: Unrelated | wrong: Sizing works with a stop, not instead of one.
+So position size can be as large as you like | detail: Backwards | wrong: Small consistent risk is the whole point; it caps size.
 WHY: Small consistent risk limits the damage any one loss can do.
 
 
@@ -13482,8 +13482,8 @@ TEXT: The market condition frames everything else. A level that "holds" in a ran
 
 [MC] Why classify the market condition first?
 Because it frames how you read levels, patterns, and candles.
-Because it changes the candle colors.
-Because it has no effect on anything.
+Because it locks in the day's trend direction.
+Because it sets your position size for you.
 WHY: The condition sets the context for every other read.
 
 [TF] The same level can behave differently in a range vs a volatile condition.
@@ -13623,7 +13623,7 @@ TEXT: Because it averages, a moving average <b>smooths</b> out the candle-to-can
 [MC] Averaging recent prices makes a moving average...
 smoother than the raw candles.
 more jagged than the candles.
-unrelated to price.
+identical to the raw price line.
 WHY: Averaging smooths the noise, so the line is steadier than raw price.
 
 [FILL] A moving average [___] out short-term noise.
@@ -13762,7 +13762,7 @@ TEXT: A <b>short</b> MA (few periods) reacts quickly to price. It's "fast." A <b
 [MC] A short-period MA is...
 fast. It reacts quickly to price.
 slow and very smooth.
-unrelated to price.
+the same as a long-period MA.
 WHY: Fewer periods means quicker reaction, a "fast" MA.
 
 [MC] A long-period MA is...
@@ -13875,7 +13875,7 @@ CHART: uptrend
 CONCERN: Reviewing the big picture
 A smoothed, lagging line whose slope reads the trend, descriptive, not predictive | detail: The central theme
 A predictor of the next price | detail: Overstates | wrong: MAs lag, they don't predict.
-Unrelated to price | detail: Wrong | wrong: An MA is built directly from price.
+A guaranteed buy/sell signal on every cross | detail: Overstates it | wrong: Crossovers are lagging cues, not guaranteed signals.
 WHY: Smoothed, lagging, descriptive trend reading is the throughline.
 
 
@@ -14041,7 +14041,7 @@ WHY: The gap/relationship between the MAs reads as momentum.
 [MC] Since MACD comes from moving averages, it is...
 lagging (derived from past prices).
 a leading predictor.
-unrelated to price.
+faster-moving than price itself.
 WHY: MA-based indicators lag price.
 
 
@@ -14457,7 +14457,7 @@ WHY: The 4th candle is where price closes back below VWAP, the crossing point.
 [MC] Price above VWAP is commonly described as...
 trading above the session average (relative strength).
 guaranteed to fall.
-unrelated to VWAP.
+always exactly equal to VWAP.
 WHY: Above the volume-weighted average is commonly read as relative strength.
 
 [TF] Price below VWAP is commonly described as relative weakness.
@@ -14788,7 +14788,7 @@ WHY: Streaks are normal variance, not proof of a broken system.
 CONCERN: Reading variance honestly
 Because streaks happen by chance even with positive expectancy | detail: Normal variance
 Because systems never lose | detail: Wrong | wrong: All systems have losing trades.
-Because expectancy doesn't exist | detail: Backwards | wrong: Expectancy is the long-run measure.
+Because more trades always guarantee a win eventually | detail: Not quite | wrong: Nothing guarantees a win; streaks are just normal variance.
 WHY: Losing streaks are normal variance, not proof about the long-run edge.
 
 
