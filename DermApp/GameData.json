@@ -25074,7 +25074,7 @@
        "options": [
         "It helps quantify how much a single loss could realistically cost.",
         "It guarantees the trade will be profitable.",
-        "It removes the need for a stop-loss entirely."
+        "It tells you the best price to take profit at."
        ],
        "correct": 0,
        "explanation": "Quantifying potential loss is the whole point of thinking about risk per trade."
@@ -25852,7 +25852,7 @@
        "type": "multiple_choice",
        "question": "Why is understanding drawdowns commonly considered useful?",
        "options": [
-        "It only applies to accounts that have never had any losses.",
+        "It tells you exactly when the next losing streak will end.",
         "It guarantees an account will never decline again.",
         "It helps set realistic expectations that account value doesn't move in a straight line."
        ],
@@ -30192,10 +30192,10 @@
        "question": "How should divergence be read?",
        "options": [
         {
-         "label": "As proof the data is broken",
+         "label": "As a leading signal that front-runs the turn",
          "correct": false,
-         "detail": "Wrong",
-         "wrong_explanation": "It's a normal, valid reading."
+         "detail": "Overstates it",
+         "wrong_explanation": "Divergence is a lagging, descriptive disagreement, not a leading trigger."
         },
         {
          "label": "As a descriptive disagreement worth noting, not a guarantee",
@@ -32499,7 +32499,7 @@
        "options": [
         "To help gauge a reasonable stop distance based on typical movement.",
         "To guarantee a winning trade.",
-        "To replace the need for any stop-loss at all."
+        "To decide which direction the trade should go."
        ],
        "correct": 0,
        "explanation": "ATR can inform how far a stop might reasonably need to sit given typical movement, connecting back to the Position Sizing unit."
@@ -33330,10 +33330,10 @@
          "detail": "An early reference point"
         },
         {
-         "label": "It only matters for the last hour of trading",
+         "label": "It shows the total volume traded that session",
          "correct": false,
-         "detail": "Incorrect",
-         "wrong_explanation": "The opening range is defined by early, not late, price action."
+         "detail": "Not quite",
+         "wrong_explanation": "The opening range is a high/low reference, not a volume measure."
         }
        ],
        "concern": "Understanding the tool",
@@ -33528,10 +33528,10 @@
          "detail": "Consistent with breakout concepts"
         },
         {
-         "label": "Because it means the opening range concept doesn't apply here",
+         "label": "Because a false break means the opening range was drawn incorrectly",
          "correct": false,
-         "detail": "Incorrect",
-         "wrong_explanation": "The opening range concept still applies, it just didn't hold."
+         "detail": "Not quite",
+         "wrong_explanation": "A false break is normal price behavior, not a drawing error."
         }
        ],
        "concern": "Applying prior concepts",
@@ -34591,10 +34591,10 @@
          "detail": "A cautious, descriptive frame"
         },
         {
-         "label": "As something irrelevant to understand at all",
+         "label": "As a complete replacement for reading the price chart",
          "correct": false,
-         "detail": "Understates it",
-         "wrong_explanation": "Conceptual awareness of the order book is still useful context."
+         "detail": "Overstates it",
+         "wrong_explanation": "It's one added descriptive layer, not a replacement for price."
         }
        ],
        "concern": "Setting expectations",
