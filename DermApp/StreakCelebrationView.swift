@@ -2,10 +2,13 @@ import SwiftUI
 
 // MARK: - Streak celebration screen
 // Shown once per day, right after the first lesson that extends the streak
-// (not on replays or a second lesson the same day). A grey, unlit flame spins
-// and reveals the real animated FlameIcon underneath, then the streak count,
-// "day streak" label, and a Mo–Su week row (checked days) fade/pop in —
-// Duolingo's streak screen, without the mascot.
+// (not on replays or a second lesson the same day). Two distinct intros:
+//   - Day 1 ("a streak is born"): a blank/white flame fast-spins and reveals
+//     the real animated FlameIcon underneath, mid-spin.
+//   - Every day after: already lit from the start (no white phase) — just a
+//     very quick spin flourish celebrating the new day.
+// Then the streak count, "day streak" label, and a Mo–Su week row (checked
+// days) pop in — Duolingo's streak screen, without the mascot.
 
 struct StreakCelebrationView: View {
     var count: Int
@@ -21,6 +24,7 @@ struct StreakCelebrationView: View {
 
     private var ink: Color { scheme == .dark ? Theme.inkDark : Theme.ink }
     private let flameSize: CGFloat = 150
+    private var isFirstDay: Bool { count <= 1 }
 
     var body: some View {
         ZStack {
@@ -30,7 +34,9 @@ struct StreakCelebrationView: View {
                 Spacer()
 
                 ZStack {
-                    UnlitFlameIcon(size: flameSize).opacity(revealed ? 0 : 1)
+                    if isFirstDay {
+                        UnlitFlameIcon(size: flameSize).opacity(revealed ? 0 : 1)
+                    }
                     FlameIcon(size: flameSize).opacity(revealed ? 1 : 0)
                 }
                 .rotation3DEffect(.degrees(spinDegrees), axis: (x: 0, y: 1, z: 0), perspective: 0.45)
@@ -89,18 +95,26 @@ struct StreakCelebrationView: View {
     }
 
     private func runIntro() {
-        // A one-turn flip: swap the grey silhouette for the real flame right
-        // as the view is edge-on (halfway through), so the "reveal" lands
-        // mid-spin instead of as a plain crossfade.
-        withAnimation(.easeInOut(duration: 0.85)) {
-            spinDegrees = 360
-        }
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.42) {
+        if isFirstDay {
+            // "A streak is born": blank/white flame fast-spins and swaps to the
+            // real lit flame right as it's edge-on (mid-spin), not a crossfade.
+            withAnimation(.easeInOut(duration: 0.5)) { spinDegrees = 360 }
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.25) {
+                Haptics.impact(.medium)
+                withAnimation(.easeInOut(duration: 0.12)) { revealed = true }
+            }
+            withAnimation(.spring(response: 0.5, dampingFraction: 0.62).delay(0.55)) {
+                popIn = true
+            }
+        } else {
+            // Already lit from the start — no white phase — just a very quick
+            // spin flourish celebrating the new day.
+            revealed = true
+            withAnimation(.easeInOut(duration: 0.22)) { spinDegrees = 360 }
             Haptics.impact(.medium)
-            withAnimation(.easeInOut(duration: 0.18)) { revealed = true }
-        }
-        withAnimation(.spring(response: 0.5, dampingFraction: 0.62).delay(0.75)) {
-            popIn = true
+            withAnimation(.spring(response: 0.5, dampingFraction: 0.62).delay(0.28)) {
+                popIn = true
+            }
         }
     }
 }
