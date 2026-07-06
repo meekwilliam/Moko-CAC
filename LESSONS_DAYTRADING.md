@@ -12941,6 +12941,18 @@ INTRO
 TITLE: Size to Fit the Risk
 TEXT: Position size is commonly worked <b>backward</b> from your dollar risk and stop distance: choose a size so that if the stop is hit, the loss equals your planned dollar risk.
 
+[ORDER] The commonly used steps to calculate a position size:
+Multiply account size by risk percent to get the dollar risk
+Find the stop distance (entry price minus stop price)
+Divide the dollar risk by the stop distance to get share size
+WHY: Dollar risk first, then stop distance, then divide, is the standard backward-from-risk calculation.
+
+[MATCH] Match each term to what it represents.
+Dollar risk => Account size multiplied by risk percent
+Stop distance => Entry price minus stop price
+Position size => Dollar risk divided by stop distance
+WHY: These three pieces combine to size a position from risk and stop distance.
+
 [MC] Position size is commonly calculated from your...
 dollar risk and stop distance.
 favorite number.
@@ -13116,6 +13128,18 @@ CELEBRATION: You understand expectancy!
 INTRO
 TITLE: Average Result Per Trade
 TEXT: Expectancy is the <b>average result per trade</b>, measured in R, over many trades. A positive expectancy means the average trade gains R over the long run.
+
+[ORDER] The commonly used steps to calculate expectancy:
+Multiply win rate by the average win size (in R)
+Multiply loss rate by the average loss size (in R)
+Subtract the second result from the first
+WHY: (Win rate × average win) minus (loss rate × average loss) is the standard expectancy formula.
+
+[MATCH] Match each term to what it measures.
+Win rate => How often trades win
+Average win => How much winning trades gain, in R
+Average loss => How much losing trades give back, in R
+WHY: These three inputs combine into the expectancy formula.
 
 [MC] Expectancy is the...
 average result per trade (in R) over many trades.
@@ -14161,6 +14185,13 @@ Invalidation => Where the idea is proven wrong
 Target => The planned exit
 WHY: Idea, invalidation, target (and size) are the core of a plan.
 
+[ORDER] A commonly used order for building a trade plan:
+Define the idea (why the trade makes sense)
+Define invalidation (where the idea is proven wrong)
+Define the target (the planned exit)
+Define the size (based on risk and stop distance)
+WHY: Idea first, then invalidation, then target, then size, is a natural planning sequence.
+
 [FILL] A plan decides the key things [___] entering.
 before
 after
@@ -14720,6 +14751,19 @@ INTRO
 TITLE: Losses Need Bigger Gains Back
 TEXT: A key fact: a loss needs a <b>larger</b> percentage gain to recover. A 50% loss needs a 100% gain to break even. This is why limiting drawdowns matters.
 
+[MATCH] Match each drawdown to the roughly gain needed to recover it.
+10% loss => ~11% gain to recover
+25% loss => ~33% gain to recover
+50% loss => 100% gain to recover
+WHY: The deeper the loss, the more disproportionately larger the recovery gain needed.
+
+[ORDER] Order these drawdowns from the smallest recovery gain needed to the largest:
+10% loss (needs ~11% back)
+25% loss (needs ~33% back)
+50% loss (needs 100% back)
+75% loss (needs 300% back)
+WHY: Recovery gain needed grows faster than the loss itself as drawdowns deepen.
+
 [MC] A 50% loss requires what gain to break even?
 100%.
 50%.
@@ -14984,6 +15028,13 @@ Setup => Why the trade made sense
 Plan => Entry, invalidation, target, size
 Outcome => The result, measured in R
 WHY: Setup, plan, execution, and outcome make a complete entry.
+
+[ORDER] The order a complete journal entry logs its fields:
+Setup (why the trade made sense)
+Plan (entry, invalidation, target, size)
+Execution (did you follow the plan?)
+Outcome (the result, in R)
+WHY: This mirrors the trade's own timeline, why, then plan, then what happened, then the result.
 
 [MC] Recording the outcome in R (not just dollars) lets you...
 compare trades of different sizes fairly.
