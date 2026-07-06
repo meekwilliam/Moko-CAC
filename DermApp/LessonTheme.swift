@@ -241,14 +241,14 @@ struct ChartCard: ViewModifier {
                 RoundedRectangle(cornerRadius: radius, style: .continuous)
                     .fill(Color.white.opacity(0.07))
                     .overlay(RoundedRectangle(cornerRadius: radius, style: .continuous)
-                        .strokeBorder(Color.white.opacity(0.16), lineWidth: 1.5))
+                        .strokeBorder(Color(hex: "#334155"), lineWidth: 1.5))
             )
             .background(
-                // A solid near-black slab, not a translucent blend — a low-opacity
-                // black over this app's already-dark navy background barely reads
-                // as a shadow, so the card looked flat despite having one.
+                // Slab matches the border color (the same neutral slate used by
+                // every answer option's outline), not a translucent black blend —
+                // that blended into the page background and read as flat.
                 RoundedRectangle(cornerRadius: radius, style: .continuous)
-                    .fill(Color(hex: "#020617"))
+                    .fill(Color(hex: "#334155"))
                     .offset(y: depth)
             )
     }

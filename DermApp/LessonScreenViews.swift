@@ -910,7 +910,7 @@ struct ChoiceView: View {
 
         var fill = scheme == .dark ? Color(hex: "#1E293B") : Color.white
         var border = scheme == .dark ? Color(hex: "#334155") : Color(hex: "#DDE3ED")
-        var slab = scheme == .dark ? Color(hex: "#020617") : Color(hex: "#B8C4D8")
+        var slab = scheme == .dark ? Color(hex: "#334155") : Color(hex: "#B8C4D8")
         var textColor = ink
 
         if revealed {
@@ -1004,7 +1004,7 @@ struct MatchingView: View {
 
         var fill = scheme == .dark ? Color(hex: "#1E293B") : Color.white
         var border = scheme == .dark ? Color(hex: "#334155") : Color(hex: "#DDE3ED")
-        var slab = scheme == .dark ? Color(hex: "#020617") : Color(hex: "#B8C4D8")
+        var slab = scheme == .dark ? Color(hex: "#334155") : Color(hex: "#B8C4D8")
         var textColor = ink
 
         if matched {
@@ -1131,7 +1131,7 @@ struct FlowChips: View {
         let isSel = selected == idx
         var fill = scheme == .dark ? Color(hex: "#1E293B") : Color.white
         var border = scheme == .dark ? Color(hex: "#334155") : Color(hex: "#DDE3ED")
-        var slab = scheme == .dark ? Color(hex: "#020617") : Color(hex: "#B8C4D8")
+        var slab = scheme == .dark ? Color(hex: "#334155") : Color(hex: "#B8C4D8")
         var textColor = ink
         if revealed && idx == correctIndex {
             fill = Theme.correct; border = Theme.correctDark; slab = Theme.correctDark; textColor = .white
@@ -1194,7 +1194,7 @@ struct IngredientMatchView: View {
 
         var fill = scheme == .dark ? Color(hex: "#1E293B") : Color.white
         var border = scheme == .dark ? Color(hex: "#334155") : Color(hex: "#DDE3ED")
-        var slab = scheme == .dark ? Color(hex: "#020617") : Color(hex: "#B8C4D8")
+        var slab = scheme == .dark ? Color(hex: "#334155") : Color(hex: "#B8C4D8")
         var textColor = ink
         var subColor = Theme.muted
 
@@ -1298,7 +1298,7 @@ struct OrderBuilderView: View {
                             )
                             .background(
                                 RoundedRectangle(cornerRadius: 14, style: .continuous)
-                                    .fill(scheme == .dark ? Color(hex: "#020617") : Color(hex: "#B8C4D8"))
+                                    .fill(scheme == .dark ? Color(hex: "#334155") : Color(hex: "#B8C4D8"))
                                     .offset(y: 4)
                             )
                             .contentShape(Rectangle())
@@ -1325,7 +1325,7 @@ struct OrderBuilderView: View {
 
         var fill = scheme == .dark ? Color(hex: "#1E293B") : Color.white
         var border = player.unit.main
-        var slab = scheme == .dark ? Color(hex: "#020617") : Color(hex: "#B8C4D8")
+        var slab = border
         var textColor = ink
         if revealed {
             if rightPlace { fill = Theme.correct; border = Theme.correctDark; slab = Theme.correctDark; textColor = .white }
