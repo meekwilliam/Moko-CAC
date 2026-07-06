@@ -291,23 +291,59 @@ private struct PersonShoulders: Shape {
 
 // MARK: - Flame (streak icon)
 // Rendered from the provided streak.svg (three layered flame paths, deep
-// orange body with a brighter yellow core) via the shared SVG renderer,
-// instead of a custom-drawn Shape or the SF Symbol.
+// orange body with a brighter yellow core) via the shared SVG renderer.
+// Each path is parsed as its own layer (rather than one flattened SVGIconView)
+// so it can flicker independently — different scale/tilt/timing per layer,
+// like Duolingo's animated streak flame — plus a soft pulsing glow behind it.
 
 struct FlameIcon: View {
     var size: CGFloat
+    @State private var flickerA = false
+    @State private var flickerB = false
+    @State private var flickerCore = false
 
-    private static let svg = SVGParser.parse("""
+    private static let bodyOuter = SVGParser.parse("""
         <svg viewBox="0 0 200 200">
         <path d="M107.619 30.1449C103.798 24.9107 96.2019 24.9107 92.3809 30.1449C77.2805 50.8305 45 98.1863 45 125C45 155.5 69.5 180 100 180C130.5 180 155 155.5 155 125C155 98.1863 122.72 50.8305 107.619 30.1449Z" fill="#E77100"/>
+        </svg>
+        """)
+    private static let bodyLick = SVGParser.parse("""
+        <svg viewBox="0 0 200 200">
         <path d="M55.5884 54.2185C49.5488 51.3043 42.6828 55.2684 42.1868 61.9559C40.5271 84.3307 38.8691 128.735 49.7251 147.538C62.6321 169.893 89.9741 178.051 111.105 165.851C132.236 153.651 138.842 125.893 125.935 103.538C115.079 84.7347 75.7954 63.9686 55.5884 54.2185Z" fill="#E77100"/>
+        </svg>
+        """)
+    private static let core = SVGParser.parse("""
+        <svg viewBox="0 0 200 200">
         <path d="M108.13 78.9635C104.451 73.3933 96.5494 73.3933 92.8698 78.9635C84.7316 91.283 73 111.123 73 123.125C73 139.137 85.25 152 100.5 152C115.75 152 128 139.137 128 123.125C128 111.123 116.268 91.283 108.13 78.9635Z" fill="#FFC225"/>
         </svg>
         """)
 
     var body: some View {
-        SVGIconView(svg: Self.svg)
-            .frame(width: size * 0.86, height: size)
+        ZStack {
+            // Soft warm glow pulsing behind the flame.
+            Circle()
+                .fill(Color(hex: "#FF9500"))
+                .opacity(flickerA ? 0.32 : 0.16)
+                .blur(radius: size * 0.22)
+                .scaleEffect(flickerA ? 1.05 : 0.9)
+
+            SVGIconView(svg: Self.bodyOuter)
+                .scaleEffect(flickerA ? 1.025 : 0.985, anchor: .bottom)
+                .rotationEffect(.degrees(flickerA ? 1.4 : -1.4), anchor: .bottom)
+
+            SVGIconView(svg: Self.bodyLick)
+                .scaleEffect(flickerB ? 1.02 : 0.99, anchor: .bottom)
+                .rotationEffect(.degrees(flickerB ? -1.6 : 1.1), anchor: .bottom)
+
+            SVGIconView(svg: Self.core)
+                .scaleEffect(flickerCore ? 1.05 : 0.93, anchor: .bottom)
+        }
+        .frame(width: size * 0.86, height: size)
+        .onAppear {
+            withAnimation(.easeInOut(duration: 1.1).repeatForever(autoreverses: true)) { flickerA = true }
+            withAnimation(.easeInOut(duration: 0.85).repeatForever(autoreverses: true).delay(0.12)) { flickerB = true }
+            withAnimation(.easeInOut(duration: 0.7).repeatForever(autoreverses: true).delay(0.05)) { flickerCore = true }
+        }
     }
 }
 
