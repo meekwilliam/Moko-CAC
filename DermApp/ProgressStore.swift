@@ -260,6 +260,18 @@ final class ProgressStore: ObservableObject {
         }
     }
 
+    /// Testing helper: force the streak up by 1 and mark today active, bypassing
+    /// the "only once per real day" rule in recordCompletion — lets the streak
+    /// celebration screen be triggered repeatedly to check the animation.
+    @discardableResult
+    func debugBumpStreak() -> Int {
+        s.streak += 1
+        let today = Self.dateString(Date())
+        s.lastLessonDate = today
+        s.activeDates.insert(today)
+        return s.streak
+    }
+
     func saveInProgress(node: Int, screen: Int) {
         var c = cur; c.inProgressNode = node; c.inProgressScreen = screen; cur = c
     }

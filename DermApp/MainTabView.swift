@@ -54,7 +54,8 @@ struct MainTabView: View {
                     onUnlockAll: { router.onUnlockAll?() },
                     onGrantTestTreats: { router.onGrantTestTreats?() },
                     onTestMechanics: { router.onOpenMechanicsTest?() },
-                    onPreviewStreak: { router.onPreviewStreak?() }
+                    onPreviewStreak: { router.onPreviewStreak?() },
+                    onBumpStreak: { router.onBumpStreak?() }
                 )
             } else {
                 Color(hex: "#0F172A").ignoresSafeArea()
