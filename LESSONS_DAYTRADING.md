@@ -11534,7 +11534,7 @@ WHY: A bigger portion of capital at stake means a larger risk for that trade.
 [MC] Why is thinking about risk per trade useful, in general terms?
 It helps quantify how much a single loss could realistically cost.
 It guarantees the trade will be profitable.
-It removes the need for a stop-loss entirely.
+It tells you the best price to take profit at.
 WHY: Quantifying potential loss is the whole point of thinking about risk per trade.
 
 [MATCH] Match the risk framing to its description.
@@ -11884,7 +11884,7 @@ WHY: "Drawdown" is the standard term for this kind of decline.
 [MC] Why is understanding drawdowns commonly considered useful?
 It helps set realistic expectations that account value doesn't move in a straight line.
 It guarantees an account will never decline again.
-It only applies to accounts that have never had any losses.
+It tells you exactly when the next losing streak will end.
 WHY: Understanding drawdowns helps build realistic expectations about a normal account's ups and downs.
 
 [MATCH] Match the drawdown concept to its description.
@@ -14083,7 +14083,7 @@ WHY: The two disagreeing on direction is divergence.
 CONCERN: Reading it honestly
 As a descriptive disagreement worth noting, not a guarantee | detail: A clue
 As a guaranteed reversal | detail: Overstates certainty | wrong: Divergence can persist without a reversal.
-As proof the data is broken | detail: Wrong | wrong: It's a normal, valid reading.
+As a leading signal that front-runs the turn | detail: Overstates it | wrong: Divergence is a lagging, descriptive disagreement, not a leading trigger.
 WHY: Divergence is a descriptive clue, not a guaranteed signal.
 
 
@@ -15284,7 +15284,7 @@ TEXT: Some traders use ATR to help gauge a reasonable stop distance, sizing posi
 [MC] How might ATR be used alongside position sizing?
 To help gauge a reasonable stop distance based on typical movement.
 To guarantee a winning trade.
-To replace the need for any stop-loss at all.
+To decide which direction the trade should go.
 WHY: ATR can inform how far a stop might reasonably need to sit given typical movement, connecting back to the Position Sizing unit.
 
 [TF] A wider ATR (more typical movement) might call for a wider stop distance to avoid being caught by normal noise.
@@ -15668,7 +15668,7 @@ CHART: volatile
 CONCERN: Understanding the tool
 It's an early reference level formed from the session's first activity | detail: An early reference point
 It guarantees the day's exact high and low | detail: Overstates certainty | wrong: The opening range is an early reference, not a guarantee of the day's extremes.
-It only matters for the last hour of trading | detail: Incorrect | wrong: The opening range is defined by early, not late, price action.
+It shows the total volume traded that session | detail: Not quite | wrong: The opening range is a high/low reference, not a volume measure.
 WHY: The opening range gives an early reference level built from the session's first few minutes.
 
 [SPOT] Someone assumes the opening range guarantees the day's final high and low.
@@ -15762,7 +15762,7 @@ CHART: breakoutRetest
 CONCERN: Applying prior concepts
 Because it reinforces that any break, including this one, can fail to hold | detail: Consistent with breakout concepts
 Because false breaks of the opening range never happen | detail: Incorrect | wrong: They can and do occur, same as any other breakout.
-Because it means the opening range concept doesn't apply here | detail: Incorrect | wrong: The opening range concept still applies, it just didn't hold.
+Because a false break means the opening range was drawn incorrectly | detail: Not quite | wrong: A false break is normal price behavior, not a drawing error.
 WHY: Recognizing false breaks keeps the opening range concept consistent with the broader breakout/retest ideas taught earlier.
 
 [SPOT] Someone assumes every opening range break automatically holds and never fails.
@@ -16254,7 +16254,7 @@ WHY: Recognizing these limitations keeps Level II awareness properly descriptive
 CONCERN: Setting expectations
 As descriptive awareness of the order book, with real limitations, not a predictive edge | detail: A cautious, descriptive frame
 As a tool that guarantees knowing exactly what happens next | detail: Overstates certainty | wrong: Level II has real limitations and doesn't guarantee outcomes.
-As something irrelevant to understand at all | detail: Understates it | wrong: Conceptual awareness of the order book is still useful context.
+As a complete replacement for reading the price chart | detail: Overstates it | wrong: It's one added descriptive layer, not a replacement for price.
 WHY: This course frames Level II as useful conceptual awareness, with clear limitations, never a predictive guarantee.
 
 [SPOT] Someone assumes Level II removes all uncertainty about what will happen next in a stock.
