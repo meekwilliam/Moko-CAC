@@ -1525,16 +1525,16 @@
          "detail": "More pressure on one side than the other"
         },
         {
-         "label": "The chart being recalibrated",
+         "label": "The bid-ask spread staying perfectly fixed",
          "correct": false,
-         "detail": "Unrelated",
-         "wrong_explanation": "Charts display real trades, not arbitrary recalibrations."
+         "detail": "Not quite",
+         "wrong_explanation": "Sharp moves often coincide with the spread widening, not holding fixed."
         },
         {
-         "label": "The company changing its logo",
+         "label": "A slow, quiet drift with no change in activity",
          "correct": false,
-         "detail": "Unrelated",
-         "wrong_explanation": "Branding changes don't directly move price like this."
+         "detail": "Not quite",
+         "wrong_explanation": "A sharp move usually comes with a burst of activity, not a quiet drift."
         }
        ],
        "concern": "Interpreting price moves",
@@ -1689,10 +1689,10 @@
          "detail": "More activity accompanied the move"
         },
         {
-         "label": "A chart data error",
+         "label": "Fewer participants than a normal candle",
          "correct": false,
-         "detail": "Unrelated",
-         "wrong_explanation": "A volume spike is a normal, valid occurrence."
+         "detail": "Backwards",
+         "wrong_explanation": "A volume spike means more participation, not less."
         },
         {
          "label": "A guarantee that the move will continue forever",
@@ -3180,10 +3180,10 @@
          "wrong_explanation": "That would simply be described as an unfilled gap."
         },
         {
-         "label": "A candle with no wick",
+         "label": "A gap that keeps widening over time",
          "correct": false,
-         "detail": "Unrelated",
-         "wrong_explanation": "That's a separate candlestick concept, not about gaps."
+         "detail": "Opposite",
+         "wrong_explanation": "A fill is price closing the gap, not the gap growing."
         }
        ],
        "concern": "Understanding gap terminology",
@@ -3750,10 +3750,10 @@
          "wrong_explanation": "No single candle guarantees what comes next."
         },
         {
-         "label": "That the market is closed",
+         "label": "That volume was unusually high that period",
          "correct": false,
-         "detail": "Unrelated",
-         "wrong_explanation": "A doji is a normal candle, not a closed market."
+         "detail": "Not shown",
+         "wrong_explanation": "A doji is about the open and close being close, not about volume."
         }
        ],
        "concern": "Interpreting a doji from the chart",
@@ -3982,10 +3982,10 @@
        "question": "What does the shooting star on the chart above describe?",
        "options": [
         {
-         "label": "The exact volume traded",
+         "label": "That buyers stayed in control into the close",
          "correct": false,
-         "detail": "Unrelated",
-         "wrong_explanation": "Candle shape doesn't show volume directly."
+         "detail": "Backwards",
+         "wrong_explanation": "The upper wick shows buyers were rejected, not in control."
         },
         {
          "label": "Buyers pushed price up, but it was rejected back down by the close",
@@ -5363,7 +5363,7 @@
        "scenario": "Someone reads a single big marubozu as a promise that momentum continues forever.",
        "question": "What is the mistake?",
        "options": [
-        "Body size has nothing to do with momentum.",
+        "A big body guarantees the very next candle is also big.",
         "Momentum candles always repeat.",
         "A big body describes one strong period. It doesn't guarantee momentum keeps going."
        ],
@@ -5789,10 +5789,10 @@
        "question": "When might a market order's fill differ most from the last displayed price?",
        "options": [
         {
-         "label": "Only on public holidays",
+         "label": "Only when using a limit order",
          "correct": false,
-         "detail": "Unrelated",
-         "wrong_explanation": "Holiday scheduling isn't what drives this gap."
+         "detail": "Backwards",
+         "wrong_explanation": "Limit orders cap the price; market orders are what can slip in fast conditions."
         },
         {
          "label": "In a very calm, highly liquid market",
@@ -6569,10 +6569,10 @@
        "question": "Which best describes when slippage is likely to be largest?",
        "options": [
         {
-         "label": "Only during scheduled maintenance windows",
+         "label": "Only when volume is unusually high and steady",
          "correct": false,
-         "detail": "Unrelated",
-         "wrong_explanation": "Maintenance windows aren't what drives slippage."
+         "detail": "Not quite",
+         "wrong_explanation": "Slippage is worst in thin, fast markets, not steady high-volume ones."
         },
         {
          "label": "During calm, highly liquid conditions",
@@ -11159,10 +11159,10 @@
        "question": "Which best describes a \"weakening\" trend, as commonly read?",
        "options": [
         {
-         "label": "No candles forming at all",
+         "label": "Price gapping to a fresh, stronger high",
          "correct": false,
-         "detail": "Unrelated",
-         "wrong_explanation": "A lack of candles isn't how trend strength is measured."
+         "detail": "Not quite",
+         "wrong_explanation": "A strong new high suggests strength, not a weakening trend."
         },
         {
          "label": "Swings becoming smaller and less consistent than before",
@@ -11794,10 +11794,10 @@
          "wrong_explanation": "It's commonly read as an early signal, not a certainty."
         },
         {
-         "label": "A completely random, meaningless event",
+         "label": "The same thing as a single red candle",
          "correct": false,
-         "detail": "Overcorrects",
-         "wrong_explanation": "It's a commonly cited, useful piece of context."
+         "detail": "Too narrow",
+         "wrong_explanation": "It's about breaking the swing structure, not one candle."
         }
        ],
        "concern": "Understanding this specific term",
@@ -12980,10 +12980,10 @@
        "question": "Which best describes what a breakout tells you, on its own?",
        "options": [
         {
-         "label": "Proof that the prior level was drawn incorrectly",
+         "label": "Proof the level will never matter again",
          "correct": false,
-         "detail": "Unrelated",
-         "wrong_explanation": "A breakout doesn't mean the level was wrong."
+         "detail": "Overstates it",
+         "wrong_explanation": "A broken level can flip roles and be retested, not vanish."
         },
         {
          "label": "A guarantee that price will keep moving in that direction forever",
@@ -13142,10 +13142,10 @@
          "wrong_explanation": "That would be a confirmed breakout."
         },
         {
-         "label": "A candle with a small body and long wicks",
+         "label": "Price never reaching the level at all",
          "correct": false,
-         "detail": "Unrelated",
-         "wrong_explanation": "That describes a doji, not a false breakout."
+         "detail": "Doesn't match",
+         "wrong_explanation": "A false breakout requires crossing the level first, then reversing."
         },
         {
          "label": "Price moved past a level but then reversed back into the range",
@@ -13534,7 +13534,7 @@
        "question": "Why might a support level be viewed differently during an uptrend versus a downtrend?",
        "options": [
         "The broader trend context can add to how a level is commonly interpreted.",
-        "Trend and support have no relationship to each other at all.",
+        "The trend has to be identified before any level can exist.",
         "Support only exists during uptrends and never during downtrends."
        ],
        "correct": 0,
@@ -14008,10 +14008,10 @@
        "question": "What does a double top describe, on its own?",
        "options": [
         {
-         "label": "That both peaks are green candles",
+         "label": "That the two peaks must match to the exact cent",
          "correct": false,
-         "detail": "Unrelated",
-         "wrong_explanation": "Candle color isn't what defines the pattern."
+         "detail": "Too strict",
+         "wrong_explanation": "'About the same' level is the standard, not exact equality."
         },
         {
          "label": "A guaranteed crash from here",
@@ -14227,7 +14227,7 @@
        "question": "Why is the neckline important when reading a double top?",
        "options": [
         "The neckline guarantees the direction of the next candle.",
-        "The neckline is unrelated to the pattern.",
+        "The neckline marks the taller of the two peaks.",
         "The pattern is commonly said to complete only when price breaks the neckline."
        ],
        "correct": 2,
@@ -15681,7 +15681,7 @@
        "question": "Why is the neckline important in a head & shoulders?",
        "options": [
         "The pattern is commonly said to complete only when price breaks the neckline.",
-        "The neckline is unrelated to the pattern.",
+        "The neckline runs along the three peaks, not the troughs.",
         "The neckline guarantees the next candle's direction."
        ],
        "correct": 0,
@@ -15751,9 +15751,9 @@
        "type": "multiple_choice",
        "question": "What is the neckline, in simple terms?",
        "options": [
-        "The tallest peak itself.",
+        "The tallest peak (the head) itself.",
         "The level connecting the troughs between the three peaks.",
-        "A random line unrelated to the pattern."
+        "The line connecting the tops of the two shoulders."
        ],
        "correct": 1,
        "explanation": "The neckline specifically connects the two troughs framing the head."
@@ -17293,10 +17293,10 @@
          "detail": "The central theme"
         },
         {
-         "label": "Shapes unrelated to support and resistance",
+         "label": "Shapes that always break upward",
          "correct": false,
-         "detail": "Backwards",
-         "wrong_explanation": "The flat sides ARE levels."
+         "detail": "Too strong",
+         "wrong_explanation": "Triangles can break either way; only a flat side hints at bias."
         },
         {
          "label": "Patterns that guarantee the breakout direction",
@@ -18699,7 +18699,7 @@
        "type": "multiple_choice",
        "question": "What happens if a pullback breaks clearly below the uptrend line?",
        "options": [
-        "Nothing, trendlines have no relationship to structure.",
+        "It confirms the uptrend will simply resume unchanged.",
         "It's commonly read as a possible early sign of weakening structure.",
         "It automatically confirms a new, permanent downtrend."
        ],
@@ -18792,7 +18792,7 @@
        "options": [
         "It automatically confirms a new, permanent uptrend.",
         "It's commonly read as a possible early sign of weakening structure.",
-        "Nothing, trendlines have no relationship to structure."
+        "It confirms the downtrend will simply resume unchanged."
        ],
        "correct": 1,
        "explanation": "A break is a commonly cited early signal, not an automatic confirmation of a new trend."
@@ -19604,10 +19604,10 @@
          "wrong_explanation": "Contradicts the unit."
         },
         {
-         "label": "Ranges unrelated to support and resistance",
+         "label": "Ranges that form only on the daily chart",
          "correct": false,
-         "detail": "Backwards",
-         "wrong_explanation": "The boundaries ARE support and resistance."
+         "detail": "Too narrow",
+         "wrong_explanation": "Ranges form on every timeframe."
         }
        ],
        "concern": "Reviewing the big picture",
@@ -20610,7 +20610,7 @@
        "options": [
         "As a commonly observed tendency, not a certainty.",
         "As an absolute, guaranteed rule.",
-        "As something that never happens."
+        "As a rule that applies only to downtrends."
        ],
        "correct": 0,
        "explanation": "This course consistently frames such patterns as tendencies, not guarantees."
@@ -21502,8 +21502,8 @@
        "question": "What two factors combine in \"level + pattern\" confluence?",
        "options": [
         "A key level and a chart pattern forming there.",
-        "Two unrelated timeframes.",
-        "Candle color and account size."
+        "Two moving averages crossing each other.",
+        "A single candlestick read on its own."
        ],
        "correct": 0,
        "explanation": "A pattern reinforced by a level is this specific type of confluence."
@@ -21659,7 +21659,7 @@
        "question": "What is the honest limit of confluence, even with many agreeing factors?",
        "options": [
         "It eventually guarantees the outcome.",
-        "It has no effect on the read at all.",
+        "It replaces the need to read price at all.",
         "It strengthens the read but never guarantees the outcome."
        ],
        "correct": 2,
@@ -21701,7 +21701,7 @@
        "question": "What is the honest limit of confluence?",
        "options": [
         "It guarantees the outcome once you have enough.",
-        "It has no effect on a read.",
+        "It only works with exactly two factors.",
         "It stacks probability but never guarantees an outcome."
        ],
        "correct": 2,
@@ -22101,10 +22101,10 @@
          "wrong_explanation": "Not every gap fills."
         },
         {
-         "label": "As something that never happens",
+         "label": "As a precise date the gap will fill by",
          "correct": false,
-         "detail": "Backwards",
-         "wrong_explanation": "Gap fills are common, just not guaranteed."
+         "detail": "Overstates it",
+         "wrong_explanation": "'Often' is a tendency, not a schedule."
         }
        ],
        "concern": "Managing expectations",
@@ -22407,7 +22407,7 @@
        "question": "What do higher and lower timeframes have in common?",
        "options": [
         "Both describe the same market, just at different scales.",
-        "They describe two entirely unrelated markets.",
+        "They each show a different stock entirely.",
         "Only one of them is ever accurate."
        ],
        "correct": 0,
@@ -23781,10 +23781,10 @@
        "question": "Why are earnings reports commonly linked to gaps?",
        "options": [
         {
-         "label": "Gaps only happen for reasons unrelated to earnings",
+         "label": "Gaps form only during standard trading hours",
          "correct": false,
-         "detail": "Incomplete",
-         "wrong_explanation": "Earnings are a commonly cited gap driver."
+         "detail": "Backwards",
+         "wrong_explanation": "Gaps form between sessions, when earnings often land."
         },
         {
          "label": "New information released while the market is closed can shift the next open sharply",
@@ -25540,7 +25540,7 @@
        "type": "multiple_choice",
        "question": "Why might a stop-loss be placed just beyond a nearby support level?",
        "options": [
-        "It has no relationship to the trade's original reasoning.",
+        "It sets the stop a fixed dollar amount below entry, ignoring the level.",
         "It guarantees the stop will never be triggered.",
         "If that level breaks, it may suggest the original reason for the trade no longer holds."
        ],
@@ -25611,10 +25611,10 @@
        "question": "Which best describes a stop-loss placed \"just beyond a nearby support level\"?",
        "options": [
         {
-         "label": "A completely random number with no logic behind it",
+         "label": "A fixed number of cents below entry, ignoring the level",
          "correct": false,
-         "detail": "Contradicts the approach",
-         "wrong_explanation": "This approach is specifically about having a clear reason."
+         "detail": "Not the idea",
+         "wrong_explanation": "The point is tying the stop TO the level, not a fixed offset."
         },
         {
          "label": "A guarantee the position will never lose money",
@@ -25698,7 +25698,7 @@
        "options": [
         "It guarantees larger profits with no added risk.",
         "It amplifies losses, potentially causing much larger damage from a single adverse move.",
-        "It has no effect on the size of potential losses."
+        "It reduces risk by spreading it across more trades."
        ],
        "correct": 1,
        "explanation": "Amplified losses are the commonly cited core danger of overleveraging."
@@ -26166,7 +26166,7 @@
        "options": [
         "Preserving capital guarantees higher returns than any other approach.",
         "Without sufficient capital remaining, there's nothing left to trade with going forward.",
-        "Capital preservation has no relationship to risk management."
+        "Capital preservation means avoiding trades entirely."
        ],
        "correct": 1,
        "explanation": "Capital preservation is commonly linked to risk management, since capital is needed to keep participating at all."
@@ -27159,7 +27159,7 @@
        "options": [
         "They should expect it to move even further away to match the description.",
         "Mean reversion is commonly described as expecting an eventual move back toward average, not further away from it.",
-        "They should assume mean reversion has no relationship to an average level."
+        "Mean reversion and trend-following describe the same expectation."
        ],
        "correct": 1,
        "explanation": "This description contradicts the commonly cited core idea behind mean reversion.",
@@ -27314,7 +27314,7 @@
        "question": "What is the mistake?",
        "options": [
         "Breakout trading is commonly described as expecting continuation after a range clears, not an immediate reversal.",
-        "They should assume breakout trading has no relationship to a range at all.",
+        "Breakout trading and range trading expect the same thing.",
         "They should expect a reversal even sooner to match the description."
        ],
        "correct": 0,
@@ -27470,7 +27470,7 @@
        "question": "What is the mistake?",
        "options": [
         "They should expect it to break through even more boundaries to match the description.",
-        "They should assume range trading has no relationship to support or resistance.",
+        "Range trading and breakout trading expect the same thing.",
         "Range trading is commonly described as expecting price to stay within boundaries, not break through them repeatedly."
        ],
        "correct": 2,
@@ -27819,10 +27819,10 @@
        "question": "Why keep risk per trade small and consistent?",
        "options": [
         {
-         "label": "So you never have to use a stop",
+         "label": "So position size can be as large as you like",
          "correct": false,
-         "detail": "Unrelated",
-         "wrong_explanation": "Sizing works with a stop, not instead of one."
+         "detail": "Backwards",
+         "wrong_explanation": "Small consistent risk is the whole point; it caps size."
         },
         {
          "label": "So a single loss can't do outsized damage to the account",
@@ -29118,8 +29118,8 @@
        "type": "multiple_choice",
        "question": "Why classify the market condition first?",
        "options": [
-        "Because it changes the candle colors.",
-        "Because it has no effect on anything.",
+        "Because it locks in the day's trend direction.",
+        "Because it sets your position size for you.",
         "Because it frames how you read levels, patterns, and candles."
        ],
        "correct": 2,
@@ -29381,7 +29381,7 @@
        "question": "Averaging recent prices makes a moving average...",
        "options": [
         "more jagged than the candles.",
-        "unrelated to price.",
+        "identical to the raw price line.",
         "smoother than the raw candles."
        ],
        "correct": 2,
@@ -29604,7 +29604,7 @@
        "type": "multiple_choice",
        "question": "A short-period MA is...",
        "options": [
-        "unrelated to price.",
+        "the same as a long-period MA.",
         "slow and very smooth.",
         "fast. It reacts quickly to price."
        ],
@@ -29847,10 +29847,10 @@
          "wrong_explanation": "MAs lag, they don't predict."
         },
         {
-         "label": "Unrelated to price",
+         "label": "A guaranteed buy/sell signal on every cross",
          "correct": false,
-         "detail": "Wrong",
-         "wrong_explanation": "An MA is built directly from price."
+         "detail": "Overstates it",
+         "wrong_explanation": "Crossovers are lagging cues, not guaranteed signals."
         }
        ],
        "concern": "Reviewing the big picture",
@@ -30125,7 +30125,7 @@
        "options": [
         "lagging (derived from past prices).",
         "a leading predictor.",
-        "unrelated to price."
+        "faster-moving than price itself."
        ],
        "correct": 0,
        "explanation": "MA-based indicators lag price."
@@ -30912,7 +30912,7 @@
        "type": "multiple_choice",
        "question": "Price above VWAP is commonly described as...",
        "options": [
-        "unrelated to VWAP.",
+        "always exactly equal to VWAP.",
         "trading above the session average (relative strength).",
         "guaranteed to fall."
        ],
@@ -31513,10 +31513,10 @@
          "wrong_explanation": "All systems have losing trades."
         },
         {
-         "label": "Because expectancy doesn't exist",
+         "label": "Because more trades always guarantee a win eventually",
          "correct": false,
-         "detail": "Backwards",
-         "wrong_explanation": "Expectancy is the long-run measure."
+         "detail": "Not quite",
+         "wrong_explanation": "Nothing guarantees a win; streaks are just normal variance."
         }
        ],
        "concern": "Reading variance honestly",
