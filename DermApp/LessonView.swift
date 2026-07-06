@@ -300,11 +300,12 @@ struct LessonView: View {
         HStack(spacing: 14) {
             Button(action: { Haptics.selection(); withAnimation(.easeOut(duration: 0.18)) { showExitConfirm = true } }) {
                 Image(systemName: "xmark")
-                    .font(.system(size: 17, weight: .bold))
+                    .font(.system(size: 17, weight: .black))
                     .foregroundColor(Theme.muted)
-                    .frame(width: 34, height: 34)
-                    .background(Circle().fill(scheme == .dark ? Color.white.opacity(0.08) : Color.black.opacity(0.06)))
             }
+            .buttonStyle(Circle3DStyle(
+                face: scheme == .dark ? Color(white: 0.17) : Color(white: 0.93),
+                slab: scheme == .dark ? Color.black.opacity(0.55) : Color.black.opacity(0.20)))
 
             GeometryReader { geo in
                 ZStack(alignment: .leading) {

@@ -107,7 +107,7 @@ private struct BottomNav: View {
                 )
                 .contentShape(Rectangle())
         }
-        .buttonStyle(NoFadeButtonStyle())   // plain style dims the label on press → icons flicker
+        .buttonStyle(TabPopStyle())   // icon shrinks slightly on press → a tactile "pop"
     }
 
     @ViewBuilder
@@ -130,10 +130,18 @@ private struct BottomNav: View {
     }
 }
 
-// A button style that renders its label unchanged — no press opacity/scale — so
-// the always-on colored tab icons never flicker on tap.
-private struct NoFadeButtonStyle: ButtonStyle {
-    func makeBody(configuration: Configuration) -> some View { configuration.label }
+// Scales the icon down slightly on press/hold for a tactile "pop" (like the
+// path node pucks). No opacity dim, so the always-on colored tab icons don't
+// flicker — only the springy shrink.
+private struct TabPopStyle: ButtonStyle {
+    func makeBody(configuration: Configuration) -> some View {
+        configuration.label
+            .scaleEffect(configuration.isPressed ? 0.84 : 1.0)
+            .animation(configuration.isPressed
+                       ? .easeIn(duration: 0.06)
+                       : .spring(response: 0.3, dampingFraction: 0.55),
+                       value: configuration.isPressed)
+    }
 }
 
 // MARK: - Multi-color tab icons (custom drawings)
@@ -300,6 +308,10 @@ private struct PersonShoulders: Shape {
 
 struct FlameIcon: View {
     var size: CGFloat
+    // Home screen passes animated: false (no flicker) and greyed: true when the
+    // streak is 0. The streak-celebration keeps the defaults (animated, lit).
+    var animated: Bool = true
+    var greyed: Bool = false
     @State private var flickerA = false
     @State private var flickerB = false
     @State private var flickerCore = false
@@ -341,7 +353,11 @@ struct FlameIcon: View {
                 .scaleEffect(flickerCore ? 1.05 : 0.93, anchor: .bottom)
         }
         .frame(width: size * 0.86, height: size)
+        // Greyed (streak == 0): desaturate to grey and dim.
+        .grayscale(greyed ? 1 : 0)
+        .opacity(greyed ? 0.4 : 1)
         .onAppear {
+            guard animated else { return }
             withAnimation(.easeInOut(duration: 1.1).repeatForever(autoreverses: true)) { flickerA = true }
             withAnimation(.easeInOut(duration: 0.85).repeatForever(autoreverses: true).delay(0.12)) { flickerB = true }
             withAnimation(.easeInOut(duration: 0.7).repeatForever(autoreverses: true).delay(0.05)) { flickerCore = true }
