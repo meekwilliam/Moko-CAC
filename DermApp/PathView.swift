@@ -258,19 +258,19 @@ struct PathView: View {
 
     // MARK: Side decorations (Duolingo-style gems along the path)
 
-    /// Decorative gems planted beside the path at intervals, alternating sides,
-    /// each tilted in toward the path's center — purely cosmetic, independent
-    /// of the actual node curve.
+    /// One decorative gem every 3rd unit, at a random-looking spot within
+    /// that unit — purely cosmetic, independent of the actual node curve.
+    /// The "random" position is seeded from the section index so it's stable
+    /// across re-renders instead of jumping every time the view redraws.
+    @ViewBuilder
     private func sideGems(count: Int, width: CGFloat, sectionIndex: Int) -> some View {
-        let interval = 3
-        let gemSize: CGFloat = 40
-        let xAmplitude = min(width / 2 - 46, 148)
-        // Vary the starting side per section so consecutive sections don't
-        // always plant a gem on the same side at the top.
-        let startSide = sectionIndex % 2
+        if count > 0 && sectionIndex % 3 == 0 {
+            let gemSize: CGFloat = 40
+            let xAmplitude = min(width / 2 - 46, 148)
+            var rng = SeededRNG(seed: UInt64(sectionIndex &* 2654435761 &+ 12345))
+            let slot = Int(rng.next() % UInt64(count))
+            let onRight = rng.next() % 2 == 0
 
-        return ForEach(Array(stride(from: 1, to: count, by: interval).enumerated()), id: \.offset) { i, slot in
-            let onRight = (i + startSide) % 2 == 0
             PathGemDecoration(size: gemSize, tiltDegrees: onRight ? -14 : 14)
                 .offset(x: onRight ? xAmplitude : -xAmplitude)
                 .padding(.top, CGFloat(slot) * vStep + (vStep / 2) - (gemSize / 2))
