@@ -6123,7 +6123,7 @@ WHY: One touch of resistance is a rejection; a double top needs two touches at t
 [MC] The chart above shows two peaks at the same level with a dip between them. This is best described as...
 A double top.
 A single resistance rejection.
-A breakout.
+A head & shoulders.
 CHART: doubleTop
 WHY: Two touches of the same level, forming an "M", is a double top.
 
@@ -6188,7 +6188,7 @@ WHY: One touch of support is a bounce; a double bottom needs two touches at the 
 [MC] The chart above shows two troughs at the same level with a bounce between them. This is best described as...
 A double bottom.
 A single support bounce.
-A breakdown.
+An inverse head & shoulders.
 CHART: doubleBottom
 WHY: Two touches of the same support, forming a "W", is a double bottom.
 
@@ -6563,7 +6563,7 @@ TEXT: A full mix, identify the pattern and read the level behavior.
 CHART: doubleTop
 Double top.
 Double bottom.
-Breakout.
+Head & shoulders.
 WHY: Two peaks at the same resistance is a double top.
 
 [PICK] On the chart above, price tested support twice and held. Best description?
@@ -10740,8 +10740,8 @@ WHY: Two peaks at the same resistance is a double top.
 [MC] Which pattern is shown on the chart above?
 CHART: headShoulders
 Head & shoulders.
-Double bottom.
-Bull flag.
+Inverse head & shoulders.
+Double top.
 WHY: Three peaks with a higher middle is a head & shoulders.
 
 [MC] Which pattern is shown on the chart above?

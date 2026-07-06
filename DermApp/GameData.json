@@ -14355,7 +14355,7 @@
        "options": [
         "A double top.",
         "A single resistance rejection.",
-        "A breakout."
+        "A head & shoulders."
        ],
        "correct": 0,
        "explanation": "Two touches of the same level, forming an \"M\", is a double top.",
@@ -14485,7 +14485,7 @@
        "type": "multiple_choice",
        "question": "The chart above shows two troughs at the same level with a bounce between them. This is best described as...",
        "options": [
-        "A breakdown.",
+        "An inverse head & shoulders.",
         "A double bottom.",
         "A single support bounce."
        ],
@@ -15183,7 +15183,7 @@
        "options": [
         "Double top.",
         "Double bottom.",
-        "Breakout."
+        "Head & shoulders."
        ],
        "correct": 0,
        "explanation": "Two peaks at the same resistance is a double top.",
@@ -22810,8 +22810,8 @@
        "question": "Which pattern is shown on the chart above?",
        "options": [
         "Head & shoulders.",
-        "Bull flag.",
-        "Double bottom."
+        "Double top.",
+        "Inverse head & shoulders."
        ],
        "correct": 0,
        "explanation": "Three peaks with a higher middle is a head & shoulders.",
