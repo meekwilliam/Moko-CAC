@@ -21829,6 +21829,16 @@
        "chart": "gapUp"
       },
       {
+       "type": "tap_candles",
+       "question": "Tap the two candles the empty gap space sits between.",
+       "targets": [
+        1,
+        2
+       ],
+       "explanation": "The gap is the untraded space between candle 2's high and candle 3's open, so it sits between those two candles.",
+       "chart": "gapUp"
+      },
+      {
        "type": "fill_blank",
        "question": "A gap leaves an empty space with no [___] in between.",
        "options": [
@@ -22436,6 +22446,13 @@
        ],
        "correct": 2,
        "explanation": "A higher-timeframe pullback can appear as a full downtrend when zoomed in."
+      },
+      {
+       "type": "tap_candle",
+       "question": "Tap the pullback dip that could look like a short-term downtrend on a lower timeframe.",
+       "target": 2,
+       "explanation": "The 3rd candle is the pullback within the larger uptrend, the dip that zooms into its own small downtrend.",
+       "chart": "pullbackUptrend"
       },
       {
        "type": "true_false",
@@ -25379,6 +25396,17 @@
        ],
        "correct": 1,
        "explanation": "$100 of risk against $200 of potential reward is a 1:2 ratio (risk:reward)."
+      },
+      {
+       "type": "number_slider",
+       "question": "Risking $120 at a 1:3 risk/reward ratio. Drag to the potential reward.",
+       "number_min": 0.0,
+       "number_max": 800.0,
+       "number_step": 20.0,
+       "number_correct": 360.0,
+       "number_tolerance": 20.0,
+       "number_unit": "$",
+       "explanation": "A 1:3 ratio means reward is three times the risk: 3 × $120 = $360."
       },
       {
        "type": "multiple_choice",
@@ -30204,6 +30232,13 @@
        "explanation": "MACD tracks how a fast and slow MA relate, a momentum read."
       },
       {
+       "type": "tap_candle",
+       "question": "MACD tracks the fast and slow MA. Tap the candle where the fast MA crosses above the slow MA.",
+       "target": 3,
+       "explanation": "The 4th candle is where the fast (blue) MA crosses above the slow (amber) MA, the crossover MACD summarizes.",
+       "chart": "maCrossUp"
+      },
+      {
        "type": "true_false",
        "question": "MACD is built from moving averages, so it is also lagging.",
        "correct": true,
@@ -32691,6 +32726,17 @@
        "question": "A wider ATR (more typical movement) might call for a wider stop distance to avoid being caught by normal noise.",
        "correct": true,
        "explanation": "A stop set too tight relative to typical movement risks getting triggered by ordinary volatility."
+      },
+      {
+       "type": "number_slider",
+       "question": "A common approach sets the stop at 1.5x ATR. If ATR is $0.80, drag to the stop distance.",
+       "number_min": 0.0,
+       "number_max": 3.0,
+       "number_step": 0.1,
+       "number_correct": 1.2,
+       "number_tolerance": 0.1,
+       "number_unit": "$",
+       "explanation": "1.5 × $0.80 ATR = a $1.20 stop distance, sized to typical movement."
       },
       {
        "type": "fill_blank",
