@@ -49,13 +49,21 @@ class ViewController: UIViewController {
 
         appRouter.onCompleteLesson = { [weak self] node in
             guard let self = self else { return }
-            self.progress.recordCompletion(node: node, unitNodes: self.unitNodes(forNode: node))
+            let extendedStreakToday = self.progress.recordCompletion(node: node, unitNodes: self.unitNodes(forNode: node))
             self.progress.clearInProgress()
             self.refreshPathState()
             self.syncHearts()
-            withAnimation(.spring(response: 0.42, dampingFraction: 0.86)) {
-                self.appRouter.selectedTab = .home
-                self.appRouter.currentScreen = .main
+            if extendedStreakToday {
+                self.appRouter.streakCount = self.progress.streak
+                self.appRouter.streakWeek = self.progress.weekActivity()
+                withAnimation(.spring(response: 0.42, dampingFraction: 0.86)) {
+                    self.appRouter.currentScreen = .streak
+                }
+            } else {
+                withAnimation(.spring(response: 0.42, dampingFraction: 0.86)) {
+                    self.appRouter.selectedTab = .home
+                    self.appRouter.currentScreen = .main
+                }
             }
         }
 
@@ -77,6 +85,15 @@ class ViewController: UIViewController {
             Haptics.impact(.medium)
         }
         appRouter.onOpenMechanicsTest = { [weak self] in self?.openMechanicsTestLesson() }
+        appRouter.onPreviewStreak = { [weak self] in
+            guard let self = self else { return }
+            // Preview only — doesn't touch real streak/progress data.
+            self.appRouter.streakCount = max(1, self.progress.streak)
+            self.appRouter.streakWeek = self.progress.weekActivity()
+            withAnimation(.spring(response: 0.42, dampingFraction: 0.86)) {
+                self.appRouter.currentScreen = .streak
+            }
+        }
         appRouter.onGrantTestTreats = { [weak self] in
             guard let self = self else { return }
             self.progress.grantTestTreats()

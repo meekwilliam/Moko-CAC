@@ -8,6 +8,7 @@ enum AppScreen {
     case legal(LegalDoc)
     case hearts        // hearts / regeneration screen
     case courses       // course picker (like Duolingo's language switcher)
+    case streak        // full-screen streak celebration (first lesson of the day)
 }
 
 enum MainTab: Hashable {
@@ -44,6 +45,7 @@ final class AppRouter: ObservableObject {
     var onOpenHearts: (() -> Void)?
     var onUnlockAll: (() -> Void)?
     var onOpenMechanicsTest: (() -> Void)?
+    var onPreviewStreak: (() -> Void)?
     var onGrantTestTreats: (() -> Void)?
     var onOpenCourses: (() -> Void)?
     var onSelectCourse: ((String) -> Void)?
@@ -63,6 +65,10 @@ final class AppRouter: ObservableObject {
     @Published var currentCourseId: String = Game.defaultCourseId
     // Completed-lesson count per course id (for the switcher).
     @Published var courseLessonsDone: [String: Int] = [:]
+
+    // Streak celebration screen data (set right before currentScreen = .streak).
+    @Published var streakCount: Int = 0
+    @Published var streakWeek: [(label: String, active: Bool, isToday: Bool)] = []
 }
 
 struct AppRouterView: View {
@@ -151,6 +157,19 @@ struct AppRouterView: View {
                     onClose: { withAnimation(.easeInOut(duration: 0.28)) { router.currentScreen = .main } })
                     .transition(.move(edge: .bottom))
                     .zIndex(20)
+
+            case .streak:
+                StreakCelebrationView(
+                    count: router.streakCount,
+                    week: router.streakWeek,
+                    onContinue: {
+                        withAnimation(.spring(response: 0.42, dampingFraction: 0.86)) {
+                            router.selectedTab = .home
+                            router.currentScreen = .main
+                        }
+                    })
+                    .transition(.opacity)
+                    .zIndex(30)
             }
 
             if router.showSplash {
