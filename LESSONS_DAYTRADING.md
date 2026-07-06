@@ -8514,6 +8514,12 @@ CELEBRATION: You know what makes a trendline valid!
 INTRO
 TITLE: More Touches, More Meaningful
 TEXT: A trendline is commonly considered more meaningful when price has <b>touched it multiple times</b>. A line through only one point isn't really established yet.
+CHART: ascendingChannel
+
+[TAPCANDLES] Tap every candle that touches the lower trendline of this channel.
+CHART: ascendingChannel
+TARGETS: 1, 3, 5
+WHY: Candles 1, 3, and 5 each touch the rising lower trendline, the repeated touches that make it meaningful.
 
 [MC] A trendline is commonly considered more meaningful when it has...
 multiple touches.
@@ -9904,6 +9910,11 @@ two
 zero
 one
 WHY: Confluence requires at least two agreeing factors.
+
+[MARKLEVEL] Drag the line to the support level that's part of this confluence example.
+CHART: supportBounce
+LEVEL: support
+WHY: The support level is one of the two factors agreeing here, alongside the bounce candle at it.
 
 [PICK] Why is confluence useful to read?
 CHART: supportBounce
@@ -13650,8 +13661,10 @@ CELEBRATION: You understand moving averages!
 INTRO
 TITLE: The Average of Recent Prices
 TEXT: A moving average (MA) is the <b>average of the last N prices</b>, recalculated each candle. A 20-period MA averages the last 20 closes. It's a smoothed line that follows price.
+CHART: priceAboveMA
 
 [MC] A moving average is the...
+CHART: priceAboveMA
 average of the last N prices, updated each candle.
 the single highest price over the period.
 the difference between the high and low.
@@ -13831,8 +13844,15 @@ CELEBRATION: You understand fast vs slow MAs!
 INTRO
 TITLE: Fast and Slow
 TEXT: A <b>short</b> MA (few periods) reacts quickly to price. It's "fast." A <b>long</b> MA (many periods) reacts slowly. It's "smooth and slow." Each shows a different scale of trend.
+CHART: maCrossUp
+
+[TAPCANDLE] Tap the candle where the fast (blue) MA has clearly pulled away from the slow (amber) MA the most.
+CHART: maCrossUp
+TARGET: 6
+WHY: By the 6th candle the fast MA has moved furthest from the slower, smoother MA, showing how much quicker it reacts.
 
 [MC] A short-period MA is...
+CHART: maCrossUp
 fast. It reacts quickly to price.
 slow and very smooth.
 the same as a long-period MA.
@@ -14580,12 +14600,19 @@ CELEBRATION: You understand Bollinger Bands!
 INTRO
 TITLE: A Band Around a Moving Average
 TEXT: Bollinger Bands draw a <b>moving average</b> with an upper and lower band set a number of <b>standard deviations</b> away. The bands measure how far price is straying from its average.
+CHART: bandsWidening
 
 [MC] Bollinger Bands are built around a...
+CHART: bandsWidening
 moving average, with bands set by standard deviation.
 single fixed price.
 volume total.
 WHY: The middle is an MA; the bands are standard deviations from it.
+
+[TAPCANDLE] Tap the candle where price stretches farthest from the middle band.
+CHART: touchUpperBand
+TARGET: 5
+WHY: The 5th candle stretches out to touch the upper band, the farthest strayed from the moving-average center.
 
 [FILL] The Bollinger band width is based on [___] deviation.
 standard
