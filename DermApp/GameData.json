@@ -1613,8 +1613,8 @@
        "type": "multiple_choice",
        "question": "What does very low volume commonly suggest about a price move?",
        "options": [
-        "The move is guaranteed to reverse immediately.",
-        "The chart's data must be incorrect.",
+        "The move was unusually volatile.",
+        "The move covered a very large price range.",
         "Fewer participants were involved in that particular move."
        ],
        "correct": 2,
@@ -1777,9 +1777,9 @@
        "type": "multiple_choice",
        "question": "What is a commonly cited downside of low liquidity?",
        "options": [
-        "It guarantees higher profits.",
+        "Trading volume tends to rise sharply.",
         "Larger price swings can result from relatively small trades.",
-        "It removes the need for a bid and ask price."
+        "The bid-ask spread tends to become very tight."
        ],
        "correct": 1,
        "explanation": "In illiquid markets, even modest trades can move the price more noticeably."
@@ -2270,9 +2270,9 @@
        "type": "multiple_choice",
        "question": "What does \"low volatility\" commonly describe?",
        "options": [
-        "A guarantee of steady profit.",
+        "Lower trading volume over time.",
         "Smaller, slower price movements over time.",
-        "A market that has stopped trading."
+        "A steady, gently rising trend."
        ],
        "correct": 1,
        "explanation": "Low volatility simply means calmer, smaller price movement."
@@ -2341,16 +2341,16 @@
        "question": "Which chart is more likely to be described as \"volatile\"?",
        "options": [
         {
-         "label": "One with small, steady, gradual movement",
+         "label": "One with very high trading volume",
          "correct": false,
-         "detail": "Opposite description",
-         "wrong_explanation": "That would more likely be described as low volatility."
+         "detail": "Not the same",
+         "wrong_explanation": "High volume is participation, not necessarily large price swings."
         },
         {
-         "label": "One that hasn't moved at all",
+         "label": "One climbing steadily to new highs",
          "correct": false,
-         "detail": "Opposite extreme",
-         "wrong_explanation": "No movement is the lowest possible volatility, not high."
+         "detail": "That's trend",
+         "wrong_explanation": "A steady climb is a trend; volatility is swing size and speed, either direction."
         },
         {
          "label": "One with large, fast price swings",
@@ -2379,8 +2379,8 @@
        "type": "multiple_choice",
        "question": "Which market condition would most likely be described as \"volatile\"?",
        "options": [
-        "A market that's completely closed.",
-        "Small, slow, steady movement.",
+        "A strong, steady upward trend.",
+        "Unusually high trading volume.",
         "Large, fast price swings in a short period."
        ],
        "correct": 2,
@@ -2877,9 +2877,9 @@
        "type": "multiple_choice",
        "question": "What does a candlestick's wick represent?",
        "options": [
-        "The average price for that period.",
-        "The high and/or low price reached during that period.",
-        "The open and close prices for that period."
+        "Only the opening and closing prices for that period.",
+        "The highest and lowest price reached during that period.",
+        "Only the highest price reached during that period."
        ],
        "correct": 1,
        "explanation": "Wicks mark the extreme high and low prices reached, beyond the body."
@@ -12264,7 +12264,7 @@
        "question": "Support is often thought of as a price [___].",
        "options": [
         "floor",
-        "wick",
+        "trendline",
         "ceiling"
        ],
        "correct": 0,
@@ -12426,7 +12426,7 @@
        "type": "fill_blank",
        "question": "Resistance is often thought of as a price [___].",
        "options": [
-        "wick",
+        "trendline",
         "ceiling",
         "floor"
        ],
@@ -19282,8 +19282,8 @@
        "type": "multiple_choice",
        "question": "What distinguishes range-bound from trending price action?",
        "options": [
-        "There is no difference between them.",
-        "Range-bound always lasts longer than trending.",
+        "Trending stays between two levels; range-bound makes directional progress.",
+        "Range-bound only ever happens on higher timeframes.",
         "Range-bound is sideways between levels; trending makes directional progress."
        ],
        "correct": 2,

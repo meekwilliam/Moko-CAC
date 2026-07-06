@@ -559,8 +559,8 @@ WHY: Volume counts the number of shares that actually changed hands.
 
 [MC] What does very low volume commonly suggest about a price move?
 Fewer participants were involved in that particular move.
-The move is guaranteed to reverse immediately.
-The chart's data must be incorrect.
+The move was unusually volatile.
+The move covered a very large price range.
 WHY: Low volume simply describes fewer shares trading, not a guaranteed outcome.
 
 [MATCH] Match the volume description to its meaning.
@@ -632,8 +632,8 @@ WHY: "Liquid" describes an asset that's easy to trade without big price impact.
 
 [MC] What is a commonly cited downside of low liquidity?
 Larger price swings can result from relatively small trades.
-It guarantees higher profits.
-It removes the need for a bid and ask price.
+Trading volume tends to rise sharply.
+The bid-ask spread tends to become very tight.
 WHY: In illiquid markets, even modest trades can move the price more noticeably.
 
 [MATCH] Match the liquidity level to its common description.
@@ -852,8 +852,8 @@ WHY: "Volatile" describes large, fast price swings.
 
 [MC] What does "low volatility" commonly describe?
 Smaller, slower price movements over time.
-A guarantee of steady profit.
-A market that has stopped trading.
+Lower trading volume over time.
+A steady, gently rising trend.
 WHY: Low volatility simply means calmer, smaller price movement.
 
 [MATCH] Match the volatility level to its description.
@@ -878,8 +878,8 @@ WHY: Comparing recent movement to what's typical is a simple way to estimate vol
 CHART: breakout
 CONCERN: Comparing two hypothetical charts
 One with large, fast price swings | detail: Bigger, quicker movement
-One with small, steady, gradual movement | detail: Opposite description | wrong: That would more likely be described as low volatility.
-One that hasn't moved at all | detail: Opposite extreme | wrong: No movement is the lowest possible volatility, not high.
+One with very high trading volume | detail: Not the same | wrong: High volume is participation, not necessarily large price swings.
+One climbing steadily to new highs | detail: That's trend | wrong: A steady climb is a trend; volatility is swing size and speed, either direction.
 WHY: Larger, faster swings are the hallmark of higher volatility.
 
 [SPOT] Someone assumes high volatility guarantees a specific direction for price.
@@ -893,8 +893,8 @@ WHY: A highly volatile market can move sharply in either direction, volatility a
 
 [MC] Which market condition would most likely be described as "volatile"?
 Large, fast price swings in a short period.
-Small, slow, steady movement.
-A market that's completely closed.
+Unusually high trading volume.
+A strong, steady upward trend.
 WHY: Volatility is about the size and speed of price movement, regardless of direction.
 
 [TF] Volatility can be high even if a market is trending strongly upward.
@@ -1117,9 +1117,9 @@ WHY: Candlesticks describe what already happened. They aren't guarantees about w
 
 
 [MC] What does a candlestick's wick represent?
-The high and/or low price reached during that period.
-The open and close prices for that period.
-The average price for that period.
+The highest and lowest price reached during that period.
+Only the highest price reached during that period.
+Only the opening and closing prices for that period.
 WHY: Wicks mark the extreme high and low prices reached, beyond the body.
 
 [TF] Every single candlestick must have at least one visible wick.
@@ -5152,7 +5152,7 @@ WHY: That's the standard descriptive definition of support.
 [FILL] Support is often thought of as a price [___].
 floor
 ceiling
-wick
+trendline
 WHY: The floor analogy is a common way to remember what support describes.
 
 [MARKLEVEL] Drag the line to the support this chart keeps bouncing from.
@@ -5227,7 +5227,7 @@ WHY: That's the standard descriptive definition of resistance.
 [FILL] Resistance is often thought of as a price [___].
 ceiling
 floor
-wick
+trendline
 WHY: The ceiling analogy is a common way to remember what resistance describes.
 
 [MARKLEVEL] Drag the line to the resistance this chart keeps rejecting from.
@@ -8767,8 +8767,8 @@ WHY: Market regimes change; a range can eventually resolve into a trend.
 
 [MC] What distinguishes range-bound from trending price action?
 Range-bound is sideways between levels; trending makes directional progress.
-There is no difference between them.
-Range-bound always lasts longer than trending.
+Trending stays between two levels; range-bound makes directional progress.
+Range-bound only ever happens on higher timeframes.
 WHY: Sideways-bounded vs. directional-progress is the key distinction.
 
 NODE 3
