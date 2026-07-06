@@ -138,13 +138,7 @@ struct TapCandleView: View {
                     showsAxes: true
                 )
                 .frame(height: 210)
-                .padding(.horizontal, 6).padding(.vertical, 14)
-                .background(
-                    RoundedRectangle(cornerRadius: 16, style: .continuous)
-                        .fill(Color.white.opacity(0.04))
-                        .overlay(RoundedRectangle(cornerRadius: 16, style: .continuous)
-                            .strokeBorder(Color.white.opacity(0.08), lineWidth: 1.5))
-                )
+                .modifier(ChartCard())
 
                 if player.selectedIndex == nil {
                     Label("Tap a candle on the chart", systemImage: "hand.tap.fill")
@@ -199,13 +193,7 @@ struct TapCandlesView: View {
                     showsAxes: true
                 )
                 .frame(height: 210)
-                .padding(.horizontal, 6).padding(.vertical, 14)
-                .background(
-                    RoundedRectangle(cornerRadius: 16, style: .continuous)
-                        .fill(Color.white.opacity(0.04))
-                        .overlay(RoundedRectangle(cornerRadius: 16, style: .continuous)
-                            .strokeBorder(Color.white.opacity(0.08), lineWidth: 1.5))
-                )
+                .modifier(ChartCard())
 
                 Label(player.selectedSet.isEmpty ? "Tap all the candles that match" : "\(player.selectedSet.count) selected — tap Check when done",
                       systemImage: "hand.tap.fill")
@@ -271,13 +259,7 @@ struct MarkLevelView: View {
                         player.markedLevel = price(lineY, lo, range)
                     }
                 )
-                .padding(.horizontal, 6).padding(.vertical, 14)
-                .background(
-                    RoundedRectangle(cornerRadius: 16, style: .continuous)
-                        .fill(Color.white.opacity(0.04))
-                        .overlay(RoundedRectangle(cornerRadius: 16, style: .continuous)
-                            .strokeBorder(Color.white.opacity(0.08), lineWidth: 1.5))
-                )
+                .modifier(ChartCard())
                 .onAppear {
                     player.markTrueLevel = truth
                     player.markTolerance = tol
@@ -316,7 +298,10 @@ struct MarkLevelView: View {
             Text(label.uppercased())
                 .font(Theme.font(9, .black)).foregroundColor(.white)
                 .padding(.horizontal, 5).padding(.vertical, 2)
-                .background(Capsule().fill(color))
+                .background(
+                    Capsule().fill(color)
+                        .background(Capsule().fill(Color.black.opacity(0.4)).offset(y: 2.5))
+                )
                 .offset(y: y - 18)
         }
     }
@@ -381,13 +366,7 @@ struct TrendlineView: View {
                     }
                 }
                 .frame(height: chartHeight)
-                .padding(.horizontal, 6).padding(.vertical, 14)
-                .background(
-                    RoundedRectangle(cornerRadius: 16, style: .continuous)
-                        .fill(Color.white.opacity(0.04))
-                        .overlay(RoundedRectangle(cornerRadius: 16, style: .continuous)
-                            .strokeBorder(Color.white.opacity(0.08), lineWidth: 1.5))
-                )
+                .modifier(ChartCard())
 
                 Label(player.trendStart == nil ? "Drag from one point to the other" : "Adjust or tap Check",
                       systemImage: "hand.draw.fill")
@@ -494,13 +473,7 @@ struct ConsolidationView: View {
                     }
                 }
                 .frame(height: chartHeight)
-                .padding(.horizontal, 6).padding(.vertical, 14)
-                .background(
-                    RoundedRectangle(cornerRadius: 16, style: .continuous)
-                        .fill(Color.white.opacity(0.04))
-                        .overlay(RoundedRectangle(cornerRadius: 16, style: .continuous)
-                            .strokeBorder(Color.white.opacity(0.08), lineWidth: 1.5))
-                )
+                .modifier(ChartCard())
 
                 Label(player.consolidationLo == nil ? "Drag across the candles that fit" : "Adjust or tap Check",
                       systemImage: "hand.draw.fill")
@@ -670,6 +643,7 @@ struct OHLCLabelView: View {
                 Capsule().fill(tint)
                     .overlay(Capsule().strokeBorder(Color.white.opacity(0.18), lineWidth: 1))
             )
+            .background(Capsule().fill(Color.black.opacity(0.35)).offset(y: 3))
     }
 
     // MARK: Drag handling
@@ -754,7 +728,7 @@ struct NumberSliderView: View {
                     .foregroundColor(tint)
                     .frame(maxWidth: .infinity, alignment: .center)
 
-                Slider(
+                ChunkySlider(
                     value: Binding(
                         get: { player.numberValue ?? (lo + hi) / 2 },
                         set: { newValue in
@@ -763,12 +737,10 @@ struct NumberSliderView: View {
                             player.numberValue = min(max(snapped, lo), hi)
                         }
                     ),
-                    in: lo...hi,
-                    step: step,
-                    onEditingChanged: { began in if began { Haptics.selection() } }
+                    range: lo...hi,
+                    tint: tint,
+                    disabled: player.revealed
                 )
-                .tint(tint)
-                .disabled(player.revealed)
                 .onAppear {
                     guard !didInit else { return }
                     didInit = true
@@ -790,12 +762,7 @@ struct NumberSliderView: View {
                 }
             }
             .padding(18)
-            .background(
-                RoundedRectangle(cornerRadius: 16, style: .continuous)
-                    .fill(Color.white.opacity(0.04))
-                    .overlay(RoundedRectangle(cornerRadius: 16, style: .continuous)
-                        .strokeBorder(Color.white.opacity(0.08), lineWidth: 1.5))
-            )
+            .modifier(ChartCard())
 
             Label("Drag the slider, then tap Check", systemImage: "hand.draw.fill")
                 .font(Theme.font(13, .bold))
@@ -803,6 +770,61 @@ struct NumberSliderView: View {
                 .frame(maxWidth: .infinity, alignment: .center)
         }
         .frame(maxWidth: .infinity, alignment: .leading)
+    }
+}
+
+/// A chunky, 3D-styled slider matching the app's slab button language: a
+/// raised capsule track with a filled portion up to a raised circular thumb.
+/// Replaces the native SwiftUI Slider, which renders flat.
+private struct ChunkySlider: View {
+    @Binding var value: Double
+    var range: ClosedRange<Double>
+    var tint: Color
+    var disabled: Bool
+
+    private let trackHeight: CGFloat = 14
+    private let thumbSize: CGFloat = 32
+    @State private var dragActive = false
+
+    var body: some View {
+        GeometryReader { geo in
+            let w = geo.size.width
+            let frac = CGFloat((value - range.lowerBound) / (range.upperBound - range.lowerBound))
+            let thumbX = min(max(frac, 0), 1) * w
+
+            ZStack(alignment: .leading) {
+                // Track base (slab beneath, like every other chunky control).
+                Capsule().fill(Color.black.opacity(0.35)).offset(y: 3)
+                Capsule().fill(Color.white.opacity(0.10))
+                    .overlay(Capsule().strokeBorder(Color.white.opacity(0.12), lineWidth: 1))
+
+                // Filled portion up to the thumb.
+                Capsule().fill(tint)
+                    .frame(width: thumbX)
+
+                // Thumb.
+                Circle().fill(Color.black.opacity(0.4))
+                    .frame(width: thumbSize, height: thumbSize)
+                    .offset(x: thumbX - thumbSize / 2, y: 3)
+                Circle().fill(tint)
+                    .overlay(Circle().strokeBorder(Color.white.opacity(0.35), lineWidth: 1.5))
+                    .frame(width: thumbSize, height: thumbSize)
+                    .offset(x: thumbX - thumbSize / 2)
+            }
+            .frame(height: trackHeight)
+            .contentShape(Rectangle().inset(by: -14))
+            .gesture(
+                DragGesture(minimumDistance: 0)
+                    .onChanged { g in
+                        guard !disabled else { return }
+                        if !dragActive { dragActive = true; Haptics.selection() }
+                        let f = min(max(g.location.x / w, 0), 1)
+                        value = range.lowerBound + Double(f) * (range.upperBound - range.lowerBound)
+                    }
+                    .onEnded { _ in dragActive = false }
+            )
+        }
+        .frame(height: thumbSize)
     }
 }
 
@@ -1109,13 +1131,14 @@ struct FlowChips: View {
         let isSel = selected == idx
         var fill = scheme == .dark ? Color(hex: "#1E293B") : Color.white
         var border = scheme == .dark ? Color(hex: "#334155") : Color(hex: "#DDE3ED")
+        var slab = scheme == .dark ? Color(hex: "#0F172A") : Color(hex: "#B8C4D8")
         var textColor = ink
         if revealed && idx == correctIndex {
-            fill = Theme.correct; border = Theme.correctDark; textColor = .white
+            fill = Theme.correct; border = Theme.correctDark; slab = Theme.correctDark; textColor = .white
         } else if revealed && isSel {
-            fill = Theme.incorrect; border = Theme.incorrectDark; textColor = .white
+            fill = Theme.incorrect; border = Theme.incorrectDark; slab = Theme.incorrectDark; textColor = .white
         } else if isSel {
-            fill = Theme.answer; border = Theme.answerDark; textColor = .white
+            fill = Theme.answer; border = Theme.answerDark; slab = Theme.answerDark; textColor = .white
         }
         return Button { onTap(idx) } label: {
             Text(label).font(Theme.font(14, .bold)).foregroundColor(textColor)
@@ -1125,7 +1148,10 @@ struct FlowChips: View {
             RoundedRectangle(cornerRadius: 12, style: .continuous).fill(fill)
                 .overlay(RoundedRectangle(cornerRadius: 12, style: .continuous).strokeBorder(border, lineWidth: 2))
         )
-        .buttonStyle(RowPressStyle())
+        .background(
+            RoundedRectangle(cornerRadius: 12, style: .continuous).fill(slab).offset(y: 4)
+        )
+        .buttonStyle(SinkButtonStyle(depth: 4))
         .modifier(AnswerFeedbackFX(pop: revealed && idx == correctIndex,
                                    shake: revealed && isSel && idx != correctIndex))
     }
@@ -1270,9 +1296,14 @@ struct OrderBuilderView: View {
                                     .overlay(RoundedRectangle(cornerRadius: 14, style: .continuous)
                                         .strokeBorder(scheme == .dark ? Color(hex: "#334155") : Color(hex: "#DDE3ED"), lineWidth: 2))
                             )
+                            .background(
+                                RoundedRectangle(cornerRadius: 14, style: .continuous)
+                                    .fill(scheme == .dark ? Color(hex: "#0F172A") : Color(hex: "#B8C4D8"))
+                                    .offset(y: 4)
+                            )
                             .contentShape(Rectangle())
                         }
-                        .buttonStyle(RowPressStyle())
+                        .buttonStyle(SinkButtonStyle(depth: 4))
                     }
                 }
                 .padding(.top, 4)
@@ -1294,10 +1325,11 @@ struct OrderBuilderView: View {
 
         var fill = scheme == .dark ? Color(hex: "#1E293B") : Color.white
         var border = player.unit.main
+        var slab = scheme == .dark ? Color(hex: "#0F172A") : Color(hex: "#B8C4D8")
         var textColor = ink
         if revealed {
-            if rightPlace { fill = Theme.correct; border = Theme.correctDark; textColor = .white }
-            else { fill = Theme.incorrect; border = Theme.incorrectDark; textColor = .white }
+            if rightPlace { fill = Theme.correct; border = Theme.correctDark; slab = Theme.correctDark; textColor = .white }
+            else { fill = Theme.incorrect; border = Theme.incorrectDark; slab = Theme.incorrectDark; textColor = .white }
         }
 
         return Button {
@@ -1320,9 +1352,12 @@ struct OrderBuilderView: View {
                 RoundedRectangle(cornerRadius: 14, style: .continuous).fill(fill)
                     .overlay(RoundedRectangle(cornerRadius: 14, style: .continuous).strokeBorder(border, lineWidth: 2))
             )
+            .background(
+                RoundedRectangle(cornerRadius: 14, style: .continuous).fill(slab).offset(y: 4)
+            )
             .contentShape(Rectangle())
         }
-        .buttonStyle(RowPressStyle())
+        .buttonStyle(SinkButtonStyle(depth: 4))
         .disabled(revealed)
     }
 }
