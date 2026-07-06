@@ -153,16 +153,20 @@ struct PathView: View {
     }
 
     private func metric(system: String, color: Color, value: Int) -> some View {
-        HStack(spacing: 6) {
+        // A 0 streak reads as inactive: greyed flame + muted count. No flicker
+        // animation on the home screen (only the streak celebration animates).
+        let inactive = system == "flame.fill" && value == 0
+        return HStack(spacing: 6) {
             if system == "flame.fill" {
                 // Custom-drawn flame instead of the SF Symbol — guarantees the
                 // inner layer renders as a lighter orange/yellow, rather than
                 // relying on SF Symbols' inconsistent multicolor fallback.
-                FlameIcon(size: 34)
+                FlameIcon(size: 34, animated: false, greyed: inactive)
             } else {
                 Image(systemName: system).font(.system(size: 22)).foregroundColor(color)
             }
-            Text("\(value)").font(Theme.font(18, .heavy)).foregroundColor(theme.palette.ink)
+            Text("\(value)").font(Theme.font(18, .heavy))
+                .foregroundColor(inactive ? theme.palette.muted : theme.palette.ink)
         }
     }
 

@@ -133,6 +133,29 @@ struct Chunky3DStyle: ButtonStyle {
     }
 }
 
+// A circular chunky-3D button (same raised-face-over-slab feel as Chunky3DStyle,
+// round). Used for the lesson close (X) button so it reads as a tactile 3D chip.
+struct Circle3DStyle: ButtonStyle {
+    var face: Color
+    var slab: Color
+    var size: CGFloat = 34
+    var depth: CGFloat = 3
+    func makeBody(configuration: Configuration) -> some View {
+        let pressed = configuration.isPressed
+        configuration.label
+            .frame(width: size, height: size)
+            .background(
+                Circle().fill(face)
+                    .overlay(Circle().strokeBorder(slab, lineWidth: 1.5))
+            )
+            .background(Circle().fill(slab).offset(y: depth))
+            .offset(y: pressed ? depth : 0)
+            .animation(pressed
+                       ? .easeIn(duration: 0.055)
+                       : .spring(response: 0.34, dampingFraction: 0.55), value: pressed)
+    }
+}
+
 // Sinks the label straight down onto its slab on touch-down (the tactile 3D
 // press). Use `depth` = the slab offset of whatever it's applied to. Because it
 // reacts to `isPressed`, pair it with `delaysContentTouches = false` so the
