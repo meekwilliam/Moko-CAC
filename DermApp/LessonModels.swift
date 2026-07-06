@@ -97,6 +97,14 @@ struct LessonScreen: Decodable, Identifiable {
     let targetLo: Int?
     let targetHi: Int?
 
+    // number_slider → drag a slider to the calculated answer
+    let numberMin: Double?
+    let numberMax: Double?
+    let numberStep: Double?
+    let numberCorrect: Double?
+    let numberTolerance: Double?
+    let numberUnit: String?
+
     enum CodingKeys: String, CodingKey {
         case type, text, question, explanation, options, pairs, scenario, template, blanks
         case concern, items, chart, target, targets, level
@@ -105,6 +113,12 @@ struct LessonScreen: Decodable, Identifiable {
         case targetEnd = "target_end"
         case targetLo = "target_lo"
         case targetHi = "target_hi"
+        case numberMin = "number_min"
+        case numberMax = "number_max"
+        case numberStep = "number_step"
+        case numberCorrect = "number_correct"
+        case numberTolerance = "number_tolerance"
+        case numberUnit = "number_unit"
         case screenTitle = "title"
         case correct
         case wrongExplanations = "wrong_explanations"
@@ -138,6 +152,12 @@ struct LessonScreen: Decodable, Identifiable {
         targetEnd = try c.decodeIfPresent(Int.self, forKey: .targetEnd)
         targetLo = try c.decodeIfPresent(Int.self, forKey: .targetLo)
         targetHi = try c.decodeIfPresent(Int.self, forKey: .targetHi)
+        numberMin = try c.decodeIfPresent(Double.self, forKey: .numberMin)
+        numberMax = try c.decodeIfPresent(Double.self, forKey: .numberMax)
+        numberStep = try c.decodeIfPresent(Double.self, forKey: .numberStep)
+        numberCorrect = try c.decodeIfPresent(Double.self, forKey: .numberCorrect)
+        numberTolerance = try c.decodeIfPresent(Double.self, forKey: .numberTolerance)
+        numberUnit = try c.decodeIfPresent(String.self, forKey: .numberUnit)
 
         // wrong_explanations may contain nulls
         wrongExplanations = (try? c.decodeIfPresent([String?].self, forKey: .wrongExplanations)) ?? nil

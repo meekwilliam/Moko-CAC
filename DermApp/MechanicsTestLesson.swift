@@ -120,6 +120,13 @@ enum MechanicsTestLesson {
                 "explanation": "ohlc_label: drag 4 labels onto a candle's four levels.",
             ],
             [
+                "type": "number_slider",
+                "question": "You risk 1% of a $10,000 account with a $0.50 stop distance. Drag to the correct share size.",
+                "number_min": 0, "number_max": 500, "number_step": 10,
+                "number_correct": 200, "number_tolerance": 10, "number_unit": "shares",
+                "explanation": "number_slider: drag to a calculated numeric answer, graded with tolerance.",
+            ],
+            [
                 "type": "draw_trendline",
                 "question": "Draw the lower boundary of this ascending channel.",
                 "chart": "ascendingChannel",

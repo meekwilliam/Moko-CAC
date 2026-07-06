@@ -12824,10 +12824,13 @@ color
 timeframe
 WHY: Dollar risk = account size × risk percent.
 
-[MC] On a $20,000 account, risking 1% means risking...
-$200.
-$2,000.
-$20.
+[NUMBER] Drag the slider to the correct dollar risk: a $20,000 account, risking 1%.
+MIN: 0
+MAX: 1000
+STEP: 10
+ANSWER: 200
+TOLERANCE: 10
+UNIT: $
 WHY: 1% of $20,000 is $200.
 
 [TF] A larger account risking the same percent risks more dollars.
@@ -12918,6 +12921,15 @@ WHY: Three times the risk gained is +3R.
 +6R.
 WHY: $600 gain on $200 risk is three times the risk, +3R.
 
+[NUMBER] Drag the slider to the dollar gain on a +4R result, risking $150.
+MIN: 0
+MAX: 1000
+STEP: 25
+ANSWER: 600
+TOLERANCE: 25
+UNIT: $
+WHY: +4R means four times the risk: 4 × $150 = $600.
+
 [TF] A full loss is −1R, since you lost exactly the amount you risked.
 ANSWER: True
 WHY: Losing the whole risked amount is by definition −1R.
@@ -12977,6 +12989,15 @@ A fixed size regardless of stop distance makes the dollar risk vary unpredictabl
 Size should never change.
 Stop distance never matters for sizing.
 WHY: Consistent dollar risk requires adjusting size to the stop distance.
+
+[NUMBER] Drag the slider to the correct position size: $200 dollar risk, $2.00 stop distance.
+MIN: 0
+MAX: 500
+STEP: 10
+ANSWER: 100
+TOLERANCE: 10
+UNIT: shares
+WHY: Dollar risk ÷ stop distance = $200 ÷ $2.00 = 100 shares.
 
 
 [FILL] Position size is worked [___] from your dollar risk and stop distance.
@@ -13140,6 +13161,15 @@ Win rate => How often trades win
 Average win => How much winning trades gain, in R
 Average loss => How much losing trades give back, in R
 WHY: These three inputs combine into the expectancy formula.
+
+[NUMBER] Drag the slider to the expectancy: 40% win rate, average win +2R, average loss -1R.
+MIN: -2
+MAX: 2
+STEP: 0.1
+ANSWER: 0.2
+TOLERANCE: 0.1
+UNIT: R
+WHY: (0.4 × 2) + (0.6 × -1) = 0.8 - 0.6 = +0.2R.
 
 [MC] Expectancy is the...
 average result per trade (in R) over many trades.
@@ -14775,6 +14805,15 @@ WHY: Halving your account means you must double what's left, a 100% gain.
 20%.
 10%.
 WHY: From 80% of the start, you need +25% (0.80 × 1.25 = 1.00).
+
+[NUMBER] Drag the slider to the gain needed to recover a 30% loss.
+MIN: 0
+MAX: 100
+STEP: 1
+ANSWER: 43
+TOLERANCE: 3
+UNIT: %
+WHY: From 70% of the start, you need roughly +43% (0.70 × 1.43 ≈ 1.00) to break even.
 
 [TF] A loss needs a larger percentage gain than the loss itself to recover.
 ANSWER: True
