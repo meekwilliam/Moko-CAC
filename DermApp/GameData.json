@@ -1395,42 +1395,18 @@
        "explanation": "Orienting yourself to scale and timeframe first makes the shape of the chart easier to interpret."
       },
       {
-       "type": "ingredient_match",
-       "question": "What is the main purpose of a price chart?",
-       "options": [
-        {
-         "label": "Replacing the need to understand the underlying company",
-         "correct": false,
-         "detail": "Too narrow",
-         "wrong_explanation": "A chart is one tool among several, not a full substitute."
-        },
-        {
-         "label": "Guaranteeing what the future price will be",
-         "correct": false,
-         "detail": "Overstates certainty",
-         "wrong_explanation": "Charts show history, not guaranteed futures."
-        },
-        {
-         "label": "Visualizing how price has moved over a period of time",
-         "correct": true,
-         "detail": "A historical picture, not a forecast"
-        }
-       ],
-       "concern": "Understanding the tool itself",
-       "explanation": "A chart's core job is visualization of price history.",
+       "type": "draw_trendline",
+       "question": "Draw the uptrend line from the first candle to the last.",
+       "target_start": 0,
+       "target_end": 4,
+       "explanation": "Connecting the rising candles traces the uptrend line.",
        "chart": "uptrend"
       },
       {
-       "type": "spot_mistake",
-       "scenario": "Someone assumes a chart alone tells them everything they need to know about a company's health.",
-       "question": "What is the mistake?",
-       "options": [
-        "They should ignore the chart entirely from now on.",
-        "A chart shows price history, not the full picture of the underlying business.",
-        "They should look at an even shorter timeframe instead."
-       ],
-       "correct": 1,
-       "explanation": "Charts are one useful tool, but they don't capture everything about a company.",
+       "type": "tap_candle",
+       "question": "Tap the candle that makes the highest high.",
+       "target": 4,
+       "explanation": "In this uptrend the last candle prints the highest high.",
        "chart": "uptrend"
       },
       {
@@ -3425,42 +3401,18 @@
        "explanation": "This keeps the exercise descriptive rather than predictive."
       },
       {
-       "type": "ingredient_match",
-       "question": "Which best describes what \"trend\" means as a term?",
-       "options": [
-        {
-         "label": "A guarantee that price will keep moving that way forever",
-         "correct": false,
-         "detail": "Overstates certainty",
-         "wrong_explanation": "A trend describes the past pattern, not a certain future."
-        },
-        {
-         "label": "A description of the general direction price has recently moved",
-         "correct": true,
-         "detail": "Descriptive label, not a guarantee"
-        },
-        {
-         "label": "A specific candlestick shape",
-         "correct": false,
-         "detail": "Not quite",
-         "wrong_explanation": "Trend describes multiple candles together, not one shape."
-        }
-       ],
-       "concern": "Understanding trend terminology",
-       "explanation": "\"Trend\" is a useful descriptive shorthand, not a promise about what happens next.",
+       "type": "draw_trendline",
+       "question": "Draw the downtrend line from the first candle to the last.",
+       "target_start": 0,
+       "target_end": 4,
+       "explanation": "Connecting the falling candles traces the downtrend line.",
        "chart": "downtrend"
       },
       {
-       "type": "spot_mistake",
-       "scenario": "Someone assumes that because a chart has trended upward for months, it can never turn downward.",
-       "question": "What is the mistake?",
-       "options": [
-        "A trend describes what has already happened. It doesn't guarantee it will continue forever.",
-        "They should have used a shorter timeframe instead.",
-        "They should have looked at a totally different asset."
-       ],
-       "correct": 0,
-       "explanation": "Trends can and do change; treating a past trend as a permanent guarantee is a common misconception.",
+       "type": "tap_candle",
+       "question": "Tap the candle that makes the lowest low.",
+       "target": 4,
+       "explanation": "In this downtrend the last candle prints the lowest low.",
        "chart": "downtrend"
       },
       {
@@ -3583,42 +3535,18 @@
        "explanation": "Comparing the start and end of a period is a simple first step toward classifying direction."
       },
       {
-       "type": "ingredient_match",
-       "question": "What is the purpose of this kind of classification exercise?",
-       "options": [
-        {
-         "label": "Practicing a clear, descriptive read of what a chart has already done",
-         "correct": true,
-         "detail": "A literacy skill, not a forecast"
-        },
-        {
-         "label": "Predicting the next candle with total certainty",
-         "correct": false,
-         "detail": "Overstates certainty",
-         "wrong_explanation": "Classification describes the past, not a guaranteed future."
-        },
-        {
-         "label": "Deciding whether to buy or sell right now",
-         "correct": false,
-         "detail": "Out of scope",
-         "wrong_explanation": "This drill is about reading direction, not making a trade decision."
-        }
-       ],
-       "concern": "Understanding the point of the drill",
-       "explanation": "This exercise builds descriptive chart-reading skill, not predictive or trading decisions.",
+       "type": "draw_trendline",
+       "question": "Draw the uptrend line from the first candle to the last.",
+       "target_start": 0,
+       "target_end": 4,
+       "explanation": "Connecting the rising candles traces the uptrend line.",
        "chart": "uptrend"
       },
       {
-       "type": "spot_mistake",
-       "scenario": "Someone finishes this drill and claims they can now predict every future chart's direction with certainty.",
-       "question": "What is the mistake?",
-       "options": [
-        "This drill practices describing direction that has already happened. It doesn't grant predictive certainty about the future.",
-        "They should have practiced on an even smaller chart.",
-        "They should have skipped straight to a real account instead."
-       ],
-       "correct": 0,
-       "explanation": "This is a literacy exercise in reading what already happened, not a predictive skill.",
+       "type": "tap_candle",
+       "question": "Tap the candle that makes the highest high.",
+       "target": 4,
+       "explanation": "In this uptrend the last candle prints the highest high.",
        "chart": "uptrend"
       },
       {
@@ -5797,42 +5725,18 @@
        "explanation": "Market orders are built for immediate execution, not price precision."
       },
       {
-       "type": "ingredient_match",
-       "question": "When might a market order's fill differ most from the last displayed price?",
-       "options": [
-        {
-         "label": "Only when using a limit order",
-         "correct": false,
-         "detail": "Backwards",
-         "wrong_explanation": "Limit orders cap the price; market orders are what can slip in fast conditions."
-        },
-        {
-         "label": "In a very calm, highly liquid market",
-         "correct": false,
-         "detail": "Less likely",
-         "wrong_explanation": "Calm, liquid markets tend to have smaller gaps between quote and fill."
-        },
-        {
-         "label": "In a fast-moving or thin-liquidity market",
-         "correct": true,
-         "detail": "Price can shift quickly with fewer participants"
-        }
-       ],
-       "concern": "Understanding execution risk",
-       "explanation": "Fast-moving or thin markets are where the gap between expected and actual fill price tends to be largest.",
+       "type": "draw_trendline",
+       "question": "Draw the uptrend line from the first candle to the last.",
+       "target_start": 0,
+       "target_end": 4,
+       "explanation": "Connecting the rising candles traces the uptrend line.",
        "chart": "uptrend"
       },
       {
-       "type": "spot_mistake",
-       "scenario": "Someone is surprised their market order filled at a noticeably different price during a very fast-moving moment.",
-       "question": "What is the mistake?",
-       "options": [
-        "Market orders should never be used under any circumstances.",
-        "The order must have been placed incorrectly.",
-        "Market orders prioritize speed over exact price, so some difference is expected in fast conditions."
-       ],
-       "correct": 2,
-       "explanation": "This is a normal trade-off of the order type, not evidence of an error.",
+       "type": "tap_candle",
+       "question": "Tap the candle that makes the highest high.",
+       "target": 4,
+       "explanation": "In this uptrend the last candle prints the highest high.",
        "chart": "uptrend"
       },
       {
@@ -6108,42 +6012,18 @@
        "explanation": "This describes the mechanical process, without implying any particular outcome."
       },
       {
-       "type": "ingredient_match",
-       "question": "Which best describes what a stop-loss order is used for, conceptually?",
-       "options": [
-        {
-         "label": "Defining a price level in advance, as part of a risk plan",
-         "correct": true,
-         "detail": "Descriptive, not a guarantee"
-        },
-        {
-         "label": "Guaranteeing the exact same fill price every time",
-         "correct": false,
-         "detail": "Incorrect",
-         "wrong_explanation": "Once triggered, actual fill price can vary depending on market conditions."
-        },
-        {
-         "label": "Guaranteeing you will never lose money",
-         "correct": false,
-         "detail": "Overstates certainty",
-         "wrong_explanation": "A stop-loss limits how a plan unfolds; it doesn't guarantee outcomes."
-        }
-       ],
-       "concern": "Understanding stop-loss orders",
-       "explanation": "A stop-loss order is a planning tool, not a guarantee of outcome or price.",
+       "type": "draw_trendline",
+       "question": "Draw the downtrend line from the first candle to the last.",
+       "target_start": 0,
+       "target_end": 4,
+       "explanation": "Connecting the falling candles traces the downtrend line.",
        "chart": "downtrend"
       },
       {
-       "type": "spot_mistake",
-       "scenario": "Someone believes setting a stop-loss means they can never lose more than expected, no matter what.",
-       "question": "What is the mistake?",
-       "options": [
-        "They should have only used a stop-loss on weekends.",
-        "They should have avoided using any stop-loss at all.",
-        "Fast-moving markets can sometimes fill a triggered stop-loss at a worse price than expected. It isn't an absolute guarantee."
-       ],
-       "correct": 2,
-       "explanation": "A stop-loss defines an intended exit level, but the exact executed price can still vary in fast-moving conditions.",
+       "type": "tap_candle",
+       "question": "Tap the candle that makes the lowest low.",
+       "target": 4,
+       "explanation": "In this downtrend the last candle prints the lowest low.",
        "chart": "downtrend"
       },
       {
@@ -6269,42 +6149,18 @@
        "explanation": "This describes the mechanical process, without guaranteeing that price will reach it."
       },
       {
-       "type": "ingredient_match",
-       "question": "Which best describes what a take-profit order is used for?",
-       "options": [
-        {
-         "label": "Preventing any losses from ever occurring",
-         "correct": false,
-         "detail": "Incorrect",
-         "wrong_explanation": "A take-profit addresses the upside target, not downside risk."
-        },
-        {
-         "label": "Defining a favorable target level in advance, as part of a plan",
-         "correct": true,
-         "detail": "Descriptive, not a guarantee"
-        },
-        {
-         "label": "Guaranteeing that price will always reach that level",
-         "correct": false,
-         "detail": "Overstates certainty",
-         "wrong_explanation": "Setting a target doesn't guarantee price gets there."
-        }
-       ],
-       "concern": "Understanding take-profit orders",
-       "explanation": "A take-profit order is a planning tool for a target, not a guarantee that price reaches it.",
+       "type": "draw_trendline",
+       "question": "Draw the uptrend line from the first candle to the last.",
+       "target_start": 0,
+       "target_end": 4,
+       "explanation": "Connecting the rising candles traces the uptrend line.",
        "chart": "uptrend"
       },
       {
-       "type": "spot_mistake",
-       "scenario": "Someone assumes setting a take-profit guarantees price will eventually reach that level.",
-       "question": "What is the mistake?",
-       "options": [
-        "They should set an even higher take-profit level instead.",
-        "Setting a target doesn't guarantee price will ever reach it, the order simply waits until (and unless) it does.",
-        "They should remove all take-profit orders from now on."
-       ],
-       "correct": 1,
-       "explanation": "A take-profit order defines an intended target; it doesn't guarantee that target will be reached.",
+       "type": "tap_candle",
+       "question": "Tap the candle that makes the highest high.",
+       "target": 4,
+       "explanation": "In this uptrend the last candle prints the highest high.",
        "chart": "uptrend"
       },
       {
@@ -7054,29 +6910,10 @@
        "explanation": "This is the same buyer/seller balance idea from earlier lessons, framed as supply and demand."
       },
       {
-       "type": "ingredient_match",
-       "question": "Which best describes how supply and demand relate to price?",
-       "options": [
-        {
-         "label": "The exchange sets the price directly, not supply and demand",
-         "correct": false,
-         "detail": "Not quite",
-         "wrong_explanation": "Price emerges from the supply/demand balance, not an exchange decree."
-        },
-        {
-         "label": "Price commonly reflects the shifting balance between supply and demand",
-         "correct": true,
-         "detail": "A foundational economic idea"
-        },
-        {
-         "label": "Supply and demand guarantee a specific future price",
-         "correct": false,
-         "detail": "Overstates certainty",
-         "wrong_explanation": "It's a descriptive mechanism, not a guarantee."
-        }
-       ],
-       "concern": "Understanding the basic mechanism",
-       "explanation": "Supply and demand together are commonly described as the basic engine behind price.",
+       "type": "tap_candle",
+       "question": "Tap the candle that makes the highest high.",
+       "target": 4,
+       "explanation": "In this uptrend the last candle prints the highest high.",
        "chart": "uptrend"
       },
       {
@@ -10113,42 +9950,18 @@
        "explanation": "This turns raw swing points into a simple, consistent classification process."
       },
       {
-       "type": "ingredient_match",
-       "question": "Which best describes what \"uptrend\" means as a term?",
-       "options": [
-        {
-         "label": "A guarantee that price will keep rising forever",
-         "correct": false,
-         "detail": "Overstates certainty",
-         "wrong_explanation": "A trend describes the past pattern, not a certain future."
-        },
-        {
-         "label": "A description of a pattern of rising swing highs and lows",
-         "correct": true,
-         "detail": "Descriptive label, not a guarantee"
-        },
-        {
-         "label": "A specific single candlestick shape",
-         "correct": false,
-         "detail": "Not quite",
-         "wrong_explanation": "Trend describes multiple candles together, not one shape."
-        }
-       ],
-       "concern": "Understanding the terminology",
-       "explanation": "\"Uptrend\" is a useful descriptive shorthand, not a promise about what happens next.",
+       "type": "draw_trendline",
+       "question": "Draw the uptrend line from the first candle to the last.",
+       "target_start": 0,
+       "target_end": 4,
+       "explanation": "Connecting the rising candles traces the uptrend line.",
        "chart": "uptrend"
       },
       {
-       "type": "spot_mistake",
-       "scenario": "Someone assumes a chart \"can't\" be in an uptrend just because one single candle closed red.",
-       "question": "What is the mistake?",
-       "options": [
-        "They should have ignored the red candle's existence entirely.",
-        "They should have switched to a totally different asset.",
-        "One candle within an overall uptrend doesn't change the broader classification by itself."
-       ],
-       "correct": 2,
-       "explanation": "Trend classification is based on the broader swing pattern, not any single candle.",
+       "type": "tap_candle",
+       "question": "Tap the candle that makes the highest high.",
+       "target": 4,
+       "explanation": "In this uptrend the last candle prints the highest high.",
        "chart": "uptrend"
       },
       {
@@ -10274,42 +10087,18 @@
        "explanation": "This turns raw swing points into a simple, consistent classification process."
       },
       {
-       "type": "ingredient_match",
-       "question": "Which best describes what \"downtrend\" means as a term?",
-       "options": [
-        {
-         "label": "A description of a pattern of falling swing highs and lows",
-         "correct": true,
-         "detail": "Descriptive label, not a guarantee"
-        },
-        {
-         "label": "A guarantee that price will keep falling forever",
-         "correct": false,
-         "detail": "Overstates certainty",
-         "wrong_explanation": "A trend describes the past pattern, not a certain future."
-        },
-        {
-         "label": "A specific single candlestick shape",
-         "correct": false,
-         "detail": "Not quite",
-         "wrong_explanation": "Trend describes multiple candles together, not one shape."
-        }
-       ],
-       "concern": "Understanding the terminology",
-       "explanation": "\"Downtrend\" is a useful descriptive shorthand, not a promise about what happens next.",
+       "type": "draw_trendline",
+       "question": "Draw the downtrend line from the first candle to the last.",
+       "target_start": 0,
+       "target_end": 4,
+       "explanation": "Connecting the falling candles traces the downtrend line.",
        "chart": "downtrend"
       },
       {
-       "type": "spot_mistake",
-       "scenario": "Someone says a chart \"can't\" be in a downtrend just because one single candle closed green.",
-       "question": "What is the mistake?",
-       "options": [
-        "One candle within an overall downtrend doesn't change the broader classification by itself.",
-        "They should have ignored the green candle's existence entirely.",
-        "They should have switched to a totally different asset."
-       ],
-       "correct": 0,
-       "explanation": "Trend classification is based on the broader swing pattern, not any single candle.",
+       "type": "tap_candle",
+       "question": "Tap the candle that makes the lowest low.",
+       "target": 4,
+       "explanation": "In this downtrend the last candle prints the lowest low.",
        "chart": "downtrend"
       },
       {
@@ -10606,42 +10395,18 @@
        "explanation": "Confirming both sequences together is what verifies uptrend structure."
       },
       {
-       "type": "ingredient_match",
-       "question": "Which best describes what \"higher highs and higher lows\" means?",
-       "options": [
-        {
-         "label": "Each new swing high and swing low both exceed the prior ones",
-         "correct": true,
-         "detail": "The defining uptrend structure"
-        },
-        {
-         "label": "Only the lows need to rise; highs don't matter",
-         "correct": false,
-         "detail": "Incomplete",
-         "wrong_explanation": "Both highs and lows rising together define this structure."
-        },
-        {
-         "label": "Only the highs need to rise; lows don't matter",
-         "correct": false,
-         "detail": "Incomplete",
-         "wrong_explanation": "Both highs and lows rising together define this structure."
-        }
-       ],
-       "concern": "Understanding this specific phrase",
-       "explanation": "Both sequences rising together is what the phrase specifically describes.",
+       "type": "draw_trendline",
+       "question": "Draw the uptrend line from the first candle to the last.",
+       "target_start": 0,
+       "target_end": 4,
+       "explanation": "Connecting the rising candles traces the uptrend line.",
        "chart": "uptrend"
       },
       {
-       "type": "spot_mistake",
-       "scenario": "Someone claims a chart has \"higher highs and higher lows\" after checking only the swing highs.",
-       "question": "What is the mistake?",
-       "options": [
-        "They should ignore swing lows entirely from now on.",
-        "Confirming this structure requires checking both the swing highs AND the swing lows, not just one.",
-        "They should check the swing highs twice instead."
-       ],
-       "correct": 1,
-       "explanation": "Both sequences need to be checked together to properly confirm this structure.",
+       "type": "tap_candle",
+       "question": "Tap the candle that makes the highest high.",
+       "target": 4,
+       "explanation": "In this uptrend the last candle prints the highest high.",
        "chart": "uptrend"
       },
       {
@@ -10767,42 +10532,18 @@
        "explanation": "Confirming both sequences together is what verifies downtrend structure."
       },
       {
-       "type": "ingredient_match",
-       "question": "Which best describes what \"lower highs and lower lows\" means?",
-       "options": [
-        {
-         "label": "Each new swing high and swing low both fall below the prior ones",
-         "correct": true,
-         "detail": "The defining downtrend structure"
-        },
-        {
-         "label": "Only the lows need to fall; highs don't matter",
-         "correct": false,
-         "detail": "Incomplete",
-         "wrong_explanation": "Both highs and lows falling together define this structure."
-        },
-        {
-         "label": "Only the highs need to fall; lows don't matter",
-         "correct": false,
-         "detail": "Incomplete",
-         "wrong_explanation": "Both highs and lows falling together define this structure."
-        }
-       ],
-       "concern": "Understanding this specific phrase",
-       "explanation": "Both sequences falling together is what the phrase specifically describes.",
+       "type": "draw_trendline",
+       "question": "Draw the downtrend line from the first candle to the last.",
+       "target_start": 0,
+       "target_end": 4,
+       "explanation": "Connecting the falling candles traces the downtrend line.",
        "chart": "downtrend"
       },
       {
-       "type": "spot_mistake",
-       "scenario": "Someone claims a chart has \"lower highs and lower lows\" after checking only the swing lows.",
-       "question": "What is the mistake?",
-       "options": [
-        "Confirming this structure requires checking both the swing highs AND the swing lows, not just one.",
-        "They should check the swing lows twice instead.",
-        "They should ignore swing highs entirely from now on."
-       ],
-       "correct": 0,
-       "explanation": "Both sequences need to be checked together to properly confirm this structure.",
+       "type": "tap_candle",
+       "question": "Tap the candle that makes the lowest low.",
+       "target": 4,
+       "explanation": "In this downtrend the last candle prints the lowest low.",
        "chart": "downtrend"
       },
       {
@@ -11205,42 +10946,18 @@
        "explanation": "You typically can't be certain whether it's a pullback or reversal until after it's played out."
       },
       {
-       "type": "ingredient_match",
-       "question": "Which best describes how to think about a fresh counter-trend move?",
-       "options": [
-        {
-         "label": "It's always guaranteed to be a full reversal",
-         "correct": false,
-         "detail": "Overstates certainty",
-         "wrong_explanation": "Many counter-moves are just temporary pullbacks."
-        },
-        {
-         "label": "It could be a temporary pullback or the start of a reversal, often unclear at first",
-         "correct": true,
-         "detail": "Honest uncertainty in the moment"
-        },
-        {
-         "label": "It's always guaranteed to be just a pullback",
-         "correct": false,
-         "detail": "Overstates certainty",
-         "wrong_explanation": "Some counter-moves do turn into full reversals."
-        }
-       ],
-       "concern": "Interpreting a possible pullback",
-       "explanation": "In the moment, it's often genuinely unclear which one you're seeing. That's honest uncertainty, not a flaw.",
+       "type": "draw_trendline",
+       "question": "Draw the uptrend line from the first candle to the last.",
+       "target_start": 0,
+       "target_end": 4,
+       "explanation": "Connecting the rising candles traces the uptrend line.",
        "chart": "uptrend"
       },
       {
-       "type": "spot_mistake",
-       "scenario": "Someone labels every single counter-trend move a \"pullback\" no matter how it later plays out.",
-       "question": "What is the mistake?",
-       "options": [
-        "They should ignore counter-trend moves entirely.",
-        "They should label every counter-move a reversal instead.",
-        "Some counter-trend moves do turn into full reversals. Not every one stays a temporary pullback."
-       ],
-       "correct": 2,
-       "explanation": "Whether something was a pullback or a reversal is really only clear in hindsight.",
+       "type": "tap_candle",
+       "question": "Tap the candle that makes the highest high.",
+       "target": 4,
+       "explanation": "In this uptrend the last candle prints the highest high.",
        "chart": "uptrend"
       },
       {
@@ -13296,42 +13013,18 @@
        "explanation": "This habit builds a fuller, combined read rather than relying on just one concept."
       },
       {
-       "type": "ingredient_match",
-       "question": "Which best reflects a balanced way to combine trend and levels?",
-       "options": [
-        {
-         "label": "Considering both together for a fuller descriptive picture",
-         "correct": true,
-         "detail": "Neither alone tells the whole story"
-        },
-        {
-         "label": "Only ever considering levels, ignoring trend entirely",
-         "correct": false,
-         "detail": "Incomplete",
-         "wrong_explanation": "This ignores useful context the trend can add."
-        },
-        {
-         "label": "Only ever considering trend, ignoring levels entirely",
-         "correct": false,
-         "detail": "Incomplete",
-         "wrong_explanation": "This ignores useful context levels can add."
-        }
-       ],
-       "concern": "Combining these concepts responsibly",
-       "explanation": "Combining both is more descriptive than relying on either one alone.",
+       "type": "draw_trendline",
+       "question": "Draw the uptrend line from the first candle to the last.",
+       "target_start": 0,
+       "target_end": 4,
+       "explanation": "Connecting the rising candles traces the uptrend line.",
        "chart": "uptrend"
       },
       {
-       "type": "spot_mistake",
-       "scenario": "Someone reads a resistance level the exact same way regardless of whether the chart is in an uptrend or downtrend.",
-       "question": "What is the mistake?",
-       "options": [
-        "Ignoring the broader trend context misses useful information that's commonly combined with level analysis.",
-        "They should ignore resistance levels entirely instead.",
-        "They should only ever look at trend, never levels."
-       ],
-       "correct": 0,
-       "explanation": "Combining trend and level context together is more descriptive than looking at either alone.",
+       "type": "tap_candle",
+       "question": "Tap the candle that makes the highest high.",
+       "target": 4,
+       "explanation": "In this uptrend the last candle prints the highest high.",
        "chart": "uptrend"
       },
       {
@@ -17688,10 +17381,10 @@
        "chart": "uptrend"
       },
       {
-       "type": "true_false",
-       "question": "The chart above shows a falling wedge.",
-       "correct": false,
-       "explanation": "This is a descending channel (parallel), not a converging falling wedge.",
+       "type": "tap_candle",
+       "question": "Tap the candle that makes the lowest low.",
+       "target": 4,
+       "explanation": "In this downtrend the last candle prints the lowest low.",
        "chart": "downtrend"
       },
       {
@@ -17785,16 +17478,10 @@
        "chart": "fallingWedge"
       },
       {
-       "type": "spot_mistake",
-       "scenario": "Someone calls every rising chart a \"rising wedge.\"",
-       "question": "What is the mistake?",
-       "options": [
-        "Any rising chart is a wedge.",
-        "A rising wedge specifically has converging lines; a plain rising trend within parallel lines is a channel.",
-        "Convergence doesn't matter."
-       ],
-       "correct": 1,
-       "explanation": "The converging structure, not just rising, is what makes a wedge.",
+       "type": "tap_candle",
+       "question": "Tap the candle that makes the highest high.",
+       "target": 4,
+       "explanation": "In this uptrend the last candle prints the highest high.",
        "chart": "uptrend"
       },
       {
@@ -18874,16 +18561,10 @@
        "chart": "range"
       },
       {
-       "type": "spot_mistake",
-       "scenario": "Someone calls a strong trending chart a \"range.\"",
-       "question": "What is the mistake?",
-       "options": [
-        "Any chart is a range.",
-        "Higher highs and higher lows is a trend, not a sideways range between fixed levels.",
-        "Trends and ranges are the same."
-       ],
-       "correct": 1,
-       "explanation": "A range is sideways between levels; a trend makes directional progress.",
+       "type": "tap_candle",
+       "question": "Tap the candle that makes the highest high.",
+       "target": 4,
+       "explanation": "In this uptrend the last candle prints the highest high.",
        "chart": "uptrend"
       },
       {
@@ -21786,16 +21467,10 @@
        "explanation": "Agreeing timeframes are another agreeing factor, confluence."
       },
       {
-       "type": "spot_mistake",
-       "scenario": "Someone sees both timeframes agree and assumes the trade \"can't lose.\"",
-       "question": "What is the mistake?",
-       "options": [
-        "Alignment removes all risk.",
-        "Timeframe agreement is stronger evidence but never a guarantee, \"can't lose\" overstates it.",
-        "Agreement makes it certain."
-       ],
-       "correct": 1,
-       "explanation": "Even aligned timeframes only stack probability, not certainty.",
+       "type": "tap_candle",
+       "question": "Tap the candle that makes the highest high.",
+       "target": 4,
+       "explanation": "In this uptrend the last candle prints the highest high.",
        "chart": "uptrend"
       },
       {
@@ -24218,42 +23893,18 @@
        "explanation": "This process turns an abstract risk tolerance into a concrete plan."
       },
       {
-       "type": "ingredient_match",
-       "question": "Which best describes \"risk per trade\"?",
-       "options": [
-        {
-         "label": "The total amount of money in your account",
-         "correct": false,
-         "detail": "Different concept",
-         "wrong_explanation": "That's your total account size, not the risk on one trade."
-        },
-        {
-         "label": "How much of your capital could be lost if a single trade goes against you",
-         "correct": true,
-         "detail": "A quantifiable, planned amount"
-        },
-        {
-         "label": "A guarantee of how much you will actually lose",
-         "correct": false,
-         "detail": "Overstates certainty",
-         "wrong_explanation": "It's the potential loss if things go against you, not a guaranteed outcome."
-        }
-       ],
-       "concern": "Understanding this specific term",
-       "explanation": "Risk per trade specifically describes the potential loss on a single position.",
+       "type": "draw_trendline",
+       "question": "Draw the downtrend line from the first candle to the last.",
+       "target_start": 0,
+       "target_end": 4,
+       "explanation": "Connecting the falling candles traces the downtrend line.",
        "chart": "downtrend"
       },
       {
-       "type": "spot_mistake",
-       "scenario": "Someone risks 50% of their account on a single trade because they feel very confident about it.",
-       "question": "What is the mistake?",
-       "options": [
-        "They should have felt even more confident before risking that much.",
-        "They should have risked their entire account instead.",
-        "Risking such a large portion of an account on one trade exposes it to severe damage from a single loss."
-       ],
-       "correct": 2,
-       "explanation": "Confidence in an outcome doesn't remove risk, a single loss at that size could be very damaging.",
+       "type": "tap_candle",
+       "question": "Tap the candle that makes the lowest low.",
+       "target": 4,
+       "explanation": "In this downtrend the last candle prints the lowest low.",
        "chart": "downtrend"
       },
       {
@@ -24836,42 +24487,18 @@
        "explanation": "This keeps leverage decisions tied to individual risk tolerance rather than chasing amplified gains alone."
       },
       {
-       "type": "ingredient_match",
-       "question": "Which best describes \"overleveraging\"?",
-       "options": [
-        {
-         "label": "Using any leverage at all, under any circumstances",
-         "correct": false,
-         "detail": "Overgeneralizes",
-         "wrong_explanation": "Leverage itself isn't inherently overleveraging; it's about fit with risk tolerance."
-        },
-        {
-         "label": "A guarantee of larger losses no matter what",
-         "correct": false,
-         "detail": "Overstates certainty",
-         "wrong_explanation": "It raises risk, but exact outcomes still depend on what actually happens."
-        },
-        {
-         "label": "Using more leverage than fits your own risk tolerance",
-         "correct": true,
-         "detail": "A mismatch between leverage and personal risk capacity"
-        }
-       ],
-       "concern": "Understanding this specific term",
-       "explanation": "Overleveraging specifically describes a mismatch between leverage used and one's own risk tolerance.",
+       "type": "draw_trendline",
+       "question": "Draw the downtrend line from the first candle to the last.",
+       "target_start": 0,
+       "target_end": 4,
+       "explanation": "Connecting the falling candles traces the downtrend line.",
        "chart": "downtrend"
       },
       {
-       "type": "spot_mistake",
-       "scenario": "Someone uses very high leverage because \"it worked out fine last time.\"",
-       "question": "What is the mistake?",
-       "options": [
-        "They should assume high leverage always works out.",
-        "Past luck with high leverage doesn't reduce the risk of amplified losses on a future adverse move.",
-        "They should use even higher leverage next time to be consistent."
-       ],
-       "correct": 1,
-       "explanation": "One favorable past outcome doesn't change the underlying amplified risk that leverage carries.",
+       "type": "tap_candle",
+       "question": "Tap the candle that makes the lowest low.",
+       "target": 4,
+       "explanation": "In this downtrend the last candle prints the lowest low.",
        "chart": "downtrend"
       },
       {
@@ -24997,42 +24624,18 @@
        "explanation": "This is a straightforward, descriptive calculation based on account history."
       },
       {
-       "type": "ingredient_match",
-       "question": "Which best describes a \"20% drawdown\"?",
-       "options": [
-        {
-         "label": "A guarantee the account will recover fully",
-         "correct": false,
-         "detail": "Overstates certainty",
-         "wrong_explanation": "A drawdown describes what happened, not a guaranteed recovery."
-        },
-        {
-         "label": "A rule requiring the account to close",
-         "correct": false,
-         "detail": "Incorrect",
-         "wrong_explanation": "A drawdown is a descriptive measurement, not a mandated action."
-        },
-        {
-         "label": "The account has fallen 20% from its prior peak value",
-         "correct": true,
-         "detail": "A descriptive measure of decline"
-        }
-       ],
-       "concern": "Understanding drawdown terminology",
-       "explanation": "A drawdown specifically measures the decline from peak, nothing more or less.",
+       "type": "draw_trendline",
+       "question": "Draw the downtrend line from the first candle to the last.",
+       "target_start": 0,
+       "target_end": 4,
+       "explanation": "Connecting the falling candles traces the downtrend line.",
        "chart": "downtrend"
       },
       {
-       "type": "spot_mistake",
-       "scenario": "Someone panics and assumes any drawdown means their overall trading approach has permanently failed.",
-       "question": "What is the mistake?",
-       "options": [
-        "Drawdowns are a normal, expected part of most account histories, even ones that are profitable overall.",
-        "They should avoid ever checking their account value again.",
-        "They should assume every drawdown means immediate, permanent failure."
-       ],
-       "correct": 0,
-       "explanation": "A single drawdown doesn't by itself indicate a permanent failure of an overall approach.",
+       "type": "tap_candle",
+       "question": "Tap the candle that makes the lowest low.",
+       "target": 4,
+       "explanation": "In this downtrend the last candle prints the lowest low.",
        "chart": "downtrend"
       },
       {
@@ -25158,42 +24761,18 @@
        "explanation": "A measured review is commonly recommended over an immediate, emotional overhaul."
       },
       {
-       "type": "ingredient_match",
-       "question": "Which best reflects a balanced way to think about a losing streak?",
-       "options": [
-        {
-         "label": "\"Losing streaks are impossible with any sound approach\"",
-         "correct": false,
-         "detail": "Overstates certainty",
-         "wrong_explanation": "Losing streaks can happen even with reasonable approaches."
-        },
-        {
-         "label": "\"This can happen even with a reasonable plan; worth a calm review\"",
-         "correct": true,
-         "detail": "Balanced, accurate framing"
-        },
-        {
-         "label": "\"This proves my plan is completely worthless\"",
-         "correct": false,
-         "detail": "Overstates certainty",
-         "wrong_explanation": "A losing streak alone doesn't prove that."
-        }
-       ],
-       "concern": "Interpreting a string of losses",
-       "explanation": "The balanced view treats a losing streak as possible and worth reviewing, not an automatic verdict.",
+       "type": "draw_trendline",
+       "question": "Draw the downtrend line from the first candle to the last.",
+       "target_start": 0,
+       "target_end": 4,
+       "explanation": "Connecting the falling candles traces the downtrend line.",
        "chart": "downtrend"
       },
       {
-       "type": "spot_mistake",
-       "scenario": "Someone abandons a carefully planned approach entirely after just two losing trades in a row.",
-       "question": "What is the mistake?",
-       "options": [
-        "Two losses in a row can happen even with a reasonable approach. It doesn't necessarily mean the approach has failed.",
-        "They should never review their plan under any circumstances.",
-        "They should have taken on much more risk instead."
-       ],
-       "correct": 0,
-       "explanation": "A short losing streak alone is often not enough evidence to conclude a reasonable plan has failed.",
+       "type": "tap_candle",
+       "question": "Tap the candle that makes the lowest low.",
+       "target": 4,
+       "explanation": "In this downtrend the last candle prints the lowest low.",
        "chart": "downtrend"
       },
       {
@@ -25576,42 +25155,18 @@
        "explanation": "Each lesson built on the one before it toward a fuller risk management picture."
       },
       {
-       "type": "ingredient_match",
-       "question": "Which best summarizes the overall theme of this unit?",
-       "options": [
-        {
-         "label": "Risk management is about planning for and accepting uncertainty, not eliminating it",
-         "correct": true,
-         "detail": "The central theme throughout"
-        },
-        {
-         "label": "Good risk management guarantees consistent profits",
-         "correct": false,
-         "detail": "Overstates certainty",
-         "wrong_explanation": "This directly contradicts what every lesson covered."
-        },
-        {
-         "label": "Risk management is unnecessary if your approach is good enough",
-         "correct": false,
-         "detail": "Overcorrects",
-         "wrong_explanation": "This unit specifically emphasized risk management as foundational."
-        }
-       ],
-       "concern": "Reviewing the big picture",
-       "explanation": "This balanced view has been the throughline of every lesson in this unit.",
+       "type": "draw_trendline",
+       "question": "Draw the uptrend line from the first candle to the last.",
+       "target_start": 0,
+       "target_end": 4,
+       "explanation": "Connecting the rising candles traces the uptrend line.",
        "chart": "uptrend"
       },
       {
-       "type": "spot_mistake",
-       "scenario": "Someone finishes this unit and assumes strong risk management guarantees they'll never have a losing trade.",
-       "question": "What is the mistake?",
-       "options": [
-        "Risk management is about limiting the damage from losses, not eliminating the possibility of losses entirely.",
-        "They should skip risk management from now on since it can't guarantee anything.",
-        "They should only ever take trades with a 1:1 ratio."
-       ],
-       "correct": 0,
-       "explanation": "This unit builds a planning and acceptance mindset, not a guarantee against ever losing.",
+       "type": "tap_candle",
+       "question": "Tap the candle that makes the highest high.",
+       "target": 4,
+       "explanation": "In this uptrend the last candle prints the highest high.",
        "chart": "uptrend"
       },
       {
@@ -25898,42 +25453,18 @@
        "explanation": "This reflects the commonly described multi-day nature of swing trading."
       },
       {
-       "type": "ingredient_match",
-       "question": "Which best describes \"swing trading,\" as commonly defined?",
-       "options": [
-        {
-         "label": "Holding trades for several days to a few weeks to capture a broader price swing",
-         "correct": true,
-         "detail": "A multi-day, broader-move approach"
-        },
-        {
-         "label": "Holding a position for only a few seconds",
-         "correct": false,
-         "detail": "This describes something closer to scalping, not swing trading",
-         "wrong_explanation": "That timeframe is far shorter than swing trading's typical range."
-        },
-        {
-         "label": "A guarantee of capturing the entire move",
-         "correct": false,
-         "detail": "Overstates certainty",
-         "wrong_explanation": "Swing trading describes an approach's timeframe, not a guaranteed outcome."
-        }
-       ],
-       "concern": "Understanding this specific approach",
-       "explanation": "Swing trading specifically describes a multi-day-to-multi-week holding approach.",
+       "type": "draw_trendline",
+       "question": "Draw the uptrend line from the first candle to the last.",
+       "target_start": 0,
+       "target_end": 4,
+       "explanation": "Connecting the rising candles traces the uptrend line.",
        "chart": "uptrend"
       },
       {
-       "type": "spot_mistake",
-       "scenario": "Someone describes \"holding a position for thirty seconds\" as an example of swing trading.",
-       "question": "What is the mistake?",
-       "options": [
-        "They should hold it for even less time to make it a proper swing trade.",
-        "Swing trading is commonly described as spanning days to weeks, not thirty seconds.",
-        "They should assume timeframe doesn't matter when describing an approach."
-       ],
-       "correct": 1,
-       "explanation": "A thirty-second hold doesn't match the commonly described days-to-weeks nature of swing trading.",
+       "type": "tap_candle",
+       "question": "Tap the candle that makes the highest high.",
+       "target": 4,
+       "explanation": "In this uptrend the last candle prints the highest high.",
        "chart": "uptrend"
       },
       {
@@ -26064,42 +25595,18 @@
        "explanation": "This reflects the commonly described direction-aligned nature of trend following."
       },
       {
-       "type": "ingredient_match",
-       "question": "Which best describes \"trend following,\" as commonly defined?",
-       "options": [
-        {
-         "label": "Betting that price will reverse the moment a trend appears",
-         "correct": false,
-         "detail": "This describes a reversal-betting idea, not trend following",
-         "wrong_explanation": "That contradicts the core idea of staying aligned with the trend."
-        },
-        {
-         "label": "A guarantee that the trend will never end",
-         "correct": false,
-         "detail": "Overstates certainty",
-         "wrong_explanation": "Trend following describes an approach, not a guarantee about how long a trend lasts."
-        },
-        {
-         "label": "Staying aligned with a sustained directional move for as long as it continues",
-         "correct": true,
-         "detail": "A direction-aligned approach"
-        }
-       ],
-       "concern": "Understanding this specific approach",
-       "explanation": "Trend following specifically describes staying aligned with a sustained direction, not betting against it.",
+       "type": "draw_trendline",
+       "question": "Draw the uptrend line from the first candle to the last.",
+       "target_start": 0,
+       "target_end": 4,
+       "explanation": "Connecting the rising candles traces the uptrend line.",
        "chart": "uptrend"
       },
       {
-       "type": "spot_mistake",
-       "scenario": "Someone describes \"betting against every sustained move as soon as it starts\" as an example of trend following.",
-       "question": "What is the mistake?",
-       "options": [
-        "They should bet against the move even earlier next time.",
-        "Trend following is commonly described as staying aligned with a sustained move, not betting against it.",
-        "They should assume all approaches describe the same idea."
-       ],
-       "correct": 1,
-       "explanation": "Betting against a sustained move contradicts the commonly described core idea of trend following.",
+       "type": "tap_candle",
+       "question": "Tap the candle that makes the highest high.",
+       "target": 4,
+       "explanation": "In this uptrend the last candle prints the highest high.",
        "chart": "uptrend"
       },
       {
@@ -26791,42 +26298,18 @@
        "explanation": "Each lesson built on the one before it toward a fuller picture of common strategy types."
       },
       {
-       "type": "ingredient_match",
-       "question": "Which best summarizes the overall theme of this unit?",
-       "options": [
-        {
-         "label": "Only one of these strategy types is ever valid",
-         "correct": false,
-         "detail": "Overstates it",
-         "wrong_explanation": "This unit presented all six as commonly described, distinct approaches."
-        },
-        {
-         "label": "Each strategy type guarantees a specific win rate",
-         "correct": false,
-         "detail": "Overstates certainty",
-         "wrong_explanation": "This directly contradicts what every lesson covered."
-        },
-        {
-         "label": "These are descriptive categories for common approaches, not signals to follow for a specific trade",
-         "correct": true,
-         "detail": "The central theme throughout"
-        }
-       ],
-       "concern": "Reviewing the big picture",
-       "explanation": "This balanced view has been the throughline of every lesson in this unit.",
+       "type": "draw_trendline",
+       "question": "Draw the uptrend line from the first candle to the last.",
+       "target_start": 0,
+       "target_end": 4,
+       "explanation": "Connecting the rising candles traces the uptrend line.",
        "chart": "uptrend"
       },
       {
-       "type": "spot_mistake",
-       "scenario": "Someone finishes this unit and assumes memorizing these six names means they now know exactly which trades to take.",
-       "question": "What is the mistake?",
-       "options": [
-        "This unit builds descriptive vocabulary about common approaches, not a signal system for deciding specific trades.",
-        "They should pick one strategy type and use it on every single trade going forward.",
-        "They should assume strategy names guarantee an outcome."
-       ],
-       "correct": 0,
-       "explanation": "This unit is about descriptive categorization, not a system for making specific trade decisions.",
+       "type": "tap_candle",
+       "question": "Tap the candle that makes the highest high.",
+       "target": 4,
+       "explanation": "In this uptrend the last candle prints the highest high.",
        "chart": "uptrend"
       },
       {
@@ -28111,10 +27594,10 @@
        "explanation": "Lower highs and lower lows is a downtrend."
       },
       {
-       "type": "true_false",
-       "question": "An uptrend shows higher highs and higher lows.",
-       "correct": true,
-       "explanation": "Rising highs and lows define an uptrend.",
+       "type": "tap_candle",
+       "question": "Tap the candle that makes the highest high.",
+       "target": 4,
+       "explanation": "In this uptrend the last candle prints the highest high.",
        "chart": "uptrend"
       },
       {
@@ -28648,10 +28131,10 @@
        "explanation": "In an uptrend, the average of recent prices rises, the MA slopes up."
       },
       {
-       "type": "true_false",
-       "question": "A falling moving average reflects a downtrend.",
-       "correct": true,
-       "explanation": "When recent prices fall, their average falls, the MA slopes down.",
+       "type": "tap_candle",
+       "question": "Tap the candle that makes the lowest low.",
+       "target": 4,
+       "explanation": "In this downtrend the last candle prints the lowest low.",
        "chart": "downtrend"
       },
       {
@@ -29023,29 +28506,10 @@
        "explanation": "MAs smooth and lag; they don't predict."
       },
       {
-       "type": "ingredient_match",
-       "question": "Which best summarizes moving averages?",
-       "options": [
-        {
-         "label": "A smoothed, lagging line whose slope reads the trend, descriptive, not predictive",
-         "correct": true,
-         "detail": "The central theme"
-        },
-        {
-         "label": "A guaranteed buy/sell signal on every cross",
-         "correct": false,
-         "detail": "Overstates it",
-         "wrong_explanation": "Crossovers are lagging cues, not guaranteed signals."
-        },
-        {
-         "label": "A predictor of the next price",
-         "correct": false,
-         "detail": "Overstates",
-         "wrong_explanation": "MAs lag, they don't predict."
-        }
-       ],
-       "concern": "Reviewing the big picture",
-       "explanation": "Smoothed, lagging, descriptive trend reading is the throughline.",
+       "type": "tap_candle",
+       "question": "Tap the candle that makes the highest high.",
+       "target": 4,
+       "explanation": "In this uptrend the last candle prints the highest high.",
        "chart": "uptrend"
       },
       {
@@ -34392,42 +33856,18 @@
        "explanation": "This process creates space between a loss and the next decision."
       },
       {
-       "type": "ingredient_match",
-       "question": "Which best describes \"revenge trading\"?",
-       "options": [
-        {
-         "label": "A guarantee that the next trade will be profitable",
-         "correct": false,
-         "detail": "Overstates certainty",
-         "wrong_explanation": "Revenge trading describes a motivation, not a guaranteed outcome."
-        },
-        {
-         "label": "Entering a new trade quickly after a loss, driven by the urge to recover it immediately",
-         "correct": true,
-         "detail": "A reactive pattern tied to a recent loss"
-        },
-        {
-         "label": "Reviewing a loss calmly before deciding what to do next",
-         "correct": false,
-         "detail": "This describes a measured response, not revenge trading",
-         "wrong_explanation": "A calm review is the opposite of revenge trading."
-        }
-       ],
-       "concern": "Understanding this specific term",
-       "explanation": "Revenge trading specifically describes a reactive attempt to immediately recover a recent loss.",
+       "type": "draw_trendline",
+       "question": "Draw the downtrend line from the first candle to the last.",
+       "target_start": 0,
+       "target_end": 4,
+       "explanation": "Connecting the falling candles traces the downtrend line.",
        "chart": "downtrend"
       },
       {
-       "type": "spot_mistake",
-       "scenario": "Someone loses on a trade and immediately doubles their position size on the next trade to \"make it back fast.\"",
-       "question": "What is the mistake?",
-       "options": [
-        "They should stop looking at charts entirely from now on.",
-        "Increasing size specifically to recover a loss quickly is a commonly described sign of revenge trading, adding risk on top of an emotional reaction.",
-        "They should double their size again after the next loss too."
-       ],
-       "correct": 1,
-       "explanation": "Sizing decisions driven by the urge to recover a loss quickly are a commonly cited revenge-trading pattern.",
+       "type": "tap_candle",
+       "question": "Tap the candle that makes the lowest low.",
+       "target": 4,
+       "explanation": "In this downtrend the last candle prints the lowest low.",
        "chart": "downtrend"
       },
       {
@@ -34714,42 +34154,18 @@
        "explanation": "This keeps risk management consistent regardless of a recent run of results."
       },
       {
-       "type": "ingredient_match",
-       "question": "Which best describes overconfidence following a string of wins?",
-       "options": [
-        {
-         "label": "Becoming more cautious and reducing size after wins",
-         "correct": false,
-         "detail": "This describes the opposite pattern",
-         "wrong_explanation": "That describes increased caution, not overconfidence."
-        },
-        {
-         "label": "A guarantee that the next trade will also win",
-         "correct": false,
-         "detail": "Overstates certainty",
-         "wrong_explanation": "Overconfidence describes a mindset, not a guaranteed outcome."
-        },
-        {
-         "label": "Feeling emboldened enough to skip normal risk steps, because recent wins feel like proof of skill",
-         "correct": true,
-         "detail": "A commonly described emotional pattern"
-        }
-       ],
-       "concern": "Understanding this specific pattern",
-       "explanation": "Overconfidence specifically describes skipping normal risk steps due to recent wins, not increased caution.",
+       "type": "draw_trendline",
+       "question": "Draw the uptrend line from the first candle to the last.",
+       "target_start": 0,
+       "target_end": 4,
+       "explanation": "Connecting the rising candles traces the uptrend line.",
        "chart": "uptrend"
       },
       {
-       "type": "spot_mistake",
-       "scenario": "Someone removes their stop-loss on their next trade because they've \"been on a roll\" for the past week.",
-       "question": "What is the mistake?",
-       "options": [
-        "Removing a normal risk step because of a recent winning streak is a commonly described overconfidence pattern, recent wins don't remove future risk.",
-        "They should remove stop-losses on every trade from now on.",
-        "They should assume the winning streak guarantees future wins."
-       ],
-       "correct": 0,
-       "explanation": "A recent streak of wins doesn't change the underlying risk of a new trade, per this commonly cited concern.",
+       "type": "tap_candle",
+       "question": "Tap the candle that makes the highest high.",
+       "target": 4,
+       "explanation": "In this uptrend the last candle prints the highest high.",
        "chart": "uptrend"
       },
       {
@@ -34870,42 +34286,18 @@
        "explanation": "This keeps decisions tied to the plan rather than a fear reaction to recent losses."
       },
       {
-       "type": "ingredient_match",
-       "question": "Which best describes fear-driven hesitation following a string of losses?",
-       "options": [
-        {
-         "label": "A guarantee that the next trade will also lose",
-         "correct": false,
-         "detail": "Overstates certainty",
-         "wrong_explanation": "Fear describes a reaction, not a guaranteed outcome."
-        },
-        {
-         "label": "Taking on larger risk to compensate for recent losses",
-         "correct": false,
-         "detail": "This describes a different pattern (revenge trading)",
-         "wrong_explanation": "That's closer to revenge trading, not fear-driven hesitation."
-        },
-        {
-         "label": "Hesitating on or skipping a genuinely planned setup because of recent losses",
-         "correct": true,
-         "detail": "A commonly described emotional response"
-        }
-       ],
-       "concern": "Understanding this specific pattern",
-       "explanation": "Fear-driven hesitation specifically describes skipping or exiting a valid plan due to recent losses.",
+       "type": "draw_trendline",
+       "question": "Draw the downtrend line from the first candle to the last.",
+       "target_start": 0,
+       "target_end": 4,
+       "explanation": "Connecting the falling candles traces the downtrend line.",
        "chart": "downtrend"
       },
       {
-       "type": "spot_mistake",
-       "scenario": "Someone skips a setup that matches their plan exactly, purely because they're afraid after a few recent losses.",
-       "question": "What is the mistake?",
-       "options": [
-        "Skipping a genuinely planned setup purely from fear after recent losses is a commonly described pattern where emotion overrides the plan.",
-        "They should double their position size to make up for the losses.",
-        "They should abandon their plan permanently."
-       ],
-       "correct": 0,
-       "explanation": "Letting fear override a genuinely planned setup, rather than reviewing the plan calmly, is the commonly cited concern here.",
+       "type": "tap_candle",
+       "question": "Tap the candle that makes the lowest low.",
+       "target": 4,
+       "explanation": "In this downtrend the last candle prints the lowest low.",
        "chart": "downtrend"
       },
       {
@@ -35099,29 +34491,11 @@
        "chart": "uptrend"
       },
       {
-       "type": "ingredient_match",
-       "question": "Someone buys immediately after seeing a stock spike, with no plan, purely from urgency about missing further gains. Which pattern does this describe?",
-       "options": [
-        {
-         "label": "FOMO",
-         "correct": true,
-         "detail": "Urgency-driven entry with no plan"
-        },
-        {
-         "label": "Capital preservation",
-         "correct": false,
-         "detail": "A different concept",
-         "wrong_explanation": "Capital preservation is about protecting capital, not urgency-driven entries."
-        },
-        {
-         "label": "Discipline",
-         "correct": false,
-         "detail": "Opposite pattern",
-         "wrong_explanation": "Discipline describes plan-following, not this reactive urgency."
-        }
-       ],
-       "concern": "Identifying a psychological pattern",
-       "explanation": "Acting from urgency about missing a move, without a plan, is the commonly described core of FOMO.",
+       "type": "draw_trendline",
+       "question": "Draw the uptrend line from the first candle to the last.",
+       "target_start": 0,
+       "target_end": 4,
+       "explanation": "Connecting the rising candles traces the uptrend line.",
        "chart": "uptrend"
       },
       {
@@ -35172,16 +34546,10 @@
        "explanation": "These patterns are each linked to a distinct, commonly described emotional driver."
       },
       {
-       "type": "spot_mistake",
-       "scenario": "Someone feels afraid after two losses and skips a setup that matches their plan exactly, then later feels regret.",
-       "question": "Which pattern does this best describe?",
-       "options": [
-        "Fear-driven hesitation, where recent losses caused them to skip a genuinely planned setup.",
-        "Capital preservation, since they avoided a trade.",
-        "Overconfidence, since they felt very certain about the decision."
-       ],
-       "correct": 0,
-       "explanation": "Skipping a valid, planned setup specifically due to fear after losses is the fear-driven hesitation pattern.",
+       "type": "tap_candle",
+       "question": "Tap the candle that makes the highest high.",
+       "target": 4,
+       "explanation": "In this uptrend the last candle prints the highest high.",
        "chart": "uptrend"
       },
       {
@@ -35435,42 +34803,18 @@
        "explanation": "This process reflects a commonly described, descriptive way to classify market conditions."
       },
       {
-       "type": "ingredient_match",
-       "question": "Which best describes a \"trending\" market classification?",
-       "options": [
-        {
-         "label": "Price bouncing between the same two levels repeatedly",
-         "correct": false,
-         "detail": "This describes range-bound, not trending",
-         "wrong_explanation": "That description matches a range-bound classification instead."
-        },
-        {
-         "label": "A sustained move in one general direction over time",
-         "correct": true,
-         "detail": "A descriptive classification of price behavior"
-        },
-        {
-         "label": "A guarantee that the direction will continue indefinitely",
-         "correct": false,
-         "detail": "Overstates certainty",
-         "wrong_explanation": "Classification describes what has happened, not what will happen next."
-        }
-       ],
-       "concern": "Understanding this specific classification",
-       "explanation": "Trending specifically describes a sustained directional move, not a guarantee about the future or a bounded range.",
+       "type": "draw_trendline",
+       "question": "Draw the uptrend line from the first candle to the last.",
+       "target_start": 0,
+       "target_end": 4,
+       "explanation": "Connecting the rising candles traces the uptrend line.",
        "chart": "uptrend"
       },
       {
-       "type": "spot_mistake",
-       "scenario": "Someone classifies a market as \"trending\" after seeing just a single candle, with no broader context.",
-       "question": "What is the mistake?",
-       "options": [
-        "They should classify every single candle as its own trend.",
-        "They should ignore the sequence of highs and lows entirely.",
-        "A trending classification is commonly based on a sustained sequence of highs and lows over time, not a single candle."
-       ],
-       "correct": 2,
-       "explanation": "A single candle doesn't provide the sustained sequence commonly needed to classify a trend.",
+       "type": "tap_candle",
+       "question": "Tap the candle that makes the highest high.",
+       "target": 4,
+       "explanation": "In this uptrend the last candle prints the highest high.",
        "chart": "uptrend"
       },
       {
@@ -35961,42 +35305,18 @@
        "explanation": "This process reflects a commonly described, level-headed way to respond to a losing streak."
       },
       {
-       "type": "ingredient_match",
-       "question": "Which best describes a \"disciplined response\" to a losing streak, as commonly defined?",
-       "options": [
-        {
-         "label": "A calm review of whether the plan was followed, without an emotional overhaul",
-         "correct": true,
-         "detail": "A process-focused, level-headed response"
-        },
-        {
-         "label": "Immediately abandoning the plan after the very first loss",
-         "correct": false,
-         "detail": "This describes an overreactive response, not a disciplined one",
-         "wrong_explanation": "That's closer to an overreaction than a disciplined review."
-        },
-        {
-         "label": "A guarantee that the losing streak will end immediately",
-         "correct": false,
-         "detail": "Overstates certainty",
-         "wrong_explanation": "A disciplined response describes a process, not a guaranteed outcome."
-        }
-       ],
-       "concern": "Understanding this specific concept",
-       "explanation": "A disciplined response specifically describes a calm process review, not an emotional overhaul or a guaranteed result.",
+       "type": "draw_trendline",
+       "question": "Draw the downtrend line from the first candle to the last.",
+       "target_start": 0,
+       "target_end": 4,
+       "explanation": "Connecting the falling candles traces the downtrend line.",
        "chart": "downtrend"
       },
       {
-       "type": "spot_mistake",
-       "scenario": "Someone responds to three losses in a row by immediately doubling their position size to \"make it back.\"",
-       "question": "What is the mistake?",
-       "options": [
-        "They should double their size again after the next loss too.",
-        "They should assume this response guarantees recovering the losses.",
-        "Immediately increasing size to recover losses quickly is commonly described as a revenge-trading response, not a disciplined one."
-       ],
-       "correct": 2,
-       "explanation": "This response matches the commonly described revenge-trading pattern rather than a calm, disciplined review.",
+       "type": "tap_candle",
+       "question": "Tap the candle that makes the lowest low.",
+       "target": 4,
+       "explanation": "In this downtrend the last candle prints the lowest low.",
        "chart": "downtrend"
       },
       {
@@ -36195,42 +35515,18 @@
        "explanation": "Each unit built on the one before it toward a fuller educational picture of the markets."
       },
       {
-       "type": "ingredient_match",
-       "question": "Which best summarizes the overall theme of this course?",
-       "options": [
-        {
-         "label": "This course builds descriptive, educational understanding of markets, not a system for specific trade decisions",
-         "correct": true,
-         "detail": "The central theme throughout"
-        },
-        {
-         "label": "This course guarantees consistent profits if followed exactly",
-         "correct": false,
-         "detail": "Overstates certainty",
-         "wrong_explanation": "This directly contradicts what every unit emphasized."
-        },
-        {
-         "label": "This course is only useful for people who already trade professionally",
-         "correct": false,
-         "detail": "Overstates it",
-         "wrong_explanation": "The course was built as general, descriptive education."
-        }
-       ],
-       "concern": "Reviewing the big picture",
-       "explanation": "This balanced view has been the throughline of every unit across this entire course.",
+       "type": "draw_trendline",
+       "question": "Draw the uptrend line from the first candle to the last.",
+       "target_start": 0,
+       "target_end": 4,
+       "explanation": "Connecting the rising candles traces the uptrend line.",
        "chart": "uptrend"
       },
       {
-       "type": "spot_mistake",
-       "scenario": "Someone finishes this course and assumes it has taught them exactly which trades to make going forward.",
-       "question": "What is the mistake?",
-       "options": [
-        "This course builds descriptive, educational vocabulary and classification skills, not a system for making specific trade decisions.",
-        "They should assume every concept guarantees a specific trading outcome.",
-        "They should skip risk management now that they've finished the course."
-       ],
-       "correct": 0,
-       "explanation": "This course is educational and descriptive by design, not a signal system for specific trades, real trading decisions carry real risk beyond this course's scope.",
+       "type": "tap_candle",
+       "question": "Tap the candle that makes the highest high.",
+       "target": 4,
+       "explanation": "In this uptrend the last candle prints the highest high.",
        "chart": "uptrend"
       },
       {
