@@ -243,8 +243,6 @@ struct PathView: View {
         let height = CGFloat(count) * vStep
 
         return ZStack(alignment: .top) {
-            sideGems(count: count, width: width, sectionIndex: s)
-
             ForEach(Array(nodes.enumerated()), id: \.element.num) { i, node in
                 nodeButton(node)
                     .id("node-\(node.num)")
@@ -254,27 +252,6 @@ struct PathView: View {
             }
         }
         .frame(width: width, height: height)
-    }
-
-    // MARK: Side decorations (Duolingo-style gems along the path)
-
-    /// One decorative gem every 3rd unit, at a random-looking spot within
-    /// that unit — purely cosmetic, independent of the actual node curve.
-    /// The "random" position is seeded from the section index so it's stable
-    /// across re-renders instead of jumping every time the view redraws.
-    @ViewBuilder
-    private func sideGems(count: Int, width: CGFloat, sectionIndex: Int) -> some View {
-        if count > 0 && sectionIndex % 3 == 0 {
-            let gemSize: CGFloat = 40
-            let xAmplitude = min(width / 2 - 46, 148)
-            var rng = SeededRNG(seed: UInt64(sectionIndex &* 2654435761 &+ 12345))
-            let slot = Int(rng.next() % UInt64(count))
-            let onRight = rng.next() % 2 == 0
-
-            PathGemDecoration(size: gemSize, tiltDegrees: onRight ? -14 : 14)
-                .offset(x: onRight ? xAmplitude : -xAmplitude)
-                .padding(.top, CGFloat(slot) * vStep + (vStep / 2) - (gemSize / 2))
-        }
     }
 
     // MARK: Node
@@ -462,47 +439,6 @@ struct PathView: View {
 }
 
 // MARK: - Supporting shapes / styles
-
-/// A decorative emerald gem planted beside the path (Duolingo-style side
-/// clutter): the same GemShape used for the treats currency icon, given a
-/// raised 3D slab, a gentle perspective tilt matching the node pucks, and an
-/// in-plane rotation so it leans in toward the path's center line.
-private struct PathGemDecoration: View {
-    var size: CGFloat
-    var tiltDegrees: Double
-    @State private var breathe = false
-
-    private let emerald = Color(hex: "#10A868")
-    private let emeraldDark = Color(hex: "#0B7A4C")
-
-    var body: some View {
-        ZStack {
-            GemShape().fill(emeraldDark).offset(y: size * 0.10)
-            GemShape()
-                .fill(emerald)
-                .overlay(
-                    GemShape().stroke(Color.white.opacity(0.22), lineWidth: 1.5)
-                )
-                .overlay(
-                    Ellipse()
-                        .fill(Color.white.opacity(0.5))
-                        .frame(width: size * 0.26, height: size * 0.15)
-                        .rotationEffect(.degrees(-28))
-                        .offset(x: -size * 0.15, y: -size * 0.22)
-                        .blur(radius: 0.3)
-                )
-        }
-        .frame(width: size * 0.92, height: size)
-        .modifier(TiltModifier(isPressed: false, base: 20))
-        .rotationEffect(.degrees(tiltDegrees))
-        .scaleEffect(breathe ? 1.05 : 0.96)
-        .opacity(0.92)
-        .allowsHitTesting(false)
-        .onAppear {
-            withAnimation(.easeInOut(duration: 2.6).repeatForever(autoreverses: true)) { breathe = true }
-        }
-    }
-}
 
 /// Halo for the active node: a solid, darker enlarged silhouette sitting
 /// behind the whole 3D button (face + slab) that gently breathes in and out —
