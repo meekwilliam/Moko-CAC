@@ -218,3 +218,27 @@ struct OptionSurface: ViewModifier {
             .animation(.spring(response: 0.3, dampingFraction: 0.6), value: pressed)
     }
 }
+
+/// The raised card panel a chart sits in, matching the app's chunky-button
+/// slab language (a darker copy offset downward) instead of a flat translucent
+/// rectangle. Used by every chart-attached view (tap/mark/draw/consolidation
+/// screens, question charts, the intro card).
+struct ChartCard: ViewModifier {
+    var depth: CGFloat = 5
+    var radius: CGFloat = 16
+    func body(content: Content) -> some View {
+        content
+            .padding(.horizontal, 6).padding(.vertical, 14)
+            .background(
+                RoundedRectangle(cornerRadius: radius, style: .continuous)
+                    .fill(Color.white.opacity(0.05))
+                    .overlay(RoundedRectangle(cornerRadius: radius, style: .continuous)
+                        .strokeBorder(Color.white.opacity(0.10), lineWidth: 1.5))
+            )
+            .background(
+                RoundedRectangle(cornerRadius: radius, style: .continuous)
+                    .fill(Color.black.opacity(0.32))
+                    .offset(y: depth)
+            )
+    }
+}

@@ -95,12 +95,10 @@ struct CandlestickChart: View {
             ZStack(alignment: .topLeading) {
                 if showsAxes { gridAndAxes(m: m, n: n, leftG: leftG, plotW: plotW, plotH: plotH) }
 
-                if let s = supportLevel { levelLine(y: m.y(s), label: "Support", color: bullish, x0: leftG, x1: geo.size.width) }
-                if let r = resistanceLevel { levelLine(y: m.y(r), label: "Resistance", color: bearish, x0: leftG, x1: geo.size.width) }
-                if let upper = bandUpper, let lower = bandLower { bollingerBand(upper, lower, slot: slot, x0: leftG, mapper: m) }
-                if let line = maLine { overlayLine(line, slot: slot, x0: leftG, mapper: m, color: Color(hex: "#F59E0B"), label: maLineLabel) }
-                if let line = maLine2 { overlayLine(line, slot: slot, x0: leftG, mapper: m, color: Color(hex: "#38bdf8"), label: maLine2Label) }
-
+                // Candles draw BEFORE the overlay lines/levels and their pill
+                // labels, so a candle body can never paint over a label — the
+                // labels always stay legible on top, regardless of where a
+                // candle happens to fall under a sloped line.
                 ForEach(Array(candles.enumerated()), id: \.offset) { i, c in
                     let cx = leftG + slot * (CGFloat(i) + 0.5)
                     let color = c.isBullish ? bullish : bearish
@@ -124,6 +122,12 @@ struct CandlestickChart: View {
                     }
                     .opacity(dimmed ? 0.3 : 1)
                 }
+
+                if let s = supportLevel { levelLine(y: m.y(s), label: "Support", color: bullish, x0: leftG, x1: geo.size.width) }
+                if let r = resistanceLevel { levelLine(y: m.y(r), label: "Resistance", color: bearish, x0: leftG, x1: geo.size.width) }
+                if let upper = bandUpper, let lower = bandLower { bollingerBand(upper, lower, slot: slot, x0: leftG, mapper: m) }
+                if let line = maLine { overlayLine(line, slot: slot, x0: leftG, mapper: m, color: Color(hex: "#F59E0B"), label: maLineLabel) }
+                if let line = maLine2 { overlayLine(line, slot: slot, x0: leftG, mapper: m, color: Color(hex: "#38bdf8"), label: maLine2Label) }
 
                 // Interactive layer: selection / reveal rings + tap targets.
                 if onTapCandle != nil || chosenIndex != nil || revealTarget != nil
@@ -553,13 +557,7 @@ struct ScenarioChartView: View {
                          bandLabel: m.bandLabel,
                          showsAxes: true)
             .frame(height: height)
-            .padding(.horizontal, 10).padding(.vertical, 14)
-            .background(
-                RoundedRectangle(cornerRadius: 16, style: .continuous)
-                    .fill(Color.white.opacity(0.04))
-                    .overlay(RoundedRectangle(cornerRadius: 16, style: .continuous)
-                        .strokeBorder(Color.white.opacity(0.08), lineWidth: 1.5))
-            )
+            .modifier(ChartCard())
     }
 }
 
