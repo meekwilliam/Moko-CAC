@@ -290,38 +290,24 @@ private struct PersonShoulders: Shape {
 }
 
 // MARK: - Flame (streak icon)
-// Custom-drawn instead of the SF Symbol so the inner layer is a guaranteed
-// lighter orange/yellow, independent of SF Symbols' multicolor fallback.
-
-private struct FlameShape: Shape {
-    func path(in r: CGRect) -> Path {
-        let w = r.width, h = r.height
-        func pt(_ x: CGFloat, _ y: CGFloat) -> CGPoint { CGPoint(x: r.minX + x * w, y: r.minY + y * h) }
-        var p = Path()
-        p.move(to: pt(0.5, 0.0))
-        p.addCurve(to: pt(0.84, 0.55), control1: pt(0.78, 0.14), control2: pt(0.98, 0.34))
-        p.addCurve(to: pt(0.5, 1.0), control1: pt(0.98, 0.82), control2: pt(0.74, 1.0))
-        p.addCurve(to: pt(0.16, 0.55), control1: pt(0.26, 1.0), control2: pt(0.02, 0.82))
-        p.addCurve(to: pt(0.38, 0.34), control1: pt(0.02, 0.34), control2: pt(0.20, 0.46))
-        p.addCurve(to: pt(0.5, 0.0), control1: pt(0.46, 0.24), control2: pt(0.40, 0.14))
-        p.closeSubpath()
-        return p
-    }
-}
+// Rendered from the provided streak.svg (three layered flame paths, deep
+// orange body with a brighter yellow core) via the shared SVG renderer,
+// instead of a custom-drawn Shape or the SF Symbol.
 
 struct FlameIcon: View {
-    var outer: Color
-    var inner: Color
     var size: CGFloat
 
+    private static let svg = SVGParser.parse("""
+        <svg viewBox="0 0 200 200">
+        <path d="M107.619 30.1449C103.798 24.9107 96.2019 24.9107 92.3809 30.1449C77.2805 50.8305 45 98.1863 45 125C45 155.5 69.5 180 100 180C130.5 180 155 155.5 155 125C155 98.1863 122.72 50.8305 107.619 30.1449Z" fill="#E77100"/>
+        <path d="M55.5884 54.2185C49.5488 51.3043 42.6828 55.2684 42.1868 61.9559C40.5271 84.3307 38.8691 128.735 49.7251 147.538C62.6321 169.893 89.9741 178.051 111.105 165.851C132.236 153.651 138.842 125.893 125.935 103.538C115.079 84.7347 75.7954 63.9686 55.5884 54.2185Z" fill="#E77100"/>
+        <path d="M108.13 78.9635C104.451 73.3933 96.5494 73.3933 92.8698 78.9635C84.7316 91.283 73 111.123 73 123.125C73 139.137 85.25 152 100.5 152C115.75 152 128 139.137 128 123.125C128 111.123 116.268 91.283 108.13 78.9635Z" fill="#FFC225"/>
+        </svg>
+        """)
+
     var body: some View {
-        ZStack {
-            FlameShape().fill(outer)
-            FlameShape().fill(inner)
-                .scaleEffect(0.5, anchor: .bottom)
-                .offset(y: size * 0.02)
-        }
-        .frame(width: size * 0.86, height: size)
+        SVGIconView(svg: Self.svg)
+            .frame(width: size * 0.86, height: size)
     }
 }
 
