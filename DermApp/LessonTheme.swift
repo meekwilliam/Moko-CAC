@@ -101,6 +101,10 @@ struct Chunky3DStyle: ButtonStyle {
     var depth: CGFloat = 6
     var radius: CGFloat = 18
     var font: Font = Theme.font(19, .black)
+    // A crisp rim around the top face, like OptionSurface's answer chips —
+    // without it the button reads flatter than the answer options next to it.
+    // Defaults to the slab color, matching how tinted OptionSurface states work.
+    var border: Color? = nil
 
     func makeBody(configuration: Configuration) -> some View {
         let pressed = configuration.isPressed
@@ -112,6 +116,10 @@ struct Chunky3DStyle: ButtonStyle {
             .background(
                 RoundedRectangle(cornerRadius: radius, style: .continuous)
                     .fill(fill)
+                    .overlay(
+                        RoundedRectangle(cornerRadius: radius, style: .continuous)
+                            .strokeBorder(border ?? slab, lineWidth: 2)
+                    )
             )
             .background(
                 RoundedRectangle(cornerRadius: radius, style: .continuous)
