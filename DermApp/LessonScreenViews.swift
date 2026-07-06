@@ -30,6 +30,8 @@ struct LessonScreenRouter: View {
             ConsolidationView(player: player, ink: ink)
         case "ohlc_label":
             OHLCLabelView(player: player, ink: ink)
+        case "number_slider":
+            NumberSliderView(player: player, ink: ink)
         default:
             // true_false / multiple_choice / fill_blank / spot_mistake
             ChoiceView(player: player, ink: ink)
@@ -708,6 +710,99 @@ private struct OHLCSlotKey: PreferenceKey {
     static var defaultValue: [Int: CGRect] = [:]
     static func reduce(value: inout [Int: CGRect], nextValue: () -> [Int: CGRect]) {
         value.merge(nextValue(), uniquingKeysWith: { _, new in new })
+    }
+}
+
+// MARK: - Number slider (interactive) — drag to the calculated answer
+// Used for the quantitative units (position sizing, expectancy, drawdowns, …)
+// where the question has one correct number rather than a chart target.
+
+struct NumberSliderView: View {
+    @ObservedObject var player: LessonPlayer
+    var ink: Color
+    @State private var didInit = false
+
+    private var s: LessonScreen { player.screen }
+    private var lo: Double { s.numberMin ?? 0 }
+    private var hi: Double { max(s.numberMax ?? 100, lo + 1) }
+    private var step: Double { max(s.numberStep ?? 1, 0.0001) }
+    private var unit: String { s.numberUnit ?? "" }
+
+    private func format(_ v: Double) -> String {
+        let rounded = (v / step).rounded() * step
+        if step.truncatingRemainder(dividingBy: 1) == 0 {
+            return "\(Int(rounded))"
+        }
+        return String(format: "%.2f", rounded)
+    }
+
+    var body: some View {
+        VStack(alignment: .leading, spacing: 18) {
+            Text(RichText.attributed(s.question ?? "Drag the slider to the correct value.",
+                                     base: Theme.font(21, .heavy),
+                                     bold: Theme.font(21, .black), color: ink))
+                .fixedSize(horizontal: false, vertical: true)
+
+            VStack(spacing: 14) {
+                let value = player.numberValue ?? (lo + hi) / 2
+                let correct = player.revealed && s.numberCorrect != nil
+                    && abs(value - s.numberCorrect!) <= (s.numberTolerance ?? 0)
+                let tint: Color = player.revealed ? (correct ? Theme.correct : Theme.incorrect) : Theme.answer
+
+                Text("\(format(value))\(unit.isEmpty ? "" : " \(unit)")")
+                    .font(Theme.font(34, .black))
+                    .foregroundColor(tint)
+                    .frame(maxWidth: .infinity, alignment: .center)
+
+                Slider(
+                    value: Binding(
+                        get: { player.numberValue ?? (lo + hi) / 2 },
+                        set: { newValue in
+                            guard !player.revealed else { return }
+                            let snapped = (newValue / step).rounded() * step
+                            player.numberValue = min(max(snapped, lo), hi)
+                        }
+                    ),
+                    in: lo...hi,
+                    step: step,
+                    onEditingChanged: { began in if began { Haptics.selection() } }
+                )
+                .tint(tint)
+                .disabled(player.revealed)
+                .onAppear {
+                    guard !didInit else { return }
+                    didInit = true
+                    if player.numberValue == nil { player.numberValue = (lo + hi) / 2 }
+                }
+
+                HStack {
+                    Text("\(format(lo))\(unit.isEmpty ? "" : " \(unit)")")
+                    Spacer()
+                    Text("\(format(hi))\(unit.isEmpty ? "" : " \(unit)")")
+                }
+                .font(Theme.font(12, .bold))
+                .foregroundColor(Theme.muted)
+
+                if player.revealed, !correct, let truth = s.numberCorrect {
+                    Text("Correct: \(format(truth))\(unit.isEmpty ? "" : " \(unit)")")
+                        .font(Theme.font(14, .black))
+                        .foregroundColor(Theme.correct)
+                }
+            }
+            .padding(18)
+            .background(
+                RoundedRectangle(cornerRadius: 16, style: .continuous)
+                    .fill(Color.white.opacity(0.04))
+                    .overlay(RoundedRectangle(cornerRadius: 16, style: .continuous)
+                        .strokeBorder(Color.white.opacity(0.08), lineWidth: 1.5))
+            )
+
+            Label("Drag the slider, then tap Check", systemImage: "hand.draw.fill")
+                .font(Theme.font(13, .bold))
+                .foregroundColor(Theme.muted)
+                .frame(maxWidth: .infinity, alignment: .center)
+        }
+        .frame(maxWidth: .infinity, alignment: .leading)
     }
 }
 

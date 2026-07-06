@@ -122,6 +122,16 @@ def parse_doc(text):
             q["meta"]["target_lo"] = s[len("TARGET_LO:"):].strip(); continue
         if s.startswith("TARGET_HI:"):
             q["meta"]["target_hi"] = s[len("TARGET_HI:"):].strip(); continue
+        if s.startswith("MIN:"):
+            q["meta"]["min"] = s[len("MIN:"):].strip(); continue
+        if s.startswith("MAX:"):
+            q["meta"]["max"] = s[len("MAX:"):].strip(); continue
+        if s.startswith("STEP:"):
+            q["meta"]["step"] = s[len("STEP:"):].strip(); continue
+        if s.startswith("TOLERANCE:"):
+            q["meta"]["tolerance"] = s[len("TOLERANCE:"):].strip(); continue
+        if s.startswith("UNIT:"):
+            q["meta"]["unit"] = s[len("UNIT:"):].strip(); continue
         m2 = re.match(r"^BLANK(\d):\s*(.*)$", s)
         if m2:
             q["meta"].setdefault("blanks", {})[int(m2.group(1))] = m2.group(2).strip(); continue
@@ -188,6 +198,22 @@ def build_screen(qtype, q):
         tlo = int(q["meta"].get("target_lo", "1")) - 1
         thi = int(q["meta"].get("target_hi", "2")) - 1
         s = {"type": "mark_consolidation", "question": head, "target_lo": tlo, "target_hi": thi}
+        if why: s["explanation"] = why
+        return s
+    if qtype == "NUMBER":
+        # Interactive: drag a slider to the calculated answer.
+        # MIN/MAX/STEP define the slider range; ANSWER is the correct value;
+        # TOLERANCE is the acceptable distance from it; UNIT is an optional
+        # suffix label (e.g. "shares", "%").
+        s = {
+            "type": "number_slider", "question": head,
+            "number_min": float(q["meta"].get("min", "0")),
+            "number_max": float(q["meta"].get("max", "100")),
+            "number_step": float(q["meta"].get("step", "1")),
+            "number_correct": float(q["meta"].get("answer", "0")),
+            "number_tolerance": float(q["meta"].get("tolerance", "0")),
+        }
+        if q["meta"].get("unit"): s["number_unit"] = q["meta"]["unit"]
         if why: s["explanation"] = why
         return s
     if qtype == "OHLC":

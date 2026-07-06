@@ -34,6 +34,8 @@ final class LessonPlayer: ObservableObject {
     // (0=top wick, 1=body top, 2=body bottom, 3=bottom wick), and the correct map.
     @Published var ohlcPlacement: [Int: Int] = [:]
     var ohlcExpected: [Int: Int] = [:]
+    // number_slider: the value the learner dragged to
+    @Published var numberValue: Double? = nil
     // fill_blank_multi
     @Published var multiSelections: [Int?] = []
     // sequence_builder / drag_order
@@ -97,6 +99,8 @@ final class LessonPlayer: ObservableObject {
             return consolidationLo != nil && consolidationHi != nil
         case "ohlc_label":
             return ohlcPlacement.count == 4
+        case "number_slider":
+            return numberValue != nil
         default:
             return selectedIndex != nil
         }
@@ -113,6 +117,7 @@ final class LessonPlayer: ObservableObject {
         consolidationHi = nil
         ohlcPlacement = [:]
         ohlcExpected = [:]
+        numberValue = nil
         revealed = false
         lastCorrect = false
         builtOrder = []
@@ -158,6 +163,10 @@ final class LessonPlayer: ObservableObject {
             } else { correct = false }
         case "ohlc_label":
             correct = !ohlcExpected.isEmpty && ohlcPlacement == ohlcExpected
+        case "number_slider":
+            if let v = numberValue, let truth = screen.numberCorrect {
+                correct = abs(v - truth) <= (screen.numberTolerance ?? 0)
+            } else { correct = false }
         default:
             correct = (selectedIndex == currentCorrectIndex)
         }
