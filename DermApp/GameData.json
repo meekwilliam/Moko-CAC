@@ -9899,29 +9899,10 @@
        "explanation": "Every term in this unit changes meaning depending on the surrounding context."
       },
       {
-       "type": "ingredient_match",
-       "question": "Which best captures why context matters in price action reading?",
-       "options": [
-        {
-         "label": "Context never affects how a term should be read",
-         "correct": false,
-         "detail": "Backwards",
-         "wrong_explanation": "This lesson's whole point is that it does."
-        },
-        {
-         "label": "Only the exact vocabulary word matters, never the surroundings",
-         "correct": false,
-         "detail": "Incomplete",
-         "wrong_explanation": "The surroundings are what make the vocabulary meaningful."
-        },
-        {
-         "label": "The same term or shape means different things depending on the surrounding trend and levels",
-         "correct": true,
-         "detail": "Context shapes meaning"
-        }
-       ],
-       "concern": "Tying vocabulary to context",
-       "explanation": "Combining vocabulary with context is what makes price-action reading useful.",
+       "type": "mark_level",
+       "question": "Drag the line to the level that broke, then held on the retest.",
+       "level_kind": "resistance",
+       "explanation": "The old resistance becomes support on the retest.",
        "chart": "breakoutRetest"
       },
       {
@@ -14897,29 +14878,10 @@
        "explanation": "The whole unit treats patterns as descriptive clues, not certainties."
       },
       {
-       "type": "ingredient_match",
-       "question": "Which best summarizes this unit?",
-       "options": [
-        {
-         "label": "Double patterns describe a level tested twice, useful context, not a guaranteed signal",
-         "correct": true,
-         "detail": "The central theme"
-        },
-        {
-         "label": "Double patterns guarantee the next move",
-         "correct": false,
-         "detail": "Overstates certainty",
-         "wrong_explanation": "This contradicts the whole unit."
-        },
-        {
-         "label": "Double patterns replace looking at levels",
-         "correct": false,
-         "detail": "Backwards",
-         "wrong_explanation": "They're read together with the level."
-        }
-       ],
-       "concern": "Reviewing the big picture",
-       "explanation": "This descriptive, level-aware reading is the throughline of the unit.",
+       "type": "tap_candle",
+       "question": "Tap the first trough of the double bottom.",
+       "target": 1,
+       "explanation": "The first of the two equal troughs starts the \"W\".",
        "chart": "doubleBottom"
       },
       {
@@ -17653,29 +17615,11 @@
        "explanation": "A rising wedge converges; an ascending channel stays parallel, different structures."
       },
       {
-       "type": "ingredient_match",
-       "question": "Reading the chart above, converging lines mean it's a...",
-       "options": [
-        {
-         "label": "wedge, the lines narrow",
-         "correct": true,
-         "detail": "Convergence = wedge"
-        },
-        {
-         "label": "triangle with a flat side",
-         "correct": false,
-         "detail": "Not quite",
-         "wrong_explanation": "Both lines move; neither is flat here."
-        },
-        {
-         "label": "channel, parallel lines",
-         "correct": false,
-         "detail": "Wrong structure",
-         "wrong_explanation": "These lines converge, so it's a wedge."
-        }
-       ],
-       "concern": "Structure check",
-       "explanation": "Converging trendlines make it a wedge, not a channel.",
+       "type": "draw_trendline",
+       "question": "Draw a line along the rising wedge from start to end.",
+       "target_start": 0,
+       "target_end": 4,
+       "explanation": "Connecting the wedge's start and end traces its slope.",
        "chart": "risingWedge"
       },
       {
@@ -17833,29 +17777,11 @@
        "explanation": "Converging vs parallel lines is the deciding structural read."
       },
       {
-       "type": "ingredient_match",
-       "question": "Which best summarizes this unit?",
-       "options": [
-        {
-         "label": "Wedges and channels guarantee their next move",
-         "correct": false,
-         "detail": "Overstates certainty",
-         "wrong_explanation": "Contradicts the unit."
-        },
-        {
-         "label": "Wedges converge (with a reversal bias); channels stay parallel (a trend), read descriptively",
-         "correct": true,
-         "detail": "The central theme"
-        },
-        {
-         "label": "Wedges and channels are the same shape",
-         "correct": false,
-         "detail": "Wrong",
-         "wrong_explanation": "One converges, the other is parallel."
-        }
-       ],
-       "concern": "Reviewing the big picture",
-       "explanation": "Converging-vs-parallel plus a descriptive bias is the throughline.",
+       "type": "draw_trendline",
+       "question": "Draw a line along the falling wedge from start to end.",
+       "target_start": 0,
+       "target_end": 4,
+       "explanation": "Connecting the wedge's start and end traces its slope.",
        "chart": "fallingWedge"
       },
       {
@@ -18703,10 +18629,11 @@
        "explanation": "Resistance caps the range; price bounces down from it."
       },
       {
-       "type": "true_false",
-       "question": "Within a range, price commonly bounces UP from support.",
-       "correct": true,
-       "explanation": "Support is the floor price bounces up from within the range.",
+       "type": "mark_consolidation",
+       "question": "Drag across the whole ranging (sideways) stretch.",
+       "target_lo": 0,
+       "target_hi": 5,
+       "explanation": "The full sideways band is the range.",
        "chart": "range"
       },
       {
@@ -18939,29 +18866,11 @@
        "explanation": "Sideways between two levels is the definition of a range."
       },
       {
-       "type": "ingredient_match",
-       "question": "Which best summarizes this unit?",
-       "options": [
-        {
-         "label": "Price bouncing between levels until it breaks out, with breaks that can be false",
-         "correct": true,
-         "detail": "The central theme"
-        },
-        {
-         "label": "Ranges that guarantee their breakout direction",
-         "correct": false,
-         "detail": "Overstates certainty",
-         "wrong_explanation": "Contradicts the unit."
-        },
-        {
-         "label": "Ranges that form only on the daily chart",
-         "correct": false,
-         "detail": "Too narrow",
-         "wrong_explanation": "Ranges form on every timeframe."
-        }
-       ],
-       "concern": "Reviewing the big picture",
-       "explanation": "Bounded sideways movement with non-guaranteed breaks is the throughline.",
+       "type": "mark_consolidation",
+       "question": "Drag across the whole ranging (sideways) stretch.",
+       "target_lo": 0,
+       "target_hi": 5,
+       "explanation": "The full sideways band is the range.",
        "chart": "range"
       },
       {
@@ -19209,10 +19118,10 @@
        "explanation": "\"Retest\" is the standard term for returning to the broken level."
       },
       {
-       "type": "true_false",
-       "question": "A retest often shows the old resistance acting as new support.",
-       "correct": true,
-       "explanation": "After breaking up, the old resistance commonly acts as new support on the retest.",
+       "type": "mark_level",
+       "question": "Drag the line to the level that broke, then held on the retest.",
+       "level_kind": "resistance",
+       "explanation": "The old resistance becomes support on the retest.",
        "chart": "breakoutRetest"
       },
       {
@@ -19473,29 +19382,10 @@
        "explanation": "Clear the level, then retest that same level."
       },
       {
-       "type": "ingredient_match",
-       "question": "Which best summarizes this unit?",
-       "options": [
-        {
-         "label": "Price clears a level, often retests it as a flipped role, and continues, read descriptively",
-         "correct": true,
-         "detail": "The central theme"
-        },
-        {
-         "label": "Levels that never change roles",
-         "correct": false,
-         "detail": "Wrong",
-         "wrong_explanation": "Broken levels commonly flip roles."
-        },
-        {
-         "label": "Breakouts that guarantee a big move",
-         "correct": false,
-         "detail": "Overstates certainty",
-         "wrong_explanation": "Contradicts the unit."
-        }
-       ],
-       "concern": "Reviewing the big picture",
-       "explanation": "Clear, retest, flip, descriptively, is the throughline.",
+       "type": "mark_level",
+       "question": "Drag the line to the level that broke, then held on the retest.",
+       "level_kind": "resistance",
+       "explanation": "The old resistance becomes support on the retest.",
        "chart": "breakoutRetest"
       },
       {
@@ -23002,29 +22892,13 @@
        "explanation": "Earnings connect directly back to the gaps and volatility concepts from earlier units."
       },
       {
-       "type": "ingredient_match",
-       "question": "Why are earnings reports commonly linked to gaps?",
-       "options": [
-        {
-         "label": "Gaps form only during standard trading hours",
-         "correct": false,
-         "detail": "Backwards",
-         "wrong_explanation": "Gaps form between sessions, when earnings often land."
-        },
-        {
-         "label": "New information released while the market is closed can shift the next open sharply",
-         "correct": true,
-         "detail": "Connects to the Gaps unit"
-        },
-        {
-         "label": "Earnings only matter during standard trading hours",
-         "correct": false,
-         "detail": "Not quite",
-         "wrong_explanation": "Earnings often land after the close, which is exactly why they gap the next open."
-        }
+       "type": "tap_candles",
+       "question": "Tap the candle before the gap and the gap candle itself.",
+       "targets": [
+        1,
+        2
        ],
-       "concern": "Connecting concepts",
-       "explanation": "This ties the earlier Gaps unit directly to a commonly cited real-world cause.",
+       "explanation": "The jump between candle 2's close and candle 3's open is the gap.",
        "chart": "gapUp"
       },
       {
@@ -29060,29 +28934,10 @@
        "chart": "maCrossDown"
       },
       {
-       "type": "ingredient_match",
-       "question": "How should a crossover be read?",
-       "options": [
-        {
-         "label": "As a guaranteed entry",
-         "correct": false,
-         "detail": "Overstates certainty",
-         "wrong_explanation": "Crossovers lag and can whipsaw."
-        },
-        {
-         "label": "As a descriptive, lagging trend cue, not a guaranteed signal",
-         "correct": true,
-         "detail": "Lagging context"
-        },
-        {
-         "label": "As a leading predictor of price",
-         "correct": false,
-         "detail": "Backwards",
-         "wrong_explanation": "MAs lag; they don't lead."
-        }
-       ],
-       "concern": "Reading it honestly",
-       "explanation": "A crossover is a lagging, descriptive cue, never a guarantee.",
+       "type": "tap_candle",
+       "question": "Tap the candle where the fast MA crosses up through the slow MA.",
+       "target": 5,
+       "explanation": "At this candle the fast average pulls above the slow one.",
        "chart": "maCrossUp"
       },
       {
@@ -32132,29 +31987,11 @@
        "explanation": "ATR gives numeric texture to the trending/ranging/volatile classifications from earlier in the course."
       },
       {
-       "type": "ingredient_match",
-       "question": "How does ATR add to market condition classification?",
-       "options": [
-        {
-         "label": "It gives a numeric read on how much price is typically moving, reinforcing the classification",
-         "correct": true,
-         "detail": "Confluence with condition"
-        },
-        {
-         "label": "It predicts exactly when the condition will change",
-         "correct": false,
-         "detail": "Overstates it",
-         "wrong_explanation": "ATR describes current typical movement, it doesn't forecast condition changes."
-        },
-        {
-         "label": "It replaces classifying trending vs. ranging entirely",
-         "correct": false,
-         "detail": "Overstates it",
-         "wrong_explanation": "ATR adds to, not replaces, that classification."
-        }
-       ],
-       "concern": "Connecting the concepts",
-       "explanation": "ATR is one more piece of confluence alongside the condition classification skill from Advanced.",
+       "type": "mark_consolidation",
+       "question": "Drag across the whole ranging (sideways) stretch.",
+       "target_lo": 0,
+       "target_hi": 5,
+       "explanation": "The full sideways band is the range.",
        "chart": "range"
       },
       {
@@ -32996,29 +32833,10 @@
        "explanation": "The opening range is simply one more level that can be broken, held, or falsely broken."
       },
       {
-       "type": "ingredient_match",
-       "question": "Why is it useful to recognize a false break of the opening range?",
-       "options": [
-        {
-         "label": "Because false breaks of the opening range never happen",
-         "correct": false,
-         "detail": "Incorrect",
-         "wrong_explanation": "They can and do occur, same as any other breakout."
-        },
-        {
-         "label": "Because a false break means the opening range was drawn incorrectly",
-         "correct": false,
-         "detail": "Not quite",
-         "wrong_explanation": "A false break is normal price behavior, not a drawing error."
-        },
-        {
-         "label": "Because it reinforces that any break, including this one, can fail to hold",
-         "correct": true,
-         "detail": "Consistent with breakout concepts"
-        }
-       ],
-       "concern": "Applying prior concepts",
-       "explanation": "Recognizing false breaks keeps the opening range concept consistent with the broader breakout/retest ideas taught earlier.",
+       "type": "mark_level",
+       "question": "Drag the line to the level that broke, then held on the retest.",
+       "level_kind": "resistance",
+       "explanation": "The old resistance becomes support on the retest.",
        "chart": "breakoutRetest"
       },
       {
