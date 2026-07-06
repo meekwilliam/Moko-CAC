@@ -237,16 +237,20 @@ struct ChartCard: ViewModifier {
     func body(content: Content) -> some View {
         content
             .padding(.horizontal, 6).padding(.vertical, 14)
-            .background(
+            .background(Color.white.opacity(0.07))
+            // Clip the chart's own content (grid lines, candles) to the rounded
+            // shape BEFORE adding the border — otherwise the chart's square
+            // corners poke past the rounded card edge.
+            .clipShape(RoundedRectangle(cornerRadius: radius, style: .continuous))
+            .overlay(
                 RoundedRectangle(cornerRadius: radius, style: .continuous)
-                    .fill(Color.white.opacity(0.07))
-                    .overlay(RoundedRectangle(cornerRadius: radius, style: .continuous)
-                        .strokeBorder(Color(hex: "#334155"), lineWidth: 1.5))
+                    .strokeBorder(Color(hex: "#334155"), lineWidth: 1.5)
             )
             .background(
                 // Slab matches the border color (the same neutral slate used by
                 // every answer option's outline), not a translucent black blend —
-                // that blended into the page background and read as flat.
+                // that blended into the page background and read as flat. Added
+                // after the clip so it still peeks out below for depth.
                 RoundedRectangle(cornerRadius: radius, style: .continuous)
                     .fill(Color(hex: "#334155"))
                     .offset(y: depth)
