@@ -32,6 +32,9 @@ final class ProgressStore: ObservableObject {
         var treats: Int = 0
         var streak: Int = 0
         var lastLessonDate: String? = nil
+        // Calendar dates ("yyyy-MM-dd") that counted toward the streak — powers
+        // the weekly Mo–Su row on the streak celebration screen.
+        var activeDates: Set<String> = []
         // Hearts are global too: a lesson costs 1; regen 1/hour.
         var hearts: Int = 5
         var heartAnchor: Date? = nil
@@ -203,10 +206,15 @@ final class ProgressStore: ObservableObject {
     /// `unitNodes` — every node number sharing this node's unit (any size),
     /// supplied by the caller since ProgressStore has no knowledge of course
     /// content structure. Defaults to just the node itself if not given.
-    func recordCompletion(node: Int, unitNodes: [Int] = []) {
+    /// Returns whether this call is the first completion TODAY that extends
+    /// the streak — the caller uses this to decide whether to show the
+    /// streak celebration screen (once per day, not on every lesson).
+    @discardableResult
+    func recordCompletion(node: Int, unitNodes: [Int] = []) -> Bool {
         var c = cur
         let isNew = !c.completed.contains(node)
         let today = Self.dateString(Date())
+        var extendedStreakToday = false
         if !isNew {
             s.xp += 25
         } else {
@@ -222,14 +230,34 @@ final class ProgressStore: ObservableObject {
             let yesterday = Self.dateString(Calendar.current.date(byAdding: .day, value: -1, to: Date()) ?? Date())
             if s.lastLessonDate == today {
                 // already counted today
-            } else if s.lastLessonDate == yesterday {
-                s.streak += 1
             } else {
-                s.streak = 1
+                extendedStreakToday = true
+                if s.lastLessonDate == yesterday {
+                    s.streak += 1
+                } else {
+                    s.streak = 1
+                }
             }
             s.lastLessonDate = today
+            s.activeDates.insert(today)
         }
         cur = c
+        return extendedStreakToday
+    }
+
+    /// This calendar week (Monday–Sunday), each day flagged whether it counted
+    /// toward the streak, for the celebration screen's weekly row.
+    func weekActivity() -> [(label: String, active: Bool, isToday: Bool)] {
+        var cal = Calendar.current
+        cal.firstWeekday = 2   // Monday
+        let now = Date()
+        let startOfWeek = cal.dateInterval(of: .weekOfYear, for: now)?.start ?? now
+        let labels = ["Mo", "Tu", "We", "Th", "Fr", "Sa", "Su"]
+        return (0..<7).map { i in
+            let day = cal.date(byAdding: .day, value: i, to: startOfWeek) ?? now
+            let key = Self.dateString(day)
+            return (labels[i], s.activeDates.contains(key), cal.isDateInToday(day))
+        }
     }
 
     func saveInProgress(node: Int, screen: Int) {
