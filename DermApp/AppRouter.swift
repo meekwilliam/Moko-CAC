@@ -98,6 +98,7 @@ struct AppRouterView: View {
                         isReplay: router.currentLessonIsReplay,
                         unitColor: router.currentLessonUnitColor,
                         unitBonusEligible: router.currentLessonBonusEligible,
+                        isTestLesson: router.isTestLesson,
                         onClose: {
                             if router.isTestLesson {
                                 router.isTestLesson = false
