@@ -244,11 +244,10 @@ struct ChartCard: ViewModifier {
             RoundedRectangle(cornerRadius: radius, style: .continuous)
                 .fill(Color(hex: "#334155"))
                 .offset(y: depth)
-            // Solid elevated panel (matches the answer-option card fill), NOT a
-            // translucent white wash — a white overlay over the navy read as a
-            // hazy film sitting on top of the whole chart.
+            // Solid, darker panel — a deep navy distinctly darker than the page
+            // background so it reads as an opaque card, not a hazy translucent film.
             RoundedRectangle(cornerRadius: radius, style: .continuous)
-                .fill(Color(hex: "#1E293B"))
+                .fill(Color(hex: "#0A0F1A"))
                 .overlay(
                     RoundedRectangle(cornerRadius: radius, style: .continuous)
                         .strokeBorder(Color(hex: "#334155"), lineWidth: 1.5)
