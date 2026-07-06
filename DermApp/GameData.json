@@ -392,14 +392,19 @@
        "explanation": "Long describes buying first, profiting if price rises."
       },
       {
-       "type": "true_false",
-       "question": "\"Going short\" means selling first and hoping to buy back at a lower price.",
-       "correct": true,
+       "type": "multiple_choice",
+       "question": "\"Going short\" means...",
+       "options": [
+        "Buying first, hoping to sell higher later.",
+        "Selling first, hoping to buy back at a lower price.",
+        "Holding cash on the sidelines."
+       ],
+       "correct": 1,
        "explanation": "Short positions profit if price falls, since you buy back cheaper than you sold."
       },
       {
-       "type": "fill_blank",
-       "question": "A long position profits if price moves [___].",
+       "type": "multiple_choice",
+       "question": "A long position profits if price moves...",
        "options": [
         "sideways only",
         "up",
@@ -409,8 +414,8 @@
        "explanation": "A long position was bought first, so it benefits from price rising."
       },
       {
-       "type": "fill_blank",
-       "question": "A short position profits if price moves [___].",
+       "type": "multiple_choice",
+       "question": "A short position profits if price moves...",
        "options": [
         "up",
         "sideways only",
@@ -528,8 +533,8 @@
        "explanation": "Fill specifically refers to the actual executed price, which can differ from the expected one."
       },
       {
-       "type": "fill_blank",
-       "question": "The amount of shares or contracts you're holding is called your [___].",
+       "type": "multiple_choice",
+       "question": "The amount of shares or contracts you're holding is called your...",
        "options": [
         "size",
         "timeframe",
@@ -539,8 +544,8 @@
        "explanation": "\"Size\" describes how much of a position you're holding."
       },
       {
-       "type": "fill_blank",
-       "question": "Once you buy or sell, you now have an open [___].",
+       "type": "multiple_choice",
+       "question": "Once you buy or sell, you now have an open...",
        "options": [
         "gap",
         "spread",
@@ -629,9 +634,14 @@
        "explanation": "Unrealized P&L reflects an open position's current paper value, not yet locked in."
       },
       {
-       "type": "true_false",
-       "question": "Realized P&L only exists after a position has been closed.",
-       "correct": true,
+       "type": "multiple_choice",
+       "question": "When does realized P&L exist for a trade?",
+       "options": [
+        "As soon as the position is opened.",
+        "Only after the position has been closed.",
+        "Only once the position becomes profitable."
+       ],
+       "correct": 1,
        "explanation": "Realized P&L is the actual, locked-in result once a trade is closed."
       },
       {
@@ -759,14 +769,19 @@
        "explanation": "Market cap specifically multiplies price by total shares outstanding."
       },
       {
-       "type": "true_false",
-       "question": "A \"large cap\" company is generally bigger, by market cap, than a \"small cap\" company.",
-       "correct": true,
+       "type": "multiple_choice",
+       "question": "\"Large cap\" and \"small cap\" are labels that describe a company's...",
+       "options": [
+        "Share price only.",
+        "Relative size by market cap.",
+        "Trading volume."
+       ],
+       "correct": 1,
        "explanation": "\"Large cap\" and \"small cap\" are labels describing relative company size by market cap."
       },
       {
-       "type": "fill_blank",
-       "question": "Market cap stands for market [___].",
+       "type": "multiple_choice",
+       "question": "Market cap stands for market...",
        "options": [
         "category",
         "capitalization",
@@ -866,9 +881,14 @@
        "explanation": "Float specifically counts shares available to the public, not the company's revenue or schedule."
       },
       {
-       "type": "true_false",
-       "question": "Shares held by company insiders are commonly excluded from the float.",
-       "correct": true,
+       "type": "multiple_choice",
+       "question": "Which shares are commonly excluded from a company's float?",
+       "options": [
+        "Shares held by company insiders.",
+        "Shares held by retail investors.",
+        "Shares traded on the primary exchange."
+       ],
+       "correct": 0,
        "explanation": "Float commonly excludes insider-held or locked-up shares from the public trading count."
       },
       {
@@ -962,9 +982,14 @@
        "text": "A final review of long/short, position/fill/size, unrealized/realized P&L, market cap, and float."
       },
       {
-       "type": "true_false",
-       "question": "Going long profits from a rising price; going short profits from a falling price.",
-       "correct": true,
+       "type": "multiple_choice",
+       "question": "Which pairing correctly matches trade direction to how it profits?",
+       "options": [
+        "Going long profits from a falling price; going short profits from a rising price.",
+        "Going long profits from a rising price; going short profits from a falling price.",
+        "Both directions profit only while price stays flat."
+       ],
+       "correct": 1,
        "explanation": "That's the core distinction between the two basic trade directions."
       },
       {
@@ -1098,9 +1123,14 @@
        "text": "A stock is a small slice of ownership in a company. Owning a share makes you a partial owner, not an employee or a lender."
       },
       {
-       "type": "true_false",
-       "question": "A share of stock represents partial ownership in a company.",
-       "correct": true,
+       "type": "multiple_choice",
+       "question": "A share of stock represents...",
+       "options": [
+        "A loan you've made to the company.",
+        "Partial ownership in the company.",
+        "A guaranteed dividend payment."
+       ],
+       "correct": 1,
        "explanation": "Buying stock literally means buying a small ownership stake."
       },
       {
@@ -1239,8 +1269,8 @@
        "explanation": "Ownership doesn't equal management control; influence often scales with how many shares are owned and formal voting processes."
       },
       {
-       "type": "fill_blank",
-       "question": "A person or entity that owns at least one share is called a [___].",
+       "type": "multiple_choice",
+       "question": "A person or entity that owns at least one share is called a...",
        "options": [
         "creditor",
         "employee",
@@ -1263,14 +1293,19 @@
        "chart": "uptrend"
       },
       {
-       "type": "true_false",
-       "question": "A chart is a visual plot of price over time.",
-       "correct": true,
+       "type": "multiple_choice",
+       "question": "At its core, a price chart is a visual plot of...",
+       "options": [
+        "Price over time.",
+        "Company earnings over time.",
+        "Trading volume over price."
+       ],
+       "correct": 0,
        "explanation": "That's the entire function of a price chart, at its core."
       },
       {
-       "type": "fill_blank",
-       "question": "Charts plot price against [___].",
+       "type": "multiple_choice",
+       "question": "Charts plot price against...",
        "options": [
         "company size",
         "time",
@@ -1406,8 +1441,8 @@
        "explanation": "Most charting tools let you switch between many different timeframes for the same asset."
       },
       {
-       "type": "fill_blank",
-       "question": "The vertical axis of a standard price chart represents [___].",
+       "type": "multiple_choice",
+       "question": "The vertical axis of a standard price chart represents...",
        "options": [
         "volume only",
         "company size",
@@ -1435,8 +1470,8 @@
        "explanation": "Every trade is an agreement between someone willing to buy and someone willing to sell."
       },
       {
-       "type": "fill_blank",
-       "question": "When more people want to buy than sell at a given price, price tends to move [___].",
+       "type": "multiple_choice",
+       "question": "When more people want to buy than sell at a given price, price tends to move...",
        "options": [
         "sideways only",
         "up",
@@ -1593,14 +1628,19 @@
        "text": "Volume measures how many shares changed hands during a period, a separate idea from price itself."
       },
       {
-       "type": "true_false",
-       "question": "Volume measures how many shares changed hands during a period.",
-       "correct": true,
+       "type": "multiple_choice",
+       "question": "Volume specifically measures...",
+       "options": [
+        "How many shares changed hands during a period.",
+        "How far price moved during a period.",
+        "How many trades were profitable during a period."
+       ],
+       "correct": 0,
        "explanation": "That's the definition of volume, a count of shares traded, not a price level."
       },
       {
-       "type": "fill_blank",
-       "question": "Higher volume generally means more shares were [___].",
+       "type": "multiple_choice",
+       "question": "Higher volume generally means more shares were...",
        "options": [
         "canceled",
         "traded",
@@ -1728,14 +1768,19 @@
        "explanation": "Popular assets during active trading hours commonly see more shares change hands."
       },
       {
-       "type": "true_false",
-       "question": "Volume and price are actually the same measurement, just displayed differently.",
-       "correct": false,
+       "type": "multiple_choice",
+       "question": "How do volume and price differ?",
+       "options": [
+        "They're the same measurement shown two different ways.",
+        "Volume counts shares traded; price measures the level they traded at.",
+        "Volume measures price, and price measures volume."
+       ],
+       "correct": 1,
        "explanation": "Volume counts shares traded; price measures the level shares traded at, two separate dimensions."
       },
       {
-       "type": "fill_blank",
-       "question": "A sudden, unusually large increase in volume is often called a volume [___].",
+       "type": "multiple_choice",
+       "question": "A sudden, unusually large increase in volume is often called a volume...",
        "options": [
         "spike",
         "gap",
@@ -1757,14 +1802,19 @@
        "text": "Liquidity describes how easily an asset can be bought or sold without significantly moving its price."
       },
       {
-       "type": "true_false",
-       "question": "Liquidity describes how easily an asset can be bought or sold without significantly moving its price.",
-       "correct": true,
+       "type": "multiple_choice",
+       "question": "Liquidity specifically describes...",
+       "options": [
+        "How easily an asset can be bought or sold without significantly moving its price.",
+        "How much an asset's price swings from day to day.",
+        "How many shares outstanding a company has."
+       ],
+       "correct": 0,
        "explanation": "That's the standard definition of liquidity."
       },
       {
-       "type": "fill_blank",
-       "question": "A market with many active buyers and sellers is generally described as [___].",
+       "type": "multiple_choice",
+       "question": "A market with many active buyers and sellers is generally described as...",
        "options": [
         "frozen",
         "liquid",
@@ -1892,14 +1942,19 @@
        "explanation": "Active participation with tight spreads is a hallmark of high liquidity."
       },
       {
-       "type": "true_false",
-       "question": "Liquidity has no effect on how much a large trade might move the price.",
-       "correct": false,
+       "type": "multiple_choice",
+       "question": "What effect does low liquidity have on a large trade?",
+       "options": [
+        "None, liquidity doesn't affect price impact.",
+        "It generally makes the trade move price more.",
+        "It guarantees the trade fills at the last traded price."
+       ],
+       "correct": 1,
        "explanation": "Lower liquidity generally means large trades can move price more noticeably."
       },
       {
-       "type": "fill_blank",
-       "question": "An asset that's easy to buy or sell without moving its price much is described as highly [___].",
+       "type": "multiple_choice",
+       "question": "An asset that's easy to buy or sell without moving its price much is described as highly...",
        "options": [
         "volatile",
         "closed",
@@ -1927,8 +1982,8 @@
        "explanation": "The ask is what sellers want to receive; the bid is what buyers are offering."
       },
       {
-       "type": "fill_blank",
-       "question": "The gap between the highest bid and the lowest ask is called the [___].",
+       "type": "multiple_choice",
+       "question": "The gap between the highest bid and the lowest ask is called the...",
        "options": [
         "spread",
         "volume",
@@ -2062,8 +2117,8 @@
        "explanation": "Market orders match against the best currently available bid or ask, which can differ slightly from the last trade."
       },
       {
-       "type": "fill_blank",
-       "question": "The price sellers are currently willing to accept is called the [___].",
+       "type": "multiple_choice",
+       "question": "The price sellers are currently willing to accept is called the...",
        "options": [
         "ask",
         "bid",
@@ -2220,9 +2275,14 @@
        "explanation": "A limit order only executes at your specified price or better, which means it might not fill at all."
       },
       {
-       "type": "true_false",
-       "question": "A market order guarantees the price you'll pay, down to the exact cent.",
-       "correct": false,
+       "type": "multiple_choice",
+       "question": "What does a market order actually guarantee?",
+       "options": [
+        "The exact cent you'll pay.",
+        "Fast execution, not an exact price.",
+        "That no slippage will ever occur."
+       ],
+       "correct": 1,
        "explanation": "A market order guarantees speed of execution, not an exact guaranteed price."
       },
       {
@@ -2250,14 +2310,19 @@
        "chart": "breakout"
       },
       {
-       "type": "true_false",
-       "question": "Volatility describes how much and how quickly price moves, regardless of direction.",
-       "correct": true,
+       "type": "multiple_choice",
+       "question": "Volatility specifically describes...",
+       "options": [
+        "Which direction price is moving.",
+        "How much and how quickly price moves, regardless of direction.",
+        "How many shares are being traded."
+       ],
+       "correct": 1,
        "explanation": "Volatility is about the size and speed of movement, not which direction it goes."
       },
       {
-       "type": "fill_blank",
-       "question": "A market moving through large price swings quickly is often described as [___].",
+       "type": "multiple_choice",
+       "question": "A market moving through large price swings quickly is often described as...",
        "options": [
         "volatile",
         "closed",
@@ -2754,8 +2819,8 @@
        "explanation": "A candlestick summarizes an entire time period, not a single instant."
       },
       {
-       "type": "fill_blank",
-       "question": "The thick middle part of a candlestick is called the [___].",
+       "type": "multiple_choice",
+       "question": "The thick middle part of a candlestick is called the...",
        "options": [
         "wick",
         "label",
@@ -2885,14 +2950,19 @@
        "explanation": "Wicks mark the extreme high and low prices reached, beyond the body."
       },
       {
-       "type": "true_false",
-       "question": "Every single candlestick must have at least one visible wick.",
-       "correct": false,
+       "type": "multiple_choice",
+       "question": "Which candlestick feature is NOT guaranteed to appear on every candle?",
+       "options": [
+        "A body.",
+        "A visible wick.",
+        "An open price."
+       ],
+       "correct": 1,
        "explanation": "A candle can have a tiny or nonexistent wick if price barely moved beyond the open/close range."
       },
       {
-       "type": "fill_blank",
-       "question": "The colored, thick part of a candlestick between the open and close is called the [___].",
+       "type": "multiple_choice",
+       "question": "The colored, thick part of a candlestick between the open and close is called the...",
        "options": [
         "spread",
         "body",
@@ -2920,8 +2990,8 @@
        "explanation": "Open, high, low, and close are the four numbers that define a candle."
       },
       {
-       "type": "fill_blank",
-       "question": "The price at the very start of a candle's period is called the [___].",
+       "type": "multiple_choice",
+       "question": "The price at the very start of a candle's period is called the...",
        "options": [
         "close",
         "wick",
@@ -3049,14 +3119,19 @@
        "explanation": "\"Low\" specifically marks the lowest price touched during that period."
       },
       {
-       "type": "true_false",
-       "question": "The open and close values are always the same as the high and low values.",
-       "correct": false,
+       "type": "multiple_choice",
+       "question": "Which is true about a candle's open/close versus its high/low?",
+       "options": [
+        "They're always identical on every candle.",
+        "They can differ, the body and wicks can sit in different places.",
+        "High and low always sit inside the body."
+       ],
+       "correct": 1,
        "explanation": "Open/close and high/low are often different; a candle's body and wicks can differ in position."
       },
       {
-       "type": "fill_blank",
-       "question": "The very last traded price within a candle's period is called the [___].",
+       "type": "multiple_choice",
+       "question": "The very last traded price within a candle's period is called the...",
        "options": [
         "open",
         "close",
@@ -3084,8 +3159,8 @@
        "explanation": "A gap specifically describes a noticeable difference between the prior close and the new open."
       },
       {
-       "type": "fill_blank",
-       "question": "A jump between one candle's close and the next candle's open is called a [___].",
+       "type": "multiple_choice",
+       "question": "A jump between one candle's close and the next candle's open is called a...",
        "options": [
         "wick",
         "gap",
@@ -3213,14 +3288,20 @@
        "explanation": "News released while the market is closed is a common cause of a gap at the next open."
       },
       {
-       "type": "true_false",
-       "question": "A \"gap down\" means the next candle opens noticeably higher than the prior close.",
-       "correct": false,
+       "type": "multiple_choice",
+       "question": "The chart above shows a gap down. What does that mean?",
+       "options": [
+        "The next candle opened noticeably higher than the prior close.",
+        "The next candle opened noticeably lower than the prior close.",
+        "The next candle opened exactly at the prior close."
+       ],
+       "correct": 1,
+       "chart": "gapDown",
        "explanation": "A gap down means the next open is noticeably LOWER than the prior close, not higher."
       },
       {
-       "type": "fill_blank",
-       "question": "Price later trading back through a gap's skipped range is called a gap [___].",
+       "type": "multiple_choice",
+       "question": "Price later trading back through a gap's skipped range is called a gap...",
        "options": [
         "wick",
         "fill",
@@ -3243,9 +3324,14 @@
        "chart": "downtrend"
       },
       {
-       "type": "true_false",
-       "question": "A trend is a description of the general direction price has been moving.",
-       "correct": true,
+       "type": "multiple_choice",
+       "question": "A \"trend\" is best described as...",
+       "options": [
+        "A prediction of where price will go next.",
+        "A description of the general direction price has been moving.",
+        "A guarantee that price will keep moving the same way."
+       ],
+       "correct": 1,
        "explanation": "That's the core, descriptive meaning of \"trend.\""
       },
       {
@@ -3386,8 +3472,8 @@
        "explanation": "Trends can and do change; a past trend doesn't lock in the future direction forever."
       },
       {
-       "type": "fill_blank",
-       "question": "Price generally moving from higher levels to lower levels over time is called a [___].",
+       "type": "multiple_choice",
+       "question": "Price generally moving from higher levels to lower levels over time is called a...",
        "options": [
         "spread",
         "downtrend",
@@ -3538,14 +3624,19 @@
        "explanation": "Comparing the start and end points is a simple, direct way to gauge overall direction."
       },
       {
-       "type": "true_false",
-       "question": "Classifying a chart's direction is the same thing as predicting its next move.",
-       "correct": false,
+       "type": "multiple_choice",
+       "question": "Classifying a chart's current direction is best described as...",
+       "options": [
+        "A prediction of the next move.",
+        "A description of what has already happened.",
+        "A guarantee the direction will continue."
+       ],
+       "correct": 1,
        "explanation": "Classification describes what has already happened; it is not a prediction of the future."
       },
       {
-       "type": "fill_blank",
-       "question": "A chart bouncing within a similar band with no clear direction is classified as [___].",
+       "type": "multiple_choice",
+       "question": "A chart bouncing within a similar band with no clear direction is classified as...",
        "options": [
         "uptrend",
         "downtrend",
@@ -3580,10 +3671,10 @@
        "chart": "marubozu"
       },
       {
-       "type": "true_false",
-       "question": "On the chart above, the thin lines poking out of each candle's body are the wicks (the high/low reach).",
-       "correct": true,
-       "explanation": "Wicks (or shadows) mark how far price stretched beyond the body.",
+       "type": "tap_candle",
+       "question": "Tap the marubozu (large body with almost no wicks).",
+       "target": 1,
+       "explanation": "The candle that is nearly all body, with barely any wick, is the marubozu.",
        "chart": "marubozu"
       },
       {
@@ -3716,10 +3807,10 @@
        "chart": "doji"
       },
       {
-       "type": "true_false",
-       "question": "The chart above shows a candle with a large, decisive body.",
-       "correct": false,
-       "explanation": "The highlighted candle is a doji. Its body is tiny, the opposite of decisive.",
+       "type": "tap_candle",
+       "question": "Tap the doji (tiny body with wicks on both sides).",
+       "target": 1,
+       "explanation": "The middle candle's near-zero body with balanced wicks is the doji.",
        "chart": "doji"
       },
       {
@@ -3791,9 +3882,9 @@
        "type": "multiple_choice",
        "question": "Which best describes what \"indecision\" means for a doji?",
        "options": [
-        "The candle has no high or low.",
+        "Buyers were stronger than sellers.",
         "Neither buyers nor sellers clearly won that period.",
-        "The chart data is missing."
+        "Sellers were stronger than buyers."
        ],
        "correct": 1,
        "explanation": "Indecision describes a balanced tug-of-war, not missing data."
@@ -3839,17 +3930,17 @@
        "options": [
         "recovered",
         "collapsed further",
-        "never moved"
+        "gapped even lower"
        ],
        "correct": 0,
        "explanation": "The body finishing near the top means buyers pulled price back up before the close.",
        "chart": "hammer"
       },
       {
-       "type": "true_false",
-       "question": "The chart above shows a candle with a long <b>upper</b> wick and body near the bottom.",
-       "correct": false,
-       "explanation": "This is a hammer, a long LOWER wick with the body near the top.",
+       "type": "tap_candle",
+       "question": "Tap the hammer (long lower wick, small body near the top).",
+       "target": 2,
+       "explanation": "The last candle's long lower wick and small upper body is the hammer.",
        "chart": "hammer"
       },
       {
@@ -3857,10 +3948,10 @@
        "question": "What does the hammer on the chart above describe?",
        "options": [
         {
-         "label": "That the candle has no body at all",
+         "label": "Buyers closed near the low",
          "correct": false,
          "detail": "Incorrect",
-         "wrong_explanation": "A hammer has a small but real body near the top."
+         "wrong_explanation": "A hammer's body sits near the top, not the low, that's the opposite read."
         },
         {
          "label": "Sellers pushed price down, but buyers recovered much of it by the close",
@@ -3962,7 +4053,7 @@
        "type": "fill_blank",
        "question": "The long upper wick on the highlighted candle shows price was pushed up but [___] by the close.",
        "options": [
-        "never moved",
+        "gapped even higher",
         "slid back down",
         "kept climbing"
        ],
@@ -3971,10 +4062,10 @@
        "chart": "shootingStar"
       },
       {
-       "type": "true_false",
-       "question": "The chart above shows the same shape as a hammer.",
-       "correct": false,
-       "explanation": "It's the mirror image, a long UPPER wick (shooting star), not a long lower wick (hammer).",
+       "type": "tap_candle",
+       "question": "Tap the shooting star (long upper wick, small body near the bottom).",
+       "target": 2,
+       "explanation": "The last candle's long upper wick with a low body is the shooting star.",
        "chart": "shootingStar"
       },
       {
@@ -4111,10 +4202,10 @@
        "chart": "bullishEngulfing"
       },
       {
-       "type": "true_false",
-       "question": "In a bullish engulfing like the one shown, the second (highlighted) candle's body is smaller than the first.",
-       "correct": false,
-       "explanation": "The whole point is the second body is LARGER. It engulfs the first.",
+       "type": "tap_candle",
+       "question": "Tap the candle whose body fully engulfs the one before it.",
+       "target": 1,
+       "explanation": "The second candle's larger body completely covers the prior candle's body.",
        "chart": "bullishEngulfing"
       },
       {
@@ -4233,10 +4324,10 @@
        "chart": "bearishEngulfing"
       },
       {
-       "type": "true_false",
-       "question": "The chart above shows an up (green) candle engulfing a down candle.",
-       "correct": false,
-       "explanation": "Here a DOWN candle engulfs an up candle. That's bearish engulfing.",
+       "type": "tap_candle",
+       "question": "Tap the candle whose body fully engulfs the one before it.",
+       "target": 1,
+       "explanation": "The second candle's larger body completely covers the prior candle's body.",
        "chart": "bearishEngulfing"
       },
       {
@@ -4370,10 +4461,10 @@
        "chart": "spinningTop"
       },
       {
-       "type": "true_false",
-       "question": "The chart above shows a candle with a large body and no wicks.",
-       "correct": false,
-       "explanation": "A spinning top has a SMALL body with wicks on both sides, the opposite of a marubozu.",
+       "type": "tap_candle",
+       "question": "Tap the spinning top (small body with similar wicks on both sides).",
+       "target": 1,
+       "explanation": "The candle with a small body and balanced wicks is the spinning top.",
        "chart": "spinningTop"
       },
       {
@@ -4503,10 +4594,10 @@
        "explanation": "The full body with no wicks shows price moved one way and held."
       },
       {
-       "type": "true_false",
-       "question": "The chart above shows more hesitation than a spinning top would.",
-       "correct": false,
-       "explanation": "A marubozu shows decisiveness, far less hesitation than a small-bodied spinning top.",
+       "type": "tap_candle",
+       "question": "Tap the marubozu (large body with almost no wicks).",
+       "target": 1,
+       "explanation": "The candle that is nearly all body, with barely any wick, is the marubozu.",
        "chart": "marubozu"
       },
       {
@@ -4614,10 +4705,10 @@
        "chart": "rejectionWickDown"
       },
       {
-       "type": "true_false",
-       "question": "A long upper wick is commonly read as a rejection of the highs.",
-       "correct": true,
-       "explanation": "Here the highlighted candle spiked up and got pushed back down, the highs were rejected.",
+       "type": "tap_candle",
+       "question": "Tap the candle with a long upper wick (rejection of the highs).",
+       "target": 1,
+       "explanation": "The middle candle's long upper wick shows the highs were rejected.",
        "chart": "rejectionWickUp"
       },
       {
@@ -4670,7 +4761,7 @@
        "options": [
         "highs.",
         "lows.",
-        "open price."
+        "midpoint."
        ],
        "correct": 1,
        "explanation": "A long lower wick specifically shows the lows were tested and rejected."
@@ -4784,10 +4875,10 @@
        "chart": "hangingMan"
       },
       {
-       "type": "true_false",
-       "question": "The chart above shows a doji.",
-       "correct": true,
-       "explanation": "Tiny body with wicks both sides. That's a doji.",
+       "type": "tap_candle",
+       "question": "Tap the doji (tiny body with wicks on both sides).",
+       "target": 1,
+       "explanation": "The middle candle's near-zero body with balanced wicks is the doji.",
        "chart": "doji"
       },
       {
@@ -4823,8 +4914,8 @@
        "explanation": "Both share the same shape; only the preceding trend differs."
       },
       {
-       "type": "fill_blank",
-       "question": "Correctly identifying a candle shape means checking both its form and its [___].",
+       "type": "multiple_choice",
+       "question": "Correctly identifying a candle shape means checking both its form and its...",
        "options": [
         "volume",
         "context",
@@ -4894,10 +4985,10 @@
        "chart": "spinningTop"
       },
       {
-       "type": "true_false",
-       "question": "The chart above shows a bearish engulfing.",
-       "correct": false,
-       "explanation": "The big candle here is an UP candle engulfing a down one. That's bullish engulfing.",
+       "type": "tap_candle",
+       "question": "Tap the candle whose body fully engulfs the one before it.",
+       "target": 1,
+       "explanation": "The second candle's larger body completely covers the prior candle's body.",
        "chart": "bullishEngulfing"
       },
       {
@@ -4967,10 +5058,10 @@
        "chart": "doji"
       },
       {
-       "type": "true_false",
-       "question": "The chart above shows a shooting star.",
-       "correct": false,
-       "explanation": "This is a hammer, the long wick is on the bottom, not the top.",
+       "type": "tap_candle",
+       "question": "Tap the hammer (long lower wick, small body near the top).",
+       "target": 2,
+       "explanation": "The last candle's long lower wick and small upper body is the hammer.",
        "chart": "hammer"
       },
       {
@@ -5028,8 +5119,8 @@
        "type": "multiple_choice",
        "question": "A rejection wick and a long wick on a hammer describe a similar underlying idea. What is it?",
        "options": [
-        "The candle has no real body.",
-        "Price never moved during the period.",
+        "Price closed at its extreme for the period.",
+        "Price gapped past the prior close.",
         "Price was pushed to an extreme, then didn't hold there."
        ],
        "correct": 2,
@@ -5109,10 +5200,10 @@
        "chart": "rejectionWickUp"
       },
       {
-       "type": "true_false",
-       "question": "The hammer on the chart above suggests sellers stayed fully in control into the close.",
-       "correct": false,
-       "explanation": "The body closing back near the top shows BUYERS recovered the move, not sellers staying in control.",
+       "type": "tap_candle",
+       "question": "Tap the hammer (long lower wick, small body near the top).",
+       "target": 2,
+       "explanation": "The last candle's long lower wick and small upper body is the hammer.",
        "chart": "hammer"
       },
       {
@@ -5146,8 +5237,8 @@
        "explanation": "The suggestion is about behavior (who got rejected), not a measurement exercise."
       },
       {
-       "type": "fill_blank",
-       "question": "Moving from naming a shape to reading its suggestion adds a layer of [___].",
+       "type": "multiple_choice",
+       "question": "Moving from naming a shape to reading its suggestion adds a layer of...",
        "options": [
         "interpretation",
         "certainty",
@@ -5215,10 +5306,10 @@
        "chart": "invertedHammer"
       },
       {
-       "type": "true_false",
-       "question": "Where a candle appears in the trend can change what it's called and what it suggests.",
-       "correct": true,
-       "explanation": "Identical shapes (hammer vs hanging man) get different names based on the preceding move.",
+       "type": "tap_candle",
+       "question": "Tap the hanging man (small body up top, long lower wick, after an up-move).",
+       "target": 2,
+       "explanation": "The last candle's small upper body and long lower wick, following a rise, is the hanging man.",
        "chart": "hangingMan"
       },
       {
@@ -5352,10 +5443,10 @@
        "explanation": "Body size is a quick read of how one-sided the period was."
       },
       {
-       "type": "true_false",
-       "question": "The doji on the chart above suggests strong one-directional momentum.",
-       "correct": false,
-       "explanation": "A doji's near-zero body suggests balance, not strong momentum.",
+       "type": "tap_candle",
+       "question": "Tap the doji (tiny body with wicks on both sides).",
+       "target": 1,
+       "explanation": "The middle candle's near-zero body with balanced wicks is the doji.",
        "chart": "doji"
       },
       {
@@ -5483,10 +5574,10 @@
        "chart": "doji"
       },
       {
-       "type": "true_false",
-       "question": "The chart above shows a hammer (long lower wick, body up top).",
-       "correct": true,
-       "explanation": "That's the hammer shape.",
+       "type": "tap_candle",
+       "question": "Tap the hammer (long lower wick, small body near the top).",
+       "target": 2,
+       "explanation": "The last candle's long lower wick and small upper body is the hammer.",
        "chart": "hammer"
       },
       {
@@ -5578,10 +5669,10 @@
        "chart": "invertedHammer"
       },
       {
-       "type": "true_false",
-       "question": "The chart above shows a bullish engulfing.",
-       "correct": false,
-       "explanation": "A big DOWN candle engulfing an up candle is bearish engulfing.",
+       "type": "tap_candle",
+       "question": "Tap the candle whose body fully engulfs the one before it.",
+       "target": 1,
+       "explanation": "The second candle's larger body completely covers the prior candle's body.",
        "chart": "bearishEngulfing"
       },
       {
@@ -5652,8 +5743,8 @@
        "explanation": "Context-aware reading has been the throughline of the whole unit."
       },
       {
-       "type": "fill_blank",
-       "question": "Completing this unit means you can both name a shape and read its [___].",
+       "type": "multiple_choice",
+       "question": "Completing this unit means you can both name a shape and read its...",
        "options": [
         "color",
         "volume",
@@ -5860,8 +5951,8 @@
        "explanation": "A limit order only executes if the market reaches your specified price. It may never fill."
       },
       {
-       "type": "fill_blank",
-       "question": "A limit order to buy will only execute at your set price or [___].",
+       "type": "multiple_choice",
+       "question": "A limit order to buy will only execute at your set price or...",
        "options": [
         "lower",
         "higher",
@@ -5980,8 +6071,8 @@
        "chart": "resistanceRejection"
       },
       {
-       "type": "fill_blank",
-       "question": "A sell limit order will only execute at your set price or [___].",
+       "type": "multiple_choice",
+       "question": "A sell limit order will only execute at your set price or...",
        "options": [
         "higher",
         "random",
@@ -6010,9 +6101,14 @@
        "chart": "downtrend"
       },
       {
-       "type": "true_false",
-       "question": "A stop-loss order exists specifically to guarantee a profit.",
-       "correct": false,
+       "type": "multiple_choice",
+       "question": "What is a stop-loss order's main purpose?",
+       "options": [
+        "To guarantee a profit.",
+        "To limit potential losses.",
+        "To guarantee the exact fill price."
+       ],
+       "correct": 1,
        "explanation": "A stop-loss is commonly used to limit potential losses, not to guarantee profit."
       },
       {
@@ -6484,8 +6580,8 @@
        "explanation": "Slippage specifically refers to getting a different price than expected, usually during fast price movement."
       },
       {
-       "type": "fill_blank",
-       "question": "The difference between the expected price and the actual executed price is called [___].",
+       "type": "multiple_choice",
+       "question": "The difference between the expected price and the actual executed price is called...",
        "options": [
         "structure",
         "spread",
@@ -6948,8 +7044,8 @@
        "type": "multiple_choice",
        "question": "\"Order flow\" refers to...",
        "options": [
-        "A single candle's wick length.",
-        "The company's quarterly earnings report.",
+        "The current bid/ask spread only.",
+        "A single completed trade's price.",
         "The ongoing stream of buy and sell orders hitting the market."
        ],
        "correct": 2,
@@ -7059,8 +7155,8 @@
        "explanation": "More sellers willing to sell than buyers willing to buy commonly pushes price down."
       },
       {
-       "type": "fill_blank",
-       "question": "Price is commonly described as reflecting the balance of supply and [___].",
+       "type": "multiple_choice",
+       "question": "Price is commonly described as reflecting the balance of supply and...",
        "options": [
         "demand",
         "volume",
@@ -7252,8 +7348,8 @@
        "explanation": "Price gravitates to levels where a buyer and seller are both willing to transact."
       },
       {
-       "type": "fill_blank",
-       "question": "A market can be simply described as a continuous [___].",
+       "type": "multiple_choice",
+       "question": "A market can be simply described as a continuous...",
        "options": [
         "auction",
         "guarantee",
@@ -7626,8 +7722,8 @@
        "explanation": "That's the common thread tying every lesson in this unit together."
       },
       {
-       "type": "fill_blank",
-       "question": "Price is commonly described as reflecting the balance of supply and [___].",
+       "type": "multiple_choice",
+       "question": "Price is commonly described as reflecting the balance of supply and...",
        "options": [
         "demand",
         "color",
@@ -8957,8 +9053,8 @@
        "explanation": "Volume level is commonly read as a meaningful difference between the two, not identical."
       },
       {
-       "type": "fill_blank",
-       "question": "A breakout with strong volume behind it is commonly described as having more [___].",
+       "type": "multiple_choice",
+       "question": "A breakout with strong volume behind it is commonly described as having more...",
        "options": [
         "certainty",
         "participation",
@@ -9567,9 +9663,14 @@
        "explanation": "A swing high specifically marks a turning point where price reversed downward."
       },
       {
-       "type": "true_false",
-       "question": "A swing low is a trough where price turned up afterward.",
-       "correct": true,
+       "type": "multiple_choice",
+       "question": "A swing low is best described as...",
+       "options": [
+        "A trough where price turned up afterward.",
+        "The single lowest price ever traded.",
+        "A peak where price turned down afterward."
+       ],
+       "correct": 0,
        "explanation": "That's the standard definition of a swing low."
       },
       {
@@ -9673,9 +9774,14 @@
        "explanation": "Impulse describes the strong, decisive leg of a trend."
       },
       {
-       "type": "true_false",
-       "question": "A correction is the same basic idea as a pullback, just a different name.",
-       "correct": true,
+       "type": "multiple_choice",
+       "question": "How does a \"correction\" relate to a \"pullback\"?",
+       "options": [
+        "They're unrelated, separate concepts.",
+        "Same basic idea, a temporary counter-move within a trend, different name.",
+        "A correction is a full trend reversal, unlike a pullback."
+       ],
+       "correct": 1,
        "explanation": "\"Correction\" and \"pullback\" both describe a temporary counter-move within a trend."
       },
       {
@@ -9772,14 +9878,19 @@
        "explanation": "Compression specifically describes a narrowing price range."
       },
       {
-       "type": "true_false",
-       "question": "Expansion describes price ranges widening, often after a period of compression.",
-       "correct": true,
+       "type": "multiple_choice",
+       "question": "\"Expansion\" describes price ranges...",
+       "options": [
+        "Widening, often after a period of compression.",
+        "Narrowing into a tighter range.",
+        "Staying perfectly flat over time."
+       ],
+       "correct": 0,
        "explanation": "Expansion is commonly described as the release that follows a compressed, narrowing range."
       },
       {
-       "type": "fill_blank",
-       "question": "A symmetrical triangle is a chart example of [___].",
+       "type": "multiple_choice",
+       "question": "A symmetrical triangle is a chart example of...",
        "options": [
         "neither",
         "compression",
@@ -9877,8 +9988,8 @@
        "explanation": "Acceptance is the opposite of rejection, the level is absorbed rather than pushed back from."
       },
       {
-       "type": "fill_blank",
-       "question": "A long wick at a level is commonly read as a sign of [___].",
+       "type": "multiple_choice",
+       "question": "A long wick at a level is commonly read as a sign of...",
        "options": [
         "acceptance",
         "rejection",
@@ -9970,14 +10081,19 @@
        "explanation": "Continuation specifically describes the existing direction persisting."
       },
       {
-       "type": "true_false",
-       "question": "Exhaustion describes signs a move may be running out of steam.",
-       "correct": true,
+       "type": "multiple_choice",
+       "question": "\"Exhaustion\" describes...",
+       "options": [
+        "Signs a move may be running out of steam.",
+        "Price ranges suddenly widening.",
+        "Price accelerating with fresh momentum."
+       ],
+       "correct": 0,
        "explanation": "Shrinking bodies or rejected pushes are commonly cited exhaustion signs."
       },
       {
-       "type": "fill_blank",
-       "question": "Shrinking candle bodies late in a move are a commonly cited sign of [___].",
+       "type": "multiple_choice",
+       "question": "Shrinking candle bodies late in a move are a commonly cited sign of...",
        "options": [
         "continuation",
         "acceptance",
@@ -10075,8 +10191,8 @@
        "explanation": "Impulse describes a strong, trend-aligned move regardless of which direction the trend runs."
       },
       {
-       "type": "fill_blank",
-       "question": "Reading price action well means combining vocabulary with [___].",
+       "type": "multiple_choice",
+       "question": "Reading price action well means combining vocabulary with...",
        "options": [
         "a single indicator",
         "context",
@@ -10162,8 +10278,8 @@
        "explanation": "That's the common thread across every lesson in this unit."
       },
       {
-       "type": "fill_blank",
-       "question": "A peak where price turned down is called a swing [___].",
+       "type": "multiple_choice",
+       "question": "A peak where price turned down is called a swing...",
        "options": [
         "low",
         "average",
@@ -10596,8 +10712,8 @@
        "explanation": "A sideways market describes a lack of clear direction, bouncing within a band instead."
       },
       {
-       "type": "fill_blank",
-       "question": "Price moving back and forth between a rough ceiling and floor is often called a [___].",
+       "type": "multiple_choice",
+       "question": "Price moving back and forth between a rough ceiling and floor is often called a...",
        "options": [
         "breakout",
         "range",
@@ -10716,8 +10832,8 @@
        "chart": "sideways"
       },
       {
-       "type": "fill_blank",
-       "question": "A sideways market is sometimes also called a [___].",
+       "type": "multiple_choice",
+       "question": "A sideways market is sometimes also called a...",
        "options": [
         "breakout",
         "gap",
@@ -11074,8 +11190,8 @@
        "explanation": "Trends can vary widely in steepness and consistency, even when sharing the same overall direction."
       },
       {
-       "type": "fill_blank",
-       "question": "A trend with large, consistent moves in one direction is often described as [___].",
+       "type": "multiple_choice",
+       "question": "A trend with large, consistent moves in one direction is often described as...",
        "options": [
         "weak",
         "sideways",
@@ -11224,14 +11340,19 @@
        "chart": "breakout"
       },
       {
-       "type": "true_false",
-       "question": "Momentum describes how quickly and forcefully price is currently moving.",
-       "correct": true,
+       "type": "multiple_choice",
+       "question": "\"Momentum\" describes...",
+       "options": [
+        "How quickly and forcefully price is currently moving.",
+        "How many shares are currently outstanding.",
+        "How far price has moved since the yearly open."
+       ],
+       "correct": 0,
        "explanation": "That's the standard descriptive meaning of momentum in this context."
       },
       {
-       "type": "fill_blank",
-       "question": "A market with fast, forceful moves in one direction is often described as having strong [___].",
+       "type": "multiple_choice",
+       "question": "A market with fast, forceful moves in one direction is often described as having strong...",
        "options": [
         "momentum",
         "volume",
@@ -11386,8 +11507,8 @@
        "explanation": "A pullback is commonly described as a temporary move against the trend, not a guaranteed permanent reversal."
       },
       {
-       "type": "fill_blank",
-       "question": "A short-term move against the prevailing trend is commonly called a [___].",
+       "type": "multiple_choice",
+       "question": "A short-term move against the prevailing trend is commonly called a...",
        "options": [
         "gap",
         "breakout",
@@ -11506,8 +11627,8 @@
        "chart": "uptrend"
       },
       {
-       "type": "fill_blank",
-       "question": "Whether a counter-trend move is a pullback or reversal is often only clear in [___].",
+       "type": "multiple_choice",
+       "question": "Whether a counter-trend move is a pullback or reversal is often only clear in...",
        "options": [
         "hindsight",
         "advance",
@@ -11536,14 +11657,19 @@
        "chart": "sideways"
       },
       {
-       "type": "true_false",
-       "question": "Consolidation describes price moving sideways within a tighter range.",
-       "correct": true,
+       "type": "multiple_choice",
+       "question": "\"Consolidation\" describes price...",
+       "options": [
+        "Moving sideways within a tighter range.",
+        "Breaking out into a strong new trend.",
+        "Gapping sharply between sessions."
+       ],
+       "correct": 0,
        "explanation": "That's the standard descriptive meaning of consolidation."
       },
       {
-       "type": "fill_blank",
-       "question": "A period of sideways movement within a tighter range is commonly called [___].",
+       "type": "multiple_choice",
+       "question": "A period of sideways movement within a tighter range is commonly called...",
        "options": [
         "consolidation",
         "a gap",
@@ -11698,8 +11824,8 @@
        "explanation": "That's the core descriptive meaning of a structure break."
       },
       {
-       "type": "fill_blank",
-       "question": "Breaking the established pattern of swing highs and lows is commonly called a break of [___].",
+       "type": "multiple_choice",
+       "question": "Breaking the established pattern of swing highs and lows is commonly called a break of...",
        "options": [
         "liquidity",
         "structure",
@@ -12004,8 +12130,8 @@
        "explanation": "It's often genuinely unclear at first whether a counter-move is a pullback or the start of a reversal."
       },
       {
-       "type": "fill_blank",
-       "question": "A temporary counter-trend move that's often followed by the trend resuming is called a [___].",
+       "type": "multiple_choice",
+       "question": "A temporary counter-trend move that's often followed by the trend resuming is called a...",
        "options": [
         "marubozu",
         "pullback",
@@ -12254,14 +12380,19 @@
        "chart": "supportBounce"
       },
       {
-       "type": "true_false",
-       "question": "Support is a price area where a chart has previously had trouble falling below.",
-       "correct": true,
+       "type": "multiple_choice",
+       "question": "Support is best described as a price area where a chart has...",
+       "options": [
+        "Previously had trouble falling below.",
+        "Previously had trouble rising above.",
+        "Gapped through without any reaction."
+       ],
+       "correct": 0,
        "explanation": "That's the standard descriptive definition of support."
       },
       {
-       "type": "fill_blank",
-       "question": "Support is often thought of as a price [___].",
+       "type": "multiple_choice",
+       "question": "Support is often thought of as a price...",
        "options": [
         "floor",
         "trendline",
@@ -12417,14 +12548,19 @@
        "chart": "resistanceRejection"
       },
       {
-       "type": "true_false",
-       "question": "Resistance is a price area where a chart has previously had trouble rising above.",
-       "correct": true,
+       "type": "multiple_choice",
+       "question": "Resistance is best described as a price area where a chart has...",
+       "options": [
+        "Previously had trouble rising above.",
+        "Previously had trouble falling below.",
+        "Gapped through without any reaction."
+       ],
+       "correct": 0,
        "explanation": "That's the standard descriptive definition of resistance."
       },
       {
-       "type": "fill_blank",
-       "question": "Resistance is often thought of as a price [___].",
+       "type": "multiple_choice",
+       "question": "Resistance is often thought of as a price...",
        "options": [
         "trendline",
         "ceiling",
@@ -12739,8 +12875,8 @@
        "explanation": "A level with multiple touches and reactions is commonly viewed as more notable than one touched only once."
       },
       {
-       "type": "fill_blank",
-       "question": "A support or resistance level that has been tested multiple times is often described as more [___].",
+       "type": "multiple_choice",
+       "question": "A support or resistance level that has been tested multiple times is often described as more...",
        "options": [
         "significant",
         "invisible",
@@ -12895,8 +13031,8 @@
        "explanation": "A breakout describes what just happened; it doesn't guarantee what happens next."
       },
       {
-       "type": "fill_blank",
-       "question": "When price clearly moves above a prior resistance level, it's often called a [___].",
+       "type": "multiple_choice",
+       "question": "When price clearly moves above a prior resistance level, it's often called a...",
        "options": [
         "doji",
         "pullback",
@@ -13045,9 +13181,14 @@
        "chart": "resistanceRejection"
       },
       {
-       "type": "true_false",
-       "question": "A false breakout means price moved past a level and then reversed back, instead of continuing.",
-       "correct": true,
+       "type": "multiple_choice",
+       "question": "A \"false breakout\" specifically means price...",
+       "options": [
+        "Moved past a level and then reversed back, instead of continuing.",
+        "Never actually reached the level in the first place.",
+        "Continued strongly in the breakout direction."
+       ],
+       "correct": 0,
        "explanation": "That reversal back into the prior range is what defines a false breakout."
       },
       {
@@ -13201,14 +13342,19 @@
        "chart": "breakout"
       },
       {
-       "type": "true_false",
-       "question": "A retest means price returns to a broken level from the other side.",
-       "correct": true,
+       "type": "multiple_choice",
+       "question": "A retest specifically refers to...",
+       "options": [
+        "Price returning to a broken level from the other side.",
+        "Price approaching a level for the very first time.",
+        "Price gapping past a level without touching it."
+       ],
+       "correct": 0,
        "explanation": "That's the definition, revisiting the level after it was already broken."
       },
       {
-       "type": "fill_blank",
-       "question": "Old resistance that gets broken is sometimes described as becoming new [___].",
+       "type": "multiple_choice",
+       "question": "Old resistance that gets broken is sometimes described as becoming new...",
        "options": [
         "resistance",
         "support",
@@ -13327,8 +13473,8 @@
        "chart": "breakout"
       },
       {
-       "type": "fill_blank",
-       "question": "A retest only makes sense once a level has already [___].",
+       "type": "multiple_choice",
+       "question": "A retest only makes sense once a level has already...",
        "options": [
         "broken",
         "disappeared",
@@ -13357,14 +13503,19 @@
        "chart": "sideways"
       },
       {
-       "type": "true_false",
-       "question": "A trading range describes price bouncing between a fairly consistent support and resistance level.",
-       "correct": true,
+       "type": "multiple_choice",
+       "question": "A \"trading range\" describes price...",
+       "options": [
+        "Bouncing between a fairly consistent support and resistance level.",
+        "Making clear, sustained directional progress.",
+        "Gapping repeatedly between sessions."
+       ],
+       "correct": 0,
        "explanation": "That's the standard descriptive definition of a trading range."
       },
       {
-       "type": "fill_blank",
-       "question": "The upper boundary of a trading range is commonly the level acting as [___].",
+       "type": "multiple_choice",
+       "question": "The upper boundary of a trading range is commonly the level acting as...",
        "options": [
         "support",
         "volume",
@@ -13808,8 +13959,8 @@
        "explanation": "That's the common thread across every concept in this unit."
       },
       {
-       "type": "fill_blank",
-       "question": "A price floor where declines have previously struggled is called [___].",
+       "type": "multiple_choice",
+       "question": "A price floor where declines have previously struggled is called...",
        "options": [
         "resistance",
         "support",
@@ -13967,10 +14118,10 @@
        "explanation": "Two peaks at the same level forming an \"M\" is a double top. A head & shoulders would have three peaks with a higher middle; an ascending triangle has a flat top with rising lows."
       },
       {
-       "type": "true_false",
-       "question": "A double top is commonly described as forming after an up-move, at resistance.",
-       "correct": true,
-       "explanation": "The two peaks stall at the same resistance level after price has risen into it.",
+       "type": "mark_level",
+       "question": "Drag the line to the resistance both peaks stall at.",
+       "level_kind": "resistance",
+       "explanation": "The shared high both peaks reach is the resistance level of a double top.",
        "chart": "doubleTop"
       },
       {
@@ -14101,10 +14252,10 @@
        "explanation": "Two troughs at the same level forming a \"W\" is the double bottom shape."
       },
       {
-       "type": "true_false",
-       "question": "A double bottom is commonly described as forming after a down-move, at support.",
-       "correct": true,
-       "explanation": "The two troughs hold at the same support level after price has fallen into it.",
+       "type": "mark_level",
+       "question": "Drag the line to the support both troughs bounce from.",
+       "level_kind": "support",
+       "explanation": "The shared low both troughs reach is the support level of a double bottom.",
        "chart": "doubleBottom"
       },
       {
@@ -14447,8 +14598,8 @@
        "explanation": "A single rejection is still meaningful. It's just not a double top by itself."
       },
       {
-       "type": "fill_blank",
-       "question": "A single touch of a level is a rejection; a second touch at the same level upgrades it to a [___].",
+       "type": "multiple_choice",
+       "question": "A single touch of a level is a rejection; a second touch at the same level upgrades it to a...",
        "options": [
         "double top",
         "random pattern",
@@ -14579,8 +14730,8 @@
        "explanation": "A single bounce is still meaningful. It's just not a double bottom by itself."
       },
       {
-       "type": "fill_blank",
-       "question": "A single touch of support is a bounce; a second touch at the same level upgrades it to a [___].",
+       "type": "multiple_choice",
+       "question": "A single touch of support is a bounce; a second touch at the same level upgrades it to a...",
        "options": [
         "double bottom",
         "triple top",
@@ -14603,10 +14754,10 @@
        "chart": "doubleTop"
       },
       {
-       "type": "true_false",
-       "question": "A double top is commonly described as having two peaks at roughly the same level.",
-       "correct": true,
-       "explanation": "Roughly-equal peaks are what make it a \"double\" top.",
+       "type": "mark_level",
+       "question": "Drag the line to the resistance both peaks stall at.",
+       "level_kind": "resistance",
+       "explanation": "The shared high both peaks reach is the resistance level of a double top.",
        "chart": "doubleTop"
       },
       {
@@ -14857,8 +15008,8 @@
        "explanation": "Breaking up through the level is the opposite of the expected reversal, so the pattern fails."
       },
       {
-       "type": "fill_blank",
-       "question": "Because patterns are clues and not guarantees, a double top can still [___].",
+       "type": "multiple_choice",
+       "question": "Because patterns are clues and not guarantees, a double top can still...",
        "options": [
         "fail",
         "guarantee",
@@ -15003,10 +15154,10 @@
        "chart": "doubleTop"
       },
       {
-       "type": "true_false",
-       "question": "The chart above shows a double bottom.",
-       "correct": false,
-       "explanation": "This is a single support bounce (one touch), not a two-touch double bottom.",
+       "type": "mark_level",
+       "question": "Drag the line to the support this chart keeps bouncing from.",
+       "level_kind": "support",
+       "explanation": "The floor price keeps reacting off of is the support level.",
        "chart": "supportBounce"
       },
       {
@@ -15216,10 +15367,10 @@
        "chart": "doubleBottom"
       },
       {
-       "type": "true_false",
-       "question": "The chart above shows a single test of the level, not a double pattern.",
-       "correct": true,
-       "explanation": "One touch of resistance is a single rejection, not a double top.",
+       "type": "mark_level",
+       "question": "Drag the line to the resistance this chart keeps getting rejected at.",
+       "level_kind": "resistance",
+       "explanation": "The ceiling price keeps failing to break is the resistance level.",
        "chart": "resistanceRejection"
       },
       {
@@ -15295,8 +15446,8 @@
        "explanation": "That's the core of both patterns."
       },
       {
-       "type": "fill_blank",
-       "question": "The level whose break commonly confirms a double pattern is the [___].",
+       "type": "multiple_choice",
+       "question": "The level whose break commonly confirms a double pattern is the...",
        "options": [
         "wick",
         "average",
@@ -15456,8 +15607,8 @@
        "explanation": "Three peaks with a higher middle \"head\" is the head & shoulders shape."
       },
       {
-       "type": "fill_blank",
-       "question": "In a head & shoulders, the middle and highest peak is called the [___].",
+       "type": "multiple_choice",
+       "question": "In a head & shoulders, the middle and highest peak is called the...",
        "options": [
         "neckline",
         "head",
@@ -16154,8 +16305,8 @@
        "chart": "headShoulders"
       },
       {
-       "type": "fill_blank",
-       "question": "Before the neckline breaks, a head & shoulders is still [___].",
+       "type": "multiple_choice",
+       "question": "Before the neckline breaks, a head & shoulders is still...",
        "options": [
         "confirmed",
         "guaranteed",
@@ -16212,8 +16363,8 @@
        "explanation": "Not following through at the neckline is what makes the pattern fail."
       },
       {
-       "type": "fill_blank",
-       "question": "Because patterns are clues, a head & shoulders can still [___].",
+       "type": "multiple_choice",
+       "question": "Because patterns are clues, a head & shoulders can still...",
        "options": [
         "guarantee",
         "fail",
@@ -16249,8 +16400,8 @@
        "chart": "headShoulders"
       },
       {
-       "type": "fill_blank",
-       "question": "A head & shoulders can fail if price never breaks the [___].",
+       "type": "multiple_choice",
+       "question": "A head & shoulders can fail if price never breaks the...",
        "options": [
         "left shoulder",
         "neckline",
@@ -16527,8 +16678,8 @@
        "chart": "inverseHeadShoulders"
       },
       {
-       "type": "fill_blank",
-       "question": "Mixed recognition combines naming the shape with reading its [___].",
+       "type": "multiple_choice",
+       "question": "Mixed recognition combines naming the shape with reading its...",
        "options": [
         "gap size",
         "level context",
@@ -16562,8 +16713,8 @@
        "explanation": "That's the core of both patterns."
       },
       {
-       "type": "fill_blank",
-       "question": "The level connecting the two troughs, whose break confirms the pattern, is the [___].",
+       "type": "multiple_choice",
+       "question": "The level connecting the two troughs, whose break confirms the pattern, is the...",
        "options": [
         "neckline",
         "shoulder",
@@ -17379,8 +17530,8 @@
        "chart": "bullFlag"
       },
       {
-       "type": "fill_blank",
-       "question": "In a bull flag, the strong initial up-move is called the [___].",
+       "type": "multiple_choice",
+       "question": "In a bull flag, the strong initial up-move is called the...",
        "options": [
         "flag",
         "pole",
@@ -17423,8 +17574,8 @@
        "chart": "bullFlag"
       },
       {
-       "type": "fill_blank",
-       "question": "The strong initial move in a bull flag is called the [___].",
+       "type": "multiple_choice",
+       "question": "The strong initial move in a bull flag is called the...",
        "options": [
         "flag",
         "neckline",
@@ -17521,8 +17672,8 @@
        "chart": "bearFlag"
       },
       {
-       "type": "fill_blank",
-       "question": "The strong initial move in a bear flag is called the [___].",
+       "type": "multiple_choice",
+       "question": "The strong initial move in a bear flag is called the...",
        "options": [
         "flag",
         "pole",
@@ -17657,8 +17808,8 @@
        "explanation": "A pennant's consolidation converges like a small symmetrical triangle."
       },
       {
-       "type": "fill_blank",
-       "question": "A pennant and a flag both follow a strong [___].",
+       "type": "multiple_choice",
+       "question": "A pennant and a flag both follow a strong...",
        "options": [
         "gap",
         "neckline",
@@ -17885,8 +18036,8 @@
        "chart": "sideways"
       },
       {
-       "type": "fill_blank",
-       "question": "This review ties together bull flags, bear flags, and [___].",
+       "type": "multiple_choice",
+       "question": "This review ties together bull flags, bear flags, and...",
        "options": [
         "pennants",
         "neck lines",
@@ -17933,8 +18084,8 @@
        "chart": "risingWedge"
       },
       {
-       "type": "fill_blank",
-       "question": "A rising wedge has higher highs and higher lows, but the lines [___].",
+       "type": "multiple_choice",
+       "question": "A rising wedge has higher highs and higher lows, but the lines...",
        "options": [
         "converge",
         "stay parallel",
@@ -18037,8 +18188,8 @@
        "chart": "fallingWedge"
       },
       {
-       "type": "fill_blank",
-       "question": "A falling wedge has lower highs and lower lows, but the lines [___].",
+       "type": "multiple_choice",
+       "question": "A falling wedge has lower highs and lower lows, but the lines...",
        "options": [
         "diverge",
         "stay parallel",
@@ -18295,8 +18446,8 @@
        "chart": "risingWedge"
       },
       {
-       "type": "fill_blank",
-       "question": "The single question that separates a wedge from a channel is whether the lines [___].",
+       "type": "multiple_choice",
+       "question": "The single question that separates a wedge from a channel is whether the lines...",
        "options": [
         "are drawn quickly",
         "converge or stay parallel",
@@ -18367,8 +18518,8 @@
        "chart": "downtrend"
       },
       {
-       "type": "fill_blank",
-       "question": "This drill practices telling wedges and channels apart by checking [___].",
+       "type": "multiple_choice",
+       "question": "This drill practices telling wedges and channels apart by checking...",
        "options": [
         "convergence vs. parallel lines",
         "candle color",
@@ -18488,8 +18639,8 @@
        "chart": "uptrend"
       },
       {
-       "type": "fill_blank",
-       "question": "This review ties together rising wedges, falling wedges, and [___].",
+       "type": "multiple_choice",
+       "question": "This review ties together rising wedges, falling wedges, and...",
        "options": [
         "channels",
         "neck lines",
@@ -18529,14 +18680,19 @@
        "explanation": "An uptrend line connects the rising (higher) lows."
       },
       {
-       "type": "true_false",
-       "question": "A trendline is a diagonal line, unlike a flat horizontal support or resistance.",
-       "correct": true,
+       "type": "multiple_choice",
+       "question": "How does a trendline differ from a horizontal support/resistance level?",
+       "options": [
+        "A trendline is diagonal; horizontal levels are flat.",
+        "A trendline is flat; horizontal levels are diagonal.",
+        "There's no difference, they're the same tool."
+       ],
+       "correct": 0,
        "explanation": "Trendlines slope with the trend; horizontal levels are flat."
       },
       {
-       "type": "fill_blank",
-       "question": "In a downtrend, a trendline connects the [___].",
+       "type": "multiple_choice",
+       "question": "In a downtrend, a trendline connects the...",
        "options": [
         "lower highs",
         "higher lows",
@@ -18662,8 +18818,8 @@
        "explanation": "Higher lows holding above the line keep the uptrend structure."
       },
       {
-       "type": "fill_blank",
-       "question": "An uptrend line is drawn under the rising [___].",
+       "type": "multiple_choice",
+       "question": "An uptrend line is drawn under the rising...",
        "options": [
         "highs",
         "lows",
@@ -18746,8 +18902,8 @@
        "explanation": "Lower highs staying below the line keep the downtrend structure."
       },
       {
-       "type": "fill_blank",
-       "question": "A downtrend line is drawn above the falling [___].",
+       "type": "multiple_choice",
+       "question": "A downtrend line is drawn above the falling...",
        "options": [
         "highs",
         "lows",
@@ -19076,8 +19232,8 @@
        "chart": "pullbackUptrend"
       },
       {
-       "type": "fill_blank",
-       "question": "This review ties together uptrend lines, downtrend lines, touches, and [___].",
+       "type": "multiple_choice",
+       "question": "This review ties together uptrend lines, downtrend lines, touches, and...",
        "options": [
         "moving averages",
         "gap fills",
@@ -19405,8 +19561,8 @@
        "explanation": "Break direction isn't guaranteed in advance. It's read as it happens."
       },
       {
-       "type": "fill_blank",
-       "question": "Leaving a range by clearing a boundary is called a [___].",
+       "type": "multiple_choice",
+       "question": "Leaving a range by clearing a boundary is called a...",
        "options": [
         "gap",
         "bounce",
@@ -19442,8 +19598,8 @@
        "chart": "breakout"
       },
       {
-       "type": "fill_blank",
-       "question": "Leaving a range by clearing a boundary is called a [___].",
+       "type": "multiple_choice",
+       "question": "Leaving a range by clearing a boundary is called a...",
        "options": [
         "bounce",
         "gap",
@@ -19640,8 +19796,8 @@
        "chart": "uptrend"
       },
       {
-       "type": "fill_blank",
-       "question": "This review ties together ranges, boundaries, breakouts, and [___].",
+       "type": "multiple_choice",
+       "question": "This review ties together ranges, boundaries, breakouts, and...",
        "options": [
         "false breakouts",
         "divergence",
@@ -19716,8 +19872,8 @@
        "explanation": "Breakouts can fail; nothing after a breakout is guaranteed."
       },
       {
-       "type": "fill_blank",
-       "question": "A breakout is price clearing a level with [___].",
+       "type": "multiple_choice",
+       "question": "A breakout is price clearing a level with...",
        "options": [
         "momentum",
         "no volume",
@@ -19775,10 +19931,10 @@
        "chart": "breakdown"
       },
       {
-       "type": "true_false",
-       "question": "A breakdown clears a support level to the downside.",
-       "correct": true,
-       "explanation": "A breakdown is price clearing support and continuing lower.",
+       "type": "tap_candle",
+       "question": "Tap the candle that breaks below the support shelf.",
+       "target": 3,
+       "explanation": "The fourth candle drops through the support the prior candles were holding.",
        "chart": "breakdown"
       },
       {
@@ -19860,8 +20016,8 @@
        "explanation": "A retest is the return to the broken level to test it as new support/resistance."
       },
       {
-       "type": "fill_blank",
-       "question": "After a breakout, returning to the broken level is called a [___].",
+       "type": "multiple_choice",
+       "question": "After a breakout, returning to the broken level is called a...",
        "options": [
         "retest",
         "gap",
@@ -19954,8 +20110,8 @@
        "explanation": "The level's role commonly flips after a clean break."
       },
       {
-       "type": "fill_blank",
-       "question": "When a level breaks, its role commonly [___].",
+       "type": "multiple_choice",
+       "question": "When a level breaks, its role commonly...",
        "options": [
         "stays the same",
         "flips",
@@ -20174,8 +20330,8 @@
        "chart": "resistanceRejection"
       },
       {
-       "type": "fill_blank",
-       "question": "This review ties together breakouts, breakdowns, retests, and the level [___].",
+       "type": "multiple_choice",
+       "question": "This review ties together breakouts, breakdowns, retests, and the level...",
        "options": [
         "moving averages",
         "flip",
@@ -20719,8 +20875,8 @@
        "chart": "pullbackUptrend"
       },
       {
-       "type": "fill_blank",
-       "question": "This review ties together pullbacks, higher lows/lower highs, and [___].",
+       "type": "multiple_choice",
+       "question": "This review ties together pullbacks, higher lows/lower highs, and...",
        "options": [
         "divergence",
         "gap fills",
@@ -20865,15 +21021,15 @@
        "explanation": "A rejected push suggests the move may be running out of steam there."
       },
       {
-       "type": "true_false",
-       "question": "A long lower wick shows a down-push that got rejected (buyers stepped in).",
-       "correct": true,
-       "explanation": "A long lower wick shows sellers were rejected and buyers recovered price.",
+       "type": "tap_candle",
+       "question": "Tap the candle with a long lower wick (rejection of the lows).",
+       "target": 1,
+       "explanation": "The middle candle's long lower wick shows the lows were rejected.",
        "chart": "rejectionWickDown"
       },
       {
-       "type": "fill_blank",
-       "question": "A long wick shows a push that got [___].",
+       "type": "multiple_choice",
+       "question": "A long wick shows a push that got...",
        "options": [
         "guaranteed",
         "rejected",
@@ -20936,10 +21092,10 @@
        "chart": "spinningTop"
       },
       {
-       "type": "true_false",
-       "question": "A doji reflects strong one-directional momentum.",
-       "correct": false,
-       "explanation": "A doji reflects balance/indecision, the opposite of strong momentum.",
+       "type": "tap_candle",
+       "question": "Tap the doji (tiny body with wicks on both sides).",
+       "target": 1,
+       "explanation": "The middle candle's near-zero body with balanced wicks is the doji.",
        "chart": "doji"
       },
       {
@@ -21403,8 +21559,8 @@
        "explanation": "The level plus the candle agreeing (confluence) is stronger than the candle alone."
       },
       {
-       "type": "fill_blank",
-       "question": "A support level and a bounce candle together is an example of [___].",
+       "type": "multiple_choice",
+       "question": "A support level and a bounce candle together is an example of...",
        "options": [
         "confluence",
         "volume",
@@ -21414,8 +21570,8 @@
        "explanation": "Two agreeing factors at one spot is confluence."
       },
       {
-       "type": "fill_blank",
-       "question": "A support level plus a bounce candle together is an example of [___].",
+       "type": "multiple_choice",
+       "question": "A support level plus a bounce candle together is an example of...",
        "options": [
         "confluence",
         "volume",
@@ -21489,8 +21645,8 @@
        "explanation": "The pattern plus the level (confluence) is stronger than the pattern alone."
       },
       {
-       "type": "fill_blank",
-       "question": "A double top at resistance combines a pattern with a [___].",
+       "type": "multiple_choice",
+       "question": "A double top at resistance combines a pattern with a...",
        "options": [
         "gap",
         "color",
@@ -21887,9 +22043,14 @@
        "explanation": "Price jumped, so no trades happened across the gap."
       },
       {
-       "type": "true_false",
-       "question": "A gap can occur between one candle's close and the next candle's open.",
-       "correct": true,
+       "type": "multiple_choice",
+       "question": "A gap specifically occurs between...",
+       "options": [
+        "One candle's close and the next candle's open.",
+        "One candle's high and its own low.",
+        "The open and close of the very same candle."
+       ],
+       "correct": 0,
        "explanation": "That jump between close and next open is the defining feature of a gap."
       },
       {
@@ -21976,9 +22137,14 @@
        "explanation": "Opening above the prior high is what defines a gap up."
       },
       {
-       "type": "true_false",
-       "question": "A gap down opens below the prior candle's low.",
-       "correct": true,
+       "type": "multiple_choice",
+       "question": "A gap down specifically means the next candle opens...",
+       "options": [
+        "Above the prior candle's high.",
+        "Below the prior candle's low.",
+        "Exactly at the prior candle's close."
+       ],
+       "correct": 1,
        "explanation": "Opening below the prior low is what defines a gap down."
       },
       {
@@ -22046,8 +22212,8 @@
        "chart": "gapUp"
       },
       {
-       "type": "fill_blank",
-       "question": "Gaps commonly form when trading isn't [___].",
+       "type": "multiple_choice",
+       "question": "Gaps commonly form when trading isn't...",
        "options": [
         "continuous",
         "colorful",
@@ -22098,9 +22264,14 @@
        "explanation": "Filling the gap means price comes back through the empty space."
       },
       {
-       "type": "true_false",
-       "question": "Every gap is guaranteed to fill.",
-       "correct": false,
+       "type": "multiple_choice",
+       "question": "How reliably do gaps fill?",
+       "options": [
+        "Every gap is guaranteed to fill.",
+        "Gaps often fill, but it's a tendency, not a guarantee.",
+        "Gaps never fill."
+       ],
+       "correct": 1,
        "explanation": "Gaps fill often but not always. It's a tendency, not a guarantee."
       },
       {
@@ -22152,9 +22323,14 @@
        "explanation": "Gap fills are a common tendency, not a certainty."
       },
       {
-       "type": "true_false",
-       "question": "Every gap is guaranteed to eventually fill.",
-       "correct": false,
+       "type": "multiple_choice",
+       "question": "How reliably do gaps fill?",
+       "options": [
+        "Every gap is guaranteed to fill.",
+        "Gaps often fill, but it's a tendency, not a guarantee.",
+        "Gaps never fill."
+       ],
+       "correct": 1,
        "explanation": "Gaps fill often but not always. It's a tendency, not a guarantee."
       },
       {
@@ -22244,8 +22420,8 @@
        "chart": "gapUp"
       },
       {
-       "type": "fill_blank",
-       "question": "This review ties together gap direction, causes, and [___].",
+       "type": "multiple_choice",
+       "question": "This review ties together gap direction, causes, and...",
        "options": [
         "divergence",
         "moving averages",
@@ -22671,8 +22847,8 @@
        "chart": "uptrend"
       },
       {
-       "type": "fill_blank",
-       "question": "Timeframes agreeing with each other is a form of [___].",
+       "type": "multiple_choice",
+       "question": "Timeframes agreeing with each other is a form of...",
        "options": [
         "confluence",
         "randomness",
@@ -22790,8 +22966,8 @@
        "chart": "pullbackUptrend"
       },
       {
-       "type": "fill_blank",
-       "question": "This review ties together timeframes, higher vs lower, and [___].",
+       "type": "multiple_choice",
+       "question": "This review ties together timeframes, higher vs lower, and...",
        "options": [
         "alignment",
         "moving averages",
@@ -23437,8 +23613,8 @@
        "chart": "doubleTop"
       },
       {
-       "type": "fill_blank",
-       "question": "This level's core skill is combining pattern, level, and candle reads through [___].",
+       "type": "multiple_choice",
+       "question": "This level's core skill is combining pattern, level, and candle reads through...",
        "options": [
         "guesswork",
         "random chance",
@@ -24260,8 +24436,8 @@
        "explanation": "That's the common thread across every lesson in this unit."
       },
       {
-       "type": "fill_blank",
-       "question": "After-hours is the extended-session counterpart to [___].",
+       "type": "multiple_choice",
+       "question": "After-hours is the extended-session counterpart to...",
        "options": [
         "pre-market",
         "midday",
@@ -25088,9 +25264,14 @@
        "chart": "downtrend"
       },
       {
-       "type": "true_false",
-       "question": "Risk per trade describes how much capital could be lost on a single trade if it goes against you.",
-       "correct": true,
+       "type": "multiple_choice",
+       "question": "\"Risk per trade\" specifically describes...",
+       "options": [
+        "How much capital could be lost on a single trade if it goes against you.",
+        "Your total account balance.",
+        "The commission charged on a single trade."
+       ],
+       "correct": 0,
        "explanation": "That's the standard definition of risk per trade."
       },
       {
@@ -25250,8 +25431,8 @@
        "explanation": "A sound position size is commonly calculated backward from how much you're willing to risk."
       },
       {
-       "type": "fill_blank",
-       "question": "The amount of capital allocated to a single trade is commonly called its [___].",
+       "type": "multiple_choice",
+       "question": "The amount of capital allocated to a single trade is commonly called its...",
        "options": [
         "wick",
         "position size",
@@ -25406,8 +25587,8 @@
        "explanation": "That's the standard meaning of a 2:1 (or similarly stated) risk/reward ratio."
       },
       {
-       "type": "fill_blank",
-       "question": "A trade risking $100 to potentially make $200 has a risk/reward ratio of [___].",
+       "type": "multiple_choice",
+       "question": "A trade risking $100 to potentially make $200 has a risk/reward ratio of...",
        "options": [
         "1:1",
         "1:2",
@@ -25573,8 +25754,8 @@
        "explanation": "Stop-loss levels are commonly tied to a specific reason, like a nearby support or resistance level."
       },
       {
-       "type": "fill_blank",
-       "question": "Placing a stop-loss just beyond a nearby support or resistance level is a commonly cited [___].",
+       "type": "multiple_choice",
+       "question": "Placing a stop-loss just beyond a nearby support or resistance level is a commonly cited...",
        "options": [
         "requirement",
         "guarantee",
@@ -25723,14 +25904,19 @@
        "chart": "downtrend"
       },
       {
-       "type": "true_false",
-       "question": "Leverage only amplifies potential gains, never potential losses.",
-       "correct": false,
+       "type": "multiple_choice",
+       "question": "What does leverage actually amplify?",
+       "options": [
+        "Potential gains only.",
+        "Both potential gains and potential losses.",
+        "Potential losses only."
+       ],
+       "correct": 1,
        "explanation": "Leverage amplifies both directions, potential gains and potential losses alike."
       },
       {
-       "type": "fill_blank",
-       "question": "Using more leverage than is appropriate for your risk tolerance is commonly called [___].",
+       "type": "multiple_choice",
+       "question": "Using more leverage than is appropriate for your risk tolerance is commonly called...",
        "options": [
         "overleveraging",
         "diversifying",
@@ -25849,8 +26035,8 @@
        "chart": "downtrend"
       },
       {
-       "type": "fill_blank",
-       "question": "Leverage amplifies both potential gains and potential [___].",
+       "type": "multiple_choice",
+       "question": "Leverage amplifies both potential gains and potential...",
        "options": [
         "volume",
         "guarantees",
@@ -25885,8 +26071,8 @@
        "explanation": "That's the standard definition of a drawdown."
       },
       {
-       "type": "fill_blank",
-       "question": "The percentage decline from an account's highest value to a subsequent low point is called a [___].",
+       "type": "multiple_choice",
+       "question": "The percentage decline from an account's highest value to a subsequent low point is called a...",
        "options": [
         "drawdown",
         "spread",
@@ -26005,8 +26191,8 @@
        "chart": "downtrend"
       },
       {
-       "type": "fill_blank",
-       "question": "A drawdown measures decline from a prior [___].",
+       "type": "multiple_choice",
+       "question": "A drawdown measures decline from a prior...",
        "options": [
         "best trade",
         "peak",
@@ -26041,8 +26227,8 @@
        "explanation": "Losing streaks can happen even with a reasonable approach. They don't automatically prove it's flawed."
       },
       {
-       "type": "fill_blank",
-       "question": "A string of consecutive losing trades is commonly called a losing [___].",
+       "type": "multiple_choice",
+       "question": "A string of consecutive losing trades is commonly called a losing...",
        "options": [
         "spread",
         "streak",
@@ -26191,9 +26377,14 @@
        "chart": "sideways"
       },
       {
-       "type": "true_false",
-       "question": "Capital preservation describes prioritizing protection of existing capital.",
-       "correct": true,
+       "type": "multiple_choice",
+       "question": "\"Capital preservation\" describes prioritizing...",
+       "options": [
+        "Protection of existing capital.",
+        "Maximum position size on every trade.",
+        "Avoiding all risk entirely, under every circumstance."
+       ],
+       "correct": 0,
        "explanation": "That's the standard descriptive meaning of a capital preservation mindset."
       },
       {
@@ -26469,8 +26660,8 @@
        "explanation": "That's the common thread across every concept in this unit."
       },
       {
-       "type": "fill_blank",
-       "question": "The process of deciding how much capital to allocate to a trade is called [___].",
+       "type": "multiple_choice",
+       "question": "The process of deciding how much capital to allocate to a trade is called...",
        "options": [
         "position sizing",
         "volume",
@@ -26589,8 +26780,8 @@
        "chart": "uptrend"
       },
       {
-       "type": "fill_blank",
-       "question": "This review ties together risk per trade, sizing, risk/reward, and [___].",
+       "type": "multiple_choice",
+       "question": "This review ties together risk per trade, sizing, risk/reward, and...",
        "options": [
         "capital preservation",
         "win rate",
@@ -26619,14 +26810,19 @@
        "chart": "sideways"
       },
       {
-       "type": "true_false",
-       "question": "Scalping is commonly described as targeting small price moves over very short timeframes.",
-       "correct": true,
+       "type": "multiple_choice",
+       "question": "Scalping is commonly described as...",
+       "options": [
+        "Targeting small price moves over very short timeframes.",
+        "Holding trades for several days to a few weeks.",
+        "Staying aligned with a sustained directional move."
+       ],
+       "correct": 0,
        "explanation": "That's the standard descriptive definition of scalping."
       },
       {
-       "type": "fill_blank",
-       "question": "An approach targeting small price moves over very short timeframes is commonly called [___].",
+       "type": "multiple_choice",
+       "question": "An approach targeting small price moves over very short timeframes is commonly called...",
        "options": [
         "scalping",
         "trend following",
@@ -26775,14 +26971,19 @@
        "chart": "uptrend"
       },
       {
-       "type": "true_false",
-       "question": "Swing trading is commonly described as holding trades for several days to a few weeks.",
-       "correct": true,
+       "type": "multiple_choice",
+       "question": "Swing trading is commonly described as...",
+       "options": [
+        "Targeting small price moves over very short timeframes.",
+        "Holding trades for several days to a few weeks.",
+        "Expecting price to stay between established boundaries."
+       ],
+       "correct": 1,
        "explanation": "That's the standard descriptive definition of swing trading."
       },
       {
-       "type": "fill_blank",
-       "question": "An approach commonly described as holding trades for several days to a few weeks is called [___].",
+       "type": "multiple_choice",
+       "question": "An approach commonly described as holding trades for several days to a few weeks is called...",
        "options": [
         "range trading",
         "swing trading",
@@ -26931,14 +27132,19 @@
        "chart": "uptrend"
       },
       {
-       "type": "true_false",
-       "question": "Trend following is commonly described as aiming to stay aligned with a sustained directional move.",
-       "correct": true,
+       "type": "multiple_choice",
+       "question": "Trend following is commonly described as...",
+       "options": [
+        "Expecting price to move back toward an average level.",
+        "Aiming to stay aligned with a sustained directional move.",
+        "Expecting continuation right after price clears a range."
+       ],
+       "correct": 1,
        "explanation": "That's the standard descriptive definition of trend following."
       },
       {
-       "type": "fill_blank",
-       "question": "An approach aiming to stay aligned with a sustained directional move is commonly called [___].",
+       "type": "multiple_choice",
+       "question": "An approach aiming to stay aligned with a sustained directional move is commonly called...",
        "options": [
         "mean reversion",
         "trend following",
@@ -27087,14 +27293,19 @@
        "chart": "doji"
       },
       {
-       "type": "true_false",
-       "question": "Mean reversion is commonly described as expecting price to move back toward an average level.",
-       "correct": true,
+       "type": "multiple_choice",
+       "question": "Mean reversion is commonly described as expecting...",
+       "options": [
+        "Price to move back toward an average level.",
+        "Price to stay aligned with a sustained directional move.",
+        "Price to continue after clearing an established range."
+       ],
+       "correct": 0,
        "explanation": "That's the standard descriptive definition of mean reversion."
       },
       {
-       "type": "fill_blank",
-       "question": "An approach expecting price to move back toward an average after moving unusually far away is commonly called [___].",
+       "type": "multiple_choice",
+       "question": "An approach expecting price to move back toward an average after moving unusually far away is commonly called...",
        "options": [
         "mean reversion",
         "trend following",
@@ -27213,8 +27424,8 @@
        "chart": "doji"
       },
       {
-       "type": "fill_blank",
-       "question": "Mean reversion expects price to move back toward its [___].",
+       "type": "multiple_choice",
+       "question": "Mean reversion expects price to move back toward its...",
        "options": [
         "random level",
         "extreme",
@@ -27243,14 +27454,19 @@
        "chart": "breakout"
       },
       {
-       "type": "true_false",
-       "question": "Breakout trading is commonly described as expecting continuation after price clears an established range.",
-       "correct": true,
+       "type": "multiple_choice",
+       "question": "Breakout trading is commonly described as expecting...",
+       "options": [
+        "Continuation after price clears an established range.",
+        "Price to move back toward an average level.",
+        "Price to stay contained between established boundaries."
+       ],
+       "correct": 0,
        "explanation": "That's the standard descriptive definition of breakout trading."
       },
       {
-       "type": "fill_blank",
-       "question": "An approach expecting continuation after price clears a previously established range is commonly called [___].",
+       "type": "multiple_choice",
+       "question": "An approach expecting continuation after price clears a previously established range is commonly called...",
        "options": [
         "scalping",
         "range trading",
@@ -27399,14 +27615,19 @@
        "chart": "sideways"
       },
       {
-       "type": "true_false",
-       "question": "Range trading is commonly described as expecting price to stay between established boundaries.",
-       "correct": true,
+       "type": "multiple_choice",
+       "question": "Range trading is commonly described as expecting...",
+       "options": [
+        "Price to stay between established boundaries.",
+        "Continuation after price clears an established range.",
+        "Price to move back toward an average level."
+       ],
+       "correct": 0,
        "explanation": "That's the standard descriptive definition of range trading."
       },
       {
-       "type": "fill_blank",
-       "question": "An approach expecting price to stay between established support and resistance boundaries is commonly called [___].",
+       "type": "multiple_choice",
+       "question": "An approach expecting price to stay between established support and resistance boundaries is commonly called...",
        "options": [
         "trend following",
         "range trading",
@@ -27625,8 +27846,8 @@
        "explanation": "Trend following aligns with a sustained direction, while mean reversion expects a return toward average, commonly framed as contrasting ideas."
       },
       {
-       "type": "fill_blank",
-       "question": "An approach expecting price to move between established support and resistance boundaries is called [___].",
+       "type": "multiple_choice",
+       "question": "An approach expecting price to move between established support and resistance boundaries is called...",
        "options": [
         "range trading",
         "trend following",
@@ -27685,8 +27906,8 @@
        "explanation": "That's the common thread across every concept in this unit."
       },
       {
-       "type": "fill_blank",
-       "question": "An approach targeting small price moves over very short timeframes is called [___].",
+       "type": "multiple_choice",
+       "question": "An approach targeting small price moves over very short timeframes is called...",
        "options": [
         "mean reversion",
         "swing trading",
@@ -27949,8 +28170,8 @@
        "explanation": "2% of $5,000 is $100."
       },
       {
-       "type": "fill_blank",
-       "question": "To get dollar risk, multiply account size by the risk [___].",
+       "type": "multiple_choice",
+       "question": "To get dollar risk, multiply account size by the risk...",
        "options": [
         "color",
         "timeframe",
@@ -27977,8 +28198,8 @@
        "explanation": "The same percent of a bigger account is a bigger dollar amount."
       },
       {
-       "type": "fill_blank",
-       "question": "Dollar risk equals account size multiplied by risk [___].",
+       "type": "multiple_choice",
+       "question": "Dollar risk equals account size multiplied by risk...",
        "options": [
         "percent",
         "color",
@@ -28129,9 +28350,14 @@
        "explanation": "+4R means four times the risk: 4 × $150 = $600."
       },
       {
-       "type": "true_false",
-       "question": "A full loss is −1R, since you lost exactly the amount you risked.",
-       "correct": true,
+       "type": "multiple_choice",
+       "question": "Losing exactly the amount you risked on a trade is expressed as...",
+       "options": [
+        "+1R.",
+        "−1R.",
+        "0R."
+       ],
+       "correct": 1,
        "explanation": "Losing the whole risked amount is by definition −1R."
       },
       {
@@ -28372,8 +28598,8 @@
        "explanation": "Consistent percent risk, stop-based sizing, and R measurement is the throughline."
       },
       {
-       "type": "fill_blank",
-       "question": "This review ties together risk per trade, dollar risk, R, and [___].",
+       "type": "multiple_choice",
+       "question": "This review ties together risk per trade, dollar risk, R, and...",
        "options": [
         "position sizing",
         "expectancy",
@@ -28625,8 +28851,8 @@
        "explanation": "Positive expectancy = the average trade comes out ahead in R over the long run."
       },
       {
-       "type": "fill_blank",
-       "question": "Expectancy is the average result per trade measured in [___].",
+       "type": "multiple_choice",
+       "question": "Expectancy is the average result per trade measured in...",
        "options": [
         "R",
         "candles",
@@ -28931,8 +29157,8 @@
        "explanation": "Expectancy needs a large sample; a couple of wins prove nothing."
       },
       {
-       "type": "fill_blank",
-       "question": "This review ties together win rate, average R, expectancy, and [___].",
+       "type": "multiple_choice",
+       "question": "This review ties together win rate, average R, expectancy, and...",
        "options": [
         "stop distance",
         "position sizing",
@@ -28964,12 +29190,12 @@
        "type": "multiple_choice",
        "question": "The chart above makes steady higher highs and higher lows. This condition is...",
        "options": [
-        "trending.",
-        "ranging.",
-        "volatile."
+        "trending up.",
+        "trending down.",
+        "ranging."
        ],
        "correct": 0,
-       "explanation": "Directional progress (higher highs/lows) is a trending condition."
+       "explanation": "Directional progress (higher highs/lows) is a trending-up condition."
       },
       {
        "type": "multiple_choice",
@@ -29015,8 +29241,8 @@
        "explanation": "These three broad conditions describe most markets."
       },
       {
-       "type": "fill_blank",
-       "question": "Markets are commonly classified as trending, ranging, or [___].",
+       "type": "multiple_choice",
+       "question": "Markets are commonly classified as trending, ranging, or...",
        "options": [
         "random",
         "guaranteed",
@@ -29100,9 +29326,14 @@
        "explanation": "Directional progression (higher highs/lows or lower highs/lows) defines trending."
       },
       {
-       "type": "true_false",
-       "question": "Higher highs and higher lows describe a trending condition.",
-       "correct": true,
+       "type": "multiple_choice",
+       "question": "Higher highs and higher lows describe which market condition?",
+       "options": [
+        "Ranging.",
+        "Trending.",
+        "Volatile."
+       ],
+       "correct": 1,
        "explanation": "That progression is the defining structure of a trend."
       }
      ]
@@ -29452,8 +29683,8 @@
        "type": "multiple_choice",
        "question": "A moving average is the...",
        "options": [
-        "the single highest price over the period.",
-        "the difference between the high and low.",
+        "average daily trading volume.",
+        "average high-low range.",
         "average of the last N prices, updated each candle."
        ],
        "correct": 2,
@@ -29637,8 +29868,8 @@
        "explanation": "The slope (up/down/flat) mirrors the trend."
       },
       {
-       "type": "fill_blank",
-       "question": "A moving average's slope reflects the [___].",
+       "type": "multiple_choice",
+       "question": "A moving average's slope reflects the...",
        "options": [
         "volume",
         "trend",
@@ -29722,8 +29953,8 @@
        "chart": "priceAboveMA"
       },
       {
-       "type": "fill_blank",
-       "question": "Price holding above a rising MA is commonly described as relative [___].",
+       "type": "multiple_choice",
+       "question": "Price holding above a rising MA is commonly described as relative...",
        "options": [
         "weakness",
         "randomness",
@@ -29865,8 +30096,8 @@
        "explanation": "An MA is an average of past prices, so it lags current price."
       },
       {
-       "type": "fill_blank",
-       "question": "Because MAs are built from past prices, they are [___].",
+       "type": "multiple_choice",
+       "question": "Because MAs are built from past prices, they are...",
        "options": [
         "leading",
         "predictive",
@@ -30017,8 +30248,8 @@
        "chart": "uptrend"
       },
       {
-       "type": "fill_blank",
-       "question": "This review ties together what an MA is, smoothing, slope, and [___].",
+       "type": "multiple_choice",
+       "question": "This review ties together what an MA is, smoothing, slope, and...",
        "options": [
         "crossovers",
         "divergence",
@@ -30125,8 +30356,8 @@
        "explanation": "RSI summarizes recent up vs down move strength from 0 to 100."
       },
       {
-       "type": "fill_blank",
-       "question": "RSI is bounded between 0 and [___].",
+       "type": "multiple_choice",
+       "question": "RSI is bounded between 0 and...",
        "options": [
         "50",
         "10",
@@ -30136,9 +30367,14 @@
        "explanation": "RSI runs from 0 to 100."
       },
       {
-       "type": "true_false",
-       "question": "A higher RSI reflects stronger recent up-moves.",
-       "correct": true,
+       "type": "multiple_choice",
+       "question": "A rising RSI reading reflects...",
+       "options": [
+        "Stronger recent up-moves.",
+        "Stronger recent down-moves.",
+        "Higher trading volume."
+       ],
+       "correct": 0,
        "explanation": "RSI rises when recent gains dominate recent losses."
       },
       {
@@ -30164,9 +30400,14 @@
        "explanation": "RSI is bounded between 0 and 100."
       },
       {
-       "type": "true_false",
-       "question": "A higher RSI reflects stronger recent up-moves.",
-       "correct": true,
+       "type": "multiple_choice",
+       "question": "A rising RSI reading reflects...",
+       "options": [
+        "Stronger recent up-moves.",
+        "Stronger recent down-moves.",
+        "Higher trading volume."
+       ],
+       "correct": 0,
        "explanation": "RSI rises when recent gains dominate recent losses."
       }
      ]
@@ -30193,9 +30434,14 @@
        "explanation": "High RSI (~70+) is commonly labeled overbought, a description."
       },
       {
-       "type": "true_false",
-       "question": "\"Overbought\" is a guaranteed sell signal.",
-       "correct": false,
+       "type": "multiple_choice",
+       "question": "What does \"overbought\" actually mean?",
+       "options": [
+        "A guaranteed sell signal.",
+        "A descriptive label, a strong uptrend can stay overbought for a long time.",
+        "A signal price will fall within the next candle."
+       ],
+       "correct": 1,
        "explanation": "It's a descriptive label; a strong uptrend can stay overbought for a long time."
       },
       {
@@ -30486,8 +30732,8 @@
        "explanation": "Descriptive, derived, lagging, never guaranteed, is the throughline."
       },
       {
-       "type": "fill_blank",
-       "question": "This review ties together oscillators, RSI, its zones, MACD, and [___].",
+       "type": "multiple_choice",
+       "question": "This review ties together oscillators, RSI, its zones, MACD, and...",
        "options": [
         "moving averages",
         "divergence",
@@ -30619,14 +30865,19 @@
        "explanation": "Invalidation marks where the reasoning no longer holds."
       },
       {
-       "type": "true_false",
-       "question": "A stop is commonly based on where the idea is invalidated, not a random number.",
-       "correct": true,
+       "type": "multiple_choice",
+       "question": "A stop-loss level is commonly chosen based on...",
+       "options": [
+        "Where the trade idea would be proven wrong.",
+        "A fixed dollar amount picked at random.",
+        "Whatever level keeps the position size largest."
+       ],
+       "correct": 0,
        "explanation": "Tying the stop to invalidation gives it a clear, reasoned basis."
       },
       {
-       "type": "fill_blank",
-       "question": "Invalidation is where the trade idea is [___].",
+       "type": "multiple_choice",
+       "question": "Invalidation is where the trade idea is...",
        "options": [
         "guaranteed",
         "wrong",
@@ -30648,8 +30899,8 @@
        "explanation": "A defined invalidation is what makes risk manageable and the idea testable."
       },
       {
-       "type": "fill_blank",
-       "question": "Invalidation is where the trade idea is proven [___].",
+       "type": "multiple_choice",
+       "question": "Invalidation is where the trade idea is proven...",
        "options": [
         "doubled",
         "guaranteed",
@@ -30659,9 +30910,14 @@
        "explanation": "Invalidation marks where the reasoning no longer holds."
       },
       {
-       "type": "true_false",
-       "question": "A stop is commonly based on where the idea is invalidated, not a random number.",
-       "correct": true,
+       "type": "multiple_choice",
+       "question": "A stop-loss level is commonly chosen based on...",
+       "options": [
+        "Where the trade idea would be proven wrong.",
+        "A fixed dollar amount picked at random.",
+        "Whatever level keeps the position size largest."
+       ],
+       "correct": 0,
        "explanation": "Tying the stop to invalidation gives it a clear, reasoned basis."
       }
      ]
@@ -30980,8 +31236,8 @@
        "explanation": "Plan-in-advance plus disciplined process is the throughline."
       },
       {
-       "type": "fill_blank",
-       "question": "This review ties together plans, invalidation, process, and [___].",
+       "type": "multiple_choice",
+       "question": "This review ties together plans, invalidation, process, and...",
        "options": [
         "position sizing",
         "win rate",
@@ -31020,8 +31276,8 @@
        "explanation": "VWAP is the volume-weighted average price over a session."
       },
       {
-       "type": "fill_blank",
-       "question": "VWAP weights each price by its [___].",
+       "type": "multiple_choice",
+       "question": "VWAP weights each price by its...",
        "options": [
         "volume",
         "timeframe",
@@ -31132,8 +31388,8 @@
        "explanation": "VWAP context is descriptive, never a guaranteed signal."
       },
       {
-       "type": "fill_blank",
-       "question": "Price above VWAP is commonly described as relative [___].",
+       "type": "multiple_choice",
+       "question": "Price above VWAP is commonly described as relative...",
        "options": [
         "weakness",
         "strength",
@@ -31209,8 +31465,8 @@
        "explanation": "The bands quantify deviation from the moving-average center."
       },
       {
-       "type": "fill_blank",
-       "question": "Bollinger Bands are built around a moving [___].",
+       "type": "multiple_choice",
+       "question": "Bollinger Bands are built around a moving...",
        "options": [
         "volume total",
         "random line",
@@ -31553,8 +31809,8 @@
        "explanation": "Drawdown is measured from the prior peak value."
       },
       {
-       "type": "fill_blank",
-       "question": "A drawdown measures percent decline from an account's [___].",
+       "type": "multiple_choice",
+       "question": "A drawdown measures percent decline from an account's...",
        "options": [
         "starting deposit",
         "best trade",
@@ -31726,8 +31982,8 @@
        "explanation": "Short streaks happen by chance; they don't prove the long-run expectancy."
       },
       {
-       "type": "fill_blank",
-       "question": "A losing streak alone doesn't prove a system is [___].",
+       "type": "multiple_choice",
+       "question": "A losing streak alone doesn't prove a system is...",
        "options": [
         "random",
         "profitable",
@@ -32019,8 +32275,8 @@
        "explanation": "Normal variance plus recovery math driving preservation is the throughline."
       },
       {
-       "type": "fill_blank",
-       "question": "This review ties together drawdowns, recovery math, and losing [___].",
+       "type": "multiple_choice",
+       "question": "This review ties together drawdowns, recovery math, and losing...",
        "options": [
         "streaks",
         "win rate",
@@ -32194,8 +32450,8 @@
        "explanation": "R makes results comparable regardless of position size."
       },
       {
-       "type": "fill_blank",
-       "question": "A useful entry logs setup, plan, execution, and [___].",
+       "type": "multiple_choice",
+       "question": "A useful entry logs setup, plan, execution, and...",
        "options": [
         "outcome",
         "volume",
@@ -32263,8 +32519,8 @@
        "explanation": "The point of review is the process, which you control, not just outcomes."
       },
       {
-       "type": "fill_blank",
-       "question": "The most useful review question is: did I follow my [___]?",
+       "type": "multiple_choice",
+       "question": "The most useful review question is: did I follow my...?",
        "options": [
         "luck",
         "process",
@@ -32567,9 +32823,14 @@
        "explanation": "ATR is a volatility measure based on the average size of recent price movement."
       },
       {
-       "type": "true_false",
-       "question": "ATR is expressed in price terms, not as a bounded 0-100 scale.",
-       "correct": true,
+       "type": "multiple_choice",
+       "question": "How is ATR expressed?",
+       "options": [
+        "As a bounded 0-100 scale, like RSI.",
+        "In the asset's own price units.",
+        "As a percentage of account size."
+       ],
+       "correct": 1,
        "explanation": "Unlike RSI, ATR is expressed in the asset's own price units."
       },
       {
@@ -32956,9 +33217,14 @@
        "text": "A final review of what ATR measures, comparing readings, ATR and position sizing, and ATR across market conditions."
       },
       {
-       "type": "true_false",
-       "question": "ATR measures typical size of price movement, not direction.",
-       "correct": true,
+       "type": "multiple_choice",
+       "question": "ATR specifically measures...",
+       "options": [
+        "The typical size of price movement, not direction.",
+        "The direction price is currently trending.",
+        "The bid-ask spread."
+       ],
+       "correct": 0,
        "explanation": "That's the core, consistent idea across this whole unit."
       },
       {
@@ -33065,9 +33331,14 @@
        "explanation": "RVOL is a same-stock, same-time-of-day comparison, not a cross-market ranking."
       },
       {
-       "type": "true_false",
-       "question": "RVOL is about comparing a stock's volume to its own typical pattern, not to other stocks.",
-       "correct": true,
+       "type": "multiple_choice",
+       "question": "RVOL specifically compares a stock's current volume to...",
+       "options": [
+        "That same stock's own typical volume pattern.",
+        "The volume of other, unrelated stocks.",
+        "The overall market's total daily volume."
+       ],
+       "correct": 0,
        "explanation": "RVOL is stock-specific and time-of-day-specific."
       },
       {
@@ -33438,9 +33709,14 @@
        "text": "A final review of what RVOL measures, reading its readings, its relationship to catalysts, and how time of day factors in."
       },
       {
-       "type": "true_false",
-       "question": "RVOL compares current volume to that stock's own typical volume, not to other stocks.",
-       "correct": true,
+       "type": "multiple_choice",
+       "question": "ATR specifically measures...",
+       "options": [
+        "The typical size of price movement, not direction.",
+        "The direction price is currently trending.",
+        "The bid-ask spread."
+       ],
+       "correct": 0,
        "explanation": "That's the core, consistent idea across this whole unit."
       },
       {
@@ -33546,9 +33822,14 @@
        "explanation": "The opening range is specifically about the high/low formed in an early defined window, not prior-day or weekly data."
       },
       {
-       "type": "true_false",
-       "question": "The opening range window is commonly the first five, fifteen, or thirty minutes of the session.",
-       "correct": true,
+       "type": "multiple_choice",
+       "question": "Which is a commonly used opening range window?",
+       "options": [
+        "The first five, fifteen, or thirty minutes of the session.",
+        "The entire pre-market session.",
+        "The final hour of the session, \"power hour.\""
+       ],
+       "correct": 0,
        "explanation": "Different traders use different defined windows, but these are common choices."
       },
       {
@@ -33930,9 +34211,14 @@
        "text": "A final review of what the opening range is, breaks of the range, false breaks, and how range width connects to volatility."
       },
       {
-       "type": "true_false",
-       "question": "The opening range is the high and low formed during a defined early window after the open.",
-       "correct": true,
+       "type": "multiple_choice",
+       "question": "ATR specifically measures...",
+       "options": [
+        "The typical size of price movement, not direction.",
+        "The direction price is currently trending.",
+        "The bid-ask spread."
+       ],
+       "correct": 0,
        "explanation": "That's the core, consistent idea across this whole unit."
       },
       {
@@ -34141,8 +34427,8 @@
        "explanation": "Underperforming the sector, in either direction, fits the relative weakness description."
       },
       {
-       "type": "fill_blank",
-       "question": "Moving more than the sector/index in the same direction is commonly called relative [___].",
+       "type": "multiple_choice",
+       "question": "Moving more than the sector/index in the same direction is commonly called relative...",
        "options": [
         "strength",
         "weakness",
@@ -34333,8 +34619,8 @@
        "explanation": "Consistent with how confluence was framed earlier in the course."
       },
       {
-       "type": "fill_blank",
-       "question": "Weighing sector context alongside chart patterns is an example of building [___].",
+       "type": "multiple_choice",
+       "question": "Weighing sector context alongside chart patterns is an example of building...",
        "options": [
         "a guarantee",
         "certainty",
@@ -34412,14 +34698,19 @@
        "text": "A final review of sector and index context, relative strength and weakness, sector rotation, and how it all connects to confluence."
       },
       {
-       "type": "true_false",
-       "question": "Individual stocks commonly move somewhat alongside their sector and the broader market, though not in guaranteed lockstep.",
-       "correct": true,
+       "type": "multiple_choice",
+       "question": "ATR specifically measures...",
+       "options": [
+        "The typical size of price movement, not direction.",
+        "The direction price is currently trending.",
+        "The bid-ask spread."
+       ],
+       "correct": 0,
        "explanation": "That's the core, consistent idea across this whole unit."
       },
       {
-       "type": "fill_blank",
-       "question": "A stock outperforming its sector to the upside is commonly described as relative [___].",
+       "type": "multiple_choice",
+       "question": "A stock outperforming its sector to the upside is commonly described as relative...",
        "options": [
         "volume",
         "weakness",
@@ -34511,7 +34802,7 @@
        "type": "multiple_choice",
        "question": "Level II data displays...",
        "options": [
-        "A company's quarterly earnings report.",
+        "A record of recently completed trades.",
         "A list of current bid and ask orders at different price levels.",
         "Only the single most recent traded price."
        ],
@@ -34519,9 +34810,14 @@
        "explanation": "Level II is specifically about the order book, current bids and asks, not a single last-price figure or fundamentals report."
       },
       {
-       "type": "true_false",
-       "question": "Level II data is sometimes called the order book.",
-       "correct": true,
+       "type": "multiple_choice",
+       "question": "Level II data is also commonly known as the...",
+       "options": [
+        "Order book.",
+        "Time and sales tape.",
+        "Watchlist."
+       ],
+       "correct": 0,
        "explanation": "\"Order book\" and \"Level II\" commonly refer to the same underlying concept."
       },
       {
@@ -34615,9 +34911,14 @@
        "explanation": "The bid and ask represent opposite sides of the current order book, buyers versus sellers."
       },
       {
-       "type": "true_false",
-       "question": "The spread is the gap between the current bid and ask price.",
-       "correct": true,
+       "type": "multiple_choice",
+       "question": "The \"spread\" specifically refers to...",
+       "options": [
+        "The gap between the current bid and ask price.",
+        "The gap between the day's high and low.",
+        "The commission charged per trade."
+       ],
+       "correct": 0,
        "explanation": "This is the standard definition of the bid-ask spread."
       },
       {
@@ -34711,9 +35012,14 @@
        "explanation": "Depth is specifically about the size of orders waiting at various levels, not company-wide share counts or predictions."
       },
       {
-       "type": "true_false",
-       "question": "Deeper order book levels commonly reflect more resting orders at that price.",
-       "correct": true,
+       "type": "multiple_choice",
+       "question": "What does more \"depth\" at an order book level commonly reflect?",
+       "options": [
+        "More resting orders at that price.",
+        "A guaranteed price floor.",
+        "Recently completed trades at that price."
+       ],
+       "correct": 0,
        "explanation": "More depth simply means a larger number of shares represented in waiting orders at that level."
       },
       {
@@ -34892,14 +35198,19 @@
        "text": "A final review of what Level II shows, bids/asks/spread, order book depth, and the real limitations of this kind of data."
       },
       {
-       "type": "true_false",
-       "question": "Level II displays current buy and sell orders at various price levels, sometimes called the order book.",
-       "correct": true,
+       "type": "multiple_choice",
+       "question": "ATR specifically measures...",
+       "options": [
+        "The typical size of price movement, not direction.",
+        "The direction price is currently trending.",
+        "The bid-ask spread."
+       ],
+       "correct": 0,
        "explanation": "That's the core, consistent idea across this whole unit."
       },
       {
-       "type": "fill_blank",
-       "question": "The gap between the current bid and ask is called the [___].",
+       "type": "multiple_choice",
+       "question": "The gap between the current bid and ask is called the...",
        "options": [
         "snapshot",
         "spread",
@@ -35105,14 +35416,20 @@
        "chart": "breakout"
       },
       {
-       "type": "true_false",
-       "question": "FOMO describes jumping into a trade because a plan says it's a good setup.",
-       "correct": false,
+       "type": "multiple_choice",
+       "question": "FOMO describes entering a trade because...",
+       "options": [
+        "A pre-set plan's conditions were met.",
+        "Urgency about missing a fast move, without a clear plan.",
+        "A checklist confirmed the setup."
+       ],
+       "correct": 1,
+       "chart": "breakout",
        "explanation": "FOMO specifically describes acting from urgency about missing a move, not from a planned setup."
       },
       {
-       "type": "fill_blank",
-       "question": "The urge to jump into a trade purely because price is already moving fast is commonly called [___].",
+       "type": "multiple_choice",
+       "question": "The urge to jump into a trade purely because price is already moving fast is commonly called...",
        "options": [
         "FOMO",
         "a drawdown",
@@ -35207,10 +35524,10 @@
          "detail": "An emotionally reactive entry"
         },
         {
-         "label": "A guarantee that the trade will be profitable",
+         "label": "Entering after a breakout confirms your written trading plan",
          "correct": false,
-         "detail": "Overstates certainty",
-         "wrong_explanation": "FOMO describes a motivation for entering, not an outcome."
+         "detail": "This is a planned, rule-based entry",
+         "wrong_explanation": "Following your plan's own confirmation isn't FOMO, even though it also happens after a fast move."
         }
        ],
        "concern": "Understanding this specific term",
@@ -35261,9 +35578,14 @@
        "chart": "downtrend"
       },
       {
-       "type": "true_false",
-       "question": "Revenge trading describes entering a new trade quickly after a loss, driven by the urge to recover it immediately.",
-       "correct": true,
+       "type": "multiple_choice",
+       "question": "\"Revenge trading\" describes...",
+       "options": [
+        "Entering a new trade quickly after a loss, driven by the urge to recover it immediately.",
+        "Calmly reviewing a loss before deciding on the next trade.",
+        "Sticking to a pre-planned number of trades per day."
+       ],
+       "correct": 0,
        "explanation": "That's the standard definition of revenge trading."
       },
       {
@@ -35423,8 +35745,8 @@
        "explanation": "Overtrading specifically describes exceeding a plan's typical trade frequency, not sticking to it."
       },
       {
-       "type": "fill_blank",
-       "question": "Taking a much higher number of trades than a plan calls for is commonly called [___].",
+       "type": "multiple_choice",
+       "question": "Taking a much higher number of trades than a plan calls for is commonly called...",
        "options": [
         "hedging",
         "overtrading",
@@ -35543,8 +35865,8 @@
        "chart": "sideways"
       },
       {
-       "type": "fill_blank",
-       "question": "Overtrading means taking far more trades than a plan calls for, often from [___].",
+       "type": "multiple_choice",
+       "question": "Overtrading means taking far more trades than a plan calls for, often from...",
        "options": [
         "a solid plan",
         "boredom",
@@ -35579,8 +35901,8 @@
        "explanation": "A hot streak commonly is described as building confidence that can lead to skipping normal risk steps."
       },
       {
-       "type": "fill_blank",
-       "question": "Skipping normal risk steps after a string of wins is commonly linked to [___].",
+       "type": "multiple_choice",
+       "question": "Skipping normal risk steps after a string of wins is commonly linked to...",
        "options": [
         "overconfidence",
         "diversification",
@@ -35735,8 +36057,8 @@
        "explanation": "A losing streak commonly is described as building fear that can lead to hesitation or early exits from a plan."
       },
       {
-       "type": "fill_blank",
-       "question": "Hesitating on a genuinely planned setup because of recent losses is commonly linked to [___].",
+       "type": "multiple_choice",
+       "question": "Hesitating on a genuinely planned setup because of recent losses is commonly linked to...",
        "options": [
         "leverage",
         "fear",
@@ -35885,14 +36207,19 @@
        "chart": "doji"
       },
       {
-       "type": "true_false",
-       "question": "Discipline describes following a pre-set plan consistently, even when a feeling suggests otherwise.",
-       "correct": true,
+       "type": "multiple_choice",
+       "question": "\"Discipline\" describes...",
+       "options": [
+        "Following a pre-set plan consistently, even when a feeling suggests otherwise.",
+        "Acting on an in-the-moment feeling instead of the plan.",
+        "Avoiding trading entirely after a loss."
+       ],
+       "correct": 0,
        "explanation": "That's the standard descriptive meaning of discipline in this context."
       },
       {
-       "type": "fill_blank",
-       "question": "Acting on an in-the-moment feeling rather than a pre-set plan is commonly called an [___].",
+       "type": "multiple_choice",
+       "question": "Acting on an in-the-moment feeling rather than a pre-set plan is commonly called an...",
        "options": [
         "average",
         "order",
@@ -36022,9 +36349,14 @@
        "explanation": "Discipline is defined as consistent plan-following, even against momentary feelings."
       },
       {
-       "type": "true_false",
-       "question": "An impulse is acting on an in-the-moment feeling rather than the plan.",
-       "correct": true,
+       "type": "multiple_choice",
+       "question": "An \"impulse\" is best described as...",
+       "options": [
+        "Acting on an in-the-moment feeling rather than the plan.",
+        "Following a pre-set plan consistently.",
+        "Reviewing a trade after it closes."
+       ],
+       "correct": 0,
        "explanation": "That's the definition of impulse, contrasted with discipline."
       }
      ]
@@ -36084,8 +36416,8 @@
        "explanation": "Revenge trading specifically describes a reactive attempt to immediately recover a recent loss."
       },
       {
-       "type": "fill_blank",
-       "question": "Following a pre-set plan consistently, even when a feeling suggests otherwise, is commonly called [___].",
+       "type": "multiple_choice",
+       "question": "Following a pre-set plan consistently, even when a feeling suggests otherwise, is commonly called...",
        "options": [
         "overleveraging",
         "discipline",
@@ -36163,8 +36495,8 @@
        "explanation": "That's the common thread across every concept in this unit."
       },
       {
-       "type": "fill_blank",
-       "question": "Acting on an in-the-moment feeling rather than a pre-set plan is commonly called an [___].",
+       "type": "multiple_choice",
+       "question": "Acting on an in-the-moment feeling rather than a pre-set plan is commonly called an...",
        "options": [
         "average",
         "impulse",
@@ -36283,8 +36615,8 @@
        "chart": "sideways"
       },
       {
-       "type": "fill_blank",
-       "question": "This review ties together FOMO, revenge trading, overtrading, and [___].",
+       "type": "multiple_choice",
+       "question": "This review ties together FOMO, revenge trading, overtrading, and...",
        "options": [
         "expectancy",
         "discipline",
@@ -36330,8 +36662,8 @@
        "explanation": "A sustained sequence of higher (or lower) highs and lows is the commonly cited hallmark of a trend."
       },
       {
-       "type": "fill_blank",
-       "question": "A market showing a sustained move in one general direction is commonly classified as [___].",
+       "type": "multiple_choice",
+       "question": "A market showing a sustained move in one general direction is commonly classified as...",
        "options": [
         "choppy",
         "trending",
@@ -36416,8 +36748,8 @@
        "chart": "uptrend"
       },
       {
-       "type": "fill_blank",
-       "question": "A trending market is classified by a sustained move in one general [___].",
+       "type": "multiple_choice",
+       "question": "A trending market is classified by a sustained move in one general...",
        "options": [
         "color",
         "direction",
@@ -36446,9 +36778,14 @@
        "chart": "sideways"
       },
       {
-       "type": "true_false",
-       "question": "A choppy market is commonly described as moving back and forth with no clear sustained direction.",
-       "correct": true,
+       "type": "multiple_choice",
+       "question": "A \"choppy\" market is commonly described as...",
+       "options": [
+        "Moving back and forth with no clear sustained direction.",
+        "Showing a sustained move in one general direction.",
+        "Showing unusually large, fast swings in one direction."
+       ],
+       "correct": 0,
        "explanation": "That's the standard descriptive definition of a choppy market."
       },
       {
@@ -36463,8 +36800,8 @@
        "explanation": "Oscillation with no sustained progress is the commonly cited hallmark of a choppy market."
       },
       {
-       "type": "fill_blank",
-       "question": "A market moving back and forth with no clear sustained direction is commonly classified as [___].",
+       "type": "multiple_choice",
+       "question": "A market moving back and forth with no clear sustained direction is commonly classified as...",
        "options": [
         "breaking out",
         "trending",
@@ -36549,8 +36886,8 @@
        "chart": "sideways"
       },
       {
-       "type": "fill_blank",
-       "question": "A choppy market moves back and forth with no clear sustained [___].",
+       "type": "multiple_choice",
+       "question": "A choppy market moves back and forth with no clear sustained...",
        "options": [
         "volume",
         "color",
@@ -36596,8 +36933,8 @@
        "explanation": "Large or fast swings, regardless of direction, are the commonly cited hallmark of volatility."
       },
       {
-       "type": "fill_blank",
-       "question": "A market showing unusually large or fast price swings is commonly classified as [___].",
+       "type": "multiple_choice",
+       "question": "A market showing unusually large or fast price swings is commonly classified as...",
        "options": [
         "flat",
         "volatile",
@@ -36682,8 +37019,8 @@
        "chart": "breakout"
       },
       {
-       "type": "fill_blank",
-       "question": "A volatile market shows unusually large or fast [___].",
+       "type": "multiple_choice",
+       "question": "A volatile market shows unusually large or fast...",
        "options": [
         "colors",
         "volumes only",
@@ -36712,9 +37049,14 @@
        "chart": "resistanceRejection"
       },
       {
-       "type": "true_false",
-       "question": "A fakeout is commonly described as a price move beyond a level that quickly reverses.",
-       "correct": true,
+       "type": "multiple_choice",
+       "question": "A \"fakeout\" is commonly described as...",
+       "options": [
+        "A price move beyond a level that quickly reverses.",
+        "A price move beyond a level that keeps continuing.",
+        "Price approaching a level for the first time."
+       ],
+       "correct": 0,
        "explanation": "That's the standard descriptive definition of a fakeout."
       },
       {
@@ -36729,8 +37071,8 @@
        "explanation": "A brief move beyond a level followed by a quick reversal is the commonly cited hallmark of a fakeout."
       },
       {
-       "type": "fill_blank",
-       "question": "A price move beyond a level that quickly reverses, rather than continuing, is commonly called a [___].",
+       "type": "multiple_choice",
+       "question": "A price move beyond a level that quickly reverses, rather than continuing, is commonly called a...",
        "options": [
         "fakeout",
         "breakout",
@@ -36815,8 +37157,8 @@
        "chart": "resistanceRejection"
       },
       {
-       "type": "fill_blank",
-       "question": "A fakeout is a price move beyond a level that quickly [___].",
+       "type": "multiple_choice",
+       "question": "A fakeout is a price move beyond a level that quickly...",
        "options": [
         "disappears",
         "continues",
@@ -36948,8 +37290,8 @@
        "chart": "downtrend"
       },
       {
-       "type": "fill_blank",
-       "question": "A disciplined response to a losing streak is a calm review of the [___].",
+       "type": "multiple_choice",
+       "question": "A disciplined response to a losing streak is a calm review of the...",
        "options": [
         "the account balance",
         "process",
@@ -37021,8 +37363,8 @@
        "explanation": "A calm, process-focused review is the commonly described disciplined response."
       },
       {
-       "type": "fill_blank",
-       "question": "A market moving back and forth with no clear sustained direction is commonly classified as [___].",
+       "type": "multiple_choice",
+       "question": "A market moving back and forth with no clear sustained direction is commonly classified as...",
        "options": [
         "choppy",
         "volatile",
