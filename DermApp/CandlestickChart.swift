@@ -58,8 +58,10 @@ struct CandlestickChart: View {
     private let bearish = Color(hex: "#E15C5C")
     private let lineColor = Color(hex: "#8B5CF6")
     private let selectBlue = Theme.answer
-    private let gridColor = Color.white.opacity(0.07)
-    private let axisText = Color.white.opacity(0.42)
+    // Solid line/label colors (not translucent white) so the grid doesn't read
+    // as a frosted-glass mesh over the panel.
+    private let gridColor = Color(hex: "#2A3649")
+    private let axisText = Color(hex: "#7C8AA0")
 
     /// Maps a price value to a y-coordinate within the plot area's height.
     private struct ValueMapper {
