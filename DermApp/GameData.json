@@ -2448,16 +2448,10 @@
        "chart": "breakout"
       },
       {
-       "type": "spot_mistake",
-       "scenario": "Someone assumes high volatility guarantees a specific direction for price.",
-       "question": "What is the mistake?",
-       "options": [
-        "They should assume volatility always means a downtrend.",
-        "Volatility describes the size and speed of movement, not which direction it goes.",
-        "They should assume volatility always means an uptrend."
-       ],
-       "correct": 1,
-       "explanation": "A highly volatile market can move sharply in either direction, volatility alone doesn't determine direction.",
+       "type": "tap_candle",
+       "question": "Tap the breakout candle (the one that clears the range).",
+       "target": 3,
+       "explanation": "This candle pushes above the range on strong momentum.",
        "chart": "breakout"
       },
       {
@@ -2956,16 +2950,10 @@
        "chart": "doji"
       },
       {
-       "type": "spot_mistake",
-       "scenario": "Someone says \"this one candle proves price will definitely go up next.\"",
-       "question": "What is the mistake?",
-       "options": [
-        "A doji specifically predicts an up move next.",
-        "No single candlestick can reliably predict future price with certainty.",
-        "A longer wick on the candle would have made it a valid prediction."
-       ],
-       "correct": 1,
-       "explanation": "Candlesticks describe what already happened. They aren't guarantees about what happens next.",
+       "type": "tap_candle",
+       "question": "Tap the doji (tiny body, wicks on both sides).",
+       "target": 1,
+       "explanation": "The middle candle's near-zero body with balanced wicks is the doji.",
        "chart": "doji"
       },
       {
@@ -4789,10 +4777,10 @@
        "chart": "rejectionWickUp"
       },
       {
-       "type": "true_false",
-       "question": "A rejection wick shows price failed to hold at an extreme it briefly reached.",
-       "correct": true,
-       "explanation": "The wick marks a level price touched but couldn't sustain into the close.",
+       "type": "tap_candle",
+       "question": "Tap the candle with the long lower wick (rejection of the lows).",
+       "target": 1,
+       "explanation": "The long lower wick shows the lows were rejected.",
        "chart": "rejectionWickDown"
       },
       {
@@ -4936,10 +4924,10 @@
        "chart": "invertedHammer"
       },
       {
-       "type": "true_false",
-       "question": "A hanging man and a hammer share the exact same candle shape.",
-       "correct": true,
-       "explanation": "Same shape, different context, a hammer after a decline, a hanging man after a rise.",
+       "type": "tap_candle",
+       "question": "Tap the hanging man (small body up top, long lower wick after a rise).",
+       "target": 2,
+       "explanation": "Same shape as a hammer, but appearing after a rise, is the hanging man.",
        "chart": "hangingMan"
       },
       {
@@ -5117,10 +5105,10 @@
        "chart": "bearishEngulfing"
       },
       {
-       "type": "true_false",
-       "question": "The chart above shows a marubozu, a big body with almost no wicks.",
-       "correct": true,
-       "explanation": "Full body, no meaningful wicks. That's a marubozu.",
+       "type": "tap_candle",
+       "question": "Tap the marubozu (large body, almost no wicks).",
+       "target": 1,
+       "explanation": "The candle that is nearly all body is the marubozu.",
        "chart": "marubozu"
       },
       {
@@ -5215,28 +5203,10 @@
        "chart": "rejectionWickDown"
       },
       {
-       "type": "ingredient_match",
-       "question": "The highlighted candle on the chart above has a long upper wick. What does it suggest?",
-       "options": [
-        {
-         "label": "That volume was zero",
-         "correct": false,
-         "detail": "Incorrect",
-         "wrong_explanation": "Wicks show price extremes, not volume."
-        },
-        {
-         "label": "Buyers pushed price up, but sellers rejected it by the close",
-         "correct": true,
-         "detail": "A read of the upper wick"
-        },
-        {
-         "label": "A guaranteed crash",
-         "correct": false,
-         "detail": "Overstates certainty",
-         "wrong_explanation": "Descriptive, not a promise."
-        }
-       ],
-       "explanation": "A long upper wick describes an upward push that got rejected.",
+       "type": "tap_candle",
+       "question": "Tap the candle with the long upper wick (rejection of the highs).",
+       "target": 1,
+       "explanation": "The long upper wick shows the highs were rejected.",
        "chart": "rejectionWickUp"
       },
       {
@@ -5247,16 +5217,10 @@
        "chart": "hammer"
       },
       {
-       "type": "spot_mistake",
-       "scenario": "Someone reads the rejection wick on this chart as a guaranteed reversal.",
-       "question": "What is the mistake?",
-       "options": [
-        "A rejection wick is descriptive context. It doesn't guarantee the direction of the next candle.",
-        "Rejection wicks always mean the trend reverses.",
-        "The wick shows the exact future price."
-       ],
-       "correct": 0,
-       "explanation": "Rejection describes what happened at a level, not what happens next.",
+       "type": "tap_candle",
+       "question": "Tap the candle with the long lower wick (rejection of the lows).",
+       "target": 1,
+       "explanation": "The long lower wick shows the lows were rejected.",
        "chart": "rejectionWickDown"
       },
       {
@@ -5353,29 +5317,10 @@
        "chart": "hangingMan"
       },
       {
-       "type": "ingredient_match",
-       "question": "Why read a candle alongside the trend around it, as on the chart above?",
-       "options": [
-        {
-         "label": "The same shape can mean different things depending on what came before it",
-         "correct": true,
-         "detail": "Context shapes the read"
-        },
-        {
-         "label": "Because it guarantees the next move",
-         "correct": false,
-         "detail": "Overstates certainty",
-         "wrong_explanation": "Context informs, it doesn't guarantee."
-        },
-        {
-         "label": "Because the trend never matters",
-         "correct": false,
-         "detail": "Incorrect",
-         "wrong_explanation": "Context is central to reading candles."
-        }
-       ],
-       "concern": "The role of context",
-       "explanation": "Reading a candle in context is what turns a shape into a meaningful description.",
+       "type": "tap_candle",
+       "question": "Tap the inverted hammer (low body, long upper wick after a drop).",
+       "target": 2,
+       "explanation": "A low body with a long upper wick after a decline is the inverted hammer.",
        "chart": "invertedHammer"
       },
       {
@@ -5490,16 +5435,10 @@
        "chart": "doji"
       },
       {
-       "type": "spot_mistake",
-       "scenario": "Someone reads a single big marubozu as a promise that momentum continues forever.",
-       "question": "What is the mistake?",
-       "options": [
-        "A big body guarantees the very next candle is also big.",
-        "Momentum candles always repeat.",
-        "A big body describes one strong period. It doesn't guarantee momentum keeps going."
-       ],
-       "correct": 2,
-       "explanation": "A decisive candle is descriptive; it doesn't lock in the future.",
+       "type": "tap_candle",
+       "question": "Tap the marubozu (large body, almost no wicks).",
+       "target": 1,
+       "explanation": "The candle that is nearly all body is the marubozu.",
        "chart": "marubozu"
       },
       {
@@ -5589,28 +5528,10 @@
        "chart": "bullishEngulfing"
       },
       {
-       "type": "ingredient_match",
-       "question": "The highlighted doji on the chart above is best read as...",
-       "options": [
-        {
-         "label": "A balanced period with neither side in control",
-         "correct": true,
-         "detail": "Descriptive read"
-        },
-        {
-         "label": "Proof of a data error",
-         "correct": false,
-         "detail": "Incorrect",
-         "wrong_explanation": "A doji is a valid candle."
-        },
-        {
-         "label": "A guaranteed top",
-         "correct": false,
-         "detail": "Overstates certainty",
-         "wrong_explanation": "A doji doesn't guarantee a turn."
-        }
-       ],
-       "explanation": "A doji describes balance, nothing more on its own.",
+       "type": "tap_candle",
+       "question": "Tap the doji (tiny body, wicks on both sides).",
+       "target": 1,
+       "explanation": "The middle candle's near-zero body with balanced wicks is the doji.",
        "chart": "doji"
       },
       {
@@ -5728,41 +5649,20 @@
        "chart": "spinningTop"
       },
       {
-       "type": "ingredient_match",
-       "question": "Reading the shooting star on the chart above, the safe, descriptive takeaway is...",
-       "options": [
-        {
-         "label": "The candle shows trading volume",
-         "correct": false,
-         "detail": "Incorrect",
-         "wrong_explanation": "Wicks show price extremes, not volume."
-        },
-        {
-         "label": "Price will definitely fall now",
-         "correct": false,
-         "detail": "Overstates certainty",
-         "wrong_explanation": "Descriptive, not a promise."
-        },
-        {
-         "label": "An upward push was rejected by the close, useful context",
-         "correct": true,
-         "detail": "Descriptive read"
-        }
-       ],
-       "explanation": "The shooting star describes a rejected push up. Context, not a guarantee.",
+       "type": "tap_candle",
+       "question": "Tap the shooting star (long upper wick, low body).",
+       "target": 2,
+       "explanation": "The long upper wick with a low body is the shooting star.",
        "chart": "shootingStar"
       },
       {
-       "type": "spot_mistake",
-       "scenario": "Someone names every candle correctly but never once looks at the surrounding chart.",
-       "question": "What is the mistake?",
-       "options": [
-        "Candles are read alongside the surrounding trend and levels, not in total isolation.",
-        "Naming candles is the only thing that ever matters.",
-        "The surrounding chart should always be ignored."
+       "type": "tap_candles",
+       "question": "Tap the two swing highs making higher highs.",
+       "targets": [
+        1,
+        3
        ],
-       "correct": 0,
-       "explanation": "Context from the surrounding chart is part of reading any single candle well.",
+       "explanation": "These two peaks each print higher than the last, the uptrend's higher highs.",
        "chart": "pullbackUptrend"
       },
       {
@@ -6098,16 +5998,10 @@
        "chart": "resistanceRejection"
       },
       {
-       "type": "spot_mistake",
-       "scenario": "Someone is frustrated that their limit order didn't fill even though price came close to their level.",
-       "question": "What is the mistake?",
-       "options": [
-        "Limit orders should always be replaced with market orders.",
-        "The platform must have malfunctioned.",
-        "\"Close\" isn't the same as reaching the exact specified price, the order was working as designed."
-       ],
-       "correct": 2,
-       "explanation": "A limit order requires the exact specified price (or better) to be reached, not just approached.",
+       "type": "mark_level",
+       "question": "Drag the line to the resistance this chart keeps getting rejected at.",
+       "level_kind": "resistance",
+       "explanation": "The ceiling price keeps failing to break is the resistance.",
        "chart": "resistanceRejection"
       },
       {
@@ -6576,16 +6470,10 @@
        "chart": "breakout"
       },
       {
-       "type": "spot_mistake",
-       "scenario": "Someone is confused why their stop-limit order didn't fill during a very fast price drop.",
-       "question": "What is the mistake?",
-       "options": [
-        "If price moved past the limit price too quickly, the order can remain unfilled. That's a known trade-off of this order type.",
-        "Stop-limit orders always behave exactly like market orders.",
-        "The platform must have a bug."
-       ],
-       "correct": 0,
-       "explanation": "A fast move past the limit price is a well-known way a stop-limit order can fail to fill.",
+       "type": "tap_candle",
+       "question": "Tap the breakout candle (the one that clears the range).",
+       "target": 3,
+       "explanation": "This candle pushes above the range on strong momentum.",
        "chart": "breakout"
       },
       {
@@ -6732,16 +6620,10 @@
        "chart": "breakout"
       },
       {
-       "type": "spot_mistake",
-       "scenario": "Someone calculates a trading plan's results using only the exact prices shown on a chart, ignoring slippage entirely.",
-       "question": "What is the mistake?",
-       "options": [
-        "They should use an even older chart instead.",
-        "They should only look at longer wicks.",
-        "Ignoring slippage makes a plan look better on paper than it would likely perform in practice."
-       ],
-       "correct": 2,
-       "explanation": "A realistic picture accounts for costs like slippage beyond just the chart's displayed prices.",
+       "type": "tap_candle",
+       "question": "Tap the breakout candle (the one that clears the range).",
+       "target": 3,
+       "explanation": "This candle pushes above the range on strong momentum.",
        "chart": "breakout"
       },
       {
@@ -7044,16 +6926,10 @@
        "chart": "doji"
       },
       {
-       "type": "spot_mistake",
-       "scenario": "Someone finishes this unit and assumes there's one single \"best\" order type to use in every situation.",
-       "question": "What is the mistake?",
-       "options": [
-        "Different order types suit different situations, there's no single type that's best in every case.",
-        "They should only ever use limit orders from now on.",
-        "They should only ever use market orders from now on."
-       ],
-       "correct": 0,
-       "explanation": "This unit covered several order types precisely because each fits different situations and priorities.",
+       "type": "tap_candle",
+       "question": "Tap the doji (tiny body, wicks on both sides).",
+       "target": 1,
+       "explanation": "The middle candle's near-zero body with balanced wicks is the doji.",
        "chart": "doji"
       },
       {
@@ -7551,16 +7427,10 @@
        "chart": "hammer"
       },
       {
-       "type": "spot_mistake",
-       "scenario": "Someone believes candle shapes are unrelated to actual buying and selling activity.",
-       "question": "What is the mistake?",
-       "options": [
-        "Candle shape reflects only the timeframe, not order flow.",
-        "Candle shapes are mechanical traces of real order flow and supply/demand pressure during that period.",
-        "Only the color of a candle matters, not its shape."
-       ],
-       "correct": 1,
-       "explanation": "Body and wick size directly reflect the underlying buy/sell pressure for that period.",
+       "type": "tap_candle",
+       "question": "Tap the hammer (long lower wick, small body up top).",
+       "target": 2,
+       "explanation": "The long lower wick with a small upper body is the hammer.",
        "chart": "hammer"
       }
      ]
@@ -7642,16 +7512,10 @@
        "chart": "breakout"
       },
       {
-       "type": "spot_mistake",
-       "scenario": "Someone assumes every trend must accelerate at some predictable, fixed point.",
-       "question": "What is the mistake?",
-       "options": [
-        "Trends never accelerate at all.",
-        "Acceleration is a commonly observed tendency, not a guaranteed or perfectly predictable feature.",
-        "All trends accelerate at the exact same point."
-       ],
-       "correct": 1,
-       "explanation": "Acceleration can happen, but it's not a fixed, guaranteed pattern.",
+       "type": "tap_candle",
+       "question": "Tap the breakout candle (the one that clears the range).",
+       "target": 3,
+       "explanation": "This candle pushes above the range on strong momentum.",
        "chart": "breakout"
       }
      ]
@@ -7741,16 +7605,10 @@
        "chart": "resistanceRejection"
       },
       {
-       "type": "spot_mistake",
-       "scenario": "Someone treats reversals and breakouts as totally random events with no underlying mechanism.",
-       "question": "What is the mistake?",
-       "options": [
-        "Only breakouts have a mechanical cause, not reversals.",
-        "Both trace back to shifts in the same underlying supply/demand and order-flow mechanics covered in this unit.",
-        "Only reversals have a mechanical cause, not breakouts."
-       ],
-       "correct": 1,
-       "explanation": "This unit's whole point is that both events trace back to the same underlying mechanics.",
+       "type": "mark_level",
+       "question": "Drag the line to the resistance this chart keeps getting rejected at.",
+       "level_kind": "resistance",
+       "explanation": "The ceiling price keeps failing to break is the resistance.",
        "chart": "resistanceRejection"
       }
      ]
@@ -7836,29 +7694,10 @@
        "explanation": "This unit ties the underlying mechanics to concepts already covered, candles, trends, and breakouts."
       },
       {
-       "type": "ingredient_match",
-       "question": "Which best summarizes this unit?",
-       "options": [
-        {
-         "label": "The underlying mechanics (order flow, supply/demand) explain why candles, trends, and breakouts behave as they do",
-         "correct": true,
-         "detail": "The central theme"
-        },
-        {
-         "label": "This unit replaces everything taught in earlier units",
-         "correct": false,
-         "detail": "Overstates it",
-         "wrong_explanation": "It builds on and connects earlier units, it doesn't replace them."
-        },
-        {
-         "label": "This unit provides guaranteed trading signals",
-         "correct": false,
-         "detail": "Overstates certainty",
-         "wrong_explanation": "This contradicts the descriptive nature of every lesson."
-        }
-       ],
-       "concern": "Reviewing the big picture",
-       "explanation": "Connecting underlying mechanics to previously taught concepts is the throughline of this unit.",
+       "type": "tap_candle",
+       "question": "Tap the breakout candle (the one that clears the range).",
+       "target": 3,
+       "explanation": "This candle pushes above the range on strong momentum.",
        "chart": "breakout"
       },
       {
@@ -9164,16 +9003,10 @@
        "chart": "breakout"
       },
       {
-       "type": "spot_mistake",
-       "scenario": "Someone assumes a low-volume breakout is exactly as convincing as a high-volume one.",
-       "question": "What is the mistake?",
-       "options": [
-        "All breakouts are read identically regardless of volume.",
-        "Volume never matters for breakouts.",
-        "Volume level is commonly read as a meaningful difference, a low-volume breakout is commonly treated with more caution."
-       ],
-       "correct": 2,
-       "explanation": "Volume is commonly used to gauge how much participation is behind a breakout.",
+       "type": "tap_candle",
+       "question": "Tap the breakout candle (the one that clears the range).",
+       "target": 3,
+       "explanation": "This candle pushes above the range on strong momentum.",
        "chart": "breakout"
       }
      ]
@@ -9268,16 +9101,10 @@
        "chart": "resistanceRejection"
       },
       {
-       "type": "spot_mistake",
-       "scenario": "Someone assumes every reversal, regardless of volume, is equally significant.",
-       "question": "What is the mistake?",
-       "options": [
-        "Volume never matters for reversals.",
-        "Volume level is commonly used to gauge how significant a reversal might be, treating them all as identical ignores that context.",
-        "All reversals are read identically regardless of volume."
-       ],
-       "correct": 1,
-       "explanation": "Volume is commonly read as meaningful added context at a reversal point.",
+       "type": "mark_level",
+       "question": "Drag the line to the resistance this chart keeps getting rejected at.",
+       "level_kind": "resistance",
+       "explanation": "The ceiling price keeps failing to break is the resistance.",
        "chart": "resistanceRejection"
       }
      ]
@@ -9565,16 +9392,10 @@
        "chart": "marubozu"
       },
       {
-       "type": "spot_mistake",
-       "scenario": "Someone reads a big-bodied candle as equally significant regardless of the volume behind it.",
-       "question": "What is the mistake?",
-       "options": [
-        "Volume never changes how a candle should be read.",
-        "Volume level can meaningfully change how significant a candle's shape is read to be.",
-        "Candle shape is the only thing that ever matters."
-       ],
-       "correct": 1,
-       "explanation": "Combining the two factors (confluence) gives a fuller picture than shape alone.",
+       "type": "tap_candle",
+       "question": "Tap the marubozu (large body, almost no wicks).",
+       "target": 1,
+       "explanation": "The candle that is nearly all body is the marubozu.",
        "chart": "marubozu"
       }
      ]
@@ -9686,16 +9507,10 @@
        "chart": "breakout"
       },
       {
-       "type": "spot_mistake",
-       "scenario": "Someone finishes this unit and starts treating every high-volume move as a guaranteed success.",
-       "question": "What is the mistake?",
-       "options": [
-        "Low volume is what guarantees a successful move.",
-        "Volume adds context and confluence. It never guarantees a move's success.",
-        "High volume always guarantees success."
-       ],
-       "correct": 1,
-       "explanation": "This unit consistently frames volume as descriptive context, never a guarantee.",
+       "type": "tap_candle",
+       "question": "Tap the breakout candle (the one that clears the range).",
+       "target": 3,
+       "explanation": "This candle pushes above the range on strong momentum.",
        "chart": "breakout"
       }
      ]
@@ -9797,16 +9612,13 @@
        "chart": "pullbackUptrend"
       },
       {
-       "type": "spot_mistake",
-       "scenario": "Someone tries to classify a trend without ever identifying any swing highs or lows.",
-       "question": "What is the mistake?",
-       "options": [
-        "Swing highs and lows are unnecessary for trend reading.",
-        "Trend classification is built from comparing swing highs and lows, skipping them removes the basis for the read.",
-        "Any single candle can replace a full swing sequence."
+       "type": "tap_candles",
+       "question": "Tap the two swing highs making higher highs.",
+       "targets": [
+        1,
+        3
        ],
-       "correct": 1,
-       "explanation": "Swing highs/lows are the foundational vocabulary trend classification relies on.",
+       "explanation": "These two peaks each print higher than the last, the uptrend's higher highs.",
        "chart": "pullbackUptrend"
       }
      ]
@@ -9901,16 +9713,13 @@
        "chart": "pullbackUptrend"
       },
       {
-       "type": "spot_mistake",
-       "scenario": "Someone labels every single candle in an uptrend as an \"impulse,\" including the pullbacks.",
-       "question": "What is the mistake?",
-       "options": [
-        "Corrections don't exist as a separate concept.",
-        "Only the strong, trend-aligned legs are impulses. The counter-trend dips are corrections, not impulses.",
-        "Impulses and corrections are the same label for everything."
+       "type": "tap_candles",
+       "question": "Tap the two swing highs making higher highs.",
+       "targets": [
+        1,
+        3
        ],
-       "correct": 1,
-       "explanation": "Impulses and corrections describe two distinct, alternating phases within a trend.",
+       "explanation": "These two peaks each print higher than the last, the uptrend's higher highs.",
        "chart": "pullbackUptrend"
       }
      ]
@@ -10083,42 +9892,17 @@
        "explanation": "Rejection and acceptance are two contrasting ways price can behave at the same level."
       },
       {
-       "type": "ingredient_match",
-       "question": "How would you describe price that breaks a level and then holds calmly above it?",
-       "options": [
-        {
-         "label": "Acceptance, the level was tested and comfortably held through",
-         "correct": true,
-         "detail": "Calm holding above the level"
-        },
-        {
-         "label": "Neither term applies here",
-         "correct": false,
-         "detail": "Incomplete",
-         "wrong_explanation": "Acceptance specifically describes this calm-holding behavior."
-        },
-        {
-         "label": "Rejection, the level pushed price back",
-         "correct": false,
-         "detail": "Opposite behavior",
-         "wrong_explanation": "Rejection describes a push-back, not a calm hold."
-        }
-       ],
-       "concern": "Reading level behavior",
-       "explanation": "Calmly holding through a level, rather than being pushed back, is acceptance.",
+       "type": "tap_candle",
+       "question": "Tap the breakout candle that clears the level.",
+       "target": 3,
+       "explanation": "This candle clears the level before the retest that follows.",
        "chart": "breakoutRetest"
       },
       {
-       "type": "spot_mistake",
-       "scenario": "Someone calls a long-wick rejection candle an example of \"acceptance.\"",
-       "question": "What is the mistake?",
-       "options": [
-        "A long wick shows price was pushed back. That's rejection, not the calm holding that defines acceptance.",
-        "Rejection and acceptance mean the same thing.",
-        "A long wick always means the level was accepted."
-       ],
-       "correct": 0,
-       "explanation": "A pushed-back wick is rejection; acceptance describes a level being calmly held or traded through instead.",
+       "type": "tap_candle",
+       "question": "Tap the candle with the long upper wick (rejection of the highs).",
+       "target": 1,
+       "explanation": "The long upper wick shows the highs were rejected.",
        "chart": "rejectionWickUp"
       }
      ]
@@ -10213,16 +9997,13 @@
        "chart": "pullbackUptrend"
       },
       {
-       "type": "spot_mistake",
-       "scenario": "Someone treats a single small-bodied candle as guaranteed proof the whole trend is over.",
-       "question": "What is the mistake?",
-       "options": [
-        "Exhaustion signs never mean anything at all.",
-        "A single candle always ends a trend for certain.",
-        "One candle is a clue, not a guarantee. Exhaustion signs describe a possibility, not a certainty."
+       "type": "tap_candles",
+       "question": "Tap the two swing highs making higher highs.",
+       "targets": [
+        1,
+        3
        ],
-       "correct": 2,
-       "explanation": "Exhaustion signs are descriptive context, read alongside everything else, not a standalone guarantee.",
+       "explanation": "These two peaks each print higher than the last, the uptrend's higher highs.",
        "chart": "pullbackUptrend"
       }
      ]
@@ -10312,16 +10093,10 @@
        "chart": "breakoutRetest"
       },
       {
-       "type": "spot_mistake",
-       "scenario": "Someone memorizes every term in this unit but never once considers the surrounding trend or level.",
-       "question": "What is the mistake?",
-       "options": [
-        "Memorizing terms is the only skill that matters here.",
-        "Vocabulary without context misses the surrounding trend and levels that actually give each term its meaning.",
-        "Context only matters for beginners, not for the terms themselves."
-       ],
-       "correct": 1,
-       "explanation": "Context is what turns raw vocabulary into a meaningful, applied reading skill.",
+       "type": "tap_candle",
+       "question": "Tap the breakout candle that clears the level.",
+       "target": 3,
+       "explanation": "This candle clears the level before the retest that follows.",
        "chart": "breakoutRetest"
       }
      ]
@@ -10433,16 +10208,13 @@
        "chart": "pullbackUptrend"
       },
       {
-       "type": "spot_mistake",
-       "scenario": "Someone finishes this unit and starts using these terms as guaranteed trade signals.",
-       "question": "What is the mistake?",
-       "options": [
-        "This vocabulary has no practical use at all.",
-        "These terms guarantee specific trading outcomes.",
-        "This vocabulary is descriptive, useful for communication and reading charts, not a guaranteed signal system."
+       "type": "tap_candles",
+       "question": "Tap the two swing highs making higher highs.",
+       "targets": [
+        1,
+        3
        ],
-       "correct": 2,
-       "explanation": "Like the rest of this course, this vocabulary supports descriptive reading, not guaranteed signals.",
+       "explanation": "These two peaks each print higher than the last, the uptrend's higher highs.",
        "chart": "pullbackUptrend"
       }
      ]
@@ -11392,16 +11164,10 @@
        "chart": "breakout"
       },
       {
-       "type": "spot_mistake",
-       "scenario": "Someone assumes trend strength is either \"fully strong\" or \"fully weak,\" with nothing in between.",
-       "question": "What is the mistake?",
-       "options": [
-        "Trend strength exists on a spectrum, not as a simple two-option label.",
-        "They should only ever describe trends as weak.",
-        "They should only ever describe trends as strong."
-       ],
-       "correct": 0,
-       "explanation": "Treating strength as binary oversimplifies what's actually a matter of degree.",
+       "type": "tap_candle",
+       "question": "Tap the breakout candle (the one that clears the range).",
+       "target": 3,
+       "explanation": "This candle pushes above the range on strong momentum.",
        "chart": "breakout"
       },
       {
@@ -11553,16 +11319,10 @@
        "chart": "breakout"
       },
       {
-       "type": "spot_mistake",
-       "scenario": "Someone assumes strong momentum today guarantees the same strong momentum tomorrow.",
-       "question": "What is the mistake?",
-       "options": [
-        "They should assume momentum can only ever increase.",
-        "They should assume momentum never changes once established.",
-        "Momentum can shift day to day, strong momentum now doesn't guarantee it continues at the same intensity."
-       ],
-       "correct": 2,
-       "explanation": "Momentum is a current, changeable reading, not a fixed guarantee going forward.",
+       "type": "tap_candle",
+       "question": "Tap the breakout candle (the one that clears the range).",
+       "target": 3,
+       "explanation": "This candle pushes above the range on strong momentum.",
        "chart": "breakout"
       },
       {
@@ -12031,16 +11791,10 @@
        "chart": "breakout"
       },
       {
-       "type": "spot_mistake",
-       "scenario": "Someone treats every single break of structure as a guaranteed, permanent trend reversal.",
-       "question": "What is the mistake?",
-       "options": [
-        "They should ignore breaks of structure entirely.",
-        "They should look for an even bigger break to be sure.",
-        "Not every break of structure leads to a lasting trend change, some fail and the prior trend resumes."
-       ],
-       "correct": 2,
-       "explanation": "A break of structure is commonly read as an early signal, not a guaranteed permanent shift.",
+       "type": "tap_candle",
+       "question": "Tap the breakout candle (the one that clears the range).",
+       "target": 3,
+       "explanation": "This candle pushes above the range on strong momentum.",
        "chart": "breakout"
       },
       {
@@ -13097,16 +12851,10 @@
        "chart": "supportBounce"
       },
       {
-       "type": "spot_mistake",
-       "scenario": "Someone assumes a level touched five times is now mathematically guaranteed to hold a sixth time.",
-       "question": "What is the mistake?",
-       "options": [
-        "More touches can add notability, but they never guarantee the level will hold again.",
-        "They should stop counting touches entirely.",
-        "They should wait for even more touches before considering it at all."
-       ],
-       "correct": 0,
-       "explanation": "Notability from repeated touches is not the same as a guarantee about future behavior.",
+       "type": "mark_level",
+       "question": "Drag the line to the support this chart keeps bouncing from.",
+       "level_kind": "support",
+       "explanation": "The floor price keeps reacting off of is the support.",
        "chart": "supportBounce"
       },
       {
@@ -13253,16 +13001,10 @@
        "chart": "breakout"
       },
       {
-       "type": "spot_mistake",
-       "scenario": "Someone treats every single breakout as guaranteed to keep going in that direction.",
-       "question": "What is the mistake?",
-       "options": [
-        "They should have picked a totally different asset instead.",
-        "Breakouts sometimes fail and reverse, treating them as guaranteed outcomes overstates certainty.",
-        "They should have used a shorter timeframe only."
-       ],
-       "correct": 1,
-       "explanation": "Not every breakout continues, some reverse back, commonly called a \"false breakout.\"",
+       "type": "tap_candle",
+       "question": "Tap the breakout candle (the one that clears the range).",
+       "target": 3,
+       "explanation": "This candle pushes above the range on strong momentum.",
        "chart": "breakout"
       },
       {
@@ -13414,16 +13156,10 @@
        "chart": "resistanceRejection"
       },
       {
-       "type": "spot_mistake",
-       "scenario": "Someone assumes every breakout must be false and never trusts one at all.",
-       "question": "What is the mistake?",
-       "options": [
-        "Some breakouts do continue, treating every single one as false is just as much an overstatement as treating every one as guaranteed.",
-        "They should have used a completely different chart type.",
-        "They should have only looked at longer wicks."
-       ],
-       "correct": 0,
-       "explanation": "Both extremes, assuming every breakout works, or assuming none do, overstate certainty in either direction.",
+       "type": "mark_level",
+       "question": "Drag the line to the resistance this chart keeps getting rejected at.",
+       "level_kind": "resistance",
+       "explanation": "The ceiling price keeps failing to break is the resistance.",
        "chart": "resistanceRejection"
       },
       {
@@ -13575,16 +13311,10 @@
        "chart": "breakout"
       },
       {
-       "type": "spot_mistake",
-       "scenario": "Someone assumes every retest of a broken level will always hold and bounce.",
-       "question": "What is the mistake?",
-       "options": [
-        "Retests sometimes fail and price breaks back through. It isn't guaranteed to hold.",
-        "They should have used a shorter timeframe only.",
-        "They should have ignored the retest entirely."
-       ],
-       "correct": 0,
-       "explanation": "Like other chart concepts here, a retest describes a common pattern, not a certainty.",
+       "type": "tap_candle",
+       "question": "Tap the breakout candle (the one that clears the range).",
+       "target": 3,
+       "explanation": "This candle pushes above the range on strong momentum.",
        "chart": "breakout"
       },
       {
@@ -14296,16 +14026,10 @@
        "chart": "doubleTop"
       },
       {
-       "type": "spot_mistake",
-       "scenario": "Someone sees one peak and immediately calls it a \"double top.\"",
-       "question": "What is the mistake?",
-       "options": [
-        "A double top only needs a single peak to count.",
-        "A double top needs two peaks at about the same level, a single peak isn't one yet.",
-        "The number of peaks doesn't matter for a double top."
-       ],
-       "correct": 1,
-       "explanation": "The pattern is defined by two peaks at a similar level, not one.",
+       "type": "mark_level",
+       "question": "Drag the line to the resistance this chart keeps getting rejected at.",
+       "level_kind": "resistance",
+       "explanation": "The ceiling price keeps failing to break is the resistance.",
        "chart": "resistanceRejection"
       },
       {
@@ -14535,42 +14259,23 @@
        "explanation": "The neckline is the shared \"confirmation level\" for both patterns."
       },
       {
-       "type": "ingredient_match",
-       "question": "Which best describes the neckline's role?",
-       "options": [
-        {
-         "label": "The exact future price target",
-         "correct": false,
-         "detail": "Incorrect",
-         "wrong_explanation": "The neckline is a level, not a price prediction."
-        },
-        {
-         "label": "A level whose break is commonly read as confirming the pattern",
-         "correct": true,
-         "detail": "A descriptive confirmation step"
-        },
-        {
-         "label": "A guarantee the pattern will play out",
-         "correct": false,
-         "detail": "Overstates certainty",
-         "wrong_explanation": "A break is a clue, not a guarantee."
-        }
+       "type": "tap_candles",
+       "question": "Tap both troughs of the double bottom.",
+       "targets": [
+        1,
+        3
        ],
-       "concern": "Understanding confirmation",
-       "explanation": "The neckline is the confirmation level, described, not a certainty.",
+       "explanation": "The two troughs at the same support form the double bottom's \"W\".",
        "chart": "doubleBottom"
       },
       {
-       "type": "spot_mistake",
-       "scenario": "Someone treats a double top as complete even though price never broke the neckline.",
-       "question": "What is the mistake?",
-       "options": [
-        "The neckline never matters for a double top.",
-        "Without a neckline break, the pattern isn't commonly considered confirmed yet.",
-        "A double top is always complete at the first peak."
+       "type": "tap_candles",
+       "question": "Tap both peaks of the double top.",
+       "targets": [
+        1,
+        3
        ],
-       "correct": 1,
-       "explanation": "The neckline break is the commonly cited confirmation, so calling it complete early skips that step.",
+       "explanation": "The two peaks at the same resistance form the double top's \"M\".",
        "chart": "doubleTop"
       },
       {
@@ -14693,16 +14398,13 @@
        "chart": "doubleTop"
       },
       {
-       "type": "spot_mistake",
-       "scenario": "Someone labels a two-peak \"M\" at resistance a \"single rejection.\"",
-       "question": "What is the mistake?",
-       "options": [
-        "A double top and a single rejection are identical.",
-        "The number of touches never matters.",
-        "Two peaks at the same level is a double top, not a single rejection. They undercounted the tests."
+       "type": "tap_candles",
+       "question": "Tap both peaks of the double top.",
+       "targets": [
+        1,
+        3
        ],
-       "correct": 2,
-       "explanation": "The count of tests at the level is exactly what distinguishes the two.",
+       "explanation": "The two peaks at the same resistance form the double top's \"M\".",
        "chart": "doubleTop"
       },
       {
@@ -14825,16 +14527,13 @@
        "chart": "doubleBottom"
       },
       {
-       "type": "spot_mistake",
-       "scenario": "Someone calls a two-trough \"W\" a \"single bounce.\"",
-       "question": "What is the mistake?",
-       "options": [
-        "Counting touches never matters at support.",
-        "Two troughs at the same level is a double bottom, not a single bounce. They undercounted the tests.",
-        "A double bottom and a single bounce are identical."
+       "type": "tap_candles",
+       "question": "Tap both troughs of the double bottom.",
+       "targets": [
+        1,
+        3
        ],
-       "correct": 1,
-       "explanation": "The count of tests at support is what distinguishes the two.",
+       "explanation": "The two troughs at the same support form the double bottom's \"W\".",
        "chart": "doubleBottom"
       },
       {
@@ -14908,29 +14607,13 @@
        "explanation": "\"About the same\" height is the practical standard, not perfectly identical."
       },
       {
-       "type": "ingredient_match",
-       "question": "The two peaks on the chart above are at about the same level. What does that support?",
-       "options": [
-        {
-         "label": "A cleaner double top read, since the level was tested twice at the same height",
-         "correct": true,
-         "detail": "Roughly-equal peaks"
-        },
-        {
-         "label": "A guaranteed reversal",
-         "correct": false,
-         "detail": "Overstates certainty",
-         "wrong_explanation": "Equal peaks strengthen the read, not guarantee an outcome."
-        },
-        {
-         "label": "That the pattern is invalid",
-         "correct": false,
-         "detail": "Backwards",
-         "wrong_explanation": "Equal peaks support the pattern, not invalidate it."
-        }
+       "type": "tap_candles",
+       "question": "Tap both peaks of the double top.",
+       "targets": [
+        1,
+        3
        ],
-       "concern": "Judging the peaks",
-       "explanation": "Roughly-equal peaks strengthen the double top read, descriptively.",
+       "explanation": "The two peaks at the same resistance form the double top's \"M\".",
        "chart": "doubleTop"
       },
       {
@@ -14941,16 +14624,10 @@
        "chart": "doubleTop"
       },
       {
-       "type": "spot_mistake",
-       "scenario": "Someone calls it a clean double top even though the second peak is far higher than the first.",
-       "question": "What is the mistake?",
-       "options": [
-        "A higher second peak always makes a stronger double top.",
-        "Peak heights never matter for a double top.",
-        "If the second high is far above the first, the peaks aren't at the same level. It's a weaker \"double\" read (and may just be a breakout)."
-       ],
-       "correct": 2,
-       "explanation": "The \"double\" read depends on the two peaks being at about the same level.",
+       "type": "tap_candle",
+       "question": "Tap the breakout candle (the one that clears the range).",
+       "target": 3,
+       "explanation": "This candle pushes above the range on strong momentum.",
        "chart": "breakout"
       },
       {
@@ -15030,42 +14707,20 @@
        "chart": "doubleBottom"
       },
       {
-       "type": "ingredient_match",
-       "question": "The two troughs on the chart above hold at about the same level. What does that support?",
-       "options": [
-        {
-         "label": "A cleaner double bottom read, since support held twice at the same level",
-         "correct": true,
-         "detail": "Roughly-equal troughs"
-        },
-        {
-         "label": "That the pattern is invalid",
-         "correct": false,
-         "detail": "Backwards",
-         "wrong_explanation": "Equal troughs support the pattern."
-        },
-        {
-         "label": "A guaranteed rally",
-         "correct": false,
-         "detail": "Overstates certainty",
-         "wrong_explanation": "Equal troughs strengthen the read, not guarantee it."
-        }
+       "type": "tap_candles",
+       "question": "Tap both troughs of the double bottom.",
+       "targets": [
+        1,
+        3
        ],
-       "concern": "Judging the troughs",
-       "explanation": "Roughly-equal troughs strengthen the double bottom read, descriptively.",
+       "explanation": "The two troughs at the same support form the double bottom's \"W\".",
        "chart": "doubleBottom"
       },
       {
-       "type": "spot_mistake",
-       "scenario": "Someone calls it a clean double bottom even though the second trough is far below the first.",
-       "question": "What is the mistake?",
-       "options": [
-        "Trough depth never matters.",
-        "A lower second trough always strengthens the pattern.",
-        "If the second low is far below the first, the troughs aren't at the same level, a weaker \"double\" read (and may just be a breakdown)."
-       ],
-       "correct": 2,
-       "explanation": "The \"double\" read depends on the two troughs being at about the same level.",
+       "type": "tap_candle",
+       "question": "Tap the candle that breaks below the support shelf.",
+       "target": 3,
+       "explanation": "This candle drops through the support the prior candles held.",
        "chart": "breakdown"
       },
       {
@@ -15144,42 +14799,20 @@
        "explanation": "Any pattern can fail. That's why it's read as a clue, not a certainty."
       },
       {
-       "type": "ingredient_match",
-       "question": "Why treat a double top as a clue rather than a certainty?",
-       "options": [
-        {
-         "label": "Because the pattern controls the market",
-         "correct": false,
-         "detail": "Incorrect",
-         "wrong_explanation": "A pattern describes; it doesn't control price."
-        },
-        {
-         "label": "Because price can still break the level instead of reversing",
-         "correct": true,
-         "detail": "Patterns fail sometimes"
-        },
-        {
-         "label": "Because patterns always work",
-         "correct": false,
-         "detail": "Overstates certainty",
-         "wrong_explanation": "This is exactly the overconfidence to avoid."
-        }
+       "type": "tap_candles",
+       "question": "Tap both peaks of the double top.",
+       "targets": [
+        1,
+        3
        ],
-       "concern": "Managing expectations",
-       "explanation": "Any pattern can fail, so it's read as a probability-shaped clue, not a guarantee.",
+       "explanation": "The two peaks at the same resistance form the double top's \"M\".",
        "chart": "doubleTop"
       },
       {
-       "type": "spot_mistake",
-       "scenario": "Someone assumes a double top means a reversal is certain and ignores that price broke upward.",
-       "question": "What is the mistake?",
-       "options": [
-        "A double top can never fail.",
-        "Price broke up through the level, the double top failed. Treating it as certain ignored that outcome.",
-        "Breaking upward confirms the double top."
-       ],
-       "correct": 1,
-       "explanation": "When price breaks up instead of down, the double top has failed. Patterns aren't guarantees.",
+       "type": "tap_candle",
+       "question": "Tap the breakout candle (the one that clears the range).",
+       "target": 3,
+       "explanation": "This candle pushes above the range on strong momentum.",
        "chart": "breakout"
       },
       {
@@ -15351,28 +14984,13 @@
        "chart": "doubleBottom"
       },
       {
-       "type": "ingredient_match",
-       "question": "A double top on the chart above has failed at resistance twice. Descriptively, that suggests...",
-       "options": [
-        {
-         "label": "A guaranteed crash",
-         "correct": false,
-         "detail": "Overstates certainty",
-         "wrong_explanation": "Descriptive, not a promise."
-        },
-        {
-         "label": "That resistance no longer exists",
-         "correct": false,
-         "detail": "Backwards",
-         "wrong_explanation": "The level held twice, so it's still relevant."
-        },
-        {
-         "label": "Buyers failed to push above the level twice, sellers defended it",
-         "correct": true,
-         "detail": "A read of the two tests"
-        }
+       "type": "tap_candles",
+       "question": "Tap both peaks of the double top.",
+       "targets": [
+        1,
+        3
        ],
-       "explanation": "Two failed pushes above resistance is descriptive context, not a certainty.",
+       "explanation": "The two peaks at the same resistance form the double top's \"M\".",
        "chart": "doubleTop"
       },
       {
@@ -15401,16 +15019,13 @@
        "explanation": "Each is a descriptive read of how the level behaved."
       },
       {
-       "type": "spot_mistake",
-       "scenario": "Someone turns \"a double bottom suggests buyers defended support\" into \"definitely buy now.\"",
-       "question": "What is the mistake?",
-       "options": [
-        "That converts a descriptive read into a certainty and a trade command. The pattern is context, not a guaranteed signal.",
-        "The descriptive read and a guaranteed buy are the same thing.",
-        "Patterns are always trade commands."
+       "type": "tap_candles",
+       "question": "Tap both troughs of the double bottom.",
+       "targets": [
+        1,
+        3
        ],
-       "correct": 0,
-       "explanation": "A descriptive read isn't a guaranteed signal; treating it as one overstates certainty.",
+       "explanation": "The two troughs at the same support form the double bottom's \"W\".",
        "chart": "doubleBottom"
       },
       {
@@ -15466,29 +15081,13 @@
        "chart": "doubleTop"
       },
       {
-       "type": "ingredient_match",
-       "question": "On the chart above, price tested support twice and held. Best description?",
-       "options": [
-        {
-         "label": "A double bottom, support defended twice",
-         "correct": true,
-         "detail": "Two holds at the level"
-        },
-        {
-         "label": "A guaranteed reversal",
-         "correct": false,
-         "detail": "Overstates certainty",
-         "wrong_explanation": "Descriptive, not a guarantee."
-        },
-        {
-         "label": "A single bounce",
-         "correct": false,
-         "detail": "Undercounts",
-         "wrong_explanation": "There are two troughs, not one."
-        }
+       "type": "tap_candles",
+       "question": "Tap both troughs of the double bottom.",
+       "targets": [
+        1,
+        3
        ],
-       "concern": "Reading level behavior",
-       "explanation": "Two holds at support form a double bottom, described.",
+       "explanation": "The two troughs at the same support form the double bottom's \"W\".",
        "chart": "doubleBottom"
       },
       {
@@ -15757,42 +15356,23 @@
        "chart": "headShoulders"
       },
       {
-       "type": "ingredient_match",
-       "question": "What does a head & shoulders describe, on its own?",
-       "options": [
-        {
-         "label": "A guaranteed crash",
-         "correct": false,
-         "detail": "Overstates certainty",
-         "wrong_explanation": "A pattern describes; it doesn't guarantee the move."
-        },
-        {
-         "label": "That the middle peak is the lowest",
-         "correct": false,
-         "detail": "Backwards",
-         "wrong_explanation": "The head (middle) is the highest, not the lowest."
-        },
-        {
-         "label": "Three peaks with a higher middle, a possible reversal shape",
-         "correct": true,
-         "detail": "Descriptive, not a guarantee"
-        }
+       "type": "tap_candles",
+       "question": "Tap the left and right shoulders.",
+       "targets": [
+        1,
+        5
        ],
-       "concern": "Reading the pattern descriptively",
-       "explanation": "A head & shoulders describes a three-peak shape. Context, not certainty.",
+       "explanation": "The two outer peaks, lower than the head between them, are the shoulders.",
        "chart": "headShoulders"
       },
       {
-       "type": "spot_mistake",
-       "scenario": "Someone calls a two-peak chart a \"head & shoulders.\"",
-       "question": "What is the mistake?",
-       "options": [
-        "The number of peaks doesn't matter.",
-        "A head & shoulders needs three peaks (with a higher middle), two peaks is a double top.",
-        "Two peaks is enough for a head & shoulders."
+       "type": "tap_candles",
+       "question": "Tap both peaks of the double top.",
+       "targets": [
+        1,
+        3
        ],
-       "correct": 1,
-       "explanation": "Head & shoulders is a three-peak pattern; two peaks is a double top.",
+       "explanation": "The two peaks at the same resistance form the double top's \"M\".",
        "chart": "doubleTop"
       },
       {
@@ -15991,29 +15571,13 @@
        "explanation": "Confirmation is commonly tied to the neckline breaking, not just the right shoulder appearing."
       },
       {
-       "type": "ingredient_match",
-       "question": "Which best describes the neckline's role?",
-       "options": [
-        {
-         "label": "A level whose break is commonly read as confirming the pattern",
-         "correct": true,
-         "detail": "A descriptive confirmation step"
-        },
-        {
-         "label": "A guarantee the pattern plays out",
-         "correct": false,
-         "detail": "Overstates certainty",
-         "wrong_explanation": "A break is a clue, not a guarantee."
-        },
-        {
-         "label": "The exact future price target",
-         "correct": false,
-         "detail": "Incorrect",
-         "wrong_explanation": "The neckline is a level, not a prediction."
-        }
+       "type": "tap_candles",
+       "question": "Tap the left and right shoulders.",
+       "targets": [
+        1,
+        5
        ],
-       "concern": "Understanding confirmation",
-       "explanation": "The neckline is the confirmation level, described, not a certainty.",
+       "explanation": "The two outer peaks, lower than the head between them, are the shoulders.",
        "chart": "headShoulders"
       },
       {
@@ -16216,16 +15780,13 @@
        "explanation": "The head must be the highest peak; if it isn't, it's not a clean head & shoulders."
       },
       {
-       "type": "spot_mistake",
-       "scenario": "Someone calls it a clean head & shoulders even though the middle peak is lower than both outer peaks.",
-       "question": "What is the mistake?",
-       "options": [
-        "Peak heights never matter.",
-        "The head can be the lowest peak.",
-        "If the middle peak isn't the highest, it isn't a head & shoulders. The head must top both shoulders."
+       "type": "tap_candles",
+       "question": "Tap both peaks of the double top.",
+       "targets": [
+        1,
+        3
        ],
-       "correct": 2,
-       "explanation": "The defining feature is a head that stands above both shoulders.",
+       "explanation": "The two peaks at the same resistance form the double top's \"M\".",
        "chart": "doubleTop"
       },
       {
@@ -16337,16 +15898,13 @@
        "chart": "headShoulders"
       },
       {
-       "type": "spot_mistake",
-       "scenario": "Someone labels a clear three-peak (higher middle) chart a \"double top.\"",
-       "question": "What is the mistake?",
-       "options": [
-        "Peak count never matters.",
-        "Three peaks with a higher middle is a head & shoulders. They undercounted the peaks.",
-        "A double top and head & shoulders are identical."
+       "type": "tap_candles",
+       "question": "Tap the left and right shoulders.",
+       "targets": [
+        1,
+        5
        ],
-       "correct": 1,
-       "explanation": "The peak count (and the higher middle) is exactly what distinguishes them.",
+       "explanation": "The two outer peaks, lower than the head between them, are the shoulders.",
        "chart": "headShoulders"
       },
       {
@@ -16414,29 +15972,13 @@
        "explanation": "This order, shoulders, head, shoulder, then neckline break, is how the pattern is commonly read."
       },
       {
-       "type": "ingredient_match",
-       "question": "Why wait for the neckline break before calling it confirmed?",
-       "options": [
-        {
-         "label": "Because the pattern is always confirmed at the head",
-         "correct": false,
-         "detail": "Too early",
-         "wrong_explanation": "The head forming isn't the confirmation step."
-        },
-        {
-         "label": "Because until the neckline breaks, the pattern can still fail",
-         "correct": true,
-         "detail": "Confirmation reduces (not removes) uncertainty"
-        },
-        {
-         "label": "Because confirmation guarantees the outcome",
-         "correct": false,
-         "detail": "Overstates certainty",
-         "wrong_explanation": "Even a confirmed pattern can fail."
-        }
+       "type": "tap_candles",
+       "question": "Tap the left and right shoulders.",
+       "targets": [
+        1,
+        5
        ],
-       "concern": "Managing confirmation",
-       "explanation": "The neckline break is the commonly cited confirmation; before it, the pattern can still fail.",
+       "explanation": "The two outer peaks, lower than the head between them, are the shoulders.",
        "chart": "headShoulders"
       },
       {
@@ -16509,29 +16051,13 @@
        "explanation": "Any pattern can fail. That's why it's read as a clue."
       },
       {
-       "type": "ingredient_match",
-       "question": "Why treat a head & shoulders as a clue rather than a certainty?",
-       "options": [
-        {
-         "label": "Because patterns always work",
-         "correct": false,
-         "detail": "Overstates certainty",
-         "wrong_explanation": "This is the overconfidence to avoid."
-        },
-        {
-         "label": "Because the pattern controls price",
-         "correct": false,
-         "detail": "Incorrect",
-         "wrong_explanation": "A pattern describes; it doesn't control the market."
-        },
-        {
-         "label": "Because price can still fail to break the neckline",
-         "correct": true,
-         "detail": "Patterns fail sometimes"
-        }
+       "type": "tap_candles",
+       "question": "Tap the left and right shoulders.",
+       "targets": [
+        1,
+        5
        ],
-       "concern": "Managing expectations",
-       "explanation": "Any pattern can fail, so it's read as a probability-shaped clue, not a guarantee.",
+       "explanation": "The two outer peaks, lower than the head between them, are the shoulders.",
        "chart": "headShoulders"
       },
       {
@@ -16677,28 +16203,10 @@
        "chart": "headShoulders"
       },
       {
-       "type": "ingredient_match",
-       "question": "An inverse head & shoulders has completed on the chart above. Descriptively, that suggests...",
-       "options": [
-        {
-         "label": "Nothing can be read from it",
-         "correct": false,
-         "detail": "Undersells it",
-         "wrong_explanation": "The structure is meaningful context."
-        },
-        {
-         "label": "A guaranteed rally",
-         "correct": false,
-         "detail": "Overstates certainty",
-         "wrong_explanation": "Descriptive, not a promise."
-        },
-        {
-         "label": "Sellers made a lower low (head) but couldn't sustain it, and the level gave way upward",
-         "correct": true,
-         "detail": "A read of the structure"
-        }
-       ],
-       "explanation": "The failed lower low plus an upward neckline break is descriptive context.",
+       "type": "tap_candle",
+       "question": "Tap the head (the lowest of the three troughs).",
+       "target": 3,
+       "explanation": "The deepest middle trough is the head of an inverse head & shoulders.",
        "chart": "inverseHeadShoulders"
       },
       {
@@ -16708,16 +16216,13 @@
        "explanation": "This course stays descriptive, patterns inform reading, not trade commands."
       },
       {
-       "type": "spot_mistake",
-       "scenario": "Someone turns \"a head & shoulders suggests a failed higher high\" into \"definitely short it now.\"",
-       "question": "What is the mistake?",
-       "options": [
-        "Patterns are always trade commands.",
-        "A descriptive read and a trade command are the same.",
-        "That converts a descriptive read into a certainty and a trade command. The pattern is context, not a guaranteed signal."
+       "type": "tap_candles",
+       "question": "Tap the left and right shoulders.",
+       "targets": [
+        1,
+        5
        ],
-       "correct": 2,
-       "explanation": "A descriptive read isn't a guaranteed signal; treating it as one overstates certainty.",
+       "explanation": "The two outer peaks, lower than the head between them, are the shoulders.",
        "chart": "headShoulders"
       },
       {
@@ -16780,10 +16285,13 @@
        "chart": "inverseHeadShoulders"
       },
       {
-       "type": "true_false",
-       "question": "The chart above shows a head & shoulders (three peaks, higher middle).",
-       "correct": true,
-       "explanation": "That's the head & shoulders shape.",
+       "type": "tap_candles",
+       "question": "Tap the left and right shoulders.",
+       "targets": [
+        1,
+        5
+       ],
+       "explanation": "The two outer peaks, lower than the head between them, are the shoulders.",
        "chart": "headShoulders"
       },
       {
@@ -16912,29 +16420,13 @@
        "explanation": "The unit treats the pattern as a descriptive, confirmation-based clue."
       },
       {
-       "type": "ingredient_match",
-       "question": "Which best summarizes this unit?",
-       "options": [
-        {
-         "label": "A replacement for reading levels",
-         "correct": false,
-         "detail": "Backwards",
-         "wrong_explanation": "It's read together with the neckline."
-        },
-        {
-         "label": "A three-peak reversal shape confirmed by a neckline break, useful context, not a guaranteed signal",
-         "correct": true,
-         "detail": "The central theme"
-        },
-        {
-         "label": "A pattern that guarantees the next move",
-         "correct": false,
-         "detail": "Overstates certainty",
-         "wrong_explanation": "This contradicts the unit."
-        }
+       "type": "tap_candles",
+       "question": "Tap the left and right shoulders.",
+       "targets": [
+        1,
+        5
        ],
-       "concern": "Reviewing the big picture",
-       "explanation": "This descriptive, confirmation-aware reading is the throughline of the unit.",
+       "explanation": "The two outer peaks, lower than the head between them, are the shoulders.",
        "chart": "headShoulders"
       },
       {
@@ -17396,16 +16888,10 @@
        "explanation": "Descriptive bias, not a promise, is the honest read."
       },
       {
-       "type": "spot_mistake",
-       "scenario": "Someone bets everything on an ascending triangle \"definitely\" breaking up.",
-       "question": "What is the mistake?",
-       "options": [
-        "Ascending triangles always break up.",
-        "Break direction is fully predictable.",
-        "An ascending triangle is associated with an upward break but doesn't guarantee it, treating it as certain overstates the read."
-       ],
-       "correct": 2,
-       "explanation": "A bias isn't a guarantee; triangles can and do break either way.",
+       "type": "mark_level",
+       "question": "Drag the line to the flat resistance the triangle presses against.",
+       "level_kind": "resistance",
+       "explanation": "The flat ceiling the rising lows squeeze toward is the resistance.",
        "chart": "ascendingTriangle"
       },
       {
@@ -17481,10 +16967,10 @@
        "chart": "ascendingTriangle"
       },
       {
-       "type": "true_false",
-       "question": "The chart above shows a symmetrical triangle.",
-       "correct": false,
-       "explanation": "This is a descending triangle (flat bottom), not a symmetrical one.",
+       "type": "mark_level",
+       "question": "Drag the line to the flat support the triangle presses against.",
+       "level_kind": "support",
+       "explanation": "The flat floor the falling highs squeeze toward is the support.",
        "chart": "descendingTriangle"
       },
       {
@@ -18047,16 +17533,11 @@
        "explanation": "They describe a pause that often continues, descriptively."
       },
       {
-       "type": "spot_mistake",
-       "scenario": "Someone treats a bull flag as a certain continuation and ignores that it broke down.",
-       "question": "What is the mistake?",
-       "options": [
-        "A flag's continuation is a tendency, not a guarantee. It can fail and break the other way.",
-        "Continuation is fully certain.",
-        "Flags always continue the trend."
-       ],
-       "correct": 0,
-       "explanation": "Continuation patterns are clues, not guarantees.",
+       "type": "mark_consolidation",
+       "question": "Drag across the flag (the small pause after the pole).",
+       "target_lo": 2,
+       "target_hi": 3,
+       "explanation": "The small drift after the strong pole is the flag.",
        "chart": "bearFlag"
       },
       {
@@ -18142,29 +17623,11 @@
        "explanation": "Pole first, then a continuation-style pause."
       },
       {
-       "type": "ingredient_match",
-       "question": "Which best summarizes flags and pennants?",
-       "options": [
-        {
-         "label": "A brief pause after a strong move that often continues, a tendency, not a guarantee",
-         "correct": true,
-         "detail": "The central theme"
-        },
-        {
-         "label": "Patterns that guarantee continuation",
-         "correct": false,
-         "detail": "Overstates certainty",
-         "wrong_explanation": "Contradicts the unit."
-        },
-        {
-         "label": "Reversal patterns",
-         "correct": false,
-         "detail": "Wrong category",
-         "wrong_explanation": "They're continuation patterns."
-        }
-       ],
-       "concern": "Reviewing the big picture",
-       "explanation": "A pause with a continuation tendency (not a guarantee) is the throughline.",
+       "type": "mark_consolidation",
+       "question": "Drag across the flag (the small pause after the pole).",
+       "target_lo": 2,
+       "target_hi": 3,
+       "explanation": "The small drift after the strong pole is the flag.",
        "chart": "bullFlag"
       },
       {
@@ -18852,29 +18315,13 @@
        "explanation": "A downtrend line connects the falling (lower) highs."
       },
       {
-       "type": "ingredient_match",
-       "question": "What does a trendline describe?",
-       "options": [
-        {
-         "label": "A guarantee price will follow it forever",
-         "correct": false,
-         "detail": "Overstates certainty",
-         "wrong_explanation": "A trendline is a guide, not a promise."
-        },
-        {
-         "label": "The exact future price",
-         "correct": false,
-         "detail": "Incorrect",
-         "wrong_explanation": "It marks structure, not a prediction."
-        },
-        {
-         "label": "A diagonal guide along a trend's turning points",
-         "correct": true,
-         "detail": "Descriptive structure"
-        }
+       "type": "tap_candles",
+       "question": "Tap the two swing highs making higher highs.",
+       "targets": [
+        1,
+        3
        ],
-       "concern": "Reading the tool",
-       "explanation": "A trendline is a descriptive guide along the trend's turns.",
+       "explanation": "These two peaks each print higher than the last, the uptrend's higher highs.",
        "chart": "pullbackUptrend"
       },
       {
@@ -19255,16 +18702,13 @@
        "explanation": "It's a descriptive, possible shift in structure."
       },
       {
-       "type": "spot_mistake",
-       "scenario": "Someone treats a single trendline break as a guaranteed reversal and bets everything on it.",
-       "question": "What is the mistake?",
-       "options": [
-        "Breaks are fully predictable.",
-        "A break always means a full reversal.",
-        "A trendline break is a possible shift, not a guaranteed reversal. Treating it as certain overstates it."
+       "type": "tap_candles",
+       "question": "Tap the two swing highs making higher highs.",
+       "targets": [
+        1,
+        3
        ],
-       "correct": 2,
-       "explanation": "A break is descriptive context, not a guarantee.",
+       "explanation": "These two peaks each print higher than the last, the uptrend's higher highs.",
        "chart": "pullbackUptrend"
       },
       {
@@ -19361,29 +18805,13 @@
        "explanation": "Multiple touches are the evidence a line matters."
       },
       {
-       "type": "ingredient_match",
-       "question": "Which best summarizes trendlines?",
-       "options": [
-        {
-         "label": "Lines that guarantee where price goes",
-         "correct": false,
-         "detail": "Overstates certainty",
-         "wrong_explanation": "Contradicts the unit."
-        },
-        {
-         "label": "Diagonal guides along a trend's turns, more meaningful with more touches",
-         "correct": true,
-         "detail": "The central theme"
-        },
-        {
-         "label": "The same as horizontal support/resistance",
-         "correct": false,
-         "detail": "Wrong",
-         "wrong_explanation": "Trendlines are diagonal, not flat."
-        }
+       "type": "tap_candles",
+       "question": "Tap the two swing highs making higher highs.",
+       "targets": [
+        1,
+        3
        ],
-       "concern": "Reviewing the big picture",
-       "explanation": "Descriptive diagonal guides, validity from touches, is the throughline.",
+       "explanation": "These two peaks each print higher than the last, the uptrend's higher highs.",
        "chart": "pullbackUptrend"
       },
       {
@@ -19582,16 +19010,10 @@
        "explanation": "Range-bound = sideways; trending = directional."
       },
       {
-       "type": "spot_mistake",
-       "scenario": "Someone treats a clearly sideways range as a strong uptrend.",
-       "question": "What is the mistake?",
-       "options": [
-        "Any chart is always trending.",
-        "Ranges and trends are identical.",
-        "Bouncing sideways between levels is range-bound, not a strong uptrend. The regime was misread."
-       ],
-       "correct": 2,
-       "explanation": "Reading the regime (range vs trend) correctly is the skill.",
+       "type": "mark_level",
+       "question": "Drag the line to the top of the range (its resistance).",
+       "level_kind": "resistance",
+       "explanation": "The ceiling the range keeps stalling at is its resistance.",
        "chart": "range"
       },
       {
@@ -19737,29 +19159,10 @@
        "explanation": "Clearing support or resistance out of the range is a breakout."
       },
       {
-       "type": "ingredient_match",
-       "question": "What does a range breakout describe?",
-       "options": [
-        {
-         "label": "A guaranteed big trend afterward",
-         "correct": false,
-         "detail": "Overstates certainty",
-         "wrong_explanation": "Breakouts can also fail; nothing is guaranteed."
-        },
-        {
-         "label": "That the range never existed",
-         "correct": false,
-         "detail": "Backwards",
-         "wrong_explanation": "The breakout is defined relative to the range."
-        },
-        {
-         "label": "Price leaving the range by clearing a boundary",
-         "correct": true,
-         "detail": "Descriptive move"
-        }
-       ],
-       "concern": "Reading the move",
-       "explanation": "A breakout describes price leaving the range. Context, not a guaranteed trend.",
+       "type": "tap_candle",
+       "question": "Tap the breakout candle (the one that clears the range).",
+       "target": 3,
+       "explanation": "This candle pushes above the range on strong momentum.",
        "chart": "breakout"
       },
       {
@@ -19832,16 +19235,10 @@
        "explanation": "\"False breakout\" (or fakeout) is the standard term."
       },
       {
-       "type": "spot_mistake",
-       "scenario": "Someone treats every poke past resistance as a guaranteed breakout.",
-       "question": "What is the mistake?",
-       "options": [
-        "False breakouts don't exist.",
-        "Every poke past a level always continues.",
-        "Some pokes are false breakouts that fail back inside, a poke isn't a guaranteed breakout."
-       ],
-       "correct": 2,
-       "explanation": "False breakouts are exactly why a break isn't a guarantee.",
+       "type": "mark_level",
+       "question": "Drag the line to the resistance this chart keeps getting rejected at.",
+       "level_kind": "resistance",
+       "explanation": "The ceiling price keeps failing to break is the resistance.",
        "chart": "resistanceRejection"
       },
       {
@@ -20482,16 +19879,10 @@
        "chart": "breakoutRetest"
       },
       {
-       "type": "spot_mistake",
-       "scenario": "Someone treats every breakout as a guaranteed trend and never watches for a retest or failure.",
-       "question": "What is the mistake?",
-       "options": [
-        "Retests and failures never happen.",
-        "Every breakout always trends immediately.",
-        "Breakouts can fail or retest first, treating every one as a guaranteed trend ignores that."
-       ],
-       "correct": 2,
-       "explanation": "Breakouts are descriptive clues that can fail or retest, not guarantees.",
+       "type": "mark_level",
+       "question": "Drag the line to the resistance this chart keeps getting rejected at.",
+       "level_kind": "resistance",
+       "explanation": "The ceiling price keeps failing to break is the resistance.",
        "chart": "resistanceRejection"
       },
       {
@@ -20908,16 +20299,10 @@
        "explanation": "The trend commonly resumes after a healthy pullback."
       },
       {
-       "type": "spot_mistake",
-       "scenario": "Someone assumes every pullback is guaranteed to continue the trend and ignores a broken structure.",
-       "question": "What is the mistake?",
-       "options": [
-        "Every pullback always continues.",
-        "Structure never matters.",
-        "Continuation is a tendency, not a guarantee. A broken structure can mean a reversal instead."
-       ],
-       "correct": 2,
-       "explanation": "Continuation is likely after a healthy pullback but not guaranteed, especially if structure breaks.",
+       "type": "tap_candle",
+       "question": "Tap the candle that breaks below the support shelf.",
+       "target": 3,
+       "explanation": "This candle drops through the support the prior candles held.",
        "chart": "breakdown"
       },
       {
@@ -21014,29 +20399,13 @@
        "explanation": "Pullbacks preserve structure; continuation is a tendency."
       },
       {
-       "type": "ingredient_match",
-       "question": "Which best summarizes this unit?",
-       "options": [
-        {
-         "label": "Pullbacks identical to full reversals",
-         "correct": false,
-         "detail": "Wrong",
-         "wrong_explanation": "Pullbacks keep structure; reversals break it."
-        },
-        {
-         "label": "Pullbacks that guarantee continuation",
-         "correct": false,
-         "detail": "Overstates certainty",
-         "wrong_explanation": "Contradicts the unit."
-        },
-        {
-         "label": "Trends pause with pullbacks and often continue if structure holds, descriptively",
-         "correct": true,
-         "detail": "The central theme"
-        }
+       "type": "tap_candles",
+       "question": "Tap the two swing highs making higher highs.",
+       "targets": [
+        1,
+        3
        ],
-       "concern": "Reviewing the big picture",
-       "explanation": "Structure-preserving pauses with likely (not guaranteed) continuation is the throughline.",
+       "explanation": "These two peaks each print higher than the last, the uptrend's higher highs.",
        "chart": "pullbackUptrend"
       },
       {
@@ -21531,29 +20900,10 @@
        "explanation": "Bodies read momentum; wicks read rejection/exhaustion."
       },
       {
-       "type": "ingredient_match",
-       "question": "Which best summarizes this unit?",
-       "options": [
-        {
-         "label": "Candle shape tells you nothing",
-         "correct": false,
-         "detail": "Backwards",
-         "wrong_explanation": "Shape reflects momentum and exhaustion."
-        },
-        {
-         "label": "Candle shape guarantees the next move",
-         "correct": false,
-         "detail": "Overstates certainty",
-         "wrong_explanation": "Contradicts the unit."
-        },
-        {
-         "label": "Read momentum, exhaustion, and indecision from candle shape, descriptively",
-         "correct": true,
-         "detail": "The central theme"
-        }
-       ],
-       "concern": "Reviewing the big picture",
-       "explanation": "Descriptive candle-strength reading is the throughline.",
+       "type": "tap_candle",
+       "question": "Tap the marubozu (large body, almost no wicks).",
+       "target": 1,
+       "explanation": "The candle that is nearly all body is the marubozu.",
        "chart": "marubozu"
       },
       {
@@ -21965,16 +21315,10 @@
        "explanation": "More agreeing factors raise the odds in the read, not a guarantee."
       },
       {
-       "type": "spot_mistake",
-       "scenario": "Someone finds three agreeing signals and bets everything, sure it \"can't fail.\"",
-       "question": "What is the mistake?",
-       "options": [
-        "Confluence removes all risk.",
-        "Even strong confluence isn't a guarantee, treating it as \"can't fail\" overstates the read.",
-        "More confluence makes it certain."
-       ],
-       "correct": 1,
-       "explanation": "Confluence improves the read's odds but never removes uncertainty.",
+       "type": "mark_level",
+       "question": "Drag the line to the resistance this chart keeps getting rejected at.",
+       "level_kind": "resistance",
+       "explanation": "The ceiling price keeps failing to break is the resistance.",
        "chart": "resistanceRejection"
       },
       {
@@ -22071,42 +21415,17 @@
        "explanation": "Multiple agreeing factors make a stronger, not certain, read."
       },
       {
-       "type": "ingredient_match",
-       "question": "Which best summarizes this unit?",
-       "options": [
-        {
-         "label": "Confluence means ignoring the chart",
-         "correct": false,
-         "detail": "Backwards",
-         "wrong_explanation": "It's reading several chart factors together."
-        },
-        {
-         "label": "Confluence guarantees the outcome",
-         "correct": false,
-         "detail": "Overstates certainty",
-         "wrong_explanation": "Contradicts the unit."
-        },
-        {
-         "label": "Stacking agreeing readings makes a stronger, still-uncertain read",
-         "correct": true,
-         "detail": "The central theme"
-        }
-       ],
-       "concern": "Reviewing the big picture",
-       "explanation": "Stronger-but-never-certain, from agreeing factors, is the throughline.",
+       "type": "mark_level",
+       "question": "Drag the line to the support this chart keeps bouncing from.",
+       "level_kind": "support",
+       "explanation": "The floor price keeps reacting off of is the support.",
        "chart": "supportBounce"
       },
       {
-       "type": "spot_mistake",
-       "scenario": "Someone treats one signal alone as if it were full confluence.",
-       "question": "What is the mistake?",
-       "options": [
-        "Confluence needs two or more agreeing readings, a single signal on its own isn't confluence.",
-        "One signal is always full confluence.",
-        "The number of factors doesn't matter."
-       ],
-       "correct": 0,
-       "explanation": "Confluence requires multiple agreeing factors, not a lone signal.",
+       "type": "tap_candle",
+       "question": "Tap the doji (tiny body, wicks on both sides).",
+       "target": 1,
+       "explanation": "The middle candle's near-zero body with balanced wicks is the doji.",
        "chart": "doji"
       },
       {
@@ -22364,16 +21683,10 @@
        "explanation": "Discontinuous trading lets price jump, forming a gap."
       },
       {
-       "type": "spot_mistake",
-       "scenario": "Someone assumes gaps only appear randomly for no reason.",
-       "question": "What is the mistake?",
-       "options": [
-        "Gaps never have any cause.",
-        "Gaps commonly have causes, session breaks or news, not pure randomness.",
-        "Gaps only depend on candle color."
-       ],
-       "correct": 1,
-       "explanation": "Gaps usually reflect non-continuous trading (sessions/news), not randomness.",
+       "type": "tap_candle",
+       "question": "Tap the gap-up candle (it opens above the prior candle).",
+       "target": 2,
+       "explanation": "This candle opens with a gap above the previous candle's range.",
        "chart": "gapUp"
       },
       {
@@ -22451,29 +21764,10 @@
        "explanation": "Gap fills are a common tendency, not a certainty."
       },
       {
-       "type": "ingredient_match",
-       "question": "How should you read \"gaps often fill\"?",
-       "options": [
-        {
-         "label": "As a common tendency, not a guarantee",
-         "correct": true,
-         "detail": "Descriptive tendency"
-        },
-        {
-         "label": "As a certainty every time",
-         "correct": false,
-         "detail": "Overstates certainty",
-         "wrong_explanation": "Not every gap fills."
-        },
-        {
-         "label": "As a precise date the gap will fill by",
-         "correct": false,
-         "detail": "Overstates it",
-         "wrong_explanation": "'Often' is a tendency, not a schedule."
-        }
-       ],
-       "concern": "Managing expectations",
-       "explanation": "\"Often fills\" is a descriptive tendency, never a guarantee.",
+       "type": "tap_candle",
+       "question": "Tap the gap-up candle (it opens above the prior candle).",
+       "target": 2,
+       "explanation": "This candle opens with a gap above the previous candle's range.",
        "chart": "gapUp"
       },
       {
@@ -22559,29 +21853,10 @@
        "explanation": "Discontinuous trading is the common cause of gaps."
       },
       {
-       "type": "ingredient_match",
-       "question": "Which best summarizes gaps?",
-       "options": [
-        {
-         "label": "Random marks with no cause",
-         "correct": false,
-         "detail": "Wrong",
-         "wrong_explanation": "Gaps usually have a cause."
-        },
-        {
-         "label": "Gaps that always fill immediately",
-         "correct": false,
-         "detail": "Overstates certainty",
-         "wrong_explanation": "Not every gap fills."
-        },
-        {
-         "label": "Jumps leaving empty space, from discontinuous trading, that often (not always) fill",
-         "correct": true,
-         "detail": "The central theme"
-        }
-       ],
-       "concern": "Reviewing the big picture",
-       "explanation": "Cause + a fill tendency (not guarantee) is the throughline.",
+       "type": "tap_candle",
+       "question": "Tap the gap-up candle (it opens above the prior candle).",
+       "target": 2,
+       "explanation": "This candle opens with a gap above the previous candle's range.",
        "chart": "gapUp"
       },
       {
@@ -22832,16 +22107,13 @@
        "explanation": "Trends can differ across timeframes for the same market."
       },
       {
-       "type": "spot_mistake",
-       "scenario": "Someone reads only the 1-minute chart and ignores the daily trend entirely.",
-       "question": "What is the mistake?",
-       "options": [
-        "Only the 1-minute chart matters.",
-        "The higher timeframe never matters.",
-        "Ignoring the higher timeframe misses the big-picture trend the short-term move sits inside."
+       "type": "tap_candles",
+       "question": "Tap the two swing highs making higher highs.",
+       "targets": [
+        1,
+        3
        ],
-       "correct": 2,
-       "explanation": "The higher-timeframe context frames what the lower-timeframe move means.",
+       "explanation": "These two peaks each print higher than the last, the uptrend's higher highs.",
        "chart": "pullbackUptrend"
       },
       {
@@ -23110,29 +22382,13 @@
        "explanation": "Context from the higher timeframe frames the lower-timeframe detail."
       },
       {
-       "type": "ingredient_match",
-       "question": "Which best summarizes multi-timeframe reading?",
-       "options": [
-        {
-         "label": "Read big-picture context first, then detail, alignment adds confluence, not certainty",
-         "correct": true,
-         "detail": "The central theme"
-        },
-        {
-         "label": "Timeframe agreement guarantees the outcome",
-         "correct": false,
-         "detail": "Overstates certainty",
-         "wrong_explanation": "Alignment isn't a guarantee."
-        },
-        {
-         "label": "Only the lowest timeframe matters",
-         "correct": false,
-         "detail": "Too narrow",
-         "wrong_explanation": "Context comes from higher timeframes."
-        }
+       "type": "tap_candles",
+       "question": "Tap the two swing highs making higher highs.",
+       "targets": [
+        1,
+        3
        ],
-       "concern": "Reviewing the big picture",
-       "explanation": "Context-first reading with alignment as confluence (not certainty) is the throughline.",
+       "explanation": "These two peaks each print higher than the last, the uptrend's higher highs.",
        "chart": "pullbackUptrend"
       },
       {
@@ -23597,29 +22853,13 @@
        "text": "Combine pattern, level, and candle reads on each chart, the whole intermediate skillset."
       },
       {
-       "type": "ingredient_match",
-       "question": "On the chart above, two peaks stall at resistance and roll over. Best read?",
-       "options": [
-        {
-         "label": "A double top at resistance, a reversal shape at a level (confluence)",
-         "correct": true,
-         "detail": "Pattern + level"
-        },
-        {
-         "label": "A guaranteed crash",
-         "correct": false,
-         "detail": "Overstates certainty",
-         "wrong_explanation": "Confluence isn't a guarantee."
-        },
-        {
-         "label": "A bull flag",
-         "correct": false,
-         "detail": "Wrong pattern",
-         "wrong_explanation": "This is two peaks at resistance, not a pole-and-flag."
-        }
+       "type": "tap_candles",
+       "question": "Tap both peaks of the double top.",
+       "targets": [
+        1,
+        3
        ],
-       "concern": "Full-chart read",
-       "explanation": "Pattern + level agreeing is a confluent, descriptive read, not a guarantee.",
+       "explanation": "The two peaks at the same resistance form the double top's \"M\".",
        "chart": "doubleTop"
       },
       {
@@ -23744,42 +22984,20 @@
        "explanation": "Confluence is stronger but never a guarantee."
       },
       {
-       "type": "ingredient_match",
-       "question": "Which best summarizes the Intermediate level?",
-       "options": [
-        {
-         "label": "Read patterns, levels, and candles together, descriptively, as probabilities, not certainties",
-         "correct": true,
-         "detail": "The central theme"
-        },
-        {
-         "label": "A list of shapes with no context",
-         "correct": false,
-         "detail": "Backwards",
-         "wrong_explanation": "Context and confluence are the point."
-        },
-        {
-         "label": "A system of guaranteed signals",
-         "correct": false,
-         "detail": "Overstates certainty",
-         "wrong_explanation": "Nothing here is guaranteed."
-        }
-       ],
-       "concern": "Reviewing the whole level",
-       "explanation": "Context-aware, descriptive, probability-minded reading is what this level built.",
+       "type": "tap_candle",
+       "question": "Tap the breakout candle that clears the level.",
+       "target": 3,
+       "explanation": "This candle clears the level before the retest that follows.",
        "chart": "breakoutRetest"
       },
       {
-       "type": "spot_mistake",
-       "scenario": "Someone finishes this level and starts treating every pattern as a guaranteed trade.",
-       "question": "What is the mistake?",
-       "options": [
-        "Patterns are guaranteed once learned.",
-        "Everything here is a descriptive clue read with context, never a guaranteed trade.",
-        "Context stops mattering after this level."
+       "type": "tap_candles",
+       "question": "Tap both peaks of the double top.",
+       "targets": [
+        1,
+        3
        ],
-       "correct": 1,
-       "explanation": "The whole level teaches probability-minded, descriptive reading, not guarantees.",
+       "explanation": "The two peaks at the same resistance form the double top's \"M\".",
        "chart": "doubleTop"
       },
       {
@@ -24190,16 +23408,10 @@
        "chart": "gapUp"
       },
       {
-       "type": "spot_mistake",
-       "scenario": "Someone assumes earnings reports have no relationship to price volatility.",
-       "question": "What is the mistake?",
-       "options": [
-        "Only random, unscheduled news can affect volatility.",
-        "Earnings reports are commonly associated with some of the sharpest volatility spikes around their release.",
-        "Earnings reports never affect price behavior."
-       ],
-       "correct": 1,
-       "explanation": "Scheduled information events like earnings are commonly cited volatility drivers.",
+       "type": "tap_candle",
+       "question": "Tap the gap-up candle (it opens above the prior candle).",
+       "target": 2,
+       "explanation": "This candle opens with a gap above the previous candle's range.",
        "chart": "gapUp"
       }
      ]
@@ -24675,29 +23887,10 @@
        "explanation": "Higher volatility and wider spreads are the commonly cited reasons for added caution around news."
       },
       {
-       "type": "ingredient_match",
-       "question": "Which best summarizes this unit?",
-       "options": [
-        {
-         "label": "Session and news timing are irrelevant to reading a chart",
-         "correct": false,
-         "detail": "Backwards",
-         "wrong_explanation": "This unit's whole point is that they matter."
-        },
-        {
-         "label": "Session and news context shape how charts behave, descriptive factors, not guarantees",
-         "correct": true,
-         "detail": "The central theme"
-        },
-        {
-         "label": "Sessions and news guarantee specific price outcomes",
-         "correct": false,
-         "detail": "Overstates certainty",
-         "wrong_explanation": "This contradicts the whole unit."
-        }
-       ],
-       "concern": "Reviewing the big picture",
-       "explanation": "Descriptive, context-adding session and news awareness is the throughline of this unit.",
+       "type": "tap_candle",
+       "question": "Tap the gap-up candle (it opens above the prior candle).",
+       "target": 2,
+       "explanation": "This candle opens with a gap above the previous candle's range.",
        "chart": "gapUp"
       },
       {
@@ -25718,16 +24911,10 @@
        "chart": "supportBounce"
       },
       {
-       "type": "spot_mistake",
-       "scenario": "Someone uses the exact same position size on every trade, regardless of how far away their stop-loss is.",
-       "question": "What is the mistake?",
-       "options": [
-        "A fixed position size regardless of stop distance means dollar risk varies unpredictably between trades.",
-        "They should remove stop-losses to simplify things.",
-        "They should always use an even bigger position size instead."
-       ],
-       "correct": 0,
-       "explanation": "Adjusting position size to the stop-loss distance is how consistent dollar risk is commonly maintained.",
+       "type": "mark_level",
+       "question": "Drag the line to the support this chart keeps bouncing from.",
+       "level_kind": "support",
+       "explanation": "The floor price keeps reacting off of is the support.",
        "chart": "supportBounce"
       },
       {
@@ -25890,16 +25077,10 @@
        "chart": "breakout"
       },
       {
-       "type": "spot_mistake",
-       "scenario": "Someone assumes a favorable risk/reward ratio guarantees the trade will be profitable.",
-       "question": "What is the mistake?",
-       "options": [
-        "They should look for an even higher ratio to be sure.",
-        "A favorable ratio describes the potential payoff structure, not a guarantee that the trade succeeds.",
-        "They should ignore risk/reward ratios entirely."
-       ],
-       "correct": 1,
-       "explanation": "Risk/reward is about the shape of possible outcomes, not a certainty about which one happens.",
+       "type": "tap_candle",
+       "question": "Tap the breakout candle (the one that clears the range).",
+       "target": 3,
+       "explanation": "This candle pushes above the range on strong momentum.",
        "chart": "breakout"
       },
       {
@@ -26051,16 +25232,10 @@
        "chart": "supportBounce"
       },
       {
-       "type": "spot_mistake",
-       "scenario": "Someone sets a stop-loss extremely close to their entry price, with no particular reasoning behind the distance.",
-       "question": "What is the mistake?",
-       "options": [
-        "They should remove the stop-loss entirely instead.",
-        "A stop placed too close with no reasoning can get triggered by normal price noise rather than a meaningful shift.",
-        "They should place it even closer for extra safety."
-       ],
-       "correct": 1,
-       "explanation": "Stop-loss placement is commonly tied to a specific, reasoned level rather than an arbitrarily tight distance.",
+       "type": "mark_level",
+       "question": "Drag the line to the support this chart keeps bouncing from.",
+       "level_kind": "support",
+       "explanation": "The floor price keeps reacting off of is the support.",
        "chart": "supportBounce"
       },
       {
@@ -26821,16 +25996,10 @@
        "explanation": "These are commonly cited, level-headed responses to each situation."
       },
       {
-       "type": "spot_mistake",
-       "scenario": "Someone increases their position size significantly right after a big win, without changing their stop-loss plan.",
-       "question": "What is the mistake?",
-       "options": [
-        "They should increase their position size even further.",
-        "Increasing size without adjusting the plan can unintentionally increase dollar risk beyond what was originally intended.",
-        "They should remove their stop-loss to simplify things."
-       ],
-       "correct": 1,
-       "explanation": "Position size changes should stay tied to a consistent risk plan, not be driven by a recent win.",
+       "type": "tap_candle",
+       "question": "Tap the breakout candle (the one that clears the range).",
+       "target": 3,
+       "explanation": "This candle pushes above the range on strong momentum.",
        "chart": "breakout"
       },
       {
@@ -27631,16 +26800,10 @@
        "chart": "doji"
       },
       {
-       "type": "spot_mistake",
-       "scenario": "Someone describes \"expecting price to keep moving further away from its average forever\" as an example of mean reversion.",
-       "question": "What is the mistake?",
-       "options": [
-        "They should expect it to move even further away to match the description.",
-        "Mean reversion is commonly described as expecting an eventual move back toward average, not further away from it.",
-        "Mean reversion and trend-following describe the same expectation."
-       ],
-       "correct": 1,
-       "explanation": "This description contradicts the commonly cited core idea behind mean reversion.",
+       "type": "tap_candle",
+       "question": "Tap the doji (tiny body, wicks on both sides).",
+       "target": 1,
+       "explanation": "The middle candle's near-zero body with balanced wicks is the doji.",
        "chart": "doji"
       },
       {
@@ -27797,16 +26960,10 @@
        "chart": "breakout"
       },
       {
-       "type": "spot_mistake",
-       "scenario": "Someone describes \"expecting price to reverse the instant it clears any established range\" as an example of breakout trading.",
-       "question": "What is the mistake?",
-       "options": [
-        "Breakout trading is commonly described as expecting continuation after a range clears, not an immediate reversal.",
-        "Breakout trading and range trading expect the same thing.",
-        "They should expect a reversal even sooner to match the description."
-       ],
-       "correct": 0,
-       "explanation": "This description contradicts the commonly cited core idea behind breakout trading.",
+       "type": "tap_candle",
+       "question": "Tap the breakout candle (the one that clears the range).",
+       "target": 3,
+       "explanation": "This candle pushes above the range on strong momentum.",
        "chart": "breakout"
       },
       {
@@ -28092,16 +27249,10 @@
        "explanation": "Reviewing the term from earlier in this unit."
       },
       {
-       "type": "spot_mistake",
-       "scenario": "Someone describes scalping as \"holding a position for several weeks.\"",
-       "question": "What is the mistake?",
-       "options": [
-        "They should hold it for even longer to make it a proper scalp.",
-        "Scalping is commonly described as very short-timeframe, not weeks-long. That description matches swing trading instead.",
-        "They should assume all strategy types describe the same holding period."
-       ],
-       "correct": 1,
-       "explanation": "A weeks-long hold doesn't match the commonly described short-timeframe nature of scalping.",
+       "type": "tap_candle",
+       "question": "Tap the breakout candle (the one that clears the range).",
+       "target": 3,
+       "explanation": "This candle pushes above the range on strong momentum.",
        "chart": "breakout"
       },
       {
@@ -29884,29 +29035,10 @@
        "chart": "downtrend"
       },
       {
-       "type": "ingredient_match",
-       "question": "Which best summarizes this unit?",
-       "options": [
-        {
-         "label": "Classification guarantees the next move",
-         "correct": false,
-         "detail": "Overstates certainty",
-         "wrong_explanation": "It frames, not guarantees."
-        },
-        {
-         "label": "Condition never matters",
-         "correct": false,
-         "detail": "Backwards",
-         "wrong_explanation": "It's core context."
-        },
-        {
-         "label": "Classify trending, ranging, or volatile first. It frames every other read",
-         "correct": true,
-         "detail": "The central theme"
-        }
-       ],
-       "concern": "Reviewing the big picture",
-       "explanation": "Condition-first reading is the throughline.",
+       "type": "mark_level",
+       "question": "Drag the line to the top of the range (its resistance).",
+       "level_kind": "resistance",
+       "explanation": "The ceiling the range keeps stalling at is its resistance.",
        "chart": "range"
       },
       {
@@ -33482,16 +32614,10 @@
        "chart": "range"
       },
       {
-       "type": "spot_mistake",
-       "scenario": "Someone assumes ATR always stays exactly the same number no matter the market condition.",
-       "question": "What is the mistake?",
-       "options": [
-        "ATR never changes regardless of condition.",
-        "ATR commonly rises in volatile/trending conditions and falls in quiet ranges — it isn't fixed.",
-        "ATR is set once at the market open and then frozen."
-       ],
-       "correct": 1,
-       "explanation": "ATR moves with the underlying volatility of the current condition.",
+       "type": "mark_level",
+       "question": "Drag the line to the top of the range (its resistance).",
+       "level_kind": "resistance",
+       "explanation": "The ceiling the range keeps stalling at is its resistance.",
        "chart": "range"
       }
      ]
@@ -34278,16 +33404,10 @@
        "chart": "breakout"
       },
       {
-       "type": "spot_mistake",
-       "scenario": "Someone treats an opening range break as guaranteed to continue trending the rest of the day.",
-       "question": "What is the mistake?",
-       "options": [
-        "A break describes crossing the range boundary, it doesn't guarantee the rest of the day's direction.",
-        "Every opening range break continues in the same direction all day.",
-        "Price never reverses after breaking the opening range."
-       ],
-       "correct": 0,
-       "explanation": "Like any breakout, a range break can continue, stall, or reverse afterward.",
+       "type": "tap_candle",
+       "question": "Tap the breakout candle (the one that clears the range).",
+       "target": 3,
+       "explanation": "This candle pushes above the range on strong momentum.",
        "chart": "breakout"
       }
      ]
@@ -34377,16 +33497,10 @@
        "chart": "breakoutRetest"
       },
       {
-       "type": "spot_mistake",
-       "scenario": "Someone assumes every opening range break automatically holds and never fails.",
-       "question": "What is the mistake?",
-       "options": [
-        "Opening range breaks are a completely different phenomenon from regular breakouts.",
-        "Opening range breaks can fail to hold, just like any other breakout covered earlier in the course.",
-        "False breaks are impossible once price crosses the opening range boundary."
-       ],
-       "correct": 1,
-       "explanation": "The opening range is one more level subject to the same false-breakout dynamics taught earlier.",
+       "type": "tap_candle",
+       "question": "Tap the breakout candle that clears the level.",
+       "target": 3,
+       "explanation": "This candle clears the level before the retest that follows.",
        "chart": "breakoutRetest"
       }
      ]
@@ -35825,16 +34939,10 @@
        "chart": "breakout"
       },
       {
-       "type": "spot_mistake",
-       "scenario": "Someone sees a stock moving up quickly and buys immediately, without any plan, purely because they're afraid of missing further gains.",
-       "question": "What is the mistake?",
-       "options": [
-        "They should have bought even more, even faster.",
-        "They should never look at fast-moving prices again.",
-        "Entering purely from urgency about missing a move, without a plan, is a commonly described FOMO reaction."
-       ],
-       "correct": 2,
-       "explanation": "Acting from fear of missing out, without a plan, is the commonly described core of a FOMO-driven mistake.",
+       "type": "tap_candle",
+       "question": "Tap the breakout candle (the one that clears the range).",
+       "target": 3,
+       "explanation": "This candle pushes above the range on strong momentum.",
        "chart": "breakout"
       },
       {
@@ -36625,16 +35733,10 @@
        "chart": "doji"
       },
       {
-       "type": "spot_mistake",
-       "scenario": "Someone has a clear, pre-set plan but abandons it mid-trade because of a sudden feeling that \"this time is different.\"",
-       "question": "What is the mistake?",
-       "options": [
-        "Abandoning a pre-set plan due to an in-the-moment feeling is a commonly described impulse overriding discipline.",
-        "They should never make plans in the first place.",
-        "They should have felt even more strongly before abandoning the plan."
-       ],
-       "correct": 0,
-       "explanation": "Following a feeling over a pre-set plan is the commonly described core of an impulsive deviation.",
+       "type": "tap_candle",
+       "question": "Tap the doji (tiny body, wicks on both sides).",
+       "target": 1,
+       "explanation": "The middle candle's near-zero body with balanced wicks is the doji.",
        "chart": "doji"
       },
       {
@@ -37316,16 +36418,10 @@
        "chart": "breakout"
       },
       {
-       "type": "spot_mistake",
-       "scenario": "Someone classifies a market as \"volatile\" after seeing a long, slow, steady drift with very small price changes.",
-       "question": "What is the mistake?",
-       "options": [
-        "They should look for even smaller price changes to confirm it's volatile.",
-        "A slow, steady drift with small changes is commonly described as low volatility, not volatile.",
-        "They should ignore the size of price swings entirely."
-       ],
-       "correct": 1,
-       "explanation": "The described pattern contradicts the commonly cited hallmark of a volatile classification.",
+       "type": "tap_candle",
+       "question": "Tap the breakout candle (the one that clears the range).",
+       "target": 3,
+       "explanation": "This candle pushes above the range on strong momentum.",
        "chart": "breakout"
       },
       {
@@ -37454,16 +36550,10 @@
        "chart": "resistanceRejection"
       },
       {
-       "type": "spot_mistake",
-       "scenario": "Someone labels a move a \"fakeout\" the instant price clears a level, before waiting to see what happens next.",
-       "question": "What is the mistake?",
-       "options": [
-        "A fakeout is commonly classified only after price clears a level and then quickly reverses. It can't be confirmed at the moment of clearing alone.",
-        "They should ignore what happens after price clears a level.",
-        "They should label every single clearing of a level a fakeout immediately."
-       ],
-       "correct": 0,
-       "explanation": "Classifying a fakeout requires observing the reversal after the clearing, not just the initial move.",
+       "type": "mark_level",
+       "question": "Drag the line to the resistance this chart keeps getting rejected at.",
+       "level_kind": "resistance",
+       "explanation": "The ceiling price keeps failing to break is the resistance.",
        "chart": "resistanceRejection"
       },
       {
@@ -37713,16 +36803,10 @@
        "explanation": "These are commonly cited classifications for describing different general chart conditions."
       },
       {
-       "type": "spot_mistake",
-       "scenario": "Someone classifies a chart as \"volatile\" purely because it's trending strongly upward, with otherwise normal-sized swings.",
-       "question": "What is the mistake?",
-       "options": [
-        "They should assume trending and volatile always mean the same thing.",
-        "A strong sustained trend with normal-sized swings matches a trending classification, not necessarily a volatile one. Those describe different traits.",
-        "They should ignore the size of the swings entirely."
-       ],
-       "correct": 1,
-       "explanation": "Trending describes sustained direction, while volatile specifically describes unusually large or fast swings. They're distinct classifications.",
+       "type": "tap_candle",
+       "question": "Tap the breakout candle (the one that clears the range).",
+       "target": 3,
+       "explanation": "This candle pushes above the range on strong momentum.",
        "chart": "breakout"
       },
       {
