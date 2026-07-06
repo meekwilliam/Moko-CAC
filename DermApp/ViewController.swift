@@ -94,6 +94,16 @@ class ViewController: UIViewController {
                 self.appRouter.currentScreen = .streak
             }
         }
+        appRouter.onBumpStreak = { [weak self] in
+            guard let self = self else { return }
+            let n = self.progress.debugBumpStreak()
+            self.refreshPathState()
+            self.appRouter.streakCount = n
+            self.appRouter.streakWeek = self.progress.weekActivity()
+            withAnimation(.spring(response: 0.42, dampingFraction: 0.86)) {
+                self.appRouter.currentScreen = .streak
+            }
+        }
         appRouter.onGrantTestTreats = { [weak self] in
             guard let self = self else { return }
             self.progress.grantTestTreats()
