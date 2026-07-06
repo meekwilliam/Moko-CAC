@@ -527,9 +527,14 @@
        "explanation": "Position describes an open, active trade."
       },
       {
-       "type": "true_false",
-       "question": "A \"fill\" is the price at which your order actually executed.",
-       "correct": true,
+       "type": "multiple_choice",
+       "question": "A \"fill\" refers to...",
+       "options": [
+        "The price at which your order actually executed.",
+        "The price you hoped to get when you placed the order.",
+        "The current best bid price."
+       ],
+       "correct": 0,
        "explanation": "Fill specifically refers to the actual executed price, which can differ from the expected one."
       },
       {
@@ -1263,9 +1268,14 @@
        "explanation": "Equity ownership means owning a stake in the business, unlike a deposit or membership."
       },
       {
-       "type": "true_false",
-       "question": "All shareholders of a company automatically get an equal say in daily decisions.",
-       "correct": false,
+       "type": "multiple_choice",
+       "question": "How much influence does owning shares give in company decisions?",
+       "options": [
+        "An equal say, regardless of how many shares.",
+        "Influence that commonly scales with shares owned.",
+        "No influence at all, ever."
+       ],
+       "correct": 1,
        "explanation": "Ownership doesn't equal management control; influence often scales with how many shares are owned and formal voting processes."
       },
       {
@@ -1976,9 +1986,14 @@
        "text": "Most markets quote two prices at once: the bid (what buyers offer) and the ask (what sellers want)."
       },
       {
-       "type": "true_false",
-       "question": "The ask price is what buyers are offering to pay.",
-       "correct": false,
+       "type": "multiple_choice",
+       "question": "The ask price is...",
+       "options": [
+        "What buyers are offering to pay.",
+        "What sellers want to receive.",
+        "The last traded price."
+       ],
+       "correct": 1,
        "explanation": "The ask is what sellers want to receive; the bid is what buyers are offering."
       },
       {
@@ -2140,9 +2155,14 @@
        "text": "A market order and a limit order are two basic ways to place a trade, trading off speed against price control."
       },
       {
-       "type": "true_false",
-       "question": "A market order lets you name the exact price you want to pay.",
-       "correct": false,
+       "type": "multiple_choice",
+       "question": "With a market order, the price you get is...",
+       "options": [
+        "An exact price you name in advance.",
+        "The best price currently available.",
+        "Always the previous close."
+       ],
+       "correct": 1,
        "explanation": "A market order executes at the best currently available price, not a chosen price."
       },
       {
@@ -2481,9 +2501,14 @@
        "text": "Most stock markets have set trading hours, with additional (often thinner) trading happening outside them."
       },
       {
-       "type": "true_false",
-       "question": "Every stock market is open for trading 24 hours a day, 7 days a week.",
-       "correct": false,
+       "type": "multiple_choice",
+       "question": "When are most stock markets open?",
+       "options": [
+        "24 hours a day, 7 days a week.",
+        "Defined standard hours, with limited activity outside them.",
+        "Only during earnings season."
+       ],
+       "correct": 1,
        "explanation": "Most stock markets have defined standard trading hours, with limited activity outside them."
       },
       {
@@ -2813,9 +2838,14 @@
        "chart": "doji"
       },
       {
-       "type": "true_false",
-       "question": "A candlestick only shows the price at one single instant in time.",
-       "correct": false,
+       "type": "multiple_choice",
+       "question": "A single candlestick summarizes...",
+       "options": [
+        "The price at one single instant.",
+        "An entire time period, via open, high, low and close.",
+        "Only the closing price."
+       ],
+       "correct": 1,
        "explanation": "A candlestick summarizes an entire time period, not a single instant."
       },
       {
@@ -2984,9 +3014,14 @@
        "text": "Every candlestick is built from exactly four numbers: the open, high, low, and close for that period."
       },
       {
-       "type": "true_false",
-       "question": "Every candlestick is built from exactly four price values.",
-       "correct": true,
+       "type": "multiple_choice",
+       "question": "How many price values define a candlestick?",
+       "options": [
+        "Two: open and close.",
+        "Four: open, high, low, and close.",
+        "One: the close."
+       ],
+       "correct": 1,
        "explanation": "Open, high, low, and close are the four numbers that define a candle."
       },
       {
@@ -3153,9 +3188,14 @@
        "text": "A gap happens when price opens noticeably above or below where it previously closed, often due to news or events between sessions."
       },
       {
-       "type": "true_false",
-       "question": "A gap occurs when a candle opens at the exact same price the previous candle closed at.",
-       "correct": false,
+       "type": "multiple_choice",
+       "question": "A gap occurs when a candle opens...",
+       "options": [
+        "At the exact same price the prior candle closed.",
+        "Noticeably away from the prior candle’s close.",
+        "At the midpoint of the prior candle."
+       ],
+       "correct": 1,
        "explanation": "A gap specifically describes a noticeable difference between the prior close and the new open."
       },
       {
@@ -6262,9 +6302,14 @@
        "chart": "uptrend"
       },
       {
-       "type": "true_false",
-       "question": "A take-profit order is the same thing as a stop-loss order.",
-       "correct": false,
+       "type": "multiple_choice",
+       "question": "How does a take-profit differ from a stop-loss?",
+       "options": [
+        "They are the same order.",
+        "Take-profit targets a favorable exit; stop-loss an unfavorable one.",
+        "Take-profit only works on short positions."
+       ],
+       "correct": 1,
        "explanation": "A take-profit targets a favorable exit level; a stop-loss targets an unfavorable one."
       },
       {
@@ -7052,9 +7097,14 @@
        "explanation": "Order flow describes the continuous stream of incoming buy/sell orders."
       },
       {
-       "type": "true_false",
-       "question": "Order flow describes a single trade, not an ongoing stream of orders.",
-       "correct": false,
+       "type": "multiple_choice",
+       "question": "\"Order flow\" describes...",
+       "options": [
+        "A single, isolated trade.",
+        "The ongoing, continuous stream of buy and sell orders.",
+        "The day’s opening price."
+       ],
+       "correct": 1,
        "explanation": "Order flow specifically describes the ongoing, continuous stream, not one isolated trade."
       },
       {
@@ -9047,9 +9097,14 @@
        "explanation": "Higher volume on a breakout is commonly read as more participation, without guaranteeing success."
       },
       {
-       "type": "true_false",
-       "question": "A breakout on very low, quiet volume is commonly read the same way as one on high volume.",
-       "correct": false,
+       "type": "multiple_choice",
+       "question": "A breakout on quiet volume vs one on high volume is commonly read as...",
+       "options": [
+        "The same either way.",
+        "Meaningfully different.",
+        "Always stronger on the quiet volume."
+       ],
+       "correct": 1,
        "explanation": "Volume level is commonly read as a meaningful difference between the two, not identical."
       },
       {
@@ -9146,9 +9201,14 @@
        "explanation": "Higher volume at a reversal is commonly read as adding significance, without guaranteeing anything."
       },
       {
-       "type": "true_false",
-       "question": "A reversal on very quiet volume is commonly read the same as one with a volume surge.",
-       "correct": false,
+       "type": "multiple_choice",
+       "question": "A reversal on quiet volume vs one with a volume surge is commonly read as...",
+       "options": [
+        "The same either way.",
+        "Meaningfully different.",
+        "Always stronger on the quiet volume."
+       ],
+       "correct": 1,
        "explanation": "Volume level is commonly read as a meaningful difference at reversal points too."
       },
       {
@@ -9982,9 +10042,14 @@
        "explanation": "Rejection specifically describes a failed test that gets pushed back."
       },
       {
-       "type": "true_false",
-       "question": "\"Acceptance\" describes price testing a level and then comfortably holding or trading through it.",
-       "correct": true,
+       "type": "multiple_choice",
+       "question": "\"Acceptance\" describes price that...",
+       "options": [
+        "Tests a level, then comfortably holds or trades through it.",
+        "Gets sharply rejected away from a level.",
+        "Never reaches the level at all."
+       ],
+       "correct": 0,
        "explanation": "Acceptance is the opposite of rejection, the level is absorbed rather than pushed back from."
       },
       {
@@ -10531,9 +10596,14 @@
        "explanation": "Both swing highs and swing lows rising together is the defining structure."
       },
       {
-       "type": "true_false",
-       "question": "A single lower low automatically disqualifies an otherwise clear uptrend.",
-       "correct": false,
+       "type": "multiple_choice",
+       "question": "Does one lower low automatically cancel an uptrend?",
+       "options": [
+        "Yes, a single lower low disqualifies it instantly.",
+        "No, classification looks at the overall sequence of swings.",
+        "Only if volume is high."
+       ],
+       "correct": 1,
        "explanation": "One isolated swing doesn't override the broader pattern; classification looks at the overall sequence."
       }
      ]
@@ -10687,9 +10757,14 @@
        "explanation": "Both swing highs and swing lows falling together is the defining structure."
       },
       {
-       "type": "true_false",
-       "question": "A single higher high automatically disqualifies an otherwise clear downtrend.",
-       "correct": false,
+       "type": "multiple_choice",
+       "question": "Does one higher high automatically cancel a downtrend?",
+       "options": [
+        "Yes, a single higher high disqualifies it instantly.",
+        "No, classification looks at the overall sequence of swings.",
+        "Only if it happens at the open."
+       ],
+       "correct": 1,
        "explanation": "One isolated swing doesn't override the broader pattern; classification looks at the overall sequence."
       }
      ]
@@ -10706,9 +10781,14 @@
        "chart": "sideways"
       },
       {
-       "type": "true_false",
-       "question": "A sideways market shows a clear upward direction.",
-       "correct": false,
+       "type": "multiple_choice",
+       "question": "A sideways market shows...",
+       "options": [
+        "A clear upward direction.",
+        "No clear direction, bouncing within a band.",
+        "A clear downward direction."
+       ],
+       "correct": 1,
        "explanation": "A sideways market describes a lack of clear direction, bouncing within a band instead."
       },
       {
@@ -11009,9 +11089,14 @@
        "explanation": "Higher highs paired with higher lows together define the uptrend structure."
       },
       {
-       "type": "true_false",
-       "question": "Checking only swing highs is enough to confirm an uptrend.",
-       "correct": false,
+       "type": "multiple_choice",
+       "question": "To confirm an uptrend, you should check...",
+       "options": [
+        "Only the swing highs.",
+        "Both swing highs and swing lows together.",
+        "Only the swing lows."
+       ],
+       "correct": 1,
        "explanation": "Both swing highs and swing lows need to be checked together."
       }
      ]
@@ -11165,9 +11250,14 @@
        "explanation": "Lower highs paired with lower lows together define the downtrend structure."
       },
       {
-       "type": "true_false",
-       "question": "Checking only swing lows is enough to confirm a downtrend.",
-       "correct": false,
+       "type": "multiple_choice",
+       "question": "To confirm a downtrend, you should check...",
+       "options": [
+        "Only the swing lows.",
+        "Both swing highs and swing lows together.",
+        "Only the swing highs."
+       ],
+       "correct": 1,
        "explanation": "Both swing highs and swing lows need to be checked together."
       }
      ]
@@ -11184,9 +11274,14 @@
        "chart": "breakout"
       },
       {
-       "type": "true_false",
-       "question": "All uptrends move at exactly the same speed and steepness.",
-       "correct": false,
+       "type": "multiple_choice",
+       "question": "Do all uptrends share the same speed and steepness?",
+       "options": [
+        "Yes, they are identical.",
+        "No, they vary widely in steepness and consistency.",
+        "Only in volatile markets."
+       ],
+       "correct": 1,
        "explanation": "Trends can vary widely in steepness and consistency, even when sharing the same overall direction."
       },
       {
@@ -11482,9 +11577,14 @@
        "explanation": "Speed of movement is central to reading momentum."
       },
       {
-       "type": "true_false",
-       "question": "Momentum and volatility describe the exact same thing.",
-       "correct": false,
+       "type": "multiple_choice",
+       "question": "How do momentum and volatility differ?",
+       "options": [
+        "They describe the exact same thing.",
+        "Momentum is directional speed; volatility is swing size regardless of direction.",
+        "Momentum only applies to downtrends."
+       ],
+       "correct": 1,
        "explanation": "Momentum is about directional speed/force; volatility is about the size and speed of swings generally, regardless of direction."
       }
      ]
@@ -12715,9 +12815,14 @@
        "text": "Support and resistance are commonly explained by the idea that traders \"remember\" prior price reactions and behave similarly near those levels again."
       },
       {
-       "type": "true_false",
-       "question": "Support and resistance levels form for no describable reason at all.",
-       "correct": false,
+       "type": "multiple_choice",
+       "question": "Why do support and resistance levels form?",
+       "options": [
+        "For no describable reason at all.",
+        "From patterns in trader behavior around prior price reactions.",
+        "Because exchanges set them officially."
+       ],
+       "correct": 1,
        "explanation": "They're commonly explained by patterns in trader behavior around prior price reactions."
       },
       {
@@ -12850,9 +12955,14 @@
        "explanation": "It's commonly discussed as a reasonable theory, not an enforced law."
       },
       {
-       "type": "true_false",
-       "question": "Support and resistance levels are enforced by exchange rules.",
-       "correct": false,
+       "type": "multiple_choice",
+       "question": "Support and resistance levels are...",
+       "options": [
+        "Enforced by official exchange rules.",
+        "Informal, descriptive chart-reading concepts.",
+        "Guaranteed to always hold."
+       ],
+       "correct": 1,
        "explanation": "They're informal, descriptive chart-reading concepts, not official exchange rules."
       }
      ]
@@ -12869,9 +12979,14 @@
        "chart": "supportBounce"
       },
       {
-       "type": "true_false",
-       "question": "A level touched only once is generally viewed the same as one touched many times.",
-       "correct": false,
+       "type": "multiple_choice",
+       "question": "How does a level touched once compare with one touched many times?",
+       "options": [
+        "They are viewed the same.",
+        "A level with more touches is commonly viewed as more notable.",
+        "A single touch is always the stronger level."
+       ],
+       "correct": 1,
        "explanation": "A level with multiple touches and reactions is commonly viewed as more notable than one touched only once."
       },
       {
@@ -14205,9 +14320,14 @@
        "explanation": "The double top's \"M\" shape forms after price has risen into resistance."
       },
       {
-       "type": "true_false",
-       "question": "A double top's two peaks must be exactly identical to the cent.",
-       "correct": false,
+       "type": "multiple_choice",
+       "question": "How closely must a double top’s two peaks match?",
+       "options": [
+        "Exactly identical, to the cent.",
+        "About the same level.",
+        "Within 50% of each other."
+       ],
+       "correct": 1,
        "explanation": "\"About the same\" level is the practical standard, not perfect equality."
       },
       {
@@ -14327,9 +14447,14 @@
        "explanation": "The \"W\" shape forms after price has fallen into support."
       },
       {
-       "type": "true_false",
-       "question": "A double bottom's two troughs must be exactly identical to the cent.",
-       "correct": false,
+       "type": "multiple_choice",
+       "question": "How closely must a double bottom’s two troughs match?",
+       "options": [
+        "Exactly identical, to the cent.",
+        "About the same level.",
+        "Within 50% of each other."
+       ],
+       "correct": 1,
        "explanation": "\"About the same\" level is the practical standard, not perfect equality."
       },
       {
@@ -15682,9 +15807,14 @@
        "explanation": "Left shoulder, head, right shoulder, three peaks total."
       },
       {
-       "type": "true_false",
-       "question": "The head is the middle peak of the three.",
-       "correct": true,
+       "type": "multiple_choice",
+       "question": "In a head & shoulders, the head is...",
+       "options": [
+        "The middle (and tallest) of the three peaks.",
+        "The left-most peak.",
+        "The right-most peak."
+       ],
+       "correct": 0,
        "explanation": "Left shoulder, then the (highest) head, then the right shoulder, the head sits in the middle."
       },
       {
@@ -15794,9 +15924,14 @@
        "explanation": "Roughly equal shoulder heights are part of a clean head & shoulders."
       },
       {
-       "type": "true_false",
-       "question": "The head is commonly the shortest of the three peaks.",
-       "correct": false,
+       "type": "multiple_choice",
+       "question": "In a head & shoulders, the head is...",
+       "options": [
+        "Commonly the shortest of the three peaks.",
+        "Commonly the tallest of the three peaks.",
+        "Always equal to the shoulders."
+       ],
+       "correct": 1,
        "explanation": "The head is commonly the tallest of the three peaks, not the shortest."
       }
      ]
@@ -17761,9 +17896,14 @@
        "explanation": "The flag consolidates gently against the pole before continuing."
       },
       {
-       "type": "true_false",
-       "question": "The flag portion is usually larger than the pole.",
-       "correct": false,
+       "type": "multiple_choice",
+       "question": "In a flag pattern, how do the flag and pole compare?",
+       "options": [
+        "The flag is usually larger than the pole.",
+        "The pole is the large move; the flag is a small pause.",
+        "They are always equal in size."
+       ],
+       "correct": 1,
        "explanation": "The flag is a small pause; the pole is the large, strong move."
       },
       {
@@ -17838,9 +17978,14 @@
        "explanation": "Flag vs pennant differ in the pause's shape, not the overall idea."
       },
       {
-       "type": "true_false",
-       "question": "A pennant is a reversal pattern, unlike a flag.",
-       "correct": false,
+       "type": "multiple_choice",
+       "question": "A pennant is...",
+       "options": [
+        "A reversal pattern, unlike a flag.",
+        "A continuation pause, like a flag.",
+        "The same shape as a double top."
+       ],
+       "correct": 1,
        "explanation": "Both flags and pennants are continuation pauses, not reversals."
       },
       {
@@ -18414,9 +18559,14 @@
        "explanation": "Convergence vs parallel is the deciding read."
       },
       {
-       "type": "true_false",
-       "question": "A rising wedge and an ascending channel are the same thing.",
-       "correct": false,
+       "type": "multiple_choice",
+       "question": "How do a rising wedge and an ascending channel differ?",
+       "options": [
+        "They are the same thing.",
+        "A wedge converges; a channel stays parallel.",
+        "A wedge is always bullish."
+       ],
+       "correct": 1,
        "explanation": "A rising wedge converges; an ascending channel stays parallel, different structures."
       },
       {
@@ -18989,9 +19139,14 @@
        "explanation": "Multiple touches make a trendline more established and meaningful."
       },
       {
-       "type": "true_false",
-       "question": "A line drawn through a single point is already a well-established trendline.",
-       "correct": false,
+       "type": "multiple_choice",
+       "question": "How many points establish a trendline?",
+       "options": [
+        "A single point is enough.",
+        "At least two, and more touches make it more meaningful.",
+        "Exactly five points."
+       ],
+       "correct": 1,
        "explanation": "One point isn't enough, multiple touches are commonly needed to establish a line."
       },
       {
@@ -19335,9 +19490,14 @@
        "explanation": "Support and resistance together bound a range from below and above."
       },
       {
-       "type": "true_false",
-       "question": "A range describes price making clear directional progress.",
-       "correct": false,
+       "type": "multiple_choice",
+       "question": "A \"range\" describes price that is...",
+       "options": [
+        "Making clear directional progress.",
+        "Moving sideways within bounds.",
+        "Gapping every session."
+       ],
+       "correct": 1,
        "explanation": "A range is sideways, bounded movement, the opposite of clear directional progress."
       },
       {
@@ -19388,9 +19548,14 @@
        "chart": "uptrend"
       },
       {
-       "type": "true_false",
-       "question": "A range-bound market and a trending market are read the same way.",
-       "correct": false,
+       "type": "multiple_choice",
+       "question": "Are range-bound and trending markets read the same way?",
+       "options": [
+        "Yes, identically.",
+        "No, sideways vs directional regimes are read differently.",
+        "Only on daily charts."
+       ],
+       "correct": 1,
        "explanation": "They're different regimes, sideways vs directional, and read differently."
       },
       {
@@ -22776,9 +22941,14 @@
        "explanation": "Top-down means starting with the big picture (higher timeframe) before zooming in."
       },
       {
-       "type": "true_false",
-       "question": "Top-down reading means checking the lower timeframe before the higher one.",
-       "correct": false,
+       "type": "multiple_choice",
+       "question": "Top-down reading checks...",
+       "options": [
+        "The lower timeframe first, then the higher.",
+        "The higher timeframe first, then lower for detail.",
+        "Only a single timeframe, ever."
+       ],
+       "correct": 1,
        "explanation": "Top-down specifically means higher timeframe first, then lower for detail."
       },
       {
@@ -23760,9 +23930,14 @@
        "explanation": "Midday is commonly a lull in activity between the open and the close."
       },
       {
-       "type": "true_false",
-       "question": "\"Power hour\" refers to the final hour of the standard session.",
-       "correct": true,
+       "type": "multiple_choice",
+       "question": "\"Power hour\" refers to...",
+       "options": [
+        "The final hour of the standard session.",
+        "The first hour after the open.",
+        "The overnight session."
+       ],
+       "correct": 0,
        "explanation": "That's the standard meaning of the term."
       },
       {
@@ -25406,9 +25581,14 @@
        "explanation": "Small, consistent risk per trade is a commonly recommended habit."
       },
       {
-       "type": "true_false",
-       "question": "Risking a large percent of the account on one trade is generally considered lower risk than a small percent.",
-       "correct": false,
+       "type": "multiple_choice",
+       "question": "Compared with risking a small percent, risking a large percent on one trade is...",
+       "options": [
+        "Lower risk.",
+        "Higher risk.",
+        "Exactly the same risk."
+       ],
+       "correct": 1,
        "explanation": "A larger percentage at risk is generally considered higher, not lower, risk."
       }
      ]
@@ -25562,9 +25742,14 @@
        "explanation": "Position size is worked backward from your dollar risk and stop distance."
       },
       {
-       "type": "true_false",
-       "question": "A wider stop generally calls for a larger position size to keep the same dollar risk.",
-       "correct": false,
+       "type": "multiple_choice",
+       "question": "To keep the same dollar risk, a wider stop calls for...",
+       "options": [
+        "A larger position size.",
+        "A smaller position size.",
+        "The same position size."
+       ],
+       "correct": 1,
        "explanation": "A wider stop calls for a SMALLER position size to keep the same dollar risk, not larger."
       }
      ]
@@ -25748,9 +25933,14 @@
        "chart": "supportBounce"
       },
       {
-       "type": "true_false",
-       "question": "A stop-loss level is commonly chosen completely at random, with no specific reasoning.",
-       "correct": false,
+       "type": "multiple_choice",
+       "question": "A stop-loss level is commonly chosen...",
+       "options": [
+        "Completely at random, with no reasoning.",
+        "Tied to a specific reason, like a nearby level.",
+        "To maximize the position size."
+       ],
+       "correct": 1,
        "explanation": "Stop-loss levels are commonly tied to a specific reason, like a nearby support or resistance level."
       },
       {
@@ -26046,9 +26236,14 @@
        "explanation": "Leverage cuts both ways, bigger potential gains AND bigger potential losses."
       },
       {
-       "type": "true_false",
-       "question": "Overleveraging means using leverage that fits your risk tolerance well.",
-       "correct": false,
+       "type": "multiple_choice",
+       "question": "\"Overleveraging\" means using...",
+       "options": [
+        "Leverage that fits your risk tolerance well.",
+        "More leverage than fits your risk tolerance.",
+        "No leverage at all."
+       ],
+       "correct": 1,
        "explanation": "Overleveraging specifically means using MORE leverage than fits your risk tolerance."
       }
      ]
@@ -26221,9 +26416,14 @@
        "chart": "downtrend"
       },
       {
-       "type": "true_false",
-       "question": "A losing streak automatically proves that a trading approach is fundamentally flawed.",
-       "correct": false,
+       "type": "multiple_choice",
+       "question": "Does a losing streak automatically prove an approach is flawed?",
+       "options": [
+        "Yes, it proves the approach is broken.",
+        "No, streaks can happen even with a sound approach.",
+        "Only after ten losses in a row."
+       ],
+       "correct": 1,
        "explanation": "Losing streaks can happen even with a reasonable approach. They don't automatically prove it's flawed."
       },
       {
@@ -26358,9 +26558,14 @@
        "explanation": "Even a sound approach can see a losing streak by chance alone."
       },
       {
-       "type": "true_false",
-       "question": "A losing streak automatically proves a trading approach is broken.",
-       "correct": false,
+       "type": "multiple_choice",
+       "question": "Does a losing streak automatically prove an approach is broken?",
+       "options": [
+        "Yes, it proves the approach is broken.",
+        "No, streaks can happen by chance even with a sound approach.",
+        "Only if it lasts a month."
+       ],
+       "correct": 1,
        "explanation": "Streaks can happen by chance; they don't automatically prove the approach has failed."
       }
      ]
@@ -26519,9 +26724,14 @@
        "explanation": "Capital preservation is about protecting what you already have."
       },
       {
-       "type": "true_false",
-       "question": "Capital preservation means avoiding all risk entirely, under every circumstance.",
-       "correct": false,
+       "type": "multiple_choice",
+       "question": "Capital preservation means...",
+       "options": [
+        "Avoiding all risk entirely, under every circumstance.",
+        "Managing risk deliberately, not eliminating it.",
+        "Using maximum leverage."
+       ],
+       "correct": 1,
        "explanation": "It means managing risk deliberately, not eliminating it entirely."
       }
      ]
@@ -27113,9 +27323,14 @@
        "explanation": "Days-to-weeks holding periods are commonly associated with swing trading."
       },
       {
-       "type": "true_false",
-       "question": "Swing trading targets a smaller price move than scalping.",
-       "correct": false,
+       "type": "multiple_choice",
+       "question": "Compared with scalping, swing trading targets...",
+       "options": [
+        "A smaller move.",
+        "A larger move, over a longer hold.",
+        "Exactly the same size move."
+       ],
+       "correct": 1,
        "explanation": "Swing trading commonly targets a LARGER move than scalping, over a longer hold."
       }
      ]
@@ -27274,9 +27489,14 @@
        "explanation": "Trend following means staying aligned with an existing direction, not betting against it."
       },
       {
-       "type": "true_false",
-       "question": "Trend following bets that a sustained move will reverse immediately.",
-       "correct": false,
+       "type": "multiple_choice",
+       "question": "Trend following bets that a sustained move will...",
+       "options": [
+        "Reverse immediately.",
+        "Continue in its direction.",
+        "Stay perfectly flat."
+       ],
+       "correct": 1,
        "explanation": "Trend following aligns WITH the sustained move, rather than betting on its reversal."
       }
      ]
@@ -27435,9 +27655,14 @@
        "explanation": "Mean reversion specifically expects a return toward an average level."
       },
       {
-       "type": "true_false",
-       "question": "Mean reversion expects price to keep moving further away from its average indefinitely.",
-       "correct": false,
+       "type": "multiple_choice",
+       "question": "Mean reversion expects price to...",
+       "options": [
+        "Keep moving further from its average.",
+        "Move back toward its average.",
+        "Gap away permanently."
+       ],
+       "correct": 1,
        "explanation": "Mean reversion expects the OPPOSITE, an eventual move back toward average."
       }
      ]
@@ -27596,9 +27821,14 @@
        "explanation": "Breakout trading expects the move to continue once a range is cleared."
       },
       {
-       "type": "true_false",
-       "question": "Breakout trading expects price to reverse the instant it clears a range.",
-       "correct": false,
+       "type": "multiple_choice",
+       "question": "Breakout trading expects price to...",
+       "options": [
+        "Reverse the instant it clears a range.",
+        "Continue after clearing the range.",
+        "Stay bounded inside the range."
+       ],
+       "correct": 1,
        "explanation": "Breakout trading expects continuation, not an immediate reversal."
       }
      ]
@@ -27757,9 +27987,14 @@
        "explanation": "Range trading expects price to bounce within its boundaries, not break beyond them."
       },
       {
-       "type": "true_false",
-       "question": "Range trading expects price to break through every boundary and keep going.",
-       "correct": false,
+       "type": "multiple_choice",
+       "question": "Range trading expects price to...",
+       "options": [
+        "Break through every boundary and keep going.",
+        "Stay bounded between support and resistance.",
+        "Trend strongly upward."
+       ],
+       "correct": 1,
        "explanation": "That describes breakout trading, range trading expects price to stay bounded instead."
       }
      ]
@@ -28491,9 +28726,14 @@
        "explanation": "You start from the risk and stop, then solve for the position size."
       },
       {
-       "type": "true_false",
-       "question": "A wider stop distance calls for a larger position size to keep the same dollar risk.",
-       "correct": false,
+       "type": "multiple_choice",
+       "question": "To keep the same dollar risk, a wider stop distance calls for...",
+       "options": [
+        "A larger position size.",
+        "A smaller position size.",
+        "The same position size."
+       ],
+       "correct": 1,
        "explanation": "A wider stop calls for a SMALLER size to keep the dollar risk the same, not larger."
       }
      ]
@@ -28927,9 +29167,14 @@
        "explanation": "Large winners in R can outweigh more frequent, smaller losers."
       },
       {
-       "type": "true_false",
-       "question": "You must win more than half your trades to be profitable.",
-       "correct": false,
+       "type": "multiple_choice",
+       "question": "Must you win more than half your trades to be profitable?",
+       "options": [
+        "Yes, always.",
+        "No, large enough winners in R can offset a sub-50% win rate.",
+        "Only in ranging markets."
+       ],
+       "correct": 1,
        "explanation": "With large enough winners in R, a sub-50% win rate can still profit."
       },
       {
@@ -28967,9 +29212,14 @@
        "explanation": "Sub-50% win rates can still be profitable if the average winner in R is large enough."
       },
       {
-       "type": "true_false",
-       "question": "You must win more than half your trades to be profitable.",
-       "correct": false,
+       "type": "multiple_choice",
+       "question": "Must you win more than half your trades to be profitable?",
+       "options": [
+        "Yes, always.",
+        "No, large enough winners in R can offset a sub-50% win rate.",
+        "Only in ranging markets."
+       ],
+       "correct": 1,
        "explanation": "With large enough winners in R, a sub-50% win rate can still profit overall."
       }
      ]
@@ -28996,9 +29246,14 @@
        "explanation": "Averages need many trades to be meaningful; small samples are noisy."
       },
       {
-       "type": "true_false",
-       "question": "Three winning trades in a row prove a system has positive expectancy.",
-       "correct": false,
+       "type": "multiple_choice",
+       "question": "Do three wins in a row prove positive expectancy?",
+       "options": [
+        "Yes, they prove it.",
+        "No, a tiny sample can happen by chance.",
+        "Only with real money at stake."
+       ],
+       "correct": 1,
        "explanation": "A tiny sample can happen by chance; it doesn't prove long-run expectancy."
       },
       {
@@ -29049,9 +29304,14 @@
        "explanation": "A large sample is needed for averages like expectancy to be meaningful."
       },
       {
-       "type": "true_false",
-       "question": "Three winning trades in a row proves a system has positive expectancy.",
-       "correct": false,
+       "type": "multiple_choice",
+       "question": "Do three wins in a row prove positive expectancy?",
+       "options": [
+        "Yes, they prove it.",
+        "No, a tiny sample can happen by chance.",
+        "Only after a drawdown."
+       ],
+       "correct": 1,
        "explanation": "A tiny sample can happen by chance; it doesn't prove long-run expectancy."
       }
      ]
@@ -29879,9 +30139,14 @@
        "explanation": "Rising, falling, or flat slope mirrors the underlying trend direction."
       },
       {
-       "type": "true_false",
-       "question": "A flat moving average most likely reflects a strong trend.",
-       "correct": false,
+       "type": "multiple_choice",
+       "question": "A flat moving average most likely reflects...",
+       "options": [
+        "A strong trend.",
+        "A range.",
+        "A sharp reversal."
+       ],
+       "correct": 1,
        "explanation": "A flat MA more likely reflects a range, not a strong trend."
       }
      ]
@@ -30053,9 +30318,14 @@
        "explanation": "Fewer periods means quicker reaction, making it a \"fast\" MA."
       },
       {
-       "type": "true_false",
-       "question": "A long-period MA hugs price more closely than a short-period MA.",
-       "correct": false,
+       "type": "multiple_choice",
+       "question": "Which moving average hugs price more closely?",
+       "options": [
+        "The long-period MA.",
+        "The short-period MA.",
+        "They hug price equally."
+       ],
+       "correct": 1,
        "explanation": "A SHORT MA hugs price more closely; a long MA is smoother and slower."
       }
      ]
@@ -30299,9 +30569,14 @@
        "explanation": "Oscillators are calculated from price data."
       },
       {
-       "type": "true_false",
-       "question": "An oscillator shows the raw price directly.",
-       "correct": false,
+       "type": "multiple_choice",
+       "question": "An oscillator shows...",
+       "options": [
+        "Raw price, directly.",
+        "A derived measure that moves within a bounded range.",
+        "Trading volume only."
+       ],
+       "correct": 1,
        "explanation": "It shows a derived measure about price, not the price line itself."
       },
       {
@@ -30327,9 +30602,14 @@
        "explanation": "Oscillators are calculated from price data, bounded within a fixed range."
       },
       {
-       "type": "true_false",
-       "question": "An oscillator shows the raw price directly.",
-       "correct": false,
+       "type": "multiple_choice",
+       "question": "An oscillator shows...",
+       "options": [
+        "Raw price, directly.",
+        "A derived measure that moves within a bounded range.",
+        "Trading volume only."
+       ],
+       "correct": 1,
        "explanation": "It shows a derived measure about price, not the price line itself."
       }
      ]
@@ -31976,9 +32256,14 @@
        "explanation": "Even a good system sees losing streaks by chance."
       },
       {
-       "type": "true_false",
-       "question": "A few losses in a row proves a system has negative expectancy.",
-       "correct": false,
+       "type": "multiple_choice",
+       "question": "Do a few losses in a row prove negative expectancy?",
+       "options": [
+        "Yes, they prove it.",
+        "No, short streaks happen by chance.",
+        "Only if real money is involved."
+       ],
+       "correct": 1,
        "explanation": "Short streaks happen by chance; they don't prove the long-run expectancy."
       },
       {
@@ -32029,9 +32314,14 @@
        "explanation": "Even a good system sees losing streaks by chance."
       },
       {
-       "type": "true_false",
-       "question": "A few losses in a row proves a system has negative expectancy.",
-       "correct": false,
+       "type": "multiple_choice",
+       "question": "Do a few losses in a row prove negative expectancy?",
+       "options": [
+        "Yes, they prove it.",
+        "No, short streaks happen by chance.",
+        "Only if real money is involved."
+       ],
+       "correct": 1,
        "explanation": "Short streaks happen by chance; they don't prove the long-run expectancy."
       }
      ]
@@ -35739,9 +36029,14 @@
        "chart": "sideways"
       },
       {
-       "type": "true_false",
-       "question": "Overtrading describes sticking closely to a pre-planned number of trades.",
-       "correct": false,
+       "type": "multiple_choice",
+       "question": "\"Overtrading\" describes...",
+       "options": [
+        "Sticking closely to a pre-planned number of trades.",
+        "Exceeding the trade frequency genuine setups justify.",
+        "Trading only once per week."
+       ],
+       "correct": 1,
        "explanation": "Overtrading specifically describes exceeding a plan's typical trade frequency, not sticking to it."
       },
       {
@@ -35876,9 +36171,14 @@
        "explanation": "Boredom or restlessness is commonly cited as driving overtrading."
       },
       {
-       "type": "true_false",
-       "question": "Overtrading reflects a genuine rise in valid setups.",
-       "correct": false,
+       "type": "multiple_choice",
+       "question": "Overtrading commonly reflects...",
+       "options": [
+        "A genuine rise in valid setups.",
+        "Emotion like boredom, not more real setups.",
+        "A tested, written plan."
+       ],
+       "correct": 1,
        "explanation": "Overtrading is commonly linked to emotion, not an actual increase in valid setups."
       }
      ]
@@ -36759,9 +37059,14 @@
        "explanation": "Sustained directional progress defines a trending classification."
       },
       {
-       "type": "true_false",
-       "question": "A single candle is enough to classify a market as trending.",
-       "correct": false,
+       "type": "multiple_choice",
+       "question": "Is a single candle enough to classify a market as trending?",
+       "options": [
+        "Yes.",
+        "No, it needs a sustained sequence of highs and lows.",
+        "Only if it is a large marubozu."
+       ],
+       "correct": 1,
        "explanation": "Classification needs a sustained sequence of highs and lows, not one candle."
       }
      ]
@@ -36897,9 +37202,14 @@
        "explanation": "Directionless oscillation defines a choppy classification."
       },
       {
-       "type": "true_false",
-       "question": "A choppy market shows a clear, sustained directional progress.",
-       "correct": false,
+       "type": "multiple_choice",
+       "question": "A choppy market shows...",
+       "options": [
+        "Clear, sustained directional progress.",
+        "No sustained direction, just back-and-forth movement.",
+        "A steady one-way trend."
+       ],
+       "correct": 1,
        "explanation": "Choppy specifically describes the ABSENCE of sustained directional progress."
       }
      ]
@@ -37168,9 +37478,14 @@
        "explanation": "A quick reversal after clearing a level is what defines a fakeout."
       },
       {
-       "type": "true_false",
-       "question": "A fakeout can be confirmed the instant price clears a level, before waiting to see what happens next.",
-       "correct": false,
+       "type": "multiple_choice",
+       "question": "When is a fakeout confirmed?",
+       "options": [
+        "The instant price clears the level.",
+        "Only after price reverses back following the clearing.",
+        "Before price reaches the level."
+       ],
+       "correct": 1,
        "explanation": "Confirming a fakeout requires observing the reversal after the clearing."
       }
      ]
@@ -37301,9 +37616,14 @@
        "explanation": "Reviewing whether the process was followed is the disciplined response."
       },
       {
-       "type": "true_false",
-       "question": "Immediately doubling position size after a loss is a disciplined response.",
-       "correct": false,
+       "type": "multiple_choice",
+       "question": "Immediately doubling position size after a loss is...",
+       "options": [
+        "A disciplined response.",
+        "A revenge-trading response.",
+        "Standard position sizing."
+       ],
+       "correct": 1,
        "explanation": "That's a revenge-trading response, not a disciplined one."
       }
      ]
@@ -37417,9 +37737,14 @@
        "explanation": "The practice round applies classification skills without making trade decisions."
       },
       {
-       "type": "true_false",
-       "question": "Trending and volatile describe the same thing.",
-       "correct": false,
+       "type": "multiple_choice",
+       "question": "Do \"trending\" and \"volatile\" describe the same thing?",
+       "options": [
+        "Yes, the same thing.",
+        "No, sustained direction vs swing size and speed.",
+        "Only during downtrends."
+       ],
+       "correct": 1,
        "explanation": "Trending describes sustained direction; volatile describes swing size/speed, distinct classifications."
       }
      ]
