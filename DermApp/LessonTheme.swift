@@ -232,20 +232,23 @@ struct OptionSurface: ViewModifier {
 /// rectangle. Used by every chart-attached view (tap/mark/draw/consolidation
 /// screens, question charts, the intro card).
 struct ChartCard: ViewModifier {
-    var depth: CGFloat = 5
+    var depth: CGFloat = 6
     var radius: CGFloat = 16
     func body(content: Content) -> some View {
         content
             .padding(.horizontal, 6).padding(.vertical, 14)
             .background(
                 RoundedRectangle(cornerRadius: radius, style: .continuous)
-                    .fill(Color.white.opacity(0.05))
+                    .fill(Color.white.opacity(0.07))
                     .overlay(RoundedRectangle(cornerRadius: radius, style: .continuous)
-                        .strokeBorder(Color.white.opacity(0.10), lineWidth: 1.5))
+                        .strokeBorder(Color.white.opacity(0.16), lineWidth: 1.5))
             )
             .background(
+                // A solid near-black slab, not a translucent blend — a low-opacity
+                // black over this app's already-dark navy background barely reads
+                // as a shadow, so the card looked flat despite having one.
                 RoundedRectangle(cornerRadius: radius, style: .continuous)
-                    .fill(Color.black.opacity(0.32))
+                    .fill(Color(hex: "#020617"))
                     .offset(y: depth)
             )
     }
