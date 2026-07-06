@@ -369,10 +369,13 @@ struct LessonView: View {
             Button("Got It") { withAnimation { player.advance() } }
                 .buttonStyle(Chunky3DStyle(fill: accent, slab: accentDark))
         } else if !player.revealed {
+            // Solid (not translucent) grays when disabled — a translucent fill
+            // let the dark background bleed through unevenly at the seam
+            // between the top face and the slab, showing as a stray line.
             Button("Check") { withAnimation { player.check() } }
                 .buttonStyle(Chunky3DStyle(
-                    fill: player.canCheck ? accent : Color.gray.opacity(0.4),
-                    slab: player.canCheck ? accentDark : Color.gray.opacity(0.55)))
+                    fill: player.canCheck ? accent : Color(hex: "#4B5563"),
+                    slab: player.canCheck ? accentDark : Color(hex: "#333B47")))
                 .disabled(!player.canCheck)
         } else {
             Button(player.isLastScreen ? "Finish" : "Continue") { withAnimation { player.advance() } }
