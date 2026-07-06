@@ -2422,29 +2422,10 @@
        "explanation": "Comparing recent movement to what's typical is a simple way to estimate volatility."
       },
       {
-       "type": "ingredient_match",
-       "question": "Which chart is more likely to be described as \"volatile\"?",
-       "options": [
-        {
-         "label": "One with very high trading volume",
-         "correct": false,
-         "detail": "Not the same",
-         "wrong_explanation": "High volume is participation, not necessarily large price swings."
-        },
-        {
-         "label": "One climbing steadily to new highs",
-         "correct": false,
-         "detail": "That's trend",
-         "wrong_explanation": "A steady climb is a trend; volatility is swing size and speed, either direction."
-        },
-        {
-         "label": "One with large, fast price swings",
-         "correct": true,
-         "detail": "Bigger, quicker movement"
-        }
-       ],
-       "concern": "Comparing two hypothetical charts",
-       "explanation": "Larger, faster swings are the hallmark of higher volatility.",
+       "type": "mark_level",
+       "question": "Drag the line to the resistance the price broke above.",
+       "level_kind": "resistance",
+       "explanation": "The ceiling the range held before the breakout is the resistance.",
        "chart": "breakout"
       },
       {
@@ -6444,29 +6425,10 @@
        "explanation": "This shows how a stop-limit order differs from a plain stop order that becomes a market order."
       },
       {
-       "type": "ingredient_match",
-       "question": "Which best describes the main risk of a stop-limit order compared to a basic stop order?",
-       "options": [
-        {
-         "label": "It guarantees a better price than a market order every time",
-         "correct": false,
-         "detail": "Overstates it",
-         "wrong_explanation": "There's no such guarantee; it may simply not fill."
-        },
-        {
-         "label": "It always fills instantly regardless of price movement",
-         "correct": false,
-         "detail": "Contradicts the definition",
-         "wrong_explanation": "That describes a basic stop order becoming a market order, not a stop-limit."
-        },
-        {
-         "label": "It may not fill at all if price moves quickly past the limit price",
-         "correct": true,
-         "detail": "Trading execution certainty for price control"
-        }
-       ],
-       "concern": "Comparing order types",
-       "explanation": "The added price control comes with the risk of the order not filling in a fast move.",
+       "type": "mark_level",
+       "question": "Drag the line to the resistance the price broke above.",
+       "level_kind": "resistance",
+       "explanation": "The ceiling the range held before the breakout is the resistance.",
        "chart": "breakout"
       },
       {
@@ -6594,29 +6556,10 @@
        "explanation": "This gives a more complete, honest picture than looking at expected prices alone."
       },
       {
-       "type": "ingredient_match",
-       "question": "Which best describes when slippage is likely to be largest?",
-       "options": [
-        {
-         "label": "Only when volume is unusually high and steady",
-         "correct": false,
-         "detail": "Not quite",
-         "wrong_explanation": "Slippage is worst in thin, fast markets, not steady high-volume ones."
-        },
-        {
-         "label": "During calm, highly liquid conditions",
-         "correct": false,
-         "detail": "Less likely",
-         "wrong_explanation": "Calm, liquid conditions tend to have smaller slippage."
-        },
-        {
-         "label": "During fast-moving, low-liquidity conditions",
-         "correct": true,
-         "detail": "Bigger, quicker price changes with fewer participants"
-        }
-       ],
-       "concern": "Understanding slippage conditions",
-       "explanation": "Fast-moving, thin markets are where the gap between expected and actual price tends to be largest.",
+       "type": "mark_level",
+       "question": "Drag the line to the resistance the price broke above.",
+       "level_kind": "resistance",
+       "explanation": "The ceiling the range held before the breakout is the resistance.",
        "chart": "breakout"
       },
       {
@@ -7486,29 +7429,10 @@
        "explanation": "Acceleration is a commonly observed tendency, not a guaranteed or uniform feature of every trend."
       },
       {
-       "type": "ingredient_match",
-       "question": "Which best describes why a trend might accelerate?",
-       "options": [
-        {
-         "label": "Acceleration is guaranteed once a trend starts",
-         "correct": false,
-         "detail": "Overstates certainty",
-         "wrong_explanation": "Acceleration is a tendency, not guaranteed."
-        },
-        {
-         "label": "Added participants joining an existing move can compound the pressure",
-         "correct": true,
-         "detail": "A mechanical, descriptive explanation"
-        },
-        {
-         "label": "Acceleration is entirely random with no cause",
-         "correct": false,
-         "detail": "Overcorrects",
-         "wrong_explanation": "There's a commonly cited mechanical explanation."
-        }
-       ],
-       "concern": "Understanding this mechanism",
-       "explanation": "Added participation compounding existing pressure is the commonly cited mechanism, without guaranteeing it happens every time.",
+       "type": "mark_level",
+       "question": "Drag the line to the resistance the price broke above.",
+       "level_kind": "resistance",
+       "explanation": "The ceiling the range held before the breakout is the resistance.",
        "chart": "breakout"
       },
       {
@@ -8977,29 +8901,10 @@
        "explanation": "Volume is commonly combined with a breakout as a form of confluence."
       },
       {
-       "type": "ingredient_match",
-       "question": "Which best describes reading volume on a breakout?",
-       "options": [
-        {
-         "label": "Higher volume suggests more participation, adding confluence to the breakout",
-         "correct": true,
-         "detail": "Descriptive, not a guarantee"
-        },
-        {
-         "label": "Low volume confirms a breakout better than high volume",
-         "correct": false,
-         "detail": "Backwards",
-         "wrong_explanation": "Higher participation adds confluence; low volume is commonly a caution."
-        },
-        {
-         "label": "High volume on a breakout guarantees it continues",
-         "correct": false,
-         "detail": "Overstates certainty",
-         "wrong_explanation": "Even high-volume breakouts can still fail."
-        }
-       ],
-       "concern": "Reading volume as context",
-       "explanation": "Volume adds confluence to a breakout read, without guaranteeing the outcome.",
+       "type": "mark_level",
+       "question": "Drag the line to the resistance the price broke above.",
+       "level_kind": "resistance",
+       "explanation": "The ceiling the range held before the breakout is the resistance.",
        "chart": "breakout"
       },
       {
@@ -9481,29 +9386,10 @@
        "explanation": "Volume is context that can add confluence, not a standalone guarantee."
       },
       {
-       "type": "ingredient_match",
-       "question": "Which best summarizes this unit?",
-       "options": [
-        {
-         "label": "Volume adds participation context to price reads, descriptive, and stronger in combination",
-         "correct": true,
-         "detail": "The central theme"
-        },
-        {
-         "label": "Volume replaces price as the main thing to read",
-         "correct": false,
-         "detail": "Overstates it",
-         "wrong_explanation": "Volume is a companion to price, not a replacement for it."
-        },
-        {
-         "label": "Volume guarantees every price outcome",
-         "correct": false,
-         "detail": "Overstates certainty",
-         "wrong_explanation": "This contradicts the whole unit."
-        }
-       ],
-       "concern": "Reviewing the big picture",
-       "explanation": "Descriptive, confluence-adding volume reading is the throughline of this unit.",
+       "type": "mark_level",
+       "question": "Drag the line to the resistance the price broke above.",
+       "level_kind": "resistance",
+       "explanation": "The ceiling the range held before the breakout is the resistance.",
        "chart": "breakout"
       },
       {
@@ -9586,29 +9472,11 @@
        "explanation": "These are the basic vocabulary for describing price's ups and downs."
       },
       {
-       "type": "ingredient_match",
-       "question": "Why are swing highs and lows described as \"raw building blocks\"?",
-       "options": [
-        {
-         "label": "They mark only the single top and bottom of the whole chart",
-         "correct": false,
-         "detail": "Not quite",
-         "wrong_explanation": "Swing points occur throughout; trend structure compares their sequence."
-        },
-        {
-         "label": "They only apply to downtrends",
-         "correct": false,
-         "detail": "Incomplete",
-         "wrong_explanation": "Swing highs/lows apply to any market condition."
-        },
-        {
-         "label": "Trend and structure classifications are built by comparing sequences of them",
-         "correct": true,
-         "detail": "Foundational vocabulary"
-        }
-       ],
-       "concern": "Understanding their role",
-       "explanation": "Comparing sequences of swing highs/lows is literally how trend structure gets classified.",
+       "type": "draw_trendline",
+       "question": "Draw the uptrend line under the higher lows.",
+       "target_start": 0,
+       "target_end": 2,
+       "explanation": "Connecting the rising lows draws the uptrend line.",
        "chart": "pullbackUptrend"
       },
       {
@@ -9687,29 +9555,11 @@
        "explanation": "Trends are commonly described as a repeating cycle of impulses and corrections."
       },
       {
-       "type": "ingredient_match",
-       "question": "How does an impulse differ from a correction?",
-       "options": [
-        {
-         "label": "Impulses only happen in downtrends",
-         "correct": false,
-         "detail": "Incomplete",
-         "wrong_explanation": "Impulses occur in either direction, aligned with whichever trend is in play."
-        },
-        {
-         "label": "An impulse is the strong move with the trend; a correction is the smaller pause against it",
-         "correct": true,
-         "detail": "Direction and size both differ"
-        },
-        {
-         "label": "They are exactly the same thing",
-         "correct": false,
-         "detail": "Incorrect",
-         "wrong_explanation": "One moves with the trend, the other against it."
-        }
-       ],
-       "concern": "Telling them apart",
-       "explanation": "Direction (with vs. against the trend) is what separates an impulse from a correction.",
+       "type": "draw_trendline",
+       "question": "Draw the uptrend line under the higher lows.",
+       "target_start": 0,
+       "target_end": 2,
+       "explanation": "Connecting the rising lows draws the uptrend line.",
        "chart": "pullbackUptrend"
       },
       {
@@ -9971,29 +9821,11 @@
        "explanation": "Continuation and exhaustion are contrasting ways to read whether a move still has strength."
       },
       {
-       "type": "ingredient_match",
-       "question": "How should exhaustion signs be read?",
-       "options": [
-        {
-         "label": "As proof continuation is impossible from here",
-         "correct": false,
-         "detail": "Overstates it",
-         "wrong_explanation": "The move can still continue despite exhaustion signs."
-        },
-        {
-         "label": "As a guarantee the move ends immediately",
-         "correct": false,
-         "detail": "Overstates certainty",
-         "wrong_explanation": "Exhaustion signs are clues, not guarantees."
-        },
-        {
-         "label": "As a descriptive clue the move may be weakening, not a guaranteed end",
-         "correct": true,
-         "detail": "Descriptive, not certain"
-        }
-       ],
-       "concern": "Reading them honestly",
-       "explanation": "Exhaustion signs are descriptive clues about weakening momentum, not a certain ending.",
+       "type": "draw_trendline",
+       "question": "Draw the uptrend line under the higher lows.",
+       "target_start": 0,
+       "target_end": 2,
+       "explanation": "Connecting the rising lows draws the uptrend line.",
        "chart": "pullbackUptrend"
       },
       {
@@ -10182,29 +10014,11 @@
        "explanation": "Context is what gives meaning to this vocabulary, as covered in the previous lesson."
       },
       {
-       "type": "ingredient_match",
-       "question": "Which best summarizes this unit?",
-       "options": [
-        {
-         "label": "A set of guaranteed trading signals",
-         "correct": false,
-         "detail": "Overstates certainty",
-         "wrong_explanation": "This contradicts the whole unit."
-        },
-        {
-         "label": "Vocabulary that applies to only one specific chart pattern",
-         "correct": false,
-         "detail": "Too narrow",
-         "wrong_explanation": "It describes price behavior broadly, across many patterns."
-        },
-        {
-         "label": "A shared vocabulary for describing price behavior, most useful combined with context",
-         "correct": true,
-         "detail": "The central theme"
-        }
-       ],
-       "concern": "Reviewing the big picture",
-       "explanation": "Shared, context-dependent vocabulary is the throughline of this unit.",
+       "type": "draw_trendline",
+       "question": "Draw the uptrend line under the higher lows.",
+       "target_start": 0,
+       "target_end": 2,
+       "explanation": "Connecting the rising lows draws the uptrend line.",
        "chart": "pullbackUptrend"
       },
       {
@@ -11138,29 +10952,10 @@
        "explanation": "These comparisons together give a rough sense of how strong a trend currently looks."
       },
       {
-       "type": "ingredient_match",
-       "question": "Which best describes a \"weakening\" trend, as commonly read?",
-       "options": [
-        {
-         "label": "Price gapping to a fresh, stronger high",
-         "correct": false,
-         "detail": "Not quite",
-         "wrong_explanation": "A strong new high suggests strength, not a weakening trend."
-        },
-        {
-         "label": "Swings becoming smaller and less consistent than before",
-         "correct": true,
-         "detail": "A commonly cited sign of fading momentum"
-        },
-        {
-         "label": "Swings becoming larger and more consistent",
-         "correct": false,
-         "detail": "Opposite description",
-         "wrong_explanation": "That would more commonly be read as a strengthening trend."
-        }
-       ],
-       "concern": "Reading trend strength",
-       "explanation": "Smaller, less consistent swings are the commonly cited sign of a weakening trend.",
+       "type": "mark_level",
+       "question": "Drag the line to the resistance the price broke above.",
+       "level_kind": "resistance",
+       "explanation": "The ceiling the range held before the breakout is the resistance.",
        "chart": "breakout"
       },
       {
@@ -11293,29 +11088,10 @@
        "explanation": "These comparisons together give a rough sense of how forceful the current move looks."
       },
       {
-       "type": "ingredient_match",
-       "question": "Which best describes \"momentum\" as used here?",
-       "options": [
-        {
-         "label": "The current speed and force behind a price move",
-         "correct": true,
-         "detail": "A description of intensity, not direction alone"
-        },
-        {
-         "label": "A guarantee of how long a move will last",
-         "correct": false,
-         "detail": "Overstates certainty",
-         "wrong_explanation": "Momentum describes the present, not a guaranteed duration."
-        },
-        {
-         "label": "The exact same concept as \"trend\"",
-         "correct": false,
-         "detail": "Conflates two terms",
-         "wrong_explanation": "Trend describes direction; momentum describes speed/force."
-        }
-       ],
-       "concern": "Understanding this specific term",
-       "explanation": "Momentum specifically describes the intensity of a move, distinct from its direction.",
+       "type": "mark_level",
+       "question": "Drag the line to the resistance the price broke above.",
+       "level_kind": "resistance",
+       "explanation": "The ceiling the range held before the breakout is the resistance.",
        "chart": "breakout"
       },
       {
@@ -11765,29 +11541,10 @@
        "explanation": "Patience before fully committing to a \"confirmed\" break is a commonly cited habit."
       },
       {
-       "type": "ingredient_match",
-       "question": "Which best describes a break of structure, as commonly used?",
-       "options": [
-        {
-         "label": "Price breaking the established pattern of recent swing highs/lows",
-         "correct": true,
-         "detail": "An early, descriptive signal"
-        },
-        {
-         "label": "A guarantee the trend has permanently reversed",
-         "correct": false,
-         "detail": "Overstates certainty",
-         "wrong_explanation": "It's commonly read as an early signal, not a certainty."
-        },
-        {
-         "label": "The same thing as a single red candle",
-         "correct": false,
-         "detail": "Too narrow",
-         "wrong_explanation": "It's about breaking the swing structure, not one candle."
-        }
-       ],
-       "concern": "Understanding this specific term",
-       "explanation": "A break of structure is a descriptive early clue, not a guaranteed outcome.",
+       "type": "mark_level",
+       "question": "Drag the line to the resistance the price broke above.",
+       "level_kind": "resistance",
+       "explanation": "The ceiling the range held before the breakout is the resistance.",
        "chart": "breakout"
       },
       {
@@ -12975,29 +12732,10 @@
        "explanation": "Confirming the move held is part of how chart readers describe breakouts after the fact."
       },
       {
-       "type": "ingredient_match",
-       "question": "Which best describes what a breakout tells you, on its own?",
-       "options": [
-        {
-         "label": "Proof the level will never matter again",
-         "correct": false,
-         "detail": "Overstates it",
-         "wrong_explanation": "A broken level can flip roles and be retested, not vanish."
-        },
-        {
-         "label": "A guarantee that price will keep moving in that direction forever",
-         "correct": false,
-         "detail": "Overstates certainty",
-         "wrong_explanation": "Breakouts can fail and reverse."
-        },
-        {
-         "label": "A description that price has moved clearly past a prior level",
-         "correct": true,
-         "detail": "Descriptive, not a guarantee"
-        }
-       ],
-       "concern": "Interpreting a breakout accurately",
-       "explanation": "A breakout is a description of a past event, not a certainty about the future.",
+       "type": "mark_level",
+       "question": "Drag the line to the resistance the price broke above.",
+       "level_kind": "resistance",
+       "explanation": "The ceiling the range held before the breakout is the resistance.",
        "chart": "breakout"
       },
       {
@@ -13285,29 +13023,10 @@
        "explanation": "Like breakouts, retests are described after the fact based on how price actually behaved."
       },
       {
-       "type": "ingredient_match",
-       "question": "Which best matches the idea that \"old resistance can become new support\"?",
-       "options": [
-        {
-         "label": "A rule enforced by exchanges",
-         "correct": false,
-         "detail": "Incorrect",
-         "wrong_explanation": "This is informal chart-reading terminology, not an official rule."
-        },
-        {
-         "label": "A guarantee that every broken level will hold on retest",
-         "correct": false,
-         "detail": "Overstates certainty",
-         "wrong_explanation": "Retests can also fail and break back through."
-        },
-        {
-         "label": "A broken ceiling sometimes acts as a floor on a later retest",
-         "correct": true,
-         "detail": "A commonly cited descriptive idea"
-        }
-       ],
-       "concern": "Understanding retest terminology",
-       "explanation": "This is a commonly cited pattern, not a guaranteed rule.",
+       "type": "mark_level",
+       "question": "Drag the line to the resistance the price broke above.",
+       "level_kind": "resistance",
+       "explanation": "The ceiling the range held before the breakout is the resistance.",
        "chart": "breakout"
       },
       {
@@ -14372,29 +14091,10 @@
        "explanation": "Counting the tests of the level is what separates the two reads."
       },
       {
-       "type": "ingredient_match",
-       "question": "Reading the chart above, which description fits?",
-       "options": [
-        {
-         "label": "A single test of resistance",
-         "correct": false,
-         "detail": "Undercounts",
-         "wrong_explanation": "There are two peaks here, not one."
-        },
-        {
-         "label": "Two tests of the same resistance, a double top",
-         "correct": true,
-         "detail": "Two touches, \"M\" shape"
-        },
-        {
-         "label": "A support bounce",
-         "correct": false,
-         "detail": "Wrong side",
-         "wrong_explanation": "This is at resistance (top), not support."
-        }
-       ],
-       "concern": "Counting tests of the level",
-       "explanation": "Two peaks at the same resistance is a double top, not a single rejection.",
+       "type": "mark_level",
+       "question": "Drag the line to the resistance both peaks stall at.",
+       "level_kind": "resistance",
+       "explanation": "The shared high the two peaks reach is the double top's resistance.",
        "chart": "doubleTop"
       },
       {
@@ -14501,29 +14201,10 @@
        "explanation": "Counting the tests of support is what separates the two reads."
       },
       {
-       "type": "ingredient_match",
-       "question": "Reading the chart above, which description fits?",
-       "options": [
-        {
-         "label": "A resistance rejection",
-         "correct": false,
-         "detail": "Wrong side",
-         "wrong_explanation": "This is at support (bottom), not resistance."
-        },
-        {
-         "label": "A single support bounce",
-         "correct": false,
-         "detail": "Undercounts",
-         "wrong_explanation": "There are two troughs here, not one."
-        },
-        {
-         "label": "Two tests of the same support, a double bottom",
-         "correct": true,
-         "detail": "Two touches, \"W\" shape"
-        }
-       ],
-       "concern": "Counting tests of the level",
-       "explanation": "Two troughs at the same support is a double bottom, not a single bounce.",
+       "type": "mark_level",
+       "question": "Drag the line to the support both troughs bounce from.",
+       "level_kind": "support",
+       "explanation": "The shared low the two troughs reach is the double bottom's support.",
        "chart": "doubleBottom"
       },
       {
@@ -14959,28 +14640,10 @@
        "text": "Read what each completed pattern <b>suggests</b>, always descriptively, never as a buy/sell instruction."
       },
       {
-       "type": "ingredient_match",
-       "question": "A double bottom on the chart above has held support twice. Descriptively, that suggests...",
-       "options": [
-        {
-         "label": "Nothing can be said about the level",
-         "correct": false,
-         "detail": "Undersells it",
-         "wrong_explanation": "Two holds at a level is meaningful context."
-        },
-        {
-         "label": "A guaranteed rally",
-         "correct": false,
-         "detail": "Overstates certainty",
-         "wrong_explanation": "Descriptive, not a promise."
-        },
-        {
-         "label": "Sellers failed to push below the level twice, buyers defended it",
-         "correct": true,
-         "detail": "A read of the two tests"
-        }
-       ],
-       "explanation": "Two successful defenses of support is descriptive context, not a certainty.",
+       "type": "mark_level",
+       "question": "Drag the line to the support both troughs bounce from.",
+       "level_kind": "support",
+       "explanation": "The shared low the two troughs reach is the double bottom's support.",
        "chart": "doubleBottom"
       },
       {
@@ -15342,10 +15005,10 @@
        "explanation": "The tallest, central peak is the \"head\"."
       },
       {
-       "type": "true_false",
-       "question": "A head & shoulders is commonly described as forming after an up-move.",
-       "correct": true,
-       "explanation": "Like other reversal patterns, it appears after price has risen into it.",
+       "type": "mark_level",
+       "question": "Drag the line to the neckline (the support under the pattern).",
+       "level_kind": "support",
+       "explanation": "The line under the two troughs is the head & shoulders neckline.",
        "chart": "headShoulders"
       },
       {
@@ -15480,16 +15143,10 @@
        "chart": "headShoulders"
       },
       {
-       "type": "spot_mistake",
-       "scenario": "Someone says the right shoulder should be much taller than the head.",
-       "question": "What is the mistake?",
-       "options": [
-        "The head is the tallest; the shoulders are lower and roughly equal to each other.",
-        "The head should be the shortest peak.",
-        "The right shoulder is always the tallest."
-       ],
-       "correct": 0,
-       "explanation": "The head is the highest peak; shoulders sit lower and are roughly equal.",
+       "type": "mark_level",
+       "question": "Drag the line to the neckline (the support under the pattern).",
+       "level_kind": "support",
+       "explanation": "The line under the two troughs is the head & shoulders neckline.",
        "chart": "headShoulders"
       },
       {
@@ -15872,29 +15529,10 @@
        "explanation": "Counting the peaks separates the two patterns."
       },
       {
-       "type": "ingredient_match",
-       "question": "Reading the chart above, which fits?",
-       "options": [
-        {
-         "label": "No pattern at all",
-         "correct": false,
-         "detail": "Misses it",
-         "wrong_explanation": "Three peaks with a higher middle is a recognizable pattern."
-        },
-        {
-         "label": "Three peaks with a higher middle, a head & shoulders",
-         "correct": true,
-         "detail": "Three-peak pattern"
-        },
-        {
-         "label": "Two peaks, a double top",
-         "correct": false,
-         "detail": "Undercounts",
-         "wrong_explanation": "There are three peaks here, not two."
-        }
-       ],
-       "concern": "Counting the peaks",
-       "explanation": "Three peaks with a higher middle is a head & shoulders, not a double top.",
+       "type": "mark_level",
+       "question": "Drag the line to the neckline (the support under the pattern).",
+       "level_kind": "support",
+       "explanation": "The line under the two troughs is the head & shoulders neckline.",
        "chart": "headShoulders"
       },
       {
@@ -16178,28 +15816,10 @@
        "text": "Read what a completed head & shoulders <b>suggests</b>, descriptively, never as a buy/sell command."
       },
       {
-       "type": "ingredient_match",
-       "question": "A head & shoulders has completed on the chart above (neckline broke). Descriptively, that suggests...",
-       "options": [
-        {
-         "label": "A guaranteed crash",
-         "correct": false,
-         "detail": "Overstates certainty",
-         "wrong_explanation": "Descriptive, not a promise."
-        },
-        {
-         "label": "Buyers made a higher high (head) but couldn't sustain it, and the level gave way",
-         "correct": true,
-         "detail": "A read of the structure"
-        },
-        {
-         "label": "That resistance no longer exists",
-         "correct": false,
-         "detail": "Backwards",
-         "wrong_explanation": "The structure is exactly what's being read."
-        }
-       ],
-       "explanation": "The failed higher high plus a neckline break is descriptive context, not a certainty.",
+       "type": "mark_level",
+       "question": "Drag the line to the neckline (the support under the pattern).",
+       "level_kind": "support",
+       "explanation": "The line under the two troughs is the head & shoulders neckline.",
        "chart": "headShoulders"
       },
       {
@@ -25051,29 +24671,10 @@
        "explanation": "This calculation can be done in advance, before a trade is even placed."
       },
       {
-       "type": "ingredient_match",
-       "question": "Which best describes what risk/reward ratio measures, on its own?",
-       "options": [
-        {
-         "label": "The total dollar amount in your account",
-         "correct": false,
-         "detail": "Different concept",
-         "wrong_explanation": "That's your account size, not a per-trade ratio."
-        },
-        {
-         "label": "A guarantee of how the trade will actually turn out",
-         "correct": false,
-         "detail": "Overstates certainty",
-         "wrong_explanation": "It's a ratio of possibilities, not a guaranteed outcome."
-        },
-        {
-         "label": "The relationship between potential loss and potential gain on a trade",
-         "correct": true,
-         "detail": "A math comparison, not a certainty"
-        }
-       ],
-       "concern": "Understanding this specific concept",
-       "explanation": "Risk/reward is a mathematical comparison, not a prediction of the outcome.",
+       "type": "mark_level",
+       "question": "Drag the line to the resistance the price broke above.",
+       "level_kind": "resistance",
+       "explanation": "The ceiling the range held before the breakout is the resistance.",
        "chart": "breakout"
       },
       {
@@ -25923,29 +25524,10 @@
        "chart": "breakout"
       },
       {
-       "type": "ingredient_match",
-       "question": "A trader has $10,000 and wants to risk no more than 1% on a single trade. What's the maximum dollar risk on that trade?",
-       "options": [
-        {
-         "label": "$100",
-         "correct": true,
-         "detail": "1% of $10,000"
-        },
-        {
-         "label": "$10",
-         "correct": false,
-         "detail": "That would be 0.1%, not 1%",
-         "wrong_explanation": "0.1% of $10,000 is $10, not the 1% requested."
-        },
-        {
-         "label": "$1,000",
-         "correct": false,
-         "detail": "That would be 10%, not 1%",
-         "wrong_explanation": "10% of $10,000 is $1,000, not the 1% requested."
-        }
-       ],
-       "concern": "Applying a risk percentage",
-       "explanation": "1% of a $10,000 account is $100 in maximum dollar risk.",
+       "type": "mark_level",
+       "question": "Drag the line to the resistance the price broke above.",
+       "level_kind": "resistance",
+       "explanation": "The ceiling the range held before the breakout is the resistance.",
        "chart": "breakout"
       },
       {
@@ -26934,29 +26516,10 @@
        "explanation": "This reflects the commonly described range-clearing logic of breakout trading."
       },
       {
-       "type": "ingredient_match",
-       "question": "Which best describes \"breakout trading,\" as commonly defined?",
-       "options": [
-        {
-         "label": "Expecting continuation after price clears a previously established range",
-         "correct": true,
-         "detail": "A range-clearing, momentum-aligned approach"
-        },
-        {
-         "label": "A guarantee that every breakout will continue",
-         "correct": false,
-         "detail": "Overstates certainty",
-         "wrong_explanation": "Breakout trading describes an expectation within an approach, not a guarantee."
-        },
-        {
-         "label": "Expecting price to reverse the instant it nears any boundary",
-         "correct": false,
-         "detail": "This contradicts the core idea of breakout trading",
-         "wrong_explanation": "That's closer to a reversal-betting idea."
-        }
-       ],
-       "concern": "Understanding this specific approach",
-       "explanation": "Breakout trading specifically describes expecting continuation after clearing a range, not a guaranteed certainty.",
+       "type": "mark_level",
+       "question": "Drag the line to the resistance the price broke above.",
+       "level_kind": "resistance",
+       "explanation": "The ceiling the range held before the breakout is the resistance.",
        "chart": "breakout"
       },
       {
@@ -27206,29 +26769,10 @@
        "explanation": "These are the commonly cited core traits distinguishing each approach."
       },
       {
-       "type": "ingredient_match",
-       "question": "Which strategy type best matches \"holding a position for about two weeks to capture a broader move\"?",
-       "options": [
-        {
-         "label": "Range trading",
-         "correct": false,
-         "detail": "Describes a different core idea",
-         "wrong_explanation": "Range trading is about boundaries, not holding duration specifically."
-        },
-        {
-         "label": "Scalping",
-         "correct": false,
-         "detail": "Too short a timeframe",
-         "wrong_explanation": "Scalping is commonly described as very short-timeframe, not weeks-long."
-        },
-        {
-         "label": "Swing trading",
-         "correct": true,
-         "detail": "Matches the days-to-weeks holding description"
-        }
-       ],
-       "concern": "Matching a description to a strategy type",
-       "explanation": "A multi-week hold aimed at a broader move matches the commonly described definition of swing trading.",
+       "type": "mark_level",
+       "question": "Drag the line to the resistance the price broke above.",
+       "level_kind": "resistance",
+       "explanation": "The ceiling the range held before the breakout is the resistance.",
        "chart": "breakout"
       },
       {
@@ -33378,29 +32922,10 @@
        "explanation": "These are the three basic descriptive states relative to the opening range."
       },
       {
-       "type": "ingredient_match",
-       "question": "What does an opening range break describe, on its own?",
-       "options": [
-        {
-         "label": "A guaranteed continuation for the rest of the day",
-         "correct": false,
-         "detail": "Overstates certainty",
-         "wrong_explanation": "A break describes a boundary crossing, not a guaranteed continuation."
-        },
-        {
-         "label": "That price has moved beyond an early reference level, nothing more by itself",
-         "correct": true,
-         "detail": "A descriptive observation"
-        },
-        {
-         "label": "Confirmation that a reversal is now impossible",
-         "correct": false,
-         "detail": "Overstates certainty",
-         "wrong_explanation": "Price can reverse after any break."
-        }
-       ],
-       "concern": "Staying descriptive",
-       "explanation": "An opening range break is a descriptive observation about crossing an early reference level, not a guarantee of what follows.",
+       "type": "mark_level",
+       "question": "Drag the line to the resistance the price broke above.",
+       "level_kind": "resistance",
+       "explanation": "The ceiling the range held before the breakout is the resistance.",
        "chart": "breakout"
       },
       {
@@ -34913,29 +34438,10 @@
        "explanation": "This process gives space to recognize FOMO before automatically acting on it."
       },
       {
-       "type": "ingredient_match",
-       "question": "Which best describes a FOMO-driven trade entry?",
-       "options": [
-        {
-         "label": "Entering after a pre-set plan's specific conditions are met",
-         "correct": false,
-         "detail": "This describes a planned entry, not FOMO",
-         "wrong_explanation": "A planned entry is the opposite of what FOMO describes."
-        },
-        {
-         "label": "Entering because of urgency about a fast-moving price, without a clear plan",
-         "correct": true,
-         "detail": "An emotionally reactive entry"
-        },
-        {
-         "label": "Entering after a breakout confirms your written trading plan",
-         "correct": false,
-         "detail": "This is a planned, rule-based entry",
-         "wrong_explanation": "Following your plan's own confirmation isn't FOMO, even though it also happens after a fast move."
-        }
-       ],
-       "concern": "Understanding this specific term",
-       "explanation": "FOMO specifically describes an emotionally reactive, plan-less entry driven by urgency.",
+       "type": "mark_level",
+       "question": "Drag the line to the resistance the price broke above.",
+       "level_kind": "resistance",
+       "explanation": "The ceiling the range held before the breakout is the resistance.",
        "chart": "breakout"
       },
       {
@@ -36392,29 +35898,10 @@
        "explanation": "This process reflects a commonly described, descriptive way to classify market conditions."
       },
       {
-       "type": "ingredient_match",
-       "question": "Which best describes a \"volatile\" market classification?",
-       "options": [
-        {
-         "label": "Unusually large or fast price swings, in either direction",
-         "correct": true,
-         "detail": "A descriptive classification based on swing size and speed"
-        },
-        {
-         "label": "A guarantee that price will keep swinging forever",
-         "correct": false,
-         "detail": "Overstates certainty",
-         "wrong_explanation": "Volatile describes recent behavior, not a guarantee about the future."
-        },
-        {
-         "label": "A slow, steady drift with very small changes",
-         "correct": false,
-         "detail": "This describes low volatility, not high volatility",
-         "wrong_explanation": "That description is closer to the opposite of a volatile classification."
-        }
-       ],
-       "concern": "Understanding this specific classification",
-       "explanation": "Volatile specifically describes unusually large or fast swings, not a guarantee about what happens next.",
+       "type": "mark_level",
+       "question": "Drag the line to the resistance the price broke above.",
+       "level_kind": "resistance",
+       "explanation": "The ceiling the range held before the breakout is the resistance.",
        "chart": "breakout"
       },
       {
@@ -36730,29 +36217,10 @@
        "chart": "breakout"
       },
       {
-       "type": "ingredient_match",
-       "question": "Given a chart showing a long sequence of higher highs and higher lows, which classification best fits?",
-       "options": [
-        {
-         "label": "Choppy",
-         "correct": false,
-         "detail": "Doesn't match this description",
-         "wrong_explanation": "Choppy describes oscillation with no net progress, not sustained higher highs and lows."
-        },
-        {
-         "label": "Volatile",
-         "correct": false,
-         "detail": "Describes swing size, not direction",
-         "wrong_explanation": "Volatile describes swing size/speed, not necessarily a sustained direction."
-        },
-        {
-         "label": "Trending",
-         "correct": true,
-         "detail": "Matches the sustained-direction description"
-        }
-       ],
-       "concern": "Classifying a market condition",
-       "explanation": "A sustained sequence of higher highs and higher lows matches the commonly described trending classification.",
+       "type": "mark_level",
+       "question": "Drag the line to the resistance the price broke above.",
+       "level_kind": "resistance",
+       "explanation": "The ceiling the range held before the breakout is the resistance.",
        "chart": "breakout"
       },
       {
