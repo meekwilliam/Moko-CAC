@@ -8,6 +8,7 @@ final class LessonPlayer: ObservableObject {
     let unit: (main: Color, dark: Color)
     let isReplay: Bool                   // already completed → reward shows +25 XP
     let unitBonusEligible: Bool          // completing this lesson finishes its whole unit
+    let isTestLesson: Bool               // debug mechanics-test lesson → shows a Skip button
 
     /// Live queue of screens; a missed question is re-appended so you must get
     /// it right to finish (mirrors the web LessonEngine).
@@ -47,10 +48,12 @@ final class LessonPlayer: ObservableObject {
     var onAdvance: ((Int) -> Void)?
 
     init(lesson: Lesson, startIndex: Int = 0, isReplay: Bool = false,
-         unitColor: (main: Color, dark: Color)? = nil, unitBonusEligible: Bool = false) {
+         unitColor: (main: Color, dark: Color)? = nil, unitBonusEligible: Bool = false,
+         isTestLesson: Bool = false) {
         self.lesson = lesson
         self.isReplay = isReplay
         self.unitBonusEligible = unitBonusEligible
+        self.isTestLesson = isTestLesson
         self.screens = lesson.screens
         // Prefer the caller-supplied unit color (the lesson's real unit banner
         // color, works for any unit size); fall back to the legacy node-range
@@ -215,11 +218,13 @@ struct LessonView: View {
     init(lesson: Lesson, startIndex: Int = 0, isReplay: Bool = false,
          unitColor: (main: Color, dark: Color)? = nil,
          unitBonusEligible: Bool = false,
+         isTestLesson: Bool = false,
          onClose: @escaping () -> Void,
          onComplete: @escaping (Int) -> Void,
          onSaveProgress: @escaping (Int) -> Void = { _ in }) {
         let p = LessonPlayer(lesson: lesson, startIndex: startIndex, isReplay: isReplay,
-                             unitColor: unitColor, unitBonusEligible: unitBonusEligible)
+                             unitColor: unitColor, unitBonusEligible: unitBonusEligible,
+                             isTestLesson: isTestLesson)
         p.onAdvance = onSaveProgress
         _player = StateObject(wrappedValue: p)
         self.onClose = onClose
@@ -324,6 +329,14 @@ struct LessonView: View {
 
     private var footer: some View {
         VStack(spacing: 0) {
+            if player.isTestLesson {
+                Button("Skip →") { withAnimation { player.advance() } }
+                    .font(Theme.font(13, .black))
+                    .foregroundColor(Theme.muted)
+                    .padding(.top, 6)
+                    .frame(maxWidth: .infinity, alignment: .trailing)
+                    .padding(.horizontal, 20)
+            }
             if player.revealed && !player.isIntro {
                 // The feedback card carries its own WHY? / Got It / Continue
                 // buttons, so it replaces the primary button entirely. Matching
