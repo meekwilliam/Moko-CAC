@@ -10204,6 +10204,11 @@ CHART: gapUp
 TARGET: 3
 WHY: The 3rd candle opens above the prior candle's high, the gap candle.
 
+[TAPCANDLES] Tap the two candles the empty gap space sits between.
+CHART: gapUp
+TARGETS: 2, 3
+WHY: The gap is the untraded space between candle 2's high and candle 3's open, so it sits between those two candles.
+
 [FILL] A gap leaves an empty space with no [___] in between.
 trading
 color
@@ -10537,6 +10542,11 @@ short-term downtrend.
 higher-timeframe uptrend.
 gap.
 WHY: A higher-timeframe pullback can appear as a full downtrend when zoomed in.
+
+[TAPCANDLE] Tap the pullback dip that could look like a short-term downtrend on a lower timeframe.
+CHART: pullbackUptrend
+TARGET: 3
+WHY: The 3rd candle is the pullback within the larger uptrend, the dip that zooms into its own small downtrend.
 
 [TF] A pullback on a higher timeframe can look like a downtrend on a lower timeframe.
 ANSWER: True
@@ -11670,6 +11680,15 @@ WHY: That's the standard meaning of a 2:1 (or similarly stated) risk/reward rati
 2:1
 1:1
 WHY: $100 of risk against $200 of potential reward is a 1:2 ratio (risk:reward).
+
+[NUMBER] Risking $120 at a 1:3 risk/reward ratio. Drag to the potential reward.
+MIN: 0
+MAX: 800
+STEP: 20
+ANSWER: 360
+TOLERANCE: 20
+UNIT: $
+WHY: A 1:3 ratio means reward is three times the risk: 3 × $120 = $360.
 
 [MC] What does a favorable risk/reward ratio generally describe?
 Potential reward that is larger than the potential risk taken.
@@ -14082,6 +14101,11 @@ the speed of moves on a 0–100 scale.
 the volume-weighted average price.
 WHY: MACD tracks how a fast and slow MA relate, a momentum read.
 
+[TAPCANDLE] MACD tracks the fast and slow MA. Tap the candle where the fast MA crosses above the slow MA.
+CHART: maCrossUp
+TARGET: 4
+WHY: The 4th candle is where the fast (blue) MA crosses above the slow (amber) MA, the crossover MACD summarizes.
+
 [TF] MACD is built from moving averages, so it is also lagging.
 ANSWER: True
 WHY: Because it's built from MAs (past prices), MACD lags too.
@@ -15380,6 +15404,15 @@ WHY: ATR can inform how far a stop might reasonably need to sit given typical mo
 [TF] A wider ATR (more typical movement) might call for a wider stop distance to avoid being caught by normal noise.
 ANSWER: True
 WHY: A stop set too tight relative to typical movement risks getting triggered by ordinary volatility.
+
+[NUMBER] A common approach sets the stop at 1.5x ATR. If ATR is $0.80, drag to the stop distance.
+MIN: 0
+MAX: 3
+STEP: 0.1
+ANSWER: 1.2
+TOLERANCE: 0.1
+UNIT: $
+WHY: 1.5 × $0.80 ATR = a $1.20 stop distance, sized to typical movement.
 
 [FILL] Using ATR for stops means basing distance on typical [___], not an arbitrary number.
 movement
