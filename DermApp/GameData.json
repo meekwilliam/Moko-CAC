@@ -598,7 +598,7 @@
        "scenario": "Someone assumes their \"fill\" price will always exactly match the last price shown on the chart.",
        "question": "What is the mistake?",
        "options": [
-        "Fills have nothing to do with price at all.",
+        "Fills are always filled at a better price than the chart.",
         "Fills always match the chart exactly.",
         "Fills can differ slightly from the displayed chart price due to spread, slippage, and order type."
        ],
@@ -703,10 +703,10 @@
        "question": "Which best describes unrealized P&L?",
        "options": [
         {
-         "label": "The company's total revenue",
+         "label": "Your entire account's balance",
          "correct": false,
-         "detail": "Unrelated",
-         "wrong_explanation": "P&L describes a trade's result, not company revenue."
+         "detail": "Not quite",
+         "wrong_explanation": "Unrealized P&L is one open position's paper result, not your whole account."
         },
         {
          "label": "A final, unchangeable result",
@@ -836,7 +836,7 @@
        "question": "What is the mistake?",
        "options": [
         "Market cap and cash reserves are the same thing.",
-        "Market cap has nothing to do with share price.",
+        "Market cap counts only the shares held by insiders.",
         "Market cap is share price times shares outstanding. It's a size metric, not a cash measurement."
        ],
        "correct": 2,
@@ -887,8 +887,8 @@
        "question": "Why might a low-float stock commonly show larger price swings?",
        "options": [
         "Fewer shares available can mean relatively small trades move the price more.",
-        "Low float guarantees the price never moves.",
-        "Low float has no relationship to price behavior."
+        "A larger float means each trade moves the price more.",
+        "Float only affects a stock's opening price."
        ],
        "correct": 0,
        "explanation": "With fewer shares available, the same order size can have a bigger relative impact on price."
@@ -942,7 +942,7 @@
        "scenario": "Someone assumes a low-float stock will always have small, steady price moves.",
        "question": "What is the mistake?",
        "options": [
-        "Float has no relationship to price behavior at all.",
+        "A high-float stock always swings more than a low-float one.",
         "Low float always means calmer price action.",
         "Low-float stocks are commonly associated with LARGER price swings, not smaller ones, since fewer shares are available."
        ],
@@ -1080,7 +1080,7 @@
        "options": [
         "Short and long-term are synonyms.",
         "\"Short\" describes selling first to profit from a decline. It's unrelated to how long a trade is held.",
-        "Vocabulary from this unit doesn't matter going forward."
+        "Going short means buying at a lower price first."
        ],
        "correct": 1,
        "explanation": "Precise use of this vocabulary matters, since the rest of the course builds on these exact terms."
@@ -7022,7 +7022,7 @@
        "question": "What is the mistake?",
        "options": [
         "Order flow describes current buy/sell pressure. It doesn't guarantee the exact next price.",
-        "Order flow has no relationship to price at all.",
+        "Order flow only matters after the market closes.",
         "Order flow guarantees perfect predictions every time."
        ],
        "correct": 0,
@@ -7093,10 +7093,10 @@
        "question": "Which best describes how supply and demand relate to price?",
        "options": [
         {
-         "label": "Supply and demand have no relationship to price at all",
+         "label": "The exchange sets the price directly, not supply and demand",
          "correct": false,
-         "detail": "Incorrect",
-         "wrong_explanation": "This is the basic mechanism behind price moves."
+         "detail": "Not quite",
+         "wrong_explanation": "Price emerges from the supply/demand balance, not an exchange decree."
         },
         {
          "label": "Price commonly reflects the shifting balance between supply and demand",
@@ -7119,7 +7119,7 @@
        "scenario": "Someone claims supply and demand have nothing to do with why a stock's price changes.",
        "question": "What is the mistake?",
        "options": [
-        "Price changes for reasons totally unrelated to buyers and sellers.",
+        "Price changes only from company news, never from order flow.",
         "Supply and demand are commonly described as the basic economic engine behind price changes.",
         "Supply and demand only apply to physical goods, never stocks."
        ],
@@ -7311,7 +7311,7 @@
        "scenario": "Someone believes a single company employee sets the price under this \"auction\" framing.",
        "question": "What is the mistake?",
        "options": [
-        "Auctions have no relationship to how markets work.",
+        "The exchange fixes one auction price for the whole day.",
         "The auction framing describes price emerging from many participants, not one person's decision.",
         "One person sets the auction price for everyone."
        ],
@@ -7335,8 +7335,8 @@
        "type": "multiple_choice",
        "question": "Why might a candle end up with a long lower wick, mechanically?",
        "options": [
-        "The chart software randomly added a wick.",
-        "Wicks are unrelated to buying and selling pressure.",
+        "Buyers pushed price up, but selling pressure drove it back down.",
+        "The candle opened and closed at exactly the same price.",
         "Sellers pushed price down, but buying pressure pushed it back up before the close."
        ],
        "correct": 2,
@@ -7388,10 +7388,10 @@
          "detail": "Shape reflects underlying mechanics"
         },
         {
-         "label": "Because order flow has no relationship to candles",
+         "label": "Because only a candle's color reflects order flow",
          "correct": false,
-         "detail": "Backwards",
-         "wrong_explanation": "This lesson's whole point is that they're connected."
+         "detail": "Incomplete",
+         "wrong_explanation": "Body and wick size reflect it too, not just color."
         },
         {
          "label": "Because candle shapes are randomly generated",
@@ -7409,7 +7409,7 @@
        "scenario": "Someone believes candle shapes are unrelated to actual buying and selling activity.",
        "question": "What is the mistake?",
        "options": [
-        "Candles are drawn randomly with no connection to trading.",
+        "Candle shape reflects only the timeframe, not order flow.",
         "Candle shapes are mechanical traces of real order flow and supply/demand pressure during that period.",
         "Only the color of a candle matters, not its shape."
        ],
@@ -7584,10 +7584,10 @@
          "wrong_explanation": "As covered earlier, breakouts can still fail."
         },
         {
-         "label": "A breakout has no relationship to supply, demand, or order flow",
+         "label": "A breakout is caused by the chart timeframe, not order flow",
          "correct": false,
-         "detail": "Backwards",
-         "wrong_explanation": "This lesson's point is exactly that connection."
+         "detail": "Not quite",
+         "wrong_explanation": "Breakouts trace back to supply/demand overwhelming a level."
         }
        ],
        "concern": "Tying mechanics together",
@@ -7699,10 +7699,10 @@
          "detail": "The central theme"
         },
         {
-         "label": "This unit is unrelated to earlier units in the course",
+         "label": "This unit replaces everything taught in earlier units",
          "correct": false,
-         "detail": "Backwards",
-         "wrong_explanation": "It explicitly connects back to candles, trends, and levels."
+         "detail": "Overstates it",
+         "wrong_explanation": "It builds on and connects earlier units, it doesn't replace them."
         },
         {
          "label": "This unit provides guaranteed trading signals",
@@ -8833,7 +8833,7 @@
        "options": [
         "Volume should always be read alone.",
         "Volume is commonly read alongside price for context, not in total isolation from it.",
-        "Volume has no relationship to price at all."
+        "Volume replaces the need to read price at all."
        ],
        "correct": 1,
        "explanation": "Volume and price are read together for a fuller picture."
@@ -8882,8 +8882,8 @@
        "type": "multiple_choice",
        "question": "Why might comparing volume to recent history matter?",
        "options": [
-        "It only matters for the very first candle on a chart.",
-        "It has no bearing on reading volume at all.",
+        "A single volume bar means the same thing on every stock.",
+        "It tells you the exact price the next candle will reach.",
         "It helps judge whether current activity is unusually high or low for that asset."
        ],
        "correct": 2,
@@ -8996,10 +8996,10 @@
          "detail": "Descriptive, not a guarantee"
         },
         {
-         "label": "Volume has no relationship to breakouts",
+         "label": "Low volume confirms a breakout better than high volume",
          "correct": false,
          "detail": "Backwards",
-         "wrong_explanation": "Volume is commonly read as added context on breakouts."
+         "wrong_explanation": "Higher participation adds confluence; low volume is commonly a caution."
         },
         {
          "label": "High volume on a breakout guarantees it continues",
@@ -9101,10 +9101,10 @@
          "wrong_explanation": "Even high-volume reversals can fail."
         },
         {
-         "label": "Volume has no relationship to reversals",
+         "label": "A reversal on low volume is the strongest kind",
          "correct": false,
          "detail": "Backwards",
-         "wrong_explanation": "Volume is commonly read as added context at reversals."
+         "wrong_explanation": "A volume surge is what commonly adds confluence to a reversal read."
         }
        ],
        "concern": "Reading volume as context",
@@ -9194,10 +9194,10 @@
          "detail": "Descriptive tendency"
         },
         {
-         "label": "Because climactic volume has no relationship to move-endings at all",
+         "label": "Because climactic volume only ever appears at the open",
          "correct": false,
-         "detail": "Undersells it",
-         "wrong_explanation": "It IS commonly cited context, just not certain."
+         "detail": "Not quite",
+         "wrong_explanation": "A climactic spike is commonly noted near move-endings, not tied to the open."
         },
         {
          "label": "Because climactic volume always guarantees the move ends immediately",
@@ -9513,10 +9513,10 @@
          "detail": "The central theme"
         },
         {
-         "label": "Volume has no relationship to price action",
+         "label": "Volume replaces price as the main thing to read",
          "correct": false,
-         "detail": "Backwards",
-         "wrong_explanation": "Volume is a core, descriptive companion to price."
+         "detail": "Overstates it",
+         "wrong_explanation": "Volume is a companion to price, not a replacement for it."
         },
         {
          "label": "Volume guarantees every price outcome",
@@ -9534,7 +9534,7 @@
        "scenario": "Someone finishes this unit and starts treating every high-volume move as a guaranteed success.",
        "question": "What is the mistake?",
        "options": [
-        "Volume has no relationship to move quality at all.",
+        "Low volume is what guarantees a successful move.",
         "Volume adds context and confluence. It never guarantees a move's success.",
         "High volume always guarantees success."
        ],
@@ -9614,10 +9614,10 @@
        "question": "Why are swing highs and lows described as \"raw building blocks\"?",
        "options": [
         {
-         "label": "They have no relationship to trend classification",
+         "label": "They mark only the single top and bottom of the whole chart",
          "correct": false,
-         "detail": "Backwards",
-         "wrong_explanation": "Trend classification is built directly from comparing these points."
+         "detail": "Not quite",
+         "wrong_explanation": "Swing points occur throughout; trend structure compares their sequence."
         },
         {
          "label": "They only apply to downtrends",
@@ -9840,7 +9840,7 @@
        "options": [
         "Compression never resolves into anything else.",
         "Compression is commonly described as temporary, eventually resolving into expansion.",
-        "Expansion has no relationship to compression."
+        "A narrowing range guarantees the next move is upward."
        ],
        "correct": 1,
        "explanation": "The narrowing-then-widening rhythm is a commonly cited pattern, not a permanent state.",
@@ -9939,7 +9939,7 @@
        "options": [
         "A long wick shows price was pushed back. That's rejection, not the calm holding that defines acceptance.",
         "Rejection and acceptance mean the same thing.",
-        "Wick length has no relationship to rejection or acceptance."
+        "A long wick always means the level was accepted."
        ],
        "correct": 0,
        "explanation": "A pushed-back wick is rejection; acceptance describes a level being calmly held or traded through instead.",
@@ -10137,7 +10137,7 @@
        "options": [
         "Memorizing terms is the only skill that matters here.",
         "Vocabulary without context misses the surrounding trend and levels that actually give each term its meaning.",
-        "Context has no relationship to price-action vocabulary."
+        "Context only matters for beginners, not for the terms themselves."
        ],
        "correct": 1,
        "explanation": "Context is what turns raw vocabulary into a meaningful, applied reading skill.",
@@ -10236,10 +10236,10 @@
          "wrong_explanation": "This contradicts the whole unit."
         },
         {
-         "label": "Vocabulary unrelated to earlier units in the course",
+         "label": "Vocabulary that applies to only one specific chart pattern",
          "correct": false,
-         "detail": "Backwards",
-         "wrong_explanation": "This vocabulary describes ideas already covered, just named precisely."
+         "detail": "Too narrow",
+         "wrong_explanation": "It describes price behavior broadly, across many patterns."
         },
         {
          "label": "A shared vocabulary for describing price behavior, most useful combined with context",
@@ -23492,16 +23492,16 @@
        "question": "Why is \"the open\" commonly considered especially active?",
        "options": [
         {
-         "label": "Trading is impossible during the open",
+         "label": "Pre-market prices are frozen and carried into the open",
          "correct": false,
-         "detail": "Incorrect",
-         "wrong_explanation": "The open is trading, just often the busiest part."
+         "detail": "Not quite",
+         "wrong_explanation": "The open is a fresh burst of standard-hours activity, not carried-over pre-market prices."
         },
         {
-         "label": "The open has no relationship to activity level",
+         "label": "Order flow is spread evenly across the whole day",
          "correct": false,
-         "detail": "Incorrect",
-         "wrong_explanation": "The open is commonly one of the most active periods."
+         "detail": "Not quite",
+         "wrong_explanation": "Activity commonly clusters at the open and close, not evenly through the day."
         },
         {
          "label": "Many participants who were waiting through pre-market act once standard hours begin",
@@ -23588,10 +23588,10 @@
        "question": "Why might power hour commonly see increased activity?",
        "options": [
         {
-         "label": "Power hour has no relationship to activity level",
+         "label": "Activity is always lowest in the final hour",
          "correct": false,
-         "detail": "Incorrect",
-         "wrong_explanation": "It's commonly one of the more active periods."
+         "detail": "Backwards",
+         "wrong_explanation": "Power hour is commonly one of the busier periods, not the quietest."
         },
         {
          "label": "Participants commonly position or adjust ahead of the session's close",
@@ -23613,7 +23613,7 @@
        "scenario": "Someone assumes midday is always the busiest part of the trading day.",
        "question": "What is the mistake?",
        "options": [
-        "Session timing has no effect on typical activity level.",
+        "Every session of the day sees identical activity.",
         "Midday is commonly the quieter lull, not the busiest period. That's more commonly the open or power hour.",
         "Midday is always busier than the open."
        ],
@@ -23709,7 +23709,7 @@
        "scenario": "Someone expects an after-hours fill to behave identically to a standard-hours fill.",
        "question": "What is the mistake?",
        "options": [
-        "Liquidity has no relationship to fill behavior.",
+        "After-hours orders are guaranteed a better price than standard hours.",
         "After-hours fills always match standard-hours fills exactly.",
         "Thinner after-hours liquidity can commonly lead to bigger gaps between expected and actual fill prices."
        ],
@@ -23792,10 +23792,10 @@
          "detail": "Connects to the Gaps unit"
         },
         {
-         "label": "Earnings reports never affect price at all",
+         "label": "Earnings only matter during standard trading hours",
          "correct": false,
-         "detail": "Incorrect",
-         "wrong_explanation": "They're commonly linked to some of the largest volatility events."
+         "detail": "Not quite",
+         "wrong_explanation": "Earnings often land after the close, which is exactly why they gap the next open."
         }
        ],
        "concern": "Connecting concepts",
@@ -23879,10 +23879,10 @@
        "question": "Why might economic releases commonly cause broader market volatility?",
        "options": [
         {
-         "label": "They have no relationship to market behavior",
+         "label": "They move only bonds, never stocks",
          "correct": false,
-         "detail": "Incorrect",
-         "wrong_explanation": "They're commonly cited as broad volatility drivers."
+         "detail": "Not quite",
+         "wrong_explanation": "Broad economic data commonly moves equities market-wide too, not just bonds."
         },
         {
          "label": "They describe the broader economy, which can affect sentiment across many assets at once",
@@ -23930,7 +23930,7 @@
        "options": [
         "New information gets absorbed by the market all at once, rather than gradually.",
         "News releases always calm the market down.",
-        "Volatility has no relationship to news timing."
+        "The bid-ask spread narrows sharply the moment news lands."
        ],
        "correct": 0,
        "explanation": "A sudden burst of new information commonly produces sharper, faster price swings."
@@ -23987,10 +23987,10 @@
          "detail": "A commonly cited pattern"
         },
         {
-         "label": "Volatility has no relationship to how information gets absorbed",
+         "label": "The volatility comes from the spread, not the news",
          "correct": false,
-         "detail": "Backwards",
-         "wrong_explanation": "This lesson's core point is that connection."
+         "detail": "Not quite",
+         "wrong_explanation": "The spike is the market absorbing new information, not just a spread change."
         }
        ],
        "concern": "Reading it honestly",
@@ -24003,7 +24003,7 @@
        "question": "What is the mistake?",
        "options": [
         "Volatility spikes always last permanently.",
-        "News has no relationship to volatility at all.",
+        "Only earnings, never economic data, can spike volatility.",
         "News-driven volatility is commonly temporary, settling back down once the information is absorbed."
        ],
        "correct": 2,
@@ -24100,7 +24100,7 @@
        "question": "What is the mistake?",
        "options": [
         "News commonly brings added volatility and wider spreads. Many traders apply extra caution, not more size, around it.",
-        "News has no relationship to typical risk levels.",
+        "Wider spreads around news guarantee a better entry price.",
         "Increasing size before news always leads to bigger profits."
        ],
        "correct": 0,
@@ -24124,7 +24124,7 @@
        "question": "Why might a chart look different during pre-market versus the standard open?",
        "options": [
         "Liquidity and participation commonly differ by session, changing the chart's rhythm.",
-        "Session timing has no relationship to chart behavior.",
+        "Pre-market always trends the opposite way to standard hours.",
         "Charts are always identical no matter the session."
        ],
        "correct": 0,
@@ -24176,10 +24176,10 @@
          "detail": "Adds to the full picture"
         },
         {
-         "label": "Because session timing has no bearing on reading a chart",
+         "label": "Because sessions only matter to long-term investors",
          "correct": false,
-         "detail": "Backwards",
-         "wrong_explanation": "This whole unit shows it commonly does."
+         "detail": "Not quite",
+         "wrong_explanation": "Session rhythm is especially relevant to intraday reading."
         },
         {
          "label": "Because session timing replaces the need for any other analysis",
@@ -24239,8 +24239,8 @@
        "question": "What do earnings reports and economic releases have in common?",
        "options": [
         "Both are scheduled information events commonly linked to increased volatility.",
-        "Neither has any relationship to price behavior.",
-        "Both are completely random and unscheduled."
+        "Both guarantee the market moves in the reported direction.",
+        "Both affect only the single company that reports them."
        ],
        "correct": 0,
        "explanation": "Both are scheduled events commonly tied to volatility, differing mainly in scope."
@@ -32571,7 +32571,7 @@
        "question": "What is the mistake?",
        "options": [
         "Stop distance should never consider typical movement.",
-        "ATR has no relationship to stop placement.",
+        "ATR tells you the exact price a stop will be hit.",
         "A stop set well inside typical movement (ATR) can get triggered by ordinary volatility, not a meaningful shift."
        ],
        "correct": 2,
@@ -32595,7 +32595,7 @@
        "question": "ATR commonly does what during a tight, quiet range?",
        "options": [
         "Rises sharply.",
-        "Has no relationship to market condition.",
+        "Stays fixed at a preset value.",
         "Falls, reflecting smaller typical movement."
        ],
        "correct": 2,
@@ -32653,10 +32653,10 @@
          "detail": "Confluence with condition"
         },
         {
-         "label": "It has no relationship to market condition",
+         "label": "It predicts exactly when the condition will change",
          "correct": false,
-         "detail": "Incorrect",
-         "wrong_explanation": "ATR commonly shifts with condition."
+         "detail": "Overstates it",
+         "wrong_explanation": "ATR describes current typical movement, it doesn't forecast condition changes."
         }
        ],
        "concern": "Connecting the concepts",
@@ -32670,7 +32670,7 @@
        "options": [
         "ATR never changes regardless of condition.",
         "ATR commonly rises in volatile/trending conditions and falls in quiet ranges — it isn't fixed.",
-        "Market condition has no bearing on ATR."
+        "ATR is set once at the market open and then frozen."
        ],
        "correct": 1,
        "explanation": "ATR moves with the underlying volatility of the current condition.",
@@ -32709,7 +32709,7 @@
        "type": "multiple_choice",
        "question": "How does ATR commonly connect to risk management?",
        "options": [
-        "It has no relationship to stops or sizing.",
+        "It sets your position size automatically for you.",
         "It guarantees a specific trade outcome.",
         "It can inform a reasonable stop distance based on typical movement."
        ],
@@ -32751,10 +32751,10 @@
          "detail": "The central theme"
         },
         {
-         "label": "ATR is unrelated to risk management",
+         "label": "ATR is only useful on daily charts, never intraday",
          "correct": false,
-         "detail": "Backwards",
-         "wrong_explanation": "It connects directly to stop placement and sizing."
+         "detail": "Too narrow",
+         "wrong_explanation": "ATR applies across timeframes, including intraday."
         }
        ],
        "concern": "Reviewing the big picture",
@@ -32959,7 +32959,7 @@
        "scenario": "Someone assumes an RVOL of \"1.5x\" means the same absolute share count for every stock.",
        "question": "What is the mistake?",
        "options": [
-        "RVOL has no connection to that stock's own history.",
+        "1.5x compares the stock's volume to every other stock's.",
         "1.5x always equals exactly the same number of shares everywhere.",
         "1.5x is relative to that stock's own typical volume, which differs stock to stock."
        ],
@@ -33151,7 +33151,7 @@
        "scenario": "Someone compares midday volume directly to the opening-minutes baseline and calls it \"quiet.\"",
        "question": "What is the mistake?",
        "options": [
-        "RVOL has no relationship to time of day.",
+        "RVOL ignores time of day and uses the full daily total.",
         "Volume is identical at every point in the trading day.",
         "Comparing across mismatched time-of-day baselines can make normal midday volume look artificially low."
        ],
@@ -33233,10 +33233,10 @@
          "detail": "The central theme"
         },
         {
-         "label": "RVOL is unrelated to time of day",
+         "label": "RVOL works only on stocks, never on indexes",
          "correct": false,
-         "detail": "Incorrect",
-         "wrong_explanation": "The baseline itself is time-of-day specific."
+         "detail": "Too narrow",
+         "wrong_explanation": "The relative-volume idea applies to indexes too."
         }
        ],
        "concern": "Reviewing the big picture",
@@ -33345,7 +33345,7 @@
        "scenario": "Someone assumes the opening range guarantees the day's final high and low.",
        "question": "What is the mistake?",
        "options": [
-        "The opening range has no relationship to the rest of the day.",
+        "The opening range is only valid if the day closes higher.",
         "The opening range always matches the day's final high and low exactly.",
         "The opening range is an early reference level, not a guarantee of the full day's eventual high or low."
        ],
@@ -33627,10 +33627,10 @@
          "detail": "Confluence with volatility"
         },
         {
-         "label": "It has no relationship to volatility",
+         "label": "It measures volume, not volatility",
          "correct": false,
-         "detail": "Incorrect",
-         "wrong_explanation": "Range width directly reflects early volatility."
+         "detail": "Not quite",
+         "wrong_explanation": "Opening range width reflects early price volatility, not volume."
         }
        ],
        "concern": "Connecting concepts",
@@ -33644,7 +33644,7 @@
        "options": [
         "A wide opening range describes early volatility, it doesn't guarantee how the rest of the day unfolds.",
         "Opening range width always predicts the entire day's volatility.",
-        "Opening range width has no connection to volatility at all."
+        "A wide opening range guarantees a calm afternoon."
        ],
        "correct": 0,
        "explanation": "The opening range only describes the earliest window, not a guarantee for the rest of the session.",
@@ -33714,10 +33714,10 @@
        "question": "Which best summarizes this unit?",
        "options": [
         {
-         "label": "The opening range is unrelated to volatility",
+         "label": "The opening range only works on the daily timeframe",
          "correct": false,
-         "detail": "Incorrect",
-         "wrong_explanation": "Range width directly reflects early volatility."
+         "detail": "Too narrow",
+         "wrong_explanation": "It's an intraday concept, built from the session's first minutes."
         },
         {
          "label": "The opening range guarantees the day's final high and low",
@@ -33837,7 +33837,7 @@
        "scenario": "Someone assumes a stock always moves in perfect lockstep with its sector.",
        "question": "What is the mistake?",
        "options": [
-        "Sector context has no relationship to an individual stock at all.",
+        "A stock always moves in the exact opposite direction to its sector.",
         "Stocks commonly move somewhat together with their sector, but not in guaranteed lockstep.",
         "Every stock in a sector moves identically at all times."
        ],
@@ -33935,7 +33935,7 @@
        "options": [
         "Relative strength describes current comparative movement, it doesn't guarantee future outperformance.",
         "Relative strength always continues indefinitely once observed.",
-        "Relative strength has no meaning beyond a single day."
+        "Relative strength is measured against the stock's own past, not its sector."
        ],
        "correct": 0,
        "explanation": "Like any descriptive read, relative strength can shift from one period to the next."
@@ -34009,10 +34009,10 @@
          "detail": "Descriptive framing"
         },
         {
-         "label": "As a concept unrelated to relative strength",
+         "label": "As the same thing as one stock's individual trend",
          "correct": false,
-         "detail": "Incorrect",
-         "wrong_explanation": "It's relative strength/weakness applied over time at the sector level."
+         "detail": "Not quite",
+         "wrong_explanation": "Rotation is relative strength between sectors over time, not one stock's trend."
         },
         {
          "label": "As a guaranteed calendar of which sector leads each month",
@@ -34029,7 +34029,7 @@
        "scenario": "Someone assumes sector rotation follows a fixed, guaranteed monthly schedule.",
        "question": "What is the mistake?",
        "options": [
-        "Sector rotation has no relationship to relative strength.",
+        "Sector rotation applies to only one stock at a time.",
         "Sector rotation always follows an identical, predictable calendar.",
         "Sector rotation describes a shifting pattern over time, not a fixed guaranteed schedule."
        ],
@@ -34125,7 +34125,7 @@
        "scenario": "Someone uses sector strength alone, ignoring every other factor, as a complete trading system.",
        "question": "What is the mistake?",
        "options": [
-        "Sector context has no relationship to the Confluence unit's ideas.",
+        "Sector context should replace chart and level reading entirely.",
         "Sector strength alone is sufficient and no other factor matters.",
         "Sector context is one descriptive factor among several, not a complete standalone system."
        ],
@@ -34166,7 +34166,7 @@
        "question": "How should sector rotation be understood?",
        "options": [
         "As a descriptive pattern of sectors taking turns showing relative strength over time.",
-        "As something with no connection to relative strength.",
+        "As one sector permanently leading all the others.",
         "As a guaranteed fixed schedule."
        ],
        "correct": 0,
@@ -34196,10 +34196,10 @@
        "question": "Which best summarizes this unit?",
        "options": [
         {
-         "label": "Sector and index context is unrelated to confluence",
+         "label": "Sector and index context is a standalone signal to trade on",
          "correct": false,
-         "detail": "Incorrect",
-         "wrong_explanation": "It connects directly to the Confluence unit's framing."
+         "detail": "Overstates it",
+         "wrong_explanation": "It's one confluence factor, not a standalone signal."
         },
         {
          "label": "Sector and index context adds descriptive confluence, without guaranteeing any stock's future movement",
@@ -34319,7 +34319,7 @@
        "options": [
         "Level II shows current standing orders, it doesn't guarantee the exact next traded price.",
         "Level II always predicts the very next trade price precisely.",
-        "Level II has no relationship to bids and asks at all."
+        "Level II shows only the single last traded price."
        ],
        "correct": 0,
        "explanation": "Level II is a descriptive snapshot of current orders, not a guaranteed prediction of the next trade."
@@ -34414,7 +34414,7 @@
        "question": "What is the mistake?",
        "options": [
         "The spread describes the current gap between buy and sell orders, it doesn't guarantee any profit.",
-        "The spread has no relationship to buyers and sellers.",
+        "The spread is set by the exchange, not by resting orders.",
         "Crossing the spread always guarantees a profitable outcome."
        ],
        "correct": 0,
@@ -34510,7 +34510,7 @@
        "question": "What is the mistake?",
        "options": [
         "Resting orders in the book can be modified or canceled at any moment, they aren't necessarily permanent.",
-        "Order book depth has no relationship to buying or selling interest.",
+        "A large resting order guarantees price stops at that level.",
         "Orders in the book can never be canceled once placed."
        ],
        "correct": 0,
@@ -34681,10 +34681,10 @@
          "detail": "The central theme"
         },
         {
-         "label": "Level II is unrelated to bids, asks, or depth",
+         "label": "Level II replaces the need to read price and volume",
          "correct": false,
-         "detail": "Incorrect",
-         "wrong_explanation": "Those are exactly what Level II displays."
+         "detail": "Overstates it",
+         "wrong_explanation": "It's one more descriptive layer, not a replacement."
         },
         {
          "label": "Level II guarantees exact knowledge of every future trade",

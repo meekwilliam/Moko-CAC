@@ -102,7 +102,7 @@ WHY: Fill is specifically the executed price, not the position's size.
 QUESTION: What is the mistake?
 Fills can differ slightly from the displayed chart price due to spread, slippage, and order type.
 Fills always match the chart exactly.
-Fills have nothing to do with price at all.
+Fills are always filled at a better price than the chart.
 WHY: As covered in prior lessons, several factors can make a fill differ from the chart's displayed price.
 
 NODE 3
@@ -150,7 +150,7 @@ WHY: An open position's paper value can move until it's closed and the result be
 CONCERN: Understanding this specific term
 A paper gain/loss that can still change while the position stays open | detail: Not yet locked in
 A final, unchangeable result | detail: Describes realized P&L instead | wrong: That describes realized P&L, not unrealized.
-The company's total revenue | detail: Unrelated | wrong: P&L describes a trade's result, not company revenue.
+Your entire account's balance | detail: Not quite | wrong: Unrealized P&L is one open position's paper result, not your whole account.
 WHY: Unrealized P&L is a paper value that can still move until the position closes.
 
 [SPOT] Someone treats their unrealized P&L as a final, guaranteed result before closing the position.
@@ -207,7 +207,7 @@ WHY: Market cap is a size metric calculated from price and shares outstanding.
 QUESTION: What is the mistake?
 Market cap is share price times shares outstanding. It's a size metric, not a cash measurement.
 Market cap and cash reserves are the same thing.
-Market cap has nothing to do with share price.
+Market cap counts only the shares held by insiders.
 WHY: Market cap is specifically calculated from share price and share count, not cash on hand.
 
 NODE 5
@@ -236,8 +236,8 @@ WHY: "Low float" describes a stock with relatively few shares available for publ
 
 [MC] Why might a low-float stock commonly show larger price swings?
 Fewer shares available can mean relatively small trades move the price more.
-Low float guarantees the price never moves.
-Low float has no relationship to price behavior.
+A larger float means each trade moves the price more.
+Float only affects a stock's opening price.
 WHY: With fewer shares available, the same order size can have a bigger relative impact on price.
 
 [MATCH] Match the float description to its common trait.
@@ -257,7 +257,7 @@ WHY: Float specifically counts publicly tradeable shares, distinct from total sh
 QUESTION: What is the mistake?
 Low-float stocks are commonly associated with LARGER price swings, not smaller ones, since fewer shares are available.
 Low float always means calmer price action.
-Float has no relationship to price behavior at all.
+A high-float stock always swings more than a low-float one.
 WHY: Fewer available shares commonly means relatively bigger price impact per trade, not steadier action.
 
 NODE 6
@@ -313,7 +313,7 @@ WHY: This unit builds the foundational vocabulary used throughout the rest of th
 QUESTION: What is the mistake?
 "Short" describes selling first to profit from a decline. It's unrelated to how long a trade is held.
 Short and long-term are synonyms.
-Vocabulary from this unit doesn't matter going forward.
+Going short means buying at a lower price first.
 WHY: Precise use of this vocabulary matters, since the rest of the course builds on these exact terms.
 
 UNIT 2 — Market Foundations
@@ -3193,7 +3193,7 @@ WHY: Order flow is a descriptive read of current buy/sell pressure, not a guaran
 QUESTION: What is the mistake?
 Order flow describes current buy/sell pressure. It doesn't guarantee the exact next price.
 Order flow guarantees perfect predictions every time.
-Order flow has no relationship to price at all.
+Order flow only matters after the market closes.
 WHY: Order flow is descriptive context about pressure, not a certainty about the future.
 
 NODE 2
@@ -3231,14 +3231,14 @@ WHY: This is the same buyer/seller balance idea from earlier lessons, framed as 
 CHART: uptrend
 CONCERN: Understanding the basic mechanism
 Price commonly reflects the shifting balance between supply and demand | detail: A foundational economic idea
-Supply and demand have no relationship to price at all | detail: Incorrect | wrong: This is the basic mechanism behind price moves.
+The exchange sets the price directly, not supply and demand | detail: Not quite | wrong: Price emerges from the supply/demand balance, not an exchange decree.
 Supply and demand guarantee a specific future price | detail: Overstates certainty | wrong: It's a descriptive mechanism, not a guarantee.
 WHY: Supply and demand together are commonly described as the basic engine behind price.
 
 [SPOT] Someone claims supply and demand have nothing to do with why a stock's price changes.
 QUESTION: What is the mistake?
 Supply and demand are commonly described as the basic economic engine behind price changes.
-Price changes for reasons totally unrelated to buyers and sellers.
+Price changes only from company news, never from order flow.
 Supply and demand only apply to physical goods, never stocks.
 WHY: This mechanism applies to stocks (and most markets) just as it does to other goods.
 
@@ -3327,7 +3327,7 @@ WHY: The continuous-auction framing describes ongoing price discovery, not a fix
 QUESTION: What is the mistake?
 The auction framing describes price emerging from many participants, not one person's decision.
 One person sets the auction price for everyone.
-Auctions have no relationship to how markets work.
+The exchange fixes one auction price for the whole day.
 WHY: This is the same idea revisited from earlier lessons, price emerges from many participants, not one.
 
 NODE 5
@@ -3341,8 +3341,8 @@ CHART: hammer
 
 [MC] Why might a candle end up with a long lower wick, mechanically?
 Sellers pushed price down, but buying pressure pushed it back up before the close.
-The chart software randomly added a wick.
-Wicks are unrelated to buying and selling pressure.
+Buyers pushed price up, but selling pressure drove it back down.
+The candle opened and closed at exactly the same price.
 WHY: A long lower wick reflects a mechanical tug-of-war: a push down that got reversed by buying pressure.
 
 [TF] A candle's shape reflects the underlying supply/demand tug-of-war during that period.
@@ -3366,14 +3366,14 @@ CHART: hammer
 CONCERN: Connecting mechanics to shape
 Because body and wick size are mechanical traces of that period's buy/sell pressure | detail: Shape reflects underlying mechanics
 Because candle shapes are randomly generated | detail: Incorrect | wrong: Shapes reflect real trading activity, not randomness.
-Because order flow has no relationship to candles | detail: Backwards | wrong: This lesson's whole point is that they're connected.
+Because only a candle's color reflects order flow | detail: Incomplete | wrong: Body and wick size reflect it too, not just color.
 WHY: This connects the "why" (mechanics) to the "what" (candle shapes) taught earlier in the course.
 
 [SPOT] Someone believes candle shapes are unrelated to actual buying and selling activity.
 CHART: hammer
 QUESTION: What is the mistake?
 Candle shapes are mechanical traces of real order flow and supply/demand pressure during that period.
-Candles are drawn randomly with no connection to trading.
+Candle shape reflects only the timeframe, not order flow.
 Only the color of a candle matters, not its shape.
 WHY: Body and wick size directly reflect the underlying buy/sell pressure for that period.
 
@@ -3459,7 +3459,7 @@ WHY: Both reversals and breakouts trace back to the same underlying order flow a
 CHART: resistanceRejection
 CONCERN: Tying mechanics together
 A breakout reflects demand or supply finally overwhelming a level, via the same order-flow mechanics | detail: Connects mechanism to event
-A breakout has no relationship to supply, demand, or order flow | detail: Backwards | wrong: This lesson's point is exactly that connection.
+A breakout is caused by the chart timeframe, not order flow | detail: Not quite | wrong: Breakouts trace back to supply/demand overwhelming a level.
 A breakout guarantees the new direction continues forever | detail: Overstates certainty | wrong: As covered earlier, breakouts can still fail.
 WHY: This ties the "why" mechanics (order flow, supply/demand) back to the "what" (breakouts, reversals) from earlier units.
 
@@ -3511,7 +3511,7 @@ CHART: breakout
 CONCERN: Reviewing the big picture
 The underlying mechanics (order flow, supply/demand) explain why candles, trends, and breakouts behave as they do | detail: The central theme
 This unit provides guaranteed trading signals | detail: Overstates certainty | wrong: This contradicts the descriptive nature of every lesson.
-This unit is unrelated to earlier units in the course | detail: Backwards | wrong: It explicitly connects back to candles, trends, and levels.
+This unit replaces everything taught in earlier units | detail: Overstates it | wrong: It builds on and connects earlier units, it doesn't replace them.
 WHY: Connecting underlying mechanics to previously taught concepts is the throughline of this unit.
 
 [SPOT] Someone finishes this unit and claims market mechanics now let them predict every future price with certainty.
@@ -3563,7 +3563,7 @@ WHY: Volume adds participation context to a price move. It doesn't replace or gu
 QUESTION: What is the mistake?
 Volume is commonly read alongside price for context, not in total isolation from it.
 Volume should always be read alone.
-Volume has no relationship to price at all.
+Volume replaces the need to read price at all.
 WHY: Volume and price are read together for a fuller picture.
 
 NODE 2
@@ -3592,8 +3592,8 @@ WHY: Comparing to what's typical for that specific asset is the relative approac
 
 [MC] Why might comparing volume to recent history matter?
 It helps judge whether current activity is unusually high or low for that asset.
-It has no bearing on reading volume at all.
-It only matters for the very first candle on a chart.
+It tells you the exact price the next candle will reach.
+A single volume bar means the same thing on every stock.
 WHY: Comparing to recent history gives a relative baseline for judging current volume.
 
 [PICK] How should "high volume" be judged?
@@ -3646,7 +3646,7 @@ CHART: breakout
 CONCERN: Reading volume as context
 Higher volume suggests more participation, adding confluence to the breakout | detail: Descriptive, not a guarantee
 High volume on a breakout guarantees it continues | detail: Overstates certainty | wrong: Even high-volume breakouts can still fail.
-Volume has no relationship to breakouts | detail: Backwards | wrong: Volume is commonly read as added context on breakouts.
+Low volume confirms a breakout better than high volume | detail: Backwards | wrong: Higher participation adds confluence; low volume is commonly a caution.
 WHY: Volume adds confluence to a breakout read, without guaranteeing the outcome.
 
 [SPOT] Someone assumes a low-volume breakout is exactly as convincing as a high-volume one.
@@ -3693,7 +3693,7 @@ CHART: resistanceRejection
 CONCERN: Reading volume as context
 A volume surge adds confluence to a reversal read, without guaranteeing it | detail: Descriptive, not a guarantee
 High volume at a reversal guarantees the trend has permanently turned | detail: Overstates certainty | wrong: Even high-volume reversals can fail.
-Volume has no relationship to reversals | detail: Backwards | wrong: Volume is commonly read as added context at reversals.
+A reversal on low volume is the strongest kind | detail: Backwards | wrong: A volume surge is what commonly adds confluence to a reversal read.
 WHY: Volume adds confluence to a reversal read, without guaranteeing the outcome.
 
 [SPOT] Someone assumes every reversal, regardless of volume, is equally significant.
@@ -3740,7 +3740,7 @@ CHART: volatile
 CONCERN: Reading it honestly
 Because a spike is commonly noted near move-endings, but doesn't guarantee one | detail: Descriptive tendency
 Because climactic volume always guarantees the move ends immediately | detail: Overstates certainty | wrong: It's a commonly cited tendency, not a guarantee.
-Because climactic volume has no relationship to move-endings at all | detail: Undersells it | wrong: It IS commonly cited context, just not certain.
+Because climactic volume only ever appears at the open | detail: Not quite | wrong: A climactic spike is commonly noted near move-endings, not tied to the open.
 WHY: Like other volume reads, climactic volume is descriptive context, not a guarantee.
 
 [SPOT] Someone assumes every climactic volume spike guarantees the current move is about to end.
@@ -3885,7 +3885,7 @@ CHART: breakout
 CONCERN: Reviewing the big picture
 Volume adds participation context to price reads, descriptive, and stronger in combination | detail: The central theme
 Volume guarantees every price outcome | detail: Overstates certainty | wrong: This contradicts the whole unit.
-Volume has no relationship to price action | detail: Backwards | wrong: Volume is a core, descriptive companion to price.
+Volume replaces price as the main thing to read | detail: Overstates it | wrong: Volume is a companion to price, not a replacement for it.
 WHY: Descriptive, confluence-adding volume reading is the throughline of this unit.
 
 [SPOT] Someone finishes this unit and starts treating every high-volume move as a guaranteed success.
@@ -3893,7 +3893,7 @@ CHART: breakout
 QUESTION: What is the mistake?
 Volume adds context and confluence. It never guarantees a move's success.
 High volume always guarantees success.
-Volume has no relationship to move quality at all.
+Low volume is what guarantees a successful move.
 WHY: This unit consistently frames volume as descriptive context, never a guarantee.
 
 UNIT 7 — Price Action Vocabulary
@@ -3937,7 +3937,7 @@ WHY: These are the basic vocabulary for describing price's ups and downs.
 CHART: pullbackUptrend
 CONCERN: Understanding their role
 Trend and structure classifications are built by comparing sequences of them | detail: Foundational vocabulary
-They have no relationship to trend classification | detail: Backwards | wrong: Trend classification is built directly from comparing these points.
+They mark only the single top and bottom of the whole chart | detail: Not quite | wrong: Swing points occur throughout; trend structure compares their sequence.
 They only apply to downtrends | detail: Incomplete | wrong: Swing highs/lows apply to any market condition.
 WHY: Comparing sequences of swing highs/lows is literally how trend structure gets classified.
 
@@ -4040,7 +4040,7 @@ CHART: symmetricalTriangle
 QUESTION: What is the mistake?
 Compression is commonly described as temporary, eventually resolving into expansion.
 Compression never resolves into anything else.
-Expansion has no relationship to compression.
+A narrowing range guarantees the next move is upward.
 WHY: The narrowing-then-widening rhythm is a commonly cited pattern, not a permanent state.
 
 NODE 4
@@ -4087,7 +4087,7 @@ CHART: rejectionWickUp
 QUESTION: What is the mistake?
 A long wick shows price was pushed back. That's rejection, not the calm holding that defines acceptance.
 Rejection and acceptance mean the same thing.
-Wick length has no relationship to rejection or acceptance.
+A long wick always means the level was accepted.
 WHY: A pushed-back wick is rejection; acceptance describes a level being calmly held or traded through instead.
 
 NODE 5
@@ -4181,7 +4181,7 @@ CHART: breakoutRetest
 QUESTION: What is the mistake?
 Vocabulary without context misses the surrounding trend and levels that actually give each term its meaning.
 Memorizing terms is the only skill that matters here.
-Context has no relationship to price-action vocabulary.
+Context only matters for beginners, not for the terms themselves.
 WHY: Context is what turns raw vocabulary into a meaningful, applied reading skill.
 
 NODE 7
@@ -4224,7 +4224,7 @@ CHART: pullbackUptrend
 CONCERN: Reviewing the big picture
 A shared vocabulary for describing price behavior, most useful combined with context | detail: The central theme
 A set of guaranteed trading signals | detail: Overstates certainty | wrong: This contradicts the whole unit.
-Vocabulary unrelated to earlier units in the course | detail: Backwards | wrong: This vocabulary describes ideas already covered, just named precisely.
+Vocabulary that applies to only one specific chart pattern | detail: Too narrow | wrong: It describes price behavior broadly, across many patterns.
 WHY: Shared, context-dependent vocabulary is the throughline of this unit.
 
 [SPOT] Someone finishes this unit and starts using these terms as guaranteed trade signals.
@@ -11132,8 +11132,8 @@ WHY: Each session period commonly has a distinct liquidity and activity profile.
 [PICK] Why is "the open" commonly considered especially active?
 CONCERN: Understanding session structure
 Many participants who were waiting through pre-market act once standard hours begin | detail: A commonly cited pattern
-The open has no relationship to activity level | detail: Incorrect | wrong: The open is commonly one of the most active periods.
-Trading is impossible during the open | detail: Incorrect | wrong: The open is trading, just often the busiest part.
+Order flow is spread evenly across the whole day | detail: Not quite | wrong: Activity commonly clusters at the open and close, not evenly through the day.
+Pre-market prices are frozen and carried into the open | detail: Not quite | wrong: The open is a fresh burst of standard-hours activity, not carried-over pre-market prices.
 WHY: Pent-up activity from pre-market commonly concentrates right at the open.
 
 [SPOT] Someone assumes pre-market liquidity is always identical to the standard session's.
@@ -11176,7 +11176,7 @@ WHY: Standard sessions commonly follow this busy-quiet-busy activity pattern.
 [PICK] Why might power hour commonly see increased activity?
 CONCERN: Understanding this session period
 Participants commonly position or adjust ahead of the session's close | detail: A commonly cited pattern
-Power hour has no relationship to activity level | detail: Incorrect | wrong: It's commonly one of the more active periods.
+Activity is always lowest in the final hour | detail: Backwards | wrong: Power hour is commonly one of the busier periods, not the quietest.
 The market briefly reopens during power hour | detail: Incorrect | wrong: Power hour is part of the same standard session, not a reopening.
 WHY: End-of-day positioning is a commonly cited reason for power hour's added activity.
 
@@ -11184,7 +11184,7 @@ WHY: End-of-day positioning is a commonly cited reason for power hour's added ac
 QUESTION: What is the mistake?
 Midday is commonly the quieter lull, not the busiest period. That's more commonly the open or power hour.
 Midday is always busier than the open.
-Session timing has no effect on typical activity level.
+Every session of the day sees identical activity.
 WHY: The open and power hour are more commonly cited as the busier periods, not midday.
 
 NODE 3
@@ -11228,7 +11228,7 @@ WHY: This connects the liquidity idea from earlier units to the after-hours sess
 QUESTION: What is the mistake?
 Thinner after-hours liquidity can commonly lead to bigger gaps between expected and actual fill prices.
 After-hours fills always match standard-hours fills exactly.
-Liquidity has no relationship to fill behavior.
+After-hours orders are guaranteed a better price than standard hours.
 WHY: As covered in the Orders & Execution unit, thinner liquidity commonly affects fill behavior.
 
 NODE 4
@@ -11266,7 +11266,7 @@ WHY: Earnings connect directly back to the gaps and volatility concepts from ear
 CHART: gapUp
 CONCERN: Connecting concepts
 New information released while the market is closed can shift the next open sharply | detail: Connects to the Gaps unit
-Earnings reports never affect price at all | detail: Incorrect | wrong: They're commonly linked to some of the largest volatility events.
+Earnings only matter during standard trading hours | detail: Not quite | wrong: Earnings often land after the close, which is exactly why they gap the next open.
 Gaps only happen for reasons unrelated to earnings | detail: Incomplete | wrong: Earnings are a commonly cited gap driver.
 WHY: This ties the earlier Gaps unit directly to a commonly cited real-world cause.
 
@@ -11312,7 +11312,7 @@ WHY: Scope (one company vs. the broader market) is the key difference between th
 CONCERN: Understanding scope
 They describe the broader economy, which can affect sentiment across many assets at once | detail: A wide-reaching event
 They only ever affect a single company | detail: Incorrect | wrong: That describes earnings, not economic releases.
-They have no relationship to market behavior | detail: Incorrect | wrong: They're commonly cited as broad volatility drivers.
+They move only bonds, never stocks | detail: Not quite | wrong: Broad economic data commonly moves equities market-wide too, not just bonds.
 WHY: Broad economic data commonly shifts sentiment market-wide, unlike a single company's earnings.
 
 [SPOT] Someone assumes economic releases only affect the specific company mentioned in the report.
@@ -11334,7 +11334,7 @@ CHART: volatile
 [MC] Why does volatility commonly spike around scheduled news?
 New information gets absorbed by the market all at once, rather than gradually.
 News releases always calm the market down.
-Volatility has no relationship to news timing.
+The bid-ask spread narrows sharply the moment news lands.
 WHY: A sudden burst of new information commonly produces sharper, faster price swings.
 
 [TF] Volatility spikes around news are commonly temporary, not a permanent state.
@@ -11358,7 +11358,7 @@ CHART: volatile
 CONCERN: Reading it honestly
 Once the market absorbs the new information, activity commonly settles back toward typical levels | detail: A commonly cited pattern
 News-driven volatility never settles back down | detail: Overstates it | wrong: It's commonly described as temporary, not permanent.
-Volatility has no relationship to how information gets absorbed | detail: Backwards | wrong: This lesson's core point is that connection.
+The volatility comes from the spread, not the news | detail: Not quite | wrong: The spike is the market absorbing new information, not just a spread change.
 WHY: Volatility spikes are commonly read as a temporary reaction, not a lasting new state.
 
 [SPOT] Someone assumes volatility around a news event will stay permanently elevated forever.
@@ -11366,7 +11366,7 @@ CHART: volatile
 QUESTION: What is the mistake?
 News-driven volatility is commonly temporary, settling back down once the information is absorbed.
 Volatility spikes always last permanently.
-News has no relationship to volatility at all.
+Only earnings, never economic data, can spike volatility.
 WHY: This is a commonly cited temporary pattern, not a permanent shift.
 
 NODE 7
@@ -11409,7 +11409,7 @@ WHY: This connects the Risk Management unit's ideas directly to a real-world sce
 [SPOT] Someone dramatically increases their position size right before a major scheduled news release, assuming it's the same as any other moment.
 QUESTION: What is the mistake?
 News commonly brings added volatility and wider spreads. Many traders apply extra caution, not more size, around it.
-News has no relationship to typical risk levels.
+Wider spreads around news guarantee a better entry price.
 Increasing size before news always leads to bigger profits.
 WHY: This ignores the commonly cited added risk around scheduled news events.
 
@@ -11425,7 +11425,7 @@ CHART: volatile
 [MC] Why might a chart look different during pre-market versus the standard open?
 Liquidity and participation commonly differ by session, changing the chart's rhythm.
 Charts are always identical no matter the session.
-Session timing has no relationship to chart behavior.
+Pre-market always trends the opposite way to standard hours.
 WHY: Session-specific liquidity differences are commonly cited as changing how a chart behaves.
 
 [TF] The open, midday, and power hour commonly have different typical rhythms within the same day.
@@ -11449,7 +11449,7 @@ CHART: volatile
 CONCERN: Tying it all together
 Because it's one more piece of context that can change how a chart's move should be read | detail: Adds to the full picture
 Because session timing replaces the need for any other analysis | detail: Overstates it | wrong: It's one added factor, not a replacement for everything else.
-Because session timing has no bearing on reading a chart | detail: Backwards | wrong: This whole unit shows it commonly does.
+Because sessions only matter to long-term investors | detail: Not quite | wrong: Session rhythm is especially relevant to intraday reading.
 WHY: Session context is one more descriptive factor to combine with the rest of your reading skills.
 
 [SPOT] Someone reads a choppy, thin pre-market move exactly the same way as an identical-looking move during the standard open.
@@ -11480,8 +11480,8 @@ WHY: Reviewing the pairing from earlier in this unit.
 
 [MC] What do earnings reports and economic releases have in common?
 Both are scheduled information events commonly linked to increased volatility.
-Both are completely random and unscheduled.
-Neither has any relationship to price behavior.
+Both affect only the single company that reports them.
+Both guarantee the market moves in the reported direction.
 WHY: Both are scheduled events commonly tied to volatility, differing mainly in scope.
 
 [MATCH] Match the term to its one-line meaning.
@@ -15314,7 +15314,7 @@ WHY: ATR-informed stops are grounded in typical movement, not a guarantee agains
 QUESTION: What is the mistake?
 A stop set well inside typical movement (ATR) can get triggered by ordinary volatility, not a meaningful shift.
 Stop distance should never consider typical movement.
-ATR has no relationship to stop placement.
+ATR tells you the exact price a stop will be hit.
 WHY: This connects back to the earlier Stop-Loss Placement Logic lesson — a stop too tight for normal movement risks getting hit by noise.
 
 NODE 4
@@ -15329,7 +15329,7 @@ CHART: range
 [MC] ATR commonly does what during a tight, quiet range?
 Falls, reflecting smaller typical movement.
 Rises sharply.
-Has no relationship to market condition.
+Stays fixed at a preset value.
 WHY: Quiet, range-bound conditions commonly show lower ATR readings.
 
 [TF] ATR commonly rises during volatile or strongly trending conditions.
@@ -15353,7 +15353,7 @@ CHART: range
 CONCERN: Connecting the concepts
 It gives a numeric read on how much price is typically moving, reinforcing the classification | detail: Confluence with condition
 It replaces classifying trending vs. ranging entirely | detail: Overstates it | wrong: ATR adds to, not replaces, that classification.
-It has no relationship to market condition | detail: Incorrect | wrong: ATR commonly shifts with condition.
+It predicts exactly when the condition will change | detail: Overstates it | wrong: ATR describes current typical movement, it doesn't forecast condition changes.
 WHY: ATR is one more piece of confluence alongside the condition classification skill from Advanced.
 
 [SPOT] Someone assumes ATR always stays exactly the same number no matter the market condition.
@@ -15361,7 +15361,7 @@ CHART: range
 QUESTION: What is the mistake?
 ATR commonly rises in volatile/trending conditions and falls in quiet ranges — it isn't fixed.
 ATR never changes regardless of condition.
-Market condition has no bearing on ATR.
+ATR is set once at the market open and then frozen.
 WHY: ATR moves with the underlying volatility of the current condition.
 
 NODE 5
@@ -15385,7 +15385,7 @@ WHY: Like volume, ATR readings are relative, not a single universal number.
 [MC] How does ATR commonly connect to risk management?
 It can inform a reasonable stop distance based on typical movement.
 It guarantees a specific trade outcome.
-It has no relationship to stops or sizing.
+It sets your position size automatically for you.
 WHY: ATR is commonly used as one input into stop placement, connecting back to earlier Risk Management lessons.
 
 [MATCH] Match the term to its one-line meaning.
@@ -15399,7 +15399,7 @@ CHART: volatile
 CONCERN: Reviewing the big picture
 ATR quantifies typical movement size, connecting to stops, sizing, and market condition | detail: The central theme
 ATR guarantees the next price direction | detail: Overstates certainty | wrong: ATR describes size, not direction or certainty.
-ATR is unrelated to risk management | detail: Backwards | wrong: It connects directly to stop placement and sizing.
+ATR is only useful on daily charts, never intraday | detail: Too narrow | wrong: ATR applies across timeframes, including intraday.
 WHY: ATR quantifying typical movement, connected to risk concepts already taught, is the throughline of this unit.
 
 [SPOT] Someone finishes this unit and starts using ATR as a buy/sell signal.
@@ -15496,7 +15496,7 @@ WHY: The 1x baseline is specific to each stock, which is what makes RVOL a relat
 QUESTION: What is the mistake?
 1.5x is relative to that stock's own typical volume, which differs stock to stock.
 1.5x always equals exactly the same number of shares everywhere.
-RVOL has no connection to that stock's own history.
+1.5x compares the stock's volume to every other stock's.
 WHY: The multiple is anchored to each stock's own typical volume, not a shared absolute number.
 
 NODE 3
@@ -15584,7 +15584,7 @@ WHY: A meaningful RVOL reading depends on comparing against the right same-time-
 QUESTION: What is the mistake?
 Comparing across mismatched time-of-day baselines can make normal midday volume look artificially low.
 Volume is identical at every point in the trading day.
-RVOL has no relationship to time of day.
+RVOL ignores time of day and uses the full daily total.
 WHY: RVOL's comparison should use the typical baseline for that same time window, not a different one.
 
 NODE 5
@@ -15621,7 +15621,7 @@ WHY: A quick recap of the unit's core vocabulary.
 CONCERN: Reviewing the big picture
 RVOL adds relative, time-aware context to raw volume, without predicting direction | detail: The central theme
 RVOL guarantees the next price direction | detail: Overstates certainty | wrong: RVOL describes participation, not direction.
-RVOL is unrelated to time of day | detail: Incorrect | wrong: The baseline itself is time-of-day specific.
+RVOL works only on stocks, never on indexes | detail: Too narrow | wrong: The relative-volume idea applies to indexes too.
 WHY: RVOL's value is the relative, time-aware context it adds to plain volume figures.
 
 [SPOT] Someone finishes this unit and starts using RVOL alone as a buy/sell trigger.
@@ -15676,7 +15676,7 @@ CHART: volatile
 QUESTION: What is the mistake?
 The opening range is an early reference level, not a guarantee of the full day's eventual high or low.
 The opening range always matches the day's final high and low exactly.
-The opening range has no relationship to the rest of the day.
+The opening range is only valid if the day closes higher.
 WHY: Price can move well beyond the opening range as the day continues.
 
 NODE 2
@@ -15809,7 +15809,7 @@ CHART: volatile
 CONCERN: Connecting concepts
 It gives an early descriptive read on volatility, similar to ATR but specific to the open | detail: Confluence with volatility
 It replaces the need for ATR throughout the rest of the day | detail: Overstates it | wrong: Opening range width is one added data point, not a replacement.
-It has no relationship to volatility | detail: Incorrect | wrong: Range width directly reflects early volatility.
+It measures volume, not volatility | detail: Not quite | wrong: Opening range width reflects early price volatility, not volume.
 WHY: Opening range width is simply a volatility read specific to the earliest minutes of the session.
 
 [SPOT] Someone assumes a wide opening range guarantees a volatile day for the remaining hours.
@@ -15817,7 +15817,7 @@ CHART: volatile
 QUESTION: What is the mistake?
 A wide opening range describes early volatility, it doesn't guarantee how the rest of the day unfolds.
 Opening range width always predicts the entire day's volatility.
-Opening range width has no connection to volatility at all.
+A wide opening range guarantees a calm afternoon.
 WHY: The opening range only describes the earliest window, not a guarantee for the rest of the session.
 
 NODE 5
@@ -15855,7 +15855,7 @@ CHART: volatile
 CONCERN: Reviewing the big picture
 The opening range is an early, descriptive reference level, useful for context, not prediction | detail: The central theme
 The opening range guarantees the day's final high and low | detail: Overstates certainty | wrong: It's an early reference, not a guarantee of the full day's range.
-The opening range is unrelated to volatility | detail: Incorrect | wrong: Range width directly reflects early volatility.
+The opening range only works on the daily timeframe | detail: Too narrow | wrong: It's an intraday concept, built from the session's first minutes.
 WHY: The opening range's value is as descriptive early context, not a predictive guarantee.
 
 [SPOT] Someone finishes this unit and starts trading every opening range break as an automatic signal.
@@ -15908,7 +15908,7 @@ WHY: Sector and index context adds useful confluence without guaranteeing exact 
 QUESTION: What is the mistake?
 Stocks commonly move somewhat together with their sector, but not in guaranteed lockstep.
 Every stock in a sector moves identically at all times.
-Sector context has no relationship to an individual stock at all.
+A stock always moves in the exact opposite direction to its sector.
 WHY: Correlation is common, not a guarantee, so individual stocks can diverge from their sector.
 
 NODE 2
@@ -15952,7 +15952,7 @@ WHY: Relative strength is a descriptive comparison of price movement, not a guar
 QUESTION: What is the mistake?
 Relative strength describes current comparative movement, it doesn't guarantee future outperformance.
 Relative strength always continues indefinitely once observed.
-Relative strength has no meaning beyond a single day.
+Relative strength is measured against the stock's own past, not its sector.
 WHY: Like any descriptive read, relative strength can shift from one period to the next.
 
 NODE 3
@@ -15989,14 +15989,14 @@ WHY: Sector rotation is really relative strength/weakness applied at the sector 
 CONCERN: Framing it correctly
 As a descriptive pattern of shifting relative strength between sectors, not a fixed schedule | detail: Descriptive framing
 As a guaranteed calendar of which sector leads each month | detail: Overstates certainty | wrong: No fixed schedule is guaranteed.
-As a concept unrelated to relative strength | detail: Incorrect | wrong: It's relative strength/weakness applied over time at the sector level.
+As the same thing as one stock's individual trend | detail: Not quite | wrong: Rotation is relative strength between sectors over time, not one stock's trend.
 WHY: Sector rotation is best understood as a descriptive, shifting pattern rather than a predictive schedule.
 
 [SPOT] Someone assumes sector rotation follows a fixed, guaranteed monthly schedule.
 QUESTION: What is the mistake?
 Sector rotation describes a shifting pattern over time, not a fixed guaranteed schedule.
 Sector rotation always follows an identical, predictable calendar.
-Sector rotation has no relationship to relative strength.
+Sector rotation applies to only one stock at a time.
 WHY: Sector rotation is a descriptive pattern, not a guaranteed timetable.
 
 NODE 4
@@ -16040,7 +16040,7 @@ WHY: Sector and index context slots into the same multi-factor, descriptive conf
 QUESTION: What is the mistake?
 Sector context is one descriptive factor among several, not a complete standalone system.
 Sector strength alone is sufficient and no other factor matters.
-Sector context has no relationship to the Confluence unit's ideas.
+Sector context should replace chart and level reading entirely.
 WHY: This echoes the Confluence unit's core lesson that no single factor should be relied on alone.
 
 NODE 5
@@ -16064,7 +16064,7 @@ WHY: A recap of the relative strength/weakness terminology from this unit.
 [MC] How should sector rotation be understood?
 As a descriptive pattern of sectors taking turns showing relative strength over time.
 As a guaranteed fixed schedule.
-As something with no connection to relative strength.
+As one sector permanently leading all the others.
 WHY: A recap of sector rotation as a descriptive, non-predictive concept.
 
 [MATCH] Match the term to its one-line meaning.
@@ -16077,7 +16077,7 @@ WHY: A quick recap of the unit's core vocabulary.
 CONCERN: Reviewing the big picture
 Sector and index context adds descriptive confluence, without guaranteeing any stock's future movement | detail: The central theme
 Sector context guarantees which stocks will outperform going forward | detail: Overstates certainty | wrong: It's descriptive context, not a guarantee.
-Sector and index context is unrelated to confluence | detail: Incorrect | wrong: It connects directly to the Confluence unit's framing.
+Sector and index context is a standalone signal to trade on | detail: Overstates it | wrong: It's one confluence factor, not a standalone signal.
 WHY: Sector and index context is valuable as one more descriptive layer of confluence, not a predictive guarantee.
 
 [SPOT] Someone finishes this unit and starts trading based on sector strength alone as a complete signal.
@@ -16129,7 +16129,7 @@ WHY: Level II adds a view of standing orders that a simple last-price quote does
 QUESTION: What is the mistake?
 Level II shows current standing orders, it doesn't guarantee the exact next traded price.
 Level II always predicts the very next trade price precisely.
-Level II has no relationship to bids and asks at all.
+Level II shows only the single last traded price.
 WHY: Level II is a descriptive snapshot of current orders, not a guaranteed prediction of the next trade.
 
 NODE 2
@@ -16173,7 +16173,7 @@ WHY: Spread width is simply one more descriptive detail about current market con
 QUESTION: What is the mistake?
 The spread describes the current gap between buy and sell orders, it doesn't guarantee any profit.
 Crossing the spread always guarantees a profitable outcome.
-The spread has no relationship to buyers and sellers.
+The spread is set by the exchange, not by resting orders.
 WHY: The spread is a descriptive snapshot of order book conditions, not a profit guarantee.
 
 NODE 3
@@ -16217,7 +16217,7 @@ WHY: Order book depth is a constantly shifting descriptive snapshot, not a fixed
 QUESTION: What is the mistake?
 Resting orders in the book can be modified or canceled at any moment, they aren't necessarily permanent.
 Orders in the book can never be canceled once placed.
-Order book depth has no relationship to buying or selling interest.
+A large resting order guarantees price stops at that level.
 WHY: The order book is a live, constantly shifting snapshot, not a fixed structure.
 
 NODE 4
@@ -16298,7 +16298,7 @@ WHY: A quick recap of the unit's core vocabulary.
 CONCERN: Reviewing the big picture
 Level II offers descriptive awareness of the order book, with real limitations, never a certainty | detail: The central theme
 Level II guarantees exact knowledge of every future trade | detail: Overstates certainty | wrong: Level II has real, acknowledged limitations.
-Level II is unrelated to bids, asks, or depth | detail: Incorrect | wrong: Those are exactly what Level II displays.
+Level II replaces the need to read price and volume | detail: Overstates it | wrong: It's one more descriptive layer, not a replacement.
 WHY: This unit's throughline is conceptual, descriptive awareness of the order book, with honest limitations.
 
 [SPOT] Someone finishes this unit and starts treating Level II alone as a complete trading edge.
