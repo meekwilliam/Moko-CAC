@@ -1,5 +1,67 @@
 import SwiftUI
 
+// MARK: - Mascot speech-bubble prompt
+// Renders the Moko mascot (buisness.svg) beside a speech bubble holding the
+// question — a Duolingo-style character prompt. Currently wired to the very
+// first question only (see ChoiceView.isFirstEverQuestion) as a preview.
+
+struct MascotIcon: View {
+    // Character paths only — the SVG's opaque background <rect> is dropped so the
+    // mascot reads as a cutout over the lesson background.
+    private static let image = SVGParser.parse("""
+    <svg viewBox="0 0 420 419" fill="none">
+    <path d="M40 419C60 340 120 300 210 300C300 300 360 340 380 419H40Z" fill="#101216"/>
+    <path d="M40 419C60 340 120 300 210 300V419H40Z" fill="#101216"/>
+    <path d="M168 300L210 372L252 300C240 296 226 294 210 294C194 294 180 296 168 300Z" fill="#F4F6FA"/>
+    <path d="M168 300L210 340L178 322L168 300Z" fill="#E4E8F0"/>
+    <path d="M252 300L210 340L242 322L252 300Z" fill="#E4E8F0"/>
+    <path d="M210 336L220 350L214 419H206L200 350L210 336Z" fill="#7C2B3B"/>
+    <path d="M210 336L220 350L210 360L200 350L210 336Z" fill="#7C2B3B"/>
+    <path d="M40 419C55 345 120 302 168 300L190 419H40Z" fill="#1A2237"/>
+    <path d="M380 419C365 345 300 302 252 300L230 419H380Z" fill="#1A2237"/>
+    <path d="M182 285C182 310 238 310 238 285V250H182V285Z" fill="#E8A877"/>
+    <path d="M118 208C118 118 158 88 210 88C262 88 302 118 302 208C302 268 268 300 210 300C152 300 118 268 118 208Z" fill="#F4B483"/>
+    <path d="M120 234C128.284 234 135 224.15 135 212C135 199.85 128.284 190 120 190C111.716 190 105 199.85 105 212C105 224.15 111.716 234 120 234Z" fill="#F4B483"/>
+    <path d="M300 234C308.284 234 315 224.15 315 212C315 199.85 308.284 190 300 190C291.716 190 285 199.85 285 212C285 224.15 291.716 234 300 234Z" fill="#F4B483"/>
+    <path d="M116 210C106 118 152 62 210 62C268 62 314 118 304 210C300 178 288 160 268 158C258 150 250 148 244 152C230 158 218 168 210 170C202 168 190 158 176 152C170 148 162 150 152 158C128 168 118 184 116 210Z" fill="#1E2128"/>
+    <path d="M210 66C213 96 213 132 210 168C207 132 207 96 210 66Z" fill="#33373F"/>
+    <path d="M154 92.0005C176 76.0005 200 78.0005 206 96.0005C190 84.0005 168 86.0005 150 100L154 92.0005Z" fill="#2A2E37"/>
+    <path d="M214 96.0001C220 78.0001 244 76.0001 268 96.0001C246 84.0001 226 84.0001 214 100V96.0001Z" fill="#2A2E37"/>
+    <path d="M154 195C168 192 186 198 198 210C186 202 168 200 154 201V195Z" fill="#5A4433"/>
+    <path d="M266 195C252 192 234 198 222 210C234 202 252 200 266 201V195Z" fill="#5A4433"/>
+    <path d="M156 214C170 206 196 208 198 226C200 244 178 250 164 244C150 238 148 220 156 214Z" fill="white"/>
+    <path d="M264 214C250 206 224 208 222 226C220 244 242 250 256 244C270 238 272 220 264 214Z" fill="white"/>
+    <path d="M172 214C184 212 190 222 186 234C182 244 168 244 164 234C160 224 164 216 172 214Z" fill="#1B1F27"/>
+    <path d="M248 214C236 212 230 222 234 234C238 244 252 244 256 234C260 224 256 216 248 214Z" fill="#1B1F27"/>
+    <path d="M180 224.2C181.767 224.2 183.2 222.767 183.2 221C183.2 219.232 181.767 217.8 180 217.8C178.233 217.8 176.8 219.232 176.8 221C176.8 222.767 178.233 224.2 180 224.2Z" fill="white"/>
+    <path d="M240 224.2C241.767 224.2 243.2 222.767 243.2 221C243.2 219.232 241.767 217.8 240 217.8C238.233 217.8 236.8 219.232 236.8 221C236.8 222.767 238.233 224.2 240 224.2Z" fill="white"/>
+    <path d="M206 238C202 254 200 262 210 264C220 262 218 254 214 238H206Z" fill="#E8A877"/>
+    <path d="M188 278C200 286 220 286 232 278C220 274 200 274 188 278Z" fill="#C77B5A"/>
+    </svg>
+    """)
+
+    var body: some View { SVGIconView(svg: Self.image) }
+}
+
+/// A rounded speech bubble with a small tail on its left edge pointing at the
+/// mascot. The tail sits `tail` points left of the rounded body.
+struct SpeechBubbleShape: Shape {
+    var corner: CGFloat = 20
+    var tail: CGFloat = 12
+    func path(in rect: CGRect) -> Path {
+        var p = Path()
+        let body = CGRect(x: rect.minX + tail, y: rect.minY,
+                          width: rect.width - tail, height: rect.height)
+        p.addRoundedRect(in: body, cornerSize: CGSize(width: corner, height: corner))
+        let cy = rect.midY
+        p.move(to: CGPoint(x: body.minX + 2, y: cy - 12))
+        p.addLine(to: CGPoint(x: rect.minX, y: cy))
+        p.addLine(to: CGPoint(x: body.minX + 2, y: cy + 12))
+        p.closeSubpath()
+        return p
+    }
+}
+
 // MARK: - Router
 
 struct LessonScreenRouter: View {
@@ -849,7 +911,11 @@ struct ChoiceView: View {
                 scenarioCard(scenario)
             }
 
-            promptText
+            if isFirstEverQuestion {
+                mascotPrompt
+            } else {
+                promptText
+            }
 
             VStack(spacing: 14) {
                 ForEach(Array(player.currentOptions.enumerated()), id: \.offset) { idx, opt in
@@ -869,6 +935,33 @@ struct ChoiceView: View {
                                         color: ink))
             .fixedSize(horizontal: false, vertical: true)
             .frame(maxWidth: .infinity, alignment: .leading)
+    }
+
+    // The very first question of the whole course (first lesson, first question).
+    private var isFirstEverQuestion: Bool {
+        player.lesson.node == 1 && player.index == 1
+    }
+
+    // Mascot on the left with the question in a speech bubble beside it.
+    private var mascotPrompt: some View {
+        HStack(alignment: .center, spacing: 2) {
+            MascotIcon()
+                .frame(width: 118, height: 118)
+            Text(RichText.attributed(displayQuestion(),
+                                     base: Theme.font(19, .heavy),
+                                     bold: Theme.font(19, .black),
+                                     color: ink))
+                .fixedSize(horizontal: false, vertical: true)
+                .padding(.vertical, 16)
+                .padding(.leading, 22)
+                .padding(.trailing, 16)
+                .background(
+                    SpeechBubbleShape()
+                        .fill(scheme == .dark ? Color(hex: "#2A2E37") : Color(hex: "#EEF1F6"))
+                )
+        }
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .padding(.vertical, 4)
     }
 
     /// For fill_blank, fill the [___] with the chosen option (or a blank).
