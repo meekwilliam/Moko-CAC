@@ -960,7 +960,7 @@ struct ChoiceView: View {
                 scenarioCard(scenario)
             }
 
-            MascotPrompt(text: displayQuestion(), ink: ink)
+            MascotPrompt(text: displayQuestion(), ink: ink, divider: true)
 
             VStack(spacing: 14) {
                 ForEach(Array(player.currentOptions.enumerated()), id: \.offset) { idx, opt in
