@@ -54,12 +54,15 @@ final class LessonPlayer: ObservableObject {
         self.isReplay = isReplay
         self.unitBonusEligible = unitBonusEligible
         self.isTestLesson = isTestLesson
-        self.screens = lesson.screens
+        // Drop the lesson-opening "intro" reading screen — straight into the
+        // first question. Attention spans are short and it read as dead air.
+        let screens = lesson.screens.filter { $0.type != "intro" }
+        self.screens = screens.isEmpty ? lesson.screens : screens
         // Prefer the caller-supplied unit color (the lesson's real unit banner
         // color, works for any unit size); fall back to the legacy node-range
         // guess only if the caller doesn't have section data on hand.
         self.unit = unitColor ?? Theme.unitColor(lesson.node)
-        self.index = min(max(0, startIndex), max(0, lesson.screens.count - 1))
+        self.index = min(max(0, startIndex), max(0, self.screens.count - 1))
         if self.index > 0 { resetForScreen() }
     }
 
