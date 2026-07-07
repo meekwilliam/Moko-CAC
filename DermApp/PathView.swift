@@ -23,6 +23,7 @@ struct PathView: View {
     @State private var elevatedNode: Int? = nil
 
     private let nodeSize: CGFloat = 82
+    private let ovalRatio: CGFloat = 0.78     // puck height / width — a wide coin
     private let vStep: CGFloat = 106          // node center-to-center spacing
     private let bg = Color(hex: "#0A1017")
 
@@ -294,50 +295,50 @@ struct PathView: View {
                 // Just the face (+ icon + badge); the slab is drawn fixed by the
                 // button style so the face sinks onto it on press.
                 ZStack {
-                    Circle().fill(c.main).frame(width: nodeSize, height: nodeSize)
-                        // Top-lit gloss: the face is brightest along the top so the
-                        // coin reads as facing up toward the light.
+                    // Wide oval (not a perfect circle) so it reads as a coin
+                    // facing up, like other gamified apps.
+                    Ellipse().fill(c.main).frame(width: nodeSize, height: nodeSize * ovalRatio)
+                        // Top-lit gloss: brightest along the top edge.
                         .overlay(
-                            Circle().fill(
+                            Ellipse().fill(
                                 LinearGradient(
                                     colors: [Color.white.opacity(state == .locked ? 0.14 : 0.28), .clear],
                                     startPoint: .top, endPoint: .center))
                         )
-                        // Broad soft sheen across the upper-left of the face.
+                        // Crisp glossy highlight (a clean lens, no blur).
                         .overlay(
                             Ellipse()
-                                .fill(Color.white.opacity(state == .locked ? 0.12 : 0.32))
-                                .frame(width: nodeSize * 0.58, height: nodeSize * 0.32)
-                                .rotationEffect(.degrees(-25))
-                                .offset(x: -nodeSize * 0.12, y: -nodeSize * 0.20)
-                                .blur(radius: 4)
+                                .fill(Color.white.opacity(state == .locked ? 0.12 : 0.34))
+                                .frame(width: nodeSize * 0.5, height: nodeSize * ovalRatio * 0.36)
+                                .rotationEffect(.degrees(-16))
+                                .offset(x: -nodeSize * 0.14, y: -nodeSize * ovalRatio * 0.24)
                         )
                         // Crisp glossy rim-light arc along the top-left edge.
                         .overlay(
-                            Circle()
+                            Ellipse()
                                 .trim(from: 0.52, to: 0.72)
-                                .stroke(Color.white.opacity(state == .locked ? 0.2 : 0.55),
+                                .stroke(Color.white.opacity(state == .locked ? 0.2 : 0.6),
                                         style: StrokeStyle(lineWidth: 4, lineCap: .round))
-                                .frame(width: nodeSize * 0.82, height: nodeSize * 0.82)
-                                .blur(radius: 1)
+                                .frame(width: nodeSize * 0.9, height: nodeSize * ovalRatio * 0.9)
                         )
                         // Inner bottom shading for a rounded, puffed look.
                         .overlay(
-                            Circle().stroke(Color.black.opacity(0.20), lineWidth: 4)
+                            Ellipse().stroke(Color.black.opacity(0.20), lineWidth: 4)
                                 .padding(1).mask(
                                     LinearGradient(colors: [.clear, .black], startPoint: .center, endPoint: .bottom))
                         )
-                        .clipShape(Circle())
+                        .clipShape(Ellipse())
 
-                    // The node's icon (star, etc.) — crisp white, centered.
+                    // The node's icon (star, etc.) — crisp white, normal aspect.
                     SVGIconView(svg: node.icon)
-                        .frame(width: nodeSize * 0.44, height: nodeSize * 0.44)
+                        .frame(width: nodeSize * 0.42, height: nodeSize * 0.42)
                         .opacity(state == .locked ? 0.5 : 1)
                         .shadow(color: .black.opacity(0.15), radius: 1, y: 1)
                 }
-                .contentShape(Circle())
+                .frame(width: nodeSize, height: nodeSize)
+                .contentShape(Ellipse())
             }
-            .buttonStyle(PuckButtonStyle(slab: c.dark, size: nodeSize))
+            .buttonStyle(PuckButtonStyle(slab: c.dark, size: nodeSize, ovalRatio: ovalRatio))
 
             // START label only for the very first lesson ever (nothing completed yet).
             if state == .active && store.completed.isEmpty {
@@ -477,12 +478,10 @@ private struct PulseRing: View {
     @State private var breathe = false
 
     var body: some View {
-        Circle()
+        Ellipse()
             .fill(color.opacity(0.28))
-            .frame(width: size + 30, height: size + 30)
+            .frame(width: size + 30, height: size * 0.78 + 30)
             .scaleEffect(breathe ? 1.0 : 0.8)
-            // Same perspective tilt as the puck so the plate lies flat under it.
-            .modifier(TiltModifier(isPressed: false))
             .onAppear {
                 withAnimation(.easeInOut(duration: 2.8).repeatForever(autoreverses: true)) {
                     breathe = true
@@ -507,18 +506,18 @@ private struct Triangle: Shape {
 private struct PuckButtonStyle: ButtonStyle {
     var slab: Color
     var size: CGFloat
+    var ovalRatio: CGFloat = 0.78
     var depth: CGFloat = 10
     func makeBody(configuration: Configuration) -> some View {
+        let h = size * ovalRatio
         ZStack {
-            // Thicker dark base so, once tilted, the coin shows a chunky side
-            // (the raised "facing up" look). A darker inner ring at the very
-            // bottom deepens the edge.
-            Circle().fill(slab).frame(width: size, height: size).offset(y: depth)
+            // Darker oval base offset straight down — the coin's chunky side
+            // (the raised "facing up" look), no perspective tilt needed.
+            Ellipse().fill(slab).frame(width: size, height: h).offset(y: depth)
             configuration.label
                 .offset(y: configuration.isPressed ? depth - 1 : 0)
         }
         .frame(width: size, height: size)
-        .modifier(TiltModifier(isPressed: configuration.isPressed))
         .animation(configuration.isPressed
                    ? .easeIn(duration: 0.04)
                    : .spring(response: 0.3, dampingFraction: 0.55),
