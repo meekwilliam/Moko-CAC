@@ -14,14 +14,50 @@ struct MascotIcon: View {
     @State private var eye: CGSize = .zero
     private let lookTimer = Timer.publish(every: 1.7, on: .main, in: .common).autoconnect()
 
+    // Reaction played once the question is graded: a happy hop-and-pop when
+    // right, a side-to-side "no" head shake when wrong.
+    var revealed: Bool = false
+    var correct: Bool = false
+    @State private var bounce: CGFloat = 1
+    @State private var hop: CGFloat = 0
+    @State private var shakeAngle: Double = 0
+
     var body: some View {
         ZStack {
             SVGIconView(svg: Self.base)
             SVGIconView(svg: Self.pupils)
                 .offset(eye)
         }
+        .scaleEffect(bounce)
+        .offset(y: hop)
+        .rotationEffect(.degrees(shakeAngle))
         .onReceive(lookTimer) { _ in
+            guard shakeAngle == 0 else { return }   // don't fight the head-shake
             withAnimation(.easeInOut(duration: 0.32)) { eye = Self.randomLook() }
+        }
+        .onChange(of: revealed) { _, isRevealed in
+            guard isRevealed else { return }
+            correct ? playHappy() : playSad()
+        }
+    }
+
+    private func playHappy() {
+        eye = .zero
+        withAnimation(.spring(response: 0.22, dampingFraction: 0.35)) {
+            bounce = 1.16; hop = -12
+        }
+        withAnimation(.spring(response: 0.35, dampingFraction: 0.45).delay(0.18)) {
+            bounce = 1; hop = 0
+        }
+    }
+
+    private func playSad() {
+        eye = CGSize(width: 0, height: 1.5)   // droop slightly
+        let steps: [Double] = [-11, 10, -8, 7, -4, 0]
+        for (i, angle) in steps.enumerated() {
+            withAnimation(.easeInOut(duration: 0.09).delay(Double(i) * 0.09)) {
+                shakeAngle = angle
+            }
         }
     }
 
@@ -65,6 +101,10 @@ struct MascotPrompt: View {
     // first answer button. Every other mechanic sets it true: a full-width line
     // runs under the mascot (he "comes out" of it) with the content below.
     var divider: Bool = false
+    // Grading state, forwarded to MascotIcon so it can react (happy hop when
+    // right, head-shake when wrong) the moment the question is checked.
+    var revealed: Bool = false
+    var correct: Bool = false
     @Environment(\.colorScheme) private var scheme
 
     // Shrink the bubble text for longer questions so tall bubbles don't overlap
@@ -86,7 +126,7 @@ struct MascotPrompt: View {
         let row = HStack(alignment: .center, spacing: 4) {
             // Frame aspect ≈ the bear viewBox (141×141, square) so the art
             // fills the width and sits flush-left.
-            MascotIcon()
+            MascotIcon(revealed: revealed, correct: correct)
                 .frame(width: 120, height: 120)
             Text(RichText.attributed(text,
                                      base: Theme.font(fontSize, .heavy),
@@ -251,7 +291,7 @@ struct TapCandleView: View {
 
     var body: some View {
         VStack(alignment: .leading, spacing: 16) {
-            MascotPrompt(text: s.question ?? "Tap the candle.", ink: ink, divider: true)
+            MascotPrompt(text: s.question ?? "Tap the candle.", ink: ink, divider: true, revealed: player.revealed, correct: player.lastCorrect)
 
             if let sc = scenario {
                 let m = sc.model(seed: chartSeed(s))
@@ -304,7 +344,7 @@ struct TapCandlesView: View {
 
     var body: some View {
         VStack(alignment: .leading, spacing: 16) {
-            MascotPrompt(text: s.question ?? "Tap the candles.", ink: ink, divider: true)
+            MascotPrompt(text: s.question ?? "Tap the candles.", ink: ink, divider: true, revealed: player.revealed, correct: player.lastCorrect)
 
             if let sc = scenario {
                 let m = sc.model(seed: chartSeed(s))
@@ -355,7 +395,7 @@ struct MarkLevelView: View {
 
     var body: some View {
         VStack(alignment: .leading, spacing: 16) {
-            MascotPrompt(text: s.question ?? "Drag the line to the level.", ink: ink, divider: true)
+            MascotPrompt(text: s.question ?? "Drag the line to the level.", ink: ink, divider: true, revealed: player.revealed, correct: player.lastCorrect)
 
             if let sc = scenario {
                 let m = sc.model(seed: chartSeed(s))
@@ -452,7 +492,7 @@ struct TrendlineView: View {
 
     var body: some View {
         VStack(alignment: .leading, spacing: 16) {
-            MascotPrompt(text: s.question ?? "Drag to connect the two points on the chart.", ink: ink, divider: true)
+            MascotPrompt(text: s.question ?? "Drag to connect the two points on the chart.", ink: ink, divider: true, revealed: player.revealed, correct: player.lastCorrect)
 
             if let sc = scenario {
                 let m = sc.model(seed: chartSeed(s))
@@ -559,7 +599,7 @@ struct ConsolidationView: View {
 
     var body: some View {
         VStack(alignment: .leading, spacing: 16) {
-            MascotPrompt(text: s.question ?? "Drag across the consolidation area.", ink: ink, divider: true)
+            MascotPrompt(text: s.question ?? "Drag across the consolidation area.", ink: ink, divider: true, revealed: player.revealed, correct: player.lastCorrect)
 
             if let sc = scenario {
                 let m = sc.model(seed: chartSeed(s))
@@ -667,7 +707,7 @@ struct OHLCLabelView: View {
 
     var body: some View {
         VStack(alignment: .leading, spacing: 18) {
-            MascotPrompt(text: s.question ?? "Drag each label onto the matching part of the candle.", ink: ink, divider: true)
+            MascotPrompt(text: s.question ?? "Drag each label onto the matching part of the candle.", ink: ink, divider: true, revealed: player.revealed, correct: player.lastCorrect)
 
             candleArea
             tray
@@ -835,7 +875,7 @@ struct NumberSliderView: View {
 
     var body: some View {
         VStack(alignment: .leading, spacing: 18) {
-            MascotPrompt(text: s.question ?? "Drag the slider to the correct value.", ink: ink, divider: true)
+            MascotPrompt(text: s.question ?? "Drag the slider to the correct value.", ink: ink, divider: true, revealed: player.revealed, correct: player.lastCorrect)
 
             VStack(spacing: 14) {
                 let value = player.numberValue ?? (lo + hi) / 2
@@ -975,7 +1015,7 @@ struct ChoiceView: View {
             if s.chart != nil {
                 plainPrompt
             } else {
-                MascotPrompt(text: displayQuestion(), ink: ink, divider: true)
+                MascotPrompt(text: displayQuestion(), ink: ink, divider: true, revealed: player.revealed, correct: player.lastCorrect)
             }
 
             VStack(spacing: 14) {
@@ -1096,7 +1136,7 @@ struct MatchingView: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 18) {
             QuestionChart(key: player.screen.chart, height: 130, seed: chartSeed(player.screen))
-            MascotPrompt(text: question.isEmpty ? "Match the pairs:" : question, ink: ink, divider: true)
+            MascotPrompt(text: question.isEmpty ? "Match the pairs:" : question, ink: ink, divider: true, revealed: player.revealed, correct: player.lastCorrect)
 
             HStack(alignment: .top, spacing: 12) {
                 VStack(spacing: 12) {
@@ -1190,7 +1230,7 @@ struct FillBlankMultiView: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 20) {
             QuestionChart(key: player.screen.chart, height: 130, seed: chartSeed(player.screen))
-            MascotPrompt(text: filledTemplate(), ink: ink, divider: true)
+            MascotPrompt(text: filledTemplate(), ink: ink, divider: true, revealed: player.revealed, correct: player.lastCorrect)
 
             ForEach(blanks.indices, id: \.self) { bi in
                 VStack(alignment: .leading, spacing: 8) {
@@ -1292,7 +1332,7 @@ struct IngredientMatchView: View {
         VStack(alignment: .leading, spacing: 18) {
             QuestionChart(key: s.chart, height: 130, seed: chartSeed(player.screen))
 
-            MascotPrompt(text: s.question ?? "", ink: ink, divider: true)
+            MascotPrompt(text: s.question ?? "", ink: ink, divider: true, revealed: player.revealed, correct: player.lastCorrect)
                 .frame(maxWidth: .infinity, alignment: .leading)
 
             VStack(spacing: 14) {
@@ -1374,7 +1414,7 @@ struct OrderBuilderView: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 18) {
             QuestionChart(key: player.screen.chart, height: 130, seed: chartSeed(player.screen))
-            MascotPrompt(text: question, ink: ink, divider: true)
+            MascotPrompt(text: question, ink: ink, divider: true, revealed: player.revealed, correct: player.lastCorrect)
 
             // Built sequence
             VStack(spacing: 10) {
