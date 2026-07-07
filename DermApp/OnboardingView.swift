@@ -7,8 +7,7 @@ import SwiftUI
 // home screen). Answers are stored in UserDefaults under "onboarding.*".
 
 struct OnboardingView: View {
-    var onFinish: () -> Void
-    var onSkip: () -> Void = {}
+    @ObservedObject var router: AppRouter
 
     @EnvironmentObject var theme: ThemeManager
     @State private var step = 0
@@ -67,7 +66,7 @@ struct OnboardingView: View {
                     case 2: goalsScreen
                     case 3: dailyGoalScreen
                     case 4: journeyScreen
-                    default: CommitScreen(onFinish: finish)
+                    default: CommitScreen(router: router, onCommitted: persistAnswers)
                     }
                 }
                 .id(step)
@@ -115,14 +114,15 @@ struct OnboardingView: View {
         step += 1
     }
 
-    private func finish() {
-        // Persist the intake answers for personalization/analytics.
+    private func persistAnswers() {
+        // Persist the intake answers for personalization/analytics. The actual
+        // screen swap to the lesson is driven by CommitScreen, timed with the
+        // curtain animation (see AppRouter.curtainColor).
         let d = UserDefaults.standard
         if let e = experience { d.set(experienceOptions[e].label, forKey: "onboarding.experience") }
         d.set(goals.sorted().map { goalOptions[$0].label }, forKey: "onboarding.goals")
         if let g = dailyGoal { d.set(dailyGoalOptions[g].label, forKey: "onboarding.dailyGoal") }
         d.set(true, forKey: "onboarding.completed")
-        onFinish()
     }
 
     // MARK: Screen 1 — Welcome
@@ -338,63 +338,65 @@ struct OnboardingView: View {
 
 // MARK: - Screen 6 — Hold-to-commit
 // "Make yourself a promise": press and hold the button; it charges up with a
-// pulse + progress ring, then the commit color bursts outward, covers the
-// screen, and the flow finishes (straight into Lesson 1).
+// pulse, then the commit color bursts outward FROM THE BUTTON'S OWN SCREEN
+// POSITION (via the router-level curtain, not a locally-centered circle),
+// covers the screen, swaps in the already-loaded lesson underneath, and fades
+// away to reveal it — seamless, no flash/jump to a blank or home screen.
 
 private struct CommitScreen: View {
-    var onFinish: () -> Void
+    @ObservedObject var router: AppRouter
+    var onCommitted: () -> Void
 
     @EnvironmentObject var theme: ThemeManager
     @State private var holding = false
     @State private var holdProgress: CGFloat = 0   // 0…1 while charging
-    @State private var burst = false               // color expands to fill screen
+    @State private var burst = false               // curtain has been launched
     @State private var generation = 0              // cancels stale hold timers
     @State private var pulse = false
+    @State private var buttonCenter: CGPoint = .zero
 
     private let holdDuration: Double = 1.5
     private let commit = Theme.correct
     private let commitDark = Theme.correctDark
 
     var body: some View {
-        ZStack {
-            VStack(spacing: 0) {
-                Spacer()
-                Text("Make yourself a promise")
-                    .font(Theme.font(28, .black))
-                    .foregroundColor(theme.palette.ink)
-                    .multilineTextAlignment(.center)
-                Text("I will spend a few minutes a day learning to trade with discipline.")
-                    .font(Theme.font(16, .bold))
-                    .foregroundColor(theme.palette.muted)
-                    .multilineTextAlignment(.center)
-                    .lineSpacing(3)
-                    .padding(.top, 12)
+        VStack(spacing: 0) {
+            Spacer()
+            Text("Make yourself a promise")
+                .font(Theme.font(28, .black))
+                .foregroundColor(theme.palette.ink)
+                .multilineTextAlignment(.center)
+            Text("I will spend a few minutes a day learning to trade with discipline.")
+                .font(Theme.font(16, .bold))
+                .foregroundColor(theme.palette.muted)
+                .multilineTextAlignment(.center)
+                .lineSpacing(3)
+                .padding(.top, 12)
 
-                Spacer()
+            Spacer()
 
-                holdButton
+            holdButton
+                .background(
+                    // Track the button's actual on-screen position (global
+                    // coordinates match the router-level curtain's coordinate
+                    // space), so the burst can originate exactly from it.
+                    GeometryReader { g in
+                        Color.clear
+                            .onAppear { buttonCenter = CGPoint(x: g.frame(in: .global).midX,
+                                                               y: g.frame(in: .global).midY) }
+                    }
+                )
 
-                Text("Press and hold")
-                    .font(Theme.font(13, .black))
-                    .textCase(.uppercase).tracking(1)
-                    .foregroundColor(theme.palette.muted)
-                    .padding(.top, 18)
-                    .opacity(burst ? 0 : 1)
+            Text("Press and hold")
+                .font(Theme.font(13, .black))
+                .textCase(.uppercase).tracking(1)
+                .foregroundColor(theme.palette.muted)
+                .padding(.top, 18)
+                .opacity(burst ? 0 : 1)
 
-                Spacer()
-            }
-            .padding(.horizontal, 28)
-
-            // The expanding commit-color wash. Scaled from the button's spot;
-            // 30x the 120pt ring covers any phone screen.
-            Circle()
-                .fill(commit)
-                .frame(width: 120, height: 120)
-                .scaleEffect(burst ? 30 : 0.0001)
-                .opacity(burst ? 1 : 0)
-                .animation(.easeIn(duration: 0.55), value: burst)
-                .allowsHitTesting(false)
+            Spacer()
         }
+        .padding(.horizontal, 28)
     }
 
     private var holdButton: some View {
@@ -453,8 +455,31 @@ private struct CommitScreen: View {
     private func completeHold() {
         Haptics.success()
         burst = true
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.7) {
-            onFinish()
+        onCommitted()   // persist onboarding answers
+
+        // Launch the curtain from the button's own position and expand it to
+        // cover the whole screen.
+        router.curtainColor = commit
+        router.curtainOrigin = buttonCenter
+        router.curtainOpacity = 1
+        router.curtainScale = 0.0001
+        withAnimation(.easeIn(duration: 0.5)) {
+            router.curtainScale = 34
+        }
+
+        // Once fully covered, swap in the lesson UNDERNEATH the still-opaque
+        // curtain — invisible to the user — then fade the curtain away to
+        // reveal it already loaded.
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+            router.onOnboardingFinished?()
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.15) {
+                withAnimation(.easeOut(duration: 0.35)) {
+                    router.curtainOpacity = 0
+                }
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.35) {
+                    router.curtainColor = nil
+                }
+            }
         }
     }
 }
