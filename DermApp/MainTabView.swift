@@ -55,7 +55,10 @@ struct MainTabView: View {
                     onGrantTestTreats: { router.onGrantTestTreats?() },
                     onTestMechanics: { router.onOpenMechanicsTest?() },
                     onPreviewStreak: { router.onPreviewStreak?() },
-                    onBumpStreak: { router.onBumpStreak?() }
+                    onBumpStreak: { router.onBumpStreak?() },
+                    onTestOnboarding: {
+                        withAnimation(.easeInOut(duration: 0.28)) { router.currentScreen = .onboarding }
+                    }
                 )
             } else {
                 Color(hex: "#0F172A").ignoresSafeArea()
