@@ -255,22 +255,15 @@ struct OptionSurface: ViewModifier {
 /// rectangle. Used by every chart-attached view (tap/mark/draw/consolidation
 /// screens, question charts, the intro card).
 struct ChartCard: ViewModifier {
-    var depth: CGFloat = 6
     var radius: CGFloat = 16
     func body(content: Content) -> some View {
         // A plain ZStack instead of chained .background/.clipShape/.overlay —
         // that chain rendered an extra ghosted rounded-rect edge at the top
-        // corners. Layer order here is explicit and unambiguous: slab at the
-        // bottom, the card fill+border above it, and the chart's own content
-        // clipped to the same rounded shape on top.
+        // corners. Layer order here is explicit: the flat card fill+border, and
+        // the chart's own content clipped to the same rounded shape on top.
         ZStack {
-            // Thick bottom edge: a darker shade of the card's own fill (same hue,
-            // not the old lighter slate) so the 3D reads as the card's own shadow.
-            RoundedRectangle(cornerRadius: radius, style: .continuous)
-                .fill(Color(hex: "#05070E"))
-                .offset(y: depth)
-            // Solid, darker panel — a deep navy distinctly darker than the page
-            // background so it reads as an opaque card, not a hazy translucent film.
+            // Flat panel — a deep navy distinctly darker than the page background
+            // so it reads as an opaque card, not a hazy translucent film.
             RoundedRectangle(cornerRadius: radius, style: .continuous)
                 .fill(Color(hex: "#0A0F1A"))
                 .overlay(
