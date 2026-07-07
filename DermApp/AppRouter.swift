@@ -72,6 +72,16 @@ final class AppRouter: ObservableObject {
     // Streak celebration screen data (set right before currentScreen = .streak).
     @Published var streakCount: Int = 0
     @Published var streakWeek: [(label: String, active: Bool, isToday: Bool)] = []
+
+    // A full-screen color "curtain" that expands from a given screen point and
+    // covers everything, independent of whatever's in `currentScreen` — used by
+    // onboarding's hold-to-commit so the color visibly comes from the button
+    // and stays on top through the screen swap to the lesson underneath, then
+    // fades to reveal it already loaded (seamless, no flash/jump).
+    @Published var curtainColor: Color? = nil
+    @Published var curtainOrigin: CGPoint = .zero
+    @Published var curtainScale: CGFloat = 0.0001
+    @Published var curtainOpacity: Double = 1
 }
 
 struct AppRouterView: View {
@@ -162,7 +172,7 @@ struct AppRouterView: View {
                     .zIndex(20)
 
             case .onboarding:
-                OnboardingView(onFinish: { router.onOnboardingFinished?() })
+                OnboardingView(router: router)
                     .transition(.opacity)
                     .zIndex(40)
 
@@ -178,6 +188,20 @@ struct AppRouterView: View {
                     })
                     .transition(.opacity)
                     .zIndex(30)
+            }
+
+            // Commit-burst curtain (see AppRouter.curtainColor) — sits above
+            // every screen so it can persist through a screen swap underneath it.
+            if let color = router.curtainColor {
+                Circle()
+                    .fill(color)
+                    .frame(width: 140, height: 140)
+                    .scaleEffect(router.curtainScale)
+                    .position(router.curtainOrigin)
+                    .opacity(router.curtainOpacity)
+                    .ignoresSafeArea()
+                    .allowsHitTesting(false)
+                    .zIndex(500)
             }
 
             if router.showSplash {
