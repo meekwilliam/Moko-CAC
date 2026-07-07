@@ -399,21 +399,13 @@ private struct CommitScreen: View {
 
     private var holdButton: some View {
         ZStack {
-            // Soft breathing halo, stronger while charging.
+            // Soft breathing halo, stronger while charging (and while charging,
+            // it also grows with hold progress so you still feel the charge-up
+            // without a separate ring).
             Circle()
                 .fill(commit.opacity(holding ? 0.28 : 0.14))
                 .frame(width: 168, height: 168)
-                .scaleEffect(pulse ? 1.08 : 0.92)
-
-            // Progress ring fills over the hold.
-            Circle()
-                .stroke(Color.white.opacity(0.18), lineWidth: 7)
-                .frame(width: 140, height: 140)
-            Circle()
-                .trim(from: 0, to: holdProgress)
-                .stroke(commit, style: StrokeStyle(lineWidth: 7, lineCap: .round))
-                .frame(width: 140, height: 140)
-                .rotationEffect(.degrees(-90))
+                .scaleEffect((pulse ? 1.08 : 0.92) + holdProgress * 0.12)
 
             // The button face itself.
             Text("I'M\nCOMMITTED")
