@@ -71,7 +71,7 @@ struct MascotPrompt: View {
     var body: some View {
         let face = scheme == .dark ? Color(hex: "#2A2E37") : Color(hex: "#EEF1F6")
         let slab = scheme == .dark ? Color(hex: "#181B21") : Color(hex: "#C7D0DE")
-        let line = scheme == .dark ? Color.white.opacity(0.14) : Color.black.opacity(0.12)
+        let line = scheme == .dark ? Color(hex: "#334155") : Color(hex: "#CBD5E1")
 
         let row = HStack(alignment: .center, spacing: 4) {
             // Frame aspect ≈ the cropped viewBox (340×367) so the art fills the
