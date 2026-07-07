@@ -296,31 +296,9 @@ struct PathView: View {
                 // button style so the face sinks onto it on press.
                 ZStack {
                     // Wide oval (not a perfect circle) so it reads as a coin
-                    // facing up, like other gamified apps.
+                    // facing up, like other gamified apps. Plain fill — no
+                    // icon, no shine/gloss.
                     Ellipse().fill(c.main).frame(width: nodeSize, height: nodeSize * ovalRatio)
-                        // Top-lit gloss: brightest along the top edge.
-                        .overlay(
-                            Ellipse().fill(
-                                LinearGradient(
-                                    colors: [Color.white.opacity(state == .locked ? 0.14 : 0.28), .clear],
-                                    startPoint: .top, endPoint: .center))
-                        )
-                        // Crisp glossy highlight (a clean lens, no blur).
-                        .overlay(
-                            Ellipse()
-                                .fill(Color.white.opacity(state == .locked ? 0.12 : 0.34))
-                                .frame(width: nodeSize * 0.5, height: nodeSize * ovalRatio * 0.36)
-                                .rotationEffect(.degrees(-16))
-                                .offset(x: -nodeSize * 0.14, y: -nodeSize * ovalRatio * 0.24)
-                        )
-                        // Crisp glossy rim-light arc along the top-left edge.
-                        .overlay(
-                            Ellipse()
-                                .trim(from: 0.52, to: 0.72)
-                                .stroke(Color.white.opacity(state == .locked ? 0.2 : 0.6),
-                                        style: StrokeStyle(lineWidth: 4, lineCap: .round))
-                                .frame(width: nodeSize * 0.9, height: nodeSize * ovalRatio * 0.9)
-                        )
                         // Inner bottom shading for a rounded, puffed look.
                         .overlay(
                             Ellipse().stroke(Color.black.opacity(0.20), lineWidth: 4)
@@ -328,12 +306,6 @@ struct PathView: View {
                                     LinearGradient(colors: [.clear, .black], startPoint: .center, endPoint: .bottom))
                         )
                         .clipShape(Ellipse())
-
-                    // The node's icon (star, etc.) — crisp white, normal aspect.
-                    SVGIconView(svg: node.icon)
-                        .frame(width: nodeSize * 0.42, height: nodeSize * 0.42)
-                        .opacity(state == .locked ? 0.5 : 1)
-                        .shadow(color: .black.opacity(0.15), radius: 1, y: 1)
                 }
                 .frame(width: nodeSize, height: nodeSize)
                 .contentShape(Ellipse())
