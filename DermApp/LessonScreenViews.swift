@@ -8,8 +8,10 @@ import SwiftUI
 struct MascotIcon: View {
     // Character paths only — the SVG's opaque background <rect> is dropped so the
     // mascot reads as a cutout over the lesson background.
+    // viewBox cropped to the character's bounding box (was 0 0 420 419) so it
+    // fills the frame and sits flush at the top instead of floating with a gap.
     private static let image = SVGParser.parse("""
-    <svg viewBox="0 0 420 419" fill="none">
+    <svg viewBox="40 52 340 360" fill="none">
     <path d="M40 419C60 340 120 300 210 300C300 300 360 340 380 419H40Z" fill="#101216"/>
     <path d="M40 419C60 340 120 300 210 300V419H40Z" fill="#101216"/>
     <path d="M168 300L210 372L252 300C240 296 226 294 210 294C194 294 180 296 168 300Z" fill="#F4F6FA"/>
@@ -942,9 +944,11 @@ struct ChoiceView: View {
         player.lesson.node == 1 && player.index == 1
     }
 
-    // Mascot on the left with the question in a speech bubble beside it.
+    // Mascot on the left with the question in a 3D speech bubble beside it.
     private var mascotPrompt: some View {
-        HStack(alignment: .center, spacing: 2) {
+        let face = scheme == .dark ? Color(hex: "#2A2E37") : Color(hex: "#EEF1F6")
+        let slab = scheme == .dark ? Color(hex: "#181B21") : Color(hex: "#C7D0DE")
+        return HStack(alignment: .center, spacing: 2) {
             MascotIcon()
                 .frame(width: 118, height: 118)
             Text(RichText.attributed(displayQuestion(),
@@ -956,12 +960,15 @@ struct ChoiceView: View {
                 .padding(.leading, 22)
                 .padding(.trailing, 16)
                 .background(
+                    // Chunky 3D: a darker slab sits behind and below the face,
+                    // matching the lesson's 3D buttons/answer chips.
                     SpeechBubbleShape()
-                        .fill(scheme == .dark ? Color(hex: "#2A2E37") : Color(hex: "#EEF1F6"))
+                        .fill(face)
+                        .overlay(SpeechBubbleShape().stroke(slab, lineWidth: 2))
+                        .background(SpeechBubbleShape().fill(slab).offset(y: 5))
                 )
         }
         .frame(maxWidth: .infinity, alignment: .leading)
-        .padding(.vertical, 4)
     }
 
     /// For fill_blank, fill the [___] with the chosen option (or a blank).
