@@ -52,9 +52,9 @@ enum SVGParser {
                 strokeWidth: CGFloat(Double(attrs["stroke-width"] ?? "") ?? 1),
                 rounded: rounded
             )
-            // Apply a rotate() transform if present.
-            if let t = attrs["transform"], let rot = parseRotate(t) {
-                el.path = el.path.applying(rot)
+            // Apply a rotate()/matrix() transform if present.
+            if let t = attrs["transform"], let tf = parseTransform(t) {
+                el.path = el.path.applying(tf)
             }
             elements.append(el)
         }
@@ -124,7 +124,20 @@ enum SVGParser {
         }
     }
 
-    private static func parseRotate(_ t: String) -> CGAffineTransform? {
+    private static func parseTransform(_ t: String) -> CGAffineTransform? {
+        // matrix(a b c d e f) — a general affine transform (also covers the
+        // rotate+reflect forms that mirrored elements use).
+        if let r = t.range(of: "matrix(") {
+            let rest = t[r.upperBound...]
+            if let end = rest.firstIndex(of: ")") {
+                let n = rest[..<end].split(whereSeparator: { $0 == " " || $0 == "," }).compactMap { Double($0) }
+                if n.count == 6 {
+                    return CGAffineTransform(a: CGFloat(n[0]), b: CGFloat(n[1]),
+                                             c: CGFloat(n[2]), d: CGFloat(n[3]),
+                                             tx: CGFloat(n[4]), ty: CGFloat(n[5]))
+                }
+            }
+        }
         guard let r = t.range(of: "rotate(") else { return nil }
         let rest = t[r.upperBound...]
         guard let end = rest.firstIndex(of: ")") else { return nil }
