@@ -45,6 +45,45 @@ struct MascotIcon: View {
     var body: some View { SVGIconView(svg: Self.image) }
 }
 
+/// The mascot beside the question in a 3D speech bubble, tucked so its bottom
+/// sits behind whatever follows (answer buttons / chart / etc). Used as the
+/// prompt for every question mechanic.
+struct MascotPrompt: View {
+    let text: String
+    var ink: Color
+    @Environment(\.colorScheme) private var scheme
+
+    var body: some View {
+        let face = scheme == .dark ? Color(hex: "#2A2E37") : Color(hex: "#EEF1F6")
+        let slab = scheme == .dark ? Color(hex: "#181B21") : Color(hex: "#C7D0DE")
+        return HStack(alignment: .center, spacing: 4) {
+            // Frame aspect ≈ the cropped viewBox (340×367) so the art fills the
+            // width and the character's shoulders sit flush-left.
+            MascotIcon()
+                .frame(width: 116, height: 126)
+            Text(RichText.attributed(text,
+                                     base: Theme.font(19, .heavy),
+                                     bold: Theme.font(19, .black),
+                                     color: ink))
+                .fixedSize(horizontal: false, vertical: true)
+                .padding(.vertical, 16)
+                .padding(.leading, 22)
+                .padding(.trailing, 16)
+                .background(
+                    SpeechBubbleShape()
+                        .fill(face)
+                        .overlay(SpeechBubbleShape().stroke(slab, lineWidth: 2))
+                        .background(SpeechBubbleShape().fill(slab).offset(y: 5))
+                )
+        }
+        .frame(maxWidth: .infinity, alignment: .leading)
+        // Pull whatever follows up so the character tucks behind it (drawn after
+        // the mascot, so it covers the overlap → mascot looks like it's behind).
+        .padding(.bottom, -48)
+        .zIndex(-1)
+    }
+}
+
 /// A rounded speech bubble with a small tail on its left edge pointing at the
 /// mascot. The tail sits `tail` points left of the rounded body.
 struct SpeechBubbleShape: Shape {
@@ -174,10 +213,7 @@ struct TapCandleView: View {
 
     var body: some View {
         VStack(alignment: .leading, spacing: 16) {
-            Text(RichText.attributed(s.question ?? "Tap the candle.",
-                                     base: Theme.font(21, .heavy),
-                                     bold: Theme.font(21, .black), color: ink))
-                .fixedSize(horizontal: false, vertical: true)
+            MascotPrompt(text: s.question ?? "Tap the candle.", ink: ink)
 
             if let sc = scenario {
                 let m = sc.model(seed: chartSeed(s))
@@ -230,10 +266,7 @@ struct TapCandlesView: View {
 
     var body: some View {
         VStack(alignment: .leading, spacing: 16) {
-            Text(RichText.attributed(s.question ?? "Tap the candles.",
-                                     base: Theme.font(21, .heavy),
-                                     bold: Theme.font(21, .black), color: ink))
-                .fixedSize(horizontal: false, vertical: true)
+            MascotPrompt(text: s.question ?? "Tap the candles.", ink: ink)
 
             if let sc = scenario {
                 let m = sc.model(seed: chartSeed(s))
@@ -284,10 +317,7 @@ struct MarkLevelView: View {
 
     var body: some View {
         VStack(alignment: .leading, spacing: 16) {
-            Text(RichText.attributed(s.question ?? "Drag the line to the level.",
-                                     base: Theme.font(21, .heavy),
-                                     bold: Theme.font(21, .black), color: ink))
-                .fixedSize(horizontal: false, vertical: true)
+            MascotPrompt(text: s.question ?? "Drag the line to the level.", ink: ink)
 
             if let sc = scenario {
                 let m = sc.model(seed: chartSeed(s))
@@ -384,10 +414,7 @@ struct TrendlineView: View {
 
     var body: some View {
         VStack(alignment: .leading, spacing: 16) {
-            Text(RichText.attributed(s.question ?? "Drag to connect the two points on the chart.",
-                                     base: Theme.font(21, .heavy),
-                                     bold: Theme.font(21, .black), color: ink))
-                .fixedSize(horizontal: false, vertical: true)
+            MascotPrompt(text: s.question ?? "Drag to connect the two points on the chart.", ink: ink)
 
             if let sc = scenario {
                 let m = sc.model(seed: chartSeed(s))
@@ -494,10 +521,7 @@ struct ConsolidationView: View {
 
     var body: some View {
         VStack(alignment: .leading, spacing: 16) {
-            Text(RichText.attributed(s.question ?? "Drag across the consolidation area.",
-                                     base: Theme.font(21, .heavy),
-                                     bold: Theme.font(21, .black), color: ink))
-                .fixedSize(horizontal: false, vertical: true)
+            MascotPrompt(text: s.question ?? "Drag across the consolidation area.", ink: ink)
 
             if let sc = scenario {
                 let m = sc.model(seed: chartSeed(s))
@@ -605,10 +629,7 @@ struct OHLCLabelView: View {
 
     var body: some View {
         VStack(alignment: .leading, spacing: 18) {
-            Text(RichText.attributed(s.question ?? "Drag each label onto the matching part of the candle.",
-                                     base: Theme.font(21, .heavy),
-                                     bold: Theme.font(21, .black), color: ink))
-                .fixedSize(horizontal: false, vertical: true)
+            MascotPrompt(text: s.question ?? "Drag each label onto the matching part of the candle.", ink: ink)
 
             candleArea
             tray
@@ -776,10 +797,7 @@ struct NumberSliderView: View {
 
     var body: some View {
         VStack(alignment: .leading, spacing: 18) {
-            Text(RichText.attributed(s.question ?? "Drag the slider to the correct value.",
-                                     base: Theme.font(21, .heavy),
-                                     bold: Theme.font(21, .black), color: ink))
-                .fixedSize(horizontal: false, vertical: true)
+            MascotPrompt(text: s.question ?? "Drag the slider to the correct value.", ink: ink)
 
             VStack(spacing: 14) {
                 let value = player.numberValue ?? (lo + hi) / 2
@@ -913,11 +931,7 @@ struct ChoiceView: View {
                 scenarioCard(scenario)
             }
 
-            if isFirstEverQuestion {
-                mascotPrompt
-            } else {
-                promptText
-            }
+            MascotPrompt(text: displayQuestion(), ink: ink)
 
             VStack(spacing: 14) {
                 ForEach(Array(player.currentOptions.enumerated()), id: \.offset) { idx, opt in
@@ -927,56 +941,6 @@ struct ChoiceView: View {
             .padding(.top, 4)
         }
         .frame(maxWidth: .infinity, alignment: .leading)
-    }
-
-    private var promptText: some View {
-        let raw = displayQuestion()
-        return Text(RichText.attributed(raw,
-                                        base: Theme.font(21, .heavy),
-                                        bold: Theme.font(21, .black),
-                                        color: ink))
-            .fixedSize(horizontal: false, vertical: true)
-            .frame(maxWidth: .infinity, alignment: .leading)
-    }
-
-    // The very first question of the whole course (first lesson, first question).
-    private var isFirstEverQuestion: Bool {
-        player.lesson.node == 1 && player.index == 1
-    }
-
-    // Mascot on the left with the question in a 3D speech bubble beside it.
-    private var mascotPrompt: some View {
-        let face = scheme == .dark ? Color(hex: "#2A2E37") : Color(hex: "#EEF1F6")
-        let slab = scheme == .dark ? Color(hex: "#181B21") : Color(hex: "#C7D0DE")
-        return HStack(alignment: .center, spacing: 4) {
-            // Frame aspect ≈ the cropped viewBox (340×367) so the art fills the
-            // width and the character's shoulders sit flush-left with the answer
-            // choices below, instead of being centered with a gap.
-            MascotIcon()
-                .frame(width: 116, height: 126)
-            Text(RichText.attributed(displayQuestion(),
-                                     base: Theme.font(19, .heavy),
-                                     bold: Theme.font(19, .black),
-                                     color: ink))
-                .fixedSize(horizontal: false, vertical: true)
-                .padding(.vertical, 16)
-                .padding(.leading, 22)
-                .padding(.trailing, 16)
-                .background(
-                    // Chunky 3D: a darker slab sits behind and below the face,
-                    // matching the lesson's 3D buttons/answer chips.
-                    SpeechBubbleShape()
-                        .fill(face)
-                        .overlay(SpeechBubbleShape().stroke(slab, lineWidth: 2))
-                        .background(SpeechBubbleShape().fill(slab).offset(y: 5))
-                )
-        }
-        .frame(maxWidth: .infinity, alignment: .leading)
-        // Pull the answer choices up so the character's bottom tucks behind the
-        // first button (the buttons are drawn after the mascot, so they cover
-        // the overlap — making the mascot look like it stands behind them).
-        .padding(.bottom, -48)
-        .zIndex(-1)
     }
 
     /// For fill_blank, fill the [___] with the chosen option (or a blank).
@@ -1076,10 +1040,7 @@ struct MatchingView: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 18) {
             QuestionChart(key: player.screen.chart, height: 130, seed: chartSeed(player.screen))
-            Text(RichText.attributed(question.isEmpty ? "Match the pairs:" : question,
-                                     base: Theme.font(21, .heavy),
-                                     bold: Theme.font(21, .black), color: ink))
-                .fixedSize(horizontal: false, vertical: true)
+            MascotPrompt(text: question.isEmpty ? "Match the pairs:" : question, ink: ink)
 
             HStack(alignment: .top, spacing: 12) {
                 VStack(spacing: 12) {
@@ -1173,11 +1134,7 @@ struct FillBlankMultiView: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 20) {
             QuestionChart(key: player.screen.chart, height: 130, seed: chartSeed(player.screen))
-            Text(RichText.attributed(filledTemplate(),
-                                     base: Theme.font(20, .heavy),
-                                     bold: Theme.font(20, .black), color: ink))
-                .lineSpacing(4)
-                .fixedSize(horizontal: false, vertical: true)
+            MascotPrompt(text: filledTemplate(), ink: ink)
 
             ForEach(blanks.indices, id: \.self) { bi in
                 VStack(alignment: .leading, spacing: 8) {
@@ -1279,10 +1236,7 @@ struct IngredientMatchView: View {
         VStack(alignment: .leading, spacing: 18) {
             QuestionChart(key: s.chart, height: 130, seed: chartSeed(player.screen))
 
-            Text(RichText.attributed(s.question ?? "",
-                                     base: Theme.font(21, .heavy),
-                                     bold: Theme.font(21, .black), color: ink))
-                .fixedSize(horizontal: false, vertical: true)
+            MascotPrompt(text: s.question ?? "", ink: ink)
                 .frame(maxWidth: .infinity, alignment: .leading)
 
             VStack(spacing: 14) {
@@ -1364,10 +1318,7 @@ struct OrderBuilderView: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 18) {
             QuestionChart(key: player.screen.chart, height: 130, seed: chartSeed(player.screen))
-            Text(RichText.attributed(question,
-                                     base: Theme.font(21, .heavy),
-                                     bold: Theme.font(21, .black), color: ink))
-                .fixedSize(horizontal: false, vertical: true)
+            MascotPrompt(text: question, ink: ink)
 
             // Built sequence
             VStack(spacing: 10) {
