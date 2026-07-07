@@ -972,6 +972,11 @@ struct ChoiceView: View {
                 )
         }
         .frame(maxWidth: .infinity, alignment: .leading)
+        // Pull the answer choices up so the character's bottom tucks behind the
+        // first button (the buttons are drawn after the mascot, so they cover
+        // the overlap — making the mascot look like it stands behind them).
+        .padding(.bottom, -48)
+        .zIndex(-1)
     }
 
     /// For fill_blank, fill the [___] with the chosen option (or a blank).
