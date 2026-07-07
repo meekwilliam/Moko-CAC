@@ -264,8 +264,10 @@ struct ChartCard: ViewModifier {
         // bottom, the card fill+border above it, and the chart's own content
         // clipped to the same rounded shape on top.
         ZStack {
+            // Thick bottom edge: a darker shade of the card's own fill (same hue,
+            // not the old lighter slate) so the 3D reads as the card's own shadow.
             RoundedRectangle(cornerRadius: radius, style: .continuous)
-                .fill(Color(hex: "#334155"))
+                .fill(Color(hex: "#05070E"))
                 .offset(y: depth)
             // Solid, darker panel — a deep navy distinctly darker than the page
             // background so it reads as an opaque card, not a hazy translucent film.
@@ -273,7 +275,7 @@ struct ChartCard: ViewModifier {
                 .fill(Color(hex: "#0A0F1A"))
                 .overlay(
                     RoundedRectangle(cornerRadius: radius, style: .continuous)
-                        .strokeBorder(Color(hex: "#334155"), lineWidth: 1.5)
+                        .strokeBorder(Color(hex: "#1B2436"), lineWidth: 1.5)
                 )
             content
                 .padding(.horizontal, 6).padding(.vertical, 14)

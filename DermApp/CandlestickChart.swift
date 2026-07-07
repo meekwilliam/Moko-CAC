@@ -117,7 +117,7 @@ struct CandlestickChart: View {
                         // Body
                         let top = m.y(max(c.open, c.close))
                         let bottom = m.y(min(c.open, c.close))
-                        RoundedRectangle(cornerRadius: 1.5, style: .continuous)
+                        RoundedRectangle(cornerRadius: 3.5, style: .continuous)
                             .fill(color)
                             .frame(width: bodyWidth, height: max(bottom - top, 2))
                             .position(x: cx, y: (top + bottom) / 2)
@@ -162,7 +162,7 @@ struct CandlestickChart: View {
             ForEach(0...rows, id: \.self) { r in
                 let y = plotH * CGFloat(r) / CGFloat(rows)
                 Path { p in p.move(to: CGPoint(x: leftG, y: y)); p.addLine(to: CGPoint(x: leftG + plotW, y: y)) }
-                    .stroke(gridColor, lineWidth: 1)
+                    .stroke(gridColor.opacity(0.4), lineWidth: 1)
                 Text(String(format: "%.1f", m.value(y)))
                     .font(Theme.font(8, .bold)).foregroundColor(axisText)
                     .frame(width: leftG - 5, alignment: .trailing)
@@ -172,7 +172,7 @@ struct CandlestickChart: View {
             ForEach(0..<n, id: \.self) { i in
                 let cx = leftG + plotW * (CGFloat(i) + 0.5) / CGFloat(n)
                 Path { p in p.move(to: CGPoint(x: cx, y: 0)); p.addLine(to: CGPoint(x: cx, y: plotH)) }
-                    .stroke(gridColor, lineWidth: 1)
+                    .stroke(gridColor.opacity(0.4), lineWidth: 1)
                 Text("\(i + 1)")
                     .font(Theme.font(8, .bold)).foregroundColor(axisText)
                     .position(x: cx, y: plotH + 8)

@@ -303,26 +303,32 @@ struct LessonView: View {
         HStack(spacing: 14) {
             Button(action: { Haptics.selection(); withAnimation(.easeOut(duration: 0.18)) { showExitConfirm = true } }) {
                 Image(systemName: "xmark")
-                    .font(.system(size: 17, weight: .black))
-                    .foregroundColor(Theme.muted)
+                    .font(.system(size: 20, weight: .black))
+                    .foregroundColor(scheme == .dark ? Color(white: 0.78) : Theme.muted)
             }
             .buttonStyle(Circle3DStyle(
-                face: scheme == .dark ? Color(white: 0.17) : Color(white: 0.93),
-                slab: scheme == .dark ? Color.black.opacity(0.55) : Color.black.opacity(0.20)))
+                face: scheme == .dark ? Color(white: 0.20) : Color(white: 0.93),
+                slab: scheme == .dark ? Color.black.opacity(0.6) : Color.black.opacity(0.20),
+                size: 42, depth: 4))
 
             GeometryReader { geo in
                 ZStack(alignment: .leading) {
-                    Capsule().fill(scheme == .dark ? Color.white.opacity(0.12) : Color.black.opacity(0.10))
-                    Capsule().fill(accent)
-                        .frame(width: max(12, geo.size.width * player.progress))
+                    // Brighter, more visible track.
+                    Capsule().fill(scheme == .dark ? Color.white.opacity(0.20) : Color.black.opacity(0.12))
+                    // Vibrant, glossy blue fill: a top-lit gradient plus a bright
+                    // highlight strip along the top edge.
+                    Capsule().fill(
+                        LinearGradient(colors: [Color(hex: "#4CA9FF"), Color(hex: "#2B70C9")],
+                                       startPoint: .top, endPoint: .bottom))
+                        .frame(width: max(16, geo.size.width * player.progress))
                         .overlay(
-                            Capsule().fill(Color.white.opacity(0.35))
-                                .frame(height: 3).padding(.horizontal, 4).padding(.top, 3),
+                            Capsule().fill(Color.white.opacity(0.5))
+                                .frame(height: 4).padding(.horizontal, 6).padding(.top, 4),
                             alignment: .top
                         )
                 }
             }
-            .frame(height: 16)
+            .frame(height: 20)
         }
         .padding(.horizontal, 18)
         .padding(.top, 8)
