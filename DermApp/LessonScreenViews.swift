@@ -11,7 +11,7 @@ struct MascotIcon: View {
     // viewBox cropped to the character's bounding box (was 0 0 420 419) so it
     // fills the frame and sits flush at the top instead of floating with a gap.
     private static let image = SVGParser.parse("""
-    <svg viewBox="40 52 340 360" fill="none">
+    <svg viewBox="40 52 340 367" fill="none">
     <path d="M40 419C60 340 120 300 210 300C300 300 360 340 380 419H40Z" fill="#101216"/>
     <path d="M40 419C60 340 120 300 210 300V419H40Z" fill="#101216"/>
     <path d="M168 300L210 372L252 300C240 296 226 294 210 294C194 294 180 296 168 300Z" fill="#F4F6FA"/>
@@ -948,9 +948,12 @@ struct ChoiceView: View {
     private var mascotPrompt: some View {
         let face = scheme == .dark ? Color(hex: "#2A2E37") : Color(hex: "#EEF1F6")
         let slab = scheme == .dark ? Color(hex: "#181B21") : Color(hex: "#C7D0DE")
-        return HStack(alignment: .center, spacing: 2) {
+        return HStack(alignment: .center, spacing: 4) {
+            // Frame aspect ≈ the cropped viewBox (340×367) so the art fills the
+            // width and the character's shoulders sit flush-left with the answer
+            // choices below, instead of being centered with a gap.
             MascotIcon()
-                .frame(width: 118, height: 118)
+                .frame(width: 116, height: 126)
             Text(RichText.attributed(displayQuestion(),
                                      base: Theme.font(19, .heavy),
                                      bold: Theme.font(19, .black),
