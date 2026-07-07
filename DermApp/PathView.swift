@@ -295,21 +295,45 @@ struct PathView: View {
                 // button style so the face sinks onto it on press.
                 ZStack {
                     Circle().fill(c.main).frame(width: nodeSize, height: nodeSize)
-                        // Glossy shine highlight, like the heart / gem.
+                        // Top-lit gloss: the face is brightest along the top so the
+                        // coin reads as facing up toward the light.
+                        .overlay(
+                            Circle().fill(
+                                LinearGradient(
+                                    colors: [Color.white.opacity(state == .locked ? 0.14 : 0.28), .clear],
+                                    startPoint: .top, endPoint: .center))
+                        )
+                        // Broad soft sheen across the upper-left of the face.
                         .overlay(
                             Ellipse()
-                                .fill(Color.white.opacity(state == .locked ? 0.16 : 0.42))
-                                .frame(width: nodeSize * 0.5, height: nodeSize * 0.26)
-                                .rotationEffect(.degrees(-28))
-                                .offset(x: -nodeSize * 0.14, y: -nodeSize * 0.18)
-                                .blur(radius: 2)
+                                .fill(Color.white.opacity(state == .locked ? 0.12 : 0.32))
+                                .frame(width: nodeSize * 0.58, height: nodeSize * 0.32)
+                                .rotationEffect(.degrees(-25))
+                                .offset(x: -nodeSize * 0.12, y: -nodeSize * 0.20)
+                                .blur(radius: 4)
                         )
+                        // Crisp glossy rim-light arc along the top-left edge.
                         .overlay(
-                            Circle().stroke(Color.black.opacity(0.18), lineWidth: 3)
+                            Circle()
+                                .trim(from: 0.52, to: 0.72)
+                                .stroke(Color.white.opacity(state == .locked ? 0.2 : 0.55),
+                                        style: StrokeStyle(lineWidth: 4, lineCap: .round))
+                                .frame(width: nodeSize * 0.82, height: nodeSize * 0.82)
+                                .blur(radius: 1)
+                        )
+                        // Inner bottom shading for a rounded, puffed look.
+                        .overlay(
+                            Circle().stroke(Color.black.opacity(0.20), lineWidth: 4)
                                 .padding(1).mask(
-                                    LinearGradient(colors: [.clear, .black], startPoint: .top, endPoint: .bottom))
+                                    LinearGradient(colors: [.clear, .black], startPoint: .center, endPoint: .bottom))
                         )
                         .clipShape(Circle())
+
+                    // The node's icon (star, etc.) — crisp white, centered.
+                    SVGIconView(svg: node.icon)
+                        .frame(width: nodeSize * 0.44, height: nodeSize * 0.44)
+                        .opacity(state == .locked ? 0.5 : 1)
+                        .shadow(color: .black.opacity(0.15), radius: 1, y: 1)
                 }
                 .contentShape(Circle())
             }
@@ -483,9 +507,12 @@ private struct Triangle: Shape {
 private struct PuckButtonStyle: ButtonStyle {
     var slab: Color
     var size: CGFloat
-    var depth: CGFloat = 6
+    var depth: CGFloat = 10
     func makeBody(configuration: Configuration) -> some View {
         ZStack {
+            // Thicker dark base so, once tilted, the coin shows a chunky side
+            // (the raised "facing up" look). A darker inner ring at the very
+            // bottom deepens the edge.
             Circle().fill(slab).frame(width: size, height: size).offset(y: depth)
             configuration.label
                 .offset(y: configuration.isPressed ? depth - 1 : 0)
