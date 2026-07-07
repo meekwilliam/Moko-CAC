@@ -1,4 +1,5 @@
 import SwiftUI
+import Combine
 
 // MARK: - Mascot speech-bubble prompt
 // Renders the Moko mascot (buisness.svg) beside a speech bubble holding the
@@ -6,11 +7,34 @@ import SwiftUI
 // first question only (see ChoiceView.isFirstEverQuestion) as a preview.
 
 struct MascotIcon: View {
-    // Character paths only — the SVG's opaque background <rect> is dropped so the
-    // mascot reads as a cutout over the lesson background.
-    // viewBox cropped to the character's bounding box (was 0 0 420 419) so it
-    // fills the frame and sits flush at the top instead of floating with a gap.
-    private static let image = SVGParser.parse("""
+    // The pupils (iris + highlight) are split into their own layer so they can
+    // be offset independently — the eyes randomly dart around while the rest of
+    // the face stays put. NOTE: if the mascot art is swapped, re-split the new
+    // pupil paths here (there's no generic "find the eyes" for arbitrary SVGs).
+    @State private var eye: CGSize = .zero
+    private let lookTimer = Timer.publish(every: 1.7, on: .main, in: .common).autoconnect()
+
+    var body: some View {
+        ZStack {
+            SVGIconView(svg: Self.base)
+            SVGIconView(svg: Self.pupils)
+                .offset(eye)
+        }
+        .onReceive(lookTimer) { _ in
+            withAnimation(.easeInOut(duration: 0.32)) { eye = Self.randomLook() }
+        }
+    }
+
+    // Small offset in points; kept inside the eye whites. ~1-in-4 recenters.
+    private static func randomLook() -> CGSize {
+        if Int.random(in: 0..<4) == 0 { return .zero }
+        return CGSize(width: .random(in: -3...3), height: .random(in: -2...2))
+    }
+
+    // Face minus pupils — the SVG's opaque background <rect> is dropped (cutout)
+    // and the viewBox is cropped to the character's bounding box so it fills the
+    // frame and sits flush at the top.
+    private static let base = SVGParser.parse("""
     <svg viewBox="40 52 340 367" fill="none">
     <path d="M40 419C60 340 120 300 210 300C300 300 360 340 380 419H40Z" fill="#101216"/>
     <path d="M40 419C60 340 120 300 210 300V419H40Z" fill="#101216"/>
@@ -33,16 +57,19 @@ struct MascotIcon: View {
     <path d="M266 195C252 192 234 198 222 210C234 202 252 200 266 201V195Z" fill="#5A4433"/>
     <path d="M156 214C170 206 196 208 198 226C200 244 178 250 164 244C150 238 148 220 156 214Z" fill="white"/>
     <path d="M264 214C250 206 224 208 222 226C220 244 242 250 256 244C270 238 272 220 264 214Z" fill="white"/>
-    <path d="M172 214C184 212 190 222 186 234C182 244 168 244 164 234C160 224 164 216 172 214Z" fill="#1B1F27"/>
-    <path d="M248 214C236 212 230 222 234 234C238 244 252 244 256 234C260 224 256 216 248 214Z" fill="#1B1F27"/>
-    <path d="M180 224.2C181.767 224.2 183.2 222.767 183.2 221C183.2 219.232 181.767 217.8 180 217.8C178.233 217.8 176.8 219.232 176.8 221C176.8 222.767 178.233 224.2 180 224.2Z" fill="white"/>
-    <path d="M240 224.2C241.767 224.2 243.2 222.767 243.2 221C243.2 219.232 241.767 217.8 240 217.8C238.233 217.8 236.8 219.232 236.8 221C236.8 222.767 238.233 224.2 240 224.2Z" fill="white"/>
     <path d="M206 238C202 254 200 262 210 264C220 262 218 254 214 238H206Z" fill="#E8A877"/>
     <path d="M188 278C200 286 220 286 232 278C220 274 200 274 188 278Z" fill="#C77B5A"/>
     </svg>
     """)
 
-    var body: some View { SVGIconView(svg: Self.image) }
+    private static let pupils = SVGParser.parse("""
+    <svg viewBox="40 52 340 367" fill="none">
+    <path d="M172 214C184 212 190 222 186 234C182 244 168 244 164 234C160 224 164 216 172 214Z" fill="#1B1F27"/>
+    <path d="M248 214C236 212 230 222 234 234C238 244 252 244 256 234C260 224 256 216 248 214Z" fill="#1B1F27"/>
+    <path d="M180 224.2C181.767 224.2 183.2 222.767 183.2 221C183.2 219.232 181.767 217.8 180 217.8C178.233 217.8 176.8 219.232 176.8 221C176.8 222.767 178.233 224.2 180 224.2Z" fill="white"/>
+    <path d="M240 224.2C241.767 224.2 243.2 222.767 243.2 221C243.2 219.232 241.767 217.8 240 217.8C238.233 217.8 236.8 219.232 236.8 221C236.8 222.767 238.233 224.2 240 224.2Z" fill="white"/>
+    </svg>
+    """)
 }
 
 /// The mascot beside the question in a 3D speech bubble, tucked so its bottom
