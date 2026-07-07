@@ -109,10 +109,9 @@ struct MascotPrompt: View {
             if divider {
                 VStack(alignment: .leading, spacing: 0) {
                     row
-                    // Full-width baseline; nudged up a hair so the mascot's base
-                    // reads as emerging from it. Drawn after → sits on top.
+                    // Full-width baseline, sitting right under the mascot (no
+                    // overlap — overlapping was clipping into the art).
                     Rectangle().fill(line).frame(height: 2)
-                        .padding(.top, -3)
                 }
             } else {
                 // Pull the answer buttons up so the character tucks behind the
