@@ -17,6 +17,7 @@ struct ProfileView: View {
     var onTestMechanics: () -> Void = {}
     var onPreviewStreak: () -> Void = {}
     var onBumpStreak: () -> Void = {}
+    var onTestOnboarding: () -> Void = {}
 
     @EnvironmentObject var theme: ThemeManager
 
@@ -151,6 +152,10 @@ struct ProfileView: View {
                 prefButton(iconSystem: "plus.circle.fill", iconColor: Color(hex: "#F59E0B"),
                            iconBg: Color(hex: "#F59E0B").opacity(0.12), label: "Bump Streak +1 & Play Animation (Test)") {
                     onBumpStreak()
+                }
+                prefButton(iconSystem: "flag.fill", iconColor: Color(hex: "#38bdf8"),
+                           iconBg: Color(hex: "#38bdf8").opacity(0.12), label: "Preview Onboarding (Test)") {
+                    onTestOnboarding()
                 }
                 prefButton(iconSystem: "trash.fill", iconColor: Color(hex: "#D6536D"),
                            iconBg: Color(hex: "#D6536D").opacity(0.12), label: "Clear Application Data",

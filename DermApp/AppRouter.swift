@@ -9,6 +9,7 @@ enum AppScreen {
     case hearts        // hearts / regeneration screen
     case courses       // course picker (like Duolingo's language switcher)
     case streak        // full-screen streak celebration (first lesson of the day)
+    case onboarding    // first-run intake flow (also previewable from Profile)
 }
 
 enum MainTab: Hashable {
@@ -48,6 +49,7 @@ final class AppRouter: ObservableObject {
     var onPreviewStreak: (() -> Void)?
     var onBumpStreak: (() -> Void)?
     var onGrantTestTreats: (() -> Void)?
+    var onOnboardingFinished: (() -> Void)?
     var onOpenCourses: (() -> Void)?
     var onSelectCourse: ((String) -> Void)?
     var onRefillHearts: (() -> Void)?
@@ -158,6 +160,11 @@ struct AppRouterView: View {
                     onClose: { withAnimation(.easeInOut(duration: 0.28)) { router.currentScreen = .main } })
                     .transition(.move(edge: .bottom))
                     .zIndex(20)
+
+            case .onboarding:
+                OnboardingView(onFinish: { router.onOnboardingFinished?() })
+                    .transition(.opacity)
+                    .zIndex(40)
 
             case .streak:
                 StreakCelebrationView(

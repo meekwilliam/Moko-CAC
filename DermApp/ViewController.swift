@@ -111,6 +111,11 @@ class ViewController: UIViewController {
             self.syncHearts()
             Haptics.impact(.medium)
         }
+        appRouter.onOnboardingFinished = { [weak self] in
+            // Never land on the home screen after onboarding — go straight
+            // into the first lesson (completing one immediately drives retention).
+            self?.openLesson(node: 1)
+        }
         appRouter.onOpenCourses = { [weak self] in self?.openCourses() }
         appRouter.onSelectCourse = { [weak self] id in self?.selectCourse(id) }
         appRouter.onRefillHearts = { [weak self] in self?.refillHearts() }
