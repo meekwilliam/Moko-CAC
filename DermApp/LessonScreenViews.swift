@@ -960,7 +960,14 @@ struct ChoiceView: View {
                 scenarioCard(scenario)
             }
 
-            MascotPrompt(text: displayQuestion(), ink: ink, divider: true)
+            // Chart-analysis questions (read the chart, then answer) keep the
+            // old plain-text prompt so the chart stays the focus; questions
+            // without a chart get the mascot prompt.
+            if s.chart != nil {
+                plainPrompt
+            } else {
+                MascotPrompt(text: displayQuestion(), ink: ink, divider: true)
+            }
 
             VStack(spacing: 14) {
                 ForEach(Array(player.currentOptions.enumerated()), id: \.offset) { idx, opt in
@@ -970,6 +977,17 @@ struct ChoiceView: View {
             .padding(.top, 4)
         }
         .frame(maxWidth: .infinity, alignment: .leading)
+    }
+
+    // Old-style prompt: plain question text above the answers (used for
+    // chart-analysis questions where the chart is the focus).
+    private var plainPrompt: some View {
+        Text(RichText.attributed(displayQuestion(),
+                                 base: Theme.font(21, .heavy),
+                                 bold: Theme.font(21, .black),
+                                 color: ink))
+            .fixedSize(horizontal: false, vertical: true)
+            .frame(maxWidth: .infinity, alignment: .leading)
     }
 
     /// For fill_blank, fill the [___] with the chosen option (or a blank).
