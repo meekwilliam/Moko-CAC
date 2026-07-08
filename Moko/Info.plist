@@ -6,6 +6,21 @@
 	<string>Moko</string>
 	<key>CFBundleName</key>
 	<string>Moko</string>
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleURLName</key>
+			<string>com.meeko.moko</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>com.googleusercontent.apps.935178841017-lt71fkktagmo078v4s0fddg3gt5qgqcc</string>
+			</array>
+		</dict>
+	</array>
+	<key>NSCameraUsageDescription</key>
+	<string>We need camera access to scan your skin for analysis.</string>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>We need microphone access for media permissions.</string>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>
@@ -25,9 +40,5 @@
 			</array>
 		</dict>
 	</dict>
-	<key>NSCameraUsageDescription</key>
-	<string>We need camera access to scan your skin for analysis.</string>
-	<key>NSMicrophoneUsageDescription</key>
-	<string>We need microphone access for media permissions.</string>
 </dict>
 </plist>

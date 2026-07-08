@@ -41,6 +41,10 @@ final class FirebaseBackend: NSObject, AuthService, RemoteStore {
     @MainActor
     func signInWithGoogle() async throws -> BackendUser {
         guard let clientID = FirebaseApp.app()?.options.clientID else { throw BackendError.notConfigured }
+        // GoogleSignIn raises an UNCATCHABLE ObjC exception (hard crash) inside
+        // signIn(...) if the reversed-client-id URL scheme isn't registered.
+        // Pre-check it here so a misconfig fails gracefully instead of crashing.
+        guard Self.hasGoogleURLScheme else { throw BackendError.notConfigured }
         GIDSignIn.sharedInstance.configuration = GIDConfiguration(clientID: clientID)
         guard let presenter = Self.topViewController() else { throw BackendError.notConfigured }
 
@@ -96,6 +100,14 @@ final class FirebaseBackend: NSObject, AuthService, RemoteStore {
     }
 
     // MARK: Helpers
+
+    /// Whether the app registers a `com.googleusercontent.apps.*` URL scheme
+    /// (the Google redirect). Required by GoogleSignIn — missing it hard-crashes.
+    static var hasGoogleURLScheme: Bool {
+        let types = Bundle.main.object(forInfoDictionaryKey: "CFBundleURLTypes") as? [[String: Any]] ?? []
+        let schemes = types.flatMap { $0["CFBundleURLSchemes"] as? [String] ?? [] }
+        return schemes.contains { $0.hasPrefix("com.googleusercontent.apps") }
+    }
 
     static func topViewController(_ base: UIViewController? = nil) -> UIViewController? {
         let root = base ?? UIApplication.shared.connectedScenes
