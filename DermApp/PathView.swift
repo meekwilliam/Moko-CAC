@@ -487,7 +487,10 @@ private struct PuckButtonStyle: ButtonStyle {
             // (the raised "facing up" look), no perspective tilt needed.
             Ellipse().fill(slab).frame(width: size, height: h).offset(y: depth)
             configuration.label
-                .offset(y: configuration.isPressed ? depth - 1 : 0)
+                // Full depth on press — the face lands flush on the slab with
+                // no visible lip, reading as fully flat/2D (matches every
+                // other chunky-3D control in the app).
+                .offset(y: configuration.isPressed ? depth : 0)
         }
         .frame(width: size, height: size)
         .animation(configuration.isPressed
