@@ -119,6 +119,8 @@ struct AppRouterView: View {
                         unitColor: router.currentLessonUnitColor,
                         unitBonusEligible: router.currentLessonBonusEligible,
                         isTestLesson: router.isTestLesson,
+                        hearts: router.hearts,
+                        isUnlimitedHearts: router.isUnlimitedHearts,
                         onClose: {
                             if router.isTestLesson {
                                 router.isTestLesson = false

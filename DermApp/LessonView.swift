@@ -225,6 +225,8 @@ struct LessonView: View {
     @Environment(\.colorScheme) private var scheme
     @EnvironmentObject private var theme: ThemeManager
     @State private var showExitConfirm = false
+    let hearts: Int
+    let isUnlimitedHearts: Bool
     var onClose: () -> Void
     var onComplete: (Int) -> Void   // node number
 
@@ -232,6 +234,8 @@ struct LessonView: View {
          unitColor: (main: Color, dark: Color)? = nil,
          unitBonusEligible: Bool = false,
          isTestLesson: Bool = false,
+         hearts: Int = ProgressStore.maxHearts,
+         isUnlimitedHearts: Bool = false,
          onClose: @escaping () -> Void,
          onComplete: @escaping (Int) -> Void,
          onSaveProgress: @escaping (Int) -> Void = { _ in },
@@ -242,6 +246,8 @@ struct LessonView: View {
         p.onAdvance = onSaveProgress
         p.onSpendHeart = onSpendHeart
         _player = StateObject(wrappedValue: p)
+        self.hearts = hearts
+        self.isUnlimitedHearts = isUnlimitedHearts
         self.onClose = onClose
         self.onComplete = onComplete
     }
@@ -341,10 +347,29 @@ struct LessonView: View {
                 }
             }
             .frame(height: 20)
+
+            lessonHeartBadge
         }
         .padding(.horizontal, 18)
         .padding(.top, 8)
         .padding(.bottom, 12)
+    }
+
+    private var lessonHeartBadge: some View {
+        HStack(spacing: 5) {
+            HeartBadge(filled: isUnlimitedHearts || hearts > 0, size: 20)
+            if isUnlimitedHearts {
+                Image(systemName: "infinity")
+                    .font(.system(size: 14, weight: .black))
+                    .foregroundColor(ink)
+            } else {
+                Text("\(hearts)")
+                    .font(Theme.font(16, .black))
+                    .foregroundColor(ink)
+                    .monospacedDigit()
+            }
+        }
+        .frame(minWidth: 52, alignment: .trailing)
     }
 
     // MARK: Footer — feedback banner + primary button
