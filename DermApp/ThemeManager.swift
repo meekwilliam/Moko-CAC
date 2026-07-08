@@ -17,7 +17,7 @@ struct Palette {
 /// and a picker can be re-added later.
 final class ThemeManager: ObservableObject {
     let palette = Palette(scheme: .dark,
-                          base: Color(hex: "#0F172A"),
+                          base: Color(hex: "#131F24"),
                           ink: .white,
                           muted: Color(hex: "#94A3B8"))
 }
