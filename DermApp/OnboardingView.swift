@@ -352,13 +352,10 @@ struct OnboardingView: View {
                     .overlay(RoundedRectangle(cornerRadius: 16, style: .continuous)
                         .strokeBorder(selected ? Theme.answerDark : Color(hex: "#334155"), lineWidth: 2))
             )
-            .background(
-                RoundedRectangle(cornerRadius: 16, style: .continuous)
-                    .fill(selected ? Theme.answerDark : Color(hex: "#334155"))
-                    .offset(y: 4)
-            )
+            .contentShape(Rectangle())
         }
-        .buttonStyle(SinkButtonStyle(depth: 4))
+        .buttonStyle(SinkButtonStyle(
+            slab: selected ? Theme.answerDark : Color(hex: "#334155"), radius: 16, depth: 4))
     }
 }
 

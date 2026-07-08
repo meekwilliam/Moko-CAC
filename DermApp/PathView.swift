@@ -183,12 +183,8 @@ struct PathView: View {
                         .overlay(RoundedRectangle(cornerRadius: 12, style: .continuous)
                             .strokeBorder(Color.white.opacity(0.12), lineWidth: 1))
                 )
-                .background(
-                    RoundedRectangle(cornerRadius: 12, style: .continuous)
-                        .fill(Color.black.opacity(0.55)).offset(y: 4)
-                )
         }
-        .buttonStyle(SinkButtonStyle(depth: 4))
+        .buttonStyle(SinkButtonStyle(slab: Color.black.opacity(0.55), radius: 12, depth: 4))
     }
 
     private var floatingBanner: some View {
@@ -214,10 +210,9 @@ struct PathView: View {
             .frame(maxWidth: .infinity, alignment: .leading)
             .padding(.vertical, 18).padding(.horizontal, 20)   // ~12% taller
             .background(RoundedRectangle(cornerRadius: 18, style: .continuous).fill(bgc))
-            .background(RoundedRectangle(cornerRadius: 18, style: .continuous).fill(slab).offset(y: 5))
             .contentShape(RoundedRectangle(cornerRadius: 18, style: .continuous))
         }
-        .buttonStyle(SinkButtonStyle(depth: 5))
+        .buttonStyle(SinkButtonStyle(slab: slab, radius: 18, depth: 5))
     }
 
     // MARK: Section divider

@@ -166,8 +166,11 @@ struct ProfileView: View {
         }
     }
 
+    // `sunk`: static rows (a toggle) draw their own fixed slab lip. Buttons pass
+    // sunk:true so the slab is instead drawn by SinkButtonStyle and vanishes on
+    // press (the tactile 2D press).
     private func prefRowSurface<Trailing: View>(iconSystem: String, iconColor: Color, iconBg: Color,
-                                                label: String, labelColor: Color = .white,
+                                                label: String, labelColor: Color = .white, sunk: Bool = false,
                                                 @ViewBuilder trailing: () -> Trailing) -> some View {
         HStack(spacing: 13) {
             Image(systemName: iconSystem).font(.system(size: 16)).foregroundColor(iconColor)
@@ -180,7 +183,11 @@ struct ProfileView: View {
         .padding(.vertical, 14).padding(.horizontal, 16)
         .background(RoundedRectangle(cornerRadius: 18, style: .continuous).fill(cardBg)
             .overlay(RoundedRectangle(cornerRadius: 18, style: .continuous).strokeBorder(cardBorder, lineWidth: 1.5)))
-        .background(RoundedRectangle(cornerRadius: 18, style: .continuous).fill(Color.black.opacity(0.38)).offset(y: 4))
+        .background {
+            if !sunk {
+                RoundedRectangle(cornerRadius: 18, style: .continuous).fill(Color.black.opacity(0.38)).offset(y: 4)
+            }
+        }
     }
 
     private func prefRow<Trailing: View>(iconSystem: String, iconColor: Color, iconBg: Color,
@@ -192,12 +199,12 @@ struct ProfileView: View {
                             labelColor: Color = .white, action: @escaping () -> Void) -> some View {
         Button(action: { Haptics.selection(); action() }) {
             prefRowSurface(iconSystem: iconSystem, iconColor: iconColor, iconBg: iconBg,
-                           label: label, labelColor: labelColor) {
+                           label: label, labelColor: labelColor, sunk: true) {
                 Image(systemName: "chevron.right").font(.system(size: 14, weight: .heavy)).foregroundColor(muted)
             }
             .contentShape(Rectangle())
         }
-        .buttonStyle(SinkButtonStyle(depth: 4))
+        .buttonStyle(SinkButtonStyle(slab: Color.black.opacity(0.38), radius: 18, depth: 4))
     }
 
     // MARK: Home fab
