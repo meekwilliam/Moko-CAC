@@ -120,35 +120,48 @@ struct OnboardingView: View {
     }
 
     // MARK: Screen 1 — Welcome
-    // Finelo-style landing, Moko'd: a live candlestick chart fills the hero (in
-    // place of orbiting company logos), then a headline, a primary GET STARTED
-    // (-> goes into the intake, ending at sign-up right before the commit
-    // screen) and a secondary "I already have an account" (-> skips straight
-    // into the app for a returning user).
+    // A brand lockup + a chart that tells a real story (downtrend → base →
+    // breakout → run: "you'll learn to read THIS"), an outcome-led headline,
+    // credibility stats, then GET STARTED (into the intake) with a secondary
+    // "I already have an account" (skip straight into the app).
 
     private var welcomeScreen: some View {
         VStack(spacing: 0) {
-            LiveCandleChart()
-                .opacity(0.85)
+            // Brand lockup — the mascot + wordmark, so the screen has an identity.
+            HStack(spacing: 8) {
+                MascotIcon().frame(width: 34, height: 34)
+                Text("Moko").font(Theme.font(22, .black)).foregroundColor(theme.palette.ink)
+            }
+            .padding(.top, 6)
+
+            StoryCandleChart()
+                .frame(maxHeight: .infinity)
+                .padding(.horizontal, 6)
                 .mask(
                     // Fade the chart out toward the bottom so it melts into
                     // the page instead of ending on a hard edge.
                     LinearGradient(
-                        colors: [.black, .black, .black.opacity(0.15)],
+                        colors: [.black, .black, .black.opacity(0.2)],
                         startPoint: .top, endPoint: .bottom)
                 )
-                .frame(maxHeight: .infinity)
 
-            VStack(spacing: 14) {
-                Text("Learn to trade")
-                    .font(Theme.font(34, .black))
+            VStack(spacing: 12) {
+                Text("Read charts, not guesses.")
+                    .font(Theme.font(31, .black))
                     .foregroundColor(theme.palette.ink)
                     .multilineTextAlignment(.center)
-                Text("Master charts, price action, and risk management through short interactive lessons.")
+                Text("Go from confusing candles to confident reads — a few minutes a day.")
                     .font(Theme.font(16, .bold))
                     .foregroundColor(theme.palette.muted)
                     .multilineTextAlignment(.center)
                     .lineSpacing(3)
+
+                HStack(spacing: 8) {
+                    statChip("📚", "300+ lessons")
+                    statChip("📈", "Real charts")
+                    statChip("🔥", "Streaks")
+                }
+                .padding(.top, 2)
 
                 Button("GET STARTED") { advance() }
                     .buttonStyle(Chunky3DStyle(fill: Theme.answer, slab: Theme.answerDark))
@@ -160,11 +173,24 @@ struct OnboardingView: View {
                 }
                 .font(Theme.font(15, .black))
                 .foregroundColor(theme.palette.muted)
-                .padding(.top, 4)
+                .padding(.top, 2)
             }
             .padding(.horizontal, 24)
-            .padding(.bottom, 26)
+            .padding(.bottom, 24)
         }
+    }
+
+    private func statChip(_ emoji: String, _ text: String) -> some View {
+        HStack(spacing: 5) {
+            Text(emoji).font(.system(size: 13))
+            Text(text).font(Theme.font(12.5, .black)).foregroundColor(theme.palette.ink)
+                .fixedSize(horizontal: true, vertical: false)
+        }
+        .padding(.vertical, 8).padding(.horizontal, 11)
+        .background(
+            Capsule().fill(Color(hex: "#1E293B"))
+                .overlay(Capsule().strokeBorder(Color(hex: "#334155"), lineWidth: 1.5))
+        )
     }
 
     // MARK: Screen 2 — Experience
@@ -507,85 +533,57 @@ private struct CommitScreen: View {
     }
 }
 
-// MARK: - Live candlestick chart
-// A decorative "live market" backdrop: reuses the app's CandlestickChart but
-// rolls a fixed-width window forward on a timer — every tick a new random
-// candle appears on the right and the oldest drops off the left, animated so
-// it reads as a live-updating chart.
+// MARK: - Story candlestick chart
+// A curated hero chart that reads as an actual setup rather than random
+// wallpaper: a downtrend, an accumulation base under resistance, a breakout
+// that clears it, then a continuation run. The resistance line reinforces the
+// "you'll learn to read THIS" message. The whole story draws itself in on
+// appear (each candle rises into place) so it feels alive without looking
+// random.
 
-struct LiveCandleChart: View {
-    @State private var candles: [Candle] = []
-    // A quick highlight flash over the newest (rightmost) candle only — the
-    // rolling window itself updates instantly with no animation, since
-    // animating the whole array made every bar visibly reshape/resize each
-    // tick (all 16 indices change value when the window shifts).
-    @State private var popID = 0
-    private let count = 16
-    private let timer = Timer.publish(every: 0.85, on: .main, in: .common).autoconnect()
+struct StoryCandleChart: View {
+    @State private var shown = 0
+    private let drawTimer = Timer.publish(every: 0.11, on: .main, in: .common).autoconnect()
+
+    // downtrend → accumulation base (< 12.0) → breakout → continuation up.
+    private static let story: [Candle] = [
+        Candle(open: 15.8, high: 16.0, low: 14.6, close: 14.8),
+        Candle(open: 14.8, high: 15.0, low: 13.4, close: 13.5),
+        Candle(open: 13.5, high: 13.7, low: 12.6, close: 12.7),
+        Candle(open: 12.7, high: 12.9, low: 11.7, close: 11.9),
+        Candle(open: 11.9, high: 12.0, low: 11.4, close: 11.6),
+        Candle(open: 11.6, high: 11.95, low: 11.3, close: 11.8),
+        Candle(open: 11.8, high: 12.0, low: 11.35, close: 11.5),
+        Candle(open: 11.5, high: 11.9, low: 11.3, close: 11.85),
+        Candle(open: 11.85, high: 13.6, low: 11.8, close: 13.5),   // breakout
+        Candle(open: 13.5, high: 14.3, low: 13.4, close: 14.1),
+        Candle(open: 14.1, high: 14.4, low: 13.6, close: 13.8),
+        Candle(open: 13.8, high: 15.2, low: 13.7, close: 15.0),
+        Candle(open: 15.0, high: 15.9, low: 14.8, close: 15.7),
+    ]
 
     var body: some View {
+        // Keep the full story mapped for a stable y-axis, but only reveal the
+        // first `shown` candles — the rest sit invisibly at their final spot.
+        CandlestickChart(candles: Self.story, resistanceLevel: 12.0,
+                         highlightIndex: nil, showsAxes: true)
+            .mask(revealMask)
+            .onReceive(drawTimer) { _ in
+                if shown < Self.story.count { withAnimation(.easeOut(duration: 0.18)) { shown += 1 } }
+            }
+    }
+
+    // Reveals the drawn candles left-to-right (a hard vertical wipe per slot).
+    private var revealMask: some View {
         GeometryReader { geo in
-            ZStack(alignment: .topLeading) {
-                CandlestickChart(candles: candles, showsAxes: true)
-                if !candles.isEmpty {
-                    let slot = geo.size.width / CGFloat(count)
-                    NewCandlePop(key: popID)
-                        .frame(width: slot, height: geo.size.height)
-                        .position(x: geo.size.width - slot / 2, y: geo.size.height / 2)
-                }
+            let axisGutter: CGFloat = 34
+            let plotW = geo.size.width - axisGutter
+            let w = axisGutter + plotW * CGFloat(shown) / CGFloat(Self.story.count)
+            HStack(spacing: 0) {
+                Rectangle().frame(width: w)
+                Spacer(minLength: 0)
             }
         }
-        .onAppear { if candles.isEmpty { seed() } }
-        .onReceive(timer) { _ in tick() }
-    }
-
-    private func seed() {
-        var arr: [Candle] = []
-        var price = 100.0
-        for _ in 0..<count {
-            let c = Self.next(from: price)
-            arr.append(c); price = c.close
-        }
-        candles = arr
-    }
-
-    private func tick() {
-        let last = candles.last?.close ?? 100
-        let fresh = Self.next(from: last)
-        candles = Array(candles.dropFirst()) + [fresh]   // instant, no animation
-        popID += 1                                        // re-trigger the flash
-    }
-
-    /// A believable next candle: a random walk from the prior close with wicks.
-    private static func next(from close: Double) -> Candle {
-        let open = close
-        let drift = Double.random(in: -3.4...3.4)
-        let newClose = max(20, open + drift)
-        let hi = max(open, newClose) + Double.random(in: 0.3...2.0)
-        let lo = min(open, newClose) - Double.random(in: 0.3...2.0)
-        return Candle(open: open, high: hi, low: lo, close: newClose)
-    }
-}
-
-/// A soft vertical highlight that pops in and fades over the newest candle's
-/// slot. Re-fires whenever `key` changes (a new tick), independent of the
-/// chart's own candle views, so only the incoming bar visibly announces
-/// itself — the rest of the chart never re-animates.
-private struct NewCandlePop: View {
-    let key: Int
-    @State private var visible = false
-
-    var body: some View {
-        LinearGradient(colors: [Color.white.opacity(0.28), .clear],
-                       startPoint: .top, endPoint: .bottom)
-            .opacity(visible ? 0 : 1)
-            .scaleEffect(x: 1, y: visible ? 1.15 : 0.85, anchor: .bottom)
-            .onAppear { flash() }
-            .onChange(of: key) { _, _ in visible = false; flash() }
-    }
-
-    private func flash() {
-        withAnimation(.easeOut(duration: 0.5)) { visible = true }
     }
 }
 
