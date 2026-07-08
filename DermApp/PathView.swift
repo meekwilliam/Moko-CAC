@@ -477,21 +477,19 @@ private struct PuckButtonStyle: ButtonStyle {
     var depth: CGFloat = 10
     func makeBody(configuration: Configuration) -> some View {
         let h = size * ovalRatio
-        ZStack {
-            // Darker oval base offset straight down — the coin's chunky side
-            // (the raised "facing up" look), no perspective tilt needed.
-            Ellipse().fill(slab).frame(width: size, height: h).offset(y: depth)
-            configuration.label
-                // Full depth on press — the face lands flush on the slab with
-                // no visible lip, reading as fully flat/2D (matches every
-                // other chunky-3D control in the app).
-                .offset(y: configuration.isPressed ? depth : 0)
+        return PressSink(isPressed: configuration.isPressed) { down in
+            ZStack {
+                // Darker oval base offset straight down — the coin's chunky side
+                // (the raised "facing up" look), no perspective tilt needed.
+                Ellipse().fill(slab).frame(width: size, height: h).offset(y: depth)
+                configuration.label
+                    // Full depth on press — the face lands flush on the slab so
+                    // there's no visible lip (fully flat/2D). PressSink holds the
+                    // down state a minimum time so even an instant tap shows it.
+                    .offset(y: down ? depth : 0)
+            }
+            .frame(width: size, height: size)
         }
-        .frame(width: size, height: size)
-        .animation(configuration.isPressed
-                   ? .easeIn(duration: 0.04)
-                   : .spring(response: 0.3, dampingFraction: 0.55),
-                   value: configuration.isPressed)
     }
 }
 
