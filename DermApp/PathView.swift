@@ -25,7 +25,7 @@ struct PathView: View {
     private let nodeSize: CGFloat = 82
     private let ovalRatio: CGFloat = 0.78     // puck height / width — a wide coin
     private let vStep: CGFloat = 106          // node center-to-center spacing
-    private let bg = Color(hex: "#131F24")
+    private let bg = Color(hex: "#0E161A")
 
     var body: some View {
         GeometryReader { geo in

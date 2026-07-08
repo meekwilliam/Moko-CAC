@@ -17,7 +17,7 @@ class ViewController: UIViewController {
 
         // Let button press-states fire instantly inside SwiftUI ScrollViews.
         UIScrollView.appearance().delaysContentTouches = false
-        view.backgroundColor = UIColor(red: 0x13/255.0, green: 0x1F/255.0, blue: 0x24/255.0, alpha: 1)
+        view.backgroundColor = UIColor(red: 0x0E/255.0, green: 0x16/255.0, blue: 0x1A/255.0, alpha: 1)
 
         setupAppRouter()
         presentNativePath()   // boot straight onto the path (home tab)
