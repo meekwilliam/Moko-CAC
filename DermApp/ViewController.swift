@@ -66,11 +66,11 @@ class ViewController: UIViewController {
             if extendedStreakToday {
                 self.appRouter.streakCount = self.progress.streak
                 self.appRouter.streakWeek = self.progress.weekActivity()
-                withAnimation(.spring(response: 0.42, dampingFraction: 0.86)) {
+                withAnimation(.easeOut(duration: 0.22)) {
                     self.appRouter.currentScreen = .streak
                 }
             } else {
-                withAnimation(.spring(response: 0.42, dampingFraction: 0.86)) {
+                withAnimation(.easeOut(duration: 0.22)) {
                     self.appRouter.selectedTab = .home
                     self.appRouter.currentScreen = .main
                 }
@@ -79,7 +79,7 @@ class ViewController: UIViewController {
 
         appRouter.onExitLesson = { [weak self] in
             self?.refreshPathState()   // pull in saved in-progress so the tooltip shows "CONTINUE"
-            withAnimation(.spring(response: 0.42, dampingFraction: 0.86)) { self?.appRouter.currentScreen = .main }
+            withAnimation(.easeOut(duration: 0.22)) { self?.appRouter.currentScreen = .main }
         }
 
         appRouter.onToggleReminders = { [weak self] on in self?.progress.setReminder(on) }
