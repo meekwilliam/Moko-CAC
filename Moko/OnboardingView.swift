@@ -18,6 +18,7 @@ struct OnboardingView: View {
     @State private var goals: Set<Int> = []
     @State private var dailyGoal: Int? = nil
     @State private var authInFlight = false
+    @State private var showingSignIn = false   // returning-user login overlay
 
     private let totalSteps = 6
 
@@ -69,8 +70,16 @@ struct OnboardingView: View {
                     removal: .opacity))
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
             }
+
+            // Returning-user login, slides over the welcome screen.
+            if showingSignIn {
+                signInScreen
+                    .transition(.move(edge: .trailing))
+                    .zIndex(5)
+            }
         }
         .animation(.spring(response: 0.4, dampingFraction: 0.9), value: step)
+        .animation(.easeInOut(duration: 0.3), value: showingSignIn)
     }
 
     // MARK: Header — back + progress
@@ -157,7 +166,7 @@ struct OnboardingView: View {
 
                 Button("I already have an account") {
                     Haptics.selection()
-                    withAnimation(.easeInOut(duration: 0.28)) { router.currentScreen = .main }
+                    withAnimation(.easeInOut(duration: 0.3)) { showingSignIn = true }
                 }
                 .font(Theme.font(15, .black))
                 .foregroundColor(theme.palette.muted)
@@ -243,23 +252,8 @@ struct OnboardingView: View {
             .multilineTextAlignment(.center)
             .frame(maxWidth: .infinity)
 
-            VStack(spacing: 14) {
-                authButton(label: "Continue with Apple",
-                          fill: .black, textColor: .white, border: Color.white.opacity(0.18)) {
-                    Image(systemName: "apple.logo")
-                        .font(.system(size: 18, weight: .medium))
-                } action: {
-                    try await Backend.auth.signInWithApple()
-                }
-                authButton(label: "Continue with Google",
-                          fill: .white, textColor: Color(hex: "#1F1F1F"), border: Color.black.opacity(0.08)) {
-                    GoogleGlyph().frame(width: 18, height: 18)
-                } action: {
-                    try await Backend.auth.signInWithGoogle()
-                }
-            }
-            .padding(.top, 32)
-            .disabled(authInFlight)
+            authProviderButtons(proceed: { advance() })
+                .padding(.top, 32)
 
             Spacer()
             Spacer()
@@ -268,24 +262,90 @@ struct OnboardingView: View {
         .padding(.bottom, 26)
     }
 
+    // MARK: Returning-user sign in
+    // Reached from "I already have an account". Same providers, but a successful
+    // sign-in pulls the user's cloud progress and drops straight into the app
+    // (no intake). Backed by its own full-bleed layer over the welcome screen.
+
+    private var signInScreen: some View {
+        ZStack {
+            ThemedBackground()
+            VStack(spacing: 0) {
+                HStack {
+                    Button(action: { Haptics.selection(); withAnimation(.easeInOut(duration: 0.3)) { showingSignIn = false } }) {
+                        Image(systemName: "chevron.left")
+                            .font(.system(size: 19, weight: .black))
+                            .foregroundColor(Theme.muted)
+                            .frame(width: 40, height: 40)
+                    }
+                    Spacer()
+                }
+                .padding(.horizontal, 14).padding(.top, 8)
+
+                Spacer()
+
+                VStack(alignment: .center, spacing: 6) {
+                    Text("Welcome back")
+                        .font(Theme.font(26, .black))
+                        .foregroundColor(theme.palette.ink)
+                    Text("Sign in to pick up where you left off.")
+                        .font(Theme.font(15, .bold))
+                        .foregroundColor(theme.palette.muted)
+                }
+                .multilineTextAlignment(.center)
+                .frame(maxWidth: .infinity)
+
+                authProviderButtons(proceed: {
+                    withAnimation(.easeInOut(duration: 0.28)) { router.currentScreen = .main }
+                })
+                .padding(.top, 32)
+                .padding(.horizontal, 24)
+
+                Spacer()
+                Spacer()
+            }
+            .padding(.bottom, 26)
+        }
+    }
+
+    // Apple + Google buttons. `proceed` is what happens after a successful
+    // sign-in (or the local-first fallback when no backend is configured):
+    // the sign-UP screen continues the intake; the sign-IN screen jumps to the app.
+    private func authProviderButtons(proceed: @escaping () -> Void) -> some View {
+        VStack(spacing: 14) {
+            authButton(label: "Continue with Apple",
+                      fill: .black, textColor: .white, border: Color.white.opacity(0.18),
+                      action: { try await Backend.auth.signInWithApple() }, proceed: proceed) {
+                Image(systemName: "apple.logo").font(.system(size: 18, weight: .medium))
+            }
+            authButton(label: "Continue with Google",
+                      fill: .white, textColor: Color(hex: "#1F1F1F"), border: Color.black.opacity(0.08),
+                      action: { try await Backend.auth.signInWithGoogle() }, proceed: proceed) {
+                GoogleGlyph().frame(width: 18, height: 18)
+            }
+        }
+        .disabled(authInFlight)
+    }
+
     private func authButton<Glyph: View>(label: String, fill: Color, textColor: Color, border: Color,
-                                         @ViewBuilder glyph: () -> Glyph,
-                                         action: @escaping () async throws -> BackendUser) -> some View {
+                                         action: @escaping () async throws -> BackendUser,
+                                         proceed: @escaping () -> Void,
+                                         @ViewBuilder glyph: () -> Glyph) -> some View {
         Button {
             Haptics.selection()
             guard !authInFlight else { return }
             // Real sign-in when a backend is configured; until then it throws
-            // .notConfigured and we just advance (local-first, unchanged).
+            // .notConfigured and we just proceed (local-first, unchanged).
             Task {
                 authInFlight = true
                 defer { authInFlight = false }
                 do {
                     let user = try await action()
                     SyncService.shared.userDidSignIn(user)   // pull cloud progress
-                    advance()
+                    proceed()
                 }
                 catch BackendError.cancelled { /* user backed out — stay put */ }
-                catch { advance() }   // not configured yet → proceed
+                catch { proceed() }   // not configured yet → proceed
             }
         } label: {
             HStack(spacing: 10) {

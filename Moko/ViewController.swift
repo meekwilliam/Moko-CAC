@@ -20,7 +20,7 @@ class ViewController: UIViewController {
         view.backgroundColor = UIColor(red: 0x0E/255.0, green: 0x16/255.0, blue: 0x1A/255.0, alpha: 1)
 
         setupAppRouter()
-        presentNativePath()   // boot straight onto the path (home tab)
+        presentNativePath()
 
         // When a cloud snapshot is pulled in (sign-in / launch restore), refresh
         // the derived UI stores so the path/profile reflect the synced state.
