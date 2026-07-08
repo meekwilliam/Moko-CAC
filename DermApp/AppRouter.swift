@@ -39,6 +39,7 @@ final class AppRouter: ObservableObject {
     var onClearData: (() -> Void)?
     var onCompleteLesson: ((Int) -> Void)?
     var onSaveLessonProgress: ((Int) -> Void)?
+    var onSpendQuestionHeart: (() -> Bool)?
     var onExitLesson: (() -> Void)?
     var onOpenLesson: ((Int) -> Void)?
     var onRequestPath: (() -> Void)?
@@ -139,6 +140,10 @@ struct AppRouterView: View {
                         onSaveProgress: { screen in
                             guard !router.isTestLesson else { return }
                             router.onSaveLessonProgress?(screen)
+                        },
+                        onSpendHeart: {
+                            guard !router.isTestLesson else { return true }
+                            return router.onSpendQuestionHeart?() ?? true
                         }
                     )
                     .transition(.move(edge: .bottom))   // slides up to open, down to close

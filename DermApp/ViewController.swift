@@ -47,6 +47,16 @@ class ViewController: UIViewController {
             self?.progress.saveInProgress(node: node, screen: screen)
         }
 
+        appRouter.onSpendQuestionHeart = { [weak self] in
+            guard let self = self else { return false }
+            guard self.progress.useHeart() else {
+                self.openHearts()
+                return false
+            }
+            self.syncHearts()
+            return true
+        }
+
         appRouter.onCompleteLesson = { [weak self] node in
             guard let self = self else { return }
             let extendedStreakToday = self.progress.recordCompletion(node: node, unitNodes: self.unitNodes(forNode: node))
@@ -346,21 +356,8 @@ class ViewController: UIViewController {
 
     private func openLesson(node: Int) {
         guard let lesson = Game.lesson(course: progress.currentCourse, node: node) else { return }
-        // Already has a saved attempt (even if they quit on the very first
-        // screen) → resuming never costs a heart, no matter how many times
-        // they come back to it.
-        let alreadyStarted = progress.hasInProgress(node: node)
-        if !alreadyStarted && !progress.canStartLesson {
-            openHearts()
-            return
-        }
-        // A heart is spent only the first time a lesson is opened. Mark it
-        // in-progress immediately (screen 0) so re-opening — even before the
-        // learner advances past the intro card — is recognized as a resume.
-        if !alreadyStarted {
-            progress.useHeart()
+        if !progress.hasInProgress(node: node) {
             progress.saveInProgress(node: node, screen: 0)
-            syncHearts()
         }
         let resumeAt = progress.resumeScreen(node: node)
         appRouter.currentLessonIsReplay = progress.completed.contains(node)

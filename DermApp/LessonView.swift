@@ -46,6 +46,9 @@ final class LessonPlayer: ObservableObject {
     /// Called with the new screen index each time the player advances, so the
     /// native lesson can persist mid-lesson progress (resume on reopen).
     var onAdvance: ((Int) -> Void)?
+    /// Called before revealing an original question's result. Returns false
+    /// when the learner is out of hearts, so the answer stays ungraded.
+    var onSpendHeart: (() -> Bool)?
 
     init(lesson: Lesson, startIndex: Int = 0, isReplay: Bool = false,
          unitColor: (main: Color, dark: Color)? = nil, unitBonusEligible: Bool = false,
@@ -136,6 +139,7 @@ final class LessonPlayer: ObservableObject {
 
     func check() {
         guard !revealed else { return }
+        guard spendHeartIfNeeded() else { return }
         var correct = true
         switch screen.type {
         case "fill_blank_multi":
@@ -190,9 +194,15 @@ final class LessonPlayer: ObservableObject {
     /// Called by matching once all pairs are solved.
     func markMatchingSolved() {
         guard !revealed else { return }
+        guard spendHeartIfNeeded() else { return }
         lastCorrect = true
         revealed = true
         Haptics.success()
+    }
+
+    private func spendHeartIfNeeded() -> Bool {
+        guard !screen.isPreviousMistake else { return true }
+        return onSpendHeart?() ?? true
     }
 
     func advance() {
@@ -224,11 +234,13 @@ struct LessonView: View {
          isTestLesson: Bool = false,
          onClose: @escaping () -> Void,
          onComplete: @escaping (Int) -> Void,
-         onSaveProgress: @escaping (Int) -> Void = { _ in }) {
+         onSaveProgress: @escaping (Int) -> Void = { _ in },
+         onSpendHeart: @escaping () -> Bool = { true }) {
         let p = LessonPlayer(lesson: lesson, startIndex: startIndex, isReplay: isReplay,
                              unitColor: unitColor, unitBonusEligible: unitBonusEligible,
                              isTestLesson: isTestLesson)
         p.onAdvance = onSaveProgress
+        p.onSpendHeart = onSpendHeart
         _player = StateObject(wrappedValue: p)
         self.onClose = onClose
         self.onComplete = onComplete

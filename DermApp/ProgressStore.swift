@@ -35,8 +35,8 @@ final class ProgressStore: ObservableObject {
         // Calendar dates ("yyyy-MM-dd") that counted toward the streak — powers
         // the weekly Mo–Su row on the streak celebration screen.
         var activeDates: Set<String> = []
-        // Hearts are global too: a lesson costs 1; regen 1/hour.
-        var hearts: Int = 5
+        // Hearts are global too: original question answers cost 1; regen 1/hour.
+        var hearts: Int = 25
         var heartAnchor: Date? = nil
         // Prototype monetization: mock "unlimited hearts" subscription state.
         var unlimitedHearts: Bool = false
@@ -47,7 +47,7 @@ final class ProgressStore: ObservableObject {
         var inProgressScreen: Int? = nil
     }
 
-    static let maxHearts = 5
+    static let maxHearts = 25
     static let heartRegenSeconds: TimeInterval = 3600   // 1 hour
 
     private var s: Snapshot { didSet { persist() } }
@@ -67,6 +67,9 @@ final class ProgressStore: ObservableObject {
                 inProgressScreen: s.inProgressScreen ?? 0)
         }
         s.completed = nil; s.inProgressNode = nil; s.inProgressScreen = nil
+        if !s.unlimitedHearts, s.hearts == 5, s.heartAnchor == nil {
+            s.hearts = Self.maxHearts
+        }
     }
 
     // MARK: Course selection
@@ -112,8 +115,8 @@ final class ProgressStore: ObservableObject {
     /// Prototype "Super" subscription: unlimited hearts, no gating or regen countdown.
     var isUnlimitedHearts: Bool { s.unlimitedHearts }
 
-    /// Whether the user has a heart to spend on a lesson.
-    var canStartLesson: Bool { isUnlimitedHearts || hearts > 0 }
+    /// Whether the user has a heart to spend on an original question answer.
+    var canAnswerQuestion: Bool { isUnlimitedHearts || hearts > 0 }
 
     /// Seconds until the next heart regenerates, or nil when already full.
     var secondsUntilNextHeart: Int? {
@@ -142,8 +145,8 @@ final class ProgressStore: ObservableObject {
         s.heartAnchor = (s.hearts >= Self.maxHearts) ? nil : next.addingTimeInterval(-Self.heartRegenSeconds)
     }
 
-    /// Spend a heart on a completed lesson. Starts the regen clock if we were
-    /// at full. Returns false if there were none to spend.
+    /// Spend a heart when an original question is answered. Starts the regen
+    /// clock if we were at full. Returns false if there were none to spend.
     @discardableResult
     func useHeart() -> Bool {
         guard !isUnlimitedHearts else { return true }   // Super: never spend hearts
@@ -186,16 +189,16 @@ final class ProgressStore: ObservableObject {
     func setUnlimitedHearts(_ on: Bool) { s.unlimitedHearts = on }
 
     /// The node with saved mid-lesson progress (drives the "CONTINUE" tooltip).
-    /// Note: screen 0 still counts as "in progress" — a heart was already spent
-    /// the moment the lesson opened, even if the learner quit on the intro card.
+    /// Note: screen 0 still counts as "in progress" so a learner who opens and
+    /// exits before answering can resume from the beginning.
     var inProgressNode: Int? { cur.inProgressNode }
 
     func resumeScreen(node: Int) -> Int {
         cur.inProgressNode == node ? cur.inProgressScreen : 0
     }
 
-    /// Whether this lesson already has a saved attempt (a heart was already
-    /// spent on it) — used to avoid charging a second heart on re-open.
+    /// Whether this lesson already has a saved attempt, so it can resume from
+    /// the last saved screen on re-open.
     func hasInProgress(node: Int) -> Bool { cur.inProgressNode == node }
 
     // MARK: Writes
