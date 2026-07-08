@@ -534,19 +534,20 @@ private struct CommitScreen: View {
 }
 
 // MARK: - Story candlestick chart
-// A curated hero chart that reads as an actual setup rather than random
-// wallpaper: a downtrend, an accumulation base under resistance, a breakout
-// that clears it, then a continuation run. The resistance line reinforces the
-// "you'll learn to read THIS" message. The whole story draws itself in on
-// appear (each candle rises into place) so it feels alive without looking
-// random.
+// A curated hero chart that reads as an actual market rather than random
+// wallpaper — a repeating cycle of downtrend → accumulation base under a fixed
+// resistance level → breakout → continuation run → roll back down. It scrolls
+// left one candle per tick (like a live feed), but because the window always
+// holds the same cyclic set the y-axis and resistance line stay put (no jumpy
+// rescale) and the structure stays readable as it moves.
 
 struct StoryCandleChart: View {
-    @State private var shown = 0
-    private let drawTimer = Timer.publish(every: 0.11, on: .main, in: .common).autoconnect()
+    @State private var offset = 0
+    private let timer = Timer.publish(every: 0.9, on: .main, in: .common).autoconnect()
 
-    // downtrend → accumulation base (< 12.0) → breakout → continuation up.
-    private static let story: [Candle] = [
+    // One seamless cycle (last close ≈ first open, so it loops cleanly):
+    // downtrend → base (< 12.0) → breakout → run up → roll back toward the base.
+    private static let cycle: [Candle] = [
         Candle(open: 15.8, high: 16.0, low: 14.6, close: 14.8),
         Candle(open: 14.8, high: 15.0, low: 13.4, close: 13.5),
         Candle(open: 13.5, high: 13.7, low: 12.6, close: 12.7),
@@ -559,31 +560,21 @@ struct StoryCandleChart: View {
         Candle(open: 13.5, high: 14.3, low: 13.4, close: 14.1),
         Candle(open: 14.1, high: 14.4, low: 13.6, close: 13.8),
         Candle(open: 13.8, high: 15.2, low: 13.7, close: 15.0),
-        Candle(open: 15.0, high: 15.9, low: 14.8, close: 15.7),
+        Candle(open: 15.0, high: 15.9, low: 15.0, close: 15.8),
     ]
 
-    var body: some View {
-        // Keep the full story mapped for a stable y-axis, but only reveal the
-        // first `shown` candles — the rest sit invisibly at their final spot.
-        CandlestickChart(candles: Self.story, resistanceLevel: 12.0,
-                         highlightIndex: nil, showsAxes: true)
-            .mask(revealMask)
-            .onReceive(drawTimer) { _ in
-                if shown < Self.story.count { withAnimation(.easeOut(duration: 0.18)) { shown += 1 } }
-            }
+    // The visible window: the cycle rotated by `offset`, so each tick the whole
+    // thing shifts one slot to the left and wraps — a continuous scroll.
+    private var windowed: [Candle] {
+        let n = Self.cycle.count
+        return (0..<n).map { Self.cycle[(offset + $0) % n] }
     }
 
-    // Reveals the drawn candles left-to-right (a hard vertical wipe per slot).
-    private var revealMask: some View {
-        GeometryReader { geo in
-            let axisGutter: CGFloat = 34
-            let plotW = geo.size.width - axisGutter
-            let w = axisGutter + plotW * CGFloat(shown) / CGFloat(Self.story.count)
-            HStack(spacing: 0) {
-                Rectangle().frame(width: w)
-                Spacer(minLength: 0)
+    var body: some View {
+        CandlestickChart(candles: windowed, resistanceLevel: 12.0, showsAxes: true)
+            .onReceive(timer) { _ in
+                offset = (offset + 1) % Self.cycle.count
             }
-        }
     }
 }
 
