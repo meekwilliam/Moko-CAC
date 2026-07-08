@@ -289,11 +289,11 @@ class ViewController: UIViewController {
     private func selectCourse(_ id: String) {
         progress.switchCourse(id)
         syncCourses()
-        // Rebuild the path for the new course (different nodes/units) and show it.
-        appRouter.pathStore = PathStore(payload: makePathPayload())
-        syncHearts()
         Haptics.impact(.medium)
-        withAnimation(.easeInOut(duration: 0.32)) {
+        withAnimation(.spring(response: 0.38, dampingFraction: 0.86)) {
+            // Rebuild the path for the new course (different nodes/units) and show it.
+            appRouter.pathStore = PathStore(payload: makePathPayload())
+            syncHearts()
             appRouter.selectedTab = .home
             appRouter.currentScreen = .main
         }

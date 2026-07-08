@@ -114,11 +114,17 @@ struct PathView: View {
             placeholderButton
             Spacer()
             metric(system: "flame.fill", color: Color(hex: "#FF9500"), value: store.streak)
+                .modifier(StatPulse(value: store.streak))
             Spacer()
             HStack(spacing: 6) {
                 TreatIcon(height: 24)
-                Text("\(store.treats)").font(Theme.font(18, .heavy)).foregroundColor(theme.palette.ink)
+                Text("\(store.treats)")
+                    .font(Theme.font(18, .heavy))
+                    .foregroundColor(theme.palette.ink)
+                    .monospacedDigit()
+                    .contentTransition(.numericText())
             }
+            .modifier(StatPulse(value: store.treats))
             Spacer()
             Button(action: { Haptics.selection(); onOpenHearts() }) {
                 HStack(spacing: 6) {
@@ -128,11 +134,16 @@ struct PathView: View {
                             .font(.system(size: 16, weight: .black))
                             .foregroundColor(theme.palette.ink)
                     } else {
-                        Text("\(store.hearts)").font(Theme.font(18, .heavy)).foregroundColor(theme.palette.ink)
+                        Text("\(store.hearts)")
+                            .font(Theme.font(18, .heavy))
+                            .foregroundColor(theme.palette.ink)
+                            .monospacedDigit()
+                            .contentTransition(.numericText())
                     }
                 }
             }
             .buttonStyle(RowPressStyle())
+            .modifier(StatPulse(value: store.isUnlimitedHearts ? -1 : store.hearts))
         }
     }
 
@@ -168,6 +179,8 @@ struct PathView: View {
             }
             Text("\(value)").font(Theme.font(18, .heavy))
                 .foregroundColor(inactive ? theme.palette.muted : theme.palette.ink)
+                .monospacedDigit()
+                .contentTransition(.numericText())
         }
     }
 
@@ -193,19 +206,13 @@ struct PathView: View {
         let slab = Color(hex: sec?.slab ?? "#0369a1")
         // Tapping the banner opens the level picker (Beginner → Expert).
         return Button(action: { Haptics.selection(); onOpenCourses() }) {
-            HStack(spacing: 12) {
-                VStack(alignment: .leading, spacing: 2) {
-                    Text(sec?.eyebrow ?? "UNIT 1")
-                        .font(Theme.font(11, .heavy)).tracking(1.4)
-                        .foregroundColor(Color.white.opacity(0.65))
-                    Text(sec?.title ?? "")
-                        .font(Theme.font(17, .black)).foregroundColor(.white)
-                        .lineLimit(1).minimumScaleFactor(0.7)
-                }
-                Spacer(minLength: 0)
-                Image(systemName: "square.stack.3d.up.fill")
-                    .font(.system(size: 17, weight: .bold))
-                    .foregroundColor(.white.opacity(0.85))
+            ZStack {
+                bannerContent(sec: sec)
+                    .id(sec?.index ?? visibleSection)
+                    .transition(.asymmetric(
+                        insertion: .move(edge: .trailing).combined(with: .opacity),
+                        removal: .move(edge: .leading).combined(with: .opacity)
+                    ))
             }
             .frame(maxWidth: .infinity, alignment: .leading)
             .padding(.vertical, 18).padding(.horizontal, 20)   // ~12% taller
@@ -213,6 +220,24 @@ struct PathView: View {
             .contentShape(RoundedRectangle(cornerRadius: 18, style: .continuous))
         }
         .buttonStyle(SinkButtonStyle(slab: slab, radius: 18, depth: 5))
+        .animation(.spring(response: 0.34, dampingFraction: 0.86), value: visibleSection)
+    }
+
+    private func bannerContent(sec: PathSectionData?) -> some View {
+        HStack(spacing: 12) {
+            VStack(alignment: .leading, spacing: 2) {
+                Text(sec?.eyebrow ?? "UNIT 1")
+                    .font(Theme.font(11, .heavy)).tracking(1.4)
+                    .foregroundColor(Color.white.opacity(0.65))
+                Text(sec?.title ?? "")
+                    .font(Theme.font(17, .black)).foregroundColor(.white)
+                    .lineLimit(1).minimumScaleFactor(0.7)
+            }
+            Spacer(minLength: 0)
+            Image(systemName: "square.stack.3d.up.fill")
+                .font(.system(size: 17, weight: .bold))
+                .foregroundColor(.white.opacity(0.85))
+        }
     }
 
     // MARK: Section divider
@@ -265,9 +290,9 @@ struct PathView: View {
     /// close animation so it doesn't clip behind the node below it.
     private func setTooltip(_ node: Int?) {
         if let n = node { elevatedNode = n }
-        withAnimation(.spring(response: 0.3, dampingFraction: 0.7)) { tooltipNode = node }
+        withAnimation(.spring(response: 0.26, dampingFraction: 0.74)) { tooltipNode = node }
         if node == nil {
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.32) {
                 if tooltipNode == nil { elevatedNode = nil }
             }
         }
@@ -324,7 +349,14 @@ struct PathView: View {
                 startTooltip(node, state: state, color: c)
                     .fixedSize()
                     .offset(y: nodeSize + 8)
-                    .transition(.scale(scale: 0.85, anchor: .top).combined(with: .opacity))
+                    .transition(.asymmetric(
+                        insertion: .scale(scale: 0.78, anchor: .top)
+                            .combined(with: .offset(y: -10))
+                            .combined(with: .opacity),
+                        removal: .scale(scale: 0.92, anchor: .top)
+                            .combined(with: .offset(y: -6))
+                            .combined(with: .opacity)
+                    ))
             }
         }
     }
@@ -373,7 +405,8 @@ struct PathView: View {
                         .strokeBorder(cardStroke, lineWidth: 2))
             )
         }
-        .shadow(color: .black.opacity(0.25), radius: 14, y: 10)
+        .shadow(color: color.main.opacity(locked ? 0 : 0.22), radius: 18, y: 10)
+        .shadow(color: .black.opacity(0.28), radius: 16, y: 10)
     }
 
     private var startLabel: some View {
@@ -470,6 +503,23 @@ private struct Triangle: Shape {
         p.addLine(to: CGPoint(x: rect.maxX, y: rect.minY))
         p.closeSubpath()
         return p
+    }
+}
+
+private struct StatPulse<Value: Equatable>: ViewModifier {
+    let value: Value
+    @State private var popped = false
+
+    func body(content: Content) -> some View {
+        content
+            .scaleEffect(popped ? 1.16 : 1.0)
+            .animation(.spring(response: 0.24, dampingFraction: 0.62), value: popped)
+            .onChange(of: value) { _ in
+                popped = true
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.18) {
+                    popped = false
+                }
+            }
     }
 }
 

@@ -11,6 +11,7 @@ struct CourseSwitcherView: View {
     @EnvironmentObject var theme: ThemeManager
     var onPick: (String) -> Void
     var onClose: () -> Void
+    @State private var rowsVisible = false
 
     private func done(_ c: Course) -> Int { router.courseLessonsDone[c.id] ?? 0 }
     private func total(_ c: Course) -> Int { c.nodes.count }
@@ -36,6 +37,11 @@ struct CourseSwitcherView: View {
                     .padding(.horizontal, 20)
                     .padding(.top, 18)
                 }
+            }
+        }
+        .onAppear {
+            withAnimation(.spring(response: 0.42, dampingFraction: 0.86)) {
+                rowsVisible = true
             }
         }
     }
@@ -123,5 +129,8 @@ struct CourseSwitcherView: View {
         }
         .buttonStyle(RowPressStyle())
         .disabled(!unlocked)
+        .opacity(rowsVisible ? 1 : 0)
+        .offset(y: rowsVisible ? 0 : 18)
+        .animation(.spring(response: 0.4, dampingFraction: 0.84).delay(Double(index) * 0.035), value: rowsVisible)
     }
 }
