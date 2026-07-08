@@ -960,6 +960,11 @@ struct FillBlankChoiceView: View {
 
     private var s: LessonScreen { player.screen }
     private var options: [String] { s.options ?? [] }
+    private var answerOptions: [(idx: Int, label: String)] {
+        let correct = player.currentCorrectIndex
+        guard options.indices.contains(correct) else { return [] }
+        return [(correct, options[correct])]
+    }
     private var selectedWord: String? {
         guard let idx = player.selectedIndex, options.indices.contains(idx) else { return nil }
         return options[idx]
@@ -984,7 +989,7 @@ struct FillBlankChoiceView: View {
             }
 
             wordBank
-                .padding(.top, 58)
+                .padding(.top, s.chart == nil ? 128 : 58)
         }
         .frame(maxWidth: .infinity, alignment: .leading)
     }
@@ -1033,6 +1038,10 @@ struct FillBlankChoiceView: View {
                         .foregroundColor(.white)
                         .padding(.horizontal, 18)
                         .matchedGeometryEffect(id: "fill-word-\(player.selectedIndex ?? -1)", in: wordNamespace)
+                        .transition(.asymmetric(
+                            insertion: .offset(y: 170).combined(with: .scale(scale: 0.92)),
+                            removal: .offset(y: 170).combined(with: .scale(scale: 0.92))
+                        ))
                 } else {
                     Rectangle()
                         .fill(Color(hex: "#536673"))
@@ -1052,8 +1061,8 @@ struct FillBlankChoiceView: View {
 
     private var wordBank: some View {
         HStack(spacing: 12) {
-            ForEach(Array(options.enumerated()), id: \.offset) { idx, option in
-                wordOption(idx: idx, label: option)
+            ForEach(answerOptions, id: \.idx) { item in
+                wordOption(idx: item.idx, label: item.label)
             }
         }
         .frame(maxWidth: .infinity, alignment: .center)
@@ -1087,9 +1096,9 @@ struct FillBlankChoiceView: View {
         } label: {
             ZStack {
                 RoundedRectangle(cornerRadius: 18, style: .continuous)
-                    .fill(fill.opacity(unavailable ? 0.18 : 1))
+                    .fill(unavailable ? Color(hex: "#3A4A54") : fill)
                     .overlay(RoundedRectangle(cornerRadius: 18, style: .continuous)
-                        .strokeBorder(border.opacity(unavailable ? 0.35 : 1), lineWidth: 2.5))
+                        .strokeBorder(border.opacity(unavailable ? 0 : 1), lineWidth: 2.5))
                     .background(RoundedRectangle(cornerRadius: 18, style: .continuous)
                         .fill(slab.opacity(unavailable ? 0 : 1)).offset(y: 5))
 
@@ -1110,7 +1119,7 @@ struct FillBlankChoiceView: View {
     }
 
     private var slotWidth: CGFloat {
-        let longest = max((selectedWord ?? "").count, options.map(\.count).max() ?? 6)
+        let longest = max((selectedWord ?? "").count, answerOptions.map { $0.label.count }.max() ?? 6)
         return max(112, min(190, CGFloat(longest) * 15 + 44))
     }
 
@@ -1273,6 +1282,15 @@ struct MatchingView: View {
     @State private var selLeft: Int? = nil
     @State private var selRight: Int? = nil
 
+    init(player: LessonPlayer, ink: Color) {
+        self.player = player
+        self.ink = ink
+        let pairs = player.screen.pairs ?? []
+        _pairs = State(initialValue: pairs)
+        _question = State(initialValue: player.screen.question ?? "")
+        _rightOrder = State(initialValue: Array(pairs.indices).shuffled())
+    }
+
     var body: some View {
         VStack(alignment: .leading, spacing: 18) {
             QuestionChart(key: player.screen.chart, height: 130, seed: chartSeed(player.screen))
@@ -1293,13 +1311,6 @@ struct MatchingView: View {
             }
         }
         .frame(maxWidth: .infinity, alignment: .leading)
-        .onAppear {
-            if pairs.isEmpty {
-                pairs = player.screen.pairs ?? []
-                question = player.screen.question ?? ""
-                rightOrder = Array(pairs.indices).shuffled()
-            }
-        }
     }
 
     private func chip(text: String, isLeft: Bool, index: Int) -> some View {
