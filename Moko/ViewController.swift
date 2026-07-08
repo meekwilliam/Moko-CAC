@@ -22,6 +22,14 @@ class ViewController: UIViewController {
         setupAppRouter()
         presentNativePath()   // boot straight onto the path (home tab)
 
+        // When a cloud snapshot is pulled in (sign-in / launch restore), refresh
+        // the derived UI stores so the path/profile reflect the synced state.
+        progress.onExternalReplace = { [weak self] in
+            guard let self = self else { return }
+            self.refreshPathState(); self.syncHearts(); self.syncCourses()
+        }
+        SyncService.shared.bootstrap()   // resume cloud sync if already signed in
+
         // Hold the branded loading screen for a short beat, then fade to the path.
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.3) { [weak self] in
             self?.appRouter.showSplash = false

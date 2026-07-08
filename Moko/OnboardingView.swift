@@ -279,7 +279,11 @@ struct OnboardingView: View {
             Task {
                 authInFlight = true
                 defer { authInFlight = false }
-                do { _ = try await action(); advance() }
+                do {
+                    let user = try await action()
+                    SyncService.shared.userDidSignIn(user)   // pull cloud progress
+                    advance()
+                }
                 catch BackendError.cancelled { /* user backed out — stay put */ }
                 catch { advance() }   // not configured yet → proceed
             }
