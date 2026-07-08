@@ -1,4 +1,4 @@
-import Foundation
+ import Foundation
 
 // MARK: - Bundled game content (multi-course)
 // GameData.json holds several courses (Skincare, Personal Finance, …), each with

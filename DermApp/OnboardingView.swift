@@ -17,6 +17,7 @@ struct OnboardingView: View {
     @State private var experience: Int? = nil
     @State private var goals: Set<Int> = []
     @State private var dailyGoal: Int? = nil
+    @State private var authInFlight = false
 
     private let totalSteps = 6
 
@@ -247,13 +248,18 @@ struct OnboardingView: View {
                           fill: .black, textColor: .white, border: Color.white.opacity(0.18)) {
                     Image(systemName: "apple.logo")
                         .font(.system(size: 18, weight: .medium))
+                } action: {
+                    try await Backend.auth.signInWithApple()
                 }
                 authButton(label: "Continue with Google",
                           fill: .white, textColor: Color(hex: "#1F1F1F"), border: Color.black.opacity(0.08)) {
                     GoogleGlyph().frame(width: 18, height: 18)
+                } action: {
+                    try await Backend.auth.signInWithGoogle()
                 }
             }
             .padding(.top, 32)
+            .disabled(authInFlight)
 
             Spacer()
             Spacer()
@@ -263,10 +269,20 @@ struct OnboardingView: View {
     }
 
     private func authButton<Glyph: View>(label: String, fill: Color, textColor: Color, border: Color,
-                                         @ViewBuilder glyph: () -> Glyph) -> some View {
+                                         @ViewBuilder glyph: () -> Glyph,
+                                         action: @escaping () async throws -> BackendUser) -> some View {
         Button {
             Haptics.selection()
-            advance()   // no real backend — this app is local-first; advances the flow
+            guard !authInFlight else { return }
+            // Real sign-in when a backend is configured; until then it throws
+            // .notConfigured and we just advance (local-first, unchanged).
+            Task {
+                authInFlight = true
+                defer { authInFlight = false }
+                do { _ = try await action(); advance() }
+                catch BackendError.cancelled { /* user backed out — stay put */ }
+                catch { advance() }   // not configured yet → proceed
+            }
         } label: {
             HStack(spacing: 10) {
                 glyph()
