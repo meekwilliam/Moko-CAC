@@ -151,6 +151,8 @@ struct LessonScreenRouter: View {
         switch player.screen.type {
         case "intro":
             IntroView(player: player, ink: ink)
+        case "fill_blank":
+            FillBlankChoiceView(player: player, ink: ink)
         case "matching":
             MatchingView(player: player, ink: ink)
         case "fill_blank_multi":
@@ -948,7 +950,188 @@ private struct ChunkySlider: View {
     }
 }
 
-// MARK: - Choice (true_false / multiple_choice / fill_blank / spot_mistake)
+// MARK: - Fill blank (single)
+
+struct FillBlankChoiceView: View {
+    @ObservedObject var player: LessonPlayer
+    var ink: Color
+    @Environment(\.colorScheme) private var scheme
+    @Namespace private var wordNamespace
+
+    private var s: LessonScreen { player.screen }
+    private var options: [String] { s.options ?? [] }
+    private var selectedWord: String? {
+        guard let idx = player.selectedIndex, options.indices.contains(idx) else { return nil }
+        return options[idx]
+    }
+    private var promptParts: (before: String, after: String) {
+        let pieces = (s.question ?? "").components(separatedBy: "[___]")
+        return (pieces.first ?? "", pieces.dropFirst().joined(separator: "[___]"))
+    }
+
+    var body: some View {
+        VStack(alignment: .leading, spacing: 26) {
+            QuestionChart(key: s.chart, height: 130, seed: chartSeed(player.screen))
+
+            VStack(alignment: .leading, spacing: 12) {
+                Text("Complete the sentence")
+                    .font(Theme.font(26, .black))
+                    .foregroundColor(ink)
+                    .fixedSize(horizontal: false, vertical: true)
+
+                sentenceBuilder
+                    .padding(.top, 6)
+            }
+
+            wordBank
+                .padding(.top, 58)
+        }
+        .frame(maxWidth: .infinity, alignment: .leading)
+    }
+
+    private var sentenceBuilder: some View {
+        HStack(alignment: .firstTextBaseline, spacing: 8) {
+            Text(promptParts.before)
+                .font(Theme.font(24, .medium))
+                .foregroundColor(ink)
+                .fixedSize(horizontal: false, vertical: true)
+
+            blankSlot
+
+            Text(promptParts.after)
+                .font(Theme.font(24, .medium))
+                .foregroundColor(ink)
+                .fixedSize(horizontal: false, vertical: true)
+        }
+        .frame(maxWidth: .infinity, alignment: .leading)
+    }
+
+    private var blankSlot: some View {
+        Button {
+            guard !player.revealed, player.selectedIndex != nil else { return }
+            Haptics.selection()
+            withAnimation(.spring(response: 0.34, dampingFraction: 0.78)) {
+                player.selectedIndex = nil
+            }
+        } label: {
+            ZStack {
+                RoundedRectangle(cornerRadius: 18, style: .continuous)
+                    .fill(slotFill)
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 18, style: .continuous)
+                            .strokeBorder(slotBorder, lineWidth: selectedWord == nil ? 2 : 3)
+                    )
+                    .background(
+                        RoundedRectangle(cornerRadius: 18, style: .continuous)
+                            .fill(Color.black.opacity(selectedWord == nil ? 0 : 0.28))
+                            .offset(y: 4)
+                    )
+
+                if let selectedWord {
+                    Text(selectedWord)
+                        .font(Theme.font(21, .black))
+                        .foregroundColor(.white)
+                        .padding(.horizontal, 18)
+                        .matchedGeometryEffect(id: "fill-word-\(player.selectedIndex ?? -1)", in: wordNamespace)
+                } else {
+                    Rectangle()
+                        .fill(Color(hex: "#536673"))
+                        .frame(height: 3)
+                        .padding(.horizontal, 16)
+                        .padding(.top, 28)
+                }
+            }
+            .frame(width: slotWidth, height: 58)
+            .contentShape(RoundedRectangle(cornerRadius: 18, style: .continuous))
+        }
+        .buttonStyle(RowPressStyle())
+        .disabled(player.revealed)
+        .modifier(AnswerFeedbackFX(pop: player.revealed && player.selectedIndex == player.currentCorrectIndex,
+                                   shake: player.revealed && player.selectedIndex != player.currentCorrectIndex))
+    }
+
+    private var wordBank: some View {
+        HStack(spacing: 12) {
+            ForEach(Array(options.enumerated()), id: \.offset) { idx, option in
+                wordOption(idx: idx, label: option)
+            }
+        }
+        .frame(maxWidth: .infinity, alignment: .center)
+    }
+
+    private func wordOption(idx: Int, label: String) -> some View {
+        let selected = player.selectedIndex == idx
+        let revealed = player.revealed
+        let isCorrect = idx == player.currentCorrectIndex
+        let unavailable = selected
+
+        var fill = scheme == .dark ? Color(hex: "#17242B") : Color.white
+        var border = scheme == .dark ? Color(hex: "#41515D") : Color(hex: "#DDE3ED")
+        var slab = scheme == .dark ? Color(hex: "#33424D") : Color(hex: "#B8C4D8")
+        var textColor = ink
+
+        if revealed {
+            if isCorrect {
+                fill = Theme.correct; border = Theme.correctDark; slab = Theme.correctDark; textColor = .white
+            } else if selected {
+                fill = Theme.incorrect; border = Theme.incorrectDark; slab = Theme.incorrectDark; textColor = .white
+            }
+        }
+
+        return Button {
+            guard !revealed else { return }
+            Haptics.selection()
+            withAnimation(.spring(response: 0.34, dampingFraction: 0.78)) {
+                player.selectedIndex = idx
+            }
+        } label: {
+            ZStack {
+                RoundedRectangle(cornerRadius: 18, style: .continuous)
+                    .fill(fill.opacity(unavailable ? 0.18 : 1))
+                    .overlay(RoundedRectangle(cornerRadius: 18, style: .continuous)
+                        .strokeBorder(border.opacity(unavailable ? 0.35 : 1), lineWidth: 2.5))
+                    .background(RoundedRectangle(cornerRadius: 18, style: .continuous)
+                        .fill(slab.opacity(unavailable ? 0 : 1)).offset(y: 5))
+
+                if !selected {
+                    Text(label)
+                        .font(Theme.font(20, .black))
+                        .foregroundColor(textColor)
+                        .padding(.horizontal, 18)
+                        .matchedGeometryEffect(id: "fill-word-\(idx)", in: wordNamespace)
+                }
+            }
+            .frame(minWidth: 86, minHeight: 52)
+        }
+        .buttonStyle(RowPressStyle())
+        .disabled(revealed || selected)
+        .modifier(AnswerFeedbackFX(pop: revealed && isCorrect,
+                                   shake: revealed && selected && !isCorrect))
+    }
+
+    private var slotWidth: CGFloat {
+        let longest = max((selectedWord ?? "").count, options.map(\.count).max() ?? 6)
+        return max(112, min(190, CGFloat(longest) * 15 + 44))
+    }
+
+    private var slotFill: Color {
+        guard player.revealed else {
+            return selectedWord == nil ? Color.clear : Color(hex: "#2B3A44")
+        }
+        guard let idx = player.selectedIndex else { return Color.clear }
+        return idx == player.currentCorrectIndex ? Theme.correct : Theme.incorrect
+    }
+
+    private var slotBorder: Color {
+        guard player.revealed else {
+            return selectedWord == nil ? Color(hex: "#536673") : Color(hex: "#3D4E5A")
+        }
+        guard let idx = player.selectedIndex else { return Color(hex: "#536673") }
+        return idx == player.currentCorrectIndex ? Theme.correctDark : Theme.incorrectDark
+    }
+}
+
+// MARK: - Choice (true_false / multiple_choice / spot_mistake)
 
 struct ChoiceView: View {
     @ObservedObject var player: LessonPlayer
