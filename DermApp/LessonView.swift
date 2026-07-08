@@ -39,6 +39,8 @@ final class LessonPlayer: ObservableObject {
     @Published var numberValue: Double? = nil
     // fill_blank_multi
     @Published var multiSelections: [Int?] = []
+    // matching: original left-pair index -> original right-pair index
+    @Published var matchingSelections: [Int: Int] = [:]
     // sequence_builder / drag_order
     @Published var builtOrder: [String] = []
 
@@ -93,6 +95,9 @@ final class LessonPlayer: ObservableObject {
     /// Whether the primary button can be tapped in the "check" phase.
     var canCheck: Bool {
         switch screen.type {
+        case "matching":
+            let n = screen.pairs?.count ?? 0
+            return n > 0 && matchingSelections.count == n
         case "fill_blank_multi":
             let n = screen.blanks?.count ?? 0
             return multiSelections.count == n && !multiSelections.contains(where: { $0 == nil })
@@ -127,6 +132,7 @@ final class LessonPlayer: ObservableObject {
         ohlcPlacement = [:]
         ohlcExpected = [:]
         numberValue = nil
+        matchingSelections = [:]
         revealed = false
         lastCorrect = false
         builtOrder = []
@@ -142,6 +148,10 @@ final class LessonPlayer: ObservableObject {
         guard spendHeartIfNeeded() else { return }
         var correct = true
         switch screen.type {
+        case "matching":
+            let n = screen.pairs?.count ?? 0
+            correct = n > 0 && matchingSelections.count == n &&
+                matchingSelections.allSatisfy { left, right in left == right }
         case "fill_blank_multi":
             if let blanks = screen.blanks {
                 for (i, b) in blanks.enumerated() {
@@ -189,15 +199,6 @@ final class LessonPlayer: ObservableObject {
         }
         // Outcome haptic to match the reveal banner: success buzz / error buzz.
         if correct { Haptics.success() } else { Haptics.error() }
-    }
-
-    /// Called by matching once all pairs are solved.
-    func markMatchingSolved() {
-        guard !revealed else { return }
-        guard spendHeartIfNeeded() else { return }
-        lastCorrect = true
-        revealed = true
-        Haptics.success()
     }
 
     private func spendHeartIfNeeded() -> Bool {
@@ -410,9 +411,7 @@ struct LessonView: View {
 
     @ViewBuilder
     private var primaryButton: some View {
-        if player.isMatching && !player.revealed {
-            EmptyView()  // matching advances itself; no button until solved
-        } else if player.isIntro {
+        if player.isIntro {
             Button("Got It") { withAnimation { player.advance() } }
                 .buttonStyle(Chunky3DStyle(fill: accent, slab: accentDark))
         } else if !player.revealed {
@@ -427,8 +426,8 @@ struct LessonView: View {
         } else {
             Button(player.isLastScreen ? "Finish" : "Continue") { withAnimation { player.advance() } }
                 .buttonStyle(Chunky3DStyle(
-                    fill: player.lastCorrect || player.isMatching ? Theme.correct : Theme.incorrect,
-                    slab: player.lastCorrect || player.isMatching ? Theme.correctDark : Theme.incorrectDark))
+                    fill: player.lastCorrect ? Theme.correct : Theme.incorrect,
+                    slab: player.lastCorrect ? Theme.correctDark : Theme.incorrectDark))
         }
     }
 }
