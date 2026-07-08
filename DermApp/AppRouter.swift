@@ -150,7 +150,7 @@ struct AppRouterView: View {
                     )
                     .transition(.asymmetric(
                         insertion: .move(edge: .bottom),
-                        removal: .opacity
+                        removal: .move(edge: .bottom)
                     ))
                     .zIndex(10)
                 }
