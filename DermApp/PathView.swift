@@ -25,7 +25,7 @@ struct PathView: View {
     private let nodeSize: CGFloat = 82
     private let ovalRatio: CGFloat = 0.78     // puck height / width — a wide coin
     private let vStep: CGFloat = 106          // node center-to-center spacing
-    private let bg = Color(hex: "#0A1017")
+    private let bg = Color(hex: "#131F24")
 
     var body: some View {
         GeometryReader { geo in
@@ -206,13 +206,19 @@ struct PathView: View {
         let slab = Color(hex: sec?.slab ?? "#0369a1")
         // Tapping the banner opens the level picker (Beginner → Expert).
         return Button(action: { Haptics.selection(); onOpenCourses() }) {
-            ZStack {
-                bannerContent(sec: sec)
-                    .id(sec?.index ?? visibleSection)
-                    .transition(.asymmetric(
-                        insertion: .move(edge: .trailing).combined(with: .opacity),
-                        removal: .move(edge: .leading).combined(with: .opacity)
-                    ))
+            HStack(spacing: 12) {
+                VStack(alignment: .leading, spacing: 2) {
+                    Text(sec?.eyebrow ?? "UNIT 1")
+                        .font(Theme.font(11, .heavy)).tracking(1.4)
+                        .foregroundColor(Color.white.opacity(0.65))
+                    Text(sec?.title ?? "")
+                        .font(Theme.font(17, .black)).foregroundColor(.white)
+                        .lineLimit(1).minimumScaleFactor(0.7)
+                }
+                Spacer(minLength: 0)
+                Image(systemName: "square.stack.3d.up.fill")
+                    .font(.system(size: 17, weight: .bold))
+                    .foregroundColor(.white.opacity(0.85))
             }
             .frame(maxWidth: .infinity, alignment: .leading)
             .padding(.vertical, 18).padding(.horizontal, 20)   // ~12% taller
@@ -220,24 +226,6 @@ struct PathView: View {
             .contentShape(RoundedRectangle(cornerRadius: 18, style: .continuous))
         }
         .buttonStyle(SinkButtonStyle(slab: slab, radius: 18, depth: 5))
-        .animation(.spring(response: 0.34, dampingFraction: 0.86), value: visibleSection)
-    }
-
-    private func bannerContent(sec: PathSectionData?) -> some View {
-        HStack(spacing: 12) {
-            VStack(alignment: .leading, spacing: 2) {
-                Text(sec?.eyebrow ?? "UNIT 1")
-                    .font(Theme.font(11, .heavy)).tracking(1.4)
-                    .foregroundColor(Color.white.opacity(0.65))
-                Text(sec?.title ?? "")
-                    .font(Theme.font(17, .black)).foregroundColor(.white)
-                    .lineLimit(1).minimumScaleFactor(0.7)
-            }
-            Spacer(minLength: 0)
-            Image(systemName: "square.stack.3d.up.fill")
-                .font(.system(size: 17, weight: .bold))
-                .foregroundColor(.white.opacity(0.85))
-        }
     }
 
     // MARK: Section divider
@@ -405,7 +393,6 @@ struct PathView: View {
                         .strokeBorder(cardStroke, lineWidth: 2))
             )
         }
-        .shadow(color: color.main.opacity(locked ? 0 : 0.22), radius: 18, y: 10)
         .shadow(color: .black.opacity(0.28), radius: 16, y: 10)
     }
 
