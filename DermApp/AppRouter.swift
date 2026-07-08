@@ -148,7 +148,10 @@ struct AppRouterView: View {
                             return router.onSpendQuestionHeart?() ?? true
                         }
                     )
-                    .transition(.move(edge: .bottom))   // slides up to open, down to close
+                    .transition(.asymmetric(
+                        insertion: .move(edge: .bottom),
+                        removal: .opacity
+                    ))
                     .zIndex(10)
                 }
 
