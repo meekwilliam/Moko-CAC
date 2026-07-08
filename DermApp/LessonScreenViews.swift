@@ -1065,10 +1065,10 @@ struct ChoiceView: View {
                     Image(systemName: "xmark.circle.fill")
                 }
             }
-            .modifier(OptionSurface(fill: fill, border: border, slab: slab, textColor: textColor, pressed: false))
+            .modifier(OptionSurface(fill: fill, border: border, textColor: textColor))
             .contentShape(Rectangle())
         }
-        .buttonStyle(SinkButtonStyle(depth: 5))
+        .buttonStyle(SinkButtonStyle(slab: slab, radius: 16, depth: 5))
         .disabled(revealed)
         .modifier(AnswerFeedbackFX(pop: revealed && isCorrect,
                                    shake: revealed && selected && !isCorrect))
@@ -1145,10 +1145,10 @@ struct MatchingView: View {
         } label: {
             Text(text).font(Theme.font(13.5, .bold))
                 .frame(maxWidth: .infinity, minHeight: 40, alignment: .leading)
-                .modifier(OptionSurface(fill: fill, border: border, slab: slab, textColor: textColor, pressed: false))
+                .modifier(OptionSurface(fill: fill, border: border, textColor: textColor))
                 .contentShape(Rectangle())
         }
-        .buttonStyle(SinkButtonStyle(depth: 5))
+        .buttonStyle(SinkButtonStyle(slab: slab, radius: 16, depth: 5))
         .disabled(matched)
     }
 
@@ -1264,15 +1264,13 @@ struct FlowChips: View {
         return Button { onTap(idx) } label: {
             Text(label).font(Theme.font(14, .bold)).foregroundColor(textColor)
                 .padding(.vertical, 10).padding(.horizontal, 14)
+                .background(
+                    RoundedRectangle(cornerRadius: 12, style: .continuous).fill(fill)
+                        .overlay(RoundedRectangle(cornerRadius: 12, style: .continuous).strokeBorder(border, lineWidth: 2))
+                )
+                .contentShape(Rectangle())
         }
-        .background(
-            RoundedRectangle(cornerRadius: 12, style: .continuous).fill(fill)
-                .overlay(RoundedRectangle(cornerRadius: 12, style: .continuous).strokeBorder(border, lineWidth: 2))
-        )
-        .background(
-            RoundedRectangle(cornerRadius: 12, style: .continuous).fill(slab).offset(y: 4)
-        )
-        .buttonStyle(SinkButtonStyle(depth: 4))
+        .buttonStyle(SinkButtonStyle(slab: slab, radius: 12, depth: 4))
         .modifier(AnswerFeedbackFX(pop: revealed && idx == correctIndex,
                                    shake: revealed && isSel && idx != correctIndex))
     }
@@ -1348,10 +1346,9 @@ struct IngredientMatchView: View {
                 RoundedRectangle(cornerRadius: 16, style: .continuous).fill(fill)
                     .overlay(RoundedRectangle(cornerRadius: 16, style: .continuous).strokeBorder(border, lineWidth: 2))
             )
-            .background(RoundedRectangle(cornerRadius: 16, style: .continuous).fill(slab).offset(y: 5))
             .contentShape(Rectangle())
         }
-        .buttonStyle(SinkButtonStyle(depth: 5))
+        .buttonStyle(SinkButtonStyle(slab: slab, radius: 16, depth: 5))
         .disabled(revealed)
         .modifier(AnswerFeedbackFX(pop: revealed && isCorrect,
                                    shake: revealed && selected && !isCorrect))
@@ -1411,14 +1408,11 @@ struct OrderBuilderView: View {
                                     .overlay(RoundedRectangle(cornerRadius: 14, style: .continuous)
                                         .strokeBorder(scheme == .dark ? Color(hex: "#334155") : Color(hex: "#DDE3ED"), lineWidth: 2))
                             )
-                            .background(
-                                RoundedRectangle(cornerRadius: 14, style: .continuous)
-                                    .fill(scheme == .dark ? Color(hex: "#334155") : Color(hex: "#B8C4D8"))
-                                    .offset(y: 4)
-                            )
                             .contentShape(Rectangle())
                         }
-                        .buttonStyle(SinkButtonStyle(depth: 4))
+                        .buttonStyle(SinkButtonStyle(
+                            slab: scheme == .dark ? Color(hex: "#334155") : Color(hex: "#B8C4D8"),
+                            radius: 14, depth: 4))
                     }
                 }
                 .padding(.top, 4)
@@ -1467,12 +1461,9 @@ struct OrderBuilderView: View {
                 RoundedRectangle(cornerRadius: 14, style: .continuous).fill(fill)
                     .overlay(RoundedRectangle(cornerRadius: 14, style: .continuous).strokeBorder(border, lineWidth: 2))
             )
-            .background(
-                RoundedRectangle(cornerRadius: 14, style: .continuous).fill(slab).offset(y: 4)
-            )
             .contentShape(Rectangle())
         }
-        .buttonStyle(SinkButtonStyle(depth: 4))
+        .buttonStyle(SinkButtonStyle(slab: slab, radius: 14, depth: 4))
         .disabled(revealed)
     }
 }

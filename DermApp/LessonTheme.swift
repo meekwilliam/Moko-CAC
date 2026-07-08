@@ -124,7 +124,10 @@ struct Chunky3DStyle: ButtonStyle {
             .background(
                 RoundedRectangle(cornerRadius: radius, style: .continuous)
                     .fill(slab)
-                    .offset(y: depth)
+                    // Counter-offset the whole-label sink so the slab stays fixed
+                    // and the face lands flush on it (the 3D lip vanishes on
+                    // press — the tactile "goes 2D" look, like the path puck).
+                    .offset(y: pressed ? 0 : depth)
             )
             .offset(y: pressed ? depth : 0)
             .animation(pressed
@@ -148,7 +151,9 @@ struct Circle3DStyle: ButtonStyle {
                 Circle().fill(face)
                     .overlay(Circle().strokeBorder(slab, lineWidth: 1.5))
             )
-            .background(Circle().fill(slab).offset(y: depth))
+            // Counter-offset so the slab stays fixed and the face sinks flush
+            // onto it (the lip vanishes on press), like the path puck.
+            .background(Circle().fill(slab).offset(y: pressed ? 0 : depth))
             .offset(y: pressed ? depth : 0)
             .animation(pressed
                        ? .easeIn(duration: 0.055)
@@ -161,14 +166,31 @@ struct Circle3DStyle: ButtonStyle {
 // reacts to `isPressed`, pair it with `delaysContentTouches = false` so the
 // press shows instantly inside scroll views.
 struct SinkButtonStyle: ButtonStyle {
+    // When `slab` is provided the style draws its own fixed 3D lip beneath the
+    // face and counter-offsets it, so on press the face sinks flush onto the
+    // slab and the lip vanishes (same tactile "goes flat" feel as the path
+    // puck). When nil it just offsets the label (legacy behavior, for buttons
+    // that draw no slab lip).
+    var slab: Color? = nil
+    var radius: CGFloat = 16
     var depth: CGFloat = 5
     func makeBody(configuration: Configuration) -> some View {
-        configuration.label
-            .offset(y: configuration.isPressed ? depth : 0)
-            .animation(configuration.isPressed
+        let pressed = configuration.isPressed
+        return configuration.label
+            .background(
+                Group {
+                    if let slab {
+                        RoundedRectangle(cornerRadius: radius, style: .continuous)
+                            .fill(slab)
+                            .offset(y: pressed ? 0 : depth)
+                    }
+                }
+            )
+            .offset(y: pressed ? depth : 0)
+            .animation(pressed
                        ? .easeIn(duration: 0.05)
                        : .spring(response: 0.3, dampingFraction: 0.55),
-                       value: configuration.isPressed)
+                       value: pressed)
     }
 }
 
@@ -218,13 +240,13 @@ struct AnswerFeedbackFX: ViewModifier {
     }
 }
 
-// A rounded card surface with the subtle 3D lip, used for answer options.
+// The rounded answer-option face (fill + border). The 3D lip beneath is drawn
+// by SinkButtonStyle(slab:radius:16) so it stays fixed and the face sinks flush
+// onto it on press.
 struct OptionSurface: ViewModifier {
     var fill: Color
     var border: Color
-    var slab: Color
     var textColor: Color
-    var pressed: Bool
 
     func body(content: Content) -> some View {
         content
@@ -240,13 +262,6 @@ struct OptionSurface: ViewModifier {
                             .strokeBorder(border, lineWidth: 2)
                     )
             )
-            .background(
-                RoundedRectangle(cornerRadius: 16, style: .continuous)
-                    .fill(slab)
-                    .offset(y: 5)
-            )
-            .offset(y: pressed ? 5 : 0)
-            .animation(.spring(response: 0.3, dampingFraction: 0.6), value: pressed)
     }
 }
 
