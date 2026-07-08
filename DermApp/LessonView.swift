@@ -284,15 +284,14 @@ struct LessonView: View {
                         // Duolingo-style step advance: next question slides in
                         // from the right while the previous one leaves left.
                         .transition(.asymmetric(
-                            insertion: .offset(x: 46)
-                                .combined(with: .scale(scale: 0.985, anchor: .center))
-                                .combined(with: .opacity),
-                            removal: .offset(x: -34).combined(with: .opacity)))
+                            insertion: .move(edge: .trailing),
+                            removal: .move(edge: .leading)))
                         .padding(.horizontal, 20)
                         .padding(.top, 18)
                         .padding(.bottom, 24)
                     }
-                    .animation(.spring(response: 0.36, dampingFraction: 0.86), value: player.index)
+                    .clipped()
+                    .animation(.spring(response: 0.34, dampingFraction: 0.9), value: player.index)
                     footer
                 }
             }
