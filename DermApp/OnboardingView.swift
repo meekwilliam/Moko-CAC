@@ -1,8 +1,9 @@
 import SwiftUI
+import Combine
 
 // MARK: - Onboarding flow
-// Six-screen Duolingo-style intake: welcome → experience level → goals (pick
-// up to 2) → daily goal → journey roadmap → hold-to-commit. Finishing bursts
+// Five-screen Duolingo-style intake: welcome (live-chart hero) → experience
+// level → goals (choose any) → daily goal → hold-to-commit. Finishing bursts
 // the commit color across the screen and launches Lesson 1 directly (never the
 // home screen). Answers are stored in UserDefaults under "onboarding.*".
 
@@ -17,7 +18,7 @@ struct OnboardingView: View {
     @State private var goals: Set<Int> = []
     @State private var dailyGoal: Int? = nil
 
-    private let totalSteps = 6
+    private let totalSteps = 5
 
     private let experienceOptions: [(emoji: String, label: String)] = [
         ("🌱", "I'm completely new"),
@@ -39,16 +40,6 @@ struct OnboardingView: View {
         ("🏃", "Dedicated", "20 min/day"),
         ("🔥", "Intensive", "30 min/day"),
     ]
-    private let journey: [(emoji: String, label: String)] = [
-        ("📖", "Market Basics"),
-        ("🕯️", "Candlesticks"),
-        ("📈", "Trends & Structure"),
-        ("📐", "Chart Patterns"),
-        ("⚡", "Momentum"),
-        ("🛡️", "Risk Management"),
-        ("🧠", "Trading Psychology"),
-        ("🏆", "Master Trader"),
-    ]
 
     var body: some View {
         ZStack {
@@ -65,7 +56,6 @@ struct OnboardingView: View {
                     case 1: experienceScreen
                     case 2: goalsScreen
                     case 3: dailyGoalScreen
-                    case 4: journeyScreen
                     default: CommitScreen(router: router, onCommitted: persistAnswers)
                     }
                 }
@@ -126,29 +116,45 @@ struct OnboardingView: View {
     }
 
     // MARK: Screen 1 — Welcome
+    // Finelo-style landing, Moko'd: a live candlestick chart fills the hero
+    // (in place of orbiting company logos) with the mascot centered on top as
+    // the "brand", then a headline + Get Started button below.
 
     private var welcomeScreen: some View {
         VStack(spacing: 0) {
-            Spacer()
-            MascotIcon()
-                .frame(width: 170, height: 170)
-            Text("Learn Day Trading the Right Way.")
-                .font(Theme.font(30, .black))
-                .foregroundColor(theme.palette.ink)
-                .multilineTextAlignment(.center)
-                .padding(.top, 26)
-            Text("Master chart reading, price action, and risk management through short interactive lessons.")
-                .font(Theme.font(16, .bold))
-                .foregroundColor(theme.palette.muted)
-                .multilineTextAlignment(.center)
-                .lineSpacing(3)
-                .padding(.top, 12)
-            Spacer()
-            Button("GET STARTED") { advance() }
-                .buttonStyle(Chunky3DStyle(fill: Theme.answer, slab: Theme.answerDark))
+            ZStack {
+                LiveCandleChart()
+                    .opacity(0.85)
+                    .mask(
+                        // Fade the chart out toward the bottom so it melts into
+                        // the page instead of ending on a hard edge.
+                        LinearGradient(
+                            colors: [.black, .black, .black.opacity(0.15)],
+                            startPoint: .top, endPoint: .bottom)
+                    )
+                MascotIcon()
+                    .frame(width: 150, height: 150)
+                    .shadow(color: .black.opacity(0.5), radius: 20, y: 6)
+            }
+            .frame(maxHeight: .infinity)
+
+            VStack(spacing: 14) {
+                Text("Learn to trade")
+                    .font(Theme.font(34, .black))
+                    .foregroundColor(theme.palette.ink)
+                    .multilineTextAlignment(.center)
+                Text("Master charts, price action, and risk management through short interactive lessons.")
+                    .font(Theme.font(16, .bold))
+                    .foregroundColor(theme.palette.muted)
+                    .multilineTextAlignment(.center)
+                    .lineSpacing(3)
+                Button("GET STARTED") { advance() }
+                    .buttonStyle(Chunky3DStyle(fill: Theme.answer, slab: Theme.answerDark))
+                    .padding(.top, 8)
+            }
+            .padding(.horizontal, 24)
+            .padding(.bottom, 26)
         }
-        .padding(.horizontal, 24)
-        .padding(.bottom, 26)
     }
 
     // MARK: Screen 2 — Experience
@@ -169,25 +175,19 @@ struct OnboardingView: View {
         }
     }
 
-    // MARK: Screen 3 — Goals (up to 2)
+    // MARK: Screen 3 — Goals (choose any)
 
     private var goalsScreen: some View {
         chooserScreen(
             title: "Why are you here?",
-            subtitle: "Choose up to 2.",
+            subtitle: "Choose all that apply.",
             canContinue: !goals.isEmpty
         ) {
             ForEach(goalOptions.indices, id: \.self) { i in
                 optionRow(emoji: goalOptions[i].emoji,
                           label: goalOptions[i].label,
                           selected: goals.contains(i)) {
-                    if goals.contains(i) {
-                        goals.remove(i)
-                    } else if goals.count < 2 {
-                        goals.insert(i)
-                    } else {
-                        Haptics.rigid()   // cap reached
-                    }
+                    if goals.contains(i) { goals.remove(i) } else { goals.insert(i) }
                 }
             }
         }
@@ -210,53 +210,6 @@ struct OnboardingView: View {
                 }
             }
         }
-    }
-
-    // MARK: Screen 5 — Journey roadmap
-
-    private var journeyScreen: some View {
-        VStack(spacing: 0) {
-            Text("Your journey")
-                .font(Theme.font(26, .black))
-                .foregroundColor(theme.palette.ink)
-                .frame(maxWidth: .infinity, alignment: .leading)
-                .padding(.top, 18)
-
-            ScrollView(showsIndicators: false) {
-                VStack(spacing: 6) {
-                    ForEach(journey.indices, id: \.self) { i in
-                        HStack(spacing: 12) {
-                            Text(journey[i].emoji).font(.system(size: 22))
-                            Text(journey[i].label)
-                                .font(Theme.font(16, .black))
-                                .foregroundColor(theme.palette.ink)
-                            Spacer()
-                        }
-                        .padding(.vertical, 11).padding(.horizontal, 16)
-                        .background(
-                            RoundedRectangle(cornerRadius: 14, style: .continuous)
-                                .fill(Color(hex: "#1E293B"))
-                                .overlay(RoundedRectangle(cornerRadius: 14, style: .continuous)
-                                    .strokeBorder(Color(hex: "#334155"), lineWidth: 1.5))
-                        )
-
-                        if i < journey.count - 1 {
-                            Image(systemName: "arrow.down")
-                                .font(.system(size: 13, weight: .black))
-                                .foregroundColor(theme.palette.muted)
-                                .padding(.vertical, 2)
-                        }
-                    }
-                }
-                .padding(.top, 14)
-                .padding(.bottom, 10)
-            }
-
-            Button("CONTINUE") { advance() }
-                .buttonStyle(Chunky3DStyle(fill: Theme.answer, slab: Theme.answerDark))
-        }
-        .padding(.horizontal, 24)
-        .padding(.bottom, 26)
     }
 
     // MARK: Shared chooser scaffolding
@@ -481,5 +434,51 @@ private struct CommitScreen: View {
                 }
             }
         }
+    }
+}
+
+// MARK: - Live candlestick chart
+// A decorative "live market" backdrop: reuses the app's CandlestickChart but
+// rolls a fixed-width window forward on a timer — every tick a new random
+// candle appears on the right and the oldest drops off the left, animated so
+// it reads as a live-updating chart.
+
+struct LiveCandleChart: View {
+    @State private var candles: [Candle] = []
+    private let count = 16
+    private let timer = Timer.publish(every: 0.85, on: .main, in: .common).autoconnect()
+
+    var body: some View {
+        CandlestickChart(candles: candles, showsAxes: true)
+            .onAppear { if candles.isEmpty { seed() } }
+            .onReceive(timer) { _ in tick() }
+    }
+
+    private func seed() {
+        var arr: [Candle] = []
+        var price = 100.0
+        for _ in 0..<count {
+            let c = Self.next(from: price)
+            arr.append(c); price = c.close
+        }
+        candles = arr
+    }
+
+    private func tick() {
+        let last = candles.last?.close ?? 100
+        let fresh = Self.next(from: last)
+        withAnimation(.easeInOut(duration: 0.55)) {
+            candles = Array(candles.dropFirst()) + [fresh]
+        }
+    }
+
+    /// A believable next candle: a random walk from the prior close with wicks.
+    private static func next(from close: Double) -> Candle {
+        let open = close
+        let drift = Double.random(in: -3.4...3.4)
+        let newClose = max(20, open + drift)
+        let hi = max(open, newClose) + Double.random(in: 0.3...2.0)
+        let lo = min(open, newClose) - Double.random(in: 0.3...2.0)
+        return Candle(open: open, high: hi, low: lo, close: newClose)
     }
 }
