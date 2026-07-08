@@ -17,8 +17,10 @@ struct OnboardingView: View {
     @State private var experience: Int? = nil
     @State private var goals: Set<Int> = []
     @State private var dailyGoal: Int? = nil
+    @State private var signupEmail = ""
+    @State private var signupPassword = ""
 
-    private let totalSteps = 5
+    private let totalSteps = 6
 
     private let experienceOptions: [(emoji: String, label: String)] = [
         ("🌱", "I'm completely new"),
@@ -46,9 +48,11 @@ struct OnboardingView: View {
             ThemedBackground()
 
             VStack(spacing: 0) {
-                header
-                    .padding(.horizontal, 18)
-                    .padding(.top, 8)
+                if step > 0 {
+                    header
+                        .padding(.horizontal, 18)
+                        .padding(.top, 8)
+                }
 
                 Group {
                     switch step {
@@ -56,6 +60,7 @@ struct OnboardingView: View {
                     case 1: experienceScreen
                     case 2: goalsScreen
                     case 3: dailyGoalScreen
+                    case 4: signUpScreen
                     default: CommitScreen(router: router, onCommitted: persistAnswers)
                     }
                 }
@@ -70,6 +75,7 @@ struct OnboardingView: View {
     }
 
     // MARK: Header — back + progress
+    // Hidden on the welcome screen (full-bleed hero, like the reference).
 
     private var header: some View {
         HStack(spacing: 14) {
@@ -116,27 +122,24 @@ struct OnboardingView: View {
     }
 
     // MARK: Screen 1 — Welcome
-    // Finelo-style landing, Moko'd: a live candlestick chart fills the hero
-    // (in place of orbiting company logos) with the mascot centered on top as
-    // the "brand", then a headline + Get Started button below.
+    // Finelo-style landing, Moko'd: a live candlestick chart fills the hero (in
+    // place of orbiting company logos), then a headline, a primary GET STARTED
+    // (-> goes into the intake, ending at sign-up right before the commit
+    // screen) and a secondary "I already have an account" (-> skips straight
+    // into the app for a returning user).
 
     private var welcomeScreen: some View {
         VStack(spacing: 0) {
-            ZStack {
-                LiveCandleChart()
-                    .opacity(0.85)
-                    .mask(
-                        // Fade the chart out toward the bottom so it melts into
-                        // the page instead of ending on a hard edge.
-                        LinearGradient(
-                            colors: [.black, .black, .black.opacity(0.15)],
-                            startPoint: .top, endPoint: .bottom)
-                    )
-                MascotIcon()
-                    .frame(width: 150, height: 150)
-                    .shadow(color: .black.opacity(0.5), radius: 20, y: 6)
-            }
-            .frame(maxHeight: .infinity)
+            LiveCandleChart()
+                .opacity(0.85)
+                .mask(
+                    // Fade the chart out toward the bottom so it melts into
+                    // the page instead of ending on a hard edge.
+                    LinearGradient(
+                        colors: [.black, .black, .black.opacity(0.15)],
+                        startPoint: .top, endPoint: .bottom)
+                )
+                .frame(maxHeight: .infinity)
 
             VStack(spacing: 14) {
                 Text("Learn to trade")
@@ -148,9 +151,18 @@ struct OnboardingView: View {
                     .foregroundColor(theme.palette.muted)
                     .multilineTextAlignment(.center)
                     .lineSpacing(3)
+
                 Button("GET STARTED") { advance() }
                     .buttonStyle(Chunky3DStyle(fill: Theme.answer, slab: Theme.answerDark))
                     .padding(.top, 8)
+
+                Button("I already have an account") {
+                    Haptics.selection()
+                    withAnimation(.easeInOut(duration: 0.28)) { router.currentScreen = .main }
+                }
+                .font(Theme.font(15, .black))
+                .foregroundColor(theme.palette.muted)
+                .padding(.top, 4)
             }
             .padding(.horizontal, 24)
             .padding(.bottom, 26)
@@ -210,6 +222,68 @@ struct OnboardingView: View {
                 }
             }
         }
+    }
+
+    // MARK: Screen 5 — Sign up
+    // Sits right before the commit screen — reached only via GET STARTED on
+    // the welcome screen (returning users skip all of this via "I already
+    // have an account").
+
+    private var signUpScreen: some View {
+        VStack(spacing: 0) {
+            VStack(alignment: .leading, spacing: 6) {
+                Text("Create your account")
+                    .font(Theme.font(26, .black))
+                    .foregroundColor(theme.palette.ink)
+                Text("So your progress and streak are saved.")
+                    .font(Theme.font(15, .bold))
+                    .foregroundColor(theme.palette.muted)
+            }
+            .frame(maxWidth: .infinity, alignment: .leading)
+            .padding(.top, 18)
+
+            VStack(spacing: 14) {
+                signupField(placeholder: "Email", text: $signupEmail, isSecure: false)
+                signupField(placeholder: "Password", text: $signupPassword, isSecure: true)
+            }
+            .padding(.top, 24)
+
+            Spacer()
+
+            Button("CREATE ACCOUNT") { advance() }
+                .buttonStyle(Chunky3DStyle(
+                    fill: canSignUp ? Theme.answer : Color(hex: "#4B5563"),
+                    slab: canSignUp ? Theme.answerDark : Color(hex: "#333B47")))
+                .disabled(!canSignUp)
+        }
+        .padding(.horizontal, 24)
+        .padding(.bottom, 26)
+    }
+
+    private var canSignUp: Bool {
+        signupEmail.contains("@") && signupPassword.count >= 4
+    }
+
+    private func signupField(placeholder: String, text: Binding<String>, isSecure: Bool) -> some View {
+        Group {
+            if isSecure {
+                SecureField("", text: text, prompt: Text(placeholder).foregroundColor(theme.palette.muted))
+            } else {
+                TextField("", text: text, prompt: Text(placeholder).foregroundColor(theme.palette.muted))
+                    .keyboardType(.emailAddress)
+                    .autocapitalization(.none)
+                    .autocorrectionDisabled()
+            }
+        }
+        .font(Theme.font(16, .bold))
+        .foregroundColor(theme.palette.ink)
+        .padding(.vertical, 15).padding(.horizontal, 16)
+        .background(
+            RoundedRectangle(cornerRadius: 14, style: .continuous)
+                .fill(Color(hex: "#1E293B"))
+                .overlay(RoundedRectangle(cornerRadius: 14, style: .continuous)
+                    .strokeBorder(Color(hex: "#334155"), lineWidth: 1.5))
+        )
     }
 
     // MARK: Shared chooser scaffolding
@@ -445,13 +519,28 @@ private struct CommitScreen: View {
 
 struct LiveCandleChart: View {
     @State private var candles: [Candle] = []
+    // A quick highlight flash over the newest (rightmost) candle only — the
+    // rolling window itself updates instantly with no animation, since
+    // animating the whole array made every bar visibly reshape/resize each
+    // tick (all 16 indices change value when the window shifts).
+    @State private var popID = 0
     private let count = 16
     private let timer = Timer.publish(every: 0.85, on: .main, in: .common).autoconnect()
 
     var body: some View {
-        CandlestickChart(candles: candles, showsAxes: true)
-            .onAppear { if candles.isEmpty { seed() } }
-            .onReceive(timer) { _ in tick() }
+        GeometryReader { geo in
+            ZStack(alignment: .topLeading) {
+                CandlestickChart(candles: candles, showsAxes: true)
+                if !candles.isEmpty {
+                    let slot = geo.size.width / CGFloat(count)
+                    NewCandlePop(key: popID)
+                        .frame(width: slot, height: geo.size.height)
+                        .position(x: geo.size.width - slot / 2, y: geo.size.height / 2)
+                }
+            }
+        }
+        .onAppear { if candles.isEmpty { seed() } }
+        .onReceive(timer) { _ in tick() }
     }
 
     private func seed() {
@@ -467,9 +556,8 @@ struct LiveCandleChart: View {
     private func tick() {
         let last = candles.last?.close ?? 100
         let fresh = Self.next(from: last)
-        withAnimation(.easeInOut(duration: 0.55)) {
-            candles = Array(candles.dropFirst()) + [fresh]
-        }
+        candles = Array(candles.dropFirst()) + [fresh]   // instant, no animation
+        popID += 1                                        // re-trigger the flash
     }
 
     /// A believable next candle: a random walk from the prior close with wicks.
@@ -480,5 +568,27 @@ struct LiveCandleChart: View {
         let hi = max(open, newClose) + Double.random(in: 0.3...2.0)
         let lo = min(open, newClose) - Double.random(in: 0.3...2.0)
         return Candle(open: open, high: hi, low: lo, close: newClose)
+    }
+}
+
+/// A soft vertical highlight that pops in and fades over the newest candle's
+/// slot. Re-fires whenever `key` changes (a new tick), independent of the
+/// chart's own candle views, so only the incoming bar visibly announces
+/// itself — the rest of the chart never re-animates.
+private struct NewCandlePop: View {
+    let key: Int
+    @State private var visible = false
+
+    var body: some View {
+        LinearGradient(colors: [Color.white.opacity(0.28), .clear],
+                       startPoint: .top, endPoint: .bottom)
+            .opacity(visible ? 0 : 1)
+            .scaleEffect(x: 1, y: visible ? 1.15 : 0.85, anchor: .bottom)
+            .onAppear { flash() }
+            .onChange(of: key) { _, _ in visible = false; flash() }
+    }
+
+    private func flash() {
+        withAnimation(.easeOut(duration: 0.5)) { visible = true }
     }
 }
