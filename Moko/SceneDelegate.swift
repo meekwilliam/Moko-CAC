@@ -1,6 +1,6 @@
 //
 //  SceneDelegate.swift
-//  DermApp
+//  Moko
 //
 //  Created by William Meek on 6/20/26.
 //
