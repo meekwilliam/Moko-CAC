@@ -22,3 +22,6 @@ Carthage/Build/
 
 # Misc
 *.log
+
+# Firebase config (contains the project API key) — keep local, re-download from the Firebase console on a fresh clone
+GoogleService-Info.plist

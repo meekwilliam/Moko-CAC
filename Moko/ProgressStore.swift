@@ -53,6 +53,15 @@ final class ProgressStore: ObservableObject {
     private var s: Snapshot { didSet { persist() } }
     private static let key = "moko_progress_v1"
 
+    // Cloud-sync hooks (wired by SyncService / ViewController; nil when local-only).
+    /// Fires after any local change so the syncer can push to the cloud.
+    var onChange: (() -> Void)?
+    /// Fires after a cloud snapshot is adopted so the UI (path/profile) refreshes.
+    var onExternalReplace: (() -> Void)?
+    /// While true, local persists don't trigger `onChange` (used when adopting a
+    /// pulled cloud snapshot, so we don't immediately push it straight back).
+    private var suppressChange = false
+
     private init() {
         if let data = UserDefaults.standard.data(forKey: Self.key),
            let decoded = try? JSONDecoder().decode(Snapshot.self, from: data) {
@@ -94,6 +103,22 @@ final class ProgressStore: ObservableObject {
         if let data = try? JSONEncoder().encode(s) {
             UserDefaults.standard.set(data, forKey: Self.key)
         }
+        if !suppressChange { onChange?() }
+    }
+
+    // MARK: Cloud sync (portable snapshot in/out — see Backend/SyncService)
+
+    /// The full state as portable JSON (what gets stored in the cloud).
+    func currentSnapshotData() -> Data? { try? JSONEncoder().encode(s) }
+
+    /// Adopt a snapshot pulled from the cloud, replacing local state. Persists
+    /// locally but does NOT re-trigger a push, then asks the UI to refresh.
+    func replaceSnapshot(with data: Data) {
+        guard let decoded = try? JSONDecoder().decode(Snapshot.self, from: data) else { return }
+        suppressChange = true
+        s = decoded
+        suppressChange = false
+        onExternalReplace?()
     }
 
     // MARK: Reads

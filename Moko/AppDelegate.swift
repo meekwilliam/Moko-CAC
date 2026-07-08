@@ -7,12 +7,17 @@
 
 import UIKit
 import CoreText
+import FirebaseCore
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         registerBundledFonts()
+        // Wire the Firebase backend in behind the app's seam (Backend.auth /
+        // Backend.store); everything else talks to the protocols, not Firebase.
+        FirebaseApp.configure()
+        Backend.install(auth: FirebaseBackend.shared, store: FirebaseBackend.shared)
         return true
     }
 
