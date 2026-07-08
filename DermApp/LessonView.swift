@@ -226,6 +226,7 @@ struct LessonView: View {
     @Environment(\.colorScheme) private var scheme
     @EnvironmentObject private var theme: ThemeManager
     @State private var showExitConfirm = false
+    @State private var checkReadyPulse = false
     let hearts: Int
     let isUnlimitedHearts: Bool
     var onClose: () -> Void
@@ -283,13 +284,15 @@ struct LessonView: View {
                         // Old-app `fadeUp`: the new screen rises in from below
                         // while the old one fades out underneath it.
                         .transition(.asymmetric(
-                            insertion: .offset(y: 22).combined(with: .opacity),
-                            removal: .opacity))
+                            insertion: .offset(y: 26)
+                                .combined(with: .scale(scale: 0.98, anchor: .top))
+                                .combined(with: .opacity),
+                            removal: .offset(y: -10).combined(with: .opacity)))
                         .padding(.horizontal, 20)
                         .padding(.top, 18)
                         .padding(.bottom, 24)
                     }
-                    .animation(.spring(response: 0.5, dampingFraction: 0.9), value: player.index)
+                    .animation(.spring(response: 0.42, dampingFraction: 0.88), value: player.index)
                     footer
                 }
             }
@@ -304,6 +307,13 @@ struct LessonView: View {
             }
         }
         .animation(.easeInOut(duration: 0.25), value: player.finished)
+        .onChange(of: player.canCheck) { ready in
+            guard ready && !player.revealed else { return }
+            checkReadyPulse = true
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.16) {
+                checkReadyPulse = false
+            }
+        }
     }
 
     private var mistakeBadge: some View {
@@ -348,6 +358,7 @@ struct LessonView: View {
                 }
             }
             .frame(height: 20)
+            .animation(.spring(response: 0.36, dampingFraction: 0.82), value: player.progress)
 
             lessonHeartBadge
         }
@@ -368,6 +379,7 @@ struct LessonView: View {
                     .font(Theme.font(16, .black))
                     .foregroundColor(ink)
                     .monospacedDigit()
+                    .contentTransition(.numericText())
             }
         }
         .frame(minWidth: 52, alignment: .trailing)
@@ -387,8 +399,7 @@ struct LessonView: View {
             }
             if player.revealed && !player.isIntro {
                 // The feedback card carries its own WHY? / Got It / Continue
-                // buttons, so it replaces the primary button entirely. Matching
-                // can't be gotten wrong, but still shows its WHY? explanation.
+                // buttons, so it replaces the primary button entirely.
                 FeedbackBanner(player: player) { withAnimation { player.advance() } }
                     .transition(.move(edge: .bottom)
                         .combined(with: .opacity)
@@ -423,6 +434,8 @@ struct LessonView: View {
                     fill: player.canCheck ? accent : Color(hex: "#4B5563"),
                     slab: player.canCheck ? accentDark : Color(hex: "#333B47")))
                 .disabled(!player.canCheck)
+                .scaleEffect(checkReadyPulse ? 1.025 : 1)
+                .animation(.spring(response: 0.22, dampingFraction: 0.52), value: checkReadyPulse)
         } else {
             Button(player.isLastScreen ? "Finish" : "Continue") { withAnimation { player.advance() } }
                 .buttonStyle(Chunky3DStyle(
@@ -609,7 +622,7 @@ struct RewardView: View {
     @ObservedObject var player: LessonPlayer
     @Environment(\.colorScheme) private var scheme
     var onContinue: () -> Void
-    @State private var pop = false
+    @State private var stage = 0
 
     private var ink: Color { scheme == .dark ? Theme.inkDark : Theme.ink }
 
@@ -618,36 +631,61 @@ struct RewardView: View {
             Spacer()
             ZStack {
                 Circle().fill(player.unit.main.opacity(0.15)).frame(width: 150, height: 150)
+                    .scaleEffect(stage >= 1 ? 1.08 : 0.65)
+                    .opacity(stage >= 1 ? 1 : 0)
                 Image(systemName: "checkmark.seal.fill")
                     .font(.system(size: 92, weight: .bold))
                     .foregroundColor(player.unit.main)
+                    .rotationEffect(.degrees(stage >= 1 ? 0 : -14))
+                    .scaleEffect(stage >= 1 ? 1 : 0.35)
             }
-            .scaleEffect(pop ? 1 : 0.4)
-            .opacity(pop ? 1 : 0)
+            .opacity(stage >= 1 ? 1 : 0)
 
             Text("Lesson Complete!")
                 .font(Theme.font(28, .black))
                 .foregroundColor(ink)
+                .opacity(stage >= 2 ? 1 : 0)
+                .offset(y: stage >= 2 ? 0 : 12)
 
             Text(player.lesson.celebration ?? "\(player.lesson.title) mastered")
                 .font(Theme.font(15, .semibold))
                 .foregroundColor(Theme.muted)
                 .multilineTextAlignment(.center)
                 .padding(.horizontal, 30)
+                .opacity(stage >= 2 ? 1 : 0)
+                .offset(y: stage >= 2 ? 0 : 10)
 
             HStack(spacing: 12) {
                 xpPill(text: player.isReplay ? "+25 XP" : "+100 XP")
                 if treatsEarned > 0 { treatPill(value: treatsEarned) }
             }
+            .opacity(stage >= 3 ? 1 : 0)
+            .offset(y: stage >= 3 ? 0 : 14)
             Spacer()
 
             Button("Continue") { onContinue() }
                 .buttonStyle(Chunky3DStyle(fill: player.unit.main, slab: player.unit.dark))
                 .padding(.horizontal, 20)
                 .padding(.bottom, 8)
+                .opacity(stage >= 4 ? 1 : 0)
+                .offset(y: stage >= 4 ? 0 : 18)
         }
         .onAppear {
-            withAnimation(.spring(response: 0.5, dampingFraction: 0.55)) { pop = true }
+            runRewardIntro()
+        }
+    }
+
+    private func runRewardIntro() {
+        stage = 0
+        withAnimation(.spring(response: 0.48, dampingFraction: 0.58)) { stage = 1 }
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.14) {
+            withAnimation(.spring(response: 0.38, dampingFraction: 0.86)) { stage = 2 }
+        }
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.28) {
+            withAnimation(.spring(response: 0.34, dampingFraction: 0.78)) { stage = 3 }
+        }
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.42) {
+            withAnimation(.spring(response: 0.34, dampingFraction: 0.84)) { stage = 4 }
         }
     }
 
