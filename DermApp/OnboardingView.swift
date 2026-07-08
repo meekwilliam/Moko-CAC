@@ -17,8 +17,6 @@ struct OnboardingView: View {
     @State private var experience: Int? = nil
     @State private var goals: Set<Int> = []
     @State private var dailyGoal: Int? = nil
-    @State private var signupEmail = ""
-    @State private var signupPassword = ""
 
     private let totalSteps = 6
 
@@ -231,7 +229,9 @@ struct OnboardingView: View {
 
     private var signUpScreen: some View {
         VStack(spacing: 0) {
-            VStack(alignment: .leading, spacing: 6) {
+            Spacer()
+
+            VStack(alignment: .center, spacing: 6) {
                 Text("Create your account")
                     .font(Theme.font(26, .black))
                     .foregroundColor(theme.palette.ink)
@@ -239,51 +239,50 @@ struct OnboardingView: View {
                     .font(Theme.font(15, .bold))
                     .foregroundColor(theme.palette.muted)
             }
-            .frame(maxWidth: .infinity, alignment: .leading)
-            .padding(.top, 18)
+            .multilineTextAlignment(.center)
+            .frame(maxWidth: .infinity)
 
             VStack(spacing: 14) {
-                signupField(placeholder: "Email", text: $signupEmail, isSecure: false)
-                signupField(placeholder: "Password", text: $signupPassword, isSecure: true)
+                authButton(label: "Continue with Apple",
+                          fill: .black, textColor: .white, border: Color.white.opacity(0.18)) {
+                    Image(systemName: "apple.logo")
+                        .font(.system(size: 18, weight: .medium))
+                }
+                authButton(label: "Continue with Google",
+                          fill: .white, textColor: Color(hex: "#1F1F1F"), border: Color.black.opacity(0.08)) {
+                    GoogleGlyph().frame(width: 18, height: 18)
+                }
             }
-            .padding(.top, 24)
+            .padding(.top, 32)
 
             Spacer()
-
-            Button("CREATE ACCOUNT") { advance() }
-                .buttonStyle(Chunky3DStyle(
-                    fill: canSignUp ? Theme.answer : Color(hex: "#4B5563"),
-                    slab: canSignUp ? Theme.answerDark : Color(hex: "#333B47")))
-                .disabled(!canSignUp)
+            Spacer()
         }
         .padding(.horizontal, 24)
         .padding(.bottom, 26)
     }
 
-    private var canSignUp: Bool {
-        signupEmail.contains("@") && signupPassword.count >= 4
-    }
-
-    private func signupField(placeholder: String, text: Binding<String>, isSecure: Bool) -> some View {
-        Group {
-            if isSecure {
-                SecureField("", text: text, prompt: Text(placeholder).foregroundColor(theme.palette.muted))
-            } else {
-                TextField("", text: text, prompt: Text(placeholder).foregroundColor(theme.palette.muted))
-                    .keyboardType(.emailAddress)
-                    .autocapitalization(.none)
-                    .autocorrectionDisabled()
+    private func authButton<Glyph: View>(label: String, fill: Color, textColor: Color, border: Color,
+                                         @ViewBuilder glyph: () -> Glyph) -> some View {
+        Button {
+            Haptics.selection()
+            advance()   // no real backend — this app is local-first; advances the flow
+        } label: {
+            HStack(spacing: 10) {
+                glyph()
+                Text(label).font(Theme.font(16, .black))
             }
+            .foregroundColor(textColor)
+            .frame(maxWidth: .infinity)
+            .padding(.vertical, 15)
+            .background(
+                RoundedRectangle(cornerRadius: 14, style: .continuous)
+                    .fill(fill)
+                    .overlay(RoundedRectangle(cornerRadius: 14, style: .continuous)
+                        .strokeBorder(border, lineWidth: 1.5))
+            )
         }
-        .font(Theme.font(16, .bold))
-        .foregroundColor(theme.palette.ink)
-        .padding(.vertical, 15).padding(.horizontal, 16)
-        .background(
-            RoundedRectangle(cornerRadius: 14, style: .continuous)
-                .fill(Color(hex: "#1E293B"))
-                .overlay(RoundedRectangle(cornerRadius: 14, style: .continuous)
-                    .strokeBorder(Color(hex: "#334155"), lineWidth: 1.5))
-        )
+        .buttonStyle(RowPressStyle())
     }
 
     // MARK: Shared chooser scaffolding
@@ -590,5 +589,36 @@ private struct NewCandlePop: View {
 
     private func flash() {
         withAnimation(.easeOut(duration: 0.5)) { visible = true }
+    }
+}
+
+/// A lightweight approximation of the Google "G" mark (four quarter-arcs in
+/// Google's brand colors) — used on the "Continue with Google" button since
+/// there's no SF Symbol equivalent.
+private struct GoogleGlyph: View {
+    var body: some View {
+        ZStack {
+            GoogleArc(start: -45, end: 45).stroke(Color(hex: "#4285F4"), lineWidth: 3.2)
+            GoogleArc(start: 45, end: 135).stroke(Color(hex: "#34A853"), lineWidth: 3.2)
+            GoogleArc(start: 135, end: 225).stroke(Color(hex: "#FBBC05"), lineWidth: 3.2)
+            GoogleArc(start: 225, end: 315).stroke(Color(hex: "#EA4335"), lineWidth: 3.2)
+            // The crossbar stub, like the real mark.
+            Rectangle()
+                .fill(Color(hex: "#4285F4"))
+                .frame(width: 7, height: 3.2)
+                .offset(x: 2)
+        }
+    }
+}
+
+private struct GoogleArc: Shape {
+    let start: Double
+    let end: Double
+    func path(in rect: CGRect) -> Path {
+        var p = Path()
+        p.addArc(center: CGPoint(x: rect.midX, y: rect.midY),
+                 radius: rect.width / 2 - 1.6,
+                 startAngle: .degrees(start), endAngle: .degrees(end), clockwise: false)
+        return p
     }
 }
