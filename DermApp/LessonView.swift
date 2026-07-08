@@ -276,22 +276,26 @@ struct LessonView: View {
                 VStack(spacing: 0) {
                     header
                     ScrollView {
-                        VStack(alignment: .leading, spacing: 10) {
-                            if player.screen.isPreviousMistake { mistakeBadge }
-                            LessonScreenRouter(player: player, ink: ink)
+                        ZStack(alignment: .topLeading) {
+                            VStack(alignment: .leading, spacing: 10) {
+                                if player.screen.isPreviousMistake { mistakeBadge }
+                                LessonScreenRouter(player: player, ink: ink)
+                            }
+                            .id(player.index)   // fresh per-screen @State each step
+                            // Keep both outgoing and incoming questions alive in
+                            // this stable container so the horizontal swipe reads
+                            // as movement instead of a fade.
+                            .transition(.asymmetric(
+                                insertion: .offset(x: UIScreen.main.bounds.width),
+                                removal: .offset(x: -UIScreen.main.bounds.width)))
+                            .padding(.horizontal, 20)
+                            .padding(.top, 18)
+                            .padding(.bottom, 24)
                         }
-                        .id(player.index)   // fresh per-screen @State each step
-                        // Duolingo-style step advance: next question slides in
-                        // from the right while the previous one leaves left.
-                        .transition(.asymmetric(
-                            insertion: .move(edge: .trailing),
-                            removal: .move(edge: .leading)))
-                        .padding(.horizontal, 20)
-                        .padding(.top, 18)
-                        .padding(.bottom, 24)
+                        .frame(maxWidth: .infinity, alignment: .topLeading)
+                        .clipped()
                     }
-                    .clipped()
-                    .animation(.spring(response: 0.34, dampingFraction: 0.9), value: player.index)
+                    .animation(.easeOut(duration: 0.24), value: player.index)
                     footer
                 }
             }
