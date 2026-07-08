@@ -94,6 +94,43 @@ struct TiltModifier: ViewModifier {
     }
 }
 
+// Drives a chunky-3D press: turns the button style's `isPressed` into a `down`
+// flag that is GUARANTEED to hold for a minimum duration, so even an instant
+// tap plays a full down-then-up (fast taps used to reverse before the offset
+// visibly moved). Hands `down` to a content closure that renders the button.
+struct PressSink<Content: View>: View {
+    let isPressed: Bool
+    @ViewBuilder let content: (_ down: Bool) -> Content
+
+    @State private var down = false
+    @State private var pressStart: Date?
+    @State private var gen = 0
+    private let minDown: Double = 0.11   // seconds the down state stays visible
+
+    var body: some View {
+        content(down)
+            .onChange(of: isPressed) { _, pressed in
+                gen += 1
+                if pressed {
+                    pressStart = Date()
+                    withAnimation(.easeOut(duration: 0.06)) { down = true }
+                } else {
+                    let elapsed = pressStart.map { Date().timeIntervalSince($0) } ?? minDown
+                    let remaining = max(0, minDown - elapsed)
+                    let g = gen
+                    let release = { withAnimation(.spring(response: 0.3, dampingFraction: 0.55)) { down = false } }
+                    if remaining <= 0 {
+                        release()
+                    } else {
+                        DispatchQueue.main.asyncAfter(deadline: .now() + remaining) {
+                            if g == gen { release() }
+                        }
+                    }
+                }
+            }
+    }
+}
+
 struct Chunky3DStyle: ButtonStyle {
     var fill: Color
     var slab: Color
@@ -107,32 +144,30 @@ struct Chunky3DStyle: ButtonStyle {
     var border: Color? = nil
 
     func makeBody(configuration: Configuration) -> some View {
-        let pressed = configuration.isPressed
-        configuration.label
-            .font(font)
-            .foregroundColor(textColor)
-            .frame(maxWidth: .infinity)
-            .padding(.vertical, 18)
-            .background(
-                RoundedRectangle(cornerRadius: radius, style: .continuous)
-                    .fill(fill)
-                    .overlay(
-                        RoundedRectangle(cornerRadius: radius, style: .continuous)
-                            .strokeBorder(border ?? slab, lineWidth: 2)
-                    )
-            )
-            .background(
-                RoundedRectangle(cornerRadius: radius, style: .continuous)
-                    .fill(slab)
-                    // Counter-offset the whole-label sink so the slab stays fixed
-                    // and the face lands flush on it (the 3D lip vanishes on
-                    // press — the tactile "goes 2D" look, like the path puck).
-                    .offset(y: pressed ? 0 : depth)
-            )
-            .offset(y: pressed ? depth : 0)
-            .animation(pressed
-                       ? .easeIn(duration: 0.055)
-                       : .spring(response: 0.34, dampingFraction: 0.55), value: pressed)
+        PressSink(isPressed: configuration.isPressed) { down in
+            configuration.label
+                .font(font)
+                .foregroundColor(textColor)
+                .frame(maxWidth: .infinity)
+                .padding(.vertical, 18)
+                .background(
+                    RoundedRectangle(cornerRadius: radius, style: .continuous)
+                        .fill(fill)
+                        .overlay(
+                            RoundedRectangle(cornerRadius: radius, style: .continuous)
+                                .strokeBorder(border ?? slab, lineWidth: 2)
+                        )
+                )
+                .background(
+                    RoundedRectangle(cornerRadius: radius, style: .continuous)
+                        .fill(slab)
+                        // Counter-offset the whole-label sink so the slab stays
+                        // fixed and the face lands flush on it (the 3D lip
+                        // vanishes on press — the "goes 2D" look, like the puck).
+                        .offset(y: down ? 0 : depth)
+                )
+                .offset(y: down ? depth : 0)
+        }
     }
 }
 
@@ -144,20 +179,18 @@ struct Circle3DStyle: ButtonStyle {
     var size: CGFloat = 34
     var depth: CGFloat = 3
     func makeBody(configuration: Configuration) -> some View {
-        let pressed = configuration.isPressed
-        configuration.label
-            .frame(width: size, height: size)
-            .background(
-                Circle().fill(face)
-                    .overlay(Circle().strokeBorder(slab, lineWidth: 1.5))
-            )
-            // Counter-offset so the slab stays fixed and the face sinks flush
-            // onto it (the lip vanishes on press), like the path puck.
-            .background(Circle().fill(slab).offset(y: pressed ? 0 : depth))
-            .offset(y: pressed ? depth : 0)
-            .animation(pressed
-                       ? .easeIn(duration: 0.055)
-                       : .spring(response: 0.34, dampingFraction: 0.55), value: pressed)
+        PressSink(isPressed: configuration.isPressed) { down in
+            configuration.label
+                .frame(width: size, height: size)
+                .background(
+                    Circle().fill(face)
+                        .overlay(Circle().strokeBorder(slab, lineWidth: 1.5))
+                )
+                // Counter-offset so the slab stays fixed and the face sinks flush
+                // onto it (the lip vanishes on press), like the path puck.
+                .background(Circle().fill(slab).offset(y: down ? 0 : depth))
+                .offset(y: down ? depth : 0)
+        }
     }
 }
 
@@ -175,22 +208,19 @@ struct SinkButtonStyle: ButtonStyle {
     var radius: CGFloat = 16
     var depth: CGFloat = 5
     func makeBody(configuration: Configuration) -> some View {
-        let pressed = configuration.isPressed
-        return configuration.label
-            .background(
-                Group {
-                    if let slab {
-                        RoundedRectangle(cornerRadius: radius, style: .continuous)
-                            .fill(slab)
-                            .offset(y: pressed ? 0 : depth)
+        PressSink(isPressed: configuration.isPressed) { down in
+            configuration.label
+                .background(
+                    Group {
+                        if let slab {
+                            RoundedRectangle(cornerRadius: radius, style: .continuous)
+                                .fill(slab)
+                                .offset(y: down ? 0 : depth)
+                        }
                     }
-                }
-            )
-            .offset(y: pressed ? depth : 0)
-            .animation(pressed
-                       ? .easeIn(duration: 0.05)
-                       : .spring(response: 0.3, dampingFraction: 0.55),
-                       value: pressed)
+                )
+                .offset(y: down ? depth : 0)
+        }
     }
 }
 
