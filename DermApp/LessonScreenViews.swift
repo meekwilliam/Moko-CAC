@@ -1374,50 +1374,314 @@ struct FillBlankMultiView: View {
     @ObservedObject var player: LessonPlayer
     var ink: Color
     @Environment(\.colorScheme) private var scheme
+    @Namespace private var wordNamespace
 
     private var blanks: [Blank] { player.screen.blanks ?? [] }
+    private var bankItems: [(blank: Int, option: Int, label: String)] {
+        blanks.indices.compactMap { bi in
+            let correct = blanks[bi].correct
+            guard blanks[bi].options.indices.contains(correct) else { return nil }
+            return (bi, correct, blanks[bi].options[correct])
+        }
+    }
 
     var body: some View {
-        VStack(alignment: .leading, spacing: 20) {
+        VStack(alignment: .leading, spacing: 26) {
             QuestionChart(key: player.screen.chart, height: 130, seed: chartSeed(player.screen))
-            MascotPrompt(text: filledTemplate(), ink: ink, divider: true)
 
-            ForEach(blanks.indices, id: \.self) { bi in
-                VStack(alignment: .leading, spacing: 8) {
-                    Text("Blank \(bi + 1)")
-                        .font(Theme.font(12, .black))
-                        .foregroundColor(Theme.muted)
-                    FlowChips(options: blanks[bi].options,
-                              selected: player.multiSelections[safe: bi] ?? nil,
-                              revealed: player.revealed,
-                              correctIndex: blanks[bi].correct,
-                              ink: ink,
-                              scheme: scheme) { idx in
-                        guard !player.revealed else { return }
-                        Haptics.selection()
-                        if player.multiSelections.count == blanks.count {
-                            player.multiSelections[bi] = idx
-                        }
+            VStack(alignment: .leading, spacing: 12) {
+                Text("Complete the sentence")
+                    .font(Theme.font(26, .black))
+                    .foregroundColor(ink)
+                    .fixedSize(horizontal: false, vertical: true)
+
+                sentenceBuilder
+                    .padding(.top, 6)
+            }
+
+            wordBank
+                .padding(.top, player.screen.chart == nil ? 112 : 46)
+        }
+        .frame(maxWidth: .infinity, alignment: .leading)
+    }
+
+    private var sentenceBuilder: some View {
+        MultiBlankSentenceLayout(horizontalSpacing: 8, verticalSpacing: 14) {
+            ForEach(Array(templateParts().enumerated()), id: \.offset) { _, part in
+                switch part {
+                case .text(let text):
+                    if !text.isEmpty {
+                        Text(text)
+                            .font(Theme.font(24, .medium))
+                            .foregroundColor(ink)
+                            .fixedSize()
                     }
+                case .blank(let index):
+                    blankSlot(index)
                 }
             }
         }
         .frame(maxWidth: .infinity, alignment: .leading)
     }
 
-    private func filledTemplate() -> String {
-        var t = player.screen.template ?? ""
-        for (i, b) in blanks.enumerated() {
-            let token = "[__\(i + 1)__]"
-            let fill: String
-            if let sel = player.multiSelections[safe: i] ?? nil, b.options.indices.contains(sel) {
-                fill = "<b>\(b.options[sel])</b>"
-            } else {
-                fill = "______"
+    private var wordBank: some View {
+        MultiBlankSentenceLayout(horizontalSpacing: 12, verticalSpacing: 12, rowAlignment: .center) {
+            ForEach(bankItems, id: \.blank) { item in
+                wordOption(blankIndex: item.blank, optionIndex: item.option, label: item.label)
             }
-            t = t.replacingOccurrences(of: token, with: fill)
         }
-        return t
+        .frame(maxWidth: .infinity, alignment: .center)
+    }
+
+    private func blankSlot(_ blankIndex: Int) -> some View {
+        let selected = selectedLabel(for: blankIndex)
+
+        return Button {
+            guard !player.revealed, selected != nil else { return }
+            Haptics.selection()
+            withAnimation(.spring(response: 0.34, dampingFraction: 0.78)) {
+                if player.multiSelections.indices.contains(blankIndex) {
+                    player.multiSelections[blankIndex] = nil
+                }
+            }
+        } label: {
+            ZStack {
+                RoundedRectangle(cornerRadius: 18, style: .continuous)
+                    .fill(slotFill(blankIndex: blankIndex, filled: selected != nil))
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 18, style: .continuous)
+                            .strokeBorder(slotBorder(blankIndex: blankIndex, filled: selected != nil),
+                                          lineWidth: selected == nil ? 2 : 3)
+                    )
+                    .background(
+                        RoundedRectangle(cornerRadius: 18, style: .continuous)
+                            .fill(Color.black.opacity(selected == nil ? 0 : 0.28))
+                            .offset(y: 4)
+                    )
+
+                if let selected {
+                    Text(selected)
+                        .font(Theme.font(21, .black))
+                        .foregroundColor(.white)
+                        .padding(.horizontal, 18)
+                        .matchedGeometryEffect(id: "multi-fill-word-\(blankIndex)", in: wordNamespace)
+                        .transition(.asymmetric(
+                            insertion: .offset(y: 170).combined(with: .scale(scale: 0.92)),
+                            removal: .offset(y: 170).combined(with: .scale(scale: 0.92))
+                        ))
+                } else {
+                    Rectangle()
+                        .fill(Color(hex: "#536673"))
+                        .frame(height: 3)
+                        .padding(.horizontal, 16)
+                        .padding(.top, 28)
+                }
+            }
+            .frame(width: slotWidth(for: blankIndex), height: 58)
+            .contentShape(RoundedRectangle(cornerRadius: 18, style: .continuous))
+        }
+        .buttonStyle(RowPressStyle())
+        .disabled(player.revealed)
+        .modifier(AnswerFeedbackFX(pop: player.revealed && isCorrect(blankIndex: blankIndex),
+                                   shake: player.revealed && !isCorrect(blankIndex: blankIndex)))
+    }
+
+    private func wordOption(blankIndex: Int, optionIndex: Int, label: String) -> some View {
+        let selected = (player.multiSelections[safe: blankIndex] ?? nil) == optionIndex
+        let revealed = player.revealed
+        let correct = optionIndex == blanks[blankIndex].correct
+
+        var fill = scheme == .dark ? Color(hex: "#17242B") : Color.white
+        var border = scheme == .dark ? Color(hex: "#41515D") : Color(hex: "#DDE3ED")
+        var slab = scheme == .dark ? Color(hex: "#33424D") : Color(hex: "#B8C4D8")
+        var textColor = ink
+
+        if revealed && correct {
+            fill = Theme.correct; border = Theme.correctDark; slab = Theme.correctDark; textColor = .white
+        }
+
+        return Button {
+            guard !revealed, !selected else { return }
+            Haptics.selection()
+            withAnimation(.spring(response: 0.34, dampingFraction: 0.78)) {
+                if player.multiSelections.count != blanks.count {
+                    player.multiSelections = Array(repeating: nil, count: blanks.count)
+                }
+                player.multiSelections[blankIndex] = optionIndex
+            }
+        } label: {
+            ZStack {
+                RoundedRectangle(cornerRadius: 18, style: .continuous)
+                    .fill(selected ? Color(hex: "#3A4A54") : fill)
+                    .overlay(RoundedRectangle(cornerRadius: 18, style: .continuous)
+                        .strokeBorder(border.opacity(selected ? 0 : 1), lineWidth: 2.5))
+                    .background(RoundedRectangle(cornerRadius: 18, style: .continuous)
+                        .fill(slab.opacity(selected ? 0 : 1)).offset(y: 5))
+
+                if !selected {
+                    Text(label)
+                        .font(Theme.font(20, .black))
+                        .foregroundColor(textColor)
+                        .padding(.horizontal, 18)
+                        .matchedGeometryEffect(id: "multi-fill-word-\(blankIndex)", in: wordNamespace)
+                }
+            }
+            .frame(minWidth: 86, minHeight: 52)
+        }
+        .buttonStyle(RowPressStyle())
+        .disabled(revealed || selected)
+        .modifier(AnswerFeedbackFX(pop: revealed && correct, shake: false))
+    }
+
+    private func selectedLabel(for blankIndex: Int) -> String? {
+        guard let blank = blanks[safe: blankIndex],
+              let selected = player.multiSelections[safe: blankIndex] ?? nil,
+              blank.options.indices.contains(selected) else {
+            return nil
+        }
+        return blank.options[selected]
+    }
+
+    private func isCorrect(blankIndex: Int) -> Bool {
+        guard let blank = blanks[safe: blankIndex],
+              let selected = player.multiSelections[safe: blankIndex] ?? nil else {
+            return false
+        }
+        return selected == blank.correct
+    }
+
+    private func slotWidth(for blankIndex: Int) -> CGFloat {
+        let selected = selectedLabel(for: blankIndex) ?? ""
+        let correct = bankItems.first(where: { $0.blank == blankIndex })?.label ?? ""
+        let longest = max(selected.count, correct.count, 6)
+        return max(112, min(190, CGFloat(longest) * 15 + 44))
+    }
+
+    private func slotFill(blankIndex: Int, filled: Bool) -> Color {
+        guard player.revealed else {
+            return filled ? Color(hex: "#2B3A44") : Color.clear
+        }
+        return isCorrect(blankIndex: blankIndex) ? Theme.correct : Theme.incorrect
+    }
+
+    private func slotBorder(blankIndex: Int, filled: Bool) -> Color {
+        guard player.revealed else {
+            return filled ? Color(hex: "#3D4E5A") : Color(hex: "#536673")
+        }
+        return isCorrect(blankIndex: blankIndex) ? Theme.correctDark : Theme.incorrectDark
+    }
+
+    private func templateParts() -> [MultiBlankTemplatePart] {
+        var parts: [MultiBlankTemplatePart] = []
+        var remaining = player.screen.template ?? ""
+        func appendText(_ text: String) {
+            var token = ""
+            for char in text {
+                token.append(char)
+                if char.isWhitespace {
+                    parts.append(.text(token))
+                    token = ""
+                }
+            }
+            if !token.isEmpty { parts.append(.text(token)) }
+        }
+
+        while let open = remaining.range(of: "[__") {
+            let before = String(remaining[..<open.lowerBound])
+            if !before.isEmpty { appendText(before) }
+
+            let afterOpen = remaining[open.upperBound...]
+            guard let close = afterOpen.range(of: "__]") else {
+                appendText(String(remaining[open.lowerBound...]))
+                return parts
+            }
+
+            let numberText = String(afterOpen[..<close.lowerBound])
+            if let number = Int(numberText), blanks.indices.contains(number - 1) {
+                parts.append(.blank(number - 1))
+            } else {
+                appendText(String(remaining[open.lowerBound...close.upperBound]))
+            }
+
+            remaining = String(afterOpen[close.upperBound...])
+        }
+
+        if !remaining.isEmpty { appendText(remaining) }
+        return parts
+    }
+}
+
+private enum MultiBlankTemplatePart {
+    case text(String)
+    case blank(Int)
+}
+
+private struct MultiBlankSentenceLayout: Layout {
+    enum RowAlignment: Equatable {
+        case leading
+        case center
+    }
+
+    var horizontalSpacing: CGFloat = 8
+    var verticalSpacing: CGFloat = 12
+    var rowAlignment: RowAlignment = .leading
+
+    func sizeThatFits(proposal: ProposedViewSize, subviews: Subviews, cache: inout ()) -> CGSize {
+        let maxWidth = proposal.width ?? .infinity
+        let rows = rows(in: maxWidth, subviews: subviews)
+        let width = rows.map(\.width).max() ?? 0
+        let height = rows.reduce(CGFloat(0)) { $0 + $1.height } + CGFloat(max(rows.count - 1, 0)) * verticalSpacing
+        return CGSize(width: proposal.width ?? width, height: height)
+    }
+
+    func placeSubviews(in bounds: CGRect, proposal: ProposedViewSize, subviews: Subviews, cache: inout ()) {
+        var y = bounds.minY
+        for row in rows(in: bounds.width, subviews: subviews) {
+            let rowOffset = rowAlignment == .center ? max(0, (bounds.width - row.width) / 2) : 0
+            var x = bounds.minX + rowOffset
+            for item in row.items {
+                let point = CGPoint(x: x, y: y + (row.height - item.size.height) / 2)
+                subviews[item.index].place(at: point, proposal: ProposedViewSize(item.size))
+                x += item.size.width + horizontalSpacing
+            }
+            y += row.height + verticalSpacing
+        }
+    }
+
+    private func rows(in maxWidth: CGFloat, subviews: Subviews) -> [Row] {
+        var rows: [Row] = []
+        var current = Row()
+
+        for index in subviews.indices {
+            let size = subviews[index].sizeThatFits(.unspecified)
+            let proposedWidth = current.items.isEmpty ? size.width : current.width + horizontalSpacing + size.width
+            if proposedWidth > maxWidth, !current.items.isEmpty {
+                rows.append(current)
+                current = Row()
+            }
+            current.append(index: index, size: size, spacing: horizontalSpacing)
+        }
+
+        if !current.items.isEmpty { rows.append(current) }
+        return rows
+    }
+
+    private struct Row {
+        var items: [Item] = []
+        var width: CGFloat = 0
+        var height: CGFloat = 0
+
+        mutating func append(index: Int, size: CGSize, spacing: CGFloat) {
+            if !items.isEmpty { width += spacing }
+            items.append(Item(index: index, size: size))
+            width += size.width
+            height = max(height, size.height)
+        }
+    }
+
+    private struct Item {
+        let index: Int
+        let size: CGSize
     }
 }
 
