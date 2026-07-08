@@ -100,9 +100,19 @@ struct HeartsView: View {
                     .font(.system(size: 40, weight: .black))
                     .foregroundColor(heartRed)
             } else {
-                ForEach(0..<ProgressStore.maxHearts, id: \.self) { i in
-                    HeartBadge(filled: i < hearts, size: 46)
+                ZStack(alignment: .bottomTrailing) {
+                    HeartBadge(filled: hearts > 0, size: 76)
+                    Text("\(hearts)")
+                        .font(Theme.font(18, .black))
+                        .foregroundColor(.white)
+                        .padding(.horizontal, 8)
+                        .padding(.vertical, 3)
+                        .background(Capsule().fill(Color(hex: "#1E293B")))
+                        .offset(x: 18, y: 4)
                 }
+                Text("/ \(ProgressStore.maxHearts)")
+                    .font(Theme.font(28, .black))
+                    .foregroundColor(theme.palette.ink)
             }
         }
     }
