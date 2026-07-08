@@ -54,7 +54,7 @@ struct PathView: View {
                                     .background(sectionAnchor(s))
                                     // Raise the whole section holding the open tooltip so the
                                     // callout draws above nodes in adjacent sections.
-                                    .zIndex(elevatedNode.map { ($0 - 1) / 5 } == s ? 100 : 0)
+                                    .zIndex(elevatedSection == s ? 100 : 0)
                             }
                             Color.clear.frame(height: 260)
                         }
@@ -255,6 +255,11 @@ struct PathView: View {
     }
 
     // MARK: Node
+
+    private var elevatedSection: Int? {
+        guard let elevatedNode else { return nil }
+        return store.nodes.first { $0.num == elevatedNode }?.sectionIndex
+    }
 
     /// Open/close the callout, keeping the node's raised z-order through the
     /// close animation so it doesn't clip behind the node below it.
