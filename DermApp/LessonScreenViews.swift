@@ -1087,11 +1087,8 @@ struct MatchingView: View {
     @State private var pairs: [[String]] = []
     @State private var question: String = ""
     @State private var rightOrder: [Int] = []
-    @State private var matchedLeft: Set<Int> = []
-    @State private var matchedRight: Set<Int> = []
     @State private var selLeft: Int? = nil
     @State private var selRight: Int? = nil
-    @State private var wrongPair: (Int, Int)? = nil
 
     var body: some View {
         VStack(alignment: .leading, spacing: 18) {
@@ -1123,19 +1120,27 @@ struct MatchingView: View {
     }
 
     private func chip(text: String, isLeft: Bool, index: Int) -> some View {
-        let matched = isLeft ? matchedLeft.contains(index) : matchedRight.contains(index)
+        let rightOriginal = isLeft ? nil : rightOrder[index]
+        let matched = isLeft
+            ? player.matchingSelections[index] != nil
+            : player.matchingSelections.values.contains(rightOriginal ?? -1)
         let selected = isLeft ? (selLeft == index) : (selRight == index)
-        let isWrong = wrongPair != nil && ((isLeft && wrongPair!.0 == index) || (!isLeft && wrongPair!.1 == index))
+        let isCorrect = isLeft
+            ? player.matchingSelections[index] == index
+            : player.matchingSelections.contains { left, right in left == right && right == rightOriginal }
+        let isWrong = player.revealed && matched && !isCorrect
 
         var fill = scheme == .dark ? Color(hex: "#1E293B") : Color.white
         var border = scheme == .dark ? Color(hex: "#334155") : Color(hex: "#DDE3ED")
         var slab = scheme == .dark ? Color(hex: "#334155") : Color(hex: "#B8C4D8")
         var textColor = ink
 
-        if matched {
+        if player.revealed && isCorrect {
             fill = Theme.correct; border = Theme.correctDark; slab = Theme.correctDark; textColor = .white
         } else if isWrong {
             fill = Theme.incorrect; border = Theme.incorrectDark; slab = Theme.incorrectDark; textColor = .white
+        } else if matched {
+            fill = Theme.answer.opacity(0.82); border = Theme.answerDark; slab = Theme.answerDark; textColor = .white
         } else if selected {
             fill = Theme.answer; border = Theme.answerDark; slab = Theme.answerDark; textColor = .white
         }
@@ -1149,32 +1154,23 @@ struct MatchingView: View {
                 .contentShape(Rectangle())
         }
         .buttonStyle(SinkButtonStyle(slab: slab, radius: 16, depth: 5))
-        .disabled(matched)
+        .disabled(player.revealed)
     }
 
     private func tap(isLeft: Bool, index: Int) {
-        guard wrongPair == nil else { return }
+        guard !player.revealed else { return }
         Haptics.selection()
         if isLeft { selLeft = index } else { selRight = index }
         guard let l = selLeft, let r = selRight else { return }
 
-        // rightOrder[r] is the original pair index for the chosen right chip.
-        if rightOrder[r] == l {
-            matchedLeft.insert(l); matchedRight.insert(r)
-            selLeft = nil; selRight = nil
-            Haptics.impact(.light)
-            if matchedLeft.count == pairs.count {
-                DispatchQueue.main.asyncAfter(deadline: .now() + 0.25) {
-                    withAnimation { player.markMatchingSolved() }
-                }
-            }
-        } else {
-            wrongPair = (l, r)
-            Haptics.impact(.rigid)
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                withAnimation { wrongPair = nil; selLeft = nil; selRight = nil }
-            }
+        let rightOriginal = rightOrder[r]
+        if let existingLeft = player.matchingSelections.first(where: { $0.value == rightOriginal })?.key {
+            player.matchingSelections.removeValue(forKey: existingLeft)
         }
+        player.matchingSelections[l] = rightOriginal
+        selLeft = nil
+        selRight = nil
+        Haptics.impact(.light)
     }
 }
 
