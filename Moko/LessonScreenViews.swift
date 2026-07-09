@@ -1079,6 +1079,7 @@ struct FillBlankChoiceView: View {
         HStack(spacing: 12) {
             ForEach(answerOptions, id: \.idx) { item in
                 wordOption(idx: item.idx, label: item.label)
+                    .questionItemEntrance(delay: 0.12)
             }
         }
         .frame(maxWidth: .infinity, alignment: .center)
@@ -1193,6 +1194,7 @@ struct ChoiceView: View {
             VStack(spacing: 14) {
                 ForEach(Array(player.currentOptions.enumerated()), id: \.offset) { idx, opt in
                     optionButton(idx: idx, label: opt)
+                        .questionItemEntrance(delay: 0.06 + Double(idx) * 0.055)
                 }
             }
             .padding(.top, 4)
@@ -1320,12 +1322,14 @@ struct MatchingView: View {
                 VStack(spacing: 12) {
                     ForEach(pairs.indices, id: \.self) { i in
                         chip(text: pairs[i][safe: 0] ?? "", isLeft: true, index: i)
+                            .questionItemEntrance(delay: 0.06 + Double(i) * 0.05)
                     }
                 }
                 VStack(spacing: 12) {
                     ForEach(rightOrder.indices, id: \.self) { slot in
                         let p = rightOrder[slot]
                         chip(text: (pairs[safe: p]?[safe: 1]) ?? "", isLeft: false, index: slot)
+                            .questionItemEntrance(delay: 0.12 + Double(slot) * 0.05)
                     }
                 }
             }
@@ -1369,6 +1373,8 @@ struct MatchingView: View {
         }
         .buttonStyle(SinkButtonStyle(slab: slab, radius: 16, depth: 5))
         .disabled(player.revealed)
+        .accessibilityLabel("\(isLeft ? "Term" : "Match"): \(text)")
+        .accessibilityValue(matched ? "Paired" : (selected ? "Selected" : "Not selected"))
     }
 
     private func tap(isLeft: Bool, index: Int) {
@@ -1446,8 +1452,9 @@ struct FillBlankMultiView: View {
 
     private var wordBank: some View {
         MultiBlankSentenceLayout(horizontalSpacing: 12, verticalSpacing: 12, rowAlignment: .center) {
-            ForEach(bankItems) { item in
+            ForEach(Array(bankItems.enumerated()), id: \.element.id) { index, item in
                 wordOption(item)
+                    .questionItemEntrance(delay: 0.12 + Double(index) * 0.06)
             }
         }
         .frame(maxWidth: .infinity, alignment: .center)
@@ -1749,6 +1756,7 @@ struct FlowChips: View {
         HStack(spacing: 10) {
             ForEach(Array(options.enumerated()), id: \.offset) { idx, opt in
                 chip(idx: idx, label: opt)
+                    .questionItemEntrance(delay: 0.06 + Double(idx) * 0.05)
             }
         }
     }
@@ -1801,6 +1809,7 @@ struct IngredientMatchView: View {
             VStack(spacing: 14) {
                 ForEach(Array(options.enumerated()), id: \.offset) { idx, opt in
                     optionButton(idx: idx, opt: opt)
+                        .questionItemEntrance(delay: 0.06 + Double(idx) * 0.055)
                 }
             }
             .padding(.top, 4)
@@ -1895,7 +1904,7 @@ struct OrderBuilderView: View {
             // Pool
             if !pool.isEmpty {
                 VStack(spacing: 10) {
-                    ForEach(pool, id: \.self) { item in
+                    ForEach(Array(pool.enumerated()), id: \.element) { index, item in
                         Button {
                             guard !player.revealed else { return }
                             Haptics.selection()
@@ -1918,6 +1927,7 @@ struct OrderBuilderView: View {
                         .buttonStyle(SinkButtonStyle(
                             slab: Theme.optionSlab(scheme),
                             radius: 14, depth: 4))
+                        .questionItemEntrance(delay: 0.06 + Double(index) * 0.055)
                     }
                 }
                 .padding(.top, 4)
