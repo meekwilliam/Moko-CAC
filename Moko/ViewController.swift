@@ -445,13 +445,27 @@ class ViewController: UIViewController {
         let alert = UIAlertController(title: nil, message: "Reset all progress?", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel))
         alert.addAction(UIAlertAction(title: "Reset", style: .destructive) { [weak self] _ in
-            self?.progress.reset()
-            self?.refreshPathState()
+            guard let self = self else { return }
+            self.progress.reset()
+            self.clearOnboardingData()
+            self.refreshPathState()
+            self.syncHearts()
+            self.syncCourses()
             withAnimation(.easeInOut(duration: 0.28)) {
-                self?.appRouter.selectedTab = .home
-                self?.appRouter.currentScreen = .main
+                self.appRouter.selectedTab = .home
+                self.appRouter.currentScreen = .onboarding
             }
         })
         present(alert, animated: true)
+    }
+
+    private func clearOnboardingData() {
+        let d = UserDefaults.standard
+        [
+            "onboarding.completed",
+            "onboarding.experience",
+            "onboarding.goals",
+            "onboarding.dailyGoal"
+        ].forEach { d.removeObject(forKey: $0) }
     }
 }
