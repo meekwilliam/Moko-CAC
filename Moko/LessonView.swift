@@ -19,7 +19,7 @@ final class LessonPlayer: ObservableObject {
     @Published var lastCorrect = false
     @Published var finished = false      // reward screen
 
-    // Single-choice selection (true_false / multiple_choice / fill_blank / spot_mistake / ingredient_match)
+    // Single-choice selection (true_false / multiple_choice / fill_blank / ingredient_match)
     @Published var selectedIndex: Int? = nil
     @Published var selectedSet: Set<Int> = []          // tap_candles multi-select
     @Published var markedLevel: Double? = nil          // mark_level: the price the user marked
@@ -507,7 +507,7 @@ struct FeedbackBanner: View {
     private var correctAnswerText: String? {
         let s = player.screen
         switch s.type {
-        case "true_false", "multiple_choice", "fill_blank", "spot_mistake", "ingredient_match":
+        case "true_false", "multiple_choice", "fill_blank", "ingredient_match":
             let opts = player.currentOptions
             let i = player.currentCorrectIndex
             return opts.indices.contains(i) ? opts[i] : nil

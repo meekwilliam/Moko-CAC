@@ -37,14 +37,6 @@ enum MechanicsTestLesson {
                 "explanation": "fill_blank: same UI as multiple_choice, phrased as a blank.",
             ],
             [
-                "type": "spot_mistake",
-                "scenario": "Someone made a mistake in this made-up scenario.",
-                "question": "What is the mistake?",
-                "options": ["Correct explanation of the mistake", "Wrong take A", "Wrong take B"],
-                "correct": 0,
-                "explanation": "spot_mistake: a scenario blurb plus a question.",
-            ],
-            [
                 "type": "fill_blank_multi",
                 "template": "This is [__1__] and this is [__2__].",
                 "blanks": [
