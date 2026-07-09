@@ -100,7 +100,6 @@ struct MascotPrompt: View {
                     SpeechBubbleShape(tail: 14)
                         .fill(face)
                         .overlay(SpeechBubbleShape(tail: 14).stroke(slab, lineWidth: 2))
-                        .background(SpeechBubbleBodyShape(tail: 14).fill(slab).offset(y: 5))
                 )
         }
         .frame(maxWidth: .infinity, alignment: .leading)
@@ -153,16 +152,6 @@ struct SpeechBubbleShape: Shape {
                        control: CGPoint(x: body.minX, y: body.minY))
         p.closeSubpath()
         return p
-    }
-}
-
-struct SpeechBubbleBodyShape: Shape {
-    var corner: CGFloat = 20
-    var tail: CGFloat = 12
-    func path(in rect: CGRect) -> Path {
-        Path(roundedRect: CGRect(x: rect.minX + tail, y: rect.minY,
-                                 width: rect.width - tail, height: rect.height),
-             cornerRadius: corner)
     }
 }
 
