@@ -211,7 +211,7 @@ struct OnboardingView: View {
                     .foregroundColor(theme.palette.ink)
                     .multilineTextAlignment(.center)
                 Text("Master charts, price action, and risk management through short interactive lessons.")
-                    .font(Theme.questionFont(16, .medium))
+                    .font(Theme.bodyFont(16))
                     .foregroundColor(theme.palette.muted)
                     .multilineTextAlignment(.center)
                     .lineSpacing(16 * 0.32)
@@ -299,7 +299,7 @@ struct OnboardingView: View {
                     .font(Theme.font(26, .black))
                     .foregroundColor(theme.palette.ink)
                 Text("So your progress and streak are saved.")
-                    .font(Theme.questionFont(15, .medium))
+                    .font(Theme.bodyFont(15))
                     .foregroundColor(theme.palette.muted)
             }
             .multilineTextAlignment(.center)
@@ -342,7 +342,7 @@ struct OnboardingView: View {
                         .font(Theme.font(26, .black))
                         .foregroundColor(theme.palette.ink)
                     Text("Sign in to pick up where you left off.")
-                        .font(Theme.questionFont(15, .medium))
+                        .font(Theme.bodyFont(15))
                         .foregroundColor(theme.palette.muted)
                 }
                 .multilineTextAlignment(.center)
@@ -429,7 +429,7 @@ struct OnboardingView: View {
                     .foregroundColor(theme.palette.ink)
                 if let subtitle {
                     Text(subtitle)
-                        .font(Theme.questionFont(15, .medium))
+                        .font(Theme.bodyFont(15))
                         .foregroundColor(theme.palette.muted)
                 }
             }
@@ -461,7 +461,7 @@ struct OnboardingView: View {
                         .foregroundColor(selected ? .white : theme.palette.ink)
                     if let detail {
                         Text(detail)
-                            .font(Theme.questionFont(13, .medium))
+                            .font(Theme.bodyFont(13))
                             .foregroundColor(selected ? .white.opacity(0.85) : theme.palette.muted)
                     }
                 }
@@ -517,7 +517,7 @@ private struct CommitScreen: View {
                 .foregroundColor(theme.palette.ink)
                 .multilineTextAlignment(.center)
             Text("I will spend a few minutes a day learning to trade with discipline.")
-                .font(Theme.questionFont(16, .medium))
+                .font(Theme.bodyFont(16))
                 .foregroundColor(theme.palette.muted)
                 .multilineTextAlignment(.center)
                 .lineSpacing(16 * 0.32)
