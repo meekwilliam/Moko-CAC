@@ -4171,13 +4171,6 @@
        "chart": "bullishEngulfing"
       },
       {
-       "type": "tap_candle",
-       "question": "Tap the candle whose body fully engulfs the one before it.",
-       "target": 1,
-       "explanation": "Its body opens below and closes above the previous body, covering it completely.",
-       "chart": "bullishEngulfing"
-      },
-      {
        "type": "multiple_choice",
        "question": "In a bullish engulfing, which candle comes first?",
        "options": [
@@ -4293,13 +4286,6 @@
        ],
        "correct": 2,
        "explanation": "Direction of the engulfing candle, not its size, sets bullish versus bearish.",
-       "chart": "bearishEngulfing"
-      },
-      {
-       "type": "tap_candle",
-       "question": "Tap the candle whose body fully engulfs the one before it.",
-       "target": 1,
-       "explanation": "Its body opens above and closes below the previous body, covering it completely.",
        "chart": "bearishEngulfing"
       },
       {
@@ -11810,10 +11796,10 @@
       },
       {
        "type": "mark_level",
-       "question": "Drag the line to the support this chart keeps bouncing from.",
+       "question": "Drag the line to the support both troughs tested.",
        "level_kind": "support",
-       "explanation": "The more times a level is touched and holds, the more notable it's considered.",
-       "chart": "supportBounce"
+       "chart": "doubleBottom",
+       "explanation": "The more times a level is touched and holds, the more notable it's considered."
       },
       {
        "type": "true_false",
@@ -13348,14 +13334,11 @@
        "chart": "doubleTop"
       },
       {
-       "type": "tap_candles",
-       "question": "Tap both peaks that test the same resistance level.",
-       "targets": [
-        1,
-        3
-       ],
-       "explanation": "The two peaks of a double top reach roughly the same price. That's the \"double\".",
-       "chart": "doubleTop"
+       "type": "mark_level",
+       "question": "Drag the line to the resistance both peaks tested.",
+       "level_kind": "resistance",
+       "chart": "doubleTop",
+       "explanation": "The two peaks of a double top reach roughly the same price — that shared level is the resistance."
       },
       {
        "type": "matching",
@@ -13480,14 +13463,11 @@
        "chart": "doubleBottom"
       },
       {
-       "type": "tap_candles",
-       "question": "Tap both troughs that test the same support level.",
-       "targets": [
-        1,
-        3
-       ],
-       "explanation": "The two troughs of a double bottom reach roughly the same price.",
-       "chart": "doubleBottom"
+       "type": "mark_level",
+       "question": "Drag the line to the support both troughs tested.",
+       "level_kind": "support",
+       "chart": "doubleBottom",
+       "explanation": "The two troughs of a double bottom reach roughly the same price — that shared level is the support."
       },
       {
        "type": "ingredient_match",
@@ -14735,14 +14715,11 @@
        "chart": "doubleTop"
       },
       {
-       "type": "tap_candles",
-       "question": "Tap the left and right shoulders.",
-       "targets": [
-        1,
-        5
-       ],
-       "explanation": "Head & shoulders has three peaks: two shoulders either side of a higher head.",
-       "chart": "headShoulders"
+       "type": "mark_level",
+       "question": "Drag the line to the neckline of this head & shoulders.",
+       "level_kind": "support",
+       "chart": "headShoulders",
+       "explanation": "Three peaks with a higher middle sit above a neckline drawn along the two troughs."
       },
       {
        "type": "multiple_choice",
@@ -14906,11 +14883,14 @@
        "explanation": "Breaking the neckline is the commonly cited confirmation step, descriptively."
       },
       {
-       "type": "mark_level",
-       "question": "Drag the line to the neckline (along the two troughs).",
-       "level_kind": "support",
-       "explanation": "The neckline connects the two troughs between the peaks — not the peaks themselves.",
-       "chart": "headShoulders"
+       "type": "tap_candles",
+       "question": "Tap BOTH shoulders of this head & shoulders.",
+       "targets": [
+        1,
+        5
+       ],
+       "chart": "headShoulders",
+       "explanation": "The neckline runs along the troughs; the shoulders are the outer two peaks."
       },
       {
        "type": "true_false",
@@ -18156,24 +18136,10 @@
        "chart": "range"
       },
       {
-       "type": "mark_level",
-       "question": "Drag the line to the resistance (the ceiling) of this range.",
-       "level_kind": "resistance",
-       "explanation": "A range is bounded by support below and resistance above.",
-       "chart": "range"
-      },
-      {
        "type": "true_false",
        "question": "A range has a clear, strong trend in one direction.",
        "correct": false,
        "explanation": "A range is sideways, the opposite of a strong one-directional trend.",
-       "chart": "range"
-      },
-      {
-       "type": "mark_level",
-       "question": "Drag the line to the support (the floor) of this range.",
-       "level_kind": "support",
-       "explanation": "A range is bounded by support below and resistance above.",
        "chart": "range"
       },
       {
@@ -18420,17 +18386,6 @@
        "target": 3,
        "explanation": "This candle pushes above the range on strong momentum.",
        "chart": "breakout"
-      },
-      {
-       "type": "multiple_choice",
-       "question": "Leaving a range by clearing a boundary is called a...",
-       "options": [
-        "bounce",
-        "gap",
-        "breakout"
-       ],
-       "correct": 2,
-       "explanation": "\"Breakout\" describes price clearing a range's boundary and continuing beyond it."
       },
       {
        "type": "true_false",
@@ -20557,17 +20512,6 @@
        "chart": "resistanceRejection"
       },
       {
-       "type": "fill_blank",
-       "question": "Confluence stacks [___], not certainty.",
-       "options": [
-        "volume",
-        "guarantees",
-        "probability"
-       ],
-       "correct": 2,
-       "explanation": "More agreeing factors raise the odds in the read, never guaranteeing an outcome."
-      },
-      {
        "type": "true_false",
        "question": "Enough confluence can eventually make an outcome fully guaranteed.",
        "correct": false,
@@ -20749,17 +20693,6 @@
        "target": 2,
        "explanation": "That gap up leaves empty space between the prior high and this candle's open.",
        "chart": "gapUp"
-      },
-      {
-       "type": "fill_blank",
-       "question": "A gap leaves an empty space with no [___] in between.",
-       "options": [
-        "color",
-        "trading",
-        "volume only"
-       ],
-       "correct": 1,
-       "explanation": "Price jumped, so no trades happened across the gap."
       },
       {
        "type": "multiple_choice",
@@ -21004,28 +20937,6 @@
        "target": 2,
        "explanation": "This candle opens with a gap above the previous candle's range.",
        "chart": "gapUp"
-      },
-      {
-       "type": "fill_blank",
-       "question": "A gap fill happens [___], not always.",
-       "options": [
-        "instantly",
-        "often",
-        "never"
-       ],
-       "correct": 1,
-       "explanation": "Gap fills are a common tendency, not a certainty."
-      },
-      {
-       "type": "multiple_choice",
-       "question": "How reliably do gaps fill?",
-       "options": [
-        "Every gap is guaranteed to fill.",
-        "Gaps often fill, but it's a tendency, not a guarantee.",
-        "Gaps never fill."
-       ],
-       "correct": 1,
-       "explanation": "Gaps fill often but not always. It's a tendency, not a guarantee."
       },
       {
        "type": "multiple_choice",
@@ -26163,25 +26074,6 @@
        "explanation": "These are the commonly cited core traits distinguishing each approach."
       },
       {
-       "type": "matching",
-       "question": "Match the description to its strategy type.",
-       "pairs": [
-        [
-         "Expecting a return toward an average level",
-         "Mean reversion"
-        ],
-        [
-         "Expecting continuation after clearing a range",
-         "Breakout trading"
-        ],
-        [
-         "Expecting price to stay between boundaries",
-         "Range trading"
-        ]
-       ],
-       "explanation": "These are the commonly cited core traits distinguishing each approach."
-      },
-      {
        "type": "mark_level",
        "question": "Drag the line to the resistance the price broke above.",
        "level_kind": "resistance",
@@ -27012,12 +26904,6 @@
        ],
        "correct": 1,
        "explanation": "Win rate is purely a frequency measure, not a measure of size."
-      },
-      {
-       "type": "true_false",
-       "question": "A high win rate always means a profitable system.",
-       "correct": false,
-       "explanation": "Tiny wins and huge losses can still lose money overall, even with a high win rate."
       }
      ]
     },
@@ -27219,12 +27105,6 @@
        ],
        "correct": 1,
        "explanation": "Expectancy is a long-run average, measured in R."
-      },
-      {
-       "type": "true_false",
-       "question": "A positive expectancy means the average trade, over many trades, gains R.",
-       "correct": true,
-       "explanation": "That's the definition of positive expectancy."
       }
      ]
     },
@@ -27292,17 +27172,6 @@
        ],
        "correct": 0,
        "explanation": "Sub-50% win rates can still be profitable if the average winner in R is large enough."
-      },
-      {
-       "type": "multiple_choice",
-       "question": "Must you win more than half your trades to be profitable?",
-       "options": [
-        "Yes, always.",
-        "No, large enough winners in R can offset a sub-50% win rate.",
-        "Only in ranging markets."
-       ],
-       "correct": 1,
-       "explanation": "With large enough winners in R, a sub-50% win rate can still profit overall."
       }
      ]
     },
@@ -27384,17 +27253,6 @@
        ],
        "correct": 2,
        "explanation": "A large sample is needed for averages like expectancy to be meaningful."
-      },
-      {
-       "type": "multiple_choice",
-       "question": "Do three wins in a row prove positive expectancy?",
-       "options": [
-        "Yes, they prove it.",
-        "No, a tiny sample can happen by chance.",
-        "Only after a drawdown."
-       ],
-       "correct": 1,
-       "explanation": "A tiny sample can happen by chance; it doesn't prove long-run expectancy."
       }
      ]
     },
@@ -27810,12 +27668,6 @@
        ],
        "correct": 1,
        "explanation": "Large, erratic two-way swings define a volatile condition."
-      },
-      {
-       "type": "true_false",
-       "question": "Volatile conditions have larger, faster swings than a calm range.",
-       "correct": true,
-       "explanation": "Volatility means bigger, faster moves than a calm, tight range."
       }
      ]
     },
@@ -28123,12 +27975,6 @@
        ],
        "correct": 2,
        "explanation": "Averaging reduces candle-to-candle jitter, producing a smoother line."
-      },
-      {
-       "type": "true_false",
-       "question": "A longer moving average is generally smoother than a shorter one.",
-       "correct": true,
-       "explanation": "Averaging more prices smooths more, making longer MAs steadier."
       }
      ]
     },
@@ -28618,17 +28464,6 @@
        ],
        "correct": 0,
        "explanation": "Oscillators are calculated from price data, bounded within a fixed range."
-      },
-      {
-       "type": "multiple_choice",
-       "question": "An oscillator shows...",
-       "options": [
-        "Raw price, directly.",
-        "A derived measure that moves within a bounded range.",
-        "Trading volume only."
-       ],
-       "correct": 1,
-       "explanation": "It shows a derived measure about price, not the price line itself."
       }
      ]
     },
@@ -28696,17 +28531,6 @@
        ],
        "correct": 0,
        "explanation": "RSI is bounded between 0 and 100."
-      },
-      {
-       "type": "multiple_choice",
-       "question": "A rising RSI reading reflects...",
-       "options": [
-        "Stronger recent up-moves.",
-        "Stronger recent down-moves.",
-        "Higher trading volume."
-       ],
-       "correct": 0,
-       "explanation": "RSI rises when recent gains dominate recent losses."
       }
      ]
     },
@@ -28920,23 +28744,6 @@
        ],
        "concern": "Reading it honestly",
        "explanation": "Divergence is a descriptive clue, not a guaranteed signal."
-      },
-      {
-       "type": "fill_blank",
-       "question": "Divergence is price and an oscillator [___] on direction.",
-       "options": [
-        "identical",
-        "disagreeing",
-        "agreeing"
-       ],
-       "correct": 1,
-       "explanation": "Divergence specifically describes price and the oscillator moving in different directions."
-      },
-      {
-       "type": "true_false",
-       "question": "Divergence guarantees a reversal.",
-       "correct": false,
-       "explanation": "It's a descriptive disagreement, a clue, never a guarantee."
       }
      ]
     },
@@ -29131,12 +28938,6 @@
        ],
        "correct": 2,
        "explanation": "Planning ahead keeps decisions out of the emotional moment."
-      },
-      {
-       "type": "true_false",
-       "question": "A trade plan includes where the idea would be proven wrong.",
-       "correct": true,
-       "explanation": "Invalidation is a core part of a plan."
       }
      ]
     },
@@ -29204,17 +29005,6 @@
        ],
        "correct": 2,
        "explanation": "Invalidation marks where the reasoning no longer holds."
-      },
-      {
-       "type": "multiple_choice",
-       "question": "A stop-loss level is commonly chosen based on...",
-       "options": [
-        "Where the trade idea would be proven wrong.",
-        "A fixed dollar amount picked at random.",
-        "Whatever level keeps the position size largest."
-       ],
-       "correct": 0,
-       "explanation": "Tying the stop to invalidation gives it a clear, reasoned basis."
       }
      ]
     },
@@ -29291,12 +29081,6 @@
        ],
        "correct": 2,
        "explanation": "Process is the controllable part; outcomes vary trade to trade."
-      },
-      {
-       "type": "true_false",
-       "question": "A good process can still produce a losing trade.",
-       "correct": true,
-       "explanation": "Any single outcome is uncertain; process is judged over many trades."
       }
      ]
     },
@@ -29365,12 +29149,6 @@
        ],
        "correct": 1,
        "explanation": "Repeating the same checks each time builds consistency."
-      },
-      {
-       "type": "true_false",
-       "question": "A checklist guarantees profitable trades.",
-       "correct": false,
-       "explanation": "It brings consistency; it can't guarantee outcomes."
       }
      ]
     },
@@ -29433,12 +29211,6 @@
        ],
        "correct": 2,
        "explanation": "Following the plan is what gives it value."
-      },
-      {
-       "type": "true_false",
-       "question": "Widening your stop mid-trade to avoid a loss undermines the plan.",
-       "correct": true,
-       "explanation": "Moving the stop breaks the invalidation the plan was built on."
       }
      ]
     },
@@ -29608,12 +29380,6 @@
        ],
        "correct": 2,
        "explanation": "VWAP weights each price by the volume traded there."
-      },
-      {
-       "type": "true_false",
-       "question": "VWAP is commonly used as an intraday reference for average price.",
-       "correct": true,
-       "explanation": "VWAP is a common intraday \"fair value\" reference line."
       }
      ]
     },
@@ -29691,12 +29457,6 @@
        ],
        "correct": 1,
        "explanation": "Trading above the session's volume-weighted average reads as relative strength."
-      },
-      {
-       "type": "true_false",
-       "question": "Price below VWAP is commonly described as relative weakness.",
-       "correct": true,
-       "explanation": "Below the session average reads as relative weakness."
       }
      ]
     },
@@ -29768,12 +29528,6 @@
        ],
        "correct": 2,
        "explanation": "The middle line is a moving average, with bands set by standard deviation."
-      },
-      {
-       "type": "true_false",
-       "question": "The middle Bollinger line is a moving average.",
-       "correct": true,
-       "explanation": "Bollinger Bands center on a moving average, with bands around it."
       }
      ]
     },
@@ -29924,23 +29678,6 @@
        ],
        "correct": 0,
        "explanation": "Band touches are descriptive stretch reads, not guaranteed reversals."
-      },
-      {
-       "type": "fill_blank",
-       "question": "A band touch shows price is [___] from its average, not a guaranteed reversal.",
-       "options": [
-        "stretched",
-        "identical",
-        "detached"
-       ],
-       "correct": 0,
-       "explanation": "It describes stretch/deviation, not an automatic turn."
-      },
-      {
-       "type": "true_false",
-       "question": "A band touch is a guaranteed reversal signal.",
-       "correct": false,
-       "explanation": "In a strong trend, price can ride a band for a long time, no guarantee."
       }
      ]
     },
@@ -30111,12 +29848,6 @@
        ],
        "correct": 2,
        "explanation": "Drawdown specifically measures decline from the prior peak value."
-      },
-      {
-       "type": "true_false",
-       "question": "Every account experiences drawdowns at some point.",
-       "correct": true,
-       "explanation": "Drawdowns are a normal part of any equity curve."
       }
      ]
     },
@@ -30237,12 +29968,6 @@
        ],
        "correct": 0,
        "explanation": "Halving your account means you must double what's left to break even."
-      },
-      {
-       "type": "true_false",
-       "question": "A loss needs a larger percentage gain than the loss itself to recover.",
-       "correct": true,
-       "explanation": "You're gaining on a smaller base, so the required percent is larger."
       }
      ]
     },
@@ -30324,17 +30049,6 @@
        ],
        "correct": 0,
        "explanation": "Even a good system sees losing streaks by chance."
-      },
-      {
-       "type": "multiple_choice",
-       "question": "Do a few losses in a row prove negative expectancy?",
-       "options": [
-        "Yes, they prove it.",
-        "No, short streaks happen by chance.",
-        "Only if real money is involved."
-       ],
-       "correct": 1,
-       "explanation": "Short streaks happen by chance; they don't prove the long-run expectancy."
       }
      ]
     },
@@ -30397,12 +30111,6 @@
        ],
        "correct": 1,
        "explanation": "Small samples are dominated by luck, not the true average."
-      },
-      {
-       "type": "true_false",
-       "question": "Even a positive-expectancy system can have a rough short stretch.",
-       "correct": true,
-       "explanation": "Variance means good systems still have losing stretches short-term."
       }
      ]
     },
@@ -30468,23 +30176,6 @@
        ],
        "concern": "Long-run survival",
        "explanation": "Preserving capital keeps you able to participate over the long run."
-      },
-      {
-       "type": "fill_blank",
-       "question": "Capital preservation keeps [___] small to protect the account.",
-       "options": [
-        "timeframes",
-        "targets",
-        "drawdowns"
-       ],
-       "correct": 2,
-       "explanation": "Limiting drawdowns is the core of capital preservation."
-      },
-      {
-       "type": "true_false",
-       "question": "A preserved account can keep participating; a blown-up one cannot.",
-       "correct": true,
-       "explanation": "Without capital, there's nothing left to trade with."
       }
      ]
     },
@@ -30668,12 +30359,6 @@
        ],
        "correct": 1,
        "explanation": "Recording the reasoning, not just the result, is what makes a journal useful."
-      },
-      {
-       "type": "true_false",
-       "question": "Memory alone is a reliable record of your trading decisions.",
-       "correct": false,
-       "explanation": "Memory is biased and incomplete; a written journal is more honest."
       }
      ]
     },
@@ -30829,12 +30514,6 @@
        ],
        "correct": 1,
        "explanation": "Process is what you control; reviewing it drives improvement."
-      },
-      {
-       "type": "true_false",
-       "question": "A losing trade can still be a well-executed, good-process trade.",
-       "correct": true,
-       "explanation": "Outcomes vary; a plan followed correctly is good process regardless."
       }
      ]
     },
@@ -30979,23 +30658,6 @@
        ],
        "correct": 0,
        "explanation": "Review (via the journal) is the third step of the loop."
-      },
-      {
-       "type": "fill_blank",
-       "question": "The learning loop is plan, do, [___], repeat.",
-       "options": [
-        "quit",
-        "review",
-        "guess"
-       ],
-       "correct": 1,
-       "explanation": "Review (via the journal) is the third step of the improvement loop."
-      },
-      {
-       "type": "true_false",
-       "question": "Improvement comes from repeating the plan-do-review loop over time.",
-       "correct": true,
-       "explanation": "Consistent looping, not one trade, drives improvement."
       }
      ]
     },
