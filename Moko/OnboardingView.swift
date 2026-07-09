@@ -211,10 +211,10 @@ struct OnboardingView: View {
                     .foregroundColor(theme.palette.ink)
                     .multilineTextAlignment(.center)
                 Text("Master charts, price action, and risk management through short interactive lessons.")
-                    .font(Theme.font(16, .bold))
+                    .font(Theme.questionFont(16, .medium))
                     .foregroundColor(theme.palette.muted)
                     .multilineTextAlignment(.center)
-                    .lineSpacing(3)
+                    .lineSpacing(16 * 0.32)
 
                 Button("GET STARTED") { advance() }
                     .buttonStyle(Chunky3DStyle(fill: Theme.answer, slab: Theme.answerDark))
@@ -299,7 +299,7 @@ struct OnboardingView: View {
                     .font(Theme.font(26, .black))
                     .foregroundColor(theme.palette.ink)
                 Text("So your progress and streak are saved.")
-                    .font(Theme.font(15, .bold))
+                    .font(Theme.questionFont(15, .medium))
                     .foregroundColor(theme.palette.muted)
             }
             .multilineTextAlignment(.center)
@@ -342,7 +342,7 @@ struct OnboardingView: View {
                         .font(Theme.font(26, .black))
                         .foregroundColor(theme.palette.ink)
                     Text("Sign in to pick up where you left off.")
-                        .font(Theme.font(15, .bold))
+                        .font(Theme.questionFont(15, .medium))
                         .foregroundColor(theme.palette.muted)
                 }
                 .multilineTextAlignment(.center)
@@ -429,7 +429,7 @@ struct OnboardingView: View {
                     .foregroundColor(theme.palette.ink)
                 if let subtitle {
                     Text(subtitle)
-                        .font(Theme.font(15, .bold))
+                        .font(Theme.questionFont(15, .medium))
                         .foregroundColor(theme.palette.muted)
                 }
             }
@@ -457,11 +457,11 @@ struct OnboardingView: View {
                 Text(emoji).font(.system(size: 24))
                 VStack(alignment: .leading, spacing: 1) {
                     Text(label)
-                        .font(Theme.font(16, .black))
+                        .font(Theme.questionFont(16, .semibold))
                         .foregroundColor(selected ? .white : theme.palette.ink)
                     if let detail {
                         Text(detail)
-                            .font(Theme.font(13, .bold))
+                            .font(Theme.questionFont(13, .medium))
                             .foregroundColor(selected ? .white.opacity(0.85) : theme.palette.muted)
                     }
                 }
@@ -517,10 +517,10 @@ private struct CommitScreen: View {
                 .foregroundColor(theme.palette.ink)
                 .multilineTextAlignment(.center)
             Text("I will spend a few minutes a day learning to trade with discipline.")
-                .font(Theme.font(16, .bold))
+                .font(Theme.questionFont(16, .medium))
                 .foregroundColor(theme.palette.muted)
                 .multilineTextAlignment(.center)
-                .lineSpacing(3)
+                .lineSpacing(16 * 0.32)
                 .padding(.top, 12)
 
             Spacer()
