@@ -23,9 +23,9 @@ enum Theme {
 
     // Shentox — used for question prompts and answer choices only (everything
     // else, like buttons and titles, stays on DIN Round Pro). Shentox ships as
-    // a single Regular cut, so every weight maps onto it.
+    // a single SemiBold cut, so every weight maps onto it.
     static func questionFont(_ size: CGFloat, _ weight: Font.Weight = .regular) -> Font {
-        .custom("Shentox-Regular", size: size)
+        .custom("Shentox-SemiBold", size: size)
     }
 
     static let ink = Color(hex: "#082f49")
