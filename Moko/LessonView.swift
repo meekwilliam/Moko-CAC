@@ -153,6 +153,7 @@ final class LessonPlayer: ObservableObject {
 
     func check() {
         guard !revealed else { return }
+        guard canCheck else { return }
         guard spendHeartIfNeeded() else { return }
         var correct = true
         switch screen.type {
@@ -578,6 +579,9 @@ struct FeedbackBanner: View {
                 .fill(Color(hex: "#1A2433"))
                 .ignoresSafeArea(edges: .bottom)
         )
+        .onChange(of: player.index) { _ in
+            showWhy = false
+        }
     }
 }
 
