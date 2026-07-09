@@ -3673,10 +3673,10 @@
        "chart": "marubozu"
       },
       {
-       "type": "true_false",
-       "question": "A candlestick with a small body and long wicks on both sides would generally NOT be called a marubozu.",
-       "correct": true,
-       "explanation": "A marubozu specifically needs a large body and almost no wicks, the opposite of that description.",
+       "type": "tap_candle",
+       "question": "Tap the marubozu.",
+       "target": 1,
+       "explanation": "The marubozu is the big solid body with almost no wicks — one side held control from open to close.",
        "chart": "marubozu"
       },
       {
@@ -3791,10 +3791,10 @@
        "chart": "doji"
       },
       {
-       "type": "true_false",
-       "question": "A doji's open and close prices are nearly identical.",
-       "correct": true,
-       "explanation": "The near-equal open and close is exactly what makes the tiny body of a doji.",
+       "type": "tap_candle",
+       "question": "Tap the doji.",
+       "target": 1,
+       "explanation": "The doji is the candle whose open and close land at nearly the same price, leaving a tiny body.",
        "chart": "doji"
       },
       {
@@ -3915,10 +3915,10 @@
        "chart": "hammer"
       },
       {
-       "type": "true_false",
-       "question": "A hammer's long wick points downward, below the body.",
-       "correct": true,
-       "explanation": "The long lower wick is what defines the hammer shape.",
+       "type": "tap_candle",
+       "question": "Tap the hammer.",
+       "target": 2,
+       "explanation": "The hammer is the candle with a long lower wick and a small body sitting up top.",
        "chart": "hammer"
       },
       {
@@ -4026,10 +4026,10 @@
        "chart": "shootingStar"
       },
       {
-       "type": "true_false",
-       "question": "A shooting star's long wick points upward, above the body.",
-       "correct": true,
-       "explanation": "The long upper wick is what defines the shooting star shape.",
+       "type": "tap_candle",
+       "question": "Tap the shooting star.",
+       "target": 2,
+       "explanation": "The shooting star is the candle with a long upper wick and a small body down near the low.",
        "chart": "shootingStar"
       },
       {
@@ -4170,10 +4170,10 @@
        "chart": "bullishEngulfing"
       },
       {
-       "type": "true_false",
-       "question": "A bullish engulfing pattern involves exactly two candles.",
-       "correct": true,
-       "explanation": "The pattern is specifically a two-candle relationship, a small one, then a larger engulfing one.",
+       "type": "tap_candle",
+       "question": "Tap the candle whose body fully engulfs the one before it.",
+       "target": 1,
+       "explanation": "Its body opens below and closes above the previous body, covering it completely.",
        "chart": "bullishEngulfing"
       },
       {
@@ -4210,9 +4210,14 @@
        "explanation": "The smaller, earlier down candle is the one that gets engulfed."
       },
       {
-       "type": "true_false",
-       "question": "Bullish engulfing can only occur after an uptrend, never after a decline.",
-       "correct": false,
+       "type": "multiple_choice",
+       "question": "In what context is a bullish engulfing commonly read?",
+       "options": [
+        "In the middle of a sideways range, where direction is unclear.",
+        "After a decline, where it can hint at a shift back up.",
+        "After an uptrend, where it confirms the trend continuing."
+       ],
+       "correct": 1,
        "explanation": "Bullish engulfing is commonly read in the context of a prior decline, not an uptrend."
       }
      ]
@@ -4290,10 +4295,10 @@
        "chart": "bearishEngulfing"
       },
       {
-       "type": "true_false",
-       "question": "A bearish engulfing pattern involves exactly two candles.",
-       "correct": true,
-       "explanation": "Like bullish engulfing, this is a two-candle relationship.",
+       "type": "tap_candle",
+       "question": "Tap the candle whose body fully engulfs the one before it.",
+       "target": 1,
+       "explanation": "Its body opens above and closes below the previous body, covering it completely.",
        "chart": "bearishEngulfing"
       },
       {
@@ -4421,10 +4426,10 @@
        "chart": "spinningTop"
       },
       {
-       "type": "true_false",
-       "question": "A spinning top has wicks of roughly similar length on both sides.",
-       "correct": true,
-       "explanation": "Balanced wicks on both sides, with a small body, is the spinning top shape.",
+       "type": "tap_candle",
+       "question": "Tap the spinning top.",
+       "target": 1,
+       "explanation": "The spinning top has a small body with wicks of roughly similar length on both sides.",
        "chart": "spinningTop"
       },
       {
@@ -4547,10 +4552,10 @@
        "chart": "marubozu"
       },
       {
-       "type": "true_false",
-       "question": "A marubozu has virtually no wicks on either side.",
-       "correct": true,
-       "explanation": "Almost no wick, with a large body, is exactly what defines a marubozu.",
+       "type": "tap_candle",
+       "question": "Tap the candle with virtually no wicks on either side.",
+       "target": 1,
+       "explanation": "That's the marubozu — a full body from open to close, with almost nothing rejected at either end.",
        "chart": "marubozu"
       },
       {
@@ -4723,10 +4728,15 @@
        "explanation": "Lower wick = lows rejected; upper wick = highs rejected."
       },
       {
-       "type": "true_false",
-       "question": "A rejection wick can appear on candles of either color.",
-       "correct": true,
-       "explanation": "Rejection is about wick length/position, not the candle's overall color."
+       "type": "multiple_choice",
+       "question": "On which candles can a rejection wick appear?",
+       "options": [
+        "Only red candles, since rejection means sellers won.",
+        "Only candles that close very near their open.",
+        "Either color — rejection is about the wick's length and position."
+       ],
+       "correct": 2,
+       "explanation": "Rejection is about wick length and position, not the candle's overall color."
       }
      ]
     },
@@ -4920,10 +4930,15 @@
        "chart": "marubozu"
       },
       {
-       "type": "true_false",
-       "question": "Both bullish and bearish engulfing patterns involve one candle's body fully covering another's.",
-       "correct": true,
-       "explanation": "\"Engulfing\" means full coverage in both the bullish and bearish versions."
+       "type": "multiple_choice",
+       "question": "What do bullish and bearish engulfing patterns have in common?",
+       "options": [
+        "One candle's body fully covers the previous candle's body.",
+        "The engulfing candle has no wicks of its own.",
+        "Both need three candles to complete."
+       ],
+       "correct": 0,
+       "explanation": "\"Engulfing\" means full body coverage in both the bullish and bearish versions."
       },
       {
        "type": "multiple_choice",
@@ -7276,10 +7291,15 @@
        "explanation": "A reversal reflects a mechanical shift in the underlying balance of pressure."
       },
       {
-       "type": "true_false",
-       "question": "A breakout happens when demand or supply finally overwhelms a level that had been holding.",
-       "correct": true,
-       "explanation": "A breakout mechanically reflects one side finally overpowering a previously respected level."
+       "type": "multiple_choice",
+       "question": "What defines a breakout?",
+       "options": [
+        "Price finally pushes through a level that had been holding, as one side overwhelms the other.",
+        "Price drifts sideways along a level for several candles without closing through it.",
+        "Price approaches a level and turns away from it, leaving a wick."
+       ],
+       "correct": 0,
+       "explanation": "A breakout is one side finally overpowering a level that had been respected. Drifting along a level is consolidation; turning away from it is a rejection."
       },
       {
        "type": "fill_blank",
@@ -12302,9 +12322,14 @@
        "chart": "breakout"
       },
       {
-       "type": "true_false",
-       "question": "A breakout always guarantees the new direction will continue indefinitely.",
-       "correct": false,
+       "type": "multiple_choice",
+       "question": "What does a breakout tell you about what comes next?",
+       "options": [
+        "The move is confirmed, so continuation is the expected outcome.",
+        "Nothing for certain — it describes the move that just happened, not the move to come.",
+        "The new direction will continue at least until price reaches the next major level."
+       ],
+       "correct": 1,
        "explanation": "A breakout describes what just happened; it doesn't guarantee what happens next."
       },
       {
@@ -12414,9 +12439,14 @@
        "explanation": "Confirming the move held is part of how breakouts are described in hindsight."
       },
       {
-       "type": "true_false",
-       "question": "A breakdown is the same concept as a breakout, just in the opposite direction.",
-       "correct": true,
+       "type": "multiple_choice",
+       "question": "How does a breakdown relate to a breakout?",
+       "options": [
+        "It's a breakout that failed and snapped back through the level.",
+        "It's a break of support that only counts on rising volume.",
+        "It's the downside counterpart — the same concept, opposite direction."
+       ],
+       "correct": 2,
        "explanation": "Breakdown is simply the downside counterpart to breakout."
       }
      ]
@@ -12569,10 +12599,15 @@
        "explanation": "You need to see the reversal happen before calling it a false breakout."
       },
       {
-       "type": "true_false",
-       "question": "False breakouts are a reason many chart readers wait for confirmation before reacting.",
-       "correct": true,
-       "explanation": "The risk of a false breakout is commonly cited as a reason to wait for confirmation."
+       "type": "multiple_choice",
+       "question": "Why do many chart readers wait for confirmation after a level breaks?",
+       "options": [
+        "Because the break can be false, snapping back through the level.",
+        "Because a level isn't considered broken until the session closes.",
+        "Because volume data lags price by one candle."
+       ],
+       "correct": 0,
+       "explanation": "The risk of a false breakout is the common reason to wait for confirmation."
       }
      ]
     },
@@ -13583,10 +13618,15 @@
        "explanation": "Breaking the neckline is the commonly cited confirmation step, descriptively."
       },
       {
-       "type": "true_false",
-       "question": "A double top is commonly said to be \"confirmed\" the instant the second peak forms, before any neckline break.",
-       "correct": false,
-       "explanation": "Confirmation is commonly tied to the neckline breaking, not just the second peak appearing."
+       "type": "multiple_choice",
+       "question": "When is a double top commonly said to be confirmed?",
+       "options": [
+        "When the second peak fails to exceed the first by any amount.",
+        "When price breaks the neckline.",
+        "The instant the second peak prints at the same level as the first."
+       ],
+       "correct": 1,
+       "explanation": "Confirmation is tied to the neckline breaking, not just the second peak appearing."
       },
       {
        "type": "matching",
@@ -13639,9 +13679,14 @@
        "explanation": "The neckline in a double bottom runs along the bounce high between the two troughs."
       },
       {
-       "type": "true_false",
-       "question": "The neckline is the same idea in both a double top and a double bottom, just mirrored.",
-       "correct": true,
+       "type": "multiple_choice",
+       "question": "How does the neckline differ between a double top and a double bottom?",
+       "options": [
+        "Only the double top has one; a double bottom is confirmed by its second trough.",
+        "In a double bottom the neckline sits below the troughs rather than above them.",
+        "It's the same idea mirrored — the level whose break confirms the pattern."
+       ],
+       "correct": 2,
        "explanation": "Both patterns share the neckline-confirmation idea, just on opposite sides."
       },
       {
@@ -13692,10 +13737,15 @@
        "chart": "doubleTop"
       },
       {
-       "type": "true_false",
-       "question": "The main difference between a single resistance rejection and a double top is how many times the level was tested.",
-       "correct": true,
-       "explanation": "One test = rejection; two tests at the same level = double top."
+       "type": "multiple_choice",
+       "question": "What mainly separates a single resistance rejection from a double top?",
+       "options": [
+        "How many times the level was tested — once versus twice.",
+        "Whether the level being tested is resistance or support.",
+        "Whether the rejection leaves an upper wick behind."
+       ],
+       "correct": 0,
+       "explanation": "One test is a rejection; two tests at the same level make a double top."
       },
       {
        "type": "fill_blank_multi",
@@ -13802,10 +13852,15 @@
        "chart": "doubleBottom"
       },
       {
-       "type": "true_false",
-       "question": "A double bottom and a single support bounce differ mainly in how many times support was tested.",
-       "correct": true,
-       "explanation": "One test = bounce; two tests at the same level = double bottom."
+       "type": "multiple_choice",
+       "question": "What mainly separates a single support bounce from a double bottom?",
+       "options": [
+        "Whether the second low prints below the first.",
+        "How many times support was tested — once versus twice.",
+        "Whether the bounce is followed by a neckline break."
+       ],
+       "correct": 1,
+       "explanation": "One test is a bounce; two tests at the same level make a double bottom."
       },
       {
        "type": "fill_blank_multi",
@@ -13953,10 +14008,15 @@
        "explanation": "\"About the same\" is a practical, descriptive judgment, not a strict formula."
       },
       {
-       "type": "true_false",
-       "question": "A second peak noticeably lower than the first also weakens the double top read.",
-       "correct": true,
-       "explanation": "Either a much higher OR much lower second peak weakens the \"roughly equal\" read."
+       "type": "multiple_choice",
+       "question": "A double top's second peak prints noticeably lower than the first. What does that do to the read?",
+       "options": [
+        "It strengthens it, since sellers stepped in earlier the second time.",
+        "Nothing; only the neckline break matters.",
+        "It weakens it — the two peaks are supposed to be roughly equal."
+       ],
+       "correct": 2,
+       "explanation": "Either a much higher or a much lower second peak weakens the roughly-equal read."
       },
       {
        "type": "fill_blank",
@@ -13970,9 +14030,14 @@
        "explanation": "\"Double\" specifically counts the tests of the resistance level."
       },
       {
-       "type": "true_false",
-       "question": "A double top with two clearly unequal peaks is generally considered a cleaner pattern than one with equal peaks.",
-       "correct": false,
+       "type": "multiple_choice",
+       "question": "Which makes for a cleaner double top?",
+       "options": [
+        "Two roughly equal peaks.",
+        "Two clearly unequal peaks.",
+        "A second peak well above the first."
+       ],
+       "correct": 0,
        "explanation": "Roughly equal peaks make for a cleaner double top read, not unequal ones."
       }
      ]
@@ -14046,10 +14111,15 @@
        "explanation": "\"About the same\" is a practical, descriptive judgment, not a strict formula."
       },
       {
-       "type": "true_false",
-       "question": "A second trough noticeably higher than the first also weakens the double bottom read.",
-       "correct": true,
-       "explanation": "Either a much higher OR much lower second trough weakens the \"roughly equal\" read."
+       "type": "multiple_choice",
+       "question": "A double bottom's second trough prints noticeably higher than the first. What does that do to the read?",
+       "options": [
+        "Nothing, as long as the neckline breaks.",
+        "It weakens it — the two troughs are supposed to be roughly equal.",
+        "It strengthens it, since buyers defended earlier the second time."
+       ],
+       "correct": 1,
+       "explanation": "Either a much higher or a much lower second trough weakens the roughly-equal read."
       },
       {
        "type": "fill_blank",
@@ -14063,9 +14133,14 @@
        "explanation": "\"Double\" specifically counts the tests of the support level."
       },
       {
-       "type": "true_false",
-       "question": "A double bottom with two clearly unequal troughs is generally considered a cleaner pattern than one with equal troughs.",
-       "correct": false,
+       "type": "multiple_choice",
+       "question": "Which makes for a cleaner double bottom?",
+       "options": [
+        "Two clearly unequal troughs.",
+        "A second trough well below the first.",
+        "Two roughly equal troughs."
+       ],
+       "correct": 2,
        "explanation": "Roughly equal troughs make for a cleaner double bottom read, not unequal ones."
       }
      ]
@@ -14082,9 +14157,14 @@
        "chart": "breakout"
       },
       {
-       "type": "true_false",
-       "question": "Every double top is guaranteed to lead to a reversal down.",
-       "correct": false,
+       "type": "multiple_choice",
+       "question": "What can you conclude when a double top forms?",
+       "options": [
+        "It's a clue, not a certainty — price can still break up instead.",
+        "A reversal down is guaranteed once the second peak prints.",
+        "A reversal down is guaranteed once the neckline breaks."
+       ],
+       "correct": 0,
        "explanation": "Patterns are descriptive clues; a double top can fail if price breaks up instead."
       },
       {
@@ -14138,9 +14218,14 @@
        "explanation": "Failure is exactly why patterns are read as probability-shaped clues."
       },
       {
-       "type": "true_false",
-       "question": "A double bottom can also fail, in the opposite way (breaking down through support).",
-       "correct": true,
+       "type": "multiple_choice",
+       "question": "How does a double bottom fail?",
+       "options": [
+        "Price rallies but stalls just short of the neckline.",
+        "Price breaks down through support instead of rallying.",
+        "Price prints a third trough at the same level."
+       ],
+       "correct": 1,
        "explanation": "Just as a double top can fail by breaking up, a double bottom can fail by breaking down."
       },
       {
@@ -14333,9 +14418,14 @@
        "explanation": "This unit consistently frames pattern reads as descriptive, not certain."
       },
       {
-       "type": "true_false",
-       "question": "A failed double top suggests something different than a confirmed one.",
-       "correct": true,
+       "type": "multiple_choice",
+       "question": "What does a failed double top suggest, compared with a confirmed one?",
+       "options": [
+        "The same thing, just on a delay.",
+        "Nothing; a failed pattern carries no information.",
+        "Something different — the expected reversal didn't play out."
+       ],
+       "correct": 2,
        "explanation": "A confirmed pattern suggests the reversal played out; a failed one suggests it didn't."
       },
       {
@@ -14457,9 +14547,14 @@
        "text": "A final review of double tops, double bottoms, the neckline, and reading level behavior."
       },
       {
-       "type": "true_false",
-       "question": "A double top forms at resistance (\"M\"); a double bottom forms at support (\"W\").",
-       "correct": true,
+       "type": "multiple_choice",
+       "question": "Where do a double top and a double bottom form?",
+       "options": [
+        "Double top at resistance (an \"M\"); double bottom at support (a \"W\").",
+        "Double top at support (a \"W\"); double bottom at resistance (an \"M\").",
+        "Both at resistance — only the direction of the neckline break differs."
+       ],
+       "correct": 0,
        "explanation": "That's the core of both patterns."
       },
       {
@@ -15109,10 +15204,15 @@
        "chart": "headShoulders"
       },
       {
-       "type": "true_false",
-       "question": "The main difference between a double top and a head & shoulders is the number of peaks.",
-       "correct": true,
-       "explanation": "Two peaks = double top; three peaks (higher middle) = head & shoulders."
+       "type": "multiple_choice",
+       "question": "What mainly separates a double top from a head & shoulders?",
+       "options": [
+        "Whether the pattern forms at resistance.",
+        "The number of peaks — two, versus three with a higher middle.",
+        "Whether the pattern has a neckline at all."
+       ],
+       "correct": 1,
+       "explanation": "Two peaks make a double top; three peaks with a higher middle make a head & shoulders."
       },
       {
        "type": "fill_blank_multi",
@@ -15166,10 +15266,15 @@
        "explanation": "Two peaks = double top; three peaks with a higher middle = head & shoulders."
       },
       {
-       "type": "true_false",
-       "question": "A head & shoulders and a double top can never be confused with each other.",
-       "correct": false,
-       "explanation": "Without carefully counting peaks, the two patterns can be mixed up. That's exactly the skill this lesson builds."
+       "type": "multiple_choice",
+       "question": "Can a head & shoulders be mistaken for a double top?",
+       "options": [
+        "No — a head & shoulders always has a far wider neckline.",
+        "No — they form at opposite ends of a trend.",
+        "Yes — without carefully counting peaks, the two look similar."
+       ],
+       "correct": 2,
+       "explanation": "Without carefully counting peaks the two patterns can be mixed up. That's exactly the skill this lesson builds."
       }
      ]
     },
@@ -16087,9 +16192,14 @@
        "chart": "ascendingTriangle"
       },
       {
-       "type": "true_false",
-       "question": "An ascending triangle guarantees an upward breakout.",
-       "correct": false,
+       "type": "multiple_choice",
+       "question": "What does an ascending triangle tell you about the eventual break?",
+       "options": [
+        "It's commonly associated with an upward break, but it can break either way.",
+        "It guarantees an upward break once price reaches the flat resistance.",
+        "It guarantees a downward break, since the rising lows run out of room."
+       ],
+       "correct": 0,
        "explanation": "It's commonly associated with an upward break, but nothing is guaranteed. It can break either way."
       },
       {
@@ -18399,9 +18509,14 @@
        "explanation": "A poke past the level that fails back inside is a false breakout."
       },
       {
-       "type": "true_false",
-       "question": "A false breakout is one reason a boundary break isn't a guarantee.",
-       "correct": true,
+       "type": "multiple_choice",
+       "question": "Why isn't a boundary break treated as a guarantee?",
+       "options": [
+        "Because a break only counts on the level's first test.",
+        "Because breaks can be false, reversing back inside.",
+        "Because boundaries are redrawn after every session."
+       ],
+       "correct": 1,
        "explanation": "Because breaks can be false, a break is read as a clue, not a certainty."
       },
       {
@@ -18526,9 +18641,14 @@
        "explanation": "All four core ideas from this unit are reviewed together here."
       },
       {
-       "type": "true_false",
-       "question": "A range eventually resolves into a breakout in one direction or another.",
-       "correct": true,
+       "type": "multiple_choice",
+       "question": "What eventually happens to a range?",
+       "options": [
+        "It narrows until price stops moving entirely.",
+        "It persists indefinitely unless news arrives.",
+        "It resolves into a breakout in one direction or the other."
+       ],
+       "correct": 2,
        "explanation": "Ranges are commonly described as temporary, eventually resolving into a directional move."
       },
       {
@@ -18585,10 +18705,15 @@
        "explanation": "Clearing the level (not bouncing) is what makes a breakout."
       },
       {
-       "type": "true_false",
-       "question": "A breakout guarantees a large trend afterward.",
-       "correct": false,
-       "explanation": "Breakouts can fail; nothing after a breakout is guaranteed."
+       "type": "multiple_choice",
+       "question": "What does a breakout guarantee about the trend that follows?",
+       "options": [
+        "Nothing — breakouts can fail.",
+        "A trend, though its size can't be predicted.",
+        "A trend at least as large as the range that preceded it."
+       ],
+       "correct": 0,
+       "explanation": "Breakouts can fail; nothing after a breakout is guaranteed — not even that a trend forms at all."
       },
       {
        "type": "multiple_choice",
@@ -18679,10 +18804,15 @@
        "explanation": "Breakdown mirrors breakout, but to the downside through support."
       },
       {
-       "type": "true_false",
-       "question": "A breakdown clears a support level and continues lower.",
-       "correct": true,
-       "explanation": "That's the defining description of a breakdown."
+       "type": "multiple_choice",
+       "question": "What is a breakdown?",
+       "options": [
+        "Price clears a resistance level and continues higher.",
+        "Price clears a support level and continues lower.",
+        "Price pierces support intraday but closes back above it."
+       ],
+       "correct": 1,
+       "explanation": "Clearing support and continuing lower is the defining description of a breakdown. Piercing support and closing back above it is a false breakdown."
       },
       {
        "type": "multiple_choice",
@@ -18893,9 +19023,14 @@
        "chart": "resistanceRejection"
       },
       {
-       "type": "true_false",
-       "question": "Even a clean-looking breakout can still fail.",
-       "correct": true,
+       "type": "multiple_choice",
+       "question": "A breakout looks clean and decisive. What follows?",
+       "options": [
+        "It's confirmed, so continuation is expected.",
+        "It will retest the broken level before continuing.",
+        "It can still fail — a clean look is context, not a guarantee."
+       ],
+       "correct": 2,
        "explanation": "Strength is descriptive context; a clean breakout is not a guarantee."
       },
       {
@@ -19792,9 +19927,14 @@
        "explanation": "Small bodies on both these shapes reflect a balanced, indecisive period."
       },
       {
-       "type": "true_false",
-       "question": "A doji and a spinning top both have relatively small bodies.",
-       "correct": true,
+       "type": "multiple_choice",
+       "question": "What do a doji and a spinning top share?",
+       "options": [
+        "Both have relatively small bodies, reflecting indecision.",
+        "Both have almost no wicks.",
+        "Both have a long lower wick and a short upper one."
+       ],
+       "correct": 0,
        "explanation": "Small body size is what both shapes share, reflecting indecision."
       },
       {
@@ -20646,10 +20786,10 @@
        "explanation": "Price jumped, so no trades happened across the gap."
       },
       {
-       "type": "true_false",
-       "question": "A gap up opens above the previous candle's high.",
-       "correct": true,
-       "explanation": "A gap up jumps above the prior candle, leaving space below the new open.",
+       "type": "tap_candle",
+       "question": "Tap the candle that opened above the previous candle's high.",
+       "target": 2,
+       "explanation": "That gap up leaves empty space between the prior high and this candle's open.",
        "chart": "gapUp"
       },
       {
@@ -20717,10 +20857,10 @@
        "chart": "gapDown"
       },
       {
-       "type": "true_false",
-       "question": "A gap down opens below the previous candle's low.",
-       "correct": true,
-       "explanation": "A gap down jumps below the prior candle.",
+       "type": "tap_candle",
+       "question": "Tap the candle that opened below the previous candle's low.",
+       "target": 2,
+       "explanation": "That gap down leaves empty space between the prior low and this candle's open.",
        "chart": "gapDown"
       },
       {
