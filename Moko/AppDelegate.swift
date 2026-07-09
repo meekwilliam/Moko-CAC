@@ -22,8 +22,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return true
     }
 
-    /// Register the bundled DIN Round Pro faces so SwiftUI can use them by name
-    /// (matches the web app's typeface instead of the SF Rounded stand-in).
+    /// Register every bundled app font so SwiftUI can resolve each custom face
+    /// by its PostScript name, including the separate Sora weight files.
     private func registerBundledFonts() {
         var urls: [URL] = []
         for ext in ["otf", "ttf"] {
@@ -51,4 +51,3 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
 }
-

@@ -5,11 +5,24 @@ import SwiftUI
 // ported to native so the lesson player matches the web look & feel.
 
 enum Theme {
-    // Sora Bold — the app's chrome typeface (bundled + registered at launch):
-    // buttons, screen titles, and other short headline-style text. Only one
-    // cut is bundled, so every weight maps onto it.
+    // Sora — the app's chrome typeface (bundled + registered at launch).
+    // Keep the weight mapping explicit: SwiftUI cannot reliably select a
+    // custom face from `.weight(...)` when fonts are registered at runtime.
     static func font(_ size: CGFloat, _ weight: Font.Weight = .heavy) -> Font {
-        .custom("Sora-Bold", size: size)
+        switch weight {
+        case .ultraLight, .thin, .light, .regular:
+            return .custom("Sora-Regular", size: size)
+        case .medium:
+            return .custom("Sora-Medium", size: size)
+        case .semibold:
+            return .custom("Sora-SemiBold", size: size)
+        case .bold:
+            return .custom("Sora-Bold", size: size)
+        default:
+            // Sora tops out at 800, so ExtraBold is the closest native face
+            // for SwiftUI's Heavy (800) and Black (900) semantics.
+            return .custom("Sora-ExtraBold", size: size)
+        }
     }
 
     // Plus Jakarta Sans SemiBold — section titles and quiz questions (the
