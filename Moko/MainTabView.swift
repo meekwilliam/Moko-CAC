@@ -317,6 +317,7 @@ struct FlameIcon: View {
     // streak is 0. The streak-celebration keeps the defaults (animated, lit).
     var animated: Bool = true
     var greyed: Bool = false
+    var showsGlow: Bool = true
     @State private var flickerA = false
     @State private var flickerB = false
     @State private var flickerCore = false
@@ -339,12 +340,14 @@ struct FlameIcon: View {
 
     var body: some View {
         ZStack {
-            // Soft warm glow pulsing behind the flame.
-            Circle()
-                .fill(Color(hex: "#FF9500"))
-                .opacity(flickerA ? 0.32 : 0.16)
-                .blur(radius: size * 0.22)
-                .scaleEffect(flickerA ? 1.05 : 0.9)
+            if showsGlow {
+                // Soft warm glow pulsing behind the flame.
+                Circle()
+                    .fill(Color(hex: "#FF9500"))
+                    .opacity(flickerA ? 0.32 : 0.16)
+                    .blur(radius: size * 0.22)
+                    .scaleEffect(flickerA ? 1.05 : 0.9)
+            }
 
             SVGIconView(svg: Self.bodyOuter)
                 .scaleEffect(flickerA ? 1.025 : 0.985, anchor: .bottom)
