@@ -492,9 +492,8 @@
        "explanation": "Short describes selling first and profiting from a decline."
       },
       {
-       "type": "spot_mistake",
-       "scenario": "Someone says \"going short\" means buying shares to hold for the long term.",
-       "question": "What is the mistake?",
+       "type": "multiple_choice",
+       "question": "Someone says \"going short\" means buying shares to hold for the long term.\n\nWhat is the mistake?",
        "options": [
         "Short always means holding for years.",
         "\"Short\" describes selling first hoping for a price decline. It has nothing to do with a long-term buy-and-hold.",
@@ -604,9 +603,8 @@
        "explanation": "Fill is specifically the executed price, not the position's size."
       },
       {
-       "type": "spot_mistake",
-       "scenario": "Someone assumes their \"fill\" price will always exactly match the last price shown on the chart.",
-       "question": "What is the mistake?",
+       "type": "multiple_choice",
+       "question": "Someone assumes their \"fill\" price will always exactly match the last price shown on the chart.\n\nWhat is the mistake?",
        "options": [
         "Fills are always filled at a better price than the chart.",
         "Fills always match the chart exactly.",
@@ -739,9 +737,8 @@
        "explanation": "Unrealized P&L is a paper value that can still move until the position closes."
       },
       {
-       "type": "spot_mistake",
-       "scenario": "Someone treats their unrealized P&L as a final, guaranteed result before closing the position.",
-       "question": "What is the mistake?",
+       "type": "multiple_choice",
+       "question": "Someone treats their unrealized P&L as a final, guaranteed result before closing the position.\n\nWhat is the mistake?",
        "options": [
         "Unrealized P&L can still change until the position is actually closed. It isn't locked in yet.",
         "Once a position is open, its P&L never changes.",
@@ -851,9 +848,8 @@
        "explanation": "Market cap is a size metric calculated from price and shares outstanding."
       },
       {
-       "type": "spot_mistake",
-       "scenario": "Someone assumes market cap measures a company's cash reserves.",
-       "question": "What is the mistake?",
+       "type": "multiple_choice",
+       "question": "Someone assumes market cap measures a company's cash reserves.\n\nWhat is the mistake?",
        "options": [
         "Market cap and cash reserves are the same thing.",
         "Market cap counts only the shares held by insiders.",
@@ -963,9 +959,8 @@
        "explanation": "Float specifically counts publicly tradeable shares, distinct from total shares issued or market cap."
       },
       {
-       "type": "spot_mistake",
-       "scenario": "Someone assumes a low-float stock will always have small, steady price moves.",
-       "question": "What is the mistake?",
+       "type": "multiple_choice",
+       "question": "Someone assumes a low-float stock will always have small, steady price moves.\n\nWhat is the mistake?",
        "options": [
         "A high-float stock always swings more than a low-float one.",
         "Low float always means calmer price action.",
@@ -1104,9 +1099,8 @@
        "explanation": "This unit builds the foundational vocabulary used throughout the rest of the course."
       },
       {
-       "type": "spot_mistake",
-       "scenario": "Someone finishes this unit and still confuses \"short\" with \"long-term holding.\"",
-       "question": "What is the mistake?",
+       "type": "multiple_choice",
+       "question": "Someone finishes this unit and still confuses \"short\" with \"long-term holding.\"\n\nWhat is the mistake?",
        "options": [
         "Short and long-term are synonyms.",
         "\"Short\" describes selling first to profit from a decline. It's unrelated to how long a trade is held.",
@@ -1245,9 +1239,8 @@
        "explanation": "Stock ownership is equity, a piece of the business itself."
       },
       {
-       "type": "spot_mistake",
-       "scenario": "Someone believes owning one share means they help run the company's daily operations.",
-       "question": "What is the mistake?",
+       "type": "multiple_choice",
+       "question": "Someone believes owning one share means they help run the company's daily operations.\n\nWhat is the mistake?",
        "options": [
         "Owning shares generally doesn't give an individual shareholder control over daily operations.",
         "They should buy even more shares to get more control.",
@@ -1562,9 +1555,8 @@
        "explanation": "Price moves reflect shifts in buying and selling pressure."
       },
       {
-       "type": "spot_mistake",
-       "scenario": "Someone believes a single company employee personally sets the stock's price each day.",
-       "question": "What is the mistake?",
+       "type": "multiple_choice",
+       "question": "Someone believes a single company employee personally sets the stock's price each day.\n\nWhat is the mistake?",
        "options": [
         "They should ask a different employee instead.",
         "Price emerges from many buyers and sellers trading, not one person's decision.",
@@ -1731,9 +1723,8 @@
        "explanation": "Volume spikes are commonly read as a sign of increased participation, not a certainty about what happens next."
       },
       {
-       "type": "spot_mistake",
-       "scenario": "Someone claims volume numbers are meaningless and should always be ignored.",
-       "question": "What is the mistake?",
+       "type": "multiple_choice",
+       "question": "Someone claims volume numbers are meaningless and should always be ignored.\n\nWhat is the mistake?",
        "options": [
         "Volume is commonly used as one added piece of context, not something to dismiss outright.",
         "They should stop looking at charts altogether.",
@@ -1905,9 +1896,8 @@
        "explanation": "Wide spreads are commonly linked to thinner, less liquid markets."
       },
       {
-       "type": "spot_mistake",
-       "scenario": "Someone buys a large position in a very illiquid stock, expecting to exit instantly at the same price.",
-       "question": "What is the mistake?",
+       "type": "multiple_choice",
+       "question": "Someone buys a large position in a very illiquid stock, expecting to exit instantly at the same price.\n\nWhat is the mistake?",
        "options": [
         "They should have ignored the bid/ask spread entirely.",
         "They should have bought an even larger position.",
@@ -2079,9 +2069,8 @@
        "explanation": "\"Spread\" specifically refers to the bid/ask gap."
       },
       {
-       "type": "spot_mistake",
-       "scenario": "Someone expects to always buy at the exact last traded price shown on a chart.",
-       "question": "What is the mistake?",
+       "type": "multiple_choice",
+       "question": "Someone expects to always buy at the exact last traded price shown on a chart.\n\nWhat is the mistake?",
        "options": [
         "The chart itself must be broken.",
         "Actual fills happen near the current bid or ask, which can differ slightly from the last traded price.",
@@ -2248,9 +2237,8 @@
        "explanation": "A limit order only fills if the market actually reaches your specified price."
       },
       {
-       "type": "spot_mistake",
-       "scenario": "Someone is confused why their limit order never filled, even though they set a specific price.",
-       "question": "What is the mistake?",
+       "type": "multiple_choice",
+       "question": "Someone is confused why their limit order never filled, even though they set a specific price.\n\nWhat is the mistake?",
        "options": [
         "They should have set an even lower limit price regardless of the market.",
         "Limit orders must be broken and shouldn't be used.",
@@ -2569,9 +2557,8 @@
        "explanation": "Extended-hours sessions are commonly described as having thinner liquidity."
       },
       {
-       "type": "spot_mistake",
-       "scenario": "Someone is surprised that a trade placed during after-hours filled at a very different price than expected.",
-       "question": "What is the mistake?",
+       "type": "multiple_choice",
+       "question": "Someone is surprised that a trade placed during after-hours filled at a very different price than expected.\n\nWhat is the mistake?",
        "options": [
         "Extended hours should have identical liquidity to standard hours.",
         "Lower liquidity outside standard hours can lead to bigger differences between expected and actual fill prices.",
@@ -2735,9 +2722,8 @@
        "chart": "sideways"
       },
       {
-       "type": "spot_mistake",
-       "scenario": "Someone judges an asset's entire long-term direction using only a 1-minute chart.",
-       "question": "What is the mistake?",
+       "type": "multiple_choice",
+       "question": "Someone judges an asset's entire long-term direction using only a 1-minute chart.\n\nWhat is the mistake?",
        "options": [
         "A very short timeframe mostly shows recent detail, not the bigger long-term picture.",
         "They should have used an even shorter timeframe instead.",
@@ -3076,9 +3062,8 @@
        "explanation": "The high specifically marks the peak price reached, regardless of where it closed."
       },
       {
-       "type": "spot_mistake",
-       "scenario": "Someone assumes the \"close\" of a candle is always the same as its highest price.",
-       "question": "What is the mistake?",
+       "type": "multiple_choice",
+       "question": "Someone assumes the \"close\" of a candle is always the same as its highest price.\n\nWhat is the mistake?",
        "options": [
         "They should ignore the close value entirely.",
         "The close and the high are often different values, the close is simply where price ended.",
@@ -3250,9 +3235,8 @@
        "explanation": "\"Gap fill\" specifically describes price retracing back through the skipped range."
       },
       {
-       "type": "spot_mistake",
-       "scenario": "Someone assumes every gap must always get filled eventually, as a guaranteed rule.",
-       "question": "What is the mistake?",
+       "type": "multiple_choice",
+       "question": "Someone assumes every gap must always get filled eventually, as a guaranteed rule.\n\nWhat is the mistake?",
        "options": [
         "They should assume no gap is ever filled instead.",
         "Not every gap gets filled, some do, some don't; there's no guarantee either way.",
@@ -3677,9 +3661,8 @@
        "chart": "marubozu"
       },
       {
-       "type": "spot_mistake",
-       "scenario": "Someone glances at the chart and reads only the wicks, ignoring the bodies entirely.",
-       "question": "What is the mistake?",
+       "type": "multiple_choice",
+       "question": "Someone glances at the chart and reads only the wicks, ignoring the bodies entirely.\n\nWhat is the mistake?",
        "options": [
         "They should ignore the wicks too and just guess.",
         "The body and wicks are read together, the body shows the net move, the wicks the extremes.",
@@ -3789,9 +3772,8 @@
        "chart": "doji"
       },
       {
-       "type": "spot_mistake",
-       "scenario": "Looking at this chart, someone calls the highlighted doji a \"100% guaranteed reversal.\"",
-       "question": "What is the mistake?",
+       "type": "multiple_choice",
+       "question": "Looking at this chart, someone calls the highlighted doji a \"100% guaranteed reversal.\"\n\nWhat is the mistake?",
        "options": [
         "A doji can only ever appear at the start of a chart.",
         "The doji should have an even bigger body to count.",
@@ -4032,9 +4014,8 @@
        "chart": "shootingStar"
       },
       {
-       "type": "spot_mistake",
-       "scenario": "Someone sees this chart and labels the highlighted candle a hammer.",
-       "question": "What is the mistake?",
+       "type": "multiple_choice",
+       "question": "Someone sees this chart and labels the highlighted candle a hammer.\n\nWhat is the mistake?",
        "options": [
         "A shooting star and a hammer are the exact same shape.",
         "Wick direction doesn't matter when naming a candle.",
@@ -4082,9 +4063,8 @@
        "explanation": "Wick position (and preceding trend) is what names each shape."
       },
       {
-       "type": "spot_mistake",
-       "scenario": "Someone assumes a shooting star's long wick means volume was extremely high.",
-       "question": "What is the mistake?",
+       "type": "multiple_choice",
+       "question": "Someone assumes a shooting star's long wick means volume was extremely high.\n\nWhat is the mistake?",
        "options": [
         "Volume can't be measured separately from wicks.",
         "Wick length shows price extremes, not trading volume. They're two separate ideas.",
@@ -4298,9 +4278,8 @@
        "explanation": "The engulfing direction depends on which candle swallows the other."
       },
       {
-       "type": "spot_mistake",
-       "scenario": "Someone sees this chart and calls it bullish because \"there's a big candle.\"",
-       "question": "What is the mistake?",
+       "type": "multiple_choice",
+       "question": "Someone sees this chart and calls it bullish because \"there's a big candle.\"\n\nWhat is the mistake?",
        "options": [
         "A big candle always means bullish.",
         "Size alone isn't the point. Here the big candle is a DOWN candle engulfing an up one, which is bearish.",
@@ -4460,9 +4439,8 @@
        "explanation": "A spinning top has a bit more body than a doji, but still small overall."
       },
       {
-       "type": "spot_mistake",
-       "scenario": "Someone claims a spinning top always signals an immediate reversal.",
-       "question": "What is the mistake?",
+       "type": "multiple_choice",
+       "question": "Someone claims a spinning top always signals an immediate reversal.\n\nWhat is the mistake?",
        "options": [
         "Spinning tops always reverse the trend immediately.",
         "A spinning top describes hesitation, not a guaranteed reversal signal.",
@@ -4557,9 +4535,8 @@
        "explanation": "Body size is a quick read of how one-sided a period was."
       },
       {
-       "type": "spot_mistake",
-       "scenario": "Someone treats a single marubozu on this chart as a promise the trend continues.",
-       "question": "What is the mistake?",
+       "type": "multiple_choice",
+       "question": "Someone treats a single marubozu on this chart as a promise the trend continues.\n\nWhat is the mistake?",
        "options": [
         "A marubozu describes one decisive period. It doesn't guarantee what the next candle does.",
         "A marubozu can only appear once per chart.",
@@ -6569,9 +6546,8 @@
        "chart": "sideways"
       },
       {
-       "type": "spot_mistake",
-       "scenario": "Someone assumes any difference between chart price and their actual fill means the platform cheated them.",
-       "question": "What is the mistake?",
+       "type": "multiple_choice",
+       "question": "Someone assumes any difference between chart price and their actual fill means the platform cheated them.\n\nWhat is the mistake?",
        "options": [
         "They should assume all trading platforms are identical in this regard.",
         "They should stop using charts entirely.",
@@ -6838,9 +6814,8 @@
        "explanation": "Order flow is a descriptive read of current buy/sell pressure, not a guaranteed prediction."
       },
       {
-       "type": "spot_mistake",
-       "scenario": "Someone believes reading order flow lets them know the exact next price with certainty.",
-       "question": "What is the mistake?",
+       "type": "multiple_choice",
+       "question": "Someone believes reading order flow lets them know the exact next price with certainty.\n\nWhat is the mistake?",
        "options": [
         "Order flow describes current buy/sell pressure. It doesn't guarantee the exact next price.",
         "Order flow only matters after the market closes.",
@@ -6917,9 +6892,8 @@
        "chart": "uptrend"
       },
       {
-       "type": "spot_mistake",
-       "scenario": "Someone claims supply and demand have nothing to do with why a stock's price changes.",
-       "question": "What is the mistake?",
+       "type": "multiple_choice",
+       "question": "Someone claims supply and demand have nothing to do with why a stock's price changes.\n\nWhat is the mistake?",
        "options": [
         "Price changes only from company news, never from order flow.",
         "Supply and demand are commonly described as the basic economic engine behind price changes.",
@@ -7013,9 +6987,8 @@
        "explanation": "Market makers are commonly described as liquidity providers, not price-outcome guarantors."
       },
       {
-       "type": "spot_mistake",
-       "scenario": "Someone believes market makers guarantee a stock can never crash.",
-       "question": "What is the mistake?",
+       "type": "multiple_choice",
+       "question": "Someone believes market makers guarantee a stock can never crash.\n\nWhat is the mistake?",
        "options": [
         "Market makers have no role in markets at all.",
         "Market makers control all price outcomes.",
@@ -7109,9 +7082,8 @@
        "explanation": "The continuous-auction framing describes ongoing price discovery, not a fixed or guaranteed outcome."
       },
       {
-       "type": "spot_mistake",
-       "scenario": "Someone believes a single company employee sets the price under this \"auction\" framing.",
-       "question": "What is the mistake?",
+       "type": "multiple_choice",
+       "question": "Someone believes a single company employee sets the price under this \"auction\" framing.\n\nWhat is the mistake?",
        "options": [
         "The exchange fixes one auction price for the whole day.",
         "The auction framing describes price emerging from many participants, not one person's decision.",
@@ -7462,9 +7434,8 @@
        "chart": "breakout"
       },
       {
-       "type": "spot_mistake",
-       "scenario": "Someone finishes this unit and claims market mechanics now let them predict every future price with certainty.",
-       "question": "What is the mistake?",
+       "type": "multiple_choice",
+       "question": "Someone finishes this unit and claims market mechanics now let them predict every future price with certainty.\n\nWhat is the mistake?",
        "options": [
         "Market mechanics guarantee perfect predictions.",
         "This unit teaches nothing useful at all.",
@@ -8573,9 +8544,8 @@
        "explanation": "Volume adds participation context to a price move. It doesn't replace or guarantee anything."
       },
       {
-       "type": "spot_mistake",
-       "scenario": "Someone reads volume bars completely separately, without ever looking at the price candles above them.",
-       "question": "What is the mistake?",
+       "type": "multiple_choice",
+       "question": "Someone reads volume bars completely separately, without ever looking at the price candles above them.\n\nWhat is the mistake?",
        "options": [
         "Volume should always be read alone.",
         "Volume is commonly read alongside price for context, not in total isolation from it.",
@@ -8661,9 +8631,8 @@
        "explanation": "Volume is judged relative to that asset's typical activity, not a fixed universal figure."
       },
       {
-       "type": "spot_mistake",
-       "scenario": "Someone assumes any stock trading 1 million shares must have \"high\" volume, without checking that stock's typical activity.",
-       "question": "What is the mistake?",
+       "type": "multiple_choice",
+       "question": "Someone assumes any stock trading 1 million shares must have \"high\" volume, without checking that stock's typical activity.\n\nWhat is the mistake?",
        "options": [
         "Without comparing to that stock's typical volume, there's no way to know if 1 million shares is high or low for it.",
         "Any large-sounding number is automatically high volume.",
@@ -8936,9 +8905,8 @@
        "chart": "volatile"
       },
       {
-       "type": "spot_mistake",
-       "scenario": "Someone assumes every climactic volume spike guarantees the current move is about to end.",
-       "question": "What is the mistake?",
+       "type": "multiple_choice",
+       "question": "Someone assumes every climactic volume spike guarantees the current move is about to end.\n\nWhat is the mistake?",
        "options": [
         "Every volume spike guarantees an immediate ending.",
         "Climactic volume is commonly noted near endings, but it doesn't guarantee one. The move can still continue.",
@@ -9035,9 +9003,8 @@
        "chart": "sideways"
       },
       {
-       "type": "spot_mistake",
-       "scenario": "Someone assumes dry-up volume always precedes a big upward move.",
-       "question": "What is the mistake?",
+       "type": "multiple_choice",
+       "question": "Someone assumes dry-up volume always precedes a big upward move.\n\nWhat is the mistake?",
        "options": [
         "Dry-up volume always means a crash is coming.",
         "Dry-up volume always means a big rally is coming.",
@@ -9501,9 +9468,8 @@
        "chart": "symmetricalTriangle"
       },
       {
-       "type": "spot_mistake",
-       "scenario": "Someone assumes a compressed, narrowing range will stay narrow forever.",
-       "question": "What is the mistake?",
+       "type": "multiple_choice",
+       "question": "Someone assumes a compressed, narrowing range will stay narrow forever.\n\nWhat is the mistake?",
        "options": [
         "Compression never resolves into anything else.",
         "Compression is commonly described as temporary, eventually resolving into expansion.",
@@ -10255,9 +10221,8 @@
        "chart": "sideways"
       },
       {
-       "type": "spot_mistake",
-       "scenario": "Someone assumes a sideways market will stay sideways forever.",
-       "question": "What is the mistake?",
+       "type": "multiple_choice",
+       "question": "Someone assumes a sideways market will stay sideways forever.\n\nWhat is the mistake?",
        "options": [
         "Sideways periods are commonly followed by a move in one direction or another. They don't last forever.",
         "They should have only looked at a shorter timeframe.",
@@ -11109,9 +11074,8 @@
        "chart": "sideways"
       },
       {
-       "type": "spot_mistake",
-       "scenario": "Someone assumes consolidation always resolves in the same direction as the move that preceded it.",
-       "question": "What is the mistake?",
+       "type": "multiple_choice",
+       "question": "Someone assumes consolidation always resolves in the same direction as the move that preceded it.\n\nWhat is the mistake?",
        "options": [
         "Consolidation can resolve in either direction. It doesn't guarantee a continuation of the prior move.",
         "They should assume it always reverses instead.",
@@ -11494,9 +11458,8 @@
        "explanation": "Honest uncertainty in the moment is more accurate than a confident guess either way."
       },
       {
-       "type": "spot_mistake",
-       "scenario": "Someone confidently labels an in-progress counter-trend move as \"just a pullback\" before it has played out.",
-       "question": "What is the mistake?",
+       "type": "multiple_choice",
+       "question": "Someone confidently labels an in-progress counter-trend move as \"just a pullback\" before it has played out.\n\nWhat is the mistake?",
        "options": [
         "They should stop distinguishing between the two terms entirely.",
         "They should have labeled it a reversal instead, with the same certainty.",
@@ -11647,9 +11610,8 @@
        "explanation": "This balanced view has been the throughline of every lesson in this unit."
       },
       {
-       "type": "spot_mistake",
-       "scenario": "Someone finishes this unit and claims they can now predict every future swing with certainty.",
-       "question": "What is the mistake?",
+       "type": "multiple_choice",
+       "question": "Someone finishes this unit and claims they can now predict every future swing with certainty.\n\nWhat is the mistake?",
        "options": [
         "They should have only studied one single chart.",
         "They should have skipped straight to more advanced lessons.",
@@ -11814,9 +11776,8 @@
        "chart": "supportBounce"
       },
       {
-       "type": "spot_mistake",
-       "scenario": "Someone claims a certain price level is \"support\" that can never be broken.",
-       "question": "What is the mistake?",
+       "type": "multiple_choice",
+       "question": "Someone claims a certain price level is \"support\" that can never be broken.\n\nWhat is the mistake?",
        "options": [
         "They should have used a shorter timeframe only.",
         "No support level is unbreakable; price levels are historical tendencies, not permanent walls.",
@@ -11982,9 +11943,8 @@
        "chart": "resistanceRejection"
       },
       {
-       "type": "spot_mistake",
-       "scenario": "Someone claims a certain price level is \"resistance\" that can never be broken.",
-       "question": "What is the mistake?",
+       "type": "multiple_choice",
+       "question": "Someone claims a certain price level is \"resistance\" that can never be broken.\n\nWhat is the mistake?",
        "options": [
         "No resistance level is unbreakable; price levels are historical tendencies, not permanent walls.",
         "They should have picked an even higher price level instead.",
@@ -12141,9 +12101,8 @@
        "explanation": "The balanced view treats this as a reasonable theory, not an absolute law."
       },
       {
-       "type": "spot_mistake",
-       "scenario": "Someone insists there's a strict, universal rule guaranteeing why every level holds.",
-       "question": "What is the mistake?",
+       "type": "multiple_choice",
+       "question": "Someone insists there's a strict, universal rule guaranteeing why every level holds.\n\nWhat is the mistake?",
        "options": [
         "They should stop discussing why levels form at all.",
         "They should look for an even older price level instead.",
@@ -12883,9 +12842,8 @@
        "chart": "sideways"
       },
       {
-       "type": "spot_mistake",
-       "scenario": "Someone assumes an established trading range will hold forever and never resolve into a breakout.",
-       "question": "What is the mistake?",
+       "type": "multiple_choice",
+       "question": "Someone assumes an established trading range will hold forever and never resolve into a breakout.\n\nWhat is the mistake?",
        "options": [
         "Ranges are commonly followed eventually by a breakout in one direction or another. They don't last forever.",
         "They should have widened the range indefinitely instead.",
@@ -13303,9 +13261,8 @@
        "explanation": "This balanced view has been the throughline of every lesson in this unit."
       },
       {
-       "type": "spot_mistake",
-       "scenario": "Someone finishes this unit and claims they can now predict every future price reaction with certainty.",
-       "question": "What is the mistake?",
+       "type": "multiple_choice",
+       "question": "Someone finishes this unit and claims they can now predict every future price reaction with certainty.\n\nWhat is the mistake?",
        "options": [
         "They should have skipped straight to more advanced lessons.",
         "They should have only studied one single chart.",
@@ -13540,9 +13497,8 @@
        "chart": "doubleBottom"
       },
       {
-       "type": "spot_mistake",
-       "scenario": "Someone calls the chart a double top because \"it has two turning points.\"",
-       "question": "What is the mistake?",
+       "type": "multiple_choice",
+       "question": "Someone calls the chart a double top because \"it has two turning points.\"\n\nWhat is the mistake?",
        "options": [
         "Double tops and double bottoms are the same thing.",
         "Two troughs at support form a double bottom (a \"W\"), not a double top.",
@@ -14578,9 +14534,8 @@
        "chart": "doubleBottom"
       },
       {
-       "type": "spot_mistake",
-       "scenario": "Someone finishes this unit and starts calling every two-bar wiggle a \"double top.\"",
-       "question": "What is the mistake?",
+       "type": "multiple_choice",
+       "question": "Someone finishes this unit and starts calling every two-bar wiggle a \"double top.\"\n\nWhat is the mistake?",
        "options": [
         "The level and context don't matter.",
         "Any two candles form a double top.",
@@ -15000,9 +14955,8 @@
        "chart": "inverseHeadShoulders"
       },
       {
-       "type": "spot_mistake",
-       "scenario": "Someone calls an inverse head & shoulders a \"regular head & shoulders\".",
-       "question": "What is the mistake?",
+       "type": "multiple_choice",
+       "question": "Someone calls an inverse head & shoulders a \"regular head & shoulders\".\n\nWhat is the mistake?",
        "options": [
         "Troughs and peaks don't change the name.",
         "The two patterns are the same thing.",
@@ -15705,9 +15659,8 @@
        "chart": "headShoulders"
       },
       {
-       "type": "spot_mistake",
-       "scenario": "Someone finishes this unit and starts calling every three-bar wiggle a \"head & shoulders.\"",
-       "question": "What is the mistake?",
+       "type": "multiple_choice",
+       "question": "Someone finishes this unit and starts calling every three-bar wiggle a \"head & shoulders.\"\n\nWhat is the mistake?",
        "options": [
         "Any three candles form a head & shoulders.",
         "The neckline and peak heights don't matter.",
@@ -15914,9 +15867,8 @@
        "chart": "descendingTriangle"
       },
       {
-       "type": "spot_mistake",
-       "scenario": "Someone calls a flat-bottom, falling-highs chart an \"ascending triangle.\"",
-       "question": "What is the mistake?",
+       "type": "multiple_choice",
+       "question": "Someone calls a flat-bottom, falling-highs chart an \"ascending triangle.\"\n\nWhat is the mistake?",
        "options": [
         "Flat bottom with falling highs is a descending triangle; ascending has a flat top with rising lows.",
         "The two triangles are the same.",
@@ -16357,9 +16309,8 @@
        "chart": "symmetricalTriangle"
       },
       {
-       "type": "spot_mistake",
-       "scenario": "Someone calls every little sideways wiggle a \"triangle.\"",
-       "question": "What is the mistake?",
+       "type": "multiple_choice",
+       "question": "Someone calls every little sideways wiggle a \"triangle.\"\n\nWhat is the mistake?",
        "options": [
         "A triangle needs converging (or one flat) trendlines, not just any sideways drift.",
         "Any sideways movement is a triangle.",
@@ -16555,9 +16506,8 @@
        "explanation": "Like the bull flag, it's a continuation of the pole's direction."
       },
       {
-       "type": "spot_mistake",
-       "scenario": "Someone calls a strong-down-then-small-up chart a \"bull flag.\"",
-       "question": "What is the mistake?",
+       "type": "multiple_choice",
+       "question": "Someone calls a strong-down-then-small-up chart a \"bull flag.\"\n\nWhat is the mistake?",
        "options": [
         "Bull and bear flags are the same.",
         "A down pole with an upward flag is a bear flag; a bull flag has an up pole.",
@@ -16906,9 +16856,8 @@
        "chart": "bullFlag"
       },
       {
-       "type": "spot_mistake",
-       "scenario": "Someone calls a huge, slow sideways range a \"bull flag.\"",
-       "question": "What is the mistake?",
+       "type": "multiple_choice",
+       "question": "Someone calls a huge, slow sideways range a \"bull flag.\"\n\nWhat is the mistake?",
        "options": [
         "A flag is a small pause after a sharp pole, not a large, slow range with no pole.",
         "Any sideways move is a flag.",
@@ -17082,9 +17031,8 @@
        "explanation": "Converging lines make it a wedge."
       },
       {
-       "type": "spot_mistake",
-       "scenario": "Someone calls a falling wedge \"just a downtrend, nothing more.\"",
-       "question": "What is the mistake?",
+       "type": "multiple_choice",
+       "question": "Someone calls a falling wedge \"just a downtrend, nothing more.\"\n\nWhat is the mistake?",
        "options": [
         "A wedge and a plain downtrend are identical.",
         "The converging (narrowing) lines make it a wedge, a specific structure, not just any downtrend.",
@@ -17743,9 +17691,8 @@
        "explanation": "The line connects the lower highs above price."
       },
       {
-       "type": "spot_mistake",
-       "scenario": "Someone draws a downtrend line along the lows instead of the highs.",
-       "question": "What is the mistake?",
+       "type": "multiple_choice",
+       "question": "Someone draws a downtrend line along the lows instead of the highs.\n\nWhat is the mistake?",
        "options": [
         "Downtrend lines go along the lows.",
         "A downtrend line is drawn along the lower highs (above price), not the lows.",
@@ -19315,9 +19262,8 @@
        "explanation": "Lower highs keep the downtrend structure intact."
       },
       {
-       "type": "spot_mistake",
-       "scenario": "Someone sees a bounce make a HIGHER high and still calls the downtrend perfectly healthy.",
-       "question": "What is the mistake?",
+       "type": "multiple_choice",
+       "question": "Someone sees a bounce make a HIGHER high and still calls the downtrend perfectly healthy.\n\nWhat is the mistake?",
        "options": [
         "A higher high breaks the lower-high pattern. That's commonly read as the downtrend weakening, not healthy.",
         "The highs don't matter in a downtrend.",
@@ -22068,9 +22014,8 @@
        "explanation": "Pattern-plus-level is confluence, stronger than either alone."
       },
       {
-       "type": "spot_mistake",
-       "scenario": "Someone reads one perfect pattern and ignores the level, the trend, and the candles around it.",
-       "question": "What is the mistake?",
+       "type": "multiple_choice",
+       "question": "Someone reads one perfect pattern and ignores the level, the trend, and the candles around it.\n\nWhat is the mistake?",
        "options": [
         "Context never helps.",
         "A full read combines pattern, level, trend, and candles, not one factor in isolation.",
@@ -22298,9 +22243,8 @@
        "explanation": "Pent-up activity from pre-market commonly concentrates right at the open."
       },
       {
-       "type": "spot_mistake",
-       "scenario": "Someone assumes pre-market liquidity is always identical to the standard session's.",
-       "question": "What is the mistake?",
+       "type": "multiple_choice",
+       "question": "Someone assumes pre-market liquidity is always identical to the standard session's.\n\nWhat is the mistake?",
        "options": [
         "Pre-market commonly has thinner liquidity than the standard session, treating them as identical ignores that difference.",
         "Pre-market always has more liquidity than standard hours.",
@@ -22399,9 +22343,8 @@
        "explanation": "End-of-day positioning is a commonly cited reason for power hour's added activity."
       },
       {
-       "type": "spot_mistake",
-       "scenario": "Someone assumes midday is always the busiest part of the trading day.",
-       "question": "What is the mistake?",
+       "type": "multiple_choice",
+       "question": "Someone assumes midday is always the busiest part of the trading day.\n\nWhat is the mistake?",
        "options": [
         "Every session of the day sees identical activity.",
         "Midday is commonly the quieter lull, not the busiest period. That's more commonly the open or power hour.",
@@ -22495,9 +22438,8 @@
        "explanation": "This connects the liquidity idea from earlier units to the after-hours session specifically."
       },
       {
-       "type": "spot_mistake",
-       "scenario": "Someone expects an after-hours fill to behave identically to a standard-hours fill.",
-       "question": "What is the mistake?",
+       "type": "multiple_choice",
+       "question": "Someone expects an after-hours fill to behave identically to a standard-hours fill.\n\nWhat is the mistake?",
        "options": [
         "After-hours orders are guaranteed a better price than standard hours.",
         "After-hours fills always match standard-hours fills exactly.",
@@ -22668,9 +22610,8 @@
        "explanation": "Broad economic data commonly shifts sentiment market-wide, unlike a single company's earnings."
       },
       {
-       "type": "spot_mistake",
-       "scenario": "Someone assumes economic releases only affect the specific company mentioned in the report.",
-       "question": "What is the mistake?",
+       "type": "multiple_choice",
+       "question": "Someone assumes economic releases only affect the specific company mentioned in the report.\n\nWhat is the mistake?",
        "options": [
         "Economic releases and earnings reports describe the same scope.",
         "Economic releases commonly affect many assets across the market, not just one specific company.",
@@ -22766,9 +22707,8 @@
        "chart": "volatile"
       },
       {
-       "type": "spot_mistake",
-       "scenario": "Someone assumes volatility around a news event will stay permanently elevated forever.",
-       "question": "What is the mistake?",
+       "type": "multiple_choice",
+       "question": "Someone assumes volatility around a news event will stay permanently elevated forever.\n\nWhat is the mistake?",
        "options": [
         "Volatility spikes always last permanently.",
         "Only earnings, never economic data, can spike volatility.",
@@ -22863,9 +22803,8 @@
        "explanation": "This connects the Risk Management unit's ideas directly to a real-world scenario."
       },
       {
-       "type": "spot_mistake",
-       "scenario": "Someone dramatically increases their position size right before a major scheduled news release, assuming it's the same as any other moment.",
-       "question": "What is the mistake?",
+       "type": "multiple_choice",
+       "question": "Someone dramatically increases their position size right before a major scheduled news release, assuming it's the same as any other moment.\n\nWhat is the mistake?",
        "options": [
         "News commonly brings added volatility and wider spreads. Many traders apply extra caution, not more size, around it.",
         "Wider spreads around news guarantee a better entry price.",
@@ -22961,9 +22900,8 @@
        "chart": "volatile"
       },
       {
-       "type": "spot_mistake",
-       "scenario": "Someone reads a choppy, thin pre-market move exactly the same way as an identical-looking move during the standard open.",
-       "question": "What is the mistake?",
+       "type": "multiple_choice",
+       "question": "Someone reads a choppy, thin pre-market move exactly the same way as an identical-looking move during the standard open.\n\nWhat is the mistake?",
        "options": [
         "Pre-market and the standard open always behave identically.",
         "Session timing never matters for reading a chart.",
@@ -23063,9 +23001,8 @@
        "chart": "gapUp"
       },
       {
-       "type": "spot_mistake",
-       "scenario": "Someone finishes this unit and starts treating news events as guaranteed trading opportunities.",
-       "question": "What is the mistake?",
+       "type": "multiple_choice",
+       "question": "Someone finishes this unit and starts treating news events as guaranteed trading opportunities.\n\nWhat is the mistake?",
        "options": [
         "News events guarantee profitable trades.",
         "News adds volatility and context, but never a guaranteed outcome. This unit has framed it as added risk to manage, not a guaranteed opportunity.",
@@ -24929,9 +24866,8 @@
        "chart": "sideways"
       },
       {
-       "type": "spot_mistake",
-       "scenario": "Someone dismisses capital preservation as unnecessary because they're only focused on maximizing potential gains.",
-       "question": "What is the mistake?",
+       "type": "multiple_choice",
+       "question": "Someone dismisses capital preservation as unnecessary because they're only focused on maximizing potential gains.\n\nWhat is the mistake?",
        "options": [
         "They should take on the maximum possible risk on every trade instead.",
         "Without capital remaining, there's nothing left to generate future gains with. Preservation and growth are commonly linked.",
@@ -25318,9 +25254,8 @@
        "chart": "sideways"
       },
       {
-       "type": "spot_mistake",
-       "scenario": "Someone describes \"holding a stock for six months\" as an example of scalping.",
-       "question": "What is the mistake?",
+       "type": "multiple_choice",
+       "question": "Someone describes \"holding a stock for six months\" as an example of scalping.\n\nWhat is the mistake?",
        "options": [
         "Scalping is commonly described as very short-timeframe and high-frequency, not a six-month hold.",
         "They should assume all approaches are basically the same.",
@@ -26064,9 +25999,8 @@
        "chart": "sideways"
       },
       {
-       "type": "spot_mistake",
-       "scenario": "Someone describes \"expecting price to break every boundary and keep moving in one direction\" as an example of range trading.",
-       "question": "What is the mistake?",
+       "type": "multiple_choice",
+       "question": "Someone describes \"expecting price to break every boundary and keep moving in one direction\" as an example of range trading.\n\nWhat is the mistake?",
        "options": [
         "They should expect it to break through even more boundaries to match the description.",
         "Range trading and breakout trading expect the same thing.",
@@ -26744,9 +26678,8 @@
        "explanation": "You start from the risk and stop, then solve for size."
       },
       {
-       "type": "spot_mistake",
-       "scenario": "Someone uses the same fixed position size no matter how far away the stop is.",
-       "question": "What is the mistake?",
+       "type": "multiple_choice",
+       "question": "Someone uses the same fixed position size no matter how far away the stop is.\n\nWhat is the mistake?",
        "options": [
         "Stop distance never matters for sizing.",
         "Size should never change.",
@@ -27241,9 +27174,8 @@
        "explanation": "Larger winners in R can more than offset frequent small losses."
       },
       {
-       "type": "spot_mistake",
-       "scenario": "Someone dismisses a system purely because its win rate is under 50%, without checking the average R.",
-       "question": "What is the mistake?",
+       "type": "multiple_choice",
+       "question": "Someone dismisses a system purely because its win rate is under 50%, without checking the average R.\n\nWhat is the mistake?",
        "options": [
         "Average R never matters.",
         "Under 50% always means unprofitable.",
@@ -27457,9 +27389,8 @@
        "explanation": "Expectancy (win rate × R over many trades) is the honest measure."
       },
       {
-       "type": "spot_mistake",
-       "scenario": "Someone judges a brand-new system as \"amazing\" after two lucky wins.",
-       "question": "What is the mistake?",
+       "type": "multiple_choice",
+       "question": "Someone judges a brand-new system as \"amazing\" after two lucky wins.\n\nWhat is the mistake?",
        "options": [
         "Sample size is irrelevant.",
         "Two wins prove a positive expectancy.",
@@ -27764,9 +27695,8 @@
        "explanation": "Large erratic two-way swings define volatility."
       },
       {
-       "type": "spot_mistake",
-       "scenario": "Someone treats a wildly volatile chart as a calm, tidy range.",
-       "question": "What is the mistake?",
+       "type": "multiple_choice",
+       "question": "Someone treats a wildly volatile chart as a calm, tidy range.\n\nWhat is the mistake?",
        "options": [
         "Volatile and calm ranges are the same.",
         "Big erratic swings are volatile, not a calm range, the condition was misread.",
@@ -28238,9 +28168,8 @@
        "chart": "priceBelowMA"
       },
       {
-       "type": "spot_mistake",
-       "scenario": "Someone treats \"price above the MA\" as an automatic, guaranteed buy signal.",
-       "question": "What is the mistake?",
+       "type": "multiple_choice",
+       "question": "Someone treats \"price above the MA\" as an automatic, guaranteed buy signal.\n\nWhat is the mistake?",
        "options": [
         "The MA guarantees the next move.",
         "Price above the MA is a descriptive strength read, not a guaranteed signal to act on.",
@@ -28731,9 +28660,8 @@
        "explanation": "They describe RSI's zone; they aren't automatic trade signals."
       },
       {
-       "type": "spot_mistake",
-       "scenario": "Someone shorts every time RSI hits \"overbought,\" sure it must reverse.",
-       "question": "What is the mistake?",
+       "type": "multiple_choice",
+       "question": "Someone shorts every time RSI hits \"overbought,\" sure it must reverse.\n\nWhat is the mistake?",
        "options": [
         "RSI zones are guaranteed signals.",
         "\"Overbought\" is a label, not a signal, strong trends can stay overbought a long time.",
@@ -29162,9 +29090,8 @@
        "explanation": "It's the level that disproves the idea."
       },
       {
-       "type": "spot_mistake",
-       "scenario": "Someone enters a trade with no idea of where they'd be wrong.",
-       "question": "What is the mistake?",
+       "type": "multiple_choice",
+       "question": "Someone enters a trade with no idea of where they'd be wrong.\n\nWhat is the mistake?",
        "options": [
         "Without an invalidation point, there's no clear place to stop or admit the idea failed.",
         "A trade never needs a wrong-point.",
@@ -29392,9 +29319,8 @@
        "explanation": "Following the plan is what gives it value."
       },
       {
-       "type": "spot_mistake",
-       "scenario": "Someone hits their planned invalidation but moves the stop further away to avoid taking the loss.",
-       "question": "What is the mistake?",
+       "type": "multiple_choice",
+       "question": "Someone hits their planned invalidation but moves the stop further away to avoid taking the loss.\n\nWhat is the mistake?",
        "options": [
         "Invalidation is optional once you're in.",
         "Moving the stop is following the plan.",
@@ -29651,9 +29577,8 @@
        "explanation": "It describes strength/weakness; it isn't an automatic trade."
       },
       {
-       "type": "spot_mistake",
-       "scenario": "Someone treats \"price above VWAP\" as an automatic guaranteed buy.",
-       "question": "What is the mistake?",
+       "type": "multiple_choice",
+       "question": "Someone treats \"price above VWAP\" as an automatic guaranteed buy.\n\nWhat is the mistake?",
        "options": [
         "Above VWAP is a descriptive strength read, not a guaranteed signal to buy.",
         "VWAP guarantees the next move.",
@@ -29896,9 +29821,8 @@
        "explanation": "It describes stretch/deviation, not an automatic turn."
       },
       {
-       "type": "spot_mistake",
-       "scenario": "Someone sells every time price touches the upper band, sure it must revert.",
-       "question": "What is the mistake?",
+       "type": "multiple_choice",
+       "question": "Someone sells every time price touches the upper band, sure it must revert.\n\nWhat is the mistake?",
        "options": [
         "Band touches are guaranteed signals.",
         "An upper-band touch always reverses.",
@@ -30199,9 +30123,8 @@
        "explanation": "Deeper losses require disproportionately larger recovery gains."
       },
       {
-       "type": "spot_mistake",
-       "scenario": "Someone assumes a 50% loss just needs a 50% gain to get back.",
-       "question": "What is the mistake?",
+       "type": "multiple_choice",
+       "question": "Someone assumes a 50% loss just needs a 50% gain to get back.\n\nWhat is the mistake?",
        "options": [
         "A 50% loss needs a 100% gain to recover, since you're rebuilding from a smaller base.",
         "50% back always fixes a 50% loss.",
@@ -30792,9 +30715,8 @@
        "explanation": "Reviewing process (not just the result) is what improves you."
       },
       {
-       "type": "spot_mistake",
-       "scenario": "Someone only reviews winners and ignores whether they followed their process.",
-       "question": "What is the mistake?",
+       "type": "multiple_choice",
+       "question": "Someone only reviews winners and ignores whether they followed their process.\n\nWhat is the mistake?",
        "options": [
         "Reviewing outcomes alone misses whether the process was sound, the controllable part.",
         "Process doesn't matter in review.",
@@ -31175,9 +31097,8 @@
        "chart": "volatile"
       },
       {
-       "type": "spot_mistake",
-       "scenario": "Someone treats ATR as a signal for market direction.",
-       "question": "What is the mistake?",
+       "type": "multiple_choice",
+       "question": "Someone treats ATR as a signal for market direction.\n\nWhat is the mistake?",
        "options": [
         "ATR measures size of movement, not direction.",
         "ATR predicts the next candle's color.",
@@ -31272,9 +31193,8 @@
        "explanation": "Like volume, ATR is judged relative to what's typical for that specific asset."
       },
       {
-       "type": "spot_mistake",
-       "scenario": "Someone assumes a specific ATR number is universally \"high\" for every single asset.",
-       "question": "What is the mistake?",
+       "type": "multiple_choice",
+       "question": "Someone assumes a specific ATR number is universally \"high\" for every single asset.\n\nWhat is the mistake?",
        "options": [
         "ATR is judged relative to that asset's own typical range, not one fixed universal number.",
         "ATR values never vary between assets.",
@@ -31379,9 +31299,8 @@
        "explanation": "ATR-informed stops are grounded in typical movement, not a guarantee against being stopped out."
       },
       {
-       "type": "spot_mistake",
-       "scenario": "Someone sets a stop far tighter than the asset's typical ATR and is surprised it gets hit by normal noise.",
-       "question": "What is the mistake?",
+       "type": "multiple_choice",
+       "question": "Someone sets a stop far tighter than the asset's typical ATR and is surprised it gets hit by normal noise.\n\nWhat is the mistake?",
        "options": [
         "Stop distance should never consider typical movement.",
         "A stop set well inside typical movement (ATR) can get triggered by ordinary volatility, not a meaningful shift.",
@@ -31556,9 +31475,8 @@
        "chart": "volatile"
       },
       {
-       "type": "spot_mistake",
-       "scenario": "Someone finishes this unit and starts using ATR as a buy/sell signal.",
-       "question": "What is the mistake?",
+       "type": "multiple_choice",
+       "question": "Someone finishes this unit and starts using ATR as a buy/sell signal.\n\nWhat is the mistake?",
        "options": [
         "ATR always tells you when to buy or sell.",
         "ATR describes typical movement size, it's not a buy or sell signal.",
@@ -31658,9 +31576,8 @@
        "explanation": "A million shares might be huge for one stock and tiny for another — RVOL adds that missing context."
       },
       {
-       "type": "spot_mistake",
-       "scenario": "Someone sees \"2 million shares traded\" and assumes that's automatically a big deal for every stock.",
-       "question": "What is the mistake?",
+       "type": "multiple_choice",
+       "question": "Someone sees \"2 million shares traded\" and assumes that's automatically a big deal for every stock.\n\nWhat is the mistake?",
        "options": [
         "Whether 2 million shares is unusual depends on that stock's own typical volume, which RVOL captures.",
         "Volume numbers never need any context.",
@@ -31754,9 +31671,8 @@
        "explanation": "The 1x baseline is specific to each stock, which is what makes RVOL a relative measure."
       },
       {
-       "type": "spot_mistake",
-       "scenario": "Someone assumes an RVOL of \"1.5x\" means the same absolute share count for every stock.",
-       "question": "What is the mistake?",
+       "type": "multiple_choice",
+       "question": "Someone assumes an RVOL of \"1.5x\" means the same absolute share count for every stock.\n\nWhat is the mistake?",
        "options": [
         "1.5x compares the stock's volume to every other stock's.",
         "1.5x always equals exactly the same number of shares everywhere.",
@@ -31850,9 +31766,8 @@
        "explanation": "RVOL adds context about participation levels, never a directional or truth guarantee."
       },
       {
-       "type": "spot_mistake",
-       "scenario": "Someone sees high RVOL on earnings day and treats it as a guaranteed breakout signal.",
-       "question": "What is the mistake?",
+       "type": "multiple_choice",
+       "question": "Someone sees high RVOL on earnings day and treats it as a guaranteed breakout signal.\n\nWhat is the mistake?",
        "options": [
         "High RVOL reflects participation, not a guaranteed direction or outcome.",
         "RVOL always predicts a breakout on earnings days.",
@@ -31946,9 +31861,8 @@
        "explanation": "A meaningful RVOL reading depends on comparing against the right same-time-of-day baseline."
       },
       {
-       "type": "spot_mistake",
-       "scenario": "Someone compares midday volume directly to the opening-minutes baseline and calls it \"quiet.\"",
-       "question": "What is the mistake?",
+       "type": "multiple_choice",
+       "question": "Someone compares midday volume directly to the opening-minutes baseline and calls it \"quiet.\"\n\nWhat is the mistake?",
        "options": [
         "RVOL ignores time of day and uses the full daily total.",
         "Comparing across mismatched time-of-day baselines can make normal midday volume look artificially low.",
@@ -32047,9 +31961,8 @@
        "explanation": "RVOL's value is the relative, time-aware context it adds to plain volume figures."
       },
       {
-       "type": "spot_mistake",
-       "scenario": "Someone finishes this unit and starts using RVOL alone as a buy/sell trigger.",
-       "question": "What is the mistake?",
+       "type": "multiple_choice",
+       "question": "Someone finishes this unit and starts using RVOL alone as a buy/sell trigger.\n\nWhat is the mistake?",
        "options": [
         "RVOL always tells you when to buy or sell.",
         "RVOL describes relative participation, it's not a buy or sell signal on its own.",
@@ -32150,9 +32063,8 @@
        "chart": "volatile"
       },
       {
-       "type": "spot_mistake",
-       "scenario": "Someone assumes the opening range guarantees the day's final high and low.",
-       "question": "What is the mistake?",
+       "type": "multiple_choice",
+       "question": "Someone assumes the opening range guarantees the day's final high and low.\n\nWhat is the mistake?",
        "options": [
         "The opening range always matches the day's final high and low exactly.",
         "The opening range is an early reference level, not a guarantee of the full day's eventual high or low.",
@@ -32397,9 +32309,8 @@
        "chart": "volatile"
       },
       {
-       "type": "spot_mistake",
-       "scenario": "Someone assumes a wide opening range guarantees a volatile day for the remaining hours.",
-       "question": "What is the mistake?",
+       "type": "multiple_choice",
+       "question": "Someone assumes a wide opening range guarantees a volatile day for the remaining hours.\n\nWhat is the mistake?",
        "options": [
         "Opening range width always predicts the entire day's volatility.",
         "A wide opening range describes early volatility, it doesn't guarantee how the rest of the day unfolds.",
@@ -32500,9 +32411,8 @@
        "chart": "volatile"
       },
       {
-       "type": "spot_mistake",
-       "scenario": "Someone finishes this unit and starts trading every opening range break as an automatic signal.",
-       "question": "What is the mistake?",
+       "type": "multiple_choice",
+       "question": "Someone finishes this unit and starts trading every opening range break as an automatic signal.\n\nWhat is the mistake?",
        "options": [
         "The opening range has no descriptive value at all.",
         "Every opening range break should be traded automatically.",
@@ -32597,9 +32507,8 @@
        "explanation": "Sector and index context adds useful confluence without guaranteeing exact matching movement."
       },
       {
-       "type": "spot_mistake",
-       "scenario": "Someone assumes a stock always moves in perfect lockstep with its sector.",
-       "question": "What is the mistake?",
+       "type": "multiple_choice",
+       "question": "Someone assumes a stock always moves in perfect lockstep with its sector.\n\nWhat is the mistake?",
        "options": [
         "Stocks commonly move somewhat together with their sector, but not in guaranteed lockstep.",
         "A stock always moves in the exact opposite direction to its sector.",
@@ -32693,9 +32602,8 @@
        "explanation": "Relative strength is a descriptive comparison of price movement, not a guarantee or fundamentals claim."
       },
       {
-       "type": "spot_mistake",
-       "scenario": "Someone treats relative strength today as a guarantee it continues tomorrow.",
-       "question": "What is the mistake?",
+       "type": "multiple_choice",
+       "question": "Someone treats relative strength today as a guarantee it continues tomorrow.\n\nWhat is the mistake?",
        "options": [
         "Relative strength describes current comparative movement, it doesn't guarantee future outperformance.",
         "Relative strength always continues indefinitely once observed.",
@@ -32789,9 +32697,8 @@
        "explanation": "Sector rotation is best understood as a descriptive, shifting pattern rather than a predictive schedule."
       },
       {
-       "type": "spot_mistake",
-       "scenario": "Someone assumes sector rotation follows a fixed, guaranteed monthly schedule.",
-       "question": "What is the mistake?",
+       "type": "multiple_choice",
+       "question": "Someone assumes sector rotation follows a fixed, guaranteed monthly schedule.\n\nWhat is the mistake?",
        "options": [
         "Sector rotation describes a shifting pattern over time, not a fixed guaranteed schedule.",
         "Sector rotation applies to only one stock at a time.",
@@ -32885,9 +32792,8 @@
        "explanation": "Sector and index context slots into the same multi-factor, descriptive confluence approach taught earlier."
       },
       {
-       "type": "spot_mistake",
-       "scenario": "Someone uses sector strength alone, ignoring every other factor, as a complete trading system.",
-       "question": "What is the mistake?",
+       "type": "multiple_choice",
+       "question": "Someone uses sector strength alone, ignoring every other factor, as a complete trading system.\n\nWhat is the mistake?",
        "options": [
         "Sector context should replace chart and level reading entirely.",
         "Sector strength alone is sufficient and no other factor matters.",
@@ -32986,9 +32892,8 @@
        "explanation": "Sector and index context is valuable as one more descriptive layer of confluence, not a predictive guarantee."
       },
       {
-       "type": "spot_mistake",
-       "scenario": "Someone finishes this unit and starts trading based on sector strength alone as a complete signal.",
-       "question": "What is the mistake?",
+       "type": "multiple_choice",
+       "question": "Someone finishes this unit and starts trading based on sector strength alone as a complete signal.\n\nWhat is the mistake?",
        "options": [
         "Sector context has no descriptive value at all.",
         "Sector strength is one descriptive factor among several, not a standalone buy or sell signal.",
@@ -33087,9 +32992,8 @@
        "explanation": "Level II adds a view of standing orders that a simple last-price quote doesn't show."
       },
       {
-       "type": "spot_mistake",
-       "scenario": "Someone assumes Level II data tells you exactly what price will print next.",
-       "question": "What is the mistake?",
+       "type": "multiple_choice",
+       "question": "Someone assumes Level II data tells you exactly what price will print next.\n\nWhat is the mistake?",
        "options": [
         "Level II shows only the single last traded price.",
         "Level II always predicts the very next trade price precisely.",
@@ -33188,9 +33092,8 @@
        "explanation": "Spread width is simply one more descriptive detail about current market conditions, not a profit guarantee."
       },
       {
-       "type": "spot_mistake",
-       "scenario": "Someone assumes the bid-ask spread guarantees a certain profit if crossed.",
-       "question": "What is the mistake?",
+       "type": "multiple_choice",
+       "question": "Someone assumes the bid-ask spread guarantees a certain profit if crossed.\n\nWhat is the mistake?",
        "options": [
         "Crossing the spread always guarantees a profitable outcome.",
         "The spread describes the current gap between buy and sell orders, it doesn't guarantee any profit.",
@@ -33289,9 +33192,8 @@
        "explanation": "Order book depth is a constantly shifting descriptive snapshot, not a fixed or predictive figure."
       },
       {
-       "type": "spot_mistake",
-       "scenario": "Someone treats a large order sitting at one price level as a permanent, unchangeable wall.",
-       "question": "What is the mistake?",
+       "type": "multiple_choice",
+       "question": "Someone treats a large order sitting at one price level as a permanent, unchangeable wall.\n\nWhat is the mistake?",
        "options": [
         "A large resting order guarantees price stops at that level.",
         "Orders in the book can never be canceled once placed.",
@@ -33385,9 +33287,8 @@
        "explanation": "This course frames Level II as useful conceptual awareness, with clear limitations, never a predictive guarantee."
       },
       {
-       "type": "spot_mistake",
-       "scenario": "Someone assumes Level II removes all uncertainty about what will happen next in a stock.",
-       "question": "What is the mistake?",
+       "type": "multiple_choice",
+       "question": "Someone assumes Level II removes all uncertainty about what will happen next in a stock.\n\nWhat is the mistake?",
        "options": [
         "Level II guarantees full certainty about every future trade.",
         "Level II is a live, changeable snapshot with real limitations, not a tool that removes uncertainty.",
@@ -33486,9 +33387,8 @@
        "explanation": "This unit's throughline is conceptual, descriptive awareness of the order book, with honest limitations."
       },
       {
-       "type": "spot_mistake",
-       "scenario": "Someone finishes this unit and starts treating Level II alone as a complete trading edge.",
-       "question": "What is the mistake?",
+       "type": "multiple_choice",
+       "question": "Someone finishes this unit and starts treating Level II alone as a complete trading edge.\n\nWhat is the mistake?",
        "options": [
         "Level II is descriptive, limited context, it's not a complete standalone trading edge.",
         "Level II has no descriptive value at all.",
@@ -34019,9 +33919,8 @@
        "chart": "sideways"
       },
       {
-       "type": "spot_mistake",
-       "scenario": "Someone takes twenty trades in a single day out of boredom, despite their plan calling for only a couple of genuinely planned setups.",
-       "question": "What is the mistake?",
+       "type": "multiple_choice",
+       "question": "Someone takes twenty trades in a single day out of boredom, despite their plan calling for only a couple of genuinely planned setups.\n\nWhat is the mistake?",
        "options": [
         "Taking far more trades than the plan calls for, driven by boredom rather than genuine setups, is a commonly described overtrading pattern.",
         "They should stop having any plan at all.",
@@ -34696,9 +34595,8 @@
        "chart": "sideways"
       },
       {
-       "type": "spot_mistake",
-       "scenario": "Someone finishes this unit and assumes that simply knowing these terms means they'll never act impulsively again.",
-       "question": "What is the mistake?",
+       "type": "multiple_choice",
+       "question": "Someone finishes this unit and assumes that simply knowing these terms means they'll never act impulsively again.\n\nWhat is the mistake?",
        "options": [
         "Knowing a pattern's name doesn't automatically prevent it from happening, recognizing it in the moment still takes practice.",
         "They should stop thinking about psychology from now on since it can't guarantee anything.",
@@ -34948,9 +34846,8 @@
        "chart": "sideways"
       },
       {
-       "type": "spot_mistake",
-       "scenario": "Someone classifies a market as \"choppy\" after seeing a long, clear sequence of higher highs and higher lows.",
-       "question": "What is the mistake?",
+       "type": "multiple_choice",
+       "question": "Someone classifies a market as \"choppy\" after seeing a long, clear sequence of higher highs and higher lows.\n\nWhat is the mistake?",
        "options": [
         "They should look for even more oscillation to confirm it's choppy.",
         "They should ignore the sequence of highs and lows entirely.",

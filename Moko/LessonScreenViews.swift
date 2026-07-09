@@ -190,7 +190,7 @@ struct LessonScreenRouter: View {
         case "number_slider":
             NumberSliderView(player: player, ink: ink)
         default:
-            // true_false / multiple_choice / fill_blank / spot_mistake
+            // true_false / multiple_choice / fill_blank
             ChoiceView(player: player, ink: ink)
         }
         // Re-key so per-screen @State resets when the step changes.
@@ -1160,7 +1160,7 @@ struct FillBlankChoiceView: View {
     }
 }
 
-// MARK: - Choice (true_false / multiple_choice / spot_mistake)
+// MARK: - Choice (true_false / multiple_choice)
 
 struct ChoiceView: View {
     @ObservedObject var player: LessonPlayer
@@ -1175,10 +1175,6 @@ struct ChoiceView: View {
             // regardless of its underlying type (MC / TF / etc).
             if let key = s.chart, let scenario = ChartScenario(rawValue: key) {
                 ScenarioChartView(scenario: scenario, height: 130, seed: chartSeed(player.screen))
-            }
-
-            if s.type == "spot_mistake", let scenario = s.scenario {
-                scenarioCard(scenario)
             }
 
             // Chart-analysis questions (read the chart, then answer) keep the
@@ -1224,23 +1220,6 @@ struct ChoiceView: View {
             q = q.replacingOccurrences(of: "[___]", with: fill)
         }
         return q
-    }
-
-    private func scenarioCard(_ scenario: String) -> some View {
-        Text(RichText.attributed(scenario,
-                                 base: Theme.font(15.5, .semibold),
-                                 bold: Theme.font(15.5, .black),
-                                 color: .white))
-            .lineSpacing(3)
-            .fixedSize(horizontal: false, vertical: true)
-            .frame(maxWidth: .infinity, alignment: .leading)
-            .padding(18)
-            .background(
-                RoundedRectangle(cornerRadius: 18, style: .continuous)
-                    .fill(Color(hex: "#F59E0B"))
-                    .background(RoundedRectangle(cornerRadius: 18, style: .continuous)
-                        .fill(Color(hex: "#B45309")).offset(y: 5))
-            )
     }
 
     private func optionButton(idx: Int, label: String) -> some View {

@@ -59,7 +59,7 @@ struct LessonScreen: Decodable, Identifiable {
     // true_false → correct is a Bool
     let correctBool: Bool?
 
-    // multiple_choice / fill_blank / spot_mistake → correct is an index
+    // multiple_choice / fill_blank → correct is an index
     let options: [String]?
     let correctIndex: Int?
     let wrongExplanations: [String?]?
@@ -67,8 +67,7 @@ struct LessonScreen: Decodable, Identifiable {
     // matching
     let pairs: [[String]]?
 
-    // spot_mistake / ingredient_match
-    let scenario: String?
+    // ingredient_match
     let concern: String?
 
     // fill_blank_multi
@@ -106,7 +105,7 @@ struct LessonScreen: Decodable, Identifiable {
     let numberUnit: String?
 
     enum CodingKeys: String, CodingKey {
-        case type, text, question, explanation, options, pairs, scenario, template, blanks
+        case type, text, question, explanation, options, pairs, template, blanks
         case concern, items, chart, target, targets, level
         case levelKind = "level_kind"
         case targetStart = "target_start"
@@ -138,7 +137,6 @@ struct LessonScreen: Decodable, Identifiable {
         options = (try? c.decodeIfPresent([String].self, forKey: .options)) ?? nil
         ingredientOptions = (try? c.decodeIfPresent([IngredientOption].self, forKey: .options)) ?? nil
         pairs = try c.decodeIfPresent([[String]].self, forKey: .pairs)
-        scenario = try c.decodeIfPresent(String.self, forKey: .scenario)
         concern = try c.decodeIfPresent(String.self, forKey: .concern)
         template = try c.decodeIfPresent(String.self, forKey: .template)
         blanks = try c.decodeIfPresent([Blank].self, forKey: .blanks)
