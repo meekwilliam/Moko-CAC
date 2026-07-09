@@ -100,7 +100,7 @@ struct MascotPrompt: View {
                     SpeechBubbleShape(tail: 14)
                         .fill(face)
                         .overlay(SpeechBubbleShape(tail: 14).stroke(slab, lineWidth: 2))
-                        .background(SpeechBubbleShape(tail: 14).fill(slab).offset(y: 5))
+                        .background(SpeechBubbleBodyShape(tail: 14).fill(slab).offset(y: 5))
                 )
         }
         .frame(maxWidth: .infinity, alignment: .leading)
@@ -131,13 +131,38 @@ struct SpeechBubbleShape: Shape {
         var p = Path()
         let body = CGRect(x: rect.minX + tail, y: rect.minY,
                           width: rect.width - tail, height: rect.height)
-        p.addRoundedRect(in: body, cornerSize: CGSize(width: corner, height: corner))
         let cy = rect.midY
-        p.move(to: CGPoint(x: body.minX + 2, y: cy - 12))
+        let tailHalfHeight: CGFloat = 16
+        let radius = min(corner, body.width / 2, body.height / 2)
+
+        p.move(to: CGPoint(x: body.minX + radius, y: body.minY))
+        p.addLine(to: CGPoint(x: body.maxX - radius, y: body.minY))
+        p.addQuadCurve(to: CGPoint(x: body.maxX, y: body.minY + radius),
+                       control: CGPoint(x: body.maxX, y: body.minY))
+        p.addLine(to: CGPoint(x: body.maxX, y: body.maxY - radius))
+        p.addQuadCurve(to: CGPoint(x: body.maxX - radius, y: body.maxY),
+                       control: CGPoint(x: body.maxX, y: body.maxY))
+        p.addLine(to: CGPoint(x: body.minX + radius, y: body.maxY))
+        p.addQuadCurve(to: CGPoint(x: body.minX, y: body.maxY - radius),
+                       control: CGPoint(x: body.minX, y: body.maxY))
+        p.addLine(to: CGPoint(x: body.minX, y: cy + tailHalfHeight))
         p.addLine(to: CGPoint(x: rect.minX, y: cy))
-        p.addLine(to: CGPoint(x: body.minX + 2, y: cy + 12))
+        p.addLine(to: CGPoint(x: body.minX, y: cy - tailHalfHeight))
+        p.addLine(to: CGPoint(x: body.minX, y: body.minY + radius))
+        p.addQuadCurve(to: CGPoint(x: body.minX + radius, y: body.minY),
+                       control: CGPoint(x: body.minX, y: body.minY))
         p.closeSubpath()
         return p
+    }
+}
+
+struct SpeechBubbleBodyShape: Shape {
+    var corner: CGFloat = 20
+    var tail: CGFloat = 12
+    func path(in rect: CGRect) -> Path {
+        Path(roundedRect: CGRect(x: rect.minX + tail, y: rect.minY,
+                                 width: rect.width - tail, height: rect.height),
+             cornerRadius: corner)
     }
 }
 
@@ -997,12 +1022,12 @@ struct FillBlankChoiceView: View {
     }
 
     private var sentenceBuilder: some View {
-        MultiBlankSentenceLayout(horizontalSpacing: 9, verticalSpacing: 14) {
+        MultiBlankSentenceLayout(horizontalSpacing: 5, verticalSpacing: 10) {
             ForEach(Array(sentenceParts.enumerated()), id: \.offset) { _, part in
                 switch part {
                 case .text(let text):
                     Text(text)
-                        .font(Theme.font(23, .bold))
+                        .font(Theme.font(20, .bold))
                         .foregroundColor(ink)
                         .fixedSize()
                 case .blank:
@@ -1036,7 +1061,7 @@ struct FillBlankChoiceView: View {
 
                 if let selectedWord {
                     Text(selectedWord)
-                        .font(Theme.font(21, .black))
+                        .font(Theme.font(19, .black))
                         .foregroundColor(.white)
                         .padding(.horizontal, 18)
                         .matchedGeometryEffect(id: "fill-word-\(player.selectedIndex ?? -1)", in: wordNamespace)
@@ -1052,7 +1077,7 @@ struct FillBlankChoiceView: View {
                         .padding(.top, 28)
                 }
             }
-            .frame(width: slotWidth, height: 54)
+            .frame(width: slotWidth, height: 50)
             .contentShape(RoundedRectangle(cornerRadius: 18, style: .continuous))
         }
         .buttonStyle(RowPressStyle())
@@ -1122,21 +1147,11 @@ struct FillBlankChoiceView: View {
 
     private var slotWidth: CGFloat {
         let longest = max((selectedWord ?? "").count, answerOptions.map { $0.label.count }.max() ?? 6)
-        return max(96, min(172, CGFloat(longest) * 14 + 38))
+        return max(88, min(156, CGFloat(longest) * 13 + 34))
     }
 
     private func textParts(_ text: String) -> [SingleBlankSentencePart] {
-        var parts: [SingleBlankSentencePart] = []
-        var token = ""
-        for char in text {
-            token.append(char)
-            if char.isWhitespace {
-                parts.append(.text(token))
-                token = ""
-            }
-        }
-        if !token.isEmpty { parts.append(.text(token)) }
-        return parts
+        text.split(whereSeparator: { $0.isWhitespace }).map { .text(String($0)) }
     }
 
     private var slotFill: Color {
@@ -1421,13 +1436,13 @@ struct FillBlankMultiView: View {
     }
 
     private var sentenceBuilder: some View {
-        MultiBlankSentenceLayout(horizontalSpacing: 8, verticalSpacing: 14) {
+        MultiBlankSentenceLayout(horizontalSpacing: 5, verticalSpacing: 10) {
             ForEach(Array(templateParts().enumerated()), id: \.offset) { _, part in
                 switch part {
                 case .text(let text):
                     if !text.isEmpty {
                         Text(text)
-                            .font(Theme.font(23, .bold))
+                            .font(Theme.font(20, .bold))
                             .foregroundColor(ink)
                             .fixedSize()
                     }
@@ -1476,7 +1491,7 @@ struct FillBlankMultiView: View {
 
                 if let selected {
                     Text(selected)
-                        .font(Theme.font(21, .black))
+                        .font(Theme.font(19, .black))
                         .foregroundColor(.white)
                         .padding(.horizontal, 18)
                         .matchedGeometryEffect(id: "multi-fill-word-\(blankIndex)", in: wordNamespace)
@@ -1492,7 +1507,7 @@ struct FillBlankMultiView: View {
                         .padding(.top, 28)
                 }
             }
-            .frame(width: slotWidth(for: blankIndex), height: 54)
+            .frame(width: slotWidth(for: blankIndex), height: 50)
             .contentShape(RoundedRectangle(cornerRadius: 18, style: .continuous))
         }
         .buttonStyle(RowPressStyle())
@@ -1569,7 +1584,7 @@ struct FillBlankMultiView: View {
         let selected = selectedLabel(for: blankIndex) ?? ""
         let correct = bankItems.first(where: { $0.blank == blankIndex })?.label ?? ""
         let longest = max(selected.count, correct.count, 6)
-        return max(96, min(172, CGFloat(longest) * 14 + 38))
+        return max(88, min(156, CGFloat(longest) * 13 + 34))
     }
 
     private func slotFill(blankIndex: Int, filled: Bool) -> Color {
@@ -1590,15 +1605,9 @@ struct FillBlankMultiView: View {
         var parts: [MultiBlankTemplatePart] = []
         var remaining = player.screen.template ?? ""
         func appendText(_ text: String) {
-            var token = ""
-            for char in text {
-                token.append(char)
-                if char.isWhitespace {
-                    parts.append(.text(token))
-                    token = ""
-                }
+            for word in text.split(whereSeparator: { $0.isWhitespace }) {
+                parts.append(.text(String(word)))
             }
-            if !token.isEmpty { parts.append(.text(token)) }
         }
 
         while let open = remaining.range(of: "[__") {
