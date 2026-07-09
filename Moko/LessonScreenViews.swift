@@ -89,8 +89,8 @@ struct MascotPrompt: View {
             MascotIcon()
                 .frame(width: 112, height: 112)
             Text(RichText.attributed(text,
-                                     base: Theme.font(fontSize, .heavy),
-                                     bold: Theme.font(fontSize, .black),
+                                     base: Theme.questionFont(fontSize, .heavy),
+                                     bold: Theme.questionFont(fontSize, .black),
                                      color: ink))
                 .fixedSize(horizontal: false, vertical: true)
                 .padding(.vertical, 14)
@@ -776,7 +776,7 @@ struct OHLCLabelView: View {
 
     private func chip(label: Int, tint: Color) -> some View {
         Text(labelNames[label])
-            .font(Theme.font(14, .black)).foregroundColor(.white)
+            .font(Theme.questionFont(14, .black)).foregroundColor(.white)
             .padding(.horizontal, 14).padding(.vertical, 9)
             .background(
                 Capsule().fill(tint)
@@ -1016,7 +1016,7 @@ struct FillBlankChoiceView: View {
                 switch part {
                 case .text(let text):
                     Text(text)
-                        .font(Theme.font(20, .bold))
+                        .font(Theme.questionFont(20, .bold))
                         .foregroundColor(ink)
                         .fixedSize()
                 case .blank:
@@ -1050,7 +1050,7 @@ struct FillBlankChoiceView: View {
 
                 if let selectedWord {
                     Text(selectedWord)
-                        .font(Theme.font(19, .black))
+                        .font(Theme.questionFont(19, .black))
                         .foregroundColor(.white)
                         .padding(.horizontal, 18)
                         .matchedGeometryEffect(id: "fill-word-\(player.selectedIndex ?? -1)", in: wordNamespace)
@@ -1120,7 +1120,7 @@ struct FillBlankChoiceView: View {
 
                 if !selected {
                     Text(label)
-                        .font(Theme.font(20, .black))
+                        .font(Theme.questionFont(20, .black))
                         .foregroundColor(textColor)
                         .padding(.horizontal, 18)
                         .matchedGeometryEffect(id: "fill-word-\(idx)", in: wordNamespace)
@@ -1200,8 +1200,8 @@ struct ChoiceView: View {
     // chart-analysis questions where the chart is the focus).
     private var plainPrompt: some View {
         Text(RichText.attributed(displayQuestion(),
-                                 base: Theme.font(21, .heavy),
-                                 bold: Theme.font(21, .black),
+                                 base: Theme.questionFont(21, .heavy),
+                                 bold: Theme.questionFont(21, .black),
                                  color: ink))
             .fixedSize(horizontal: false, vertical: true)
             .frame(maxWidth: .infinity, alignment: .leading)
@@ -1248,7 +1248,7 @@ struct ChoiceView: View {
             player.selectedIndex = idx
         } label: {
             HStack {
-                Text(label).font(Theme.font(16, .bold))
+                Text(label).font(Theme.questionFont(16, .bold))
                 Spacer(minLength: 0)
                 if revealed && isCorrect {
                     Image(systemName: "checkmark.circle.fill")
@@ -1341,7 +1341,7 @@ struct MatchingView: View {
         return Button {
             tap(isLeft: isLeft, index: index)
         } label: {
-            Text(text).font(Theme.font(13.5, .bold))
+            Text(text).font(Theme.questionFont(13.5, .bold))
                 .frame(maxWidth: .infinity, minHeight: 40, alignment: .leading)
                 .modifier(OptionSurface(fill: fill, border: border, textColor: textColor))
                 .contentShape(Rectangle())
@@ -1413,7 +1413,7 @@ struct FillBlankMultiView: View {
                 case .text(let text):
                     if !text.isEmpty {
                         Text(text)
-                            .font(Theme.font(20, .bold))
+                            .font(Theme.questionFont(20, .bold))
                             .foregroundColor(ink)
                             .fixedSize()
                     }
@@ -1469,7 +1469,7 @@ struct FillBlankMultiView: View {
 
                 if let selected {
                     Text(selected)
-                        .font(Theme.font(19, .black))
+                        .font(Theme.questionFont(19, .black))
                         .foregroundColor(.white)
                         .padding(.horizontal, 18)
                         .matchedGeometryEffect(id: "multi-fill-word-\(selectedID ?? selected)", in: wordNamespace)
@@ -1524,7 +1524,7 @@ struct FillBlankMultiView: View {
 
                 if !selected {
                     Text(item.label)
-                        .font(Theme.font(20, .black))
+                        .font(Theme.questionFont(20, .black))
                         .foregroundColor(textColor)
                         .padding(.horizontal, 18)
                         .matchedGeometryEffect(id: "multi-fill-word-\(item.id)", in: wordNamespace)
@@ -1748,7 +1748,7 @@ struct FlowChips: View {
             fill = Theme.answer; border = Theme.answerDark; slab = Theme.answerDark; textColor = .white
         }
         return Button { onTap(idx) } label: {
-            Text(label).font(Theme.font(14, .bold)).foregroundColor(textColor)
+            Text(label).font(Theme.questionFont(14, .bold)).foregroundColor(textColor)
                 .padding(.vertical, 10).padding(.horizontal, 14)
                 .background(
                     RoundedRectangle(cornerRadius: 12, style: .continuous).fill(fill)
@@ -1814,12 +1814,12 @@ struct IngredientMatchView: View {
         } label: {
             HStack(alignment: .top, spacing: 10) {
                 VStack(alignment: .leading, spacing: 3) {
-                    Text(opt.label).font(Theme.font(16, .black)).foregroundColor(textColor)
+                    Text(opt.label).font(Theme.questionFont(16, .black)).foregroundColor(textColor)
                     // Only reveal the detail subtitle after checking — showing it up
                     // front (e.g. "Overstates certainty" on a wrong option) gives
                     // away the answer before the learner picks.
                     if revealed, let detail = opt.detail {
-                        Text(detail).font(Theme.font(13, .semibold)).foregroundColor(subColor)
+                        Text(detail).font(Theme.questionFont(13, .semibold)).foregroundColor(subColor)
                     }
                 }
                 Spacer(minLength: 0)
@@ -1883,7 +1883,7 @@ struct OrderBuilderView: View {
                             player.builtOrder.append(item)
                         } label: {
                             HStack {
-                                Text(item).font(Theme.font(15, .bold)).foregroundColor(ink)
+                                Text(item).font(Theme.questionFont(15, .bold)).foregroundColor(ink)
                                 Spacer(minLength: 0)
                                 Image(systemName: "plus.circle.fill").foregroundColor(player.unit.main)
                             }
@@ -1938,7 +1938,7 @@ struct OrderBuilderView: View {
                     .foregroundColor(revealed ? .white : player.unit.main)
                     .frame(width: 26, height: 26)
                     .background(Circle().fill((revealed ? Color.white : player.unit.main).opacity(revealed ? 0.25 : 0.15)))
-                Text(item).font(Theme.font(15, .bold)).foregroundColor(textColor)
+                Text(item).font(Theme.questionFont(15, .bold)).foregroundColor(textColor)
                 Spacer(minLength: 0)
                 if !revealed { Image(systemName: "xmark.circle.fill").foregroundColor(Theme.muted.opacity(0.5)) }
             }

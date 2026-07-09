@@ -25,9 +25,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     /// Register the bundled DIN Round Pro faces so SwiftUI can use them by name
     /// (matches the web app's typeface instead of the SF Rounded stand-in).
     private func registerBundledFonts() {
-        let urls = Bundle.main.urls(forResourcesWithExtension: "otf", subdirectory: nil) ?? []
-        let nested = Bundle.main.urls(forResourcesWithExtension: "otf", subdirectory: "fonts") ?? []
-        for url in Set(urls + nested) {
+        var urls: [URL] = []
+        for ext in ["otf", "ttf"] {
+            urls += Bundle.main.urls(forResourcesWithExtension: ext, subdirectory: nil) ?? []
+            urls += Bundle.main.urls(forResourcesWithExtension: ext, subdirectory: "fonts") ?? []
+        }
+        for url in Set(urls) {
             CTFontManagerRegisterFontsForURL(url as CFURL, .process, nil)
         }
     }
