@@ -30,6 +30,8 @@ final class AppRouter: ObservableObject {
     @Published var currentLessonUnitColor: (main: Color, dark: Color)? = nil
     // Whether completing the current lesson finishes its whole unit (any size).
     @Published var currentLessonBonusEligible: Bool = false
+    // Whether this is the unit's final lesson — presented as a unit review test.
+    @Published var currentLessonIsUnitTest: Bool = false
     // True while a debug/mechanics-test lesson is open — completing or exiting
     // it must NOT touch real progress (no recordCompletion, no saveInProgress).
     @Published var isTestLesson: Bool = false
@@ -119,6 +121,7 @@ struct AppRouterView: View {
                         unitColor: router.currentLessonUnitColor,
                         unitBonusEligible: router.currentLessonBonusEligible,
                         isTestLesson: router.isTestLesson,
+                        isUnitTest: router.currentLessonIsUnitTest,
                         hearts: router.hearts,
                         isUnlimitedHearts: router.isUnlimitedHearts,
                         onClose: {

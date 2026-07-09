@@ -57,6 +57,11 @@ struct PathNode: Identifiable {
     /// 0-based unit this node belongs to — units can be any size, this comes
     /// straight from the content data, not a fixed node-count assumption.
     let sectionIndex: Int
+    /// The final node of its unit — a review test covering everything the unit
+    /// taught. Structural (the highest node number in the section), unlike
+    /// `unitBonusEligible`, which only asks whether the *rest* of the unit
+    /// happens to be done already.
+    let isBoss: Bool
     var id: Int { num }
 
     /// Smooth continuous S-curve sway (Duolingo-style), out to the side and back
@@ -92,10 +97,16 @@ final class PathStore: ObservableObject {
         self.energy = payload.stats.energy
         self.inProgressNode = payload.inProgressNode
         self.sections = payload.sections.sorted { $0.index < $1.index }
+        // The last node of each unit is that unit's review test.
+        var lastInUnit: [Int: Int] = [:]
+        for n in payload.nodes {
+            lastInUnit[n.sectionIndex] = max(lastInUnit[n.sectionIndex] ?? n.num, n.num)
+        }
         self.nodes = payload.nodes
             .sorted { $0.num < $1.num }
             .map { PathNode(num: $0.num, icon: SVGParser.parse($0.svg),
-                            title: $0.title ?? "Lesson \($0.num)", sectionIndex: $0.sectionIndex) }
+                            title: $0.title ?? "Lesson \($0.num)", sectionIndex: $0.sectionIndex,
+                            isBoss: lastInUnit[$0.sectionIndex] == $0.num) }
         self.totalNodes = self.nodes.count
     }
 
