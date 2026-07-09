@@ -21,6 +21,9 @@ class ViewController: UIViewController {
 
         setupAppRouter()
         presentNativePath()
+        if shouldShowOnboardingOnLaunch {
+            appRouter.currentScreen = .onboarding
+        }
 
         // When a cloud snapshot is pulled in (sign-in / launch restore), refresh
         // the derived UI stores so the path/profile reflect the synced state.
@@ -34,6 +37,10 @@ class ViewController: UIViewController {
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.3) { [weak self] in
             self?.appRouter.showSplash = false
         }
+    }
+
+    private var shouldShowOnboardingOnLaunch: Bool {
+        !UserDefaults.standard.bool(forKey: "onboarding.completed")
     }
 
     // MARK: - Router setup + callbacks
