@@ -12,6 +12,7 @@ struct OnboardingView: View {
 
     @EnvironmentObject var theme: ThemeManager
     @State private var step = 0
+    @State private var stepDirection: CGFloat = 1
 
     // Selections
     @State private var experience: Int? = nil
@@ -54,21 +55,25 @@ struct OnboardingView: View {
                         .padding(.top, 8)
                 }
 
-                Group {
-                    switch step {
-                    case 0: welcomeScreen
-                    case 1: experienceScreen
-                    case 2: goalsScreen
-                    case 3: dailyGoalScreen
-                    case 4: signUpScreen
-                    default: CommitScreen(router: router, onCommitted: persistAnswers)
+                ZStack(alignment: .topLeading) {
+                    Group {
+                        switch step {
+                        case 0: welcomeScreen
+                        case 1: experienceScreen
+                        case 2: goalsScreen
+                        case 3: dailyGoalScreen
+                        case 4: signUpScreen
+                        default: CommitScreen(router: router, onCommitted: persistAnswers)
+                        }
                     }
+                    .id(step)
+                    .transition(.asymmetric(
+                        insertion: .offset(x: stepDirection * UIScreen.main.bounds.width),
+                        removal: .offset(x: -stepDirection * UIScreen.main.bounds.width)))
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
                 }
-                .id(step)
-                .transition(.asymmetric(
-                    insertion: .offset(x: 40).combined(with: .opacity),
-                    removal: .opacity))
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
+                .clipped()
             }
 
             // Returning-user login, slides over the welcome screen.
@@ -78,7 +83,7 @@ struct OnboardingView: View {
                     .zIndex(5)
             }
         }
-        .animation(.spring(response: 0.4, dampingFraction: 0.9), value: step)
+        .animation(.easeOut(duration: 0.24), value: step)
         .animation(.easeInOut(duration: 0.3), value: showingSignIn)
     }
 
@@ -110,11 +115,15 @@ struct OnboardingView: View {
     }
 
     private func goBack() {
-        if step > 0 { step -= 1 }
+        if step > 0 {
+            stepDirection = -1
+            step -= 1
+        }
     }
 
     private func advance() {
         Haptics.selection()
+        stepDirection = 1
         step += 1
     }
 
