@@ -174,7 +174,7 @@ struct PathView: View {
                 // Custom-drawn flame instead of the SF Symbol — guarantees the
                 // inner layer renders as a lighter orange/yellow, rather than
                 // relying on SF Symbols' inconsistent multicolor fallback.
-                FlameIcon(size: 34, animated: false, greyed: inactive)
+                FlameIcon(size: 34, animated: false, greyed: inactive, showsGlow: false)
             } else {
                 Image(systemName: system).font(.system(size: 22)).foregroundColor(color)
             }
