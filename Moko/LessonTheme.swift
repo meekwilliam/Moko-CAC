@@ -5,27 +5,23 @@ import SwiftUI
 // ported to native so the lesson player matches the web look & feel.
 
 enum Theme {
-    // DIN Round Pro — the app's real typeface (bundled + registered at launch),
-    // matching the original web wrapper. Only Black/Bold/Light faces exist, so
-    // weights map onto the nearest available cut.
+    // Sora Bold — the app's chrome typeface (bundled + registered at launch):
+    // buttons, screen titles, and other short headline-style text. Only one
+    // cut is bundled, so every weight maps onto it.
     static func font(_ size: CGFloat, _ weight: Font.Weight = .heavy) -> Font {
-        let name: String
-        switch weight {
-        case .black, .heavy:
-            name = "DINRoundPro-Black"
-        case .light, .thin, .ultraLight:
-            name = "DINRoundPro-Light"
-        default:
-            name = "DINRoundPro-Bold"
-        }
-        return .custom(name, size: size)
+        .custom("Sora-Bold", size: size)
     }
 
-    // Shentox — used for question prompts and answer choices only (everything
-    // else, like buttons and titles, stays on DIN Round Pro). Shentox ships as
-    // a single SemiBold cut, so every weight maps onto it.
+    // Plus Jakarta Sans SemiBold — section titles and quiz questions (the
+    // prompt itself and its answer choices).
     static func questionFont(_ size: CGFloat, _ weight: Font.Weight = .regular) -> Font {
-        .custom("Shentox-SemiBold", size: size)
+        .custom("PlusJakartaSans-SemiBold", size: size)
+    }
+
+    // Plus Jakarta Sans Regular — body copy and supporting/secondary text
+    // (subtitles, descriptions, detail captions under a choice).
+    static func bodyFont(_ size: CGFloat, _ weight: Font.Weight = .regular) -> Font {
+        .custom("PlusJakartaSans-Regular", size: size)
     }
 
     static let ink = Color(hex: "#082f49")

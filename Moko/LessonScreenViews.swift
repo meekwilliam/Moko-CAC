@@ -1824,7 +1824,7 @@ struct IngredientMatchView: View {
                     // front (e.g. "Overstates certainty" on a wrong option) gives
                     // away the answer before the learner picks.
                     if revealed, let detail = opt.detail {
-                        Text(detail).font(Theme.questionFont(13, .semibold)).foregroundColor(subColor)
+                        Text(detail).font(Theme.bodyFont(13)).foregroundColor(subColor)
                     }
                 }
                 Spacer(minLength: 0)
