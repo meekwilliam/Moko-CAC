@@ -92,6 +92,10 @@ struct MascotPrompt: View {
                                      base: Theme.questionFont(fontSize, .heavy),
                                      bold: Theme.questionFont(fontSize, .black),
                                      color: ink))
+                // Shentox plays the "DIN Next Rounded" role in Duolingo's system —
+                // the body/reading face, set with generous (~140%) leading rather
+                // than the tight leading used on Feather-Bold-style chrome text.
+                .lineSpacing(fontSize * 0.32)
                 .fixedSize(horizontal: false, vertical: true)
                 .padding(.vertical, 14)
                 .padding(.leading, 26)
@@ -1203,6 +1207,7 @@ struct ChoiceView: View {
                                  base: Theme.questionFont(21, .heavy),
                                  bold: Theme.questionFont(21, .black),
                                  color: ink))
+            .lineSpacing(21 * 0.32)
             .fixedSize(horizontal: false, vertical: true)
             .frame(maxWidth: .infinity, alignment: .leading)
     }
