@@ -301,7 +301,7 @@ struct PathView: View {
 
             Button(action: {
                 // Locked nodes still open a callout — it just says "Locked".
-                if state == .locked { Haptics.rigid() } else { Haptics.selection() }
+                if state == .locked { Haptics.play(.locked) } else { Haptics.play(.puckPress) }
                 setTooltip(tooltipNode == node.num ? nil : node.num)
             }) {
                 // Just the face (+ icon + badge); the slab is drawn fixed by the
@@ -367,7 +367,7 @@ struct PathView: View {
                     .multilineTextAlignment(.center).fixedSize(horizontal: false, vertical: true)
                 Button(action: {
                     if locked {
-                        Haptics.rigid()      // can't start a locked lesson
+                        Haptics.play(.locked)      // can't start a locked lesson
                     } else {
                         Haptics.selection()
                         setTooltip(nil)

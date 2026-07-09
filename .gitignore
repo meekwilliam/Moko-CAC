@@ -25,3 +25,6 @@ Carthage/Build/
 
 # Firebase config (contains the project API key) — keep local, re-download from the Firebase console on a fresh clone
 GoogleService-Info.plist
+
+# Xcode build output (SPM checkouts, build products)
+.derivedData/

@@ -746,15 +746,4 @@ extension Array {
     }
 }
 
-enum Haptics {
-    static func impact(_ style: UIImpactFeedbackGenerator.FeedbackStyle) {
-        UIImpactFeedbackGenerator(style: style).impactOccurred()
-    }
-    static func selection() { UISelectionFeedbackGenerator().selectionChanged() }
-    static func light() { UIImpactFeedbackGenerator(style: .light).impactOccurred() }
-    static func rigid() { UIImpactFeedbackGenerator(style: .rigid).impactOccurred() }
-
-    // Outcome cues — reserved for answer reveals, not routine taps.
-    static func success() { UINotificationFeedbackGenerator().notificationOccurred(.success) }
-    static func error() { UINotificationFeedbackGenerator().notificationOccurred(.error) }
-}
+// Haptics moved to Haptics.swift — same API, custom Core Haptics patterns.
