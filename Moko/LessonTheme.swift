@@ -291,36 +291,6 @@ struct AnswerFeedbackFX: ViewModifier {
     }
 }
 
-/// Gives answer controls a small, staggered right-to-left entrance without
-/// competing with the lesson-level question swipe. Keeping it shared prevents
-/// individual mechanics from drifting into different motion languages.
-struct QuestionItemEntrance: ViewModifier {
-    var delay: Double = 0
-    @Environment(\.accessibilityReduceMotion) private var reduceMotion
-    @State private var visible = false
-
-    func body(content: Content) -> some View {
-        content
-            .opacity(visible || reduceMotion ? 1 : 0)
-            .offset(x: visible || reduceMotion ? 0 : 28)
-            .onAppear {
-                guard !reduceMotion else {
-                    visible = true
-                    return
-                }
-                withAnimation(.spring(response: 0.36, dampingFraction: 0.86).delay(delay)) {
-                    visible = true
-                }
-            }
-    }
-}
-
-extension View {
-    func questionItemEntrance(delay: Double = 0) -> some View {
-        modifier(QuestionItemEntrance(delay: delay))
-    }
-}
-
 // The rounded answer-option face (fill + border). The 3D lip beneath is drawn
 // by SinkButtonStyle(slab:radius:16) so it stays fixed and the face sinks flush
 // onto it on press.

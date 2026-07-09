@@ -13,6 +13,7 @@ struct OnboardingView: View {
     @EnvironmentObject var theme: ThemeManager
     @State private var step = 0
     @State private var stepDirection: CGFloat = 1
+    @State private var hasPresentedInitialStep = false
 
     // Selections
     @State private var experience: Int? = nil
@@ -77,9 +78,7 @@ struct OnboardingView: View {
                         }
                     }
                     .id(step)
-                    .transition(.asymmetric(
-                        insertion: .offset(x: stepDirection * stepSlideDistance),
-                        removal: .offset(x: -stepDirection * stepSlideDistance)))
+                    .transition(stepTransition)
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
                 }
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
@@ -99,6 +98,7 @@ struct OnboardingView: View {
         }
         .animation(.easeOut(duration: 0.24), value: step)
         .animation(.easeInOut(duration: 0.3), value: showingSignIn)
+        .onAppear { hasPresentedInitialStep = true }
     }
 
     private var choiceFooter: some View {
@@ -136,7 +136,20 @@ struct OnboardingView: View {
                 }
             }
             .frame(height: 14)
+
+            // Match the lesson header's heart counter footprint so the
+            // onboarding progress bar starts and ends at the same positions.
+            Color.clear
+                .frame(width: 52, height: 42)
         }
+    }
+
+    private var stepTransition: AnyTransition {
+        guard hasPresentedInitialStep else { return .identity }
+        return .asymmetric(
+            insertion: .offset(x: stepDirection * stepSlideDistance),
+            removal: .offset(x: -stepDirection * stepSlideDistance)
+        )
     }
 
     private func goBack() {
