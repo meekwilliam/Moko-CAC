@@ -22,6 +22,7 @@ struct PathView: View {
     // When switching menus, this temporarily contains both nodes so the old
     // callout cannot slide underneath its neighbours on the way out.
     @State private var elevatedNodes: Set<Int> = []
+    @State private var tooltipRequest = 0
 
     private let nodeSize: CGFloat = 82
     private let ovalRatio: CGFloat = 0.78     // puck height / width — a wide coin
@@ -261,7 +262,7 @@ struct PathView: View {
                     .id("node-\(node.num)")
                     .offset(x: node.xOffset)
                     .padding(.top, CGFloat(i) * vStep + (vStep / 2) - (nodeSize / 2))
-                    .zIndex(elevatedNodes.contains(node.num) ? 50 : 0)
+                    .zIndex(tooltipNode == node.num ? 1_000 : (elevatedNodes.contains(node.num) ? 999 : 0))
             }
         }
         .frame(width: width, height: height)
@@ -278,16 +279,34 @@ struct PathView: View {
     /// Open or close a callout while preserving every closing card's z-order.
     private func setTooltip(_ node: Int?) {
         let previous = tooltipNode
-        if let node {
-            // Let the z-index change render before inserting the new card.
-            // Otherwise SwiftUI can begin the insertion under neighbouring
-            // nodes, then raise it a frame later.
-            var transaction = Transaction(animation: nil)
-            transaction.disablesAnimations = true
-            withTransaction(transaction) { elevatedNodes.insert(node) }
-            DispatchQueue.main.async { revealTooltip(node, replacing: previous) }
-        } else {
+        tooltipRequest += 1
+        let request = tooltipRequest
+
+        guard let node else {
             revealTooltip(nil, replacing: previous)
+            return
+        }
+
+        if previous != nil {
+            // Do not insert one card while another is still crossing nearby
+            // nodes. Close the old card, then open the next one above the path.
+            revealTooltip(nil, replacing: previous)
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.26) {
+                guard request == tooltipRequest else { return }
+                prepareAndRevealTooltip(node, request: request)
+            }
+        } else {
+            prepareAndRevealTooltip(node, request: request)
+        }
+    }
+
+    private func prepareAndRevealTooltip(_ node: Int, request: Int) {
+        var transaction = Transaction(animation: nil)
+        transaction.disablesAnimations = true
+        withTransaction(transaction) { elevatedNodes.insert(node) }
+        DispatchQueue.main.async {
+            guard request == tooltipRequest else { return }
+            revealTooltip(node, replacing: nil)
         }
     }
 
