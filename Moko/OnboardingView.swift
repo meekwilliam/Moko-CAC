@@ -453,14 +453,14 @@ struct OnboardingView: View {
             .padding(.vertical, 15).padding(.horizontal, 16)
             .background(
                 RoundedRectangle(cornerRadius: 16, style: .continuous)
-                    .fill(selected ? Theme.answer : Color(hex: "#1E293B"))
+                    .fill(selected ? Theme.answer : Theme.surface)
                     .overlay(RoundedRectangle(cornerRadius: 16, style: .continuous)
-                        .strokeBorder(selected ? Theme.answerDark : Color(hex: "#334155"), lineWidth: 2))
+                        .strokeBorder(selected ? Theme.answerDark : Theme.surfaceBorder, lineWidth: 2))
             )
             .contentShape(Rectangle())
         }
         .buttonStyle(SinkButtonStyle(
-            slab: selected ? Theme.answerDark : Color(hex: "#334155"), radius: 16, depth: 4))
+            slab: selected ? Theme.answerDark : Theme.surfaceSlab, radius: 16, depth: 4))
     }
 }
 

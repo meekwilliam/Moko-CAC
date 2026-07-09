@@ -604,14 +604,14 @@ struct ExitDialog: View {
                         .buttonStyle(Chunky3DStyle(fill: Color(hex: "#2B70C9"), slab: Color(hex: "#1C4A85"),
                                                    depth: 4, radius: 14, font: Theme.font(15, .black)))
                     Button("Exit") { onExit() }
-                        .buttonStyle(Chunky3DStyle(fill: Color(hex: "#2A3648"), slab: Color(hex: "#1A2434"),
+                        .buttonStyle(Chunky3DStyle(fill: Theme.surface, slab: Theme.surfaceSlab,
                                                    textColor: Color(hex: "#94A3B8"),
                                                    depth: 4, radius: 14, font: Theme.font(15, .black)))
                 }
             }
             .padding(.horizontal, 24).padding(.top, 28).padding(.bottom, 20)
             .frame(maxWidth: 320)
-            .background(RoundedRectangle(cornerRadius: 24, style: .continuous).fill(Color(hex: "#1E293B")))
+            .background(RoundedRectangle(cornerRadius: 24, style: .continuous).fill(Theme.surfaceRaised))
             .shadow(color: .black.opacity(0.4), radius: 30, y: 16)
             .padding(.horizontal, 24)
             .scaleEffect(appear ? 1 : 0.88)

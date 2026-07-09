@@ -25,7 +25,6 @@ struct PathView: View {
     private let nodeSize: CGFloat = 82
     private let ovalRatio: CGFloat = 0.78     // puck height / width — a wide coin
     private let vStep: CGFloat = 106          // node center-to-center spacing
-    private let bg = Color(hex: "#0E161A")
 
     var body: some View {
         GeometryReader { geo in
@@ -156,9 +155,9 @@ struct PathView: View {
                 .frame(width: 38, height: 38)
                 .background(
                     RoundedRectangle(cornerRadius: 12, style: .continuous)
-                        .fill(Color.white.opacity(0.06))
+                        .fill(Theme.surface)
                         .overlay(RoundedRectangle(cornerRadius: 12, style: .continuous)
-                            .strokeBorder(theme.palette.muted.opacity(0.35), lineWidth: 1.5))
+                            .strokeBorder(Theme.surfaceBorder, lineWidth: 1.5))
                 )
         }
         .buttonStyle(RowPressStyle())
@@ -192,12 +191,12 @@ struct PathView: View {
                 .frame(width: 40, height: 40)
                 .background(
                     RoundedRectangle(cornerRadius: 12, style: .continuous)
-                        .fill(Color(hex: "#161616"))
+                        .fill(Theme.surface)
                         .overlay(RoundedRectangle(cornerRadius: 12, style: .continuous)
-                            .strokeBorder(Color.white.opacity(0.12), lineWidth: 1))
+                            .strokeBorder(Theme.surfaceBorder, lineWidth: 1.5))
                 )
         }
-        .buttonStyle(SinkButtonStyle(slab: Color.black.opacity(0.55), radius: 12, depth: 4))
+        .buttonStyle(SinkButtonStyle(slab: Theme.surfaceSlab, radius: 12, depth: 4))
     }
 
     private var floatingBanner: some View {

@@ -21,8 +21,8 @@ struct ProfileView: View {
 
     @EnvironmentObject var theme: ThemeManager
 
-    private let cardBg = Color(hex: "#1E293B")
-    private let cardBorder = Color(hex: "#334155")
+    private let cardBg = Theme.surface
+    private let cardBorder = Theme.surfaceBorder
     private var muted: Color { theme.palette.muted }
 
     var body: some View {
@@ -185,7 +185,7 @@ struct ProfileView: View {
             .overlay(RoundedRectangle(cornerRadius: 18, style: .continuous).strokeBorder(cardBorder, lineWidth: 1.5)))
         .background {
             if !sunk {
-                RoundedRectangle(cornerRadius: 18, style: .continuous).fill(Color.black.opacity(0.38)).offset(y: 4)
+                RoundedRectangle(cornerRadius: 18, style: .continuous).fill(Theme.surfaceSlab).offset(y: 4)
             }
         }
     }
@@ -204,7 +204,7 @@ struct ProfileView: View {
             }
             .contentShape(Rectangle())
         }
-        .buttonStyle(SinkButtonStyle(slab: Color.black.opacity(0.38), radius: 18, depth: 4))
+        .buttonStyle(SinkButtonStyle(slab: Theme.surfaceSlab, radius: 18, depth: 4))
     }
 
     // MARK: Home fab

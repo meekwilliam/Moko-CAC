@@ -107,7 +107,7 @@ struct HeartsView: View {
                         .foregroundColor(.white)
                         .padding(.horizontal, 8)
                         .padding(.vertical, 3)
-                        .background(Capsule().fill(Color(hex: "#1E293B")))
+                        .background(Capsule().fill(Theme.surfaceRaised))
                         .offset(x: 18, y: 4)
                 }
                 Text("/ \(ProgressStore.maxHearts)")
@@ -212,9 +212,9 @@ struct HeartsView: View {
         }
         .buttonStyle(RowPressStyle())
         .background(
-            RoundedRectangle(cornerRadius: 18, style: .continuous).fill(Color.white.opacity(0.04)))
+            RoundedRectangle(cornerRadius: 18, style: .continuous).fill(Theme.surface))
         .overlay(RoundedRectangle(cornerRadius: 18, style: .continuous)
-            .strokeBorder(Color.white.opacity(0.1), lineWidth: 1.5))
+            .strokeBorder(Theme.surfaceBorder.opacity(0.65), lineWidth: 1.5))
         .clipShape(RoundedRectangle(cornerRadius: 18, style: .continuous))
     }
 
@@ -229,9 +229,9 @@ struct HeartsView: View {
             .padding(16)
             .background(
                 RoundedRectangle(cornerRadius: 18, style: .continuous)
-                    .fill(Color.white.opacity(0.04))
+                    .fill(Theme.surface)
                     .overlay(RoundedRectangle(cornerRadius: 18, style: .continuous)
-                        .strokeBorder(Color.white.opacity(0.1), lineWidth: 1.5))
+                        .strokeBorder(Theme.surfaceBorder.opacity(0.65), lineWidth: 1.5))
             )
         }
         .buttonStyle(RowPressStyle())
@@ -244,7 +244,7 @@ struct HeartsView: View {
             Text(label)
                 .font(Theme.font(11, .black)).foregroundColor(.white)
                 .padding(.horizontal, 4).padding(.vertical, 1)
-                .background(Capsule().fill(Color(hex: "#1E293B")))
+                .background(Capsule().fill(Theme.surfaceRaised))
                 .offset(x: 14, y: 12)
         }
         .frame(width: 42, height: 42)
