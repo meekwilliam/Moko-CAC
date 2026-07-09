@@ -278,7 +278,20 @@ struct PathView: View {
     /// Open or close a callout while preserving every closing card's z-order.
     private func setTooltip(_ node: Int?) {
         let previous = tooltipNode
-        if let node { elevatedNodes.insert(node) }
+        if let node {
+            // Let the z-index change render before inserting the new card.
+            // Otherwise SwiftUI can begin the insertion under neighbouring
+            // nodes, then raise it a frame later.
+            var transaction = Transaction(animation: nil)
+            transaction.disablesAnimations = true
+            withTransaction(transaction) { elevatedNodes.insert(node) }
+            DispatchQueue.main.async { revealTooltip(node, replacing: previous) }
+        } else {
+            revealTooltip(nil, replacing: previous)
+        }
+    }
+
+    private func revealTooltip(_ node: Int?, replacing previous: Int?) {
         withAnimation(.spring(response: 0.26, dampingFraction: 0.74)) { tooltipNode = node }
         if let previous, previous != node {
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.32) {
