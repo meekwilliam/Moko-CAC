@@ -39,6 +39,8 @@ final class LessonPlayer: ObservableObject {
     @Published var numberValue: Double? = nil
     // fill_blank_multi
     @Published var multiSelections: [Int?] = []
+    @Published var multiSelectionLabels: [String?] = []
+    @Published var multiSelectionIDs: [String?] = []
     // matching: original left-pair index -> original right-pair index
     @Published var matchingSelections: [Int: Int] = [:]
     // sequence_builder / drag_order
@@ -100,7 +102,9 @@ final class LessonPlayer: ObservableObject {
             return n > 0 && matchingSelections.count == n
         case "fill_blank_multi":
             let n = screen.blanks?.count ?? 0
-            return multiSelections.count == n && !multiSelections.contains(where: { $0 == nil })
+            return n > 0 &&
+                multiSelectionLabels.count == n &&
+                !multiSelectionLabels.contains(where: { $0 == nil })
         case "sequence_builder", "drag_order":
             return !builtOrder.isEmpty && builtOrder.count == (screen.items?.count ?? 0)
         case "tap_candles":
@@ -138,8 +142,12 @@ final class LessonPlayer: ObservableObject {
         builtOrder = []
         if screen.type == "fill_blank_multi" {
             multiSelections = Array(repeating: nil, count: screen.blanks?.count ?? 0)
+            multiSelectionLabels = Array(repeating: nil, count: screen.blanks?.count ?? 0)
+            multiSelectionIDs = Array(repeating: nil, count: screen.blanks?.count ?? 0)
         } else {
             multiSelections = []
+            multiSelectionLabels = []
+            multiSelectionIDs = []
         }
     }
 
@@ -155,8 +163,9 @@ final class LessonPlayer: ObservableObject {
         case "fill_blank_multi":
             if let blanks = screen.blanks {
                 for (i, b) in blanks.enumerated() {
-                    let sel: Int? = multiSelections.indices.contains(i) ? multiSelections[i] : nil
-                    if sel != b.correct { correct = false }
+                    let selectedLabel: String? = multiSelectionLabels.indices.contains(i) ? multiSelectionLabels[i] : nil
+                    let correctLabel: String? = b.options.indices.contains(b.correct) ? b.options[b.correct] : nil
+                    if selectedLabel != correctLabel { correct = false }
                 }
             }
         case "sequence_builder", "drag_order":
