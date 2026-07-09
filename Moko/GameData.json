@@ -3809,14 +3809,15 @@
        "explanation": "Indecision describes a balanced tug-of-war, not missing data."
       },
       {
-       "type": "fill_blank",
-       "question": "A doji can appear at any point in a chart, [___] just at the very start.",
+       "type": "multiple_choice",
+       "question": "Where in a chart can a doji appear?",
        "options": [
-        "always",
-        "only",
-        "not"
+        "Anywhere — it's defined by its shape, not its location.",
+        "Only at the very start of a chart.",
+        "Only at the end of an established trend."
        ],
-       "correct": 2
+       "correct": 0,
+       "explanation": "A doji is defined by open and close landing at nearly the same price, so it can print at any point."
       }
      ]
     },
@@ -3933,15 +3934,15 @@
        "explanation": "A hammer's body sits near the top, with the long wick trailing below it."
       },
       {
-       "type": "fill_blank",
-       "question": "A hammer commonly appears after a [___] in price.",
+       "type": "multiple_choice",
+       "question": "A hammer commonly appears after what?",
        "options": [
-        "gap",
-        "decline",
-        "rise"
+        "A gap in price.",
+        "A decline in price.",
+        "A rise in price."
        ],
        "correct": 1,
-       "explanation": "The hammer shape is read in the context of a preceding down-move."
+       "explanation": "The hammer's long lower wick reads as a rejection of lower prices after a decline."
       }
      ]
     },
@@ -4126,14 +4127,14 @@
        "chart": "bullishEngulfing"
       },
       {
-       "type": "fill_blank",
-       "question": "A bullish engulfing pattern needs the up candle to fully [___] the prior candle's body.",
+       "type": "multiple_choice",
+       "question": "In a bullish engulfing, what must the up candle do to the prior candle's body?",
        "options": [
-        "cover",
-        "match",
-        "ignore"
+        "Match its size exactly.",
+        "Close somewhere inside it.",
+        "Fully cover it."
        ],
-       "correct": 0,
+       "correct": 2,
        "explanation": "\"Engulfing\" means the second body completely covers the first."
       },
       {
@@ -4188,26 +4189,26 @@
        "explanation": "The smaller down candle is followed by the larger engulfing up candle."
       },
       {
-       "type": "fill_blank",
-       "question": "The word \"engulfing\" describes one candle's body completely [___] another's.",
+       "type": "multiple_choice",
+       "question": "What does the word \"engulfing\" describe?",
        "options": [
-        "ignoring",
-        "covering",
-        "matching"
+        "One candle's body completely covering another's.",
+        "One candle's wick completely covering another's.",
+        "Two candles closing at the same price."
        ],
-       "correct": 1,
-       "explanation": "\"Engulfing\" specifically means the second body fully covers the first."
+       "correct": 0,
+       "explanation": "Engulfing refers to body coverage, not wicks."
       },
       {
-       "type": "fill_blank",
-       "question": "The candle that gets engulfed in a bullish engulfing pattern is the [___] one.",
+       "type": "multiple_choice",
+       "question": "In a bullish engulfing, which candle gets engulfed?",
        "options": [
-        "second (up)",
-        "first (down)",
-        "neither"
+        "Neither; the two bodies are the same size.",
+        "The first one — the down candle.",
+        "The second one — the up candle."
        ],
        "correct": 1,
-       "explanation": "The smaller, earlier down candle is the one that gets engulfed."
+       "explanation": "The up candle's body swallows the prior down candle's body."
       },
       {
        "type": "multiple_choice",
@@ -4253,15 +4254,15 @@
        "chart": "bearishEngulfing"
       },
       {
-       "type": "fill_blank",
-       "question": "A bearish engulfing is commonly read as [___] taking over from buyers for that period.",
+       "type": "multiple_choice",
+       "question": "A bearish engulfing is commonly read as what?",
        "options": [
-        "sellers",
-        "wicks",
-        "volume"
+        "Buyers taking over from sellers for that period.",
+        "Volume drying up as interest fades.",
+        "Sellers taking over from buyers for that period."
        ],
-       "correct": 0,
-       "explanation": "The larger down candle shows selling pressure overwhelmed the prior up candle."
+       "correct": 2,
+       "explanation": "The down candle engulfing the prior up candle reads as sellers seizing control."
       },
       {
        "type": "matching",
@@ -4339,15 +4340,15 @@
        "chart": "bearishEngulfing"
       },
       {
-       "type": "fill_blank",
-       "question": "The candle that gets engulfed in a bearish engulfing pattern is the [___] one.",
+       "type": "multiple_choice",
+       "question": "In a bearish engulfing, which candle gets engulfed?",
        "options": [
-        "neither",
-        "second (down)",
-        "first (up)"
+        "The first one — the up candle.",
+        "The second one — the down candle.",
+        "Neither; the two bodies are the same size."
        ],
-       "correct": 2,
-       "explanation": "The smaller, earlier up candle is the one that gets engulfed."
+       "correct": 0,
+       "explanation": "The down candle's body swallows the prior up candle's body."
       },
       {
        "type": "tap_candle",
@@ -4389,15 +4390,15 @@
        "chart": "spinningTop"
       },
       {
-       "type": "fill_blank",
-       "question": "A spinning top is commonly read as [___], with neither side clearly in control.",
+       "type": "multiple_choice",
+       "question": "A spinning top is commonly read as what?",
        "options": [
-        "certainty",
-        "hesitation",
-        "a guarantee"
+        "A guaranteed reversal of the prior move.",
+        "Hesitation, with neither side clearly in control.",
+        "Certainty, with one side firmly in control."
        ],
        "correct": 1,
-       "explanation": "The small body and balanced wicks suggest an indecisive period."
+       "explanation": "Small body, wicks both sides: neither buyers nor sellers finished in control."
       },
       {
        "type": "ingredient_match",
@@ -4456,15 +4457,15 @@
        "chart": "spinningTop"
       },
       {
-       "type": "fill_blank",
-       "question": "A spinning top's wicks are roughly [___] in length on both sides.",
+       "type": "multiple_choice",
+       "question": "What do a spinning top's wicks look like?",
        "options": [
-        "equal",
-        "opposite",
-        "absent"
+        "Long on one side and absent on the other.",
+        "Absent on both sides.",
+        "Roughly equal in length on both sides."
        ],
-       "correct": 0,
-       "explanation": "Balanced wick length on both sides is part of the spinning top's definition."
+       "correct": 2,
+       "explanation": "Similar wicks either side of a small body is what makes a spinning top."
       },
       {
        "type": "multiple_choice",
@@ -4503,15 +4504,15 @@
        "chart": "marubozu"
       },
       {
-       "type": "fill_blank",
-       "question": "A marubozu is commonly read as a [___], one-sided period.",
+       "type": "multiple_choice",
+       "question": "A marubozu is commonly read as what kind of period?",
        "options": [
-        "hesitant",
-        "balanced",
-        "decisive"
+        "Decisive and one-sided.",
+        "Hesitant and balanced.",
+        "Indecisive, with both sides trading control."
        ],
-       "correct": 2,
-       "explanation": "The full body with no wicks shows price moved one way and held."
+       "correct": 0,
+       "explanation": "A full body from open to close means one side held control throughout."
       },
       {
        "type": "tap_candle",
@@ -4570,26 +4571,26 @@
        "explanation": "A marubozu reflects steady, one-directional movement through the period."
       },
       {
-       "type": "fill_blank",
-       "question": "A marubozu's lack of wicks suggests neither side pushed price [___] before the close.",
+       "type": "multiple_choice",
+       "question": "What does a marubozu's lack of wicks suggest?",
        "options": [
-        "forward",
-        "sideways",
-        "back"
+        "Volume was unusually low that period.",
+        "Neither side pushed price back before the close.",
+        "Price gapped away at the open."
        ],
-       "correct": 2,
-       "explanation": "With no meaningful wick, price wasn't pushed back from its extreme before closing."
+       "correct": 1,
+       "explanation": "No wick means nothing was rejected at either end of the candle."
       },
       {
-       "type": "fill_blank",
-       "question": "A marubozu's open is at (or very near) one extreme, and its close is at the [___] extreme.",
+       "type": "multiple_choice",
+       "question": "Where do a marubozu's open and close sit?",
        "options": [
-        "opposite",
-        "random",
-        "same"
+        "At the same extreme of the candle.",
+        "Both near the middle of the candle.",
+        "At opposite extremes of the candle."
        ],
-       "correct": 0,
-       "explanation": "Opening at one extreme and closing at the other, with little wick, is the marubozu shape."
+       "correct": 2,
+       "explanation": "Open at one extreme, close at the other — that's the full body."
       },
       {
        "type": "tap_candle",
@@ -4631,15 +4632,15 @@
        "chart": "rejectionWickUp"
       },
       {
-       "type": "fill_blank",
-       "question": "A rejection wick shows price [___] a level but failed to hold there into the close.",
+       "type": "multiple_choice",
+       "question": "What does a rejection wick show?",
        "options": [
-        "guaranteed",
-        "reached",
-        "ignored"
+        "Price reached a level but failed to hold there into the close.",
+        "Price never reached the level at all.",
+        "Price closed exactly at the level."
        ],
-       "correct": 1,
-       "explanation": "The wick marks a level price touched but couldn't sustain."
+       "correct": 0,
+       "explanation": "The wick marks territory price touched and then gave back."
       },
       {
        "type": "ingredient_match",
@@ -4952,15 +4953,15 @@
        "explanation": "The engulfing candle's direction (up vs down) names the pattern."
       },
       {
-       "type": "fill_blank",
-       "question": "A marubozu is identified mainly by its [___] body and lack of wicks.",
+       "type": "multiple_choice",
+       "question": "A marubozu is identified mainly by what?",
        "options": [
-        "missing",
-        "large",
-        "small"
+        "A small body and long wicks.",
+        "A large body and a lack of wicks.",
+        "A large body and long wicks."
        ],
        "correct": 1,
-       "explanation": "A big body with almost no wick is the marubozu's defining feature."
+       "explanation": "Large body, almost no wicks. A small body with long wicks is a spinning top."
       }
      ]
     },
@@ -5164,15 +5165,15 @@
        "explanation": "Naming is identification; suggestion is interpretation of the shape's meaning."
       },
       {
-       "type": "fill_blank",
-       "question": "A rejection wick's suggestion is read [___], not as a certainty.",
+       "type": "multiple_choice",
+       "question": "How is a rejection wick's suggestion read?",
        "options": [
-        "as a guarantee",
-        "descriptively",
-        "randomly"
+        "As a guarantee that price will reverse.",
+        "As a random artifact carrying no information.",
+        "Descriptively — as a clue, not a certainty."
        ],
-       "correct": 1,
-       "explanation": "All single-candle suggestions in this unit stay descriptive, not certain."
+       "correct": 2,
+       "explanation": "A rejection wick is context, never a promise about the next candle."
       }
      ]
     },
@@ -5254,15 +5255,15 @@
        "explanation": "The preceding trend is the context that shapes a candle's meaning."
       },
       {
-       "type": "fill_blank",
-       "question": "An inverted hammer appears after a [___], while a shooting star appears after a rise.",
+       "type": "multiple_choice",
+       "question": "An inverted hammer and a shooting star look alike. Where does each appear?",
        "options": [
-        "gap",
-        "decline",
-        "rise"
+        "Inverted hammer after a decline; shooting star after a rise.",
+        "Inverted hammer after a rise; shooting star after a decline.",
+        "Both after a decline; only the candle's color differs."
        ],
-       "correct": 1,
-       "explanation": "Same upper-wick shape, but the inverted hammer's context is a preceding decline."
+       "correct": 0,
+       "explanation": "Same shape, opposite context — the prior move is what separates them."
       },
       {
        "type": "true_false",
@@ -9259,15 +9260,15 @@
        "explanation": "That's the standard definition of a swing low."
       },
       {
-       "type": "fill_blank",
-       "question": "Swing highs and lows are the raw building blocks behind [___] and structure.",
+       "type": "multiple_choice",
+       "question": "Swing highs and lows are the raw building blocks behind what?",
        "options": [
-        "volume",
-        "color",
-        "trend"
+        "Candle color.",
+        "Trend and structure.",
+        "Volume and liquidity."
        ],
-       "correct": 2,
-       "explanation": "These turning points are what trend/structure classification is built from."
+       "correct": 1,
+       "explanation": "Reading how swings stack up is how trend and structure get defined."
       },
       {
        "type": "tap_candle",
@@ -9855,15 +9856,15 @@
        "explanation": "That's the standard descriptive definition of an uptrend's structure."
       },
       {
-       "type": "fill_blank",
-       "question": "In an uptrend, each pullback often finds a [___] low than the one before.",
+       "type": "multiple_choice",
+       "question": "In an uptrend, where does each pullback often bottom?",
        "options": [
-        "lower",
-        "higher",
-        "identical"
+        "At a lower low than the one before.",
+        "At an identical low each time.",
+        "At a higher low than the one before."
        ],
-       "correct": 1,
-       "explanation": "Higher lows stepping up is part of the classic uptrend description."
+       "correct": 2,
+       "explanation": "Rising lows are what keep an uptrend intact."
       },
       {
        "type": "multiple_choice",
@@ -9992,15 +9993,15 @@
        "explanation": "That's the standard descriptive definition of a downtrend's structure."
       },
       {
-       "type": "fill_blank",
-       "question": "In a downtrend, each rally often reaches a [___] high than the one before.",
+       "type": "multiple_choice",
+       "question": "In a downtrend, where does each rally often top?",
        "options": [
-        "higher",
-        "identical",
-        "lower"
+        "At a lower high than the one before.",
+        "At a higher high than the one before.",
+        "At an identical high each time."
        ],
-       "correct": 2,
-       "explanation": "Lower highs stepping down is part of the classic downtrend description."
+       "correct": 0,
+       "explanation": "Falling highs are what keep a downtrend intact."
       },
       {
        "type": "multiple_choice",
@@ -10299,15 +10300,15 @@
        "explanation": "This phrase is the standard descriptive shorthand for uptrend structure."
       },
       {
-       "type": "fill_blank",
-       "question": "A swing high that is higher than the previous swing high is called a [___] high.",
-       "options": [
-        "higher",
-        "equal",
-        "lower"
+       "type": "tap_candles",
+       "question": "Tap every candle that pushes up to the upper channel boundary.",
+       "targets": [
+        1,
+        3,
+        5
        ],
-       "correct": 0,
-       "explanation": "\"Higher high\" specifically means it exceeds the prior swing high."
+       "explanation": "Each of these swing highs prints above the one before it — a higher high.",
+       "chart": "ascendingChannel"
       },
       {
        "type": "multiple_choice",
@@ -11808,15 +11809,11 @@
        "chart": "supportBounce"
       },
       {
-       "type": "fill_blank",
-       "question": "A support level is commonly viewed as more notable with [___] touches.",
-       "options": [
-        "more",
-        "zero",
-        "fewer"
-       ],
-       "correct": 0,
-       "explanation": "More reactions at a level commonly add to how notable it's viewed."
+       "type": "mark_level",
+       "question": "Drag the line to the support this chart keeps bouncing from.",
+       "level_kind": "support",
+       "explanation": "The more times a level is touched and holds, the more notable it's considered.",
+       "chart": "supportBounce"
       },
       {
        "type": "true_false",
@@ -11975,15 +11972,11 @@
        "chart": "resistanceRejection"
       },
       {
-       "type": "fill_blank",
-       "question": "A resistance level is commonly viewed as more notable with [___] touches.",
-       "options": [
-        "more",
-        "fewer",
-        "zero"
-       ],
-       "correct": 0,
-       "explanation": "More reactions at a level commonly add to how notable it's viewed."
+       "type": "mark_level",
+       "question": "Drag the line to the resistance this chart keeps getting rejected at.",
+       "level_kind": "resistance",
+       "explanation": "The more times a level is touched and holds, the more notable it's considered.",
+       "chart": "resistanceRejection"
       },
       {
        "type": "true_false",
@@ -12889,15 +12882,15 @@
        "chart": "sideways"
       },
       {
-       "type": "fill_blank",
-       "question": "A trading range is bounded by consistent support [___] resistance levels.",
+       "type": "multiple_choice",
+       "question": "A trading range is bounded by what?",
        "options": [
-        "without",
-        "or",
-        "and"
+        "A single diagonal trendline.",
+        "Consistent support below and resistance above.",
+        "Support below, with no defined ceiling."
        ],
-       "correct": 2,
-       "explanation": "Both a floor (support) and a ceiling (resistance) together define a range."
+       "correct": 1,
+       "explanation": "Two horizontal boundaries — a floor and a ceiling — define a range."
       },
       {
        "type": "true_false",
@@ -13355,15 +13348,14 @@
        "chart": "doubleTop"
       },
       {
-       "type": "fill_blank",
-       "question": "The two peaks of a double top reach roughly the [___] price level.",
-       "options": [
-        "random",
-        "opposite",
-        "same"
+       "type": "tap_candles",
+       "question": "Tap both peaks that test the same resistance level.",
+       "targets": [
+        1,
+        3
        ],
-       "correct": 2,
-       "explanation": "The defining feature is two peaks at about the same level."
+       "explanation": "The two peaks of a double top reach roughly the same price. That's the \"double\".",
+       "chart": "doubleTop"
       },
       {
        "type": "matching",
@@ -13488,15 +13480,14 @@
        "chart": "doubleBottom"
       },
       {
-       "type": "fill_blank",
-       "question": "The two troughs of a double bottom reach roughly the [___] price level.",
-       "options": [
-        "same",
-        "opposite",
-        "random"
+       "type": "tap_candles",
+       "question": "Tap both troughs that test the same support level.",
+       "targets": [
+        1,
+        3
        ],
-       "correct": 0,
-       "explanation": "The defining feature is two troughs at about the same level."
+       "explanation": "The two troughs of a double bottom reach roughly the same price.",
+       "chart": "doubleBottom"
       },
       {
        "type": "ingredient_match",
@@ -13596,15 +13587,15 @@
        "chart": "doubleTop"
       },
       {
-       "type": "fill_blank",
-       "question": "In a double top, the neckline sits at the [___] between the two peaks.",
+       "type": "multiple_choice",
+       "question": "In a double top, where does the neckline sit?",
        "options": [
-        "dip",
-        "midpoint of the wicks",
-        "top"
+        "Across the tops of the two peaks.",
+        "At the midpoint of the peaks' wicks.",
+        "At the dip between the two peaks."
        ],
-       "correct": 0,
-       "explanation": "The neckline runs along the low of the pullback between the two peaks."
+       "correct": 2,
+       "explanation": "The neckline is the low between the peaks; breaking it is what confirms the pattern."
       },
       {
        "type": "multiple_choice",
@@ -14019,15 +14010,15 @@
        "explanation": "Either a much higher or a much lower second peak weakens the roughly-equal read."
       },
       {
-       "type": "fill_blank",
-       "question": "The \"double\" in double top refers to the number of times the [___] was tested.",
+       "type": "multiple_choice",
+       "question": "In \"double top\", what does \"double\" refer to?",
        "options": [
-        "timeframe",
-        "level",
-        "candle color"
+        "The number of times the level was tested.",
+        "The number of candle colors in the pattern.",
+        "The number of timeframes it must appear on."
        ],
-       "correct": 1,
-       "explanation": "\"Double\" specifically counts the tests of the resistance level."
+       "correct": 0,
+       "explanation": "Two tests of the same level make it a double top; one test is just a rejection."
       },
       {
        "type": "multiple_choice",
@@ -14744,15 +14735,14 @@
        "chart": "doubleTop"
       },
       {
-       "type": "fill_blank",
-       "question": "A head & shoulders is a [___]-peak pattern.",
-       "options": [
-        "three",
-        "four",
-        "two"
+       "type": "tap_candles",
+       "question": "Tap the left and right shoulders.",
+       "targets": [
+        1,
+        5
        ],
-       "correct": 0,
-       "explanation": "Left shoulder, head, right shoulder, three peaks total."
+       "explanation": "Head & shoulders has three peaks: two shoulders either side of a higher head.",
+       "chart": "headShoulders"
       },
       {
        "type": "multiple_choice",
@@ -14916,15 +14906,11 @@
        "explanation": "Breaking the neckline is the commonly cited confirmation step, descriptively."
       },
       {
-       "type": "fill_blank",
-       "question": "The neckline connects the two [___] between the peaks.",
-       "options": [
-        "troughs",
-        "wicks",
-        "peaks"
-       ],
-       "correct": 0,
-       "explanation": "The neckline runs along the lows (troughs), not the peaks."
+       "type": "mark_level",
+       "question": "Drag the line to the neckline (along the two troughs).",
+       "level_kind": "support",
+       "explanation": "The neckline connects the two troughs between the peaks — not the peaks themselves.",
+       "chart": "headShoulders"
       },
       {
        "type": "true_false",
@@ -14943,15 +14929,15 @@
        "chart": "headShoulders"
       },
       {
-       "type": "fill_blank",
-       "question": "The neckline connects the two [___] between the peaks.",
+       "type": "multiple_choice",
+       "question": "What does a head & shoulders neckline connect?",
        "options": [
-        "troughs",
-        "wicks",
-        "peaks"
+        "The wicks on either side of the head.",
+        "The two troughs between the peaks.",
+        "The two outer peaks (the shoulders)."
        ],
-       "correct": 0,
-       "explanation": "The neckline runs along the lows between the shoulders and head, not the peaks."
+       "correct": 1,
+       "explanation": "The neckline runs along the troughs, and its break is what confirms the pattern."
       },
       {
        "type": "true_false",
@@ -17616,15 +17602,12 @@
        "chart": "pullbackUptrend"
       },
       {
-       "type": "fill_blank",
-       "question": "A trendline is a [___] line, not a flat horizontal level.",
-       "options": [
-        "vertical",
-        "diagonal",
-        "horizontal"
-       ],
-       "correct": 1,
-       "explanation": "Trendlines slope with the trend, unlike a flat support/resistance level."
+       "type": "draw_trendline",
+       "question": "Draw the uptrend line from the first candle to the last.",
+       "target_start": 0,
+       "target_end": 4,
+       "explanation": "A trendline is diagonal, tracking the rising lows — not a flat horizontal level.",
+       "chart": "uptrend"
       },
       {
        "type": "true_false",
@@ -17723,15 +17706,12 @@
        "explanation": "A lower low breaking the line is commonly read as the uptrend structure weakening."
       },
       {
-       "type": "fill_blank",
-       "question": "An uptrend line stays intact as long as pullbacks hold [___] the line.",
-       "options": [
-        "above",
-        "below",
-        "exactly on"
-       ],
-       "correct": 0,
-       "explanation": "Holding above the line keeps the uptrend structure intact."
+       "type": "draw_trendline",
+       "question": "Draw the uptrend line under the higher lows.",
+       "target_start": 0,
+       "target_end": 2,
+       "explanation": "The uptrend line stays intact as long as pullbacks hold above it.",
+       "chart": "pullbackUptrend"
       },
       {
        "type": "true_false",
@@ -17813,15 +17793,12 @@
        "chart": "lowerHighsDowntrend"
       },
       {
-       "type": "fill_blank",
-       "question": "A downtrend line stays intact as long as bounces stay [___] the line.",
-       "options": [
-        "below",
-        "exactly on",
-        "above"
-       ],
-       "correct": 0,
-       "explanation": "Staying below the line keeps the downtrend structure intact."
+       "type": "draw_trendline",
+       "question": "Draw the downtrend line from the first candle to the last.",
+       "target_start": 0,
+       "target_end": 4,
+       "explanation": "The downtrend line stays intact as long as bounces stay below it.",
+       "chart": "downtrend"
       },
       {
        "type": "true_false",
@@ -18179,15 +18156,11 @@
        "chart": "range"
       },
       {
-       "type": "fill_blank",
-       "question": "A range is bounded by a support below and a [___] above.",
-       "options": [
-        "gap",
-        "resistance",
-        "trendline"
-       ],
-       "correct": 1,
-       "explanation": "Support below, resistance above, bound a range."
+       "type": "mark_level",
+       "question": "Drag the line to the resistance (the ceiling) of this range.",
+       "level_kind": "resistance",
+       "explanation": "A range is bounded by support below and resistance above.",
+       "chart": "range"
       },
       {
        "type": "true_false",
@@ -18197,15 +18170,11 @@
        "chart": "range"
       },
       {
-       "type": "fill_blank",
-       "question": "A range is bounded by support below and [___] above.",
-       "options": [
-        "a trendline",
-        "a gap",
-        "resistance"
-       ],
-       "correct": 2,
-       "explanation": "Support and resistance together bound a range from below and above."
+       "type": "mark_level",
+       "question": "Drag the line to the support (the floor) of this range.",
+       "level_kind": "support",
+       "explanation": "A range is bounded by support below and resistance above.",
+       "chart": "range"
       },
       {
        "type": "multiple_choice",
@@ -18381,15 +18350,11 @@
        "chart": "range"
       },
       {
-       "type": "fill_blank",
-       "question": "In a range, price commonly bounces [___] from resistance.",
-       "options": [
-        "up",
-        "down",
-        "sideways only"
-       ],
-       "correct": 1,
-       "explanation": "Resistance caps the range from above, so price commonly bounces down from it."
+       "type": "mark_level",
+       "question": "Drag the line to the resistance the push was rejected at.",
+       "level_kind": "resistance",
+       "explanation": "Inside a range, price commonly bounces back down from resistance.",
+       "chart": "resistanceRejection"
       },
       {
        "type": "true_false",
@@ -18948,15 +18913,15 @@
        "explanation": "The flip works both ways, broken support often becomes resistance."
       },
       {
-       "type": "fill_blank",
-       "question": "A broken level commonly [___] its role (support ↔ resistance).",
+       "type": "multiple_choice",
+       "question": "When a level breaks, what commonly happens to its role?",
        "options": [
-        "doubles",
-        "flips",
-        "keeps"
+        "It keeps its original role once price returns.",
+        "It doubles in strength on the retest.",
+        "It flips — support becomes resistance, and resistance becomes support."
        ],
-       "correct": 1,
-       "explanation": "The level's role commonly flips after a clean break."
+       "correct": 2,
+       "explanation": "A broken floor often acts as a ceiling afterwards, and vice versa."
       },
       {
        "type": "multiple_choice",
@@ -19302,15 +19267,12 @@
        "explanation": "Higher highs and higher lows define a healthy uptrend."
       },
       {
-       "type": "fill_blank",
-       "question": "Each pullback in a healthy uptrend bottoms at a [___] low.",
-       "options": [
-        "higher",
-        "zero",
-        "lower"
-       ],
-       "correct": 0,
-       "explanation": "Higher lows keep the uptrend structure intact."
+       "type": "draw_trendline",
+       "question": "Drag to connect the two higher lows that define this uptrend line.",
+       "target_start": 0,
+       "target_end": 2,
+       "explanation": "Each pullback in a healthy uptrend bottoms at a higher low than the last.",
+       "chart": "pullbackUptrend"
       },
       {
        "type": "true_false",
@@ -19386,15 +19348,11 @@
        "explanation": "Lower highs and lower lows define a healthy downtrend."
       },
       {
-       "type": "fill_blank",
-       "question": "Each bounce in a healthy downtrend tops at a [___] high.",
-       "options": [
-        "lower",
-        "higher",
-        "flat"
-       ],
-       "correct": 0,
-       "explanation": "Lower highs keep the downtrend structure intact."
+       "type": "tap_candle",
+       "question": "Tap the lower high on this downtrend.",
+       "target": 2,
+       "explanation": "Each bounce in a healthy downtrend tops out below the previous high.",
+       "chart": "lowerHighsDowntrend"
       },
       {
        "type": "multiple_choice",
@@ -27766,15 +27724,11 @@
        "chart": "range"
       },
       {
-       "type": "fill_blank",
-       "question": "A range moves [___] between support and resistance.",
-       "options": [
-        "sideways",
-        "straight down",
-        "straight up"
-       ],
-       "correct": 0,
-       "explanation": "Sideways bounded movement is a range."
+       "type": "mark_level",
+       "question": "Drag the line to the support of this range.",
+       "level_kind": "support",
+       "explanation": "A range moves sideways between its support and its resistance.",
+       "chart": "range"
       },
       {
        "type": "fill_blank",
