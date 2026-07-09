@@ -587,7 +587,7 @@ private struct CommitScreen: View {
         holding = true
         generation += 1
         let gen = generation
-        Haptics.light()
+        Haptics.beginHold(duration: holdDuration)   // buzz climbs as the ring fills
         withAnimation(.linear(duration: holdDuration)) { holdProgress = 1 }
         DispatchQueue.main.asyncAfter(deadline: .now() + holdDuration) {
             guard gen == generation, holding, !burst else { return }
@@ -599,11 +599,13 @@ private struct CommitScreen: View {
         guard !burst else { return }
         holding = false
         generation += 1
+        Haptics.endHold()
         withAnimation(.spring(response: 0.35, dampingFraction: 0.8)) { holdProgress = 0 }
     }
 
     private func completeHold() {
-        Haptics.success()
+        Haptics.endHold()
+        Haptics.play(.celebrate)
         burst = true
         onCommitted()   // persist onboarding answers
 

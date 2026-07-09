@@ -14,6 +14,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         registerBundledFonts()
+        Haptics.prepare()   // warm the engine so the first tap isn't late
         // Wire the Firebase backend in behind the app's seam (Backend.auth /
         // Backend.store); everything else talks to the protocols, not Firebase.
         FirebaseApp.configure()
