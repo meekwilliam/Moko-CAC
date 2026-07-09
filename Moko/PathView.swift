@@ -18,9 +18,10 @@ struct PathView: View {
     @State private var didInitialScroll = false
     @State private var pulse: Bool = false
     @State private var tooltipNode: Int? = nil
-    // Stays set through the dismiss animation so the callout keeps its raised
-    // z-order while it collapses (otherwise it draws behind the node below).
-    @State private var elevatedNode: Int? = nil
+    // Nodes keep their raised z-order until each callout has fully collapsed.
+    // When switching menus, this temporarily contains both nodes so the old
+    // callout cannot slide underneath its neighbours on the way out.
+    @State private var elevatedNodes: Set<Int> = []
 
     private let nodeSize: CGFloat = 82
     private let ovalRatio: CGFloat = 0.78     // puck height / width — a wide coin
@@ -53,7 +54,7 @@ struct PathView: View {
                                     .background(sectionAnchor(s))
                                     // Raise the whole section holding the open tooltip so the
                                     // callout draws above nodes in adjacent sections.
-                                    .zIndex(elevatedSection == s ? 100 : 0)
+                                    .zIndex(elevatedSections.contains(s) ? 100 : 0)
                             }
                             Color.clear.frame(height: 260)
                         }
@@ -260,7 +261,7 @@ struct PathView: View {
                     .id("node-\(node.num)")
                     .offset(x: node.xOffset)
                     .padding(.top, CGFloat(i) * vStep + (vStep / 2) - (nodeSize / 2))
-                    .zIndex(elevatedNode == node.num ? 50 : 0)
+                    .zIndex(elevatedNodes.contains(node.num) ? 50 : 0)
             }
         }
         .frame(width: width, height: height)
@@ -268,19 +269,20 @@ struct PathView: View {
 
     // MARK: Node
 
-    private var elevatedSection: Int? {
-        guard let elevatedNode else { return nil }
-        return store.nodes.first { $0.num == elevatedNode }?.sectionIndex
+    private var elevatedSections: Set<Int> {
+        Set(elevatedNodes.compactMap { node in
+            store.nodes.first { $0.num == node }?.sectionIndex
+        })
     }
 
-    /// Open/close the callout, keeping the node's raised z-order through the
-    /// close animation so it doesn't clip behind the node below it.
+    /// Open or close a callout while preserving every closing card's z-order.
     private func setTooltip(_ node: Int?) {
-        if let n = node { elevatedNode = n }
+        let previous = tooltipNode
+        if let node { elevatedNodes.insert(node) }
         withAnimation(.spring(response: 0.26, dampingFraction: 0.74)) { tooltipNode = node }
-        if node == nil {
+        if let previous, previous != node {
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.32) {
-                if tooltipNode == nil { elevatedNode = nil }
+                if tooltipNode != previous { elevatedNodes.remove(previous) }
             }
         }
     }
@@ -324,10 +326,6 @@ struct PathView: View {
             }
             .buttonStyle(PuckButtonStyle(slab: c.dark, size: nodeSize, ovalRatio: ovalRatio))
 
-            // START label only for the very first lesson ever (nothing completed yet).
-            if state == .active && store.completed.isEmpty {
-                startLabel.offset(y: -(nodeSize / 2) - 22)
-            }
         }
         .frame(width: nodeSize, height: nodeSize)
         // Tap callout: title + Start / Continue / Replay button, anchored below.
@@ -393,28 +391,6 @@ struct PathView: View {
             )
         }
         .shadow(color: .black.opacity(0.28), radius: 16, y: 10)
-    }
-
-    private var startLabel: some View {
-        VStack(spacing: 0) {
-            Text("START")
-                .font(Theme.font(13, .black)).tracking(1.2)
-                .foregroundColor(Color(hex: "#333333"))
-                .padding(.vertical, 5).padding(.horizontal, 16)
-                .background(
-                    RoundedRectangle(cornerRadius: 10, style: .continuous).fill(Color.white)
-                        .overlay(RoundedRectangle(cornerRadius: 10, style: .continuous)
-                            .strokeBorder(Color(hex: "#e5e7eb"), lineWidth: 2.5))
-                )
-                .background(
-                    RoundedRectangle(cornerRadius: 10, style: .continuous)
-                        .fill(Color(hex: "#d1d5db")).offset(y: 2)
-                )
-            Triangle().fill(Color.white)
-                .frame(width: 12, height: 7)
-                .overlay(Triangle().stroke(Color(hex: "#e5e7eb"), lineWidth: 1))
-        }
-        .fixedSize()
     }
 
     // Recolor a parsed icon so white/translucent-white parts follow the node state.
