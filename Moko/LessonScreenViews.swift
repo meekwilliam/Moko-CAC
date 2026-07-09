@@ -83,24 +83,24 @@ struct MascotPrompt: View {
         let slab = scheme == .dark ? Theme.surfaceSlab : Color(hex: "#C7D0DE")
         let line = scheme == .dark ? Theme.surfaceBorder : Color(hex: "#CBD5E1")
 
-        let row = HStack(alignment: .center, spacing: 4) {
+        let row = HStack(alignment: .center, spacing: 16) {
             // Frame aspect ≈ the bear viewBox (141×141, square) so the art
             // fills the width and sits flush-left.
             MascotIcon()
-                .frame(width: 120, height: 120)
+                .frame(width: 112, height: 112)
             Text(RichText.attributed(text,
                                      base: Theme.font(fontSize, .heavy),
                                      bold: Theme.font(fontSize, .black),
                                      color: ink))
                 .fixedSize(horizontal: false, vertical: true)
                 .padding(.vertical, 14)
-                .padding(.leading, 22)
+                .padding(.leading, 26)
                 .padding(.trailing, 16)
                 .background(
-                    SpeechBubbleShape()
+                    SpeechBubbleShape(tail: 14)
                         .fill(face)
-                        .overlay(SpeechBubbleShape().stroke(slab, lineWidth: 2))
-                        .background(SpeechBubbleShape().fill(slab).offset(y: 5))
+                        .overlay(SpeechBubbleShape(tail: 14).stroke(slab, lineWidth: 2))
+                        .background(SpeechBubbleShape(tail: 14).fill(slab).offset(y: 5))
                 )
         }
         .frame(maxWidth: .infinity, alignment: .leading)
@@ -973,40 +973,42 @@ struct FillBlankChoiceView: View {
         let pieces = (s.question ?? "").components(separatedBy: "[___]")
         return (pieces.first ?? "", pieces.dropFirst().joined(separator: "[___]"))
     }
+    private var sentenceParts: [SingleBlankSentencePart] {
+        textParts(promptParts.before) + [.blank] + textParts(promptParts.after)
+    }
 
     var body: some View {
-        VStack(alignment: .leading, spacing: 26) {
+        VStack(alignment: .leading, spacing: 24) {
             QuestionChart(key: s.chart, height: 130, seed: chartSeed(player.screen))
 
-            VStack(alignment: .leading, spacing: 12) {
+            VStack(alignment: .leading, spacing: 18) {
                 Text("Complete the sentence")
                     .font(Theme.font(26, .black))
                     .foregroundColor(ink)
                     .fixedSize(horizontal: false, vertical: true)
 
                 sentenceBuilder
-                    .padding(.top, 6)
             }
 
             wordBank
-                .padding(.top, s.chart == nil ? 128 : 58)
+                .padding(.top, s.chart == nil ? 116 : 52)
         }
         .frame(maxWidth: .infinity, alignment: .leading)
     }
 
     private var sentenceBuilder: some View {
-        HStack(alignment: .firstTextBaseline, spacing: 8) {
-            Text(promptParts.before)
-                .font(Theme.font(24, .medium))
-                .foregroundColor(ink)
-                .fixedSize(horizontal: false, vertical: true)
-
-            blankSlot
-
-            Text(promptParts.after)
-                .font(Theme.font(24, .medium))
-                .foregroundColor(ink)
-                .fixedSize(horizontal: false, vertical: true)
+        MultiBlankSentenceLayout(horizontalSpacing: 9, verticalSpacing: 14) {
+            ForEach(Array(sentenceParts.enumerated()), id: \.offset) { _, part in
+                switch part {
+                case .text(let text):
+                    Text(text)
+                        .font(Theme.font(23, .bold))
+                        .foregroundColor(ink)
+                        .fixedSize()
+                case .blank:
+                    blankSlot
+                }
+            }
         }
         .frame(maxWidth: .infinity, alignment: .leading)
     }
@@ -1050,7 +1052,7 @@ struct FillBlankChoiceView: View {
                         .padding(.top, 28)
                 }
             }
-            .frame(width: slotWidth, height: 58)
+            .frame(width: slotWidth, height: 54)
             .contentShape(RoundedRectangle(cornerRadius: 18, style: .continuous))
         }
         .buttonStyle(RowPressStyle())
@@ -1120,7 +1122,21 @@ struct FillBlankChoiceView: View {
 
     private var slotWidth: CGFloat {
         let longest = max((selectedWord ?? "").count, answerOptions.map { $0.label.count }.max() ?? 6)
-        return max(112, min(190, CGFloat(longest) * 15 + 44))
+        return max(96, min(172, CGFloat(longest) * 14 + 38))
+    }
+
+    private func textParts(_ text: String) -> [SingleBlankSentencePart] {
+        var parts: [SingleBlankSentencePart] = []
+        var token = ""
+        for char in text {
+            token.append(char)
+            if char.isWhitespace {
+                parts.append(.text(token))
+                token = ""
+            }
+        }
+        if !token.isEmpty { parts.append(.text(token)) }
+        return parts
     }
 
     private var slotFill: Color {
@@ -1386,21 +1402,20 @@ struct FillBlankMultiView: View {
     }
 
     var body: some View {
-        VStack(alignment: .leading, spacing: 26) {
+        VStack(alignment: .leading, spacing: 24) {
             QuestionChart(key: player.screen.chart, height: 130, seed: chartSeed(player.screen))
 
-            VStack(alignment: .leading, spacing: 12) {
+            VStack(alignment: .leading, spacing: 18) {
                 Text("Complete the sentence")
                     .font(Theme.font(26, .black))
                     .foregroundColor(ink)
                     .fixedSize(horizontal: false, vertical: true)
 
                 sentenceBuilder
-                    .padding(.top, 6)
             }
 
             wordBank
-                .padding(.top, player.screen.chart == nil ? 112 : 46)
+                .padding(.top, player.screen.chart == nil ? 116 : 52)
         }
         .frame(maxWidth: .infinity, alignment: .leading)
     }
@@ -1412,7 +1427,7 @@ struct FillBlankMultiView: View {
                 case .text(let text):
                     if !text.isEmpty {
                         Text(text)
-                            .font(Theme.font(24, .medium))
+                            .font(Theme.font(23, .bold))
                             .foregroundColor(ink)
                             .fixedSize()
                     }
@@ -1477,7 +1492,7 @@ struct FillBlankMultiView: View {
                         .padding(.top, 28)
                 }
             }
-            .frame(width: slotWidth(for: blankIndex), height: 58)
+            .frame(width: slotWidth(for: blankIndex), height: 54)
             .contentShape(RoundedRectangle(cornerRadius: 18, style: .continuous))
         }
         .buttonStyle(RowPressStyle())
@@ -1554,7 +1569,7 @@ struct FillBlankMultiView: View {
         let selected = selectedLabel(for: blankIndex) ?? ""
         let correct = bankItems.first(where: { $0.blank == blankIndex })?.label ?? ""
         let longest = max(selected.count, correct.count, 6)
-        return max(112, min(190, CGFloat(longest) * 15 + 44))
+        return max(96, min(172, CGFloat(longest) * 14 + 38))
     }
 
     private func slotFill(blankIndex: Int, filled: Bool) -> Color {
@@ -1614,6 +1629,11 @@ struct FillBlankMultiView: View {
 private enum MultiBlankTemplatePart {
     case text(String)
     case blank(Int)
+}
+
+private enum SingleBlankSentencePart {
+    case text(String)
+    case blank
 }
 
 private struct MultiBlankSentenceLayout: Layout {
