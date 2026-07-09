@@ -131,8 +131,9 @@ struct SpeechBubbleShape: Shape {
         let body = CGRect(x: rect.minX + tail, y: rect.minY,
                           width: rect.width - tail, height: rect.height)
         let cy = rect.midY
-        let tailHalfHeight: CGFloat = 16
         let radius = min(corner, body.width / 2, body.height / 2)
+        let upperTailAttach = CGPoint(x: body.minX, y: body.minY + radius)
+        let lowerTailAttach = CGPoint(x: body.minX, y: body.maxY - radius)
 
         p.move(to: CGPoint(x: body.minX + radius, y: body.minY))
         p.addLine(to: CGPoint(x: body.maxX - radius, y: body.minY))
@@ -144,10 +145,9 @@ struct SpeechBubbleShape: Shape {
         p.addLine(to: CGPoint(x: body.minX + radius, y: body.maxY))
         p.addQuadCurve(to: CGPoint(x: body.minX, y: body.maxY - radius),
                        control: CGPoint(x: body.minX, y: body.maxY))
-        p.addLine(to: CGPoint(x: body.minX, y: cy + tailHalfHeight))
+        p.addLine(to: lowerTailAttach)
         p.addLine(to: CGPoint(x: rect.minX, y: cy))
-        p.addLine(to: CGPoint(x: body.minX, y: cy - tailHalfHeight))
-        p.addLine(to: CGPoint(x: body.minX, y: body.minY + radius))
+        p.addLine(to: upperTailAttach)
         p.addQuadCurve(to: CGPoint(x: body.minX + radius, y: body.minY),
                        control: CGPoint(x: body.minX, y: body.minY))
         p.closeSubpath()
