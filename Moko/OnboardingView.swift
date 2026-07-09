@@ -145,7 +145,10 @@ struct OnboardingView: View {
     }
 
     private var stepTransition: AnyTransition {
-        guard hasPresentedInitialStep else { return .identity }
+        // The welcome screen is a stable reset point. Animating it back in
+        // after step one leaves two full-screen scenes in the transition tree,
+        // so a following Get Started tap can inherit the stale direction.
+        guard hasPresentedInitialStep, step > 0 else { return .identity }
         return .asymmetric(
             insertion: .offset(x: stepDirection * stepSlideDistance),
             removal: .offset(x: -stepDirection * stepSlideDistance)
