@@ -493,14 +493,14 @@
       },
       {
        "type": "multiple_choice",
-       "question": "Someone says \"going short\" means buying shares to hold for the long term.\n\nWhat is the mistake?",
+       "question": "What does it mean to go short?",
        "options": [
-        "Short always means holding for years.",
-        "\"Short\" describes selling first hoping for a price decline. It has nothing to do with a long-term buy-and-hold.",
-        "Long and short are the same thing."
+        "Selling first, hoping to buy back lower after a price decline.",
+        "Buying first and holding for a long period, hoping the price rises.",
+        "Selling a position you've held a long time to lock in the gain."
        ],
-       "correct": 1,
-       "explanation": "\"Short\" and \"long-term\" are unrelated ideas that happen to share a similar-sounding word."
+       "correct": 0,
+       "explanation": "\"Short\" describes selling first to profit from a decline. It has nothing to do with how long a trade is held."
       }
      ]
     },
@@ -604,14 +604,14 @@
       },
       {
        "type": "multiple_choice",
-       "question": "Someone assumes their \"fill\" price will always exactly match the last price shown on the chart.\n\nWhat is the mistake?",
+       "question": "Why might your fill price differ from the last price shown on the chart?",
        "options": [
-        "Fills are always filled at a better price than the chart.",
-        "Fills always match the chart exactly.",
-        "Fills can differ slightly from the displayed chart price due to spread, slippage, and order type."
+        "Charts update on a delay, so the displayed price is always stale.",
+        "Spread, slippage, and order type can each move the fill away from the displayed price.",
+        "The chart always shows the bid, while fills always happen at the ask."
        ],
-       "correct": 2,
-       "explanation": "As covered in prior lessons, several factors can make a fill differ from the chart's displayed price."
+       "correct": 1,
+       "explanation": "Several separate factors can make a fill differ from the chart's displayed price."
       }
      ]
     },
@@ -738,14 +738,14 @@
       },
       {
        "type": "multiple_choice",
-       "question": "Someone treats their unrealized P&L as a final, guaranteed result before closing the position.\n\nWhat is the mistake?",
+       "question": "What is true of unrealized P&L?",
        "options": [
-        "Unrealized P&L can still change until the position is actually closed. It isn't locked in yet.",
-        "Once a position is open, its P&L never changes.",
-        "Unrealized and realized P&L are identical."
+        "It becomes realized P&L the moment the position turns profitable.",
+        "It is fixed the moment the position is opened.",
+        "It can still change until the position is closed — it isn't locked in."
        ],
-       "correct": 0,
-       "explanation": "Only realized P&L (after closing) is the final, locked-in result."
+       "correct": 2,
+       "explanation": "Only realized P&L, after closing, is the final locked-in result."
       }
      ]
     },
@@ -849,14 +849,14 @@
       },
       {
        "type": "multiple_choice",
-       "question": "Someone assumes market cap measures a company's cash reserves.\n\nWhat is the mistake?",
+       "question": "What does market cap measure?",
        "options": [
-        "Market cap and cash reserves are the same thing.",
-        "Market cap counts only the shares held by insiders.",
-        "Market cap is share price times shares outstanding. It's a size metric, not a cash measurement."
+        "Share price times shares outstanding — a measure of size.",
+        "The total value of the company's shares traded that day.",
+        "The company's cash reserves on hand."
        ],
-       "correct": 2,
-       "explanation": "Market cap is specifically calculated from share price and share count, not cash on hand."
+       "correct": 0,
+       "explanation": "Market cap is calculated from share price and share count, not from cash or volume."
       }
      ]
     },
@@ -960,14 +960,14 @@
       },
       {
        "type": "multiple_choice",
-       "question": "Someone assumes a low-float stock will always have small, steady price moves.\n\nWhat is the mistake?",
+       "question": "What are low-float stocks commonly associated with?",
        "options": [
-        "A high-float stock always swings more than a low-float one.",
-        "Low float always means calmer price action.",
-        "Low-float stocks are commonly associated with LARGER price swings, not smaller ones, since fewer shares are available."
+        "Smaller, steadier moves, since fewer shares change hands.",
+        "Larger price swings, since fewer shares are available to trade.",
+        "Larger price swings, driven mainly by unusually heavy volume."
        ],
-       "correct": 2,
-       "explanation": "Fewer available shares commonly means relatively bigger price impact per trade, not steadier action."
+       "correct": 1,
+       "explanation": "The swings come from scarce available supply — a bigger price impact per trade — not from heavy volume."
       }
      ]
     },
@@ -1100,14 +1100,14 @@
       },
       {
        "type": "multiple_choice",
-       "question": "Someone finishes this unit and still confuses \"short\" with \"long-term holding.\"\n\nWhat is the mistake?",
+       "question": "How does being \"short\" relate to how long a trade is held?",
        "options": [
-        "Short and long-term are synonyms.",
-        "\"Short\" describes selling first to profit from a decline. It's unrelated to how long a trade is held.",
-        "Going short means buying at a lower price first."
+        "A short is any trade held for less than a single day.",
+        "A short must always be closed before the market closes.",
+        "Not at all — \"short\" means selling first to profit from a decline."
        ],
-       "correct": 1,
-       "explanation": "Precise use of this vocabulary matters, since the rest of the course builds on these exact terms."
+       "correct": 2,
+       "explanation": "Precise vocabulary matters here: \"short\" is a direction, not a holding period."
       }
      ]
     },
@@ -1240,14 +1240,14 @@
       },
       {
        "type": "multiple_choice",
-       "question": "Someone believes owning one share means they help run the company's daily operations.\n\nWhat is the mistake?",
+       "question": "What does owning a single share generally give you?",
        "options": [
-        "Owning shares generally doesn't give an individual shareholder control over daily operations.",
-        "They should buy even more shares to get more control.",
-        "They should contact the company to request a job."
+        "A small ownership stake, but no say in daily operations.",
+        "A guaranteed share of the company's profits each quarter.",
+        "A say in daily operations, proportional to the stake."
        ],
        "correct": 0,
-       "explanation": "Day-to-day operations are run by management, not by individual shareholders."
+       "explanation": "Day-to-day operations are run by management. Shareholders may vote on certain matters, but not daily decisions."
       },
       {
        "type": "multiple_choice",
@@ -1556,14 +1556,14 @@
       },
       {
        "type": "multiple_choice",
-       "question": "Someone believes a single company employee personally sets the stock's price each day.\n\nWhat is the mistake?",
+       "question": "Where does a stock's price come from?",
        "options": [
-        "They should ask a different employee instead.",
-        "Price emerges from many buyers and sellers trading, not one person's decision.",
-        "They should assume the price is fixed once set."
+        "A company employee sets it at the start of each day.",
+        "It emerges from many buyers and sellers trading with each other.",
+        "The exchange sets it from the company's reported earnings."
        ],
        "correct": 1,
-       "explanation": "No individual sets the price directly. It comes from collective trading activity."
+       "explanation": "No individual sets the price. It comes from collective trading activity."
       },
       {
        "type": "multiple_choice",
@@ -1724,14 +1724,14 @@
       },
       {
        "type": "multiple_choice",
-       "question": "Someone claims volume numbers are meaningless and should always be ignored.\n\nWhat is the mistake?",
+       "question": "How is volume best used?",
        "options": [
-        "Volume is commonly used as one added piece of context, not something to dismiss outright.",
-        "They should stop looking at charts altogether.",
-        "They should only look at volume and ignore price entirely."
+        "As a signal to ignore, since it only confirms what price already showed.",
+        "As the only thing worth watching, with price set aside.",
+        "As one added piece of context alongside price."
        ],
-       "correct": 0,
-       "explanation": "Volume adds useful context; the mistake is dismissing it entirely, not the reverse."
+       "correct": 2,
+       "explanation": "Volume adds useful context. It neither replaces price nor deserves dismissing."
       },
       {
        "type": "multiple_choice",
@@ -1897,14 +1897,14 @@
       },
       {
        "type": "multiple_choice",
-       "question": "Someone buys a large position in a very illiquid stock, expecting to exit instantly at the same price.\n\nWhat is the mistake?",
+       "question": "What is the risk of holding a large position in an illiquid stock?",
        "options": [
-        "They should have ignored the bid/ask spread entirely.",
-        "They should have bought an even larger position.",
-        "Low liquidity can make it harder to exit a large position without affecting the price."
+        "Exiting can be hard without moving the price against you.",
+        "You are forced to exit at the last traded price, whatever it is.",
+        "The bid/ask spread is fixed, so every exit costs the same."
        ],
-       "correct": 2,
-       "explanation": "Illiquid markets can make large trades harder to exit cleanly at the expected price."
+       "correct": 0,
+       "explanation": "Thin markets can make large positions hard to exit cleanly at the expected price."
       },
       {
        "type": "multiple_choice",
@@ -2070,14 +2070,14 @@
       },
       {
        "type": "multiple_choice",
-       "question": "Someone expects to always buy at the exact last traded price shown on a chart.\n\nWhat is the mistake?",
+       "question": "At what price do actual fills happen?",
        "options": [
-        "The chart itself must be broken.",
-        "Actual fills happen near the current bid or ask, which can differ slightly from the last traded price.",
-        "They should refresh the page many times instead."
+        "Exactly at the last traded price shown on the chart.",
+        "Near the current bid or ask, which can differ from the last traded price.",
+        "At the midpoint between the bid and the ask."
        ],
        "correct": 1,
-       "explanation": "A small gap between the last trade and the current bid/ask is a normal part of how markets work."
+       "explanation": "A small gap between the last trade and the current bid/ask is normal."
       },
       {
        "type": "multiple_choice",
@@ -2238,11 +2238,11 @@
       },
       {
        "type": "multiple_choice",
-       "question": "Someone is confused why their limit order never filled, even though they set a specific price.\n\nWhat is the mistake?",
+       "question": "A limit order was placed at a specific price and never filled. What most likely happened?",
        "options": [
-        "They should have set an even lower limit price regardless of the market.",
-        "Limit orders must be broken and shouldn't be used.",
-        "If the market price never reached their limit, the order simply remained unfilled. That's expected behavior."
+        "It filled partially, and the remainder was cancelled.",
+        "Limit orders expire automatically if unfilled within seconds.",
+        "The market price never reached that limit, so it stayed unfilled."
        ],
        "correct": 2,
        "explanation": "An unfilled limit order usually just means price never reached that level."
@@ -2558,14 +2558,14 @@
       },
       {
        "type": "multiple_choice",
-       "question": "Someone is surprised that a trade placed during after-hours filled at a very different price than expected.\n\nWhat is the mistake?",
+       "question": "Why might a trade placed after hours fill far from the expected price?",
        "options": [
-        "Extended hours should have identical liquidity to standard hours.",
-        "Lower liquidity outside standard hours can lead to bigger differences between expected and actual fill prices.",
-        "The trading platform must be broken."
+        "Thinner liquidity outside standard hours widens the gap between expectation and fill.",
+        "After-hours prices are fixed at the close and don't move.",
+        "Exchanges apply a surcharge to every after-hours fill."
        ],
-       "correct": 1,
-       "explanation": "Thinner participation outside standard hours is a commonly cited reason for wider price gaps on fills."
+       "correct": 0,
+       "explanation": "Thinner participation outside standard hours is the commonly cited reason for wider fill gaps."
       },
       {
        "type": "multiple_choice",
@@ -2723,13 +2723,13 @@
       },
       {
        "type": "multiple_choice",
-       "question": "Someone judges an asset's entire long-term direction using only a 1-minute chart.\n\nWhat is the mistake?",
+       "question": "What can a 1-minute chart tell you about an asset's long-term direction?",
        "options": [
-        "A very short timeframe mostly shows recent detail, not the bigger long-term picture.",
-        "They should have used an even shorter timeframe instead.",
-        "They should have ignored the chart entirely."
+        "Everything, since every timeframe shows the same trend.",
+        "Little — a short timeframe shows recent detail, not the bigger picture.",
+        "The long-term direction, as long as you scroll back far enough."
        ],
-       "correct": 0,
+       "correct": 1,
        "explanation": "Judging the bigger picture usually calls for checking a longer timeframe as well.",
        "chart": "sideways"
       },
@@ -3063,13 +3063,13 @@
       },
       {
        "type": "multiple_choice",
-       "question": "Someone assumes the \"close\" of a candle is always the same as its highest price.\n\nWhat is the mistake?",
+       "question": "How does a candle's close relate to its high?",
        "options": [
-        "They should ignore the close value entirely.",
-        "The close and the high are often different values, the close is simply where price ended.",
-        "They should assume close always equals the low instead."
+        "The close always sits between the open and the high.",
+        "The close always equals the high.",
+        "They're often different — the close is simply where price ended."
        ],
-       "correct": 1,
+       "correct": 2,
        "explanation": "A candle can close well below its high if price pulled back before the period ended."
       },
       {
@@ -3236,14 +3236,14 @@
       },
       {
        "type": "multiple_choice",
-       "question": "Someone assumes every gap must always get filled eventually, as a guaranteed rule.\n\nWhat is the mistake?",
+       "question": "Do gaps always get filled?",
        "options": [
-        "They should assume no gap is ever filled instead.",
-        "Not every gap gets filled, some do, some don't; there's no guarantee either way.",
-        "They should ignore gaps entirely from now on."
+        "No — some do, some don't. There's no guarantee either way.",
+        "Only gaps down get filled; gaps up rarely do.",
+        "Yes, every gap is eventually filled."
        ],
-       "correct": 1,
-       "explanation": "Treating \"gaps always fill\" as a certainty overstates what is really just a commonly observed tendency, not a rule."
+       "correct": 0,
+       "explanation": "\"Gaps always fill\" overstates a commonly observed tendency into a rule."
       },
       {
        "type": "multiple_choice",
@@ -3662,11 +3662,11 @@
       },
       {
        "type": "multiple_choice",
-       "question": "Someone glances at the chart and reads only the wicks, ignoring the bodies entirely.\n\nWhat is the mistake?",
+       "question": "How should a candle's body and its wicks be read?",
        "options": [
-        "They should ignore the wicks too and just guess.",
-        "The body and wicks are read together, the body shows the net move, the wicks the extremes.",
-        "They should only ever look at the very first candle."
+        "Wicks only; the body just restates what the wicks already show.",
+        "Together — the body shows the net move, the wicks the extremes.",
+        "Body only; wicks are noise from thin trading."
        ],
        "correct": 1,
        "explanation": "Reading body and wick together gives a fuller picture than either alone.",
@@ -3773,11 +3773,11 @@
       },
       {
        "type": "multiple_choice",
-       "question": "Looking at this chart, someone calls the highlighted doji a \"100% guaranteed reversal.\"\n\nWhat is the mistake?",
+       "question": "What does a doji tell you about what happens next?",
        "options": [
-        "A doji can only ever appear at the start of a chart.",
-        "The doji should have an even bigger body to count.",
-        "A doji describes balance. No single candle is a guaranteed signal of what happens next."
+        "The prior trend continues, since neither side gave ground.",
+        "A reversal is guaranteed once the doji closes.",
+        "Nothing for certain — it describes balance between buyers and sellers."
        ],
        "correct": 2,
        "explanation": "A doji is a useful descriptive clue, not a certainty.",
@@ -4016,14 +4016,14 @@
       },
       {
        "type": "multiple_choice",
-       "question": "Someone sees this chart and labels the highlighted candle a hammer.\n\nWhat is the mistake?",
+       "question": "The highlighted candle has a long wick on top, after a rise. What is it?",
        "options": [
-        "A shooting star and a hammer are the exact same shape.",
-        "Wick direction doesn't matter when naming a candle.",
-        "The long wick here is on top, after a rise. That's a shooting star, not a hammer."
+        "A shooting star.",
+        "An inverted hammer.",
+        "A hammer."
        ],
-       "correct": 2,
-       "explanation": "Which side the long wick is on (and the preceding move) is what separates the two.",
+       "correct": 0,
+       "explanation": "Shape alone isn't enough: an inverted hammer is the same shape after a decline, and a hammer's long wick points down.",
        "chart": "shootingStar"
       },
       {
@@ -4065,14 +4065,14 @@
       },
       {
        "type": "multiple_choice",
-       "question": "Someone assumes a shooting star's long wick means volume was extremely high.\n\nWhat is the mistake?",
+       "question": "What does a shooting star's long wick tell you?",
        "options": [
-        "Volume can't be measured separately from wicks.",
-        "Wick length shows price extremes, not trading volume. They're two separate ideas.",
-        "Wick length always equals volume."
+        "That trading volume was extremely high.",
+        "How far price reached before being pushed back.",
+        "That the candle closed near its high."
        ],
        "correct": 1,
-       "explanation": "Wicks describe price reach, not trading volume.",
+       "explanation": "Wicks describe price reach, not trading volume. They're separate ideas.",
        "chart": "shootingStar"
       },
       {
@@ -4285,14 +4285,14 @@
       },
       {
        "type": "multiple_choice",
-       "question": "Someone sees this chart and calls it bullish because \"there's a big candle.\"\n\nWhat is the mistake?",
+       "question": "A large candle engulfs the one before it. What makes this bearish rather than bullish?",
        "options": [
-        "A big candle always means bullish.",
-        "Size alone isn't the point. Here the big candle is a DOWN candle engulfing an up one, which is bearish.",
-        "The color of the engulfing candle never matters."
+        "It closed above the previous candle's high.",
+        "Its size — an unusually large candle is read as bearish.",
+        "The engulfing candle is a down candle."
        ],
-       "correct": 1,
-       "explanation": "Direction of the engulfing candle, not just its size, sets bullish vs bearish.",
+       "correct": 2,
+       "explanation": "Direction of the engulfing candle, not its size, sets bullish versus bearish.",
        "chart": "bearishEngulfing"
       },
       {
@@ -4446,13 +4446,13 @@
       },
       {
        "type": "multiple_choice",
-       "question": "Someone claims a spinning top always signals an immediate reversal.\n\nWhat is the mistake?",
+       "question": "What does a spinning top signal?",
        "options": [
-        "Spinning tops always reverse the trend immediately.",
-        "A spinning top describes hesitation, not a guaranteed reversal signal.",
-        "Spinning tops only appear once per chart."
+        "Hesitation — neither side finished in control.",
+        "Strong continuation, since price returned to its open.",
+        "An immediate reversal of the current trend."
        ],
-       "correct": 1,
+       "correct": 0,
        "explanation": "Like other single candles, a spinning top is descriptive, not a certainty.",
        "chart": "spinningTop"
       },
@@ -4542,14 +4542,14 @@
       },
       {
        "type": "multiple_choice",
-       "question": "Someone treats a single marubozu on this chart as a promise the trend continues.\n\nWhat is the mistake?",
+       "question": "What does a single marubozu tell you about the next candle?",
        "options": [
-        "A marubozu describes one decisive period. It doesn't guarantee what the next candle does.",
-        "A marubozu can only appear once per chart.",
-        "Big candles never mean anything at all."
+        "The trend continues, since one side held control throughout.",
+        "Nothing for certain — it describes one decisive period, not the future.",
+        "A reversal is likely, since the move looks exhausted."
        ],
-       "correct": 0,
-       "explanation": "Even a decisive candle is descriptive, not a guarantee of the future.",
+       "correct": 1,
+       "explanation": "Even a decisive candle is descriptive, not a guarantee of what follows.",
        "chart": "marubozu"
       },
       {
@@ -6563,11 +6563,11 @@
       },
       {
        "type": "multiple_choice",
-       "question": "Someone assumes any difference between chart price and their actual fill means the platform cheated them.\n\nWhat is the mistake?",
+       "question": "A fill comes in slightly different from the price on the chart. What is the most likely explanation?",
        "options": [
-        "They should assume all trading platforms are identical in this regard.",
-        "They should stop using charts entirely.",
-        "Small differences between chart price and fills are commonly explained by spread, slippage, and order type, not platform wrongdoing."
+        "The chart is showing a different exchange's price feed.",
+        "The platform executed the trade dishonestly.",
+        "Spread, slippage, and order type — normal parts of how markets work."
        ],
        "correct": 2,
        "explanation": "These small gaps are a normal, well-understood part of how markets and order types work.",
@@ -6831,11 +6831,11 @@
       },
       {
        "type": "multiple_choice",
-       "question": "Someone believes reading order flow lets them know the exact next price with certainty.\n\nWhat is the mistake?",
+       "question": "What does reading order flow tell you?",
        "options": [
-        "Order flow describes current buy/sell pressure. It doesn't guarantee the exact next price.",
-        "Order flow only matters after the market closes.",
-        "Order flow guarantees perfect predictions every time."
+        "Current buying and selling pressure.",
+        "Which resting orders will be cancelled before they fill.",
+        "The exact next price, with certainty."
        ],
        "correct": 0,
        "explanation": "Order flow is descriptive context about pressure, not a certainty about the future."
@@ -6909,14 +6909,14 @@
       },
       {
        "type": "multiple_choice",
-       "question": "Someone claims supply and demand have nothing to do with why a stock's price changes.\n\nWhat is the mistake?",
+       "question": "What is commonly described as the basic engine behind price changes?",
        "options": [
-        "Price changes only from company news, never from order flow.",
-        "Supply and demand are commonly described as the basic economic engine behind price changes.",
-        "Supply and demand only apply to physical goods, never stocks."
+        "Company news announcements.",
+        "Supply and demand.",
+        "The exchange's opening auction."
        ],
        "correct": 1,
-       "explanation": "This mechanism applies to stocks (and most markets) just as it does to other goods."
+       "explanation": "Supply and demand applies to stocks just as it does to other goods."
       }
      ]
     },
@@ -7004,11 +7004,11 @@
       },
       {
        "type": "multiple_choice",
-       "question": "Someone believes market makers guarantee a stock can never crash.\n\nWhat is the mistake?",
+       "question": "What role do market makers commonly play?",
        "options": [
-        "Market makers have no role in markets at all.",
-        "Market makers control all price outcomes.",
-        "Market makers commonly provide liquidity. They don't guarantee against price declines."
+        "They set the day's opening and closing prices.",
+        "They guarantee a stock can never decline sharply.",
+        "They provide liquidity by quoting both sides of the market."
        ],
        "correct": 2,
        "explanation": "Providing liquidity is a commonly cited role, distinct from guaranteeing any price outcome."
@@ -7099,14 +7099,14 @@
       },
       {
        "type": "multiple_choice",
-       "question": "Someone believes a single company employee sets the price under this \"auction\" framing.\n\nWhat is the mistake?",
+       "question": "Under the auction framing, how is a price arrived at?",
        "options": [
-        "The exchange fixes one auction price for the whole day.",
-        "The auction framing describes price emerging from many participants, not one person's decision.",
-        "One person sets the auction price for everyone."
+        "It emerges from many participants bidding and offering against each other.",
+        "The highest bid alone sets it, regardless of sellers.",
+        "A single company employee sets it each day."
        ],
-       "correct": 1,
-       "explanation": "This is the same idea revisited from earlier lessons, price emerges from many participants, not one."
+       "correct": 0,
+       "explanation": "Price emerges from many participants, not from one person's decision."
       }
      ]
     },
@@ -7456,14 +7456,14 @@
       },
       {
        "type": "multiple_choice",
-       "question": "Someone finishes this unit and claims market mechanics now let them predict every future price with certainty.\n\nWhat is the mistake?",
+       "question": "What does understanding market mechanics give you?",
        "options": [
-        "Market mechanics guarantee perfect predictions.",
-        "This unit teaches nothing useful at all.",
-        "This unit explains descriptive mechanics behind price behavior. It doesn't grant predictive certainty."
+        "The ability to predict future prices with certainty.",
+        "Descriptive understanding of price behavior.",
+        "A reliable edge, provided you check volume too."
        ],
-       "correct": 2,
-       "explanation": "Like the rest of this course, this unit builds descriptive understanding, not predictive certainty."
+       "correct": 1,
+       "explanation": "This course builds descriptive understanding, not predictive certainty."
       }
      ]
     }
@@ -8566,13 +8566,13 @@
       },
       {
        "type": "multiple_choice",
-       "question": "Someone reads volume bars completely separately, without ever looking at the price candles above them.\n\nWhat is the mistake?",
+       "question": "How is volume best read?",
        "options": [
-        "Volume should always be read alone.",
-        "Volume is commonly read alongside price for context, not in total isolation from it.",
-        "Volume replaces the need to read price at all."
+        "Alongside price, as added context.",
+        "Instead of price, since volume leads it.",
+        "In isolation, so price doesn't bias the read."
        ],
-       "correct": 1,
+       "correct": 0,
        "explanation": "Volume and price are read together for a fuller picture."
       }
      ]
@@ -8653,13 +8653,13 @@
       },
       {
        "type": "multiple_choice",
-       "question": "Someone assumes any stock trading 1 million shares must have \"high\" volume, without checking that stock's typical activity.\n\nWhat is the mistake?",
+       "question": "A stock trades one million shares today. Is that high volume?",
        "options": [
-        "Without comparing to that stock's typical volume, there's no way to know if 1 million shares is high or low for it.",
-        "Any large-sounding number is automatically high volume.",
-        "Volume never needs a comparison point."
+        "No; high volume starts in the tens of millions.",
+        "It depends — you'd have to compare it with that stock's own typical activity.",
+        "Yes; a million shares is high for any stock."
        ],
-       "correct": 0,
+       "correct": 1,
        "explanation": "A single number means nothing without comparing it to that asset's own typical activity."
       }
      ]
@@ -8927,13 +8927,13 @@
       },
       {
        "type": "multiple_choice",
-       "question": "Someone assumes every climactic volume spike guarantees the current move is about to end.\n\nWhat is the mistake?",
+       "question": "What does a climactic volume spike tell you?",
        "options": [
-        "Every volume spike guarantees an immediate ending.",
-        "Climactic volume is commonly noted near endings, but it doesn't guarantee one. The move can still continue.",
-        "Climactic volume never relates to move-endings at all."
+        "The current move is guaranteed to end.",
+        "The current move is guaranteed to accelerate.",
+        "It's commonly noted near the end of a move, but the move can still continue."
        ],
-       "correct": 1,
+       "correct": 2,
        "explanation": "This is a commonly cited tendency, not a certainty.",
        "chart": "volatile"
       }
@@ -9025,14 +9025,14 @@
       },
       {
        "type": "multiple_choice",
-       "question": "Someone assumes dry-up volume always precedes a big upward move.\n\nWhat is the mistake?",
+       "question": "What does dry-up volume describe?",
        "options": [
-        "Dry-up volume always means a crash is coming.",
-        "Dry-up volume always means a big rally is coming.",
-        "Dry-up volume describes reduced participation generally. It doesn't specify or guarantee an upward move."
+        "Reduced participation, without implying a direction.",
+        "Reduced participation ahead of a rally.",
+        "Reduced participation ahead of a decline."
        ],
-       "correct": 2,
-       "explanation": "Dry-up volume is descriptive of quietness, not a directional guarantee either way.",
+       "correct": 0,
+       "explanation": "Dry-up volume describes quietness. It's not a directional guarantee either way.",
        "chart": "sideways"
       }
      ]
@@ -9490,11 +9490,11 @@
       },
       {
        "type": "multiple_choice",
-       "question": "Someone assumes a compressed, narrowing range will stay narrow forever.\n\nWhat is the mistake?",
+       "question": "What commonly happens to a compressed, narrowing range?",
        "options": [
-        "Compression never resolves into anything else.",
-        "Compression is commonly described as temporary, eventually resolving into expansion.",
-        "A narrowing range guarantees the next move is upward."
+        "It stays narrow until a news event forces a move.",
+        "It eventually resolves into expansion, in one direction or the other.",
+        "It resolves upward, since compression builds buying pressure."
        ],
        "correct": 1,
        "explanation": "The narrowing-then-widening rhythm is a commonly cited pattern, not a permanent state.",
@@ -10243,14 +10243,14 @@
       },
       {
        "type": "multiple_choice",
-       "question": "Someone assumes a sideways market will stay sideways forever.\n\nWhat is the mistake?",
+       "question": "What commonly follows a sideways market?",
        "options": [
-        "Sideways periods are commonly followed by a move in one direction or another. They don't last forever.",
-        "They should have only looked at a shorter timeframe.",
-        "They should have widened their definition of the range instead."
+        "A move in the same direction as the one that preceded it.",
+        "More sideways drift, until volume returns.",
+        "A move in one direction or the other — it doesn't last forever."
        ],
-       "correct": 0,
-       "explanation": "Treating any market phase as permanent overstates what is really just a temporary description.",
+       "correct": 2,
+       "explanation": "Treating any market phase as permanent overstates what is really a temporary description.",
        "chart": "sideways"
       },
       {
@@ -11096,14 +11096,14 @@
       },
       {
        "type": "multiple_choice",
-       "question": "Someone assumes consolidation always resolves in the same direction as the move that preceded it.\n\nWhat is the mistake?",
+       "question": "In which direction does a consolidation resolve?",
        "options": [
-        "Consolidation can resolve in either direction. It doesn't guarantee a continuation of the prior move.",
-        "They should assume it always reverses instead.",
-        "They should ignore consolidation phases entirely."
+        "Either — the move that preceded it doesn't determine the outcome.",
+        "The same direction as the move that preceded it.",
+        "The opposite direction to the move that preceded it."
        ],
        "correct": 0,
-       "explanation": "Which direction consolidation resolves in isn't something that can be assumed in advance.",
+       "explanation": "Which direction a consolidation resolves in can't be assumed in advance.",
        "chart": "sideways"
       },
       {
@@ -11480,14 +11480,14 @@
       },
       {
        "type": "multiple_choice",
-       "question": "Someone confidently labels an in-progress counter-trend move as \"just a pullback\" before it has played out.\n\nWhat is the mistake?",
+       "question": "A counter-trend move is underway. Is it a pullback or a reversal?",
        "options": [
-        "They should stop distinguishing between the two terms entirely.",
-        "They should have labeled it a reversal instead, with the same certainty.",
-        "Whether a counter-move is a pullback or a reversal is often only clear in hindsight, not while it's still happening."
+        "A reversal, once it lasts more than a few candles.",
+        "Often only clear in hindsight, once it has played out.",
+        "A pullback, since every counter-move begins as one."
        ],
-       "correct": 2,
-       "explanation": "Confidently declaring an in-progress move one way or the other overstates what can actually be known at the time."
+       "correct": 1,
+       "explanation": "Confidently declaring an in-progress move one way or the other overstates what can be known at the time."
       },
       {
        "type": "fill_blank",
@@ -11632,14 +11632,14 @@
       },
       {
        "type": "multiple_choice",
-       "question": "Someone finishes this unit and claims they can now predict every future swing with certainty.\n\nWhat is the mistake?",
+       "question": "What does this unit's work on price structure give you?",
        "options": [
-        "They should have only studied one single chart.",
-        "They should have skipped straight to more advanced lessons.",
-        "Nothing in this unit was about certainty. It was about describing price structure more clearly."
+        "A dependable signal, as long as you confirm it with volume.",
+        "The ability to predict every future swing.",
+        "A clearer way to describe structure — not certainty about future swings."
        ],
        "correct": 2,
-       "explanation": "This unit builds reading literacy, not a predictive guarantee, that distinction matters."
+       "explanation": "This unit builds reading literacy, not a predictive guarantee. That distinction matters."
       },
       {
        "type": "fill_blank",
@@ -11798,14 +11798,14 @@
       },
       {
        "type": "multiple_choice",
-       "question": "Someone claims a certain price level is \"support\" that can never be broken.\n\nWhat is the mistake?",
+       "question": "Can a support level be broken?",
        "options": [
-        "They should have used a shorter timeframe only.",
-        "No support level is unbreakable; price levels are historical tendencies, not permanent walls.",
-        "They should have picked an even lower price level instead."
+        "Yes — levels are historical tendencies, not permanent walls.",
+        "Only if the break comes on unusually high volume.",
+        "No — support holds price up by definition."
        ],
-       "correct": 1,
-       "explanation": "Support levels get broken regularly, treating any level as absolute is a common misconception.",
+       "correct": 0,
+       "explanation": "Support levels get broken regularly. Treating any level as absolute is a common misconception.",
        "chart": "supportBounce"
       },
       {
@@ -11961,14 +11961,14 @@
       },
       {
        "type": "multiple_choice",
-       "question": "Someone claims a certain price level is \"resistance\" that can never be broken.\n\nWhat is the mistake?",
+       "question": "Can a resistance level be broken?",
        "options": [
-        "No resistance level is unbreakable; price levels are historical tendencies, not permanent walls.",
-        "They should have picked an even higher price level instead.",
-        "They should have used a shorter timeframe only."
+        "No — resistance caps price by definition.",
+        "Yes — levels are historical tendencies, not permanent walls.",
+        "Only if the break comes on unusually high volume."
        ],
-       "correct": 0,
-       "explanation": "Resistance levels get broken regularly, treating any level as absolute is a common misconception.",
+       "correct": 1,
+       "explanation": "Resistance levels get broken regularly. Treating any level as absolute is a common misconception.",
        "chart": "resistanceRejection"
       },
       {
@@ -12115,11 +12115,11 @@
       },
       {
        "type": "multiple_choice",
-       "question": "Someone insists there's a strict, universal rule guaranteeing why every level holds.\n\nWhat is the mistake?",
+       "question": "Why do price levels tend to hold?",
        "options": [
-        "They should stop discussing why levels form at all.",
-        "They should look for an even older price level instead.",
-        "There's no strict, universal rule. These are commonly cited theories about trader behavior, not guarantees."
+        "A strict rule of market structure that always applies.",
+        "Exchange rules that slow price down at round numbers.",
+        "Commonly cited theories about trader behavior — there's no strict universal rule."
        ],
        "correct": 2,
        "explanation": "Treating a commonly cited theory as an absolute rule overstates what's actually known."
@@ -12871,14 +12871,14 @@
       },
       {
        "type": "multiple_choice",
-       "question": "Someone assumes an established trading range will hold forever and never resolve into a breakout.\n\nWhat is the mistake?",
+       "question": "What eventually happens to an established trading range?",
        "options": [
-        "Ranges are commonly followed eventually by a breakout in one direction or another. They don't last forever.",
-        "They should have widened the range indefinitely instead.",
-        "They should have only looked at a shorter timeframe."
+        "It resolves into a breakout in one direction or another.",
+        "It resolves in the direction of the move that formed it.",
+        "It holds indefinitely, since both boundaries are proven."
        ],
        "correct": 0,
-       "explanation": "Treating any market phase as permanent overstates what is really just a temporary description.",
+       "explanation": "Treating any market phase as permanent overstates what is really a temporary description.",
        "chart": "sideways"
       },
       {
@@ -13290,14 +13290,14 @@
       },
       {
        "type": "multiple_choice",
-       "question": "Someone finishes this unit and claims they can now predict every future price reaction with certainty.\n\nWhat is the mistake?",
+       "question": "What does this unit on key price zones give you?",
        "options": [
-        "They should have skipped straight to more advanced lessons.",
-        "They should have only studied one single chart.",
-        "Nothing in this unit was about certainty. It was about describing key price zones more clearly."
+        "The ability to predict every future price reaction.",
+        "A clearer way to describe those zones — not certainty about reactions.",
+        "A dependable signal whenever price reaches a zone."
        ],
-       "correct": 2,
-       "explanation": "This unit builds reading literacy, not a predictive guarantee, that distinction matters."
+       "correct": 1,
+       "explanation": "This unit builds reading literacy, not a predictive guarantee. That distinction matters."
       },
       {
        "type": "fill_blank",
@@ -13524,14 +13524,14 @@
       },
       {
        "type": "multiple_choice",
-       "question": "Someone calls the chart a double top because \"it has two turning points.\"\n\nWhat is the mistake?",
+       "question": "This chart turns twice at the same level, after a down-move. What is it?",
        "options": [
-        "Double tops and double bottoms are the same thing.",
-        "Two troughs at support form a double bottom (a \"W\"), not a double top.",
-        "Any two turning points always make a double top."
+        "A double top — two turns at the same level, forming an \"M\".",
+        "A range — two touches of the same boundary.",
+        "A double bottom — two troughs at support, forming a \"W\"."
        ],
-       "correct": 1,
-       "explanation": "Direction matters, troughs at support is a double bottom, peaks at resistance is a double top.",
+       "correct": 2,
+       "explanation": "Direction matters: troughs at support make a double bottom; peaks at resistance make a double top.",
        "chart": "doubleBottom"
       },
       {
@@ -14621,14 +14621,14 @@
       },
       {
        "type": "multiple_choice",
-       "question": "Someone finishes this unit and starts calling every two-bar wiggle a \"double top.\"\n\nWhat is the mistake?",
+       "question": "What does a double top require?",
        "options": [
-        "The level and context don't matter.",
-        "Any two candles form a double top.",
-        "A double top needs two clear peaks at about the same resistance after an up-move, not any small wiggle."
+        "Two clear peaks at about the same resistance, after an up-move.",
+        "Two peaks at the same level, in any prior context.",
+        "Any two candles that turn price back down."
        ],
-       "correct": 2,
-       "explanation": "The pattern has specific requirements (two equal peaks at resistance); random wiggles don't qualify.",
+       "correct": 0,
+       "explanation": "The pattern has specific requirements. A random two-bar wiggle doesn't qualify.",
        "chart": "sideways"
       },
       {
@@ -15037,14 +15037,14 @@
       },
       {
        "type": "multiple_choice",
-       "question": "Someone calls an inverse head & shoulders a \"regular head & shoulders\".\n\nWhat is the mistake?",
+       "question": "Three troughs, the middle one lowest. What is this?",
        "options": [
-        "Troughs and peaks don't change the name.",
-        "The two patterns are the same thing.",
-        "This is three troughs with a lower middle (inverse), not three peaks with a higher middle."
+        "A regular head & shoulders.",
+        "An inverse head & shoulders.",
+        "A triple bottom."
        ],
-       "correct": 2,
-       "explanation": "Peaks-up is the regular pattern; troughs-down is the inverse.",
+       "correct": 1,
+       "explanation": "Three troughs with a lower middle is the inverse pattern. A triple bottom's lows are roughly level, and the regular pattern is three peaks with a higher middle.",
        "chart": "inverseHeadShoulders"
       },
       {
@@ -15253,14 +15253,14 @@
       },
       {
        "type": "multiple_choice",
-       "question": "Can a head & shoulders be mistaken for a double top?",
+       "question": "Can a head & shoulders be confused with a double top?",
        "options": [
         "No — a head & shoulders always has a far wider neckline.",
         "No — they form at opposite ends of a trend.",
         "Yes — without carefully counting peaks, the two look similar."
        ],
        "correct": 2,
-       "explanation": "Without carefully counting peaks the two patterns can be mixed up. That's exactly the skill this lesson builds."
+       "explanation": "Without carefully counting peaks the two patterns can be confused. That's exactly the skill this lesson builds."
       }
      ]
     },
@@ -15751,14 +15751,14 @@
       },
       {
        "type": "multiple_choice",
-       "question": "Someone finishes this unit and starts calling every three-bar wiggle a \"head & shoulders.\"\n\nWhat is the mistake?",
+       "question": "What does a head & shoulders require?",
        "options": [
-        "Any three candles form a head & shoulders.",
-        "The neckline and peak heights don't matter.",
-        "A head & shoulders needs three clear peaks with a higher middle and a neckline, not any small wiggle."
+        "Three peaks of roughly equal height, plus a neckline.",
+        "Any three candles that form peaks.",
+        "Three clear peaks with a higher middle, plus a neckline."
        ],
        "correct": 2,
-       "explanation": "The pattern has specific requirements (three peaks, higher middle, neckline); random wiggles don't qualify.",
+       "explanation": "Three peaks of equal height would be a triple top. The higher middle is what makes the head.",
        "chart": "sideways"
       },
       {
@@ -15959,14 +15959,14 @@
       },
       {
        "type": "multiple_choice",
-       "question": "Someone calls a flat-bottom, falling-highs chart an \"ascending triangle.\"\n\nWhat is the mistake?",
+       "question": "A chart shows a flat bottom with falling highs. What is it?",
        "options": [
-        "Flat bottom with falling highs is a descending triangle; ascending has a flat top with rising lows.",
-        "The two triangles are the same.",
-        "The flat side doesn't matter."
+        "A descending triangle.",
+        "A symmetrical triangle.",
+        "An ascending triangle."
        ],
        "correct": 0,
-       "explanation": "Which side is flat (top vs bottom) separates ascending from descending.",
+       "explanation": "Which side is flat separates the two: an ascending triangle has a flat top with rising lows.",
        "chart": "descendingTriangle"
       },
       {
@@ -16406,14 +16406,14 @@
       },
       {
        "type": "multiple_choice",
-       "question": "Someone calls every little sideways wiggle a \"triangle.\"\n\nWhat is the mistake?",
+       "question": "What does a triangle require?",
        "options": [
-        "A triangle needs converging (or one flat) trendlines, not just any sideways drift.",
-        "Any sideways movement is a triangle.",
-        "Converging lines don't matter."
+        "Any sideways drift between two prices.",
+        "Converging trendlines, or one flat side.",
+        "Two parallel trendlines containing price."
        ],
-       "correct": 0,
-       "explanation": "Triangles have specific converging structure; random drift doesn't qualify.",
+       "correct": 1,
+       "explanation": "Triangles have a specific converging structure. Parallel lines would be a channel.",
        "chart": "sideways"
       },
       {
@@ -16603,14 +16603,14 @@
       },
       {
        "type": "multiple_choice",
-       "question": "Someone calls a strong-down-then-small-up chart a \"bull flag.\"\n\nWhat is the mistake?",
+       "question": "A sharp move down, then a small drift upward. What is it?",
        "options": [
-        "Bull and bear flags are the same.",
-        "A down pole with an upward flag is a bear flag; a bull flag has an up pole.",
-        "Flags don't depend on direction."
+        "A falling wedge.",
+        "A bull flag.",
+        "A bear flag."
        ],
-       "correct": 1,
-       "explanation": "The pole's direction (up vs down) names the flag.",
+       "correct": 2,
+       "explanation": "The pole's direction names the flag. A down pole makes it a bear flag.",
        "chart": "bearFlag"
       },
       {
@@ -16953,14 +16953,14 @@
       },
       {
        "type": "multiple_choice",
-       "question": "Someone calls a huge, slow sideways range a \"bull flag.\"\n\nWhat is the mistake?",
+       "question": "What does a flag require?",
        "options": [
-        "A flag is a small pause after a sharp pole, not a large, slow range with no pole.",
-        "Any sideways move is a flag.",
-        "The pole doesn't matter."
+        "A sharp pole, then a small pause drifting against it.",
+        "A sharp pole, then a pause continuing in the same direction.",
+        "A large, slow sideways range."
        ],
        "correct": 0,
-       "explanation": "A flag needs a strong pole and a small pause; a big slow range isn't one.",
+       "explanation": "A flag needs a strong pole and a small counter-drift pause. A big slow range isn't one.",
        "chart": "sideways"
       },
       {
@@ -17128,11 +17128,11 @@
       },
       {
        "type": "multiple_choice",
-       "question": "Someone calls a falling wedge \"just a downtrend, nothing more.\"\n\nWhat is the mistake?",
+       "question": "What separates a falling wedge from a plain downtrend?",
        "options": [
-        "A wedge and a plain downtrend are identical.",
-        "The converging (narrowing) lines make it a wedge, a specific structure, not just any downtrend.",
-        "Convergence doesn't matter."
+        "Nothing — a falling wedge is any downtrend.",
+        "Its trendlines converge, narrowing as price falls.",
+        "Its trendlines run parallel, forming a channel."
        ],
        "correct": 1,
        "explanation": "The converging shape is what distinguishes a wedge from a plain trend.",
@@ -17782,13 +17782,13 @@
       },
       {
        "type": "multiple_choice",
-       "question": "Someone draws a downtrend line along the lows instead of the highs.\n\nWhat is the mistake?",
+       "question": "Where is a downtrend line drawn?",
        "options": [
-        "Downtrend lines go along the lows.",
-        "A downtrend line is drawn along the lower highs (above price), not the lows.",
-        "It doesn't matter which points you connect."
+        "Through the midpoint of each candle's body.",
+        "Along the lower lows, below price.",
+        "Along the lower highs, above price."
        ],
-       "correct": 1,
+       "correct": 2,
        "explanation": "Downtrend lines connect the lower highs; uptrend lines connect the higher lows.",
        "chart": "lowerHighsDowntrend"
       },
@@ -19356,14 +19356,14 @@
       },
       {
        "type": "multiple_choice",
-       "question": "Someone sees a bounce make a HIGHER high and still calls the downtrend perfectly healthy.\n\nWhat is the mistake?",
+       "question": "A bounce in a downtrend makes a higher high. What does that suggest?",
        "options": [
-        "A higher high breaks the lower-high pattern. That's commonly read as the downtrend weakening, not healthy.",
-        "The highs don't matter in a downtrend.",
-        "Higher highs keep a downtrend healthy."
+        "The downtrend is weakening — its lower-high pattern just broke.",
+        "The downtrend has definitively reversed.",
+        "The downtrend is healthy; only the lows define it."
        ],
        "correct": 0,
-       "explanation": "Lower highs keep a downtrend intact; a higher high weakens it.",
+       "explanation": "Lower highs keep a downtrend intact, so a higher high weakens it — though that alone doesn't confirm a reversal.",
        "chart": "lowerHighsDowntrend"
       },
       {
@@ -22113,11 +22113,11 @@
       },
       {
        "type": "multiple_choice",
-       "question": "Someone reads one perfect pattern and ignores the level, the trend, and the candles around it.\n\nWhat is the mistake?",
+       "question": "What makes for the strongest chart read?",
        "options": [
-        "Context never helps.",
-        "A full read combines pattern, level, trend, and candles, not one factor in isolation.",
-        "Only the pattern ever matters."
+        "A single perfect pattern, read on its own.",
+        "Pattern, level, trend, and candles all pointing the same way.",
+        "The pattern plus volume, with level and trend set aside."
        ],
        "correct": 1,
        "explanation": "The strongest reads combine several agreeing factors, not a lone signal.",
@@ -22342,14 +22342,14 @@
       },
       {
        "type": "multiple_choice",
-       "question": "Someone assumes pre-market liquidity is always identical to the standard session's.\n\nWhat is the mistake?",
+       "question": "How does pre-market liquidity commonly compare with the standard session?",
        "options": [
-        "Pre-market commonly has thinner liquidity than the standard session, treating them as identical ignores that difference.",
-        "Pre-market always has more liquidity than standard hours.",
-        "Session timing never affects liquidity."
+        "Commonly heavier, as traders position early.",
+        "Identical; session timing doesn't affect liquidity.",
+        "Commonly thinner."
        ],
-       "correct": 0,
-       "explanation": "Liquidity commonly varies a lot by session, a pattern worth being aware of."
+       "correct": 2,
+       "explanation": "Liquidity commonly varies a great deal by session."
       }
      ]
     },
@@ -22442,14 +22442,14 @@
       },
       {
        "type": "multiple_choice",
-       "question": "Someone assumes midday is always the busiest part of the trading day.\n\nWhat is the mistake?",
+       "question": "Which part of the trading day is commonly the quietest?",
        "options": [
-        "Every session of the day sees identical activity.",
-        "Midday is commonly the quieter lull, not the busiest period. That's more commonly the open or power hour.",
-        "Midday is always busier than the open."
+        "Midday.",
+        "The open.",
+        "Power hour, near the close."
        ],
-       "correct": 1,
-       "explanation": "The open and power hour are more commonly cited as the busier periods, not midday."
+       "correct": 0,
+       "explanation": "The open and power hour are the more commonly cited busy periods. Midday is the lull."
       }
      ]
     },
@@ -22537,13 +22537,13 @@
       },
       {
        "type": "multiple_choice",
-       "question": "Someone expects an after-hours fill to behave identically to a standard-hours fill.\n\nWhat is the mistake?",
+       "question": "How does an after-hours fill commonly compare with a standard-hours fill?",
        "options": [
-        "After-hours orders are guaranteed a better price than standard hours.",
-        "After-hours fills always match standard-hours fills exactly.",
-        "Thinner after-hours liquidity can commonly lead to bigger gaps between expected and actual fill prices."
+        "It behaves identically to a standard-hours fill.",
+        "Thinner liquidity can leave a bigger gap between the expected and actual price.",
+        "It commonly fills at a better price, with less competition."
        ],
-       "correct": 2,
+       "correct": 1,
        "explanation": "As covered in the Orders & Execution unit, thinner liquidity commonly affects fill behavior."
       }
      ]
@@ -22709,13 +22709,13 @@
       },
       {
        "type": "multiple_choice",
-       "question": "Someone assumes economic releases only affect the specific company mentioned in the report.\n\nWhat is the mistake?",
+       "question": "What do economic releases commonly affect?",
        "options": [
-        "Economic releases and earnings reports describe the same scope.",
-        "Economic releases commonly affect many assets across the market, not just one specific company.",
-        "Economic releases always affect only one company."
+        "Only the index that the company belongs to.",
+        "Only the specific company named in the report.",
+        "Many assets across the whole market."
        ],
-       "correct": 1,
+       "correct": 2,
        "explanation": "Economic releases are commonly cited as broader, market-wide events."
       }
      ]
@@ -22806,14 +22806,14 @@
       },
       {
        "type": "multiple_choice",
-       "question": "Someone assumes volatility around a news event will stay permanently elevated forever.\n\nWhat is the mistake?",
+       "question": "What commonly happens to volatility after a news event?",
        "options": [
-        "Volatility spikes always last permanently.",
-        "Only earnings, never economic data, can spike volatility.",
-        "News-driven volatility is commonly temporary, settling back down once the information is absorbed."
+        "It settles back down as the information is absorbed.",
+        "It settles down, then spikes again into the close.",
+        "It stays permanently elevated."
        ],
-       "correct": 2,
-       "explanation": "This is a commonly cited temporary pattern, not a permanent shift.",
+       "correct": 0,
+       "explanation": "News-driven volatility is commonly temporary, not a permanent shift.",
        "chart": "volatile"
       }
      ]
@@ -22902,14 +22902,14 @@
       },
       {
        "type": "multiple_choice",
-       "question": "Someone dramatically increases their position size right before a major scheduled news release, assuming it's the same as any other moment.\n\nWhat is the mistake?",
+       "question": "How do many traders adjust position size around scheduled news?",
        "options": [
-        "News commonly brings added volatility and wider spreads. Many traders apply extra caution, not more size, around it.",
-        "Wider spreads around news guarantee a better entry price.",
-        "Increasing size before news always leads to bigger profits."
+        "They increase it, since news commonly brings bigger moves.",
+        "They reduce it, since news commonly brings volatility and wider spreads.",
+        "They leave it unchanged; size follows account rules, not conditions."
        ],
-       "correct": 0,
-       "explanation": "This ignores the commonly cited added risk around scheduled news events."
+       "correct": 1,
+       "explanation": "Added volatility and wider spreads around news are commonly met with extra caution, not extra size."
       }
      ]
     },
@@ -22999,11 +22999,11 @@
       },
       {
        "type": "multiple_choice",
-       "question": "Someone reads a choppy, thin pre-market move exactly the same way as an identical-looking move during the standard open.\n\nWhat is the mistake?",
+       "question": "A choppy move in pre-market looks identical to one at the standard open. Read them the same way?",
        "options": [
-        "Pre-market and the standard open always behave identically.",
-        "Session timing never matters for reading a chart.",
-        "Session context (liquidity, participation) commonly changes how the same-looking move should be read."
+        "No — pre-market moves are always reversed at the open.",
+        "Yes — identical price action carries identical meaning.",
+        "No — session context such as liquidity and participation changes the read."
        ],
        "correct": 2,
        "explanation": "The same shape can carry different meaning depending on which session it happened in.",
@@ -23100,13 +23100,13 @@
       },
       {
        "type": "multiple_choice",
-       "question": "Someone finishes this unit and starts treating news events as guaranteed trading opportunities.\n\nWhat is the mistake?",
+       "question": "How does this unit frame news events?",
        "options": [
-        "News events guarantee profitable trades.",
-        "News adds volatility and context, but never a guaranteed outcome. This unit has framed it as added risk to manage, not a guaranteed opportunity.",
-        "Session and news context never matter after this unit."
+        "As added volatility and context — risk to manage, not a guaranteed opportunity.",
+        "As noise, best ignored entirely.",
+        "As guaranteed trading opportunities."
        ],
-       "correct": 1,
+       "correct": 0,
        "explanation": "This unit consistently frames news as added context and risk, never a guaranteed opportunity.",
        "chart": "volatile"
       }
@@ -24965,14 +24965,14 @@
       },
       {
        "type": "multiple_choice",
-       "question": "Someone dismisses capital preservation as unnecessary because they're only focused on maximizing potential gains.\n\nWhat is the mistake?",
+       "question": "Why is capital preservation commonly treated as foundational?",
        "options": [
-        "They should take on the maximum possible risk on every trade instead.",
-        "Without capital remaining, there's nothing left to generate future gains with. Preservation and growth are commonly linked.",
-        "They should ignore risk management entirely from now on."
+        "Without capital left, there's nothing to generate future gains with.",
+        "Because preserving capital raises the win rate of each trade.",
+        "Because brokers require a minimum balance to keep trading."
        ],
-       "correct": 1,
-       "explanation": "Capital preservation is commonly viewed as foundational to being able to keep participating and pursuing gains long-term.",
+       "correct": 0,
+       "explanation": "Preservation and growth are commonly linked: staying in the game is what lets you keep pursuing gains.",
        "chart": "sideways"
       },
       {
@@ -25353,14 +25353,14 @@
       },
       {
        "type": "multiple_choice",
-       "question": "Someone describes \"holding a stock for six months\" as an example of scalping.\n\nWhat is the mistake?",
+       "question": "Which best describes scalping?",
        "options": [
-        "Scalping is commonly described as very short-timeframe and high-frequency, not a six-month hold.",
-        "They should assume all approaches are basically the same.",
-        "They should hold it for even longer to make it a proper scalp."
+        "Holding for weeks, aiming for one large move.",
+        "Very short timeframes, with high trade frequency.",
+        "Very short timeframes, with a few high-conviction trades."
        ],
-       "correct": 0,
-       "explanation": "A six-month hold doesn't match the commonly described short-timeframe, high-frequency nature of scalping.",
+       "correct": 1,
+       "explanation": "Scalping is commonly described as short-timeframe AND high-frequency. A six-month hold is neither.",
        "chart": "sideways"
       },
       {
@@ -26098,14 +26098,14 @@
       },
       {
        "type": "multiple_choice",
-       "question": "Someone describes \"expecting price to break every boundary and keep moving in one direction\" as an example of range trading.\n\nWhat is the mistake?",
+       "question": "What does range trading expect price to do?",
        "options": [
-        "They should expect it to break through even more boundaries to match the description.",
-        "Range trading and breakout trading expect the same thing.",
-        "Range trading is commonly described as expecting price to stay within boundaries, not break through them repeatedly."
+        "Break one boundary, then snap back inside it.",
+        "Break every boundary and keep moving one way.",
+        "Stay within its boundaries, turning at each one."
        ],
        "correct": 2,
-       "explanation": "This description contradicts the commonly cited core idea behind range trading.",
+       "explanation": "Expecting the boundaries to hold is the core idea. Expecting them to break is breakout trading.",
        "chart": "sideways"
       },
       {
@@ -26777,14 +26777,14 @@
       },
       {
        "type": "multiple_choice",
-       "question": "Someone uses the same fixed position size no matter how far away the stop is.\n\nWhat is the mistake?",
+       "question": "Why adjust position size to the stop distance?",
        "options": [
-        "Stop distance never matters for sizing.",
-        "Size should never change.",
-        "A fixed size regardless of stop distance makes the dollar risk vary unpredictably between trades."
+        "So the dollar risk stays consistent from trade to trade.",
+        "So the share count stays consistent from trade to trade.",
+        "So the reward-to-risk ratio always stays above 2:1."
        ],
-       "correct": 2,
-       "explanation": "Consistent dollar risk requires adjusting size to the stop distance."
+       "correct": 0,
+       "explanation": "A fixed size regardless of stop distance makes the dollar risk vary unpredictably between trades."
       },
       {
        "type": "number_slider",
@@ -27273,14 +27273,14 @@
       },
       {
        "type": "multiple_choice",
-       "question": "Someone dismisses a system purely because its win rate is under 50%, without checking the average R.\n\nWhat is the mistake?",
+       "question": "A system wins fewer than half its trades. Is it unprofitable?",
        "options": [
-        "Average R never matters.",
-        "Under 50% always means unprofitable.",
-        "Win rate alone isn't enough, a sub-50% system with large winners in R can still have positive expectancy."
+        "Yes; a system has to win more than half its trades.",
+        "Not necessarily — large winners in R can still give positive expectancy.",
+        "Not necessarily — but only if the win rate stays above 40%."
        ],
-       "correct": 2,
-       "explanation": "Both win rate and average R matter; ignoring R misjudges the system."
+       "correct": 1,
+       "explanation": "Expectancy combines win rate with average R. There's no fixed win-rate threshold that decides it."
       },
       {
        "type": "fill_blank",
@@ -27488,14 +27488,14 @@
       },
       {
        "type": "multiple_choice",
-       "question": "Someone judges a brand-new system as \"amazing\" after two lucky wins.\n\nWhat is the mistake?",
+       "question": "A brand-new system wins its first two trades. What does that prove?",
        "options": [
-        "Sample size is irrelevant.",
-        "Two wins prove a positive expectancy.",
-        "Two trades is far too small a sample to judge expectancy. That's chance, not proof."
+        "That the edge is real, though its size is still unknown.",
+        "That the system has positive expectancy.",
+        "Very little — two trades is far too small a sample."
        ],
        "correct": 2,
-       "explanation": "Expectancy needs a large sample; a couple of wins prove nothing."
+       "explanation": "Expectancy needs a large sample. A couple of wins is chance, not proof."
       },
       {
        "type": "multiple_choice",
@@ -27790,13 +27790,13 @@
       },
       {
        "type": "multiple_choice",
-       "question": "Someone treats a wildly volatile chart as a calm, tidy range.\n\nWhat is the mistake?",
+       "question": "How should this chart's condition be classified?",
        "options": [
-        "Volatile and calm ranges are the same.",
-        "Big erratic swings are volatile, not a calm range, the condition was misread.",
-        "Swing size doesn't matter."
+        "Volatile — the swings are large and erratic.",
+        "A trend — price covers a lot of ground overall.",
+        "A calm range — price keeps returning to the same area."
        ],
-       "correct": 1,
+       "correct": 0,
        "explanation": "Volatile conditions have far larger, more erratic swings than a tidy range.",
        "chart": "volatile"
       },
@@ -28263,11 +28263,11 @@
       },
       {
        "type": "multiple_choice",
-       "question": "Someone treats \"price above the MA\" as an automatic, guaranteed buy signal.\n\nWhat is the mistake?",
+       "question": "What does price sitting above its moving average tell you?",
        "options": [
-        "The MA guarantees the next move.",
-        "Price above the MA is a descriptive strength read, not a guaranteed signal to act on.",
-        "It's always an automatic buy."
+        "A confirmed buy signal.",
+        "A descriptive read of strength — not a signal to act on.",
+        "That the MA will act as support on the next pullback."
        ],
        "correct": 1,
        "explanation": "An MA read is descriptive context, never a guaranteed signal.",
@@ -28755,14 +28755,14 @@
       },
       {
        "type": "multiple_choice",
-       "question": "Someone shorts every time RSI hits \"overbought,\" sure it must reverse.\n\nWhat is the mistake?",
+       "question": "RSI reads \"overbought\". What does that mean?",
        "options": [
-        "RSI zones are guaranteed signals.",
-        "\"Overbought\" is a label, not a signal, strong trends can stay overbought a long time.",
-        "Overbought always means an immediate reversal."
+        "That price has risen too far above its average to continue.",
+        "That a reversal down is now due.",
+        "A label describing RSI's level — strong trends can stay there a long while."
        ],
-       "correct": 1,
-       "explanation": "Zones describe RSI; they don't guarantee a reversal."
+       "correct": 2,
+       "explanation": "Zones describe where RSI is. They don't guarantee a reversal."
       },
       {
        "type": "fill_blank",
@@ -29185,11 +29185,11 @@
       },
       {
        "type": "multiple_choice",
-       "question": "Someone enters a trade with no idea of where they'd be wrong.\n\nWhat is the mistake?",
+       "question": "Why define an invalidation point before entering a trade?",
        "options": [
-        "Without an invalidation point, there's no clear place to stop or admit the idea failed.",
-        "A trade never needs a wrong-point.",
-        "Invalidation is unnecessary."
+        "It marks where the idea has failed, giving a clear place to exit.",
+        "It sets the price target for taking profit.",
+        "It guarantees the trade cannot lose more than intended."
        ],
        "correct": 0,
        "explanation": "A defined invalidation is what makes risk manageable and the idea testable."
@@ -29414,14 +29414,14 @@
       },
       {
        "type": "multiple_choice",
-       "question": "Someone hits their planned invalidation but moves the stop further away to avoid taking the loss.\n\nWhat is the mistake?",
+       "question": "Price reaches the planned invalidation. What does moving the stop further away do?",
        "options": [
-        "Invalidation is optional once you're in.",
-        "Moving the stop is following the plan.",
-        "Moving the stop past invalidation abandons the plan and lets a small planned loss grow."
+        "Gives the trade room to work, at no additional cost.",
+        "Abandons the plan, letting a small planned loss grow.",
+        "Converts the trade into a longer-timeframe position."
        ],
-       "correct": 2,
-       "explanation": "Honoring invalidation is core discipline; moving it undoes the plan."
+       "correct": 1,
+       "explanation": "Honoring invalidation is core discipline. Moving it undoes the plan."
       },
       {
        "type": "fill_blank",
@@ -29672,13 +29672,13 @@
       },
       {
        "type": "multiple_choice",
-       "question": "Someone treats \"price above VWAP\" as an automatic guaranteed buy.\n\nWhat is the mistake?",
+       "question": "What does price above VWAP tell you?",
        "options": [
-        "Above VWAP is a descriptive strength read, not a guaranteed signal to buy.",
-        "VWAP guarantees the next move.",
-        "It's always an automatic buy."
+        "That the average buyer today is in profit, so price must rise.",
+        "A confirmed buy signal.",
+        "A descriptive read of strength — not a signal to buy."
        ],
-       "correct": 0,
+       "correct": 2,
        "explanation": "VWAP context is descriptive, never a guaranteed signal."
       },
       {
@@ -29916,13 +29916,13 @@
       },
       {
        "type": "multiple_choice",
-       "question": "Someone sells every time price touches the upper band, sure it must revert.\n\nWhat is the mistake?",
+       "question": "Price touches the upper Bollinger band. What does that mean?",
        "options": [
-        "Band touches are guaranteed signals.",
-        "An upper-band touch always reverses.",
-        "Price can ride the upper band in a strong trend, a touch isn't a guaranteed reversal."
+        "A descriptive stretch read — price can ride the band in a strong trend.",
+        "That volatility has peaked and will now contract.",
+        "That a reversal back to the middle band is due."
        ],
-       "correct": 2,
+       "correct": 0,
        "explanation": "Band touches are descriptive stretch reads, not guaranteed reversals."
       },
       {
@@ -30218,14 +30218,14 @@
       },
       {
        "type": "multiple_choice",
-       "question": "Someone assumes a 50% loss just needs a 50% gain to get back.\n\nWhat is the mistake?",
+       "question": "How much gain does it take to recover from a 50% loss?",
        "options": [
-        "A 50% loss needs a 100% gain to recover, since you're rebuilding from a smaller base.",
-        "50% back always fixes a 50% loss.",
-        "Recovery math doesn't apply."
+        "50% — the same amount that was lost.",
+        "100% — you're rebuilding from a smaller base.",
+        "75% — more than the loss, but less than double it."
        ],
-       "correct": 0,
-       "explanation": "Recovering a loss requires a larger percent gain than the loss itself."
+       "correct": 1,
+       "explanation": "Recovering a loss always requires a larger percentage gain than the loss itself."
       },
       {
        "type": "fill_blank",
@@ -30810,14 +30810,14 @@
       },
       {
        "type": "multiple_choice",
-       "question": "Someone only reviews winners and ignores whether they followed their process.\n\nWhat is the mistake?",
+       "question": "What should a trade review focus on?",
        "options": [
-        "Reviewing outcomes alone misses whether the process was sound, the controllable part.",
-        "Process doesn't matter in review.",
-        "Only winners are worth reviewing."
+        "The size of each outcome, so the biggest can be studied.",
+        "Which trades won, so they can be repeated.",
+        "Whether the process was followed — the part you control."
        ],
-       "correct": 0,
-       "explanation": "The point of review is the process, which you control, not just outcomes."
+       "correct": 2,
+       "explanation": "The point of review is the process, which you control, not just the outcomes."
       },
       {
        "type": "multiple_choice",
@@ -30860,10 +30860,15 @@
        "explanation": "Patterns across many entries reveal what helps or hurts your results."
       },
       {
-       "type": "true_false",
-       "question": "Reviewing many entries can reveal recurring mistakes to fix.",
-       "correct": true,
-       "explanation": "Patterns across a large sample surface habits worth changing."
+       "type": "multiple_choice",
+       "question": "What does reviewing many journal entries reveal?",
+       "options": [
+        "Whether the strategy's edge is statistically significant.",
+        "Recurring habits worth changing.",
+        "The single best trade to repeat."
+       ],
+       "correct": 1,
+       "explanation": "Patterns across a large sample surface habits worth changing. A journal shows tendencies, not statistical proof of an edge."
       },
       {
        "type": "fill_blank",
@@ -30914,7 +30919,7 @@
       },
       {
        "type": "true_false",
-       "question": "Reviewing many entries can reveal recurring mistakes to fix.",
+       "question": "Reviewing many entries can reveal recurring habits worth changing.",
        "correct": true,
        "explanation": "Patterns across a large sample surface habits worth changing."
       }
@@ -31192,14 +31197,14 @@
       },
       {
        "type": "multiple_choice",
-       "question": "Someone treats ATR as a signal for market direction.\n\nWhat is the mistake?",
+       "question": "What does ATR measure?",
        "options": [
-        "ATR measures size of movement, not direction.",
-        "ATR predicts the next candle's color.",
-        "ATR always points up when volatility rises."
+        "The size of typical movement.",
+        "The rate at which volatility is changing.",
+        "The direction of typical movement."
        ],
        "correct": 0,
-       "explanation": "ATR describes magnitude of movement, not which way price is heading.",
+       "explanation": "ATR describes the magnitude of movement, not which way price is heading.",
        "chart": "volatile"
       }
      ]
@@ -31288,13 +31293,13 @@
       },
       {
        "type": "multiple_choice",
-       "question": "Someone assumes a specific ATR number is universally \"high\" for every single asset.\n\nWhat is the mistake?",
+       "question": "Is an ATR of 2.00 high?",
        "options": [
-        "ATR is judged relative to that asset's own typical range, not one fixed universal number.",
-        "ATR values never vary between assets.",
-        "Every asset shares the identical ATR scale."
+        "Yes; 2.00 is a high reading on any asset.",
+        "It depends — ATR is judged against that asset's own typical range.",
+        "It depends on the timeframe, but not on the asset."
        ],
-       "correct": 0,
+       "correct": 1,
        "explanation": "ATR readings are relative to each asset's own typical volatility."
       }
      ]
@@ -31394,14 +31399,14 @@
       },
       {
        "type": "multiple_choice",
-       "question": "Someone sets a stop far tighter than the asset's typical ATR and is surprised it gets hit by normal noise.\n\nWhat is the mistake?",
+       "question": "A stop is set well inside the asset's typical ATR. What is likely?",
        "options": [
-        "Stop distance should never consider typical movement.",
-        "A stop set well inside typical movement (ATR) can get triggered by ordinary volatility, not a meaningful shift.",
-        "ATR tells you the exact price a stop will be hit."
+        "It will hold, since a tighter stop reduces risk.",
+        "It will only trigger if the idea is genuinely wrong.",
+        "Ordinary volatility can trigger it, without any meaningful shift."
        ],
-       "correct": 1,
-       "explanation": "This connects back to the earlier Stop-Loss Placement Logic lesson — a stop too tight for normal movement risks getting hit by noise."
+       "correct": 2,
+       "explanation": "A stop set too tight for normal movement risks getting hit by noise, as the Stop-Loss Placement lesson covered."
       }
      ]
     },
@@ -31570,13 +31575,13 @@
       },
       {
        "type": "multiple_choice",
-       "question": "Someone finishes this unit and starts using ATR as a buy/sell signal.\n\nWhat is the mistake?",
+       "question": "Can ATR be used as a buy or sell signal?",
        "options": [
-        "ATR always tells you when to buy or sell.",
-        "ATR describes typical movement size, it's not a buy or sell signal.",
-        "ATR has no descriptive value at all."
+        "No — it describes typical movement size, not direction.",
+        "Yes, but only in combination with volume.",
+        "Yes, whenever it rises above its own average."
        ],
-       "correct": 1,
+       "correct": 0,
        "explanation": "Like every indicator in this course, ATR is descriptive context, never a trade signal.",
        "chart": "volatile"
       }
@@ -31671,13 +31676,13 @@
       },
       {
        "type": "multiple_choice",
-       "question": "Someone sees \"2 million shares traded\" and assumes that's automatically a big deal for every stock.\n\nWhat is the mistake?",
+       "question": "A stock trades two million shares. Is that unusual?",
        "options": [
-        "Whether 2 million shares is unusual depends on that stock's own typical volume, which RVOL captures.",
-        "Volume numbers never need any context.",
-        "Raw share count means the same thing for every stock."
+        "Yes; two million shares is heavy for any stock.",
+        "It depends on that stock's own typical volume — which is what RVOL captures.",
+        "It depends on the sector's average volume."
        ],
-       "correct": 0,
+       "correct": 1,
        "explanation": "Without comparing to typical volume, a raw number alone doesn't reveal whether it's unusual."
       }
      ]
@@ -31766,11 +31771,11 @@
       },
       {
        "type": "multiple_choice",
-       "question": "Someone assumes an RVOL of \"1.5x\" means the same absolute share count for every stock.\n\nWhat is the mistake?",
+       "question": "An RVOL of 1.5x means what?",
        "options": [
-        "1.5x compares the stock's volume to every other stock's.",
-        "1.5x always equals exactly the same number of shares everywhere.",
-        "1.5x is relative to that stock's own typical volume, which differs stock to stock."
+        "Volume is 1.5x yesterday's total.",
+        "Volume is 1.5x the average stock's volume.",
+        "Volume is 1.5x that stock's own typical volume."
        ],
        "correct": 2,
        "explanation": "The multiple is anchored to each stock's own typical volume, not a shared absolute number."
@@ -31861,11 +31866,11 @@
       },
       {
        "type": "multiple_choice",
-       "question": "Someone sees high RVOL on earnings day and treats it as a guaranteed breakout signal.\n\nWhat is the mistake?",
+       "question": "High RVOL on earnings day tells you what?",
        "options": [
-        "High RVOL reflects participation, not a guaranteed direction or outcome.",
-        "RVOL always predicts a breakout on earnings days.",
-        "Earnings always cause identical RVOL patterns."
+        "Participation is elevated — not which way price will go.",
+        "The move that follows will be larger than usual.",
+        "A breakout is coming."
        ],
        "correct": 0,
        "explanation": "RVOL is descriptive context about activity level, never a predictive signal."
@@ -31956,11 +31961,11 @@
       },
       {
        "type": "multiple_choice",
-       "question": "Someone compares midday volume directly to the opening-minutes baseline and calls it \"quiet.\"\n\nWhat is the mistake?",
+       "question": "Why compare volume against the baseline for the same time of day?",
        "options": [
-        "RVOL ignores time of day and uses the full daily total.",
-        "Comparing across mismatched time-of-day baselines can make normal midday volume look artificially low.",
-        "Volume is identical at every point in the trading day."
+        "Because RVOL cannot be calculated any other way.",
+        "Otherwise normal midday volume looks artificially low next to the open.",
+        "Because volume is identical at every point in the trading day."
        ],
        "correct": 1,
        "explanation": "RVOL's comparison should use the typical baseline for that same time window, not a different one."
@@ -32056,13 +32061,13 @@
       },
       {
        "type": "multiple_choice",
-       "question": "Someone finishes this unit and starts using RVOL alone as a buy/sell trigger.\n\nWhat is the mistake?",
+       "question": "Can RVOL alone be a buy or sell trigger?",
        "options": [
-        "RVOL always tells you when to buy or sell.",
-        "RVOL describes relative participation, it's not a buy or sell signal on its own.",
-        "RVOL has no descriptive value at all."
+        "Yes, when it's paired with a rising price.",
+        "Yes, whenever it exceeds 2x.",
+        "No — it describes relative participation, not direction."
        ],
-       "correct": 1,
+       "correct": 2,
        "explanation": "Like every indicator in this course, RVOL is descriptive context, never a trade signal."
       }
      ]
@@ -32158,13 +32163,13 @@
       },
       {
        "type": "multiple_choice",
-       "question": "Someone assumes the opening range guarantees the day's final high and low.\n\nWhat is the mistake?",
+       "question": "What does the opening range tell you about the day's high and low?",
        "options": [
-        "The opening range always matches the day's final high and low exactly.",
-        "The opening range is an early reference level, not a guarantee of the full day's eventual high or low.",
-        "The opening range is only valid if the day closes higher."
+        "It's an early reference level — the day can move well beyond it.",
+        "It marks the day's high and low, unless news breaks.",
+        "It marks the day's final high and low."
        ],
-       "correct": 1,
+       "correct": 0,
        "explanation": "Price can move well beyond the opening range as the day continues.",
        "chart": "volatile"
       }
@@ -32404,14 +32409,14 @@
       },
       {
        "type": "multiple_choice",
-       "question": "Someone assumes a wide opening range guarantees a volatile day for the remaining hours.\n\nWhat is the mistake?",
+       "question": "A wide opening range. What does that say about the rest of the day?",
        "options": [
-        "Opening range width always predicts the entire day's volatility.",
-        "A wide opening range describes early volatility, it doesn't guarantee how the rest of the day unfolds.",
-        "A wide opening range guarantees a calm afternoon."
+        "The whole day will be volatile.",
+        "It describes early volatility only — the rest can unfold either way.",
+        "The afternoon will be calm, since the move is already spent."
        ],
        "correct": 1,
-       "explanation": "The opening range only describes the earliest window, not a guarantee for the rest of the session.",
+       "explanation": "The opening range only describes the earliest window, not the rest of the session.",
        "chart": "volatile"
       }
      ]
@@ -32506,11 +32511,11 @@
       },
       {
        "type": "multiple_choice",
-       "question": "Someone finishes this unit and starts trading every opening range break as an automatic signal.\n\nWhat is the mistake?",
+       "question": "Is a break of the opening range an automatic signal?",
        "options": [
-        "The opening range has no descriptive value at all.",
-        "Every opening range break should be traded automatically.",
-        "The opening range describes an early reference level, it's not an automatic buy or sell signal."
+        "Yes, provided it breaks in the direction of the trend.",
+        "Yes, once the break holds for a full candle.",
+        "No — it's an early reference level, not a buy or sell trigger."
        ],
        "correct": 2,
        "explanation": "Like every concept in this course, the opening range is descriptive context, never a trade signal.",
@@ -32602,11 +32607,11 @@
       },
       {
        "type": "multiple_choice",
-       "question": "Someone assumes a stock always moves in perfect lockstep with its sector.\n\nWhat is the mistake?",
+       "question": "How closely does a stock track its sector?",
        "options": [
-        "Stocks commonly move somewhat together with their sector, but not in guaranteed lockstep.",
-        "A stock always moves in the exact opposite direction to its sector.",
-        "Every stock in a sector moves identically at all times."
+        "Commonly somewhat together, but not in guaranteed lockstep.",
+        "Inversely, since capital rotates between the two.",
+        "Exactly in lockstep, at all times."
        ],
        "correct": 0,
        "explanation": "Correlation is common, not a guarantee, so individual stocks can diverge from their sector."
@@ -32697,13 +32702,13 @@
       },
       {
        "type": "multiple_choice",
-       "question": "Someone treats relative strength today as a guarantee it continues tomorrow.\n\nWhat is the mistake?",
+       "question": "A stock shows relative strength today. What does that imply about tomorrow?",
        "options": [
-        "Relative strength describes current comparative movement, it doesn't guarantee future outperformance.",
-        "Relative strength always continues indefinitely once observed.",
-        "Relative strength is measured against the stock's own past, not its sector."
+        "That it will outperform tomorrow as well.",
+        "Nothing guaranteed — it describes current comparative movement.",
+        "That it's stretched, and due to underperform."
        ],
-       "correct": 0,
+       "correct": 1,
        "explanation": "Like any descriptive read, relative strength can shift from one period to the next."
       }
      ]
@@ -32792,13 +32797,13 @@
       },
       {
        "type": "multiple_choice",
-       "question": "Someone assumes sector rotation follows a fixed, guaranteed monthly schedule.\n\nWhat is the mistake?",
+       "question": "What is sector rotation?",
        "options": [
-        "Sector rotation describes a shifting pattern over time, not a fixed guaranteed schedule.",
-        "Sector rotation applies to only one stock at a time.",
-        "Sector rotation always follows an identical, predictable calendar."
+        "A rule that capital moves from the weakest sector to the strongest each quarter.",
+        "A fixed monthly schedule of which sectors lead.",
+        "A shifting pattern of leadership over time — not a fixed schedule."
        ],
-       "correct": 0,
+       "correct": 2,
        "explanation": "Sector rotation is a descriptive pattern, not a guaranteed timetable."
       }
      ]
@@ -32887,13 +32892,13 @@
       },
       {
        "type": "multiple_choice",
-       "question": "Someone uses sector strength alone, ignoring every other factor, as a complete trading system.\n\nWhat is the mistake?",
+       "question": "How should sector strength be used?",
        "options": [
-        "Sector context should replace chart and level reading entirely.",
-        "Sector strength alone is sufficient and no other factor matters.",
-        "Sector context is one descriptive factor among several, not a complete standalone system."
+        "As one descriptive factor among several.",
+        "As a replacement for reading levels and structure.",
+        "As a complete standalone trading system."
        ],
-       "correct": 2,
+       "correct": 0,
        "explanation": "This echoes the Confluence unit's core lesson that no single factor should be relied on alone."
       }
      ]
@@ -32987,14 +32992,14 @@
       },
       {
        "type": "multiple_choice",
-       "question": "Someone finishes this unit and starts trading based on sector strength alone as a complete signal.\n\nWhat is the mistake?",
+       "question": "Is sector strength a standalone buy or sell signal?",
        "options": [
-        "Sector context has no descriptive value at all.",
-        "Sector strength is one descriptive factor among several, not a standalone buy or sell signal.",
-        "Sector strength alone is a complete and sufficient trading system."
+        "Yes, when the whole sector is trending.",
+        "No — it's one descriptive factor among several.",
+        "Yes, when the stock is leading its sector."
        ],
        "correct": 1,
-       "explanation": "Like every concept in this course, sector and index context is descriptive confluence, never a standalone signal."
+       "explanation": "Sector and index context is descriptive confluence, never a standalone signal."
       }
      ]
     },
@@ -33087,14 +33092,14 @@
       },
       {
        "type": "multiple_choice",
-       "question": "Someone assumes Level II data tells you exactly what price will print next.\n\nWhat is the mistake?",
+       "question": "What does Level II show?",
        "options": [
-        "Level II shows only the single last traded price.",
-        "Level II always predicts the very next trade price precisely.",
-        "Level II shows current standing orders, it doesn't guarantee the exact next traded price."
+        "Every trade that has executed so far today.",
+        "The exact next price that will print.",
+        "The current standing orders — not the exact next traded price."
        ],
        "correct": 2,
-       "explanation": "Level II is a descriptive snapshot of current orders, not a guaranteed prediction of the next trade."
+       "explanation": "Level II is a descriptive snapshot of current orders, not a prediction of the next trade."
       }
      ]
     },
@@ -33187,13 +33192,13 @@
       },
       {
        "type": "multiple_choice",
-       "question": "Someone assumes the bid-ask spread guarantees a certain profit if crossed.\n\nWhat is the mistake?",
+       "question": "What does the bid-ask spread describe?",
        "options": [
-        "Crossing the spread always guarantees a profitable outcome.",
-        "The spread describes the current gap between buy and sell orders, it doesn't guarantee any profit.",
-        "The spread is set by the exchange, not by resting orders."
+        "The current gap between the best buy and sell orders.",
+        "A fee the exchange charges on each trade.",
+        "A profit available to anyone willing to cross it."
        ],
-       "correct": 1,
+       "correct": 0,
        "explanation": "The spread is a descriptive snapshot of order book conditions, not a profit guarantee."
       }
      ]
@@ -33287,13 +33292,13 @@
       },
       {
        "type": "multiple_choice",
-       "question": "Someone treats a large order sitting at one price level as a permanent, unchangeable wall.\n\nWhat is the mistake?",
+       "question": "A large order rests at one price level. Is it a permanent wall?",
        "options": [
-        "A large resting order guarantees price stops at that level.",
-        "Orders in the book can never be canceled once placed.",
-        "Resting orders in the book can be modified or canceled at any moment, they aren't necessarily permanent."
+        "Yes, until it has been completely filled.",
+        "No — resting orders can be modified or cancelled at any moment.",
+        "Yes, since exchanges require orders to rest for a minimum time."
        ],
-       "correct": 2,
+       "correct": 1,
        "explanation": "The order book is a live, constantly shifting snapshot, not a fixed structure."
       }
      ]
@@ -33382,13 +33387,13 @@
       },
       {
        "type": "multiple_choice",
-       "question": "Someone assumes Level II removes all uncertainty about what will happen next in a stock.\n\nWhat is the mistake?",
+       "question": "What are Level II's limitations?",
        "options": [
-        "Level II guarantees full certainty about every future trade.",
-        "Level II is a live, changeable snapshot with real limitations, not a tool that removes uncertainty.",
-        "Level II has no limitations worth understanding."
+        "It lags by a second or two, but is otherwise complete.",
+        "It has no limitations worth understanding.",
+        "It's a live, changeable snapshot — it doesn't remove uncertainty."
        ],
-       "correct": 1,
+       "correct": 2,
        "explanation": "Order book data is descriptive and limited, not a certainty-removing tool."
       }
      ]
@@ -33482,11 +33487,11 @@
       },
       {
        "type": "multiple_choice",
-       "question": "Someone finishes this unit and starts treating Level II alone as a complete trading edge.\n\nWhat is the mistake?",
+       "question": "Is Level II a complete trading edge on its own?",
        "options": [
-        "Level II is descriptive, limited context, it's not a complete standalone trading edge.",
-        "Level II has no descriptive value at all.",
-        "Level II alone is sufficient for guaranteed success."
+        "No — it's descriptive, limited context.",
+        "Yes, on short timeframes.",
+        "Yes, once you can read order flow fluently."
        ],
        "correct": 0,
        "explanation": "Like every concept in this course, Level II awareness is descriptive context, never a guaranteed edge."
@@ -34014,14 +34019,14 @@
       },
       {
        "type": "multiple_choice",
-       "question": "Someone takes twenty trades in a single day out of boredom, despite their plan calling for only a couple of genuinely planned setups.\n\nWhat is the mistake?",
+       "question": "What is commonly described as overtrading?",
        "options": [
-        "Taking far more trades than the plan calls for, driven by boredom rather than genuine setups, is a commonly described overtrading pattern.",
-        "They should stop having any plan at all.",
-        "They should aim for an even higher number of trades tomorrow."
+        "Taking oversized positions on a small number of setups.",
+        "Taking far more trades than the plan calls for, driven by emotion rather than setups.",
+        "Trading a strategy that naturally produces many signals per day."
        ],
-       "correct": 0,
-       "explanation": "A large gap between planned frequency and actual frequency, driven by emotion, is the commonly cited core of overtrading.",
+       "correct": 1,
+       "explanation": "The gap between planned frequency and actual frequency, driven by emotion, is the commonly cited core of overtrading.",
        "chart": "sideways"
       },
       {
@@ -34690,14 +34695,14 @@
       },
       {
        "type": "multiple_choice",
-       "question": "Someone finishes this unit and assumes that simply knowing these terms means they'll never act impulsively again.\n\nWhat is the mistake?",
+       "question": "Does knowing the name of a psychological pattern prevent it?",
        "options": [
-        "Knowing a pattern's name doesn't automatically prevent it from happening, recognizing it in the moment still takes practice.",
-        "They should stop thinking about psychology from now on since it can't guarantee anything.",
-        "They should assume impulsive decisions no longer carry any risk."
+        "Yes, provided you review your journal each day.",
+        "Yes; naming a bias removes its influence.",
+        "No — recognizing it in the moment still takes practice."
        ],
-       "correct": 0,
-       "explanation": "This unit builds awareness of patterns, not a guarantee that they'll never occur again.",
+       "correct": 2,
+       "explanation": "This unit builds awareness of these patterns, not a guarantee they'll never occur again.",
        "chart": "sideways"
       },
       {
@@ -34941,14 +34946,14 @@
       },
       {
        "type": "multiple_choice",
-       "question": "Someone classifies a market as \"choppy\" after seeing a long, clear sequence of higher highs and higher lows.\n\nWhat is the mistake?",
+       "question": "A market prints a long, clear sequence of higher highs and higher lows. How is it classified?",
        "options": [
-        "They should look for even more oscillation to confirm it's choppy.",
-        "They should ignore the sequence of highs and lows entirely.",
-        "A sustained sequence of higher highs and higher lows is commonly described as trending, not choppy."
+        "Trending.",
+        "Ranging.",
+        "Choppy."
        ],
-       "correct": 2,
-       "explanation": "The described pattern matches a trending classification, not a choppy one.",
+       "correct": 0,
+       "explanation": "A sustained sequence of higher highs and higher lows is commonly described as trending, not choppy.",
        "chart": "sideways"
       },
       {
