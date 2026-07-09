@@ -1397,11 +1397,12 @@ struct FillBlankMultiView: View {
     @Namespace private var wordNamespace
 
     private var blanks: [Blank] { player.screen.blanks ?? [] }
-    private var bankItems: [(blank: Int, option: Int, label: String)] {
+    private var bankItems: [MultiBlankBankItem] {
         blanks.indices.compactMap { bi in
             let correct = blanks[bi].correct
             guard blanks[bi].options.indices.contains(correct) else { return nil }
-            return (bi, correct, blanks[bi].options[correct])
+            let label = blanks[bi].options[correct]
+            return MultiBlankBankItem(id: "\(bi)-\(correct)-\(label)", label: label)
         }
     }
 
@@ -1445,8 +1446,8 @@ struct FillBlankMultiView: View {
 
     private var wordBank: some View {
         MultiBlankSentenceLayout(horizontalSpacing: 12, verticalSpacing: 12, rowAlignment: .center) {
-            ForEach(bankItems, id: \.blank) { item in
-                wordOption(blankIndex: item.blank, optionIndex: item.option, label: item.label)
+            ForEach(bankItems) { item in
+                wordOption(item)
             }
         }
         .frame(maxWidth: .infinity, alignment: .center)
@@ -1454,6 +1455,7 @@ struct FillBlankMultiView: View {
 
     private func blankSlot(_ blankIndex: Int) -> some View {
         let selected = selectedLabel(for: blankIndex)
+        let selectedID = selectedID(for: blankIndex)
 
         return Button {
             guard !player.revealed, selected != nil else { return }
@@ -1461,6 +1463,12 @@ struct FillBlankMultiView: View {
             withAnimation(.spring(response: 0.34, dampingFraction: 0.78)) {
                 if player.multiSelections.indices.contains(blankIndex) {
                     player.multiSelections[blankIndex] = nil
+                }
+                if player.multiSelectionLabels.indices.contains(blankIndex) {
+                    player.multiSelectionLabels[blankIndex] = nil
+                }
+                if player.multiSelectionIDs.indices.contains(blankIndex) {
+                    player.multiSelectionIDs[blankIndex] = nil
                 }
             }
         } label: {
@@ -1483,7 +1491,7 @@ struct FillBlankMultiView: View {
                         .font(Theme.font(19, .black))
                         .foregroundColor(.white)
                         .padding(.horizontal, 18)
-                        .matchedGeometryEffect(id: "multi-fill-word-\(blankIndex)", in: wordNamespace)
+                        .matchedGeometryEffect(id: "multi-fill-word-\(selectedID ?? selected)", in: wordNamespace)
                         .transition(.asymmetric(
                             insertion: .offset(y: 170).combined(with: .scale(scale: 0.92)),
                             removal: .offset(y: 170).combined(with: .scale(scale: 0.92))
@@ -1505,28 +1513,24 @@ struct FillBlankMultiView: View {
                                    shake: player.revealed && !isCorrect(blankIndex: blankIndex)))
     }
 
-    private func wordOption(blankIndex: Int, optionIndex: Int, label: String) -> some View {
-        let selected = (player.multiSelections[safe: blankIndex] ?? nil) == optionIndex
+    private func wordOption(_ item: MultiBlankBankItem) -> some View {
+        let selected = player.multiSelectionIDs.contains(item.id)
         let revealed = player.revealed
-        let correct = optionIndex == blanks[blankIndex].correct
+        let canPlace = firstEmptyBlankIndex != nil
 
         var fill = Theme.optionFill(scheme)
         var border = Theme.optionBorder(scheme)
         var slab = Theme.optionSlab(scheme)
         var textColor = ink
 
-        if revealed && correct {
-            fill = Theme.correct; border = Theme.correctDark; slab = Theme.correctDark; textColor = .white
-        }
-
         return Button {
-            guard !revealed, !selected else { return }
+            guard !revealed, !selected, let targetIndex = firstEmptyBlankIndex else { return }
             Haptics.selection()
             withAnimation(.spring(response: 0.34, dampingFraction: 0.78)) {
-                if player.multiSelections.count != blanks.count {
-                    player.multiSelections = Array(repeating: nil, count: blanks.count)
-                }
-                player.multiSelections[blankIndex] = optionIndex
+                ensureMultiBlankState()
+                player.multiSelectionLabels[targetIndex] = item.label
+                player.multiSelectionIDs[targetIndex] = item.id
+                player.multiSelections[targetIndex] = blanks[targetIndex].options.firstIndex(of: item.label)
             }
         } label: {
             ZStack {
@@ -1538,40 +1542,64 @@ struct FillBlankMultiView: View {
                         .fill(slab.opacity(selected ? 0 : 1)).offset(y: 5))
 
                 if !selected {
-                    Text(label)
+                    Text(item.label)
                         .font(Theme.font(20, .black))
                         .foregroundColor(textColor)
                         .padding(.horizontal, 18)
-                        .matchedGeometryEffect(id: "multi-fill-word-\(blankIndex)", in: wordNamespace)
+                        .matchedGeometryEffect(id: "multi-fill-word-\(item.id)", in: wordNamespace)
                 }
             }
             .frame(minWidth: 86, minHeight: 52)
         }
         .buttonStyle(RowPressStyle())
-        .disabled(revealed || selected)
-        .modifier(AnswerFeedbackFX(pop: revealed && correct, shake: false))
+        .disabled(revealed || selected || !canPlace)
     }
 
     private func selectedLabel(for blankIndex: Int) -> String? {
-        guard let blank = blanks[safe: blankIndex],
-              let selected = player.multiSelections[safe: blankIndex] ?? nil,
-              blank.options.indices.contains(selected) else {
-            return nil
-        }
-        return blank.options[selected]
+        player.multiSelectionLabels[safe: blankIndex] ?? nil
+    }
+
+    private func selectedID(for blankIndex: Int) -> String? {
+        player.multiSelectionIDs[safe: blankIndex] ?? nil
     }
 
     private func isCorrect(blankIndex: Int) -> Bool {
         guard let blank = blanks[safe: blankIndex],
-              let selected = player.multiSelections[safe: blankIndex] ?? nil else {
+              let selected = selectedLabel(for: blankIndex),
+              blank.options.indices.contains(blank.correct) else {
             return false
         }
-        return selected == blank.correct
+        return selected == blank.options[blank.correct]
+    }
+
+    private var firstEmptyBlankIndex: Int? {
+        ensureLabelsForRead().firstIndex(where: { $0 == nil })
+    }
+
+    private func ensureLabelsForRead() -> [String?] {
+        if player.multiSelectionLabels.count == blanks.count {
+            return player.multiSelectionLabels
+        }
+        return Array(repeating: nil, count: blanks.count)
+    }
+
+    private func ensureMultiBlankState() {
+        if player.multiSelections.count != blanks.count {
+            player.multiSelections = Array(repeating: nil, count: blanks.count)
+        }
+        if player.multiSelectionLabels.count != blanks.count {
+            player.multiSelectionLabels = Array(repeating: nil, count: blanks.count)
+        }
+        if player.multiSelectionIDs.count != blanks.count {
+            player.multiSelectionIDs = Array(repeating: nil, count: blanks.count)
+        }
     }
 
     private func slotWidth(for blankIndex: Int) -> CGFloat {
         let selected = selectedLabel(for: blankIndex) ?? ""
-        let correct = bankItems.first(where: { $0.blank == blankIndex })?.label ?? ""
+        let correct = blanks[safe: blankIndex].flatMap { blank in
+            blank.options.indices.contains(blank.correct) ? blank.options[blank.correct] : nil
+        } ?? ""
         let longest = max(selected.count, correct.count, 6)
         return max(88, min(156, CGFloat(longest) * 13 + 34))
     }
@@ -1622,6 +1650,11 @@ struct FillBlankMultiView: View {
         if !remaining.isEmpty { appendText(remaining) }
         return parts
     }
+}
+
+private struct MultiBlankBankItem: Identifiable, Hashable {
+    let id: String
+    let label: String
 }
 
 private enum MultiBlankTemplatePart {
