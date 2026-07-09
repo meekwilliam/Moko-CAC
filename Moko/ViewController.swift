@@ -378,6 +378,7 @@ class ViewController: UIViewController {
         appRouter.currentLessonIsReplay = progress.completed.contains(node)
         appRouter.currentLessonUnitColor = unitColor(forNode: node)
         appRouter.currentLessonBonusEligible = isLastNodeInUnit(node)
+        appRouter.currentLessonIsUnitTest = isFinalNodeOfUnit(node)
         presentNativeLesson(lesson: lesson, startIndex: resumeAt)
     }
 
@@ -404,6 +405,12 @@ class ViewController: UIViewController {
     /// i.e. every other node in the unit is already done. Computed up front
     /// so the reward screen can predict the unit bonus before completion is
     /// actually recorded.
+    /// Structurally the unit's last node — its review test. Unlike
+    /// `isLastNodeInUnit`, this doesn't depend on what's been completed.
+    private func isFinalNodeOfUnit(_ node: Int) -> Bool {
+        unitNodes(forNode: node).max() == node
+    }
+
     private func isLastNodeInUnit(_ node: Int) -> Bool {
         let group = unitNodes(forNode: node)
         return group.filter { $0 != node }.allSatisfy { progress.completed.contains($0) }
@@ -415,6 +422,7 @@ class ViewController: UIViewController {
         appRouter.currentLessonIsReplay = false
         appRouter.currentLessonUnitColor = (Color(hex: "#8B5CF6"), Color(hex: "#6D28D9"))
         appRouter.currentLessonBonusEligible = false
+        appRouter.currentLessonIsUnitTest = false
         appRouter.isTestLesson = true
         presentNativeLesson(lesson: MechanicsTestLesson.build(), startIndex: 0)
     }

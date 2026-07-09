@@ -9,6 +9,7 @@ final class LessonPlayer: ObservableObject {
     let isReplay: Bool                   // already completed → reward shows +25 XP
     let unitBonusEligible: Bool          // completing this lesson finishes its whole unit
     let isTestLesson: Bool               // debug mechanics-test lesson → shows a Skip button
+    let isUnitTest: Bool                 // last lesson of a unit → a review test over the whole unit
 
     /// Live queue of screens; a missed question is re-appended so you must get
     /// it right to finish (mirrors the web LessonEngine).
@@ -56,11 +57,12 @@ final class LessonPlayer: ObservableObject {
 
     init(lesson: Lesson, startIndex: Int = 0, isReplay: Bool = false,
          unitColor: (main: Color, dark: Color)? = nil, unitBonusEligible: Bool = false,
-         isTestLesson: Bool = false) {
+         isTestLesson: Bool = false, isUnitTest: Bool = false) {
         self.lesson = lesson
         self.isReplay = isReplay
         self.unitBonusEligible = unitBonusEligible
         self.isTestLesson = isTestLesson
+        self.isUnitTest = isUnitTest
         // Drop the lesson-opening "intro" reading screen — straight into the
         // first question. Attention spans are short and it read as dead air.
         let screens = lesson.screens.filter { $0.type != "intro" }
@@ -246,6 +248,7 @@ struct LessonView: View {
          unitColor: (main: Color, dark: Color)? = nil,
          unitBonusEligible: Bool = false,
          isTestLesson: Bool = false,
+         isUnitTest: Bool = false,
          hearts: Int = ProgressStore.maxHearts,
          isUnlimitedHearts: Bool = false,
          onClose: @escaping () -> Void,
@@ -254,7 +257,7 @@ struct LessonView: View {
          onSpendHeart: @escaping () -> Bool = { true }) {
         let p = LessonPlayer(lesson: lesson, startIndex: startIndex, isReplay: isReplay,
                              unitColor: unitColor, unitBonusEligible: unitBonusEligible,
-                             isTestLesson: isTestLesson)
+                             isTestLesson: isTestLesson, isUnitTest: isUnitTest)
         p.onAdvance = onSaveProgress
         p.onSpendHeart = onSpendHeart
         _player = StateObject(wrappedValue: p)
@@ -288,7 +291,8 @@ struct LessonView: View {
                     ScrollView {
                         ZStack(alignment: .topLeading) {
                             VStack(alignment: .leading, spacing: 10) {
-                                if player.screen.isPreviousMistake { mistakeBadge }
+                                if player.isUnitTest { unitTestBadge }
+                                if player.screen.isPreviousMistake { retryBadge }
                                 LessonScreenRouter(player: player, ink: ink)
                             }
                             .id(player.index)   // fresh per-screen @State each step
@@ -329,14 +333,27 @@ struct LessonView: View {
         }
     }
 
-    private var mistakeBadge: some View {
+    private var retryBadge: some View {
         HStack(spacing: 5) {
             Image(systemName: "arrow.counterclockwise")
                 .font(.system(size: 12, weight: .black))
-            Text("Previous mistake")
+            Text("Second try")
                 .font(Theme.font(13, .black)).textCase(.uppercase).tracking(0.5)
         }
         .foregroundColor(Color(hex: "#f87171"))
+    }
+
+    /// Marks the unit's final lesson as a review test over everything it taught.
+    private var unitTestBadge: some View {
+        HStack(spacing: 6) {
+            Image(systemName: "crown.fill")
+                .font(.system(size: 11, weight: .black))
+            Text("Unit review")
+                .font(Theme.font(12, .black)).textCase(.uppercase).tracking(0.6)
+        }
+        .foregroundColor(Color(hex: "#7a4f00"))
+        .padding(.horizontal, 10).padding(.vertical, 6)
+        .background(Capsule().fill(Color(hex: "#FFC800")))
     }
 
     // MARK: Header — close, progress bar, hearts
@@ -649,7 +666,7 @@ struct RewardView: View {
                 Circle().fill(player.unit.main.opacity(0.15)).frame(width: 150, height: 150)
                     .scaleEffect(stage >= 1 ? 1.08 : 0.65)
                     .opacity(stage >= 1 ? 1 : 0)
-                Image(systemName: "checkmark.seal.fill")
+                Image(systemName: player.isUnitTest ? "crown.fill" : "checkmark.seal.fill")
                     .font(.system(size: 92, weight: .bold))
                     .foregroundColor(player.unit.main)
                     .rotationEffect(.degrees(stage >= 1 ? 0 : -14))
@@ -657,7 +674,7 @@ struct RewardView: View {
             }
             .opacity(stage >= 1 ? 1 : 0)
 
-            Text("Lesson Complete!")
+            Text(player.isUnitTest ? "Unit Complete!" : "Lesson Complete!")
                 .font(Theme.font(28, .black))
                 .foregroundColor(ink)
                 .opacity(stage >= 2 ? 1 : 0)

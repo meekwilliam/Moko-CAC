@@ -319,6 +319,23 @@ struct PathView: View {
         }
     }
 
+    /// Gold crown on the unit's final node. Muted while the node is locked so
+    /// it reads as "there's a test here", not "this is available".
+    private func bossBadge(locked: Bool) -> some View {
+        let face = locked ? Color(hex: "#3a6080") : Color(hex: "#FFC800")
+        let slab = locked ? Color(hex: "#1a3a50") : Color(hex: "#D9A400")
+        return Image(systemName: "crown.fill")
+            .font(.system(size: 14, weight: .black))
+            .foregroundColor(locked ? Color(hex: "#7c8ba1") : Color(hex: "#7a4f00"))
+            .frame(width: 30, height: 30)
+            .background(
+                ZStack {
+                    Circle().fill(slab).offset(y: 2.5)   // slab behind, like the puck
+                    Circle().fill(face)
+                }
+            )
+    }
+
     private func nodeButton(_ node: PathNode) -> some View {
         let state = store.state(for: node.num)
         let c = store.colors(for: node.num, state: state)
@@ -358,6 +375,14 @@ struct PathView: View {
             }
             .buttonStyle(PuckButtonStyle(slab: c.dark, size: nodeSize, ovalRatio: ovalRatio))
 
+            // The last node of each unit is that unit's review test. Mark it
+            // with a crown, drawn above the puck so it doesn't sink with the
+            // face on press.
+            if node.isBoss {
+                bossBadge(locked: state == .locked)
+                    .offset(x: nodeSize * 0.37, y: -nodeSize * 0.30)
+                    .allowsHitTesting(false)
+            }
         }
         .frame(width: nodeSize, height: nodeSize)
         // Tap callout: title + Start / Continue / Replay button, anchored below.
