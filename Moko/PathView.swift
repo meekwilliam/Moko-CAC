@@ -339,13 +339,16 @@ struct PathView: View {
     private func nodeButton(_ node: PathNode) -> some View {
         let state = store.state(for: node.num)
         let c = store.colors(for: node.num, state: state)
+        // A unit's final lesson is its review test — a hexagon instead of the
+        // usual coin, so it reads as a different kind of node at a glance.
+        let silhouette: AnyShape = node.isBoss ? AnyShape(Hexagon()) : AnyShape(Ellipse())
 
         return ZStack {
             // Animated halo around the lesson you're on. Offset down + tilted
             // into the puck's 3D plane so it looks like it emerges from the
             // button's base rather than floating flat in front of it.
             if state == .active {
-                PulseRing(color: c.main, size: nodeSize)
+                PulseRing(color: c.main, size: nodeSize, shape: silhouette)
                     .offset(y: 5)
                     .allowsHitTesting(false)
             }
@@ -361,19 +364,20 @@ struct PathView: View {
                     // Wide oval (not a perfect circle) so it reads as a coin
                     // facing up, like other gamified apps. Plain fill — no
                     // icon, no shine/gloss.
-                    Ellipse().fill(c.main).frame(width: nodeSize, height: nodeSize * ovalRatio)
+                    silhouette.fill(c.main).frame(width: nodeSize, height: nodeSize * ovalRatio)
                         // Inner bottom shading for a rounded, puffed look.
                         .overlay(
-                            Ellipse().stroke(Color.black.opacity(0.20), lineWidth: 4)
+                            silhouette.stroke(Color.black.opacity(0.20), lineWidth: 4)
                                 .padding(1).mask(
                                     LinearGradient(colors: [.clear, .black], startPoint: .center, endPoint: .bottom))
                         )
-                        .clipShape(Ellipse())
+                        .clipShape(silhouette)
                 }
                 .frame(width: nodeSize, height: nodeSize)
-                .contentShape(Ellipse())
+                .contentShape(silhouette)
             }
-            .buttonStyle(PuckButtonStyle(slab: c.dark, size: nodeSize, ovalRatio: ovalRatio))
+            .buttonStyle(PuckButtonStyle(slab: c.dark, size: nodeSize, ovalRatio: ovalRatio,
+                                         shape: silhouette))
 
             // The last node of each unit is that unit's review test. Mark it
             // with a crown, drawn above the puck so it doesn't sink with the
@@ -496,13 +500,47 @@ struct PathView: View {
 /// Halo for the active node: a solid, darker enlarged silhouette sitting
 /// behind the whole 3D button (face + slab) that gently breathes in and out —
 /// the Duolingo-style "you are here" plate.
+/// Flat-topped hexagon with points at the left and right. The flat bottom edge
+/// gives the 3D slab a clean seam, the way the ellipse's bottom arc does.
+/// Corners are rounded so it sits with the app's soft, chunky geometry rather
+/// than reading as a spiky badge.
+struct Hexagon: Shape {
+    var cornerRadius: CGFloat = 9
+
+    func path(in rect: CGRect) -> Path {
+        let inset = rect.width * 0.25   // how far the top/bottom edges pull in
+        let pts = [
+            CGPoint(x: rect.minX, y: rect.midY),
+            CGPoint(x: rect.minX + inset, y: rect.minY),
+            CGPoint(x: rect.maxX - inset, y: rect.minY),
+            CGPoint(x: rect.maxX, y: rect.midY),
+            CGPoint(x: rect.maxX - inset, y: rect.maxY),
+            CGPoint(x: rect.minX + inset, y: rect.maxY),
+        ]
+        var p = Path()
+        // Walk the corners, arcing between each pair of edges.
+        for i in pts.indices {
+            let prev = pts[(i + pts.count - 1) % pts.count]
+            let corner = pts[i]
+            let next = pts[(i + 1) % pts.count]
+            if i == 0 {
+                p.move(to: CGPoint(x: (prev.x + corner.x) / 2, y: (prev.y + corner.y) / 2))
+            }
+            p.addArc(tangent1End: corner, tangent2End: next, radius: cornerRadius)
+        }
+        p.closeSubpath()
+        return p
+    }
+}
+
 private struct PulseRing: View {
     var color: Color
     var size: CGFloat
+    var shape: AnyShape = AnyShape(Ellipse())
     @State private var breathe = false
 
     var body: some View {
-        Ellipse()
+        shape
             .fill(color.opacity(0.28))
             .frame(width: size + 30, height: size * 0.78 + 30)
             .scaleEffect(breathe ? 1.0 : 0.8)
@@ -549,13 +587,14 @@ private struct PuckButtonStyle: ButtonStyle {
     var size: CGFloat
     var ovalRatio: CGFloat = 0.78
     var depth: CGFloat = 10
+    var shape: AnyShape = AnyShape(Ellipse())
     func makeBody(configuration: Configuration) -> some View {
         let h = size * ovalRatio
         return PressSink(isPressed: configuration.isPressed) { down in
             ZStack {
-                // Darker oval base offset straight down — the coin's chunky side
+                // Darker base offset straight down — the coin's chunky side
                 // (the raised "facing up" look), no perspective tilt needed.
-                Ellipse().fill(slab).frame(width: size, height: h).offset(y: depth)
+                shape.fill(slab).frame(width: size, height: h).offset(y: depth)
                 configuration.label
                     // Full depth on press — the face lands flush on the slab so
                     // there's no visible lip (fully flat/2D). PressSink holds the
