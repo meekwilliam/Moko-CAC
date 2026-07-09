@@ -30,10 +30,7 @@ struct MainTabView: View {
                     onOpenCourses: { router.onOpenCourses?() }
                 )
                 .id(router.currentCourseId)
-                .transition(.asymmetric(
-                    insertion: .offset(x: 34).combined(with: .opacity),
-                    removal: .offset(x: -24).combined(with: .opacity)
-                ))
+                .transition(.opacity)
             }
         case .quest:
             PlaceholderTab(title: "Quests", subtitle: "Daily challenges are coming soon.") {
