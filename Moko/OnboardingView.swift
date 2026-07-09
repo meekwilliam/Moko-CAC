@@ -22,6 +22,16 @@ struct OnboardingView: View {
     @State private var showingSignIn = false   // returning-user login overlay
 
     private let totalSteps = 6
+    private var stepSlideDistance: CGFloat { UIScreen.main.bounds.width + 64 }
+    private var showsChoiceFooter: Bool { (1...3).contains(step) }
+    private var currentStepCanContinue: Bool {
+        switch step {
+        case 1: return experience != nil
+        case 2: return !goals.isEmpty
+        case 3: return dailyGoal != nil
+        default: return true
+        }
+    }
 
     private let experienceOptions: [(emoji: String, label: String)] = [
         ("🌱", "I'm completely new"),
@@ -68,12 +78,16 @@ struct OnboardingView: View {
                     }
                     .id(step)
                     .transition(.asymmetric(
-                        insertion: .offset(x: stepDirection * UIScreen.main.bounds.width),
-                        removal: .offset(x: -stepDirection * UIScreen.main.bounds.width)))
+                        insertion: .offset(x: stepDirection * stepSlideDistance),
+                        removal: .offset(x: -stepDirection * stepSlideDistance)))
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
                 }
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
                 .clipped()
+
+                if showsChoiceFooter {
+                    choiceFooter
+                }
             }
 
             // Returning-user login, slides over the welcome screen.
@@ -85,6 +99,17 @@ struct OnboardingView: View {
         }
         .animation(.easeOut(duration: 0.24), value: step)
         .animation(.easeInOut(duration: 0.3), value: showingSignIn)
+    }
+
+    private var choiceFooter: some View {
+        Button("CONTINUE") { advance() }
+            .buttonStyle(Chunky3DStyle(
+                fill: currentStepCanContinue ? Theme.answer : Color(hex: "#4B5563"),
+                slab: currentStepCanContinue ? Theme.answerDark : Color(hex: "#333B47")))
+            .disabled(!currentStepCanContinue)
+            .padding(.horizontal, 24)
+            .padding(.bottom, 26)
+            .transition(.opacity)
     }
 
     // MARK: Header — back + progress
@@ -191,8 +216,7 @@ struct OnboardingView: View {
     private var experienceScreen: some View {
         chooserScreen(
             title: "What best describes you?",
-            subtitle: nil,
-            canContinue: experience != nil
+            subtitle: nil
         ) {
             ForEach(experienceOptions.indices, id: \.self) { i in
                 optionRow(emoji: experienceOptions[i].emoji,
@@ -209,8 +233,7 @@ struct OnboardingView: View {
     private var goalsScreen: some View {
         chooserScreen(
             title: "Why are you here?",
-            subtitle: "Choose all that apply.",
-            canContinue: !goals.isEmpty
+            subtitle: "Choose all that apply."
         ) {
             ForEach(goalOptions.indices, id: \.self) { i in
                 optionRow(emoji: goalOptions[i].emoji,
@@ -227,8 +250,7 @@ struct OnboardingView: View {
     private var dailyGoalScreen: some View {
         chooserScreen(
             title: "What's your daily goal?",
-            subtitle: nil,
-            canContinue: dailyGoal != nil
+            subtitle: nil
         ) {
             ForEach(dailyGoalOptions.indices, id: \.self) { i in
                 optionRow(emoji: dailyGoalOptions[i].emoji,
@@ -377,7 +399,6 @@ struct OnboardingView: View {
     // MARK: Shared chooser scaffolding
 
     private func chooserScreen<Rows: View>(title: String, subtitle: String?,
-                                           canContinue: Bool,
                                            @ViewBuilder rows: () -> Rows) -> some View {
         VStack(spacing: 0) {
             VStack(alignment: .leading, spacing: 6) {
@@ -399,14 +420,9 @@ struct OnboardingView: View {
                     .padding(.bottom, 10)
             }
 
-            Button("CONTINUE") { advance() }
-                .buttonStyle(Chunky3DStyle(
-                    fill: canContinue ? Theme.answer : Color(hex: "#4B5563"),
-                    slab: canContinue ? Theme.answerDark : Color(hex: "#333B47")))
-                .disabled(!canContinue)
         }
         .padding(.horizontal, 24)
-        .padding(.bottom, 26)
+        .padding(.bottom, 10)
     }
 
     private func optionRow(emoji: String, label: String, detail: String? = nil,
