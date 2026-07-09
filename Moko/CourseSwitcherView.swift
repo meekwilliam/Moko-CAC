@@ -80,7 +80,7 @@ struct CourseSwitcherView: View {
             HStack(spacing: 16) {
                 // Level badge — number when unlocked, lock when not.
                 RoundedRectangle(cornerRadius: 14, style: .continuous)
-                    .fill(unlocked ? accent.opacity(0.18) : Color.white.opacity(0.05))
+                    .fill(unlocked ? accent.opacity(0.18) : Theme.surfaceRaised.opacity(0.55))
                     .frame(width: 54, height: 54)
                     .overlay(
                         Group {
@@ -119,9 +119,9 @@ struct CourseSwitcherView: View {
             .padding(16)
             .background(
                 RoundedRectangle(cornerRadius: 18, style: .continuous)
-                    .fill(Color.white.opacity(unlocked ? 0.04 : 0.02))
+                    .fill(unlocked ? Theme.surface : Theme.surfaceRaised.opacity(0.55))
                     .overlay(RoundedRectangle(cornerRadius: 18, style: .continuous)
-                        .strokeBorder(selected ? accent.opacity(0.6) : Color.white.opacity(0.08),
+                        .strokeBorder(selected ? accent.opacity(0.6) : Theme.surfaceBorder.opacity(0.65),
                                       lineWidth: selected ? 2 : 1.5))
             )
             .opacity(unlocked ? 1 : 0.6)

@@ -66,7 +66,7 @@ struct MainTabView: View {
                     }
                 )
             } else {
-                Color(hex: "#0E161A").ignoresSafeArea()
+                Theme.appBackground.ignoresSafeArea()
             }
         }
     }

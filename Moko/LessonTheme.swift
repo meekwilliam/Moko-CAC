@@ -36,6 +36,27 @@ enum Theme {
     static let answer = Color(hex: "#2B70C9")
     static let answerDark = Color(hex: "#1C4A85")
 
+    static let appBackground = Color(hex: "#0E161A")
+    static let surface = Color(hex: "#17242B")
+    static let surfaceRaised = Color(hex: "#1E293B")
+    static let surfaceBorder = Color(hex: "#41515D")
+    static let surfaceSlab = Color(hex: "#33424D")
+    static let surfaceMuted = Color(hex: "#3A4A54")
+    static let slotFill = Color(hex: "#2B3A44")
+    static let slotBorder = Color(hex: "#536673")
+
+    static func optionFill(_ scheme: ColorScheme) -> Color {
+        scheme == .dark ? surface : .white
+    }
+
+    static func optionBorder(_ scheme: ColorScheme) -> Color {
+        scheme == .dark ? surfaceBorder : Color(hex: "#DDE3ED")
+    }
+
+    static func optionSlab(_ scheme: ColorScheme) -> Color {
+        scheme == .dark ? surfaceSlab : Color(hex: "#B8C4D8")
+    }
+
     /// Mirrors `lessonUnitColor(nodeNum)` in index.html.
     static func unitColor(_ node: Int) -> (main: Color, dark: Color) {
         switch node {
@@ -310,10 +331,10 @@ struct ChartCard: ViewModifier {
             // Flat panel — a deep navy distinctly darker than the page background
             // so it reads as an opaque card, not a hazy translucent film.
             RoundedRectangle(cornerRadius: radius, style: .continuous)
-                .fill(Color(hex: "#0A0F1A"))
+                .fill(Color(hex: "#10191E"))
                 .overlay(
                     RoundedRectangle(cornerRadius: radius, style: .continuous)
-                        .strokeBorder(Color(hex: "#1B2436"), lineWidth: 1.5)
+                        .strokeBorder(Theme.surfaceBorder.opacity(0.45), lineWidth: 1.5)
                 )
             content
                 .padding(.horizontal, 6).padding(.vertical, 14)

@@ -79,9 +79,9 @@ struct MascotPrompt: View {
     }
 
     var body: some View {
-        let face = scheme == .dark ? Color(hex: "#2A2E37") : Color(hex: "#EEF1F6")
-        let slab = scheme == .dark ? Color(hex: "#181B21") : Color(hex: "#C7D0DE")
-        let line = scheme == .dark ? Color(hex: "#334155") : Color(hex: "#CBD5E1")
+        let face = scheme == .dark ? Theme.surfaceRaised : Color(hex: "#EEF1F6")
+        let slab = scheme == .dark ? Theme.surfaceSlab : Color(hex: "#C7D0DE")
+        let line = scheme == .dark ? Theme.surfaceBorder : Color(hex: "#CBD5E1")
 
         let row = HStack(alignment: .center, spacing: 4) {
             // Frame aspect ≈ the bear viewBox (141×141, square) so the art
@@ -748,7 +748,7 @@ struct OHLCLabelView: View {
     private var tray: some View {
         HStack(spacing: 10) {
             ForEach(trayLabels, id: \.self) { label in
-                chip(label: label, tint: Color(hex: "#1E293B"))
+                chip(label: label, tint: Theme.surfaceRaised)
                     .opacity(dragging == label ? 0 : 1)
                     .gesture(dragGesture(for: label))
             }
@@ -1044,7 +1044,7 @@ struct FillBlankChoiceView: View {
                         ))
                 } else {
                     Rectangle()
-                        .fill(Color(hex: "#536673"))
+                        .fill(Theme.slotBorder)
                         .frame(height: 3)
                         .padding(.horizontal, 16)
                         .padding(.top, 28)
@@ -1074,9 +1074,9 @@ struct FillBlankChoiceView: View {
         let isCorrect = idx == player.currentCorrectIndex
         let unavailable = selected
 
-        var fill = scheme == .dark ? Color(hex: "#17242B") : Color.white
-        var border = scheme == .dark ? Color(hex: "#41515D") : Color(hex: "#DDE3ED")
-        var slab = scheme == .dark ? Color(hex: "#33424D") : Color(hex: "#B8C4D8")
+        var fill = Theme.optionFill(scheme)
+        var border = Theme.optionBorder(scheme)
+        var slab = Theme.optionSlab(scheme)
         var textColor = ink
 
         if revealed {
@@ -1096,7 +1096,7 @@ struct FillBlankChoiceView: View {
         } label: {
             ZStack {
                 RoundedRectangle(cornerRadius: 18, style: .continuous)
-                    .fill(unavailable ? Color(hex: "#3A4A54") : fill)
+                    .fill(unavailable ? Theme.surfaceMuted : fill)
                     .overlay(RoundedRectangle(cornerRadius: 18, style: .continuous)
                         .strokeBorder(border.opacity(unavailable ? 0 : 1), lineWidth: 2.5))
                     .background(RoundedRectangle(cornerRadius: 18, style: .continuous)
@@ -1125,7 +1125,7 @@ struct FillBlankChoiceView: View {
 
     private var slotFill: Color {
         guard player.revealed else {
-            return selectedWord == nil ? Color.clear : Color(hex: "#2B3A44")
+            return selectedWord == nil ? Color.clear : Theme.slotFill
         }
         guard let idx = player.selectedIndex else { return Color.clear }
         return idx == player.currentCorrectIndex ? Theme.correct : Theme.incorrect
@@ -1133,9 +1133,9 @@ struct FillBlankChoiceView: View {
 
     private var slotBorder: Color {
         guard player.revealed else {
-            return selectedWord == nil ? Color(hex: "#536673") : Color(hex: "#3D4E5A")
+            return selectedWord == nil ? Theme.slotBorder : Theme.surfaceBorder
         }
-        guard let idx = player.selectedIndex else { return Color(hex: "#536673") }
+        guard let idx = player.selectedIndex else { return Theme.slotBorder }
         return idx == player.currentCorrectIndex ? Theme.correctDark : Theme.incorrectDark
     }
 }
@@ -1228,9 +1228,9 @@ struct ChoiceView: View {
         let revealed = player.revealed
         let isCorrect = idx == player.currentCorrectIndex
 
-        var fill = scheme == .dark ? Color(hex: "#1E293B") : Color.white
-        var border = scheme == .dark ? Color(hex: "#334155") : Color(hex: "#DDE3ED")
-        var slab = scheme == .dark ? Color(hex: "#334155") : Color(hex: "#B8C4D8")
+        var fill = Theme.optionFill(scheme)
+        var border = Theme.optionBorder(scheme)
+        var slab = Theme.optionSlab(scheme)
         var textColor = ink
 
         if revealed {
@@ -1324,9 +1324,9 @@ struct MatchingView: View {
             : player.matchingSelections.contains { left, right in left == right && right == rightOriginal }
         let isWrong = player.revealed && matched && !isCorrect
 
-        var fill = scheme == .dark ? Color(hex: "#1E293B") : Color.white
-        var border = scheme == .dark ? Color(hex: "#334155") : Color(hex: "#DDE3ED")
-        var slab = scheme == .dark ? Color(hex: "#334155") : Color(hex: "#B8C4D8")
+        var fill = Theme.optionFill(scheme)
+        var border = Theme.optionBorder(scheme)
+        var slab = Theme.optionSlab(scheme)
         var textColor = ink
 
         if player.revealed && isCorrect {
@@ -1471,7 +1471,7 @@ struct FillBlankMultiView: View {
                         ))
                 } else {
                     Rectangle()
-                        .fill(Color(hex: "#536673"))
+                        .fill(Theme.slotBorder)
                         .frame(height: 3)
                         .padding(.horizontal, 16)
                         .padding(.top, 28)
@@ -1491,9 +1491,9 @@ struct FillBlankMultiView: View {
         let revealed = player.revealed
         let correct = optionIndex == blanks[blankIndex].correct
 
-        var fill = scheme == .dark ? Color(hex: "#17242B") : Color.white
-        var border = scheme == .dark ? Color(hex: "#41515D") : Color(hex: "#DDE3ED")
-        var slab = scheme == .dark ? Color(hex: "#33424D") : Color(hex: "#B8C4D8")
+        var fill = Theme.optionFill(scheme)
+        var border = Theme.optionBorder(scheme)
+        var slab = Theme.optionSlab(scheme)
         var textColor = ink
 
         if revealed && correct {
@@ -1512,7 +1512,7 @@ struct FillBlankMultiView: View {
         } label: {
             ZStack {
                 RoundedRectangle(cornerRadius: 18, style: .continuous)
-                    .fill(selected ? Color(hex: "#3A4A54") : fill)
+                    .fill(selected ? Theme.surfaceMuted : fill)
                     .overlay(RoundedRectangle(cornerRadius: 18, style: .continuous)
                         .strokeBorder(border.opacity(selected ? 0 : 1), lineWidth: 2.5))
                     .background(RoundedRectangle(cornerRadius: 18, style: .continuous)
@@ -1559,14 +1559,14 @@ struct FillBlankMultiView: View {
 
     private func slotFill(blankIndex: Int, filled: Bool) -> Color {
         guard player.revealed else {
-            return filled ? Color(hex: "#2B3A44") : Color.clear
+            return filled ? Theme.slotFill : Color.clear
         }
         return isCorrect(blankIndex: blankIndex) ? Theme.correct : Theme.incorrect
     }
 
     private func slotBorder(blankIndex: Int, filled: Bool) -> Color {
         guard player.revealed else {
-            return filled ? Color(hex: "#3D4E5A") : Color(hex: "#536673")
+            return filled ? Theme.surfaceBorder : Theme.slotBorder
         }
         return isCorrect(blankIndex: blankIndex) ? Theme.correctDark : Theme.incorrectDark
     }
@@ -1704,9 +1704,9 @@ struct FlowChips: View {
 
     private func chip(idx: Int, label: String) -> some View {
         let isSel = selected == idx
-        var fill = scheme == .dark ? Color(hex: "#1E293B") : Color.white
-        var border = scheme == .dark ? Color(hex: "#334155") : Color(hex: "#DDE3ED")
-        var slab = scheme == .dark ? Color(hex: "#334155") : Color(hex: "#B8C4D8")
+        var fill = Theme.optionFill(scheme)
+        var border = Theme.optionBorder(scheme)
+        var slab = Theme.optionSlab(scheme)
         var textColor = ink
         if revealed && idx == correctIndex {
             fill = Theme.correct; border = Theme.correctDark; slab = Theme.correctDark; textColor = .white
@@ -1762,9 +1762,9 @@ struct IngredientMatchView: View {
         let revealed = player.revealed
         let isCorrect = (opt.correct == true)
 
-        var fill = scheme == .dark ? Color(hex: "#1E293B") : Color.white
-        var border = scheme == .dark ? Color(hex: "#334155") : Color(hex: "#DDE3ED")
-        var slab = scheme == .dark ? Color(hex: "#334155") : Color(hex: "#B8C4D8")
+        var fill = Theme.optionFill(scheme)
+        var border = Theme.optionBorder(scheme)
+        var slab = Theme.optionSlab(scheme)
         var textColor = ink
         var subColor = Theme.muted
 
@@ -1858,14 +1858,14 @@ struct OrderBuilderView: View {
                             .padding(.vertical, 15).padding(.horizontal, 18)
                             .background(
                                 RoundedRectangle(cornerRadius: 14, style: .continuous)
-                                    .fill(scheme == .dark ? Color(hex: "#1E293B") : Color.white)
+                                    .fill(Theme.optionFill(scheme))
                                     .overlay(RoundedRectangle(cornerRadius: 14, style: .continuous)
-                                        .strokeBorder(scheme == .dark ? Color(hex: "#334155") : Color(hex: "#DDE3ED"), lineWidth: 2))
+                                        .strokeBorder(Theme.optionBorder(scheme), lineWidth: 2))
                             )
                             .contentShape(Rectangle())
                         }
                         .buttonStyle(SinkButtonStyle(
-                            slab: scheme == .dark ? Color(hex: "#334155") : Color(hex: "#B8C4D8"),
+                            slab: Theme.optionSlab(scheme),
                             radius: 14, depth: 4))
                     }
                 }
@@ -1886,7 +1886,7 @@ struct OrderBuilderView: View {
         let revealed = player.revealed
         let rightPlace = revealed && (correctOrder[safe: i] == item)
 
-        var fill = scheme == .dark ? Color(hex: "#1E293B") : Color.white
+        var fill = Theme.optionFill(scheme)
         var border = player.unit.main
         var slab = border
         var textColor = ink
