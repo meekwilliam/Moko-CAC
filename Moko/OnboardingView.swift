@@ -96,7 +96,6 @@ struct OnboardingView: View {
                     .zIndex(5)
             }
         }
-        .animation(.easeOut(duration: 0.24), value: step)
         .animation(.easeInOut(duration: 0.3), value: showingSignIn)
         .onAppear { hasPresentedInitialStep = true }
     }
@@ -156,16 +155,23 @@ struct OnboardingView: View {
     }
 
     private func goBack() {
-        if step > 0 {
-            stepDirection = -1
-            step -= 1
-        }
+        guard step > 0 else { return }
+        setStepDirection(-1)
+        withAnimation(.easeOut(duration: 0.24)) { step -= 1 }
     }
 
     private func advance() {
         Haptics.selection()
-        stepDirection = 1
-        step += 1
+        setStepDirection(1)
+        withAnimation(.easeOut(duration: 0.24)) { step += 1 }
+    }
+
+    private func setStepDirection(_ direction: CGFloat) {
+        var transaction = Transaction(animation: nil)
+        transaction.disablesAnimations = true
+        withTransaction(transaction) {
+            stepDirection = direction
+        }
     }
 
     private func persistAnswers() {
