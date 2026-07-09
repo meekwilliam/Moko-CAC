@@ -186,8 +186,8 @@ final class HapticEngine {
 
     // MARK: Hold-to-commit ramp
 
-    /// A continuous buzz that climbs in intensity and sharpness over `duration`,
-    /// punctuated by accelerating ticks so the charge reads as "filling up".
+    /// A flat, continuous buzz for as long as the finger is down — no ramp, no
+    /// ticks. `duration` only caps it; `endHold()` is what normally stops it.
     /// This is the thing UIKit's generators simply cannot do.
     func beginHold(duration: TimeInterval) {
         guard supportsHaptics else { return }
@@ -196,20 +196,8 @@ final class HapticEngine {
         endHold()
         do {
             try engine.start()
-            var events = [swell(0.15, 0.20, at: 0, for: duration)]
-            for f in [0.35, 0.62, 0.82, 0.94] {
-                events.append(tap(Float(0.30 + 0.55 * f), 0.85, at: duration * f))
-            }
-            let intensity = CHHapticParameterCurve(parameterID: .hapticIntensityControl, controlPoints: [
-                .init(relativeTime: 0, value: 0.15),
-                .init(relativeTime: duration * 0.6, value: 0.55),
-                .init(relativeTime: duration, value: 1.0),
-            ], relativeTime: 0)
-            let sharpness = CHHapticParameterCurve(parameterID: .hapticSharpnessControl, controlPoints: [
-                .init(relativeTime: 0, value: 0.15),
-                .init(relativeTime: duration, value: 0.85),
-            ], relativeTime: 0)
-            let pattern = try CHHapticPattern(events: events, parameterCurves: [intensity, sharpness])
+            let event = swell(0.55, 0.30, at: 0, for: duration)
+            let pattern = try CHHapticPattern(events: [event], parameterCurves: [])
             let p = try engine.makeAdvancedPlayer(with: pattern)
             try p.start(atTime: CHHapticTimeImmediate)
             holdPlayer = p
