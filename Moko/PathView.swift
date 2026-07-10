@@ -366,14 +366,10 @@ struct PathView: View {
                         )
                         .clipShape(silhouette)
 
-                    tradingNodeIcon(for: node, state: state)
-
-                    // A unit's review test keeps its crown as a badge, so the
-                    // trading icon remains readable on every lesson puck.
                     if node.isBoss {
                         bossCrown(locked: state == .locked)
-                            .scaleEffect(0.62)
-                            .offset(x: 23, y: -20)
+                    } else {
+                        tradingNodeIcon(for: node, state: state)
                     }
                 }
                 .frame(width: nodeSize, height: nodeSize)
