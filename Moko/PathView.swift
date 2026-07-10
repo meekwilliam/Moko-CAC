@@ -366,11 +366,14 @@ struct PathView: View {
                         )
                         .clipShape(silhouette)
 
-                    // A unit's review test wears a crown on its face. Inside the
-                    // label, so it sinks with the face on press instead of
-                    // hovering over a puck that's moving away beneath it.
+                    tradingNodeIcon(for: node, state: state)
+
+                    // A unit's review test keeps its crown as a badge, so the
+                    // trading icon remains readable on every lesson puck.
                     if node.isBoss {
                         bossCrown(locked: state == .locked)
+                            .scaleEffect(0.62)
+                            .offset(x: 23, y: -20)
                     }
                 }
                 .frame(width: nodeSize, height: nodeSize)
@@ -396,6 +399,24 @@ struct PathView: View {
                     ))
             }
         }
+    }
+
+    private func tradingNodeIcon(for node: PathNode, state: NodeState) -> some View {
+        let symbols = [
+            "chart.line.uptrend.xyaxis", "chart.bar.xaxis", "arrow.up.right",
+            "arrow.down.right", "arrow.left.and.right", "dollarsign.circle",
+            "target", "percent", "briefcase.fill", "banknote.fill",
+            "arrow.triangle.2.circlepath", "scope", "chart.pie.fill",
+            "line.diagonal", "checkmark.seal.fill"
+        ]
+        let symbol = symbols[(node.num - 1) % symbols.count]
+        let color = state == .locked ? Color.white.opacity(0.40) : Color.white.opacity(0.94)
+
+        return Image(systemName: symbol)
+            .font(.system(size: 27, weight: .black))
+            .foregroundColor(color)
+            .frame(width: 40, height: 40)
+            .accessibilityHidden(true)
     }
 
     private func startTooltip(_ node: PathNode, state: NodeState, color: (main: Color, dark: Color)) -> some View {
