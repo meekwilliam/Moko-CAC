@@ -32,16 +32,16 @@ def build_lesson(L):
 # Each unit (section) gets its own button color, cycling this palette across the
 # whole course so adjacent units differ (Duolingo-style). (bg, darker slab).
 UNIT_PALETTE = [
-    ("#4D7966", "#315344"),  # moss
-    ("#3F6F8C", "#27485B"),  # steel
-    ("#735D86", "#4A3B5A"),  # plum
-    ("#A46D35", "#714823"),  # ochre
-    ("#985559", "#67373B"),  # brick
-    ("#3F7880", "#285057"),  # petrol
-    ("#9A617A", "#653C4E"),  # dusty rose
-    ("#596D91", "#384965"),  # slate
-    ("#A6613C", "#6D4028"),  # copper
-    ("#477462", "#2E4D40"),  # forest
+    ("#22C55E", "#15803D"),  # green
+    ("#3B82F6", "#1D4ED8"),  # blue
+    ("#8B5CF6", "#6D28D9"),  # purple
+    ("#F59E0B", "#B45309"),  # amber
+    ("#EF4444", "#B91C1C"),  # red
+    ("#14B8A6", "#0F766E"),  # teal
+    ("#EC4899", "#BE185D"),  # pink
+    ("#6366F1", "#4338CA"),  # indigo
+    ("#F97316", "#C2410C"),  # orange
+    ("#10B981", "#047857"),  # emerald
 ]
 
 def build_level(cid, name, level_num, unit_indices, bg, slab, raw, doc_units, lesson_unit, color_start=0):
