@@ -538,8 +538,8 @@ private struct CourseBuildView: View {
     private func startBuilding() {
         generation += 1
         let currentGeneration = generation
-        withAnimation(.easeOut(duration: 1.6)) { progress = 1 }
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1.68) {
+        withAnimation(.easeOut(duration: 9)) { progress = 1 }
+        DispatchQueue.main.asyncAfter(deadline: .now() + 9.08) {
             guard currentGeneration == generation else { return }
             Haptics.success()
             onComplete()
