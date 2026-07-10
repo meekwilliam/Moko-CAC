@@ -4,42 +4,42 @@
    "id": "dt_beginner",
    "name": "Beginner",
    "level": 1,
-   "color": "#1B8A5A",
+   "color": "#1FB155",
    "sections": [
     {
      "index": 0,
      "eyebrow": "SECTION 1 · UNIT 1",
      "title": "Trading Terminology",
-     "bg": "#0062CC",
-     "slab": "#004A99"
+     "bg": "#3575DD",
+     "slab": "#1A46C2"
     },
     {
      "index": 1,
      "eyebrow": "SECTION 1 · UNIT 2",
      "title": "Market Foundations",
-     "bg": "#1B8A5A",
-     "slab": "#146B45"
+     "bg": "#1FB155",
+     "slab": "#137337"
     },
     {
      "index": 2,
      "eyebrow": "SECTION 1 · UNIT 3",
      "title": "Candlesticks",
-     "bg": "#6D4AA6",
-     "slab": "#543880"
+     "bg": "#7D53DD",
+     "slab": "#6224C3"
     },
     {
      "index": 3,
      "eyebrow": "SECTION 1 · UNIT 4",
      "title": "Orders & Execution",
-     "bg": "#C08A2E",
-     "slab": "#93690F"
+     "bg": "#DC8E0A",
+     "slab": "#A24B08"
     },
     {
      "index": 4,
      "eyebrow": "SECTION 1 · UNIT 5",
      "title": "Market Mechanics",
-     "bg": "#C1443D",
-     "slab": "#953530"
+     "bg": "#D73D3D",
+     "slab": "#A61919"
     }
    ],
    "nodes": [
@@ -7415,140 +7415,140 @@
    "id": "dt_intermediate",
    "name": "Intermediate",
    "level": 2,
-   "color": "#0062CC",
+   "color": "#3575DD",
    "sections": [
     {
      "index": 0,
      "eyebrow": "SECTION 2 · UNIT 1",
      "title": "Volume Analysis",
-     "bg": "#0F8A82",
-     "slab": "#0B6862"
+     "bg": "#12A695",
+     "slab": "#0E6A63"
     },
     {
      "index": 1,
      "eyebrow": "SECTION 2 · UNIT 2",
      "title": "Price Action Vocabulary",
-     "bg": "#B84C7D",
-     "slab": "#8C3861"
+     "bg": "#D4418A",
+     "slab": "#AB1654"
     },
     {
      "index": 2,
      "eyebrow": "SECTION 2 · UNIT 3",
      "title": "Trends & Structure",
-     "bg": "#4A55A2",
-     "slab": "#383F7D"
+     "bg": "#595CD9",
+     "slab": "#3C32B6"
     },
     {
      "index": 3,
      "eyebrow": "SECTION 2 · UNIT 4",
      "title": "Support & Resistance",
-     "bg": "#C1672E",
-     "slab": "#954E22"
+     "bg": "#E06814",
+     "slab": "#AF3A0B"
     },
     {
      "index": 4,
      "eyebrow": "SECTION 2 · UNIT 5",
      "title": "Double Tops & Bottoms",
-     "bg": "#1F9E74",
-     "slab": "#17795A"
+     "bg": "#0EA674",
+     "slab": "#046C4E"
     },
     {
      "index": 5,
      "eyebrow": "SECTION 2 · UNIT 6",
      "title": "Head & Shoulders",
-     "bg": "#1B8A5A",
-     "slab": "#146B45"
+     "bg": "#1FB155",
+     "slab": "#137337"
     },
     {
      "index": 6,
      "eyebrow": "SECTION 2 · UNIT 7",
      "title": "Triangles",
-     "bg": "#0062CC",
-     "slab": "#004A99"
+     "bg": "#3575DD",
+     "slab": "#1A46C2"
     },
     {
      "index": 7,
      "eyebrow": "SECTION 2 · UNIT 8",
      "title": "Flags & Pennants",
-     "bg": "#6D4AA6",
-     "slab": "#543880"
+     "bg": "#7D53DD",
+     "slab": "#6224C3"
     },
     {
      "index": 8,
      "eyebrow": "SECTION 2 · UNIT 9",
      "title": "Wedges & Channels",
-     "bg": "#C08A2E",
-     "slab": "#93690F"
+     "bg": "#DC8E0A",
+     "slab": "#A24B08"
     },
     {
      "index": 9,
      "eyebrow": "SECTION 2 · UNIT 10",
      "title": "Trendlines",
-     "bg": "#C1443D",
-     "slab": "#953530"
+     "bg": "#D73D3D",
+     "slab": "#A61919"
     },
     {
      "index": 10,
      "eyebrow": "SECTION 2 · UNIT 11",
      "title": "Ranges & Consolidation",
-     "bg": "#0F8A82",
-     "slab": "#0B6862"
+     "bg": "#12A695",
+     "slab": "#0E6A63"
     },
     {
      "index": 11,
      "eyebrow": "SECTION 2 · UNIT 12",
      "title": "Breakouts & Retests",
-     "bg": "#B84C7D",
-     "slab": "#8C3861"
+     "bg": "#D4418A",
+     "slab": "#AB1654"
     },
     {
      "index": 12,
      "eyebrow": "SECTION 2 · UNIT 13",
      "title": "Pullbacks & Continuation",
-     "bg": "#4A55A2",
-     "slab": "#383F7D"
+     "bg": "#595CD9",
+     "slab": "#3C32B6"
     },
     {
      "index": 13,
      "eyebrow": "SECTION 2 · UNIT 14",
      "title": "Momentum & Exhaustion",
-     "bg": "#C1672E",
-     "slab": "#954E22"
+     "bg": "#E06814",
+     "slab": "#AF3A0B"
     },
     {
      "index": 14,
      "eyebrow": "SECTION 2 · UNIT 15",
      "title": "Confluence",
-     "bg": "#1F9E74",
-     "slab": "#17795A"
+     "bg": "#0EA674",
+     "slab": "#046C4E"
     },
     {
      "index": 15,
      "eyebrow": "SECTION 2 · UNIT 16",
      "title": "Gaps",
-     "bg": "#1B8A5A",
-     "slab": "#146B45"
+     "bg": "#1FB155",
+     "slab": "#137337"
     },
     {
      "index": 16,
      "eyebrow": "SECTION 2 · UNIT 17",
      "title": "Multi-Timeframe Basics",
-     "bg": "#0062CC",
-     "slab": "#004A99"
+     "bg": "#3575DD",
+     "slab": "#1A46C2"
     },
     {
      "index": 17,
      "eyebrow": "SECTION 2 · UNIT 18",
      "title": "Chart-Reading Mastery",
-     "bg": "#6D4AA6",
-     "slab": "#543880"
+     "bg": "#7D53DD",
+     "slab": "#6224C3"
     },
     {
      "index": 18,
      "eyebrow": "SECTION 2 · UNIT 19",
      "title": "Trading Sessions & News",
-     "bg": "#C08A2E",
-     "slab": "#93690F"
+     "bg": "#DC8E0A",
+     "slab": "#A24B08"
     }
    ],
    "nodes": [
@@ -22985,119 +22985,119 @@
    "id": "dt_advanced",
    "name": "Advanced",
    "level": 3,
-   "color": "#6D4AA6",
+   "color": "#7D53DD",
    "sections": [
     {
      "index": 0,
      "eyebrow": "SECTION 3 · UNIT 1",
      "title": "Risk Management",
-     "bg": "#C1443D",
-     "slab": "#953530"
+     "bg": "#D73D3D",
+     "slab": "#A61919"
     },
     {
      "index": 1,
      "eyebrow": "SECTION 3 · UNIT 2",
      "title": "Strategy Types",
-     "bg": "#0F8A82",
-     "slab": "#0B6862"
+     "bg": "#12A695",
+     "slab": "#0E6A63"
     },
     {
      "index": 2,
      "eyebrow": "SECTION 3 · UNIT 3",
      "title": "Position Sizing & R",
-     "bg": "#B84C7D",
-     "slab": "#8C3861"
+     "bg": "#D4418A",
+     "slab": "#AB1654"
     },
     {
      "index": 3,
      "eyebrow": "SECTION 3 · UNIT 4",
      "title": "Expectancy & Edge",
-     "bg": "#4A55A2",
-     "slab": "#383F7D"
+     "bg": "#595CD9",
+     "slab": "#3C32B6"
     },
     {
      "index": 4,
      "eyebrow": "SECTION 3 · UNIT 5",
      "title": "Market Condition Classification",
-     "bg": "#C1672E",
-     "slab": "#954E22"
+     "bg": "#E06814",
+     "slab": "#AF3A0B"
     },
     {
      "index": 5,
      "eyebrow": "SECTION 3 · UNIT 6",
      "title": "Moving Averages",
-     "bg": "#1F9E74",
-     "slab": "#17795A"
+     "bg": "#0EA674",
+     "slab": "#046C4E"
     },
     {
      "index": 6,
      "eyebrow": "SECTION 3 · UNIT 7",
      "title": "Oscillators: RSI & MACD",
-     "bg": "#1B8A5A",
-     "slab": "#146B45"
+     "bg": "#1FB155",
+     "slab": "#137337"
     },
     {
      "index": 7,
      "eyebrow": "SECTION 3 · UNIT 8",
      "title": "Trade Planning & Process",
-     "bg": "#0062CC",
-     "slab": "#004A99"
+     "bg": "#3575DD",
+     "slab": "#1A46C2"
     },
     {
      "index": 8,
      "eyebrow": "SECTION 3 · UNIT 9",
      "title": "VWAP & Bollinger Bands",
-     "bg": "#6D4AA6",
-     "slab": "#543880"
+     "bg": "#7D53DD",
+     "slab": "#6224C3"
     },
     {
      "index": 9,
      "eyebrow": "SECTION 3 · UNIT 10",
      "title": "Drawdowns & Losing Streaks",
-     "bg": "#C08A2E",
-     "slab": "#93690F"
+     "bg": "#DC8E0A",
+     "slab": "#A24B08"
     },
     {
      "index": 10,
      "eyebrow": "SECTION 3 · UNIT 11",
      "title": "Journaling & Review",
-     "bg": "#C1443D",
-     "slab": "#953530"
+     "bg": "#D73D3D",
+     "slab": "#A61919"
     },
     {
      "index": 11,
      "eyebrow": "SECTION 3 · UNIT 12",
      "title": "Average True Range (ATR)",
-     "bg": "#0F8A82",
-     "slab": "#0B6862"
+     "bg": "#12A695",
+     "slab": "#0E6A63"
     },
     {
      "index": 12,
      "eyebrow": "SECTION 3 · UNIT 13",
      "title": "Relative Volume (RVOL)",
-     "bg": "#B84C7D",
-     "slab": "#8C3861"
+     "bg": "#D4418A",
+     "slab": "#AB1654"
     },
     {
      "index": 13,
      "eyebrow": "SECTION 3 · UNIT 14",
      "title": "Opening Range",
-     "bg": "#4A55A2",
-     "slab": "#383F7D"
+     "bg": "#595CD9",
+     "slab": "#3C32B6"
     },
     {
      "index": 14,
      "eyebrow": "SECTION 3 · UNIT 15",
      "title": "Sector & Index Strength",
-     "bg": "#C1672E",
-     "slab": "#954E22"
+     "bg": "#E06814",
+     "slab": "#AF3A0B"
     },
     {
      "index": 15,
      "eyebrow": "SECTION 3 · UNIT 16",
      "title": "Level II & Order Book Awareness",
-     "bg": "#1F9E74",
-     "slab": "#17795A"
+     "bg": "#0EA674",
+     "slab": "#046C4E"
     }
    ],
    "nodes": [
@@ -33122,21 +33122,21 @@
    "id": "dt_expert",
    "name": "Expert",
    "level": 4,
-   "color": "#C08A2E",
+   "color": "#DC8E0A",
    "sections": [
     {
      "index": 0,
      "eyebrow": "SECTION 4 · UNIT 1",
      "title": "Trading Psychology",
-     "bg": "#1B8A5A",
-     "slab": "#146B45"
+     "bg": "#1FB155",
+     "slab": "#137337"
     },
     {
      "index": 1,
      "eyebrow": "SECTION 4 · UNIT 2",
      "title": "Full Simulation Training",
-     "bg": "#0062CC",
-     "slab": "#004A99"
+     "bg": "#3575DD",
+     "slab": "#1A46C2"
     }
    ],
    "nodes": [

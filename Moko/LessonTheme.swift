@@ -76,15 +76,15 @@ enum Theme {
     /// Mirrors `lessonUnitColor(nodeNum)` in index.html.
     static func unitColor(_ node: Int) -> (main: Color, dark: Color) {
         switch node {
-        case ...5:  return (Color(hex: "#0062CC"), Color(hex: "#004A99"))
-        case ...10: return (Color(hex: "#0F8A82"), Color(hex: "#0B6862"))
-        case ...15: return (Color(hex: "#6D4AA6"), Color(hex: "#543880"))
-        case ...20: return (Color(hex: "#1F9E74"), Color(hex: "#17795A"))
-        case ...25: return (Color(hex: "#C08A2E"), Color(hex: "#93690F"))
-        case ...30: return (Color(hex: "#0B7A94"), Color(hex: "#085A6E"))
-        case ...35: return (Color(hex: "#4A55A2"), Color(hex: "#383F7D"))
-        case ...40: return (Color(hex: "#B84C7D"), Color(hex: "#8C3861"))
-        default:    return (Color(hex: "#C1672E"), Color(hex: "#954E22"))
+        case ...5:  return (Color(hex: "#3575DD"), Color(hex: "#1A46C2"))
+        case ...10: return (Color(hex: "#12A695"), Color(hex: "#0E6A63"))
+        case ...15: return (Color(hex: "#7D53DD"), Color(hex: "#6224C3"))
+        case ...20: return (Color(hex: "#0EA674"), Color(hex: "#046C4E"))
+        case ...25: return (Color(hex: "#DC8E0A"), Color(hex: "#A24B08"))
+        case ...30: return (Color(hex: "#0A6E85"), Color(hex: "#075163"))
+        case ...35: return (Color(hex: "#595CD9"), Color(hex: "#3C32B6"))
+        case ...40: return (Color(hex: "#D4418A"), Color(hex: "#AB1654"))
+        default:    return (Color(hex: "#E06814"), Color(hex: "#AF3A0B"))
         }
     }
 }
