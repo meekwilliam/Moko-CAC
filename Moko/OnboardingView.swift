@@ -2,8 +2,9 @@ import SwiftUI
 import Combine
 
 // MARK: - Onboarding flow
-// Five-screen Duolingo-style intake: welcome (live-chart hero) → experience
-// level → goals (choose any) → daily goal → hold-to-commit. Finishing bursts
+// Seven-screen Duolingo-style intake: welcome (live-chart hero) → experience
+// level → goals (choose any) → daily goal → sign-up → course build → commit.
+// Finishing bursts
 // the commit color across the screen and launches Lesson 1 directly (never the
 // home screen). Answers are stored in UserDefaults under "onboarding.*".
 
@@ -22,7 +23,7 @@ struct OnboardingView: View {
     @State private var authInFlight = false
     @State private var showingSignIn = false   // returning-user login overlay
 
-    private let totalSteps = 6
+    private let totalSteps = 7
     private var stepSlideDistance: CGFloat { UIScreen.main.bounds.width + 64 }
     private var showsChoiceFooter: Bool { (1...3).contains(step) }
     private var currentStepCanContinue: Bool {
@@ -74,6 +75,7 @@ struct OnboardingView: View {
                         case 2: goalsScreen
                         case 3: dailyGoalScreen
                         case 4: signUpScreen
+                        case 5: CourseBuildView(onComplete: advance)
                         default: CommitScreen(router: router, onCommitted: persistAnswers)
                         }
                     }
@@ -486,7 +488,66 @@ struct OnboardingView: View {
     }
 }
 
-// MARK: - Screen 6 — Hold-to-commit
+// MARK: - Screen 6 — Course build
+
+private struct CourseBuildView: View {
+    var onComplete: () -> Void
+
+    @EnvironmentObject private var theme: ThemeManager
+    @State private var progress: CGFloat = 0
+    @State private var generation = 0
+
+    var body: some View {
+        VStack(spacing: 0) {
+            Spacer()
+
+            ZStack {
+                Circle()
+                    .stroke(Theme.surfaceBorder.opacity(0.45), lineWidth: 12)
+
+                Circle()
+                    .trim(from: 0, to: progress)
+                    .stroke(Theme.answer, style: StrokeStyle(lineWidth: 12, lineCap: .round))
+                    .rotationEffect(.degrees(-90))
+
+                Text("\(Int((progress * 100).rounded()))%")
+                    .font(Theme.font(26, .black))
+                    .foregroundColor(theme.palette.ink)
+                    .contentTransition(.numericText())
+            }
+            .frame(width: 148, height: 148)
+
+            Text("Building your course")
+                .font(Theme.font(28, .black))
+                .foregroundColor(theme.palette.ink)
+                .padding(.top, 30)
+
+            Text("Personalizing your learning path")
+                .font(Theme.bodyFont(16))
+                .foregroundColor(theme.palette.muted)
+                .padding(.top, 8)
+
+            Spacer()
+        }
+        .multilineTextAlignment(.center)
+        .padding(.horizontal, 28)
+        .onAppear { startBuilding() }
+        .onDisappear { generation += 1 }
+    }
+
+    private func startBuilding() {
+        generation += 1
+        let currentGeneration = generation
+        withAnimation(.easeOut(duration: 1.6)) { progress = 1 }
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.68) {
+            guard currentGeneration == generation else { return }
+            Haptics.success()
+            onComplete()
+        }
+    }
+}
+
+// MARK: - Screen 7 — Hold-to-commit
 // "Make yourself a promise": press and hold the button; it charges up with a
 // pulse, then the commit color bursts outward FROM THE BUTTON'S OWN SCREEN
 // POSITION (via the router-level curtain, not a locally-centered circle),
