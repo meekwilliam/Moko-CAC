@@ -113,11 +113,12 @@ struct OnboardingView: View {
             .transition(.opacity)
     }
 
-    // MARK: Header — back + progress
+    // MARK: Header — back above full-width progress
     // Hidden on the welcome screen (full-bleed hero, like the reference).
 
     private var header: some View {
-        HStack(spacing: 14) {
+        VStack(spacing: 7) {
+            HStack {
             Button(action: { Haptics.selection(); goBack() }) {
                 Image(systemName: "chevron.left")
                     .font(.system(size: 19, weight: .black))
@@ -126,6 +127,9 @@ struct OnboardingView: View {
             }
             .opacity(step > 0 ? 1 : 0)
             .disabled(step == 0)
+
+                Spacer()
+            }
 
             GeometryReader { geo in
                 ZStack(alignment: .leading) {
@@ -137,11 +141,6 @@ struct OnboardingView: View {
                 }
             }
             .frame(height: 14)
-
-            // Match the lesson header's heart counter footprint so the
-            // onboarding progress bar starts and ends at the same positions.
-            Color.clear
-                .frame(width: 52, height: 42)
         }
     }
 
