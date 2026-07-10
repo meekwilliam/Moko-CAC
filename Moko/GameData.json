@@ -381,18 +381,18 @@
        "chart": "uptrend"
       },
       {
-       "type": "tap_candle",
-       "question": "Charts are made of candles. Tap the green up candle — it closed higher than it opened.",
-       "target": 2,
+       "type": "tap_candles",
+       "question": "Charts are made of candles. Tap every green up candle — it closed higher than it opened.",
+       "targets": [0, 2, 4],
        "explanation": "Nice! A green (up) candle closes above where it opened.",
-       "chart": "uptrend"
+       "chart": "volatile"
       },
       {
-       "type": "tap_candle",
-       "question": "Now tap the red down candle — it closed lower than it opened.",
-       "target": 2,
+       "type": "tap_candles",
+       "question": "Now tap every red down candle — it closed lower than it opened.",
+       "targets": [1, 3, 5],
        "explanation": "That's it! A red (down) candle closes below where it opened.",
-       "chart": "downtrend"
+       "chart": "volatile"
       },
       {
        "type": "multiple_choice",
