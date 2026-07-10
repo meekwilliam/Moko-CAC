@@ -8,7 +8,6 @@ import SwiftUI
 struct MainTabView: View {
     @ObservedObject var router: AppRouter
     @EnvironmentObject var theme: ThemeManager
-    @State private var showingColorLab = false
 
     var body: some View {
         ZStack(alignment: .bottom) {
@@ -22,33 +21,16 @@ struct MainTabView: View {
         switch router.selectedTab {
         case .home:
             if let store = router.pathStore {
-                ZStack {
-                    PathView(
-                        store: store,
-                        showsHomeButton: false,
-                        onSelectNode: { router.onOpenLesson?($0) },
-                        onHome: {},
-                        onOpenHearts: { router.onOpenHearts?() },
-                        onOpenCourses: { router.onOpenCourses?() }
-                    )
-                    .id(router.currentCourseId)
-                    .transition(.opacity)
-
-                    // Temporary: live unit-color picker (Unit Color Lab). The FAB
-                    // floats top-right; the panel floats over the bottom of the
-                    // path so nodes keep updating live above it as you drag.
-                    colorLabFAB
-                    if showingColorLab {
-                        VStack {
-                            Spacer()
-                            UnitColorLabView(store: store, onClose: {
-                                withAnimation(.easeInOut(duration: 0.2)) { showingColorLab = false }
-                            })
-                            .padding(.bottom, 74)
-                        }
-                        .transition(.move(edge: .bottom).combined(with: .opacity))
-                    }
-                }
+                PathView(
+                    store: store,
+                    showsHomeButton: false,
+                    onSelectNode: { router.onOpenLesson?($0) },
+                    onHome: {},
+                    onOpenHearts: { router.onOpenHearts?() },
+                    onOpenCourses: { router.onOpenCourses?() }
+                )
+                .id(router.currentCourseId)
+                .transition(.opacity)
             }
         case .quest:
             PlaceholderTab(title: "Quests", subtitle: "Daily challenges are coming soon.") {
@@ -84,29 +66,6 @@ struct MainTabView: View {
                 Theme.appBackground.ignoresSafeArea()
             }
         }
-    }
-
-    private var colorLabFAB: some View {
-        VStack {
-            HStack {
-                Spacer()
-                Button {
-                    Haptics.selection()
-                    withAnimation(.easeInOut(duration: 0.2)) { showingColorLab.toggle() }
-                } label: {
-                    Image(systemName: "paintpalette.fill")
-                        .font(.system(size: 18, weight: .bold))
-                        .foregroundColor(.white)
-                        .frame(width: 44, height: 44)
-                        .background(Circle().fill(Color(hex: "#EC4899")))
-                        .overlay(Circle().strokeBorder(Color.white.opacity(0.25), lineWidth: 1.5))
-                        .shadow(color: .black.opacity(0.25), radius: 6, y: 3)
-                }
-                .padding(.trailing, 16)
-            }
-            Spacer()
-        }
-        .padding(.top, 8)
     }
 }
 
