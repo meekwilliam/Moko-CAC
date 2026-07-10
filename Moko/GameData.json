@@ -2396,14 +2396,10 @@
        "explanation": "A strong uptrend can still include large, fast swings, volatility measures movement size, not direction."
       },
       {
-       "type": "fill_blank",
-       "question": "Markets with small, slow price movement are often described as having [___] volatility.",
-       "options": [
-        "low",
-        "high",
-        "zero"
-       ],
-       "correct": 0,
+       "type": "mark_level",
+       "chart": "breakout",
+       "question": "Drag the line to the resistance the price broke above.",
+       "level_kind": "resistance",
        "explanation": "\"Low volatility\" describes calmer, smaller price movement."
       }
      ]
@@ -3290,14 +3286,11 @@
        "explanation": "That's the core, descriptive meaning of \"trend.\""
       },
       {
-       "type": "fill_blank",
-       "question": "A chart generally moving from lower prices to higher prices is described as being in an [___] trend.",
-       "options": [
-        "sideways",
-        "downtrend",
-        "uptrend"
-       ],
-       "correct": 2,
+       "type": "draw_trendline",
+       "chart": "downtrend",
+       "question": "Draw the downtrend line from the first candle to the last.",
+       "target_start": 0,
+       "target_end": 4,
        "explanation": "\"Uptrend\" is the standard descriptive term for that general direction."
       },
       {
@@ -3600,16 +3593,11 @@
        "chart": "marubozu"
       },
       {
-       "type": "fill_blank",
-       "question": "A green (or hollow) candle like the highlighted one closed [___] than it opened.",
-       "options": [
-        "higher",
-        "exactly equal",
-        "lower"
-       ],
-       "correct": 0,
-       "explanation": "By convention a bullish/green candle closes above its open.",
-       "chart": "marubozu"
+       "type": "tap_candle",
+       "chart": "marubozu",
+       "question": "Tap the big-momentum candle.",
+       "target": 1,
+       "explanation": "By convention a bullish/green candle closes above its open."
       },
       {
        "type": "matching",
@@ -3681,14 +3669,10 @@
        "chart": "marubozu"
       },
       {
-       "type": "fill_blank",
-       "question": "Wicks show the [___] and low reached during the period, beyond the body.",
-       "options": [
-        "high",
-        "color",
-        "volume"
-       ],
-       "correct": 0,
+       "type": "tap_candle",
+       "chart": "marubozu",
+       "question": "Tap the big-momentum candle.",
+       "target": 1,
        "explanation": "Wicks mark the high and low extremes; the body marks the open-to-close range."
       },
       {
@@ -3735,16 +3719,11 @@
        "chart": "doji"
       },
       {
-       "type": "fill_blank",
-       "question": "The tiny body on the highlighted candle is commonly read as market [___] between buyers and sellers.",
-       "options": [
-        "certainty",
-        "indecision",
-        "volume"
-       ],
-       "correct": 1,
-       "explanation": "Neither side pushed price clearly higher or lower by the close.",
-       "chart": "doji"
+       "type": "tap_candle",
+       "chart": "doji",
+       "question": "Tap the doji.",
+       "target": 1,
+       "explanation": "Neither side pushed price clearly higher or lower by the close."
       },
       {
        "type": "ingredient_match",
@@ -3846,16 +3825,11 @@
        "chart": "hammer"
       },
       {
-       "type": "fill_blank",
-       "question": "The long lower wick on the highlighted candle shows price was pushed down but [___] by the close.",
-       "options": [
-        "recovered",
-        "collapsed further",
-        "gapped even lower"
-       ],
-       "correct": 0,
-       "explanation": "The body finishing near the top means buyers pulled price back up before the close.",
-       "chart": "hammer"
+       "type": "tap_candle",
+       "chart": "hammer",
+       "question": "Tap the hammer.",
+       "target": 2,
+       "explanation": "The body finishing near the top means buyers pulled price back up before the close."
       },
       {
        "type": "tap_candle",
@@ -3971,16 +3945,11 @@
        "chart": "shootingStar"
       },
       {
-       "type": "fill_blank",
-       "question": "The long upper wick on the highlighted candle shows price was pushed up but [___] by the close.",
-       "options": [
-        "gapped even higher",
-        "slid back down",
-        "kept climbing"
-       ],
-       "correct": 1,
-       "explanation": "The body finishing near the low means the higher prices were rejected before the close.",
-       "chart": "shootingStar"
+       "type": "tap_candle",
+       "chart": "shootingStar",
+       "question": "Tap the shooting star.",
+       "target": 2,
+       "explanation": "The body finishing near the low means the higher prices were rejected before the close."
       },
       {
        "type": "tap_candle",
@@ -5058,14 +5027,10 @@
        "explanation": "Both describe a push to an extreme that then reversed before the close."
       },
       {
-       "type": "fill_blank",
-       "question": "Speed rounds like this one build [___] recognition of common shapes.",
-       "options": [
-        "slower",
-        "zero",
-        "faster"
-       ],
-       "correct": 2,
+       "type": "tap_candle",
+       "chart": "rejectionWickDown",
+       "question": "Tap the candle with a long lower wick (rejection of the lows).",
+       "target": 1,
        "explanation": "Repeated practice speeds up pattern recognition."
       },
       {
@@ -5266,14 +5231,10 @@
        "explanation": "Hammer/hanging man is the classic same-shape-different-context pair."
       },
       {
-       "type": "fill_blank",
-       "question": "Reading candles \"in context\" means considering the trend that came [___] them.",
-       "options": [
-        "before",
-        "after",
-        "without regard to"
-       ],
-       "correct": 0,
+       "type": "tap_candle",
+       "chart": "invertedHammer",
+       "question": "Tap the inverted hammer.",
+       "target": 2,
        "explanation": "The preceding trend is the context that shapes a candle's meaning."
       },
       {
@@ -5383,25 +5344,17 @@
        "explanation": "Repeated large bodies in one direction reflect ongoing momentum."
       },
       {
-       "type": "fill_blank",
-       "question": "Reading momentum from bodies is a [___] read, not a guaranteed forecast.",
-       "options": [
-        "descriptive",
-        "guaranteed",
-        "random"
-       ],
-       "correct": 0,
+       "type": "tap_candle",
+       "chart": "doji",
+       "question": "Tap the doji.",
+       "target": 1,
        "explanation": "Like other candle reads in this unit, it's descriptive context, not certainty."
       },
       {
-       "type": "fill_blank",
-       "question": "Momentum reading pairs body size with the [___] of the move.",
-       "options": [
-        "volume",
-        "timeframe",
-        "direction"
-       ],
-       "correct": 2,
+       "type": "tap_candle",
+       "chart": "marubozu",
+       "question": "Tap the big-momentum candle.",
+       "target": 1,
        "explanation": "Body size shows how one-sided the move was; direction shows which way."
       },
       {
@@ -5502,25 +5455,17 @@
        "explanation": "This lesson explicitly combines identification with interpretation."
       },
       {
-       "type": "fill_blank",
-       "question": "Round One mixes recognition with [___] to build a fuller reading skill.",
-       "options": [
-        "guessing",
-        "memorization only",
-        "interpretation"
-       ],
-       "correct": 2,
+       "type": "tap_candle",
+       "chart": "doji",
+       "question": "Tap the doji.",
+       "target": 1,
        "explanation": "Interpretation alongside recognition is the point of this mixed round."
       },
       {
-       "type": "fill_blank",
-       "question": "\"Round One\" is meant to check both shape [___] and contextual reading together.",
-       "options": [
-        "color",
-        "volume",
-        "recognition"
-       ],
-       "correct": 2,
+       "type": "tap_candle",
+       "chart": "hammer",
+       "question": "Tap the hammer.",
+       "target": 2,
        "explanation": "This lesson combines identification with interpretation, as the title suggests."
       },
       {
@@ -5632,14 +5577,10 @@
        "explanation": "Both identification and interpretation are the two halves of this unit's skill."
       },
       {
-       "type": "fill_blank",
-       "question": "Completing this final round means you can recognize shapes [___] read their context.",
-       "options": [
-        "instead of",
-        "without",
-        "and"
-       ],
-       "correct": 2,
+       "type": "tap_candle",
+       "chart": "bearishEngulfing",
+       "question": "Tap the engulfing candle.",
+       "target": 1,
        "explanation": "The unit's goal is combining recognition with contextual reading, not choosing one."
       },
       {
@@ -5702,14 +5643,10 @@
        "explanation": "A market order executes at the best available price at that moment, not a chosen one."
       },
       {
-       "type": "fill_blank",
-       "question": "A market order prioritizes [___] of execution above all else.",
-       "options": [
-        "price",
-        "patience",
-        "speed"
-       ],
-       "correct": 2,
+       "type": "tap_candle",
+       "chart": "uptrend",
+       "question": "Tap the candle that makes the highest high.",
+       "target": 4,
        "explanation": "Speed is the defining trade-off a market order makes."
       },
       {
@@ -5798,14 +5735,11 @@
        "chart": "uptrend"
       },
       {
-       "type": "fill_blank",
-       "question": "Once submitted, a market order typically executes [___] rather than waiting.",
-       "options": [
-        "after a delay",
-        "never",
-        "right away"
-       ],
-       "correct": 2,
+       "type": "draw_trendline",
+       "chart": "uptrend",
+       "question": "Draw the uptrend line from the first candle to the last.",
+       "target_start": 0,
+       "target_end": 4,
        "explanation": "Immediate execution is the whole point of a market order."
       },
       {
@@ -5989,14 +5923,11 @@
        "explanation": "A stop-loss is commonly used to limit potential losses, not to guarantee profit."
       },
       {
-       "type": "fill_blank",
-       "question": "An order that triggers a sale once price falls to a specified level is called a [___] order.",
-       "options": [
-        "limit",
-        "market",
-        "stop-loss"
-       ],
-       "correct": 2,
+       "type": "draw_trendline",
+       "chart": "downtrend",
+       "question": "Draw the downtrend line from the first candle to the last.",
+       "target_start": 0,
+       "target_end": 4,
        "explanation": "\"Stop-loss\" is the standard term for this kind of risk-defining order."
       },
       {
@@ -6085,14 +6016,10 @@
        "chart": "downtrend"
       },
       {
-       "type": "fill_blank",
-       "question": "A stop-loss is commonly placed at a level that would [___] the original trade idea.",
-       "options": [
-        "guarantee",
-        "invalidate",
-        "double"
-       ],
-       "correct": 1,
+       "type": "tap_candle",
+       "chart": "downtrend",
+       "question": "Tap the candle that makes the lowest low.",
+       "target": 4,
        "explanation": "A stop-loss is commonly tied to the point where the reasoning for the trade no longer holds."
       },
       {
@@ -6126,14 +6053,10 @@
        "explanation": "A take-profit targets a favorable exit level; a stop-loss targets an unfavorable one."
       },
       {
-       "type": "fill_blank",
-       "question": "An order set to exit once price reaches a favorable target is called a [___] order.",
-       "options": [
-        "stop-loss",
-        "market",
-        "take-profit"
-       ],
-       "correct": 2,
+       "type": "tap_candle",
+       "chart": "uptrend",
+       "question": "Tap the candle that makes the highest high.",
+       "target": 4,
        "explanation": "\"Take-profit\" describes exiting at a pre-planned favorable level."
       },
       {
@@ -6222,14 +6145,11 @@
        "chart": "uptrend"
       },
       {
-       "type": "fill_blank",
-       "question": "A take-profit order is commonly placed at a level considered a [___] outcome.",
-       "options": [
-        "satisfying",
-        "guaranteed",
-        "random"
-       ],
-       "correct": 0,
+       "type": "draw_trendline",
+       "chart": "uptrend",
+       "question": "Draw the uptrend line from the first candle to the last.",
+       "target_start": 0,
+       "target_end": 4,
        "explanation": "The take-profit level represents a planned, satisfying exit point."
       },
       {
@@ -6258,14 +6178,10 @@
        "explanation": "Once triggered, a stop-limit becomes a limit order, which may not fill if price moves past the limit price too quickly."
       },
       {
-       "type": "fill_blank",
-       "question": "A stop-limit order combines a trigger price with a specified [___] price.",
-       "options": [
-        "market",
-        "random",
-        "limit"
-       ],
-       "correct": 2,
+       "type": "mark_level",
+       "chart": "breakout",
+       "question": "Drag the line to the resistance the price broke above.",
+       "level_kind": "resistance",
        "explanation": "The \"limit\" part adds price control once the stop is triggered."
       },
       {
@@ -6353,14 +6269,10 @@
        "chart": "breakout"
       },
       {
-       "type": "fill_blank",
-       "question": "Once a stop-limit's trigger price is hit, it converts into a [___] order.",
-       "options": [
-        "stop",
-        "market",
-        "limit"
-       ],
-       "correct": 2,
+       "type": "tap_candle",
+       "chart": "breakout",
+       "question": "Tap the breakout candle.",
+       "target": 3,
        "explanation": "The defining feature of a stop-limit is converting into a limit order once triggered."
       },
       {
@@ -6484,14 +6396,10 @@
        "chart": "breakout"
       },
       {
-       "type": "fill_blank",
-       "question": "Slippage tends to be [___] in calm, liquid markets.",
-       "options": [
-        "smaller",
-        "guaranteed",
-        "larger"
-       ],
-       "correct": 0,
+       "type": "mark_level",
+       "chart": "breakout",
+       "question": "Drag the line to the resistance the price broke above.",
+       "level_kind": "resistance",
        "explanation": "Calmer, more liquid conditions are commonly linked to smaller slippage."
       },
       {
@@ -6675,14 +6583,10 @@
        "explanation": "Each order type has its own trade-offs; none guarantees a specific price or fill with certainty."
       },
       {
-       "type": "fill_blank",
-       "question": "The order type that prioritizes speed over price is the [___] order.",
-       "options": [
-        "limit",
-        "market",
-        "stop-limit"
-       ],
-       "correct": 1,
+       "type": "tap_candle",
+       "chart": "doji",
+       "question": "Tap the doji.",
+       "target": 1,
        "explanation": "A market order specifically prioritizes fast execution over a chosen price."
       },
       {
@@ -6789,14 +6693,10 @@
        "chart": "doji"
       },
       {
-       "type": "fill_blank",
-       "question": "This unit's order types each balance speed, price control, and [___] differently.",
-       "options": [
-        "risk",
-        "color",
-        "volume"
-       ],
-       "correct": 0,
+       "type": "tap_candle",
+       "chart": "doji",
+       "question": "Tap the doji.",
+       "target": 1,
        "explanation": "Speed, price control, and risk are the three dimensions each order type trades off."
       },
       {
@@ -7212,14 +7112,10 @@
        "explanation": "Body size and wick length are mechanical traces of that period's buying/selling pressure."
       },
       {
-       "type": "fill_blank",
-       "question": "A large candle body reflects [___], decisive pressure from one side.",
-       "options": [
-        "weak",
-        "strong",
-        "random"
-       ],
-       "correct": 1,
+       "type": "tap_candle",
+       "chart": "hammer",
+       "question": "Tap the hammer.",
+       "target": 2,
        "explanation": "A big body mechanically reflects one side dominating that period."
       },
       {
@@ -7305,14 +7201,10 @@
        "explanation": "Additional participants adding pressure in the same direction can speed up a trend."
       },
       {
-       "type": "fill_blank",
-       "question": "Trend acceleration is commonly linked to momentum [___] on itself.",
-       "options": [
-        "disappearing",
-        "freezing",
-        "feeding"
-       ],
-       "correct": 2,
+       "type": "mark_level",
+       "chart": "breakout",
+       "question": "Drag the line to the resistance the price broke above.",
+       "level_kind": "resistance",
        "explanation": "\"Feeding on itself\" describes how added participation can compound an existing move."
       },
       {
@@ -7376,14 +7268,10 @@
        "explanation": "A breakout is one side finally overpowering a level that had been respected. Drifting along a level is consolidation; turning away from it is a rejection."
       },
       {
-       "type": "fill_blank",
-       "question": "A reversal reflects a [___] in the underlying supply/demand balance.",
-       "options": [
-        "random event",
-        "guarantee",
-        "shift"
-       ],
-       "correct": 2,
+       "type": "mark_level",
+       "chart": "resistanceRejection",
+       "question": "Drag the line to the resistance this chart keeps getting rejected at.",
+       "level_kind": "resistance",
        "explanation": "A shift strong enough to overpower the prior trend is what mechanically produces a reversal."
       },
       {
@@ -8857,14 +8745,10 @@
        "explanation": "Volume level is commonly read as a meaningful difference at reversal points too."
       },
       {
-       "type": "fill_blank",
-       "question": "A volume surge at a turning point is commonly read as adding [___] to that reversal.",
-       "options": [
-        "certainty",
-        "significance",
-        "guarantee"
-       ],
-       "correct": 1,
+       "type": "mark_level",
+       "chart": "resistanceRejection",
+       "question": "Drag the line to the resistance this chart keeps getting rejected at.",
+       "level_kind": "resistance",
        "explanation": "More participation at the turn is commonly read as more meaningful, not certain."
       },
       {
@@ -9146,14 +9030,10 @@
        "explanation": "Volume adds context that can change how a candle's shape is interpreted."
       },
       {
-       "type": "fill_blank",
-       "question": "Combining candle shape with volume is an example of [___] from an earlier unit.",
-       "options": [
-        "a lagging indicator",
-        "confluence",
-        "a single isolated signal"
-       ],
-       "correct": 1,
+       "type": "tap_candle",
+       "chart": "marubozu",
+       "question": "Tap the big-momentum candle.",
+       "target": 1,
        "explanation": "This is the same confluence idea, multiple agreeing factors, applied to candles and volume."
       },
       {
@@ -9227,14 +9107,10 @@
        "explanation": "That's the common thread across every lesson in this unit."
       },
       {
-       "type": "fill_blank",
-       "question": "High or low volume is judged [___] to what's typical for that asset.",
-       "options": [
-        "without regard",
-        "relative",
-        "absolute"
-       ],
-       "correct": 1,
+       "type": "mark_level",
+       "chart": "breakout",
+       "question": "Drag the line to the resistance the price broke above.",
+       "level_kind": "resistance",
        "explanation": "Reviewing the relative-judgment idea from earlier in this unit."
       },
       {
@@ -9437,14 +9313,13 @@
        "explanation": "\"Correction\" and \"pullback\" both describe a temporary counter-move within a trend."
       },
       {
-       "type": "fill_blank",
-       "question": "An impulse moves [___] with the trend; a correction moves against it.",
-       "options": [
-        "sideways only",
-        "in line",
-        "opposite"
+       "type": "tap_candles",
+       "chart": "pullbackUptrend",
+       "question": "Tap the two swing highs making higher highs.",
+       "targets": [
+        1,
+        3
        ],
-       "correct": 1,
        "explanation": "Impulse legs align with the trend direction; corrections move against it temporarily."
       },
       {
@@ -10067,14 +9942,10 @@
        "chart": "uptrend"
       },
       {
-       "type": "fill_blank",
-       "question": "Both the highs and the lows in an uptrend generally move [___] together.",
-       "options": [
-        "opposite",
-        "downward",
-        "upward"
-       ],
-       "correct": 2,
+       "type": "tap_candle",
+       "chart": "uptrend",
+       "question": "Tap the candle that makes the highest high.",
+       "target": 4,
        "explanation": "Both swing highs and swing lows rising together is the defining structure."
       },
       {
@@ -10204,14 +10075,11 @@
        "chart": "downtrend"
       },
       {
-       "type": "fill_blank",
-       "question": "Both the highs and the lows in a downtrend generally move [___] together.",
-       "options": [
-        "downward",
-        "sideways",
-        "upward"
-       ],
-       "correct": 0,
+       "type": "draw_trendline",
+       "chart": "downtrend",
+       "question": "Draw the downtrend line from the first candle to the last.",
+       "target_start": 0,
+       "target_end": 4,
        "explanation": "Both swing highs and swing lows falling together is the defining structure."
       },
       {
@@ -10567,14 +10435,11 @@
        "explanation": "This phrase is the standard descriptive shorthand for downtrend structure."
       },
       {
-       "type": "fill_blank",
-       "question": "A swing low that is lower than the previous swing low is called a [___] low.",
-       "options": [
-        "equal",
-        "higher",
-        "lower"
-       ],
-       "correct": 2,
+       "type": "draw_trendline",
+       "chart": "downtrend",
+       "question": "Draw the downtrend line from the first candle to the last.",
+       "target_start": 0,
+       "target_end": 4,
        "explanation": "\"Lower low\" specifically means it falls below the prior swing low."
       },
       {
@@ -10804,14 +10669,10 @@
        "chart": "breakout"
       },
       {
-       "type": "fill_blank",
-       "question": "Trend strength is commonly judged by comparing swing size to what's [___] for that chart.",
-       "options": [
-        "random",
-        "typical",
-        "colorful"
-       ],
-       "correct": 1,
+       "type": "mark_level",
+       "chart": "breakout",
+       "question": "Drag the line to the resistance the price broke above.",
+       "level_kind": "resistance",
        "explanation": "Comparing recent swings to what's typical gives a rough sense of relative strength."
       },
       {
@@ -10940,14 +10801,10 @@
        "chart": "breakout"
       },
       {
-       "type": "fill_blank",
-       "question": "Momentum is often gauged by how [___] price is covering distance.",
-       "options": [
-        "colorfully",
-        "randomly",
-        "quickly"
-       ],
-       "correct": 2,
+       "type": "mark_level",
+       "chart": "breakout",
+       "question": "Drag the line to the resistance the price broke above.",
+       "level_kind": "resistance",
        "explanation": "Speed of movement is central to reading momentum."
       },
       {
@@ -11368,14 +11225,10 @@
        "chart": "breakout"
       },
       {
-       "type": "fill_blank",
-       "question": "A break of structure is commonly treated as an early, not [___], signal.",
-       "options": [
-        "random",
-        "descriptive",
-        "confirmed"
-       ],
-       "correct": 2,
+       "type": "mark_level",
+       "chart": "breakout",
+       "question": "Drag the line to the resistance the price broke above.",
+       "level_kind": "resistance",
        "explanation": "It's read as an early clue that may or may not be confirmed by what follows."
       },
       {
@@ -11495,14 +11348,10 @@
        "explanation": "These drills build a consistent, descriptive habit, not predictive certainty."
       },
       {
-       "type": "fill_blank",
-       "question": "Classifying direction requires comparing multiple [___], not a single candle.",
-       "options": [
-        "swings",
-        "timeframes only",
-        "colors"
-       ],
-       "correct": 0,
+       "type": "mark_level",
+       "chart": "breakout",
+       "question": "Drag the line to the resistance the price broke above.",
+       "level_kind": "resistance",
        "explanation": "Trend classification is based on comparing a sequence of swings."
       },
       {
@@ -11664,14 +11513,10 @@
        "explanation": "Confidently declaring an in-progress move one way or the other overstates what can be known at the time."
       },
       {
-       "type": "fill_blank",
-       "question": "Distinguishing a pullback from a reversal often requires [___] for how it plays out.",
-       "options": [
-        "guessing immediately",
-        "ignoring the chart",
-        "waiting"
-       ],
-       "correct": 2,
+       "type": "tap_candle",
+       "chart": "uptrend",
+       "question": "Tap the candle that makes the highest high.",
+       "target": 4,
        "explanation": "Patience is commonly needed since the distinction is often unclear in the moment."
       },
       {
@@ -12498,14 +12343,10 @@
        "chart": "supportBounce"
       },
       {
-       "type": "fill_blank",
-       "question": "Touch count is one simple way to compare the relative [___] of levels.",
-       "options": [
-        "notability",
-        "volume",
-        "color"
-       ],
-       "correct": 0,
+       "type": "mark_level",
+       "chart": "supportBounce",
+       "question": "Drag the line to the support this chart keeps bouncing from.",
+       "level_kind": "support",
        "explanation": "Comparing touch counts is a simple, descriptive way to judge relative notability."
       },
       {
@@ -12634,14 +12475,10 @@
        "chart": "breakout"
       },
       {
-       "type": "fill_blank",
-       "question": "A breakout is described [___] the fact, based on what actually happened.",
-       "options": [
-        "before",
-        "after",
-        "without regard to"
-       ],
-       "correct": 1,
+       "type": "mark_level",
+       "chart": "breakout",
+       "question": "Drag the line to the resistance the price broke above.",
+       "level_kind": "resistance",
        "explanation": "Confirming the move held is part of how breakouts are described in hindsight."
       },
       {
@@ -12680,14 +12517,10 @@
        "explanation": "That reversal back into the prior range is what defines a false breakout."
       },
       {
-       "type": "fill_blank",
-       "question": "A breakout that quickly reverses back is often called a [___] breakout.",
-       "options": [
-        "confirmed",
-        "strong",
-        "false"
-       ],
-       "correct": 2,
+       "type": "mark_level",
+       "chart": "resistanceRejection",
+       "question": "Drag the line to the resistance this chart keeps getting rejected at.",
+       "level_kind": "resistance",
        "explanation": "\"False\" describes the failed follow-through."
       },
       {
@@ -12794,14 +12627,10 @@
        "chart": "resistanceRejection"
       },
       {
-       "type": "fill_blank",
-       "question": "A false breakout can only be labeled [___] price has already reversed back.",
-       "options": [
-        "after",
-        "before",
-        "without"
-       ],
-       "correct": 0,
+       "type": "mark_level",
+       "chart": "resistanceRejection",
+       "question": "Drag the line to the resistance this chart keeps getting rejected at.",
+       "level_kind": "resistance",
        "explanation": "You need to see the reversal happen before calling it a false breakout."
       },
       {
@@ -13131,14 +12960,10 @@
        "explanation": "Levels are commonly read alongside trend context for a fuller picture, not in total isolation."
       },
       {
-       "type": "fill_blank",
-       "question": "A support level within an established uptrend is sometimes described as aligning with the [___] trend.",
-       "options": [
-        "random",
-        "broader",
-        "opposite"
-       ],
-       "correct": 1,
+       "type": "tap_candle",
+       "chart": "uptrend",
+       "question": "Tap the candle that makes the highest high.",
+       "target": 4,
        "explanation": "Levels are commonly discussed in relation to the broader trend they sit within."
       },
       {
@@ -13227,14 +13052,11 @@
        "chart": "uptrend"
       },
       {
-       "type": "fill_blank",
-       "question": "Combining levels with trend gives a [___] picture than either alone.",
-       "options": [
-        "narrower",
-        "random",
-        "fuller"
-       ],
-       "correct": 2,
+       "type": "draw_trendline",
+       "chart": "uptrend",
+       "question": "Draw the uptrend line from the first candle to the last.",
+       "target_start": 0,
+       "target_end": 4,
        "explanation": "Together, levels and trend context are commonly described as more complete than either alone."
       },
       {
@@ -13342,14 +13164,10 @@
        "explanation": "This drill builds a consistent, descriptive habit, not predictive certainty."
       },
       {
-       "type": "fill_blank",
-       "question": "These drills build a consistent, [___] habit for spotting levels.",
-       "options": [
-        "descriptive",
-        "random",
-        "predictive"
-       ],
-       "correct": 0,
+       "type": "mark_level",
+       "chart": "resistanceRejection",
+       "question": "Drag the line to the resistance this chart keeps getting rejected at.",
+       "level_kind": "resistance",
        "explanation": "The goal is descriptive skill, not predictive certainty."
       },
       {
@@ -13648,14 +13466,10 @@
        "chart": "resistanceRejection"
       },
       {
-       "type": "fill_blank",
-       "question": "A double top forms after an [___] move, at resistance.",
-       "options": [
-        "sideways",
-        "down",
-        "up"
-       ],
-       "correct": 2,
+       "type": "mark_level",
+       "chart": "doubleTop",
+       "question": "Drag the line to the resistance both peaks stall at.",
+       "level_kind": "resistance",
        "explanation": "The double top's \"M\" shape forms after price has risen into resistance."
       },
       {
@@ -13777,14 +13591,10 @@
        "chart": "doubleBottom"
       },
       {
-       "type": "fill_blank",
-       "question": "A double bottom forms after a [___] move, at support.",
-       "options": [
-        "down",
-        "sideways",
-        "up"
-       ],
-       "correct": 0,
+       "type": "mark_level",
+       "chart": "doubleBottom",
+       "question": "Drag the line to the support both troughs tested.",
+       "level_kind": "support",
        "explanation": "The \"W\" shape forms after price has fallen into support."
       },
       {
@@ -13908,14 +13718,10 @@
        "chart": "doubleTop"
       },
       {
-       "type": "fill_blank",
-       "question": "In a double bottom, the neckline sits at the [___] between the two troughs.",
-       "options": [
-        "midpoint of the wicks",
-        "lowest point",
-        "bounce peak"
-       ],
-       "correct": 2,
+       "type": "mark_level",
+       "chart": "doubleTop",
+       "question": "Drag the line to the resistance both peaks stall at.",
+       "level_kind": "resistance",
        "explanation": "The neckline in a double bottom runs along the bounce high between the two troughs."
       },
       {
@@ -14063,14 +13869,10 @@
        "chart": "doubleTop"
       },
       {
-       "type": "fill_blank",
-       "question": "Counting how many times a level was tested is the key to telling these two [___] apart.",
-       "options": [
-        "patterns",
-        "colors",
-        "timeframes"
-       ],
-       "correct": 0,
+       "type": "mark_level",
+       "chart": "resistanceRejection",
+       "question": "Drag the line to the resistance this chart keeps getting rejected at.",
+       "level_kind": "resistance",
        "explanation": "Test count (one vs two) is exactly what separates a rejection from a double top."
       },
       {
@@ -14192,14 +13994,10 @@
        "chart": "doubleBottom"
       },
       {
-       "type": "fill_blank",
-       "question": "Counting how many times support was tested is the key to telling these two [___] apart.",
-       "options": [
-        "timeframes",
-        "colors",
-        "patterns"
-       ],
-       "correct": 2,
+       "type": "mark_level",
+       "chart": "doubleBottom",
+       "question": "Drag the line to the support both troughs tested.",
+       "level_kind": "support",
        "explanation": "Test count (one vs two) is exactly what separates a bounce from a double bottom."
       },
       {
@@ -14272,14 +14070,10 @@
        "explanation": "The pattern relies on the two peaks being at about the same level."
       },
       {
-       "type": "fill_blank",
-       "question": "For a clean double top, the two peaks should be at [___] the same height.",
-       "options": [
-        "exactly zero",
-        "wildly different",
-        "about"
-       ],
-       "correct": 2,
+       "type": "mark_level",
+       "chart": "doubleTop",
+       "question": "Drag the line to the resistance both peaks stall at.",
+       "level_kind": "resistance",
        "explanation": "\"About the same\" height is the practical standard, not perfectly identical."
       },
       {
@@ -14307,14 +14101,13 @@
        "chart": "breakout"
       },
       {
-       "type": "fill_blank",
-       "question": "Judging whether two peaks are \"roughly equal\" is a matter of [___], not exact math.",
-       "options": [
-        "exact measurement",
-        "degree",
-        "a fixed percentage rule"
+       "type": "tap_candles",
+       "chart": "doubleTop",
+       "question": "Tap both peaks of the double top.",
+       "targets": [
+        1,
+        3
        ],
-       "correct": 1,
        "explanation": "\"About the same\" is a practical, descriptive judgment, not a strict formula."
       },
       {
@@ -14382,14 +14175,10 @@
        "explanation": "The pattern relies on the two troughs being at about the same level."
       },
       {
-       "type": "fill_blank",
-       "question": "For a clean double bottom, the two troughs should be at [___] the same low.",
-       "options": [
-        "exactly zero",
-        "about",
-        "wildly different"
-       ],
-       "correct": 1,
+       "type": "mark_level",
+       "chart": "doubleBottom",
+       "question": "Drag the line to the support both troughs tested.",
+       "level_kind": "support",
        "explanation": "\"About the same\" low is the practical standard."
       },
       {
@@ -14417,14 +14206,13 @@
        "chart": "breakdown"
       },
       {
-       "type": "fill_blank",
-       "question": "Judging whether two troughs are \"roughly equal\" is a matter of [___], not exact math.",
-       "options": [
-        "a fixed percentage rule",
-        "degree",
-        "exact measurement"
+       "type": "tap_candles",
+       "chart": "doubleBottom",
+       "question": "Tap both troughs that test the same support level.",
+       "targets": [
+        1,
+        3
        ],
-       "correct": 1,
        "explanation": "\"About the same\" is a practical, descriptive judgment, not a strict formula."
       },
       {
@@ -14538,14 +14326,10 @@
        "chart": "breakout"
       },
       {
-       "type": "fill_blank",
-       "question": "A failed double top is one commonly cited reason to treat patterns as [___], not certainties.",
-       "options": [
-        "guarantees",
-        "clues",
-        "laws"
-       ],
-       "correct": 1,
+       "type": "mark_level",
+       "chart": "breakout",
+       "question": "Drag the line to the resistance the price broke above.",
+       "level_kind": "resistance",
        "explanation": "Failure is exactly why patterns are read as probability-shaped clues."
       },
       {
@@ -14560,14 +14344,10 @@
        "explanation": "Just as a double top can fail by breaking up, a double bottom can fail by breaking down."
       },
       {
-       "type": "fill_blank",
-       "question": "Whether a double top \"fails\" or \"confirms\" is only known [___] the fact.",
-       "options": [
-        "after",
-        "before",
-        "without regard to"
-       ],
-       "correct": 0,
+       "type": "tap_candle",
+       "chart": "breakout",
+       "question": "Tap the breakout candle.",
+       "target": 3,
        "explanation": "You need to see how price actually resolves to know if the pattern held or failed."
       },
       {
@@ -14667,14 +14447,10 @@
        "chart": "supportBounce"
       },
       {
-       "type": "fill_blank",
-       "question": "This drill practices spotting [___] before naming a pattern.",
-       "options": [
-        "touch count",
-        "wick length",
-        "gap size"
-       ],
-       "correct": 0,
+       "type": "mark_level",
+       "chart": "doubleTop",
+       "question": "Drag the line to the resistance both peaks stall at.",
+       "level_kind": "resistance",
        "explanation": "Counting touches at a level is the first step to correctly naming these patterns."
       },
       {
@@ -14684,14 +14460,13 @@
        "explanation": "Repetition is how recognition speed improves."
       },
       {
-       "type": "fill_blank",
-       "question": "Fast identification drills like this one build [___] recognition speed.",
-       "options": [
-        "random",
-        "zero",
-        "pattern"
+       "type": "tap_candles",
+       "chart": "doubleTop",
+       "question": "Tap both peaks of the double top.",
+       "targets": [
+        1,
+        3
        ],
-       "correct": 2,
        "explanation": "Repetition across mixed charts builds faster pattern recognition."
       },
       {
@@ -14807,14 +14582,10 @@
        "chart": "doubleBottom"
       },
       {
-       "type": "fill_blank",
-       "question": "\"What a pattern suggests\" always stays [___], never a certainty.",
-       "options": [
-        "random",
-        "descriptive",
-        "guaranteed"
-       ],
-       "correct": 1,
+       "type": "mark_level",
+       "chart": "doubleBottom",
+       "question": "Drag the line to the support both troughs tested.",
+       "level_kind": "support",
        "explanation": "This unit consistently frames pattern reads as descriptive, not certain."
       },
       {
@@ -14829,14 +14600,13 @@
        "explanation": "A confirmed pattern suggests the reversal played out; a failed one suggests it didn't."
       },
       {
-       "type": "fill_blank",
-       "question": "Reading \"what a pattern suggests\" adds [___] on top of simply naming the shape.",
-       "options": [
-        "guesswork",
-        "volume",
-        "interpretation"
+       "type": "tap_candles",
+       "chart": "doubleBottom",
+       "question": "Tap both troughs that test the same support level.",
+       "targets": [
+        1,
+        3
        ],
-       "correct": 2,
        "explanation": "Interpreting the pattern's implication goes beyond just identifying its shape."
       },
       {
@@ -14935,14 +14705,10 @@
        "explanation": "Recognizing the shape and the level behavior together is the intermediate skill."
       },
       {
-       "type": "fill_blank",
-       "question": "Mixing pattern recognition with level reading builds a [___] chart-reading skill.",
-       "options": [
-        "random",
-        "narrower",
-        "fuller"
-       ],
-       "correct": 2,
+       "type": "mark_level",
+       "chart": "doubleTop",
+       "question": "Drag the line to the resistance both peaks stall at.",
+       "level_kind": "resistance",
        "explanation": "Combining both skills gives a more complete picture than either alone."
       },
       {
@@ -14952,14 +14718,13 @@
        "explanation": "This lesson explicitly combines identification with level-behavior reading."
       },
       {
-       "type": "fill_blank",
-       "question": "\"Mixed\" recognition means combining pattern identification with [___] reading.",
-       "options": [
-        "color",
-        "level",
-        "timeframe-only"
+       "type": "tap_candles",
+       "chart": "doubleTop",
+       "question": "Tap both peaks of the double top.",
+       "targets": [
+        1,
+        3
        ],
-       "correct": 1,
        "explanation": "This lesson mixes shape identification with reading the level's behavior."
       },
       {
@@ -15317,14 +15082,10 @@
        "chart": "headShoulders"
       },
       {
-       "type": "fill_blank",
-       "question": "The right shoulder is commonly at about the [___] height as the left shoulder.",
-       "options": [
-        "double",
-        "same",
-        "zero"
-       ],
-       "correct": 1,
+       "type": "mark_level",
+       "chart": "headShoulders",
+       "question": "Drag the line to the neckline of this head & shoulders.",
+       "level_kind": "support",
        "explanation": "Roughly-equal shoulders are part of a clean head & shoulders."
       },
       {
@@ -15353,14 +15114,10 @@
        "chart": "headShoulders"
       },
       {
-       "type": "fill_blank",
-       "question": "The left and right shoulders are commonly at [___] height as each other.",
-       "options": [
-        "about the same",
-        "wildly different",
-        "exactly double the"
-       ],
-       "correct": 0,
+       "type": "tap_candle",
+       "chart": "headShoulders",
+       "question": "Tap the head.",
+       "target": 3,
        "explanation": "Roughly equal shoulder heights are part of a clean head & shoulders."
       },
       {
@@ -15574,14 +15331,10 @@
        "chart": "inverseHeadShoulders"
       },
       {
-       "type": "fill_blank",
-       "question": "An inverse head & shoulders has three [___] instead of three peaks.",
-       "options": [
-        "necklines",
-        "wicks",
-        "troughs"
-       ],
-       "correct": 2,
+       "type": "tap_candle",
+       "chart": "inverseHeadShoulders",
+       "question": "Tap the head.",
+       "target": 3,
        "explanation": "The inverse version flips peaks into troughs."
       },
       {
@@ -15636,14 +15389,10 @@
        "chart": "headShoulders"
       },
       {
-       "type": "fill_blank",
-       "question": "The head should be clearly [___] both shoulders.",
-       "options": [
-        "equal to",
-        "above",
-        "below"
-       ],
-       "correct": 1,
+       "type": "mark_level",
+       "chart": "doubleTop",
+       "question": "Drag the line to the resistance both peaks stall at.",
+       "level_kind": "resistance",
        "explanation": "The head is the highest peak, above both shoulders."
       },
       {
@@ -15663,14 +15412,13 @@
        "chart": "doubleTop"
       },
       {
-       "type": "fill_blank",
-       "question": "Judging shoulder symmetry is about [___], not exact precision.",
-       "options": [
-        "degree",
-        "a fixed percentage rule",
-        "exact measurement"
+       "type": "tap_candles",
+       "chart": "doubleTop",
+       "question": "Tap both peaks of the double top.",
+       "targets": [
+        1,
+        3
        ],
-       "correct": 0,
        "explanation": "\"About the same\" height is a practical, descriptive judgment."
       },
       {
@@ -15803,14 +15551,10 @@
        "chart": "headShoulders"
       },
       {
-       "type": "fill_blank",
-       "question": "Counting the [___] is the fastest way to tell a double top from a head & shoulders.",
-       "options": [
-        "peaks",
-        "candle colors",
-        "timeframes"
-       ],
-       "correct": 0,
+       "type": "mark_level",
+       "chart": "doubleTop",
+       "question": "Drag the line to the resistance both peaks stall at.",
+       "level_kind": "resistance",
        "explanation": "Two peaks = double top; three peaks with a higher middle = head & shoulders."
       },
       {
@@ -16132,14 +15876,10 @@
        "chart": "headShoulders"
       },
       {
-       "type": "fill_blank",
-       "question": "This drill practices spotting the pattern's [___] quickly.",
-       "options": [
-        "color",
-        "volume",
-        "parts"
-       ],
-       "correct": 2,
+       "type": "mark_level",
+       "chart": "headShoulders",
+       "question": "Drag the line to the neckline of this head & shoulders.",
+       "level_kind": "support",
        "explanation": "Naming the head, shoulders, and neckline quickly is the point of this drill."
       },
       {
@@ -16213,14 +15953,10 @@
        "chart": "headShoulders"
       },
       {
-       "type": "fill_blank",
-       "question": "\"What it suggests\" stays [___], never a certainty.",
-       "options": [
-        "descriptive",
-        "random",
-        "guaranteed"
-       ],
-       "correct": 0,
+       "type": "mark_level",
+       "chart": "headShoulders",
+       "question": "Drag the line to the neckline of this head & shoulders.",
+       "level_kind": "support",
        "explanation": "This course consistently frames pattern reads as descriptive, not certain."
       },
       {
@@ -16473,14 +16209,10 @@
        "chart": "sideways"
       },
       {
-       "type": "fill_blank",
-       "question": "This unit treats head & shoulders as a [___] pattern, confirmed by the neckline.",
-       "options": [
-        "random",
-        "descriptive",
-        "guaranteed"
-       ],
-       "correct": 1,
+       "type": "mark_level",
+       "chart": "headShoulders",
+       "question": "Drag the line to the neckline of this head & shoulders.",
+       "level_kind": "support",
        "explanation": "Descriptive, neckline-confirmed reading has been the throughline of this unit."
       },
       {
@@ -16566,14 +16298,10 @@
        "chart": "ascendingTriangle"
       },
       {
-       "type": "fill_blank",
-       "question": "The lows of an ascending triangle are commonly [___] while the top stays flat.",
-       "options": [
-        "falling",
-        "rising",
-        "flat"
-       ],
-       "correct": 1,
+       "type": "mark_level",
+       "chart": "ascendingTriangle",
+       "question": "Drag the line to the flat resistance the highs keep testing.",
+       "level_kind": "resistance",
        "explanation": "Rising lows plus a flat top is the defining structure."
       },
       {
@@ -16603,14 +16331,14 @@
        "chart": "ascendingTriangle"
       },
       {
-       "type": "fill_blank",
-       "question": "An ascending triangle has a flat [___] on top.",
-       "options": [
-        "support",
-        "resistance",
-        "neckline"
+       "type": "tap_candles",
+       "chart": "ascendingTriangle",
+       "question": "Tap the three touches of the flat resistance.",
+       "targets": [
+        0,
+        2,
+        4
        ],
-       "correct": 1,
        "explanation": "The flat top of an ascending triangle is the resistance being tested."
       },
       {
@@ -16684,14 +16412,10 @@
        "chart": "descendingTriangle"
       },
       {
-       "type": "fill_blank",
-       "question": "The highs of a descending triangle are commonly [___] while the bottom stays flat.",
-       "options": [
-        "falling",
-        "rising",
-        "flat"
-       ],
-       "correct": 0,
+       "type": "mark_level",
+       "chart": "descendingTriangle",
+       "question": "Drag the line to the flat support the lows keep testing.",
+       "level_kind": "support",
        "explanation": "Falling highs plus a flat bottom is the defining structure."
       },
       {
@@ -16714,14 +16438,10 @@
        "chart": "descendingTriangle"
       },
       {
-       "type": "fill_blank",
-       "question": "A descending triangle has a flat [___] on the bottom.",
-       "options": [
-        "neckline",
-        "resistance",
-        "support"
-       ],
-       "correct": 2,
+       "type": "mark_level",
+       "chart": "descendingTriangle",
+       "question": "Drag the line to the flat support the lows keep testing.",
+       "level_kind": "support",
        "explanation": "The flat bottom of a descending triangle is the support being tested."
       },
       {
@@ -16892,14 +16612,10 @@
        "explanation": "The flat bottom of a descending triangle is a support being retested."
       },
       {
-       "type": "fill_blank",
-       "question": "The flat side of an ascending or descending triangle is being tested [___] over time.",
-       "options": [
-        "never",
-        "repeatedly",
-        "once only"
-       ],
-       "correct": 1,
+       "type": "mark_level",
+       "chart": "descendingTriangle",
+       "question": "Drag the line to the flat support the lows keep testing.",
+       "level_kind": "support",
        "explanation": "Repeated tests of the flat side is what makes it a meaningful level."
       },
       {
@@ -16944,14 +16660,10 @@
        "explanation": "A commonly-cited bias isn't a guarantee; triangles can break either way."
       },
       {
-       "type": "fill_blank",
-       "question": "A triangle's expected break direction is a [___], not a certainty.",
-       "options": [
-        "guarantee",
-        "rule",
-        "bias"
-       ],
-       "correct": 2,
+       "type": "mark_level",
+       "chart": "ascendingTriangle",
+       "question": "Drag the line to the flat resistance the highs keep testing.",
+       "level_kind": "resistance",
        "explanation": "Descriptive bias, not a promise, is the honest read."
       },
       {
@@ -16962,14 +16674,14 @@
        "chart": "ascendingTriangle"
       },
       {
-       "type": "fill_blank",
-       "question": "A triangle's expected break direction is described as a [___], not a guarantee.",
-       "options": [
-        "bias",
-        "certainty",
-        "rule"
+       "type": "tap_candles",
+       "chart": "ascendingTriangle",
+       "question": "Tap the three touches of the flat resistance.",
+       "targets": [
+        0,
+        2,
+        4
        ],
-       "correct": 0,
        "explanation": "Even a commonly associated direction is just a bias, not a promise."
       },
       {
@@ -17052,14 +16764,10 @@
        "chart": "descendingTriangle"
       },
       {
-       "type": "fill_blank",
-       "question": "Fast identification drills help build quicker [___] recognition.",
-       "options": [
-        "random",
-        "zero",
-        "pattern"
-       ],
-       "correct": 2,
+       "type": "mark_level",
+       "chart": "descendingTriangle",
+       "question": "Drag the line to the flat support the lows keep testing.",
+       "level_kind": "support",
        "explanation": "Repetition across mixed triangle charts builds faster recognition."
       },
       {
@@ -17357,14 +17065,11 @@
        "chart": "bearFlag"
       },
       {
-       "type": "fill_blank",
-       "question": "A bear flag is commonly read as a [___] pattern.",
-       "options": [
-        "continuation",
-        "reversal",
-        "random"
-       ],
-       "correct": 0,
+       "type": "mark_consolidation",
+       "chart": "bearFlag",
+       "question": "Drag across the flag.",
+       "target_lo": 2,
+       "target_hi": 3,
        "explanation": "Like the bull flag, it's a continuation of the pole's direction."
       },
       {
@@ -17458,14 +17163,10 @@
        "chart": "bullFlag"
       },
       {
-       "type": "fill_blank",
-       "question": "The flag drifts [___] the pole's direction, as a small pause.",
-       "options": [
-        "against",
-        "exactly with",
-        "far beyond"
-       ],
-       "correct": 0,
+       "type": "tap_candle",
+       "chart": "bullFlag",
+       "question": "Tap the start of the pole.",
+       "target": 0,
        "explanation": "The flag consolidates gently against the pole before continuing."
       },
       {
@@ -17480,14 +17181,11 @@
        "explanation": "The flag is a small pause; the pole is the large, strong move."
       },
       {
-       "type": "fill_blank",
-       "question": "The flag portion is [___] than the pole.",
-       "options": [
-        "identical in size",
-        "much smaller",
-        "much larger"
-       ],
-       "correct": 1,
+       "type": "mark_consolidation",
+       "chart": "bullFlag",
+       "question": "Drag across the flag.",
+       "target_lo": 2,
+       "target_hi": 3,
        "explanation": "The flag is a brief, small pause compared to the larger pole move."
       },
       {
@@ -17617,14 +17315,11 @@
        "explanation": "Continuation is a tendency, not a certainty."
       },
       {
-       "type": "fill_blank",
-       "question": "Flags and pennants are read as [___] patterns, not guaranteed outcomes.",
-       "options": [
-        "reversal",
-        "random",
-        "continuation"
-       ],
-       "correct": 2,
+       "type": "mark_consolidation",
+       "chart": "bearFlag",
+       "question": "Drag across the flag.",
+       "target_lo": 2,
+       "target_hi": 3,
        "explanation": "They describe a pause that often continues, descriptively."
       },
       {
@@ -17636,14 +17331,10 @@
        "chart": "bearFlag"
       },
       {
-       "type": "fill_blank",
-       "question": "Flags and pennants are classified as [___] patterns.",
-       "options": [
-        "continuation",
-        "reversal",
-        "random"
-       ],
-       "correct": 0,
+       "type": "tap_candle",
+       "chart": "bullFlag",
+       "question": "Tap the start of the pole.",
+       "target": 0,
        "explanation": "Both are read as pauses that often continue the prior move, not reverse it."
       },
       {
@@ -17845,14 +17536,11 @@
        "chart": "risingWedge"
       },
       {
-       "type": "fill_blank",
-       "question": "A rising wedge's lines [___] rather than staying parallel.",
-       "options": [
-        "diverge",
-        "stay flat",
-        "converge"
-       ],
-       "correct": 2,
+       "type": "draw_trendline",
+       "chart": "risingWedge",
+       "question": "Drag to connect the two highs that form the wedge's upper line.",
+       "target_start": 0,
+       "target_end": 4,
        "explanation": "Converging (narrowing) lines are what define a wedge, unlike a parallel channel."
       },
       {
@@ -17935,14 +17623,11 @@
        "chart": "fallingWedge"
       },
       {
-       "type": "fill_blank",
-       "question": "A falling wedge's lines [___] rather than staying parallel.",
-       "options": [
-        "converge",
-        "diverge",
-        "stay flat"
-       ],
-       "correct": 0,
+       "type": "draw_trendline",
+       "chart": "fallingWedge",
+       "question": "Drag to connect the two lows that form the wedge's lower line.",
+       "target_start": 0,
+       "target_end": 4,
        "explanation": "Converging (narrowing) lines are what define a wedge, unlike a parallel channel."
       },
       {
@@ -17996,14 +17681,14 @@
        "chart": "ascendingChannel"
       },
       {
-       "type": "fill_blank",
-       "question": "A channel's boundary lines stay [___], unlike a wedge's converging lines.",
-       "options": [
-        "parallel",
-        "crossing",
-        "converging"
+       "type": "tap_candles",
+       "chart": "ascendingChannel",
+       "question": "Tap every candle that pushes up to the upper channel boundary.",
+       "targets": [
+        1,
+        3,
+        5
        ],
-       "correct": 0,
        "explanation": "Parallel boundaries define a channel; converging ones define a wedge."
       },
       {
@@ -18052,14 +17737,14 @@
        "explanation": "Parallel vs converging is the key structural difference."
       },
       {
-       "type": "fill_blank",
-       "question": "A channel's boundary lines stay [___] to each other.",
-       "options": [
-        "crossing",
-        "converging",
-        "parallel"
+       "type": "tap_candles",
+       "chart": "ascendingChannel",
+       "question": "Tap every candle that pushes up to the upper channel boundary.",
+       "targets": [
+        1,
+        3,
+        5
        ],
-       "correct": 2,
        "explanation": "Parallel lines (not converging) define a channel."
       },
       {
@@ -18746,14 +18431,14 @@
        "explanation": "One point isn't enough, multiple touches are commonly needed to establish a line."
       },
       {
-       "type": "fill_blank",
-       "question": "More [___] generally make a trendline more meaningful.",
-       "options": [
-        "colors",
-        "candles",
-        "touches"
+       "type": "tap_candles",
+       "chart": "ascendingChannel",
+       "question": "Tap every candle that pushes up to the upper channel boundary.",
+       "targets": [
+        1,
+        3,
+        5
        ],
-       "correct": 2,
        "explanation": "Repeated touches confirm the line matters."
       },
       {
@@ -18782,14 +18467,14 @@
        "explanation": "Multiple touches are the evidence that a trendline is being respected."
       },
       {
-       "type": "fill_blank",
-       "question": "A trendline with only one touch is [___] established than one with several.",
-       "options": [
-        "more",
-        "equally",
-        "less"
+       "type": "tap_candles",
+       "chart": "ascendingChannel",
+       "question": "Tap every candle that pushes up to the upper channel boundary.",
+       "targets": [
+        1,
+        3,
+        5
        ],
-       "correct": 2,
        "explanation": "More touches make a trendline more established and meaningful."
       },
       {
@@ -18851,14 +18536,13 @@
        "explanation": "A break is a possible shift, not a guaranteed reversal."
       },
       {
-       "type": "fill_blank",
-       "question": "A trendline break is read as a [___] shift, not a certainty.",
-       "options": [
-        "possible",
-        "random",
-        "guaranteed"
+       "type": "tap_candles",
+       "chart": "pullbackUptrend",
+       "question": "Tap the two swing highs making higher highs.",
+       "targets": [
+        1,
+        3
        ],
-       "correct": 0,
        "explanation": "It's a descriptive, possible shift in structure."
       },
       {
@@ -18872,14 +18556,11 @@
        "chart": "pullbackUptrend"
       },
       {
-       "type": "fill_blank",
-       "question": "A trendline break is read as a [___] shift, not a guaranteed one.",
-       "options": [
-        "guaranteed",
-        "random",
-        "possible"
-       ],
-       "correct": 2,
+       "type": "draw_trendline",
+       "chart": "pullbackUptrend",
+       "question": "Draw the uptrend line under the higher lows.",
+       "target_start": 0,
+       "target_end": 2,
        "explanation": "Like other signals in this course, a break is descriptive, not a certainty."
       },
       {
@@ -19185,14 +18866,10 @@
        "chart": "range"
       },
       {
-       "type": "fill_blank",
-       "question": "Reading whether a market is range-bound or [___] is a key first step.",
-       "options": [
-        "colored",
-        "trending",
-        "volatile-only"
-       ],
-       "correct": 1,
+       "type": "tap_candle",
+       "chart": "uptrend",
+       "question": "Tap the candle that makes the highest high.",
+       "target": 4,
        "explanation": "Classifying the regime (range-bound vs trending) frames how everything else is read."
       },
       {
@@ -19420,14 +19097,10 @@
        "explanation": "Because breaks can be false, a break is read as a clue, not a certainty."
       },
       {
-       "type": "fill_blank",
-       "question": "A break that fails back inside the range is commonly called a [___] breakout.",
-       "options": [
-        "guaranteed",
-        "false",
-        "perfect"
-       ],
-       "correct": 1,
+       "type": "mark_level",
+       "chart": "resistanceRejection",
+       "question": "Drag the line to the resistance this chart keeps getting rejected at.",
+       "level_kind": "resistance",
        "explanation": "\"False breakout\" (or fakeout) is the standard term."
       },
       {
@@ -19438,14 +19111,10 @@
        "chart": "resistanceRejection"
       },
       {
-       "type": "fill_blank",
-       "question": "A break that fails and falls back inside the range is called a [___] breakout.",
-       "options": [
-        "false",
-        "confirmed",
-        "guaranteed"
-       ],
-       "correct": 0,
+       "type": "mark_level",
+       "chart": "resistanceRejection",
+       "question": "Drag the line to the resistance this chart keeps getting rejected at.",
+       "level_kind": "resistance",
        "explanation": "\"False breakout\" (or fakeout) describes a failed break that reverses back inside."
       },
       {
@@ -19609,14 +19278,10 @@
        "chart": "breakout"
       },
       {
-       "type": "fill_blank",
-       "question": "A breakout is price [___] a level and continuing past it.",
-       "options": [
-        "ignoring",
-        "clearing",
-        "bouncing off"
-       ],
-       "correct": 1,
+       "type": "mark_level",
+       "chart": "breakout",
+       "question": "Drag the line to the resistance the price broke above.",
+       "level_kind": "resistance",
        "explanation": "Clearing the level (not bouncing) is what makes a breakout."
       },
       {
@@ -19704,25 +19369,17 @@
        "chart": "breakdown"
       },
       {
-       "type": "fill_blank",
-       "question": "A breakdown is a breakout to the [___] side.",
-       "options": [
-        "up",
-        "flat",
-        "down"
-       ],
-       "correct": 2,
+       "type": "tap_candle",
+       "chart": "breakdown",
+       "question": "Tap the candle that breaks below the support shelf.",
+       "target": 3,
        "explanation": "A breakdown is the downside version of a breakout."
       },
       {
-       "type": "fill_blank",
-       "question": "A breakdown is the [___] version of a breakout.",
-       "options": [
-        "random",
-        "downside",
-        "identical"
-       ],
-       "correct": 1,
+       "type": "tap_candle",
+       "chart": "breakdown",
+       "question": "Tap the candle that breaks below the support shelf.",
+       "target": 3,
        "explanation": "Breakdown mirrors breakout, but to the downside through support."
       },
       {
@@ -19805,14 +19462,10 @@
        "chart": "breakoutRetest"
       },
       {
-       "type": "fill_blank",
-       "question": "A retest happens [___] the original breakout.",
-       "options": [
-        "before",
-        "after",
-        "without regard to"
-       ],
-       "correct": 1,
+       "type": "tap_candle",
+       "chart": "breakoutRetest",
+       "question": "Tap the breakout candle that clears the level.",
+       "target": 3,
        "explanation": "A retest only makes sense once a level has already broken."
       },
       {
@@ -19963,25 +19616,17 @@
        "explanation": "Strength is descriptive context; a clean breakout is not a guarantee."
       },
       {
-       "type": "fill_blank",
-       "question": "Reading breakout strength is [___] context, not a guarantee.",
-       "options": [
-        "descriptive",
-        "guaranteed",
-        "random"
-       ],
-       "correct": 0,
+       "type": "mark_level",
+       "chart": "breakout",
+       "question": "Drag the line to the resistance the price broke above.",
+       "level_kind": "resistance",
        "explanation": "It informs the read; it doesn't promise the outcome."
       },
       {
-       "type": "fill_blank",
-       "question": "A clean breakout clears the level with a [___] candle.",
-       "options": [
-        "strong, decisive",
-        "random",
-        "tiny, hesitant"
-       ],
-       "correct": 0,
+       "type": "tap_candle",
+       "chart": "breakout",
+       "question": "Tap the breakout candle.",
+       "target": 3,
        "explanation": "A strong, decisive candle through the level reads as a cleaner breakout."
       },
       {
@@ -20174,25 +19819,21 @@
        "explanation": "A pullback pauses the trend briefly; it isn't automatically a reversal."
       },
       {
-       "type": "fill_blank",
-       "question": "In an uptrend, a pullback is a temporary [___] before price often rises again.",
-       "options": [
-        "gap",
-        "dip",
-        "surge"
+       "type": "tap_candles",
+       "chart": "pullbackUptrend",
+       "question": "Tap the two swing highs making higher highs.",
+       "targets": [
+        1,
+        3
        ],
-       "correct": 1,
        "explanation": "A pullback in an uptrend is a small dip against the up-move."
       },
       {
-       "type": "fill_blank",
-       "question": "A pullback is a [___] counter-move within a trend.",
-       "options": [
-        "permanent",
-        "guaranteed",
-        "temporary"
-       ],
-       "correct": 2,
+       "type": "draw_trendline",
+       "chart": "pullbackUptrend",
+       "question": "Draw the uptrend line under the higher lows.",
+       "target_start": 0,
+       "target_end": 2,
        "explanation": "A pullback is described as temporary, not a permanent change in direction."
       },
       {
@@ -20284,14 +19925,13 @@
        "explanation": "A lower low breaks the higher-low pattern, commonly read as weakening."
       },
       {
-       "type": "fill_blank",
-       "question": "A healthy uptrend's pullbacks bottom at [___] lows each time.",
-       "options": [
-        "identical",
-        "lower",
-        "higher"
+       "type": "tap_candles",
+       "chart": "pullbackUptrend",
+       "question": "Tap the two swing highs making higher highs.",
+       "targets": [
+        1,
+        3
        ],
-       "correct": 2,
        "explanation": "Higher lows through the pullbacks is what keeps an uptrend structurally healthy."
       },
       {
@@ -20380,14 +20020,10 @@
        "chart": "lowerHighsDowntrend"
       },
       {
-       "type": "fill_blank",
-       "question": "A healthy downtrend's bounces top at [___] highs each time.",
-       "options": [
-        "identical",
-        "higher",
-        "lower"
-       ],
-       "correct": 2,
+       "type": "tap_candle",
+       "chart": "lowerHighsDowntrend",
+       "question": "Tap the lower high on this downtrend.",
+       "target": 2,
        "explanation": "Lower highs through the bounces is what keeps a downtrend structurally healthy."
       },
       {
@@ -20473,14 +20109,10 @@
        "explanation": "Pullbacks preserve structure; reversals break it."
       },
       {
-       "type": "fill_blank",
-       "question": "A pullback keeps the trend's [___] intact; a reversal breaks it.",
-       "options": [
-        "color",
-        "structure",
-        "volume"
-       ],
-       "correct": 1,
+       "type": "tap_candle",
+       "chart": "breakdown",
+       "question": "Tap the candle that breaks below the support shelf.",
+       "target": 3,
        "explanation": "Structure (higher lows / lower highs) staying intact is what separates a pullback from a reversal."
       },
       {
@@ -20563,14 +20195,10 @@
        "explanation": "It's a common tendency, not a certainty, the trend can still fail."
       },
       {
-       "type": "fill_blank",
-       "question": "After a healthy pullback, the trend often [___] its original direction.",
-       "options": [
-        "reverses",
-        "abandons",
-        "resumes"
-       ],
-       "correct": 2,
+       "type": "tap_candle",
+       "chart": "breakdown",
+       "question": "Tap the candle that breaks below the support shelf.",
+       "target": 3,
        "explanation": "The trend commonly resumes after a healthy pullback."
       },
       {
@@ -20581,14 +20209,13 @@
        "chart": "breakdown"
       },
       {
-       "type": "fill_blank",
-       "question": "Continuation after a healthy pullback is a [___], not a guarantee.",
-       "options": [
-        "certainty",
-        "rule",
-        "tendency"
+       "type": "tap_candles",
+       "chart": "pullbackUptrend",
+       "question": "Tap the two swing highs making higher highs.",
+       "targets": [
+        1,
+        3
        ],
-       "correct": 2,
        "explanation": "\"Often, not always\" describes a tendency, not a certainty."
       },
       {
@@ -20783,14 +20410,10 @@
        "chart": "marubozu"
       },
       {
-       "type": "fill_blank",
-       "question": "A [___] body reflects stronger momentum.",
-       "options": [
-        "large",
-        "small",
-        "zero"
-       ],
-       "correct": 0,
+       "type": "tap_candle",
+       "chart": "marubozu",
+       "question": "Tap the big-momentum candle.",
+       "target": 1,
        "explanation": "Bigger bodies reflect stronger, more one-sided moves."
       },
       {
@@ -20800,14 +20423,10 @@
        "explanation": "The full body shows price pushed one way and held."
       },
       {
-       "type": "fill_blank",
-       "question": "A large candle body reflects [___] in that period.",
-       "options": [
-        "momentum",
-        "indecision",
-        "volume only"
-       ],
-       "correct": 0,
+       "type": "tap_candle",
+       "chart": "marubozu",
+       "question": "Tap the big-momentum candle.",
+       "target": 1,
        "explanation": "A large body shows price moved decisively one way. That's momentum."
       },
       {
@@ -20859,14 +20478,10 @@
        "chart": "rejectionWickUp"
       },
       {
-       "type": "fill_blank",
-       "question": "A long wick is commonly read as a sign of possible [___] at that extreme.",
-       "options": [
-        "volume",
-        "exhaustion",
-        "momentum"
-       ],
-       "correct": 1,
+       "type": "tap_candle",
+       "chart": "rejectionWickDown",
+       "question": "Tap the candle with a long lower wick (rejection of the lows).",
+       "target": 1,
        "explanation": "A rejected push suggests the move may be running out of steam there."
       },
       {
@@ -20948,25 +20563,17 @@
        "chart": "doji"
       },
       {
-       "type": "fill_blank",
-       "question": "Small-bodied candles reflect momentum [___], not a strong move.",
-       "options": [
-        "doubling",
-        "surging",
-        "stalling"
-       ],
-       "correct": 2,
+       "type": "tap_candle",
+       "chart": "doji",
+       "question": "Tap the doji.",
+       "target": 1,
        "explanation": "A small body means neither side pushed decisively, momentum stalling."
       },
       {
-       "type": "fill_blank",
-       "question": "A doji or spinning top reflects [___], not decisive momentum.",
-       "options": [
-        "indecision",
-        "strong momentum",
-        "guaranteed reversal"
-       ],
-       "correct": 0,
+       "type": "tap_candle",
+       "chart": "spinningTop",
+       "question": "Tap the spinning top.",
+       "target": 1,
        "explanation": "Small bodies on both these shapes reflect a balanced, indecisive period."
       },
       {
@@ -21058,14 +20665,10 @@
        "explanation": "Strength informs the read; it doesn't guarantee what comes next."
       },
       {
-       "type": "fill_blank",
-       "question": "Comparing candles helps read [___] strength between them.",
-       "options": [
-        "guaranteed",
-        "random",
-        "relative"
-       ],
-       "correct": 2,
+       "type": "tap_candle",
+       "chart": "marubozu",
+       "question": "Tap the big-momentum candle.",
+       "target": 1,
        "explanation": "Comparing body sizes is about relative, descriptive strength, not certainty."
       },
       {
@@ -21123,25 +20726,17 @@
        "explanation": "A rejection is a descriptive clue about exhaustion, not a guarantee."
       },
       {
-       "type": "fill_blank",
-       "question": "A strong push that rejects at a level is a common [___] read.",
-       "options": [
-        "exhaustion",
-        "volume",
-        "continuation"
-       ],
-       "correct": 0,
+       "type": "mark_level",
+       "chart": "resistanceRejection",
+       "question": "Drag the line to the resistance this chart keeps getting rejected at.",
+       "level_kind": "resistance",
        "explanation": "A rejected push at a level commonly reads as exhaustion there."
       },
       {
-       "type": "fill_blank",
-       "question": "A strong push into resistance that then rejects is a common [___] read.",
-       "options": [
-        "volume",
-        "continuation",
-        "exhaustion"
-       ],
-       "correct": 2,
+       "type": "mark_level",
+       "chart": "resistanceRejection",
+       "question": "Drag the line to the resistance this chart keeps getting rejected at.",
+       "level_kind": "resistance",
        "explanation": "A rejected push at a level is commonly read as possible exhaustion there."
       },
       {
@@ -21234,14 +20829,10 @@
        "chart": "marubozu"
       },
       {
-       "type": "fill_blank",
-       "question": "This review ties together momentum (bodies), exhaustion (wicks), and [___] (small bodies).",
-       "options": [
-        "volume spikes",
-        "indecision",
-        "gap fills"
-       ],
-       "correct": 1,
+       "type": "tap_candle",
+       "chart": "marubozu",
+       "question": "Tap the big-momentum candle.",
+       "target": 1,
        "explanation": "All three core reads from this unit are reviewed together here."
       },
       {
@@ -21292,14 +20883,10 @@
        "explanation": "Agreement strengthens the read; it doesn't make it a certainty."
       },
       {
-       "type": "fill_blank",
-       "question": "Confluence is when [___] or more readings agree at the same spot.",
-       "options": [
-        "two",
-        "one",
-        "zero"
-       ],
-       "correct": 0,
+       "type": "mark_level",
+       "chart": "supportBounce",
+       "question": "Drag the line to the support this chart keeps bouncing from.",
+       "level_kind": "support",
        "explanation": "Confluence requires at least two agreeing factors."
       },
       {
@@ -21336,14 +20923,10 @@
        "chart": "supportBounce"
       },
       {
-       "type": "fill_blank",
-       "question": "Confluence is [___] or more readings agreeing at the same spot.",
-       "options": [
-        "two",
-        "exactly one",
-        "zero"
-       ],
-       "correct": 0,
+       "type": "mark_level",
+       "chart": "supportBounce",
+       "question": "Drag the line to the support this chart keeps bouncing from.",
+       "level_kind": "support",
        "explanation": "Confluence requires at least two agreeing factors at one spot."
       },
       {
@@ -21498,14 +21081,10 @@
        "explanation": "The resistance level plus the double top pattern is confluence."
       },
       {
-       "type": "fill_blank",
-       "question": "A pattern forming at a key level is an example of [___] confluence.",
-       "options": [
-        "level + pattern",
-        "random",
-        "guaranteed"
-       ],
-       "correct": 0,
+       "type": "mark_level",
+       "chart": "doubleTop",
+       "question": "Drag the line to the resistance both peaks stall at.",
+       "level_kind": "resistance",
        "explanation": "The pattern and the level reinforcing each other is this type of confluence."
       },
       {
@@ -21564,14 +21143,13 @@
        "explanation": "The trend and the pullback both pointing up is confluence."
       },
       {
-       "type": "fill_blank",
-       "question": "A higher-low pullback within an uptrend is [___] with the trend.",
-       "options": [
-        "opposed",
-        "unrelated",
-        "aligned"
+       "type": "tap_candles",
+       "chart": "pullbackUptrend",
+       "question": "Tap the two swing highs making higher highs.",
+       "targets": [
+        1,
+        3
        ],
-       "correct": 2,
        "explanation": "The pullback and the trend agree. They're aligned (confluence)."
       },
       {
@@ -21581,14 +21159,11 @@
        "explanation": "Trend plus an aligned pullback is two factors agreeing, confluence."
       },
       {
-       "type": "fill_blank",
-       "question": "A healthy pullback within a trend is an example of [___] confluence.",
-       "options": [
-        "trend + pullback",
-        "random",
-        "guaranteed"
-       ],
-       "correct": 0,
+       "type": "draw_trendline",
+       "chart": "pullbackUptrend",
+       "question": "Draw the uptrend line under the higher lows.",
+       "target_start": 0,
+       "target_end": 2,
        "explanation": "The trend direction and the pullback's structure agreeing is this type of confluence."
       },
       {
@@ -21656,14 +21231,10 @@
        "explanation": "Confluence stacks probability, never certainty. Nothing is guaranteed."
       },
       {
-       "type": "fill_blank",
-       "question": "Confluence stacks [___], not certainty.",
-       "options": [
-        "volume",
-        "probability",
-        "guarantees"
-       ],
-       "correct": 1,
+       "type": "mark_level",
+       "chart": "resistanceRejection",
+       "question": "Drag the line to the resistance this chart keeps getting rejected at.",
+       "level_kind": "resistance",
        "explanation": "More agreeing factors raise the odds in the read, not a guarantee."
       },
       {
@@ -21770,14 +21341,10 @@
        "chart": "doji"
       },
       {
-       "type": "fill_blank",
-       "question": "This review ties together the idea of stacking [___] readings.",
-       "options": [
-        "random",
-        "guaranteed",
-        "agreeing"
-       ],
-       "correct": 2,
+       "type": "tap_candle",
+       "chart": "doji",
+       "question": "Tap the doji.",
+       "target": 1,
        "explanation": "Stacking multiple agreeing readings is the throughline of this unit."
       },
       {
@@ -21839,14 +21406,10 @@
        "chart": "gapUp"
       },
       {
-       "type": "fill_blank",
-       "question": "A gap leaves an empty space with no [___] in between.",
-       "options": [
-        "color",
-        "trading",
-        "wicks"
-       ],
-       "correct": 1,
+       "type": "tap_candle",
+       "chart": "gapUp",
+       "question": "Tap the gap-up candle.",
+       "target": 2,
        "explanation": "Price jumped, so no trades happened across the gap."
       },
       {
@@ -21940,14 +21503,10 @@
        "explanation": "Up = above prior high; down = below prior low."
       },
       {
-       "type": "fill_blank",
-       "question": "A gap up opens [___] the prior candle's high.",
-       "options": [
-        "above",
-        "exactly at",
-        "below"
-       ],
-       "correct": 0,
+       "type": "tap_candle",
+       "chart": "gapDown",
+       "question": "Tap the gap candle.",
+       "target": 2,
        "explanation": "Opening above the prior high is what defines a gap up."
       },
       {
@@ -22002,14 +21561,10 @@
        "explanation": "Non-continuous trading (overnight/news) is a common cause of gaps."
       },
       {
-       "type": "fill_blank",
-       "question": "A gap forms when trading isn't [___], so the next price is far from the last.",
-       "options": [
-        "slow",
-        "colorful",
-        "continuous"
-       ],
-       "correct": 2,
+       "type": "tap_candle",
+       "chart": "gapUp",
+       "question": "Tap the gap-up candle.",
+       "target": 2,
        "explanation": "Discontinuous trading lets price jump, forming a gap."
       },
       {
@@ -22093,14 +21648,10 @@
        "explanation": "Gaps fill often but not always. It's a tendency, not a guarantee."
       },
       {
-       "type": "fill_blank",
-       "question": "A gap fill happens [___], not always.",
-       "options": [
-        "never",
-        "often",
-        "instantly"
-       ],
-       "correct": 1,
+       "type": "tap_candle",
+       "chart": "gapUp",
+       "question": "Tap the gap-up candle.",
+       "target": 2,
        "explanation": "Gap fills are a common tendency, not a certainty."
       },
       {
@@ -22256,14 +21807,10 @@
        "explanation": "A move that's a blip on a daily chart can be a whole trend on a 1-minute chart."
       },
       {
-       "type": "fill_blank",
-       "question": "A daily candle represents [___] time than a 1-minute candle.",
-       "options": [
-        "more",
-        "the same",
-        "less"
-       ],
-       "correct": 0,
+       "type": "tap_candle",
+       "chart": "uptrend",
+       "question": "Tap the candle that makes the highest high.",
+       "target": 4,
        "explanation": "Each daily candle covers a full day, far more than a minute."
       },
       {
@@ -22278,14 +21825,11 @@
        "explanation": "Higher timeframes cover more time per candle (daily > hourly > 1-minute)."
       },
       {
-       "type": "fill_blank",
-       "question": "A timeframe describes how much [___] each candle represents.",
-       "options": [
-        "volume",
-        "color",
-        "time"
-       ],
-       "correct": 2,
+       "type": "draw_trendline",
+       "chart": "uptrend",
+       "question": "Draw the uptrend line from the first candle to the last.",
+       "target_start": 0,
+       "target_end": 4,
        "explanation": "Timeframe defines the duration each candle covers."
       },
       {
@@ -22449,14 +21993,13 @@
        "explanation": "Zooming into a pullback can show a complete small downtrend."
       },
       {
-       "type": "fill_blank",
-       "question": "A market can trend one way on a higher timeframe and [___] on a lower one.",
-       "options": [
-        "never",
-        "differently",
-        "identically"
+       "type": "tap_candles",
+       "chart": "pullbackUptrend",
+       "question": "Tap the two swing highs making higher highs.",
+       "targets": [
+        1,
+        3
        ],
-       "correct": 1,
        "explanation": "Trends can differ across timeframes for the same market."
       },
       {
@@ -22470,14 +22013,11 @@
        "chart": "pullbackUptrend"
       },
       {
-       "type": "fill_blank",
-       "question": "A pullback on a higher timeframe can look like a full [___] on a lower one.",
-       "options": [
-        "downtrend",
-        "gap",
-        "uptrend"
-       ],
-       "correct": 0,
+       "type": "draw_trendline",
+       "chart": "pullbackUptrend",
+       "question": "Draw the uptrend line under the higher lows.",
+       "target_start": 0,
+       "target_end": 2,
        "explanation": "Zooming into a higher-timeframe pullback can reveal what looks like a complete small downtrend."
       },
       {
@@ -22626,14 +22166,10 @@
        "explanation": "Alignment stacks evidence (confluence), which is stronger but never certain."
       },
       {
-       "type": "fill_blank",
-       "question": "When timeframes agree, it adds [___] to the read.",
-       "options": [
-        "volume",
-        "confluence",
-        "randomness"
-       ],
-       "correct": 1,
+       "type": "tap_candle",
+       "chart": "uptrend",
+       "question": "Tap the candle that makes the highest high.",
+       "target": 4,
        "explanation": "Agreeing timeframes are another agreeing factor, confluence."
       },
       {
@@ -24078,14 +23614,10 @@
        "explanation": "New information hitting the market at once commonly produces sharper price swings."
       },
       {
-       "type": "fill_blank",
-       "question": "Earnings reports are commonly [___] in advance, unlike random news.",
-       "options": [
-        "unpredictable",
-        "irrelevant",
-        "scheduled"
-       ],
-       "correct": 2,
+       "type": "tap_candle",
+       "chart": "gapUp",
+       "question": "Tap the gap-up candle.",
+       "target": 2,
        "explanation": "Being scheduled in advance is what distinguishes earnings from random breaking news."
       },
       {
@@ -25358,14 +24890,11 @@
        "explanation": "That's the standard definition of risk per trade."
       },
       {
-       "type": "fill_blank",
-       "question": "Risking a larger portion of your account on one trade is generally considered [___] risk.",
-       "options": [
-        "lower",
-        "zero",
-        "higher"
-       ],
-       "correct": 2,
+       "type": "draw_trendline",
+       "chart": "downtrend",
+       "question": "Draw the downtrend line from the first candle to the last.",
+       "target_start": 0,
+       "target_end": 4,
        "explanation": "A bigger portion of capital at stake means a larger risk for that trade."
       },
       {
@@ -25454,14 +24983,10 @@
        "chart": "downtrend"
       },
       {
-       "type": "fill_blank",
-       "question": "Risk per trade is commonly kept [___] and consistent across trades.",
-       "options": [
-        "large",
-        "small",
-        "random"
-       ],
-       "correct": 1,
+       "type": "tap_candle",
+       "chart": "downtrend",
+       "question": "Tap the candle that makes the lowest low.",
+       "target": 4,
        "explanation": "Small, consistent risk per trade is a commonly recommended habit."
       },
       {
@@ -25609,14 +25134,10 @@
        "chart": "supportBounce"
       },
       {
-       "type": "fill_blank",
-       "question": "Position size is commonly derived from your risk amount and [___] distance.",
-       "options": [
-        "timeframe",
-        "stop",
-        "volume"
-       ],
-       "correct": 1,
+       "type": "mark_level",
+       "chart": "supportBounce",
+       "question": "Drag the line to the support this chart keeps bouncing from.",
+       "level_kind": "support",
        "explanation": "Position size is worked backward from your dollar risk and stop distance."
       },
       {
@@ -25756,14 +25277,10 @@
        "chart": "breakout"
       },
       {
-       "type": "fill_blank",
-       "question": "A higher risk/reward ratio means more potential reward for the same [___] taken.",
-       "options": [
-        "color",
-        "risk",
-        "volume"
-       ],
-       "correct": 1,
+       "type": "mark_level",
+       "chart": "breakout",
+       "question": "Drag the line to the resistance the price broke above.",
+       "level_kind": "resistance",
        "explanation": "A higher ratio means a bigger potential payoff relative to the risk."
       },
       {
