@@ -64,7 +64,7 @@ struct OnboardingView: View {
                 if step > 0 {
                     header
                         .padding(.horizontal, 18)
-                        .padding(.top, 8)
+                        .padding(.top, 0)
                 }
 
                 ZStack(alignment: .topLeading) {
@@ -117,30 +117,37 @@ struct OnboardingView: View {
     // Hidden on the welcome screen (full-bleed hero, like the reference).
 
     private var header: some View {
-        VStack(spacing: 7) {
+        VStack(spacing: 2) {
             HStack {
-            Button(action: { Haptics.selection(); goBack() }) {
-                Image(systemName: "chevron.left")
-                    .font(.system(size: 19, weight: .black))
-                    .foregroundColor(Theme.muted)
-                    .frame(width: 40, height: 40)
-            }
-            .opacity(step > 0 ? 1 : 0)
-            .disabled(step == 0)
+                Button(action: { Haptics.selection(); goBack() }) {
+                    Image(systemName: "chevron.left")
+                        .font(.system(size: 19, weight: .black))
+                        .foregroundColor(Theme.muted)
+                        .frame(width: 32, height: 32)
+                }
+                .opacity(step > 0 ? 1 : 0)
+                .disabled(step == 0)
 
                 Spacer()
             }
 
             GeometryReader { geo in
                 ZStack(alignment: .leading) {
-                    Capsule().fill(Color.white.opacity(0.14))
+                    Capsule().fill(Color.white.opacity(0.20))
                     Capsule().fill(
                         LinearGradient(colors: [Color(hex: "#4CA9FF"), Color(hex: "#2B70C9")],
                                        startPoint: .top, endPoint: .bottom))
                         .frame(width: max(14, geo.size.width * CGFloat(step + 1) / CGFloat(totalSteps)))
+                        .overlay(
+                            Capsule().fill(Color.white.opacity(0.5))
+                                .frame(height: 4)
+                                .padding(.horizontal, 6)
+                                .padding(.top, 4),
+                            alignment: .top
+                        )
                 }
             }
-            .frame(height: 14)
+            .frame(height: 20)
         }
     }
 
