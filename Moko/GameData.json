@@ -382,14 +382,14 @@
       },
       {
        "type": "tap_candles",
-       "question": "Tap every bullish (green) candle.",
+       "question": "Tap every bullish candle.",
        "targets": [0, 2, 4],
        "explanation": "Nice! A green (up) candle closes above where it opened.",
        "chart": "volatile"
       },
       {
        "type": "tap_candles",
-       "question": "Now tap every bearish (red) candle.",
+       "question": "Now tap every bearish candle.",
        "targets": [1, 3, 5],
        "explanation": "That's it! A red (down) candle closes below where it opened.",
        "chart": "volatile"
