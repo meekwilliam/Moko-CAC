@@ -2350,7 +2350,7 @@
       },
       {
        "type": "tap_candle",
-       "question": "Tap the breakout candle (the one that clears the range).",
+       "question": "Tap the breakout candle.",
        "target": 3,
        "explanation": "This candle pushes above the range on strong momentum.",
        "chart": "breakout"
@@ -2850,7 +2850,7 @@
       },
       {
        "type": "tap_candle",
-       "question": "Tap the doji (tiny body, wicks on both sides).",
+       "question": "Tap the doji.",
        "target": 1,
        "explanation": "The middle candle's near-zero body with balanced wicks is the doji.",
        "chart": "doji"
@@ -3549,7 +3549,7 @@
       },
       {
        "type": "tap_candle",
-       "question": "Tap the marubozu (large body with almost no wicks).",
+       "question": "Tap the marubozu.",
        "target": 1,
        "explanation": "The candle that is nearly all body, with barely any wick, is the marubozu.",
        "chart": "marubozu"
@@ -3684,7 +3684,7 @@
       },
       {
        "type": "tap_candle",
-       "question": "Tap the doji (tiny body with wicks on both sides).",
+       "question": "Tap the doji.",
        "target": 1,
        "explanation": "The middle candle's near-zero body with balanced wicks is the doji.",
        "chart": "doji"
@@ -3814,7 +3814,7 @@
       },
       {
        "type": "tap_candle",
-       "question": "Tap the hammer (long lower wick, small body near the top).",
+       "question": "Tap the hammer.",
        "target": 2,
        "explanation": "The last candle's long lower wick and small upper body is the hammer.",
        "chart": "hammer"
@@ -3939,7 +3939,7 @@
       },
       {
        "type": "tap_candle",
-       "question": "Tap the shooting star (long upper wick, small body near the bottom).",
+       "question": "Tap the shooting star.",
        "target": 2,
        "explanation": "The last candle's long upper wick with a low body is the shooting star.",
        "chart": "shootingStar"
@@ -4326,7 +4326,7 @@
       },
       {
        "type": "tap_candle",
-       "question": "Tap the spinning top (small body with similar wicks on both sides).",
+       "question": "Tap the spinning top.",
        "target": 1,
        "explanation": "The candle with a small body and balanced wicks is the spinning top.",
        "chart": "spinningTop"
@@ -4458,7 +4458,7 @@
       },
       {
        "type": "tap_candle",
-       "question": "Tap the marubozu (large body with almost no wicks).",
+       "question": "Tap the marubozu.",
        "target": 1,
        "explanation": "The candle that is nearly all body, with barely any wick, is the marubozu.",
        "chart": "marubozu"
@@ -4568,7 +4568,7 @@
       },
       {
        "type": "tap_candle",
-       "question": "Tap the candle with a long upper wick (rejection of the highs).",
+       "question": "Tap the candle with the long upper wick.",
        "target": 1,
        "explanation": "The middle candle's long upper wick shows the highs were rejected.",
        "chart": "rejectionWickUp"
@@ -4612,7 +4612,7 @@
       },
       {
        "type": "tap_candle",
-       "question": "Tap the candle with the long lower wick (rejection of the lows).",
+       "question": "Tap the candle with the long lower wick.",
        "target": 1,
        "explanation": "The long lower wick shows the lows were rejected.",
        "chart": "rejectionWickDown"
@@ -4743,7 +4743,7 @@
       },
       {
        "type": "tap_candle",
-       "question": "Tap the doji (tiny body with wicks on both sides).",
+       "question": "Tap the doji.",
        "target": 1,
        "explanation": "The middle candle's near-zero body with balanced wicks is the doji.",
        "chart": "doji"
@@ -4764,7 +4764,7 @@
       },
       {
        "type": "tap_candle",
-       "question": "Tap the hanging man (small body up top, long lower wick after a rise).",
+       "question": "Tap the hanging man, after a rise.",
        "target": 2,
        "explanation": "Same shape as a hammer, but appearing after a rise, is the hanging man.",
        "chart": "hangingMan"
@@ -4931,7 +4931,7 @@
       },
       {
        "type": "tap_candle",
-       "question": "Tap the hammer (long lower wick, small body near the top).",
+       "question": "Tap the hammer.",
        "target": 2,
        "explanation": "The last candle's long lower wick and small upper body is the hammer.",
        "chart": "hammer"
@@ -4950,7 +4950,7 @@
       },
       {
        "type": "tap_candle",
-       "question": "Tap the marubozu (large body, almost no wicks).",
+       "question": "Tap the marubozu.",
        "target": 1,
        "explanation": "The candle that is nearly all body is the marubozu.",
        "chart": "marubozu"
@@ -4976,7 +4976,7 @@
       },
       {
        "type": "tap_candle",
-       "question": "Tap the rejection candle (long lower wick).",
+       "question": "Tap the rejection candle.",
        "target": 1,
        "explanation": "The middle candle's long lower wick shows a rejection of the lows.",
        "chart": "rejectionWickDown"
@@ -5048,21 +5048,21 @@
       },
       {
        "type": "tap_candle",
-       "question": "Tap the candle with the long upper wick (rejection of the highs).",
+       "question": "Tap the candle with the long upper wick.",
        "target": 1,
        "explanation": "The long upper wick shows the highs were rejected.",
        "chart": "rejectionWickUp"
       },
       {
        "type": "tap_candle",
-       "question": "Tap the hammer (long lower wick, small body near the top).",
+       "question": "Tap the hammer.",
        "target": 2,
        "explanation": "The last candle's long lower wick and small upper body is the hammer.",
        "chart": "hammer"
       },
       {
        "type": "tap_candle",
-       "question": "Tap the candle with the long lower wick (rejection of the lows).",
+       "question": "Tap the candle with the long lower wick.",
        "target": 1,
        "explanation": "The long lower wick shows the lows were rejected.",
        "chart": "rejectionWickDown"
@@ -5131,7 +5131,7 @@
       },
       {
        "type": "multiple_choice",
-       "question": "The chart above shows a hammer shape appearing after a rise. That is specifically called a...",
+       "question": "This shape, after a rise, is specifically called a...",
        "options": [
         "Hammer.",
         "Hanging man.",
@@ -5143,7 +5143,7 @@
       },
       {
        "type": "multiple_choice",
-       "question": "The chart above shows a small-body, long-upper-wick candle after a drop. That is specifically called an...",
+       "question": "This shape, after a drop, is specifically called an...",
        "options": [
         "Shooting star.",
         "Inverted hammer.",
@@ -5155,14 +5155,14 @@
       },
       {
        "type": "tap_candle",
-       "question": "Tap the hanging man (small body up top, long lower wick, after an up-move).",
+       "question": "Tap the hanging man, after an up-move.",
        "target": 2,
        "explanation": "The last candle's small upper body and long lower wick, following a rise, is the hanging man.",
        "chart": "hangingMan"
       },
       {
        "type": "tap_candle",
-       "question": "Tap the inverted hammer (low body, long upper wick after a drop).",
+       "question": "Tap the inverted hammer, after a drop.",
        "target": 2,
        "explanation": "A low body with a long upper wick after a decline is the inverted hammer.",
        "chart": "invertedHammer"
@@ -5273,14 +5273,14 @@
       },
       {
        "type": "tap_candle",
-       "question": "Tap the doji (tiny body with wicks on both sides).",
+       "question": "Tap the doji.",
        "target": 1,
        "explanation": "The middle candle's near-zero body with balanced wicks is the doji.",
        "chart": "doji"
       },
       {
        "type": "tap_candle",
-       "question": "Tap the marubozu (large body, almost no wicks).",
+       "question": "Tap the marubozu.",
        "target": 1,
        "explanation": "The candle that is nearly all body is the marubozu.",
        "chart": "marubozu"
@@ -5373,14 +5373,14 @@
       },
       {
        "type": "tap_candle",
-       "question": "Tap the doji (tiny body, wicks on both sides).",
+       "question": "Tap the doji.",
        "target": 1,
        "explanation": "The middle candle's near-zero body with balanced wicks is the doji.",
        "chart": "doji"
       },
       {
        "type": "tap_candle",
-       "question": "Tap the hammer (long lower wick, small body near the top).",
+       "question": "Tap the hammer.",
        "target": 2,
        "explanation": "The last candle's long lower wick and small upper body is the hammer.",
        "chart": "hammer"
@@ -5494,7 +5494,7 @@
       },
       {
        "type": "tap_candle",
-       "question": "Tap the shooting star (long upper wick, low body).",
+       "question": "Tap the shooting star.",
        "target": 2,
        "explanation": "The long upper wick with a low body is the shooting star.",
        "chart": "shootingStar"
@@ -6224,7 +6224,7 @@
       },
       {
        "type": "tap_candle",
-       "question": "Tap the breakout candle (the one that clears the range).",
+       "question": "Tap the breakout candle.",
        "target": 3,
        "explanation": "This candle pushes above the range on strong momentum.",
        "chart": "breakout"
@@ -6355,7 +6355,7 @@
       },
       {
        "type": "tap_candle",
-       "question": "Tap the breakout candle (the one that clears the range).",
+       "question": "Tap the breakout candle.",
        "target": 3,
        "explanation": "This candle pushes above the range on strong momentum.",
        "chart": "breakout"
@@ -6660,7 +6660,7 @@
       },
       {
        "type": "tap_candle",
-       "question": "Tap the doji (tiny body, wicks on both sides).",
+       "question": "Tap the doji.",
        "target": 1,
        "explanation": "The middle candle's near-zero body with balanced wicks is the doji.",
        "chart": "doji"
@@ -7138,7 +7138,7 @@
       },
       {
        "type": "tap_candle",
-       "question": "Tap the hammer (long lower wick, small body up top).",
+       "question": "Tap the hammer.",
        "target": 2,
        "explanation": "The long lower wick with a small upper body is the hammer.",
        "chart": "hammer"
@@ -7204,7 +7204,7 @@
       },
       {
        "type": "tap_candle",
-       "question": "Tap the breakout candle (the one that clears the range).",
+       "question": "Tap the breakout candle.",
        "target": 3,
        "explanation": "This candle pushes above the range on strong momentum.",
        "chart": "breakout"
@@ -7391,7 +7391,7 @@
       },
       {
        "type": "tap_candle",
-       "question": "Tap the breakout candle (the one that clears the range).",
+       "question": "Tap the breakout candle.",
        "target": 3,
        "explanation": "This candle pushes above the range on strong momentum.",
        "chart": "breakout"
@@ -8678,7 +8678,7 @@
       },
       {
        "type": "tap_candle",
-       "question": "Tap the breakout candle (the one that clears the range).",
+       "question": "Tap the breakout candle.",
        "target": 3,
        "explanation": "This candle pushes above the range on strong momentum.",
        "chart": "breakout"
@@ -9065,7 +9065,7 @@
       },
       {
        "type": "tap_candle",
-       "question": "Tap the marubozu (large body, almost no wicks).",
+       "question": "Tap the marubozu.",
        "target": 1,
        "explanation": "The candle that is nearly all body is the marubozu.",
        "chart": "marubozu"
@@ -9161,7 +9161,7 @@
       },
       {
        "type": "tap_candle",
-       "question": "Tap the breakout candle (the one that clears the range).",
+       "question": "Tap the breakout candle.",
        "target": 3,
        "explanation": "This candle pushes above the range on strong momentum.",
        "chart": "breakout"
@@ -9516,7 +9516,7 @@
       },
       {
        "type": "tap_candle",
-       "question": "Tap the candle with the long upper wick (rejection of the highs).",
+       "question": "Tap the candle with the long upper wick.",
        "target": 1,
        "explanation": "The long upper wick shows the highs were rejected.",
        "chart": "rejectionWickUp"
@@ -10610,7 +10610,7 @@
       },
       {
        "type": "tap_candle",
-       "question": "Tap the breakout candle (the one that clears the range).",
+       "question": "Tap the breakout candle.",
        "target": 3,
        "explanation": "This candle pushes above the range on strong momentum.",
        "chart": "breakout"
@@ -10746,7 +10746,7 @@
       },
       {
        "type": "tap_candle",
-       "question": "Tap the breakout candle (the one that clears the range).",
+       "question": "Tap the breakout candle.",
        "target": 3,
        "explanation": "This candle pushes above the range on strong momentum.",
        "chart": "breakout"
@@ -11174,7 +11174,7 @@
       },
       {
        "type": "tap_candle",
-       "question": "Tap the breakout candle (the one that clears the range).",
+       "question": "Tap the breakout candle.",
        "target": 3,
        "explanation": "This candle pushes above the range on strong momentum.",
        "chart": "breakout"
@@ -12357,7 +12357,7 @@
       },
       {
        "type": "tap_candle",
-       "question": "Tap the breakout candle (the one that clears the range).",
+       "question": "Tap the breakout candle.",
        "target": 3,
        "explanation": "This candle pushes above the range on strong momentum.",
        "chart": "breakout"
@@ -12658,7 +12658,7 @@
       },
       {
        "type": "tap_candle",
-       "question": "Tap the breakout candle (the one that clears the range).",
+       "question": "Tap the breakout candle.",
        "target": 3,
        "explanation": "This candle pushes above the range on strong momentum.",
        "chart": "breakout"
@@ -13273,7 +13273,7 @@
       },
       {
        "type": "multiple_choice",
-       "question": "The chart above shows two peaks stalling at about the same price. This shape is commonly called a...",
+       "question": "This shape is commonly called a...",
        "options": [
         "Double top.",
         "Head & shoulders.",
@@ -13402,7 +13402,7 @@
       },
       {
        "type": "multiple_choice",
-       "question": "The chart above shows two troughs holding at about the same price. This shape is commonly called a...",
+       "question": "This shape is commonly called a...",
        "options": [
         "Double top.",
         "Breakdown.",
@@ -13641,7 +13641,7 @@
       },
       {
        "type": "multiple_choice",
-       "question": "The chart above shows price stalling at resistance and turning down after a single touch. This is best described as...",
+       "question": "This is best described as...",
        "options": [
         "A double top.",
         "A resistance rejection.",
@@ -13653,7 +13653,7 @@
       },
       {
        "type": "multiple_choice",
-       "question": "The chart above shows two peaks at the same level with a dip between them. This is best described as...",
+       "question": "This is best described as...",
        "options": [
         "A double top.",
         "A single resistance rejection.",
@@ -13756,7 +13756,7 @@
       },
       {
        "type": "multiple_choice",
-       "question": "The chart above shows price dipping to support and bouncing after a single touch. This is best described as...",
+       "question": "This is best described as...",
        "options": [
         "A double bottom.",
         "A support bounce.",
@@ -13768,7 +13768,7 @@
       },
       {
        "type": "multiple_choice",
-       "question": "The chart above shows two troughs at the same level with a bounce between them. This is best described as...",
+       "question": "This is best described as...",
        "options": [
         "An inverse head & shoulders.",
         "A double bottom.",
@@ -13918,7 +13918,7 @@
       },
       {
        "type": "tap_candle",
-       "question": "Tap the breakout candle (the one that clears the range).",
+       "question": "Tap the breakout candle.",
        "target": 3,
        "explanation": "This candle pushes above the range on strong momentum.",
        "chart": "breakout"
@@ -14128,7 +14128,7 @@
       },
       {
        "type": "tap_candle",
-       "question": "Tap the breakout candle (the one that clears the range).",
+       "question": "Tap the breakout candle.",
        "target": 3,
        "explanation": "This candle pushes above the range on strong momentum.",
        "chart": "breakout"
@@ -14210,7 +14210,7 @@
       },
       {
        "type": "multiple_choice",
-       "question": "The chart above tests a level only once. This is best called...",
+       "question": "This is best called...",
        "options": [
         "A double top.",
         "A single rejection, not a double pattern.",
@@ -14616,7 +14616,7 @@
       },
       {
        "type": "multiple_choice",
-       "question": "The chart above shows three peaks with the middle one highest. This shape is commonly called a...",
+       "question": "This shape is commonly called a...",
        "options": [
         "Head & shoulders.",
         "Double top.",
@@ -14638,14 +14638,14 @@
       },
       {
        "type": "mark_level",
-       "question": "Drag the line to the neckline (the support under the pattern).",
+       "question": "Drag the line to the neckline.",
        "level_kind": "support",
        "explanation": "The line under the two troughs is the head & shoulders neckline.",
        "chart": "headShoulders"
       },
       {
        "type": "tap_candle",
-       "question": "Tap the head (the highest peak).",
+       "question": "Tap the head.",
        "target": 3,
        "explanation": "The 4th candle is the head, the tallest of the three peaks.",
        "chart": "headShoulders"
@@ -14733,7 +14733,7 @@
       },
       {
        "type": "tap_candles",
-       "question": "Tap BOTH shoulders (the outer two peaks).",
+       "question": "Tap BOTH shoulders.",
        "targets": [
         1,
         5
@@ -14772,7 +14772,7 @@
       },
       {
        "type": "mark_level",
-       "question": "Drag the line to the neckline (the support under the pattern).",
+       "question": "Drag the line to the neckline.",
        "level_kind": "support",
        "explanation": "The line under the two troughs is the head & shoulders neckline.",
        "chart": "headShoulders"
@@ -14814,7 +14814,7 @@
       },
       {
        "type": "mark_level",
-       "question": "Drag the line to the neckline (along the two troughs).",
+       "question": "Drag the line to the neckline.",
        "level_kind": "support",
        "explanation": "The neckline runs along the lows between the shoulders and head.",
        "chart": "headShoulders"
@@ -14907,7 +14907,7 @@
       },
       {
        "type": "multiple_choice",
-       "question": "The chart above shows three troughs with the middle one lowest. This is commonly called an...",
+       "question": "This shape is commonly called an...",
        "options": [
         "Head & shoulders (regular).",
         "Double bottom.",
@@ -14925,14 +14925,14 @@
       },
       {
        "type": "tap_candle",
-       "question": "Tap the head (the lowest trough).",
+       "question": "Tap the head.",
        "target": 3,
        "explanation": "The 4th candle is the head, the lowest of the three troughs.",
        "chart": "inverseHeadShoulders"
       },
       {
        "type": "mark_level",
-       "question": "Drag the line to the neckline (along the two peaks).",
+       "question": "Drag the line to the neckline.",
        "level_kind": "resistance",
        "explanation": "In an inverse head & shoulders, the neckline runs along the peaks between the troughs.",
        "chart": "inverseHeadShoulders"
@@ -15103,7 +15103,7 @@
       },
       {
        "type": "multiple_choice",
-       "question": "The chart above has two peaks at the same level. This is best described as...",
+       "question": "This is best described as...",
        "options": [
         "A head & shoulders.",
         "An inverse head & shoulders.",
@@ -15115,7 +15115,7 @@
       },
       {
        "type": "multiple_choice",
-       "question": "The chart above has three peaks with a higher middle. This is best described as...",
+       "question": "This is best described as...",
        "options": [
         "A head & shoulders.",
         "A single rejection.",
@@ -15161,7 +15161,7 @@
       },
       {
        "type": "mark_level",
-       "question": "Drag the line to the neckline (the support under the pattern).",
+       "question": "Drag the line to the neckline.",
        "level_kind": "support",
        "explanation": "The line under the two troughs is the head & shoulders neckline.",
        "chart": "headShoulders"
@@ -15453,14 +15453,14 @@
       },
       {
        "type": "mark_level",
-       "question": "Drag the line to the neckline (the support under the pattern).",
+       "question": "Drag the line to the neckline.",
        "level_kind": "support",
        "explanation": "The line under the two troughs is the head & shoulders neckline.",
        "chart": "headShoulders"
       },
       {
        "type": "tap_candle",
-       "question": "Tap the head (the lowest of the three troughs).",
+       "question": "Tap the head.",
        "target": 3,
        "explanation": "The deepest middle trough is the head of an inverse head & shoulders.",
        "chart": "inverseHeadShoulders"
@@ -15535,7 +15535,7 @@
       },
       {
        "type": "tap_candle",
-       "question": "Tap the head (lowest trough) of this inverse head & shoulders.",
+       "question": "Tap the head of this inverse head & shoulders.",
        "target": 3,
        "explanation": "The 4th candle is the head, the lowest trough.",
        "chart": "inverseHeadShoulders"
@@ -15734,7 +15734,7 @@
       },
       {
        "type": "multiple_choice",
-       "question": "The chart above has a flat top and rising lows. This is commonly called an...",
+       "question": "This shape is commonly called an...",
        "options": [
         "Ascending triangle.",
         "Symmetrical triangle.",
@@ -15848,7 +15848,7 @@
       },
       {
        "type": "multiple_choice",
-       "question": "The chart above has a flat bottom and falling highs. This is commonly called a...",
+       "question": "This shape is commonly called a...",
        "options": [
         "Ascending triangle.",
         "Double bottom.",
@@ -15948,7 +15948,7 @@
       },
       {
        "type": "multiple_choice",
-       "question": "The chart above has lower highs AND higher lows converging. This is commonly called a...",
+       "question": "This shape is commonly called a...",
        "options": [
         "Channel.",
         "Ascending triangle.",
@@ -16384,7 +16384,7 @@
       },
       {
        "type": "multiple_choice",
-       "question": "The chart above shows a sharp rise, a small drift down, then more rise. This is commonly called a...",
+       "question": "This shape is commonly called a...",
        "options": [
         "Ascending triangle.",
         "Rising wedge.",
@@ -16395,14 +16395,14 @@
       },
       {
        "type": "tap_candle",
-       "question": "Tap the start of the pole (the first strong up candle).",
+       "question": "Tap the start of the pole.",
        "target": 0,
        "explanation": "The 1st candle begins the strong up move, the pole.",
        "chart": "bullFlag"
       },
       {
        "type": "mark_consolidation",
-       "question": "Drag across the candles that make up the flag (the small pause after the pole).",
+       "question": "Drag across the flag.",
        "target_lo": 2,
        "target_hi": 3,
        "explanation": "Candles 3 and 4 are the small downward drift after the pole, the flag itself.",
@@ -16495,7 +16495,7 @@
       },
       {
        "type": "multiple_choice",
-       "question": "The chart above shows a sharp drop, a small drift up, then more drop. This is commonly called a...",
+       "question": "This shape is commonly called a...",
        "options": [
         "Bear flag.",
         "Bull flag.",
@@ -16506,14 +16506,14 @@
       },
       {
        "type": "tap_candle",
-       "question": "Tap the start of the pole (the first strong down candle).",
+       "question": "Tap the start of the pole.",
        "target": 0,
        "explanation": "The 1st candle begins the strong down move, the pole.",
        "chart": "bearFlag"
       },
       {
        "type": "mark_consolidation",
-       "question": "Drag across the candles that make up the flag (the small pause after the pole).",
+       "question": "Drag across the flag.",
        "target_lo": 2,
        "target_hi": 3,
        "explanation": "Candles 3 and 4 are the small upward drift after the pole, the flag itself.",
@@ -16791,7 +16791,7 @@
       },
       {
        "type": "mark_consolidation",
-       "question": "Drag across the flag (the small pause after the pole).",
+       "question": "Drag across the flag.",
        "target_lo": 2,
        "target_hi": 3,
        "explanation": "The small drift after the strong pole is the flag.",
@@ -16881,7 +16881,7 @@
       },
       {
        "type": "mark_consolidation",
-       "question": "Drag across the flag (the small pause after the pole).",
+       "question": "Drag across the flag.",
        "target_lo": 2,
        "target_hi": 3,
        "explanation": "The small drift after the strong pole is the flag.",
@@ -16931,7 +16931,7 @@
       },
       {
        "type": "multiple_choice",
-       "question": "The chart above rises but the two lines converge. This is commonly called a...",
+       "question": "This shape is commonly called a...",
        "options": [
         "Falling wedge.",
         "Ascending channel.",
@@ -17035,7 +17035,7 @@
       },
       {
        "type": "multiple_choice",
-       "question": "The chart above falls but the two lines converge. This is commonly called a...",
+       "question": "This shape is commonly called a...",
        "options": [
         "Rising wedge.",
         "Descending channel.",
@@ -17125,7 +17125,7 @@
       },
       {
        "type": "multiple_choice",
-       "question": "The chart above rises within parallel boundaries. This is commonly called an...",
+       "question": "This shape is commonly called an...",
        "options": [
         "Rising wedge.",
         "Symmetrical triangle.",
@@ -17155,7 +17155,7 @@
       },
       {
        "type": "draw_trendline",
-       "question": "Drag to draw the lower boundary of this ascending channel (connect the two pullback lows).",
+       "question": "Drag to draw the lower boundary of this ascending channel.",
        "target_start": 0,
        "target_end": 4,
        "explanation": "The lower boundary of the channel runs along the rising pullback lows, candles 1 and 5.",
@@ -17600,7 +17600,7 @@
       },
       {
        "type": "tap_candle",
-       "question": "Tap the higher low (the pullback that stayed above the prior low).",
+       "question": "Tap the higher low.",
        "target": 2,
        "explanation": "The 3rd candle is the pullback that made a higher low, keeping the uptrend intact.",
        "chart": "pullbackUptrend"
@@ -17681,7 +17681,7 @@
       },
       {
        "type": "tap_candle",
-       "question": "Tap the lower high (the bounce that failed below the prior high).",
+       "question": "Tap the lower high.",
        "target": 2,
        "explanation": "The 3rd candle is the bounce that made a lower high, keeping the downtrend intact.",
        "chart": "lowerHighsDowntrend"
@@ -18060,7 +18060,7 @@
       },
       {
        "type": "multiple_choice",
-       "question": "The chart above bounces between a floor and a ceiling. This is commonly called a...",
+       "question": "This is commonly called a...",
        "options": [
         "range (consolidation).",
         "strong uptrend.",
@@ -18071,14 +18071,14 @@
       },
       {
        "type": "mark_level",
-       "question": "Drag the line to the resistance (the ceiling) of this range.",
+       "question": "Drag the line to the resistance.",
        "level_kind": "resistance",
        "explanation": "The top of the range is the resistance price keeps failing to break.",
        "chart": "range"
       },
       {
        "type": "mark_level",
-       "question": "Drag the line to the support (the floor) of this range.",
+       "question": "Drag the line to the support.",
        "level_kind": "support",
        "explanation": "The bottom of the range is the support price keeps bouncing from.",
        "chart": "range"
@@ -18134,7 +18134,7 @@
       },
       {
        "type": "multiple_choice",
-       "question": "The chart above bounces sideways between two levels. It is...",
+       "question": "This chart is...",
        "options": [
         "trending up.",
         "range-bound.",
@@ -18146,7 +18146,7 @@
       },
       {
        "type": "multiple_choice",
-       "question": "The chart above makes higher highs and higher lows. It is...",
+       "question": "This chart is...",
        "options": [
         "trending down.",
         "range-bound.",
@@ -18192,7 +18192,7 @@
       },
       {
        "type": "mark_level",
-       "question": "Drag the line to the top of the range (its resistance).",
+       "question": "Drag the line to the resistance.",
        "level_kind": "resistance",
        "explanation": "The ceiling the range keeps stalling at is its resistance.",
        "chart": "range"
@@ -18265,7 +18265,7 @@
       },
       {
        "type": "mark_consolidation",
-       "question": "Drag across the whole ranging (sideways) stretch.",
+       "question": "Drag across the whole ranging stretch.",
        "target_lo": 0,
        "target_hi": 5,
        "explanation": "The full sideways band is the range.",
@@ -18310,7 +18310,7 @@
       },
       {
        "type": "multiple_choice",
-       "question": "The chart above pushes above the range's resistance and keeps going. This is a...",
+       "question": "This is a...",
        "options": [
         "reversal into the range.",
         "range that's still intact.",
@@ -18338,7 +18338,7 @@
       },
       {
        "type": "tap_candle",
-       "question": "Tap the breakout candle (the one that clears the range).",
+       "question": "Tap the breakout candle.",
        "target": 3,
        "explanation": "This candle pushes above the range on strong momentum.",
        "chart": "breakout"
@@ -18375,7 +18375,7 @@
       },
       {
        "type": "multiple_choice",
-       "question": "The chart above pokes above resistance, then falls back inside the range. This is a...",
+       "question": "This is a...",
        "options": [
         "strong trend.",
         "false breakout (fakeout).",
@@ -18492,7 +18492,7 @@
       },
       {
        "type": "mark_consolidation",
-       "question": "Drag across the whole ranging (sideways) stretch.",
+       "question": "Drag across the whole ranging stretch.",
        "target_lo": 0,
        "target_hi": 5,
        "explanation": "The full sideways band is the range.",
@@ -18553,7 +18553,7 @@
       },
       {
        "type": "multiple_choice",
-       "question": "The chart above clears resistance with a strong candle and keeps going. This is a...",
+       "question": "This is a...",
        "options": [
         "range still intact.",
         "bounce back down.",
@@ -18564,7 +18564,7 @@
       },
       {
        "type": "tap_candle",
-       "question": "Tap the breakout candle (the strong one clearing the level).",
+       "question": "Tap the breakout candle.",
        "target": 3,
        "explanation": "The 4th candle clears resistance with momentum, the breakout candle.",
        "chart": "breakout"
@@ -18634,7 +18634,7 @@
       },
       {
        "type": "multiple_choice",
-       "question": "The chart above breaks below support and keeps falling. This is a...",
+       "question": "This is a...",
        "options": [
         "breakout up.",
         "support bounce.",
@@ -18645,7 +18645,7 @@
       },
       {
        "type": "tap_candle",
-       "question": "Tap the breakdown candle (the one clearing support).",
+       "question": "Tap the breakdown candle.",
        "target": 3,
        "explanation": "The 4th candle breaks below support, the breakdown candle.",
        "chart": "breakdown"
@@ -18716,7 +18716,7 @@
       },
       {
        "type": "tap_candle",
-       "question": "Tap the retest candle (where price returns to the broken level).",
+       "question": "Tap the retest candle.",
        "target": 3,
        "explanation": "The 4th candle pulls back to retest the level that was just broken.",
        "chart": "breakoutRetest"
@@ -18888,7 +18888,7 @@
       },
       {
        "type": "multiple_choice",
-       "question": "The chart above only pokes past the level, then falls back. This looks like a...",
+       "question": "This looks like a...",
        "options": [
         "false / weak breakout.",
         "clean breakout.",
@@ -19077,7 +19077,7 @@
       },
       {
        "type": "multiple_choice",
-       "question": "The chart above rises, dips briefly, then rises again. The brief dip is a...",
+       "question": "The brief dip here is a...",
        "options": [
         "full reversal.",
         "pullback.",
@@ -19088,7 +19088,7 @@
       },
       {
        "type": "tap_candle",
-       "question": "Tap the pullback (the dip within the uptrend).",
+       "question": "Tap the pullback.",
        "target": 2,
        "explanation": "The 3rd candle is the brief dip, the pullback, before the uptrend resumes.",
        "chart": "pullbackUptrend"
@@ -19153,7 +19153,7 @@
       },
       {
        "type": "tap_candle",
-       "question": "Tap the higher low (the pullback that held above the prior low).",
+       "question": "Tap the higher low.",
        "target": 2,
        "explanation": "The 3rd candle makes a higher low, keeping the uptrend healthy.",
        "chart": "pullbackUptrend"
@@ -19234,7 +19234,7 @@
       },
       {
        "type": "tap_candle",
-       "question": "Tap the lower high (the bounce that failed below the prior high).",
+       "question": "Tap the lower high.",
        "target": 2,
        "explanation": "The 3rd candle makes a lower high, keeping the downtrend healthy.",
        "chart": "lowerHighsDowntrend"
@@ -19319,7 +19319,7 @@
       },
       {
        "type": "multiple_choice",
-       "question": "The chart above dips but still makes a higher low, then continues up. This is a...",
+       "question": "This is a...",
        "options": [
         "breakdown.",
         "reversal (trend broken).",
@@ -19331,7 +19331,7 @@
       },
       {
        "type": "multiple_choice",
-       "question": "The chart above breaks below the prior low and keeps falling. This is closer to a...",
+       "question": "This is closer to a...",
        "options": [
         "continuation up.",
         "healthy pullback.",
@@ -19603,7 +19603,7 @@
       },
       {
        "type": "tap_candle",
-       "question": "Tap the strong-momentum candle (the big body).",
+       "question": "Tap the strong-momentum candle.",
        "target": 1,
        "explanation": "The 2nd candle is the big-bodied momentum candle.",
        "chart": "marubozu"
@@ -19679,7 +19679,7 @@
       },
       {
        "type": "tap_candle",
-       "question": "Tap the rejection candle (the long upper wick).",
+       "question": "Tap the rejection candle.",
        "target": 1,
        "explanation": "The 2nd candle's long upper wick shows the rejected push up.",
        "chart": "rejectionWickUp"
@@ -19768,7 +19768,7 @@
       },
       {
        "type": "tap_candle",
-       "question": "Tap the doji (tiny body with wicks on both sides).",
+       "question": "Tap the doji.",
        "target": 1,
        "explanation": "The middle candle's near-zero body with balanced wicks is the doji.",
        "chart": "doji"
@@ -19919,7 +19919,7 @@
       },
       {
        "type": "multiple_choice",
-       "question": "The chart above pushes up into resistance, then gets rejected. This is commonly read as...",
+       "question": "This is commonly read as...",
        "options": [
         "possible exhaustion at the level.",
         "no information.",
@@ -20047,7 +20047,7 @@
       },
       {
        "type": "tap_candle",
-       "question": "Tap the marubozu (large body, almost no wicks).",
+       "question": "Tap the marubozu.",
        "target": 1,
        "explanation": "The candle that is nearly all body is the marubozu.",
        "chart": "marubozu"
@@ -20558,7 +20558,7 @@
       },
       {
        "type": "tap_candle",
-       "question": "Tap the doji (tiny body, wicks on both sides).",
+       "question": "Tap the doji.",
        "target": 1,
        "explanation": "The middle candle's near-zero body with balanced wicks is the doji.",
        "chart": "doji"
@@ -20606,7 +20606,7 @@
       },
       {
        "type": "multiple_choice",
-       "question": "The chart above shows a candle opening well above the previous candle, leaving empty space. This is a...",
+       "question": "This is a...",
        "options": [
         "doji.",
         "long wick.",
@@ -20617,7 +20617,7 @@
       },
       {
        "type": "tap_candle",
-       "question": "Tap the gap candle (the one that jumped away from the previous candle).",
+       "question": "Tap the gap candle.",
        "target": 2,
        "explanation": "The 3rd candle opens above the prior candle's high, the gap candle.",
        "chart": "gapUp"
@@ -20687,7 +20687,7 @@
       },
       {
        "type": "multiple_choice",
-       "question": "The chart above opens well below the previous candle's low. This is a...",
+       "question": "This is a...",
        "options": [
         "gap down.",
         "gap up.",
@@ -20808,7 +20808,7 @@
       },
       {
        "type": "tap_candle",
-       "question": "Tap the gap-up candle (it opens above the prior candle).",
+       "question": "Tap the gap-up candle.",
        "target": 2,
        "explanation": "This candle opens with a gap above the previous candle's range.",
        "chart": "gapUp"
@@ -20889,7 +20889,7 @@
       },
       {
        "type": "tap_candle",
-       "question": "Tap the gap-up candle (it opens above the prior candle).",
+       "question": "Tap the gap-up candle.",
        "target": 2,
        "explanation": "This candle opens with a gap above the previous candle's range.",
        "chart": "gapUp"
@@ -20956,7 +20956,7 @@
       },
       {
        "type": "tap_candle",
-       "question": "Tap the gap-up candle (it opens above the prior candle).",
+       "question": "Tap the gap-up candle.",
        "target": 2,
        "explanation": "This candle opens with a gap above the previous candle's range.",
        "chart": "gapUp"
@@ -22485,7 +22485,7 @@
       },
       {
        "type": "tap_candle",
-       "question": "Tap the gap-up candle (it opens above the prior candle).",
+       "question": "Tap the gap-up candle.",
        "target": 2,
        "explanation": "This candle opens with a gap above the previous candle's range.",
        "chart": "gapUp"
@@ -22960,7 +22960,7 @@
       },
       {
        "type": "tap_candle",
-       "question": "Tap the gap-up candle (it opens above the prior candle).",
+       "question": "Tap the gap-up candle.",
        "target": 2,
        "explanation": "This candle opens with a gap above the previous candle's range.",
        "chart": "gapUp"
@@ -24106,7 +24106,7 @@
       },
       {
        "type": "tap_candle",
-       "question": "Tap the breakout candle (the one that clears the range).",
+       "question": "Tap the breakout candle.",
        "target": 3,
        "explanation": "This candle pushes above the range on strong momentum.",
        "chart": "breakout"
@@ -24933,7 +24933,7 @@
       },
       {
        "type": "tap_candle",
-       "question": "Tap the breakout candle (the one that clears the range).",
+       "question": "Tap the breakout candle.",
        "target": 3,
        "explanation": "This candle pushes above the range on strong momentum.",
        "chart": "breakout"
@@ -25664,7 +25664,7 @@
       },
       {
        "type": "tap_candle",
-       "question": "Tap the doji (tiny body, wicks on both sides).",
+       "question": "Tap the doji.",
        "target": 1,
        "explanation": "The middle candle's near-zero body with balanced wicks is the doji.",
        "chart": "doji"
@@ -25805,7 +25805,7 @@
       },
       {
        "type": "tap_candle",
-       "question": "Tap the breakout candle (the one that clears the range).",
+       "question": "Tap the breakout candle.",
        "target": 3,
        "explanation": "This candle pushes above the range on strong momentum.",
        "chart": "breakout"
@@ -26055,7 +26055,7 @@
       },
       {
        "type": "tap_candle",
-       "question": "Tap the breakout candle (the one that clears the range).",
+       "question": "Tap the breakout candle.",
        "target": 3,
        "explanation": "This candle pushes above the range on strong momentum.",
        "chart": "breakout"
@@ -27343,7 +27343,7 @@
       },
       {
        "type": "multiple_choice",
-       "question": "The chart above makes steady higher highs and higher lows. This condition is...",
+       "question": "This condition is...",
        "options": [
         "trending up.",
         "trending down.",
@@ -27354,7 +27354,7 @@
       },
       {
        "type": "multiple_choice",
-       "question": "The chart above bounces sideways between two levels. This condition is...",
+       "question": "This condition is...",
        "options": [
         "ranging.",
         "trending.",
@@ -27366,7 +27366,7 @@
       },
       {
        "type": "multiple_choice",
-       "question": "The chart above shows large, erratic swings with no clear direction. This condition is...",
+       "question": "This condition is...",
        "options": [
         "ranging.",
         "trending.",
@@ -27427,7 +27427,7 @@
       },
       {
        "type": "multiple_choice",
-       "question": "The chart above makes lower highs and lower lows. It is a...",
+       "question": "This chart is a...",
        "options": [
         "range.",
         "uptrend.",
@@ -27506,7 +27506,7 @@
       },
       {
        "type": "multiple_choice",
-       "question": "The chart above stays between a floor and ceiling. It is...",
+       "question": "This chart is...",
        "options": [
         "volatile.",
         "ranging.",
@@ -27576,7 +27576,7 @@
       },
       {
        "type": "multiple_choice",
-       "question": "The chart above shows large swings both ways with no clean direction. It is...",
+       "question": "This chart is...",
        "options": [
         "volatile.",
         "a tidy uptrend.",
@@ -27769,7 +27769,7 @@
       },
       {
        "type": "mark_level",
-       "question": "Drag the line to the top of the range (its resistance).",
+       "question": "Drag the line to the resistance.",
        "level_kind": "resistance",
        "explanation": "The ceiling the range keeps stalling at is its resistance.",
        "chart": "range"
@@ -28107,7 +28107,7 @@
       },
       {
        "type": "tap_candle",
-       "question": "Tap the candle where the fast (blue) MA has clearly pulled away from the slow (amber) MA the most.",
+       "question": "Tap the candle where the fast MA has clearly pulled away from the slow MA the most.",
        "target": 5,
        "explanation": "By the 6th candle the fast MA has moved furthest from the slower, smoother MA, showing how much quicker it reacts.",
        "chart": "maCrossUp"
@@ -31088,7 +31088,7 @@
       },
       {
        "type": "mark_consolidation",
-       "question": "Drag across the whole ranging (sideways) stretch.",
+       "question": "Drag across the whole ranging stretch.",
        "target_lo": 0,
        "target_hi": 5,
        "explanation": "The full sideways band is the range.",
@@ -31096,7 +31096,7 @@
       },
       {
        "type": "mark_level",
-       "question": "Drag the line to the top of the range (its resistance).",
+       "question": "Drag the line to the resistance.",
        "level_kind": "resistance",
        "explanation": "The ceiling the range keeps stalling at is its resistance.",
        "chart": "range"
@@ -31860,7 +31860,7 @@
       },
       {
        "type": "tap_candle",
-       "question": "Tap the breakout candle (the one that clears the range).",
+       "question": "Tap the breakout candle.",
        "target": 3,
        "explanation": "This candle pushes above the range on strong momentum.",
        "chart": "breakout"
@@ -33345,7 +33345,7 @@
       },
       {
        "type": "tap_candle",
-       "question": "Tap the breakout candle (the one that clears the range).",
+       "question": "Tap the breakout candle.",
        "target": 3,
        "explanation": "This candle pushes above the range on strong momentum.",
        "chart": "breakout"
@@ -34066,7 +34066,7 @@
       },
       {
        "type": "tap_candle",
-       "question": "Tap the doji (tiny body, wicks on both sides).",
+       "question": "Tap the doji.",
        "target": 1,
        "explanation": "The middle candle's near-zero body with balanced wicks is the doji.",
        "chart": "doji"
@@ -34682,7 +34682,7 @@
       },
       {
        "type": "tap_candle",
-       "question": "Tap the breakout candle (the one that clears the range).",
+       "question": "Tap the breakout candle.",
        "target": 3,
        "explanation": "This candle pushes above the range on strong momentum.",
        "chart": "breakout"
@@ -35024,7 +35024,7 @@
       },
       {
        "type": "tap_candle",
-       "question": "Tap the breakout candle (the one that clears the range).",
+       "question": "Tap the breakout candle.",
        "target": 3,
        "explanation": "This candle pushes above the range on strong momentum.",
        "chart": "breakout"
