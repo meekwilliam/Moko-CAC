@@ -32,7 +32,12 @@ final class FirebaseBackend: NSObject, AuthService, RemoteStore {
         try Auth.auth().signOut()
     }
 
-    private static func user(from u: FirebaseAuth.User) -> BackendUser {
+    /// The project defaults to `MainActor` isolation, but `currentUser` witnesses
+    /// a nonisolated `AuthService` requirement — so this plain value-mapping
+    /// helper has to be nonisolated too. (A warning today, an error under the
+    /// Swift 6 language mode.) It only reads immutable fields off a Firebase
+    /// user, so there's nothing to race on.
+    nonisolated private static func user(from u: FirebaseAuth.User) -> BackendUser {
         BackendUser(id: u.uid, email: u.email, displayName: u.displayName)
     }
 
