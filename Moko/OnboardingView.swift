@@ -489,6 +489,23 @@ struct OnboardingView: View {
 
 // MARK: - Screen 6 — Course build
 
+/// Plain `Text` only reads `progress` once per state change — the number
+/// would jump straight to 100% while the ring animates smoothly. Conforming
+/// to `Animatable` makes SwiftUI interpolate `progress` frame-by-frame through
+/// the same `withAnimation` block driving the ring's `trim`, so the two stay
+/// in sync.
+private struct AnimatedPercentText: View, Animatable {
+    var progress: CGFloat
+    var animatableData: CGFloat {
+        get { progress }
+        set { progress = newValue }
+    }
+
+    var body: some View {
+        Text("\(Int((progress * 100).rounded()))%")
+    }
+}
+
 private struct CourseBuildView: View {
     var onComplete: () -> Void
 
@@ -509,10 +526,9 @@ private struct CourseBuildView: View {
                     .stroke(Theme.answer, style: StrokeStyle(lineWidth: 12, lineCap: .round))
                     .rotationEffect(.degrees(-90))
 
-                Text("\(Int((progress * 100).rounded()))%")
+                AnimatedPercentText(progress: progress)
                     .font(Theme.font(26, .black))
                     .foregroundColor(theme.palette.ink)
-                    .contentTransition(.numericText())
             }
             .frame(width: 148, height: 148)
 
