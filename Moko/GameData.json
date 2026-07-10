@@ -383,14 +383,22 @@
       {
        "type": "tap_candles",
        "question": "Tap every bullish candle.",
-       "targets": [0, 2, 4],
+       "targets": [
+        0,
+        2,
+        4
+       ],
        "explanation": "Nice! A green (up) candle closes above where it opened.",
        "chart": "volatile"
       },
       {
        "type": "tap_candles",
        "question": "Now tap every bearish candle.",
-       "targets": [1, 3, 5],
+       "targets": [
+        1,
+        3,
+        5
+       ],
        "explanation": "That's it! A red (down) candle closes below where it opened.",
        "chart": "volatile"
       },
@@ -457,6 +465,21 @@
         }
        ],
        "explanation": "The order of buying and selling is what separates long from short."
+      },
+      {
+       "type": "tap_candle",
+       "question": "Tap the candle that makes the highest high.",
+       "target": 4,
+       "explanation": "In this uptrend the last candle prints the highest high.",
+       "chart": "uptrend"
+      },
+      {
+       "type": "draw_trendline",
+       "question": "Draw the uptrend line from the first candle to the last.",
+       "target_start": 0,
+       "target_end": 4,
+       "explanation": "Connecting the rising candles traces the uptrend line.",
+       "chart": "uptrend"
       }
      ]
     },
@@ -3234,6 +3257,13 @@
        ],
        "correct": 1,
        "explanation": "\"Gap fill\" describes price retracing back through the previously skipped range."
+      },
+      {
+       "type": "tap_candle",
+       "question": "Tap the gap-down candle.",
+       "target": 2,
+       "explanation": "The 3rd candle opens below the prior candle's low, the gap down.",
+       "chart": "gapDown"
       }
      ]
     },
@@ -3521,6 +3551,21 @@
        ],
        "correct": 2,
        "explanation": "\"Sideways\" (or range-bound) is the classification for directionless bouncing."
+      },
+      {
+       "type": "tap_candle",
+       "question": "Tap the candle that makes the lowest low.",
+       "target": 4,
+       "explanation": "In this downtrend the last candle prints the lowest low.",
+       "chart": "downtrend"
+      },
+      {
+       "type": "draw_trendline",
+       "question": "Draw the downtrend line from the first candle to the last.",
+       "target_start": 0,
+       "target_end": 4,
+       "explanation": "Connecting the falling candles traces the downtrend line.",
+       "chart": "downtrend"
       }
      ]
     },
@@ -4790,6 +4835,13 @@
        ],
        "correct": 1,
        "explanation": "Shape alone isn't enough, the surrounding trend matters too."
+      },
+      {
+       "type": "tap_candle",
+       "question": "Tap the hammer.",
+       "target": 2,
+       "explanation": "The last candle's long lower wick and small upper body is the hammer.",
+       "chart": "hammer"
       }
      ]
     },
@@ -4904,6 +4956,13 @@
        ],
        "correct": 1,
        "explanation": "Large body, almost no wicks. A small body with long wicks is a spinning top."
+      },
+      {
+       "type": "tap_candle",
+       "question": "Tap the spinning top.",
+       "target": 1,
+       "explanation": "The candle with a small body and balanced wicks is the spinning top.",
+       "chart": "spinningTop"
       }
      ]
     },
@@ -5008,6 +5067,27 @@
        ],
        "correct": 2,
        "explanation": "Repeated practice speeds up pattern recognition."
+      },
+      {
+       "type": "tap_candle",
+       "question": "Tap the doji.",
+       "target": 1,
+       "explanation": "The middle candle's near-zero body with balanced wicks is the doji.",
+       "chart": "doji"
+      },
+      {
+       "type": "tap_candle",
+       "question": "Tap the shooting star.",
+       "target": 2,
+       "explanation": "The last candle's long upper wick with a low body is the shooting star.",
+       "chart": "shootingStar"
+      },
+      {
+       "type": "tap_candle",
+       "question": "Tap the candle whose body fully engulfs the one before it.",
+       "target": 1,
+       "explanation": "The second candle's larger body completely covers the prior candle's body.",
+       "chart": "bearishEngulfing"
       }
      ]
     },
@@ -5448,6 +5528,20 @@
        "question": "Reviewing mixed candles helps reinforce skills from earlier in the unit.",
        "correct": true,
        "explanation": "Mixed review rounds reinforce and test everything taught so far."
+      },
+      {
+       "type": "tap_candle",
+       "question": "Tap the candle whose body fully engulfs the one before it.",
+       "target": 1,
+       "explanation": "The second candle's larger body completely covers the prior candle's body.",
+       "chart": "bullishEngulfing"
+      },
+      {
+       "type": "tap_candle",
+       "question": "Tap the hanging man, after a rise.",
+       "target": 2,
+       "explanation": "Same shape as a hammer, but appearing after a rise, is the hanging man.",
+       "chart": "hangingMan"
       }
      ]
     },
@@ -5558,6 +5652,35 @@
        ],
        "correct": 0,
        "explanation": "Single-candle reading is a foundation for reading multi-candle patterns and levels next."
+      },
+      {
+       "type": "draw_trendline",
+       "question": "Draw the uptrend line under the higher lows.",
+       "target_start": 0,
+       "target_end": 2,
+       "explanation": "Connecting the rising lows draws the uptrend line.",
+       "chart": "pullbackUptrend"
+      },
+      {
+       "type": "tap_candle",
+       "question": "Tap the higher low.",
+       "target": 2,
+       "explanation": "The 3rd candle is the pullback that made a higher low, keeping the uptrend intact.",
+       "chart": "pullbackUptrend"
+      },
+      {
+       "type": "tap_candle",
+       "question": "Tap the spinning top.",
+       "target": 1,
+       "explanation": "The candle with a small body and balanced wicks is the spinning top.",
+       "chart": "spinningTop"
+      },
+      {
+       "type": "tap_candle",
+       "question": "Tap the inverted hammer on the chart.",
+       "target": 2,
+       "explanation": "Long upper wick with a small low body after a drop, the inverted hammer.",
+       "chart": "invertedHammer"
       }
      ]
     },
@@ -6859,6 +6982,14 @@
        ],
        "correct": 1,
        "explanation": "Supply and demand applies to stocks just as it does to other goods."
+      },
+      {
+       "type": "draw_trendline",
+       "question": "Draw the uptrend line from the first candle to the last.",
+       "target_start": 0,
+       "target_end": 4,
+       "explanation": "Connecting the rising candles traces the uptrend line.",
+       "chart": "uptrend"
       }
      ]
     },
@@ -7406,6 +7537,13 @@
        ],
        "correct": 1,
        "explanation": "This course builds descriptive understanding, not predictive certainty."
+      },
+      {
+       "type": "mark_level",
+       "question": "Drag the line to the resistance the price broke above.",
+       "level_kind": "resistance",
+       "explanation": "The ceiling the range held before the breakout is the resistance.",
+       "chart": "breakout"
       }
      ]
     }
@@ -9255,6 +9393,13 @@
        ],
        "explanation": "These two peaks each print higher than the last, the uptrend's higher highs.",
        "chart": "pullbackUptrend"
+      },
+      {
+       "type": "tap_candle",
+       "question": "Tap the higher low.",
+       "target": 2,
+       "explanation": "The 3rd candle is the pullback that made a higher low, keeping the uptrend intact.",
+       "chart": "pullbackUptrend"
       }
      ]
     },
@@ -9337,6 +9482,13 @@
         3
        ],
        "explanation": "These two peaks each print higher than the last, the uptrend's higher highs.",
+       "chart": "pullbackUptrend"
+      },
+      {
+       "type": "tap_candle",
+       "question": "Tap the higher low.",
+       "target": 2,
+       "explanation": "The 3rd candle is the pullback that made a higher low, keeping the uptrend intact.",
        "chart": "pullbackUptrend"
       }
      ]
@@ -9520,6 +9672,13 @@
        "target": 1,
        "explanation": "The long upper wick shows the highs were rejected.",
        "chart": "rejectionWickUp"
+      },
+      {
+       "type": "mark_level",
+       "question": "Drag the line to the level that broke, then held on the retest.",
+       "level_kind": "resistance",
+       "explanation": "The old resistance becomes support on the retest.",
+       "chart": "breakoutRetest"
       }
      ]
     },
@@ -9602,6 +9761,13 @@
         3
        ],
        "explanation": "These two peaks each print higher than the last, the uptrend's higher highs.",
+       "chart": "pullbackUptrend"
+      },
+      {
+       "type": "tap_candle",
+       "question": "Tap the higher low.",
+       "target": 2,
+       "explanation": "The 3rd candle is the pullback that made a higher low, keeping the uptrend intact.",
        "chart": "pullbackUptrend"
       }
      ]
@@ -9776,6 +9942,13 @@
         3
        ],
        "explanation": "These two peaks each print higher than the last, the uptrend's higher highs.",
+       "chart": "pullbackUptrend"
+      },
+      {
+       "type": "tap_candle",
+       "question": "Tap the higher low.",
+       "target": 2,
+       "explanation": "The 3rd candle is the pullback that made a higher low, keeping the uptrend intact.",
        "chart": "pullbackUptrend"
       }
      ]
@@ -10358,6 +10531,21 @@
        ],
        "correct": 1,
        "explanation": "Both swing highs and swing lows need to be checked together."
+      },
+      {
+       "type": "draw_trendline",
+       "question": "Draw the uptrend line under the higher lows.",
+       "target_start": 0,
+       "target_end": 2,
+       "explanation": "Connecting the rising lows draws the uptrend line.",
+       "chart": "pullbackUptrend"
+      },
+      {
+       "type": "tap_candle",
+       "question": "Tap the higher low.",
+       "target": 2,
+       "explanation": "The 3rd candle is the pullback that made a higher low, keeping the uptrend intact.",
+       "chart": "pullbackUptrend"
       }
      ]
     },
@@ -11322,6 +11510,50 @@
        "question": "These classification drills are meant to build predictive certainty about the future.",
        "correct": false,
        "explanation": "They build descriptive reading skill, not predictive certainty."
+      },
+      {
+       "type": "tap_candle",
+       "question": "Tap the breakout candle.",
+       "target": 3,
+       "explanation": "This candle pushes above the range on strong momentum.",
+       "chart": "breakout"
+      },
+      {
+       "type": "tap_candle",
+       "question": "Tap the candle that makes the highest high.",
+       "target": 4,
+       "explanation": "In this uptrend the last candle prints the highest high.",
+       "chart": "uptrend"
+      },
+      {
+       "type": "mark_level",
+       "question": "Drag the line to the resistance the price broke above.",
+       "level_kind": "resistance",
+       "explanation": "The ceiling the range held before the breakout is the resistance.",
+       "chart": "breakout"
+      },
+      {
+       "type": "draw_trendline",
+       "question": "Draw the uptrend line from the first candle to the last.",
+       "target_start": 0,
+       "target_end": 4,
+       "explanation": "Connecting the rising candles traces the uptrend line.",
+       "chart": "uptrend"
+      },
+      {
+       "type": "draw_trendline",
+       "question": "Draw the downtrend line from the first candle to the last.",
+       "target_start": 0,
+       "target_end": 4,
+       "explanation": "Connecting the falling candles traces the downtrend line.",
+       "chart": "downtrend"
+      },
+      {
+       "type": "tap_candle",
+       "question": "Tap the candle that makes the lowest low.",
+       "target": 4,
+       "explanation": "In this downtrend the last candle prints the lowest low.",
+       "chart": "downtrend"
       }
      ]
     },
@@ -11447,6 +11679,21 @@
        "question": "Consolidation and a pullback describe the exact same market phase.",
        "correct": false,
        "explanation": "A pullback is a counter-trend move; consolidation is a tighter sideways pause, related but distinct ideas."
+      },
+      {
+       "type": "tap_candle",
+       "question": "Tap the candle that makes the highest high.",
+       "target": 4,
+       "explanation": "In this uptrend the last candle prints the highest high.",
+       "chart": "uptrend"
+      },
+      {
+       "type": "draw_trendline",
+       "question": "Draw the uptrend line from the first candle to the last.",
+       "target_start": 0,
+       "target_end": 4,
+       "explanation": "Connecting the rising candles traces the uptrend line.",
+       "chart": "uptrend"
       }
      ]
     },
@@ -11762,6 +12009,30 @@
        "question": "Support can eventually be broken and stop acting as a floor.",
        "correct": true,
        "explanation": "No support level is permanent, breaks happen regularly."
+      },
+      {
+       "type": "tap_candles",
+       "question": "Tap both troughs that test the same support level.",
+       "targets": [
+        1,
+        3
+       ],
+       "explanation": "Candles 2 and 4 are the two troughs holding at about the same level, the \"W\" shape.",
+       "chart": "doubleBottom"
+      },
+      {
+       "type": "tap_candle",
+       "question": "Tap the first trough of the double bottom.",
+       "target": 1,
+       "explanation": "The 2nd candle is the first trough, testing support for the first time.",
+       "chart": "doubleBottom"
+      },
+      {
+       "type": "tap_candle",
+       "question": "Tap the second trough of the double bottom.",
+       "target": 3,
+       "explanation": "The fourth candle is the second trough, holding at the same support as the first.",
+       "chart": "doubleBottom"
       }
      ]
     },
@@ -13105,6 +13376,34 @@
         ]
        ],
        "explanation": "These are the three core skills this drill practices together."
+      },
+      {
+       "type": "tap_candle",
+       "question": "Tap the breakout candle.",
+       "target": 3,
+       "explanation": "This candle pushes above the range on strong momentum.",
+       "chart": "breakout"
+      },
+      {
+       "type": "mark_level",
+       "question": "Drag the line to the resistance the price broke above.",
+       "level_kind": "resistance",
+       "explanation": "The ceiling the range held before the breakout is the resistance.",
+       "chart": "breakout"
+      },
+      {
+       "type": "mark_level",
+       "question": "Drag the line to the resistance this chart keeps getting rejected at.",
+       "level_kind": "resistance",
+       "explanation": "The ceiling price keeps failing to break is the resistance.",
+       "chart": "resistanceRejection"
+      },
+      {
+       "type": "mark_level",
+       "question": "Drag the line to the support this chart keeps bouncing from.",
+       "level_kind": "support",
+       "explanation": "The floor price keeps reacting off of is the support level.",
+       "chart": "supportBounce"
       }
      ]
     },
@@ -13386,6 +13685,13 @@
        ],
        "explanation": "Candles 2 and 4 are the two peaks stalling at about the same level, the \"M\" shape.",
        "chart": "doubleTop"
+      },
+      {
+       "type": "tap_candle",
+       "question": "Tap the second peak of the double top.",
+       "target": 3,
+       "explanation": "The fourth candle is the second peak, stalling at the same resistance as the first.",
+       "chart": "doubleTop"
       }
      ]
     },
@@ -13508,6 +13814,13 @@
        ],
        "explanation": "Candles 2 and 4 are the two troughs holding at about the same level, the \"W\" shape.",
        "chart": "doubleBottom"
+      },
+      {
+       "type": "tap_candle",
+       "question": "Tap the second trough of the double bottom.",
+       "target": 3,
+       "explanation": "The fourth candle is the second trough, holding at the same support as the first.",
+       "chart": "doubleBottom"
       }
      ]
     },
@@ -13626,6 +13939,41 @@
        ],
        "correct": 1,
        "explanation": "Confirmation is tied specifically to the neckline break."
+      },
+      {
+       "type": "mark_level",
+       "question": "Drag the line to the resistance both peaks stall at.",
+       "level_kind": "resistance",
+       "explanation": "The shared high both peaks reach is the resistance level of a double top.",
+       "chart": "doubleTop"
+      },
+      {
+       "type": "mark_level",
+       "question": "Drag the line to the support both troughs tested.",
+       "level_kind": "support",
+       "chart": "doubleBottom",
+       "explanation": "The more times a level is touched and holds, the more notable it's considered."
+      },
+      {
+       "type": "tap_candle",
+       "question": "Tap the second peak of the double top.",
+       "target": 3,
+       "explanation": "The fourth candle is the second peak, stalling at the same resistance as the first.",
+       "chart": "doubleTop"
+      },
+      {
+       "type": "tap_candle",
+       "question": "Tap the first trough of the double bottom.",
+       "target": 1,
+       "explanation": "The 2nd candle is the first trough, testing support for the first time.",
+       "chart": "doubleBottom"
+      },
+      {
+       "type": "tap_candle",
+       "question": "Tap the second trough of the double bottom.",
+       "target": 3,
+       "explanation": "The fourth candle is the second trough, holding at the same support as the first.",
+       "chart": "doubleBottom"
       }
      ]
     },
@@ -13741,6 +14089,20 @@
        ],
        "correct": 0,
        "explanation": "The second test at the same level is what makes it a double top rather than a single rejection."
+      },
+      {
+       "type": "mark_level",
+       "question": "Drag the line to the resistance this chart keeps getting rejected at.",
+       "level_kind": "resistance",
+       "explanation": "The ceiling price keeps failing to break is the resistance.",
+       "chart": "resistanceRejection"
+      },
+      {
+       "type": "tap_candle",
+       "question": "Tap the second peak of the double top.",
+       "target": 3,
+       "explanation": "The fourth candle is the second peak, stalling at the same resistance as the first.",
+       "chart": "doubleTop"
       }
      ]
     },
@@ -13856,6 +14218,27 @@
        ],
        "correct": 0,
        "explanation": "The second test at the same level is what makes it a double bottom rather than a single bounce."
+      },
+      {
+       "type": "mark_level",
+       "question": "Drag the line to the support this chart keeps bouncing from.",
+       "level_kind": "support",
+       "explanation": "The floor price keeps reacting off of is the support level.",
+       "chart": "supportBounce"
+      },
+      {
+       "type": "tap_candle",
+       "question": "Tap the first trough of the double bottom.",
+       "target": 1,
+       "explanation": "The 2nd candle is the first trough, testing support for the first time.",
+       "chart": "doubleBottom"
+      },
+      {
+       "type": "tap_candle",
+       "question": "Tap the second trough of the double bottom.",
+       "target": 3,
+       "explanation": "The fourth candle is the second trough, holding at the same support as the first.",
+       "chart": "doubleBottom"
       }
      ]
     },
@@ -13966,6 +14349,13 @@
        ],
        "correct": 0,
        "explanation": "Roughly equal peaks make for a cleaner double top read, not unequal ones."
+      },
+      {
+       "type": "mark_level",
+       "question": "Drag the line to the resistance the price broke above.",
+       "level_kind": "resistance",
+       "explanation": "The ceiling the range held before the breakout is the resistance.",
+       "chart": "breakout"
       }
      ]
     },
@@ -14069,6 +14459,20 @@
        ],
        "correct": 2,
        "explanation": "Roughly equal troughs make for a cleaner double bottom read, not unequal ones."
+      },
+      {
+       "type": "mark_level",
+       "question": "Drag the line to the support both troughs tested.",
+       "level_kind": "support",
+       "chart": "doubleBottom",
+       "explanation": "The more times a level is touched and holds, the more notable it's considered."
+      },
+      {
+       "type": "tap_candle",
+       "question": "Tap the first trough of the double bottom.",
+       "target": 1,
+       "explanation": "The 2nd candle is the first trough, testing support for the first time.",
+       "chart": "doubleBottom"
       }
      ]
     },
@@ -14171,6 +14575,27 @@
        "question": "A failed pattern is still useful to recognize, even though it didn't play out as expected.",
        "correct": true,
        "explanation": "Recognizing failures builds a more honest, complete understanding of how patterns behave."
+      },
+      {
+       "type": "mark_level",
+       "question": "Drag the line to the resistance the price broke above.",
+       "level_kind": "resistance",
+       "explanation": "The ceiling the range held before the breakout is the resistance.",
+       "chart": "breakout"
+      },
+      {
+       "type": "mark_level",
+       "question": "Drag the line to the resistance both peaks stall at.",
+       "level_kind": "resistance",
+       "explanation": "The shared high both peaks reach is the resistance level of a double top.",
+       "chart": "doubleTop"
+      },
+      {
+       "type": "tap_candle",
+       "question": "Tap the second peak of the double top.",
+       "target": 3,
+       "explanation": "The fourth candle is the second peak, stalling at the same resistance as the first.",
+       "chart": "doubleTop"
       }
      ]
     },
@@ -14268,6 +14693,54 @@
        ],
        "correct": 2,
        "explanation": "Repetition across mixed charts builds faster pattern recognition."
+      },
+      {
+       "type": "mark_level",
+       "question": "Drag the line to the resistance this chart keeps getting rejected at.",
+       "level_kind": "resistance",
+       "explanation": "The ceiling price keeps failing to break is the resistance.",
+       "chart": "resistanceRejection"
+      },
+      {
+       "type": "tap_candles",
+       "question": "Tap both peaks that test the same resistance level.",
+       "targets": [
+        1,
+        3
+       ],
+       "explanation": "Candles 2 and 4 are the two peaks stalling at about the same level, the \"M\" shape.",
+       "chart": "doubleTop"
+      },
+      {
+       "type": "tap_candles",
+       "question": "Tap both troughs that test the same support level.",
+       "targets": [
+        1,
+        3
+       ],
+       "explanation": "Candles 2 and 4 are the two troughs holding at about the same level, the \"W\" shape.",
+       "chart": "doubleBottom"
+      },
+      {
+       "type": "mark_level",
+       "question": "Drag the line to the support both troughs tested.",
+       "level_kind": "support",
+       "chart": "doubleBottom",
+       "explanation": "The more times a level is touched and holds, the more notable it's considered."
+      },
+      {
+       "type": "mark_level",
+       "question": "Drag the line to the resistance both peaks stall at.",
+       "level_kind": "resistance",
+       "explanation": "The shared high both peaks reach is the resistance level of a double top.",
+       "chart": "doubleTop"
+      },
+      {
+       "type": "tap_candle",
+       "question": "Tap the first trough of the double bottom.",
+       "target": 1,
+       "explanation": "The 2nd candle is the first trough, testing support for the first time.",
+       "chart": "doubleBottom"
       }
      ]
     },
@@ -14365,6 +14838,34 @@
        ],
        "correct": 2,
        "explanation": "Interpreting the pattern's implication goes beyond just identifying its shape."
+      },
+      {
+       "type": "mark_level",
+       "question": "Drag the line to the resistance both peaks stall at.",
+       "level_kind": "resistance",
+       "explanation": "The shared high both peaks reach is the resistance level of a double top.",
+       "chart": "doubleTop"
+      },
+      {
+       "type": "tap_candle",
+       "question": "Tap the second peak of the double top.",
+       "target": 3,
+       "explanation": "The fourth candle is the second peak, stalling at the same resistance as the first.",
+       "chart": "doubleTop"
+      },
+      {
+       "type": "tap_candle",
+       "question": "Tap the first trough of the double bottom.",
+       "target": 1,
+       "explanation": "The 2nd candle is the first trough, testing support for the first time.",
+       "chart": "doubleBottom"
+      },
+      {
+       "type": "tap_candle",
+       "question": "Tap the second trough of the double bottom.",
+       "target": 3,
+       "explanation": "The fourth candle is the second trough, holding at the same support as the first.",
+       "chart": "doubleBottom"
       }
      ]
     },
@@ -14460,6 +14961,44 @@
        ],
        "correct": 1,
        "explanation": "This lesson mixes shape identification with reading the level's behavior."
+      },
+      {
+       "type": "tap_candles",
+       "question": "Tap both peaks that test the same resistance level.",
+       "targets": [
+        1,
+        3
+       ],
+       "explanation": "Candles 2 and 4 are the two peaks stalling at about the same level, the \"M\" shape.",
+       "chart": "doubleTop"
+      },
+      {
+       "type": "mark_level",
+       "question": "Drag the line to the resistance both peaks stall at.",
+       "level_kind": "resistance",
+       "explanation": "The shared high both peaks reach is the resistance level of a double top.",
+       "chart": "doubleTop"
+      },
+      {
+       "type": "mark_level",
+       "question": "Drag the line to the support both troughs tested.",
+       "level_kind": "support",
+       "chart": "doubleBottom",
+       "explanation": "The more times a level is touched and holds, the more notable it's considered."
+      },
+      {
+       "type": "tap_candle",
+       "question": "Tap the first trough of the double bottom.",
+       "target": 1,
+       "explanation": "The 2nd candle is the first trough, testing support for the first time.",
+       "chart": "doubleBottom"
+      },
+      {
+       "type": "tap_candle",
+       "question": "Tap the second trough of the double bottom.",
+       "target": 3,
+       "explanation": "The fourth candle is the second trough, holding at the same support as the first.",
+       "chart": "doubleBottom"
       }
      ]
     },
@@ -14600,6 +15139,20 @@
        "level_kind": "support",
        "explanation": "Support runs across the bottoms of the two troughs.",
        "chart": "doubleBottom"
+      },
+      {
+       "type": "tap_candle",
+       "question": "Tap the second peak of the double top.",
+       "target": 3,
+       "explanation": "The fourth candle is the second peak, stalling at the same resistance as the first.",
+       "chart": "doubleTop"
+      },
+      {
+       "type": "tap_candle",
+       "question": "Tap the second trough of the double bottom.",
+       "target": 3,
+       "explanation": "The fourth candle is the second trough, holding at the same support as the first.",
+       "chart": "doubleBottom"
       }
      ]
     },
@@ -14698,6 +15251,28 @@
        ],
        "correct": 0,
        "explanation": "The name itself describes the left-to-right order: shoulder, head, shoulder."
+      },
+      {
+       "type": "mark_level",
+       "question": "Drag the line to the resistance both peaks stall at.",
+       "level_kind": "resistance",
+       "explanation": "The shared high both peaks reach is the resistance level of a double top.",
+       "chart": "doubleTop"
+      },
+      {
+       "type": "tap_candle",
+       "question": "Tap the second peak of the double top.",
+       "target": 3,
+       "explanation": "The fourth candle is the second peak, stalling at the same resistance as the first.",
+       "chart": "doubleTop"
+      },
+      {
+       "type": "draw_trendline",
+       "question": "Drag to connect the two troughs that form the neckline.",
+       "target_start": 2,
+       "target_end": 4,
+       "explanation": "Candles 3 and 5 are the troughs on either side of the head, connected by the neckline.",
+       "chart": "headShoulders"
       }
      ]
     },
@@ -14798,6 +15373,14 @@
        ],
        "correct": 1,
        "explanation": "The head is commonly the tallest of the three peaks, not the shortest."
+      },
+      {
+       "type": "draw_trendline",
+       "question": "Drag to connect the two troughs that form the neckline.",
+       "target_start": 2,
+       "target_end": 4,
+       "explanation": "Candles 3 and 5 are the troughs on either side of the head, connected by the neckline.",
+       "chart": "headShoulders"
       }
      ]
     },
@@ -14891,6 +15474,13 @@
        ],
        "correct": 1,
        "explanation": "The neckline specifically connects the two troughs framing the head."
+      },
+      {
+       "type": "tap_candle",
+       "question": "Tap the head.",
+       "target": 3,
+       "explanation": "The 4th candle is the head, the tallest of the three peaks.",
+       "chart": "headShoulders"
       }
      ]
     },
@@ -15088,6 +15678,42 @@
        "question": "A lopsided head & shoulders (very unequal shoulders) is read as a weaker version of the pattern.",
        "correct": true,
        "explanation": "Unequal shoulders weaken the \"clean\" pattern read, though it can still count loosely."
+      },
+      {
+       "type": "mark_level",
+       "question": "Drag the line to the neckline.",
+       "level_kind": "support",
+       "explanation": "The line under the two troughs is the head & shoulders neckline.",
+       "chart": "headShoulders"
+      },
+      {
+       "type": "mark_level",
+       "question": "Drag the line to the resistance both peaks stall at.",
+       "level_kind": "resistance",
+       "explanation": "The shared high both peaks reach is the resistance level of a double top.",
+       "chart": "doubleTop"
+      },
+      {
+       "type": "tap_candle",
+       "question": "Tap the second peak of the double top.",
+       "target": 3,
+       "explanation": "The fourth candle is the second peak, stalling at the same resistance as the first.",
+       "chart": "doubleTop"
+      },
+      {
+       "type": "tap_candle",
+       "question": "Tap the head.",
+       "target": 3,
+       "explanation": "The 4th candle is the head, the tallest of the three peaks.",
+       "chart": "headShoulders"
+      },
+      {
+       "type": "draw_trendline",
+       "question": "Drag to connect the two troughs that form the neckline.",
+       "target_start": 2,
+       "target_end": 4,
+       "explanation": "Candles 3 and 5 are the troughs on either side of the head, connected by the neckline.",
+       "chart": "headShoulders"
       }
      ]
     },
@@ -15197,6 +15823,45 @@
        ],
        "correct": 2,
        "explanation": "Without carefully counting peaks the two patterns can be confused. That's exactly the skill this lesson builds."
+      },
+      {
+       "type": "tap_candles",
+       "question": "Tap both peaks that test the same resistance level.",
+       "targets": [
+        1,
+        3
+       ],
+       "explanation": "Candles 2 and 4 are the two peaks stalling at about the same level, the \"M\" shape.",
+       "chart": "doubleTop"
+      },
+      {
+       "type": "mark_level",
+       "question": "Drag the line to the resistance both peaks stall at.",
+       "level_kind": "resistance",
+       "explanation": "The shared high both peaks reach is the resistance level of a double top.",
+       "chart": "doubleTop"
+      },
+      {
+       "type": "tap_candle",
+       "question": "Tap the second peak of the double top.",
+       "target": 3,
+       "explanation": "The fourth candle is the second peak, stalling at the same resistance as the first.",
+       "chart": "doubleTop"
+      },
+      {
+       "type": "tap_candle",
+       "question": "Tap the head.",
+       "target": 3,
+       "explanation": "The 4th candle is the head, the tallest of the three peaks.",
+       "chart": "headShoulders"
+      },
+      {
+       "type": "draw_trendline",
+       "question": "Drag to connect the two troughs that form the neckline.",
+       "target_start": 2,
+       "target_end": 4,
+       "explanation": "Candles 3 and 5 are the troughs on either side of the head, connected by the neckline.",
+       "chart": "headShoulders"
       }
      ]
     },
@@ -15282,6 +15947,28 @@
        ],
        "correct": 1,
        "explanation": "The neckline break after the right shoulder is the commonly cited confirmation step."
+      },
+      {
+       "type": "mark_level",
+       "question": "Drag the line to the neckline.",
+       "level_kind": "support",
+       "explanation": "The line under the two troughs is the head & shoulders neckline.",
+       "chart": "headShoulders"
+      },
+      {
+       "type": "tap_candle",
+       "question": "Tap the head.",
+       "target": 3,
+       "explanation": "The 4th candle is the head, the tallest of the three peaks.",
+       "chart": "headShoulders"
+      },
+      {
+       "type": "draw_trendline",
+       "question": "Drag to connect the two troughs that form the neckline.",
+       "target_start": 2,
+       "target_end": 4,
+       "explanation": "Candles 3 and 5 are the troughs on either side of the head, connected by the neckline.",
+       "chart": "headShoulders"
       }
      ]
     },
@@ -15361,6 +16048,28 @@
        ],
        "correct": 0,
        "explanation": "Like other patterns in this course, it's a probability-shaped clue, not a guarantee."
+      },
+      {
+       "type": "mark_level",
+       "question": "Drag the line to the neckline.",
+       "level_kind": "support",
+       "explanation": "The line under the two troughs is the head & shoulders neckline.",
+       "chart": "headShoulders"
+      },
+      {
+       "type": "tap_candle",
+       "question": "Tap the head.",
+       "target": 3,
+       "explanation": "The 4th candle is the head, the tallest of the three peaks.",
+       "chart": "headShoulders"
+      },
+      {
+       "type": "draw_trendline",
+       "question": "Drag to connect the two troughs that form the neckline.",
+       "target_start": 2,
+       "target_end": 4,
+       "explanation": "Candles 3 and 5 are the troughs on either side of the head, connected by the neckline.",
+       "chart": "headShoulders"
       }
      ]
     },
@@ -15438,6 +16147,28 @@
        "question": "Fast identification drills build quicker pattern recognition over time.",
        "correct": true,
        "explanation": "Repetition across mixed charts speeds up recognition."
+      },
+      {
+       "type": "tap_candle",
+       "question": "Tap the head.",
+       "target": 3,
+       "explanation": "The 4th candle is the head, the lowest of the three troughs.",
+       "chart": "inverseHeadShoulders"
+      },
+      {
+       "type": "draw_trendline",
+       "question": "Drag to connect the two troughs that form the neckline.",
+       "target_start": 2,
+       "target_end": 4,
+       "explanation": "Candles 3 and 5 are the troughs on either side of the head, connected by the neckline.",
+       "chart": "headShoulders"
+      },
+      {
+       "type": "mark_level",
+       "question": "Drag the line to the neckline.",
+       "level_kind": "resistance",
+       "explanation": "In an inverse head & shoulders, the neckline runs along the peaks between the troughs.",
+       "chart": "inverseHeadShoulders"
       }
      ]
     },
@@ -15508,6 +16239,28 @@
        ],
        "correct": 0,
        "explanation": "This course treats pattern suggestions as descriptive context, never a guaranteed signal."
+      },
+      {
+       "type": "tap_candle",
+       "question": "Tap the head.",
+       "target": 3,
+       "explanation": "The 4th candle is the head, the tallest of the three peaks.",
+       "chart": "headShoulders"
+      },
+      {
+       "type": "draw_trendline",
+       "question": "Drag to connect the two troughs that form the neckline.",
+       "target_start": 2,
+       "target_end": 4,
+       "explanation": "Candles 3 and 5 are the troughs on either side of the head, connected by the neckline.",
+       "chart": "headShoulders"
+      },
+      {
+       "type": "mark_level",
+       "question": "Drag the line to the neckline.",
+       "level_kind": "resistance",
+       "explanation": "In an inverse head & shoulders, the neckline runs along the peaks between the troughs.",
+       "chart": "inverseHeadShoulders"
       }
      ]
     },
@@ -15592,6 +16345,28 @@
        "question": "Practicing mixed recognition helps reinforce everything covered earlier in the unit.",
        "correct": true,
        "explanation": "Mixed rounds reinforce and test the whole unit's skills together."
+      },
+      {
+       "type": "mark_level",
+       "question": "Drag the line to the neckline.",
+       "level_kind": "support",
+       "explanation": "The line under the two troughs is the head & shoulders neckline.",
+       "chart": "headShoulders"
+      },
+      {
+       "type": "tap_candle",
+       "question": "Tap the head.",
+       "target": 3,
+       "explanation": "The 4th candle is the head, the tallest of the three peaks.",
+       "chart": "headShoulders"
+      },
+      {
+       "type": "draw_trendline",
+       "question": "Drag to connect the two troughs that form the neckline.",
+       "target_start": 2,
+       "target_end": 4,
+       "explanation": "Candles 3 and 5 are the troughs on either side of the head, connected by the neckline.",
+       "chart": "headShoulders"
       }
      ]
     },
@@ -15718,6 +16493,28 @@
        ],
        "correct": 1,
        "explanation": "Combining structure and confirmation is the core skill from this unit."
+      },
+      {
+       "type": "mark_level",
+       "question": "Drag the line to the neckline.",
+       "level_kind": "support",
+       "explanation": "The line under the two troughs is the head & shoulders neckline.",
+       "chart": "headShoulders"
+      },
+      {
+       "type": "tap_candle",
+       "question": "Tap the head.",
+       "target": 3,
+       "explanation": "The 4th candle is the head, the tallest of the three peaks.",
+       "chart": "headShoulders"
+      },
+      {
+       "type": "draw_trendline",
+       "question": "Drag to connect the two troughs that form the neckline.",
+       "target_start": 2,
+       "target_end": 4,
+       "explanation": "Candles 3 and 5 are the troughs on either side of the head, connected by the neckline.",
+       "chart": "headShoulders"
       }
      ]
     },
@@ -15832,6 +16629,17 @@
        ],
        "correct": 0,
        "explanation": "Price is squeezed between the flat top and the rising lows."
+      },
+      {
+       "type": "tap_candles",
+       "question": "Tap the candles that touch the flat resistance on top.",
+       "targets": [
+        0,
+        2,
+        4
+       ],
+       "explanation": "The 1st, 3rd, and 5th candles push up into the flat resistance.",
+       "chart": "ascendingTriangle"
       }
      ]
     },
@@ -16169,6 +16977,17 @@
        "question": "A descending triangle can still break upward, despite the commonly cited downward bias.",
        "correct": true,
        "explanation": "Bias describes a tendency, not a guarantee, any triangle can break either way."
+      },
+      {
+       "type": "tap_candles",
+       "question": "Tap the candles that touch the flat resistance on top.",
+       "targets": [
+        0,
+        2,
+        4
+       ],
+       "explanation": "The 1st, 3rd, and 5th candles push up into the flat resistance.",
+       "chart": "ascendingTriangle"
       }
      ]
     },
@@ -16248,6 +17067,17 @@
        "question": "All three triangle types share the idea of price squeezing into a narrower range.",
        "correct": true,
        "explanation": "Squeezing into a narrowing range is the shared idea across ascending, descending, and symmetrical triangles."
+      },
+      {
+       "type": "tap_candles",
+       "question": "Tap the candles that touch the flat resistance on top.",
+       "targets": [
+        0,
+        2,
+        4
+       ],
+       "explanation": "The 1st, 3rd, and 5th candles push up into the flat resistance.",
+       "chart": "ascendingTriangle"
       }
      ]
     },
@@ -16665,6 +17495,14 @@
        "question": "Both the pole and the flag are essential parts of this pattern.",
        "correct": true,
        "explanation": "The pattern needs both the strong pole and the smaller pause (flag) to be complete."
+      },
+      {
+       "type": "mark_consolidation",
+       "question": "Drag across the flag.",
+       "target_lo": 2,
+       "target_hi": 3,
+       "explanation": "Candles 3 and 4 are the small downward drift after the pole, the flag itself.",
+       "chart": "bullFlag"
       }
      ]
     },
@@ -16813,6 +17651,21 @@
        "question": "A flag or pennant is guaranteed to continue the prior trend.",
        "correct": false,
        "explanation": "Continuation is a common tendency, not a guarantee, the pattern can still fail."
+      },
+      {
+       "type": "mark_consolidation",
+       "question": "Drag across the flag.",
+       "target_lo": 2,
+       "target_hi": 3,
+       "explanation": "Candles 3 and 4 are the small downward drift after the pole, the flag itself.",
+       "chart": "bullFlag"
+      },
+      {
+       "type": "tap_candle",
+       "question": "Tap the start of the pole.",
+       "target": 0,
+       "explanation": "The 1st candle begins the strong up move, the pole.",
+       "chart": "bullFlag"
       }
      ]
     },
@@ -16915,6 +17768,13 @@
        "question": "Even after this review, continuation should be read as a tendency, not a certainty.",
        "correct": true,
        "explanation": "This remains true throughout, flags and pennants suggest a tendency, never a guarantee."
+      },
+      {
+       "type": "tap_candle",
+       "question": "Tap the start of the pole.",
+       "target": 0,
+       "explanation": "The 1st candle begins the strong up move, the pole.",
+       "chart": "bullFlag"
       }
      ]
     },
@@ -17383,6 +18243,45 @@
        "question": "Repeated practice with mixed charts builds faster, more reliable structure recognition.",
        "correct": true,
        "explanation": "Like other identification drills in this course, repetition builds recognition speed."
+      },
+      {
+       "type": "tap_candle",
+       "question": "Tap the candle that makes the highest high.",
+       "target": 4,
+       "explanation": "In this uptrend the last candle prints the highest high.",
+       "chart": "uptrend"
+      },
+      {
+       "type": "draw_trendline",
+       "question": "Draw the uptrend line from the first candle to the last.",
+       "target_start": 0,
+       "target_end": 4,
+       "explanation": "Connecting the rising candles traces the uptrend line.",
+       "chart": "uptrend"
+      },
+      {
+       "type": "draw_trendline",
+       "question": "Draw the downtrend line from the first candle to the last.",
+       "target_start": 0,
+       "target_end": 4,
+       "explanation": "Connecting the falling candles traces the downtrend line.",
+       "chart": "downtrend"
+      },
+      {
+       "type": "draw_trendline",
+       "question": "Drag to connect the two highs that form the wedge's upper line.",
+       "target_start": 0,
+       "target_end": 4,
+       "explanation": "Candles 1 and 5 mark the upper line, rising but converging with the line below it.",
+       "chart": "risingWedge"
+      },
+      {
+       "type": "draw_trendline",
+       "question": "Drag to connect the two lows that form the wedge's lower line.",
+       "target_start": 0,
+       "target_end": 4,
+       "explanation": "Candles 1 and 5 mark the lower line, falling but converging with the line above it.",
+       "chart": "fallingWedge"
       }
      ]
     },
@@ -17480,6 +18379,14 @@
        "question": "Even after this review, a wedge's implied reversal remains a bias, not a certainty.",
        "correct": true,
        "explanation": "As with other patterns, wedges suggest a bias, never a guaranteed outcome."
+      },
+      {
+       "type": "draw_trendline",
+       "question": "Draw the uptrend line from the first candle to the last.",
+       "target_start": 0,
+       "target_end": 4,
+       "explanation": "Connecting the rising candles traces the uptrend line.",
+       "chart": "uptrend"
       }
      ]
     },
@@ -17584,6 +18491,28 @@
         }
        ],
        "explanation": "Higher lows for uptrend lines; lower highs for downtrend lines."
+      },
+      {
+       "type": "tap_candle",
+       "question": "Tap the candle that makes the highest high.",
+       "target": 4,
+       "explanation": "In this uptrend the last candle prints the highest high.",
+       "chart": "uptrend"
+      },
+      {
+       "type": "draw_trendline",
+       "question": "Draw the uptrend line under the higher lows.",
+       "target_start": 0,
+       "target_end": 2,
+       "explanation": "Connecting the rising lows draws the uptrend line.",
+       "chart": "pullbackUptrend"
+      },
+      {
+       "type": "tap_candle",
+       "question": "Tap the higher low.",
+       "target": 2,
+       "explanation": "The 3rd candle is the pullback that made a higher low, keeping the uptrend intact.",
+       "chart": "pullbackUptrend"
       }
      ]
     },
@@ -17665,6 +18594,16 @@
        ],
        "correct": 1,
        "explanation": "A break is a commonly cited early signal, not an automatic confirmation of a new trend."
+      },
+      {
+       "type": "tap_candles",
+       "question": "Tap the two swing highs making higher highs.",
+       "targets": [
+        1,
+        3
+       ],
+       "explanation": "These two peaks each print higher than the last, the uptrend's higher highs.",
+       "chart": "pullbackUptrend"
       }
      ]
     },
@@ -17752,6 +18691,13 @@
        ],
        "correct": 1,
        "explanation": "A break is a commonly cited early signal, not an automatic confirmation of a new trend."
+      },
+      {
+       "type": "tap_candle",
+       "question": "Tap the candle that makes the lowest low.",
+       "target": 4,
+       "explanation": "In this downtrend the last candle prints the lowest low.",
+       "chart": "downtrend"
       }
      ]
     },
@@ -17862,6 +18808,17 @@
        ],
        "correct": 0,
        "explanation": "Repeated respect for the line is commonly cited evidence of its significance, without guaranteeing anything."
+      },
+      {
+       "type": "tap_candles",
+       "question": "Tap every candle that pushes up to the upper channel boundary.",
+       "targets": [
+        1,
+        3,
+        5
+       ],
+       "explanation": "Each of these swing highs prints above the one before it — a higher high.",
+       "chart": "ascendingChannel"
       }
      ]
     },
@@ -17941,6 +18898,21 @@
        ],
        "correct": 0,
        "explanation": "A balanced read treats a break as a notable but non-guaranteed signal."
+      },
+      {
+       "type": "draw_trendline",
+       "question": "Draw the uptrend line under the higher lows.",
+       "target_start": 0,
+       "target_end": 2,
+       "explanation": "Connecting the rising lows draws the uptrend line.",
+       "chart": "pullbackUptrend"
+      },
+      {
+       "type": "tap_candle",
+       "question": "Tap the higher low.",
+       "target": 2,
+       "explanation": "The 3rd candle is the pullback that made a higher low, keeping the uptrend intact.",
+       "chart": "pullbackUptrend"
       }
      ]
     },
@@ -18044,6 +19016,21 @@
        ],
        "correct": 0,
        "explanation": "Grounding trendlines in actual turning points, then reading touches/breaks, is the core skill."
+      },
+      {
+       "type": "draw_trendline",
+       "question": "Draw the uptrend line under the higher lows.",
+       "target_start": 0,
+       "target_end": 2,
+       "explanation": "Connecting the rising lows draws the uptrend line.",
+       "chart": "pullbackUptrend"
+      },
+      {
+       "type": "tap_candle",
+       "question": "Tap the higher low.",
+       "target": 2,
+       "explanation": "The 3rd candle is the pullback that made a higher low, keeping the uptrend intact.",
+       "chart": "pullbackUptrend"
       }
      ]
     },
@@ -18224,6 +19211,36 @@
        ],
        "correct": 2,
        "explanation": "Sideways-bounded vs. directional-progress is the key distinction."
+      },
+      {
+       "type": "tap_candle",
+       "question": "Tap the candle that makes the highest high.",
+       "target": 4,
+       "explanation": "In this uptrend the last candle prints the highest high.",
+       "chart": "uptrend"
+      },
+      {
+       "type": "draw_trendline",
+       "question": "Draw the uptrend line from the first candle to the last.",
+       "target_start": 0,
+       "target_end": 4,
+       "explanation": "Connecting the rising candles traces the uptrend line.",
+       "chart": "uptrend"
+      },
+      {
+       "type": "mark_consolidation",
+       "question": "Drag across every candle that's part of this range's consolidation.",
+       "target_lo": 0,
+       "target_hi": 5,
+       "explanation": "All six candles here stay bounded between the support and resistance, the whole chart is the consolidation.",
+       "chart": "range"
+      },
+      {
+       "type": "mark_level",
+       "question": "Drag the line to the support.",
+       "level_kind": "support",
+       "explanation": "The bottom of the range is the support price keeps bouncing from.",
+       "chart": "range"
       }
      ]
     },
@@ -18359,6 +19376,13 @@
        ],
        "correct": 2,
        "explanation": "Clearing resistance and continuing beyond it is the definition of a breakout."
+      },
+      {
+       "type": "mark_level",
+       "question": "Drag the line to the resistance the price broke above.",
+       "level_kind": "resistance",
+       "explanation": "The ceiling the range held before the breakout is the resistance.",
+       "chart": "breakout"
       }
      ]
     },
@@ -18537,6 +19561,21 @@
        ],
        "correct": 2,
        "explanation": "Reading boundaries plus healthy skepticism about breaks is the core skill here."
+      },
+      {
+       "type": "draw_trendline",
+       "question": "Draw the uptrend line from the first candle to the last.",
+       "target_start": 0,
+       "target_end": 4,
+       "explanation": "Connecting the rising candles traces the uptrend line.",
+       "chart": "uptrend"
+      },
+      {
+       "type": "mark_level",
+       "question": "Drag the line to the support.",
+       "level_kind": "support",
+       "explanation": "The bottom of the range is the support price keeps bouncing from.",
+       "chart": "range"
       }
      ]
     },
@@ -18618,6 +19657,13 @@
        ],
        "correct": 1,
        "explanation": "Clearing and continuing past the level is the core of a breakout."
+      },
+      {
+       "type": "mark_level",
+       "question": "Drag the line to the resistance the price broke above.",
+       "level_kind": "resistance",
+       "explanation": "The ceiling the range held before the breakout is the resistance.",
+       "chart": "breakout"
       }
      ]
     },
@@ -18861,6 +19907,13 @@
        ],
        "correct": 1,
        "explanation": "A retest specifically tests whether the newly flipped role holds."
+      },
+      {
+       "type": "tap_candle",
+       "question": "Tap the breakout candle that clears the level.",
+       "target": 3,
+       "explanation": "This candle clears the level before the retest that follows.",
+       "chart": "breakoutRetest"
       }
      ]
     },
@@ -18947,6 +20000,27 @@
        ],
        "correct": 2,
        "explanation": "A weak breakout barely clears the level and lacks conviction."
+      },
+      {
+       "type": "tap_candle",
+       "question": "Tap the breakout candle.",
+       "target": 3,
+       "explanation": "This candle pushes above the range on strong momentum.",
+       "chart": "breakout"
+      },
+      {
+       "type": "mark_level",
+       "question": "Drag the line to the resistance the price broke above.",
+       "level_kind": "resistance",
+       "explanation": "The ceiling the range held before the breakout is the resistance.",
+       "chart": "breakout"
+      },
+      {
+       "type": "mark_level",
+       "question": "Drag the line to the resistance this chart keeps getting rejected at.",
+       "level_kind": "resistance",
+       "explanation": "The ceiling price keeps failing to break is the resistance.",
+       "chart": "resistanceRejection"
       }
      ]
     },
@@ -19137,6 +20211,24 @@
        ],
        "correct": 0,
        "explanation": "A pullback describes a temporary pause, not a full reversal."
+      },
+      {
+       "type": "tap_candles",
+       "question": "Tap the two swing highs making higher highs.",
+       "targets": [
+        1,
+        3
+       ],
+       "explanation": "These two peaks each print higher than the last, the uptrend's higher highs.",
+       "chart": "pullbackUptrend"
+      },
+      {
+       "type": "draw_trendline",
+       "question": "Draw the uptrend line under the higher lows.",
+       "target_start": 0,
+       "target_end": 2,
+       "explanation": "Connecting the rising lows draws the uptrend line.",
+       "chart": "pullbackUptrend"
       }
      ]
     },
@@ -19218,6 +20310,16 @@
        ],
        "correct": 1,
        "explanation": "Holding above the prior low (a higher low) keeps the uptrend structure intact."
+      },
+      {
+       "type": "tap_candles",
+       "question": "Tap the two swing highs making higher highs.",
+       "targets": [
+        1,
+        3
+       ],
+       "explanation": "These two peaks each print higher than the last, the uptrend's higher highs.",
+       "chart": "pullbackUptrend"
       }
      ]
     },
@@ -19397,6 +20499,38 @@
        ],
        "correct": 0,
        "explanation": "Preserved vs. broken structure is the defining difference."
+      },
+      {
+       "type": "tap_candles",
+       "question": "Tap the two swing highs making higher highs.",
+       "targets": [
+        1,
+        3
+       ],
+       "explanation": "These two peaks each print higher than the last, the uptrend's higher highs.",
+       "chart": "pullbackUptrend"
+      },
+      {
+       "type": "draw_trendline",
+       "question": "Draw the uptrend line under the higher lows.",
+       "target_start": 0,
+       "target_end": 2,
+       "explanation": "Connecting the rising lows draws the uptrend line.",
+       "chart": "pullbackUptrend"
+      },
+      {
+       "type": "tap_candle",
+       "question": "Tap the higher low.",
+       "target": 2,
+       "explanation": "The 3rd candle is the pullback that made a higher low, keeping the uptrend intact.",
+       "chart": "pullbackUptrend"
+      },
+      {
+       "type": "tap_candle",
+       "question": "Tap the candle that breaks below the support shelf.",
+       "target": 3,
+       "explanation": "This candle drops through the support the prior candles held.",
+       "chart": "breakdown"
       }
      ]
     },
@@ -19473,6 +20607,31 @@
        ],
        "correct": 0,
        "explanation": "This course consistently frames such patterns as tendencies, not guarantees."
+      },
+      {
+       "type": "tap_candles",
+       "question": "Tap the two swing highs making higher highs.",
+       "targets": [
+        1,
+        3
+       ],
+       "explanation": "These two peaks each print higher than the last, the uptrend's higher highs.",
+       "chart": "pullbackUptrend"
+      },
+      {
+       "type": "draw_trendline",
+       "question": "Draw the uptrend line under the higher lows.",
+       "target_start": 0,
+       "target_end": 2,
+       "explanation": "Connecting the rising lows draws the uptrend line.",
+       "chart": "pullbackUptrend"
+      },
+      {
+       "type": "tap_candle",
+       "question": "Tap the higher low.",
+       "target": 2,
+       "explanation": "The 3rd candle is the pullback that made a higher low, keeping the uptrend intact.",
+       "chart": "pullbackUptrend"
       }
      ]
     },
@@ -19576,6 +20735,21 @@
        ],
        "correct": 2,
        "explanation": "Checking whether the structure holds is the core skill from this unit."
+      },
+      {
+       "type": "draw_trendline",
+       "question": "Draw the uptrend line under the higher lows.",
+       "target_start": 0,
+       "target_end": 2,
+       "explanation": "Connecting the rising lows draws the uptrend line.",
+       "chart": "pullbackUptrend"
+      },
+      {
+       "type": "tap_candle",
+       "question": "Tap the higher low.",
+       "target": 2,
+       "explanation": "The 3rd candle is the pullback that made a higher low, keeping the uptrend intact.",
+       "chart": "pullbackUptrend"
       }
      ]
     },
@@ -19816,6 +20990,13 @@
        ],
        "correct": 0,
        "explanation": "Small bodies on both shapes point to indecision, not decisive momentum."
+      },
+      {
+       "type": "tap_candle",
+       "question": "Tap the spinning top.",
+       "target": 1,
+       "explanation": "The candle with a small body and balanced wicks is the spinning top.",
+       "chart": "spinningTop"
       }
      ]
     },
@@ -20343,6 +21524,13 @@
        ],
        "correct": 0,
        "explanation": "A pattern reinforced by a level is this specific type of confluence."
+      },
+      {
+       "type": "tap_candle",
+       "question": "Tap the second peak of the double top.",
+       "target": 3,
+       "explanation": "The fourth candle is the second peak, stalling at the same resistance as the first.",
+       "chart": "doubleTop"
       }
      ]
     },
@@ -20419,6 +21607,24 @@
        ],
        "correct": 0,
        "explanation": "Trend direction plus an aligned pullback is this specific type of confluence."
+      },
+      {
+       "type": "tap_candles",
+       "question": "Tap the two swing highs making higher highs.",
+       "targets": [
+        1,
+        3
+       ],
+       "explanation": "These two peaks each print higher than the last, the uptrend's higher highs.",
+       "chart": "pullbackUptrend"
+      },
+      {
+       "type": "draw_trendline",
+       "question": "Draw the uptrend line under the higher lows.",
+       "target_start": 0,
+       "target_end": 2,
+       "explanation": "Connecting the rising lows draws the uptrend line.",
+       "chart": "pullbackUptrend"
       }
      ]
     },
@@ -20840,6 +22046,16 @@
        ],
        "correct": 2,
        "explanation": "Non-continuous trading is the commonly cited reason gaps form between sessions."
+      },
+      {
+       "type": "tap_candles",
+       "question": "Tap the two candles the empty gap space sits between.",
+       "targets": [
+        1,
+        2
+       ],
+       "explanation": "The gap is the untraded space between candle 2's high and candle 3's open, so it sits between those two candles.",
+       "chart": "gapUp"
       }
      ]
     },
@@ -20904,6 +22120,16 @@
        ],
        "correct": 0,
        "explanation": "A gap fill specifically describes price retracing back through the skipped range."
+      },
+      {
+       "type": "tap_candles",
+       "question": "Tap the two candles the empty gap space sits between.",
+       "targets": [
+        1,
+        2
+       ],
+       "explanation": "The gap is the untraded space between candle 2's high and candle 3's open, so it sits between those two candles.",
+       "chart": "gapUp"
       }
      ]
     },
@@ -20988,6 +22214,16 @@
        ],
        "correct": 2,
        "explanation": "Reading gaps descriptively, without assuming a guaranteed fill, is the core skill here."
+      },
+      {
+       "type": "tap_candles",
+       "question": "Tap the two candles the empty gap space sits between.",
+       "targets": [
+        1,
+        2
+       ],
+       "explanation": "The gap is the untraded space between candle 2's high and candle 3's open, so it sits between those two candles.",
+       "chart": "gapUp"
       }
      ]
     },
@@ -21068,6 +22304,21 @@
        ],
        "correct": 1,
        "explanation": "Timeframe determines the duration each candle summarizes."
+      },
+      {
+       "type": "tap_candle",
+       "question": "Tap the candle that makes the highest high.",
+       "target": 4,
+       "explanation": "In this uptrend the last candle prints the highest high.",
+       "chart": "uptrend"
+      },
+      {
+       "type": "draw_trendline",
+       "question": "Draw the uptrend line from the first candle to the last.",
+       "target_start": 0,
+       "target_end": 4,
+       "explanation": "Connecting the rising candles traces the uptrend line.",
+       "chart": "uptrend"
       }
      ]
     },
@@ -21245,6 +22496,14 @@
        ],
        "correct": 2,
        "explanation": "A higher-timeframe pullback can appear as its own trend when zoomed in."
+      },
+      {
+       "type": "draw_trendline",
+       "question": "Draw the uptrend line under the higher lows.",
+       "target_start": 0,
+       "target_end": 2,
+       "explanation": "Connecting the rising lows draws the uptrend line.",
+       "chart": "pullbackUptrend"
       }
      ]
     },
@@ -21411,6 +22670,14 @@
        ],
        "correct": 0,
        "explanation": "Agreement across timeframes adds confluence, stronger, but not certain."
+      },
+      {
+       "type": "draw_trendline",
+       "question": "Draw the uptrend line from the first candle to the last.",
+       "target_start": 0,
+       "target_end": 4,
+       "explanation": "Connecting the rising candles traces the uptrend line.",
+       "chart": "uptrend"
       }
      ]
     },
@@ -21514,6 +22781,21 @@
        ],
        "correct": 1,
        "explanation": "Top-down, context-first reading across timeframes is the core skill here."
+      },
+      {
+       "type": "draw_trendline",
+       "question": "Draw the uptrend line under the higher lows.",
+       "target_start": 0,
+       "target_end": 2,
+       "explanation": "Connecting the rising lows draws the uptrend line.",
+       "chart": "pullbackUptrend"
+      },
+      {
+       "type": "tap_candle",
+       "question": "Tap the higher low.",
+       "target": 2,
+       "explanation": "The 3rd candle is the pullback that made a higher low, keeping the uptrend intact.",
+       "chart": "pullbackUptrend"
       }
      ]
     },
@@ -21617,6 +22899,124 @@
        "correct": true,
        "explanation": "Lower highs and higher lows converging, with no flat side, is a symmetrical triangle.",
        "chart": "symmetricalTriangle"
+      },
+      {
+       "type": "tap_candles",
+       "question": "Tap the left and right shoulders.",
+       "targets": [
+        1,
+        5
+       ],
+       "explanation": "The two outer peaks, lower than the head between them, are the shoulders.",
+       "chart": "headShoulders"
+      },
+      {
+       "type": "tap_candles",
+       "question": "Tap both peaks that test the same resistance level.",
+       "targets": [
+        1,
+        3
+       ],
+       "explanation": "Candles 2 and 4 are the two peaks stalling at about the same level, the \"M\" shape.",
+       "chart": "doubleTop"
+      },
+      {
+       "type": "mark_level",
+       "question": "Drag the line to the neckline.",
+       "level_kind": "support",
+       "explanation": "The line under the two troughs is the head & shoulders neckline.",
+       "chart": "headShoulders"
+      },
+      {
+       "type": "mark_level",
+       "question": "Drag the line to the resistance both peaks stall at.",
+       "level_kind": "resistance",
+       "explanation": "The shared high both peaks reach is the resistance level of a double top.",
+       "chart": "doubleTop"
+      },
+      {
+       "type": "tap_candle",
+       "question": "Tap the second peak of the double top.",
+       "target": 3,
+       "explanation": "The fourth candle is the second peak, stalling at the same resistance as the first.",
+       "chart": "doubleTop"
+      },
+      {
+       "type": "tap_candle",
+       "question": "Tap the head.",
+       "target": 3,
+       "explanation": "The 4th candle is the head, the tallest of the three peaks.",
+       "chart": "headShoulders"
+      },
+      {
+       "type": "draw_trendline",
+       "question": "Drag to connect the two troughs that form the neckline.",
+       "target_start": 2,
+       "target_end": 4,
+       "explanation": "Candles 3 and 5 are the troughs on either side of the head, connected by the neckline.",
+       "chart": "headShoulders"
+      },
+      {
+       "type": "tap_candle",
+       "question": "Tap the head.",
+       "target": 3,
+       "explanation": "The 4th candle is the head, the lowest of the three troughs.",
+       "chart": "inverseHeadShoulders"
+      },
+      {
+       "type": "mark_level",
+       "question": "Drag the line to the neckline.",
+       "level_kind": "resistance",
+       "explanation": "In an inverse head & shoulders, the neckline runs along the peaks between the troughs.",
+       "chart": "inverseHeadShoulders"
+      },
+      {
+       "type": "mark_level",
+       "question": "Drag the line to the flat resistance the highs keep testing.",
+       "level_kind": "resistance",
+       "explanation": "The flat top of an ascending triangle is the resistance being tested repeatedly.",
+       "chart": "ascendingTriangle"
+      },
+      {
+       "type": "mark_level",
+       "question": "Drag the line to the flat support the lows keep testing.",
+       "level_kind": "support",
+       "explanation": "The flat bottom of a descending triangle is the support being tested repeatedly.",
+       "chart": "descendingTriangle"
+      },
+      {
+       "type": "tap_candles",
+       "question": "Tap the candles that touch the flat resistance on top.",
+       "targets": [
+        0,
+        2,
+        4
+       ],
+       "explanation": "The 1st, 3rd, and 5th candles push up into the flat resistance.",
+       "chart": "ascendingTriangle"
+      },
+      {
+       "type": "tap_candle",
+       "question": "Tap the start of the pole.",
+       "target": 0,
+       "explanation": "The 1st candle begins the strong up move, the pole.",
+       "chart": "bullFlag"
+      },
+      {
+       "type": "mark_consolidation",
+       "question": "Drag across the flag.",
+       "target_lo": 2,
+       "target_hi": 3,
+       "explanation": "Candles 3 and 4 are the small downward drift after the pole, the flag itself.",
+       "chart": "bullFlag"
+      },
+      {
+       "type": "draw_trendline",
+       "question": "Drag to connect the two lows that form the wedge's lower line.",
+       "target_start": 0,
+       "target_end": 4,
+       "explanation": "Candles 1 and 5 mark the lower line, falling but converging with the line above it.",
+       "chart": "fallingWedge"
       }
      ]
     },
@@ -21692,6 +23092,56 @@
        "question": "Marking a level is a matter of judgment, not an exact science.",
        "correct": true,
        "explanation": "Support and resistance are estimated zones based on past reactions, not precise fixed lines."
+      },
+      {
+       "type": "tap_candle",
+       "question": "Tap the breakout candle.",
+       "target": 3,
+       "explanation": "This candle pushes above the range on strong momentum.",
+       "chart": "breakout"
+      },
+      {
+       "type": "tap_candles",
+       "question": "Tap the left and right shoulders.",
+       "targets": [
+        1,
+        5
+       ],
+       "explanation": "The two outer peaks, lower than the head between them, are the shoulders.",
+       "chart": "headShoulders"
+      },
+      {
+       "type": "mark_level",
+       "question": "Drag the line to the resistance.",
+       "level_kind": "resistance",
+       "explanation": "The top of the range is the resistance price keeps failing to break.",
+       "chart": "range"
+      },
+      {
+       "type": "tap_candle",
+       "question": "Tap the head.",
+       "target": 3,
+       "explanation": "The 4th candle is the head, the tallest of the three peaks.",
+       "chart": "headShoulders"
+      },
+      {
+       "type": "draw_trendline",
+       "question": "Drag to connect the two troughs that form the neckline.",
+       "target_start": 2,
+       "target_end": 4,
+       "explanation": "Candles 3 and 5 are the troughs on either side of the head, connected by the neckline.",
+       "chart": "headShoulders"
+      },
+      {
+       "type": "tap_candles",
+       "question": "Tap the candles that touch the flat resistance on top.",
+       "targets": [
+        0,
+        2,
+        4
+       ],
+       "explanation": "The 1st, 3rd, and 5th candles push up into the flat resistance.",
+       "chart": "ascendingTriangle"
       }
      ]
     },
@@ -21845,6 +23295,76 @@
        "question": "Multi-select questions ask you to identify more than one matching candle at once.",
        "correct": true,
        "explanation": "That's the defining feature of this question type, unlike single tap-the-candle questions."
+      },
+      {
+       "type": "mark_level",
+       "question": "Drag the line to the neckline.",
+       "level_kind": "support",
+       "explanation": "The line under the two troughs is the head & shoulders neckline.",
+       "chart": "headShoulders"
+      },
+      {
+       "type": "mark_level",
+       "question": "Drag the line to the resistance both peaks stall at.",
+       "level_kind": "resistance",
+       "explanation": "The shared high both peaks reach is the resistance level of a double top.",
+       "chart": "doubleTop"
+      },
+      {
+       "type": "mark_level",
+       "question": "Drag the line to the support both troughs tested.",
+       "level_kind": "support",
+       "chart": "doubleBottom",
+       "explanation": "The more times a level is touched and holds, the more notable it's considered."
+      },
+      {
+       "type": "tap_candle",
+       "question": "Tap the first trough of the double bottom.",
+       "target": 1,
+       "explanation": "The 2nd candle is the first trough, testing support for the first time.",
+       "chart": "doubleBottom"
+      },
+      {
+       "type": "tap_candle",
+       "question": "Tap the second peak of the double top.",
+       "target": 3,
+       "explanation": "The fourth candle is the second peak, stalling at the same resistance as the first.",
+       "chart": "doubleTop"
+      },
+      {
+       "type": "tap_candle",
+       "question": "Tap the second trough of the double bottom.",
+       "target": 3,
+       "explanation": "The fourth candle is the second trough, holding at the same support as the first.",
+       "chart": "doubleBottom"
+      },
+      {
+       "type": "tap_candle",
+       "question": "Tap the head.",
+       "target": 3,
+       "explanation": "The 4th candle is the head, the tallest of the three peaks.",
+       "chart": "headShoulders"
+      },
+      {
+       "type": "mark_level",
+       "question": "Drag the line to the flat resistance the highs keep testing.",
+       "level_kind": "resistance",
+       "explanation": "The flat top of an ascending triangle is the resistance being tested repeatedly.",
+       "chart": "ascendingTriangle"
+      },
+      {
+       "type": "mark_level",
+       "question": "Drag the line to the flat support the lows keep testing.",
+       "level_kind": "support",
+       "explanation": "The flat bottom of a descending triangle is the support being tested repeatedly.",
+       "chart": "descendingTriangle"
+      },
+      {
+       "type": "tap_candle",
+       "question": "Tap the start of the pole.",
+       "target": 0,
+       "explanation": "The 1st candle begins the strong up move, the pole.",
+       "chart": "bullFlag"
       }
      ]
     },
@@ -21935,6 +23455,84 @@
        "question": "Wedges are commonly read as reversal shapes despite their sloped direction.",
        "correct": true,
        "explanation": "A rising wedge (despite rising) and falling wedge (despite falling) are both commonly read as reversal-biased."
+      },
+      {
+       "type": "tap_candles",
+       "question": "Tap the left and right shoulders.",
+       "targets": [
+        1,
+        5
+       ],
+       "explanation": "The two outer peaks, lower than the head between them, are the shoulders.",
+       "chart": "headShoulders"
+      },
+      {
+       "type": "mark_level",
+       "question": "Drag the line to the neckline.",
+       "level_kind": "support",
+       "explanation": "The line under the two troughs is the head & shoulders neckline.",
+       "chart": "headShoulders"
+      },
+      {
+       "type": "tap_candles",
+       "question": "Tap both troughs that test the same support level.",
+       "targets": [
+        1,
+        3
+       ],
+       "explanation": "Candles 2 and 4 are the two troughs holding at about the same level, the \"W\" shape.",
+       "chart": "doubleBottom"
+      },
+      {
+       "type": "mark_level",
+       "question": "Drag the line to the support both troughs tested.",
+       "level_kind": "support",
+       "chart": "doubleBottom",
+       "explanation": "The more times a level is touched and holds, the more notable it's considered."
+      },
+      {
+       "type": "tap_candle",
+       "question": "Tap the first trough of the double bottom.",
+       "target": 1,
+       "explanation": "The 2nd candle is the first trough, testing support for the first time.",
+       "chart": "doubleBottom"
+      },
+      {
+       "type": "tap_candle",
+       "question": "Tap the second trough of the double bottom.",
+       "target": 3,
+       "explanation": "The fourth candle is the second trough, holding at the same support as the first.",
+       "chart": "doubleBottom"
+      },
+      {
+       "type": "tap_candle",
+       "question": "Tap the head.",
+       "target": 3,
+       "explanation": "The 4th candle is the head, the tallest of the three peaks.",
+       "chart": "headShoulders"
+      },
+      {
+       "type": "draw_trendline",
+       "question": "Drag to connect the two troughs that form the neckline.",
+       "target_start": 2,
+       "target_end": 4,
+       "explanation": "Candles 3 and 5 are the troughs on either side of the head, connected by the neckline.",
+       "chart": "headShoulders"
+      },
+      {
+       "type": "tap_candle",
+       "question": "Tap the start of the pole.",
+       "target": 0,
+       "explanation": "The 1st candle begins the strong up move, the pole.",
+       "chart": "bullFlag"
+      },
+      {
+       "type": "mark_consolidation",
+       "question": "Drag across the flag.",
+       "target_lo": 2,
+       "target_hi": 3,
+       "explanation": "Candles 3 and 4 are the small downward drift after the pole, the flag itself.",
+       "chart": "bullFlag"
       }
      ]
     },
@@ -22012,6 +23610,21 @@
        "question": "Combining pattern, level, and candle reads gives a fuller picture than any one alone.",
        "correct": true,
        "explanation": "This unit's core lesson is that combining reads (confluence) is stronger than a single factor."
+      },
+      {
+       "type": "tap_candle",
+       "question": "Tap the head.",
+       "target": 3,
+       "explanation": "The 4th candle is the head, the tallest of the three peaks.",
+       "chart": "headShoulders"
+      },
+      {
+       "type": "draw_trendline",
+       "question": "Drag to connect the two troughs that form the neckline.",
+       "target_start": 2,
+       "target_end": 4,
+       "explanation": "Candles 3 and 5 are the troughs on either side of the head, connected by the neckline.",
+       "chart": "headShoulders"
       }
      ]
     },
@@ -22122,6 +23735,27 @@
        ],
        "correct": 2,
        "explanation": "Combining multiple descriptive reads is the core Intermediate-level skill."
+      },
+      {
+       "type": "mark_level",
+       "question": "Drag the line to the resistance both peaks stall at.",
+       "level_kind": "resistance",
+       "explanation": "The shared high both peaks reach is the resistance level of a double top.",
+       "chart": "doubleTop"
+      },
+      {
+       "type": "mark_level",
+       "question": "Drag the line to the level that broke, then held on the retest.",
+       "level_kind": "resistance",
+       "explanation": "The old resistance becomes support on the retest.",
+       "chart": "breakoutRetest"
+      },
+      {
+       "type": "tap_candle",
+       "question": "Tap the second peak of the double top.",
+       "target": 3,
+       "explanation": "The fourth candle is the second peak, stalling at the same resistance as the first.",
+       "chart": "doubleTop"
       }
      ]
     },
@@ -22976,6 +24610,16 @@
        "correct": 0,
        "explanation": "This unit consistently frames news as added context and risk, never a guaranteed opportunity.",
        "chart": "volatile"
+      },
+      {
+       "type": "tap_candles",
+       "question": "Tap the two candles the empty gap space sits between.",
+       "targets": [
+        1,
+        2
+       ],
+       "explanation": "The gap is the untraded space between candle 2's high and candle 3's open, so it sits between those two candles.",
+       "chart": "gapUp"
       }
      ]
     }
@@ -27411,6 +29055,43 @@
        "question": "Reading the market condition first frames how you read everything else.",
        "correct": true,
        "explanation": "Condition is commonly treated as the context for reading levels, patterns, and candles."
+      },
+      {
+       "type": "tap_candle",
+       "question": "Tap the candle that makes the highest high.",
+       "target": 4,
+       "explanation": "In this uptrend the last candle prints the highest high.",
+       "chart": "uptrend"
+      },
+      {
+       "type": "draw_trendline",
+       "question": "Draw the uptrend line from the first candle to the last.",
+       "target_start": 0,
+       "target_end": 4,
+       "explanation": "Connecting the rising candles traces the uptrend line.",
+       "chart": "uptrend"
+      },
+      {
+       "type": "mark_level",
+       "question": "Drag the line to the resistance.",
+       "level_kind": "resistance",
+       "explanation": "The top of the range is the resistance price keeps failing to break.",
+       "chart": "range"
+      },
+      {
+       "type": "mark_level",
+       "question": "Drag the line to the support.",
+       "level_kind": "support",
+       "explanation": "The bottom of the range is the support price keeps bouncing from.",
+       "chart": "range"
+      },
+      {
+       "type": "mark_consolidation",
+       "question": "Drag across every candle that's part of this range's consolidation.",
+       "target_lo": 0,
+       "target_hi": 5,
+       "explanation": "All six candles here stay bounded between the support and resistance, the whole chart is the consolidation.",
+       "chart": "range"
       }
      ]
     },
@@ -27490,6 +29171,29 @@
        ],
        "correct": 1,
        "explanation": "That progression is the defining structure of a trend."
+      },
+      {
+       "type": "draw_trendline",
+       "question": "Draw the uptrend line from the first candle to the last.",
+       "target_start": 0,
+       "target_end": 4,
+       "explanation": "Connecting the rising candles traces the uptrend line.",
+       "chart": "uptrend"
+      },
+      {
+       "type": "tap_candle",
+       "question": "Tap the candle that makes the lowest low.",
+       "target": 4,
+       "explanation": "In this downtrend the last candle prints the lowest low.",
+       "chart": "downtrend"
+      },
+      {
+       "type": "draw_trendline",
+       "question": "Draw the downtrend line from the first candle to the last.",
+       "target_start": 0,
+       "target_end": 4,
+       "explanation": "Connecting the falling candles traces the downtrend line.",
+       "chart": "downtrend"
       }
      ]
     },
@@ -27790,6 +29494,51 @@
        "question": "Classifying market condition is a first-read step that frames the rest of your analysis.",
        "correct": true,
        "explanation": "This has been the throughline, condition-first reading, framing everything else."
+      },
+      {
+       "type": "tap_candle",
+       "question": "Tap the candle that makes the highest high.",
+       "target": 4,
+       "explanation": "In this uptrend the last candle prints the highest high.",
+       "chart": "uptrend"
+      },
+      {
+       "type": "draw_trendline",
+       "question": "Draw the uptrend line from the first candle to the last.",
+       "target_start": 0,
+       "target_end": 4,
+       "explanation": "Connecting the rising candles traces the uptrend line.",
+       "chart": "uptrend"
+      },
+      {
+       "type": "tap_candle",
+       "question": "Tap the candle that makes the lowest low.",
+       "target": 4,
+       "explanation": "In this downtrend the last candle prints the lowest low.",
+       "chart": "downtrend"
+      },
+      {
+       "type": "draw_trendline",
+       "question": "Draw the downtrend line from the first candle to the last.",
+       "target_start": 0,
+       "target_end": 4,
+       "explanation": "Connecting the falling candles traces the downtrend line.",
+       "chart": "downtrend"
+      },
+      {
+       "type": "mark_level",
+       "question": "Drag the line to the support.",
+       "level_kind": "support",
+       "explanation": "The bottom of the range is the support price keeps bouncing from.",
+       "chart": "range"
+      },
+      {
+       "type": "mark_consolidation",
+       "question": "Drag across every candle that's part of this range's consolidation.",
+       "target_lo": 0,
+       "target_hi": 5,
+       "explanation": "All six candles here stay bounded between the support and resistance, the whole chart is the consolidation.",
+       "chart": "range"
       }
      ]
     },
@@ -28007,6 +29756,51 @@
        ],
        "correct": 1,
        "explanation": "A flat MA more likely reflects a range, not a strong trend."
+      },
+      {
+       "type": "tap_candle",
+       "question": "Tap the candle that makes the highest high.",
+       "target": 4,
+       "explanation": "In this uptrend the last candle prints the highest high.",
+       "chart": "uptrend"
+      },
+      {
+       "type": "draw_trendline",
+       "question": "Draw the uptrend line from the first candle to the last.",
+       "target_start": 0,
+       "target_end": 4,
+       "explanation": "Connecting the rising candles traces the uptrend line.",
+       "chart": "uptrend"
+      },
+      {
+       "type": "draw_trendline",
+       "question": "Draw the downtrend line from the first candle to the last.",
+       "target_start": 0,
+       "target_end": 4,
+       "explanation": "Connecting the falling candles traces the downtrend line.",
+       "chart": "downtrend"
+      },
+      {
+       "type": "mark_level",
+       "question": "Drag the line to the resistance.",
+       "level_kind": "resistance",
+       "explanation": "The top of the range is the resistance price keeps failing to break.",
+       "chart": "range"
+      },
+      {
+       "type": "mark_level",
+       "question": "Drag the line to the support.",
+       "level_kind": "support",
+       "explanation": "The bottom of the range is the support price keeps bouncing from.",
+       "chart": "range"
+      },
+      {
+       "type": "mark_consolidation",
+       "question": "Drag across every candle that's part of this range's consolidation.",
+       "target_lo": 0,
+       "target_hi": 5,
+       "explanation": "All six candles here stay bounded between the support and resistance, the whole chart is the consolidation.",
+       "chart": "range"
       }
      ]
     },
@@ -28185,6 +29979,13 @@
        ],
        "correct": 1,
        "explanation": "A SHORT MA hugs price more closely; a long MA is smoother and slower."
+      },
+      {
+       "type": "tap_candle",
+       "question": "Tap the candle where the fast MA crosses above the slow MA.",
+       "target": 3,
+       "explanation": "The 4th candle is where the fast (blue) MA crosses above the slow (amber) MA, a bullish crossover.",
+       "chart": "maCrossUp"
       }
      ]
     },
@@ -28353,6 +30154,14 @@
        "question": "Moving averages are descriptive and lagging, not predictive.",
        "correct": true,
        "explanation": "This has been the throughline, smoothed, lagging, descriptive trend reading."
+      },
+      {
+       "type": "draw_trendline",
+       "question": "Draw the uptrend line from the first candle to the last.",
+       "target_start": 0,
+       "target_end": 4,
+       "explanation": "Connecting the rising candles traces the uptrend line.",
+       "chart": "uptrend"
       }
      ]
     },
@@ -28635,6 +30444,13 @@
        "question": "Because MACD is built from moving averages, it is also lagging.",
        "correct": true,
        "explanation": "MA-based indicators lag price, and MACD is no exception."
+      },
+      {
+       "type": "tap_candle",
+       "question": "Tap the candle where the fast MA has clearly pulled away from the slow MA the most.",
+       "target": 5,
+       "explanation": "By the 6th candle the fast MA has moved furthest from the slower, smoother MA, showing how much quicker it reacts.",
+       "chart": "maCrossUp"
       }
      ]
     },
@@ -31099,6 +32915,13 @@
        "question": "Drag the line to the resistance.",
        "level_kind": "resistance",
        "explanation": "The ceiling the range keeps stalling at is its resistance.",
+       "chart": "range"
+      },
+      {
+       "type": "mark_level",
+       "question": "Drag the line to the support.",
+       "level_kind": "support",
+       "explanation": "The bottom of the range is the support price keeps bouncing from.",
        "chart": "range"
       }
      ]
