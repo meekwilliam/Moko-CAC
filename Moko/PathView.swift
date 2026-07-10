@@ -321,19 +321,12 @@ struct PathView: View {
 
     /// Gold crown on the unit's final node. Muted while the node is locked so
     /// it reads as "there's a test here", not "this is available".
-    private func bossBadge(locked: Bool) -> some View {
-        let face = locked ? Color(hex: "#3a6080") : Color(hex: "#FFC800")
-        let slab = locked ? Color(hex: "#1a3a50") : Color(hex: "#D9A400")
-        return Image(systemName: "crown.fill")
-            .font(.system(size: 14, weight: .black))
-            .foregroundColor(locked ? Color(hex: "#7c8ba1") : Color(hex: "#7a4f00"))
-            .frame(width: 30, height: 30)
-            .background(
-                ZStack {
-                    Circle().fill(slab).offset(y: 2.5)   // slab behind, like the puck
-                    Circle().fill(face)
-                }
-            )
+    /// Crown sitting on the face of a unit's review-test node. Muted while the
+    /// node is locked, so it reads as "there's a test here", not "available".
+    private func bossCrown(locked: Bool) -> some View {
+        Image(systemName: "crown.fill")
+            .font(.system(size: 30, weight: .black))
+            .foregroundColor(locked ? Color(hex: "#5c7d96") : Color(hex: "#FFC800"))
     }
 
     private func nodeButton(_ node: PathNode) -> some View {
@@ -372,21 +365,19 @@ struct PathView: View {
                                     LinearGradient(colors: [.clear, .black], startPoint: .center, endPoint: .bottom))
                         )
                         .clipShape(silhouette)
+
+                    // A unit's review test wears a crown on its face. Inside the
+                    // label, so it sinks with the face on press instead of
+                    // hovering over a puck that's moving away beneath it.
+                    if node.isBoss {
+                        bossCrown(locked: state == .locked)
+                    }
                 }
                 .frame(width: nodeSize, height: nodeSize)
                 .contentShape(silhouette)
             }
             .buttonStyle(PuckButtonStyle(slab: c.dark, size: nodeSize, ovalRatio: ovalRatio,
                                          shape: silhouette))
-
-            // The last node of each unit is that unit's review test. Mark it
-            // with a crown, drawn above the puck so it doesn't sink with the
-            // face on press.
-            if node.isBoss {
-                bossBadge(locked: state == .locked)
-                    .offset(x: nodeSize * 0.37, y: -nodeSize * 0.30)
-                    .allowsHitTesting(false)
-            }
         }
         .frame(width: nodeSize, height: nodeSize)
         // Tap callout: title + Start / Continue / Replay button, anchored below.
