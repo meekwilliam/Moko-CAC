@@ -1,4 +1,16 @@
 import SwiftUI
+import UIKit
+
+extension Color {
+    /// Same hue, shifted brightness — for deriving the lighter top / darker
+    /// bottom of a 3D surface from one base color.
+    func brightnessShifted(_ delta: CGFloat) -> Color {
+        var h: CGFloat = 0, s: CGFloat = 0, b: CGFloat = 0, a: CGFloat = 0
+        UIColor(self).getHue(&h, saturation: &s, brightness: &b, alpha: &a)
+        return Color(hue: Double(h), saturation: Double(s),
+                     brightness: Double(min(1, max(0, b + delta))), opacity: Double(a))
+    }
+}
 
 // MARK: - Native learning path (learn map)
 // A native re-build of the web #screen-progress: a snaking column of 3D node
@@ -355,10 +367,16 @@ struct PathView: View {
                 // Just the face (+ icon + badge); the slab is drawn fixed by the
                 // button style so the face sinks onto it on press.
                 ZStack {
-                    // Wide oval (not a perfect circle) so it reads as a coin
-                    // facing up, like other gamified apps. Plain fill — no
-                    // icon, no shine/gloss.
-                    silhouette.fill(c.main).frame(width: nodeSize, height: nodeSize * ovalRatio)
+                    // A coin facing up. The face carries a gentle top-lit
+                    // gradient (brighter top, base at the bottom) so it reads as
+                    // a domed surface rather than a flat fill — the wall shading
+                    // lives in PuckButtonStyle's slab.
+                    silhouette
+                        .fill(LinearGradient(
+                            colors: [c.main.brightnessShifted(0.07), c.main,
+                                     c.main.brightnessShifted(-0.05)],
+                            startPoint: .top, endPoint: .bottom))
+                        .frame(width: nodeSize, height: nodeSize * ovalRatio)
                         // Inner bottom shading for a rounded, puffed look.
                         .overlay(
                             silhouette.stroke(Color.black.opacity(0.20), lineWidth: 4)
@@ -604,9 +622,15 @@ private struct PuckButtonStyle: ButtonStyle {
         let h = size * ovalRatio
         return PressSink(isPressed: configuration.isPressed) { down in
             ZStack {
-                // Darker base offset straight down — the coin's chunky side
-                // (the raised "facing up" look), no perspective tilt needed.
-                shape.fill(slab).frame(width: size, height: h).offset(y: depth)
+                // The coin's chunky side, offset straight down. Gradient-shaded
+                // (lit at the top of the wall, shadowed at the bottom) so the
+                // exposed rim reads as a real vertical surface instead of a
+                // flat block of colour sitting under the face.
+                shape
+                    .fill(LinearGradient(
+                        colors: [slab.brightnessShifted(0.05), slab.brightnessShifted(-0.08)],
+                        startPoint: .top, endPoint: .bottom))
+                    .frame(width: size, height: h).offset(y: depth)
                 configuration.label
                     // Full depth on press — the face lands flush on the slab so
                     // there's no visible lip (fully flat/2D). PressSink holds the
