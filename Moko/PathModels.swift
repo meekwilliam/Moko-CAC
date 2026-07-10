@@ -84,7 +84,7 @@ final class PathStore: ObservableObject {
     @Published var energy: Int
     @Published var inProgressNode: Int?
 
-    let sections: [PathSectionData]
+    @Published var sections: [PathSectionData]
     let nodes: [PathNode]
     let totalNodes: Int
 
@@ -146,6 +146,15 @@ final class PathStore: ObservableObject {
 
     func section(_ index: Int) -> PathSectionData? {
         sections.first { $0.index == index }
+    }
+
+    /// Live-edits a unit's banner colors (Unit Color Lab, home screen) —
+    /// mutates `sections` in place so every path node re-renders immediately.
+    func setSectionColor(index: Int, bg: String, slab: String) {
+        guard let i = sections.firstIndex(where: { $0.index == index }) else { return }
+        let old = sections[i]
+        sections[i] = PathSectionData(index: old.index, eyebrow: old.eyebrow, title: old.title,
+                                      bg: bg, slab: slab, tier: old.tier)
     }
 
     func nodes(inSection index: Int) -> [PathNode] {

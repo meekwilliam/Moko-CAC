@@ -20,7 +20,6 @@ struct ProfileView: View {
     var onTestOnboarding: () -> Void = {}
 
     @EnvironmentObject var theme: ThemeManager
-    @State private var showingUnitColorLab = false
 
     private let cardBg = Theme.surface
     private let cardBorder = Theme.surfaceBorder
@@ -39,9 +38,6 @@ struct ProfileView: View {
                 .padding(.top, 20)
             }
             if showsHomeButton { homeFab }
-        }
-        .sheet(isPresented: $showingUnitColorLab) {
-            UnitColorLabView()
         }
     }
 
@@ -160,10 +156,6 @@ struct ProfileView: View {
                 prefButton(iconSystem: "flag.fill", iconColor: Color(hex: "#38bdf8"),
                            iconBg: Color(hex: "#38bdf8").opacity(0.12), label: "Preview Onboarding (Test)") {
                     onTestOnboarding()
-                }
-                prefButton(iconSystem: "paintpalette.fill", iconColor: Color(hex: "#EC4899"),
-                           iconBg: Color(hex: "#EC4899").opacity(0.12), label: "Unit Color Lab (Test)") {
-                    showingUnitColorLab = true
                 }
                 prefButton(iconSystem: "trash.fill", iconColor: Color(hex: "#D6536D"),
                            iconBg: Color(hex: "#D6536D").opacity(0.12), label: "Clear Application Data",
