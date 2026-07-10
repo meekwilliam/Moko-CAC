@@ -372,13 +372,27 @@
     {
      "node": 1,
      "title": "Long vs. Short",
-     "celebration": "You understand going long vs. short!",
+     "celebration": "You just read your first chart. Nice work!",
      "screens": [
       {
        "type": "intro",
-       "title": "Two Directions to Trade",
-       "text": "Going <b>long</b> means buying first, hoping to sell later at a higher price. Going <b>short</b> means selling first (borrowing shares), hoping to buy back later at a lower price.",
+       "title": "Welcome to Moko!",
+       "text": "You're about to learn to read charts like a trader. Every trade goes one of two ways: go <b>long</b> (buy first, sell later at a higher price) or go <b>short</b> (sell first, buy back lower). Let's see it in action.",
        "chart": "uptrend"
+      },
+      {
+       "type": "tap_candle",
+       "question": "Charts are made of candles. Tap the green up candle — it closed higher than it opened.",
+       "target": 2,
+       "explanation": "Nice! A green (up) candle closes above where it opened.",
+       "chart": "uptrend"
+      },
+      {
+       "type": "tap_candle",
+       "question": "Now tap the red down candle — it closed lower than it opened.",
+       "target": 2,
+       "explanation": "That's it! A red (down) candle closes below where it opened.",
+       "chart": "downtrend"
       },
       {
        "type": "multiple_choice",
@@ -401,28 +415,6 @@
        ],
        "correct": 1,
        "explanation": "Short positions profit if price falls, since you buy back cheaper than you sold."
-      },
-      {
-       "type": "multiple_choice",
-       "question": "A long position profits if price moves...",
-       "options": [
-        "sideways only",
-        "up",
-        "down"
-       ],
-       "correct": 1,
-       "explanation": "A long position was bought first, so it benefits from price rising."
-      },
-      {
-       "type": "multiple_choice",
-       "question": "A short position profits if price moves...",
-       "options": [
-        "up",
-        "sideways only",
-        "down"
-       ],
-       "correct": 2,
-       "explanation": "A short position was sold first, so it benefits from price falling."
       },
       {
        "type": "matching",
@@ -465,42 +457,6 @@
         }
        ],
        "explanation": "The order of buying and selling is what separates long from short."
-      },
-      {
-       "type": "ingredient_match",
-       "question": "Which best describes a \"short\" position?",
-       "options": [
-        {
-         "label": "Selling first, hoping to buy back at a lower price later",
-         "correct": true,
-         "detail": "Profits from a decline"
-        },
-        {
-         "label": "Holding cash with no position at all",
-         "correct": false,
-         "detail": "Incorrect",
-         "wrong_explanation": "A short is an active position, not being in cash."
-        },
-        {
-         "label": "Buying first, hoping to sell higher later",
-         "correct": false,
-         "detail": "That's a long position",
-         "wrong_explanation": "That describes going long, not short."
-        }
-       ],
-       "concern": "Understanding this specific term",
-       "explanation": "Short describes selling first and profiting from a decline."
-      },
-      {
-       "type": "multiple_choice",
-       "question": "What does it mean to go short?",
-       "options": [
-        "Selling first, hoping to buy back lower after a price decline.",
-        "Buying first and holding for a long period, hoping the price rises.",
-        "Selling a position you've held a long time to lock in the gain."
-       ],
-       "correct": 0,
-       "explanation": "\"Short\" describes selling first to profit from a decline. It has nothing to do with how long a trade is held."
       }
      ]
     },
