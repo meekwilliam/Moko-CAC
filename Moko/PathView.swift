@@ -326,7 +326,8 @@ struct PathView: View {
     private func bossCrown(locked: Bool) -> some View {
         Image(systemName: "crown.fill")
             .font(.system(size: 30, weight: .black))
-            .foregroundColor(locked ? Color(hex: "#5c7d96") : Color(hex: "#FFC800"))
+            // White like every other node symbol; dimmed on a locked node.
+            .foregroundColor(.white.opacity(locked ? 0.55 : 1))
     }
 
     private func nodeButton(_ node: PathNode) -> some View {
@@ -513,7 +514,10 @@ struct PathView: View {
 /// Corners are rounded so it sits with the app's soft, chunky geometry rather
 /// than reading as a spiky badge.
 struct Hexagon: Shape {
-    var cornerRadius: CGFloat = 9
+    // Generously rounded: the sharp side points otherwise leave a hard vertical
+    // step where the offset-down slab peeks out, reading as a doubled outline.
+    // Rounding them makes the side rim taper to nothing like the ellipse coin.
+    var cornerRadius: CGFloat = 15
 
     func path(in rect: CGRect) -> Path {
         let inset = rect.width * 0.25   // how far the top/bottom edges pull in
