@@ -1,16 +1,6 @@
 import SwiftUI
 import Combine
 
-private struct HorizontalQuestionSlide: ViewModifier {
-    let offset: CGFloat
-
-    func body(content: Content) -> some View {
-        content
-            .offset(x: offset)
-            .opacity(1)
-    }
-}
-
 // MARK: - Lesson player (state machine)
 
 final class LessonPlayer: ObservableObject {
@@ -241,6 +231,44 @@ final class LessonPlayer: ObservableObject {
         resetForScreen()
         onAdvance?(index)
     }
+
+    /// A detached copy of the current question state. SwiftUI keeps outgoing
+    /// transition views alive, but an `ObservedObject` would otherwise make the
+    /// old page immediately render the new question as soon as `index` changes.
+    func frozenCopy() -> LessonPlayer {
+        let copy = LessonPlayer(
+            lesson: lesson,
+            startIndex: index,
+            isReplay: isReplay,
+            unitColor: unit,
+            unitBonusEligible: unitBonusEligible,
+            isTestLesson: isTestLesson,
+            isUnitTest: isUnitTest
+        )
+        copy.screens = screens
+        copy.index = index
+        copy.revealed = revealed
+        copy.lastCorrect = lastCorrect
+        copy.finished = finished
+        copy.selectedIndex = selectedIndex
+        copy.selectedSet = selectedSet
+        copy.markedLevel = markedLevel
+        copy.markTrueLevel = markTrueLevel
+        copy.markTolerance = markTolerance
+        copy.trendStart = trendStart
+        copy.trendEnd = trendEnd
+        copy.consolidationLo = consolidationLo
+        copy.consolidationHi = consolidationHi
+        copy.ohlcPlacement = ohlcPlacement
+        copy.ohlcExpected = ohlcExpected
+        copy.numberValue = numberValue
+        copy.multiSelections = multiSelections
+        copy.multiSelectionLabels = multiSelectionLabels
+        copy.multiSelectionIDs = multiSelectionIDs
+        copy.matchingSelections = matchingSelections
+        copy.builtOrder = builtOrder
+        return copy
+    }
 }
 
 // MARK: - Container
@@ -251,6 +279,9 @@ struct LessonView: View {
     @EnvironmentObject private var theme: ThemeManager
     @State private var showExitConfirm = false
     @State private var checkReadyPulse = false
+    @State private var outgoingPlayer: LessonPlayer?
+    @State private var questionSlideProgress: CGFloat = 0
+    @State private var questionSlideGeneration = 0
     let hearts: Int
     let isUnlimitedHearts: Bool
     var onClose: () -> Void
@@ -300,35 +331,7 @@ struct LessonView: View {
             } else {
                 VStack(spacing: 0) {
                     header
-                    ScrollView {
-                        ZStack(alignment: .topLeading) {
-                            VStack(alignment: .leading, spacing: 10) {
-                                if player.isUnitTest { unitTestBadge }
-                                if player.screen.isPreviousMistake { retryBadge }
-                                LessonScreenRouter(player: player, ink: ink)
-                            }
-                            .padding(.horizontal, 20)
-                            .padding(.top, 18)
-                            .padding(.bottom, 24)
-                            .id(player.index)   // fresh per-screen @State each step
-                            // Both pages remain fully opaque. The old page leaves
-                            // left while the next page enters from the right.
-                            .transition(.asymmetric(
-                                insertion: .modifier(
-                                    active: HorizontalQuestionSlide(offset: UIScreen.main.bounds.width),
-                                    identity: HorizontalQuestionSlide(offset: 0)
-                                ),
-                                removal: .modifier(
-                                    active: HorizontalQuestionSlide(offset: -UIScreen.main.bounds.width),
-                                    identity: HorizontalQuestionSlide(offset: 0)
-                                )
-                            ))
-                        }
-                        .frame(maxWidth: .infinity, alignment: .topLeading)
-                        .clipped()
-                    }
-                    .animation(.linear(duration: 0.28), value: player.index)
-                    footer
+                    questionPager
                 }
             }
 
@@ -347,6 +350,87 @@ struct LessonView: View {
             checkReadyPulse = true
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.16) {
                 checkReadyPulse = false
+            }
+        }
+    }
+
+    // MARK: Question-to-question paging
+
+    private var questionPager: some View {
+        GeometryReader { geometry in
+            let width = geometry.size.width
+            ZStack(alignment: .topLeading) {
+                if let outgoingPlayer {
+                    questionPage(outgoingPlayer)
+                        .frame(width: width, height: geometry.size.height)
+                        .offset(x: -width * questionSlideProgress)
+                        .allowsHitTesting(false)
+                }
+
+                questionPage(player)
+                    .id(player.index)
+                    .frame(width: width, height: geometry.size.height)
+                    .offset(x: outgoingPlayer == nil ? 0 : width * (1 - questionSlideProgress))
+                    .allowsHitTesting(outgoingPlayer == nil)
+            }
+            .clipped()
+        }
+    }
+
+    private func questionPage(_ pagePlayer: LessonPlayer) -> some View {
+        VStack(spacing: 0) {
+            ScrollView {
+                VStack(alignment: .leading, spacing: 10) {
+                    if pagePlayer.isUnitTest { unitTestBadge }
+                    if pagePlayer.screen.isPreviousMistake { retryBadge }
+                    LessonScreenRouter(player: pagePlayer, ink: ink)
+                }
+                .frame(maxWidth: .infinity, alignment: .topLeading)
+                .padding(.horizontal, 20)
+                .padding(.top, 18)
+                .padding(.bottom, 24)
+            }
+            footer(for: pagePlayer)
+        }
+        .background(theme.palette.base)
+    }
+
+    private func advanceQuestion() {
+        guard outgoingPlayer == nil else { return }
+
+        // The reward screen has its own transition; only question changes use
+        // the horizontal pager.
+        guard !player.isLastScreen else {
+            withAnimation(.easeInOut(duration: 0.25)) { player.advance() }
+            return
+        }
+
+        questionSlideGeneration += 1
+        let generation = questionSlideGeneration
+        let frozenOutgoing = player.frozenCopy()
+
+        // Install both pages without animation first. The outgoing copy keeps
+        // the answered state while the live player advances and resets.
+        var transaction = Transaction(animation: nil)
+        transaction.disablesAnimations = true
+        withTransaction(transaction) {
+            outgoingPlayer = frozenOutgoing
+            questionSlideProgress = 0
+            player.advance()
+        }
+
+        DispatchQueue.main.async {
+            withAnimation(.easeInOut(duration: 0.32)) {
+                questionSlideProgress = 1
+            }
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.34) {
+                guard generation == questionSlideGeneration else { return }
+                var cleanup = Transaction(animation: nil)
+                cleanup.disablesAnimations = true
+                withTransaction(cleanup) {
+                    outgoingPlayer = nil
+                    questionSlideProgress = 0
+                }
             }
         }
     }
@@ -435,25 +519,25 @@ struct LessonView: View {
 
     // MARK: Footer — feedback banner + primary button
 
-    private var footer: some View {
+    private func footer(for pagePlayer: LessonPlayer) -> some View {
         VStack(spacing: 0) {
-            if player.isTestLesson {
-                Button("Skip →") { withAnimation { player.advance() } }
+            if pagePlayer.isTestLesson {
+                Button("Skip →") { advanceQuestion() }
                     .font(Theme.font(13, .black))
                     .foregroundColor(Theme.muted)
                     .padding(.top, 6)
                     .frame(maxWidth: .infinity, alignment: .trailing)
                     .padding(.horizontal, 20)
             }
-            if player.revealed && !player.isIntro {
+            if pagePlayer.revealed && !pagePlayer.isIntro {
                 // The feedback card carries its own WHY? / Got It / Continue
                 // buttons, so it replaces the primary button entirely.
-                FeedbackBanner(player: player) { withAnimation { player.advance() } }
+                FeedbackBanner(player: pagePlayer) { advanceQuestion() }
                     .transition(.move(edge: .bottom)
                         .combined(with: .opacity)
                         .combined(with: .scale(scale: 0.9, anchor: .bottom)))
             } else {
-                primaryButton
+                primaryButton(for: pagePlayer)
                     .padding(.horizontal, 20)
                     .padding(.top, 12)
                     .padding(.bottom, 8)
@@ -461,34 +545,34 @@ struct LessonView: View {
         }
         .background(
             theme.palette.base
-                .opacity(player.revealed && !player.isIntro ? 1 : 0)
+                .opacity(pagePlayer.revealed && !pagePlayer.isIntro ? 1 : 0)
                 .ignoresSafeArea(edges: .bottom)
         )
         // Bouncy overshoot pop, like the web's speechPop.
-        .animation(.spring(response: 0.36, dampingFraction: 0.6), value: player.revealed)
+        .animation(.spring(response: 0.36, dampingFraction: 0.6), value: pagePlayer.revealed)
     }
 
     @ViewBuilder
-    private var primaryButton: some View {
-        if player.isIntro {
-            Button("Got It") { withAnimation { player.advance() } }
+    private func primaryButton(for pagePlayer: LessonPlayer) -> some View {
+        if pagePlayer.isIntro {
+            Button("Got It") { advanceQuestion() }
                 .buttonStyle(Chunky3DStyle(fill: accent, slab: accentDark))
-        } else if !player.revealed {
+        } else if !pagePlayer.revealed {
             // Solid (not translucent) grays when disabled — a translucent fill
             // let the dark background bleed through unevenly at the seam
             // between the top face and the slab, showing as a stray line.
-            Button("Check") { withAnimation { player.check() } }
+            Button("Check") { withAnimation { pagePlayer.check() } }
                 .buttonStyle(Chunky3DStyle(
-                    fill: player.canCheck ? accent : Color(hex: "#4B5563"),
-                    slab: player.canCheck ? accentDark : Color(hex: "#333B47")))
-                .disabled(!player.canCheck)
+                    fill: pagePlayer.canCheck ? accent : Color(hex: "#4B5563"),
+                    slab: pagePlayer.canCheck ? accentDark : Color(hex: "#333B47")))
+                .disabled(!pagePlayer.canCheck)
                 .scaleEffect(checkReadyPulse ? 1.025 : 1)
                 .animation(.spring(response: 0.22, dampingFraction: 0.52), value: checkReadyPulse)
         } else {
-            Button(player.isLastScreen ? "Finish" : "Continue") { withAnimation { player.advance() } }
+            Button(pagePlayer.isLastScreen ? "Finish" : "Continue") { advanceQuestion() }
                 .buttonStyle(Chunky3DStyle(
-                    fill: player.lastCorrect ? Theme.correct : Theme.incorrect,
-                    slab: player.lastCorrect ? Theme.correctDark : Theme.incorrectDark))
+                    fill: pagePlayer.lastCorrect ? Theme.correct : Theme.incorrect,
+                    slab: pagePlayer.lastCorrect ? Theme.correctDark : Theme.incorrectDark))
         }
     }
 }
