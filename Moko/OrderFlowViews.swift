@@ -474,3 +474,83 @@ struct FootprintQuestionView: View {
         .buttonStyle(RowPressStyle())
     }
 }
+
+// MARK: - Comprehensive order flow simulation
+
+/// A compact boss screen that puts several sources of evidence in one market
+/// moment. The evidence intentionally conflicts so the learner must weigh the
+/// full response instead of recognizing one isolated pattern.
+struct OrderFlowSimulationView: View {
+    @ObservedObject var player: LessonPlayer
+    var ink: Color
+
+    private var screen: LessonScreen { player.screen }
+    @State private var phase = 0
+    private let ticker = Timer.publish(every: 0.65, on: .main, in: .common).autoconnect()
+
+    var body: some View {
+        VStack(alignment: .leading, spacing: 13) {
+            HStack {
+                Text("BOSS BATTLE").font(Theme.font(11, .black)).foregroundColor(.white)
+                    .padding(.horizontal, 10).padding(.vertical, 5)
+                    .background(Capsule().fill(Color.purple))
+                Spacer()
+                Text("MULTI SIGNAL READ").font(Theme.font(10, .black)).foregroundColor(Theme.muted)
+            }
+
+            Text(screen.question ?? "What is the strongest current observation?")
+                .font(Theme.questionFont(20, .heavy)).foregroundColor(ink)
+
+            VStack(spacing: 7) {
+                evidenceRow(icon: "chart.xyaxis.line", title: "PRICE + VWAP", value: phase > 0 ? "Stalling at resistance above VWAP" : "Testing resistance", tint: .cyan)
+                evidenceRow(icon: "list.bullet.rectangle", title: "LEVEL II", value: phase > 1 ? "Offer refreshes after repeated fills" : "Large offer at 101.25", tint: askColor)
+                evidenceRow(icon: "bolt.fill", title: "TIME & SALES", value: phase > 2 ? "Fast buyer initiated prints" : "Buying pace increasing", tint: bidColor)
+                evidenceRow(icon: "square.grid.3x3.fill", title: "FOOTPRINT", value: phase > 3 ? "+840 delta with little progress" : "Ask volume dominates", tint: .orange)
+            }
+            .padding(10)
+            .background(RoundedRectangle(cornerRadius: 16).fill(Color.black.opacity(0.24)))
+            .overlay(RoundedRectangle(cornerRadius: 16).strokeBorder(Color.purple.opacity(0.55), lineWidth: 1.5))
+            .onReceive(ticker) { _ in
+                guard !player.revealed, phase < 4 else { return }
+                withAnimation(.easeInOut(duration: 0.25)) { phase += 1 }
+            }
+
+            VStack(spacing: 8) {
+                ForEach(Array(player.currentOptions.enumerated()), id: \.offset) { index, label in
+                    choice(index: index, label: label)
+                }
+            }
+        }
+    }
+
+    private func evidenceRow(icon: String, title: String, value: String, tint: Color) -> some View {
+        HStack(spacing: 10) {
+            Image(systemName: icon).font(.system(size: 14, weight: .black)).foregroundColor(tint).frame(width: 22)
+            VStack(alignment: .leading, spacing: 2) {
+                Text(title).font(Theme.font(9, .black)).foregroundColor(Theme.muted)
+                Text(value).font(Theme.font(12, .bold)).foregroundColor(ink).lineLimit(1).minimumScaleFactor(0.8)
+            }
+            Spacer()
+            Circle().fill(tint).frame(width: 7, height: 7)
+        }
+        .padding(.horizontal, 9).padding(.vertical, 7)
+        .background(RoundedRectangle(cornerRadius: 10).fill(tint.opacity(0.09)))
+    }
+
+    private func choice(index: Int, label: String) -> some View {
+        let selected = player.selectedIndex == index
+        let correct = player.currentCorrectIndex == index
+        let revealed = player.revealed
+        let tint = revealed ? (correct ? bidColor : (selected ? askColor : Theme.surfaceBorder)) : Color.purple
+        return Button {
+            guard !revealed else { return }
+            Haptics.selection(); player.selectedIndex = index
+        } label: {
+            Text(label).font(Theme.font(14, .black)).foregroundColor(ink)
+                .frame(maxWidth: .infinity, alignment: .leading).padding(12)
+                .background(RoundedRectangle(cornerRadius: 13).fill(selected ? tint.opacity(0.18) : Theme.surface))
+                .overlay(RoundedRectangle(cornerRadius: 13).strokeBorder(selected || (revealed && correct) ? tint : Theme.surfaceBorder, lineWidth: 2))
+        }
+        .buttonStyle(RowPressStyle())
+    }
+}

@@ -201,6 +201,8 @@ struct LessonScreenRouter: View {
             TimeSalesView(player: player, ink: ink)
         case "footprint":
             FootprintQuestionView(player: player, ink: ink)
+        case "orderflow_sim":
+            OrderFlowSimulationView(player: player, ink: ink)
         default:
             // true_false / multiple_choice / fill_blank
             ChoiceView(player: player, ink: ink)
