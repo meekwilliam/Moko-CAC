@@ -36640,7 +36640,7 @@
       "question": "What is order flow?",
        "options": [
         "Live buying, selling, and liquidity",
-        "The order candles appear",
+        "The order candles appear in",
         "A sequence of chart patterns"
        ],
        "correct": 0,
@@ -36683,8 +36683,8 @@
       "question": "Order flow reads the [___] of buyers and sellers.",
        "options": [
         "balance",
-        "color",
-        "calendar"
+        "volume",
+        "price"
        ],
        "correct": 0,
       "explanation": "The balance shows which side has more pressure."
