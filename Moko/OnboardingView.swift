@@ -202,7 +202,7 @@ struct OnboardingView: View {
 
     private var welcomeScreen: some View {
         VStack(spacing: 0) {
-            LiveChart(direction: .up, committedCount: 15)   // live tape hero: forming candle ticks over ~5s
+            LiveChart(direction: .volatile, committedCount: 15, ticksPerCandle: 14)   // hero: fast, jumpy, no bias
                 .opacity(0.85)
                 .mask(
                     // Fade the chart out toward the bottom so it melts into

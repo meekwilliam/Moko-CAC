@@ -1138,8 +1138,10 @@ struct LiveChart: View {
     /// (the onboarding hero).
     var height: CGFloat? = nil
     var committedCount = 10                   // static candles behind the forming one
+    /// Ticks (at 0.11s each) a candle forms for before it commits. 45 ≈ 5s for
+    /// a deliberate question tape; lower it for a faster, jumpier chart.
+    var ticksPerCandle = 45
 
-    private let ticksPerCandle = 45          // ~5s of ticking before a candle commits (45 × 0.11s)
     private let tick = Timer.publish(every: 0.11, on: .main, in: .common).autoconnect()
 
     @State private var committed: [Candle] = []
