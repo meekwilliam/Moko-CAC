@@ -36589,6 +36589,14 @@
      "bg": "#14B8A6",
      "slab": "#0F766E",
      "tier": "Foundation"
+    },
+    {
+     "index": 1,
+     "eyebrow": "STRATEGY · UNIT 2",
+     "title": "The Order Book",
+     "bg": "#3B82F6",
+     "slab": "#1D4ED8",
+     "tier": "Strategy"
     }
    ],
    "nodes": [
@@ -36627,6 +36635,42 @@
      "svg": "<svg viewBox=\"0 0 32 32\" fill=\"white\"><circle cx=\"16\" cy=\"16\" r=\"9\"/></svg>",
      "title": "Order Flow Foundations Review",
      "sectionIndex": 0
+    },
+    {
+     "num": 7,
+     "svg": "<svg viewBox=\"0 0 32 32\" fill=\"white\"><circle cx=\"16\" cy=\"16\" r=\"9\"/></svg>",
+     "title": "What the Order Book Shows",
+     "sectionIndex": 1
+    },
+    {
+     "num": 8,
+     "svg": "<svg viewBox=\"0 0 32 32\" fill=\"white\"><circle cx=\"16\" cy=\"16\" r=\"9\"/></svg>",
+     "title": "Bid Side vs. Ask Side",
+     "sectionIndex": 1
+    },
+    {
+     "num": 9,
+     "svg": "<svg viewBox=\"0 0 32 32\" fill=\"white\"><circle cx=\"16\" cy=\"16\" r=\"9\"/></svg>",
+     "title": "Size & Liquidity",
+     "sectionIndex": 1
+    },
+    {
+     "num": 10,
+     "svg": "<svg viewBox=\"0 0 32 32\" fill=\"white\"><circle cx=\"16\" cy=\"16\" r=\"9\"/></svg>",
+     "title": "Large Orders as Walls",
+     "sectionIndex": 1
+    },
+    {
+     "num": 11,
+     "svg": "<svg viewBox=\"0 0 32 32\" fill=\"white\"><circle cx=\"16\" cy=\"16\" r=\"9\"/></svg>",
+     "title": "Pulling & Spoofing",
+     "sectionIndex": 1
+    },
+    {
+     "num": 12,
+     "svg": "<svg viewBox=\"0 0 32 32\" fill=\"white\"><circle cx=\"16\" cy=\"16\" r=\"9\"/></svg>",
+     "title": "The Order Book Review",
+     "sectionIndex": 1
     }
    ],
    "lessons": [
@@ -36637,61 +36681,61 @@
      "screens": [
       {
        "type": "multiple_choice",
-      "question": "What is order flow?",
+       "question": "What is order flow?",
        "options": [
         "Live buying, selling, and liquidity",
         "The order candles appear in",
         "A sequence of chart patterns"
        ],
        "correct": 0,
-      "explanation": "Order flow shows live trading pressure and liquidity."
+       "explanation": "Order flow shows live trading pressure and liquidity."
       },
       {
        "type": "true_false",
-      "question": "Order flow shows more than a finished price line.",
+       "question": "Order flow shows more than a finished price line.",
        "correct": true,
-      "explanation": "It adds context about current pressure and liquidity."
+       "explanation": "It adds context about current pressure and liquidity."
       },
       {
        "type": "aggressor",
        "event": "lift",
-      "question": "Offers are being taken. Who is aggressive?",
+       "question": "Offers are being taken. Who is aggressive?",
        "correct": 0,
-      "explanation": "Buyers take offers, so buyers are aggressive."
+       "explanation": "Buyers take offers, so buyers are aggressive."
       },
       {
        "type": "matching",
-      "question": "Match each term.",
+       "question": "Match each term.",
        "pairs": [
         [
          "Order flow",
-        "Live buying and selling"
+         "Live buying and selling"
         ],
         [
          "Price",
-        "Result of execution"
+         "Result of execution"
         ],
         [
          "A candle",
-        "Record of past price"
+         "Record of past price"
         ]
        ],
-      "explanation": "Orders create fills. Fills create price. Candles record it."
+       "explanation": "Orders create fills. Fills create price. Candles record it."
       },
       {
        "type": "fill_blank",
-      "question": "Order flow reads the [___] of buyers and sellers.",
+       "question": "Order flow reads the [___] of buyers and sellers.",
        "options": [
         "balance",
         "volume",
         "price"
        ],
        "correct": 0,
-      "explanation": "The balance shows which side has more pressure."
+       "explanation": "The balance shows which side has more pressure."
       },
       {
        "type": "sequence_builder",
-      "question": "Build the order flow chain.",
+       "question": "Build the order flow chain.",
        "items": [
         "Buyers and sellers place orders",
         "Orders execute against each other",
@@ -36704,7 +36748,7 @@
         "Price moves to the last fill",
         "The candle updates on the chart"
        ],
-      "explanation": "Orders create fills. Fills update price and the chart."
+       "explanation": "Orders create fills. Fills update price and the chart."
       }
      ]
     },
@@ -36715,71 +36759,71 @@
      "screens": [
       {
        "type": "multiple_choice",
-      "question": "Pick the aggressive order.",
+       "question": "Pick the aggressive order.",
        "options": [
         "Takes available liquidity now",
         "Waits at a chosen price",
         "Only fills at the open"
        ],
        "correct": 0,
-      "explanation": "Aggressive orders trade now and remove liquidity."
+       "explanation": "Aggressive orders trade now and remove liquidity."
       },
       {
        "type": "multiple_choice",
-      "question": "Pick the passive order.",
+       "question": "Pick the passive order.",
        "options": [
         "Waits at a chosen price",
         "Always fills now",
         "Placed by your broker"
        ],
        "correct": 0,
-      "explanation": "Passive orders wait and provide liquidity."
+       "explanation": "Passive orders wait and provide liquidity."
       },
       {
        "type": "book_drag",
        "order": "market_buy",
-      "question": "Market buy. Tap its fill side.",
+       "question": "Market buy. Tap its fill side.",
        "correct": 1,
-      "explanation": "A market buy takes the ask."
+       "explanation": "A market buy takes the ask."
       },
       {
        "type": "book_drag",
        "order": "market_sell",
-      "question": "Market sell. Tap its fill side.",
+       "question": "Market sell. Tap its fill side.",
        "correct": 0,
-      "explanation": "A market sell hits the bid."
+       "explanation": "A market sell hits the bid."
       },
       {
        "type": "matching",
-      "question": "Match maker or taker.",
+       "question": "Match maker or taker.",
        "pairs": [
         [
-        "Instant market buy",
+         "Instant market buy",
          "Taker"
         ],
         [
-        "Resting limit sell",
+         "Resting limit sell",
          "Maker"
         ],
         [
-        "Hit the bid now",
+         "Hit the bid now",
          "Taker"
         ]
        ],
-      "explanation": "Takers trade now. Makers wait."
+       "explanation": "Takers trade now. Makers wait."
       },
       {
        "type": "true_false",
        "question": "Aggressive orders remove liquidity; passive orders provide it.",
        "correct": true,
-      "explanation": "Takers remove liquidity. Makers provide it."
+       "explanation": "Takers remove liquidity. Makers provide it."
       },
       {
        "type": "aggressor",
        "event": "hit",
-      "question": "Bids are being taken. Who is aggressive?",
+       "question": "Bids are being taken. Who is aggressive?",
        "correct": 1,
-      "explanation": "Sellers hit bids, so sellers are aggressive."
+       "explanation": "Sellers hit bids, so sellers are aggressive."
       }
      ]
     },
@@ -36790,25 +36834,25 @@
      "screens": [
       {
        "type": "multiple_choice",
-      "question": "Pick the bid.",
+       "question": "Pick the bid.",
        "options": [
         "Highest buyer price",
         "Lowest seller price",
         "Last traded price"
        ],
        "correct": 0,
-      "explanation": "The bid is the best resting buy price."
+       "explanation": "The bid is the best resting buy price."
       },
       {
        "type": "multiple_choice",
-      "question": "Pick the ask.",
+       "question": "Pick the ask.",
        "options": [
         "Lowest seller price",
         "Highest buyer price",
         "Average daily price"
        ],
        "correct": 0,
-      "explanation": "The ask is the best resting sell price."
+       "explanation": "The ask is the best resting sell price."
       },
       {
        "type": "fill_blank",
@@ -36819,46 +36863,46 @@
         "gap"
        ],
        "correct": 0,
-      "explanation": "The spread is the distance between bid and ask."
+       "explanation": "The spread is the distance between bid and ask."
       },
       {
        "type": "book_drag",
        "order": "market_buy",
-      "question": "Buy now. Tap the fill side.",
+       "question": "Buy now. Tap the fill side.",
        "correct": 1,
-      "explanation": "Buying now means paying the ask."
+       "explanation": "Buying now means paying the ask."
       },
       {
        "type": "book_drag",
        "order": "market_sell",
-      "question": "Sell now. Tap the fill side.",
+       "question": "Sell now. Tap the fill side.",
        "correct": 0,
        "explanation": "Selling immediately means hitting the bid."
       },
       {
        "type": "matching",
-      "question": "Match each action.",
+       "question": "Match each action.",
        "pairs": [
         [
-        "Market buy",
-        "Ask"
+         "Market buy",
+         "Ask"
         ],
         [
-        "Market sell",
-        "Bid"
+         "Market sell",
+         "Bid"
         ],
         [
-        "Spread",
+         "Spread",
          "Ask minus bid"
         ]
        ],
-      "explanation": "Buy at the ask. Sell at the bid."
+       "explanation": "Buy at the ask. Sell at the bid."
       },
       {
        "type": "true_false",
        "question": "A wider spread generally signals thinner liquidity.",
        "correct": true,
-      "explanation": "Less nearby liquidity can widen the spread."
+       "explanation": "Less nearby liquidity can widen the spread."
       }
      ]
     },
@@ -36869,72 +36913,72 @@
      "screens": [
       {
        "type": "multiple_choice",
-      "question": "Which action lifts the offer?",
+       "question": "Which action lifts the offer?",
        "options": [
         "Buying the ask",
         "Canceling a sell order",
         "Posting a higher offer"
        ],
        "correct": 0,
-      "explanation": "Lifting the offer means buying the ask."
+       "explanation": "Lifting the offer means buying the ask."
       },
       {
        "type": "aggressor",
        "event": "lift",
-      "question": "Offers are getting eaten. Who is aggressive?",
+       "question": "Offers are getting eaten. Who is aggressive?",
        "correct": 0,
-      "explanation": "The buyer is lifting the offer."
+       "explanation": "The buyer is lifting the offer."
       },
       {
        "type": "aggressor",
        "event": "hit",
-      "question": "Bids are getting eaten. Who is aggressive?",
+       "question": "Bids are getting eaten. Who is aggressive?",
        "correct": 1,
-      "explanation": "The seller is hitting the bid."
+       "explanation": "The seller is hitting the bid."
       },
       {
        "type": "fill_blank",
-      "question": "Sellers push down by [___] the bid.",
+       "question": "Sellers push down by [___] the bid.",
        "options": [
         "hitting",
         "posting",
         "raising"
        ],
        "correct": 0,
-      "explanation": "Hitting bids can push price lower."
+       "explanation": "Hitting bids can push price lower."
       },
       {
        "type": "matching",
-      "question": "Match each action.",
+       "question": "Match each action.",
        "pairs": [
         [
-        "Lift the offer",
-        "May push price up"
+         "Lift the offer",
+         "May push price up"
         ],
         [
-        "Hit the bid",
-        "May push price down"
+         "Hit the bid",
+         "May push price down"
         ],
         [
-        "Only resting orders",
-        "Price may stay still"
+         "Only resting orders",
+         "Price may stay still"
         ]
        ],
-      "explanation": "Aggression consumes liquidity and can move price."
+       "explanation": "Aggression consumes liquidity and can move price."
       },
       {
        "type": "book_drag",
        "order": "market_buy",
-      "question": "Lift the offer. Tap the side taken.",
+       "question": "Lift the offer. Tap the side taken.",
        "correct": 1,
-      "explanation": "A market buy takes the ask."
+       "explanation": "A market buy takes the ask."
       },
       {
        "type": "aggressor",
        "event": "lift",
-      "question": "Buyers keep lifting offers. Who controls?",
+       "question": "Buyers keep lifting offers. Who controls?",
        "correct": 0,
-      "explanation": "Persistent lifting shows buyer control."
+       "explanation": "Persistent lifting shows buyer control."
       }
      ]
     },
@@ -36945,35 +36989,35 @@
      "screens": [
       {
        "type": "multiple_choice",
-      "question": "What can push price higher?",
+       "question": "What can push price higher?",
        "options": [
         "Aggressive buying takes offers",
         "More shares exist",
         "More candles print"
        ],
        "correct": 0,
-      "explanation": "Aggressive buying can consume offers and lift price."
+       "explanation": "Aggressive buying can consume offers and lift price."
       },
       {
        "type": "true_false",
-      "question": "A large displayed order guarantees price will hold.",
+       "question": "A large displayed order guarantees price will hold.",
        "correct": false,
-      "explanation": "Displayed orders can change or disappear."
+       "explanation": "Displayed orders can change or disappear."
       },
       {
        "type": "fill_blank",
-      "question": "A strong directional move needs an order [___].",
+       "question": "A strong directional move needs an order [___].",
        "options": [
         "imbalance",
         "average",
         "schedule"
        ],
        "correct": 0,
-      "explanation": "An imbalance means one side is more aggressive."
+       "explanation": "An imbalance means one side is more aggressive."
       },
       {
        "type": "sequence_builder",
-      "question": "Build the upward move.",
+       "question": "Build the upward move.",
        "items": [
         "Buyers become more aggressive",
         "Offers get consumed",
@@ -36986,106 +37030,106 @@
         "Price reaches higher asks",
         "A green candle appears"
        ],
-      "explanation": "Buyer pressure consumes offers before the chart updates."
+       "explanation": "Buyer pressure consumes offers before the chart updates."
       },
       {
        "type": "matching",
-      "question": "Match pressure to price.",
+       "question": "Match pressure to price.",
        "pairs": [
         [
-        "Buyer imbalance",
-        "May push price up"
+         "Buyer imbalance",
+         "May push price up"
         ],
         [
-        "Seller imbalance",
-        "May push price down"
+         "Seller imbalance",
+         "May push price down"
         ],
         [
-        "Balanced pressure",
-        "May keep price ranging"
+         "Balanced pressure",
+         "May keep price ranging"
         ]
        ],
-      "explanation": "Pressure suggests direction, but conditions can change."
+       "explanation": "Pressure suggests direction, but conditions can change."
       },
       {
        "type": "aggressor",
        "event": "lift",
-      "question": "Price grinds higher. Who is aggressive?",
+       "question": "Price grinds higher. Who is aggressive?",
        "correct": 0,
-      "explanation": "Aggressive buyers are lifting offers."
+       "explanation": "Aggressive buyers are lifting offers."
       },
       {
        "type": "book_drag",
        "order": "market_buy",
-      "question": "Push price up. Tap the side buyers take.",
+       "question": "Push price up. Tap the side buyers take.",
        "correct": 1,
-      "explanation": "Buyers take asks to move price higher."
+       "explanation": "Buyers take asks to move price higher."
       }
      ]
     },
     {
      "node": 6,
      "title": "Order Flow Foundations Review",
-    "celebration": "Foundations mastered. You read the flow behind price.",
+     "celebration": "Foundations mastered. You read the flow behind price.",
      "screens": [
       {
        "type": "aggressor",
        "event": "lift",
-      "question": "Offers are consumed. Who is aggressive?",
+       "question": "Offers are consumed. Who is aggressive?",
        "correct": 0,
-      "explanation": "Buyers consume offers."
+       "explanation": "Buyers consume offers."
       },
       {
        "type": "book_drag",
        "order": "market_buy",
-      "question": "Market buy. Tap the fill side.",
+       "question": "Market buy. Tap the fill side.",
        "correct": 1,
        "explanation": "A market buy takes the ask."
       },
       {
        "type": "book_drag",
        "order": "market_sell",
-      "question": "Market sell. Tap the fill side.",
+       "question": "Market sell. Tap the fill side.",
        "correct": 0,
        "explanation": "A market sell hits the bid."
       },
       {
        "type": "matching",
-      "question": "Match each term.",
+       "question": "Match each term.",
        "pairs": [
         [
          "Bid",
-        "Best buyer price"
+         "Best buyer price"
         ],
         [
          "Ask",
-        "Best seller price"
+         "Best seller price"
         ],
         [
          "Spread",
-        "Gap between bid and ask"
+         "Gap between bid and ask"
         ],
         [
          "Imbalance",
-        "One side has more pressure"
+         "One side has more pressure"
         ]
        ],
-      "explanation": "These ideas form the base of order flow."
+       "explanation": "These ideas form the base of order flow."
       },
       {
        "type": "multiple_choice",
-      "question": "Pick order flow.",
+       "question": "Pick order flow.",
        "options": [
         "Live buying, selling, and liquidity",
         "The order chart patterns appear",
         "A company news schedule"
        ],
        "correct": 0,
-      "explanation": "Order flow adds live context to price."
+       "explanation": "Order flow adds live context to price."
       },
       {
        "type": "sequence_builder",
-      "question": "Build the order to chart chain.",
+       "question": "Build the order to chart chain.",
        "items": [
         "Aggressive orders hit the market",
         "They execute against resting orders",
@@ -37098,20 +37142,531 @@
         "Price moves to the next level",
         "The candle updates"
        ],
-      "explanation": "Orders create fills before the chart updates."
+       "explanation": "Orders create fills before the chart updates."
       },
       {
        "type": "true_false",
        "question": "You buy at the ask and sell at the bid when you trade aggressively.",
        "correct": true,
-      "explanation": "Buy now at the ask. Sell now at the bid."
+       "explanation": "Buy now at the ask. Sell now at the bid."
       },
       {
        "type": "aggressor",
        "event": "hit",
-      "question": "Bids are consumed. Who is aggressive?",
+       "question": "Bids are consumed. Who is aggressive?",
        "correct": 1,
-      "explanation": "Sellers consume bids."
+       "explanation": "Sellers consume bids."
+      }
+     ]
+    },
+    {
+     "node": 7,
+     "title": "What the Order Book Shows",
+     "celebration": "You know what Level II actually shows.",
+     "screens": [
+      {
+       "type": "multiple_choice",
+       "question": "What does Level II show?",
+       "options": [
+        "The full depth of resting orders on both sides.",
+        "Only the best bid and ask.",
+        "Every trade already executed."
+       ],
+       "correct": 0,
+       "explanation": "Level II is the whole ladder of resting limit orders. Level I is just the top of book; executed trades live in time & sales."
+      },
+      {
+       "type": "multiple_choice",
+       "question": "What does Level I show?",
+       "options": [
+        "Only the best bid and ask.",
+        "The full resting depth on both sides.",
+        "The day's executed trades."
+       ],
+       "correct": 0,
+       "explanation": "Level I is the top of the book — the single best bid and best ask."
+      },
+      {
+       "type": "matching",
+       "question": "Match each feed to what it shows.",
+       "pairs": [
+        [
+         "Level I",
+         "Best bid and ask"
+        ],
+        [
+         "Level II",
+         "Full resting depth"
+        ],
+        [
+         "Time & Sales",
+         "Executed trades"
+        ]
+       ],
+       "explanation": "Three lenses: top of book, the full book, and the trades that already happened."
+      },
+      {
+       "type": "aggressor",
+       "event": "lift",
+       "question": "Tap the aggressor.",
+       "correct": 0,
+       "explanation": "The offers are being taken, so the buyer is the aggressor lifting them."
+      },
+      {
+       "type": "book_drag",
+       "order": "market_buy",
+       "question": "Tap the side this buy fills against.",
+       "correct": 1,
+       "explanation": "A market buy takes the resting offers — it fills at the ask."
+      },
+      {
+       "type": "true_false",
+       "question": "The order book shows resting orders, not completed trades.",
+       "correct": true,
+       "explanation": "Resting orders are still waiting to fill; completed trades show up in time & sales."
+      },
+      {
+       "type": "sequence_builder",
+       "question": "Order a limit order's life in the book.",
+       "items": [
+        "A trader posts a limit order",
+        "It rests in the book",
+        "An aggressor takes it",
+        "It leaves the book"
+       ],
+       "correct_order": [
+        "A trader posts a limit order",
+        "It rests in the book",
+        "An aggressor takes it",
+        "It leaves the book"
+       ],
+       "explanation": "Resting liquidity sits until an aggressive order consumes it."
+      }
+     ]
+    },
+    {
+     "node": 8,
+     "title": "Bid Side vs. Ask Side",
+     "celebration": "You can read both sides of the book.",
+     "screens": [
+      {
+       "type": "multiple_choice",
+       "question": "Where do resting buy orders sit?",
+       "options": [
+        "The bid side.",
+        "The ask side.",
+        "The spread."
+       ],
+       "correct": 0,
+       "explanation": "Buyers rest on the bid. Sellers rest on the ask, and the spread is the gap between them."
+      },
+      {
+       "type": "multiple_choice",
+       "question": "Where do resting sell orders sit?",
+       "options": [
+        "The ask side.",
+        "The bid side.",
+        "The spread."
+       ],
+       "correct": 0,
+       "explanation": "Sellers rest on the ask side, above the spread."
+      },
+      {
+       "type": "book_drag",
+       "order": "market_buy",
+       "question": "Tap the side this buy fills against.",
+       "correct": 1,
+       "explanation": "A market buy lifts the ask."
+      },
+      {
+       "type": "book_drag",
+       "order": "market_sell",
+       "question": "Tap the side this sell fills against.",
+       "correct": 0,
+       "explanation": "A market sell hits the bid."
+      },
+      {
+       "type": "matching",
+       "question": "Match each part of the book.",
+       "pairs": [
+        [
+         "Bid side",
+         "Resting buyers"
+        ],
+        [
+         "Ask side",
+         "Resting sellers"
+        ],
+        [
+         "Spread",
+         "Gap between them"
+        ]
+       ],
+       "explanation": "Buyers below, sellers above, the spread in between."
+      },
+      {
+       "type": "true_false",
+       "question": "The best bid sits just below the best ask.",
+       "correct": true,
+       "explanation": "The bid is always below the ask; the distance between them is the spread."
+      },
+      {
+       "type": "aggressor",
+       "event": "hit",
+       "question": "Tap the aggressor.",
+       "correct": 1,
+       "explanation": "The bids are being taken, so the seller is the aggressor."
+      }
+     ]
+    },
+    {
+     "node": 9,
+     "title": "Size & Liquidity",
+     "celebration": "You can read depth and liquidity.",
+     "screens": [
+      {
+       "type": "multiple_choice",
+       "question": "What does the number beside a price show?",
+       "options": [
+        "The size resting there.",
+        "The trades done there.",
+        "Its distance from the last price."
+       ],
+       "correct": 0,
+       "explanation": "The number is resting size — how many shares sit waiting at that price."
+      },
+      {
+       "type": "multiple_choice",
+       "question": "A book with large size at every level is…",
+       "options": [
+        "Liquid.",
+        "Illiquid.",
+        "Volatile."
+       ],
+       "correct": 0,
+       "explanation": "Plenty of resting size means liquid: price needs a lot of aggression to move."
+      },
+      {
+       "type": "true_false",
+       "question": "A thin book moves on fewer orders than a thick one.",
+       "correct": true,
+       "explanation": "Less resting size means each aggressive order pushes price further."
+      },
+      {
+       "type": "matching",
+       "question": "Match each book to how it moves.",
+       "pairs": [
+        [
+         "Thick book",
+         "Hard to move"
+        ],
+        [
+         "Thin book",
+         "Easy to move"
+        ],
+        [
+         "Resting size",
+         "Liquidity at a price"
+        ]
+       ],
+       "explanation": "Depth is what absorbs aggression; without it, price jumps."
+      },
+      {
+       "type": "aggressor",
+       "event": "lift",
+       "question": "Tap the aggressor.",
+       "correct": 0,
+       "explanation": "Offers being taken means the buyer is the aggressor."
+      },
+      {
+       "type": "book_drag",
+       "order": "market_sell",
+       "question": "Tap the side this sell fills against.",
+       "correct": 0,
+       "explanation": "A market sell hits the bid."
+      },
+      {
+       "type": "sequence_builder",
+       "question": "Order what happens as a thin book gets hit.",
+       "items": [
+        "A small resting size sits at the bid",
+        "A market sell hits it",
+        "The bid clears fast",
+        "Price drops to the next level"
+       ],
+       "correct_order": [
+        "A small resting size sits at the bid",
+        "A market sell hits it",
+        "The bid clears fast",
+        "Price drops to the next level"
+       ],
+       "explanation": "Thin liquidity clears quickly, so price jumps to the next level."
+      }
+     ]
+    },
+    {
+     "node": 10,
+     "title": "Large Orders as Walls",
+     "celebration": "You can spot walls acting as support and resistance.",
+     "screens": [
+      {
+       "type": "multiple_choice",
+       "question": "A large resting bid can act as…",
+       "options": [
+        "Temporary support.",
+        "Temporary resistance.",
+        "A guaranteed floor."
+       ],
+       "correct": 0,
+       "explanation": "A big bid can hold price up for a while — but it can be pulled or absorbed, so it's not a guarantee."
+      },
+      {
+       "type": "multiple_choice",
+       "question": "A large resting ask can act as…",
+       "options": [
+        "Temporary resistance.",
+        "Temporary support.",
+        "A guaranteed ceiling."
+       ],
+       "correct": 0,
+       "explanation": "A big ask can cap price temporarily; it isn't a certainty."
+      },
+      {
+       "type": "true_false",
+       "question": "A large resting order guarantees price stops there.",
+       "correct": false,
+       "explanation": "It can be absorbed or pulled. It's a clue, not a guarantee."
+      },
+      {
+       "type": "matching",
+       "question": "Match each wall to its effect.",
+       "pairs": [
+        [
+         "Large bid",
+         "Support"
+        ],
+        [
+         "Large ask",
+         "Resistance"
+        ],
+        [
+         "Pulled wall",
+         "Level vanishes"
+        ]
+       ],
+       "explanation": "Big bids hold price up, big asks cap it — until they're pulled."
+      },
+      {
+       "type": "sequence_builder",
+       "question": "Order how a defended bid holds.",
+       "items": [
+        "Price falls toward a large bid",
+        "Sellers hit into it",
+        "The bid absorbs the selling",
+        "Price holds above it"
+       ],
+       "correct_order": [
+        "Price falls toward a large bid",
+        "Sellers hit into it",
+        "The bid absorbs the selling",
+        "Price holds above it"
+       ],
+       "explanation": "A big resting bid can soak up selling and hold price above it."
+      },
+      {
+       "type": "aggressor",
+       "event": "hit",
+       "question": "Tap the aggressor.",
+       "correct": 1,
+       "explanation": "Bids being taken means the seller is the aggressor."
+      },
+      {
+       "type": "book_drag",
+       "order": "market_buy",
+       "question": "Tap the side this buy fills against.",
+       "correct": 1,
+       "explanation": "A market buy fills at the ask."
+      }
+     ]
+    },
+    {
+     "node": 11,
+     "title": "Pulling & Spoofing",
+     "celebration": "You know the book is live and can deceive.",
+     "screens": [
+      {
+       "type": "multiple_choice",
+       "question": "What can happen to a resting order before it fills?",
+       "options": [
+        "It can be cancelled anytime.",
+        "It's locked until it fills.",
+        "It becomes a market order."
+       ],
+       "correct": 0,
+       "explanation": "Resting orders can be pulled at any moment — nothing forces them to trade."
+      },
+      {
+       "type": "multiple_choice",
+       "question": "An order that keeps vanishing before it trades may be…",
+       "options": [
+        "Spoofing.",
+        "Absorption.",
+        "A breakout."
+       ],
+       "correct": 0,
+       "explanation": "Orders shown then pulled to mislead is spoofing. Absorption actually fills; a breakout is a price move."
+      },
+      {
+       "type": "true_false",
+       "question": "A resting order is a firm promise to trade.",
+       "correct": false,
+       "explanation": "It can be cancelled before anyone hits it."
+      },
+      {
+       "type": "matching",
+       "question": "Match each behavior.",
+       "pairs": [
+        [
+         "Pulled order",
+         "Cancelled before filling"
+        ],
+        [
+         "Refreshed order",
+         "Replenished after filling"
+        ],
+        [
+         "Spoof",
+         "Shown then pulled"
+        ]
+       ],
+       "explanation": "The book is live: orders appear, refill, and disappear."
+      },
+      {
+       "type": "aggressor",
+       "event": "lift",
+       "question": "Tap the aggressor.",
+       "correct": 0,
+       "explanation": "Offers being taken means the buyer is the aggressor."
+      },
+      {
+       "type": "book_drag",
+       "order": "market_sell",
+       "question": "Tap the side this sell fills against.",
+       "correct": 0,
+       "explanation": "A market sell hits the bid."
+      },
+      {
+       "type": "sequence_builder",
+       "question": "Order a spoof playing out.",
+       "items": [
+        "A big bid appears below price",
+        "Traders see support and buy",
+        "The big bid is pulled",
+        "Support vanishes"
+       ],
+       "correct_order": [
+        "A big bid appears below price",
+        "Traders see support and buy",
+        "The big bid is pulled",
+        "Support vanishes"
+       ],
+       "explanation": "A displayed order that gets pulled can lure others in before it ever trades."
+      }
+     ]
+    },
+    {
+     "node": 12,
+     "title": "The Order Book Review",
+     "celebration": "The order book is yours — you read depth, walls and tricks.",
+     "screens": [
+      {
+       "type": "multiple_choice",
+       "question": "What does Level II show?",
+       "options": [
+        "The full depth of resting orders.",
+        "Just the best bid and ask.",
+        "Executed trades."
+       ],
+       "correct": 0,
+       "explanation": "Level II is the full ladder of resting orders on both sides."
+      },
+      {
+       "type": "book_drag",
+       "order": "market_buy",
+       "question": "Tap the side this buy fills against.",
+       "correct": 1,
+       "explanation": "A market buy takes the ask."
+      },
+      {
+       "type": "book_drag",
+       "order": "market_sell",
+       "question": "Tap the side this sell fills against.",
+       "correct": 0,
+       "explanation": "A market sell hits the bid."
+      },
+      {
+       "type": "aggressor",
+       "event": "lift",
+       "question": "Tap the aggressor.",
+       "correct": 0,
+       "explanation": "Offers being consumed means the buyer is the aggressor."
+      },
+      {
+       "type": "matching",
+       "question": "Match each order-book idea.",
+       "pairs": [
+        [
+         "Bid side",
+         "Resting buyers"
+        ],
+        [
+         "Ask side",
+         "Resting sellers"
+        ],
+        [
+         "Large order",
+         "Temporary wall"
+        ],
+        [
+         "Pulled order",
+         "Cancelled before filling"
+        ]
+       ],
+       "explanation": "The backbone of reading a book: sides, walls, and the fact orders can vanish."
+      },
+      {
+       "type": "true_false",
+       "question": "A large resting order guarantees price stops there.",
+       "correct": false,
+       "explanation": "It can be absorbed or pulled — descriptive, not a guarantee."
+      },
+      {
+       "type": "multiple_choice",
+       "question": "A large resting bid acts as…",
+       "options": [
+        "Temporary support.",
+        "Temporary resistance.",
+        "A guaranteed floor."
+       ],
+       "correct": 0,
+       "explanation": "A big bid holds price up temporarily, but it can be pulled."
+      },
+      {
+       "type": "sequence_builder",
+       "question": "Order how a wall gets tested.",
+       "items": [
+        "Price approaches a large resting order",
+        "Aggressors trade into it",
+        "It absorbs them and price stalls",
+        "The wall holds or gets pulled"
+       ],
+       "correct_order": [
+        "Price approaches a large resting order",
+        "Aggressors trade into it",
+        "It absorbs them and price stalls",
+        "The wall holds or gets pulled"
+       ],
+       "explanation": "A wall stalls price while it absorbs — then it either holds or disappears."
       }
      ]
     }
