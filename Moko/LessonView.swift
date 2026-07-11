@@ -373,7 +373,9 @@ struct LessonView: View {
                     .offset(x: outgoingPlayer == nil ? 0 : width * (1 - questionSlideProgress))
                     .allowsHitTesting(outgoingPlayer == nil)
             }
-            .clipped()
+            // The app window already clips the horizontal page offsets. Do not
+            // clip this container vertically: the feedback footer deliberately
+            // bleeds through the bottom safe area to the physical screen edge.
         }
     }
 
