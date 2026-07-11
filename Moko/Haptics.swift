@@ -118,8 +118,13 @@ final class HapticEngine {
         guard supportsHaptics, engine == nil else { return }
         do {
             let e = try CHHapticEngine()
-            e.playsHapticsOnly = true       // don't touch the audio session
-            e.isAutoShutdownEnabled = true  // idle engines cost battery
+            e.playsHapticsOnly = true        // don't touch the audio session
+            // Keep the engine warm while the app is foregrounded. Auto-shutdown
+            // idles it out after a few seconds, so the NEXT haptic has to
+            // cold-restart it (and recompile players) on the main thread — a
+            // visible hitch on the first tap after any pause. We stop it on
+            // background and restart on foreground instead (see observeLifecycle).
+            e.isAutoShutdownEnabled = false
             e.stoppedHandler = { [weak self] _ in
                 DispatchQueue.main.async { self?.invalidatePlayers() }
             }
@@ -146,13 +151,20 @@ final class HapticEngine {
     private func observeLifecycle() {
         guard !observing else { return }
         observing = true
-        NotificationCenter.default.addObserver(
-            forName: UIApplication.didEnterBackgroundNotification, object: nil, queue: .main
-        ) { [weak self] _ in
+        let nc = NotificationCenter.default
+        // Release the engine in the background…
+        nc.addObserver(forName: UIApplication.didEnterBackgroundNotification,
+                       object: nil, queue: .main) { [weak self] _ in
             guard let self else { return }
             self.endHold()
             self.engine?.stop()
             self.invalidatePlayers()
+        }
+        // …and warm it again on the way back, so the first haptic after
+        // returning is instant rather than cold-starting mid-tap.
+        nc.addObserver(forName: UIApplication.willEnterForegroundNotification,
+                       object: nil, queue: .main) { [weak self] _ in
+            try? self?.engine?.start()
         }
     }
 
