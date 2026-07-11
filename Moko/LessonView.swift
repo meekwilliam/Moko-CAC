@@ -1,6 +1,16 @@
 import SwiftUI
 import Combine
 
+private struct HorizontalQuestionSlide: ViewModifier {
+    let offset: CGFloat
+
+    func body(content: Content) -> some View {
+        content
+            .offset(x: offset)
+            .opacity(1)
+    }
+}
+
 // MARK: - Lesson player (state machine)
 
 final class LessonPlayer: ObservableObject {
@@ -302,8 +312,15 @@ struct LessonView: View {
                             // this stable container so the horizontal swipe reads
                             // as movement instead of a fade.
                             .transition(.asymmetric(
-                                insertion: .offset(x: UIScreen.main.bounds.width),
-                                removal: .offset(x: -UIScreen.main.bounds.width)))
+                                insertion: .modifier(
+                                    active: HorizontalQuestionSlide(offset: UIScreen.main.bounds.width),
+                                    identity: HorizontalQuestionSlide(offset: 0)
+                                ),
+                                removal: .modifier(
+                                    active: HorizontalQuestionSlide(offset: -UIScreen.main.bounds.width),
+                                    identity: HorizontalQuestionSlide(offset: 0)
+                                )
+                            ))
                             .padding(.horizontal, 20)
                             .padding(.top, 18)
                             .padding(.bottom, 24)
