@@ -62,7 +62,11 @@ struct PathView: View {
 
                     // ── Scrolling path ──
                     ScrollView(showsIndicators: false) {
-                        VStack(spacing: 0) {
+                        // Lazy so only on-screen sections build their nodes. A
+                        // plain VStack rebuilds every node (54–145 of them) on
+                        // any state change — banner recolor, node tap, button
+                        // press — which drops frames and reads as lag.
+                        LazyVStack(spacing: 0) {
                             Color.clear.frame(height: headerHeight - 8)
                             ForEach(0..<store.sectionCount, id: \.self) { s in
                                 if s > 0 {

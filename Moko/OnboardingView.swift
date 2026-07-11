@@ -202,7 +202,7 @@ struct OnboardingView: View {
 
     private var welcomeScreen: some View {
         VStack(spacing: 0) {
-            LiveChart(direction: .volatile, committedCount: 15, ticksPerCandle: 14)   // hero: fast, jumpy, no bias
+            LiveChart(direction: .volatile, committedCount: 15, ticksPerCandle: 14, paused: step != 0)   // hero: fast, jumpy; freeze while sliding away
                 .opacity(0.85)
                 .padding(.top, 12)   // clear the status bar so the top price label isn't cut off
                 .mask(
