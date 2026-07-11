@@ -272,13 +272,13 @@ private struct TapePrint: Identifiable {
     let buyerInitiated: Bool
 }
 
-private func makeTape(seed: UInt64, event: String) -> [TapePrint] {
+private func makeTape(seed: UInt64, event: String, target: Int? = nil) -> [TapePrint] {
     var rng = SplitMix(seed: seed)
     var price = 100.0 + Double(rng.next() % 300) / 10.0
     return (0..<9).map { index in
         let favoredBuy = event == "lift"
         let buyerInitiated: Bool
-        if event == "balanced" {
+        if event == "balanced" || event == "large_print" || event == "accelerating" || event == "stall" {
             buyerInitiated = index % 2 == 0
         } else {
             buyerInitiated = index % 4 != 0 ? favoredBuy : !favoredBuy
@@ -287,7 +287,7 @@ private func makeTape(seed: UInt64, event: String) -> [TapePrint] {
         return TapePrint(
             time: String(format: "10:04:%02d", 12 + index),
             price: price,
-            size: 20 + Int(rng.next() % 480),
+            size: target == index ? 980 : (20 + Int(rng.next() % (event == "stall" && index > 5 ? 80 : 480))),
             buyerInitiated: buyerInitiated
         )
     }
@@ -302,12 +302,13 @@ struct TimeSalesView: View {
     private var screen: LessonScreen { player.screen }
     @State private var prints: [TapePrint]
     @State private var visibleRows = 3
-    private let ticker = Timer.publish(every: 0.28, on: .main, in: .common).autoconnect()
+    @State private var tapeTick = 0
+    private let ticker = Timer.publish(every: 0.16, on: .main, in: .common).autoconnect()
 
     init(player: LessonPlayer, ink: Color) {
         self.player = player
         self.ink = ink
-        _prints = State(initialValue: makeTape(seed: chartSeed(player.screen), event: player.screen.event ?? "balanced"))
+        _prints = State(initialValue: makeTape(seed: chartSeed(player.screen), event: player.screen.event ?? "balanced", target: player.screen.target))
     }
 
     var body: some View {
@@ -322,7 +323,7 @@ struct TimeSalesView: View {
                 .font(Theme.font(10, .black)).foregroundColor(Theme.muted)
                 .padding(.horizontal, 12).padding(.vertical, 9)
 
-                ForEach(Array(prints.suffix(visibleRows))) { print in
+                ForEach(Array(prints.enumerated().suffix(visibleRows)), id: \.element.id) { index, print in
                     HStack {
                         Text(print.time).frame(maxWidth: .infinity, alignment: .leading)
                         Text(String(format: "%.2f", print.price)).frame(maxWidth: .infinity)
@@ -332,6 +333,12 @@ struct TimeSalesView: View {
                     .foregroundColor(print.buyerInitiated ? bidColor : askColor)
                     .padding(.horizontal, 12).padding(.vertical, 7)
                     .background((print.buyerInitiated ? bidColor : askColor).opacity(0.08))
+                    .overlay(RoundedRectangle(cornerRadius: 5).strokeBorder(tapeRowColor(index), lineWidth: tapeRowWidth(index)))
+                    .contentShape(Rectangle())
+                    .onTapGesture {
+                        guard screen.type == "time_sales_tap", !player.revealed else { return }
+                        Haptics.selection(); player.selectedIndex = index
+                    }
                 }
             }
             .background(RoundedRectangle(cornerRadius: 16).fill(Color.black.opacity(0.24)))
@@ -339,11 +346,38 @@ struct TimeSalesView: View {
             .clipShape(RoundedRectangle(cornerRadius: 16))
             .onReceive(ticker) { _ in
                 guard !player.revealed, visibleRows < prints.count else { return }
+                tapeTick += 1
+                let event = screen.event ?? "balanced"
+                let cadence: Int
+                if event == "accelerating" {
+                    cadence = visibleRows < 5 ? 4 : (visibleRows < 7 ? 2 : 1)
+                } else if event == "stall" {
+                    cadence = visibleRows < 6 ? 1 : 4
+                } else {
+                    cadence = 2
+                }
+                guard tapeTick.isMultiple(of: cadence) else { return }
                 withAnimation(.easeOut(duration: 0.2)) { visibleRows += 1 }
             }
 
-            choices
+            if screen.type == "time_sales_tap" {
+                Label("Tap the print that answers the question", systemImage: "hand.tap.fill")
+                    .font(Theme.font(12, .bold)).foregroundColor(Theme.muted)
+            } else {
+                choices
+            }
         }
+    }
+
+    private func tapeRowColor(_ index: Int) -> Color {
+        if player.revealed && index == screen.target { return bidColor }
+        if player.revealed && index == player.selectedIndex { return askColor }
+        if index == player.selectedIndex { return Theme.answer }
+        return .clear
+    }
+
+    private func tapeRowWidth(_ index: Int) -> CGFloat {
+        index == player.selectedIndex || (player.revealed && index == screen.target) ? 2 : 0
     }
 
     private var choices: some View {
@@ -381,10 +415,10 @@ private struct FootprintLevel: Identifiable {
     let askVolume: Int
 }
 
-private func makeFootprint(seed: UInt64, event: String) -> [FootprintLevel] {
+private func makeFootprint(seed: UInt64, event: String, target: Int? = nil) -> [FootprintLevel] {
     var rng = SplitMix(seed: seed)
     let base = 99.8 + Double(rng.next() % 200) / 100.0
-    return (0..<7).reversed().map { row in
+    return Array((0..<7).reversed()).enumerated().map { index, row in
         let baseVolume = 20 + Int(rng.next() % 90)
         let bid: Int
         let ask: Int
@@ -399,7 +433,9 @@ private func makeFootprint(seed: UInt64, event: String) -> [FootprintLevel] {
             bid = baseVolume + Int(rng.next() % 45)
             ask = baseVolume + Int(rng.next() % 45)
         }
-        return FootprintLevel(price: base + Double(row) * 0.05, bidVolume: bid, askVolume: ask)
+        let highlightedBid = target == index && event == "hit" ? bid + 260 : bid
+        let highlightedAsk = target == index && event != "hit" ? ask + 260 : ask
+        return FootprintLevel(price: base + Double(row) * 0.05, bidVolume: highlightedBid, askVolume: highlightedAsk)
     }
 }
 
@@ -415,7 +451,7 @@ struct FootprintQuestionView: View {
     init(player: LessonPlayer, ink: Color) {
         self.player = player
         self.ink = ink
-        _levels = State(initialValue: makeFootprint(seed: chartSeed(player.screen), event: player.screen.event ?? "balanced"))
+        _levels = State(initialValue: makeFootprint(seed: chartSeed(player.screen), event: player.screen.event ?? "balanced", target: player.screen.target))
     }
 
     var body: some View {
@@ -430,12 +466,20 @@ struct FootprintQuestionView: View {
                     Text("ASK VOL").frame(maxWidth: .infinity)
                 }
                 .font(Theme.font(9, .black)).foregroundColor(Theme.muted)
-                ForEach(levels) { level in
+                ForEach(Array(levels.enumerated()), id: \.element.id) { index, level in
                     HStack(spacing: 6) {
                         volumeCell(level.bidVolume, color: askColor)
                         Text(String(format: "%.2f", level.price))
                             .font(Theme.font(11, .heavy)).foregroundColor(ink).frame(width: 72)
                         volumeCell(level.askVolume, color: bidColor)
+                    }
+                    .padding(2)
+                    .background(RoundedRectangle(cornerRadius: 9).fill(index == player.selectedIndex ? Theme.answer.opacity(0.14) : .clear))
+                    .overlay(RoundedRectangle(cornerRadius: 9).strokeBorder(footprintRowColor(index), lineWidth: footprintRowWidth(index)))
+                    .contentShape(Rectangle())
+                    .onTapGesture {
+                        guard screen.type == "footprint_tap", !player.revealed else { return }
+                        Haptics.selection(); player.selectedIndex = index
                     }
                 }
             }
@@ -443,12 +487,28 @@ struct FootprintQuestionView: View {
             .background(RoundedRectangle(cornerRadius: 16).fill(Color.black.opacity(0.24)))
             .overlay(RoundedRectangle(cornerRadius: 16).strokeBorder(Theme.surfaceBorder, lineWidth: 1.5))
 
-            VStack(spacing: 10) {
-                ForEach(Array(player.currentOptions.enumerated()), id: \.offset) { index, label in
-                    footprintChoice(index: index, label: label)
+            if screen.type == "footprint_tap" {
+                Label("Tap the price row that answers the question", systemImage: "hand.tap.fill")
+                    .font(Theme.font(12, .bold)).foregroundColor(Theme.muted)
+            } else {
+                VStack(spacing: 10) {
+                    ForEach(Array(player.currentOptions.enumerated()), id: \.offset) { index, label in
+                        footprintChoice(index: index, label: label)
+                    }
                 }
             }
         }
+    }
+
+    private func footprintRowColor(_ index: Int) -> Color {
+        if player.revealed && index == screen.target { return bidColor }
+        if player.revealed && index == player.selectedIndex { return askColor }
+        if index == player.selectedIndex { return Theme.answer }
+        return .clear
+    }
+
+    private func footprintRowWidth(_ index: Int) -> CGFloat {
+        index == player.selectedIndex || (player.revealed && index == screen.target) ? 2 : 0
     }
 
     private func volumeCell(_ volume: Int, color: Color) -> some View {
@@ -502,10 +562,10 @@ struct OrderFlowSimulationView: View {
                 .font(Theme.questionFont(20, .heavy)).foregroundColor(ink)
 
             VStack(spacing: 7) {
-                evidenceRow(icon: "chart.xyaxis.line", title: "PRICE + VWAP", value: phase > 0 ? "Stalling at resistance above VWAP" : "Testing resistance", tint: .cyan)
-                evidenceRow(icon: "list.bullet.rectangle", title: "LEVEL II", value: phase > 1 ? "Offer refreshes after repeated fills" : "Large offer at 101.25", tint: askColor)
-                evidenceRow(icon: "bolt.fill", title: "TIME & SALES", value: phase > 2 ? "Fast buyer initiated prints" : "Buying pace increasing", tint: bidColor)
-                evidenceRow(icon: "square.grid.3x3.fill", title: "FOOTPRINT", value: phase > 3 ? "+840 delta with little progress" : "Ask volume dominates", tint: .orange)
+                evidenceRow(icon: "chart.xyaxis.line", title: "PRICE + VWAP", value: evidence.price[phase > 0 ? 1 : 0], tint: .cyan)
+                evidenceRow(icon: "list.bullet.rectangle", title: "LEVEL II", value: evidence.book[phase > 1 ? 1 : 0], tint: askColor)
+                evidenceRow(icon: "bolt.fill", title: "TIME & SALES", value: evidence.tape[phase > 2 ? 1 : 0], tint: bidColor)
+                evidenceRow(icon: "square.grid.3x3.fill", title: "FOOTPRINT", value: evidence.footprint[phase > 3 ? 1 : 0], tint: .orange)
             }
             .padding(10)
             .background(RoundedRectangle(cornerRadius: 16).fill(Color.black.opacity(0.24)))
@@ -520,6 +580,21 @@ struct OrderFlowSimulationView: View {
                     choice(index: index, label: label)
                 }
             }
+        }
+    }
+
+    private var evidence: (price: [String], book: [String], tape: [String], footprint: [String]) {
+        switch screen.event {
+        case "buyer_absorption":
+            return (["Testing support below VWAP", "Holding support despite selling"], ["Large bid at 99.40", "Bid refreshes after repeated fills"], ["Selling pace increasing", "Fast seller initiated prints"], ["Bid volume dominates", "Negative delta with little decline"])
+        case "sweep":
+            return (["Trading above resistance", "Immediate return below the level"], ["Offers briefly disappear", "Sell liquidity rebuilds above"], ["Buy prints surge", "Buying fades after the breach"], ["Ask volume spikes", "Positive delta fails to hold price"])
+        case "breakout":
+            return (["Testing resistance", "Holding above resistance and VWAP"], ["Offers begin thinning", "Offers consumed across levels"], ["Buying pace increases", "Buyer prints persist after the break"], ["Ask volume dominates", "Stacked ask imbalances continue"])
+        case "conflict":
+            return (["Price rises above VWAP", "Price loses momentum near resistance"], ["Offers thin briefly", "A large offer begins refreshing"], ["Buyer prints accelerate", "Large sell prints interrupt the run"], ["Positive delta builds", "Delta and price response diverge"])
+        default:
+            return (["Testing resistance above VWAP", "Stalling at resistance above VWAP"], ["Large offer at 101.25", "Offer refreshes after repeated fills"], ["Buying pace increasing", "Fast buyer initiated prints"], ["Ask volume dominates", "+840 delta with little progress"])
         }
     }
 

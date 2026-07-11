@@ -177,6 +177,8 @@ final class LessonPlayer: ObservableObject {
             correct = (builtOrder == (screen.correctOrder ?? []))
         case "tap_candle":
             correct = (selectedIndex == screen.target)
+        case "time_sales_tap", "footprint_tap":
+            correct = (selectedIndex == screen.target)
         case "tap_candles":
             correct = (selectedSet == Set(screen.targets ?? []))
         case "mark_level":
