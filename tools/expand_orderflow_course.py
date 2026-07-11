@@ -7,6 +7,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 DATA_PATH = ROOT / "Moko" / "GameData.json"
+MARKDOWN_PATH = ROOT / "LESSONS_ORDERFLOW.md"
 
 
 def lesson(title, chart, bias, clue, signal):
@@ -312,6 +313,122 @@ def remove_text_dashes(value, key=None):
     return value
 
 
+def answer_first(screen):
+    options = list(screen.get("options", []))
+    correct = screen.get("correct", 0)
+    if not options or isinstance(correct, bool) or not 0 <= correct < len(options):
+        return options
+    return [options[correct]] + options[:correct] + options[correct + 1:]
+
+
+def markdown_screen(screen):
+    kind = screen["type"]
+    question = screen.get("question", "")
+    lines = []
+    if kind == "multiple_choice":
+        lines.append(f"[MC] {question}")
+        if screen.get("chart"):
+            lines.append(f"CHART: {screen['chart']}")
+        lines.extend(answer_first(screen))
+    elif kind == "true_false":
+        lines.extend([f"[TF] {question}", f"ANSWER: {'True' if screen.get('correct') else 'False'}"])
+        if screen.get("chart"):
+            lines.insert(1, f"CHART: {screen['chart']}")
+    elif kind == "aggressor":
+        event = screen.get("event", "lift")
+        lines.extend([
+            f"[AGGRESSOR] {question}",
+            f"EVENT: {event}",
+            f"ANSWER: {'The buyer' if event == 'lift' else 'The seller'}",
+        ])
+    elif kind == "book_drag":
+        order = screen.get("order", "market_buy")
+        lines.extend([
+            f"[BOOKDRAG] {question}",
+            f"ORDER: {order}",
+            f"ANSWER: {'the ask' if order == 'market_buy' else 'the bid'}",
+        ])
+    elif kind == "matching":
+        lines.append(f"[MATCH] {question}")
+        if screen.get("chart"):
+            lines.append(f"CHART: {screen['chart']}")
+        lines.extend(f"{pair[0]} => {pair[1]}" for pair in screen.get("pairs", []))
+    elif kind == "fill_blank":
+        lines.append(f"[FILL] {question}")
+        if screen.get("chart"):
+            lines.append(f"CHART: {screen['chart']}")
+        lines.extend(answer_first(screen))
+    elif kind == "sequence_builder":
+        lines.append(f"[ORDER] {question}")
+        if screen.get("chart"):
+            lines.append(f"CHART: {screen['chart']}")
+        lines.extend(screen.get("correct_order", screen.get("items", [])))
+    elif kind == "tap_candle":
+        lines.extend([
+            f"[TAP_CANDLE] {question}",
+            f"CHART: {screen.get('chart', '')}",
+            f"TARGET: {screen.get('target', 0)}",
+        ])
+    elif kind == "draw_trendline":
+        lines.extend([
+            f"[TRENDLINE] {question}",
+            f"CHART: {screen.get('chart', '')}",
+            f"TARGET: {screen.get('target_start', 0)} => {screen.get('target_end', 4)}",
+        ])
+    elif kind == "live_chart":
+        lines.extend([
+            f"[LIVE_CHART] {question}",
+            f"DIRECTION: {screen.get('direction', 'sideways')}",
+        ])
+        lines.extend(answer_first(screen))
+    else:
+        lines.append(f"[{kind.upper()}] {question}")
+        if screen.get("chart"):
+            lines.append(f"CHART: {screen['chart']}")
+    if screen.get("explanation"):
+        lines.append(f"WHY: {screen['explanation']}")
+    return lines
+
+
+def write_markdown(course):
+    lines = [
+        "# Order Flow strategy course authoring source",
+        "",
+        "Course id: `orderflow` · accent `#14B8A6` · standalone strategy track.",
+        "Mirrors `Moko/GameData.json`. Correct answers appear first for choice and fill questions.",
+        "No intro blocks. Most questions render an order book, chart, or live chart.",
+        "",
+        "Interactive mechanics:",
+        "  [AGGRESSOR] Watch a live ladder and choose the aggressive side.",
+        "  [BOOKDRAG] Route a market order to the bid or ask.",
+        "  [TAP_CANDLE] Select a candle directly on a chart.",
+        "  [TRENDLINE] Connect two candles on a chart.",
+        "  [LIVE_CHART] Read pressure while candles update.",
+        "",
+        f"TOTAL UNITS: {len(course['sections'])}",
+        f"TOTAL LESSONS: {len(course['lessons'])}",
+        f"TOTAL QUESTIONS: {sum(len(item['screens']) for item in course['lessons'])}",
+        "",
+    ]
+    lessons_by_node = {item["node"]: item for item in course["lessons"]}
+    for section in course["sections"]:
+        lines.extend([f"UNIT {section['index'] + 1} — {section['title']}", ""])
+        nodes = [node for node in course["nodes"] if node["sectionIndex"] == section["index"]]
+        for node in nodes:
+            item = lessons_by_node[node["num"]]
+            lines.extend([
+                f"NODE {node['num']}",
+                f"TITLE: {item['title']}",
+                f"CELEBRATION: {item.get('celebration', '')}",
+                "",
+            ])
+            for screen in item["screens"]:
+                lines.extend(markdown_screen(screen))
+                lines.append("")
+        lines.append("")
+    MARKDOWN_PATH.write_text("\n".join(lines).rstrip() + "\n")
+
+
 def main():
     data = json.loads(DATA_PATH.read_text())
     course = next(c for c in data["courses"] if c["id"] == "orderflow")
@@ -360,6 +477,7 @@ def main():
     cleaned_course = remove_text_dashes(course)
     data["courses"][data["courses"].index(course)] = cleaned_course
     DATA_PATH.write_text(json.dumps(data, indent=1, ensure_ascii=False) + "\n")
+    write_markdown(cleaned_course)
 
 
 if __name__ == "__main__":
