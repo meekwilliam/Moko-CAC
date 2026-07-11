@@ -1,6 +1,6 @@
 # Order Flow — strategy course authoring source
 
-Course id: `orderflow`  ·  accent `#14B8A6`  ·  standalone strategy track (always unlocked).
+Course id: `orderflow`  ·  accent `#14B8A6`  ·  standalone foundations track (always unlocked).
 Mirrors Moko/GameData.json. Correct answer is listed FIRST for [MC]/[FILL] (the app shuffles).
 No INTRO blocks — lessons start cold.
 
@@ -16,14 +16,14 @@ TITLE: What Is Order Flow?
 CELEBRATION: You get what order flow really means.
 
 [MC] What does “order flow” describe?
-The live stream of buy and sell orders hitting the market — the real demand and supply behind each move.
+The live stream of buying, selling, and available liquidity that helps explain how price is forming.
 The order in which candlesticks form across the trading day.
 The sequence of chart patterns a stock cycles through.
-WHY: Order flow is the actual orders that move price. Candles and patterns are the *result* of that flow, not the flow itself.
+WHY: Order flow studies executed activity and available liquidity. It adds context to price, but it does not reveal every participant or guarantee the next move.
 
-[TF] Order flow looks at the orders behind price, not only the finished price line.
+[TF] Order flow adds context about current buying, selling, and liquidity beyond a finished price line.
 ANSWER: True
-WHY: The whole point is reading the pressure that moves price before it shows up as a completed candle.
+WHY: It can help describe current pressure, but the chart and order book are both incomplete snapshots of a changing market.
 
 [AGGRESSOR] Buyers are aggressively taking the offers on this ladder. Who is the aggressor?
 EVENT: lift
@@ -57,13 +57,13 @@ CELEBRATION: You can tell takers from makers.
 An order that takes whatever price is available now, removing liquidity.
 An order that waits at a set price until someone trades with it.
 An order that can only fill during the opening auction.
-WHY: A market order crosses the spread to fill immediately — it *takes* liquidity. That aggression is what pushes price.
+WHY: A market order seeks immediate execution against available liquidity. It takes resting liquidity and can move price when nearby levels are consumed.
 
 [MC] What is a passive (limit) order?
 An order resting at a chosen price, providing liquidity until someone hits it.
 An order that always fills instantly at the current price.
 An order the broker places automatically for you.
-WHY: A limit order sits in the book and waits. It *provides* liquidity; it doesn't move price until an aggressor trades against it.
+WHY: A limit order sits in the book and waits. It can provide displayed liquidity until it is filled, changed, or canceled.
 
 [BOOKDRAG] Route this MARKET BUY to the side of the book it fills against.
 ORDER: market_buy
@@ -140,7 +140,7 @@ CELEBRATION: You can read aggression in the book.
 Aggressively buying the resting sell orders at the ask.
 Cancelling your sell order above the market.
 Posting a new offer higher than the last one.
-WHY: Lifting the offer means a buyer sends market orders that consume the asks — aggressive buying that pushes price up.
+WHY: Lifting the offer means a buyer takes resting asks. It can move price higher when the available offers are consumed.
 
 [AGGRESSOR] Watch the offers get eaten. Someone is lifting the offer — who is the aggressor?
 EVENT: lift
@@ -156,13 +156,13 @@ WHY: Hitting the bid is aggressive selling: the seller is taking the resting buy
 hitting
 posting
 raising
-WHY: Hitting the bid is aggressive selling. As bids clear, the next-best bid is lower, dragging price down.
+WHY: Hitting the bid is aggressive selling. If available bids are consumed, the next executable price can be lower.
 
 [MATCH] Match the aggression to its effect.
-Buyers lifting the offer => Price pushed up
-Sellers hitting the bid => Price pushed down
-Only resting limit orders, no takers => Price stays put
-WHY: Price moves in the direction of the aggressor. With no takers, the book just sits.
+Buyers lifting the offer => Can support higher prices
+Sellers hitting the bid => Can support lower prices
+Only resting limit orders, no takers => May leave price unchanged
+WHY: Aggression and available liquidity influence price, but displayed orders can also be added, canceled, or refreshed.
 
 [BOOKDRAG] A buyer wants to lift the offer. Route their market order to the right side.
 ORDER: market_buy
@@ -178,34 +178,34 @@ NODE 5
 TITLE: What Actually Moves Price
 CELEBRATION: You understand imbalance.
 
-[MC] Ultimately, what moves price?
-An imbalance between aggressive buyers and aggressive sellers.
+[MC] What can help drive price higher over a short interval?
+Sustained aggressive buying that consumes available offers.
 The number of shares a company has outstanding.
 How many candlesticks have printed that day.
-WHY: Price moves when one side's aggression outweighs the other's. Balanced aggression means price barely moves.
+WHY: Sustained buying can move price through available offers. It is one input among changing quotes, cancellations, new liquidity, and broader market activity.
 
-[TF] If aggressive buying and aggressive selling are roughly balanced, price tends to stay range-bound.
-ANSWER: True
-WHY: Matched aggression cancels out — orders fill back and forth near the same level, so price chops sideways.
+[TF] A large displayed order means price will definitely hold at that level.
+ANSWER: False
+WHY: Displayed orders can be filled, changed, canceled, or refreshed. A book snapshot is useful context, not certainty.
 
 [FILL] A one-sided [___] of aggressive orders is what drives a strong directional move.
 imbalance
 average
 schedule
-WHY: Trends come from imbalance: far more aggression on one side than the other.
+WHY: A one-sided imbalance can contribute to a directional move, especially when it consumes nearby liquidity.
 
 [ORDER] Order these from cause to visible effect.
 Aggressive buyers outnumber aggressive sellers
 Resting offers get absorbed
 Price ticks up to higher asks
 A green candle prints
-WHY: Imbalance → offers absorbed → price rises → the chart finally shows it. Order-flow traders read step one.
+WHY: One possible sequence is imbalance → offers absorbed → higher prints → chart update. It describes a mechanism, not a prediction.
 
 [MATCH] Match the order-flow condition to what price does.
-Buy-side imbalance => Trends up
-Sell-side imbalance => Trends down
-Balanced aggression => Ranges sideways
-WHY: Direction follows whichever side is more aggressive; balance means no trend.
+Buy-side imbalance => May support higher prices
+Sell-side imbalance => May support lower prices
+Balanced aggression => May coincide with a range
+WHY: These are useful tendencies, not rules. New orders, cancellations, hidden liquidity, and broader market conditions can change the read quickly.
 
 [AGGRESSOR] Price is grinding higher on relentless buying. Who is the aggressor driving it?
 EVENT: lift
@@ -247,14 +247,14 @@ WHY: These four ideas are the backbone of every order-flow read.
 The real-time buying and selling pressure that moves price.
 The order in which chart patterns appear.
 A schedule of company news events.
-WHY: It's the live pressure behind price — the cause, not the chart-shaped effect.
+WHY: It is real-time context about buying, selling, and liquidity. It complements price action; it does not replace it or guarantee an outcome.
 
 [ORDER] Rebuild the chain from order to chart.
 Aggressive orders hit the market
 They execute against resting orders
 Price moves to the next level
 The candle updates
-WHY: Orders → fills → price → chart. Order-flow traders live at the front of that chain.
+WHY: Orders and fills influence the prices a chart records. Use that sequence as context, not as advance certainty about the next print.
 
 [TF] You buy at the ask and sell at the bid when you trade aggressively.
 ANSWER: True
