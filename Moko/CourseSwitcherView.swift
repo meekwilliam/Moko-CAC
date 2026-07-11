@@ -18,8 +18,11 @@ struct CourseSwitcherView: View {
     private func isComplete(_ c: Course) -> Bool { done(c) >= total(c) && total(c) > 0 }
 
     /// A level is unlocked if it's the first, or the previous level is finished.
+    /// Standalone strategy tracks (no difficulty `level`) sit outside the
+    /// Beginner→Expert ladder and are always open.
     private func isUnlocked(_ index: Int) -> Bool {
         guard index > 0 else { return true }
+        if Game.courses[index].level == nil { return true }
         return isComplete(Game.courses[index - 1])
     }
 
