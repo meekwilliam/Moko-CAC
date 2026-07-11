@@ -1134,9 +1134,11 @@ enum LiveDirection: String {
 /// forming candle so committed bars sit still while the live one moves.
 struct LiveChart: View {
     var direction: LiveDirection = .up
-    var height: CGFloat = 150
+    /// Fixed height for inline use (questions); nil lets it fill its container
+    /// (the onboarding hero).
+    var height: CGFloat? = nil
+    var committedCount = 10                   // static candles behind the forming one
 
-    private let committedCount = 10          // static candles behind the forming one
     private let ticksPerCandle = 45          // ~5s of ticking before a candle commits (45 × 0.11s)
     private let tick = Timer.publish(every: 0.11, on: .main, in: .common).autoconnect()
 

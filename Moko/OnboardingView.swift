@@ -202,7 +202,7 @@ struct OnboardingView: View {
 
     private var welcomeScreen: some View {
         VStack(spacing: 0) {
-            LiveCandleChart()
+            LiveChart(direction: .up, committedCount: 15)   // live tape hero: forming candle ticks over ~5s
                 .opacity(0.85)
                 .mask(
                     // Fade the chart out toward the bottom so it melts into
@@ -716,88 +716,6 @@ private struct CommitScreen: View {
                 }
             }
         }
-    }
-}
-
-// MARK: - Live candlestick chart
-// A decorative "live market" backdrop: reuses the app's CandlestickChart but
-// rolls a fixed-width window forward on a timer — every tick a new random
-// candle appears on the right and the oldest drops off the left, animated so
-// it reads as a live-updating chart.
-
-struct LiveCandleChart: View {
-    @State private var candles: [Candle] = []
-    // A quick highlight flash over the newest (rightmost) candle only — the
-    // rolling window itself updates instantly with no animation, since
-    // animating the whole array made every bar visibly reshape/resize each
-    // tick (all 16 indices change value when the window shifts).
-    @State private var popID = 0
-    private let count = 16
-    private let timer = Timer.publish(every: 0.85, on: .main, in: .common).autoconnect()
-
-    var body: some View {
-        GeometryReader { geo in
-            ZStack(alignment: .topLeading) {
-                CandlestickChart(candles: candles, showsAxes: true)
-                if !candles.isEmpty {
-                    let slot = geo.size.width / CGFloat(count)
-                    NewCandlePop(key: popID)
-                        .frame(width: slot, height: geo.size.height)
-                        .position(x: geo.size.width - slot / 2, y: geo.size.height / 2)
-                }
-            }
-        }
-        .onAppear { if candles.isEmpty { seed() } }
-        .onReceive(timer) { _ in tick() }
-    }
-
-    private func seed() {
-        var arr: [Candle] = []
-        var price = 100.0
-        for _ in 0..<count {
-            let c = Self.next(from: price)
-            arr.append(c); price = c.close
-        }
-        candles = arr
-    }
-
-    private func tick() {
-        let last = candles.last?.close ?? 100
-        let fresh = Self.next(from: last)
-        candles = Array(candles.dropFirst()) + [fresh]   // instant, no animation
-        popID += 1                                        // re-trigger the flash
-    }
-
-    /// A believable next candle: a random walk from the prior close with wicks.
-    private static func next(from close: Double) -> Candle {
-        let open = close
-        let drift = Double.random(in: -3.4...3.4)
-        let newClose = max(20, open + drift)
-        let hi = max(open, newClose) + Double.random(in: 0.3...2.0)
-        let lo = min(open, newClose) - Double.random(in: 0.3...2.0)
-        return Candle(open: open, high: hi, low: lo, close: newClose)
-    }
-}
-
-/// A soft vertical highlight that pops in and fades over the newest candle's
-/// slot. Re-fires whenever `key` changes (a new tick), independent of the
-/// chart's own candle views, so only the incoming bar visibly announces
-/// itself — the rest of the chart never re-animates.
-private struct NewCandlePop: View {
-    let key: Int
-    @State private var visible = false
-
-    var body: some View {
-        LinearGradient(colors: [Color.white.opacity(0.28), .clear],
-                       startPoint: .top, endPoint: .bottom)
-            .opacity(visible ? 0 : 1)
-            .scaleEffect(x: 1, y: visible ? 1.15 : 0.85, anchor: .bottom)
-            .onAppear { flash() }
-            .onChange(of: key) { _, _ in visible = false; flash() }
-    }
-
-    private func flash() {
-        withAnimation(.easeOut(duration: 0.5)) { visible = true }
     }
 }
 
