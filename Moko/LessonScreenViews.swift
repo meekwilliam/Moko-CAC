@@ -197,6 +197,10 @@ struct LessonScreenRouter: View {
             AggressorView(player: player, ink: ink)
         case "book_drag":
             BookDragView(player: player, ink: ink)
+        case "time_sales":
+            TimeSalesView(player: player, ink: ink)
+        case "footprint":
+            FootprintQuestionView(player: player, ink: ink)
         default:
             // true_false / multiple_choice / fill_blank
             ChoiceView(player: player, ink: ink)
