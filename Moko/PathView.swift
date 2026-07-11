@@ -240,6 +240,15 @@ struct PathView: View {
             .contentShape(RoundedRectangle(cornerRadius: 18, style: .continuous))
         }
         .buttonStyle(SinkButtonStyle(slab: slab, radius: 18, depth: 5))
+        // Section changes are driven by a scroll preference callback. Never
+        // inherit the scroll view's continuous transaction here: interpolating
+        // both the face and 3D slab colors forces extra compositing work while
+        // the path is already moving. A crisp swap is visually cleaner and
+        // keeps the scroll frame lightweight.
+        .transaction { transaction in
+            transaction.animation = nil
+            transaction.disablesAnimations = true
+        }
     }
 
     // MARK: Section divider
@@ -517,8 +526,15 @@ struct PathView: View {
             if let y = offsets[s], y <= threshold { best = s }
         }
         if best != visibleSection {
-            visibleSection = best
-            Haptics.light()
+            // This callback runs during scrolling. Starting the custom haptic
+            // engine here can block the same main-thread frame in which the
+            // banner colors update, which presents as a small hitch. Section
+            // changes are passive scroll feedback, so update state only.
+            var transaction = Transaction(animation: nil)
+            transaction.disablesAnimations = true
+            withTransaction(transaction) {
+                visibleSection = best
+            }
         }
     }
 }
@@ -649,7 +665,6 @@ private struct SectionOffsetKey: PreferenceKey {
         value.merge(nextValue(), uniquingKeysWith: { _, new in new })
     }
 }
-
 
 
 
