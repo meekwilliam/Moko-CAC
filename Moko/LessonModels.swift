@@ -51,6 +51,9 @@ struct LessonScreen: Decodable, Identifiable {
     // Optional named ChartScenario key (e.g. "doji", "uptrend") to illustrate
     // an intro card with a small candlestick chart.
     let chart: String?
+    // live_chart → the direction the live tape walks ("up"/"down"/"sideways"/
+    // "volatile"), so the forming candle biases toward a stable answer.
+    let direction: String?
 
     // shared question fields
     let question: String?
@@ -105,7 +108,7 @@ struct LessonScreen: Decodable, Identifiable {
     let numberUnit: String?
 
     enum CodingKeys: String, CodingKey {
-        case type, text, question, explanation, options, pairs, template, blanks
+        case type, text, question, explanation, options, pairs, template, blanks, direction
         case concern, items, chart, target, targets, level
         case levelKind = "level_kind"
         case targetStart = "target_start"
@@ -130,6 +133,7 @@ struct LessonScreen: Decodable, Identifiable {
         screenTitle = try c.decodeIfPresent(String.self, forKey: .screenTitle)
         text = try c.decodeIfPresent(String.self, forKey: .text)
         chart = try c.decodeIfPresent(String.self, forKey: .chart)
+        direction = try c.decodeIfPresent(String.self, forKey: .direction)
         question = try c.decodeIfPresent(String.self, forKey: .question)
         explanation = try c.decodeIfPresent(String.self, forKey: .explanation)
         // `options` is [String] for most types, but [IngredientOption] for

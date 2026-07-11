@@ -524,7 +524,7 @@ struct FeedbackBanner: View {
     private var correctAnswerText: String? {
         let s = player.screen
         switch s.type {
-        case "true_false", "multiple_choice", "fill_blank", "ingredient_match":
+        case "true_false", "multiple_choice", "fill_blank", "ingredient_match", "live_chart":
             let opts = player.currentOptions
             let i = player.currentCorrectIndex
             return opts.indices.contains(i) ? opts[i] : nil
