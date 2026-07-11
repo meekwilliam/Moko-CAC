@@ -262,6 +262,74 @@ struct BookDragView: View {
     }
 }
 
+// MARK: - Book depth comparison
+
+/// Side by side ladders make depth tangible: the thick book has large nearby
+/// resting size, while the thin book has small size and gaps between levels.
+struct BookDepthCompareView: View {
+    @ObservedObject var player: LessonPlayer
+    var ink: Color
+
+    private let prices = [101.10, 101.05, 101.00, 100.95, 100.90]
+    private let thick = [920, 760, 1100, 840, 690]
+    private let thin = [45, 0, 72, 18, 0]
+
+    var body: some View {
+        VStack(alignment: .leading, spacing: 14) {
+            Text(player.screen.question ?? "Which book should move more easily?")
+                .font(Theme.questionFont(21, .heavy)).foregroundColor(ink)
+
+            HStack(spacing: 10) {
+                ladder(title: "BOOK A", sizes: thick, tint: .cyan)
+                ladder(title: "BOOK B", sizes: thin, tint: .orange)
+            }
+
+            VStack(spacing: 9) {
+                ForEach(Array(player.currentOptions.enumerated()), id: \.offset) { index, label in
+                    choice(index: index, label: label)
+                }
+            }
+        }
+    }
+
+    private func ladder(title: String, sizes: [Int], tint: Color) -> some View {
+        VStack(spacing: 5) {
+            Text(title).font(Theme.font(10, .black)).foregroundColor(tint)
+            ForEach(prices.indices, id: \.self) { index in
+                HStack(spacing: 5) {
+                    Text(String(format: "%.2f", prices[index]))
+                        .font(Theme.font(9, .bold)).foregroundColor(Theme.muted)
+                    Spacer(minLength: 2)
+                    Text(sizes[index] == 0 ? "GAP" : "\(sizes[index])")
+                        .font(Theme.font(10, .black)).foregroundColor(ink)
+                }
+                .padding(.horizontal, 7).padding(.vertical, 6)
+                .background(RoundedRectangle(cornerRadius: 7).fill(tint.opacity(sizes[index] == 0 ? 0.04 : 0.10 + min(0.35, Double(sizes[index]) / 3000))))
+            }
+        }
+        .padding(9).frame(maxWidth: .infinity)
+        .background(RoundedRectangle(cornerRadius: 15).fill(Color.black.opacity(0.22)))
+        .overlay(RoundedRectangle(cornerRadius: 15).strokeBorder(tint.opacity(0.45), lineWidth: 1.5))
+    }
+
+    private func choice(index: Int, label: String) -> some View {
+        let selected = player.selectedIndex == index
+        let correct = player.currentCorrectIndex == index
+        let revealed = player.revealed
+        let tint = revealed ? (correct ? bidColor : (selected ? askColor : Theme.surfaceBorder)) : Theme.answer
+        return Button {
+            guard !revealed else { return }
+            Haptics.selection(); player.selectedIndex = index
+        } label: {
+            Text(label).font(Theme.font(14, .black)).foregroundColor(ink)
+                .frame(maxWidth: .infinity).padding(.vertical, 12)
+                .background(RoundedRectangle(cornerRadius: 13).fill(selected ? tint.opacity(0.18) : Theme.surface))
+                .overlay(RoundedRectangle(cornerRadius: 13).strokeBorder(selected || (revealed && correct) ? tint : Theme.surfaceBorder, lineWidth: 2))
+        }
+        .buttonStyle(RowPressStyle())
+    }
+}
+
 // MARK: - Time and Sales
 
 private struct TapePrint: Identifiable {
@@ -441,13 +509,19 @@ private func makeFootprint(seed: UInt64, event: String, target: Int? = nil) -> [
         case "balanced_target":
             bid = baseVolume + 10
             ask = baseVolume + 40 + Int(rng.next() % 30)
+        case "diagonal_ask":
+            bid = baseVolume + (index == (target ?? -2) + 1 ? 5 : 55)
+            ask = baseVolume + 55
         default:
             bid = baseVolume + Int(rng.next() % 45)
             ask = baseVolume + Int(rng.next() % 45)
         }
         let highlightedBid: Int
         let highlightedAsk: Int
-        if target == index && event == "balanced_target" {
+        if target == index && event == "diagonal_ask" {
+            highlightedBid = bid
+            highlightedAsk = ask + 280
+        } else if target == index && event == "balanced_target" {
             highlightedBid = baseVolume + 30
             highlightedAsk = baseVolume + 31
         } else if target == index && event == "total_target" {

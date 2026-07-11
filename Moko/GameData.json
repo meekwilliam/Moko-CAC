@@ -37719,7 +37719,7 @@
       },
       {
        "type": "true_false",
-       "question": "You buy at the ask and sell at the bid when you trade aggressively.",
+       "question": "Aggressive buyers trade at asks; sellers trade at bids.",
        "correct": true,
        "explanation": "Buy now at the ask. Sell now at the bid."
       },
@@ -38251,16 +38251,16 @@
       {
        "type": "aggressor",
        "event": "hit",
-       "question": "During foundations and book mixed review, which side is crossing the spread?",
+       "question": "Who's crossing the spread?",
        "correct": 1,
        "explanation": "Buyers take offers. Sellers take bids."
       },
       {
        "type": "multiple_choice",
        "chart": "sideways",
-       "question": "Which interpretation is best supported in this foundations and book mixed review example?",
+       "question": "What's the best read?",
        "options": [
-        "A complete read combines who acts where liquidity rests and how price responds",
+        "Combine aggression, liquidity, and price response",
         "Displayed liquidity is stronger evidence than completed executions",
         "A short aggressive burst can outweigh a stalled price response"
        ],
@@ -38270,7 +38270,7 @@
       {
        "type": "fill_blank",
        "chart": "sideways",
-       "question": "The missing evidence in this foundations and book mixed review read is [___].",
+       "question": "The missing evidence is [___].",
        "options": [
         "aggression liquidity and response",
         "a single large print",
@@ -38306,7 +38306,7 @@
       },
       {
        "type": "fill_blank",
-       "question": "Directional movement often develops when aggressive and passive pressure create an order [___].",
+       "question": "Directional moves often develop from an order [___].",
        "options": [
         "imbalance",
         "average",
@@ -38405,7 +38405,7 @@
       },
       {
        "type": "matching",
-       "question": "Connect the behaviors that matter for reading time and sales.",
+       "question": "Match each clue.",
        "pairs": [
         [
          "Reading Time and Sales",
@@ -38451,19 +38451,19 @@
       {
        "type": "multiple_choice",
        "chart": "sideways",
-       "question": "Which statement best connects the evidence in this reading the tape replay?",
+       "question": "Did price confirm the tape?",
        "options": [
-        "Prints reveal completed trades",
-        "The current book is more useful than the executions that changed it",
-        "Location adds little once the tape accelerates"
+        "Price response remains inconclusive",
+        "Price fully confirms buyers",
+        "Price fully confirms sellers"
        ],
        "correct": 0,
-       "explanation": "Prints reveal completed trades."
+       "explanation": "Use the chart only to judge whether price confirmed the tape evidence."
       },
       {
        "type": "aggressor",
        "event": "lift",
-       "question": "During reading the tape, which side is crossing the spread?",
+       "question": "Who's crossing the spread?",
        "correct": 0,
        "explanation": "Buyers take offers. Sellers take bids."
       }
@@ -38496,14 +38496,14 @@
       {
        "type": "multiple_choice",
        "chart": "volatile",
-       "question": "Which conclusion is best supported by the evidence in trade speed?",
+       "question": "Did price confirm the tape?",
        "options": [
-        "Faster prints can reveal rising activity",
-        "Positive delta is usually sufficient confirmation for higher prices",
-        "A pull in liquidity is equivalent to aggressive execution"
+        "Yes. Price made upward progress",
+        "No. Price rejected the buying",
+        "Not enough trades appeared"
        ],
        "correct": 0,
-       "explanation": "Faster prints can reveal rising activity."
+       "explanation": "Use the chart only to judge whether price confirmed the tape evidence."
       }
      ]
     },
@@ -38534,19 +38534,19 @@
       {
        "type": "multiple_choice",
        "chart": "marubozu",
-       "question": "Which explanation of trade size requires the fewest assumptions?",
+       "question": "Did price confirm the tape?",
        "options": [
-        "Larger trades can show stronger participation",
-        "Repeated tests always make a liquidity level stronger",
-        "A fast rejection proves the resting wall was genuine"
+        "Yes. Price made upward progress",
+        "No. Price rejected the buying",
+        "Not enough trades appeared"
        ],
        "correct": 0,
-       "explanation": "Larger trades can show stronger participation."
+       "explanation": "Use the chart only to judge whether price confirmed the tape evidence."
       },
       {
        "type": "aggressor",
        "event": "lift",
-       "question": "During trade size, which side is crossing the spread?",
+       "question": "Who's crossing the spread?",
        "correct": 0,
        "explanation": "Buyers take offers. Sellers take bids."
       }
@@ -38579,14 +38579,14 @@
       {
        "type": "multiple_choice",
        "chart": "uptrend",
-       "question": "Which interpretation is best supported in this repeated prints example?",
+       "question": "Did price confirm the tape?",
        "options": [
-        "Repeated buys can show persistent demand",
-        "Price progress can be ignored when aggression is persistent",
-        "A narrow spread confirms directional control"
+        "Yes. Price made upward progress",
+        "No. Price rejected the buying",
+        "Not enough trades appeared"
        ],
        "correct": 0,
-       "explanation": "Repeated buys can show persistent demand."
+       "explanation": "Use the chart only to judge whether price confirmed the tape evidence."
       }
      ]
     },
@@ -38617,19 +38617,19 @@
       {
        "type": "multiple_choice",
        "chart": "priceAboveVWAP",
-       "question": "Which conclusion is most reasonable for the current buyer initiated prints evidence?",
+       "question": "Did price confirm the tape?",
        "options": [
-        "Trades at the ask suggest buyer aggression",
-        "Acceptance is present as soon as one trade prints beyond a level",
-        "Passive absorption and fading aggression produce the same evidence"
+        "Yes. Price made upward progress",
+        "No. Price rejected the buying",
+        "Not enough trades appeared"
        ],
        "correct": 0,
-       "explanation": "Trades at the ask suggest buyer aggression."
+       "explanation": "Use the chart only to judge whether price confirmed the tape evidence."
       },
       {
        "type": "aggressor",
        "event": "lift",
-       "question": "During buyer initiated prints, which side is crossing the spread?",
+       "question": "Who's crossing the spread?",
        "correct": 0,
        "explanation": "Buyers take offers. Sellers take bids."
       }
@@ -38662,14 +38662,14 @@
       {
        "type": "multiple_choice",
        "chart": "priceBelowVWAP",
-       "question": "Which conclusion about seller initiated prints is best supported?",
+       "question": "Did price confirm the tape?",
        "options": [
-        "Trades at the bid suggest seller aggression",
-        "Thin liquidity implies the move has strong aggressive sponsorship",
-        "Negative delta prevents price from rising"
+        "Yes. Price made downward progress",
+        "No. Price absorbed the selling",
+        "The chart cannot show response"
        ],
        "correct": 0,
-       "explanation": "Trades at the bid suggest seller aggression."
+       "explanation": "Use the chart only to judge whether price confirmed the tape evidence."
       }
      ]
     },
@@ -38700,19 +38700,19 @@
       {
        "type": "multiple_choice",
        "chart": "bandsWidening",
-       "question": "Which statement best connects the evidence in this pace changes replay?",
+       "question": "Did price confirm the tape?",
        "options": [
-        "A faster pace can precede expansion",
-        "A failed breakout is confirmed before price returns through the level",
-        "More displayed depth necessarily means more actual liquidity"
+        "Yes. Price made upward progress",
+        "No. Price rejected the buying",
+        "Not enough trades appeared"
        ],
        "correct": 0,
-       "explanation": "A faster pace can precede expansion."
+       "explanation": "Use the chart only to judge whether price confirmed the tape evidence."
       },
       {
        "type": "aggressor",
        "event": "lift",
-       "question": "During pace changes, which side is crossing the spread?",
+       "question": "Who's crossing the spread?",
        "correct": 0,
        "explanation": "Buyers take offers. Sellers take bids."
       }
@@ -38745,14 +38745,14 @@
       {
        "type": "multiple_choice",
        "chart": "resistanceRejection",
-       "question": "Which conclusion is best supported by the evidence in tape at key levels?",
+       "question": "Did price confirm the tape?",
        "options": [
-        "Tape reaction matters most near key levels",
-        "Large executions are directional even when price does not respond",
-        "A moving average reaction can substitute for execution evidence"
+        "Yes. Price made downward progress",
+        "No. Price absorbed the selling",
+        "The chart cannot show response"
        ],
        "correct": 0,
-       "explanation": "Tape reaction matters most near key levels."
+       "explanation": "Use the chart only to judge whether price confirmed the tape evidence."
       }
      ]
     },
@@ -38783,19 +38783,19 @@
       {
        "type": "multiple_choice",
        "chart": "spinningTop",
-       "question": "Which explanation of false urgency requires the fewest assumptions?",
+       "question": "Did price confirm the tape?",
        "options": [
-        "Fast prints need price confirmation",
-        "Fast tape near resistance is stronger than failure to gain acceptance",
-        "A liquidity sweep and breakout differ mainly by candle size"
+        "No. Price failed to follow through",
+        "Yes. Speed confirmed acceptance",
+        "No. The spread was too narrow"
        ],
        "correct": 0,
-       "explanation": "Fast prints need price confirmation."
+       "explanation": "Use the chart only to judge whether price confirmed the tape evidence."
       },
       {
        "type": "aggressor",
        "event": "lift",
-       "question": "During false urgency, which side is crossing the spread?",
+       "question": "Who's crossing the spread?",
        "correct": 0,
        "explanation": "Buyers take offers. Sellers take bids."
       }
@@ -38828,14 +38828,14 @@
       {
        "type": "multiple_choice",
        "chart": "volatile",
-       "question": "Which interpretation is best supported in this tape reading review example?",
+       "question": "Did price confirm the tape?",
        "options": [
-        "Read pace, size, direction, and response together",
-        "Displayed liquidity is stronger evidence than completed executions",
-        "A short aggressive burst can outweigh a stalled price response"
+        "Price response remains inconclusive",
+        "Price fully confirms buyers",
+        "Price fully confirms sellers"
        ],
        "correct": 0,
-       "explanation": "Read pace, size, direction, and response together."
+       "explanation": "Use the chart only to judge whether price confirmed the tape evidence."
       }
      ]
     },
@@ -38847,12 +38847,12 @@
       {
        "type": "orderflow_sim",
        "event": "seller_absorption",
-       "question": "Which combined evidence best demonstrates what is absorption?",
+       "question": "What does the combined evidence show?",
        "options": [
         "Absorption appears when pressure fails to move price",
-        "The candle pattern alone establishes the order flow cause",
-        "Aggression without book response confirms continuation",
-        "Displayed size reveals all hidden liquidity"
+        "The candle alone proves the cause",
+        "Aggression confirms continuation",
+        "Displayed size reveals hidden liquidity"
        ],
        "correct": 0,
        "explanation": "Absorption appears when pressure fails to move price."
@@ -38860,11 +38860,11 @@
       {
        "type": "time_sales",
        "event": "lift",
-       "question": "How does aggressive execution compare with the resulting price progress?",
+       "question": "Is pressure moving price?",
        "options": [
-        "Execution is strong while price progress remains limited",
-        "Execution and price are accelerating equally",
-        "No aggressive executions are present"
+        "No. Execution is strong; progress is weak",
+        "Pressure and price accelerate together",
+        "No aggressive executions appear"
        ],
        "correct": 0,
        "explanation": "Absorption requires pressure plus a weak corresponding price response."
@@ -38872,7 +38872,7 @@
       {
        "type": "multiple_choice",
        "chart": "sideways",
-       "question": "Which conclusion is most reasonable for the current what is absorption evidence?",
+       "question": "What does the evidence support?",
        "options": [
         "Absorption appears when pressure fails to move price",
         "Tape speed matters more than the level where it occurs",
@@ -38892,12 +38892,12 @@
       {
        "type": "orderflow_sim",
        "event": "buyer_absorption",
-       "question": "Which combined evidence best demonstrates buyer absorption?",
+       "question": "What does the combined evidence show?",
        "options": [
         "Buyers absorb selling near support",
-        "The candle pattern alone establishes the order flow cause",
-        "Aggression without book response confirms continuation",
-        "Displayed size reveals all hidden liquidity"
+        "The candle alone proves the cause",
+        "Aggression confirms continuation",
+        "Displayed size reveals hidden liquidity"
        ],
        "correct": 0,
        "explanation": "Buyers absorb selling near support."
@@ -38905,11 +38905,11 @@
       {
        "type": "time_sales",
        "event": "hit",
-       "question": "How does aggressive execution compare with the resulting price progress?",
+       "question": "What are sellers failing to do?",
        "options": [
-        "Execution is strong while price progress remains limited",
-        "Execution and price are accelerating equally",
-        "No aggressive executions are present"
+        "Push price below support",
+        "Pressure and price accelerate together",
+        "No aggressive executions appear"
        ],
        "correct": 0,
        "explanation": "Absorption requires pressure plus a weak corresponding price response."
@@ -38917,7 +38917,7 @@
       {
        "type": "multiple_choice",
        "chart": "supportBounce",
-       "question": "Which conclusion about buyer absorption is best supported?",
+       "question": "Which explanation fits best?",
        "options": [
         "Buyers absorb selling near support",
         "High total volume normally implies strongly directional delta",
@@ -38937,12 +38937,12 @@
       {
        "type": "orderflow_sim",
        "event": "seller_absorption",
-       "question": "Which combined evidence best demonstrates seller absorption?",
+       "question": "What does the combined evidence show?",
        "options": [
         "Sellers absorb buying near resistance",
-        "The candle pattern alone establishes the order flow cause",
-        "Aggression without book response confirms continuation",
-        "Displayed size reveals all hidden liquidity"
+        "The candle alone proves the cause",
+        "Aggression confirms continuation",
+        "Displayed size reveals hidden liquidity"
        ],
        "correct": 0,
        "explanation": "Sellers absorb buying near resistance."
@@ -38950,11 +38950,11 @@
       {
        "type": "time_sales",
        "event": "lift",
-       "question": "How does aggressive execution compare with the resulting price progress?",
+       "question": "What are buyers failing to do?",
        "options": [
-        "Execution is strong while price progress remains limited",
-        "Execution and price are accelerating equally",
-        "No aggressive executions are present"
+        "Clear the refreshing offer",
+        "Pressure and price accelerate together",
+        "No aggressive executions appear"
        ],
        "correct": 0,
        "explanation": "Absorption requires pressure plus a weak corresponding price response."
@@ -38962,7 +38962,7 @@
       {
        "type": "multiple_choice",
        "chart": "resistanceRejection",
-       "question": "Which statement best connects the evidence in this seller absorption replay?",
+       "question": "What's the strongest conclusion?",
        "options": [
         "Sellers absorb buying near resistance",
         "The current book is more useful than the executions that changed it",
@@ -38982,12 +38982,12 @@
       {
        "type": "orderflow_sim",
        "event": "buyer_absorption",
-       "question": "Which combined evidence best demonstrates repeated tests?",
+       "question": "What does the combined evidence show?",
        "options": [
         "A level that survives tests may contain absorption",
-        "The candle pattern alone establishes the order flow cause",
-        "Aggression without book response confirms continuation",
-        "Displayed size reveals all hidden liquidity"
+        "The candle alone proves the cause",
+        "Aggression confirms continuation",
+        "Displayed size reveals hidden liquidity"
        ],
        "correct": 0,
        "explanation": "A level that survives tests may contain absorption."
@@ -38995,11 +38995,11 @@
       {
        "type": "time_sales",
        "event": "hit",
-       "question": "How does aggressive execution compare with the resulting price progress?",
+       "question": "What keeps happening at the level?",
        "options": [
-        "Execution is strong while price progress remains limited",
-        "Execution and price are accelerating equally",
-        "No aggressive executions are present"
+        "Pressure trades, but the level holds",
+        "Pressure and price accelerate together",
+        "No aggressive executions appear"
        ],
        "correct": 0,
        "explanation": "Absorption requires pressure plus a weak corresponding price response."
@@ -39007,7 +39007,7 @@
       {
        "type": "multiple_choice",
        "chart": "doubleBottom",
-       "question": "Which conclusion is best supported by the evidence in repeated tests?",
+       "question": "What best connects the evidence?",
        "options": [
         "A level that survives tests may contain absorption",
         "Positive delta is usually sufficient confirmation for higher prices",
@@ -39027,12 +39027,12 @@
       {
        "type": "orderflow_sim",
        "event": "seller_absorption",
-       "question": "Which combined evidence best demonstrates hidden liquidity?",
+       "question": "What does the combined evidence show?",
        "options": [
         "Refreshing liquidity can hide true available size",
-        "The candle pattern alone establishes the order flow cause",
-        "Aggression without book response confirms continuation",
-        "Displayed size reveals all hidden liquidity"
+        "The candle alone proves the cause",
+        "Aggression confirms continuation",
+        "Displayed size reveals hidden liquidity"
        ],
        "correct": 0,
        "explanation": "Refreshing liquidity can hide true available size."
@@ -39040,11 +39040,11 @@
       {
        "type": "time_sales",
        "event": "lift",
-       "question": "How does aggressive execution compare with the resulting price progress?",
+       "question": "What suggests hidden liquidity?",
        "options": [
-        "Execution is strong while price progress remains limited",
-        "Execution and price are accelerating equally",
-        "No aggressive executions are present"
+        "Displayed size keeps replenishing",
+        "Pressure and price accelerate together",
+        "No aggressive executions appear"
        ],
        "correct": 0,
        "explanation": "Absorption requires pressure plus a weak corresponding price response."
@@ -39052,7 +39052,7 @@
       {
        "type": "multiple_choice",
        "chart": "range",
-       "question": "Which explanation of hidden liquidity requires the fewest assumptions?",
+       "question": "Which read needs fewer assumptions?",
        "options": [
         "Refreshing liquidity can hide true available size",
         "Repeated tests always make a liquidity level stronger",
@@ -39072,11 +39072,11 @@
       {
        "type": "time_sales",
        "event": "stall",
-       "question": "What changes in the tape during what is exhaustion?",
+       "question": "What changed in the tape?",
        "options": [
-        "Aggressive pace and size begin fading",
-        "Resting depth proves the next reversal",
-        "Executions accelerate while price accepts new levels"
+        "Pace and size are fading",
+        "Resting depth proves reversal",
+        "Execution gains urgency"
        ],
        "correct": 0,
        "explanation": "Exhaustion is defined by aggressive activity fading."
@@ -39110,11 +39110,11 @@
       {
        "type": "time_sales",
        "event": "stall",
-       "question": "What changes in the tape during buyer exhaustion?",
+       "question": "Which side is losing urgency?",
        "options": [
-        "Aggressive pace and size begin fading",
-        "Resting depth proves the next reversal",
-        "Executions accelerate while price accepts new levels"
+        "Aggressive buyers",
+        "Resting depth proves reversal",
+        "Execution gains urgency"
        ],
        "correct": 0,
        "explanation": "Exhaustion is defined by aggressive activity fading."
@@ -39148,11 +39148,11 @@
       {
        "type": "time_sales",
        "event": "stall",
-       "question": "What changes in the tape during seller exhaustion?",
+       "question": "Which side is losing urgency?",
        "options": [
-        "Aggressive pace and size begin fading",
-        "Resting depth proves the next reversal",
-        "Executions accelerate while price accepts new levels"
+        "Aggressive sellers",
+        "Resting depth proves reversal",
+        "Execution gains urgency"
        ],
        "correct": 0,
        "explanation": "Exhaustion is defined by aggressive activity fading."
@@ -39185,34 +39185,39 @@
      "screens": [
       {
        "type": "time_sales",
-       "event": "stall",
-       "question": "What changes in the tape during absorption or exhaustion?",
+       "event": "lift",
+       "question": "Pressure stays strong, but price stalls. Which is it?",
        "options": [
-        "Aggressive pace and size begin fading",
-        "Resting depth proves the next reversal",
-        "Executions accelerate while price accepts new levels"
+        "Absorption",
+        "Exhaustion",
+        "Acceptance"
        ],
        "correct": 0,
-       "explanation": "Exhaustion is defined by aggressive activity fading."
+       "explanation": "Absorption keeps strong aggression but loses price progress. Exhaustion means aggression itself fades."
       },
       {
-       "type": "time_sales_tap",
+       "type": "time_sales",
        "event": "stall",
-       "target": 7,
-       "question": "Tap where fast activity begins losing follow through.",
-       "explanation": "Prints continue but size and pace begin fading here."
-      },
-      {
-       "type": "footprint",
-       "event": "balanced",
-       "question": "Which footprint change would support exhaustion?",
+       "question": "Aggressive pace now fades. Which is it?",
        "options": [
-        "Directional execution becomes less dominant near the extreme",
-        "One large row guarantees reversal",
-        "Displayed orders replace executed volume"
+        "Exhaustion",
+        "Absorption",
+        "Breakout acceptance"
        ],
        "correct": 0,
-       "explanation": "Fading directional execution can support an exhaustion read."
+       "explanation": "Fading aggression defines exhaustion."
+      },
+      {
+       "type": "multiple_choice",
+       "chart": "spinningTop",
+       "question": "Which comparison best separates these two ideas?",
+       "options": [
+        "Absorption shows pressure without progress. Exhaustion shows pressure fading.",
+        "Both require price to accelerate immediately",
+        "They can be separated using order size alone"
+       ],
+       "correct": 0,
+       "explanation": "Absorption shows pressure without progress. Exhaustion shows pressure fading."
       }
      ]
     },
@@ -39238,7 +39243,7 @@
       {
        "type": "multiple_choice",
        "chart": "resistanceRejection",
-       "question": "Which conclusion is best supported by the evidence in seller absorption simulation?",
+       "question": "Which read is best supported?",
        "options": [
         "Aggressive buyers can be absorbed by passive sellers at resistance",
         "Large executions are directional even when price does not respond",
@@ -39251,7 +39256,7 @@
       {
        "type": "sequence_builder",
        "chart": "resistanceRejection",
-       "question": "Build the seller absorption simulation read from evidence to conclusion.",
+       "question": "Build the read.",
        "items": [
         "Seller pressure appears",
         "Bids get consumed",
@@ -39290,7 +39295,7 @@
       {
        "type": "multiple_choice",
        "chart": "supportBounce",
-       "question": "Which explanation of buyer absorption simulation requires the fewest assumptions?",
+       "question": "What's the most reasonable read?",
        "options": [
         "Aggressive sellers can be absorbed by passive buyers at support",
         "Fast tape near resistance is stronger than failure to gain acceptance",
@@ -39303,7 +39308,7 @@
       {
        "type": "sequence_builder",
        "chart": "supportBounce",
-       "question": "Build the buyer absorption simulation read from evidence to conclusion.",
+       "question": "Build the read.",
        "items": [
         "Buyer pressure appears",
         "Offers get consumed",
@@ -39328,12 +39333,12 @@
       {
        "type": "orderflow_sim",
        "event": "buyer_absorption",
-       "question": "Which combined evidence best demonstrates absorption review?",
+       "question": "What does the combined evidence show?",
        "options": [
         "Strong pressure with little movement suggests absorption",
-        "The candle pattern alone establishes the order flow cause",
-        "Aggression without book response confirms continuation",
-        "Displayed size reveals all hidden liquidity"
+        "The candle alone proves the cause",
+        "Aggression confirms continuation",
+        "Displayed size reveals hidden liquidity"
        ],
        "correct": 0,
        "explanation": "Strong pressure with little movement suggests absorption."
@@ -39341,11 +39346,11 @@
       {
        "type": "time_sales",
        "event": "hit",
-       "question": "How does aggressive execution compare with the resulting price progress?",
+       "question": "Which clue confirms absorption?",
        "options": [
-        "Execution is strong while price progress remains limited",
-        "Execution and price are accelerating equally",
-        "No aggressive executions are present"
+        "Strong pressure with little progress",
+        "Pressure and price accelerate together",
+        "No aggressive executions appear"
        ],
        "correct": 0,
        "explanation": "Absorption requires pressure plus a weak corresponding price response."
@@ -39353,7 +39358,7 @@
       {
        "type": "multiple_choice",
        "chart": "rejectionWickDown",
-       "question": "Which interpretation is best supported in this absorption review example?",
+       "question": "What's the best read?",
        "options": [
         "Strong pressure with little movement suggests absorption",
         "Displayed liquidity is stronger evidence than completed executions",
@@ -39373,7 +39378,7 @@
       {
        "type": "multiple_choice",
        "chart": "rejectionWickDown",
-       "question": "Which conclusion is most reasonable for the current tape and absorption mixed review evidence?",
+       "question": "What does the evidence support?",
        "options": [
         "Separate active pressure from the market response",
         "Tape speed matters more than the level where it occurs",
@@ -39385,13 +39390,13 @@
       {
        "type": "book_drag",
        "order": "market_buy",
-       "question": "Route the order used in this tape and absorption mixed review example.",
+       "question": "Route this order.",
        "correct": 1,
        "explanation": "Market buys take asks. Market sells take bids."
       },
       {
        "type": "matching",
-       "question": "Connect the behaviors that matter for tape and absorption mixed review.",
+       "question": "Match each clue.",
        "pairs": [
         [
          "Tape and Absorption Mixed Review",
@@ -39411,7 +39416,7 @@
       {
        "type": "tap_candle",
        "chart": "rejectionWickDown",
-       "question": "In tape and absorption mixed review, tap where price response becomes clearest.",
+       "question": "Tap the clearest price response.",
        "target": 2,
        "explanation": "The selected candle shows whether execution produced follow through."
       }
@@ -39444,7 +39449,7 @@
       {
        "type": "multiple_choice",
        "chart": "sideways",
-       "question": "Which conclusion about reading a footprint chart is best supported?",
+       "question": "Which explanation fits best?",
        "options": [
         "A footprint shows executed volume at each price",
         "High total volume normally implies strongly directional delta",
@@ -39456,7 +39461,7 @@
       },
       {
        "type": "matching",
-       "question": "Connect the behaviors that matter for reading a footprint chart.",
+       "question": "Match each clue.",
        "pairs": [
         [
          "Reading a Footprint Chart",
@@ -39483,28 +39488,28 @@
       {
        "type": "footprint",
        "event": "lift",
-       "question": "How is a conventional ask side footprint imbalance usually evaluated?",
+       "question": "How is an ask imbalance measured?",
        "options": [
-        "Compare ask volume with bid volume diagonally at the adjacent lower price using a ratio threshold",
-        "Choose the largest same row absolute difference only",
-        "Compare displayed ask depth with completed bid volume"
+        "Compare diagonal bid and ask volume by ratio",
+        "Use the largest same row difference",
+        "Compare ask depth with bid executions"
        ],
        "correct": 0,
        "explanation": "Diagonal comparison and a defined ratio distinguish conventional imbalance from a simple same price execution difference."
       },
       {
        "type": "footprint_tap",
-       "event": "total_target",
-       "target": 6,
-       "question": "Tap the row with the largest total executed volume.",
-       "explanation": "This row has the highest combined bid and ask execution."
+       "event": "diagonal_ask",
+       "target": 4,
+       "question": "Tap the first ask side diagonal imbalance.",
+       "explanation": "Ask volume exceeds the diagonally adjacent lower bid volume by the required ratio."
       },
       {
        "type": "multiple_choice",
        "chart": "volatile",
-       "question": "Which statement best connects the evidence in this footprint imbalances replay?",
+       "question": "What's the strongest conclusion?",
        "options": [
-        "A conventional footprint imbalance compares diagonally adjacent bid and ask volume using a ratio threshold",
+        "Compare diagonal bid and ask volume by ratio",
         "The current book is more useful than the executions that changed it",
         "Location adds little once the tape accelerates",
         "The earliest signal should anchor the read even after conditions change"
@@ -39514,7 +39519,7 @@
       },
       {
        "type": "matching",
-       "question": "Connect the behaviors that matter for footprint imbalances.",
+       "question": "Match each clue.",
        "pairs": [
         [
          "Footprint Imbalances",
@@ -39541,7 +39546,7 @@
       {
        "type": "footprint",
        "event": "lift",
-       "question": "Which footprint evidence best supports order imbalance?",
+       "question": "What's the best footprint read?",
        "options": [
         "Imbalance means one side is more aggressive",
         "The largest total row proves directional delta",
@@ -39560,7 +39565,7 @@
       },
       {
        "type": "multiple_choice",
-       "question": "Which conclusion is best supported by the evidence in order imbalance?",
+       "question": "What best connects the evidence?",
        "options": [
         "Imbalance means one side is more aggressive",
         "Positive delta is usually sufficient confirmation for higher prices",
@@ -39580,7 +39585,7 @@
       {
        "type": "footprint",
        "event": "lift",
-       "question": "Which footprint evidence best supports buyer imbalance?",
+       "question": "What's the best footprint read?",
        "options": [
         "Buyer imbalance can push price higher",
         "Positive candle delta guarantees price acceptance",
@@ -39599,7 +39604,7 @@
       },
       {
        "type": "multiple_choice",
-       "question": "Which explanation of buyer imbalance requires the fewest assumptions?",
+       "question": "Which read needs fewer assumptions?",
        "options": [
         "Buyer imbalance can push price higher",
         "Repeated tests always make a liquidity level stronger",
@@ -39611,7 +39616,7 @@
       },
       {
        "type": "sequence_builder",
-       "question": "Build the buyer imbalance read from evidence to conclusion.",
+       "question": "Build the read.",
        "items": [
         "Buyer pressure appears",
         "Offers get consumed",
@@ -39636,7 +39641,7 @@
       {
        "type": "footprint",
        "event": "hit",
-       "question": "Which footprint evidence best supports seller imbalance?",
+       "question": "What's the best footprint read?",
        "options": [
         "Seller imbalance can push price lower",
         "The brightest cell identifies the next candle direction",
@@ -39655,7 +39660,7 @@
       },
       {
        "type": "multiple_choice",
-       "question": "Which interpretation is best supported in this seller imbalance example?",
+       "question": "What matters most here?",
        "options": [
         "Seller imbalance can push price lower",
         "Price progress can be ignored when aggression is persistent",
@@ -39675,7 +39680,7 @@
       {
        "type": "footprint",
        "event": "lift",
-       "question": "Which footprint evidence best supports momentum ignition?",
+       "question": "What's the best footprint read?",
        "options": [
         "Sudden aggression can ignite momentum",
         "Several ask heavy rows prove sellers withdrew",
@@ -39694,7 +39699,7 @@
       },
       {
        "type": "multiple_choice",
-       "question": "Which conclusion is most reasonable for the current momentum ignition evidence?",
+       "question": "Which conclusion fits the response?",
        "options": [
         "Sudden aggression can ignite momentum",
         "Acceptance is present as soon as one trade prints beyond a level",
@@ -39706,7 +39711,7 @@
       },
       {
        "type": "sequence_builder",
-       "question": "Build the momentum ignition read from evidence to conclusion.",
+       "question": "Build the read.",
        "items": [
         "Buyer pressure appears",
         "Offers get consumed",
@@ -39731,7 +39736,7 @@
       {
        "type": "footprint",
        "event": "lift",
-       "question": "Which footprint evidence best supports momentum continuation?",
+       "question": "What's the best footprint read?",
        "options": [
         "Renewed buying can continue momentum",
         "The largest total row proves directional delta",
@@ -39750,7 +39755,7 @@
       },
       {
        "type": "multiple_choice",
-       "question": "Which conclusion about momentum continuation is best supported?",
+       "question": "How should this be interpreted?",
        "options": [
         "Renewed buying can continue momentum",
         "Thin liquidity implies the move has strong aggressive sponsorship",
@@ -39770,7 +39775,7 @@
       {
        "type": "footprint",
        "event": "hit",
-       "question": "Which footprint evidence best supports momentum failure?",
+       "question": "What's the best footprint read?",
        "options": [
         "Momentum weakens when price stops responding",
         "Positive candle delta guarantees price acceptance",
@@ -39789,7 +39794,7 @@
       },
       {
        "type": "multiple_choice",
-       "question": "Which statement best connects the evidence in this momentum failure replay?",
+       "question": "What does the response suggest?",
        "options": [
         "Momentum weakens when price stops responding",
         "A failed breakout is confirmed before price returns through the level",
@@ -39801,7 +39806,7 @@
       },
       {
        "type": "sequence_builder",
-       "question": "Build the momentum failure read from evidence to conclusion.",
+       "question": "Build the read.",
        "items": [
         "Seller pressure appears",
         "Bids get consumed",
@@ -39826,7 +39831,7 @@
       {
        "type": "footprint",
        "event": "lift",
-       "question": "Which footprint evidence best supports stacked pressure?",
+       "question": "What's the best footprint read?",
        "options": [
         "Pressure across several levels strengthens the move",
         "The brightest cell identifies the next candle direction",
@@ -39845,7 +39850,7 @@
       },
       {
        "type": "multiple_choice",
-       "question": "Which conclusion is best supported by the evidence in stacked pressure?",
+       "question": "Which read is best supported?",
        "options": [
         "Pressure across several levels strengthens the move",
         "Large executions are directional even when price does not respond",
@@ -39865,7 +39870,7 @@
       {
        "type": "footprint",
        "event": "lift",
-       "question": "Which footprint evidence best supports delta thinking?",
+       "question": "What's the best footprint read?",
        "options": [
         "Net aggression compares buying with selling",
         "Several ask heavy rows prove sellers withdrew",
@@ -39884,7 +39889,7 @@
       },
       {
        "type": "multiple_choice",
-       "question": "Which explanation of delta thinking requires the fewest assumptions?",
+       "question": "What's the most reasonable read?",
        "options": [
         "Net aggression compares buying with selling",
         "Fast tape near resistance is stronger than failure to gain acceptance",
@@ -39896,7 +39901,7 @@
       },
       {
        "type": "sequence_builder",
-       "question": "Build the delta thinking read from evidence to conclusion.",
+       "question": "Build the read.",
        "items": [
         "Buyer pressure appears",
         "Offers get consumed",
@@ -39921,12 +39926,12 @@
       {
        "type": "footprint",
        "event": "lift",
-       "question": "Price and executed volume disagree. Which explanation best fits?",
+       "question": "Price and delta disagree. Why?",
        "options": [
-        "Volume measures total trading while delta compares aggressive buying and selling",
-        "Delta alone determines the next price",
-        "Total volume and delta measure the same thing",
-        "The disagreement makes both readings useless"
+        "Volume is total activity. Delta is net aggression",
+        "Delta determines the next price",
+        "Volume and delta are identical",
+        "The disagreement cancels both readings"
        ],
        "correct": 0,
        "explanation": "Volume measures total trading while delta compares aggressive buying and selling."
@@ -39934,9 +39939,9 @@
       {
        "type": "multiple_choice",
        "chart": "volatile",
-       "question": "Which interpretation is best supported in this delta vs volume example?",
+       "question": "What's the best read?",
        "options": [
-        "Volume measures total trading while delta compares aggressive buying and selling",
+        "Volume is total activity. Delta is net aggression",
         "Displayed liquidity is stronger evidence than completed executions",
         "A short aggressive burst can outweigh a stalled price response",
         "The candle response makes tape confirmation optional"
@@ -39954,7 +39959,7 @@
       {
        "type": "sequence_builder",
        "chart": "volatile",
-       "question": "Build the delta vs volume read from evidence to conclusion.",
+       "question": "Build the read.",
        "items": [
         "Observe the order book",
         "Compare trades with liquidity",
@@ -39979,12 +39984,12 @@
       {
        "type": "footprint",
        "event": "lift",
-       "question": "Price and executed volume disagree. Which explanation best fits?",
+       "question": "Price and delta disagree. Why?",
        "options": [
-        "Positive delta with falling price can reveal seller absorption or trapped buyers",
-        "Delta alone determines the next price",
-        "Total volume and delta measure the same thing",
-        "The disagreement makes both readings useless"
+        "Possible seller absorption or trapped buyers",
+        "Delta determines the next price",
+        "Volume and delta are identical",
+        "The disagreement cancels both readings"
        ],
        "correct": 0,
        "explanation": "Positive delta with falling price can reveal seller absorption or trapped buyers."
@@ -39992,9 +39997,9 @@
       {
        "type": "multiple_choice",
        "chart": "bearishEngulfing",
-       "question": "Which conclusion is most reasonable for the current positive delta while price falls evidence?",
+       "question": "What does the evidence support?",
        "options": [
-        "Positive delta with falling price can reveal seller absorption or trapped buyers",
+        "Possible seller absorption or trapped buyers",
         "Tape speed matters more than the level where it occurs",
         "A replenishing order is probably new unrelated liquidity",
         "Brief trade beyond the level is enough to establish acceptance"
@@ -40012,7 +40017,7 @@
       {
        "type": "sequence_builder",
        "chart": "bearishEngulfing",
-       "question": "Build the positive delta while price falls read from evidence to conclusion.",
+       "question": "Build the read.",
        "items": [
         "Seller pressure appears",
         "Bids get consumed",
@@ -40037,12 +40042,12 @@
       {
        "type": "footprint",
        "event": "hit",
-       "question": "Price and executed volume disagree. Which explanation best fits?",
+       "question": "Price and delta disagree. Why?",
        "options": [
-        "Negative delta with rising price can reveal buyer absorption or trapped sellers",
-        "Delta alone determines the next price",
-        "Total volume and delta measure the same thing",
-        "The disagreement makes both readings useless"
+        "Possible buyer absorption or trapped sellers",
+        "Delta determines the next price",
+        "Volume and delta are identical",
+        "The disagreement cancels both readings"
        ],
        "correct": 0,
        "explanation": "Negative delta with rising price can reveal buyer absorption or trapped sellers."
@@ -40050,9 +40055,9 @@
       {
        "type": "multiple_choice",
        "chart": "bullishEngulfing",
-       "question": "Which conclusion about negative delta while price rises is best supported?",
+       "question": "Which explanation fits best?",
        "options": [
-        "Negative delta with rising price can reveal buyer absorption or trapped sellers",
+        "Possible buyer absorption or trapped sellers",
         "High total volume normally implies strongly directional delta",
         "A large wall deserves more weight than repeated fills against it",
         "One unusually large trade is more reliable than subsequent response"
@@ -40070,7 +40075,7 @@
       {
        "type": "sequence_builder",
        "chart": "bullishEngulfing",
-       "question": "Build the negative delta while price rises read from evidence to conclusion.",
+       "question": "Build the read.",
        "items": [
         "Buyer pressure appears",
         "Offers get consumed",
@@ -40095,7 +40100,7 @@
       {
        "type": "footprint",
        "event": "hit",
-       "question": "Which footprint evidence best supports price and pressure divergence?",
+       "question": "What's the best footprint read?",
        "options": [
         "Price and pressure disagreement warns of weakness",
         "Several ask heavy rows prove sellers withdrew",
@@ -40114,7 +40119,7 @@
       },
       {
        "type": "multiple_choice",
-       "question": "Which statement best connects the evidence in this price and pressure divergence replay?",
+       "question": "What's the strongest conclusion?",
        "options": [
         "Price and pressure disagreement warns of weakness",
         "The current book is more useful than the executions that changed it",
@@ -40126,7 +40131,7 @@
       },
       {
        "type": "sequence_builder",
-       "question": "Build the price and pressure divergence read from evidence to conclusion.",
+       "question": "Build the read.",
        "items": [
         "Seller pressure appears",
         "Bids get consumed",
@@ -40151,7 +40156,7 @@
       {
        "type": "footprint",
        "event": "lift",
-       "question": "Which footprint evidence best supports imbalance review?",
+       "question": "What's the best footprint read?",
        "options": [
         "Sustained imbalance matters more than one burst",
         "The largest total row proves directional delta",
@@ -40170,7 +40175,7 @@
       },
       {
        "type": "multiple_choice",
-       "question": "Which conclusion is best supported by the evidence in imbalance review?",
+       "question": "What best connects the evidence?",
        "options": [
         "Sustained imbalance matters more than one burst",
         "Positive delta is usually sufficient confirmation for higher prices",
@@ -40190,7 +40195,7 @@
       {
        "type": "fill_blank",
        "chart": "range",
-       "question": "The missing evidence in this liquidity pools read is [___].",
+       "question": "The missing evidence is [___].",
        "options": [
         "clustered orders",
         "positive delta without progress",
@@ -40203,7 +40208,7 @@
       {
        "type": "multiple_choice",
        "chart": "range",
-       "question": "Which explanation of liquidity pools requires the fewest assumptions?",
+       "question": "Which read needs fewer assumptions?",
        "options": [
         "Liquidity often gathers near obvious levels",
         "Repeated tests always make a liquidity level stronger",
@@ -40215,7 +40220,7 @@
       },
       {
        "type": "matching",
-       "question": "Connect the behaviors that matter for liquidity pools.",
+       "question": "Match each clue.",
        "pairs": [
         [
          "Liquidity Pools",
@@ -40242,16 +40247,16 @@
       {
        "type": "aggressor",
        "event": "hit",
-       "question": "During resting stops, which side is crossing the spread?",
+       "question": "Who's crossing the spread?",
        "correct": 1,
        "explanation": "Buyers take offers. Sellers take bids."
       },
       {
        "type": "multiple_choice",
        "chart": "supportBounce",
-       "question": "Which interpretation is best supported in this resting stops example?",
+       "question": "What matters most here?",
        "options": [
-        "Traders often infer that stops may cluster beyond obvious support resistance highs and lows",
+        "Beyond obvious highs, lows, and levels",
         "Price progress can be ignored when aggression is persistent",
         "A narrow spread confirms directional control",
         "The largest footprint row determines the entire candle read"
@@ -40262,7 +40267,7 @@
       {
        "type": "fill_blank",
        "chart": "supportBounce",
-       "question": "The missing evidence in this resting stops read is [___].",
+       "question": "The missing evidence is [___].",
        "options": [
         "inferred stop clusters beyond obvious levels",
         "a single large print",
@@ -40282,7 +40287,7 @@
       {
        "type": "multiple_choice",
        "chart": "breakout",
-       "question": "Which conclusion is most reasonable for the current buy stops evidence?",
+       "question": "Which conclusion fits the response?",
        "options": [
         "Buy stops can fuel an upside break",
         "Acceptance is present as soon as one trade prints beyond a level",
@@ -40295,13 +40300,13 @@
       {
        "type": "book_drag",
        "order": "market_buy",
-       "question": "Route the order used in this buy stops example.",
+       "question": "Route this order.",
        "correct": 1,
        "explanation": "Market buys take asks. Market sells take bids."
       },
       {
        "type": "matching",
-       "question": "Connect the behaviors that matter for buy stops.",
+       "question": "Match each clue.",
        "pairs": [
         [
          "Buy Stops",
@@ -40321,7 +40326,7 @@
       {
        "type": "tap_candle",
        "chart": "breakout",
-       "question": "In buy stops, tap where price response becomes clearest.",
+       "question": "Tap the clearest price response.",
        "target": 1,
        "explanation": "The selected candle shows whether execution produced follow through."
       }
@@ -40335,7 +40340,7 @@
       {
        "type": "multiple_choice",
        "chart": "breakdown",
-       "question": "Which conclusion about sell stops is best supported?",
+       "question": "How should this be interpreted?",
        "options": [
         "Sell stops can fuel a downside break",
         "Thin liquidity implies the move has strong aggressive sponsorship",
@@ -40348,14 +40353,14 @@
       {
        "type": "tap_candle",
        "chart": "breakdown",
-       "question": "In sell stops, tap where price response becomes clearest.",
+       "question": "Tap the clearest price response.",
        "target": 4,
        "explanation": "The selected candle shows whether execution produced follow through."
       },
       {
        "type": "fill_blank",
        "chart": "breakdown",
-       "question": "The missing evidence in this sell stops read is [___].",
+       "question": "The missing evidence is [___].",
        "options": [
         "stops below support",
         "resting size that never trades",
@@ -40375,13 +40380,13 @@
       {
        "type": "book_drag",
        "order": "market_buy",
-       "question": "Route the order used in this liquidity sweep example.",
+       "question": "Route this order.",
        "correct": 1,
        "explanation": "Market buys take asks. Market sells take bids."
       },
       {
        "type": "matching",
-       "question": "Connect the behaviors that matter for liquidity sweep.",
+       "question": "Match each clue.",
        "pairs": [
         [
          "Liquidity Sweep",
@@ -40401,7 +40406,7 @@
       {
        "type": "multiple_choice",
        "chart": "rejectionWickDown",
-       "question": "Which statement best connects the evidence in this liquidity sweep replay?",
+       "question": "What does the response suggest?",
        "options": [
         "A sweep takes liquidity then returns",
         "A failed breakout is confirmed before price returns through the level",
@@ -40421,21 +40426,21 @@
       {
        "type": "tap_candle",
        "chart": "rejectionWickUp",
-       "question": "In upside sweep, tap where price response becomes clearest.",
+       "question": "Tap the clearest price response.",
        "target": 0,
        "explanation": "The selected candle shows whether execution produced follow through."
       },
       {
        "type": "aggressor",
        "event": "hit",
-       "question": "During upside sweep, which side is crossing the spread?",
+       "question": "Who's crossing the spread?",
        "correct": 1,
        "explanation": "Buyers take offers. Sellers take bids."
       },
       {
        "type": "multiple_choice",
        "chart": "rejectionWickUp",
-       "question": "Which conclusion is best supported by the evidence in upside sweep?",
+       "question": "Which read is best supported?",
        "options": [
         "An upside sweep can trap late buyers",
         "Large executions are directional even when price does not respond",
@@ -40448,7 +40453,7 @@
       {
        "type": "sequence_builder",
        "chart": "rejectionWickUp",
-       "question": "Build the upside sweep read from evidence to conclusion.",
+       "question": "Build the read.",
        "items": [
         "Seller pressure appears",
         "Bids get consumed",
@@ -40473,7 +40478,7 @@
       {
        "type": "fill_blank",
        "chart": "hammer",
-       "question": "The missing evidence in this downside sweep read is [___].",
+       "question": "The missing evidence is [___].",
        "options": [
         "failed push below",
         "positive delta without progress",
@@ -40486,7 +40491,7 @@
       {
        "type": "multiple_choice",
        "chart": "hammer",
-       "question": "Which explanation of downside sweep requires the fewest assumptions?",
+       "question": "What's the most reasonable read?",
        "options": [
         "A downside sweep can trap late sellers",
         "Fast tape near resistance is stronger than failure to gain acceptance",
@@ -40498,7 +40503,7 @@
       },
       {
        "type": "matching",
-       "question": "Connect the behaviors that matter for downside sweep.",
+       "question": "Match each clue.",
        "pairs": [
         [
          "Downside Sweep",
@@ -40525,16 +40530,16 @@
       {
        "type": "aggressor",
        "event": "lift",
-       "question": "During sweep or breakout, which side is crossing the spread?",
+       "question": "Who's crossing the spread?",
        "correct": 0,
        "explanation": "Buyers take offers. Sellers take bids."
       },
       {
        "type": "multiple_choice",
        "chart": "breakoutRetest",
-       "question": "Which interpretation is best supported in this sweep or breakout example?",
+       "question": "What's the best read?",
        "options": [
-        "Acceptance beyond a level supports a breakout",
+        "Sweeps reject. Breakouts gain acceptance",
         "Displayed liquidity is stronger evidence than completed executions",
         "A short aggressive burst can outweigh a stalled price response",
         "The candle response makes tape confirmation optional"
@@ -40547,12 +40552,12 @@
        "chart": "breakoutRetest",
        "question": "Which comparison best separates these two ideas?",
        "options": [
-        "A sweep returns through the level. A breakout gains acceptance beyond it.",
+        "Sweeps reject the level. Breakouts gain acceptance.",
         "A sweep always has slower tape than a breakout",
         "Any trade beyond the level confirms a breakout"
        ],
        "correct": 0,
-       "explanation": "A sweep returns through the level. A breakout gains acceptance beyond it."
+       "explanation": "Sweeps reject the level. Breakouts gain acceptance."
       }
      ]
     },
@@ -40578,7 +40583,7 @@
       {
        "type": "multiple_choice",
        "chart": "rejectionWickUp",
-       "question": "Which conclusion is most reasonable for the current liquidity sweep rejection simulation evidence?",
+       "question": "What does the evidence support?",
        "options": [
         "A sweep takes liquidity but fails to gain acceptance",
         "Tape speed matters more than the level where it occurs",
@@ -40591,7 +40596,7 @@
       {
        "type": "sequence_builder",
        "chart": "rejectionWickUp",
-       "question": "Build the liquidity sweep rejection simulation read from evidence to conclusion.",
+       "question": "Build the read.",
        "items": [
         "Seller pressure appears",
         "Bids get consumed",
@@ -40616,7 +40621,7 @@
       {
        "type": "multiple_choice",
        "chart": "gapUp",
-       "question": "Which conclusion about thin liquidity is best supported?",
+       "question": "Which explanation fits best?",
        "options": [
         "Thin liquidity lets price travel quickly",
         "High total volume normally implies strongly directional delta",
@@ -40629,14 +40634,14 @@
       {
        "type": "tap_candle",
        "chart": "gapUp",
-       "question": "In thin liquidity, tap where price response becomes clearest.",
+       "question": "Tap the clearest price response.",
        "target": 2,
        "explanation": "The selected candle shows whether execution produced follow through."
       },
       {
        "type": "fill_blank",
        "chart": "gapUp",
-       "question": "The missing evidence in this thin liquidity read is [___].",
+       "question": "The missing evidence is [___].",
        "options": [
         "few nearby orders",
         "resting size that never trades",
@@ -40654,43 +40659,38 @@
      "celebration": "Thick Book vs Thin Book complete.",
      "screens": [
       {
-       "type": "book_drag",
-       "order": "market_buy",
-       "question": "Route the order used in this thick book vs thin book example.",
-       "correct": 1,
-       "explanation": "Market buys take asks. Market sells take bids."
+       "type": "book_compare",
+       "question": "Which book should move more easily?",
+       "options": [
+        "Book B, because depth is thin",
+        "Book A, because depth is thick",
+        "Both should move equally"
+       ],
+       "correct": 0,
+       "explanation": "Thin nearby depth and gaps can let price travel with less incoming pressure."
       },
       {
-       "type": "matching",
-       "question": "Connect the behaviors that matter for thick book vs thin book.",
-       "pairs": [
-        [
-         "Thick Book vs Thin Book",
-         "Available depth"
-        ],
-        [
-         "Fast tape without progress",
-         "Urgency without confirmation"
-        ],
-        [
-         "Sweep",
-         "Liquidity taken followed by rejection"
-        ]
+       "type": "multiple_choice",
+       "question": "What does thick depth change?",
+       "options": [
+        "More liquidity must trade or withdraw",
+        "Price is guaranteed to reverse",
+        "Aggressors can ignore nearby size"
        ],
-       "explanation": "Match the signal with its order flow clue."
+       "correct": 0,
+       "explanation": "Thick displayed depth can slow travel, but it may still trade or be pulled."
       },
       {
        "type": "multiple_choice",
        "chart": "volatile",
-       "question": "Which statement best connects the evidence in this thick book vs thin book replay?",
+       "question": "Which comparison best separates these two ideas?",
        "options": [
-        "Book depth changes how easily price can travel",
-        "The current book is more useful than the executions that changed it",
-        "Location adds little once the tape accelerates",
-        "The earliest signal should anchor the read even after conditions change"
+        "Thick books resist travel. Thin books allow easier travel.",
+        "A thick book guarantees reversal",
+        "A thin book proves aggressive buyers are present"
        ],
        "correct": 0,
-       "explanation": "Book depth changes how easily price can travel."
+       "explanation": "Thick books resist travel. Thin books allow easier travel."
       }
      ]
     },
@@ -40702,7 +40702,7 @@
       {
        "type": "time_sales",
        "event": "lift",
-       "question": "Large buy prints keep trading at one price but the offer refreshes. What best explains it?",
+       "question": "The offer refills after buy prints. Why?",
        "options": [
         "A possible sell iceberg is replenishing hidden size",
         "Buyers have already secured a breakout",
@@ -40715,14 +40715,14 @@
       {
        "type": "aggressor",
        "event": "hit",
-       "question": "During iceberg orders, which side is crossing the spread?",
+       "question": "Who's crossing the spread?",
        "correct": 1,
        "explanation": "Buyers take offers. Sellers take bids."
       },
       {
        "type": "multiple_choice",
        "chart": "sideways",
-       "question": "Which conclusion is best supported by the evidence in iceberg orders?",
+       "question": "What best connects the evidence?",
        "options": [
         "An iceberg can replenish displayed size while absorbing repeated trades",
         "Positive delta is usually sufficient confirmation for higher prices",
@@ -40749,7 +40749,7 @@
       {
        "type": "fill_blank",
        "chart": "volatile",
-       "question": "The missing evidence in this liquidity review read is [___].",
+       "question": "The missing evidence is [___].",
        "options": [
         "location and response",
         "positive delta without progress",
@@ -40762,7 +40762,7 @@
       {
        "type": "multiple_choice",
        "chart": "volatile",
-       "question": "Which explanation of liquidity review requires the fewest assumptions?",
+       "question": "Which read needs fewer assumptions?",
        "options": [
         "Judge liquidity events by location and response",
         "Repeated tests always make a liquidity level stronger",
@@ -40774,7 +40774,7 @@
       },
       {
        "type": "matching",
-       "question": "Connect the behaviors that matter for liquidity review.",
+       "question": "Match each clue.",
        "pairs": [
         [
          "Liquidity Review",
@@ -40801,14 +40801,14 @@
       {
        "type": "aggressor",
        "event": "hit",
-       "question": "During flow and liquidity mixed review, which side is crossing the spread?",
+       "question": "Who's crossing the spread?",
        "correct": 1,
        "explanation": "Buyers take offers. Sellers take bids."
       },
       {
        "type": "multiple_choice",
        "chart": "breakoutRetest",
-       "question": "Which interpretation is best supported in this flow and liquidity mixed review example?",
+       "question": "What matters most here?",
        "options": [
         "Combine pressure with liquidity and price response",
         "Price progress can be ignored when aggression is persistent",
@@ -40821,7 +40821,7 @@
       {
        "type": "fill_blank",
        "chart": "breakoutRetest",
-       "question": "The missing evidence in this flow and liquidity mixed review read is [___].",
+       "question": "The missing evidence is [___].",
        "options": [
         "pressure location and acceptance",
         "a single large print",
@@ -40841,9 +40841,9 @@
       {
        "type": "multiple_choice",
        "chart": "breakout",
-       "question": "Which conclusion is most reasonable for the current breakout pressure evidence?",
+       "question": "Which conclusion fits the response?",
        "options": [
-        "An upside breakout can develop as buyers consume offers sellers withdraw liquidity or both",
+        "Offers are consumed, withdrawn, or both",
         "Acceptance is present as soon as one trade prints beyond a level",
         "Passive absorption and fading aggression produce the same evidence",
         "A high volume candle reveals which side initiated every trade"
@@ -40854,13 +40854,13 @@
       {
        "type": "book_drag",
        "order": "market_buy",
-       "question": "Route the order used in this breakout pressure example.",
+       "question": "Route this order.",
        "correct": 1,
        "explanation": "Market buys take asks. Market sells take bids."
       },
       {
        "type": "matching",
-       "question": "Connect the behaviors that matter for breakout pressure.",
+       "question": "Match each clue.",
        "pairs": [
         [
          "Breakout Pressure",
@@ -40880,7 +40880,7 @@
       {
        "type": "tap_candle",
        "chart": "breakout",
-       "question": "In breakout pressure, tap where price response becomes clearest.",
+       "question": "Tap the clearest price response.",
        "target": 2,
        "explanation": "The selected candle shows whether execution produced follow through."
       }
@@ -40894,9 +40894,9 @@
       {
        "type": "multiple_choice",
        "chart": "breakdown",
-       "question": "Which conclusion about breakdown pressure is best supported?",
+       "question": "How should this be interpreted?",
        "options": [
-        "A downside break can develop as sellers consume bids buyers withdraw liquidity or both",
+        "Bids are consumed, withdrawn, or both",
         "Thin liquidity implies the move has strong aggressive sponsorship",
         "Negative delta prevents price from rising",
         "Refreshing bids matter only after sellers stop trading"
@@ -40907,14 +40907,14 @@
       {
        "type": "tap_candle",
        "chart": "breakdown",
-       "question": "In breakdown pressure, tap where price response becomes clearest.",
+       "question": "Tap the clearest price response.",
        "target": 0,
        "explanation": "The selected candle shows whether execution produced follow through."
       },
       {
        "type": "fill_blank",
        "chart": "breakdown",
-       "question": "The missing evidence in this breakdown pressure read is [___].",
+       "question": "The missing evidence is [___].",
        "options": [
         "bids consumed withdrawn or thin",
         "resting size that never trades",
@@ -40934,14 +40934,14 @@
       {
        "type": "book_drag",
        "order": "market_buy",
-       "question": "Route the order used in this acceptance above example.",
+       "question": "Route this order.",
        "correct": 1,
        "explanation": "Market buys take asks. Market sells take bids."
       },
       {
        "type": "live_chart",
        "direction": "up",
-       "question": "Which price behavior now supports the acceptance above read?",
+       "question": "Which price behavior supports the read?",
        "options": [
         "Upward price response is developing",
         "Downward price response is developing",
@@ -40952,7 +40952,7 @@
       },
       {
        "type": "matching",
-       "question": "Connect the behaviors that matter for acceptance above.",
+       "question": "Match each clue.",
        "pairs": [
         [
          "Acceptance Above",
@@ -40972,7 +40972,7 @@
       {
        "type": "multiple_choice",
        "chart": "breakoutRetest",
-       "question": "Which statement best connects the evidence in this acceptance above replay?",
+       "question": "What does the response suggest?",
        "options": [
         "Holding above a level shows acceptance",
         "A failed breakout is confirmed before price returns through the level",
@@ -40992,21 +40992,21 @@
       {
        "type": "tap_candle",
        "chart": "breakdownRetest",
-       "question": "In acceptance below, tap where price response becomes clearest.",
+       "question": "Tap the clearest price response.",
        "target": 1,
        "explanation": "The selected candle shows whether execution produced follow through."
       },
       {
        "type": "aggressor",
        "event": "hit",
-       "question": "During acceptance below, which side is crossing the spread?",
+       "question": "Who's crossing the spread?",
        "correct": 1,
        "explanation": "Buyers take offers. Sellers take bids."
       },
       {
        "type": "multiple_choice",
        "chart": "breakdownRetest",
-       "question": "Which conclusion is best supported by the evidence in acceptance below?",
+       "question": "Which read is best supported?",
        "options": [
         "Holding below a level shows acceptance",
         "Large executions are directional even when price does not respond",
@@ -41019,7 +41019,7 @@
       {
        "type": "sequence_builder",
        "chart": "breakdownRetest",
-       "question": "Build the acceptance below read from evidence to conclusion.",
+       "question": "Build the read.",
        "items": [
         "Seller pressure appears",
         "Bids get consumed",
@@ -41058,9 +41058,9 @@
       {
        "type": "multiple_choice",
        "chart": "breakoutRetest",
-       "question": "Which explanation of breakout acceptance simulation requires the fewest assumptions?",
+       "question": "What's the most reasonable read?",
        "options": [
-        "A real breakout combines pressure with sustained trade beyond the level",
+        "Pressure is confirmed by acceptance above",
         "Fast tape near resistance is stronger than failure to gain acceptance",
         "A liquidity sweep and breakout differ mainly by candle size",
         "Order flow evidence remains valid regardless of changing volatility"
@@ -41071,7 +41071,7 @@
       {
        "type": "sequence_builder",
        "chart": "breakoutRetest",
-       "question": "Build the breakout acceptance simulation read from evidence to conclusion.",
+       "question": "Build the read.",
        "items": [
         "Buyer pressure appears",
         "Offers get consumed",
@@ -41096,14 +41096,14 @@
       {
        "type": "aggressor",
        "event": "hit",
-       "question": "During failed breakout, which side is crossing the spread?",
+       "question": "Who's crossing the spread?",
        "correct": 1,
        "explanation": "Buyers take offers. Sellers take bids."
       },
       {
        "type": "live_chart",
        "direction": "down",
-       "question": "As the failed breakout replay develops, what changed in price response?",
+       "question": "What changed in price response?",
        "options": [
         "Upward price response is developing",
         "Downward price response is developing",
@@ -41115,7 +41115,7 @@
       {
        "type": "multiple_choice",
        "chart": "resistanceRejection",
-       "question": "Which interpretation is best supported in this failed breakout example?",
+       "question": "What's the best read?",
        "options": [
         "A quick return below resistance signals failure",
         "Displayed liquidity is stronger evidence than completed executions",
@@ -41128,7 +41128,7 @@
       {
        "type": "fill_blank",
        "chart": "resistanceRejection",
-       "question": "The missing evidence in this failed breakout read is [___].",
+       "question": "The missing evidence is [___].",
        "options": [
         "return below resistance",
         "a single large print",
@@ -41148,7 +41148,7 @@
       {
        "type": "multiple_choice",
        "chart": "supportBounce",
-       "question": "Which conclusion is most reasonable for the current failed breakdown evidence?",
+       "question": "What does the evidence support?",
        "options": [
         "A quick return above support signals failure",
         "Tape speed matters more than the level where it occurs",
@@ -41161,13 +41161,13 @@
       {
        "type": "book_drag",
        "order": "market_buy",
-       "question": "Route the order used in this failed breakdown example.",
+       "question": "Route this order.",
        "correct": 1,
        "explanation": "Market buys take asks. Market sells take bids."
       },
       {
        "type": "matching",
-       "question": "Connect the behaviors that matter for failed breakdown.",
+       "question": "Match each clue.",
        "pairs": [
         [
          "Failed Breakdown",
@@ -41187,7 +41187,7 @@
       {
        "type": "tap_candle",
        "chart": "supportBounce",
-       "question": "In failed breakdown, tap where price response becomes clearest.",
+       "question": "Tap the clearest price response.",
        "target": 0,
        "explanation": "The selected candle shows whether execution produced follow through."
       }
@@ -41201,7 +41201,7 @@
       {
        "type": "multiple_choice",
        "chart": "breakoutRetest",
-       "question": "Which conclusion about breakout retest is best supported?",
+       "question": "Which explanation fits best?",
        "options": [
         "A defended retest can confirm a breakout",
         "High total volume normally implies strongly directional delta",
@@ -41214,14 +41214,14 @@
       {
        "type": "tap_candle",
        "chart": "breakoutRetest",
-       "question": "In breakout retest, tap where price response becomes clearest.",
+       "question": "Tap the clearest price response.",
        "target": 3,
        "explanation": "The selected candle shows whether execution produced follow through."
       },
       {
        "type": "fill_blank",
        "chart": "breakoutRetest",
-       "question": "The missing evidence in this breakout retest read is [___].",
+       "question": "The missing evidence is [___].",
        "options": [
         "support on retest",
         "resting size that never trades",
@@ -41241,14 +41241,14 @@
       {
        "type": "book_drag",
        "order": "market_buy",
-       "question": "Route the order used in this breakdown retest example.",
+       "question": "Route this order.",
        "correct": 1,
        "explanation": "Market buys take asks. Market sells take bids."
       },
       {
        "type": "live_chart",
        "direction": "down",
-       "question": "Which conclusion is justified by the developing price response in breakdown retest?",
+       "question": "What does the developing response support?",
        "options": [
         "Upward price response is developing",
         "Downward price response is developing",
@@ -41259,7 +41259,7 @@
       },
       {
        "type": "matching",
-       "question": "Connect the behaviors that matter for breakdown retest.",
+       "question": "Match each clue.",
        "pairs": [
         [
          "Breakdown Retest",
@@ -41279,7 +41279,7 @@
       {
        "type": "multiple_choice",
        "chart": "breakdownRetest",
-       "question": "Which statement best connects the evidence in this breakdown retest replay?",
+       "question": "What's the strongest conclusion?",
        "options": [
         "A rejected retest can confirm a breakdown",
         "The current book is more useful than the executions that changed it",
@@ -41299,21 +41299,21 @@
       {
        "type": "tap_candle",
        "chart": "gapUp",
-       "question": "In chasing breakouts, tap where price response becomes clearest.",
+       "question": "Tap the clearest price response.",
        "target": 4,
        "explanation": "The selected candle shows whether execution produced follow through."
       },
       {
        "type": "aggressor",
        "event": "hit",
-       "question": "During chasing breakouts, which side is crossing the spread?",
+       "question": "Who's crossing the spread?",
        "correct": 1,
        "explanation": "Buyers take offers. Sellers take bids."
       },
       {
        "type": "multiple_choice",
        "chart": "gapUp",
-       "question": "Which conclusion is best supported by the evidence in chasing breakouts?",
+       "question": "What best connects the evidence?",
        "options": [
         "Late entries carry worse risk and reward",
         "Positive delta is usually sufficient confirmation for higher prices",
@@ -41326,7 +41326,7 @@
       {
        "type": "sequence_builder",
        "chart": "gapUp",
-       "question": "Build the chasing breakouts read from evidence to conclusion.",
+       "question": "Build the read.",
        "items": [
         "Observe the order book",
         "Compare trades with liquidity",
@@ -41351,7 +41351,7 @@
       {
        "type": "fill_blank",
        "chart": "ascendingTriangle",
-       "question": "The missing evidence in this breakout review read is [___].",
+       "question": "The missing evidence is [___].",
        "options": [
         "pressure and acceptance",
         "positive delta without progress",
@@ -41364,7 +41364,7 @@
       {
        "type": "multiple_choice",
        "chart": "ascendingTriangle",
-       "question": "Which explanation of breakout review requires the fewest assumptions?",
+       "question": "Which read needs fewer assumptions?",
        "options": [
         "Combine pressure, level break, and acceptance",
         "Repeated tests always make a liquidity level stronger",
@@ -41376,7 +41376,7 @@
       },
       {
        "type": "matching",
-       "question": "Connect the behaviors that matter for breakout review.",
+       "question": "Match each clue.",
        "pairs": [
         [
          "Breakout Review",
@@ -41441,7 +41441,7 @@
       {
        "type": "sequence_builder",
        "chart": "shootingStar",
-       "question": "Build the common order flow misconceptions read from evidence to conclusion.",
+       "question": "Build the read.",
        "items": [
         "Observe the order book",
         "Compare trades with liquidity",
@@ -41466,7 +41466,7 @@
       {
        "type": "multiple_choice",
        "chart": "pullbackUptrend",
-       "question": "Which conclusion is most reasonable for the current healthy pullbacks evidence?",
+       "question": "Which conclusion fits the response?",
        "options": [
         "A healthy pullback shows weaker counter pressure",
         "Acceptance is present as soon as one trade prints beyond a level",
@@ -41479,13 +41479,13 @@
       {
        "type": "book_drag",
        "order": "market_buy",
-       "question": "Route the order used in this healthy pullbacks example.",
+       "question": "Route this order.",
        "correct": 1,
        "explanation": "Market buys take asks. Market sells take bids."
       },
       {
        "type": "matching",
-       "question": "Connect the behaviors that matter for healthy pullbacks.",
+       "question": "Match each clue.",
        "pairs": [
         [
          "Healthy Pullbacks",
@@ -41520,7 +41520,7 @@
       {
        "type": "multiple_choice",
        "chart": "ascendingChannel",
-       "question": "Which conclusion about pullback depth is best supported?",
+       "question": "How should this be interpreted?",
        "options": [
         "Shallow defended pullbacks show trend strength",
         "Thin liquidity implies the move has strong aggressive sponsorship",
@@ -41541,7 +41541,7 @@
       {
        "type": "fill_blank",
        "chart": "ascendingChannel",
-       "question": "The missing evidence in this pullback depth read is [___].",
+       "question": "The missing evidence is [___].",
        "options": [
         "defended structure",
         "resting size that never trades",
@@ -41561,14 +41561,14 @@
       {
        "type": "book_drag",
        "order": "market_buy",
-       "question": "Route the order used in this seller pullback example.",
+       "question": "Route this order.",
        "correct": 1,
        "explanation": "Market buys take asks. Market sells take bids."
       },
       {
        "type": "live_chart",
        "direction": "down",
-       "question": "Which price behavior now supports the seller pullback read?",
+       "question": "Which price behavior supports the read?",
        "options": [
         "Upward price response is developing",
         "Downward price response is developing",
@@ -41579,7 +41579,7 @@
       },
       {
        "type": "matching",
-       "question": "Connect the behaviors that matter for seller pullback.",
+       "question": "Match each clue.",
        "pairs": [
         [
          "Seller Pullback",
@@ -41599,7 +41599,7 @@
       {
        "type": "multiple_choice",
        "chart": "lowerHighsDowntrend",
-       "question": "Which statement best connects the evidence in this seller pullback replay?",
+       "question": "What does the response suggest?",
        "options": [
         "A bearish pullback shows weaker buying",
         "A failed breakout is confirmed before price returns through the level",
@@ -41627,14 +41627,14 @@
       {
        "type": "aggressor",
        "event": "lift",
-       "question": "During continuation trigger, which side is crossing the spread?",
+       "question": "Who's crossing the spread?",
        "correct": 0,
        "explanation": "Buyers take offers. Sellers take bids."
       },
       {
        "type": "multiple_choice",
        "chart": "bullFlag",
-       "question": "Which conclusion is best supported by the evidence in continuation trigger?",
+       "question": "Which read is best supported?",
        "options": [
         "Continuation begins when trend pressure returns",
         "Large executions are directional even when price does not respond",
@@ -41647,7 +41647,7 @@
       {
        "type": "sequence_builder",
        "chart": "bullFlag",
-       "question": "Build the continuation trigger read from evidence to conclusion.",
+       "question": "Build the read.",
        "items": [
         "Buyer pressure appears",
         "Offers get consumed",
@@ -41672,7 +41672,7 @@
       {
        "type": "fill_blank",
        "chart": "bearFlag",
-       "question": "The missing evidence in this bearish continuation read is [___].",
+       "question": "The missing evidence is [___].",
        "options": [
         "sellers return",
         "positive delta without progress",
@@ -41685,7 +41685,7 @@
       {
        "type": "multiple_choice",
        "chart": "bearFlag",
-       "question": "Which explanation of bearish continuation requires the fewest assumptions?",
+       "question": "What's the most reasonable read?",
        "options": [
         "Bearish continuation begins when sellers return",
         "Fast tape near resistance is stronger than failure to gain acceptance",
@@ -41697,7 +41697,7 @@
       },
       {
        "type": "matching",
-       "question": "Connect the behaviors that matter for bearish continuation.",
+       "question": "Match each clue.",
        "pairs": [
         [
          "Bearish Continuation",
@@ -41724,14 +41724,14 @@
       {
        "type": "aggressor",
        "event": "lift",
-       "question": "During order flow at vwap, which side is crossing the spread?",
+       "question": "Who's crossing the spread?",
        "correct": 0,
        "explanation": "Buyers take offers. Sellers take bids."
       },
       {
        "type": "live_chart",
        "direction": "up",
-       "question": "As the order flow at vwap replay develops, what changed in price response?",
+       "question": "What changed in price response?",
        "options": [
         "Upward price response is developing",
         "Downward price response is developing",
@@ -41743,7 +41743,7 @@
       {
        "type": "multiple_choice",
        "chart": "priceAboveVWAP",
-       "question": "Which interpretation is best supported in this order flow at vwap example?",
+       "question": "What's the best read?",
        "options": [
         "VWAP provides location while order flow determines the response",
         "Displayed liquidity is stronger evidence than completed executions",
@@ -41756,7 +41756,7 @@
       {
        "type": "fill_blank",
        "chart": "priceAboveVWAP",
-       "question": "The missing evidence in this order flow at vwap read is [___].",
+       "question": "The missing evidence is [___].",
        "options": [
         "response as price tests VWAP",
         "a single large print",
@@ -41776,7 +41776,7 @@
       {
        "type": "multiple_choice",
        "chart": "priceAboveMA",
-       "question": "Which conclusion is most reasonable for the current order flow at a moving average evidence?",
+       "question": "What does the evidence support?",
        "options": [
         "The average provides location but execution evidence determines the read",
         "Tape speed matters more than the level where it occurs",
@@ -41789,13 +41789,13 @@
       {
        "type": "book_drag",
        "order": "market_buy",
-       "question": "Route the order used in this order flow at a moving average example.",
+       "question": "Route this order.",
        "correct": 1,
        "explanation": "Market buys take asks. Market sells take bids."
       },
       {
        "type": "matching",
-       "question": "Connect the behaviors that matter for order flow at a moving average.",
+       "question": "Match each clue.",
        "pairs": [
         [
          "Order Flow at a Moving Average",
@@ -41815,7 +41815,7 @@
       {
        "type": "tap_candle",
        "chart": "priceAboveMA",
-       "question": "In order flow at a moving average, tap where price response becomes clearest.",
+       "question": "Tap the clearest price response.",
        "target": 1,
        "explanation": "The selected candle shows whether execution produced follow through."
       }
@@ -41829,7 +41829,7 @@
       {
        "type": "multiple_choice",
        "chart": "bearishEngulfing",
-       "question": "Which conclusion about pullback failure is best supported?",
+       "question": "Which explanation fits best?",
        "options": [
         "Strong counter pressure can end continuation",
         "High total volume normally implies strongly directional delta",
@@ -41842,14 +41842,14 @@
       {
        "type": "tap_candle",
        "chart": "bearishEngulfing",
-       "question": "In pullback failure, tap where price response becomes clearest.",
+       "question": "Tap the clearest price response.",
        "target": 4,
        "explanation": "The selected candle shows whether execution produced follow through."
       },
       {
        "type": "fill_blank",
        "chart": "bearishEngulfing",
-       "question": "The missing evidence in this pullback failure read is [___].",
+       "question": "The missing evidence is [___].",
        "options": [
         "counter pressure grows",
         "resting size that never trades",
@@ -41869,12 +41869,11 @@
       {
        "type": "time_sales",
        "event": "stall",
-       "question": "How does the tape qualify the price chart?",
+       "question": "What does the tape show?",
        "options": [
-        "Conflicting signals call for patience and a weaker conclusion",
-        "Tape speed guarantees directional acceptance",
-        "The chart makes execution data irrelevant",
-        "One large print resolves every conflict"
+        "Urgency appears, then fades",
+        "Tape speed confirms acceptance",
+        "One print resolves the read"
        ],
        "correct": 0,
        "explanation": "Conflicting signals call for patience and a weaker conclusion."
@@ -41882,12 +41881,11 @@
       {
        "type": "footprint",
        "event": "balanced",
-       "question": "Which interpretation uses both activity and price response?",
+       "question": "What contradicts the tape?",
        "options": [
-        "Conflicting signals call for patience and a weaker conclusion",
-        "The largest number on the footprint decides direction",
-        "High activity always creates a trend",
-        "Low activity means price cannot move"
+        "Delta and price response disagree",
+        "The largest cell decides direction",
+        "Volume guarantees a trend"
        ],
        "correct": 0,
        "explanation": "Conflicting signals call for patience and a weaker conclusion."
@@ -41895,7 +41893,7 @@
       {
        "type": "multiple_choice",
        "chart": "spinningTop",
-       "question": "Which statement best connects the evidence in this conflicting order flow signals replay?",
+       "question": "What's the strongest conclusion?",
        "options": [
         "Conflicting signals call for patience and a weaker conclusion",
         "The current book is more useful than the executions that changed it",
@@ -41908,14 +41906,14 @@
       {
        "type": "tap_candle",
        "chart": "spinningTop",
-       "question": "In conflicting order flow signals, tap where price response becomes clearest.",
+       "question": "Tap the clearest price response.",
        "target": 2,
        "explanation": "The selected candle shows whether execution produced follow through."
       },
       {
        "type": "sequence_builder",
        "chart": "spinningTop",
-       "question": "Build the conflicting order flow signals read from evidence to conclusion.",
+       "question": "Build the read.",
        "items": [
         "Observe the order book",
         "Compare trades with liquidity",
@@ -41940,12 +41938,11 @@
       {
        "type": "time_sales",
        "event": "stall",
-       "question": "How does the tape qualify the price chart?",
+       "question": "What defines the tape?",
        "options": [
-        "High volume without directional progress can show two sided absorption",
-        "Tape speed guarantees directional acceptance",
-        "The chart makes execution data irrelevant",
-        "One large print resolves every conflict"
+        "Fast two sided execution",
+        "Tape speed confirms acceptance",
+        "One print resolves the read"
        ],
        "correct": 0,
        "explanation": "High volume without directional progress can show two sided absorption."
@@ -41953,12 +41950,11 @@
       {
        "type": "footprint",
        "event": "balanced",
-       "question": "Which interpretation uses both activity and price response?",
+       "question": "What does the footprint add?",
        "options": [
-        "High volume without directional progress can show two sided absorption",
-        "The largest number on the footprint decides direction",
-        "High activity always creates a trend",
-        "Low activity means price cannot move"
+        "Heavy volume without directional progress",
+        "The largest cell decides direction",
+        "Volume guarantees a trend"
        ],
        "correct": 0,
        "explanation": "High volume without directional progress can show two sided absorption."
@@ -41966,7 +41962,7 @@
       {
        "type": "multiple_choice",
        "chart": "range",
-       "question": "Which conclusion is best supported by the evidence in high volume chop?",
+       "question": "What best connects the evidence?",
        "options": [
         "High volume without directional progress can show two sided absorption",
         "Positive delta is usually sufficient confirmation for higher prices",
@@ -41979,14 +41975,14 @@
       {
        "type": "tap_candle",
        "chart": "range",
-       "question": "In high volume chop, tap where price response becomes clearest.",
+       "question": "Tap the clearest price response.",
        "target": 0,
        "explanation": "The selected candle shows whether execution produced follow through."
       },
       {
        "type": "sequence_builder",
        "chart": "range",
-       "question": "Build the high volume chop read from evidence to conclusion.",
+       "question": "Build the read.",
        "items": [
         "Observe the order book",
         "Compare trades with liquidity",
@@ -42011,12 +42007,11 @@
       {
        "type": "time_sales",
        "event": "stall",
-       "question": "How does the tape qualify the price chart?",
+       "question": "What does the tape show?",
        "options": [
-        "A trend can travel on low volume when little liquidity opposes it",
-        "Tape speed guarantees directional acceptance",
-        "The chart makes execution data irrelevant",
-        "One large print resolves every conflict"
+        "Steady movement without urgent prints",
+        "Tape speed confirms acceptance",
+        "One print resolves the read"
        ],
        "correct": 0,
        "explanation": "A trend can travel on low volume when little liquidity opposes it."
@@ -42024,12 +42019,11 @@
       {
        "type": "footprint",
        "event": "lift",
-       "question": "Which interpretation uses both activity and price response?",
+       "question": "Is execution strongly directional?",
        "options": [
-        "A trend can travel on low volume when little liquidity opposes it",
-        "The largest number on the footprint decides direction",
-        "High activity always creates a trend",
-        "Low activity means price cannot move"
+        "No. Thin opposition still allows travel",
+        "The largest cell decides direction",
+        "Volume guarantees a trend"
        ],
        "correct": 0,
        "explanation": "A trend can travel on low volume when little liquidity opposes it."
@@ -42037,9 +42031,9 @@
       {
        "type": "multiple_choice",
        "chart": "ascendingChannel",
-       "question": "Which explanation of low volume trend requires the fewest assumptions?",
+       "question": "Which read needs fewer assumptions?",
        "options": [
-        "A trend can travel on low volume when little liquidity opposes it",
+        "Thin opposition can allow a low volume trend",
         "Repeated tests always make a liquidity level stronger",
         "A fast rejection proves the resting wall was genuine",
         "Stable displayed size means hidden liquidity cannot be present"
@@ -42058,7 +42052,7 @@
       {
        "type": "sequence_builder",
        "chart": "ascendingChannel",
-       "question": "Build the low volume trend read from evidence to conclusion.",
+       "question": "Build the read.",
        "items": [
         "Buyer pressure appears",
         "Offers get consumed",
@@ -42097,9 +42091,9 @@
       {
        "type": "multiple_choice",
        "chart": "spinningTop",
-       "question": "Which interpretation is best supported in this no clear read simulation example?",
+       "question": "What matters most here?",
        "options": [
-        "When evidence conflicts the strongest conclusion may be no clear read",
+        "Conflicting evidence means no confirmed read",
         "Price progress can be ignored when aggression is persistent",
         "A narrow spread confirms directional control",
         "The largest footprint row determines the entire candle read"
@@ -42110,7 +42104,7 @@
       {
        "type": "sequence_builder",
        "chart": "spinningTop",
-       "question": "Build the no clear read simulation read from evidence to conclusion.",
+       "question": "Build the read.",
        "items": [
         "Observe the order book",
         "Compare trades with liquidity",
@@ -42135,7 +42129,7 @@
       {
        "type": "multiple_choice",
        "chart": "breakoutRetest",
-       "question": "Which conclusion is most reasonable for the current entry after confirmation evidence?",
+       "question": "Which conclusion fits the response?",
        "options": [
         "Wait for pressure to return before entry",
         "Acceptance is present as soon as one trade prints beyond a level",
@@ -42148,13 +42142,13 @@
       {
        "type": "book_drag",
        "order": "market_buy",
-       "question": "Route the order used in this entry after confirmation example.",
+       "question": "Route this order.",
        "correct": 1,
        "explanation": "Market buys take asks. Market sells take bids."
       },
       {
        "type": "matching",
-       "question": "Connect the behaviors that matter for entry after confirmation.",
+       "question": "Match each clue.",
        "pairs": [
         [
          "Entry After Confirmation",
@@ -42174,7 +42168,7 @@
       {
        "type": "tap_candle",
        "chart": "breakoutRetest",
-       "question": "In entry after confirmation, tap where price response becomes clearest.",
+       "question": "Tap the clearest price response.",
        "target": 4,
        "explanation": "The selected candle shows whether execution produced follow through."
       }
@@ -42188,7 +42182,7 @@
       {
        "type": "multiple_choice",
        "chart": "bullFlag",
-       "question": "Which conclusion about continuation review is best supported?",
+       "question": "How should this be interpreted?",
        "options": [
         "Continuation needs structure and renewed pressure",
         "Thin liquidity implies the move has strong aggressive sponsorship",
@@ -42209,7 +42203,7 @@
       {
        "type": "fill_blank",
        "chart": "bullFlag",
-       "question": "The missing evidence in this continuation review read is [___].",
+       "question": "The missing evidence is [___].",
        "options": [
         "trend pressure returns",
         "resting size that never trades",
@@ -42229,14 +42223,14 @@
       {
        "type": "book_drag",
        "order": "market_buy",
-       "question": "Route the order used in this breakout and continuation mixed review example.",
+       "question": "Route this order.",
        "correct": 1,
        "explanation": "Market buys take asks. Market sells take bids."
       },
       {
        "type": "live_chart",
        "direction": "sideways",
-       "question": "Which price behavior now supports the breakout and continuation mixed review read?",
+       "question": "Which price behavior supports the read?",
        "options": [
         "Upward price response is developing",
         "Downward price response is developing",
@@ -42247,7 +42241,7 @@
       },
       {
        "type": "matching",
-       "question": "Connect the behaviors that matter for breakout and continuation mixed review.",
+       "question": "Match each clue.",
        "pairs": [
         [
          "Breakout and Continuation Mixed Review",
@@ -42267,7 +42261,7 @@
       {
        "type": "multiple_choice",
        "chart": "bullFlag",
-       "question": "Which statement best connects the evidence in this breakout and continuation mixed review replay?",
+       "question": "What does the response suggest?",
        "options": [
         "Continuation needs both structure and returning pressure",
         "A failed breakout is confirmed before price returns through the level",
@@ -42287,9 +42281,9 @@
       {
        "type": "time_sales",
        "event": "hit",
-       "question": "Which tape change matters most for reversal pressure?",
+       "question": "What changed on the tape?",
        "options": [
-        "Reversals need a clear change in control",
+        "The initiating side lost control",
         "Positive delta confirms a reversal regardless of price response",
         "Slower tape guarantees the opposing side has control"
        ],
@@ -42299,11 +42293,11 @@
       {
        "type": "footprint",
        "event": "lift",
-       "question": "How does executed volume qualify the reversal pattern?",
+       "question": "What confirms the control change?",
        "options": [
-        "It shows whether aggressive control changed beneath the price pattern",
-        "It guarantees the pattern target",
-        "It only shows resting liquidity"
+        "Opposing aggression gains strength",
+        "The pattern target is guaranteed",
+        "Only resting liquidity matters"
        ],
        "correct": 0,
        "explanation": "Tape and footprint evidence reveal what changed beneath the candle pattern."
@@ -42311,7 +42305,7 @@
       {
        "type": "multiple_choice",
        "chart": "bullishEngulfing",
-       "question": "Which conclusion is best supported by the evidence in reversal pressure?",
+       "question": "Which read is best supported?",
        "options": [
         "Reversals need a clear change in control",
         "Large executions are directional even when price does not respond",
@@ -42331,9 +42325,9 @@
       {
        "type": "time_sales",
        "event": "lift",
-       "question": "Which tape change matters most for buyer trap?",
+       "question": "What shows buyers became trapped?",
        "options": [
-        "A buyer trap forms when a breakout fails",
+        "Buy prints fail above resistance",
         "A large opposing print outweighs the executions that follow",
         "Price location is unnecessary once a reversal candle closes"
        ],
@@ -42343,11 +42337,11 @@
       {
        "type": "footprint",
        "event": "hit",
-       "question": "How does executed volume qualify the reversal pattern?",
+       "question": "What contradicts the positive delta?",
        "options": [
-        "It shows whether aggressive control changed beneath the price pattern",
-        "It guarantees the pattern target",
-        "It only shows resting liquidity"
+        "Price returns below resistance",
+        "The pattern target is guaranteed",
+        "Only resting liquidity matters"
        ],
        "correct": 0,
        "explanation": "Tape and footprint evidence reveal what changed beneath the candle pattern."
@@ -42355,7 +42349,7 @@
       {
        "type": "multiple_choice",
        "chart": "shootingStar",
-       "question": "Which explanation of buyer trap requires the fewest assumptions?",
+       "question": "What's the most reasonable read?",
        "options": [
         "A buyer trap forms when a breakout fails",
         "Fast tape near resistance is stronger than failure to gain acceptance",
@@ -42375,9 +42369,9 @@
       {
        "type": "time_sales",
        "event": "hit",
-       "question": "Which tape change matters most for seller trap?",
+       "question": "What shows sellers became trapped?",
        "options": [
-        "A seller trap forms when a breakdown fails",
+        "Sell prints fail below support",
         "The candle pattern identifies every initiating trade",
         "The earliest pressure cannot be contradicted later"
        ],
@@ -42387,11 +42381,11 @@
       {
        "type": "footprint",
        "event": "lift",
-       "question": "How does executed volume qualify the reversal pattern?",
+       "question": "What contradicts the negative delta?",
        "options": [
-        "It shows whether aggressive control changed beneath the price pattern",
-        "It guarantees the pattern target",
-        "It only shows resting liquidity"
+        "Price returns above support",
+        "The pattern target is guaranteed",
+        "Only resting liquidity matters"
        ],
        "correct": 0,
        "explanation": "Tape and footprint evidence reveal what changed beneath the candle pattern."
@@ -42399,7 +42393,7 @@
       {
        "type": "multiple_choice",
        "chart": "hammer",
-       "question": "Which interpretation is best supported in this seller trap example?",
+       "question": "What's the best read?",
        "options": [
         "A seller trap forms when a breakdown fails",
         "Displayed liquidity is stronger evidence than completed executions",
@@ -42419,9 +42413,9 @@
       {
        "type": "time_sales",
        "event": "stall",
-       "question": "Which tape change matters most for exhaustion reversal?",
+       "question": "What shows aggression fading?",
        "options": [
-        "Exhaustion can prepare a reversal",
+        "Print pace and size decline",
         "A rejection wick proves passive absorption",
         "The second test should inherit the first test's order flow"
        ],
@@ -42431,11 +42425,11 @@
       {
        "type": "footprint",
        "event": "balanced",
-       "question": "How does executed volume qualify the reversal pattern?",
+       "question": "What weakens the prior side?",
        "options": [
-        "It shows whether aggressive control changed beneath the price pattern",
-        "It guarantees the pattern target",
-        "It only shows resting liquidity"
+        "Directional execution loses dominance",
+        "The pattern target is guaranteed",
+        "Only resting liquidity matters"
        ],
        "correct": 0,
        "explanation": "Tape and footprint evidence reveal what changed beneath the candle pattern."
@@ -42443,7 +42437,7 @@
       {
        "type": "multiple_choice",
        "chart": "doji",
-       "question": "Which conclusion is most reasonable for the current exhaustion reversal evidence?",
+       "question": "What does the evidence support?",
        "options": [
         "Exhaustion can prepare a reversal",
         "Tape speed matters more than the level where it occurs",
@@ -42463,9 +42457,9 @@
       {
        "type": "time_sales",
        "event": "hit",
-       "question": "Which tape change matters most for absorption reversal?",
+       "question": "What shows pressure being absorbed?",
        "options": [
-        "Absorbed selling can support a reversal",
+        "Heavy prints make little progress",
         "Positive delta confirms a reversal regardless of price response",
         "Slower tape guarantees the opposing side has control"
        ],
@@ -42475,11 +42469,11 @@
       {
        "type": "footprint",
        "event": "lift",
-       "question": "How does executed volume qualify the reversal pattern?",
+       "question": "What confirms passive defense?",
        "options": [
-        "It shows whether aggressive control changed beneath the price pattern",
-        "It guarantees the pattern target",
-        "It only shows resting liquidity"
+        "Aggression stalls at one level",
+        "The pattern target is guaranteed",
+        "Only resting liquidity matters"
        ],
        "correct": 0,
        "explanation": "Tape and footprint evidence reveal what changed beneath the candle pattern."
@@ -42487,7 +42481,7 @@
       {
        "type": "multiple_choice",
        "chart": "rejectionWickDown",
-       "question": "Which conclusion about absorption reversal is best supported?",
+       "question": "Which explanation fits best?",
        "options": [
         "Absorbed selling can support a reversal",
         "High total volume normally implies strongly directional delta",
@@ -42507,9 +42501,9 @@
       {
        "type": "time_sales",
        "event": "lift",
-       "question": "Which tape change matters most for double top flow?",
+       "question": "How does the second test differ?",
        "options": [
-        "Repeated failure can shift control to sellers",
+        "Buyer urgency is weaker",
         "A large opposing print outweighs the executions that follow",
         "Price location is unnecessary once a reversal candle closes"
        ],
@@ -42519,11 +42513,11 @@
       {
        "type": "footprint",
        "event": "hit",
-       "question": "How does executed volume qualify the reversal pattern?",
+       "question": "What changes on the retest?",
        "options": [
-        "It shows whether aggressive control changed beneath the price pattern",
-        "It guarantees the pattern target",
-        "It only shows resting liquidity"
+        "Seller response strengthens",
+        "The pattern target is guaranteed",
+        "Only resting liquidity matters"
        ],
        "correct": 0,
        "explanation": "Tape and footprint evidence reveal what changed beneath the candle pattern."
@@ -42531,7 +42525,7 @@
       {
        "type": "multiple_choice",
        "chart": "doubleTop",
-       "question": "Which statement best connects the evidence in this double top flow replay?",
+       "question": "What's the strongest conclusion?",
        "options": [
         "Repeated failure can shift control to sellers",
         "The current book is more useful than the executions that changed it",
@@ -42551,9 +42545,9 @@
       {
        "type": "time_sales",
        "event": "hit",
-       "question": "Which tape change matters most for double bottom flow?",
+       "question": "Which side weakens on the retest?",
        "options": [
-        "Repeated failure can shift control to buyers",
+        "Aggressive sellers",
         "The candle pattern identifies every initiating trade",
         "The earliest pressure cannot be contradicted later"
        ],
@@ -42563,11 +42557,11 @@
       {
        "type": "footprint",
        "event": "lift",
-       "question": "How does executed volume qualify the reversal pattern?",
+       "question": "What changes on the second test?",
        "options": [
-        "It shows whether aggressive control changed beneath the price pattern",
-        "It guarantees the pattern target",
-        "It only shows resting liquidity"
+        "Buyer response strengthens",
+        "The pattern target is guaranteed",
+        "Only resting liquidity matters"
        ],
        "correct": 0,
        "explanation": "Tape and footprint evidence reveal what changed beneath the candle pattern."
@@ -42575,7 +42569,7 @@
       {
        "type": "multiple_choice",
        "chart": "doubleBottom",
-       "question": "Which conclusion is best supported by the evidence in double bottom flow?",
+       "question": "What best connects the evidence?",
        "options": [
         "Repeated failure can shift control to buyers",
         "Positive delta is usually sufficient confirmation for higher prices",
@@ -42595,9 +42589,9 @@
       {
        "type": "time_sales",
        "event": "hit",
-       "question": "Which tape change matters most for confirmation before entry?",
+       "question": "What confirms the reversal?",
        "options": [
-        "Confirmation reduces premature reversal entries",
+        "Opposing prints gain follow through",
         "A rejection wick proves passive absorption",
         "The second test should inherit the first test's order flow"
        ],
@@ -42607,11 +42601,11 @@
       {
        "type": "footprint",
        "event": "lift",
-       "question": "How does executed volume qualify the reversal pattern?",
+       "question": "What must execution produce?",
        "options": [
-        "It shows whether aggressive control changed beneath the price pattern",
-        "It guarantees the pattern target",
-        "It only shows resting liquidity"
+        "A confirming price response",
+        "The pattern target is guaranteed",
+        "Only resting liquidity matters"
        ],
        "correct": 0,
        "explanation": "Tape and footprint evidence reveal what changed beneath the candle pattern."
@@ -42619,7 +42613,7 @@
       {
        "type": "multiple_choice",
        "chart": "bullishEngulfing",
-       "question": "Which explanation of confirmation before entry requires the fewest assumptions?",
+       "question": "Which read needs fewer assumptions?",
        "options": [
         "Confirmation reduces premature reversal entries",
         "Repeated tests always make a liquidity level stronger",
@@ -42651,9 +42645,9 @@
       {
        "type": "time_sales",
        "event": "hit",
-       "question": "Which tape change matters most for reversal review?",
+       "question": "What completes the reversal read?",
        "options": [
-        "A reversal needs control change and confirmation",
+        "Control change plus confirmation",
         "Positive delta confirms a reversal regardless of price response",
         "Slower tape guarantees the opposing side has control"
        ],
@@ -42663,11 +42657,11 @@
       {
        "type": "footprint",
        "event": "lift",
-       "question": "How does executed volume qualify the reversal pattern?",
+       "question": "What does the footprint verify?",
        "options": [
-        "It shows whether aggressive control changed beneath the price pattern",
-        "It guarantees the pattern target",
-        "It only shows resting liquidity"
+        "Aggressive control changed",
+        "The pattern target is guaranteed",
+        "Only resting liquidity matters"
        ],
        "correct": 0,
        "explanation": "Tape and footprint evidence reveal what changed beneath the candle pattern."
@@ -42675,7 +42669,7 @@
       {
        "type": "multiple_choice",
        "chart": "inverseHeadShoulders",
-       "question": "Which interpretation is best supported in this reversal review example?",
+       "question": "What matters most here?",
        "options": [
         "A reversal needs control change and confirmation",
         "Price progress can be ignored when aggression is persistent",
@@ -42695,7 +42689,7 @@
       {
        "type": "multiple_choice",
        "chart": "breakoutRetest",
-       "question": "Which conclusion is most reasonable for the current plan the entry evidence?",
+       "question": "Which conclusion fits the response?",
        "options": [
         "A clear trigger keeps execution disciplined",
         "Acceptance is present as soon as one trade prints beyond a level",
@@ -42708,13 +42702,13 @@
       {
        "type": "book_drag",
        "order": "market_buy",
-       "question": "Route the order used in this plan the entry example.",
+       "question": "Route this order.",
        "correct": 1,
        "explanation": "Market buys take asks. Market sells take bids."
       },
       {
        "type": "matching",
-       "question": "Connect the behaviors that matter for plan the entry.",
+       "question": "Match each clue.",
        "pairs": [
         [
          "Plan the Entry",
@@ -42734,7 +42728,7 @@
       {
        "type": "tap_candle",
        "chart": "breakoutRetest",
-       "question": "In plan the entry, tap where price response becomes clearest.",
+       "question": "Tap the clearest price response.",
        "target": 0,
        "explanation": "The selected candle shows whether execution produced follow through."
       }
@@ -42748,7 +42742,7 @@
       {
        "type": "multiple_choice",
        "chart": "sideways",
-       "question": "Which conclusion about choose the order type is best supported?",
+       "question": "How should this be interpreted?",
        "options": [
         "Order choice balances speed with price control",
         "Thin liquidity implies the move has strong aggressive sponsorship",
@@ -42761,14 +42755,14 @@
       {
        "type": "tap_candle",
        "chart": "sideways",
-       "question": "In choose the order type, tap where price response becomes clearest.",
+       "question": "Tap the clearest price response.",
        "target": 3,
        "explanation": "The selected candle shows whether execution produced follow through."
       },
       {
        "type": "fill_blank",
        "chart": "sideways",
-       "question": "The missing evidence in this choose the order type read is [___].",
+       "question": "The missing evidence is [___].",
        "options": [
         "speed versus price",
         "resting size that never trades",
@@ -42788,13 +42782,13 @@
       {
        "type": "book_drag",
        "order": "market_buy",
-       "question": "Route the order used in this manage slippage example.",
+       "question": "Route this order.",
        "correct": 1,
        "explanation": "Market buys take asks. Market sells take bids."
       },
       {
        "type": "matching",
-       "question": "Connect the behaviors that matter for manage slippage.",
+       "question": "Match each clue.",
        "pairs": [
         [
          "Manage Slippage",
@@ -42814,7 +42808,7 @@
       {
        "type": "multiple_choice",
        "chart": "volatile",
-       "question": "Which statement best connects the evidence in this manage slippage replay?",
+       "question": "What does the response suggest?",
        "options": [
         "Thin liquidity can increase slippage",
         "A failed breakout is confirmed before price returns through the level",
@@ -42834,23 +42828,23 @@
       {
        "type": "tap_candle",
        "chart": "supportBounce",
-       "question": "In order flow invalidation, tap where price response becomes clearest.",
+       "question": "Tap the clearest price response.",
        "target": 4,
        "explanation": "The selected candle shows whether execution produced follow through."
       },
       {
        "type": "aggressor",
        "event": "lift",
-       "question": "During order flow invalidation, which side is crossing the spread?",
+       "question": "Who's crossing the spread?",
        "correct": 0,
        "explanation": "Buyers take offers. Sellers take bids."
       },
       {
        "type": "multiple_choice",
        "chart": "supportBounce",
-       "question": "Which conclusion is best supported by the evidence in order flow invalidation?",
+       "question": "Which read is best supported?",
        "options": [
-        "Risk belongs beyond the evidence that would invalidate the order flow read",
+        "Beyond the level that disproves the read",
         "Large executions are directional even when price does not respond",
         "A moving average reaction can substitute for execution evidence",
         "Balanced delta means neither side traded aggressively"
@@ -42861,7 +42855,7 @@
       {
        "type": "sequence_builder",
        "chart": "supportBounce",
-       "question": "Build the order flow invalidation read from evidence to conclusion.",
+       "question": "Build the read.",
        "items": [
         "Buyer pressure appears",
         "Offers get consumed",
@@ -42886,7 +42880,7 @@
       {
        "type": "fill_blank",
        "chart": "bandsWidening",
-       "question": "The missing evidence in this risk in thin liquidity read is [___].",
+       "question": "The missing evidence is [___].",
        "options": [
         "slippage and unstable depth",
         "positive delta without progress",
@@ -42899,7 +42893,7 @@
       {
        "type": "multiple_choice",
        "chart": "bandsWidening",
-       "question": "Which explanation of risk in thin liquidity requires the fewest assumptions?",
+       "question": "What's the most reasonable read?",
        "options": [
         "Thin liquidity can require smaller risk and more cautious execution",
         "Fast tape near resistance is stronger than failure to gain acceptance",
@@ -42911,7 +42905,7 @@
       },
       {
        "type": "matching",
-       "question": "Connect the behaviors that matter for risk in thin liquidity.",
+       "question": "Match each clue.",
        "pairs": [
         [
          "Risk in Thin Liquidity",
@@ -42938,14 +42932,14 @@
       {
        "type": "aggressor",
        "event": "hit",
-       "question": "During no clear order flow read, which side is crossing the spread?",
+       "question": "Who's crossing the spread?",
        "correct": 1,
        "explanation": "Buyers take offers. Sellers take bids."
       },
       {
        "type": "multiple_choice",
        "chart": "spinningTop",
-       "question": "Which interpretation is best supported in this no clear order flow read example?",
+       "question": "What's the best read?",
        "options": [
         "Conflicting evidence is a valid reason to stay out",
         "Displayed liquidity is stronger evidence than completed executions",
@@ -42958,7 +42952,7 @@
       {
        "type": "fill_blank",
        "chart": "spinningTop",
-       "question": "The missing evidence in this no clear order flow read read is [___].",
+       "question": "The missing evidence is [___].",
        "options": [
         "conflicting evidence",
         "a single large print",
@@ -42978,7 +42972,7 @@
       {
        "type": "multiple_choice",
        "chart": "resistanceRejection",
-       "question": "Which conclusion is most reasonable for the current exit into liquidity evidence?",
+       "question": "What does the evidence support?",
        "options": [
         "Liquidity can improve planned exits",
         "Tape speed matters more than the level where it occurs",
@@ -42991,13 +42985,13 @@
       {
        "type": "book_drag",
        "order": "market_buy",
-       "question": "Route the order used in this exit into liquidity example.",
+       "question": "Route this order.",
        "correct": 1,
        "explanation": "Market buys take asks. Market sells take bids."
       },
       {
        "type": "matching",
-       "question": "Connect the behaviors that matter for exit into liquidity.",
+       "question": "Match each clue.",
        "pairs": [
         [
          "Exit Into Liquidity",
@@ -43017,7 +43011,7 @@
       {
        "type": "tap_candle",
        "chart": "resistanceRejection",
-       "question": "In exit into liquidity, tap where price response becomes clearest.",
+       "question": "Tap the clearest price response.",
        "target": 3,
        "explanation": "The selected candle shows whether execution produced follow through."
       }
@@ -43031,7 +43025,7 @@
       {
        "type": "multiple_choice",
        "chart": "sideways",
-       "question": "Which conclusion about review the order flow read is best supported?",
+       "question": "Which explanation fits best?",
        "options": [
         "Review each evidence source separately from the trade outcome",
         "High total volume normally implies strongly directional delta",
@@ -43044,14 +43038,14 @@
       {
        "type": "tap_candle",
        "chart": "sideways",
-       "question": "In review the order flow read, tap where price response becomes clearest.",
+       "question": "Tap the clearest price response.",
        "target": 1,
        "explanation": "The selected candle shows whether execution produced follow through."
       },
       {
        "type": "fill_blank",
        "chart": "sideways",
-       "question": "The missing evidence in this review the order flow read read is [___].",
+       "question": "The missing evidence is [___].",
        "options": [
         "whether book tape footprint and price behaved as expected",
         "resting size that never trades",
@@ -43072,7 +43066,7 @@
        "type": "orderflow_sim",
        "event": "championship",
        "direction": "neutral",
-       "question": "Buying is aggressive but price cannot clear resistance. What is the strongest current observation?",
+       "question": "Buyers stay aggressive, but resistance holds. What's strongest?",
        "options": [
         "Buyers are active but may be absorbed by refreshing sellers",
         "The fastest evidence guarantees the next move",
@@ -43085,7 +43079,7 @@
       {
        "type": "multiple_choice",
        "chart": "volatile",
-       "question": "Which statement best connects the evidence in this comprehensive order flow simulation replay?",
+       "question": "What's the strongest conclusion?",
        "options": [
         "Build one read from book tape footprint price and risk",
         "The current book is more useful than the executions that changed it",
@@ -43098,7 +43092,7 @@
       {
        "type": "sequence_builder",
        "chart": "volatile",
-       "question": "Build the comprehensive order flow simulation read from evidence to conclusion.",
+       "question": "Build the read.",
        "items": [
         "Observe the order book",
         "Compare trades with liquidity",
