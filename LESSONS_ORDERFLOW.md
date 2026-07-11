@@ -2,11 +2,11 @@
 
 Course id: `orderflow`  ·  accent `#14B8A6`  ·  standalone strategy track (always unlocked).
 Mirrors Moko/GameData.json. Correct answer is listed FIRST for [MC]/[FILL] (the app shuffles).
-No INTRO blocks — lessons start cold.
+No INTRO blocks. Prompts are the bare ask (reasoning lives in WHY).
 
 Interactive order-flow mechanics (tap-based, no dragging):
   [AGGRESSOR] event: lift|hit — a live DOM ladder is consumed; tap buyer/seller. lift⇒buyer, hit⇒seller.
-  [BOOKDRAG]  order: market_buy|market_sell — tap the side it fills against. buy⇒ask, sell⇒bid.
+  [BOOKDRAG]  order: market_buy|market_sell — tap the side it fills. buy⇒ask, sell⇒bid.
 
 
 UNIT 1 — Order Flow Foundations
@@ -15,252 +15,517 @@ NODE 1
 TITLE: What Is Order Flow?
 CELEBRATION: You get what order flow really means.
 
-[MC] What does “order flow” describe?
-The live stream of buying, selling, and available liquidity that helps explain how price is forming.
-The order in which candlesticks form across the trading day.
-The sequence of chart patterns a stock cycles through.
-WHY: Order flow studies executed activity and available liquidity. It adds context to price, but it does not reveal every participant or guarantee the next move.
+[MC] What is order flow?
+Live buying, selling, and liquidity
+The order candles appear in
+A sequence of chart patterns
+WHY: Order flow shows live trading pressure and liquidity.
 
-[TF] Order flow adds context about current buying, selling, and liquidity beyond a finished price line.
+[TF] Order flow shows more than a finished price line.
 ANSWER: True
-WHY: It can help describe current pressure, but the chart and order book are both incomplete snapshots of a changing market.
+WHY: It adds context about current pressure and liquidity.
 
-[AGGRESSOR] Buyers are aggressively taking the offers on this ladder. Who is the aggressor?
+[AGGRESSOR] Offers are being taken. Who is aggressive?
 EVENT: lift
 ANSWER: The buyer
-WHY: The side sending market orders that eat resting liquidity is the aggressor. Here that's the buyer.
+WHY: Buyers take offers, so buyers are aggressive.
 
-[MATCH] Match each term to what it really is.
-Order flow => The live stream of buy/sell orders
-Price => The result of orders executing
-A candle => A record of past prices
-WHY: Orders come first; price is the outcome; the candle is a record after the fact.
+[MATCH] Match each term.
+Order flow => Live buying and selling
+Price => Result of execution
+A candle => Record of past price
+WHY: Orders create fills. Fills create price. Candles record it.
 
-[FILL] Order flow reads the [___] between aggressive buyers and aggressive sellers.
+[FILL] Order flow reads the [___] of buyers and sellers.
 balance
-color
-calendar
-WHY: When buyers are more aggressive than sellers, price rises; when sellers dominate, it falls. It's a balance of pressure.
+volume
+price
+WHY: The balance shows which side has more pressure.
 
-[ORDER] Put the cause-and-effect chain in the right order.
+[ORDER] Build the order flow chain.
 Buyers and sellers place orders
 Orders execute against each other
 Price moves to the last fill
 The candle updates on the chart
-WHY: Orders drive fills, fills set price, and only then does the chart redraw. Order-flow traders watch the front of that chain.
+WHY: Orders create fills. Fills update price and the chart.
 
 NODE 2
 TITLE: Aggressive vs. Passive Orders
 CELEBRATION: You can tell takers from makers.
 
-[MC] What is an aggressive (market) order?
-An order that takes whatever price is available now, removing liquidity.
-An order that waits at a set price until someone trades with it.
-An order that can only fill during the opening auction.
-WHY: A market order seeks immediate execution against available liquidity. It takes resting liquidity and can move price when nearby levels are consumed.
+[MC] Pick the aggressive order.
+Takes available liquidity now
+Waits at a chosen price
+Only fills at the open
+WHY: Aggressive orders trade now and remove liquidity.
 
-[MC] What is a passive (limit) order?
-An order resting at a chosen price, providing liquidity until someone hits it.
-An order that always fills instantly at the current price.
-An order the broker places automatically for you.
-WHY: A limit order sits in the book and waits. It can provide displayed liquidity until it is filled, changed, or canceled.
+[MC] Pick the passive order.
+Waits at a chosen price
+Always fills now
+Placed by your broker
+WHY: Passive orders wait and provide liquidity.
 
-[BOOKDRAG] Tap the side of the book this MARKET BUY fills against.
+[BOOKDRAG] Market buy. Tap its fill side.
 ORDER: market_buy
 ANSWER: the ask
-WHY: A market buy takes the resting sell orders — it fills at the ask.
+WHY: A market buy takes the ask.
 
-[BOOKDRAG] Tap the side of the book this MARKET SELL fills against.
+[BOOKDRAG] Market sell. Tap its fill side.
 ORDER: market_sell
 ANSWER: the bid
-WHY: A market sell hits the resting buy orders — it fills at the bid.
+WHY: A market sell hits the bid.
 
-[MATCH] Sort each into taker or maker.
-Market buy that fills instantly => Taker
-Limit sell resting above price => Maker
-Hitting the bid to get out fast => Taker
-WHY: Anything that fills immediately by crossing the spread is a taker; anything resting and waiting is a maker.
+[MATCH] Match maker or taker.
+Instant market buy => Taker
+Resting limit sell => Maker
+Hit the bid now => Taker
+WHY: Takers trade now. Makers wait.
 
 [TF] Aggressive orders remove liquidity; passive orders provide it.
 ANSWER: True
-WHY: Takers (market orders) consume the resting orders that makers (limit orders) supply.
+WHY: Takers remove liquidity. Makers provide it.
 
-[AGGRESSOR] Sellers are aggressively taking the bids here. Who is the aggressor?
+[AGGRESSOR] Bids are being taken. Who is aggressive?
 EVENT: hit
 ANSWER: The seller
-WHY: The side sending the market orders is the aggressor — here, the seller hitting the bid.
+WHY: Sellers hit bids, so sellers are aggressive.
 
 NODE 3
 TITLE: The Bid, Ask & Spread
 CELEBRATION: You own the bid, ask and spread.
 
-[MC] What is the bid?
-The highest price buyers are currently willing to pay.
-The lowest price sellers will accept.
-The last price a trade printed at.
-WHY: The bid is the best resting buy order. Sell into it and you trade at the bid.
+[MC] Pick the bid.
+Highest buyer price
+Lowest seller price
+Last traded price
+WHY: The bid is the best resting buy price.
 
-[MC] What is the ask (or offer)?
-The lowest price sellers are currently willing to accept.
-The highest price buyers will pay.
-The average of the day's high and low.
-WHY: The ask is the best resting sell order. Buy from it and you trade at the ask.
+[MC] Pick the ask.
+Lowest seller price
+Highest buyer price
+Average daily price
+WHY: The ask is the best resting sell price.
 
 [FILL] The gap between the bid and the ask is the [___].
 spread
 range
 gap
-WHY: The spread is the distance between the best buy and best sell orders — the cost of crossing from one side to the other.
+WHY: The spread is the distance between bid and ask.
 
-[BOOKDRAG] You want in NOW. Tap the side your market buy fills against.
+[BOOKDRAG] Buy now. Tap the fill side.
 ORDER: market_buy
 ANSWER: the ask
-WHY: Buying immediately means paying the ask — you lift the offer.
+WHY: Buying now means paying the ask.
 
-[BOOKDRAG] You want out NOW. Tap the side your market sell fills against.
+[BOOKDRAG] Sell now. Tap the fill side.
 ORDER: market_sell
 ANSWER: the bid
 WHY: Selling immediately means hitting the bid.
 
-[MATCH] Match the action to the price you trade at.
-Market buy (take now) => The ask
-Market sell (take now) => The bid
-The spread => Ask minus bid
-WHY: Buyers in a hurry pay the ask; sellers in a hurry hit the bid; the spread is the distance between them.
+[MATCH] Match each action.
+Market buy => Ask
+Market sell => Bid
+Spread => Ask minus bid
+WHY: Buy at the ask. Sell at the bid.
 
 [TF] A wider spread generally signals thinner liquidity.
 ANSWER: True
-WHY: When few orders rest near price, the best bid and ask sit further apart, so the spread widens.
+WHY: Less nearby liquidity can widen the spread.
 
 NODE 4
 TITLE: Lifting the Offer & Hitting the Bid
 CELEBRATION: You can read aggression in the book.
 
-[MC] What does “lifting the offer” mean?
-Aggressively buying the resting sell orders at the ask.
-Cancelling your sell order above the market.
-Posting a new offer higher than the last one.
-WHY: Lifting the offer means a buyer takes resting asks. It can move price higher when the available offers are consumed.
+[MC] Which action lifts the offer?
+Buying the ask
+Canceling a sell order
+Posting a higher offer
+WHY: Lifting the offer means buying the ask.
 
-[AGGRESSOR] Watch the offers get eaten. Someone is lifting the offer — who is the aggressor?
+[AGGRESSOR] Offers are getting eaten. Who is aggressive?
 EVENT: lift
 ANSWER: The buyer
-WHY: Lifting the offer is aggressive buying: the buyer is taking the resting sell orders.
+WHY: The buyer is lifting the offer.
 
-[AGGRESSOR] Now the bids are getting eaten. Someone is hitting the bid — who is the aggressor?
+[AGGRESSOR] Bids are getting eaten. Who is aggressive?
 EVENT: hit
 ANSWER: The seller
-WHY: Hitting the bid is aggressive selling: the seller is taking the resting buy orders.
+WHY: The seller is hitting the bid.
 
-[FILL] When sellers keep [___] the bid, resting buy orders get eaten and price tends to fall.
+[FILL] Sellers push down by [___] the bid.
 hitting
 posting
 raising
-WHY: Hitting the bid is aggressive selling. If available bids are consumed, the next executable price can be lower.
+WHY: Hitting bids can push price lower.
 
-[MATCH] Match the aggression to its effect.
-Buyers lifting the offer => Can support higher prices
-Sellers hitting the bid => Can support lower prices
-Only resting limit orders, no takers => May leave price unchanged
-WHY: Aggression and available liquidity influence price, but displayed orders can also be added, canceled, or refreshed.
+[MATCH] Match each action.
+Lift the offer => May push price up
+Hit the bid => May push price down
+Only resting orders => Price may stay still
+WHY: Aggression consumes liquidity and can move price.
 
-[BOOKDRAG] A buyer wants to lift the offer. Tap the side their market order takes.
+[BOOKDRAG] Lift the offer. Tap the side taken.
 ORDER: market_buy
 ANSWER: the ask
-WHY: Lifting the offer means taking the ask — that's where a market buy fills.
+WHY: A market buy takes the ask.
 
-[AGGRESSOR] Buyers keep lifting offers while sellers barely show. Who is in control here?
+[AGGRESSOR] Buyers keep lifting offers. Who controls?
 EVENT: lift
 ANSWER: The buyer
-WHY: Persistent lifting with little selling is aggressive demand — the buyer is the aggressor and in control.
+WHY: Persistent lifting shows buyer control.
 
 NODE 5
 TITLE: What Actually Moves Price
 CELEBRATION: You understand imbalance.
 
-[MC] What can help drive price higher over a short interval?
-Sustained aggressive buying that consumes available offers.
-The number of shares a company has outstanding.
-How many candlesticks have printed that day.
-WHY: Sustained buying can move price through available offers. It is one input among changing quotes, cancellations, new liquidity, and broader market activity.
+[MC] What can push price higher?
+Aggressive buying takes offers
+More shares exist
+More candles print
+WHY: Aggressive buying can consume offers and lift price.
 
-[TF] A large displayed order means price will definitely hold at that level.
+[TF] A large displayed order guarantees price will hold.
 ANSWER: False
-WHY: Displayed orders can be filled, changed, canceled, or refreshed. A book snapshot is useful context, not certainty.
+WHY: Displayed orders can change or disappear.
 
-[FILL] A one-sided [___] of aggressive orders is what drives a strong directional move.
+[FILL] A strong directional move needs an order [___].
 imbalance
 average
 schedule
-WHY: A one-sided imbalance can contribute to a directional move, especially when it consumes nearby liquidity.
+WHY: An imbalance means one side is more aggressive.
 
-[ORDER] Order these from cause to visible effect.
-Aggressive buyers outnumber aggressive sellers
-Resting offers get absorbed
-Price ticks up to higher asks
-A green candle prints
-WHY: One possible sequence is imbalance → offers absorbed → higher prints → chart update. It describes a mechanism, not a prediction.
+[ORDER] Build the upward move.
+Buyers become more aggressive
+Offers get consumed
+Price reaches higher asks
+A green candle appears
+WHY: Buyer pressure consumes offers before the chart updates.
 
-[MATCH] Match the order-flow condition to what price does.
-Buy-side imbalance => May support higher prices
-Sell-side imbalance => May support lower prices
-Balanced aggression => May coincide with a range
-WHY: These are useful tendencies, not rules. New orders, cancellations, hidden liquidity, and broader market conditions can change the read quickly.
+[MATCH] Match pressure to price.
+Buyer imbalance => May push price up
+Seller imbalance => May push price down
+Balanced pressure => May keep price ranging
+WHY: Pressure suggests direction, but conditions can change.
 
-[AGGRESSOR] Price is grinding higher on relentless buying. Who is the aggressor driving it?
+[AGGRESSOR] Price grinds higher. Who is aggressive?
 EVENT: lift
 ANSWER: The buyer
-WHY: A demand imbalance — aggressive buyers lifting offers — is pushing price up.
+WHY: Aggressive buyers are lifting offers.
 
-[BOOKDRAG] To push price UP, an aggressive buyer must take which side? Tap it.
+[BOOKDRAG] Push price up. Tap the side buyers take.
 ORDER: market_buy
 ANSWER: the ask
-WHY: Taking the ask (lifting offers) is what walks price up to higher levels.
+WHY: Buyers take asks to move price higher.
 
 NODE 6
 TITLE: Order Flow Foundations Review
-CELEBRATION: Foundations mastered — you read the flow behind price.
+CELEBRATION: Foundations mastered. You read the flow behind price.
 
-[AGGRESSOR] The offers are getting consumed. Who is the aggressor?
+[AGGRESSOR] Offers are consumed. Who is aggressive?
 EVENT: lift
 ANSWER: The buyer
-WHY: When offers (asks) are being taken, the buyer is the aggressor — lifting the offer.
+WHY: Buyers consume offers.
 
-[BOOKDRAG] Tap the side the MARKET BUY fills against.
+[BOOKDRAG] Market buy. Tap the fill side.
 ORDER: market_buy
 ANSWER: the ask
 WHY: A market buy takes the ask.
 
-[BOOKDRAG] Tap the side the MARKET SELL fills against.
+[BOOKDRAG] Market sell. Tap the fill side.
 ORDER: market_sell
 ANSWER: the bid
 WHY: A market sell hits the bid.
 
-[MATCH] Match each term to its meaning.
-Bid => Best price buyers will pay
-Ask => Best price sellers will accept
-Spread => The gap between them
-Imbalance => One side more aggressive
-WHY: These four ideas are the backbone of every order-flow read.
+[MATCH] Match each term.
+Bid => Best buyer price
+Ask => Best seller price
+Spread => Gap between bid and ask
+Imbalance => One side has more pressure
+WHY: These ideas form the base of order flow.
 
-[MC] Order flow is best described as…
-Real-time context about buying, selling, and available liquidity.
-The order in which chart patterns appear.
-A schedule of company news events.
-WHY: It complements price action with context. It does not show every participant or guarantee an outcome.
+[MC] Pick order flow.
+Live buying, selling, and liquidity
+The order chart patterns appear
+A company news schedule
+WHY: Order flow adds live context to price.
 
-[ORDER] Rebuild the chain from order to chart.
+[ORDER] Build the order to chart chain.
 Aggressive orders hit the market
 They execute against resting orders
 Price moves to the next level
 The candle updates
-WHY: Orders and fills influence the prices a chart records. Use that sequence as context, not as advance certainty about the next print.
+WHY: Orders create fills before the chart updates.
 
 [TF] You buy at the ask and sell at the bid when you trade aggressively.
 ANSWER: True
-WHY: Crossing the spread means paying the ask to buy now or hitting the bid to sell now.
+WHY: Buy now at the ask. Sell now at the bid.
 
-[AGGRESSOR] The bids are getting consumed on the ladder. Who is the aggressor?
+[AGGRESSOR] Bids are consumed. Who is aggressive?
 EVENT: hit
 ANSWER: The seller
-WHY: When bids are being taken, the seller is the aggressor — hitting the bid.
+WHY: Sellers consume bids.
+
+
+UNIT 2 — The Order Book
+
+NODE 7
+TITLE: What the Order Book Shows
+CELEBRATION: You know what Level II actually shows.
+
+[MC] What does Level II show?
+The full depth of resting orders on both sides.
+Only the best bid and ask.
+Every trade already executed.
+WHY: Level II is the whole ladder of resting limit orders. Level I is just the top of book; executed trades live in time & sales.
+
+[MC] What does Level I show?
+Only the best bid and ask.
+The full resting depth on both sides.
+The day's executed trades.
+WHY: Level I is the top of the book — the single best bid and best ask.
+
+[MATCH] Match each feed to what it shows.
+Level I => Best bid and ask
+Level II => Full resting depth
+Time & Sales => Executed trades
+WHY: Three lenses: top of book, the full book, and the trades that already happened.
+
+[AGGRESSOR] Tap the aggressor.
+EVENT: lift
+ANSWER: The buyer
+WHY: The offers are being taken, so the buyer is the aggressor lifting them.
+
+[BOOKDRAG] Tap the side this buy fills against.
+ORDER: market_buy
+ANSWER: the ask
+WHY: A market buy takes the resting offers — it fills at the ask.
+
+[TF] The order book shows resting orders, not completed trades.
+ANSWER: True
+WHY: Resting orders are still waiting to fill; completed trades show up in time & sales.
+
+[ORDER] Order a limit order's life in the book.
+A trader posts a limit order
+It rests in the book
+An aggressor takes it
+It leaves the book
+WHY: Resting liquidity sits until an aggressive order consumes it.
+
+NODE 8
+TITLE: Bid Side vs. Ask Side
+CELEBRATION: You can read both sides of the book.
+
+[MC] Where do resting buy orders sit?
+The bid side.
+The ask side.
+The spread.
+WHY: Buyers rest on the bid. Sellers rest on the ask, and the spread is the gap between them.
+
+[MC] Where do resting sell orders sit?
+The ask side.
+The bid side.
+The spread.
+WHY: Sellers rest on the ask side, above the spread.
+
+[BOOKDRAG] Tap the side this buy fills against.
+ORDER: market_buy
+ANSWER: the ask
+WHY: A market buy lifts the ask.
+
+[BOOKDRAG] Tap the side this sell fills against.
+ORDER: market_sell
+ANSWER: the bid
+WHY: A market sell hits the bid.
+
+[MATCH] Match each part of the book.
+Bid side => Resting buyers
+Ask side => Resting sellers
+Spread => Gap between them
+WHY: Buyers below, sellers above, the spread in between.
+
+[TF] The best bid sits just below the best ask.
+ANSWER: True
+WHY: The bid is always below the ask; the distance between them is the spread.
+
+[AGGRESSOR] Tap the aggressor.
+EVENT: hit
+ANSWER: The seller
+WHY: The bids are being taken, so the seller is the aggressor.
+
+NODE 9
+TITLE: Size & Liquidity
+CELEBRATION: You can read depth and liquidity.
+
+[MC] What does the number beside a price show?
+The size resting there.
+The trades done there.
+Its distance from the last price.
+WHY: The number is resting size — how many shares sit waiting at that price.
+
+[MC] A book with large size at every level is…
+Liquid.
+Illiquid.
+Volatile.
+WHY: Plenty of resting size means liquid: price needs a lot of aggression to move.
+
+[TF] A thin book moves on fewer orders than a thick one.
+ANSWER: True
+WHY: Less resting size means each aggressive order pushes price further.
+
+[MATCH] Match each book to how it moves.
+Thick book => Hard to move
+Thin book => Easy to move
+Resting size => Liquidity at a price
+WHY: Depth is what absorbs aggression; without it, price jumps.
+
+[AGGRESSOR] Tap the aggressor.
+EVENT: lift
+ANSWER: The buyer
+WHY: Offers being taken means the buyer is the aggressor.
+
+[BOOKDRAG] Tap the side this sell fills against.
+ORDER: market_sell
+ANSWER: the bid
+WHY: A market sell hits the bid.
+
+[ORDER] Order what happens as a thin book gets hit.
+A small resting size sits at the bid
+A market sell hits it
+The bid clears fast
+Price drops to the next level
+WHY: Thin liquidity clears quickly, so price jumps to the next level.
+
+NODE 10
+TITLE: Large Orders as Walls
+CELEBRATION: You can spot walls acting as support and resistance.
+
+[MC] A large resting bid can act as…
+Temporary support.
+Temporary resistance.
+A guaranteed floor.
+WHY: A big bid can hold price up for a while — but it can be pulled or absorbed, so it's not a guarantee.
+
+[MC] A large resting ask can act as…
+Temporary resistance.
+Temporary support.
+A guaranteed ceiling.
+WHY: A big ask can cap price temporarily; it isn't a certainty.
+
+[TF] A large resting order guarantees price stops there.
+ANSWER: False
+WHY: It can be absorbed or pulled. It's a clue, not a guarantee.
+
+[MATCH] Match each wall to its effect.
+Large bid => Support
+Large ask => Resistance
+Pulled wall => Level vanishes
+WHY: Big bids hold price up, big asks cap it — until they're pulled.
+
+[ORDER] Order how a defended bid holds.
+Price falls toward a large bid
+Sellers hit into it
+The bid absorbs the selling
+Price holds above it
+WHY: A big resting bid can soak up selling and hold price above it.
+
+[AGGRESSOR] Tap the aggressor.
+EVENT: hit
+ANSWER: The seller
+WHY: Bids being taken means the seller is the aggressor.
+
+[BOOKDRAG] Tap the side this buy fills against.
+ORDER: market_buy
+ANSWER: the ask
+WHY: A market buy fills at the ask.
+
+NODE 11
+TITLE: Pulling & Spoofing
+CELEBRATION: You know the book is live and can deceive.
+
+[MC] What can happen to a resting order before it fills?
+It can be cancelled anytime.
+It's locked until it fills.
+It becomes a market order.
+WHY: Resting orders can be pulled at any moment — nothing forces them to trade.
+
+[MC] An order that keeps vanishing before it trades may be…
+Spoofing.
+Absorption.
+A breakout.
+WHY: Orders shown then pulled to mislead is spoofing. Absorption actually fills; a breakout is a price move.
+
+[TF] A resting order is a firm promise to trade.
+ANSWER: False
+WHY: It can be cancelled before anyone hits it.
+
+[MATCH] Match each behavior.
+Pulled order => Cancelled before filling
+Refreshed order => Replenished after filling
+Spoof => Shown then pulled
+WHY: The book is live: orders appear, refill, and disappear.
+
+[AGGRESSOR] Tap the aggressor.
+EVENT: lift
+ANSWER: The buyer
+WHY: Offers being taken means the buyer is the aggressor.
+
+[BOOKDRAG] Tap the side this sell fills against.
+ORDER: market_sell
+ANSWER: the bid
+WHY: A market sell hits the bid.
+
+[ORDER] Order a spoof playing out.
+A big bid appears below price
+Traders see support and buy
+The big bid is pulled
+Support vanishes
+WHY: A displayed order that gets pulled can lure others in before it ever trades.
+
+NODE 12
+TITLE: The Order Book Review
+CELEBRATION: The order book is yours — you read depth, walls and tricks.
+
+[MC] What does Level II show?
+The full depth of resting orders.
+Just the best bid and ask.
+Executed trades.
+WHY: Level II is the full ladder of resting orders on both sides.
+
+[BOOKDRAG] Tap the side this buy fills against.
+ORDER: market_buy
+ANSWER: the ask
+WHY: A market buy takes the ask.
+
+[BOOKDRAG] Tap the side this sell fills against.
+ORDER: market_sell
+ANSWER: the bid
+WHY: A market sell hits the bid.
+
+[AGGRESSOR] Tap the aggressor.
+EVENT: lift
+ANSWER: The buyer
+WHY: Offers being consumed means the buyer is the aggressor.
+
+[MATCH] Match each order-book idea.
+Bid side => Resting buyers
+Ask side => Resting sellers
+Large order => Temporary wall
+Pulled order => Cancelled before filling
+WHY: The backbone of reading a book: sides, walls, and the fact orders can vanish.
+
+[TF] A large resting order guarantees price stops there.
+ANSWER: False
+WHY: It can be absorbed or pulled — descriptive, not a guarantee.
+
+[MC] A large resting bid acts as…
+Temporary support.
+Temporary resistance.
+A guaranteed floor.
+WHY: A big bid holds price up temporarily, but it can be pulled.
+
+[ORDER] Order how a wall gets tested.
+Price approaches a large resting order
+Aggressors trade into it
+It absorbs them and price stalls
+The wall holds or gets pulled
+WHY: A wall stalls price while it absorbs — then it either holds or disappears.
