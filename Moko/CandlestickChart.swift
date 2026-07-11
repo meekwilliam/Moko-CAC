@@ -1152,6 +1152,9 @@ struct LiveChart: View {
     /// Ticks (at 0.11s each) a candle forms for before it commits. 45 ≈ 5s for
     /// a deliberate question tape; lower it for a faster, jumpier chart.
     var ticksPerCandle = 45
+    /// Freeze the tape — e.g. while its screen is sliding away, so it isn't
+    /// re-rendering candles mid-transition.
+    var paused = false
 
     private let tick = Timer.publish(every: 0.11, on: .main, in: .common).autoconnect()
 
@@ -1175,7 +1178,7 @@ struct LiveChart: View {
         }
         .frame(height: height)
         .onAppear { if committed.isEmpty { seed() } }
-        .onReceive(tick) { _ in step() }
+        .onReceive(tick) { _ in if !paused { step() } }
     }
 
     /// Clock times back from now, one candle = one interval apart. Sparse
