@@ -123,6 +123,12 @@ struct AggressorView: View {
     @State private var levels: [BookLevel] = []
     @State private var eaten = 0
 
+    init(player: LessonPlayer, ink: Color) {
+        self.player = player
+        self.ink = ink
+        _levels = State(initialValue: makeBook(seed: chartSeed(player.screen)))
+    }
+
     var body: some View {
         VStack(alignment: .leading, spacing: 16) {
             plainPrompt
@@ -142,7 +148,6 @@ struct AggressorView: View {
             }
         }
         .frame(maxWidth: .infinity, alignment: .leading)
-        .onAppear { if levels.isEmpty { levels = makeBook(seed: chartSeed(s)) } }
     }
 
     private var plainPrompt: some View {
@@ -189,6 +194,12 @@ struct BookDragView: View {
     @State private var levels: [BookLevel] = []
     @State private var dropFrames: [Int: CGRect] = [:]
 
+    init(player: LessonPlayer, ink: Color) {
+        self.player = player
+        self.ink = ink
+        _levels = State(initialValue: makeBook(seed: chartSeed(player.screen)))
+    }
+
     var body: some View {
         VStack(alignment: .leading, spacing: 16) {
             Text(RichText.attributed(s.question ?? "Drag the order to the side it fills against.",
@@ -221,7 +232,6 @@ struct BookDragView: View {
         }
         .frame(maxWidth: .infinity, alignment: .leading)
         .coordinateSpace(name: "bookDrag")
-        .onAppear { if levels.isEmpty { levels = makeBook(seed: chartSeed(s)) } }
     }
 
     private var orderChip: some View {
