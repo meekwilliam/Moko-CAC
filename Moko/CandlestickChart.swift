@@ -59,6 +59,11 @@ struct CandlestickChart: View {
     /// stable frame — otherwise the whole plot would rescale every frame.
     var fixedRange: (lo: Double, hi: Double)? = nil
 
+    /// Per-candle x-axis labels, overriding the default 1…n candle numbers. The
+    /// live chart passes clock times (sparse — most entries empty) so its axis
+    /// reads as a time scale, not day counts.
+    var xLabels: [String]? = nil
+
     // Reference-matched candle tones: a muted leaf green / coral red.
     private let bullish = Color(hex: "#3FB77E")
     private let bearish = Color(hex: "#E15C5C")
@@ -182,9 +187,15 @@ struct CandlestickChart: View {
                 let cx = leftG + plotW * (CGFloat(i) + 0.5) / CGFloat(n)
                 Path { p in p.move(to: CGPoint(x: cx, y: 0)); p.addLine(to: CGPoint(x: cx, y: plotH)) }
                     .stroke(gridColor.opacity(0.4), lineWidth: 1)
-                Text("\(i + 1)")
-                    .font(Theme.font(8, .bold)).foregroundColor(axisText)
-                    .position(x: cx, y: plotH + 8)
+                // Time label (live chart) or candle number. Time labels are
+                // sparse — empty entries are skipped so they don't overlap.
+                let label = xLabels.flatMap { $0.indices.contains(i) ? $0[i] : nil } ?? "\(i + 1)"
+                if !label.isEmpty {
+                    Text(label)
+                        .font(Theme.font(8, .bold)).foregroundColor(axisText)
+                        .fixedSize()
+                        .position(x: cx, y: plotH + 8)
+                }
             }
         }
     }
@@ -1154,7 +1165,7 @@ struct LiveChart: View {
         GeometryReader { geo in
             ZStack(alignment: .topLeading) {
                 CandlestickChart(candles: committed + [forming], showsAxes: true,
-                                 fixedRange: range)
+                                 fixedRange: range, xLabels: timeLabels(committed.count + 1))
                 let slotW = geo.size.width / CGFloat(committedCount + 1)
                 NewCandleFlash(key: popID)
                     .frame(width: slotW, height: geo.size.height)
@@ -1165,6 +1176,24 @@ struct LiveChart: View {
         .frame(height: height)
         .onAppear { if committed.isEmpty { seed() } }
         .onReceive(tick) { _ in step() }
+    }
+
+    /// Clock times back from now, one candle = one interval apart. Sparse
+    /// (every 5th candle labelled) so the timestamps don't overlap, and the
+    /// rightmost is always "now", ticking live.
+    private func timeLabels(_ n: Int) -> [String] {
+        let interval = Double(ticksPerCandle) * 0.11
+        let now = Date()
+        let cal = Calendar.current
+        return (0..<n).map { i in
+            let back = n - 1 - i                 // 0 = newest (rightmost)
+            guard back % 5 == 0 else { return "" }
+            let t = now.addingTimeInterval(-Double(back) * interval)
+            var h = cal.component(.hour, from: t) % 12
+            if h == 0 { h = 12 }
+            return String(format: "%d:%02d:%02d", h,
+                          cal.component(.minute, from: t), cal.component(.second, from: t))
+        }
     }
 
     private func seed() {

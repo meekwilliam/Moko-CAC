@@ -204,12 +204,17 @@ struct OnboardingView: View {
         VStack(spacing: 0) {
             LiveChart(direction: .volatile, committedCount: 15, ticksPerCandle: 14)   // hero: fast, jumpy, no bias
                 .opacity(0.85)
+                .padding(.top, 12)   // clear the status bar so the top price label isn't cut off
                 .mask(
-                    // Fade the chart out toward the bottom so it melts into
-                    // the page instead of ending on a hard edge.
-                    LinearGradient(
-                        colors: [.black, .black, .black.opacity(0.15)],
-                        startPoint: .top, endPoint: .bottom)
+                    // Fade the chart out at BOTH ends so it melts into the page
+                    // instead of ending on a hard edge (and the top price label
+                    // fades away rather than getting clipped at the top).
+                    LinearGradient(stops: [
+                        .init(color: .black.opacity(0), location: 0.0),
+                        .init(color: .black, location: 0.14),
+                        .init(color: .black, location: 0.72),
+                        .init(color: .black.opacity(0.15), location: 1.0),
+                    ], startPoint: .top, endPoint: .bottom)
                 )
                 .frame(maxHeight: .infinity)
 
