@@ -190,9 +190,7 @@ struct BookDragView: View {
 
     private var s: LessonScreen { player.screen }
     private var isBuy: Bool { s.order != "market_sell" }   // default: market buy
-    @State private var drag: CGSize = .zero
     @State private var levels: [BookLevel] = []
-    @State private var dropFrames: [Int: CGRect] = [:]
 
     init(player: LessonPlayer, ink: Color) {
         self.player = player
@@ -202,66 +200,46 @@ struct BookDragView: View {
 
     var body: some View {
         VStack(alignment: .leading, spacing: 16) {
-            Text(RichText.attributed(s.question ?? "Drag the order to the side it fills against.",
+            Text(RichText.attributed(s.question ?? "Tap the side of the book it fills against.",
                                      base: Theme.font(20, .heavy), bold: Theme.font(20, .black), color: ink))
                 .fixedSize(horizontal: false, vertical: true)
 
-            // The order book IS the drop target: drop on the asks (top) or the
-            // bids (bottom). The two regions overlay the ladder halves and are
-            // also tappable, so the answer registers without a clean drag.
+            // A badge showing the order being routed.
+            HStack { Spacer(); orderChip; Spacer() }
+
+            // Tap a side of the real book: the asks (top) or the bids (bottom).
             OrderBookLadder(levels: levels)
-                // Overlay sizes to the ladder, so the two drop halves cover it
-                // exactly instead of stretching to fill the screen.
                 .overlay {
                     VStack(spacing: 6) {
-                        dropRegion(index: 1, label: "ASK", tint: askColor)   // top — sellers
-                        dropRegion(index: 0, label: "BID", tint: bidColor)   // bottom — buyers
+                        sideButton(index: 1, label: "ASK", tint: askColor)   // top — sellers
+                        sideButton(index: 0, label: "BID", tint: bidColor)   // bottom — buyers
                     }
                     .padding(6)
                 }
 
-            // Draggable order chip.
-            HStack { Spacer(); orderChip; Spacer() }
-                .padding(.top, 2)
-
             if player.selectedIndex == nil {
-                Label("Drag the order onto a side of the book (or tap it)", systemImage: "hand.draw.fill")
+                Label("Tap the side of the book it fills against", systemImage: "hand.tap.fill")
                     .font(Theme.font(13, .bold)).foregroundColor(Theme.muted)
                     .frame(maxWidth: .infinity, alignment: .center)
             }
         }
         .frame(maxWidth: .infinity, alignment: .leading)
-        .coordinateSpace(name: "bookDrag")
     }
 
     private var orderChip: some View {
         Text(isBuy ? "MARKET BUY" : "MARKET SELL")
             .font(Theme.font(15, .black)).foregroundColor(.white)
-            .padding(.horizontal, 20).padding(.vertical, 13)
+            .padding(.horizontal, 20).padding(.vertical, 12)
             .background(Capsule().fill(isBuy ? bidColor : askColor))
             .overlay(Capsule().strokeBorder(Color.white.opacity(0.25), lineWidth: 1.5))
-            .shadow(color: .black.opacity(0.3), radius: 6, y: 3)
-            .offset(drag)
-            .gesture(
-                DragGesture(coordinateSpace: .named("bookDrag"))
-                    .onChanged { v in guard !player.revealed else { return }; drag = v.translation }
-                    .onEnded { v in
-                        guard !player.revealed else { return }
-                        if let target = dropFrames.first(where: { $0.value.contains(v.location) })?.key {
-                            player.selectedIndex = target
-                            Haptics.selection()
-                        }
-                        withAnimation(.spring(response: 0.3, dampingFraction: 0.7)) { drag = .zero }
-                    }
-            )
     }
 
-    /// A translucent tappable/droppable half of the ladder, with a side label.
-    private func dropRegion(index: Int, label: String, tint: Color) -> some View {
+    /// A tappable half of the ladder (asks or bids), with a side label.
+    private func sideButton(index: Int, label: String, tint: Color) -> some View {
         let chosen = player.selectedIndex == index
         let correct = player.currentCorrectIndex == index
         let revealed = player.revealed
-        // Neutral until touched; green for the correct side on reveal, red for a
+        // Neutral until tapped; green for the correct side on reveal, red for a
         // wrong pick.
         let signal: Color? = revealed ? (correct ? bidColor : (chosen ? askColor : nil)) : (chosen ? tint : nil)
         return ZStack(alignment: .trailing) {
@@ -277,11 +255,6 @@ struct BookDragView: View {
                 .padding(8)
         }
         .contentShape(Rectangle())
-        .background(GeometryReader { proxy in
-            Color.clear
-                .onAppear { dropFrames[index] = proxy.frame(in: .named("bookDrag")) }
-                .onChange(of: proxy.size) { _ in dropFrames[index] = proxy.frame(in: .named("bookDrag")) }
-        })
         .onTapGesture {
             guard !player.revealed else { return }
             Haptics.selection(); player.selectedIndex = index

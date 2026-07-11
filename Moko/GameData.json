@@ -36738,14 +36738,14 @@
       {
        "type": "book_drag",
        "order": "market_buy",
-       "question": "Route this MARKET BUY to the side of the book it fills against.",
+       "question": "Tap the side of the book this MARKET BUY fills against.",
        "correct": 1,
        "explanation": "A market buy takes the resting sell orders — it fills at the ask."
       },
       {
        "type": "book_drag",
        "order": "market_sell",
-       "question": "Route this MARKET SELL to the side of the book it fills against.",
+       "question": "Tap the side of the book this MARKET SELL fills against.",
        "correct": 0,
        "explanation": "A market sell hits the resting buy orders — it fills at the bid."
       },
@@ -36824,14 +36824,14 @@
       {
        "type": "book_drag",
        "order": "market_buy",
-       "question": "You want in NOW. Drag your market buy to the side you'll fill against.",
+       "question": "You want in NOW. Tap the side your market buy fills against.",
        "correct": 1,
        "explanation": "Buying immediately means paying the ask — you lift the offer."
       },
       {
        "type": "book_drag",
        "order": "market_sell",
-       "question": "You want out NOW. Drag your market sell to the side you'll fill against.",
+       "question": "You want out NOW. Tap the side your market sell fills against.",
        "correct": 0,
        "explanation": "Selling immediately means hitting the bid."
       },
@@ -36925,7 +36925,7 @@
       {
        "type": "book_drag",
        "order": "market_buy",
-       "question": "A buyer wants to lift the offer. Route their market order to the right side.",
+       "question": "A buyer wants to lift the offer. Tap the side their market order takes.",
        "correct": 1,
        "explanation": "Lifting the offer means taking the ask — that's where a market buy fills."
       },
@@ -37017,7 +37017,7 @@
       {
        "type": "book_drag",
        "order": "market_buy",
-       "question": "To push price UP, an aggressive buyer must take which side?",
+       "question": "To push price UP, an aggressive buyer must take which side? Tap it.",
        "correct": 1,
        "explanation": "Taking the ask (lifting offers) is what walks price up to higher levels."
       }
@@ -37038,14 +37038,14 @@
       {
        "type": "book_drag",
        "order": "market_buy",
-       "question": "Route the MARKET BUY to the side it fills against.",
+       "question": "Tap the side the MARKET BUY fills against.",
        "correct": 1,
        "explanation": "A market buy takes the ask."
       },
       {
        "type": "book_drag",
        "order": "market_sell",
-       "question": "Route the MARKET SELL to the side it fills against.",
+       "question": "Tap the side the MARKET SELL fills against.",
        "correct": 0,
        "explanation": "A market sell hits the bid."
       },

@@ -1,12 +1,12 @@
 # Order Flow — strategy course authoring source
 
-Course id: `orderflow`  ·  accent `#14B8A6`  ·  standalone foundations track (always unlocked).
+Course id: `orderflow`  ·  accent `#14B8A6`  ·  standalone strategy track (always unlocked).
 Mirrors Moko/GameData.json. Correct answer is listed FIRST for [MC]/[FILL] (the app shuffles).
 No INTRO blocks — lessons start cold.
 
-Interactive order-flow mechanics:
+Interactive order-flow mechanics (tap-based, no dragging):
   [AGGRESSOR] event: lift|hit — a live DOM ladder is consumed; tap buyer/seller. lift⇒buyer, hit⇒seller.
-  [BOOKDRAG]  order: market_buy|market_sell — drag the order to the side it fills. buy⇒ask, sell⇒bid.
+  [BOOKDRAG]  order: market_buy|market_sell — tap the side it fills against. buy⇒ask, sell⇒bid.
 
 
 UNIT 1 — Order Flow Foundations
@@ -65,12 +65,12 @@ An order that always fills instantly at the current price.
 An order the broker places automatically for you.
 WHY: A limit order sits in the book and waits. It can provide displayed liquidity until it is filled, changed, or canceled.
 
-[BOOKDRAG] Route this MARKET BUY to the side of the book it fills against.
+[BOOKDRAG] Tap the side of the book this MARKET BUY fills against.
 ORDER: market_buy
 ANSWER: the ask
 WHY: A market buy takes the resting sell orders — it fills at the ask.
 
-[BOOKDRAG] Route this MARKET SELL to the side of the book it fills against.
+[BOOKDRAG] Tap the side of the book this MARKET SELL fills against.
 ORDER: market_sell
 ANSWER: the bid
 WHY: A market sell hits the resting buy orders — it fills at the bid.
@@ -112,12 +112,12 @@ range
 gap
 WHY: The spread is the distance between the best buy and best sell orders — the cost of crossing from one side to the other.
 
-[BOOKDRAG] You want in NOW. Drag your market buy to the side you'll fill against.
+[BOOKDRAG] You want in NOW. Tap the side your market buy fills against.
 ORDER: market_buy
 ANSWER: the ask
 WHY: Buying immediately means paying the ask — you lift the offer.
 
-[BOOKDRAG] You want out NOW. Drag your market sell to the side you'll fill against.
+[BOOKDRAG] You want out NOW. Tap the side your market sell fills against.
 ORDER: market_sell
 ANSWER: the bid
 WHY: Selling immediately means hitting the bid.
@@ -164,7 +164,7 @@ Sellers hitting the bid => Can support lower prices
 Only resting limit orders, no takers => May leave price unchanged
 WHY: Aggression and available liquidity influence price, but displayed orders can also be added, canceled, or refreshed.
 
-[BOOKDRAG] A buyer wants to lift the offer. Route their market order to the right side.
+[BOOKDRAG] A buyer wants to lift the offer. Tap the side their market order takes.
 ORDER: market_buy
 ANSWER: the ask
 WHY: Lifting the offer means taking the ask — that's where a market buy fills.
@@ -212,7 +212,7 @@ EVENT: lift
 ANSWER: The buyer
 WHY: A demand imbalance — aggressive buyers lifting offers — is pushing price up.
 
-[BOOKDRAG] To push price UP, an aggressive buyer must take which side?
+[BOOKDRAG] To push price UP, an aggressive buyer must take which side? Tap it.
 ORDER: market_buy
 ANSWER: the ask
 WHY: Taking the ask (lifting offers) is what walks price up to higher levels.
@@ -226,12 +226,12 @@ EVENT: lift
 ANSWER: The buyer
 WHY: When offers (asks) are being taken, the buyer is the aggressor — lifting the offer.
 
-[BOOKDRAG] Route the MARKET BUY to the side it fills against.
+[BOOKDRAG] Tap the side the MARKET BUY fills against.
 ORDER: market_buy
 ANSWER: the ask
 WHY: A market buy takes the ask.
 
-[BOOKDRAG] Route the MARKET SELL to the side it fills against.
+[BOOKDRAG] Tap the side the MARKET SELL fills against.
 ORDER: market_sell
 ANSWER: the bid
 WHY: A market sell hits the bid.
@@ -244,10 +244,10 @@ Imbalance => One side more aggressive
 WHY: These four ideas are the backbone of every order-flow read.
 
 [MC] Order flow is best described as…
-The real-time buying and selling pressure that moves price.
+Real-time context about buying, selling, and available liquidity.
 The order in which chart patterns appear.
 A schedule of company news events.
-WHY: It is real-time context about buying, selling, and liquidity. It complements price action; it does not replace it or guarantee an outcome.
+WHY: It complements price action with context. It does not show every participant or guarantee an outcome.
 
 [ORDER] Rebuild the chain from order to chart.
 Aggressive orders hit the market
