@@ -1190,37 +1190,43 @@ struct LiveChart: View {
     }
 
     private func step() {
-        // Nudge the forming candle's close; stretch its wick to any new extreme.
+        ticks += 1
+
+        // Commit: roll the window and start a fresh candle — all INSTANT, with
+        // no withAnimation anywhere, so committed bars never glide/re-animate.
+        if ticks >= ticksPerCandle {
+            committed = Array((committed + [forming]).suffix(committedCount))
+            forming = Candle(open: forming.close, high: forming.close,
+                             low: forming.close, close: forming.close)
+            ticks = 0
+            popID += 1
+            reframe()
+            return
+        }
+
+        // Mid-formation: nudge the forming candle's close and stretch its wick.
         // Scale each step so a candle's total travel is the same no matter how
-        // many ticks it lasts — otherwise a long (5s) candle drifts into the
-        // frame edge and sticks. Baseline of 13 ticks = the original feel.
+        // many ticks it lasts (baseline 13). Only the forming candle animates.
         let scale = 13.0 / Double(ticksPerCandle)
         let move = (direction.drift * 0.6 + Double.random(in: -direction.jitter...direction.jitter)) * scale
         var f = forming
         f.close = min(range.hi - 0.5, max(range.lo + 0.5, f.close + move))
         f.high = max(f.high, f.close)
         f.low = min(f.low, f.close)
-        withAnimation(.linear(duration: 0.11)) { forming = f }   // only the last bar moves
-
-        ticks += 1
-        guard ticks >= ticksPerCandle else { return }
-
-        // Commit the forming candle, roll the window, start a fresh one.
-        committed = Array((committed + [f]).suffix(committedCount))
-        forming = Candle(open: f.close, high: f.close, low: f.close, close: f.close)
-        ticks = 0
-        popID += 1
-        reframe()
+        withAnimation(.linear(duration: 0.11)) { forming = f }
     }
 
     /// Re-pin the price range to the visible candles with headroom, so the
-    /// forming candle has room to move without clipping. Only called on commit,
-    /// never mid-tick, so committed bars don't jitter while one candle forms.
+    /// forming candle has room to move without clipping. Set INSTANTLY (no
+    /// animation): animating the range remaps every candle over its duration,
+    /// which makes the whole committed history glide — the exact re-animation
+    /// we don't want. The window rolls at the same instant, so a hard snap
+    /// reads as a clean "new candle" update, not a jump.
     private func reframe() {
         let vals = (committed + [forming]).flatMap { [$0.high, $0.low] }
         let hi = vals.max() ?? 110, lo = vals.min() ?? 90
         let pad = max(hi - lo, 4) * 0.35
-        withAnimation(.easeInOut(duration: 0.4)) { range = (lo - pad, hi + pad) }
+        range = (lo - pad, hi + pad)
     }
 }
 
