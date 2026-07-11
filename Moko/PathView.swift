@@ -2,13 +2,23 @@ import SwiftUI
 import UIKit
 
 extension Color {
+    // Memoize: the node gradients call this 5× per puck, every render, and a
+    // section change re-renders the whole path. The UIColor↔Color bridge + HSB
+    // extraction is surprisingly costly to repeat per frame; the inputs are a
+    // handful of fixed unit colors, so a tiny cache makes it free.
+    private static var shiftCache: [String: Color] = [:]
+
     /// Same hue, shifted brightness — for deriving the lighter top / darker
     /// bottom of a 3D surface from one base color.
     func brightnessShifted(_ delta: CGFloat) -> Color {
+        let key = "\(self.hashValue):\(delta)"
+        if let cached = Color.shiftCache[key] { return cached }
         var h: CGFloat = 0, s: CGFloat = 0, b: CGFloat = 0, a: CGFloat = 0
         UIColor(self).getHue(&h, saturation: &s, brightness: &b, alpha: &a)
-        return Color(hue: Double(h), saturation: Double(s),
-                     brightness: Double(min(1, max(0, b + delta))), opacity: Double(a))
+        let out = Color(hue: Double(h), saturation: Double(s),
+                        brightness: Double(min(1, max(0, b + delta))), opacity: Double(a))
+        Color.shiftCache[key] = out
+        return out
     }
 }
 
