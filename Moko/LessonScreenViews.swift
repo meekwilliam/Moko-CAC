@@ -199,7 +199,11 @@ struct LessonScreenRouter: View {
             BookDragView(player: player, ink: ink)
         case "time_sales":
             TimeSalesView(player: player, ink: ink)
+        case "time_sales_tap":
+            TimeSalesView(player: player, ink: ink)
         case "footprint":
+            FootprintQuestionView(player: player, ink: ink)
+        case "footprint_tap":
             FootprintQuestionView(player: player, ink: ink)
         case "orderflow_sim":
             OrderFlowSimulationView(player: player, ink: ink)
