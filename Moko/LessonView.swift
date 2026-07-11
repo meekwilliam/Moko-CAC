@@ -86,6 +86,8 @@ final class LessonPlayer: ObservableObject {
     var currentOptions: [String] {
         if screen.type == "true_false" { return ["True", "False"] }
         if screen.type == "ingredient_match" { return (screen.ingredientOptions ?? []).map { $0.label } }
+        if screen.type == "aggressor" { return ["The buyer", "The seller"] }
+        if screen.type == "book_drag" { return ["the bid", "the ask"] }
         return screen.options ?? []
     }
     var currentCorrectIndex: Int {
@@ -524,7 +526,8 @@ struct FeedbackBanner: View {
     private var correctAnswerText: String? {
         let s = player.screen
         switch s.type {
-        case "true_false", "multiple_choice", "fill_blank", "ingredient_match", "live_chart":
+        case "true_false", "multiple_choice", "fill_blank", "ingredient_match", "live_chart",
+             "aggressor", "book_drag":
             let opts = player.currentOptions
             let i = player.currentCorrectIndex
             return opts.indices.contains(i) ? opts[i] : nil
