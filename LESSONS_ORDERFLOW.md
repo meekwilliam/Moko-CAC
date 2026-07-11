@@ -17,7 +17,7 @@ Interactive mechanics:
 
 TOTAL UNITS: 10
 TOTAL LESSONS: 111
-TOTAL QUESTIONS: 433
+TOTAL QUESTIONS: 428
 
 UNIT 1 — Order Flow Foundations
 
@@ -438,11 +438,11 @@ It's locked until it fills.
 It becomes a market order.
 WHY: Resting orders can be pulled at any moment. nothing forces them to trade.
 
-[MC] An order that keeps vanishing before it trades may be…
+[MC] Repeated deceptive posting and cancellation intended to mislead may constitute…
 Spoofing.
 Absorption.
 A breakout.
-WHY: Orders shown then pulled to mislead is spoofing. Absorption actually fills; a breakout is a price move.
+WHY: Repeated deceptive posting and cancellation intended to mislead may constitute spoofing. One cancelled order alone does not prove intent.
 
 [TF] A resting order is a firm promise to trade.
 ANSWER: False
@@ -535,12 +535,12 @@ EVENT: hit
 ANSWER: The seller
 WHY: Buyers take offers. Sellers take bids.
 
-[MC] Which evidence matters most when reading foundations and book mixed review?
+[MC] Which interpretation is best supported in this foundations and book mixed review example?
 VISUAL: Small mixed candles overlap inside a narrow horizontal trading area.
 CHART: sideways
 A complete read combines who acts where liquidity rests and how price responds
-The visible liquidity alone proves the outcome
-One aggressive burst matters more than price response
+Displayed liquidity is stronger evidence than completed executions
+A short aggressive burst can outweigh a stalled price response
 WHY: A complete read combines who acts where liquidity rests and how price responds.
 
 [FILL] The missing evidence in this foundations and book mixed review read is [___].
@@ -566,11 +566,11 @@ WHY: Aggressive buying can consume offers and lift price.
 ANSWER: False
 WHY: Displayed orders can change or disappear.
 
-[FILL] A strong directional move needs an order [___].
+[FILL] Directional movement often develops when aggressive and passive pressure create an order [___].
 imbalance
 average
 schedule
-WHY: An imbalance means one side is more aggressive.
+WHY: Directional movement can develop when aggressive pressure overwhelms liquidity, opposing liquidity withdraws, or both.
 
 [ORDER] Build the upward move.
 Buyers become more aggressive
@@ -605,7 +605,7 @@ TITLE: Reading Time and Sales
 CELEBRATION: Reading Time and Sales complete.
 
 [TIME_SALES] What information does each row provide?
-VISUAL: An animated Time and Sales table lists time, execution price, and trade size, with buyer initiated prints highlighted at the ask.
+VISUAL: An animated Time and Sales table lists time, execution price, and trade size, with buyer initiated prints dominating at the ask.
 EVENT: lift
 Execution time price size and initiating side
 Resting bid and ask size before execution
@@ -613,18 +613,18 @@ Total candle volume without trade direction
 WHY: Each row is a completed trade with time price size and side.
 
 [TIME_SALES] Which side is initiating these trades?
-VISUAL: An animated Time and Sales table lists time, execution price, and trade size, with seller initiated prints highlighted at the bid.
+VISUAL: An animated Time and Sales table lists time, execution price, and trade size, with seller initiated prints dominating at the bid.
 EVENT: hit
 Sellers
 Buyers
 Neither side can initiate a trade
 WHY: Trades at the bid are seller initiated.
 
-[TIME_SALES_TAP] Tap the unusually large executed trade.
-VISUAL: An animated Time and Sales table lists time, execution price, and trade size, with seller initiated prints highlighted at the bid.
+[TIME_SALES_TAP] In reading time and sales, tap the most informative print.
+VISUAL: An animated Time and Sales table lists time, execution price, and trade size, with one unusually large execution among ordinary prints.
 EVENT: large_print
-TARGET: 6
-WHY: The highlighted print is much larger than the surrounding executions.
+TARGET: 3
+WHY: The selected execution carries the key tape evidence.
 
 [MATCH] Connect the behaviors that matter for reading time and sales.
 Reading Time and Sales => Price size and side
@@ -637,25 +637,25 @@ TITLE: Reading the Tape
 CELEBRATION: Reading the Tape complete.
 
 [TIME_SALES] Which tape behavior best supports the reading the tape read?
-VISUAL: An animated Time and Sales table lists time, execution price, and trade size, with buyer initiated prints highlighted at the ask.
+VISUAL: An animated Time and Sales table lists time, execution price, and trade size, with buyer initiated prints dominating at the ask.
 EVENT: lift
 Prints reveal completed trades
-Displayed liquidity increased without any trades
-Candle direction alone identifies every execution
+A faster feed confirms acceptance regardless of price response
+Alternating print colors mean no side can be aggressive
 WHY: Prints reveal completed trades.
 
-[TIME_SALES_TAP] In the reading the tape tape, tap the print contributing the most volume.
-VISUAL: An animated Time and Sales table lists time, execution price, and trade size, with seller initiated prints highlighted at the bid.
+[TIME_SALES_TAP] In reading the tape, tap the most informative print.
+VISUAL: An animated Time and Sales table lists time, execution price, and trade size, with one unusually large execution among ordinary prints.
 EVENT: large_print
-TARGET: 6
-WHY: The largest print contributes the most volume to this tape sequence.
+TARGET: 1
+WHY: The selected execution carries the key tape evidence.
 
-[MC] What should the learner notice first in this reading the tape replay?
+[MC] Which statement best connects the evidence in this reading the tape replay?
 VISUAL: Small mixed candles overlap inside a narrow horizontal trading area.
 CHART: sideways
 Prints reveal completed trades
-The book should be read without the tape
-The tape should be read without location
+The current book is more useful than the executions that changed it
+Location adds little once the tape accelerates
 WHY: Prints reveal completed trades.
 
 [AGGRESSOR] During reading the tape, which side is crossing the spread?
@@ -669,25 +669,25 @@ TITLE: Trade Speed
 CELEBRATION: Trade Speed complete.
 
 [TIME_SALES] The prints begin slowly and then arrive faster. What changed?
-VISUAL: An animated Time and Sales table lists time, execution price, and trade size, with seller initiated prints highlighted at the bid.
+VISUAL: An animated Time and Sales table lists time, execution price, and trade size, with the interval between prints shrinking after the target row.
 EVENT: accelerating
 Faster prints can reveal rising activity
-Displayed liquidity increased without any trades
-Candle direction alone identifies every execution
+Displayed depth changed but no completed trade confirms participation
+Candle direction identifies the initiating side of every execution
 WHY: Faster prints can reveal rising activity.
 
-[TIME_SALES_TAP] In the trade speed tape, tap the print contributing the most volume.
-VISUAL: An animated Time and Sales table lists time, execution price, and trade size, with seller initiated prints highlighted at the bid.
-EVENT: large_print
+[TIME_SALES_TAP] Tap the first print where the tape begins accelerating.
+VISUAL: An animated Time and Sales table lists time, execution price, and trade size, with the interval between prints shrinking after the target row.
+EVENT: accelerating
 TARGET: 6
-WHY: The largest print contributes the most volume to this tape sequence.
+WHY: This print begins the faster arrival sequence.
 
-[MC] Which side failed to achieve the expected response during trade speed?
+[MC] Which conclusion is best supported by the evidence in trade speed?
 VISUAL: Alternating wide candles and long wicks show rapid movement with changing control.
 CHART: volatile
 Faster prints can reveal rising activity
-The visible liquidity alone proves the outcome
-One aggressive burst matters more than price response
+Positive delta is usually sufficient confirmation for higher prices
+A pull in liquidity is equivalent to aggressive execution
 WHY: Faster prints can reveal rising activity.
 
 NODE 17
@@ -695,25 +695,25 @@ TITLE: Trade Size
 CELEBRATION: Trade Size complete.
 
 [TIME_SALES] Which change in the feed shows unusually large participation?
-VISUAL: An animated Time and Sales table lists time, execution price, and trade size, with seller initiated prints highlighted at the bid.
+VISUAL: An animated Time and Sales table lists time, execution price, and trade size, with one unusually large execution among ordinary prints.
 EVENT: large_print
 Larger trades can show stronger participation
-Displayed liquidity increased without any trades
-Candle direction alone identifies every execution
+The spread narrowed so trade pace no longer matters
+One large print establishes persistent control
 WHY: Larger trades can show stronger participation.
 
-[TIME_SALES_TAP] In the trade size tape, tap the print contributing the most volume.
-VISUAL: An animated Time and Sales table lists time, execution price, and trade size, with seller initiated prints highlighted at the bid.
+[TIME_SALES_TAP] Tap the unusually large executed trade.
+VISUAL: An animated Time and Sales table lists time, execution price, and trade size, with one unusually large execution among ordinary prints.
 EVENT: large_print
-TARGET: 6
-WHY: The largest print contributes the most volume to this tape sequence.
+TARGET: 4
+WHY: This execution is much larger than the surrounding prints.
 
-[MC] Which conclusion goes too far when interpreting trade size?
+[MC] Which explanation of trade size requires the fewest assumptions?
 VISUAL: A wide directional candle has almost no wick, showing sustained movement through its range.
 CHART: marubozu
 Larger trades can show stronger participation
-The fastest prints always control the close
-Resting size cannot pull or replenish
+Repeated tests always make a liquidity level stronger
+A fast rejection proves the resting wall was genuine
 WHY: Larger trades can show stronger participation.
 
 [AGGRESSOR] During trade size, which side is crossing the spread?
@@ -727,25 +727,25 @@ TITLE: Repeated Prints
 CELEBRATION: Repeated Prints complete.
 
 [TIME_SALES] Which side shows more persistent aggression across the sequence?
-VISUAL: An animated Time and Sales table lists time, execution price, and trade size, with buyer initiated prints highlighted at the ask.
+VISUAL: An animated Time and Sales table lists time, execution price, and trade size, with buyer initiated prints dominating at the ask.
 EVENT: lift
 Repeated buys can show persistent demand
-Displayed liquidity increased without any trades
-Candle direction alone identifies every execution
+Total tape volume reveals where every resting order sits
+The final print deserves more weight than the full sequence
 WHY: Repeated buys can show persistent demand.
 
-[TIME_SALES_TAP] In the repeated prints tape, tap the print contributing the most volume.
-VISUAL: An animated Time and Sales table lists time, execution price, and trade size, with seller initiated prints highlighted at the bid.
-EVENT: large_print
-TARGET: 6
-WHY: The largest print contributes the most volume to this tape sequence.
+[TIME_SALES_TAP] Tap the print that breaks the dominant side sequence.
+VISUAL: An animated Time and Sales table lists time, execution price, and trade size, with one opposing print interrupting a persistent buyer sequence.
+EVENT: sequence_break
+TARGET: 2
+WHY: This print interrupts the persistent aggression shown before it.
 
-[MC] Which evidence matters most when reading repeated prints?
+[MC] Which interpretation is best supported in this repeated prints example?
 VISUAL: A sequence of higher highs and higher lows moves from the lower left toward the upper right.
 CHART: uptrend
 Repeated buys can show persistent demand
-Delta and total volume provide identical information
-A large wall must reverse price
+Price progress can be ignored when aggression is persistent
+A narrow spread confirms directional control
 WHY: Repeated buys can show persistent demand.
 
 NODE 19
@@ -753,25 +753,25 @@ TITLE: Buyer Initiated Prints
 CELEBRATION: Buyer Initiated Prints complete.
 
 [TIME_SALES] Where are the buyer initiated trades executing?
-VISUAL: An animated Time and Sales table lists time, execution price, and trade size, with buyer initiated prints highlighted at the ask.
+VISUAL: An animated Time and Sales table lists time, execution price, and trade size, with buyer initiated prints dominating at the ask.
 EVENT: lift
 Trades at the ask suggest buyer aggression
-Displayed liquidity increased without any trades
-Candle direction alone identifies every execution
+A faster feed confirms acceptance regardless of price response
+Alternating print colors mean no side can be aggressive
 WHY: Trades at the ask suggest buyer aggression.
 
-[TIME_SALES_TAP] In the buyer initiated prints tape, tap the print contributing the most volume.
-VISUAL: An animated Time and Sales table lists time, execution price, and trade size, with seller initiated prints highlighted at the bid.
-EVENT: large_print
-TARGET: 6
-WHY: The largest print contributes the most volume to this tape sequence.
+[TIME_SALES_TAP] Tap a buyer initiated execution at the ask.
+VISUAL: An animated Time and Sales table lists time, execution price, and trade size, with the target row showing a buyer initiated execution at the ask.
+EVENT: buyer_target
+TARGET: 7
+WHY: The selected trade executes at the ask and is buyer initiated.
 
-[MC] What would most weaken the current buyer initiated prints interpretation?
+[MC] Which conclusion is most reasonable for the current buyer initiated prints evidence?
 VISUAL: Candles trade above the VWAP line while pullbacks test it as potential support.
 CHART: priceAboveVWAP
 Trades at the ask suggest buyer aggression
-The book should be read without the tape
-The tape should be read without location
+Acceptance is present as soon as one trade prints beyond a level
+Passive absorption and fading aggression produce the same evidence
 WHY: Trades at the ask suggest buyer aggression.
 
 [AGGRESSOR] During buyer initiated prints, which side is crossing the spread?
@@ -785,25 +785,25 @@ TITLE: Seller Initiated Prints
 CELEBRATION: Seller Initiated Prints complete.
 
 [TIME_SALES] Where are the seller initiated trades executing?
-VISUAL: An animated Time and Sales table lists time, execution price, and trade size, with seller initiated prints highlighted at the bid.
+VISUAL: An animated Time and Sales table lists time, execution price, and trade size, with seller initiated prints dominating at the bid.
 EVENT: hit
 Trades at the bid suggest seller aggression
-Displayed liquidity increased without any trades
-Candle direction alone identifies every execution
+Displayed depth changed but no completed trade confirms participation
+Candle direction identifies the initiating side of every execution
 WHY: Trades at the bid suggest seller aggression.
 
-[TIME_SALES_TAP] In the seller initiated prints tape, tap the print contributing the most volume.
-VISUAL: An animated Time and Sales table lists time, execution price, and trade size, with seller initiated prints highlighted at the bid.
-EVENT: large_print
-TARGET: 6
-WHY: The largest print contributes the most volume to this tape sequence.
+[TIME_SALES_TAP] Tap a seller initiated execution at the bid.
+VISUAL: An animated Time and Sales table lists time, execution price, and trade size, with the target row showing a seller initiated execution at the bid.
+EVENT: seller_target
+TARGET: 5
+WHY: The selected trade executes at the bid and is seller initiated.
 
 [MC] Which conclusion about seller initiated prints is best supported?
 VISUAL: Candles trade below the VWAP line while rebounds test it as potential resistance.
 CHART: priceBelowVWAP
 Trades at the bid suggest seller aggression
-The visible liquidity alone proves the outcome
-One aggressive burst matters more than price response
+Thin liquidity implies the move has strong aggressive sponsorship
+Negative delta prevents price from rising
 WHY: Trades at the bid suggest seller aggression.
 
 NODE 21
@@ -811,25 +811,25 @@ TITLE: Pace Changes
 CELEBRATION: Pace Changes complete.
 
 [TIME_SALES] What changed first before activity expanded?
-VISUAL: An animated Time and Sales table lists time, execution price, and trade size, with seller initiated prints highlighted at the bid.
+VISUAL: An animated Time and Sales table lists time, execution price, and trade size, with the interval between prints shrinking after the target row.
 EVENT: accelerating
 A faster pace can precede expansion
-Displayed liquidity increased without any trades
-Candle direction alone identifies every execution
+The spread narrowed so trade pace no longer matters
+One large print establishes persistent control
 WHY: A faster pace can precede expansion.
 
-[TIME_SALES_TAP] In the pace changes tape, tap the print contributing the most volume.
-VISUAL: An animated Time and Sales table lists time, execution price, and trade size, with seller initiated prints highlighted at the bid.
-EVENT: large_print
-TARGET: 6
-WHY: The largest print contributes the most volume to this tape sequence.
+[TIME_SALES_TAP] Tap where the tape first changes to a faster pace.
+VISUAL: An animated Time and Sales table lists time, execution price, and trade size, with the interval between prints shrinking after the target row.
+EVENT: accelerating
+TARGET: 3
+WHY: The interval between prints begins shrinking here.
 
-[MC] What should the learner notice first in this pace changes replay?
+[MC] Which statement best connects the evidence in this pace changes replay?
 VISUAL: Candles expand in range as the surrounding volatility bands spread farther apart.
 CHART: bandsWidening
 A faster pace can precede expansion
-The fastest prints always control the close
-Resting size cannot pull or replenish
+A failed breakout is confirmed before price returns through the level
+More displayed depth necessarily means more actual liquidity
 WHY: A faster pace can precede expansion.
 
 [AGGRESSOR] During pace changes, which side is crossing the spread?
@@ -843,25 +843,25 @@ TITLE: Tape at Key Levels
 CELEBRATION: Tape at Key Levels complete.
 
 [TIME_SALES] Which tape behavior best supports the tape at key levels read?
-VISUAL: An animated Time and Sales table lists time, execution price, and trade size, with buyer initiated prints highlighted at the ask.
+VISUAL: An animated Time and Sales table lists time, execution price, and trade size, with buyer initiated prints dominating at the ask.
 EVENT: lift
 Tape reaction matters most near key levels
-Displayed liquidity increased without any trades
-Candle direction alone identifies every execution
+Total tape volume reveals where every resting order sits
+The final print deserves more weight than the full sequence
 WHY: Tape reaction matters most near key levels.
 
-[TIME_SALES_TAP] In the tape at key levels tape, tap the print contributing the most volume.
-VISUAL: An animated Time and Sales table lists time, execution price, and trade size, with seller initiated prints highlighted at the bid.
-EVENT: large_print
-TARGET: 6
-WHY: The largest print contributes the most volume to this tape sequence.
+[TIME_SALES_TAP] Tap the execution that first contradicts the dominant pressure.
+VISUAL: An animated Time and Sales table lists time, execution price, and trade size, with one opposing print interrupting a persistent buyer sequence.
+EVENT: sequence_break
+TARGET: 1
+WHY: The selected print is the first opposing execution at the level.
 
-[MC] Which side failed to achieve the expected response during tape at key levels?
+[MC] Which conclusion is best supported by the evidence in tape at key levels?
 VISUAL: An advance reaches resistance and turns lower with visible upper wick rejection.
 CHART: resistanceRejection
 Tape reaction matters most near key levels
-Delta and total volume provide identical information
-A large wall must reverse price
+Large executions are directional even when price does not respond
+A moving average reaction can substitute for execution evidence
 WHY: Tape reaction matters most near key levels.
 
 NODE 23
@@ -869,25 +869,25 @@ TITLE: False Urgency
 CELEBRATION: False Urgency complete.
 
 [TIME_SALES] Fast prints lose pace without price progress. What weakened?
-VISUAL: An animated Time and Sales table lists time, execution price, and trade size, with seller initiated prints highlighted at the bid.
+VISUAL: An animated Time and Sales table lists time, execution price, and trade size, with pace and trade size fading after the target row.
 EVENT: stall
 Fast prints need price confirmation
-Displayed liquidity increased without any trades
-Candle direction alone identifies every execution
+A faster feed confirms acceptance regardless of price response
+Alternating print colors mean no side can be aggressive
 WHY: Fast prints need price confirmation.
 
-[TIME_SALES_TAP] In the false urgency tape, tap the print contributing the most volume.
-VISUAL: An animated Time and Sales table lists time, execution price, and trade size, with seller initiated prints highlighted at the bid.
-EVENT: large_print
+[TIME_SALES_TAP] Tap where fast activity begins losing follow through.
+VISUAL: An animated Time and Sales table lists time, execution price, and trade size, with pace and trade size fading after the target row.
+EVENT: stall
 TARGET: 6
-WHY: The largest print contributes the most volume to this tape sequence.
+WHY: Prints continue but size and pace begin fading here.
 
-[MC] Which conclusion goes too far when interpreting false urgency?
+[MC] Which explanation of false urgency requires the fewest assumptions?
 VISUAL: A small candle body with upper and lower wicks shows two sided movement and little progress.
 CHART: spinningTop
 Fast prints need price confirmation
-The book should be read without the tape
-The tape should be read without location
+Fast tape near resistance is stronger than failure to gain acceptance
+A liquidity sweep and breakout differ mainly by candle size
 WHY: Fast prints need price confirmation.
 
 [AGGRESSOR] During false urgency, which side is crossing the spread?
@@ -901,25 +901,25 @@ TITLE: Tape Reading Review
 CELEBRATION: Tape Reading Review complete.
 
 [TIME_SALES] Which tape behavior best supports the tape reading review read?
-VISUAL: An animated Time and Sales table lists time, execution price, and trade size, with seller initiated prints highlighted at the bid.
+VISUAL: An animated Time and Sales table lists time, execution price, and trade size, with seller initiated prints dominating at the bid.
 EVENT: hit
 Read pace, size, direction, and response together
-Displayed liquidity increased without any trades
-Candle direction alone identifies every execution
+Displayed depth changed but no completed trade confirms participation
+Candle direction identifies the initiating side of every execution
 WHY: Read pace, size, direction, and response together.
 
-[TIME_SALES_TAP] In the tape reading review tape, tap the print contributing the most volume.
-VISUAL: An animated Time and Sales table lists time, execution price, and trade size, with seller initiated prints highlighted at the bid.
-EVENT: large_print
-TARGET: 6
-WHY: The largest print contributes the most volume to this tape sequence.
+[TIME_SALES_TAP] Tap the seller initiated print that changes the developing read.
+VISUAL: An animated Time and Sales table lists time, execution price, and trade size, with the target row showing a seller initiated execution at the bid.
+EVENT: seller_target
+TARGET: 4
+WHY: This bid side execution is the relevant opposing print.
 
-[MC] Which evidence matters most when reading tape reading review?
+[MC] Which interpretation is best supported in this tape reading review example?
 VISUAL: Alternating wide candles and long wicks show rapid movement with changing control.
 CHART: volatile
 Read pace, size, direction, and response together
-The visible liquidity alone proves the outcome
-One aggressive burst matters more than price response
+Displayed liquidity is stronger evidence than completed executions
+A short aggressive burst can outweigh a stalled price response
 WHY: Read pace, size, direction, and response together.
 
 
@@ -929,270 +929,270 @@ NODE 25
 TITLE: What Is Absorption
 CELEBRATION: What Is Absorption complete.
 
-[MC] What would most weaken the current what is absorption interpretation?
+[ORDERFLOW_SIM] Which combined evidence best demonstrates what is absorption?
+VISUAL: Price stalls at resistance above VWAP while an offer refreshes, buyer initiated prints accelerate, and positive footprint delta produces little upward progress.
+Absorption appears when pressure fails to move price
+The candle pattern alone establishes the order flow cause
+Aggression without book response confirms continuation
+Displayed size reveals all hidden liquidity
+WHY: Absorption appears when pressure fails to move price.
+
+[TIME_SALES] How does aggressive execution compare with the resulting price progress?
+VISUAL: An animated Time and Sales table lists time, execution price, and trade size, with buyer initiated prints dominating at the ask.
+EVENT: lift
+Execution is strong while price progress remains limited
+Execution and price are accelerating equally
+No aggressive executions are present
+WHY: Absorption requires pressure plus a weak corresponding price response.
+
+[MC] Which conclusion is most reasonable for the current what is absorption evidence?
 VISUAL: Small mixed candles overlap inside a narrow horizontal trading area.
 CHART: sideways
 Absorption appears when pressure fails to move price
-The fastest prints always control the close
-Resting size cannot pull or replenish
+Tape speed matters more than the level where it occurs
+A replenishing order is probably new unrelated liquidity
+Brief trade beyond the level is enough to establish acceptance
 WHY: Absorption appears when pressure fails to move price.
-
-[BOOKDRAG] Route the order used in this what is absorption example.
-VISUAL: A draggable market buy card sits beside a Level II ladder with bid and ask drop targets.
-ORDER: market_buy
-ANSWER: the ask
-WHY: Market buys take asks. Market sells take bids.
-
-[MATCH] Connect the behaviors that matter for what is absorption.
-What Is Absorption => Price holding
-Aggressive order => Trades immediately
-Passive order => Rests as liquidity
-WHY: Match the signal with its order flow clue.
-
-[TAP_CANDLE] In what is absorption, tap where price response becomes clearest.
-VISUAL: Small mixed candles overlap inside a narrow horizontal trading area. The candles are tappable and the learner must select the requested candle.
-CHART: sideways
-TARGET: 4
-WHY: The selected candle shows whether execution produced follow through.
 
 NODE 26
 TITLE: Buyer Absorption
 CELEBRATION: Buyer Absorption complete.
 
+[ORDERFLOW_SIM] Which combined evidence best demonstrates buyer absorption?
+VISUAL: Price holds support below VWAP while a bid refreshes, seller initiated prints accelerate, and negative footprint delta produces little downward progress.
+Buyers absorb selling near support
+The candle pattern alone establishes the order flow cause
+Aggression without book response confirms continuation
+Displayed size reveals all hidden liquidity
+WHY: Buyers absorb selling near support.
+
+[TIME_SALES] How does aggressive execution compare with the resulting price progress?
+VISUAL: An animated Time and Sales table lists time, execution price, and trade size, with seller initiated prints dominating at the bid.
+EVENT: hit
+Execution is strong while price progress remains limited
+Execution and price are accelerating equally
+No aggressive executions are present
+WHY: Absorption requires pressure plus a weak corresponding price response.
+
 [MC] Which conclusion about buyer absorption is best supported?
 VISUAL: A decline reaches support and rebounds with buyers defending the lower area.
 CHART: supportBounce
 Buyers absorb selling near support
-Delta and total volume provide identical information
-A large wall must reverse price
+High total volume normally implies strongly directional delta
+A large wall deserves more weight than repeated fills against it
+One unusually large trade is more reliable than subsequent response
 WHY: Buyers absorb selling near support.
-
-[TAP_CANDLE] In buyer absorption, tap where price response becomes clearest.
-VISUAL: A decline reaches support and rebounds with buyers defending the lower area. The candles are tappable and the learner must select the requested candle.
-CHART: supportBounce
-TARGET: 4
-WHY: The selected candle shows whether execution produced follow through.
-
-[FILL] The missing evidence in this buyer absorption read is [___].
-VISUAL: A decline reaches support and rebounds with buyers defending the lower area.
-CHART: supportBounce
-bids holding
-resting size that never trades
-one isolated footprint row
-direction without follow through
-WHY: Focus on bids holding.
 
 NODE 27
 TITLE: Seller Absorption
 CELEBRATION: Seller Absorption complete.
 
-[BOOKDRAG] Route the order used in this seller absorption example.
-VISUAL: A draggable market buy card sits beside a Level II ladder with bid and ask drop targets.
-ORDER: market_buy
-ANSWER: the ask
-WHY: Market buys take asks. Market sells take bids.
+[ORDERFLOW_SIM] Which combined evidence best demonstrates seller absorption?
+VISUAL: Price stalls at resistance above VWAP while an offer refreshes, buyer initiated prints accelerate, and positive footprint delta produces little upward progress.
+Sellers absorb buying near resistance
+The candle pattern alone establishes the order flow cause
+Aggression without book response confirms continuation
+Displayed size reveals all hidden liquidity
+WHY: Sellers absorb buying near resistance.
 
-[MATCH] Connect the behaviors that matter for seller absorption.
-Seller Absorption => Offers holding
-Aggressive order => Trades immediately
-Passive order => Rests as liquidity
-WHY: Match the signal with its order flow clue.
+[TIME_SALES] How does aggressive execution compare with the resulting price progress?
+VISUAL: An animated Time and Sales table lists time, execution price, and trade size, with buyer initiated prints dominating at the ask.
+EVENT: lift
+Execution is strong while price progress remains limited
+Execution and price are accelerating equally
+No aggressive executions are present
+WHY: Absorption requires pressure plus a weak corresponding price response.
 
-[MC] What should the learner notice first in this seller absorption replay?
+[MC] Which statement best connects the evidence in this seller absorption replay?
 VISUAL: An advance reaches resistance and turns lower with visible upper wick rejection.
 CHART: resistanceRejection
 Sellers absorb buying near resistance
-The book should be read without the tape
-The tape should be read without location
+The current book is more useful than the executions that changed it
+Location adds little once the tape accelerates
+The earliest signal should anchor the read even after conditions change
 WHY: Sellers absorb buying near resistance.
 
 NODE 28
 TITLE: Repeated Tests
 CELEBRATION: Repeated Tests complete.
 
-[TAP_CANDLE] In repeated tests, tap where price response becomes clearest.
-VISUAL: Price tests the same support area twice and rebounds after the second test. The candles are tappable and the learner must select the requested candle.
-CHART: doubleBottom
-TARGET: 4
-WHY: The selected candle shows whether execution produced follow through.
+[ORDERFLOW_SIM] Which combined evidence best demonstrates repeated tests?
+VISUAL: Price holds support below VWAP while a bid refreshes, seller initiated prints accelerate, and negative footprint delta produces little downward progress.
+A level that survives tests may contain absorption
+The candle pattern alone establishes the order flow cause
+Aggression without book response confirms continuation
+Displayed size reveals all hidden liquidity
+WHY: A level that survives tests may contain absorption.
 
-[AGGRESSOR] During repeated tests, which side is crossing the spread?
-VISUAL: An animated Level II ladder shows prices between bid and ask columns, with ask sizes being consumed by incoming buy orders.
-EVENT: lift
-ANSWER: The buyer
-WHY: Buyers take offers. Sellers take bids.
+[TIME_SALES] How does aggressive execution compare with the resulting price progress?
+VISUAL: An animated Time and Sales table lists time, execution price, and trade size, with seller initiated prints dominating at the bid.
+EVENT: hit
+Execution is strong while price progress remains limited
+Execution and price are accelerating equally
+No aggressive executions are present
+WHY: Absorption requires pressure plus a weak corresponding price response.
 
-[MC] Which side failed to achieve the expected response during repeated tests?
+[MC] Which conclusion is best supported by the evidence in repeated tests?
 VISUAL: Price tests the same support area twice and rebounds after the second test.
 CHART: doubleBottom
 A level that survives tests may contain absorption
-The visible liquidity alone proves the outcome
-One aggressive burst matters more than price response
+Positive delta is usually sufficient confirmation for higher prices
+A pull in liquidity is equivalent to aggressive execution
+Slower counter pressure automatically confirms continuation
 WHY: A level that survives tests may contain absorption.
-
-[ORDER] Build the repeated tests read from evidence to conclusion.
-VISUAL: Price tests the same support area twice and rebounds after the second test.
-CHART: doubleBottom
-Buyer pressure appears
-Offers get consumed
-Price reaches higher levels
-The chart confirms the move
-WHY: Read pressure, liquidity, price, then confirmation.
 
 NODE 29
 TITLE: Hidden Liquidity
 CELEBRATION: Hidden Liquidity complete.
 
-[FILL] The missing evidence in this hidden liquidity read is [___].
-VISUAL: Candles rotate between clear upper and lower boundaries without sustained direction.
-CHART: range
-replenishing size
-resting size that never trades
-one isolated footprint row
-direction without follow through
-WHY: Focus on replenishing size.
+[ORDERFLOW_SIM] Which combined evidence best demonstrates hidden liquidity?
+VISUAL: Price stalls at resistance above VWAP while an offer refreshes, buyer initiated prints accelerate, and positive footprint delta produces little upward progress.
+Refreshing liquidity can hide true available size
+The candle pattern alone establishes the order flow cause
+Aggression without book response confirms continuation
+Displayed size reveals all hidden liquidity
+WHY: Refreshing liquidity can hide true available size.
 
-[MC] Which conclusion goes too far when interpreting hidden liquidity?
+[TIME_SALES] How does aggressive execution compare with the resulting price progress?
+VISUAL: An animated Time and Sales table lists time, execution price, and trade size, with buyer initiated prints dominating at the ask.
+EVENT: lift
+Execution is strong while price progress remains limited
+Execution and price are accelerating equally
+No aggressive executions are present
+WHY: Absorption requires pressure plus a weak corresponding price response.
+
+[MC] Which explanation of hidden liquidity requires the fewest assumptions?
 VISUAL: Candles rotate between clear upper and lower boundaries without sustained direction.
 CHART: range
 Refreshing liquidity can hide true available size
-The fastest prints always control the close
-Resting size cannot pull or replenish
+Repeated tests always make a liquidity level stronger
+A fast rejection proves the resting wall was genuine
+Stable displayed size means hidden liquidity cannot be present
 WHY: Refreshing liquidity can hide true available size.
-
-[MATCH] Connect the behaviors that matter for hidden liquidity.
-Hidden Liquidity => Replenishing size
-Aggressive order => Trades immediately
-Passive order => Rests as liquidity
-WHY: Match the signal with its order flow clue.
 
 NODE 30
 TITLE: What Is Exhaustion
 CELEBRATION: What Is Exhaustion complete.
 
-[AGGRESSOR] During what is exhaustion, which side is crossing the spread?
-VISUAL: An animated Level II ladder shows prices between bid and ask columns, with bid sizes being consumed by incoming sell orders.
-EVENT: hit
-ANSWER: The seller
-WHY: Buyers take offers. Sellers take bids.
+[TIME_SALES] What changes in the tape during what is exhaustion?
+VISUAL: An animated Time and Sales table lists time, execution price, and trade size, with pace and trade size fading after the target row.
+EVENT: stall
+Aggressive pace and size begin fading
+Resting depth proves the next reversal
+Executions accelerate while price accepts new levels
+WHY: Exhaustion is defined by aggressive activity fading.
 
-[MC] Which evidence matters most when reading what is exhaustion?
-VISUAL: A narrow candle body with wicks on both sides shows little net price progress.
-CHART: doji
-Exhaustion appears when aggressive pressure fades
-Delta and total volume provide identical information
-A large wall must reverse price
-WHY: Exhaustion appears when aggressive pressure fades.
+[TIME_SALES_TAP] Tap where fast activity begins losing follow through.
+VISUAL: An animated Time and Sales table lists time, execution price, and trade size, with pace and trade size fading after the target row.
+EVENT: stall
+TARGET: 6
+WHY: Prints continue but size and pace begin fading here.
 
-[FILL] The missing evidence in this what is exhaustion read is [___].
-VISUAL: A narrow candle body with wicks on both sides shows little net price progress.
-CHART: doji
-slowing aggression
-a single large print
-displayed depth without execution
-candle color without location
-WHY: Focus on slowing aggression.
+[FOOTPRINT] Which footprint change would support exhaustion?
+VISUAL: A footprint grid places bid volume left of price and ask volume right of price, showing similar bid and ask volume across the price rows.
+EVENT: balanced
+Directional execution becomes less dominant near the extreme
+One large row guarantees reversal
+Displayed orders replace executed volume
+WHY: Fading directional execution can support an exhaustion read.
 
 NODE 31
 TITLE: Buyer Exhaustion
 CELEBRATION: Buyer Exhaustion complete.
 
-[MC] What would most weaken the current buyer exhaustion interpretation?
-VISUAL: A small candle body with a long upper wick shows rejection of higher prices.
-CHART: shootingStar
-Fading buyers can stall an advance
-The book should be read without the tape
-The tape should be read without location
-WHY: Fading buyers can stall an advance.
+[TIME_SALES] What changes in the tape during buyer exhaustion?
+VISUAL: An animated Time and Sales table lists time, execution price, and trade size, with pace and trade size fading after the target row.
+EVENT: stall
+Aggressive pace and size begin fading
+Resting depth proves the next reversal
+Executions accelerate while price accepts new levels
+WHY: Exhaustion is defined by aggressive activity fading.
 
-[BOOKDRAG] Route the order used in this buyer exhaustion example.
-VISUAL: A draggable market buy card sits beside a Level II ladder with bid and ask drop targets.
-ORDER: market_buy
-ANSWER: the ask
-WHY: Market buys take asks. Market sells take bids.
-
-[MATCH] Connect the behaviors that matter for buyer exhaustion.
-Buyer Exhaustion => Weaker buying
-Aggressive order => Trades immediately
-Passive order => Rests as liquidity
-WHY: Match the signal with its order flow clue.
-
-[TAP_CANDLE] In buyer exhaustion, tap where price response becomes clearest.
-VISUAL: A small candle body with a long upper wick shows rejection of higher prices. The candles are tappable and the learner must select the requested candle.
-CHART: shootingStar
+[TIME_SALES_TAP] Tap where fast activity begins losing follow through.
+VISUAL: An animated Time and Sales table lists time, execution price, and trade size, with pace and trade size fading after the target row.
+EVENT: stall
 TARGET: 4
-WHY: The selected candle shows whether execution produced follow through.
+WHY: Prints continue but size and pace begin fading here.
+
+[FOOTPRINT] Which footprint change would support exhaustion?
+VISUAL: A footprint grid places bid volume left of price and ask volume right of price, showing similar bid and ask volume across the price rows.
+EVENT: balanced
+Directional execution becomes less dominant near the extreme
+One large row guarantees reversal
+Displayed orders replace executed volume
+WHY: Fading directional execution can support an exhaustion read.
 
 NODE 32
 TITLE: Seller Exhaustion
 CELEBRATION: Seller Exhaustion complete.
 
-[MC] Which conclusion about seller exhaustion is best supported?
-VISUAL: A candle with a small upper body and long lower wick shows rejection of lower prices.
-CHART: hammer
-Fading sellers can stall a decline
-The visible liquidity alone proves the outcome
-One aggressive burst matters more than price response
-WHY: Fading sellers can stall a decline.
+[TIME_SALES] What changes in the tape during seller exhaustion?
+VISUAL: An animated Time and Sales table lists time, execution price, and trade size, with pace and trade size fading after the target row.
+EVENT: stall
+Aggressive pace and size begin fading
+Resting depth proves the next reversal
+Executions accelerate while price accepts new levels
+WHY: Exhaustion is defined by aggressive activity fading.
 
-[TAP_CANDLE] In seller exhaustion, tap where price response becomes clearest.
-VISUAL: A candle with a small upper body and long lower wick shows rejection of lower prices. The candles are tappable and the learner must select the requested candle.
-CHART: hammer
-TARGET: 4
-WHY: The selected candle shows whether execution produced follow through.
+[TIME_SALES_TAP] Tap where fast activity begins losing follow through.
+VISUAL: An animated Time and Sales table lists time, execution price, and trade size, with pace and trade size fading after the target row.
+EVENT: stall
+TARGET: 2
+WHY: Prints continue but size and pace begin fading here.
 
-[FILL] The missing evidence in this seller exhaustion read is [___].
-VISUAL: A candle with a small upper body and long lower wick shows rejection of lower prices.
-CHART: hammer
-weaker selling
-resting size that never trades
-one isolated footprint row
-direction without follow through
-WHY: Focus on weaker selling.
+[FOOTPRINT] Which footprint change would support exhaustion?
+VISUAL: A footprint grid places bid volume left of price and ask volume right of price, showing similar bid and ask volume across the price rows.
+EVENT: balanced
+Directional execution becomes less dominant near the extreme
+One large row guarantees reversal
+Displayed orders replace executed volume
+WHY: Fading directional execution can support an exhaustion read.
 
 NODE 33
 TITLE: Absorption or Exhaustion
 CELEBRATION: Absorption or Exhaustion complete.
 
-[BOOKDRAG] Route the order used in this absorption or exhaustion example.
-VISUAL: A draggable market buy card sits beside a Level II ladder with bid and ask drop targets.
-ORDER: market_buy
-ANSWER: the ask
-WHY: Market buys take asks. Market sells take bids.
+[TIME_SALES] What changes in the tape during absorption or exhaustion?
+VISUAL: An animated Time and Sales table lists time, execution price, and trade size, with pace and trade size fading after the target row.
+EVENT: stall
+Aggressive pace and size begin fading
+Resting depth proves the next reversal
+Executions accelerate while price accepts new levels
+WHY: Exhaustion is defined by aggressive activity fading.
 
-[MATCH] Connect the behaviors that matter for absorption or exhaustion.
-Absorption or Exhaustion => Price response
-Aggressive order => Trades immediately
-Passive order => Rests as liquidity
-WHY: Match the signal with its order flow clue.
+[TIME_SALES_TAP] Tap where fast activity begins losing follow through.
+VISUAL: An animated Time and Sales table lists time, execution price, and trade size, with pace and trade size fading after the target row.
+EVENT: stall
+TARGET: 7
+WHY: Prints continue but size and pace begin fading here.
 
-[MC] What should the learner notice first in this absorption or exhaustion replay?
-VISUAL: A small candle body with upper and lower wicks shows two sided movement and little progress.
-CHART: spinningTop
-Price response separates absorption from exhaustion
-The fastest prints always control the close
-Resting size cannot pull or replenish
-WHY: Price response separates absorption from exhaustion.
+[FOOTPRINT] Which footprint change would support exhaustion?
+VISUAL: A footprint grid places bid volume left of price and ask volume right of price, showing similar bid and ask volume across the price rows.
+EVENT: balanced
+Directional execution becomes less dominant near the extreme
+One large row guarantees reversal
+Displayed orders replace executed volume
+WHY: Fading directional execution can support an exhaustion read.
 
 NODE 34
 TITLE: Seller Absorption Simulation
 CELEBRATION: Seller Absorption Simulation complete.
 
 [ORDERFLOW_SIM] Buying is aggressive but price cannot clear resistance. What is strongest?
-VISUAL: A boss simulation updates four evidence panels together: price above VWAP stalling at resistance, a refreshing offer in Level II, fast buyer initiated Time and Sales prints, and positive footprint delta with little price progress.
+VISUAL: Price stalls at resistance above VWAP while an offer refreshes, buyer initiated prints accelerate, and positive footprint delta produces little upward progress.
 Buyers are active but may be absorbed by refreshing sellers
 The fastest evidence guarantees the next move
 Displayed size alone determines the outcome
 The candle should be read without execution context
 WHY: Aggressive buyers can be absorbed by passive sellers at resistance.
 
-[MC] Which side failed to achieve the expected response during seller absorption simulation?
+[MC] Which conclusion is best supported by the evidence in seller absorption simulation?
 VISUAL: An advance reaches resistance and turns lower with visible upper wick rejection.
 CHART: resistanceRejection
 Aggressive buyers can be absorbed by passive sellers at resistance
-Delta and total volume provide identical information
-A large wall must reverse price
-Price response matters less than one large trade
+Large executions are directional even when price does not respond
+A moving average reaction can substitute for execution evidence
+Balanced delta means neither side traded aggressively
 WHY: Aggressive buyers can be absorbed by passive sellers at resistance.
 
 [ORDER] Build the seller absorption simulation read from evidence to conclusion.
@@ -1209,20 +1209,20 @@ TITLE: Buyer Absorption Simulation
 CELEBRATION: Buyer Absorption Simulation complete.
 
 [ORDERFLOW_SIM] Selling is aggressive but price cannot break support. What is strongest?
-VISUAL: A boss simulation updates four evidence panels together: price above VWAP stalling at resistance, a refreshing offer in Level II, fast buyer initiated Time and Sales prints, and positive footprint delta with little price progress.
+VISUAL: Price holds support below VWAP while a bid refreshes, seller initiated prints accelerate, and negative footprint delta produces little downward progress.
 Sellers are active but may be absorbed by refreshing buyers
 The fastest evidence guarantees the next move
 Displayed size alone determines the outcome
 The candle should be read without execution context
 WHY: Aggressive sellers can be absorbed by passive buyers at support.
 
-[MC] Which conclusion goes too far when interpreting buyer absorption simulation?
+[MC] Which explanation of buyer absorption simulation requires the fewest assumptions?
 VISUAL: A decline reaches support and rebounds with buyers defending the lower area.
 CHART: supportBounce
 Aggressive sellers can be absorbed by passive buyers at support
-The book should be read without the tape
-The tape should be read without location
-The first signal cannot be contradicted later
+Fast tape near resistance is stronger than failure to gain acceptance
+A liquidity sweep and breakout differ mainly by candle size
+Order flow evidence remains valid regardless of changing volatility
 WHY: Aggressive sellers can be absorbed by passive buyers at support.
 
 [ORDER] Build the buyer absorption simulation read from evidence to conclusion.
@@ -1238,39 +1238,41 @@ NODE 36
 TITLE: Absorption Review
 CELEBRATION: Absorption Review complete.
 
-[AGGRESSOR] During absorption review, which side is crossing the spread?
-VISUAL: An animated Level II ladder shows prices between bid and ask columns, with ask sizes being consumed by incoming buy orders.
-EVENT: lift
-ANSWER: The buyer
-WHY: Buyers take offers. Sellers take bids.
+[ORDERFLOW_SIM] Which combined evidence best demonstrates absorption review?
+VISUAL: Price holds support below VWAP while a bid refreshes, seller initiated prints accelerate, and negative footprint delta produces little downward progress.
+Strong pressure with little movement suggests absorption
+The candle pattern alone establishes the order flow cause
+Aggression without book response confirms continuation
+Displayed size reveals all hidden liquidity
+WHY: Strong pressure with little movement suggests absorption.
 
-[MC] Which evidence matters most when reading absorption review?
+[TIME_SALES] How does aggressive execution compare with the resulting price progress?
+VISUAL: An animated Time and Sales table lists time, execution price, and trade size, with seller initiated prints dominating at the bid.
+EVENT: hit
+Execution is strong while price progress remains limited
+Execution and price are accelerating equally
+No aggressive executions are present
+WHY: Absorption requires pressure plus a weak corresponding price response.
+
+[MC] Which interpretation is best supported in this absorption review example?
 VISUAL: Price briefly trades below a level and closes back above it, leaving a long lower wick.
 CHART: rejectionWickDown
 Strong pressure with little movement suggests absorption
-The visible liquidity alone proves the outcome
-One aggressive burst matters more than price response
+Displayed liquidity is stronger evidence than completed executions
+A short aggressive burst can outweigh a stalled price response
+The candle response makes tape confirmation optional
 WHY: Strong pressure with little movement suggests absorption.
-
-[FILL] The missing evidence in this absorption review read is [___].
-VISUAL: Price briefly trades below a level and closes back above it, leaving a long lower wick.
-CHART: rejectionWickDown
-pressure without movement
-a single large print
-displayed depth without execution
-candle color without location
-WHY: Focus on pressure without movement.
 
 NODE 37
 TITLE: Tape and Absorption Mixed Review
 CELEBRATION: Tape and Absorption Mixed Review complete.
 
-[MC] What would most weaken the current tape and absorption mixed review interpretation?
+[MC] Which conclusion is most reasonable for the current tape and absorption mixed review evidence?
 VISUAL: Price briefly trades below a level and closes back above it, leaving a long lower wick.
 CHART: rejectionWickDown
 Separate active pressure from the market response
-The fastest prints always control the close
-Resting size cannot pull or replenish
+Tape speed matters more than the level where it occurs
+A replenishing order is probably new unrelated liquidity
 WHY: Separate active pressure from the market response.
 
 [BOOKDRAG] Route the order used in this tape and absorption mixed review example.
@@ -1288,236 +1290,13 @@ WHY: Match the signal with its order flow clue.
 [TAP_CANDLE] In tape and absorption mixed review, tap where price response becomes clearest.
 VISUAL: Price briefly trades below a level and closes back above it, leaving a long lower wick. The candles are tappable and the learner must select the requested candle.
 CHART: rejectionWickDown
-TARGET: 4
+TARGET: 2
 WHY: The selected candle shows whether execution produced follow through.
 
 
 UNIT 5 — Imbalances and Momentum
 
 NODE 38
-TITLE: Order Imbalance
-CELEBRATION: Order Imbalance complete.
-
-[FOOTPRINT] Which footprint evidence best supports order imbalance?
-VISUAL: A footprint grid places bid volume left of price and ask volume right of price, showing larger ask volume across several price rows.
-EVENT: lift
-Imbalance means one side is more aggressive
-The largest row guarantees continuation
-Resting orders and executed volume are identical
-Candle color overrides the bid ask split
-WHY: Imbalance means one side is more aggressive.
-
-[FOOTPRINT_TAP] In order imbalance, tap the price with the strongest execution imbalance.
-VISUAL: A footprint grid places bid volume left of price and ask volume right of price, showing larger ask volume across several price rows.
-EVENT: lift
-TARGET: 2
-WHY: The selected row has the widest execution difference between sides.
-
-[MC] Which conclusion about order imbalance is best supported?
-VISUAL: Alternating wide candles and long wicks show rapid movement with changing control.
-CHART: volatile
-Imbalance means one side is more aggressive
-Delta and total volume provide identical information
-A large wall must reverse price
-Price response matters less than one large trade
-WHY: Imbalance means one side is more aggressive.
-
-NODE 39
-TITLE: Buyer Imbalance
-CELEBRATION: Buyer Imbalance complete.
-
-[FOOTPRINT] Which footprint evidence best supports buyer imbalance?
-VISUAL: A footprint grid places bid volume left of price and ask volume right of price, showing larger ask volume across several price rows.
-EVENT: lift
-Buyer imbalance can push price higher
-The largest row guarantees continuation
-Resting orders and executed volume are identical
-Candle color overrides the bid ask split
-WHY: Buyer imbalance can push price higher.
-
-[FOOTPRINT_TAP] In buyer imbalance, tap the price with the strongest execution imbalance.
-VISUAL: A footprint grid places bid volume left of price and ask volume right of price, showing larger ask volume across several price rows.
-EVENT: lift
-TARGET: 2
-WHY: The selected row has the widest execution difference between sides.
-
-[MC] What should the learner notice first in this buyer imbalance replay?
-VISUAL: A sequence of higher highs and higher lows moves from the lower left toward the upper right.
-CHART: uptrend
-Buyer imbalance can push price higher
-The book should be read without the tape
-The tape should be read without location
-The first signal cannot be contradicted later
-WHY: Buyer imbalance can push price higher.
-
-[ORDER] Build the buyer imbalance read from evidence to conclusion.
-VISUAL: A sequence of higher highs and higher lows moves from the lower left toward the upper right.
-CHART: uptrend
-Buyer pressure appears
-Offers get consumed
-Price reaches higher levels
-The chart confirms the move
-WHY: Read pressure, liquidity, price, then confirmation.
-
-NODE 40
-TITLE: Seller Imbalance
-CELEBRATION: Seller Imbalance complete.
-
-[FOOTPRINT] Which footprint evidence best supports seller imbalance?
-VISUAL: A footprint grid places bid volume left of price and ask volume right of price, showing larger bid volume across several price rows.
-EVENT: hit
-Seller imbalance can push price lower
-The largest row guarantees continuation
-Resting orders and executed volume are identical
-Candle color overrides the bid ask split
-WHY: Seller imbalance can push price lower.
-
-[FOOTPRINT_TAP] In seller imbalance, tap the price with the strongest execution imbalance.
-VISUAL: A footprint grid places bid volume left of price and ask volume right of price, showing larger bid volume across several price rows.
-EVENT: hit
-TARGET: 2
-WHY: The selected row has the widest execution difference between sides.
-
-[MC] Which side failed to achieve the expected response during seller imbalance?
-VISUAL: A sequence of lower highs and lower lows moves from the upper left toward the lower right.
-CHART: downtrend
-Seller imbalance can push price lower
-The visible liquidity alone proves the outcome
-One aggressive burst matters more than price response
-The candle removes the need to inspect execution
-WHY: Seller imbalance can push price lower.
-
-NODE 41
-TITLE: Momentum Ignition
-CELEBRATION: Momentum Ignition complete.
-
-[FOOTPRINT] Which footprint evidence best supports momentum ignition?
-VISUAL: A footprint grid places bid volume left of price and ask volume right of price, showing larger ask volume across several price rows.
-EVENT: lift
-Sudden aggression can ignite momentum
-The largest row guarantees continuation
-Resting orders and executed volume are identical
-Candle color overrides the bid ask split
-WHY: Sudden aggression can ignite momentum.
-
-[FOOTPRINT_TAP] In momentum ignition, tap the price with the strongest execution imbalance.
-VISUAL: A footprint grid places bid volume left of price and ask volume right of price, showing larger ask volume across several price rows.
-EVENT: lift
-TARGET: 2
-WHY: The selected row has the widest execution difference between sides.
-
-[MC] Which conclusion goes too far when interpreting momentum ignition?
-VISUAL: Price pushes through a visible resistance level with expanding bullish candles.
-CHART: breakout
-Sudden aggression can ignite momentum
-The fastest prints always control the close
-Resting size cannot pull or replenish
-Any level breach establishes acceptance
-WHY: Sudden aggression can ignite momentum.
-
-[ORDER] Build the momentum ignition read from evidence to conclusion.
-VISUAL: Price pushes through a visible resistance level with expanding bullish candles.
-CHART: breakout
-Buyer pressure appears
-Offers get consumed
-Price reaches higher levels
-The chart confirms the move
-WHY: Read pressure, liquidity, price, then confirmation.
-
-NODE 42
-TITLE: Momentum Continuation
-CELEBRATION: Momentum Continuation complete.
-
-[FOOTPRINT] Which footprint evidence best supports momentum continuation?
-VISUAL: A footprint grid places bid volume left of price and ask volume right of price, showing larger ask volume across several price rows.
-EVENT: lift
-Renewed buying can continue momentum
-The largest row guarantees continuation
-Resting orders and executed volume are identical
-Candle color overrides the bid ask split
-WHY: Renewed buying can continue momentum.
-
-[FOOTPRINT_TAP] In momentum continuation, tap the price with the strongest execution imbalance.
-VISUAL: A footprint grid places bid volume left of price and ask volume right of price, showing larger ask volume across several price rows.
-EVENT: lift
-TARGET: 2
-WHY: The selected row has the widest execution difference between sides.
-
-[MC] Which evidence matters most when reading momentum continuation?
-VISUAL: A sharp advance pauses in a compact downward sloping channel before buyers test control again.
-CHART: bullFlag
-Renewed buying can continue momentum
-Delta and total volume provide identical information
-A large wall must reverse price
-Price response matters less than one large trade
-WHY: Renewed buying can continue momentum.
-
-NODE 43
-TITLE: Momentum Failure
-CELEBRATION: Momentum Failure complete.
-
-[FOOTPRINT] Which footprint evidence best supports momentum failure?
-VISUAL: A footprint grid places bid volume left of price and ask volume right of price, showing larger bid volume across several price rows.
-EVENT: hit
-Momentum weakens when price stops responding
-The largest row guarantees continuation
-Resting orders and executed volume are identical
-Candle color overrides the bid ask split
-WHY: Momentum weakens when price stops responding.
-
-[FOOTPRINT_TAP] In momentum failure, tap the price with the strongest execution imbalance.
-VISUAL: A footprint grid places bid volume left of price and ask volume right of price, showing larger bid volume across several price rows.
-EVENT: hit
-TARGET: 2
-WHY: The selected row has the widest execution difference between sides.
-
-[MC] What would most weaken the current momentum failure interpretation?
-VISUAL: A small candle body with a long upper wick shows rejection of higher prices.
-CHART: shootingStar
-Momentum weakens when price stops responding
-The book should be read without the tape
-The tape should be read without location
-The first signal cannot be contradicted later
-WHY: Momentum weakens when price stops responding.
-
-[ORDER] Build the momentum failure read from evidence to conclusion.
-VISUAL: A small candle body with a long upper wick shows rejection of higher prices.
-CHART: shootingStar
-Seller pressure appears
-Bids get consumed
-Price reaches lower levels
-The chart confirms the move
-WHY: Read pressure, liquidity, price, then confirmation.
-
-NODE 44
-TITLE: Stacked Pressure
-CELEBRATION: Stacked Pressure complete.
-
-[FOOTPRINT] Which footprint evidence best supports stacked pressure?
-VISUAL: A footprint grid places bid volume left of price and ask volume right of price, showing larger ask volume across several price rows.
-EVENT: lift
-Pressure across several levels strengthens the move
-The largest row guarantees continuation
-Resting orders and executed volume are identical
-Candle color overrides the bid ask split
-WHY: Pressure across several levels strengthens the move.
-
-[FOOTPRINT_TAP] In stacked pressure, tap the price with the strongest execution imbalance.
-VISUAL: A footprint grid places bid volume left of price and ask volume right of price, showing larger ask volume across several price rows.
-EVENT: lift
-TARGET: 2
-WHY: The selected row has the widest execution difference between sides.
-
-[MC] Which conclusion about stacked pressure is best supported?
-VISUAL: A wide directional candle has almost no wick, showing sustained movement through its range.
-CHART: marubozu
-Pressure across several levels strengthens the move
-The visible liquidity alone proves the outcome
-One aggressive burst matters more than price response
-The candle removes the need to inspect execution
-WHY: Pressure across several levels strengthens the move.
-
-NODE 45
 TITLE: Reading a Footprint Chart
 CELEBRATION: Reading a Footprint Chart complete.
 
@@ -1529,19 +1308,19 @@ Resting limit orders waiting at each price
 Total candle volume without side separation
 WHY: A footprint separates executed bid volume from executed ask volume at each price.
 
-[FOOTPRINT_TAP] Tap the row with the greatest ask side advantage.
-VISUAL: A footprint grid places bid volume left of price and ask volume right of price, showing larger ask volume across several price rows.
-EVENT: lift
-TARGET: 2
-WHY: This row has the largest difference between ask volume and bid volume.
+[FOOTPRINT_TAP] Tap the row where bid and ask execution is most balanced.
+VISUAL: A footprint grid places bid volume left of price and ask volume right of price, showing one target row with the smallest bid ask execution difference.
+EVENT: balanced_target
+TARGET: 3
+WHY: This row has the smallest difference between bid and ask volume.
 
-[MC] What should the learner notice first in this reading a footprint chart replay?
+[MC] Which conclusion about reading a footprint chart is best supported?
 VISUAL: Small mixed candles overlap inside a narrow horizontal trading area.
 CHART: sideways
 A footprint shows executed volume at each price
-The fastest prints always control the close
-Resting size cannot pull or replenish
-Any level breach establishes acceptance
+High total volume normally implies strongly directional delta
+A large wall deserves more weight than repeated fills against it
+One unusually large trade is more reliable than subsequent response
 WHY: A footprint shows executed volume at each price.
 
 [MATCH] Connect the behaviors that matter for reading a footprint chart.
@@ -1550,70 +1329,269 @@ Aggressive order => Trades immediately
 Passive order => Rests as liquidity
 WHY: Match the signal with its order flow clue.
 
-NODE 46
+NODE 39
 TITLE: Footprint Imbalances
 CELEBRATION: Footprint Imbalances complete.
 
-[FOOTPRINT] What does the bid and ask split inside each row represent?
-VISUAL: A footprint grid places bid volume left of price and ask volume right of price, showing larger ask volume across several price rows.
+[FOOTPRINT] How is a conventional ask side footprint imbalance usually evaluated?
+VISUAL: A footprint grid places bid volume left of price and ask volume right of price, showing one target row carrying the largest ask side execution advantage.
 EVENT: lift
-Executed selling at the bid and buying at the ask
-Resting limit orders waiting at each price
-Total candle volume without side separation
-WHY: A footprint separates executed bid volume from executed ask volume at each price.
+Compare ask volume with bid volume diagonally at the adjacent lower price using a ratio threshold
+Choose the largest same row absolute difference only
+Compare displayed ask depth with completed bid volume
+WHY: Diagonal comparison and a defined ratio distinguish conventional imbalance from a simple same price execution difference.
 
-[FOOTPRINT_TAP] Tap the row with the greatest ask side advantage.
-VISUAL: A footprint grid places bid volume left of price and ask volume right of price, showing larger ask volume across several price rows.
-EVENT: lift
-TARGET: 2
-WHY: This row has the largest difference between ask volume and bid volume.
+[FOOTPRINT_TAP] Tap the row with the largest total executed volume.
+VISUAL: A footprint grid places bid volume left of price and ask volume right of price, showing one target row with the largest combined executed volume.
+EVENT: total_target
+TARGET: 6
+WHY: This row has the highest combined bid and ask execution.
 
-[MC] Which side failed to achieve the expected response during footprint imbalances?
+[MC] Which statement best connects the evidence in this footprint imbalances replay?
 VISUAL: Alternating wide candles and long wicks show rapid movement with changing control.
 CHART: volatile
-Footprint imbalance highlights concentrated aggression
-Delta and total volume provide identical information
-A large wall must reverse price
-Price response matters less than one large trade
-WHY: Footprint imbalance highlights concentrated aggression.
+A conventional footprint imbalance compares diagonally adjacent bid and ask volume using a ratio threshold
+The current book is more useful than the executions that changed it
+Location adds little once the tape accelerates
+The earliest signal should anchor the read even after conditions change
+WHY: A conventional footprint imbalance compares diagonally adjacent bid and ask volume using a ratio threshold.
 
 [MATCH] Connect the behaviors that matter for footprint imbalances.
-Footprint Imbalances => Uneven volume at neighboring prices
+Footprint Imbalances => Diagonal volume ratios at neighboring prices
 Aggressive order => Trades immediately
 Passive order => Rests as liquidity
 WHY: Match the signal with its order flow clue.
+
+NODE 40
+TITLE: Order Imbalance
+CELEBRATION: Order Imbalance complete.
+
+[FOOTPRINT] Which footprint evidence best supports order imbalance?
+VISUAL: A footprint grid places bid volume left of price and ask volume right of price, showing one target row carrying the largest ask side execution advantage.
+EVENT: lift
+Imbalance means one side is more aggressive
+The largest total row proves directional delta
+The bid ask split represents resting limit orders
+One same price difference confirms a stacked diagonal imbalance
+WHY: Imbalance means one side is more aggressive.
+
+[FOOTPRINT_TAP] Tap the row with the greatest ask side execution advantage.
+VISUAL: A footprint grid places bid volume left of price and ask volume right of price, showing one target row carrying the largest ask side execution advantage.
+EVENT: lift
+TARGET: 2
+WHY: This row has the largest positive same price execution difference.
+
+[MC] Which conclusion is best supported by the evidence in order imbalance?
+Imbalance means one side is more aggressive
+Positive delta is usually sufficient confirmation for higher prices
+A pull in liquidity is equivalent to aggressive execution
+Slower counter pressure automatically confirms continuation
+WHY: Imbalance means one side is more aggressive.
+
+NODE 41
+TITLE: Buyer Imbalance
+CELEBRATION: Buyer Imbalance complete.
+
+[FOOTPRINT] Which footprint evidence best supports buyer imbalance?
+VISUAL: A footprint grid places bid volume left of price and ask volume right of price, showing one target row carrying the largest ask side execution advantage.
+EVENT: lift
+Buyer imbalance can push price higher
+Positive candle delta guarantees price acceptance
+A quiet row invalidates aggression elsewhere
+Absolute volume matters more than price response
+WHY: Buyer imbalance can push price higher.
+
+[FOOTPRINT_TAP] Tap the row with the greatest bid side execution advantage.
+VISUAL: A footprint grid places bid volume left of price and ask volume right of price, showing one target row carrying the largest bid side execution advantage.
+EVENT: hit
+TARGET: 5
+WHY: This row has the largest negative same price execution difference.
+
+[MC] Which explanation of buyer imbalance requires the fewest assumptions?
+Buyer imbalance can push price higher
+Repeated tests always make a liquidity level stronger
+A fast rejection proves the resting wall was genuine
+Stable displayed size means hidden liquidity cannot be present
+WHY: Buyer imbalance can push price higher.
+
+[ORDER] Build the buyer imbalance read from evidence to conclusion.
+Buyer pressure appears
+Offers get consumed
+Price reaches higher levels
+The chart confirms the move
+WHY: Read pressure, liquidity, price, then confirmation.
+
+NODE 42
+TITLE: Seller Imbalance
+CELEBRATION: Seller Imbalance complete.
+
+[FOOTPRINT] Which footprint evidence best supports seller imbalance?
+VISUAL: A footprint grid places bid volume left of price and ask volume right of price, showing one target row carrying the largest bid side execution advantage.
+EVENT: hit
+Seller imbalance can push price lower
+The brightest cell identifies the next candle direction
+A same row advantage and diagonal imbalance are identical
+Displayed depth can be inferred directly from executed volume
+WHY: Seller imbalance can push price lower.
+
+[FOOTPRINT_TAP] Tap the row where bid and ask execution is most balanced.
+VISUAL: A footprint grid places bid volume left of price and ask volume right of price, showing one target row with the smallest bid ask execution difference.
+EVENT: balanced_target
+TARGET: 1
+WHY: This row has the smallest difference between bid and ask volume.
+
+[MC] Which interpretation is best supported in this seller imbalance example?
+Seller imbalance can push price lower
+Price progress can be ignored when aggression is persistent
+A narrow spread confirms directional control
+The largest footprint row determines the entire candle read
+WHY: Seller imbalance can push price lower.
+
+NODE 43
+TITLE: Momentum Ignition
+CELEBRATION: Momentum Ignition complete.
+
+[FOOTPRINT] Which footprint evidence best supports momentum ignition?
+VISUAL: A footprint grid places bid volume left of price and ask volume right of price, showing one target row carrying the largest ask side execution advantage.
+EVENT: lift
+Sudden aggression can ignite momentum
+Several ask heavy rows prove sellers withdrew
+High total volume must contain directional delta
+One footprint candle is enough to ignore location
+WHY: Sudden aggression can ignite momentum.
+
+[FOOTPRINT_TAP] Tap the row with the largest total executed volume.
+VISUAL: A footprint grid places bid volume left of price and ask volume right of price, showing one target row with the largest combined executed volume.
+EVENT: total_target
+TARGET: 4
+WHY: This row has the highest combined bid and ask execution.
+
+[MC] Which conclusion is most reasonable for the current momentum ignition evidence?
+Sudden aggression can ignite momentum
+Acceptance is present as soon as one trade prints beyond a level
+Passive absorption and fading aggression produce the same evidence
+A high volume candle reveals which side initiated every trade
+WHY: Sudden aggression can ignite momentum.
+
+[ORDER] Build the momentum ignition read from evidence to conclusion.
+Buyer pressure appears
+Offers get consumed
+Price reaches higher levels
+The chart confirms the move
+WHY: Read pressure, liquidity, price, then confirmation.
+
+NODE 44
+TITLE: Momentum Continuation
+CELEBRATION: Momentum Continuation complete.
+
+[FOOTPRINT] Which footprint evidence best supports momentum continuation?
+VISUAL: A footprint grid places bid volume left of price and ask volume right of price, showing one target row carrying the largest ask side execution advantage.
+EVENT: lift
+Renewed buying can continue momentum
+The largest total row proves directional delta
+The bid ask split represents resting limit orders
+One same price difference confirms a stacked diagonal imbalance
+WHY: Renewed buying can continue momentum.
+
+[FOOTPRINT_TAP] Tap the row with the greatest ask side execution advantage.
+VISUAL: A footprint grid places bid volume left of price and ask volume right of price, showing one target row carrying the largest ask side execution advantage.
+EVENT: lift
+TARGET: 0
+WHY: This row has the largest positive same price execution difference.
+
+[MC] Which conclusion about momentum continuation is best supported?
+Renewed buying can continue momentum
+Thin liquidity implies the move has strong aggressive sponsorship
+Negative delta prevents price from rising
+Refreshing bids matter only after sellers stop trading
+WHY: Renewed buying can continue momentum.
+
+NODE 45
+TITLE: Momentum Failure
+CELEBRATION: Momentum Failure complete.
+
+[FOOTPRINT] Which footprint evidence best supports momentum failure?
+VISUAL: A footprint grid places bid volume left of price and ask volume right of price, showing one target row carrying the largest bid side execution advantage.
+EVENT: hit
+Momentum weakens when price stops responding
+Positive candle delta guarantees price acceptance
+A quiet row invalidates aggression elsewhere
+Absolute volume matters more than price response
+WHY: Momentum weakens when price stops responding.
+
+[FOOTPRINT_TAP] Tap the row with the greatest bid side execution advantage.
+VISUAL: A footprint grid places bid volume left of price and ask volume right of price, showing one target row carrying the largest bid side execution advantage.
+EVENT: hit
+TARGET: 3
+WHY: This row has the largest negative same price execution difference.
+
+[MC] Which statement best connects the evidence in this momentum failure replay?
+Momentum weakens when price stops responding
+A failed breakout is confirmed before price returns through the level
+More displayed depth necessarily means more actual liquidity
+A second test should be read the same way as the first
+WHY: Momentum weakens when price stops responding.
+
+[ORDER] Build the momentum failure read from evidence to conclusion.
+Seller pressure appears
+Bids get consumed
+Price reaches lower levels
+The chart confirms the move
+WHY: Read pressure, liquidity, price, then confirmation.
+
+NODE 46
+TITLE: Stacked Pressure
+CELEBRATION: Stacked Pressure complete.
+
+[FOOTPRINT] Which footprint evidence best supports stacked pressure?
+VISUAL: A footprint grid places bid volume left of price and ask volume right of price, showing one target row carrying the largest ask side execution advantage.
+EVENT: lift
+Pressure across several levels strengthens the move
+The brightest cell identifies the next candle direction
+A same row advantage and diagonal imbalance are identical
+Displayed depth can be inferred directly from executed volume
+WHY: Pressure across several levels strengthens the move.
+
+[FOOTPRINT_TAP] Tap the row where bid and ask execution is most balanced.
+VISUAL: A footprint grid places bid volume left of price and ask volume right of price, showing one target row with the smallest bid ask execution difference.
+EVENT: balanced_target
+TARGET: 6
+WHY: This row has the smallest difference between bid and ask volume.
+
+[MC] Which conclusion is best supported by the evidence in stacked pressure?
+Pressure across several levels strengthens the move
+Large executions are directional even when price does not respond
+A moving average reaction can substitute for execution evidence
+Balanced delta means neither side traded aggressively
+WHY: Pressure across several levels strengthens the move.
 
 NODE 47
 TITLE: Delta Thinking
 CELEBRATION: Delta Thinking complete.
 
 [FOOTPRINT] Which footprint evidence best supports delta thinking?
-VISUAL: A footprint grid places bid volume left of price and ask volume right of price, showing larger ask volume across several price rows.
+VISUAL: A footprint grid places bid volume left of price and ask volume right of price, showing one target row carrying the largest ask side execution advantage.
 EVENT: lift
 Net aggression compares buying with selling
-The largest row guarantees continuation
-Resting orders and executed volume are identical
-Candle color overrides the bid ask split
+Several ask heavy rows prove sellers withdrew
+High total volume must contain directional delta
+One footprint candle is enough to ignore location
 WHY: Net aggression compares buying with selling.
 
-[FOOTPRINT_TAP] In delta thinking, tap the price with the strongest execution imbalance.
-VISUAL: A footprint grid places bid volume left of price and ask volume right of price, showing larger ask volume across several price rows.
-EVENT: lift
+[FOOTPRINT_TAP] Tap the row with the largest total executed volume.
+VISUAL: A footprint grid places bid volume left of price and ask volume right of price, showing one target row with the largest combined executed volume.
+EVENT: total_target
 TARGET: 2
-WHY: The selected row has the widest execution difference between sides.
+WHY: This row has the highest combined bid and ask execution.
 
-[MC] Which conclusion goes too far when interpreting delta thinking?
-VISUAL: Candles expand in range as the surrounding volatility bands spread farther apart.
-CHART: bandsWidening
+[MC] Which explanation of delta thinking requires the fewest assumptions?
 Net aggression compares buying with selling
-The book should be read without the tape
-The tape should be read without location
-The first signal cannot be contradicted later
+Fast tape near resistance is stronger than failure to gain acceptance
+A liquidity sweep and breakout differ mainly by candle size
+Order flow evidence remains valid regardless of changing volatility
 WHY: Net aggression compares buying with selling.
 
 [ORDER] Build the delta thinking read from evidence to conclusion.
-VISUAL: Candles expand in range as the surrounding volatility bands spread farther apart.
-CHART: bandsWidening
 Buyer pressure appears
 Offers get consumed
 Price reaches higher levels
@@ -1625,7 +1603,7 @@ TITLE: Delta vs Volume
 CELEBRATION: Delta vs Volume complete.
 
 [FOOTPRINT] Price and executed volume disagree. Which explanation best fits?
-VISUAL: A footprint grid places bid volume left of price and ask volume right of price, showing larger ask volume across several price rows.
+VISUAL: A footprint grid places bid volume left of price and ask volume right of price, showing one target row carrying the largest ask side execution advantage.
 EVENT: lift
 Volume measures total trading while delta compares aggressive buying and selling
 Delta alone determines the next price
@@ -1633,20 +1611,20 @@ Total volume and delta measure the same thing
 The disagreement makes both readings useless
 WHY: Volume measures total trading while delta compares aggressive buying and selling.
 
-[MC] Which evidence matters most when reading delta vs volume?
+[MC] Which interpretation is best supported in this delta vs volume example?
 VISUAL: Alternating wide candles and long wicks show rapid movement with changing control.
 CHART: volatile
 Volume measures total trading while delta compares aggressive buying and selling
-The visible liquidity alone proves the outcome
-One aggressive burst matters more than price response
-The candle removes the need to inspect execution
+Displayed liquidity is stronger evidence than completed executions
+A short aggressive burst can outweigh a stalled price response
+The candle response makes tape confirmation optional
 WHY: Volume measures total trading while delta compares aggressive buying and selling.
 
-[FOOTPRINT_TAP] Tap the row contributing the strongest side imbalance.
-VISUAL: A footprint grid places bid volume left of price and ask volume right of price, showing larger ask volume across several price rows.
+[FOOTPRINT_TAP] Tap the row with the greatest ask side execution advantage.
+VISUAL: A footprint grid places bid volume left of price and ask volume right of price, showing one target row carrying the largest ask side execution advantage.
 EVENT: lift
-TARGET: 2
-WHY: The highlighted row contains the widest bid ask execution difference.
+TARGET: 5
+WHY: This row has the largest positive same price execution difference.
 
 [ORDER] Build the delta vs volume read from evidence to conclusion.
 VISUAL: Alternating wide candles and long wicks show rapid movement with changing control.
@@ -1662,7 +1640,7 @@ TITLE: Positive Delta While Price Falls
 CELEBRATION: Positive Delta While Price Falls complete.
 
 [FOOTPRINT] Price and executed volume disagree. Which explanation best fits?
-VISUAL: A footprint grid places bid volume left of price and ask volume right of price, showing larger ask volume across several price rows.
+VISUAL: A footprint grid places bid volume left of price and ask volume right of price, showing one target row carrying the largest ask side execution advantage.
 EVENT: lift
 Positive delta with falling price can reveal seller absorption or trapped buyers
 Delta alone determines the next price
@@ -1670,20 +1648,20 @@ Total volume and delta measure the same thing
 The disagreement makes both readings useless
 WHY: Positive delta with falling price can reveal seller absorption or trapped buyers.
 
-[MC] What would most weaken the current positive delta while price falls interpretation?
+[MC] Which conclusion is most reasonable for the current positive delta while price falls evidence?
 VISUAL: A large bearish candle covers the prior bullish body after an attempted rise.
 CHART: bearishEngulfing
 Positive delta with falling price can reveal seller absorption or trapped buyers
-The fastest prints always control the close
-Resting size cannot pull or replenish
-Any level breach establishes acceptance
+Tape speed matters more than the level where it occurs
+A replenishing order is probably new unrelated liquidity
+Brief trade beyond the level is enough to establish acceptance
 WHY: Positive delta with falling price can reveal seller absorption or trapped buyers.
 
-[FOOTPRINT_TAP] Tap the row contributing the strongest side imbalance.
-VISUAL: A footprint grid places bid volume left of price and ask volume right of price, showing larger ask volume across several price rows.
-EVENT: lift
-TARGET: 2
-WHY: The highlighted row contains the widest bid ask execution difference.
+[FOOTPRINT_TAP] Tap the row with the greatest bid side execution advantage.
+VISUAL: A footprint grid places bid volume left of price and ask volume right of price, showing one target row carrying the largest bid side execution advantage.
+EVENT: hit
+TARGET: 1
+WHY: This row has the largest negative same price execution difference.
 
 [ORDER] Build the positive delta while price falls read from evidence to conclusion.
 VISUAL: A large bearish candle covers the prior bullish body after an attempted rise.
@@ -1699,7 +1677,7 @@ TITLE: Negative Delta While Price Rises
 CELEBRATION: Negative Delta While Price Rises complete.
 
 [FOOTPRINT] Price and executed volume disagree. Which explanation best fits?
-VISUAL: A footprint grid places bid volume left of price and ask volume right of price, showing larger bid volume across several price rows.
+VISUAL: A footprint grid places bid volume left of price and ask volume right of price, showing one target row carrying the largest bid side execution advantage.
 EVENT: hit
 Negative delta with rising price can reveal buyer absorption or trapped sellers
 Delta alone determines the next price
@@ -1711,16 +1689,16 @@ WHY: Negative delta with rising price can reveal buyer absorption or trapped sel
 VISUAL: A large bullish candle covers the prior bearish body after an attempted decline.
 CHART: bullishEngulfing
 Negative delta with rising price can reveal buyer absorption or trapped sellers
-Delta and total volume provide identical information
-A large wall must reverse price
-Price response matters less than one large trade
+High total volume normally implies strongly directional delta
+A large wall deserves more weight than repeated fills against it
+One unusually large trade is more reliable than subsequent response
 WHY: Negative delta with rising price can reveal buyer absorption or trapped sellers.
 
-[FOOTPRINT_TAP] Tap the row contributing the strongest side imbalance.
-VISUAL: A footprint grid places bid volume left of price and ask volume right of price, showing larger bid volume across several price rows.
-EVENT: hit
-TARGET: 2
-WHY: The highlighted row contains the widest bid ask execution difference.
+[FOOTPRINT_TAP] Tap the row where bid and ask execution is most balanced.
+VISUAL: A footprint grid places bid volume left of price and ask volume right of price, showing one target row with the smallest bid ask execution difference.
+EVENT: balanced_target
+TARGET: 4
+WHY: This row has the smallest difference between bid and ask volume.
 
 [ORDER] Build the negative delta while price rises read from evidence to conclusion.
 VISUAL: A large bullish candle covers the prior bearish body after an attempted decline.
@@ -1736,32 +1714,28 @@ TITLE: Price and Pressure Divergence
 CELEBRATION: Price and Pressure Divergence complete.
 
 [FOOTPRINT] Which footprint evidence best supports price and pressure divergence?
-VISUAL: A footprint grid places bid volume left of price and ask volume right of price, showing larger bid volume across several price rows.
+VISUAL: A footprint grid places bid volume left of price and ask volume right of price, showing one target row carrying the largest bid side execution advantage.
 EVENT: hit
 Price and pressure disagreement warns of weakness
-The largest row guarantees continuation
-Resting orders and executed volume are identical
-Candle color overrides the bid ask split
+Several ask heavy rows prove sellers withdrew
+High total volume must contain directional delta
+One footprint candle is enough to ignore location
 WHY: Price and pressure disagreement warns of weakness.
 
-[FOOTPRINT_TAP] In price and pressure divergence, tap the price with the strongest execution imbalance.
-VISUAL: A footprint grid places bid volume left of price and ask volume right of price, showing larger bid volume across several price rows.
-EVENT: hit
-TARGET: 2
-WHY: The selected row has the widest execution difference between sides.
+[FOOTPRINT_TAP] Tap the row with the largest total executed volume.
+VISUAL: A footprint grid places bid volume left of price and ask volume right of price, showing one target row with the largest combined executed volume.
+EVENT: total_target
+TARGET: 0
+WHY: This row has the highest combined bid and ask execution.
 
-[MC] What should the learner notice first in this price and pressure divergence replay?
-VISUAL: A large bearish candle covers the prior bullish body after an attempted rise.
-CHART: bearishEngulfing
+[MC] Which statement best connects the evidence in this price and pressure divergence replay?
 Price and pressure disagreement warns of weakness
-The book should be read without the tape
-The tape should be read without location
-The first signal cannot be contradicted later
+The current book is more useful than the executions that changed it
+Location adds little once the tape accelerates
+The earliest signal should anchor the read even after conditions change
 WHY: Price and pressure disagreement warns of weakness.
 
 [ORDER] Build the price and pressure divergence read from evidence to conclusion.
-VISUAL: A large bearish candle covers the prior bullish body after an attempted rise.
-CHART: bearishEngulfing
 Seller pressure appears
 Bids get consumed
 Price reaches lower levels
@@ -1773,27 +1747,25 @@ TITLE: Imbalance Review
 CELEBRATION: Imbalance Review complete.
 
 [FOOTPRINT] Which footprint evidence best supports imbalance review?
-VISUAL: A footprint grid places bid volume left of price and ask volume right of price, showing larger ask volume across several price rows.
+VISUAL: A footprint grid places bid volume left of price and ask volume right of price, showing one target row carrying the largest ask side execution advantage.
 EVENT: lift
 Sustained imbalance matters more than one burst
-The largest row guarantees continuation
-Resting orders and executed volume are identical
-Candle color overrides the bid ask split
+The largest total row proves directional delta
+The bid ask split represents resting limit orders
+One same price difference confirms a stacked diagonal imbalance
 WHY: Sustained imbalance matters more than one burst.
 
-[FOOTPRINT_TAP] In imbalance review, tap the price with the strongest execution imbalance.
-VISUAL: A footprint grid places bid volume left of price and ask volume right of price, showing larger ask volume across several price rows.
+[FOOTPRINT_TAP] Tap the row with the greatest ask side execution advantage.
+VISUAL: A footprint grid places bid volume left of price and ask volume right of price, showing one target row carrying the largest ask side execution advantage.
 EVENT: lift
-TARGET: 2
-WHY: The selected row has the widest execution difference between sides.
+TARGET: 3
+WHY: This row has the largest positive same price execution difference.
 
-[MC] Which side failed to achieve the expected response during imbalance review?
-VISUAL: A faster moving average crosses above a slower average as candles begin rising.
-CHART: maCrossUp
+[MC] Which conclusion is best supported by the evidence in imbalance review?
 Sustained imbalance matters more than one burst
-The visible liquidity alone proves the outcome
-One aggressive burst matters more than price response
-The candle removes the need to inspect execution
+Positive delta is usually sufficient confirmation for higher prices
+A pull in liquidity is equivalent to aggressive execution
+Slower counter pressure automatically confirms continuation
 WHY: Sustained imbalance matters more than one burst.
 
 
@@ -1807,18 +1779,18 @@ CELEBRATION: Liquidity Pools complete.
 VISUAL: Candles rotate between clear upper and lower boundaries without sustained direction.
 CHART: range
 clustered orders
-resting size that never trades
-one isolated footprint row
-direction without follow through
+positive delta without progress
+a wick without tape evidence
+depth far from the active price
 WHY: Focus on clustered orders.
 
-[MC] Which conclusion goes too far when interpreting liquidity pools?
+[MC] Which explanation of liquidity pools requires the fewest assumptions?
 VISUAL: Candles rotate between clear upper and lower boundaries without sustained direction.
 CHART: range
 Liquidity often gathers near obvious levels
-The fastest prints always control the close
-Resting size cannot pull or replenish
-Any level breach establishes acceptance
+Repeated tests always make a liquidity level stronger
+A fast rejection proves the resting wall was genuine
+Stable displayed size means hidden liquidity cannot be present
 WHY: Liquidity often gathers near obvious levels.
 
 [MATCH] Connect the behaviors that matter for liquidity pools.
@@ -1837,35 +1809,35 @@ EVENT: hit
 ANSWER: The seller
 WHY: Buyers take offers. Sellers take bids.
 
-[MC] Which evidence matters most when reading resting stops?
+[MC] Which interpretation is best supported in this resting stops example?
 VISUAL: A decline reaches support and rebounds with buyers defending the lower area.
 CHART: supportBounce
-Stops often gather beyond support
-Delta and total volume provide identical information
-A large wall must reverse price
-Price response matters less than one large trade
-WHY: Stops often gather beyond support.
+Traders often infer that stops may cluster beyond obvious support resistance highs and lows
+Price progress can be ignored when aggression is persistent
+A narrow spread confirms directional control
+The largest footprint row determines the entire candle read
+WHY: Traders often infer that stops may cluster beyond obvious support resistance highs and lows.
 
 [FILL] The missing evidence in this resting stops read is [___].
 VISUAL: A decline reaches support and rebounds with buyers defending the lower area.
 CHART: supportBounce
-stops below support
+inferred stop clusters beyond obvious levels
 a single large print
 displayed depth without execution
 candle color without location
-WHY: Focus on stops below support.
+WHY: Focus on inferred stop clusters beyond obvious levels.
 
 NODE 55
 TITLE: Buy Stops
 CELEBRATION: Buy Stops complete.
 
-[MC] What would most weaken the current buy stops interpretation?
+[MC] Which conclusion is most reasonable for the current buy stops evidence?
 VISUAL: Price pushes through a visible resistance level with expanding bullish candles.
 CHART: breakout
 Buy stops can fuel an upside break
-The book should be read without the tape
-The tape should be read without location
-The first signal cannot be contradicted later
+Acceptance is present as soon as one trade prints beyond a level
+Passive absorption and fading aggression produce the same evidence
+A high volume candle reveals which side initiated every trade
 WHY: Buy stops can fuel an upside break.
 
 [BOOKDRAG] Route the order used in this buy stops example.
@@ -1883,7 +1855,7 @@ WHY: Match the signal with its order flow clue.
 [TAP_CANDLE] In buy stops, tap where price response becomes clearest.
 VISUAL: Price pushes through a visible resistance level with expanding bullish candles. The candles are tappable and the learner must select the requested candle.
 CHART: breakout
-TARGET: 4
+TARGET: 1
 WHY: The selected candle shows whether execution produced follow through.
 
 NODE 56
@@ -1894,9 +1866,9 @@ CELEBRATION: Sell Stops complete.
 VISUAL: Price drives below a visible support level with expanding bearish candles.
 CHART: breakdown
 Sell stops can fuel a downside break
-The visible liquidity alone proves the outcome
-One aggressive burst matters more than price response
-The candle removes the need to inspect execution
+Thin liquidity implies the move has strong aggressive sponsorship
+Negative delta prevents price from rising
+Refreshing bids matter only after sellers stop trading
 WHY: Sell stops can fuel a downside break.
 
 [TAP_CANDLE] In sell stops, tap where price response becomes clearest.
@@ -1930,13 +1902,13 @@ Iceberg => Displayed size repeatedly replenishes
 Acceptance => Price holds beyond the level
 WHY: Match the signal with its order flow clue.
 
-[MC] What should the learner notice first in this liquidity sweep replay?
+[MC] Which statement best connects the evidence in this liquidity sweep replay?
 VISUAL: Price briefly trades below a level and closes back above it, leaving a long lower wick.
 CHART: rejectionWickDown
 A sweep takes liquidity then returns
-The fastest prints always control the close
-Resting size cannot pull or replenish
-Any level breach establishes acceptance
+A failed breakout is confirmed before price returns through the level
+More displayed depth necessarily means more actual liquidity
+A second test should be read the same way as the first
 WHY: A sweep takes liquidity then returns.
 
 NODE 58
@@ -1946,7 +1918,7 @@ CELEBRATION: Upside Sweep complete.
 [TAP_CANDLE] In upside sweep, tap where price response becomes clearest.
 VISUAL: Price briefly trades above a level and closes back below it, leaving a long upper wick. The candles are tappable and the learner must select the requested candle.
 CHART: rejectionWickUp
-TARGET: 4
+TARGET: 0
 WHY: The selected candle shows whether execution produced follow through.
 
 [AGGRESSOR] During upside sweep, which side is crossing the spread?
@@ -1955,13 +1927,13 @@ EVENT: hit
 ANSWER: The seller
 WHY: Buyers take offers. Sellers take bids.
 
-[MC] Which side failed to achieve the expected response during upside sweep?
+[MC] Which conclusion is best supported by the evidence in upside sweep?
 VISUAL: Price briefly trades above a level and closes back below it, leaving a long upper wick.
 CHART: rejectionWickUp
 An upside sweep can trap late buyers
-Delta and total volume provide identical information
-A large wall must reverse price
-Price response matters less than one large trade
+Large executions are directional even when price does not respond
+A moving average reaction can substitute for execution evidence
+Balanced delta means neither side traded aggressively
 WHY: An upside sweep can trap late buyers.
 
 [ORDER] Build the upside sweep read from evidence to conclusion.
@@ -1981,18 +1953,18 @@ CELEBRATION: Downside Sweep complete.
 VISUAL: A candle with a small upper body and long lower wick shows rejection of lower prices.
 CHART: hammer
 failed push below
-resting size that never trades
-one isolated footprint row
-direction without follow through
+positive delta without progress
+a wick without tape evidence
+depth far from the active price
 WHY: Focus on failed push below.
 
-[MC] Which conclusion goes too far when interpreting downside sweep?
+[MC] Which explanation of downside sweep requires the fewest assumptions?
 VISUAL: A candle with a small upper body and long lower wick shows rejection of lower prices.
 CHART: hammer
 A downside sweep can trap late sellers
-The book should be read without the tape
-The tape should be read without location
-The first signal cannot be contradicted later
+Fast tape near resistance is stronger than failure to gain acceptance
+A liquidity sweep and breakout differ mainly by candle size
+Order flow evidence remains valid regardless of changing volatility
 WHY: A downside sweep can trap late sellers.
 
 [MATCH] Connect the behaviors that matter for downside sweep.
@@ -2011,13 +1983,13 @@ EVENT: lift
 ANSWER: The buyer
 WHY: Buyers take offers. Sellers take bids.
 
-[MC] Which evidence matters most when reading sweep or breakout?
+[MC] Which interpretation is best supported in this sweep or breakout example?
 VISUAL: Price breaks resistance, returns to test it from above, then attempts to continue higher.
 CHART: breakoutRetest
 Acceptance beyond a level supports a breakout
-The visible liquidity alone proves the outcome
-One aggressive burst matters more than price response
-The candle removes the need to inspect execution
+Displayed liquidity is stronger evidence than completed executions
+A short aggressive burst can outweigh a stalled price response
+The candle response makes tape confirmation optional
 WHY: Acceptance beyond a level supports a breakout.
 
 [MC] Which comparison best separates these two ideas?
@@ -2033,20 +2005,20 @@ TITLE: Liquidity Sweep Rejection Simulation
 CELEBRATION: Liquidity Sweep Rejection Simulation complete.
 
 [ORDERFLOW_SIM] Price trades beyond the level and immediately returns. What is strongest?
-VISUAL: A boss simulation updates four evidence panels together: price above VWAP stalling at resistance, a refreshing offer in Level II, fast buyer initiated Time and Sales prints, and positive footprint delta with little price progress.
+VISUAL: Price briefly trades above resistance as offers disappear and buy prints surge, then sell liquidity rebuilds and price immediately returns below the level.
 Liquidity was taken but acceptance failed
 The fastest evidence guarantees the next move
 Displayed size alone determines the outcome
 The candle should be read without execution context
 WHY: A sweep takes liquidity but fails to gain acceptance.
 
-[MC] What would most weaken the current liquidity sweep rejection simulation interpretation?
+[MC] Which conclusion is most reasonable for the current liquidity sweep rejection simulation evidence?
 VISUAL: Price briefly trades above a level and closes back below it, leaving a long upper wick.
 CHART: rejectionWickUp
 A sweep takes liquidity but fails to gain acceptance
-The fastest prints always control the close
-Resting size cannot pull or replenish
-Any level breach establishes acceptance
+Tape speed matters more than the level where it occurs
+A replenishing order is probably new unrelated liquidity
+Brief trade beyond the level is enough to establish acceptance
 WHY: A sweep takes liquidity but fails to gain acceptance.
 
 [ORDER] Build the liquidity sweep rejection simulation read from evidence to conclusion.
@@ -2066,15 +2038,15 @@ CELEBRATION: Thin Liquidity complete.
 VISUAL: Price opens well above the prior trading area with little activity between the two zones.
 CHART: gapUp
 Thin liquidity lets price travel quickly
-Delta and total volume provide identical information
-A large wall must reverse price
-Price response matters less than one large trade
+High total volume normally implies strongly directional delta
+A large wall deserves more weight than repeated fills against it
+One unusually large trade is more reliable than subsequent response
 WHY: Thin liquidity lets price travel quickly.
 
 [TAP_CANDLE] In thin liquidity, tap where price response becomes clearest.
 VISUAL: Price opens well above the prior trading area with little activity between the two zones. The candles are tappable and the learner must select the requested candle.
 CHART: gapUp
-TARGET: 4
+TARGET: 2
 WHY: The selected candle shows whether execution produced follow through.
 
 [FILL] The missing evidence in this thin liquidity read is [___].
@@ -2102,13 +2074,13 @@ Fast tape without progress => Urgency without confirmation
 Sweep => Liquidity taken followed by rejection
 WHY: Match the signal with its order flow clue.
 
-[MC] What should the learner notice first in this thick book vs thin book replay?
+[MC] Which statement best connects the evidence in this thick book vs thin book replay?
 VISUAL: Alternating wide candles and long wicks show rapid movement with changing control.
 CHART: volatile
 Book depth changes how easily price can travel
-The book should be read without the tape
-The tape should be read without location
-The first signal cannot be contradicted later
+The current book is more useful than the executions that changed it
+Location adds little once the tape accelerates
+The earliest signal should anchor the read even after conditions change
 WHY: Book depth changes how easily price can travel.
 
 NODE 64
@@ -2116,7 +2088,7 @@ TITLE: Iceberg Orders
 CELEBRATION: Iceberg Orders complete.
 
 [TIME_SALES] Large buy prints keep trading at one price but the offer refreshes. What best explains it?
-VISUAL: An animated Time and Sales table lists time, execution price, and trade size, with buyer initiated prints highlighted at the ask.
+VISUAL: An animated Time and Sales table lists time, execution price, and trade size, with buyer initiated prints dominating at the ask.
 EVENT: lift
 A possible sell iceberg is replenishing hidden size
 Buyers have already secured a breakout
@@ -2130,20 +2102,20 @@ EVENT: hit
 ANSWER: The seller
 WHY: Buyers take offers. Sellers take bids.
 
-[MC] Which side failed to achieve the expected response during iceberg orders?
+[MC] Which conclusion is best supported by the evidence in iceberg orders?
 VISUAL: Small mixed candles overlap inside a narrow horizontal trading area.
 CHART: sideways
 An iceberg can replenish displayed size while absorbing repeated trades
-The visible liquidity alone proves the outcome
-One aggressive burst matters more than price response
-The candle removes the need to inspect execution
+Positive delta is usually sufficient confirmation for higher prices
+A pull in liquidity is equivalent to aggressive execution
+Slower counter pressure automatically confirms continuation
 WHY: An iceberg can replenish displayed size while absorbing repeated trades.
 
-[TIME_SALES_TAP] Tap the largest trade absorbed at the refreshing price.
-VISUAL: An animated Time and Sales table lists time, execution price, and trade size, with seller initiated prints highlighted at the bid.
+[TIME_SALES_TAP] In iceberg orders, tap the most informative print.
+VISUAL: An animated Time and Sales table lists time, execution price, and trade size, with one unusually large execution among ordinary prints.
 EVENT: large_print
-TARGET: 6
-WHY: Large executions can trade without progress when hidden size replenishes.
+TARGET: 1
+WHY: The selected execution carries the key tape evidence.
 
 NODE 65
 TITLE: Liquidity Review
@@ -2153,18 +2125,18 @@ CELEBRATION: Liquidity Review complete.
 VISUAL: Alternating wide candles and long wicks show rapid movement with changing control.
 CHART: volatile
 location and response
-resting size that never trades
-one isolated footprint row
-direction without follow through
+positive delta without progress
+a wick without tape evidence
+depth far from the active price
 WHY: Focus on location and response.
 
-[MC] Which conclusion goes too far when interpreting liquidity review?
+[MC] Which explanation of liquidity review requires the fewest assumptions?
 VISUAL: Alternating wide candles and long wicks show rapid movement with changing control.
 CHART: volatile
 Judge liquidity events by location and response
-The fastest prints always control the close
-Resting size cannot pull or replenish
-Any level breach establishes acceptance
+Repeated tests always make a liquidity level stronger
+A fast rejection proves the resting wall was genuine
+Stable displayed size means hidden liquidity cannot be present
 WHY: Judge liquidity events by location and response.
 
 [MATCH] Connect the behaviors that matter for liquidity review.
@@ -2183,13 +2155,13 @@ EVENT: hit
 ANSWER: The seller
 WHY: Buyers take offers. Sellers take bids.
 
-[MC] Which evidence matters most when reading flow and liquidity mixed review?
+[MC] Which interpretation is best supported in this flow and liquidity mixed review example?
 VISUAL: Price breaks resistance, returns to test it from above, then attempts to continue higher.
 CHART: breakoutRetest
 Combine pressure with liquidity and price response
-Delta and total volume provide identical information
-A large wall must reverse price
-Price response matters less than one large trade
+Price progress can be ignored when aggression is persistent
+A narrow spread confirms directional control
+The largest footprint row determines the entire candle read
 WHY: Combine pressure with liquidity and price response.
 
 [FILL] The missing evidence in this flow and liquidity mixed review read is [___].
@@ -2208,14 +2180,14 @@ NODE 67
 TITLE: Breakout Pressure
 CELEBRATION: Breakout Pressure complete.
 
-[MC] What would most weaken the current breakout pressure interpretation?
+[MC] Which conclusion is most reasonable for the current breakout pressure evidence?
 VISUAL: Price pushes through a visible resistance level with expanding bullish candles.
 CHART: breakout
-A breakout needs offers to be consumed
-The book should be read without the tape
-The tape should be read without location
-The first signal cannot be contradicted later
-WHY: A breakout needs offers to be consumed.
+An upside breakout can develop as buyers consume offers sellers withdraw liquidity or both
+Acceptance is present as soon as one trade prints beyond a level
+Passive absorption and fading aggression produce the same evidence
+A high volume candle reveals which side initiated every trade
+WHY: An upside breakout can develop as buyers consume offers sellers withdraw liquidity or both.
 
 [BOOKDRAG] Route the order used in this breakout pressure example.
 VISUAL: A draggable market buy card sits beside a Level II ladder with bid and ask drop targets.
@@ -2224,7 +2196,7 @@ ANSWER: the ask
 WHY: Market buys take asks. Market sells take bids.
 
 [MATCH] Connect the behaviors that matter for breakout pressure.
-Breakout Pressure => Offers cleared
+Breakout Pressure => Offers consumed withdrawn or thin
 Fast tape without progress => Urgency without confirmation
 Sweep => Liquidity taken followed by rejection
 WHY: Match the signal with its order flow clue.
@@ -2232,7 +2204,7 @@ WHY: Match the signal with its order flow clue.
 [TAP_CANDLE] In breakout pressure, tap where price response becomes clearest.
 VISUAL: Price pushes through a visible resistance level with expanding bullish candles. The candles are tappable and the learner must select the requested candle.
 CHART: breakout
-TARGET: 4
+TARGET: 2
 WHY: The selected candle shows whether execution produced follow through.
 
 NODE 68
@@ -2242,26 +2214,26 @@ CELEBRATION: Breakdown Pressure complete.
 [MC] Which conclusion about breakdown pressure is best supported?
 VISUAL: Price drives below a visible support level with expanding bearish candles.
 CHART: breakdown
-A breakdown needs bids to be consumed
-The visible liquidity alone proves the outcome
-One aggressive burst matters more than price response
-The candle removes the need to inspect execution
-WHY: A breakdown needs bids to be consumed.
+A downside break can develop as sellers consume bids buyers withdraw liquidity or both
+Thin liquidity implies the move has strong aggressive sponsorship
+Negative delta prevents price from rising
+Refreshing bids matter only after sellers stop trading
+WHY: A downside break can develop as sellers consume bids buyers withdraw liquidity or both.
 
 [TAP_CANDLE] In breakdown pressure, tap where price response becomes clearest.
 VISUAL: Price drives below a visible support level with expanding bearish candles. The candles are tappable and the learner must select the requested candle.
 CHART: breakdown
-TARGET: 4
+TARGET: 0
 WHY: The selected candle shows whether execution produced follow through.
 
 [FILL] The missing evidence in this breakdown pressure read is [___].
 VISUAL: Price drives below a visible support level with expanding bearish candles.
 CHART: breakdown
-bids cleared
+bids consumed withdrawn or thin
 resting size that never trades
 one isolated footprint row
 direction without follow through
-WHY: Focus on bids cleared.
+WHY: Focus on bids consumed withdrawn or thin.
 
 NODE 69
 TITLE: Acceptance Above
@@ -2287,13 +2259,13 @@ Iceberg => Displayed size repeatedly replenishes
 Acceptance => Price holds beyond the level
 WHY: Match the signal with its order flow clue.
 
-[MC] What should the learner notice first in this acceptance above replay?
+[MC] Which statement best connects the evidence in this acceptance above replay?
 VISUAL: Price breaks resistance, returns to test it from above, then attempts to continue higher.
 CHART: breakoutRetest
 Holding above a level shows acceptance
-The fastest prints always control the close
-Resting size cannot pull or replenish
-Any level breach establishes acceptance
+A failed breakout is confirmed before price returns through the level
+More displayed depth necessarily means more actual liquidity
+A second test should be read the same way as the first
 WHY: Holding above a level shows acceptance.
 
 NODE 70
@@ -2303,7 +2275,7 @@ CELEBRATION: Acceptance Below complete.
 [TAP_CANDLE] In acceptance below, tap where price response becomes clearest.
 VISUAL: Price breaks support, returns to test it from below, then reacts lower. The candles are tappable and the learner must select the requested candle.
 CHART: breakdownRetest
-TARGET: 4
+TARGET: 1
 WHY: The selected candle shows whether execution produced follow through.
 
 [AGGRESSOR] During acceptance below, which side is crossing the spread?
@@ -2312,13 +2284,13 @@ EVENT: hit
 ANSWER: The seller
 WHY: Buyers take offers. Sellers take bids.
 
-[MC] Which side failed to achieve the expected response during acceptance below?
+[MC] Which conclusion is best supported by the evidence in acceptance below?
 VISUAL: Price breaks support, returns to test it from below, then reacts lower.
 CHART: breakdownRetest
 Holding below a level shows acceptance
-Delta and total volume provide identical information
-A large wall must reverse price
-Price response matters less than one large trade
+Large executions are directional even when price does not respond
+A moving average reaction can substitute for execution evidence
+Balanced delta means neither side traded aggressively
 WHY: Holding below a level shows acceptance.
 
 [ORDER] Build the acceptance below read from evidence to conclusion.
@@ -2335,20 +2307,20 @@ TITLE: Breakout Acceptance Simulation
 CELEBRATION: Breakout Acceptance Simulation complete.
 
 [ORDERFLOW_SIM] Offers are consumed and price holds beyond resistance. What is strongest?
-VISUAL: A boss simulation updates four evidence panels together: price above VWAP stalling at resistance, a refreshing offer in Level II, fast buyer initiated Time and Sales prints, and positive footprint delta with little price progress.
+VISUAL: Price approaches resistance, offers thin and are consumed, buyer initiated prints persist, stacked ask side execution appears, and price holds above the broken level.
 Aggression is receiving confirming price acceptance
 The fastest evidence guarantees the next move
 Displayed size alone determines the outcome
 The candle should be read without execution context
 WHY: A real breakout combines pressure with sustained trade beyond the level.
 
-[MC] Which conclusion goes too far when interpreting breakout acceptance simulation?
+[MC] Which explanation of breakout acceptance simulation requires the fewest assumptions?
 VISUAL: Price breaks resistance, returns to test it from above, then attempts to continue higher.
 CHART: breakoutRetest
 A real breakout combines pressure with sustained trade beyond the level
-The book should be read without the tape
-The tape should be read without location
-The first signal cannot be contradicted later
+Fast tape near resistance is stronger than failure to gain acceptance
+A liquidity sweep and breakout differ mainly by candle size
+Order flow evidence remains valid regardless of changing volatility
 WHY: A real breakout combines pressure with sustained trade beyond the level.
 
 [ORDER] Build the breakout acceptance simulation read from evidence to conclusion.
@@ -2378,13 +2350,13 @@ Upward price response is developing
 Price is not gaining directional acceptance
 WHY: Price response confirms or contradicts the execution evidence shown elsewhere in the lesson.
 
-[MC] Which evidence matters most when reading failed breakout?
+[MC] Which interpretation is best supported in this failed breakout example?
 VISUAL: An advance reaches resistance and turns lower with visible upper wick rejection.
 CHART: resistanceRejection
 A quick return below resistance signals failure
-The visible liquidity alone proves the outcome
-One aggressive burst matters more than price response
-The candle removes the need to inspect execution
+Displayed liquidity is stronger evidence than completed executions
+A short aggressive burst can outweigh a stalled price response
+The candle response makes tape confirmation optional
 WHY: A quick return below resistance signals failure.
 
 [FILL] The missing evidence in this failed breakout read is [___].
@@ -2400,13 +2372,13 @@ NODE 73
 TITLE: Failed Breakdown
 CELEBRATION: Failed Breakdown complete.
 
-[MC] What would most weaken the current failed breakdown interpretation?
+[MC] Which conclusion is most reasonable for the current failed breakdown evidence?
 VISUAL: A decline reaches support and rebounds with buyers defending the lower area.
 CHART: supportBounce
 A quick return above support signals failure
-The fastest prints always control the close
-Resting size cannot pull or replenish
-Any level breach establishes acceptance
+Tape speed matters more than the level where it occurs
+A replenishing order is probably new unrelated liquidity
+Brief trade beyond the level is enough to establish acceptance
 WHY: A quick return above support signals failure.
 
 [BOOKDRAG] Route the order used in this failed breakdown example.
@@ -2424,7 +2396,7 @@ WHY: Match the signal with its order flow clue.
 [TAP_CANDLE] In failed breakdown, tap where price response becomes clearest.
 VISUAL: A decline reaches support and rebounds with buyers defending the lower area. The candles are tappable and the learner must select the requested candle.
 CHART: supportBounce
-TARGET: 4
+TARGET: 0
 WHY: The selected candle shows whether execution produced follow through.
 
 NODE 74
@@ -2435,15 +2407,15 @@ CELEBRATION: Breakout Retest complete.
 VISUAL: Price breaks resistance, returns to test it from above, then attempts to continue higher.
 CHART: breakoutRetest
 A defended retest can confirm a breakout
-Delta and total volume provide identical information
-A large wall must reverse price
-Price response matters less than one large trade
+High total volume normally implies strongly directional delta
+A large wall deserves more weight than repeated fills against it
+One unusually large trade is more reliable than subsequent response
 WHY: A defended retest can confirm a breakout.
 
 [TAP_CANDLE] In breakout retest, tap where price response becomes clearest.
 VISUAL: Price breaks resistance, returns to test it from above, then attempts to continue higher. The candles are tappable and the learner must select the requested candle.
 CHART: breakoutRetest
-TARGET: 4
+TARGET: 3
 WHY: The selected candle shows whether execution produced follow through.
 
 [FILL] The missing evidence in this breakout retest read is [___].
@@ -2479,13 +2451,13 @@ Fast tape without progress => Urgency without confirmation
 Sweep => Liquidity taken followed by rejection
 WHY: Match the signal with its order flow clue.
 
-[MC] What should the learner notice first in this breakdown retest replay?
+[MC] Which statement best connects the evidence in this breakdown retest replay?
 VISUAL: Price breaks support, returns to test it from below, then reacts lower.
 CHART: breakdownRetest
 A rejected retest can confirm a breakdown
-The book should be read without the tape
-The tape should be read without location
-The first signal cannot be contradicted later
+The current book is more useful than the executions that changed it
+Location adds little once the tape accelerates
+The earliest signal should anchor the read even after conditions change
 WHY: A rejected retest can confirm a breakdown.
 
 NODE 76
@@ -2504,13 +2476,13 @@ EVENT: hit
 ANSWER: The seller
 WHY: Buyers take offers. Sellers take bids.
 
-[MC] Which side failed to achieve the expected response during chasing breakouts?
+[MC] Which conclusion is best supported by the evidence in chasing breakouts?
 VISUAL: Price opens well above the prior trading area with little activity between the two zones.
 CHART: gapUp
 Late entries carry worse risk and reward
-The visible liquidity alone proves the outcome
-One aggressive burst matters more than price response
-The candle removes the need to inspect execution
+Positive delta is usually sufficient confirmation for higher prices
+A pull in liquidity is equivalent to aggressive execution
+Slower counter pressure automatically confirms continuation
 WHY: Late entries carry worse risk and reward.
 
 [ORDER] Build the chasing breakouts read from evidence to conclusion.
@@ -2530,18 +2502,18 @@ CELEBRATION: Breakout Review complete.
 VISUAL: Higher lows press into a flat resistance level before price tests the upper boundary.
 CHART: ascendingTriangle
 pressure and acceptance
-resting size that never trades
-one isolated footprint row
-direction without follow through
+positive delta without progress
+a wick without tape evidence
+depth far from the active price
 WHY: Focus on pressure and acceptance.
 
-[MC] Which conclusion goes too far when interpreting breakout review?
+[MC] Which explanation of breakout review requires the fewest assumptions?
 VISUAL: Higher lows press into a flat resistance level before price tests the upper boundary.
 CHART: ascendingTriangle
 Combine pressure, level break, and acceptance
-The fastest prints always control the close
-Resting size cannot pull or replenish
-Any level breach establishes acceptance
+Repeated tests always make a liquidity level stronger
+A fast rejection proves the resting wall was genuine
+Stable displayed size means hidden liquidity cannot be present
 WHY: Combine pressure, level break, and acceptance.
 
 [MATCH] Connect the behaviors that matter for breakout review.
@@ -2575,7 +2547,7 @@ The chart invalidates all tape data
 WHY: Aggressive buying without progress can reveal seller absorption.
 
 [TIME_SALES] Buying prints remain active but price response stalls. Which warning is present?
-VISUAL: An animated Time and Sales table lists time, execution price, and trade size, with seller initiated prints highlighted at the bid.
+VISUAL: An animated Time and Sales table lists time, execution price, and trade size, with pace and trade size fading after the target row.
 EVENT: stall
 Aggression is not producing follow through
 The breakout is guaranteed after a delay
@@ -2598,13 +2570,13 @@ NODE 79
 TITLE: Healthy Pullbacks
 CELEBRATION: Healthy Pullbacks complete.
 
-[MC] What would most weaken the current healthy pullbacks interpretation?
+[MC] Which conclusion is most reasonable for the current healthy pullbacks evidence?
 VISUAL: An established rise pauses with smaller bearish candles before testing trend continuation.
 CHART: pullbackUptrend
 A healthy pullback shows weaker counter pressure
-The book should be read without the tape
-The tape should be read without location
-The first signal cannot be contradicted later
+Acceptance is present as soon as one trade prints beyond a level
+Passive absorption and fading aggression produce the same evidence
+A high volume candle reveals which side initiated every trade
 WHY: A healthy pullback shows weaker counter pressure.
 
 [BOOKDRAG] Route the order used in this healthy pullbacks example.
@@ -2622,7 +2594,7 @@ WHY: Match the signal with its order flow clue.
 [TRENDLINE] Mark the structure that provides location for the order flow read.
 VISUAL: An established rise pauses with smaller bearish candles before testing trend continuation. The learner draws directly between two candles to mark the structure.
 CHART: pullbackUptrend
-TARGET: 0 => 4
+TARGET: 2 => 4
 WHY: Structure supplies location. Execution evidence supplies the read.
 
 NODE 80
@@ -2633,15 +2605,15 @@ CELEBRATION: Pullback Depth complete.
 VISUAL: Candles climb between two rising parallel boundaries with pullbacks holding the lower boundary.
 CHART: ascendingChannel
 Shallow defended pullbacks show trend strength
-The visible liquidity alone proves the outcome
-One aggressive burst matters more than price response
-The candle removes the need to inspect execution
+Thin liquidity implies the move has strong aggressive sponsorship
+Negative delta prevents price from rising
+Refreshing bids matter only after sellers stop trading
 WHY: Shallow defended pullbacks show trend strength.
 
 [TRENDLINE] Mark the structure that provides location for the order flow read.
 VISUAL: Candles climb between two rising parallel boundaries with pullbacks holding the lower boundary. The learner draws directly between two candles to mark the structure.
 CHART: ascendingChannel
-TARGET: 0 => 4
+TARGET: 0 => 3
 WHY: Structure supplies location. Execution evidence supplies the read.
 
 [FILL] The missing evidence in this pullback depth read is [___].
@@ -2677,13 +2649,13 @@ Iceberg => Displayed size repeatedly replenishes
 Acceptance => Price holds beyond the level
 WHY: Match the signal with its order flow clue.
 
-[MC] What should the learner notice first in this seller pullback replay?
+[MC] Which statement best connects the evidence in this seller pullback replay?
 VISUAL: Each rebound ends below the previous high while price continues making lower lows.
 CHART: lowerHighsDowntrend
 A bearish pullback shows weaker buying
-The fastest prints always control the close
-Resting size cannot pull or replenish
-Any level breach establishes acceptance
+A failed breakout is confirmed before price returns through the level
+More displayed depth necessarily means more actual liquidity
+A second test should be read the same way as the first
 WHY: A bearish pullback shows weaker buying.
 
 NODE 82
@@ -2702,13 +2674,13 @@ EVENT: lift
 ANSWER: The buyer
 WHY: Buyers take offers. Sellers take bids.
 
-[MC] Which side failed to achieve the expected response during continuation trigger?
+[MC] Which conclusion is best supported by the evidence in continuation trigger?
 VISUAL: A sharp advance pauses in a compact downward sloping channel before buyers test control again.
 CHART: bullFlag
 Continuation begins when trend pressure returns
-Delta and total volume provide identical information
-A large wall must reverse price
-Price response matters less than one large trade
+Large executions are directional even when price does not respond
+A moving average reaction can substitute for execution evidence
+Balanced delta means neither side traded aggressively
 WHY: Continuation begins when trend pressure returns.
 
 [ORDER] Build the continuation trigger read from evidence to conclusion.
@@ -2728,18 +2700,18 @@ CELEBRATION: Bearish Continuation complete.
 VISUAL: A sharp decline pauses in a small upward sloping channel before sellers test control again.
 CHART: bearFlag
 sellers return
-resting size that never trades
-one isolated footprint row
-direction without follow through
+positive delta without progress
+a wick without tape evidence
+depth far from the active price
 WHY: Focus on sellers return.
 
-[MC] Which conclusion goes too far when interpreting bearish continuation?
+[MC] Which explanation of bearish continuation requires the fewest assumptions?
 VISUAL: A sharp decline pauses in a small upward sloping channel before sellers test control again.
 CHART: bearFlag
 Bearish continuation begins when sellers return
-The book should be read without the tape
-The tape should be read without location
-The first signal cannot be contradicted later
+Fast tape near resistance is stronger than failure to gain acceptance
+A liquidity sweep and breakout differ mainly by candle size
+Order flow evidence remains valid regardless of changing volatility
 WHY: Bearish continuation begins when sellers return.
 
 [MATCH] Connect the behaviors that matter for bearish continuation.
@@ -2766,13 +2738,13 @@ Downward price response is developing
 Price is not gaining directional acceptance
 WHY: Price response confirms or contradicts the execution evidence shown elsewhere in the lesson.
 
-[MC] Which evidence matters most when reading order flow at vwap?
+[MC] Which interpretation is best supported in this order flow at vwap example?
 VISUAL: Candles trade above the VWAP line while pullbacks test it as potential support.
 CHART: priceAboveVWAP
 VWAP provides location while order flow determines the response
-The visible liquidity alone proves the outcome
-One aggressive burst matters more than price response
-The candle removes the need to inspect execution
+Displayed liquidity is stronger evidence than completed executions
+A short aggressive burst can outweigh a stalled price response
+The candle response makes tape confirmation optional
 WHY: VWAP provides location while order flow determines the response.
 
 [FILL] The missing evidence in this order flow at vwap read is [___].
@@ -2788,13 +2760,13 @@ NODE 85
 TITLE: Order Flow at a Moving Average
 CELEBRATION: Order Flow at a Moving Average complete.
 
-[MC] What would most weaken the current order flow at a moving average interpretation?
+[MC] Which conclusion is most reasonable for the current order flow at a moving average evidence?
 VISUAL: Candles hold above a rising moving average and react near it during pullbacks.
 CHART: priceAboveMA
 The average provides location but execution evidence determines the read
-The fastest prints always control the close
-Resting size cannot pull or replenish
-Any level breach establishes acceptance
+Tape speed matters more than the level where it occurs
+A replenishing order is probably new unrelated liquidity
+Brief trade beyond the level is enough to establish acceptance
 WHY: The average provides location but execution evidence determines the read.
 
 [BOOKDRAG] Route the order used in this order flow at a moving average example.
@@ -2812,7 +2784,7 @@ WHY: Match the signal with its order flow clue.
 [TAP_CANDLE] In order flow at a moving average, tap where price response becomes clearest.
 VISUAL: Candles hold above a rising moving average and react near it during pullbacks. The candles are tappable and the learner must select the requested candle.
 CHART: priceAboveMA
-TARGET: 4
+TARGET: 1
 WHY: The selected candle shows whether execution produced follow through.
 
 NODE 86
@@ -2823,9 +2795,9 @@ CELEBRATION: Pullback Failure complete.
 VISUAL: A large bearish candle covers the prior bullish body after an attempted rise.
 CHART: bearishEngulfing
 Strong counter pressure can end continuation
-Delta and total volume provide identical information
-A large wall must reverse price
-Price response matters less than one large trade
+High total volume normally implies strongly directional delta
+A large wall deserves more weight than repeated fills against it
+One unusually large trade is more reliable than subsequent response
 WHY: Strong counter pressure can end continuation.
 
 [TAP_CANDLE] In pullback failure, tap where price response becomes clearest.
@@ -2848,7 +2820,7 @@ TITLE: Conflicting Order Flow Signals
 CELEBRATION: Conflicting Order Flow Signals complete.
 
 [TIME_SALES] How does the tape qualify the price chart?
-VISUAL: An animated Time and Sales table lists time, execution price, and trade size, with seller initiated prints highlighted at the bid.
+VISUAL: An animated Time and Sales table lists time, execution price, and trade size, with pace and trade size fading after the target row.
 EVENT: stall
 Conflicting signals call for patience and a weaker conclusion
 Tape speed guarantees directional acceptance
@@ -2865,19 +2837,19 @@ High activity always creates a trend
 Low activity means price cannot move
 WHY: Conflicting signals call for patience and a weaker conclusion.
 
-[MC] What should the learner notice first in this conflicting order flow signals replay?
+[MC] Which statement best connects the evidence in this conflicting order flow signals replay?
 VISUAL: A small candle body with upper and lower wicks shows two sided movement and little progress.
 CHART: spinningTop
 Conflicting signals call for patience and a weaker conclusion
-The book should be read without the tape
-The tape should be read without location
-The first signal cannot be contradicted later
+The current book is more useful than the executions that changed it
+Location adds little once the tape accelerates
+The earliest signal should anchor the read even after conditions change
 WHY: Conflicting signals call for patience and a weaker conclusion.
 
 [TAP_CANDLE] In conflicting order flow signals, tap where price response becomes clearest.
 VISUAL: A small candle body with upper and lower wicks shows two sided movement and little progress. The candles are tappable and the learner must select the requested candle.
 CHART: spinningTop
-TARGET: 4
+TARGET: 2
 WHY: The selected candle shows whether execution produced follow through.
 
 [ORDER] Build the conflicting order flow signals read from evidence to conclusion.
@@ -2894,7 +2866,7 @@ TITLE: High Volume Chop
 CELEBRATION: High Volume Chop complete.
 
 [TIME_SALES] How does the tape qualify the price chart?
-VISUAL: An animated Time and Sales table lists time, execution price, and trade size, with seller initiated prints highlighted at the bid.
+VISUAL: An animated Time and Sales table lists time, execution price, and trade size, with pace and trade size fading after the target row.
 EVENT: stall
 High volume without directional progress can show two sided absorption
 Tape speed guarantees directional acceptance
@@ -2911,19 +2883,19 @@ High activity always creates a trend
 Low activity means price cannot move
 WHY: High volume without directional progress can show two sided absorption.
 
-[MC] Which side failed to achieve the expected response during high volume chop?
+[MC] Which conclusion is best supported by the evidence in high volume chop?
 VISUAL: Candles rotate between clear upper and lower boundaries without sustained direction.
 CHART: range
 High volume without directional progress can show two sided absorption
-The visible liquidity alone proves the outcome
-One aggressive burst matters more than price response
-The candle removes the need to inspect execution
+Positive delta is usually sufficient confirmation for higher prices
+A pull in liquidity is equivalent to aggressive execution
+Slower counter pressure automatically confirms continuation
 WHY: High volume without directional progress can show two sided absorption.
 
 [TAP_CANDLE] In high volume chop, tap where price response becomes clearest.
 VISUAL: Candles rotate between clear upper and lower boundaries without sustained direction. The candles are tappable and the learner must select the requested candle.
 CHART: range
-TARGET: 4
+TARGET: 0
 WHY: The selected candle shows whether execution produced follow through.
 
 [ORDER] Build the high volume chop read from evidence to conclusion.
@@ -2940,7 +2912,7 @@ TITLE: Low Volume Trend
 CELEBRATION: Low Volume Trend complete.
 
 [TIME_SALES] How does the tape qualify the price chart?
-VISUAL: An animated Time and Sales table lists time, execution price, and trade size, with seller initiated prints highlighted at the bid.
+VISUAL: An animated Time and Sales table lists time, execution price, and trade size, with pace and trade size fading after the target row.
 EVENT: stall
 A trend can travel on low volume when little liquidity opposes it
 Tape speed guarantees directional acceptance
@@ -2949,7 +2921,7 @@ One large print resolves every conflict
 WHY: A trend can travel on low volume when little liquidity opposes it.
 
 [FOOTPRINT] Which interpretation uses both activity and price response?
-VISUAL: A footprint grid places bid volume left of price and ask volume right of price, showing larger ask volume across several price rows.
+VISUAL: A footprint grid places bid volume left of price and ask volume right of price, showing one target row carrying the largest ask side execution advantage.
 EVENT: lift
 A trend can travel on low volume when little liquidity opposes it
 The largest number on the footprint decides direction
@@ -2957,19 +2929,19 @@ High activity always creates a trend
 Low activity means price cannot move
 WHY: A trend can travel on low volume when little liquidity opposes it.
 
-[MC] Which conclusion goes too far when interpreting low volume trend?
+[MC] Which explanation of low volume trend requires the fewest assumptions?
 VISUAL: Candles climb between two rising parallel boundaries with pullbacks holding the lower boundary.
 CHART: ascendingChannel
 A trend can travel on low volume when little liquidity opposes it
-The fastest prints always control the close
-Resting size cannot pull or replenish
-Any level breach establishes acceptance
+Repeated tests always make a liquidity level stronger
+A fast rejection proves the resting wall was genuine
+Stable displayed size means hidden liquidity cannot be present
 WHY: A trend can travel on low volume when little liquidity opposes it.
 
 [TRENDLINE] Mark the structure that provides location for the order flow read.
 VISUAL: Candles climb between two rising parallel boundaries with pullbacks holding the lower boundary. The learner draws directly between two candles to mark the structure.
 CHART: ascendingChannel
-TARGET: 0 => 4
+TARGET: 2 => 4
 WHY: Structure supplies location. Execution evidence supplies the read.
 
 [ORDER] Build the low volume trend read from evidence to conclusion.
@@ -2986,20 +2958,20 @@ TITLE: No Clear Read Simulation
 CELEBRATION: No Clear Read Simulation complete.
 
 [ORDERFLOW_SIM] Book tape and price response disagree. What is strongest?
-VISUAL: A boss simulation updates four evidence panels together: price above VWAP stalling at resistance, a refreshing offer in Level II, fast buyer initiated Time and Sales prints, and positive footprint delta with little price progress.
+VISUAL: Price rises above VWAP with positive delta and fast buyer prints, but a large offer refreshes and upward price progress begins fading.
 The evidence conflicts so no directional read is confirmed
 The fastest evidence guarantees the next move
 Displayed size alone determines the outcome
 The candle should be read without execution context
 WHY: When evidence conflicts the strongest conclusion may be no clear read.
 
-[MC] Which evidence matters most when reading no clear read simulation?
+[MC] Which interpretation is best supported in this no clear read simulation example?
 VISUAL: A small candle body with upper and lower wicks shows two sided movement and little progress.
 CHART: spinningTop
 When evidence conflicts the strongest conclusion may be no clear read
-Delta and total volume provide identical information
-A large wall must reverse price
-Price response matters less than one large trade
+Price progress can be ignored when aggression is persistent
+A narrow spread confirms directional control
+The largest footprint row determines the entire candle read
 WHY: When evidence conflicts the strongest conclusion may be no clear read.
 
 [ORDER] Build the no clear read simulation read from evidence to conclusion.
@@ -3015,13 +2987,13 @@ NODE 91
 TITLE: Entry After Confirmation
 CELEBRATION: Entry After Confirmation complete.
 
-[MC] What would most weaken the current entry after confirmation interpretation?
+[MC] Which conclusion is most reasonable for the current entry after confirmation evidence?
 VISUAL: Price breaks resistance, returns to test it from above, then attempts to continue higher.
 CHART: breakoutRetest
 Wait for pressure to return before entry
-The book should be read without the tape
-The tape should be read without location
-The first signal cannot be contradicted later
+Acceptance is present as soon as one trade prints beyond a level
+Passive absorption and fading aggression produce the same evidence
+A high volume candle reveals which side initiated every trade
 WHY: Wait for pressure to return before entry.
 
 [BOOKDRAG] Route the order used in this entry after confirmation example.
@@ -3050,9 +3022,9 @@ CELEBRATION: Continuation Review complete.
 VISUAL: A sharp advance pauses in a compact downward sloping channel before buyers test control again.
 CHART: bullFlag
 Continuation needs structure and renewed pressure
-The visible liquidity alone proves the outcome
-One aggressive burst matters more than price response
-The candle removes the need to inspect execution
+Thin liquidity implies the move has strong aggressive sponsorship
+Negative delta prevents price from rising
+Refreshing bids matter only after sellers stop trading
 WHY: Continuation needs structure and renewed pressure.
 
 [TRENDLINE] Mark the structure that provides location for the order flow read.
@@ -3094,13 +3066,13 @@ Iceberg => Displayed size repeatedly replenishes
 Acceptance => Price holds beyond the level
 WHY: Match the signal with its order flow clue.
 
-[MC] What should the learner notice first in this breakout and continuation mixed review replay?
+[MC] Which statement best connects the evidence in this breakout and continuation mixed review replay?
 VISUAL: A sharp advance pauses in a compact downward sloping channel before buyers test control again.
 CHART: bullFlag
 Continuation needs both structure and returning pressure
-The fastest prints always control the close
-Resting size cannot pull or replenish
-Any level breach establishes acceptance
+A failed breakout is confirmed before price returns through the level
+More displayed depth necessarily means more actual liquidity
+A second test should be read the same way as the first
 WHY: Continuation needs both structure and returning pressure.
 
 
@@ -3110,265 +3082,269 @@ NODE 94
 TITLE: Reversal Pressure
 CELEBRATION: Reversal Pressure complete.
 
-[TAP_CANDLE] In reversal pressure, tap where price response becomes clearest.
-VISUAL: A large bullish candle covers the prior bearish body after an attempted decline. The candles are tappable and the learner must select the requested candle.
-CHART: bullishEngulfing
-TARGET: 4
-WHY: The selected candle shows whether execution produced follow through.
+[TIME_SALES] Which tape change matters most for reversal pressure?
+VISUAL: An animated Time and Sales table lists time, execution price, and trade size, with seller initiated prints dominating at the bid.
+EVENT: hit
+Reversals need a clear change in control
+Positive delta confirms a reversal regardless of price response
+Slower tape guarantees the opposing side has control
+WHY: Reversals need a clear change in control.
 
-[AGGRESSOR] During reversal pressure, which side is crossing the spread?
-VISUAL: An animated Level II ladder shows prices between bid and ask columns, with ask sizes being consumed by incoming buy orders.
+[FOOTPRINT] How does executed volume qualify the reversal pattern?
+VISUAL: A footprint grid places bid volume left of price and ask volume right of price, showing one target row carrying the largest ask side execution advantage.
 EVENT: lift
-ANSWER: The buyer
-WHY: Buyers take offers. Sellers take bids.
+It shows whether aggressive control changed beneath the price pattern
+It guarantees the pattern target
+It only shows resting liquidity
+WHY: Tape and footprint evidence reveal what changed beneath the candle pattern.
 
-[MC] Which side failed to achieve the expected response during reversal pressure?
+[MC] Which conclusion is best supported by the evidence in reversal pressure?
 VISUAL: A large bullish candle covers the prior bearish body after an attempted decline.
 CHART: bullishEngulfing
 Reversals need a clear change in control
-Delta and total volume provide identical information
-A large wall must reverse price
-Price response matters less than one large trade
+Large executions are directional even when price does not respond
+A moving average reaction can substitute for execution evidence
+Balanced delta means neither side traded aggressively
 WHY: Reversals need a clear change in control.
-
-[ORDER] Build the reversal pressure read from evidence to conclusion.
-VISUAL: A large bullish candle covers the prior bearish body after an attempted decline.
-CHART: bullishEngulfing
-Buyer pressure appears
-Offers get consumed
-Price reaches higher levels
-The chart confirms the move
-WHY: Read pressure, liquidity, price, then confirmation.
 
 NODE 95
 TITLE: Buyer Trap
 CELEBRATION: Buyer Trap complete.
 
-[FILL] The missing evidence in this buyer trap read is [___].
-VISUAL: A small candle body with a long upper wick shows rejection of higher prices.
-CHART: shootingStar
-failed buying
-resting size that never trades
-one isolated footprint row
-direction without follow through
-WHY: Focus on failed buying.
+[TIME_SALES] Which tape change matters most for buyer trap?
+VISUAL: An animated Time and Sales table lists time, execution price, and trade size, with buyer initiated prints dominating at the ask.
+EVENT: lift
+A buyer trap forms when a breakout fails
+A large opposing print outweighs the executions that follow
+Price location is unnecessary once a reversal candle closes
+WHY: A buyer trap forms when a breakout fails.
 
-[MC] Which conclusion goes too far when interpreting buyer trap?
+[FOOTPRINT] How does executed volume qualify the reversal pattern?
+VISUAL: A footprint grid places bid volume left of price and ask volume right of price, showing one target row carrying the largest bid side execution advantage.
+EVENT: hit
+It shows whether aggressive control changed beneath the price pattern
+It guarantees the pattern target
+It only shows resting liquidity
+WHY: Tape and footprint evidence reveal what changed beneath the candle pattern.
+
+[MC] Which explanation of buyer trap requires the fewest assumptions?
 VISUAL: A small candle body with a long upper wick shows rejection of higher prices.
 CHART: shootingStar
 A buyer trap forms when a breakout fails
-The book should be read without the tape
-The tape should be read without location
-The first signal cannot be contradicted later
+Fast tape near resistance is stronger than failure to gain acceptance
+A liquidity sweep and breakout differ mainly by candle size
+Order flow evidence remains valid regardless of changing volatility
 WHY: A buyer trap forms when a breakout fails.
-
-[MATCH] Connect the behaviors that matter for buyer trap.
-Buyer Trap => Failed buying
-Fast tape without progress => Urgency without confirmation
-Sweep => Liquidity taken followed by rejection
-WHY: Match the signal with its order flow clue.
 
 NODE 96
 TITLE: Seller Trap
 CELEBRATION: Seller Trap complete.
 
-[AGGRESSOR] During seller trap, which side is crossing the spread?
-VISUAL: An animated Level II ladder shows prices between bid and ask columns, with ask sizes being consumed by incoming buy orders.
-EVENT: lift
-ANSWER: The buyer
-WHY: Buyers take offers. Sellers take bids.
+[TIME_SALES] Which tape change matters most for seller trap?
+VISUAL: An animated Time and Sales table lists time, execution price, and trade size, with seller initiated prints dominating at the bid.
+EVENT: hit
+A seller trap forms when a breakdown fails
+The candle pattern identifies every initiating trade
+The earliest pressure cannot be contradicted later
+WHY: A seller trap forms when a breakdown fails.
 
-[MC] Which evidence matters most when reading seller trap?
+[FOOTPRINT] How does executed volume qualify the reversal pattern?
+VISUAL: A footprint grid places bid volume left of price and ask volume right of price, showing one target row carrying the largest ask side execution advantage.
+EVENT: lift
+It shows whether aggressive control changed beneath the price pattern
+It guarantees the pattern target
+It only shows resting liquidity
+WHY: Tape and footprint evidence reveal what changed beneath the candle pattern.
+
+[MC] Which interpretation is best supported in this seller trap example?
 VISUAL: A candle with a small upper body and long lower wick shows rejection of lower prices.
 CHART: hammer
 A seller trap forms when a breakdown fails
-The visible liquidity alone proves the outcome
-One aggressive burst matters more than price response
-The candle removes the need to inspect execution
+Displayed liquidity is stronger evidence than completed executions
+A short aggressive burst can outweigh a stalled price response
+The candle response makes tape confirmation optional
 WHY: A seller trap forms when a breakdown fails.
-
-[FILL] The missing evidence in this seller trap read is [___].
-VISUAL: A candle with a small upper body and long lower wick shows rejection of lower prices.
-CHART: hammer
-failed selling
-a single large print
-displayed depth without execution
-candle color without location
-WHY: Focus on failed selling.
 
 NODE 97
 TITLE: Exhaustion Reversal
 CELEBRATION: Exhaustion Reversal complete.
 
-[MC] What would most weaken the current exhaustion reversal interpretation?
+[TIME_SALES] Which tape change matters most for exhaustion reversal?
+VISUAL: An animated Time and Sales table lists time, execution price, and trade size, with pace and trade size fading after the target row.
+EVENT: stall
+Exhaustion can prepare a reversal
+A rejection wick proves passive absorption
+The second test should inherit the first test's order flow
+WHY: Exhaustion can prepare a reversal.
+
+[FOOTPRINT] How does executed volume qualify the reversal pattern?
+VISUAL: A footprint grid places bid volume left of price and ask volume right of price, showing similar bid and ask volume across the price rows.
+EVENT: balanced
+It shows whether aggressive control changed beneath the price pattern
+It guarantees the pattern target
+It only shows resting liquidity
+WHY: Tape and footprint evidence reveal what changed beneath the candle pattern.
+
+[MC] Which conclusion is most reasonable for the current exhaustion reversal evidence?
 VISUAL: A narrow candle body with wicks on both sides shows little net price progress.
 CHART: doji
 Exhaustion can prepare a reversal
-The fastest prints always control the close
-Resting size cannot pull or replenish
-Any level breach establishes acceptance
+Tape speed matters more than the level where it occurs
+A replenishing order is probably new unrelated liquidity
+Brief trade beyond the level is enough to establish acceptance
 WHY: Exhaustion can prepare a reversal.
-
-[BOOKDRAG] Route the order used in this exhaustion reversal example.
-VISUAL: A draggable market buy card sits beside a Level II ladder with bid and ask drop targets.
-ORDER: market_buy
-ANSWER: the ask
-WHY: Market buys take asks. Market sells take bids.
-
-[MATCH] Connect the behaviors that matter for exhaustion reversal.
-Exhaustion Reversal => Slowing pressure
-Iceberg => Displayed size repeatedly replenishes
-Acceptance => Price holds beyond the level
-WHY: Match the signal with its order flow clue.
-
-[TAP_CANDLE] In exhaustion reversal, tap where price response becomes clearest.
-VISUAL: A narrow candle body with wicks on both sides shows little net price progress. The candles are tappable and the learner must select the requested candle.
-CHART: doji
-TARGET: 4
-WHY: The selected candle shows whether execution produced follow through.
 
 NODE 98
 TITLE: Absorption Reversal
 CELEBRATION: Absorption Reversal complete.
 
+[TIME_SALES] Which tape change matters most for absorption reversal?
+VISUAL: An animated Time and Sales table lists time, execution price, and trade size, with seller initiated prints dominating at the bid.
+EVENT: hit
+Absorbed selling can support a reversal
+Positive delta confirms a reversal regardless of price response
+Slower tape guarantees the opposing side has control
+WHY: Absorbed selling can support a reversal.
+
+[FOOTPRINT] How does executed volume qualify the reversal pattern?
+VISUAL: A footprint grid places bid volume left of price and ask volume right of price, showing one target row carrying the largest ask side execution advantage.
+EVENT: lift
+It shows whether aggressive control changed beneath the price pattern
+It guarantees the pattern target
+It only shows resting liquidity
+WHY: Tape and footprint evidence reveal what changed beneath the candle pattern.
+
 [MC] Which conclusion about absorption reversal is best supported?
 VISUAL: Price briefly trades below a level and closes back above it, leaving a long lower wick.
 CHART: rejectionWickDown
 Absorbed selling can support a reversal
-Delta and total volume provide identical information
-A large wall must reverse price
-Price response matters less than one large trade
+High total volume normally implies strongly directional delta
+A large wall deserves more weight than repeated fills against it
+One unusually large trade is more reliable than subsequent response
 WHY: Absorbed selling can support a reversal.
-
-[TAP_CANDLE] In absorption reversal, tap where price response becomes clearest.
-VISUAL: Price briefly trades below a level and closes back above it, leaving a long lower wick. The candles are tappable and the learner must select the requested candle.
-CHART: rejectionWickDown
-TARGET: 4
-WHY: The selected candle shows whether execution produced follow through.
-
-[FILL] The missing evidence in this absorption reversal read is [___].
-VISUAL: Price briefly trades below a level and closes back above it, leaving a long lower wick.
-CHART: rejectionWickDown
-selling absorbed
-resting size that never trades
-one isolated footprint row
-direction without follow through
-WHY: Focus on selling absorbed.
 
 NODE 99
 TITLE: Double Top Flow
 CELEBRATION: Double Top Flow complete.
 
-[BOOKDRAG] Route the order used in this double top flow example.
-VISUAL: A draggable market buy card sits beside a Level II ladder with bid and ask drop targets.
-ORDER: market_buy
-ANSWER: the ask
-WHY: Market buys take asks. Market sells take bids.
+[TIME_SALES] Which tape change matters most for double top flow?
+VISUAL: An animated Time and Sales table lists time, execution price, and trade size, with buyer initiated prints dominating at the ask.
+EVENT: lift
+Repeated failure can shift control to sellers
+A large opposing print outweighs the executions that follow
+Price location is unnecessary once a reversal candle closes
+WHY: Repeated failure can shift control to sellers.
 
-[MATCH] Connect the behaviors that matter for double top flow.
-Double Top Flow => Buyers fail twice
-Fast tape without progress => Urgency without confirmation
-Sweep => Liquidity taken followed by rejection
-WHY: Match the signal with its order flow clue.
+[FOOTPRINT] How does executed volume qualify the reversal pattern?
+VISUAL: A footprint grid places bid volume left of price and ask volume right of price, showing one target row carrying the largest bid side execution advantage.
+EVENT: hit
+It shows whether aggressive control changed beneath the price pattern
+It guarantees the pattern target
+It only shows resting liquidity
+WHY: Tape and footprint evidence reveal what changed beneath the candle pattern.
 
-[MC] What should the learner notice first in this double top flow replay?
+[MC] Which statement best connects the evidence in this double top flow replay?
 VISUAL: Price tests the same resistance area twice and retreats after the second test.
 CHART: doubleTop
 Repeated failure can shift control to sellers
-The book should be read without the tape
-The tape should be read without location
-The first signal cannot be contradicted later
+The current book is more useful than the executions that changed it
+Location adds little once the tape accelerates
+The earliest signal should anchor the read even after conditions change
 WHY: Repeated failure can shift control to sellers.
 
 NODE 100
 TITLE: Double Bottom Flow
 CELEBRATION: Double Bottom Flow complete.
 
-[TAP_CANDLE] In double bottom flow, tap where price response becomes clearest.
-VISUAL: Price tests the same support area twice and rebounds after the second test. The candles are tappable and the learner must select the requested candle.
-CHART: doubleBottom
-TARGET: 4
-WHY: The selected candle shows whether execution produced follow through.
+[TIME_SALES] Which tape change matters most for double bottom flow?
+VISUAL: An animated Time and Sales table lists time, execution price, and trade size, with seller initiated prints dominating at the bid.
+EVENT: hit
+Repeated failure can shift control to buyers
+The candle pattern identifies every initiating trade
+The earliest pressure cannot be contradicted later
+WHY: Repeated failure can shift control to buyers.
 
-[AGGRESSOR] During double bottom flow, which side is crossing the spread?
-VISUAL: An animated Level II ladder shows prices between bid and ask columns, with ask sizes being consumed by incoming buy orders.
+[FOOTPRINT] How does executed volume qualify the reversal pattern?
+VISUAL: A footprint grid places bid volume left of price and ask volume right of price, showing one target row carrying the largest ask side execution advantage.
 EVENT: lift
-ANSWER: The buyer
-WHY: Buyers take offers. Sellers take bids.
+It shows whether aggressive control changed beneath the price pattern
+It guarantees the pattern target
+It only shows resting liquidity
+WHY: Tape and footprint evidence reveal what changed beneath the candle pattern.
 
-[MC] Which side failed to achieve the expected response during double bottom flow?
+[MC] Which conclusion is best supported by the evidence in double bottom flow?
 VISUAL: Price tests the same support area twice and rebounds after the second test.
 CHART: doubleBottom
 Repeated failure can shift control to buyers
-The visible liquidity alone proves the outcome
-One aggressive burst matters more than price response
-The candle removes the need to inspect execution
+Positive delta is usually sufficient confirmation for higher prices
+A pull in liquidity is equivalent to aggressive execution
+Slower counter pressure automatically confirms continuation
 WHY: Repeated failure can shift control to buyers.
-
-[ORDER] Build the double bottom flow read from evidence to conclusion.
-VISUAL: Price tests the same support area twice and rebounds after the second test.
-CHART: doubleBottom
-Buyer pressure appears
-Offers get consumed
-Price reaches higher levels
-The chart confirms the move
-WHY: Read pressure, liquidity, price, then confirmation.
 
 NODE 101
 TITLE: Confirmation Before Entry
 CELEBRATION: Confirmation Before Entry complete.
 
-[FILL] The missing evidence in this confirmation before entry read is [___].
-VISUAL: A large bullish candle covers the prior bearish body after an attempted decline.
-CHART: bullishEngulfing
-price confirms pressure
-resting size that never trades
-one isolated footprint row
-direction without follow through
-WHY: Focus on price confirms pressure.
+[TIME_SALES] Which tape change matters most for confirmation before entry?
+VISUAL: An animated Time and Sales table lists time, execution price, and trade size, with seller initiated prints dominating at the bid.
+EVENT: hit
+Confirmation reduces premature reversal entries
+A rejection wick proves passive absorption
+The second test should inherit the first test's order flow
+WHY: Confirmation reduces premature reversal entries.
 
-[MC] Which conclusion goes too far when interpreting confirmation before entry?
+[FOOTPRINT] How does executed volume qualify the reversal pattern?
+VISUAL: A footprint grid places bid volume left of price and ask volume right of price, showing one target row carrying the largest ask side execution advantage.
+EVENT: lift
+It shows whether aggressive control changed beneath the price pattern
+It guarantees the pattern target
+It only shows resting liquidity
+WHY: Tape and footprint evidence reveal what changed beneath the candle pattern.
+
+[MC] Which explanation of confirmation before entry requires the fewest assumptions?
 VISUAL: A large bullish candle covers the prior bearish body after an attempted decline.
 CHART: bullishEngulfing
 Confirmation reduces premature reversal entries
-The fastest prints always control the close
-Resting size cannot pull or replenish
-Any level breach establishes acceptance
+Repeated tests always make a liquidity level stronger
+A fast rejection proves the resting wall was genuine
+Stable displayed size means hidden liquidity cannot be present
 WHY: Confirmation reduces premature reversal entries.
-
-[MATCH] Connect the behaviors that matter for confirmation before entry.
-Confirmation Before Entry => Price confirms pressure
-Iceberg => Displayed size repeatedly replenishes
-Acceptance => Price holds beyond the level
-WHY: Match the signal with its order flow clue.
 
 NODE 102
 TITLE: Reversal Review
 CELEBRATION: Reversal Review complete.
 
-[AGGRESSOR] During reversal review, which side is crossing the spread?
-VISUAL: An animated Level II ladder shows prices between bid and ask columns, with ask sizes being consumed by incoming buy orders.
-EVENT: lift
-ANSWER: The buyer
-WHY: Buyers take offers. Sellers take bids.
+[ORDERFLOW_SIM] Which evidence source prevents an immediate reversal conclusion?
+VISUAL: Price rises above VWAP with positive delta and fast buyer prints, but a large offer refreshes and upward price progress begins fading.
+Aggression and price response still conflict
+The candle pattern guarantees confirmation
+Positive delta makes location irrelevant
+WHY: A reversal needs a control change and confirming response.
 
-[MC] Which evidence matters most when reading reversal review?
+[TIME_SALES] Which tape change matters most for reversal review?
+VISUAL: An animated Time and Sales table lists time, execution price, and trade size, with seller initiated prints dominating at the bid.
+EVENT: hit
+A reversal needs control change and confirmation
+Positive delta confirms a reversal regardless of price response
+Slower tape guarantees the opposing side has control
+WHY: A reversal needs control change and confirmation.
+
+[FOOTPRINT] How does executed volume qualify the reversal pattern?
+VISUAL: A footprint grid places bid volume left of price and ask volume right of price, showing one target row carrying the largest ask side execution advantage.
+EVENT: lift
+It shows whether aggressive control changed beneath the price pattern
+It guarantees the pattern target
+It only shows resting liquidity
+WHY: Tape and footprint evidence reveal what changed beneath the candle pattern.
+
+[MC] Which interpretation is best supported in this reversal review example?
 VISUAL: Three troughs form with the middle trough deepest before price challenges the neckline.
 CHART: inverseHeadShoulders
 A reversal needs control change and confirmation
-Delta and total volume provide identical information
-A large wall must reverse price
-Price response matters less than one large trade
+Price progress can be ignored when aggression is persistent
+A narrow spread confirms directional control
+The largest footprint row determines the entire candle read
 WHY: A reversal needs control change and confirmation.
-
-[FILL] The missing evidence in this reversal review read is [___].
-VISUAL: Three troughs form with the middle trough deepest before price challenges the neckline.
-CHART: inverseHeadShoulders
-control and confirmation
-a single large print
-displayed depth without execution
-candle color without location
-WHY: Focus on control and confirmation.
 
 
 UNIT 10 — Execution and Risk
@@ -3377,13 +3353,13 @@ NODE 103
 TITLE: Plan the Entry
 CELEBRATION: Plan the Entry complete.
 
-[MC] What would most weaken the current plan the entry interpretation?
+[MC] Which conclusion is most reasonable for the current plan the entry evidence?
 VISUAL: Price breaks resistance, returns to test it from above, then attempts to continue higher.
 CHART: breakoutRetest
 A clear trigger keeps execution disciplined
-The book should be read without the tape
-The tape should be read without location
-The first signal cannot be contradicted later
+Acceptance is present as soon as one trade prints beyond a level
+Passive absorption and fading aggression produce the same evidence
+A high volume candle reveals which side initiated every trade
 WHY: A clear trigger keeps execution disciplined.
 
 [BOOKDRAG] Route the order used in this plan the entry example.
@@ -3401,7 +3377,7 @@ WHY: Match the signal with its order flow clue.
 [TAP_CANDLE] In plan the entry, tap where price response becomes clearest.
 VISUAL: Price breaks resistance, returns to test it from above, then attempts to continue higher. The candles are tappable and the learner must select the requested candle.
 CHART: breakoutRetest
-TARGET: 4
+TARGET: 0
 WHY: The selected candle shows whether execution produced follow through.
 
 NODE 104
@@ -3412,15 +3388,15 @@ CELEBRATION: Choose the Order Type complete.
 VISUAL: Small mixed candles overlap inside a narrow horizontal trading area.
 CHART: sideways
 Order choice balances speed with price control
-The visible liquidity alone proves the outcome
-One aggressive burst matters more than price response
-The candle removes the need to inspect execution
+Thin liquidity implies the move has strong aggressive sponsorship
+Negative delta prevents price from rising
+Refreshing bids matter only after sellers stop trading
 WHY: Order choice balances speed with price control.
 
 [TAP_CANDLE] In choose the order type, tap where price response becomes clearest.
 VISUAL: Small mixed candles overlap inside a narrow horizontal trading area. The candles are tappable and the learner must select the requested candle.
 CHART: sideways
-TARGET: 4
+TARGET: 3
 WHY: The selected candle shows whether execution produced follow through.
 
 [FILL] The missing evidence in this choose the order type read is [___].
@@ -3448,13 +3424,13 @@ Iceberg => Displayed size repeatedly replenishes
 Acceptance => Price holds beyond the level
 WHY: Match the signal with its order flow clue.
 
-[MC] What should the learner notice first in this manage slippage replay?
+[MC] Which statement best connects the evidence in this manage slippage replay?
 VISUAL: Alternating wide candles and long wicks show rapid movement with changing control.
 CHART: volatile
 Thin liquidity can increase slippage
-The fastest prints always control the close
-Resting size cannot pull or replenish
-Any level breach establishes acceptance
+A failed breakout is confirmed before price returns through the level
+More displayed depth necessarily means more actual liquidity
+A second test should be read the same way as the first
 WHY: Thin liquidity can increase slippage.
 
 NODE 106
@@ -3473,13 +3449,13 @@ EVENT: lift
 ANSWER: The buyer
 WHY: Buyers take offers. Sellers take bids.
 
-[MC] Which side failed to achieve the expected response during order flow invalidation?
+[MC] Which conclusion is best supported by the evidence in order flow invalidation?
 VISUAL: A decline reaches support and rebounds with buyers defending the lower area.
 CHART: supportBounce
 Risk belongs beyond the evidence that would invalidate the order flow read
-Delta and total volume provide identical information
-A large wall must reverse price
-Price response matters less than one large trade
+Large executions are directional even when price does not respond
+A moving average reaction can substitute for execution evidence
+Balanced delta means neither side traded aggressively
 WHY: Risk belongs beyond the evidence that would invalidate the order flow read.
 
 [ORDER] Build the order flow invalidation read from evidence to conclusion.
@@ -3499,18 +3475,18 @@ CELEBRATION: Risk in Thin Liquidity complete.
 VISUAL: Candles expand in range as the surrounding volatility bands spread farther apart.
 CHART: bandsWidening
 slippage and unstable depth
-resting size that never trades
-one isolated footprint row
-direction without follow through
+positive delta without progress
+a wick without tape evidence
+depth far from the active price
 WHY: Focus on slippage and unstable depth.
 
-[MC] Which conclusion goes too far when interpreting risk in thin liquidity?
+[MC] Which explanation of risk in thin liquidity requires the fewest assumptions?
 VISUAL: Candles expand in range as the surrounding volatility bands spread farther apart.
 CHART: bandsWidening
 Thin liquidity can require smaller risk and more cautious execution
-The book should be read without the tape
-The tape should be read without location
-The first signal cannot be contradicted later
+Fast tape near resistance is stronger than failure to gain acceptance
+A liquidity sweep and breakout differ mainly by candle size
+Order flow evidence remains valid regardless of changing volatility
 WHY: Thin liquidity can require smaller risk and more cautious execution.
 
 [MATCH] Connect the behaviors that matter for risk in thin liquidity.
@@ -3529,13 +3505,13 @@ EVENT: hit
 ANSWER: The seller
 WHY: Buyers take offers. Sellers take bids.
 
-[MC] Which evidence matters most when reading no clear order flow read?
+[MC] Which interpretation is best supported in this no clear order flow read example?
 VISUAL: A small candle body with upper and lower wicks shows two sided movement and little progress.
 CHART: spinningTop
 Conflicting evidence is a valid reason to stay out
-The visible liquidity alone proves the outcome
-One aggressive burst matters more than price response
-The candle removes the need to inspect execution
+Displayed liquidity is stronger evidence than completed executions
+A short aggressive burst can outweigh a stalled price response
+The candle response makes tape confirmation optional
 WHY: Conflicting evidence is a valid reason to stay out.
 
 [FILL] The missing evidence in this no clear order flow read read is [___].
@@ -3551,13 +3527,13 @@ NODE 109
 TITLE: Exit Into Liquidity
 CELEBRATION: Exit Into Liquidity complete.
 
-[MC] What would most weaken the current exit into liquidity interpretation?
+[MC] Which conclusion is most reasonable for the current exit into liquidity evidence?
 VISUAL: An advance reaches resistance and turns lower with visible upper wick rejection.
 CHART: resistanceRejection
 Liquidity can improve planned exits
-The fastest prints always control the close
-Resting size cannot pull or replenish
-Any level breach establishes acceptance
+Tape speed matters more than the level where it occurs
+A replenishing order is probably new unrelated liquidity
+Brief trade beyond the level is enough to establish acceptance
 WHY: Liquidity can improve planned exits.
 
 [BOOKDRAG] Route the order used in this exit into liquidity example.
@@ -3575,7 +3551,7 @@ WHY: Match the signal with its order flow clue.
 [TAP_CANDLE] In exit into liquidity, tap where price response becomes clearest.
 VISUAL: An advance reaches resistance and turns lower with visible upper wick rejection. The candles are tappable and the learner must select the requested candle.
 CHART: resistanceRejection
-TARGET: 4
+TARGET: 3
 WHY: The selected candle shows whether execution produced follow through.
 
 NODE 110
@@ -3586,15 +3562,15 @@ CELEBRATION: Review the Order Flow Read complete.
 VISUAL: Small mixed candles overlap inside a narrow horizontal trading area.
 CHART: sideways
 Review each evidence source separately from the trade outcome
-Delta and total volume provide identical information
-A large wall must reverse price
-Price response matters less than one large trade
+High total volume normally implies strongly directional delta
+A large wall deserves more weight than repeated fills against it
+One unusually large trade is more reliable than subsequent response
 WHY: Review each evidence source separately from the trade outcome.
 
 [TAP_CANDLE] In review the order flow read, tap where price response becomes clearest.
 VISUAL: Small mixed candles overlap inside a narrow horizontal trading area. The candles are tappable and the learner must select the requested candle.
 CHART: sideways
-TARGET: 4
+TARGET: 1
 WHY: The selected candle shows whether execution produced follow through.
 
 [FILL] The missing evidence in this review the order flow read read is [___].
@@ -3611,20 +3587,20 @@ TITLE: Comprehensive Order Flow Simulation
 CELEBRATION: Comprehensive Order Flow Simulation complete.
 
 [ORDERFLOW_SIM] Buying is aggressive but price cannot clear resistance. What is the strongest current observation?
-VISUAL: A boss simulation updates four evidence panels together: price above VWAP stalling at resistance, a refreshing offer in Level II, fast buyer initiated Time and Sales prints, and positive footprint delta with little price progress.
+VISUAL: A championship replay combines price and VWAP, changing Level II liquidity, Time and Sales, and footprint delta so the learner must weigh all four evidence sources.
 Buyers are active but may be absorbed by refreshing sellers
 The fastest evidence guarantees the next move
 Displayed size alone determines the outcome
 The candle should be read without execution context
 WHY: Build one read from book tape footprint price and risk.
 
-[MC] What should the learner notice first in this comprehensive order flow simulation replay?
+[MC] Which statement best connects the evidence in this comprehensive order flow simulation replay?
 VISUAL: Alternating wide candles and long wicks show rapid movement with changing control.
 CHART: volatile
 Build one read from book tape footprint price and risk
-The book should be read without the tape
-The tape should be read without location
-The first signal cannot be contradicted later
+The current book is more useful than the executions that changed it
+Location adds little once the tape accelerates
+The earliest signal should anchor the read even after conditions change
 WHY: Build one read from book tape footprint price and risk.
 
 [ORDER] Build the comprehensive order flow simulation read from evidence to conclusion.

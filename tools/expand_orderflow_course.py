@@ -86,7 +86,7 @@ UNITS = [
         "tier": "Strategy",
         "lessons": [
             lesson("Liquidity Pools", "range", "neutral", "clustered orders", "Liquidity often gathers near obvious levels"),
-            lesson("Resting Stops", "supportBounce", "down", "stops below support", "Stops often gather beyond support"),
+            lesson("Resting Stops", "supportBounce", "down", "inferred stop clusters beyond obvious levels", "Traders often infer that stops may cluster beyond obvious support resistance highs and lows"),
             lesson("Buy Stops", "breakout", "up", "stops above resistance", "Buy stops can fuel an upside break"),
             lesson("Sell Stops", "breakdown", "down", "stops below support", "Sell stops can fuel a downside break"),
             lesson("Liquidity Sweep", "rejectionWickDown", "up", "quick level breach", "A sweep takes liquidity then returns"),
@@ -104,8 +104,8 @@ UNITS = [
         "slab": "#15803D",
         "tier": "Strategy",
         "lessons": [
-            lesson("Breakout Pressure", "breakout", "up", "offers cleared", "A breakout needs offers to be consumed"),
-            lesson("Breakdown Pressure", "breakdown", "down", "bids cleared", "A breakdown needs bids to be consumed"),
+            lesson("Breakout Pressure", "breakout", "up", "offers consumed withdrawn or thin", "An upside breakout can develop as buyers consume offers sellers withdraw liquidity or both"),
+            lesson("Breakdown Pressure", "breakdown", "down", "bids consumed withdrawn or thin", "A downside break can develop as sellers consume bids buyers withdraw liquidity or both"),
             lesson("Acceptance Above", "breakoutRetest", "up", "price holding above", "Holding above a level shows acceptance"),
             lesson("Acceptance Below", "breakdownRetest", "down", "price holding below", "Holding below a level shows acceptance"),
             lesson("Failed Breakout", "resistanceRejection", "down", "return below resistance", "A quick return below resistance signals failure"),
@@ -179,8 +179,8 @@ UNITS[0]["lessons"].insert(0, lesson("Reading Time and Sales", "sideways", "neut
 UNITS[1]["lessons"].append(lesson("Tape and Absorption Mixed Review", "rejectionWickDown", "neutral", "aggression and price response", "Separate active pressure from the market response"))
 UNITS[1]["lessons"].insert(9, lesson("Seller Absorption Simulation", "resistanceRejection", "down", "buying stalls against refreshing offers", "Aggressive buyers can be absorbed by passive sellers at resistance"))
 UNITS[1]["lessons"].insert(10, lesson("Buyer Absorption Simulation", "supportBounce", "up", "selling stalls against refreshing bids", "Aggressive sellers can be absorbed by passive buyers at support"))
-UNITS[2]["lessons"].insert(7, lesson("Reading a Footprint Chart", "sideways", "neutral", "bid and ask volume by price", "A footprint shows executed volume at each price"))
-UNITS[2]["lessons"].insert(8, lesson("Footprint Imbalances", "volatile", "up", "uneven volume at neighboring prices", "Footprint imbalance highlights concentrated aggression"))
+UNITS[2]["lessons"].insert(0, lesson("Reading a Footprint Chart", "sideways", "neutral", "bid and ask volume by price", "A footprint shows executed volume at each price"))
+UNITS[2]["lessons"].insert(1, lesson("Footprint Imbalances", "volatile", "up", "diagonal volume ratios at neighboring prices", "A conventional footprint imbalance compares diagonally adjacent bid and ask volume using a ratio threshold"))
 UNITS[2]["lessons"].insert(10, lesson("Delta vs Volume", "volatile", "neutral", "total activity versus net aggression", "Volume measures total trading while delta compares aggressive buying and selling"))
 UNITS[2]["lessons"].insert(11, lesson("Positive Delta While Price Falls", "bearishEngulfing", "down", "buying without upward progress", "Positive delta with falling price can reveal seller absorption or trapped buyers"))
 UNITS[2]["lessons"].insert(12, lesson("Negative Delta While Price Rises", "bullishEngulfing", "up", "selling without downward progress", "Negative delta with rising price can reveal buyer absorption or trapped sellers"))
@@ -239,18 +239,26 @@ def chain_for(meta):
 
 def choice_screen(meta, node, advanced=False):
     questions = [
-        f"Which evidence matters most when reading {meta['title'].lower()}?",
-        f"What would most weaken the current {meta['title'].lower()} interpretation?",
+        f"Which interpretation is best supported in this {meta['title'].lower()} example?",
+        f"Which conclusion is most reasonable for the current {meta['title'].lower()} evidence?",
         f"Which conclusion about {meta['title'].lower()} is best supported?",
-        f"What should the learner notice first in this {meta['title'].lower()} replay?",
-        f"Which side failed to achieve the expected response during {meta['title'].lower()}?",
-        f"Which conclusion goes too far when interpreting {meta['title'].lower()}?",
+        f"Which statement best connects the evidence in this {meta['title'].lower()} replay?",
+        f"Which conclusion is best supported by the evidence in {meta['title'].lower()}?",
+        f"Which explanation of {meta['title'].lower()} requires the fewest assumptions?",
     ]
     distractor_sets = [
-        ["The visible liquidity alone proves the outcome", "One aggressive burst matters more than price response", "The candle removes the need to inspect execution"],
-        ["The fastest prints always control the close", "Resting size cannot pull or replenish", "Any level breach establishes acceptance"],
-        ["Delta and total volume provide identical information", "A large wall must reverse price", "Price response matters less than one large trade"],
-        ["The book should be read without the tape", "The tape should be read without location", "The first signal cannot be contradicted later"],
+        ["Displayed liquidity is stronger evidence than completed executions", "A short aggressive burst can outweigh a stalled price response", "The candle response makes tape confirmation optional"],
+        ["Tape speed matters more than the level where it occurs", "A replenishing order is probably new unrelated liquidity", "Brief trade beyond the level is enough to establish acceptance"],
+        ["High total volume normally implies strongly directional delta", "A large wall deserves more weight than repeated fills against it", "One unusually large trade is more reliable than subsequent response"],
+        ["The current book is more useful than the executions that changed it", "Location adds little once the tape accelerates", "The earliest signal should anchor the read even after conditions change"],
+        ["Positive delta is usually sufficient confirmation for higher prices", "A pull in liquidity is equivalent to aggressive execution", "Slower counter pressure automatically confirms continuation"],
+        ["Repeated tests always make a liquidity level stronger", "A fast rejection proves the resting wall was genuine", "Stable displayed size means hidden liquidity cannot be present"],
+        ["Price progress can be ignored when aggression is persistent", "A narrow spread confirms directional control", "The largest footprint row determines the entire candle read"],
+        ["Acceptance is present as soon as one trade prints beyond a level", "Passive absorption and fading aggression produce the same evidence", "A high volume candle reveals which side initiated every trade"],
+        ["Thin liquidity implies the move has strong aggressive sponsorship", "Negative delta prevents price from rising", "Refreshing bids matter only after sellers stop trading"],
+        ["A failed breakout is confirmed before price returns through the level", "More displayed depth necessarily means more actual liquidity", "A second test should be read the same way as the first"],
+        ["Large executions are directional even when price does not respond", "A moving average reaction can substitute for execution evidence", "Balanced delta means neither side traded aggressively"],
+        ["Fast tape near resistance is stronger than failure to gain acceptance", "A liquidity sweep and breakout differ mainly by candle size", "Order flow evidence remains valid regardless of changing volatility"],
     ]
     wrong = distractor_sets[node % len(distractor_sets)]
     options = [meta["signal"]] + (wrong if advanced else wrong[:2])
@@ -293,17 +301,54 @@ def comparison_screen(meta):
             "explanation": correct}
 
 
+def tape_tap_screen(meta, node):
+    target = 1 + ((node * 5 + 2) % 7)
+    title = meta["title"]
+    specs = {
+        "Trade Speed": ("accelerating", "Tap the first print where the tape begins accelerating.", "This print begins the faster arrival sequence."),
+        "Trade Size": ("large_print", "Tap the unusually large executed trade.", "This execution is much larger than the surrounding prints."),
+        "Repeated Prints": ("sequence_break", "Tap the print that breaks the dominant side sequence.", "This print interrupts the persistent aggression shown before it."),
+        "Buyer Initiated Prints": ("buyer_target", "Tap a buyer initiated execution at the ask.", "The selected trade executes at the ask and is buyer initiated."),
+        "Seller Initiated Prints": ("seller_target", "Tap a seller initiated execution at the bid.", "The selected trade executes at the bid and is seller initiated."),
+        "Pace Changes": ("accelerating", "Tap where the tape first changes to a faster pace.", "The interval between prints begins shrinking here."),
+        "Tape at Key Levels": ("sequence_break", "Tap the execution that first contradicts the dominant pressure.", "The selected print is the first opposing execution at the level."),
+        "False Urgency": ("stall", "Tap where fast activity begins losing follow through.", "Prints continue but size and pace begin fading here."),
+        "Tape Reading Review": ("seller_target", "Tap the seller initiated print that changes the developing read.", "This bid side execution is the relevant opposing print."),
+    }
+    event, question, explanation = specs.get(title, ("large_print", f"In {title.lower()}, tap the most informative print.", "The selected execution carries the key tape evidence."))
+    return {"type": "time_sales_tap", "event": event, "target": target,
+            "question": question, "explanation": explanation}
+
+
+def footprint_tap_screen(meta, node):
+    target = (node * 3 + 1) % 7
+    mode = node % 4
+    if mode == 0:
+        event, question, explanation = "lift", "Tap the row with the greatest ask side execution advantage.", "This row has the largest positive same price execution difference."
+    elif mode == 1:
+        event, question, explanation = "hit", "Tap the row with the greatest bid side execution advantage.", "This row has the largest negative same price execution difference."
+    elif mode == 2:
+        event, question, explanation = "balanced_target", "Tap the row where bid and ask execution is most balanced.", "This row has the smallest difference between bid and ask volume."
+    else:
+        event, question, explanation = "total_target", "Tap the row with the largest total executed volume.", "This row has the highest combined bid and ask execution."
+    return {"type": "footprint_tap", "event": event, "target": target,
+            "question": question, "explanation": explanation}
+
+
 def screens_for(meta, node, unit_index=2):
     event = event_for(meta, node)
     buyer = event == "lift"
     order = "market_buy" if node % 2 else "market_sell"
     chain = chain_for(meta)
     advanced = unit_index >= 5
+    candle_target = (node * 3 + 1) % 5
+    trend_targets = [(0, 3), (1, 4), (0, 4), (1, 3), (2, 4)]
+    trend_start, trend_end = trend_targets[node % len(trend_targets)]
     if unit_index == 7 and meta["chart"] in {"ascendingChannel", "lowerHighsDowntrend", "pullbackUptrend", "bullFlag", "bearFlag"}:
         chart_action = {
             "type": "draw_trendline", "chart": meta["chart"],
             "question": "Mark the structure that provides location for the order flow read.",
-            "target_start": 0, "target_end": 4,
+            "target_start": trend_start, "target_end": trend_end,
             "explanation": "Structure supplies location. Execution evidence supplies the read.",
         }
     else:
@@ -311,7 +356,7 @@ def screens_for(meta, node, unit_index=2):
             "type": "tap_candle",
             "chart": meta["chart"],
             "question": f"In {meta['title'].lower()}, tap where price response becomes clearest.",
-            "target": 4,
+            "target": candle_target,
             "explanation": "The selected candle shows whether execution produced follow through.",
         }
     aggressor = {
@@ -332,7 +377,10 @@ def screens_for(meta, node, unit_index=2):
         ["a single large print", "displayed depth without execution", "candle color without location"],
         ["speed without price response", "a level breach without acceptance", "delta without total volume"],
         ["resting size that never trades", "one isolated footprint row", "direction without follow through"],
-    ][node % 3]
+        ["total volume without side separation", "a wall before it is tested", "pace without trade direction"],
+        ["one execution without persistence", "price location without response", "a pull that never changes depth"],
+        ["positive delta without progress", "a wick without tape evidence", "depth far from the active price"],
+    ][node % 6]
     fill_options = [meta["clue"]] + fill_distractors
     fill = {
             "type": "fill_blank",
@@ -368,7 +416,7 @@ def screens_for(meta, node, unit_index=2):
         return [
             {"type": "time_sales", "event": "lift", "question": "What information does each row provide?", "options": ["Execution time price size and initiating side", "Resting bid and ask size before execution", "Total candle volume without trade direction"], "correct": 0, "explanation": "Each row is a completed trade with time price size and side."},
             {"type": "time_sales", "event": "hit", "question": "Which side is initiating these trades?", "options": ["Sellers", "Buyers", "Neither side can initiate a trade"], "correct": 0, "explanation": "Trades at the bid are seller initiated."},
-            {"type": "time_sales_tap", "event": "large_print", "target": 6, "question": "Tap the unusually large executed trade.", "explanation": "The highlighted print is much larger than the surrounding executions."},
+            tape_tap_screen(meta, node),
             matching,
         ]
     if unit_index == 2:
@@ -387,17 +435,35 @@ def screens_for(meta, node, unit_index=2):
             "Pace Changes": "What changed first before activity expanded?",
             "False Urgency": "Fast prints lose pace without price progress. What weakened?",
         }.get(title, f"Which tape behavior best supports the {title.lower()} read?")
+        tape_wrongs = [
+            ["Displayed depth changed but no completed trade confirms participation", "Candle direction identifies the initiating side of every execution"],
+            ["The spread narrowed so trade pace no longer matters", "One large print establishes persistent control"],
+            ["Total tape volume reveals where every resting order sits", "The final print deserves more weight than the full sequence"],
+            ["A faster feed confirms acceptance regardless of price response", "Alternating print colors mean no side can be aggressive"],
+        ][node % 4]
         return [
-            {"type": "time_sales", "event": tape_event, "question": question, "options": [meta["signal"], "Displayed liquidity increased without any trades", "Candle direction alone identifies every execution"], "correct": 0, "explanation": meta["signal"] + "."},
-            {"type": "time_sales_tap", "event": "large_print", "target": 6, "question": f"In the {title.lower()} tape, tap the print contributing the most volume.", "explanation": "The largest print contributes the most volume to this tape sequence."},
+            {"type": "time_sales", "event": tape_event, "question": question, "options": [meta["signal"]] + tape_wrongs, "correct": 0, "explanation": meta["signal"] + "."},
+            tape_tap_screen(meta, node),
             choice_screen(meta, node),
             aggressor,
         ][:3 + (node % 2)]
     if title in {"Reading a Footprint Chart", "Footprint Imbalances"}:
         footprint_event = "lift" if meta["bias"] == "up" else "balanced"
+        if title == "Footprint Imbalances":
+            definition = {"type": "footprint", "event": footprint_event,
+                "question": "How is a conventional ask side footprint imbalance usually evaluated?",
+                "options": ["Compare ask volume with bid volume diagonally at the adjacent lower price using a ratio threshold", "Choose the largest same row absolute difference only", "Compare displayed ask depth with completed bid volume"],
+                "correct": 0,
+                "explanation": "Diagonal comparison and a defined ratio distinguish conventional imbalance from a simple same price execution difference."}
+        else:
+            definition = {"type": "footprint", "event": footprint_event,
+                "question": "What does the bid and ask split inside each row represent?",
+                "options": ["Executed selling at the bid and buying at the ask", "Resting limit orders waiting at each price", "Total candle volume without side separation"],
+                "correct": 0,
+                "explanation": "A footprint separates executed bid volume from executed ask volume at each price."}
         return [
-            {"type": "footprint", "event": footprint_event, "question": "What does the bid and ask split inside each row represent?", "options": ["Executed selling at the bid and buying at the ask", "Resting limit orders waiting at each price", "Total candle volume without side separation"], "correct": 0, "explanation": "A footprint separates executed bid volume from executed ask volume at each price."},
-            {"type": "footprint_tap", "event": "lift", "target": 2, "question": "Tap the row with the greatest ask side advantage.", "explanation": "This row has the largest difference between ask volume and bid volume."},
+            definition,
+            footprint_tap_screen(meta, node),
             choice_screen(meta, node, True), matching,
         ]
     if title == "Common Order Flow Misconceptions":
@@ -412,7 +478,7 @@ def screens_for(meta, node, unit_index=2):
         return [
             {"type": "footprint", "event": event, "question": "Price and executed volume disagree. Which explanation best fits?", "options": [meta["signal"], "Delta alone determines the next price", "Total volume and delta measure the same thing", "The disagreement makes both readings useless"], "correct": 0, "explanation": meta["signal"] + "."},
             choice_screen(meta, node, True),
-            {"type": "footprint_tap", "event": event, "target": 2, "question": "Tap the row contributing the strongest side imbalance.", "explanation": "The highlighted row contains the widest bid ask execution difference."},
+            footprint_tap_screen(meta, node),
             sequence,
         ]
     if title == "Iceberg Orders":
@@ -420,7 +486,7 @@ def screens_for(meta, node, unit_index=2):
             {"type": "time_sales", "event": "lift", "question": "Large buy prints keep trading at one price but the offer refreshes. What best explains it?", "options": ["A possible sell iceberg is replenishing hidden size", "Buyers have already secured a breakout", "The tape is showing canceled orders", "Displayed size cannot change after a fill"], "correct": 0, "explanation": "Repeated execution against refreshing displayed size is consistent with an iceberg."},
             aggressor,
             choice_screen(meta, node, True),
-            {"type": "time_sales_tap", "event": "large_print", "target": 6, "question": "Tap the largest trade absorbed at the refreshing price.", "explanation": "Large executions can trade without progress when hidden size replenishes."},
+            tape_tap_screen(meta, node),
         ]
     if title in {"Conflicting Order Flow Signals", "High Volume Chop", "Low Volume Trend"}:
         context_action = matching if chart_action["type"] == "live_chart" else chart_action
@@ -446,14 +512,58 @@ def screens_for(meta, node, unit_index=2):
             choice_screen(meta, node, True),
             sequence,
         ]
+    if unit_index == 3:
+        absorption_titles = {"What Is Absorption", "Buyer Absorption", "Seller Absorption", "Repeated Tests", "Hidden Liquidity", "Absorption Review"}
+        exhaustion_titles = {"What Is Exhaustion", "Buyer Exhaustion", "Seller Exhaustion", "Absorption or Exhaustion"}
+        if title in absorption_titles:
+            scenario = "buyer_absorption" if meta["bias"] == "up" else "seller_absorption"
+            if title == "Hidden Liquidity":
+                scenario = "seller_absorption"
+            return [
+                {"type": "orderflow_sim", "event": scenario, "question": f"Which combined evidence best demonstrates {title.lower()}?", "options": [meta["signal"], "The candle pattern alone establishes the order flow cause", "Aggression without book response confirms continuation", "Displayed size reveals all hidden liquidity"], "correct": 0, "explanation": meta["signal"] + "."},
+                {"type": "time_sales", "event": "hit" if meta["bias"] == "up" else "lift", "question": "How does aggressive execution compare with the resulting price progress?", "options": ["Execution is strong while price progress remains limited", "Execution and price are accelerating equally", "No aggressive executions are present"], "correct": 0, "explanation": "Absorption requires pressure plus a weak corresponding price response."},
+                choice_screen(meta, node, True),
+            ]
+        if title in exhaustion_titles:
+            return [
+                {"type": "time_sales", "event": "stall", "question": f"What changes in the tape during {title.lower()}?", "options": ["Aggressive pace and size begin fading", "Resting depth proves the next reversal", "Executions accelerate while price accepts new levels"], "correct": 0, "explanation": "Exhaustion is defined by aggressive activity fading."},
+                tape_tap_screen({**meta, "title": "False Urgency"}, node),
+                {"type": "footprint", "event": "balanced", "question": "Which footprint change would support exhaustion?", "options": ["Directional execution becomes less dominant near the extreme", "One large row guarantees reversal", "Displayed orders replace executed volume"], "correct": 0, "explanation": "Fading directional execution can support an exhaustion read."},
+            ]
     if unit_index == 4:
         footprint_event = "hit" if meta["bias"] == "down" else ("lift" if meta["bias"] == "up" else "balanced")
+        flow_choice = choice_screen(meta, node, True)
+        flow_choice.pop("chart", None)
+        flow_sequence = dict(sequence)
+        flow_sequence.pop("chart", None)
+        footprint_wrongs = [
+            ["The largest total row proves directional delta", "The bid ask split represents resting limit orders", "One same price difference confirms a stacked diagonal imbalance"],
+            ["Positive candle delta guarantees price acceptance", "A quiet row invalidates aggression elsewhere", "Absolute volume matters more than price response"],
+            ["The brightest cell identifies the next candle direction", "A same row advantage and diagonal imbalance are identical", "Displayed depth can be inferred directly from executed volume"],
+            ["Several ask heavy rows prove sellers withdrew", "High total volume must contain directional delta", "One footprint candle is enough to ignore location"],
+        ][node % 4]
         return [
-            {"type": "footprint", "event": footprint_event, "question": f"Which footprint evidence best supports {title.lower()}?", "options": [meta["signal"], "The largest row guarantees continuation", "Resting orders and executed volume are identical", "Candle color overrides the bid ask split"], "correct": 0, "explanation": meta["signal"] + "."},
-            {"type": "footprint_tap", "event": footprint_event, "target": 2, "question": f"In {title.lower()}, tap the price with the strongest execution imbalance.", "explanation": "The selected row has the widest execution difference between sides."},
-            choice_screen(meta, node, True),
-            sequence,
+            {"type": "footprint", "event": footprint_event, "question": f"Which footprint evidence best supports {title.lower()}?", "options": [meta["signal"]] + footprint_wrongs, "correct": 0, "explanation": meta["signal"] + "."},
+            footprint_tap_screen(meta, node),
+            flow_choice,
+            flow_sequence,
         ][:3 + (node % 2)]
+    if unit_index == 8:
+        reversal_event = "hit" if meta["bias"] == "up" else ("lift" if meta["bias"] == "down" else "stall")
+        reversal_wrongs = [
+            ["The candle pattern identifies every initiating trade", "The earliest pressure cannot be contradicted later"],
+            ["A rejection wick proves passive absorption", "The second test should inherit the first test's order flow"],
+            ["Positive delta confirms a reversal regardless of price response", "Slower tape guarantees the opposing side has control"],
+            ["A large opposing print outweighs the executions that follow", "Price location is unnecessary once a reversal candle closes"],
+        ][node % 4]
+        screens = [
+            {"type": "time_sales", "event": reversal_event, "question": f"Which tape change matters most for {title.lower()}?", "options": [meta["signal"]] + reversal_wrongs, "correct": 0, "explanation": meta["signal"] + "."},
+            {"type": "footprint", "event": "hit" if meta["bias"] == "down" else ("lift" if meta["bias"] == "up" else "balanced"), "question": "How does executed volume qualify the reversal pattern?", "options": ["It shows whether aggressive control changed beneath the price pattern", "It guarantees the pattern target", "It only shows resting liquidity"], "correct": 0, "explanation": "Tape and footprint evidence reveal what changed beneath the candle pattern."},
+            choice_screen(meta, node, True),
+        ]
+        if title == "Reversal Review":
+            screens.insert(0, {"type": "orderflow_sim", "event": "conflict", "question": "Which evidence source prevents an immediate reversal conclusion?", "options": ["Aggression and price response still conflict", "The candle pattern guarantees confirmation", "Positive delta makes location irrelevant"], "correct": 0, "explanation": "A reversal needs a control change and confirming response."})
+        return screens
     comparison = comparison_screen(meta)
     price_context = live_screen(meta, node)
     core = [choice_screen(meta, node, advanced), price_context, chart_action, fill, matching, sequence]
@@ -484,6 +594,10 @@ def remove_text_dashes(value, key=None):
             "A company news schedule": "A single candle without execution context",
             "company size": "one isolated print",
             "news schedule": "candle color without price response",
+            "An order that keeps vanishing before it trades may be…": "Repeated deceptive posting and cancellation intended to mislead may constitute…",
+            "Orders shown then pulled to mislead is spoofing. Absorption actually fills; a breakout is a price move.": "Repeated deceptive posting and cancellation intended to mislead may constitute spoofing. One cancelled order alone does not prove intent.",
+            "A strong directional move needs an order [___].": "Directional movement often develops when aggressive and passive pressure create an order [___].",
+            "An imbalance means one side is more aggressive.": "Directional movement can develop when aggressive pressure overwhelms liquidity, opposing liquidity withdraws, or both.",
         }
         value = replacements.get(value, value)
         return value.replace(" — ", ". ").replace("–", " ").replace("-", " ")
@@ -548,18 +662,36 @@ def visual_description(screen):
         order = "market buy" if screen.get("order") == "market_buy" else "market sell"
         return f"A draggable {order} card sits beside a Level II ladder with bid and ask drop targets."
     if kind in {"time_sales", "time_sales_tap"}:
-        side = "buyer initiated prints highlighted at the ask" if screen.get("event") == "lift" else "seller initiated prints highlighted at the bid"
-        return f"An animated Time and Sales table lists time, execution price, and trade size, with {side}."
+        tape_details = {
+            "lift": "buyer initiated prints dominating at the ask",
+            "hit": "seller initiated prints dominating at the bid",
+            "large_print": "one unusually large execution among ordinary prints",
+            "accelerating": "the interval between prints shrinking after the target row",
+            "stall": "pace and trade size fading after the target row",
+            "sequence_break": "one opposing print interrupting a persistent buyer sequence",
+            "buyer_target": "the target row showing a buyer initiated execution at the ask",
+            "seller_target": "the target row showing a seller initiated execution at the bid",
+        }
+        detail = tape_details.get(screen.get("event"), "mixed buyer and seller initiated executions")
+        return f"An animated Time and Sales table lists time, execution price, and trade size, with {detail}."
     if kind in {"footprint", "footprint_tap"}:
         event = screen.get("event", "balanced")
-        detail = {"lift": "larger ask volume across several price rows", "hit": "larger bid volume across several price rows", "balanced": "similar bid and ask volume across the price rows"}.get(event, "bid and ask execution volume by price")
+        detail = {"lift": "one target row carrying the largest ask side execution advantage", "hit": "one target row carrying the largest bid side execution advantage", "balanced": "similar bid and ask volume across the price rows", "balanced_target": "one target row with the smallest bid ask execution difference", "total_target": "one target row with the largest combined executed volume"}.get(event, "bid and ask execution volume by price")
         return f"A footprint grid places bid volume left of price and ask volume right of price, showing {detail}."
     if kind == "live_chart":
         direction = screen.get("direction", "sideways")
         movement = {"up": "building upward", "down": "building downward", "sideways": "alternating inside a range"}.get(direction, "updating")
         return f"A live candlestick chart adds new candles over time, with price currently {movement}."
     if kind == "orderflow_sim":
-        return "A boss simulation updates four evidence panels together: price above VWAP stalling at resistance, a refreshing offer in Level II, fast buyer initiated Time and Sales prints, and positive footprint delta with little price progress."
+        scenarios = {
+            "seller_absorption": "Price stalls at resistance above VWAP while an offer refreshes, buyer initiated prints accelerate, and positive footprint delta produces little upward progress.",
+            "buyer_absorption": "Price holds support below VWAP while a bid refreshes, seller initiated prints accelerate, and negative footprint delta produces little downward progress.",
+            "sweep": "Price briefly trades above resistance as offers disappear and buy prints surge, then sell liquidity rebuilds and price immediately returns below the level.",
+            "breakout": "Price approaches resistance, offers thin and are consumed, buyer initiated prints persist, stacked ask side execution appears, and price holds above the broken level.",
+            "conflict": "Price rises above VWAP with positive delta and fast buyer prints, but a large offer refreshes and upward price progress begins fading.",
+            "championship": "A championship replay combines price and VWAP, changing Level II liquidity, Time and Sales, and footprint delta so the learner must weigh all four evidence sources.",
+        }
+        return scenarios.get(screen.get("event"), scenarios["championship"])
     if kind == "tap_candle":
         return chart_copy + " The candles are tappable and the learner must select the requested candle."
     if kind == "draw_trendline":
