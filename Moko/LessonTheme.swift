@@ -90,23 +90,34 @@ enum Theme {
 }
 
 extension Color {
+    // Called in view bodies all over the app, often with the same literal
+    // hex, and re-run on every render. The Scanner parse is the costly part, so
+    // cache the parsed RGBA per string; constructing the Color value is cheap.
+    private static var hexCache: [String: (Double, Double, Double, Double)] = [:]
+
     init(hex: String) {
+        let (r, g, b, a) = Color.rgba(hex: hex)
+        self.init(.sRGB, red: r, green: g, blue: b, opacity: a)
+    }
+
+    private static func rgba(hex: String) -> (Double, Double, Double, Double) {
+        if let cached = hexCache[hex] { return cached }
         let s = hex.trimmingCharacters(in: CharacterSet(charactersIn: "#"))
         var rgb: UInt64 = 0
         Scanner(string: s).scanHexInt64(&rgb)
-        let r, g, b, a: Double
+        let out: (Double, Double, Double, Double)
         if s.count == 8 {
-            r = Double((rgb & 0xFF000000) >> 24) / 255
-            g = Double((rgb & 0x00FF0000) >> 16) / 255
-            b = Double((rgb & 0x0000FF00) >> 8) / 255
-            a = Double(rgb & 0x000000FF) / 255
+            out = (Double((rgb & 0xFF000000) >> 24) / 255,
+                   Double((rgb & 0x00FF0000) >> 16) / 255,
+                   Double((rgb & 0x0000FF00) >> 8) / 255,
+                   Double(rgb & 0x000000FF) / 255)
         } else {
-            r = Double((rgb & 0xFF0000) >> 16) / 255
-            g = Double((rgb & 0x00FF00) >> 8) / 255
-            b = Double(rgb & 0x0000FF) / 255
-            a = 1
+            out = (Double((rgb & 0xFF0000) >> 16) / 255,
+                   Double((rgb & 0x00FF00) >> 8) / 255,
+                   Double(rgb & 0x0000FF) / 255, 1)
         }
-        self.init(.sRGB, red: r, green: g, blue: b, opacity: a)
+        hexCache[hex] = out
+        return out
     }
 }
 
