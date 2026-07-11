@@ -307,10 +307,12 @@ struct LessonView: View {
                                 if player.screen.isPreviousMistake { retryBadge }
                                 LessonScreenRouter(player: player, ink: ink)
                             }
+                            .padding(.horizontal, 20)
+                            .padding(.top, 18)
+                            .padding(.bottom, 24)
                             .id(player.index)   // fresh per-screen @State each step
-                            // Keep both outgoing and incoming questions alive in
-                            // this stable container so the horizontal swipe reads
-                            // as movement instead of a fade.
+                            // Both pages remain fully opaque. The old page leaves
+                            // left while the next page enters from the right.
                             .transition(.asymmetric(
                                 insertion: .modifier(
                                     active: HorizontalQuestionSlide(offset: UIScreen.main.bounds.width),
@@ -321,14 +323,11 @@ struct LessonView: View {
                                     identity: HorizontalQuestionSlide(offset: 0)
                                 )
                             ))
-                            .padding(.horizontal, 20)
-                            .padding(.top, 18)
-                            .padding(.bottom, 24)
                         }
                         .frame(maxWidth: .infinity, alignment: .topLeading)
                         .clipped()
                     }
-                    .animation(.easeOut(duration: 0.24), value: player.index)
+                    .animation(.linear(duration: 0.28), value: player.index)
                     footer
                 }
             }
