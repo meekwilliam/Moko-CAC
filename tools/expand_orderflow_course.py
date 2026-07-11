@@ -173,6 +173,18 @@ UNITS = [
     },
 ]
 
+# Add the bridge, cumulative reviews, comparisons, misconceptions, and footprint
+# work without duplicating the long unit definitions above.
+UNITS[0]["lessons"].insert(0, lesson("Reading Time and Sales", "sideways", "neutral", "price size and side", "Time and Sales lists completed trades in sequence"))
+UNITS[1]["lessons"].append(lesson("Tape and Absorption Mixed Review", "rejectionWickDown", "neutral", "aggression and price response", "Separate active pressure from the market response"))
+UNITS[3]["lessons"].insert(9, lesson("Thick Book vs Thin Book", "volatile", "neutral", "available depth", "Book depth changes how easily price can travel"))
+UNITS[3]["lessons"].append(lesson("Flow and Liquidity Mixed Review", "breakoutRetest", "neutral", "pressure location and acceptance", "Combine pressure with liquidity and price response"))
+UNITS[4]["lessons"].append(lesson("Common Order Flow Misconceptions", "shootingStar", "neutral", "price response", "Pressure is context rather than a guarantee"))
+UNITS[5]["lessons"].append(lesson("Breakout and Continuation Mixed Review", "bullFlag", "neutral", "acceptance and renewed pressure", "Continuation needs both structure and returning pressure"))
+UNITS[6]["lessons"].insert(0, lesson("Reading a Footprint Chart", "sideways", "neutral", "bid and ask volume by price", "A footprint shows executed volume at each price"))
+UNITS[6]["lessons"].insert(1, lesson("Footprint Imbalances", "volatile", "up", "uneven volume at neighboring prices", "Footprint imbalance highlights concentrated aggression"))
+UNITS[7]["lessons"][-1] = lesson("Comprehensive Order Flow Simulation", "volatile", "neutral", "the complete market response", "Build one read from book tape footprint price and risk")
+
 
 NODE_SVGS = [
     '<svg viewBox="0 0 32 32" fill="white"><circle cx="16" cy="16" r="9"/></svg>',
@@ -213,11 +225,60 @@ def chain_for(meta):
     ]
 
 
-def screens_for(meta, node):
+def choice_screen(meta, node, advanced=False):
+    if advanced:
+        options = [
+            meta["signal"],
+            "Aggression is present but acceptance is not confirmed",
+            "Liquidity changed but price response remains unresolved",
+            "Price moved but the tape does not yet confirm participation",
+        ]
+        question = "Which combined interpretation best explains this chart?"
+    else:
+        options = [
+            meta["signal"],
+            "The pressure and price response point in opposite directions",
+            "One print is enough to confirm the next move",
+        ]
+        question = "Which is the best explanation of the full setup?"
+    return {"type": "multiple_choice", "chart": meta["chart"], "question": question,
+            "options": options, "correct": 0, "explanation": meta["signal"] + "."}
+
+
+def live_screen(meta):
+    direction = meta["bias"] if meta["bias"] != "neutral" else "sideways"
+    return {
+        "type": "live_chart", "direction": direction,
+        "question": "Combine pace direction and follow through. What is the best current read?",
+        "options": ["Buyer control is strengthening", "Seller control is strengthening", "Pressure remains balanced"],
+        "correct": 0 if direction == "up" else (1 if direction == "down" else 2),
+        "explanation": "The best read combines pace direction and price response.",
+    }
+
+
+def comparison_screen(meta):
+    title = meta["title"]
+    comparisons = {
+        "Absorption or Exhaustion": ("Absorption shows pressure without progress. Exhaustion shows pressure fading.", "Both require price to accelerate immediately", "They can be separated using order size alone"),
+        "Sweep or Breakout": ("A sweep returns through the level. A breakout gains acceptance beyond it.", "A sweep always has slower tape than a breakout", "Any trade beyond the level confirms a breakout"),
+        "Thick Book vs Thin Book": ("A thick book offers more nearby depth. A thin book can allow faster travel.", "A thick book guarantees reversal", "A thin book proves aggressive buyers are present"),
+        "Buyer Imbalance": ("Buyer imbalance consumes offers. Buyer absorption holds bids against selling.", "Both mean resting buyers are being hit", "Both guarantee a higher close"),
+    }
+    if title not in comparisons:
+        return None
+    correct, wrong1, wrong2 = comparisons[title]
+    return {"type": "multiple_choice", "chart": meta["chart"],
+            "question": "Which comparison best separates these two ideas?",
+            "options": [correct, wrong1, wrong2], "correct": 0,
+            "explanation": correct}
+
+
+def screens_for(meta, node, unit_index=2):
     event = event_for(meta, node)
     buyer = event == "lift"
     order = "market_buy" if node % 2 else "market_sell"
     chain = chain_for(meta)
+    advanced = unit_index >= 5
     if node % 3 == 0:
         chart_action = {
             "type": "tap_candle",
@@ -244,43 +305,30 @@ def screens_for(meta, node):
             "correct": 0 if meta["bias"] == "up" else (1 if meta["bias"] == "down" else 2),
             "explanation": "Read direction and pace together.",
         }
-    return [
-        {
+    aggressor = {
             "type": "aggressor",
             "event": event,
             "question": "Watch the book. Who is aggressive?",
             "correct": 0 if buyer else 1,
             "explanation": "Buyers take offers. Sellers take bids.",
-        },
-        {
+        }
+    book = {
             "type": "book_drag",
             "order": order,
             "question": "Route this market order.",
             "correct": 1 if order == "market_buy" else 0,
             "explanation": "Market buys take asks. Market sells take bids.",
-        },
-        {
-            "type": "multiple_choice",
-            "chart": meta["chart"],
-            "question": "What is the best read here?",
-            "options": [
-                meta["signal"],
-                "The next move is guaranteed",
-                "Only candle color matters",
-            ],
-            "correct": 0,
-            "explanation": meta["signal"] + ".",
-        },
-        chart_action,
-        {
+        }
+    fill_options = [meta["clue"], "aggression without price response", "acceptance beyond the level", "liquidity withdrawing ahead of price"]
+    fill = {
             "type": "fill_blank",
             "chart": meta["chart"],
-            "question": "The key clue is [___].",
-            "options": [meta["clue"], "company size", "news schedule"],
+            "question": "The observation that completes this interpretation is [___].",
+            "options": fill_options,
             "correct": 0,
             "explanation": "Focus on " + meta["clue"] + ".",
-        },
-        {
+        }
+    matching = {
             "type": "matching",
             "chart": meta["chart"],
             "question": "Match each clue.",
@@ -290,16 +338,53 @@ def screens_for(meta, node):
                 ["Seller pressure", "Bids being taken"],
             ],
             "explanation": "Match the signal with its order flow clue.",
-        },
-        {
+        }
+    sequence = {
             "type": "sequence_builder",
             "chart": meta["chart"],
             "question": "Build the read in order.",
             "items": chain,
             "correct_order": chain,
             "explanation": "Read pressure, liquidity, price, then confirmation.",
-        },
+        }
+    title = meta["title"]
+    if title == "Reading Time and Sales":
+        return [
+            {"type": "time_sales", "event": "lift", "question": "What does this Time and Sales feed show?", "options": ["Buyers repeatedly trading at the ask", "Sellers repeatedly trading at the bid", "Only resting orders"], "correct": 0, "explanation": "Each row is a completed trade with time price size and side."},
+            {"type": "time_sales", "event": "hit", "question": "Which side is initiating these trades?", "options": ["Sellers", "Buyers", "Neither side can initiate a trade"], "correct": 0, "explanation": "Trades at the bid are seller initiated."},
+            choice_screen(meta, node), live_screen(meta), matching, chart_action, sequence,
+        ]
+    if title in {"Reading a Footprint Chart", "Footprint Imbalances"}:
+        footprint_event = "lift" if meta["bias"] == "up" else "balanced"
+        return [
+            {"type": "footprint", "event": footprint_event, "question": "What is the best reading of this footprint?", "options": [meta["signal"], "The displayed volume guarantees the next candle", "Resting size is the only information shown"], "correct": 0, "explanation": meta["signal"] + "."},
+            choice_screen(meta, node, True), live_screen(meta), aggressor, matching, chart_action, sequence,
+        ]
+    if title == "Common Order Flow Misconceptions":
+        return [
+            {"type": "true_false", "chart": "resistanceRejection", "question": "A large visible wall guarantees a reversal.", "correct": False, "explanation": "Walls can trade pull or fail."},
+            {"type": "true_false", "chart": "breakout", "question": "Fast tape guarantees a breakout.", "correct": False, "explanation": "Speed needs acceptance and follow through."},
+            {"type": "multiple_choice", "chart": "shootingStar", "question": "Positive delta appears but price cannot rise. What is the best explanation?", "options": ["Buying may be absorbed by passive sellers", "Positive delta guarantees delayed upside", "The chart invalidates all tape data"], "correct": 0, "explanation": "Aggressive buying without progress can reveal seller absorption."},
+            live_screen(meta), aggressor, matching, sequence,
+        ]
+    if title == "Comprehensive Order Flow Simulation":
+        return [aggressor, book,
+            {"type": "time_sales", "event": "lift", "question": "How does the tape change the current read?", "options": ["Buying is active but still needs price acceptance", "The outcome is now guaranteed", "Resting bids are the only useful evidence"], "correct": 0, "explanation": "Tape confirms activity rather than outcome."},
+            {"type": "footprint", "event": "lift", "question": "What does the footprint add?", "options": ["Concentrated ask side execution at several prices", "Proof that risk is unnecessary", "A list of resting stop orders"], "correct": 0, "explanation": "The footprint locates executed volume by price."},
+            live_screen(meta), choice_screen(meta, node, True), chart_action, sequence,
+        ]
+    comparison = comparison_screen(meta)
+    core = [choice_screen(meta, node, advanced), live_screen(meta), chart_action, fill, matching, sequence]
+    if comparison:
+        core[3] = comparison
+    # Rotate mechanics so repeated lesson rhythm does not become predictable.
+    variants = [
+        [aggressor, core[0], core[1], core[3], book, core[2], core[5]],
+        [core[1], core[0], book, core[4], core[2], aggressor, core[5]],
+        [core[0], core[2], core[3], aggressor, core[1], core[4], core[5]],
+        [book, core[1], core[4], core[0], core[2], core[3], core[5]],
     ]
+    return variants[node % len(variants)]
 
 
 def remove_text_dashes(value, key=None):
@@ -309,6 +394,12 @@ def remove_text_dashes(value, key=None):
     if isinstance(value, list):
         return [remove_text_dashes(item, key) for item in value]
     if isinstance(value, str) and key != "svg":
+        replacements = {
+            "A company news schedule": "A single candle without execution context",
+            "company size": "one isolated print",
+            "news schedule": "candle color without price response",
+        }
+        value = replacements.get(value, value)
         return value.replace(" — ", ". ").replace("–", " ").replace("-", " ")
     return value
 
@@ -348,6 +439,12 @@ def markdown_screen(screen):
             f"ORDER: {order}",
             f"ANSWER: {'the ask' if order == 'market_buy' else 'the bid'}",
         ])
+    elif kind == "time_sales":
+        lines.extend([f"[TIME_SALES] {question}", f"EVENT: {screen.get('event', 'lift')}"])
+        lines.extend(answer_first(screen))
+    elif kind == "footprint":
+        lines.extend([f"[FOOTPRINT] {question}", f"EVENT: {screen.get('event', 'balanced')}"])
+        lines.extend(answer_first(screen))
     elif kind == "matching":
         lines.append(f"[MATCH] {question}")
         if screen.get("chart"):
@@ -404,6 +501,8 @@ def write_markdown(course):
         "  [TAP_CANDLE] Select a candle directly on a chart.",
         "  [TRENDLINE] Connect two candles on a chart.",
         "  [LIVE_CHART] Read pressure while candles update.",
+        "  [TIME_SALES] Read an animated feed of completed trades.",
+        "  [FOOTPRINT] Compare bid and ask volume at each price.",
         "",
         f"TOTAL UNITS: {len(course['sections'])}",
         f"TOTAL LESSONS: {len(course['lessons'])}",
@@ -433,12 +532,43 @@ def main():
     data = json.loads(DATA_PATH.read_text())
     course = next(c for c in data["courses"] if c["id"] == "orderflow")
 
-    # Keep the two authored units, then deterministically rebuild Units 3 to 10.
-    course["sections"] = course["sections"][:2]
-    course["nodes"] = course["nodes"][:12]
-    course["lessons"] = course["lessons"][:12]
+    # Preserve the handcrafted foundation lessons by title so this remains
+    # idempotent after renumbering and generated curriculum updates.
+    authored_titles = [
+        "What Is Order Flow?", "Aggressive vs. Passive Orders", "The Bid, Ask & Spread",
+        "Lifting the Offer & Hitting the Bid", "Order Flow Foundations Review",
+        "What the Order Book Shows", "Bid Side vs. Ask Side", "Size & Liquidity",
+        "Large Orders as Walls", "Pulling & Spoofing", "The Order Book Review",
+        "What Actually Moves Price",
+    ]
+    existing = {item["title"]: item for item in course["lessons"]}
+    authored = {title: existing[title] for title in authored_titles}
+    original_sections = course["sections"][:2]
+    course["sections"] = original_sections
+    course["nodes"] = []
+    course["lessons"] = []
 
-    node = 13
+    unit_one = authored_titles[:5]
+    unit_two = authored_titles[5:11]
+    node = 1
+    def add_authored(title, section_index):
+        nonlocal node
+        item = authored[title]
+        course["nodes"].append({"num": node, "svg": NODE_SVGS[section_index], "title": title, "sectionIndex": section_index})
+        course["lessons"].append({**item, "node": node})
+        node += 1
+
+    for title in unit_one:
+        add_authored(title, 0)
+    for title in unit_two:
+        add_authored(title, 1)
+    mixed = lesson("Foundations and Book Mixed Review", "sideways", "neutral", "aggression liquidity and response", "A complete read combines who acts where liquidity rests and how price responds")
+    course["nodes"].append({"num": node, "svg": NODE_SVGS[1], "title": mixed["title"], "sectionIndex": 1})
+    course["lessons"].append({"node": node, "title": mixed["title"], "celebration": mixed["title"] + " complete.", "screens": screens_for(mixed, node, 1)})
+    node += 1
+    # This concept now closes Unit 2, after learners know book depth and liquidity.
+    add_authored("What Actually Moves Price", 1)
+
     for section_index, unit in enumerate(UNITS, start=2):
         course["sections"].append({
             "index": section_index,
@@ -459,19 +589,20 @@ def main():
                 "node": node,
                 "title": meta["title"],
                 "celebration": meta["title"] + " complete.",
-                "screens": screens_for(meta, node),
+                "screens": screens_for(meta, node, section_index),
             })
             node += 1
 
     assert len(course["sections"]) == 10
-    assert len(course["nodes"]) == 90
-    assert len(course["lessons"]) == 90
-    assert [node["num"] for node in course["nodes"]] == list(range(1, 91))
-    assert [item["node"] for item in course["lessons"]] == list(range(1, 91))
+    assert 80 <= len(course["nodes"]) <= 120
+    assert len(course["lessons"]) == len(course["nodes"])
+    expected_nodes = list(range(1, len(course["nodes"]) + 1))
+    assert [node["num"] for node in course["nodes"]] == expected_nodes
+    assert [item["node"] for item in course["lessons"]] == expected_nodes
     all_screens = [screen for item in course["lessons"] for screen in item["screens"]]
     visual_screens = [
         screen for screen in all_screens
-        if screen["type"] in {"aggressor", "book_drag", "live_chart"} or "chart" in screen
+        if screen["type"] in {"aggressor", "book_drag", "live_chart", "time_sales", "footprint"} or "chart" in screen
     ]
     assert len(visual_screens) / len(all_screens) >= 0.9
     cleaned_course = remove_text_dashes(course)
