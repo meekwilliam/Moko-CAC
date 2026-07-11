@@ -412,6 +412,75 @@ def answer_first(screen):
     return [options[correct]] + options[:correct] + options[correct + 1:]
 
 
+CHART_VISUALS = {
+    "ascendingChannel": "Candles climb between two rising parallel boundaries with pullbacks holding the lower boundary.",
+    "ascendingTriangle": "Higher lows press into a flat resistance level before price tests the upper boundary.",
+    "bandsWidening": "Candles expand in range as the surrounding volatility bands spread farther apart.",
+    "bearFlag": "A sharp decline pauses in a small upward sloping channel before sellers test control again.",
+    "bearishEngulfing": "A large bearish candle covers the prior bullish body after an attempted rise.",
+    "breakdown": "Price drives below a visible support level with expanding bearish candles.",
+    "breakdownRetest": "Price breaks support, returns to test it from below, then reacts lower.",
+    "breakout": "Price pushes through a visible resistance level with expanding bullish candles.",
+    "breakoutRetest": "Price breaks resistance, returns to test it from above, then attempts to continue higher.",
+    "bullFlag": "A sharp advance pauses in a compact downward sloping channel before buyers test control again.",
+    "bullishEngulfing": "A large bullish candle covers the prior bearish body after an attempted decline.",
+    "doji": "A narrow candle body with wicks on both sides shows little net price progress.",
+    "doubleBottom": "Price tests the same support area twice and rebounds after the second test.",
+    "doubleTop": "Price tests the same resistance area twice and retreats after the second test.",
+    "downtrend": "A sequence of lower highs and lower lows moves from the upper left toward the lower right.",
+    "gapUp": "Price opens well above the prior trading area with little activity between the two zones.",
+    "hammer": "A candle with a small upper body and long lower wick shows rejection of lower prices.",
+    "inverseHeadShoulders": "Three troughs form with the middle trough deepest before price challenges the neckline.",
+    "lowerHighsDowntrend": "Each rebound ends below the previous high while price continues making lower lows.",
+    "maCrossUp": "A faster moving average crosses above a slower average as candles begin rising.",
+    "marubozu": "A wide directional candle has almost no wick, showing sustained movement through its range.",
+    "priceAboveMA": "Candles hold above a rising moving average and react near it during pullbacks.",
+    "priceAboveVWAP": "Candles trade above the VWAP line while pullbacks test it as potential support.",
+    "priceBelowVWAP": "Candles trade below the VWAP line while rebounds test it as potential resistance.",
+    "pullbackUptrend": "An established rise pauses with smaller bearish candles before testing trend continuation.",
+    "range": "Candles rotate between clear upper and lower boundaries without sustained direction.",
+    "rejectionWickDown": "Price briefly trades below a level and closes back above it, leaving a long lower wick.",
+    "rejectionWickUp": "Price briefly trades above a level and closes back below it, leaving a long upper wick.",
+    "resistanceRejection": "An advance reaches resistance and turns lower with visible upper wick rejection.",
+    "shootingStar": "A small candle body with a long upper wick shows rejection of higher prices.",
+    "sideways": "Small mixed candles overlap inside a narrow horizontal trading area.",
+    "spinningTop": "A small candle body with upper and lower wicks shows two sided movement and little progress.",
+    "supportBounce": "A decline reaches support and rebounds with buyers defending the lower area.",
+    "uptrend": "A sequence of higher highs and higher lows moves from the lower left toward the upper right.",
+    "volatile": "Alternating wide candles and long wicks show rapid movement with changing control.",
+}
+
+
+def visual_description(screen):
+    kind = screen["type"]
+    chart = screen.get("chart")
+    chart_copy = CHART_VISUALS.get(chart, "A candlestick chart displays the price structure referenced by the question.")
+    if kind == "aggressor":
+        side = "ask sizes being consumed by incoming buy orders" if screen.get("event") == "lift" else "bid sizes being consumed by incoming sell orders"
+        return f"An animated Level II ladder shows prices between bid and ask columns, with {side}."
+    if kind == "book_drag":
+        order = "market buy" if screen.get("order") == "market_buy" else "market sell"
+        return f"A draggable {order} card sits beside a Level II ladder with bid and ask drop targets."
+    if kind == "time_sales":
+        side = "buyer initiated prints highlighted at the ask" if screen.get("event") == "lift" else "seller initiated prints highlighted at the bid"
+        return f"An animated Time and Sales table lists time, execution price, and trade size, with {side}."
+    if kind == "footprint":
+        event = screen.get("event", "balanced")
+        detail = {"lift": "larger ask volume across several price rows", "hit": "larger bid volume across several price rows", "balanced": "similar bid and ask volume across the price rows"}.get(event, "bid and ask execution volume by price")
+        return f"A footprint grid places bid volume left of price and ask volume right of price, showing {detail}."
+    if kind == "live_chart":
+        direction = screen.get("direction", "sideways")
+        movement = {"up": "building upward", "down": "building downward", "sideways": "alternating inside a range"}.get(direction, "updating")
+        return f"A live candlestick chart adds new candles over time, with price currently {movement}."
+    if kind == "tap_candle":
+        return chart_copy + " The candles are tappable and the learner must select the requested candle."
+    if kind == "draw_trendline":
+        return chart_copy + " The learner draws directly between two candles to mark the structure."
+    if chart:
+        return chart_copy
+    return None
+
+
 def markdown_screen(screen):
     kind = screen["type"]
     question = screen.get("question", "")
@@ -484,6 +553,9 @@ def markdown_screen(screen):
             lines.append(f"CHART: {screen['chart']}")
     if screen.get("explanation"):
         lines.append(f"WHY: {screen['explanation']}")
+    visual = visual_description(screen)
+    if visual:
+        lines.insert(1, f"VISUAL: {visual}")
     return lines
 
 
