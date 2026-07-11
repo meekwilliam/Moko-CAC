@@ -52,7 +52,7 @@ private struct SplitMix {
 
 /// A compact depth-of-market ladder. `consumedAsks` / `consumedBids` fade the
 /// N front-of-book levels on that side, so an aggressive order visibly eats
-/// through resting liquidity.
+/// through resting liquidity without resetting the same book in a loop.
 private struct OrderBookLadder: View {
     let levels: [BookLevel]
     var consumedAsks: Int = 0
@@ -132,7 +132,8 @@ struct AggressorView: View {
                             consumedBids: lift ? 0 : eaten)
                 .onReceive(ticker) { _ in
                     guard !player.revealed else { return }
-                    eaten = eaten >= 4 ? 0 : eaten + 1   // roll the consume so it reads as "live"
+                    guard eaten < 4 else { return }
+                    eaten += 1
                 }
 
             HStack(spacing: 12) {
@@ -185,7 +186,7 @@ struct BookDragView: View {
     private var s: LessonScreen { player.screen }
     private var isBuy: Bool { s.order != "market_sell" }   // default: market buy
     @State private var drag: CGSize = .zero
-    @State private var zoneW: CGFloat = 0
+    @State private var dropFrames: [Int: CGRect] = [:]
 
     var body: some View {
         VStack(alignment: .leading, spacing: 18) {
@@ -199,7 +200,6 @@ struct BookDragView: View {
                 zone(index: 0, title: "THE BID", subtitle: "buyers waiting", tint: bidColor)
                 zone(index: 1, title: "THE ASK", subtitle: "sellers waiting", tint: askColor)
             }
-            .background(GeometryReader { g in Color.clear.onAppear { zoneW = g.size.width } })
 
             // Draggable order chip.
             HStack {
@@ -216,6 +216,7 @@ struct BookDragView: View {
             }
         }
         .frame(maxWidth: .infinity, alignment: .leading)
+        .coordinateSpace(name: "bookDrag")
     }
 
     private var orderChip: some View {
@@ -226,14 +227,12 @@ struct BookDragView: View {
             .overlay(Capsule().strokeBorder(Color.white.opacity(0.25), lineWidth: 1.5))
             .offset(drag)
             .gesture(
-                DragGesture()
+                DragGesture(coordinateSpace: .named("bookDrag"))
                     .onChanged { v in guard !player.revealed else { return }; drag = v.translation }
                     .onEnded { v in
                         guard !player.revealed else { return }
-                        // Which half did it land on? Zone row is centred above
-                        // the chip; a leftward drop = bid, rightward = ask.
-                        if abs(v.translation.height) > 20 || abs(v.translation.width) > 30 {
-                            player.selectedIndex = v.translation.width < 0 ? 0 : 1
+                        if let target = dropFrames.first(where: { $0.value.contains(v.location) })?.key {
+                            player.selectedIndex = target
                             Haptics.selection()
                         }
                         withAnimation(.spring(response: 0.3, dampingFraction: 0.7)) { drag = .zero }
@@ -257,6 +256,15 @@ struct BookDragView: View {
         .overlay(RoundedRectangle(cornerRadius: 16, style: .continuous)
             .strokeBorder(active ? color : Theme.surfaceBorder, lineWidth: chosen ? 2.5 : 1.5))
         .contentShape(RoundedRectangle(cornerRadius: 16, style: .continuous))
+        .background(
+            GeometryReader { proxy in
+                Color.clear
+                    .onAppear { dropFrames[index] = proxy.frame(in: .named("bookDrag")) }
+                    .onChange(of: proxy.size) { _ in
+                        dropFrames[index] = proxy.frame(in: .named("bookDrag"))
+                    }
+            }
+        )
         .onTapGesture {
             guard !player.revealed else { return }
             Haptics.selection(); player.selectedIndex = index

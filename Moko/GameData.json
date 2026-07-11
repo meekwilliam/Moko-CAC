@@ -36578,17 +36578,17 @@
   },
   {
    "id": "orderflow",
-   "name": "Order Flow",
+   "name": "Order Flow Foundations",
    "color": "#14B8A6",
    "level": null,
    "sections": [
     {
      "index": 0,
-     "eyebrow": "STRATEGY · UNIT 1",
+     "eyebrow": "FOUNDATIONS · UNIT 1",
      "title": "Order Flow Foundations",
      "bg": "#14B8A6",
      "slab": "#0F766E",
-     "tier": "Strategy"
+     "tier": "Foundation"
     }
    ],
    "nodes": [
@@ -36639,18 +36639,18 @@
        "type": "multiple_choice",
        "question": "What does “order flow” describe?",
        "options": [
-        "The live stream of buy and sell orders hitting the market — the real demand and supply behind each move.",
+        "The live stream of buying, selling, and available liquidity that helps explain how price is forming.",
         "The order in which candlesticks form across the trading day.",
         "The sequence of chart patterns a stock cycles through."
        ],
        "correct": 0,
-       "explanation": "Order flow is the actual orders that move price. Candles and patterns are the *result* of that flow, not the flow itself."
+       "explanation": "Order flow studies executed activity and available liquidity. It adds context to price, but it does not reveal every participant or guarantee the next move."
       },
       {
        "type": "true_false",
-       "question": "Order flow looks at the orders behind price, not only the finished price line.",
+       "question": "Order flow adds context about current buying, selling, and liquidity beyond a finished price line.",
        "correct": true,
-       "explanation": "The whole point is reading the pressure that moves price before it shows up as a completed candle."
+       "explanation": "It can help describe current pressure, but the chart and order book are both incomplete snapshots of a changing market."
       },
       {
        "type": "aggressor",
@@ -36722,7 +36722,7 @@
         "An order that can only fill during the opening auction."
        ],
        "correct": 0,
-       "explanation": "A market order crosses the spread to fill immediately — it *takes* liquidity. That aggression is what pushes price."
+       "explanation": "A market order seeks immediate execution against available liquidity. It takes resting liquidity and can move price when nearby levels are consumed."
       },
       {
        "type": "multiple_choice",
@@ -36733,7 +36733,7 @@
         "An order the broker places automatically for you."
        ],
        "correct": 0,
-       "explanation": "A limit order sits in the book and waits. It *provides* liquidity; it doesn't move price until an aggressor trades against it."
+       "explanation": "A limit order sits in the book and waits. It can provide displayed liquidity until it is filled, changed, or canceled."
       },
       {
        "type": "book_drag",
@@ -36876,7 +36876,7 @@
         "Posting a new offer higher than the last one."
        ],
        "correct": 0,
-       "explanation": "Lifting the offer means a buyer sends market orders that consume the asks — aggressive buying that pushes price up."
+       "explanation": "Lifting the offer means a buyer takes resting asks. It can move price higher when the available offers are consumed."
       },
       {
        "type": "aggressor",
@@ -36901,7 +36901,7 @@
         "raising"
        ],
        "correct": 0,
-       "explanation": "Hitting the bid is aggressive selling. As bids clear, the next-best bid is lower, dragging price down."
+       "explanation": "Hitting the bid is aggressive selling. If available bids are consumed, the next executable price can be lower."
       },
       {
        "type": "matching",
@@ -36909,18 +36909,18 @@
        "pairs": [
         [
          "Buyers lifting the offer",
-         "Price pushed up"
+         "Can support higher prices"
         ],
         [
          "Sellers hitting the bid",
-         "Price pushed down"
+         "Can support lower prices"
         ],
         [
          "Only resting limit orders, no takers",
-         "Price stays put"
+         "May leave price unchanged"
         ]
        ],
-       "explanation": "Price moves in the direction of the aggressor. With no takers, the book just sits."
+       "explanation": "Aggression and available liquidity influence price, but displayed orders can also be added, canceled, or refreshed."
       },
       {
        "type": "book_drag",
@@ -36945,20 +36945,20 @@
      "screens": [
       {
        "type": "multiple_choice",
-       "question": "Ultimately, what moves price?",
+       "question": "What can help drive price higher over a short interval?",
        "options": [
-        "An imbalance between aggressive buyers and aggressive sellers.",
+        "Sustained aggressive buying that consumes available offers.",
         "The number of shares a company has outstanding.",
         "How many candlesticks have printed that day."
        ],
        "correct": 0,
-       "explanation": "Price moves when one side's aggression outweighs the other's. Balanced aggression means price barely moves."
+       "explanation": "Sustained buying can move price through available offers. It is one input among changing quotes, cancellations, new liquidity, and broader market activity."
       },
       {
        "type": "true_false",
-       "question": "If aggressive buying and aggressive selling are roughly balanced, price tends to stay range-bound.",
-       "correct": true,
-       "explanation": "Matched aggression cancels out — orders fill back and forth near the same level, so price chops sideways."
+       "question": "A large displayed order means price will definitely hold at that level.",
+       "correct": false,
+       "explanation": "Displayed orders can be filled, changed, canceled, or refreshed. A book snapshot is useful context, not certainty."
       },
       {
        "type": "fill_blank",
@@ -36969,7 +36969,7 @@
         "schedule"
        ],
        "correct": 0,
-       "explanation": "Trends come from imbalance: far more aggression on one side than the other."
+       "explanation": "A one-sided imbalance can contribute to a directional move, especially when it consumes nearby liquidity."
       },
       {
        "type": "sequence_builder",
@@ -36986,7 +36986,7 @@
         "Price ticks up to higher asks",
         "A green candle prints"
        ],
-       "explanation": "Imbalance → offers absorbed → price rises → the chart finally shows it. Order-flow traders read step one."
+       "explanation": "One possible sequence is imbalance → offers absorbed → higher prints → chart update. It describes a mechanism, not a prediction."
       },
       {
        "type": "matching",
@@ -36994,18 +36994,18 @@
        "pairs": [
         [
          "Buy-side imbalance",
-         "Trends up"
+         "May support higher prices"
         ],
         [
          "Sell-side imbalance",
-         "Trends down"
+         "May support lower prices"
         ],
         [
          "Balanced aggression",
-         "Ranges sideways"
+         "May coincide with a range"
         ]
        ],
-       "explanation": "Direction follows whichever side is more aggressive; balance means no trend."
+       "explanation": "These are useful tendencies, not rules. New orders, cancellations, hidden liquidity, and broader market conditions can change the read quickly."
       },
       {
        "type": "aggressor",
@@ -37076,12 +37076,12 @@
        "type": "multiple_choice",
        "question": "Order flow is best described as…",
        "options": [
-        "The real-time buying and selling pressure that moves price.",
+        "Real-time context about buying, selling, and available liquidity.",
         "The order in which chart patterns appear.",
         "A schedule of company news events."
        ],
        "correct": 0,
-       "explanation": "It's the live pressure behind price — the cause, not the chart-shaped effect."
+       "explanation": "It complements price action with context. It does not show every participant or guarantee an outcome."
       },
       {
        "type": "sequence_builder",
@@ -37098,7 +37098,7 @@
         "Price moves to the next level",
         "The candle updates"
        ],
-       "explanation": "Orders → fills → price → chart. Order-flow traders live at the front of that chain."
+       "explanation": "Orders and fills influence the prices a chart records. Use that sequence as context, not as advance certainty about the next print."
       },
       {
        "type": "true_false",
