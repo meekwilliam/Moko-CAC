@@ -36601,19 +36601,19 @@
     {
      "num": 2,
      "svg": "<svg viewBox=\"0 0 32 32\" fill=\"white\"><circle cx=\"16\" cy=\"16\" r=\"9\"/></svg>",
-     "title": "Aggressive vs Passive Orders",
+     "title": "Aggressive vs. Passive Orders",
      "sectionIndex": 0
     },
     {
      "num": 3,
      "svg": "<svg viewBox=\"0 0 32 32\" fill=\"white\"><circle cx=\"16\" cy=\"16\" r=\"9\"/></svg>",
-     "title": "The Bid, the Ask & the Spread",
+     "title": "The Bid, Ask & Spread",
      "sectionIndex": 0
     },
     {
      "num": 4,
      "svg": "<svg viewBox=\"0 0 32 32\" fill=\"white\"><circle cx=\"16\" cy=\"16\" r=\"9\"/></svg>",
-     "title": "Lifting the Offer, Hitting the Bid",
+     "title": "Lifting the Offer & Hitting the Bid",
      "sectionIndex": 0
     },
     {
@@ -36644,35 +36644,20 @@
         "The sequence of chart patterns a stock cycles through."
        ],
        "correct": 0,
-       "explanation": "Order flow is the actual orders that move price. Chart patterns and candle shapes are the *result* of that flow, not the flow itself."
-      },
-      {
-       "type": "multiple_choice",
-       "question": "Price on a chart is the result of what?",
-       "options": [
-        "Buy and sell orders executing against each other.",
-        "The exchange publishing a fair value each morning.",
-        "A company's latest earnings estimate."
-       ],
-       "correct": 0,
-       "explanation": "Every tick of price is just the last order that filled. Order flow reads what's driving those fills."
+       "explanation": "Order flow is the actual orders that move price. Candles and patterns are the *result* of that flow, not the flow itself."
       },
       {
        "type": "true_false",
-       "question": "Order flow analysis looks at the orders behind price, not only the finished price line.",
+       "question": "Order flow looks at the orders behind price, not only the finished price line.",
        "correct": true,
-       "explanation": "That's the whole point: understand the pressure that moves price before it shows up as a completed candle."
+       "explanation": "The whole point is reading the pressure that moves price before it shows up as a completed candle."
       },
       {
-       "type": "fill_blank",
-       "question": "Order flow reads the [___] between aggressive buyers and aggressive sellers.",
-       "options": [
-        "balance",
-        "color",
-        "calendar"
-       ],
+       "type": "aggressor",
+       "event": "lift",
+       "question": "Buyers are aggressively taking the offers on this ladder. Who is the aggressor?",
        "correct": 0,
-       "explanation": "When buyers are more aggressive than sellers, price rises; when sellers dominate, it falls. It's a balance of pressure."
+       "explanation": "The side sending market orders that eat resting liquidity is the aggressor. Here that's the buyer."
       },
       {
        "type": "matching",
@@ -36688,10 +36673,21 @@
         ],
         [
          "A candle",
-         "A summary of past prices"
+         "A record of past prices"
         ]
        ],
        "explanation": "Orders come first; price is the outcome; the candle is a record after the fact."
+      },
+      {
+       "type": "fill_blank",
+       "question": "Order flow reads the [___] between aggressive buyers and aggressive sellers.",
+       "options": [
+        "balance",
+        "color",
+        "calendar"
+       ],
+       "correct": 0,
+       "explanation": "When buyers are more aggressive than sellers, price rises; when sellers dominate, it falls. It's a balance of pressure."
       },
       {
        "type": "sequence_builder",
@@ -36714,14 +36710,14 @@
     },
     {
      "node": 2,
-     "title": "Aggressive vs Passive Orders",
+     "title": "Aggressive vs. Passive Orders",
      "celebration": "You can tell takers from makers.",
      "screens": [
       {
        "type": "multiple_choice",
        "question": "What is an aggressive (market) order?",
        "options": [
-        "An order that takes whatever price is available right now, removing liquidity.",
+        "An order that takes whatever price is available now, removing liquidity.",
         "An order that waits at a set price until someone trades with it.",
         "An order that can only fill during the opening auction."
        ],
@@ -36734,27 +36730,24 @@
        "options": [
         "An order resting at a chosen price, providing liquidity until someone hits it.",
         "An order that always fills instantly at the current price.",
-        "An order the broker places automatically on your behalf."
+        "An order the broker places automatically for you."
        ],
        "correct": 0,
        "explanation": "A limit order sits in the book and waits. It *provides* liquidity; it doesn't move price until an aggressor trades against it."
       },
       {
-       "type": "true_false",
-       "question": "Aggressive orders remove liquidity; passive orders provide it.",
-       "correct": true,
-       "explanation": "Takers (market orders) consume the resting orders that makers (limit orders) supply."
+       "type": "book_drag",
+       "order": "market_buy",
+       "question": "Route this MARKET BUY to the side of the book it fills against.",
+       "correct": 1,
+       "explanation": "A market buy takes the resting sell orders — it fills at the ask."
       },
       {
-       "type": "fill_blank",
-       "question": "It's the [___] orders — the ones crossing the spread to fill now — that actually push price.",
-       "options": [
-        "aggressive",
-        "passive",
-        "cancelled"
-       ],
+       "type": "book_drag",
+       "order": "market_sell",
+       "question": "Route this MARKET SELL to the side of the book it fills against.",
        "correct": 0,
-       "explanation": "Resting limit orders just sit there. Price only moves when aggressive orders lift offers or hit bids."
+       "explanation": "A market sell hits the resting buy orders — it fills at the bid."
       },
       {
        "type": "matching",
@@ -36776,22 +36769,24 @@
        "explanation": "Anything that fills immediately by crossing the spread is a taker; anything resting and waiting is a maker."
       },
       {
-       "type": "multiple_choice",
-       "question": "Two traders both want in. One posts a limit bid and waits; the other sends a market buy. Which one moves price?",
-       "options": [
-        "The market buy — it crosses the spread and lifts the offer.",
-        "The limit bid — posting it raises the price.",
-        "Neither; only the exchange moves price."
-       ],
-       "correct": 0,
-       "explanation": "Placing a resting bid doesn't move price. Sending a market order that consumes the offer does."
+       "type": "true_false",
+       "question": "Aggressive orders remove liquidity; passive orders provide it.",
+       "correct": true,
+       "explanation": "Takers (market orders) consume the resting orders that makers (limit orders) supply."
+      },
+      {
+       "type": "aggressor",
+       "event": "hit",
+       "question": "Sellers are aggressively taking the bids here. Who is the aggressor?",
+       "correct": 1,
+       "explanation": "The side sending the market orders is the aggressor — here, the seller hitting the bid."
       }
      ]
     },
     {
      "node": 3,
-     "title": "The Bid, the Ask & the Spread",
-     "celebration": "You own the bid/ask/spread.",
+     "title": "The Bid, Ask & Spread",
+     "celebration": "You own the bid, ask and spread.",
      "screens": [
       {
        "type": "multiple_choice",
@@ -36827,21 +36822,18 @@
        "explanation": "The spread is the distance between the best buy and best sell orders — the cost of crossing from one side to the other."
       },
       {
-       "type": "true_false",
-       "question": "A wider spread generally signals thinner liquidity.",
-       "correct": true,
-       "explanation": "When few orders rest near price, the best bid and ask sit further apart, so the spread widens."
+       "type": "book_drag",
+       "order": "market_buy",
+       "question": "You want in NOW. Drag your market buy to the side you'll fill against.",
+       "correct": 1,
+       "explanation": "Buying immediately means paying the ask — you lift the offer."
       },
       {
-       "type": "multiple_choice",
-       "question": "A stock is 10.00 bid, 10.02 ask. You send a market buy. Where do you most likely fill?",
-       "options": [
-        "Around 10.02 — you pay the ask to buy now.",
-        "Around 10.00 — you get the bid.",
-        "Around 10.01 — always the midpoint."
-       ],
+       "type": "book_drag",
+       "order": "market_sell",
+       "question": "You want out NOW. Drag your market sell to the side you'll fill against.",
        "correct": 0,
-       "explanation": "A market buy crosses the spread and lifts the offer, so you pay the ask side, ~10.02."
+       "explanation": "Selling immediately means hitting the bid."
       },
       {
        "type": "matching",
@@ -36861,12 +36853,18 @@
         ]
        ],
        "explanation": "Buyers in a hurry pay the ask; sellers in a hurry hit the bid; the spread is the distance between them."
+      },
+      {
+       "type": "true_false",
+       "question": "A wider spread generally signals thinner liquidity.",
+       "correct": true,
+       "explanation": "When few orders rest near price, the best bid and ask sit further apart, so the spread widens."
       }
      ]
     },
     {
      "node": 4,
-     "title": "Lifting the Offer, Hitting the Bid",
+     "title": "Lifting the Offer & Hitting the Bid",
      "celebration": "You can read aggression in the book.",
      "screens": [
       {
@@ -36881,21 +36879,18 @@
        "explanation": "Lifting the offer means a buyer sends market orders that consume the asks — aggressive buying that pushes price up."
       },
       {
-       "type": "multiple_choice",
-       "question": "What does “hitting the bid” mean?",
-       "options": [
-        "Aggressively selling into the resting buy orders at the bid.",
-        "Raising your bid to buy more.",
-        "Placing a limit buy at the current bid."
-       ],
+       "type": "aggressor",
+       "event": "lift",
+       "question": "Watch the offers get eaten. Someone is lifting the offer — who is the aggressor?",
        "correct": 0,
-       "explanation": "Hitting the bid means a seller sends market orders that consume the bids — aggressive selling that pushes price down."
+       "explanation": "Lifting the offer is aggressive buying: the buyer is taking the resting sell orders."
       },
       {
-       "type": "true_false",
-       "question": "Repeatedly lifting the offer tends to push price up.",
-       "correct": true,
-       "explanation": "Each lift eats through resting sell orders; as they clear, the next-best ask is higher, so price climbs."
+       "type": "aggressor",
+       "event": "hit",
+       "question": "Now the bids are getting eaten. Someone is hitting the bid — who is the aggressor?",
+       "correct": 1,
+       "explanation": "Hitting the bid is aggressive selling: the seller is taking the resting buy orders."
       },
       {
        "type": "fill_blank",
@@ -36928,15 +36923,18 @@
        "explanation": "Price moves in the direction of the aggressor. With no takers, the book just sits."
       },
       {
-       "type": "multiple_choice",
-       "question": "You watch buyers repeatedly lift the offer while few sellers step up. What's the read?",
-       "options": [
-        "Buyers are in control — aggressive demand is absorbing supply and lifting price.",
-        "Sellers are in control, since offers are being posted.",
-        "The move is meaningless without an earnings report."
-       ],
+       "type": "book_drag",
+       "order": "market_buy",
+       "question": "A buyer wants to lift the offer. Route their market order to the right side.",
+       "correct": 1,
+       "explanation": "Lifting the offer means taking the ask — that's where a market buy fills."
+      },
+      {
+       "type": "aggressor",
+       "event": "lift",
+       "question": "Buyers keep lifting offers while sellers barely show. Who is in control here?",
        "correct": 0,
-       "explanation": "Persistent lifting with little selling pressure is aggressive demand — a bullish order-flow read."
+       "explanation": "Persistent lifting with little selling is aggressive demand — the buyer is the aggressor and in control."
       }
      ]
     },
@@ -36974,17 +36972,6 @@
        "explanation": "Trends come from imbalance: far more aggression on one side than the other."
       },
       {
-       "type": "multiple_choice",
-       "question": "Price is grinding higher on steady buying while sellers barely appear. In order-flow terms, this is…",
-       "options": [
-        "A demand imbalance — aggressive buyers dominating.",
-        "A supply imbalance — sellers dominating.",
-        "Perfect balance between both sides."
-       ],
-       "correct": 0,
-       "explanation": "More aggressive buying than selling is a demand imbalance, which lifts price."
-      },
-      {
        "type": "sequence_builder",
        "question": "Order these from cause to visible effect.",
        "items": [
@@ -36999,7 +36986,7 @@
         "Price ticks up to higher asks",
         "A green candle prints"
        ],
-       "explanation": "Imbalance → offers absorbed → price rises → the chart finally shows it. Order-flow traders are reading step one."
+       "explanation": "Imbalance → offers absorbed → price rises → the chart finally shows it. Order-flow traders read step one."
       },
       {
        "type": "matching",
@@ -37019,6 +37006,20 @@
         ]
        ],
        "explanation": "Direction follows whichever side is more aggressive; balance means no trend."
+      },
+      {
+       "type": "aggressor",
+       "event": "lift",
+       "question": "Price is grinding higher on relentless buying. Who is the aggressor driving it?",
+       "correct": 0,
+       "explanation": "A demand imbalance — aggressive buyers lifting offers — is pushing price up."
+      },
+      {
+       "type": "book_drag",
+       "order": "market_buy",
+       "question": "To push price UP, an aggressive buyer must take which side?",
+       "correct": 1,
+       "explanation": "Taking the ask (lifting offers) is what walks price up to higher levels."
       }
      ]
     },
@@ -37028,43 +37029,25 @@
      "celebration": "Foundations mastered — you read the flow behind price.",
      "screens": [
       {
-       "type": "multiple_choice",
-       "question": "Order flow is best described as…",
-       "options": [
-        "The real-time buying and selling pressure that moves price.",
-        "The order in which chart patterns appear.",
-        "A schedule of company news events."
-       ],
+       "type": "aggressor",
+       "event": "lift",
+       "question": "The offers are getting consumed. Who is the aggressor?",
        "correct": 0,
-       "explanation": "It's the live pressure behind price — the cause, not the chart-shaped effect."
+       "explanation": "When offers (asks) are being taken, the buyer is the aggressor — lifting the offer."
       },
       {
-       "type": "multiple_choice",
-       "question": "Which order removes liquidity and can move price?",
-       "options": [
-        "An aggressive market order.",
-        "A passive limit order resting in the book.",
-        "A cancelled order."
-       ],
-       "correct": 0,
-       "explanation": "Takers (market orders) cross the spread and move price; resting makers just wait."
+       "type": "book_drag",
+       "order": "market_buy",
+       "question": "Route the MARKET BUY to the side it fills against.",
+       "correct": 1,
+       "explanation": "A market buy takes the ask."
       },
       {
-       "type": "true_false",
-       "question": "You buy at the ask and sell at the bid when you trade aggressively.",
-       "correct": true,
-       "explanation": "Crossing the spread means paying the ask to buy now or hitting the bid to sell now."
-      },
-      {
-       "type": "fill_blank",
-       "question": "“Lifting the offer” is aggressive [___] that tends to push price up.",
-       "options": [
-        "buying",
-        "selling",
-        "posting"
-       ],
+       "type": "book_drag",
+       "order": "market_sell",
+       "question": "Route the MARKET SELL to the side it fills against.",
        "correct": 0,
-       "explanation": "Lifting the offer eats resting sell orders — aggressive demand."
+       "explanation": "A market sell hits the bid."
       },
       {
        "type": "matching",
@@ -37091,14 +37074,14 @@
       },
       {
        "type": "multiple_choice",
-       "question": "A stock grinds up on relentless offer-lifting while sellers barely show. Best read?",
+       "question": "Order flow is best described as…",
        "options": [
-        "Demand imbalance — aggressive buyers in control.",
-        "Supply imbalance — sellers in control.",
-        "No information without a chart pattern."
+        "The real-time buying and selling pressure that moves price.",
+        "The order in which chart patterns appear.",
+        "A schedule of company news events."
        ],
        "correct": 0,
-       "explanation": "Persistent aggressive buying with little selling is a demand imbalance — the core bullish order-flow signal."
+       "explanation": "It's the live pressure behind price — the cause, not the chart-shaped effect."
       },
       {
        "type": "sequence_builder",
@@ -37116,6 +37099,19 @@
         "The candle updates"
        ],
        "explanation": "Orders → fills → price → chart. Order-flow traders live at the front of that chain."
+      },
+      {
+       "type": "true_false",
+       "question": "You buy at the ask and sell at the bid when you trade aggressively.",
+       "correct": true,
+       "explanation": "Crossing the spread means paying the ask to buy now or hitting the bid to sell now."
+      },
+      {
+       "type": "aggressor",
+       "event": "hit",
+       "question": "The bids are getting consumed on the ladder. Who is the aggressor?",
+       "correct": 1,
+       "explanation": "When bids are being taken, the seller is the aggressor — hitting the bid."
       }
      ]
     }

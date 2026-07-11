@@ -54,6 +54,11 @@ struct LessonScreen: Decodable, Identifiable {
     // live_chart → the direction the live tape walks ("up"/"down"/"sideways"/
     // "volatile"), so the forming candle biases toward a stable answer.
     let direction: String?
+    // aggressor → which side hit the book ("lift" = buyers took the offer,
+    // "hit" = sellers took the bid); drives the ladder consume animation.
+    let event: String?
+    // book_drag → the order to route ("market_buy" / "market_sell").
+    let order: String?
 
     // shared question fields
     let question: String?
@@ -108,7 +113,7 @@ struct LessonScreen: Decodable, Identifiable {
     let numberUnit: String?
 
     enum CodingKeys: String, CodingKey {
-        case type, text, question, explanation, options, pairs, template, blanks, direction
+        case type, text, question, explanation, options, pairs, template, blanks, direction, event, order
         case concern, items, chart, target, targets, level
         case levelKind = "level_kind"
         case targetStart = "target_start"
@@ -134,6 +139,8 @@ struct LessonScreen: Decodable, Identifiable {
         text = try c.decodeIfPresent(String.self, forKey: .text)
         chart = try c.decodeIfPresent(String.self, forKey: .chart)
         direction = try c.decodeIfPresent(String.self, forKey: .direction)
+        event = try c.decodeIfPresent(String.self, forKey: .event)
+        order = try c.decodeIfPresent(String.self, forKey: .order)
         question = try c.decodeIfPresent(String.self, forKey: .question)
         explanation = try c.decodeIfPresent(String.self, forKey: .explanation)
         // `options` is [String] for most types, but [IngredientOption] for

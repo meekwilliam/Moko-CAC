@@ -193,6 +193,10 @@ struct LessonScreenRouter: View {
             OHLCLabelView(player: player, ink: ink)
         case "number_slider":
             NumberSliderView(player: player, ink: ink)
+        case "aggressor":
+            AggressorView(player: player, ink: ink)
+        case "book_drag":
+            BookDragView(player: player, ink: ink)
         default:
             // true_false / multiple_choice / fill_blank
             ChoiceView(player: player, ink: ink)
