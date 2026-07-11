@@ -276,18 +276,26 @@ private func makeTape(seed: UInt64, event: String, target: Int? = nil) -> [TapeP
     var rng = SplitMix(seed: seed)
     var price = 100.0 + Double(rng.next() % 300) / 10.0
     return (0..<9).map { index in
-        let favoredBuy = event == "lift"
         let buyerInitiated: Bool
-        if event == "balanced" || event == "large_print" || event == "accelerating" || event == "stall" {
+        switch event {
+        case "buyer_target":
+            buyerInitiated = index == target ? true : index % 3 != 0
+        case "seller_target":
+            buyerInitiated = index == target ? false : index % 3 == 0
+        case "sequence_break":
+            buyerInitiated = index != target
+        case "balanced", "large_print", "accelerating", "stall":
             buyerInitiated = index % 2 == 0
-        } else {
+        default:
+            let favoredBuy = event == "lift"
             buyerInitiated = index % 4 != 0 ? favoredBuy : !favoredBuy
         }
         price += buyerInitiated ? 0.02 : -0.02
+        let ordinarySize = 20 + Int(rng.next() % (event == "stall" && index >= (target ?? 6) ? 80 : 480))
         return TapePrint(
             time: String(format: "10:04:%02d", 12 + index),
             price: price,
-            size: target == index ? 980 : (20 + Int(rng.next() % (event == "stall" && index > 5 ? 80 : 480))),
+            size: event == "large_print" && target == index ? 980 : ordinarySize,
             buyerInitiated: buyerInitiated
         )
     }
@@ -350,9 +358,10 @@ struct TimeSalesView: View {
                 let event = screen.event ?? "balanced"
                 let cadence: Int
                 if event == "accelerating" {
-                    cadence = visibleRows < 5 ? 4 : (visibleRows < 7 ? 2 : 1)
+                    let change = screen.target ?? 5
+                    cadence = visibleRows < change ? 4 : (visibleRows < change + 2 ? 2 : 1)
                 } else if event == "stall" {
-                    cadence = visibleRows < 6 ? 1 : 4
+                    cadence = visibleRows < (screen.target ?? 6) ? 1 : 4
                 } else {
                     cadence = 2
                 }
@@ -429,12 +438,25 @@ private func makeFootprint(seed: UInt64, event: String, target: Int? = nil) -> [
         case "hit":
             bid = baseVolume + 60 + Int(rng.next() % 120)
             ask = baseVolume
+        case "balanced_target":
+            bid = baseVolume + 10
+            ask = baseVolume + 40 + Int(rng.next() % 30)
         default:
             bid = baseVolume + Int(rng.next() % 45)
             ask = baseVolume + Int(rng.next() % 45)
         }
-        let highlightedBid = target == index && event == "hit" ? bid + 260 : bid
-        let highlightedAsk = target == index && event != "hit" ? ask + 260 : ask
+        let highlightedBid: Int
+        let highlightedAsk: Int
+        if target == index && event == "balanced_target" {
+            highlightedBid = baseVolume + 30
+            highlightedAsk = baseVolume + 31
+        } else if target == index && event == "total_target" {
+            highlightedBid = bid + 220
+            highlightedAsk = ask + 220
+        } else {
+            highlightedBid = target == index && event == "hit" ? bid + 260 : bid
+            highlightedAsk = target == index && event == "lift" ? ask + 260 : ask
+        }
         return FootprintLevel(price: base + Double(row) * 0.05, bidVolume: highlightedBid, askVolume: highlightedAsk)
     }
 }
