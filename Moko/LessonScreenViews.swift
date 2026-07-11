@@ -197,6 +197,8 @@ struct LessonScreenRouter: View {
             AggressorView(player: player, ink: ink)
         case "book_drag":
             BookDragView(player: player, ink: ink)
+        case "book_compare":
+            BookDepthCompareView(player: player, ink: ink)
         case "time_sales":
             TimeSalesView(player: player, ink: ink)
         case "time_sales_tap":
