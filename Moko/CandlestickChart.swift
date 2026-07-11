@@ -1137,7 +1137,7 @@ struct LiveChart: View {
     var height: CGFloat = 150
 
     private let committedCount = 10          // static candles behind the forming one
-    private let ticksPerCandle = 13          // ~1.5s of ticking before a candle commits
+    private let ticksPerCandle = 45          // ~5s of ticking before a candle commits (45 × 0.11s)
     private let tick = Timer.publish(every: 0.11, on: .main, in: .common).autoconnect()
 
     @State private var committed: [Candle] = []
@@ -1187,7 +1187,11 @@ struct LiveChart: View {
 
     private func step() {
         // Nudge the forming candle's close; stretch its wick to any new extreme.
-        let move = direction.drift * 0.6 + Double.random(in: -direction.jitter...direction.jitter)
+        // Scale each step so a candle's total travel is the same no matter how
+        // many ticks it lasts — otherwise a long (5s) candle drifts into the
+        // frame edge and sticks. Baseline of 13 ticks = the original feel.
+        let scale = 13.0 / Double(ticksPerCandle)
+        let move = (direction.drift * 0.6 + Double.random(in: -direction.jitter...direction.jitter)) * scale
         var f = forming
         f.close = min(range.hi - 0.5, max(range.lo + 0.5, f.close + move))
         f.high = max(f.high, f.close)
