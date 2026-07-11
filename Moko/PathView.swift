@@ -79,6 +79,7 @@ struct PathView: View {
 
                     // ── Sticky header ──
                     header(width: width, topInset: topInset)
+
                 }
                 .onAppear {
                     guard !didInitialScroll else { return }
@@ -648,5 +649,6 @@ private struct SectionOffsetKey: PreferenceKey {
         value.merge(nextValue(), uniquingKeysWith: { _, new in new })
     }
 }
+
 
 

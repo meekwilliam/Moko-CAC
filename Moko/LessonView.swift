@@ -544,8 +544,15 @@ struct LessonView: View {
             }
         }
         .background(
-            theme.palette.base
-                .opacity(pagePlayer.revealed && !pagePlayer.isIntro ? 1 : 0)
+            // The card fill lives here (not on the banner) so it reliably
+            // extends into the bottom safe area with no base-coloured gap
+            // below it. Rounded top only while the feedback card is showing.
+            (pagePlayer.revealed && !pagePlayer.isIntro ? Color(hex: "#1A2433") : Color.clear)
+                .clipShape(UnevenRoundedRectangle(
+                    topLeadingRadius: pagePlayer.revealed && !pagePlayer.isIntro ? 26 : 0,
+                    bottomLeadingRadius: 0, bottomTrailingRadius: 0,
+                    topTrailingRadius: pagePlayer.revealed && !pagePlayer.isIntro ? 26 : 0,
+                    style: .continuous))
                 .ignoresSafeArea(edges: .bottom)
         )
         // Bouncy overshoot pop, like the web's speechPop.
@@ -692,13 +699,8 @@ struct FeedbackBanner: View {
         .padding(.horizontal, 20)
         .padding(.top, 20)
         .padding(.bottom, 14)
-        .background(
-            UnevenRoundedRectangle(topLeadingRadius: 26, bottomLeadingRadius: 0,
-                                   bottomTrailingRadius: 0, topTrailingRadius: 26,
-                                   style: .continuous)
-                .fill(Color(hex: "#1A2433"))
-                .ignoresSafeArea(edges: .bottom)
-        )
+        .frame(maxWidth: .infinity)
+        // Background is drawn by the footer so it fills the bottom safe area.
         .onChange(of: player.index) { _ in
             showWhy = false
         }
