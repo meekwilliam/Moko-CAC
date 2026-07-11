@@ -1181,10 +1181,17 @@ struct ChoiceView: View {
                 ScenarioChartView(scenario: scenario, height: 130, seed: chartSeed(player.screen))
             }
 
+            // A live tape: candles form and roll in real time. The forming
+            // candle ticks up and down; the walk is biased by `direction` so
+            // the answer stays stable.
+            if s.type == "live_chart" {
+                LiveChart(direction: LiveDirection(s.direction), height: 150)
+            }
+
             // Chart-analysis questions (read the chart, then answer) keep the
-            // old plain-text prompt so the chart stays the focus; questions
+            // plain-text prompt so the chart stays the focus; questions
             // without a chart get the mascot prompt.
-            if s.chart != nil {
+            if s.chart != nil || s.type == "live_chart" {
                 plainPrompt
             } else {
                 MascotPrompt(text: displayQuestion(), ink: ink, divider: true)

@@ -46,6 +46,14 @@ enum MechanicsTestLesson {
                 "explanation": "fill_blank_multi: two independent blanks in one template.",
             ],
             [
+                "type": "live_chart",
+                "direction": "up",
+                "question": "The tape is live. Which way is price trending?",
+                "options": ["Up", "Down", "Sideways"],
+                "correct": 0,
+                "explanation": "live_chart: a forming candle ticks up/down and the window rolls, biased to `direction`.",
+            ],
+            [
                 "type": "matching",
                 "question": "Match each term to its pair.",
                 "pairs": [["Term A", "Match A"], ["Term B", "Match B"], ["Term C", "Match C"]],

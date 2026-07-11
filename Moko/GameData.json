@@ -3559,6 +3559,30 @@
        "target_end": 4,
        "explanation": "Connecting the falling candles traces the downtrend line.",
        "chart": "downtrend"
+      },
+      {
+       "type": "live_chart",
+       "direction": "up",
+       "question": "This tape is live. Which way is price moving right now?",
+       "options": [
+        "Up",
+        "Down",
+        "Sideways"
+       ],
+       "correct": 0,
+       "explanation": "Higher highs and higher lows as the candles roll — that's an uptrend."
+      },
+      {
+       "type": "live_chart",
+       "direction": "down",
+       "question": "The tape is live again. Which way now?",
+       "options": [
+        "Down",
+        "Up",
+        "Sideways"
+       ],
+       "correct": 0,
+       "explanation": "Lower highs and lower lows as it prints — that's a downtrend."
       }
      ]
     },
@@ -9958,6 +9982,18 @@
        ],
        "correct": 1,
        "explanation": "One isolated swing doesn't override the broader pattern; classification looks at the overall sequence."
+      },
+      {
+       "type": "live_chart",
+       "direction": "up",
+       "question": "Watch the live tape. What is it doing?",
+       "options": [
+        "Trending up",
+        "Trending down",
+        "Going sideways"
+       ],
+       "correct": 0,
+       "explanation": "Each pullback holds a higher low and pushes a higher high — a live uptrend."
       }
      ]
     },
@@ -10092,6 +10128,18 @@
        ],
        "correct": 1,
        "explanation": "One isolated swing doesn't override the broader pattern; classification looks at the overall sequence."
+      },
+      {
+       "type": "live_chart",
+       "direction": "down",
+       "question": "Watch the live tape. What is it doing?",
+       "options": [
+        "Trending down",
+        "Trending up",
+        "Going sideways"
+       ],
+       "correct": 0,
+       "explanation": "Each bounce stalls at a lower high before rolling over — a live downtrend."
       }
      ]
     },
@@ -10252,6 +10300,18 @@
        "question": "A sideways market can eventually break into either an uptrend or a downtrend.",
        "correct": true,
        "explanation": "Ranges are commonly described as temporary, eventually resolving in one direction or another."
+      },
+      {
+       "type": "live_chart",
+       "direction": "sideways",
+       "question": "Read the live tape. How would you classify it?",
+       "options": [
+        "Ranging sideways",
+        "Trending up",
+        "Trending down"
+       ],
+       "correct": 0,
+       "explanation": "Price oscillates without making progress either way — a live range."
       }
      ]
     },
@@ -28845,6 +28905,18 @@
        ],
        "correct": 1,
        "explanation": "Large, erratic two-way swings define a volatile condition."
+      },
+      {
+       "type": "live_chart",
+       "direction": "volatile",
+       "question": "Read this live tape. What best describes the condition?",
+       "options": [
+        "Volatile — large, erratic swings",
+        "A calm, tidy range",
+        "A smooth steady trend"
+       ],
+       "correct": 0,
+       "explanation": "Big two-sided swings with no clean direction is live volatility, not a calm range."
       }
      ]
     },

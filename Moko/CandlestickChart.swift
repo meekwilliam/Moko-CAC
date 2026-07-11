@@ -1,4 +1,5 @@
 import SwiftUI
+import Combine
 
 // MARK: - Candlestick chart
 // A reusable, data-driven chart for illustrating chart-reading concepts.
@@ -53,6 +54,11 @@ struct CandlestickChart: View {
     /// geometry and expect candles to span the entire frame.
     var showsAxes: Bool = false
 
+    /// Pin the vertical price range instead of auto-fitting to the candles. The
+    /// live chart uses this so a forming candle can tick up and down within a
+    /// stable frame — otherwise the whole plot would rescale every frame.
+    var fixedRange: (lo: Double, hi: Double)? = nil
+
     // Reference-matched candle tones: a muted leaf green / coral red.
     private let bullish = Color(hex: "#3FB77E")
     private let bearish = Color(hex: "#E15C5C")
@@ -73,6 +79,9 @@ struct CandlestickChart: View {
     }
 
     private func mapper(height: CGFloat) -> ValueMapper {
+        if let r = fixedRange {
+            return ValueMapper(lo: r.lo, range: max(r.hi - r.lo, 0.0001), height: height)
+        }
         let values = candles.flatMap { [$0.high, $0.low] } + [supportLevel, resistanceLevel].compactMap { $0 }
             + (maLine ?? []) + (maLine2 ?? []) + (bandUpper ?? []) + (bandLower ?? [])
         let maxV = values.max() ?? 1
@@ -1091,4 +1100,135 @@ extension ChartScenario {
             return ChartModel(candles: out, bandUpper: upper, bandLower: lower, bandLabel: "CHANNEL")
         }
     }
+}
+
+// MARK: - Live (forming) chart
+
+/// The bias a live chart walks with, so a "which way is it moving?" question
+/// has a stable answer while still ticking randomly.
+enum LiveDirection: String {
+    case up, down, sideways, volatile
+
+    /// Per-tick average drift and how wild each tick is.
+    var drift: Double {
+        switch self {
+        case .up: return 0.55
+        case .down: return -0.55
+        case .sideways, .volatile: return 0
+        }
+    }
+    var jitter: Double {
+        switch self {
+        case .volatile: return 2.6
+        case .sideways: return 0.9
+        default: return 1.3
+        }
+    }
+    init(_ raw: String?) { self = LiveDirection(rawValue: raw ?? "up") ?? .up }
+}
+
+/// A candlestick chart that behaves like a live tape: the rightmost candle is
+/// still "forming" — its close ticks up and down every frame, its wick stretches
+/// to the extremes it has touched — and every so often it commits and a fresh
+/// candle starts, the window rolling left. The price range is pinned per
+/// forming candle so committed bars sit still while the live one moves.
+struct LiveChart: View {
+    var direction: LiveDirection = .up
+    var height: CGFloat = 150
+
+    private let committedCount = 10          // static candles behind the forming one
+    private let ticksPerCandle = 13          // ~1.5s of ticking before a candle commits
+    private let tick = Timer.publish(every: 0.11, on: .main, in: .common).autoconnect()
+
+    @State private var committed: [Candle] = []
+    @State private var forming = Candle(open: 100, high: 100, low: 100, close: 100)
+    @State private var ticks = 0
+    @State private var range: (lo: Double, hi: Double) = (90, 110)
+    @State private var popID = 0
+
+    var body: some View {
+        GeometryReader { geo in
+            ZStack(alignment: .topLeading) {
+                CandlestickChart(candles: committed + [forming], showsAxes: true,
+                                 fixedRange: range)
+                let slotW = geo.size.width / CGFloat(committedCount + 1)
+                NewCandleFlash(key: popID)
+                    .frame(width: slotW, height: geo.size.height)
+                    .position(x: geo.size.width - slotW / 2, y: geo.size.height / 2)
+                    .allowsHitTesting(false)
+            }
+        }
+        .frame(height: height)
+        .onAppear { if committed.isEmpty { seed() } }
+        .onReceive(tick) { _ in step() }
+    }
+
+    private func seed() {
+        var arr: [Candle] = []
+        var price = 100.0
+        for _ in 0..<committedCount {
+            let c = grow(from: price)
+            arr.append(c); price = c.close
+        }
+        committed = arr
+        forming = Candle(open: price, high: price, low: price, close: price)
+        ticks = 0
+        reframe()
+    }
+
+    /// A committed historical candle — a small directional walk with wicks.
+    private func grow(from close: Double) -> Candle {
+        let open = close
+        let move = direction.drift + Double.random(in: -direction.jitter...direction.jitter)
+        let c = max(20, open + move)
+        return Candle(open: open, high: max(open, c) + Double.random(in: 0.2...1.4),
+                      low: min(open, c) - Double.random(in: 0.2...1.4), close: c)
+    }
+
+    private func step() {
+        // Nudge the forming candle's close; stretch its wick to any new extreme.
+        let move = direction.drift * 0.6 + Double.random(in: -direction.jitter...direction.jitter)
+        var f = forming
+        f.close = min(range.hi - 0.5, max(range.lo + 0.5, f.close + move))
+        f.high = max(f.high, f.close)
+        f.low = min(f.low, f.close)
+        withAnimation(.linear(duration: 0.11)) { forming = f }   // only the last bar moves
+
+        ticks += 1
+        guard ticks >= ticksPerCandle else { return }
+
+        // Commit the forming candle, roll the window, start a fresh one.
+        committed = Array((committed + [f]).suffix(committedCount))
+        forming = Candle(open: f.close, high: f.close, low: f.close, close: f.close)
+        ticks = 0
+        popID += 1
+        reframe()
+    }
+
+    /// Re-pin the price range to the visible candles with headroom, so the
+    /// forming candle has room to move without clipping. Only called on commit,
+    /// never mid-tick, so committed bars don't jitter while one candle forms.
+    private func reframe() {
+        let vals = (committed + [forming]).flatMap { [$0.high, $0.low] }
+        let hi = vals.max() ?? 110, lo = vals.min() ?? 90
+        let pad = max(hi - lo, 4) * 0.35
+        withAnimation(.easeInOut(duration: 0.4)) { range = (lo - pad, hi + pad) }
+    }
+}
+
+/// A soft highlight over the forming candle's slot, re-firing on each commit —
+/// the same idea as onboarding's NewCandlePop, kept private to the live chart.
+private struct NewCandleFlash: View {
+    let key: Int
+    @State private var visible = false
+
+    var body: some View {
+        LinearGradient(colors: [Color.white.opacity(0.22), .clear],
+                       startPoint: .top, endPoint: .bottom)
+            .opacity(visible ? 0 : 1)
+            .onAppear { flash() }
+            .onChange(of: key) { _, _ in visible = false; flash() }
+    }
+
+    private func flash() { withAnimation(.easeOut(duration: 0.55)) { visible = true } }
 }
