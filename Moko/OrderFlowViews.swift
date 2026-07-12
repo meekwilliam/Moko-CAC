@@ -565,8 +565,22 @@ struct ReplayCompareView: View {
             }
         }
         .padding(11).frame(maxWidth: .infinity, minHeight: 118, alignment: .topLeading)
-        .background(RoundedRectangle(cornerRadius: 15).fill(tint.opacity(0.09)))
-        .overlay(RoundedRectangle(cornerRadius: 15).strokeBorder(tint.opacity(0.5), lineWidth: 1.5))
+        // A comparison should read as two proper lesson cards, not as colored
+        // overlays on the lesson background. Keep A/B's color on the chrome,
+        // with the same solid face and recessed slab as the rest of the app.
+        .background(
+            RoundedRectangle(cornerRadius: 15, style: .continuous)
+                .fill(Theme.surfaceRaised)
+                .overlay(
+                    RoundedRectangle(cornerRadius: 15, style: .continuous)
+                        .strokeBorder(tint.opacity(0.7), lineWidth: 1.5)
+                )
+        )
+        .background(
+            RoundedRectangle(cornerRadius: 15, style: .continuous)
+                .fill(Theme.surfaceSlab)
+                .offset(y: 5)
+        )
     }
 
     private func replayChoice(index: Int, label: String) -> some View {
