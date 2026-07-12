@@ -280,7 +280,11 @@ struct PathView: View {
             line
         }
         .padding(.horizontal, 20)
-        .padding(.top, 37).padding(.bottom, 32)   // +15% blank space between units
+        // Extra bottom room: the floating "TEST OUT?" callout on a section's
+        // first node reaches ~90pt above the node (card + pointer + bob), and
+        // was colliding with this divider's title text — the old 32pt wasn't
+        // enough clearance.
+        .padding(.top, 44).padding(.bottom, 70)
     }
 
     private var line: some View {
