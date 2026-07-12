@@ -280,7 +280,7 @@ struct PathView: View {
             line
         }
         .padding(.horizontal, 20)
-        .padding(.top, 32).padding(.bottom, 28)
+        .padding(.top, 37).padding(.bottom, 32)   // +15% blank space between units
     }
 
     private var line: some View {
@@ -390,27 +390,18 @@ struct PathView: View {
                     // tucks up under the card far enough to hide its own top
                     // edge, so only the seamless V of its two outer sides
                     // shows, unbroken from the card's corners).
-                    VStack(spacing: 0) {
-                        Text("TEST OUT?")
-                            .font(Theme.font(14, .black))
-                            .foregroundColor(.white)
-                            .fixedSize()          // keep it on one line
-                            .padding(.horizontal, 18).padding(.vertical, 10)
-                            .background(RoundedRectangle(cornerRadius: 15, style: .continuous)
-                                .fill(Theme.surfaceRaised))
-                            .overlay(RoundedRectangle(cornerRadius: 15, style: .continuous)
-                                .strokeBorder(Theme.surfaceBorder, lineWidth: 2))
-                        Triangle()
-                            .fill(Theme.surfaceRaised)      // points down at the node
-                            .overlay(Triangle().stroke(Theme.surfaceBorder, lineWidth: 2))
-                            .frame(width: 18, height: 10)
-                            .offset(y: -4)                  // tuck under the card, hiding the seam
-                    }
+                    Text("TEST OUT?")
+                        .font(Theme.font(14, .black))
+                        .foregroundColor(.white)
+                        .fixedSize()          // keep it on one line
+                        .padding(.horizontal, 18).padding(.top, 11).padding(.bottom, 20)
+                        .background(SpeechBubbleDown().fill(Theme.surfaceRaised))
+                        .overlay(SpeechBubbleDown().stroke(Theme.surfaceBorder, lineWidth: 2))
                 }
                 .buttonStyle(RowPressStyle(scale: 0.94))
                 .offset(y: -64 + (testOutBob ? -6 : 6))
                 .onAppear {
-                    withAnimation(.easeInOut(duration: 1.3).repeatForever(autoreverses: true)) {
+                    withAnimation(.easeInOut(duration: 3.5).repeatForever(autoreverses: true)) {
                         testOutBob = true
                     }
                 }
@@ -692,6 +683,41 @@ private struct Triangle: Shape {
         p.move(to: CGPoint(x: rect.midX, y: rect.maxY))
         p.addLine(to: CGPoint(x: rect.minX, y: rect.minY))
         p.addLine(to: CGPoint(x: rect.maxX, y: rect.minY))
+        p.closeSubpath()
+        return p
+    }
+}
+
+/// A rounded card with a downward pointer traced as ONE continuous path, so the
+/// card and its tail share a single unbroken outline (the tail is cut into the
+/// bottom edge rather than stroked as a separate shape). The tail occupies the
+/// bottom `tailH` of the frame — give the content that much extra bottom padding.
+private struct SpeechBubbleDown: Shape {
+    var corner: CGFloat = 15
+    var tailW: CGFloat = 18
+    var tailH: CGFloat = 9
+
+    func path(in rect: CGRect) -> Path {
+        let r = min(corner, (rect.height - tailH) / 2, rect.width / 2)
+        let bottom = rect.maxY - tailH
+        let midX = rect.midX
+        var p = Path()
+        p.move(to: CGPoint(x: rect.minX + r, y: rect.minY))
+        p.addLine(to: CGPoint(x: rect.maxX - r, y: rect.minY))
+        p.addArc(center: CGPoint(x: rect.maxX - r, y: rect.minY + r), radius: r,
+                 startAngle: .degrees(-90), endAngle: .degrees(0), clockwise: false)
+        p.addLine(to: CGPoint(x: rect.maxX, y: bottom - r))
+        p.addArc(center: CGPoint(x: rect.maxX - r, y: bottom - r), radius: r,
+                 startAngle: .degrees(0), endAngle: .degrees(90), clockwise: false)
+        p.addLine(to: CGPoint(x: midX + tailW / 2, y: bottom))
+        p.addLine(to: CGPoint(x: midX, y: rect.maxY))
+        p.addLine(to: CGPoint(x: midX - tailW / 2, y: bottom))
+        p.addLine(to: CGPoint(x: rect.minX + r, y: bottom))
+        p.addArc(center: CGPoint(x: rect.minX + r, y: bottom - r), radius: r,
+                 startAngle: .degrees(90), endAngle: .degrees(180), clockwise: false)
+        p.addLine(to: CGPoint(x: rect.minX, y: rect.minY + r))
+        p.addArc(center: CGPoint(x: rect.minX + r, y: rect.minY + r), radius: r,
+                 startAngle: .degrees(180), endAngle: .degrees(270), clockwise: false)
         p.closeSubpath()
         return p
     }
