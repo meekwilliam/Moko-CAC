@@ -45,7 +45,7 @@ final class AppRouter: ObservableObject {
     var onExitLesson: (() -> Void)?
     var onOpenLesson: ((Int) -> Void)?
     var onOpenTestOut: ((Int) -> Void)?
-    var onCompleteTestOut: ((Int, Int) -> Void)?
+    var onCompleteTestOut: ((Int, Int, [String: Int], [String: Int]) -> Void)?
     var onRequestPath: (() -> Void)?
     var onRequestProfile: (() -> Void)?
     var onOpenHearts: (() -> Void)?
@@ -144,8 +144,8 @@ struct AppRouterView: View {
                                 router.onCompleteLesson?(nodeNum)
                             }
                         },
-                        onAssessmentComplete: { correct, total in
-                            router.onCompleteTestOut?(correct, total)
+                        onAssessmentComplete: { correct, total, correctCompetencies, missedCompetencies in
+                            router.onCompleteTestOut?(correct, total, correctCompetencies, missedCompetencies)
                         },
                         onSaveProgress: { screen in
                             guard !router.isTestLesson else { return }

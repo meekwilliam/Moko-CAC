@@ -21,6 +21,8 @@ final class LessonPlayer: ObservableObject {
     @Published var correctCount = 0
     @Published var answeredCount = 0
     @Published var missedSkills: [String: Int] = [:]
+    @Published var correctCompetencies: [String: Int] = [:]
+    @Published var missedCompetencies: [String: Int] = [:]
     @Published var finished = false      // reward screen
 
     // Single-choice selection (true_false / multiple_choice / fill_blank / ingredient_match)
@@ -227,8 +229,13 @@ final class LessonPlayer: ObservableObject {
         }
         lastCorrect = correct
         answeredCount += 1
-        if correct { correctCount += 1 }
-        else if let skill = screen.skillId { missedSkills[skill, default: 0] += 1 }
+        if correct {
+            correctCount += 1
+            if let competency = screen.competencyId { correctCompetencies[competency, default: 0] += 1 }
+        } else {
+            if let skill = screen.skillId { missedSkills[skill, default: 0] += 1 }
+            if let competency = screen.competencyId { missedCompetencies[competency, default: 0] += 1 }
+        }
         revealed = true
         if !correct && lesson.lessonType != "TEST_OUT" {
             var missed = screen          // requeue the missed question to the end
@@ -276,6 +283,8 @@ final class LessonPlayer: ObservableObject {
         copy.correctCount = correctCount
         copy.answeredCount = answeredCount
         copy.missedSkills = missedSkills
+        copy.correctCompetencies = correctCompetencies
+        copy.missedCompetencies = missedCompetencies
         copy.finished = finished
         copy.selectedIndex = selectedIndex
         copy.selectedSet = selectedSet
@@ -319,7 +328,7 @@ struct LessonView: View {
     let isUnlimitedHearts: Bool
     var onClose: () -> Void
     var onComplete: (Int) -> Void   // node number
-    var onAssessmentComplete: (Int, Int) -> Void
+    var onAssessmentComplete: (Int, Int, [String: Int], [String: Int]) -> Void
 
     init(lesson: Lesson, startIndex: Int = 0, isReplay: Bool = false,
          unitColor: (main: Color, dark: Color)? = nil,
@@ -330,7 +339,7 @@ struct LessonView: View {
          isUnlimitedHearts: Bool = false,
          onClose: @escaping () -> Void,
          onComplete: @escaping (Int) -> Void,
-         onAssessmentComplete: @escaping (Int, Int) -> Void = { _, _ in },
+         onAssessmentComplete: @escaping (Int, Int, [String: Int], [String: Int]) -> Void = { _, _, _, _ in },
          onSaveProgress: @escaping (Int) -> Void = { _ in },
          onSpendHeart: @escaping () -> Bool = { true }) {
         let p = LessonPlayer(lesson: lesson, startIndex: startIndex, isReplay: isReplay,
@@ -366,7 +375,8 @@ struct LessonView: View {
             if player.finished {
                 RewardView(player: player) {
                     if player.lesson.lessonType == "TEST_OUT" {
-                        onAssessmentComplete(player.correctCount, player.answeredCount)
+                        onAssessmentComplete(player.correctCount, player.answeredCount,
+                                             player.correctCompetencies, player.missedCompetencies)
                     } else {
                         onComplete(player.lesson.node)
                     }
@@ -840,14 +850,28 @@ struct RewardView: View {
 
     private var ink: Color { scheme == .dark ? Theme.inkDark : Theme.ink }
     private var isAssessment: Bool { player.lesson.lessonType == "TEST_OUT" }
-    private var passingScore: Int { Int(ceil(Double(player.lesson.screens.count) * 0.8)) }
-    private var assessmentPassed: Bool { player.correctCount >= passingScore }
+    private var passingScore: Int { player.lesson.assessmentOverallMinimum ?? Int(ceil(Double(player.lesson.screens.count) * 0.8)) }
+    private var targetCompetencies: Set<String> { Set(player.lesson.assessmentTargetCompetencies ?? []) }
+    private var targetCorrect: Int { player.correctCompetencies.filter { targetCompetencies.contains($0.key) }.values.reduce(0, +) }
+    private var prerequisiteCorrect: Int { player.correctCompetencies.filter { !targetCompetencies.contains($0.key) }.values.reduce(0, +) }
+    private var assessmentPassed: Bool {
+        player.correctCount >= passingScore &&
+        prerequisiteCorrect >= (player.lesson.assessmentPrerequisiteMinimum ?? 0) &&
+        targetCorrect >= (player.lesson.assessmentTargetMinimum ?? 0)
+    }
     private var assessmentSummary: String {
-        if assessmentPassed { return "\(player.correctCount)/\(player.answeredCount) correct · Test Out passed" }
-        let skills = player.missedSkills.sorted { $0.value > $1.value }.prefix(2)
-            .map { $0.key.replacingOccurrences(of: "_", with: " ").capitalized }
-        let review = skills.isEmpty ? "A few skills need work" : "Review: " + skills.joined(separator: " · ")
-        return "\(player.correctCount)/\(player.answeredCount) correct · \(review)"
+        let isJump = player.lesson.assessmentPrerequisiteMinimum != nil
+        if assessmentPassed {
+            if isJump { return "Prerequisites \(prerequisiteCorrect) · Target unit \(targetCorrect) · \(player.correctCount)/\(player.answeredCount) overall" }
+            return "\(player.correctCount)/\(player.answeredCount) correct · Test Out passed"
+        }
+        let skills = player.missedCompetencies.sorted { $0.value > $1.value }.prefix(3).map { entry in
+            let raw = entry.key.split(separator: ".").last.map(String.init) ?? entry.key
+            return raw.replacingOccurrences(of: "_", with: " ").capitalized
+        }
+        let review = skills.isEmpty ? "A few skills need work" : "Weak areas: " + skills.joined(separator: " · ")
+        let score = isJump ? "Prerequisites \(prerequisiteCorrect) · Target unit \(targetCorrect) · \(player.correctCount)/\(player.answeredCount) overall" : "\(player.correctCount)/\(player.answeredCount) correct"
+        return score + "\n" + review + "\nReview these areas before retrying."
     }
 
     var body: some View {
@@ -865,7 +889,7 @@ struct RewardView: View {
             }
             .opacity(stage >= 1 ? 1 : 0)
 
-            Text(isAssessment ? (assessmentPassed ? "UNIT MASTERED!" : "Almost there.") : (player.isUnitTest ? "Unit Complete!" : "Lesson Complete!"))
+            Text(isAssessment ? (assessmentPassed ? "TESTED OUT!" : "Almost there.") : (player.isUnitTest ? "Unit Complete!" : "Lesson Complete!"))
                 .font(Theme.font(28, .black))
                 .foregroundColor(ink)
                 .opacity(stage >= 2 ? 1 : 0)

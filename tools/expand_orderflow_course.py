@@ -2,6 +2,7 @@
 """Expand the Order Flow course with a deterministic visual curriculum."""
 
 import json
+import re
 from pathlib import Path
 
 
@@ -555,7 +556,7 @@ def screens_for(meta, node, unit_index=2):
         ]
     if title == "Iceberg Orders":
         return [
-            {"type": "time_sales", "event": "lift", "question": "The offer refills after buy prints. Why?", "options": ["A possible sell iceberg is replenishing hidden size", "Buyers have already secured a breakout", "The tape is showing canceled orders", "Displayed size cannot change after a fill"], "correct": 0, "explanation": "Repeated execution against refreshing displayed size is consistent with an iceberg."},
+            {"type": "orderflow_sim", "event": "iceberg", "question": "The offer refills after buy prints. Why?", "options": ["A possible sell iceberg is replenishing hidden size", "Buyers have already secured a breakout", "The tape is showing canceled orders", "Displayed size cannot change after a fill"], "correct": 0, "explanation": "Repeated execution against refreshing displayed size is consistent with an iceberg."},
             aggressor,
             choice_screen(meta, node, True),
             tape_tap_screen(meta, node),
@@ -633,7 +634,7 @@ def screens_for(meta, node, unit_index=2):
             tape_question, tape_answer = tape_checks[title]
             return [
                 {"type": "orderflow_sim", "event": scenario, "question": "What does the combined evidence show?", "options": [signal_for(meta), "The candle alone proves the cause", "Aggression confirms continuation", "Displayed size reveals hidden liquidity"], "correct": 0, "explanation": meta["signal"] + "."},
-                {"type": "time_sales", "event": "hit" if meta["bias"] == "up" else "lift", "question": tape_question, "options": [tape_answer, "Pressure and price accelerate together", "No aggressive executions appear"], "correct": 0, "explanation": "Absorption requires pressure plus a weak corresponding price response."},
+                {"type": "orderflow_sim" if title == "Hidden Liquidity" else "time_sales", "event": "iceberg" if title == "Hidden Liquidity" else ("hit" if meta["bias"] == "up" else "lift"), "question": tape_question, "options": [tape_answer, "Pressure and price accelerate together", "No aggressive executions appear"], "correct": 0, "explanation": "Absorption requires pressure plus a weak corresponding price response."},
                 choice_screen(meta, node, True),
             ]
         if title in exhaustion_titles:
@@ -814,6 +815,7 @@ def visual_description(screen):
             "wall": "Replay A shows sellers hitting a large bid that replenishes while price holds. Replay B shows a large bid getting pulled before price falls through.",
             "sweep": "Replay A trades through a level and rejects immediately without acceptance. Replay B trades through with persistent execution and holds beyond the level.",
             "trap": "Replay A breaks and holds with persistent buying. Replay B breaks, fails, returns inside, and gives control to sellers.",
+            "trigger": "Replay A reaches the trigger level, shows confirming execution, and price responds. Replay B shows one fast print, no meaningful confirmation, and stalled price.",
             "absorption": "Replay A keeps strong buying against a replenishing offer with stalled price. Replay B shows buying pace itself fading as price stalls.",
         }
         return replay_visuals.get(screen.get("event"), "Replay A shows offers clearing and price holding above resistance. Replay B shows replenishment and price falling back inside.")
@@ -968,10 +970,12 @@ def write_markdown(course):
         "  [BOOKDRAG] Route a market order to the bid or ask.",
         "  [BOOK_COMPARE] Compare thick and thin Level II depth.",
         "  [EVIDENCE_SELECT] Choose the clues that complete an evidence stack.",
+        "  [MARK_LEVEL] Mark relevant support, resistance, or inferred liquidity.",
         "  [REPLAY_COMPARE] Compare acceptance with replenishment and rejection.",
         "  [TAP_CANDLE] Select a candle directly on a chart.",
         "  [TRENDLINE] Connect two candles on a chart.",
         "  [LIVE_CHART] Read pressure while candles update.",
+        "  [ORDERFLOW_SIM] Combine book, tape, footprint, and price response.",
         "  [TIME_SALES] Read an animated feed of completed trades.",
         "  [TIME_SALES_TAP] Select evidence directly from the animated tape.",
         "  [FOOTPRINT] Compare bid and ask volume at each price.",
@@ -1007,6 +1011,13 @@ def write_markdown(course):
             f"PASSING SCORE: {test['passingScore']}",
             f"POOL SIZE: {len(test['questionPool'])}",
             f"COMPETENCY BLUEPRINT: {', '.join(test.get('competencyBlueprint', []))}",
+            "COMPETENCY MAPPINGS: " + "; ".join(
+                f"{competency} => {', '.join(skills)}"
+                for competency, skills in test.get("competencyMappings", {}).items()),
+            f"JUMP QUESTIONS: {test.get('jumpAheadQuestionCount', 'N/A')}",
+            f"JUMP PASSING SCORE: {test.get('jumpPassingScore', 'N/A')}",
+            "JUMP PREREQUISITES: " + (", ".join(
+                slot["competencyId"] for slot in test.get("jumpPrerequisiteBlueprint", [])) or "N/A"),
             "",
         ])
     MARKDOWN_PATH.write_text("\n".join(lines).rstrip() + "\n")
@@ -1251,6 +1262,58 @@ def apply_difficulty_progression(course):
                     "explanation": "Advanced reads combine at least two aligned evidence sources.",
                 }
 
+    # Final QA: advanced evidence prompts must test the lesson's actual decision,
+    # not repeat a generic unit template.
+    specialized_evidence = {
+        "Resting Stops": ("Select clues suggesting nearby stop liquidity.", ["An obvious prior low", "Repeated tests of that level", "A distant candle", "Displayed bids alone prove stops"]),
+        "Buy Stops": ("Select clues that may fuel an upside trigger.", ["An obvious prior high", "Price pressing beneath it", "A slow print far below", "A bid wall under support"]),
+        "Sell Stops": ("Select clues that may fuel a downside trigger.", ["An obvious prior low", "Price pressing above it", "An offer far above", "One green candle"]),
+        "Liquidity Sweep": ("Select clues showing liquidity was taken and rejected.", ["Price trades through the level", "Price immediately returns inside", "Price holds beyond the level", "Execution continues away"]),
+        "Upside Sweep": ("Select clues supporting an upside sweep.", ["The prior high trades", "Price rejects back below it", "Price builds acceptance above", "Offers stay cleared"]),
+        "Downside Sweep": ("Select clues supporting a downside sweep.", ["The prior low trades", "Price rejects back above it", "Price accepts below support", "Selling keeps making progress"]),
+        "Sweep or Breakout": ("Select clues showing acceptance instead of rejection.", ["Execution persists beyond the level", "Price holds outside the range", "Price immediately returns inside", "Aggression disappears"]),
+        "Iceberg Orders": ("Select clues suggesting hidden replenishment.", ["Displayed size repeatedly refills", "Executions repeat at one price", "Positive delta alone", "One large candle"]),
+        "Acceptance Above": ("Select the clues showing price accepted above resistance.", ["Buying persists above the level", "Price holds above resistance", "Price immediately returns inside", "The offer keeps rejecting price"]),
+        "Acceptance Below": ("Select the clues showing price accepted below support.", ["Selling persists below the level", "Price holds below support", "Price immediately reclaims support", "The bid repeatedly absorbs selling"]),
+        "Failed Breakdown": ("Select the clues showing the breakdown failed.", ["Price reclaims support", "Selling loses follow through", "Price holds below support", "Seller execution accelerates lower"]),
+        "Breakdown Retest": ("Select the clues showing acceptance held on the retest.", ["Former support rejects price", "Selling resumes after the retest", "Price reclaims the range", "Buyers clear the nearby offer"]),
+        "Chasing Breakouts": ("Select the clues still missing before acceptance is confirmed.", ["Sustained trade above the level", "A hold or successful retest", "One fast buy print", "A single wide candle"]),
+    }
+    for title, (question, options) in specialized_evidence.items():
+        for screen in lessons[title]["screens"]:
+            if screen["type"] == "evidence_select":
+                screen.update({"question": question, "options": options, "targets": [0, 1],
+                               "explanation": "The interaction must match the evidence required by this specific setup."})
+
+    # Remove the three remaining exact duplicates in Unit 10 with mechanics
+    # that better match the execution decision being tested.
+    duplicate_replacements = {
+        "Plan the Entry": {"type": "replay_compare", "event": "trigger", "question": "Which replay shows a confirmed trigger?", "options": ["Replay A", "Replay B", "Neither"], "correct": 0, "explanation": "Replay A reaches the trigger, confirms it, and produces a price response."},
+        "Manage Slippage": {"type": "book_compare", "question": "Which book creates greater slippage risk?", "options": ["Book B", "Book A", "Both equally"], "correct": 0, "explanation": "Book B has thinner nearby depth and gaps."},
+        "Exit Into Liquidity": {"type": "mark_level", "chart": "resistanceRejection", "level_kind": "resistance", "question": "Mark the opposing liquidity relevant to the exit.", "explanation": "Nearby opposing liquidity is more relevant than a distant level."},
+    }
+    for title, replacement in duplicate_replacements.items():
+        seen = False
+        for index, screen in enumerate(lessons[title]["screens"]):
+            if screen["type"] == "evidence_select" and screen.get("question") == "Select the two relevant clues.":
+                if seen:
+                    lessons[title]["screens"][index] = replacement
+                    break
+                seen = True
+
+    for screen in lessons["Footprint Imbalances"]["screens"]:
+        if screen.get("options", [None])[0] == "Compare diagonal bid and ask volume by ratio":
+            screen["question"] = "What comparison defines the imbalance?"
+
+    # Evenly distribute direct footprint answers so screen position cannot
+    # become an accidental shortcut.
+    footprint_tap_index = 0
+    for lesson_item in course["lessons"]:
+        for screen in lesson_item["screens"]:
+            if screen["type"] == "footprint_tap":
+                screen["target"] = footprint_tap_index % 7
+                footprint_tap_index += 1
+
 
 def apply_boss_structure(course):
     """Convert each existing final review into one tier-appropriate Boss."""
@@ -1260,7 +1323,7 @@ def apply_boss_structure(course):
             {"type": "book_drag", "order": "market_buy", "question": "Where does a market buy execute?", "correct": 1, "explanation": "Market buys take the ask."},
             {"type": "book_drag", "order": "market_sell", "question": "Where does a market sell execute?", "correct": 0, "explanation": "Market sells hit the bid."},
             {"type": "multiple_choice", "question": "Which order is passive?", "options": ["A limit order resting at price", "A market order crossing now", "A completed execution"], "correct": 0, "explanation": "Passive orders rest as liquidity."},
-            {"type": "evidence_select", "question": "Select the complete market read.", "options": ["Aggressor", "Liquidity", "Price response", "Company logo"], "targets": [0, 1, 2], "explanation": "A complete read combines action, liquidity, and response."},
+            {"type": "evidence_select", "question": "Select the complete market read.", "options": ["Aggressor", "Liquidity", "Price response", "Candle color"], "targets": [0, 1, 2], "explanation": "A complete read combines action, liquidity, and response."},
         ]),
         1: ("Boss Battle: Read the Book", [
             {"type": "multiple_choice", "question": "What does Level II add?", "options": ["Depth across price levels", "Only the last trade", "Future orders with certainty"], "correct": 0, "explanation": "Level II displays resting depth across prices."},
@@ -1377,6 +1440,10 @@ def apply_boss_structure(course):
 
 def add_skill_tags_and_test_outs(course):
     """Tag every question and build larger assessment pools per unit."""
+    footprint_taps = [screen for lesson_item in course["lessons"] for screen in lesson_item["screens"]
+                      if screen["type"] == "footprint_tap"]
+    for index, screen in enumerate(footprint_taps):
+        screen["target"] = index % 7
     competency_blueprints = [
         ["aggressive_buyer", "aggressive_seller", "market_buy_routing", "market_sell_routing", "spread", "aggressive_vs_passive", "order_price_chain", "combined_read"],
         ["level_two", "resting_sides", "thick_liquidity", "thin_liquidity", "wall", "wall_behavior", "spoofing", "combined_book_read"],
@@ -1389,9 +1456,21 @@ def add_skill_tags_and_test_outs(course):
         ["reversal_pressure", "buyer_trap", "seller_trap", "buyer_exhaustion_reversal", "seller_exhaustion_reversal", "absorption_reversal", "double_top_flow", "double_bottom_flow", "reversal_confirmation", "insufficient_evidence"],
         ["entry_plan", "order_type", "slippage", "invalidation", "thin_liquidity_risk", "no_clear_read", "exit_liquidity", "review_process", "multi_source_evidence", "combined_execution_read"],
     ]
+    competency_sources = [
+        ["Lifting the Offer & Hitting the Bid", "Lifting the Offer & Hitting the Bid", "Lifting the Offer & Hitting the Bid", "Lifting the Offer & Hitting the Bid", "The Bid, Ask & Spread", "Aggressive vs. Passive Orders", "Lifting the Offer & Hitting the Bid", "What Is Order Flow?"],
+        ["What the Order Book Shows", "Bid Side vs. Ask Side", "Size & Liquidity", "Size & Liquidity", "Large Orders as Walls", "Large Orders as Walls", "Pulling & Spoofing", "The Order Book Review"],
+        ["Buyer Initiated Prints", "Seller Initiated Prints", "Trade Size", "Trade Speed", "Repeated Prints", "Repeated Prints", "False Urgency", "Tape at Key Levels", "Reading the Tape"],
+        ["What Is Absorption", "Buyer Absorption", "Seller Absorption", "Repeated Tests", "Hidden Liquidity", "Buyer Exhaustion", "Seller Exhaustion", "Absorption or Exhaustion", "Absorption Review"],
+        ["Reading a Footprint Chart", "Footprint Imbalances", "Buyer Imbalance", "Seller Imbalance", "Stacked Pressure", "Momentum Failure", "Delta vs Volume", "Positive Delta While Price Falls", "Negative Delta While Price Rises", "Price and Pressure Divergence"],
+        ["Liquidity Pools", "Resting Stops", "Buy Stops", "Sell Stops", "Upside Sweep", "Downside Sweep", "Sweep or Breakout", "Thick Book vs Thin Book", "Iceberg Orders", "Liquidity Review"],
+        ["Breakout Pressure", "Breakdown Pressure", "Acceptance Above", "Acceptance Below", "Failed Breakout", "Failed Breakdown", "Breakout Retest", "Breakdown Retest", "Chasing Breakouts", "Common Order Flow Misconceptions"],
+        ["Healthy Pullbacks", "Pullback Depth", "Continuation Trigger", "Bearish Continuation", "Order Flow at VWAP", "Order Flow at a Moving Average", "Pullback Failure", "Conflicting Order Flow Signals", "High Volume Chop", "No Clear Read Practice Replay"],
+        ["Reversal Pressure", "Buyer Trap", "Seller Trap", "Exhaustion Reversal", "Exhaustion Reversal", "Absorption Reversal", "Double Top Flow", "Double Bottom Flow", "Confirmation Before Entry", "Confirmation Before Entry"],
+        ["Plan the Entry", "Choose the Order Type", "Manage Slippage", "Order Flow Invalidation", "Risk in Thin Liquidity", "No Clear Order Flow Read", "Exit Into Liquidity", "Review the Order Flow Read", "Review the Order Flow Read", "Review the Order Flow Read"],
+    ]
     def skill_for(title, screen):
         kind = screen["type"]
-        title_key = title.lower().replace(" ", "_").replace(":", "")
+        title_key = re.sub(r"[^a-z0-9]+", "_", title.lower()).strip("_")
         mechanic_skills = {
             "time_sales": "tape_reading", "time_sales_tap": "tape_interaction",
             "footprint": "footprint_reading", "footprint_tap": "footprint_interaction",
@@ -1415,20 +1494,67 @@ def add_skill_tags_and_test_outs(course):
     for section in course["sections"]:
         index = section["index"]
         count = section["testOutQuestionCount"]
-        pool_size = min(len(pools[index]), max(count + 4, count * 2))
-        blueprint = competency_blueprints[index]
-        assessment_pool = pools[index][:pool_size]
-        # The source pool is ordered across different lessons and mechanics. Tag
-        # repeated passes through it with the explicit unit competencies so each
-        # assessment can enforce one question from every required category.
-        for question_index, question in enumerate(assessment_pool):
-            question["competencyId"] = blueprint[question_index % len(blueprint)]
+        blueprint = [f"u{index + 1}.{competency}" for competency in competency_blueprints[index]]
+        assessment_pool = []
+        # Each competency maps to questions from the lesson that actually teaches
+        # it. Keep two candidates per slot so attempts vary without relabeling an
+        # unrelated question as a different skill.
+        for competency, source_title in zip(blueprint, competency_sources[index]):
+            candidates = [question for question in pools[index] if question["sourceLesson"] == source_title]
+            if not candidates:
+                raise AssertionError(f"No assessment questions for {competency} from {source_title}")
+            for question in candidates[:2]:
+                assessment_pool.append({**question, "competencyId": competency})
+        competency_mappings = {
+            competency: sorted({q["skillId"] for q in assessment_pool if q["competencyId"] == competency})
+            for competency in blueprint
+        }
         course["testOuts"].append({
             "unitIndex": index, "unitId": section["unitId"], "lessonType": "TEST_OUT",
             "questionCount": count, "passingScore": section["testOutPassingScore"],
             "noHearts": True, "revealAnswersAtEnd": True,
             "questionPool": assessment_pool,
             "competencyBlueprint": blueprint,
+            "competencyMappings": competency_mappings,
+        })
+
+    jump_lengths = [0, 8, 10, 12, 14, 14, 16, 16, 18, 20]
+    for target_index in range(1, 10):
+        test = course["testOuts"][target_index]
+        total = jump_lengths[target_index]
+        prerequisite_count = total // 2
+        target_count = total - prerequisite_count
+        prerequisite_slots = []
+        # Start with one representative from every prior unit, then fill the
+        # remaining slots from additional prior competencies. This guarantees
+        # broad cumulative coverage rather than oversampling the nearest unit.
+        representative_indices = [2, 2, 7, 7, 6, 6, 5, 6, 8]
+        for prior_index in range(target_index):
+            prior_blueprint = course["testOuts"][prior_index]["competencyBlueprint"]
+            slot_index = min(representative_indices[prior_index], len(prior_blueprint) - 1)
+            prerequisite_slots.append({"unitIndex": prior_index, "competencyId": prior_blueprint[slot_index]})
+        if len(prerequisite_slots) < prerequisite_count:
+            synthesis_blueprint = course["testOuts"][target_index - 1]["competencyBlueprint"]
+            prerequisite_slots.append({"unitIndex": target_index - 1, "competencyId": synthesis_blueprint[-1]})
+        fill_round = 0
+        while len(prerequisite_slots) < prerequisite_count:
+            prior_index = fill_round % target_index
+            prior_blueprint = course["testOuts"][prior_index]["competencyBlueprint"]
+            slot_index = (fill_round // target_index + 1) % len(prior_blueprint)
+            slot = {"unitIndex": prior_index, "competencyId": prior_blueprint[slot_index]}
+            if slot not in prerequisite_slots:
+                prerequisite_slots.append(slot)
+            fill_round += 1
+        target_blueprint = test["competencyBlueprint"][:target_count]
+        if target_index == 7:  # Unit 8 combines the two location variants.
+            target_blueprint = [test["competencyBlueprint"][i] for i in [0, 1, 2, 3, 4, 6, 7, 9]]
+        test.update({
+            "jumpAheadQuestionCount": total,
+            "jumpPassingScore": (total * 4 + 4) // 5,
+            "jumpPrerequisiteMinimum": (prerequisite_count * 3 + 3) // 4,
+            "jumpTargetMinimum": (target_count * 3 + 3) // 4,
+            "jumpPrerequisiteBlueprint": prerequisite_slots[:prerequisite_count],
+            "jumpTargetBlueprint": target_blueprint,
         })
 
 

@@ -43,6 +43,7 @@ struct PathPayload: Decodable {
     let sections: [PathSectionData]
     let nodes: [PathNodeData]
     let inProgressNode: Int?
+    let testedOutUnits: [Int]
 }
 
 /// Lightweight progress refresh pushed back after a lesson completes.
@@ -90,6 +91,7 @@ final class PathStore: ObservableObject {
     @Published var isUnlimitedHearts: Bool = false
     @Published var energy: Int
     @Published var inProgressNode: Int?
+    @Published var testedOutUnits: Set<Int>
 
     let sections: [PathSectionData]
     let nodes: [PathNode]
@@ -103,6 +105,7 @@ final class PathStore: ObservableObject {
         self.hearts = payload.stats.hearts
         self.energy = payload.stats.energy
         self.inProgressNode = payload.inProgressNode
+        self.testedOutUnits = Set(payload.testedOutUnits)
         self.sections = payload.sections.sorted { $0.index < $1.index }
         // The last node of each unit is that unit's review test.
         var lastInUnit: [Int: Int] = [:]
@@ -163,11 +166,12 @@ final class PathStore: ObservableObject {
         sections.count
     }
 
-    func update(completed: [Int], xp: Int, treats: Int, streak: Int, inProgressNode: Int?) {
+    func update(completed: [Int], xp: Int, treats: Int, streak: Int, inProgressNode: Int?, testedOutUnits: [Int] = []) {
         self.completed = Set(completed)
         self.xp = xp
         self.treats = treats
         self.streak = streak
         self.inProgressNode = inProgressNode
+        self.testedOutUnits = Set(testedOutUnits)
     }
 }

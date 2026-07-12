@@ -26,6 +26,18 @@ struct TestOutDefinition: Decodable {
     let revealAnswersAtEnd: Bool
     let questionPool: [LessonScreen]
     let competencyBlueprint: [String]?
+    let competencyMappings: [String: [String]]?
+    let jumpAheadQuestionCount: Int?
+    let jumpPassingScore: Int?
+    let jumpPrerequisiteMinimum: Int?
+    let jumpTargetMinimum: Int?
+    let jumpPrerequisiteBlueprint: [JumpCompetencySlot]?
+    let jumpTargetBlueprint: [String]?
+}
+
+struct JumpCompetencySlot: Decodable {
+    let unitIndex: Int
+    let competencyId: String
 }
 
 struct GameData: Decodable {

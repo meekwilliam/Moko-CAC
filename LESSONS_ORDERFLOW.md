@@ -9,10 +9,12 @@ Interactive mechanics:
   [BOOKDRAG] Route a market order to the bid or ask.
   [BOOK_COMPARE] Compare thick and thin Level II depth.
   [EVIDENCE_SELECT] Choose the clues that complete an evidence stack.
+  [MARK_LEVEL] Mark relevant support, resistance, or inferred liquidity.
   [REPLAY_COMPARE] Compare acceptance with replenishment and rejection.
   [TAP_CANDLE] Select a candle directly on a chart.
   [TRENDLINE] Connect two candles on a chart.
   [LIVE_CHART] Read pressure while candles update.
+  [ORDERFLOW_SIM] Combine book, tape, footprint, and price response.
   [TIME_SALES] Read an animated feed of completed trades.
   [TIME_SALES_TAP] Select evidence directly from the animated tape.
   [FOOTPRINT] Compare bid and ask volume at each price.
@@ -31,14 +33,14 @@ TYPE: STANDARD
 CELEBRATION: You get what order flow really means.
 
 [MC] What is order flow?
-SKILL: what_is_order_flow?
+SKILL: what_is_order_flow
 Live buying, selling, and liquidity
 The order candles appear in
 A sequence of chart patterns
 WHY: Order flow shows live trading pressure and liquidity.
 
 [TF] Order flow shows more than a finished price line.
-SKILL: what_is_order_flow?
+SKILL: what_is_order_flow
 ANSWER: True
 WHY: It adds context about current pressure and liquidity.
 
@@ -50,14 +52,14 @@ ANSWER: The buyer
 WHY: Buyers take offers, so buyers are aggressive.
 
 [MATCH] Match each term.
-SKILL: what_is_order_flow?
+SKILL: what_is_order_flow
 Order flow => Live buying and selling
 Price => Result of execution
 A candle => Record of past price
 WHY: Orders create fills. Fills create price. Candles record it.
 
 [MC] What does order flow reveal?
-SKILL: what_is_order_flow?
+SKILL: what_is_order_flow
 Buyer and seller pressure
 Future prices with certainty
 Only candle direction
@@ -77,14 +79,14 @@ TYPE: STANDARD
 CELEBRATION: You can tell takers from makers.
 
 [MC] Pick the aggressive order.
-SKILL: aggressive_vs._passive_orders
+SKILL: aggressive_vs_passive_orders
 Takes available liquidity now
 Waits at a chosen price
 Only fills at the open
 WHY: Aggressive orders trade now and remove liquidity.
 
 [MC] Pick the passive order.
-SKILL: aggressive_vs._passive_orders
+SKILL: aggressive_vs_passive_orders
 Waits at a chosen price
 Always fills now
 Placed by your broker
@@ -105,14 +107,14 @@ ANSWER: the bid
 WHY: A market sell hits the bid.
 
 [MATCH] Match maker or taker.
-SKILL: aggressive_vs._passive_orders
+SKILL: aggressive_vs_passive_orders
 Instant market buy => Taker
 Resting limit sell => Maker
 Hit the bid now => Taker
 WHY: Takers trade now. Makers wait.
 
 [TF] Aggressive orders remove liquidity; passive orders provide it.
-SKILL: aggressive_vs._passive_orders
+SKILL: aggressive_vs_passive_orders
 ANSWER: True
 WHY: Takers remove liquidity. Makers provide it.
 
@@ -129,21 +131,21 @@ TYPE: STANDARD
 CELEBRATION: You own the bid, ask and spread.
 
 [MC] Pick the bid.
-SKILL: the_bid,_ask_&_spread
+SKILL: the_bid_ask_spread
 Highest buyer price
 Lowest seller price
 Last traded price
 WHY: The bid is the best resting buy price.
 
 [MC] Pick the ask.
-SKILL: the_bid,_ask_&_spread
+SKILL: the_bid_ask_spread
 Lowest seller price
 Highest buyer price
 Average daily price
 WHY: The ask is the best resting sell price.
 
 [MC] What's the bid ask gap called?
-SKILL: the_bid,_ask_&_spread
+SKILL: the_bid_ask_spread
 The spread
 Delta
 Depth
@@ -164,14 +166,14 @@ ANSWER: the bid
 WHY: Selling immediately means hitting the bid.
 
 [MATCH] Match each action.
-SKILL: the_bid,_ask_&_spread
+SKILL: the_bid_ask_spread
 Market buy => Ask
 Market sell => Bid
 Spread => Ask minus bid
 WHY: Buy at the ask. Sell at the bid.
 
 [TF] A wider spread generally signals thinner liquidity.
-SKILL: the_bid,_ask_&_spread
+SKILL: the_bid_ask_spread
 ANSWER: True
 WHY: Less nearby liquidity can widen the spread.
 
@@ -181,7 +183,7 @@ TYPE: STANDARD
 CELEBRATION: You can read aggression in the book.
 
 [MC] Which action lifts the offer?
-SKILL: lifting_the_offer_&_hitting_the_bid
+SKILL: lifting_the_offer_hitting_the_bid
 Buying the ask
 Canceling a sell order
 Posting a higher offer
@@ -202,14 +204,14 @@ ANSWER: The seller
 WHY: The seller is hitting the bid.
 
 [MC] How do sellers trade aggressively?
-SKILL: lifting_the_offer_&_hitting_the_bid
+SKILL: lifting_the_offer_hitting_the_bid
 They hit the bid
 They post above the ask
 They raise the bid
 WHY: Aggressive sellers cross the spread and execute against bids.
 
 [MATCH] Match each action.
-SKILL: lifting_the_offer_&_hitting_the_bid
+SKILL: lifting_the_offer_hitting_the_bid
 Lift the offer => May push price up
 Hit the bid => May push price down
 Only resting orders => Price may stay still
@@ -269,7 +271,7 @@ SELECT: 0, 1, 2
 Aggressor
 Liquidity
 Price response
-Company logo
+Candle color
 WHY: A complete read combines action, liquidity, and response.
 
 
@@ -335,14 +337,14 @@ TYPE: STANDARD
 CELEBRATION: You can read both sides of the book.
 
 [MC] Where do resting buy orders sit?
-SKILL: bid_side_vs._ask_side
+SKILL: bid_side_vs_ask_side
 The bid side.
 The ask side.
 The spread.
 WHY: Buyers rest on the bid. Sellers rest on the ask, and the spread is the gap between them.
 
 [MC] Where do resting sell orders sit?
-SKILL: bid_side_vs._ask_side
+SKILL: bid_side_vs_ask_side
 The ask side.
 The bid side.
 The spread.
@@ -363,14 +365,14 @@ ANSWER: the bid
 WHY: A market sell hits the bid.
 
 [MATCH] Match each part of the book.
-SKILL: bid_side_vs._ask_side
+SKILL: bid_side_vs_ask_side
 Bid side => Resting buyers
 Ask side => Resting sellers
 Spread => Gap between them
 WHY: Buyers below, sellers above, the spread in between.
 
 [TF] The best bid sits just below the best ask.
-SKILL: bid_side_vs._ask_side
+SKILL: bid_side_vs_ask_side
 ANSWER: True
 WHY: The bid is always below the ask; the distance between them is the spread.
 
@@ -387,26 +389,26 @@ TYPE: STANDARD
 CELEBRATION: You can read depth and liquidity.
 
 [MC] What does the number beside a price show?
-SKILL: size_&_liquidity
+SKILL: size_liquidity
 The size resting there.
 The trades done there.
 Its distance from the last price.
 WHY: The number is resting size. how many shares sit waiting at that price.
 
 [MC] A book with large size at every level is…
-SKILL: size_&_liquidity
+SKILL: size_liquidity
 Liquid.
 Illiquid.
 Volatile.
 WHY: Plenty of resting size means liquid: price needs a lot of aggression to move.
 
 [TF] A thin book moves on fewer orders than a thick one.
-SKILL: size_&_liquidity
+SKILL: size_liquidity
 ANSWER: True
 WHY: Less resting size means each aggressive order pushes price further.
 
 [MATCH] Match each book to how it moves.
-SKILL: size_&_liquidity
+SKILL: size_liquidity
 Thick book => Hard to move
 Thin book => Easy to move
 Resting size => Liquidity at a price
@@ -502,19 +504,19 @@ Neither replay
 WHY: Replay A replenishes while trading and price holds. Replay B pulls before the decline.
 
 [MC] Repeated deceptive posting and cancellation intended to mislead may constitute…
-SKILL: pulling_&_spoofing
+SKILL: pulling_spoofing
 Spoofing.
 Absorption.
 A breakout.
 WHY: Repeated deceptive posting and cancellation intended to mislead may constitute spoofing. One cancelled order alone does not prove intent.
 
 [TF] A resting order is a firm promise to trade.
-SKILL: pulling_&_spoofing
+SKILL: pulling_spoofing
 ANSWER: False
 WHY: It can be cancelled before anyone hits it.
 
 [MATCH] Match each behavior.
-SKILL: pulling_&_spoofing
+SKILL: pulling_spoofing
 Pulled order => Cancelled before filling
 Refreshed order => Replenished after filling
 Spoof => Shown then pulled
@@ -1275,10 +1277,9 @@ Aggression confirms continuation
 Displayed size reveals hidden liquidity
 WHY: Refreshing liquidity can hide true available size.
 
-[TIME_SALES] What suggests hidden liquidity?
-VISUAL: An animated Time and Sales table lists time, execution price, and trade size, with buyer initiated prints dominating at the ask.
-SKILL: tape_reading
-EVENT: lift
+[ORDERFLOW_SIM] What suggests hidden liquidity?
+VISUAL: Level II repeatedly shows 100 shares at the offer. Each 100 share execution clears the display, then another 100 immediately reappears at the same price while Time and Sales keeps printing buys.
+SKILL: multi_signal_read
 Displayed size keeps replenishing
 Pressure and price accelerate together
 No aggressive executions appear
@@ -1603,7 +1604,7 @@ WHY: A footprint separates executed bid volume from executed ask volume at each 
 VISUAL: A footprint grid places bid volume left of price and ask volume right of price, showing one target row with the largest combined executed volume.
 SKILL: footprint_interaction
 EVENT: total_target
-TARGET: 1
+TARGET: 0
 WHY: This row has the largest bid plus ask total.
 
 [MC] Which explanation fits best?
@@ -1628,7 +1629,7 @@ TITLE: Footprint Imbalances
 TYPE: STANDARD
 CELEBRATION: Footprint Imbalances complete.
 
-[FOOTPRINT] How is an ask imbalance measured?
+[FOOTPRINT] What comparison defines the imbalance?
 VISUAL: A footprint grid places bid volume left of price and ask volume right of price, showing one target row carrying the largest ask side execution advantage.
 SKILL: footprint_reading
 EVENT: lift
@@ -1641,10 +1642,10 @@ WHY: Diagonal comparison and a defined ratio distinguish conventional imbalance 
 VISUAL: A footprint grid places bid volume left of price and ask volume right of price, showing ask volume at the target price exceeding bid volume at the diagonally adjacent lower price by a clear ratio.
 SKILL: footprint_interaction
 EVENT: diagonal_ask
-TARGET: 4
+TARGET: 1
 WHY: Ask execution exceeds the adjacent lower bid by ratio.
 
-[MC] What's the strongest conclusion?
+[MC] What comparison defines the imbalance?
 VISUAL: Alternating wide candles and long wicks show rapid movement with changing control.
 SKILL: footprint_imbalances
 CHART: volatile
@@ -1680,7 +1681,7 @@ WHY: Imbalance means one side is more aggressive.
 VISUAL: A footprint grid places bid volume left of price and ask volume right of price, showing one target row carrying the largest ask side execution advantage.
 SKILL: footprint_interaction
 EVENT: lift
-TARGET: 1
+TARGET: 2
 WHY: This row has the widest directional execution advantage.
 
 [MC] What best connects the evidence?
@@ -1710,7 +1711,7 @@ WHY: Buyer imbalance can push price higher.
 VISUAL: A footprint grid places bid volume left of price and ask volume right of price, showing one target row carrying the largest ask side execution advantage.
 SKILL: footprint_interaction
 EVENT: lift
-TARGET: 4
+TARGET: 3
 WHY: Aggressive buyers execute at the ask.
 
 [MC] Which read needs fewer assumptions?
@@ -1748,7 +1749,7 @@ WHY: Seller imbalance can push price lower.
 VISUAL: A footprint grid places bid volume left of price and ask volume right of price, showing one target row carrying the largest bid side execution advantage.
 SKILL: footprint_interaction
 EVENT: hit
-TARGET: 1
+TARGET: 4
 WHY: Aggressive sellers execute at the bid.
 
 [MC] What matters most here?
@@ -1778,7 +1779,7 @@ WHY: Sudden aggression can ignite momentum.
 VISUAL: A footprint grid places bid volume left of price and ask volume right of price, showing one target row carrying the largest ask side execution advantage.
 SKILL: footprint_interaction
 EVENT: lift
-TARGET: 4
+TARGET: 5
 WHY: Concentrated ask executions can help ignite momentum.
 
 [MC] Which conclusion fits the response?
@@ -1816,7 +1817,7 @@ WHY: Renewed buying can continue momentum.
 VISUAL: A footprint grid places bid volume left of price and ask volume right of price, showing three consecutive rows showing ask side execution imbalances.
 SKILL: footprint_interaction
 EVENT: stacked_ask
-TARGET: 1
+TARGET: 6
 WHY: Consecutive ask imbalances support continued buyer pressure.
 
 [MC] How should this be interpreted?
@@ -1846,7 +1847,7 @@ WHY: Momentum weakens when price stops responding.
 VISUAL: A footprint grid places bid volume left of price and ask volume right of price, showing one target row with the smallest bid ask execution difference.
 SKILL: footprint_interaction
 EVENT: balanced_target
-TARGET: 4
+TARGET: 0
 WHY: Execution becomes balanced as momentum loses force.
 
 [MC] What does the response suggest?
@@ -1914,7 +1915,7 @@ WHY: Net aggression compares buying with selling.
 VISUAL: A footprint grid places bid volume left of price and ask volume right of price, showing one row contributing the largest positive ask minus bid delta.
 SKILL: footprint_interaction
 EVENT: delta_positive
-TARGET: 4
+TARGET: 2
 WHY: This row contributes the largest ask minus bid volume.
 
 [MC] What's the most reasonable read?
@@ -1962,7 +1963,7 @@ WHY: Volume measures total trading while delta compares aggressive buying and se
 VISUAL: A footprint grid places bid volume left of price and ask volume right of price, showing one target row with the largest combined executed volume.
 SKILL: footprint_interaction
 EVENT: total_target
-TARGET: 1
+TARGET: 3
 WHY: Total volume adds bid and ask executions, unlike delta.
 
 [ORDER] Build the read.
@@ -2046,7 +2047,7 @@ WHY: Negative delta with rising price can reveal buyer absorption or trapped sel
 VISUAL: A footprint grid places bid volume left of price and ask volume right of price, showing one row contributing the largest negative ask minus bid delta.
 SKILL: footprint_interaction
 EVENT: delta_negative
-TARGET: 1
+TARGET: 5
 WHY: Strong negative delta conflicts with the upward price response.
 
 [ORDER] Build the read.
@@ -2078,7 +2079,7 @@ WHY: Price and pressure disagreement warns of weakness.
 VISUAL: A footprint grid places bid volume left of price and ask volume right of price, showing one row contributing the largest negative ask minus bid delta.
 SKILL: footprint_interaction
 EVENT: delta_negative
-TARGET: 4
+TARGET: 6
 WHY: The selected negative delta row contradicts the price direction.
 
 [MC] What's the strongest conclusion?
@@ -2115,32 +2116,32 @@ WHY: Footprints split executed volume at each price.
 VISUAL: A footprint grid places bid volume left of price and ask volume right of price, showing ask volume at the target price exceeding bid volume at the diagonally adjacent lower price by a clear ratio.
 SKILL: footprint_interaction
 EVENT: diagonal_ask
-TARGET: 2
+TARGET: 0
 WHY: Ask volume exceeds the adjacent lower bid by ratio.
 
 [FOOTPRINT_TAP] Tap the strongest ask advantage.
 VISUAL: A footprint grid places bid volume left of price and ask volume right of price, showing one target row carrying the largest ask side execution advantage.
 SKILL: footprint_interaction
 EVENT: lift
-TARGET: 4
+TARGET: 1
 WHY: This row has the strongest aggressive buying.
 
 [FOOTPRINT_TAP] Tap the strongest bid advantage.
 VISUAL: A footprint grid places bid volume left of price and ask volume right of price, showing one target row carrying the largest bid side execution advantage.
 SKILL: footprint_interaction
 EVENT: hit
-TARGET: 1
+TARGET: 2
 WHY: This row has the strongest aggressive selling.
 
 [FOOTPRINT_TAP] Tap where stacked pressure begins.
 VISUAL: A footprint grid places bid volume left of price and ask volume right of price, showing three consecutive rows showing ask side execution imbalances.
 SKILL: footprint_interaction
 EVENT: stacked_ask
-TARGET: 2
+TARGET: 3
 WHY: Three consecutive ask imbalances start here.
 
 [MC] How do volume and delta differ?
-SKILL: boss_battle_footprint_&_momentum
+SKILL: boss_battle_footprint_momentum
 Volume totals trades; delta nets aggression
 They are identical
 Delta shows resting depth
@@ -2201,15 +2202,15 @@ TITLE: Resting Stops
 TYPE: STANDARD
 CELEBRATION: Resting Stops complete.
 
-[EVIDENCE_SELECT] Select the two liquidity clues.
+[EVIDENCE_SELECT] Select clues suggesting nearby stop liquidity.
 VISUAL: Four evidence cards separate aggression, liquidity, price response, and an irrelevant clue. The learner must select the required combination.
 SKILL: evidence_synthesis
 SELECT: 0, 1
-Nearby resting depth
-Execution at the level
+An obvious prior low
+Repeated tests of that level
 A distant candle
-Company news
-WHY: Advanced reads combine at least two aligned evidence sources.
+Displayed bids alone prove stops
+WHY: The interaction must match the evidence required by this specific setup.
 
 [MC] Where might stops cluster?
 VISUAL: A decline reaches support and rebounds with buyers defending the lower area.
@@ -2238,15 +2239,15 @@ SKILL: liquidity_location
 CHART: breakout
 WHY: Buy stops may cluster beyond obvious resistance or prior highs.
 
-[EVIDENCE_SELECT] Select the two liquidity clues.
+[EVIDENCE_SELECT] Select clues that may fuel an upside trigger.
 VISUAL: Four evidence cards separate aggression, liquidity, price response, and an irrelevant clue. The learner must select the required combination.
 SKILL: evidence_synthesis
 SELECT: 0, 1
-Nearby resting depth
-Execution at the level
-A distant candle
-Company news
-WHY: Advanced reads combine at least two aligned evidence sources.
+An obvious prior high
+Price pressing beneath it
+A slow print far below
+A bid wall under support
+WHY: The interaction must match the evidence required by this specific setup.
 
 [MATCH] Match each clue.
 SKILL: buy_stops
@@ -2295,15 +2296,15 @@ TITLE: Liquidity Sweep
 TYPE: STANDARD
 CELEBRATION: Liquidity Sweep complete.
 
-[EVIDENCE_SELECT] Select the two liquidity clues.
+[EVIDENCE_SELECT] Select clues showing liquidity was taken and rejected.
 VISUAL: Four evidence cards separate aggression, liquidity, price response, and an irrelevant clue. The learner must select the required combination.
 SKILL: evidence_synthesis
 SELECT: 0, 1
-Nearby resting depth
-Execution at the level
-A distant candle
-Company news
-WHY: Advanced reads combine at least two aligned evidence sources.
+Price trades through the level
+Price immediately returns inside
+Price holds beyond the level
+Execution continues away
+WHY: The interaction must match the evidence required by this specific setup.
 
 [MATCH] Match each clue.
 SKILL: liquidity_sweep
@@ -2334,15 +2335,15 @@ CHART: rejectionWickUp
 TARGET: 0
 WHY: The selected candle shows whether execution produced follow through.
 
-[EVIDENCE_SELECT] Select the two liquidity clues.
+[EVIDENCE_SELECT] Select clues supporting an upside sweep.
 VISUAL: Four evidence cards separate aggression, liquidity, price response, and an irrelevant clue. The learner must select the required combination.
 SKILL: evidence_synthesis
 SELECT: 0, 1
-Nearby resting depth
-Execution at the level
-A distant candle
-Company news
-WHY: Advanced reads combine at least two aligned evidence sources.
+The prior high trades
+Price rejects back below it
+Price builds acceptance above
+Offers stay cleared
+WHY: The interaction must match the evidence required by this specific setup.
 
 [MC] Which read is best supported?
 VISUAL: Price briefly trades above a level and closes back below it, leaving a long upper wick.
@@ -2398,15 +2399,15 @@ TITLE: Sweep or Breakout
 TYPE: STANDARD
 CELEBRATION: Sweep or Breakout complete.
 
-[EVIDENCE_SELECT] Select the two liquidity clues.
+[EVIDENCE_SELECT] Select clues showing acceptance instead of rejection.
 VISUAL: Four evidence cards separate aggression, liquidity, price response, and an irrelevant clue. The learner must select the required combination.
 SKILL: evidence_synthesis
 SELECT: 0, 1
-Nearby resting depth
-Execution at the level
-A distant candle
-Company news
-WHY: Advanced reads combine at least two aligned evidence sources.
+Execution persists beyond the level
+Price holds outside the range
+Price immediately returns inside
+Aggression disappears
+WHY: The interaction must match the evidence required by this specific setup.
 
 [REPLAY_COMPARE] Which replay gains acceptance?
 VISUAL: Replay A trades through a level and rejects immediately without acceptance. Replay B trades through with persistent execution and holds beyond the level.
@@ -2523,25 +2524,24 @@ TITLE: Iceberg Orders
 TYPE: STANDARD
 CELEBRATION: Iceberg Orders complete.
 
-[TIME_SALES] The offer refills after buy prints. Why?
-VISUAL: An animated Time and Sales table lists time, execution price, and trade size, with buyer initiated prints dominating at the ask.
-SKILL: tape_reading
-EVENT: lift
+[ORDERFLOW_SIM] The offer refills after buy prints. Why?
+VISUAL: Level II repeatedly shows 100 shares at the offer. Each 100 share execution clears the display, then another 100 immediately reappears at the same price while Time and Sales keeps printing buys.
+SKILL: multi_signal_read
 A possible sell iceberg is replenishing hidden size
 Buyers have already secured a breakout
 The tape is showing canceled orders
 Displayed size cannot change after a fill
 WHY: Repeated execution against refreshing displayed size is consistent with an iceberg.
 
-[EVIDENCE_SELECT] Select the two liquidity clues.
+[EVIDENCE_SELECT] Select clues suggesting hidden replenishment.
 VISUAL: Four evidence cards separate aggression, liquidity, price response, and an irrelevant clue. The learner must select the required combination.
 SKILL: evidence_synthesis
 SELECT: 0, 1
-Nearby resting depth
-Execution at the level
-A distant candle
-Company news
-WHY: Advanced reads combine at least two aligned evidence sources.
+Displayed size repeatedly refills
+Executions repeat at one price
+Positive delta alone
+One large candle
+WHY: The interaction must match the evidence required by this specific setup.
 
 [MC] What best connects the evidence?
 VISUAL: Small mixed candles overlap inside a narrow horizontal trading area.
@@ -2619,7 +2619,7 @@ WHY: Replay B holds beyond the level.
 
 [MC] What does the rejection suggest?
 VISUAL: Price briefly trades above a level and closes back below it, leaving a long upper wick.
-SKILL: boss_battle_sweep_or_acceptance?
+SKILL: boss_battle_sweep_or_acceptance
 CHART: rejectionWickUp
 Possible upside sweep
 Accepted breakout
@@ -2628,7 +2628,7 @@ WHY: Price trades above and returns inside.
 
 [MC] What does this rejection suggest?
 VISUAL: Price briefly trades below a level and closes back above it, leaving a long lower wick.
-SKILL: boss_battle_sweep_or_acceptance?
+SKILL: boss_battle_sweep_or_acceptance
 CHART: rejectionWickDown
 Possible downside sweep
 Accepted breakdown
@@ -2735,15 +2735,15 @@ TITLE: Acceptance Above
 TYPE: STANDARD
 CELEBRATION: Acceptance Above complete.
 
-[EVIDENCE_SELECT] Select the two acceptance clues.
+[EVIDENCE_SELECT] Select the clues showing price accepted above resistance.
 VISUAL: Four evidence cards separate aggression, liquidity, price response, and an irrelevant clue. The learner must select the required combination.
 SKILL: evidence_synthesis
 SELECT: 0, 1
-Execution persists
-Price holds beyond the level
-Price returns inside
-Liquidity replenishes against the move
-WHY: An advanced breakout read requires both pressure and acceptance.
+Buying persists above the level
+Price holds above resistance
+Price immediately returns inside
+The offer keeps rejecting price
+WHY: The interaction must match the evidence required by this specific setup.
 
 [LIVE_CHART] Which price behavior supports the read?
 VISUAL: A live candlestick chart adds new candles over time, with price currently building upward.
@@ -2783,15 +2783,15 @@ CHART: breakdownRetest
 TARGET: 1
 WHY: The selected candle shows whether execution produced follow through.
 
-[EVIDENCE_SELECT] Select the two acceptance clues.
+[EVIDENCE_SELECT] Select the clues showing price accepted below support.
 VISUAL: Four evidence cards separate aggression, liquidity, price response, and an irrelevant clue. The learner must select the required combination.
 SKILL: evidence_synthesis
 SELECT: 0, 1
-Execution persists
-Price holds beyond the level
-Price returns inside
-Liquidity replenishes against the move
-WHY: An advanced breakout read requires both pressure and acceptance.
+Selling persists below the level
+Price holds below support
+Price immediately reclaims support
+The bid repeatedly absorbs selling
+WHY: The interaction must match the evidence required by this specific setup.
 
 [MC] Which read is best supported?
 VISUAL: Price breaks support, returns to test it from below, then reacts lower.
@@ -2901,15 +2901,15 @@ A replenishing order is probably new unrelated liquidity
 Brief trade beyond the level is enough to establish acceptance
 WHY: A quick return above support signals failure.
 
-[EVIDENCE_SELECT] Select the two acceptance clues.
+[EVIDENCE_SELECT] Select the clues showing the breakdown failed.
 VISUAL: Four evidence cards separate aggression, liquidity, price response, and an irrelevant clue. The learner must select the required combination.
 SKILL: evidence_synthesis
 SELECT: 0, 1
-Execution persists
-Price holds beyond the level
-Price returns inside
-Liquidity replenishes against the move
-WHY: An advanced breakout read requires both pressure and acceptance.
+Price reclaims support
+Selling loses follow through
+Price holds below support
+Seller execution accelerates lower
+WHY: The interaction must match the evidence required by this specific setup.
 
 [MATCH] Match each clue.
 SKILL: failed_breakdown
@@ -2957,15 +2957,15 @@ TITLE: Breakdown Retest
 TYPE: STANDARD
 CELEBRATION: Breakdown Retest complete.
 
-[EVIDENCE_SELECT] Select the two acceptance clues.
+[EVIDENCE_SELECT] Select the clues showing acceptance held on the retest.
 VISUAL: Four evidence cards separate aggression, liquidity, price response, and an irrelevant clue. The learner must select the required combination.
 SKILL: evidence_synthesis
 SELECT: 0, 1
-Execution persists
-Price holds beyond the level
-Price returns inside
-Liquidity replenishes against the move
-WHY: An advanced breakout read requires both pressure and acceptance.
+Former support rejects price
+Selling resumes after the retest
+Price reclaims the range
+Buyers clear the nearby offer
+WHY: The interaction must match the evidence required by this specific setup.
 
 [LIVE_CHART] What does the developing response support?
 VISUAL: A live candlestick chart adds new candles over time, with price currently building downward.
@@ -3005,15 +3005,15 @@ CHART: gapUp
 TARGET: 4
 WHY: The selected candle shows whether execution produced follow through.
 
-[EVIDENCE_SELECT] Select the two acceptance clues.
+[EVIDENCE_SELECT] Select the clues still missing before acceptance is confirmed.
 VISUAL: Four evidence cards separate aggression, liquidity, price response, and an irrelevant clue. The learner must select the required combination.
 SKILL: evidence_synthesis
 SELECT: 0, 1
-Execution persists
-Price holds beyond the level
-Price returns inside
-Liquidity replenishes against the move
-WHY: An advanced breakout read requires both pressure and acceptance.
+Sustained trade above the level
+A hold or successful retest
+One fast buy print
+A single wide candle
+WHY: The interaction must match the evidence required by this specific setup.
 
 [MC] What best connects the evidence?
 VISUAL: Price opens well above the prior trading area with little activity between the two zones.
@@ -3105,7 +3105,7 @@ WHY: Replay B falls back inside.
 
 [MC] What supports a breakdown?
 VISUAL: Price drives below a visible support level with expanding bearish candles.
-SKILL: boss_battle_breakout_or_failure?
+SKILL: boss_battle_breakout_or_failure
 CHART: breakdown
 Persistent selling and acceptance
 One red candle
@@ -3124,7 +3124,7 @@ WHY: Execution and holding response support acceptance.
 
 [MC] What invalidates the breakout?
 VISUAL: An advance reaches resistance and turns lower with visible upper wick rejection.
-SKILL: boss_battle_breakout_or_failure?
+SKILL: boss_battle_breakout_or_failure
 CHART: resistanceRejection
 Price returns below resistance
 Tape stays fast
@@ -3133,7 +3133,7 @@ WHY: Returning inside shows failed acceptance.
 
 [MC] What invalidates the breakdown?
 VISUAL: A decline reaches support and rebounds with buyers defending the lower area.
-SKILL: boss_battle_breakout_or_failure?
+SKILL: boss_battle_breakout_or_failure
 CHART: supportBounce
 Price returns above support
 Tape stays fast
@@ -3141,7 +3141,7 @@ Delta stays negative
 WHY: Returning inside shows failed acceptance.
 
 [MC] Why wait for a retest?
-SKILL: boss_battle_breakout_or_failure?
+SKILL: boss_battle_breakout_or_failure
 To observe continued acceptance
 To guarantee profit
 To avoid all slippage
@@ -3224,7 +3224,7 @@ WHY: Structure supplies location. Execution evidence supplies the read.
 VISUAL: A footprint grid places bid volume left of price and ask volume right of price, showing one target row with the smallest bid ask execution difference.
 SKILL: footprint_interaction
 EVENT: balanced_target
-TARGET: 3
+TARGET: 4
 WHY: The selected row contains the requested execution profile.
 
 NODE 81
@@ -3379,7 +3379,7 @@ WHY: VWAP provides location while order flow determines the response.
 VISUAL: A footprint grid places bid volume left of price and ask volume right of price, showing one target row with the largest combined executed volume.
 SKILL: footprint_interaction
 EVENT: total_target
-TARGET: 1
+TARGET: 5
 WHY: The selected row contains the requested execution profile.
 
 NODE 85
@@ -3733,7 +3733,7 @@ WHY: Bearish structure and selling support continuation.
 
 [MC] What matters at VWAP?
 VISUAL: Candles trade above the VWAP line while pullbacks test it as potential support.
-SKILL: boss_battle_continue,_fail,_or_wait?
+SKILL: boss_battle_continue_fail_or_wait
 CHART: priceAboveVWAP
 Execution response at the level
 VWAP guarantees support
@@ -3742,7 +3742,7 @@ WHY: VWAP gives location; flow gives the read.
 
 [MC] What matters at the average?
 VISUAL: Candles hold above a rising moving average and react near it during pullbacks.
-SKILL: boss_battle_continue,_fail,_or_wait?
+SKILL: boss_battle_continue_fail_or_wait
 CHART: priceAboveMA
 Execution response at the level
 The average guarantees support
@@ -4089,7 +4089,7 @@ WHY: Repeated selling fails to make progress.
 
 [MC] What matters on the second test?
 VISUAL: Price tests the same resistance area twice and retreats after the second test.
-SKILL: boss_battle_trap_or_reversal?
+SKILL: boss_battle_trap_or_reversal
 CHART: doubleTop
 Weaker buying and stronger defense
 The shape alone
@@ -4098,7 +4098,7 @@ WHY: Compare execution and response across tests.
 
 [MC] What matters on the second test?
 VISUAL: Price tests the same support area twice and rebounds after the second test.
-SKILL: boss_battle_trap_or_reversal?
+SKILL: boss_battle_trap_or_reversal
 CHART: doubleBottom
 Weaker selling and stronger defense
 The shape alone
@@ -4124,7 +4124,7 @@ Yes. Neutral delta confirms it
 WHY: Mixed tape and balanced execution remain inconclusive.
 
 [MC] When should entry wait?
-SKILL: boss_battle_trap_or_reversal?
+SKILL: boss_battle_trap_or_reversal
 Until control and response align
 Until one large print
 Until any wick appears
@@ -4159,15 +4159,13 @@ One fast print
 Candle color
 WHY: Expert execution decisions combine market evidence with risk.
 
-[EVIDENCE_SELECT] Select the two relevant clues.
-VISUAL: Four evidence cards separate aggression, liquidity, price response, and an irrelevant clue. The learner must select the required combination.
-SKILL: evidence_synthesis
-SELECT: 0, 1
-Defined trigger
-Confirming response
-One fast print
-Candle color
-WHY: Expert execution decisions combine market evidence with risk.
+[REPLAY_COMPARE] Which replay shows a confirmed trigger?
+VISUAL: Replay A reaches the trigger level, shows confirming execution, and price responds. Replay B shows one fast print, no meaningful confirmation, and stalled price.
+SKILL: scenario_comparison
+Replay A
+Replay B
+Neither
+WHY: Replay A reaches the trigger, confirms it, and produces a price response.
 
 [TAP_CANDLE] Tap the clearest price response.
 VISUAL: Price breaks resistance, returns to test it from above, then attempts to continue higher. The candles are tappable and the learner must select the requested candle.
@@ -4220,15 +4218,13 @@ Positive delta
 A resting wall far away
 WHY: Expert execution decisions combine market evidence with risk.
 
-[EVIDENCE_SELECT] Select the two relevant clues.
-VISUAL: Four evidence cards separate aggression, liquidity, price response, and an irrelevant clue. The learner must select the required combination.
-SKILL: evidence_synthesis
-SELECT: 0, 1
-Thin nearby depth
-Widening spread
-Positive delta
-A resting wall far away
-WHY: Expert execution decisions combine market evidence with risk.
+[BOOK_COMPARE] Which book creates greater slippage risk?
+VISUAL: Two Level II ladders appear side by side. Book A has large resting size at every nearby price. Book B has small size and gaps between levels.
+SKILL: book_depth
+Book B
+Book A
+Both equally
+WHY: Book B has thinner nearby depth and gaps.
 
 [MC] What does the response suggest?
 VISUAL: Alternating wide candles and long wicks show rapid movement with changing control.
@@ -4372,15 +4368,11 @@ Candle color
 Moving average slope
 WHY: Expert execution decisions combine market evidence with risk.
 
-[EVIDENCE_SELECT] Select the two relevant clues.
-VISUAL: Four evidence cards separate aggression, liquidity, price response, and an irrelevant clue. The learner must select the required combination.
-SKILL: evidence_synthesis
-SELECT: 0, 1
-Available opposing liquidity
-Current execution pace
-Candle color
-Moving average slope
-WHY: Expert execution decisions combine market evidence with risk.
+[MARK_LEVEL] Mark the opposing liquidity relevant to the exit.
+VISUAL: An advance reaches resistance and turns lower with visible upper wick rejection.
+SKILL: liquidity_location
+CHART: resistanceRejection
+WHY: Nearby opposing liquidity is more relevant than a distant level.
 
 [TAP_CANDLE] Tap the clearest price response.
 VISUAL: An advance reaches resistance and turns lower with visible upper wick rejection. The candles are tappable and the learner must select the requested candle.
@@ -4513,58 +4505,98 @@ UNIT 1
 QUESTIONS PER ATTEMPT: 8
 PASSING SCORE: 7
 POOL SIZE: 16
-COMPETENCY BLUEPRINT: aggressive_buyer, aggressive_seller, market_buy_routing, market_sell_routing, spread, aggressive_vs_passive, order_price_chain, combined_read
+COMPETENCY BLUEPRINT: u1.aggressive_buyer, u1.aggressive_seller, u1.market_buy_routing, u1.market_sell_routing, u1.spread, u1.aggressive_vs_passive, u1.order_price_chain, u1.combined_read
+COMPETENCY MAPPINGS: u1.aggressive_buyer => aggressor_side, lifting_the_offer_hitting_the_bid; u1.aggressive_seller => aggressor_side, lifting_the_offer_hitting_the_bid; u1.market_buy_routing => aggressor_side, lifting_the_offer_hitting_the_bid; u1.market_sell_routing => aggressor_side, lifting_the_offer_hitting_the_bid; u1.spread => the_bid_ask_spread; u1.aggressive_vs_passive => aggressive_vs_passive_orders; u1.order_price_chain => aggressor_side, lifting_the_offer_hitting_the_bid; u1.combined_read => what_is_order_flow
+JUMP QUESTIONS: N/A
+JUMP PASSING SCORE: N/A
+JUMP PREREQUISITES: N/A
 
 UNIT 2
 QUESTIONS PER ATTEMPT: 8
 PASSING SCORE: 7
 POOL SIZE: 16
-COMPETENCY BLUEPRINT: level_two, resting_sides, thick_liquidity, thin_liquidity, wall, wall_behavior, spoofing, combined_book_read
+COMPETENCY BLUEPRINT: u2.level_two, u2.resting_sides, u2.thick_liquidity, u2.thin_liquidity, u2.wall, u2.wall_behavior, u2.spoofing, u2.combined_book_read
+COMPETENCY MAPPINGS: u2.level_two => what_the_order_book_shows; u2.resting_sides => bid_side_vs_ask_side; u2.thick_liquidity => size_liquidity; u2.thin_liquidity => size_liquidity; u2.wall => book_depth, large_orders_as_walls; u2.wall_behavior => book_depth, large_orders_as_walls; u2.spoofing => pulling_spoofing, scenario_comparison; u2.combined_book_read => order_routing, the_order_book_review
+JUMP QUESTIONS: 8
+JUMP PASSING SCORE: 7
+JUMP PREREQUISITES: u1.market_buy_routing, u1.combined_read, u1.aggressive_seller, u1.market_sell_routing
 
 UNIT 3
 QUESTIONS PER ATTEMPT: 9
 PASSING SCORE: 8
 POOL SIZE: 18
-COMPETENCY BLUEPRINT: buyer_initiated, seller_initiated, large_print, tape_speed, persistent_aggression, sequence_break, false_urgency, price_confirmation, combined_tape_read
+COMPETENCY BLUEPRINT: u3.buyer_initiated, u3.seller_initiated, u3.large_print, u3.tape_speed, u3.persistent_aggression, u3.sequence_break, u3.false_urgency, u3.price_confirmation, u3.combined_tape_read
+COMPETENCY MAPPINGS: u3.buyer_initiated => tape_interaction, tape_reading; u3.seller_initiated => tape_interaction, tape_reading; u3.large_print => tape_interaction, tape_reading; u3.tape_speed => tape_interaction, tape_reading; u3.persistent_aggression => tape_interaction, tape_reading; u3.sequence_break => tape_interaction, tape_reading; u3.false_urgency => tape_interaction, tape_reading; u3.price_confirmation => tape_interaction, tape_reading; u3.combined_tape_read => tape_interaction, tape_reading
+JUMP QUESTIONS: 10
+JUMP PASSING SCORE: 8
+JUMP PREREQUISITES: u1.market_buy_routing, u2.thick_liquidity, u2.combined_book_read, u1.aggressive_seller, u2.resting_sides
 
 UNIT 4
 QUESTIONS PER ATTEMPT: 9
 PASSING SCORE: 8
 POOL SIZE: 18
-COMPETENCY BLUEPRINT: absorption, buyer_absorption, seller_absorption, repeated_tests, hidden_liquidity, buyer_exhaustion, seller_exhaustion, absorption_vs_exhaustion, combined_absorption_read
+COMPETENCY BLUEPRINT: u4.absorption, u4.buyer_absorption, u4.seller_absorption, u4.repeated_tests, u4.hidden_liquidity, u4.buyer_exhaustion, u4.seller_exhaustion, u4.absorption_vs_exhaustion, u4.combined_absorption_read
+COMPETENCY MAPPINGS: u4.absorption => multi_signal_read, tape_reading; u4.buyer_absorption => multi_signal_read, tape_reading; u4.seller_absorption => multi_signal_read, tape_reading; u4.repeated_tests => multi_signal_read, tape_reading; u4.hidden_liquidity => multi_signal_read; u4.buyer_exhaustion => tape_interaction, tape_reading; u4.seller_exhaustion => tape_interaction, tape_reading; u4.absorption_vs_exhaustion => tape_reading; u4.combined_absorption_read => multi_signal_read, tape_reading
+JUMP QUESTIONS: 12
+JUMP PASSING SCORE: 10
+JUMP PREREQUISITES: u1.market_buy_routing, u2.thick_liquidity, u3.price_confirmation, u3.combined_tape_read, u1.aggressive_seller, u2.resting_sides
 
 UNIT 5
 QUESTIONS PER ATTEMPT: 10
 PASSING SCORE: 8
 POOL SIZE: 20
-COMPETENCY BLUEPRINT: footprint_basics, diagonal_imbalance, buyer_imbalance, seller_imbalance, stacked_pressure, momentum_failure, delta_vs_volume, positive_delta_divergence, negative_delta_divergence, combined_footprint_read
+COMPETENCY BLUEPRINT: u5.footprint_basics, u5.diagonal_imbalance, u5.buyer_imbalance, u5.seller_imbalance, u5.stacked_pressure, u5.momentum_failure, u5.delta_vs_volume, u5.positive_delta_divergence, u5.negative_delta_divergence, u5.combined_footprint_read
+COMPETENCY MAPPINGS: u5.footprint_basics => footprint_interaction, footprint_reading; u5.diagonal_imbalance => footprint_interaction, footprint_reading; u5.buyer_imbalance => footprint_interaction, footprint_reading; u5.seller_imbalance => footprint_interaction, footprint_reading; u5.stacked_pressure => footprint_interaction, footprint_reading; u5.momentum_failure => footprint_interaction, footprint_reading; u5.delta_vs_volume => delta_vs_volume, footprint_reading; u5.positive_delta_divergence => footprint_reading, positive_delta_while_price_falls; u5.negative_delta_divergence => footprint_reading, negative_delta_while_price_rises; u5.combined_footprint_read => footprint_interaction, footprint_reading
+JUMP QUESTIONS: 14
+JUMP PASSING SCORE: 12
+JUMP PREREQUISITES: u1.market_buy_routing, u2.thick_liquidity, u3.price_confirmation, u4.absorption_vs_exhaustion, u4.combined_absorption_read, u1.aggressive_seller, u2.resting_sides
 
 UNIT 6
 QUESTIONS PER ATTEMPT: 10
 PASSING SCORE: 8
 POOL SIZE: 20
-COMPETENCY BLUEPRINT: liquidity_pool, stop_cluster, buy_stops, sell_stops, upside_sweep, downside_sweep, sweep_vs_acceptance, book_depth, iceberg, combined_liquidity_read
+COMPETENCY BLUEPRINT: u6.liquidity_pool, u6.stop_cluster, u6.buy_stops, u6.sell_stops, u6.upside_sweep, u6.downside_sweep, u6.sweep_vs_acceptance, u6.book_depth, u6.iceberg, u6.combined_liquidity_read
+COMPETENCY MAPPINGS: u6.liquidity_pool => book_depth, liquidity_pools; u6.stop_cluster => evidence_synthesis, resting_stops; u6.buy_stops => evidence_synthesis, liquidity_location; u6.sell_stops => sell_stops; u6.upside_sweep => evidence_synthesis, upside_sweep; u6.downside_sweep => downside_sweep; u6.sweep_vs_acceptance => evidence_synthesis, scenario_comparison; u6.book_depth => book_depth, thick_book_vs_thin_book; u6.iceberg => evidence_synthesis, multi_signal_read; u6.combined_liquidity_read => evidence_synthesis, liquidity_review
+JUMP QUESTIONS: 14
+JUMP PASSING SCORE: 12
+JUMP PREREQUISITES: u1.market_buy_routing, u2.thick_liquidity, u3.price_confirmation, u4.absorption_vs_exhaustion, u5.delta_vs_volume, u5.combined_footprint_read, u1.aggressive_seller
 
 UNIT 7
 QUESTIONS PER ATTEMPT: 10
 PASSING SCORE: 8
 POOL SIZE: 20
-COMPETENCY BLUEPRINT: breakout_pressure, breakdown_pressure, acceptance_above, acceptance_below, failed_breakout, failed_breakdown, breakout_retest, breakdown_retest, sweep_vs_breakout, combined_breakout_read
+COMPETENCY BLUEPRINT: u7.breakout_pressure, u7.breakdown_pressure, u7.acceptance_above, u7.acceptance_below, u7.failed_breakout, u7.failed_breakdown, u7.breakout_retest, u7.breakdown_retest, u7.sweep_vs_breakout, u7.combined_breakout_read
+COMPETENCY MAPPINGS: u7.breakout_pressure => evidence_synthesis, scenario_comparison; u7.breakdown_pressure => breakdown_pressure; u7.acceptance_above => acceptance_above, evidence_synthesis; u7.acceptance_below => acceptance_below, evidence_synthesis; u7.failed_breakout => failed_breakout, scenario_comparison; u7.failed_breakdown => evidence_synthesis, failed_breakdown; u7.breakout_retest => breakout_retest, scenario_comparison; u7.breakdown_retest => breakdown_retest, evidence_synthesis; u7.sweep_vs_breakout => chasing_breakouts, evidence_synthesis; u7.combined_breakout_read => common_order_flow_misconceptions
+JUMP QUESTIONS: 16
+JUMP PASSING SCORE: 13
+JUMP PREREQUISITES: u1.market_buy_routing, u2.thick_liquidity, u3.price_confirmation, u4.absorption_vs_exhaustion, u5.delta_vs_volume, u6.sweep_vs_acceptance, u6.combined_liquidity_read, u1.aggressive_seller
 
 UNIT 8
 QUESTIONS PER ATTEMPT: 10
 PASSING SCORE: 8
 POOL SIZE: 20
-COMPETENCY BLUEPRINT: healthy_pullback, pullback_depth, continuation_trigger, bearish_continuation, flow_at_vwap, flow_at_average, pullback_failure, conflicting_signals, volume_context, no_clear_read
+COMPETENCY BLUEPRINT: u8.healthy_pullback, u8.pullback_depth, u8.continuation_trigger, u8.bearish_continuation, u8.flow_at_vwap, u8.flow_at_average, u8.pullback_failure, u8.conflicting_signals, u8.volume_context, u8.no_clear_read
+COMPETENCY MAPPINGS: u8.healthy_pullback => evidence_synthesis; u8.pullback_depth => pullback_depth; u8.continuation_trigger => continuation_trigger, evidence_synthesis; u8.bearish_continuation => bearish_continuation, tape_reading; u8.flow_at_vwap => evidence_synthesis, order_flow_at_vwap; u8.flow_at_average => evidence_synthesis, order_flow_at_a_moving_average; u8.pullback_failure => pullback_failure; u8.conflicting_signals => footprint_reading, tape_reading; u8.volume_context => footprint_reading, tape_reading; u8.no_clear_read => multi_signal_read, no_clear_read_practice_replay
+JUMP QUESTIONS: 16
+JUMP PASSING SCORE: 13
+JUMP PREREQUISITES: u1.market_buy_routing, u2.thick_liquidity, u3.price_confirmation, u4.absorption_vs_exhaustion, u5.delta_vs_volume, u6.sweep_vs_acceptance, u7.failed_breakdown, u7.combined_breakout_read
 
 UNIT 9
 QUESTIONS PER ATTEMPT: 10
 PASSING SCORE: 8
 POOL SIZE: 20
-COMPETENCY BLUEPRINT: reversal_pressure, buyer_trap, seller_trap, buyer_exhaustion_reversal, seller_exhaustion_reversal, absorption_reversal, double_top_flow, double_bottom_flow, reversal_confirmation, insufficient_evidence
+COMPETENCY BLUEPRINT: u9.reversal_pressure, u9.buyer_trap, u9.seller_trap, u9.buyer_exhaustion_reversal, u9.seller_exhaustion_reversal, u9.absorption_reversal, u9.double_top_flow, u9.double_bottom_flow, u9.reversal_confirmation, u9.insufficient_evidence
+COMPETENCY MAPPINGS: u9.reversal_pressure => footprint_reading, tape_reading; u9.buyer_trap => footprint_reading, tape_reading; u9.seller_trap => footprint_reading, tape_reading; u9.buyer_exhaustion_reversal => footprint_reading, tape_reading; u9.seller_exhaustion_reversal => footprint_reading, tape_reading; u9.absorption_reversal => footprint_reading, tape_reading; u9.double_top_flow => footprint_reading, tape_reading; u9.double_bottom_flow => footprint_reading, tape_reading; u9.reversal_confirmation => footprint_reading, tape_reading; u9.insufficient_evidence => footprint_reading, tape_reading
+JUMP QUESTIONS: 18
+JUMP PASSING SCORE: 15
+JUMP PREREQUISITES: u1.market_buy_routing, u2.thick_liquidity, u3.price_confirmation, u4.absorption_vs_exhaustion, u5.delta_vs_volume, u6.sweep_vs_acceptance, u7.failed_breakdown, u8.pullback_failure, u8.no_clear_read
 
 UNIT 10
 QUESTIONS PER ATTEMPT: 10
 PASSING SCORE: 8
 POOL SIZE: 20
-COMPETENCY BLUEPRINT: entry_plan, order_type, slippage, invalidation, thin_liquidity_risk, no_clear_read, exit_liquidity, review_process, multi_source_evidence, combined_execution_read
+COMPETENCY BLUEPRINT: u10.entry_plan, u10.order_type, u10.slippage, u10.invalidation, u10.thin_liquidity_risk, u10.no_clear_read, u10.exit_liquidity, u10.review_process, u10.multi_source_evidence, u10.combined_execution_read
+COMPETENCY MAPPINGS: u10.entry_plan => evidence_synthesis, plan_the_entry; u10.order_type => choose_the_order_type; u10.slippage => book_depth, evidence_synthesis; u10.invalidation => evidence_synthesis, order_flow_invalidation; u10.thin_liquidity_risk => market_sequence, risk_in_thin_liquidity; u10.no_clear_read => evidence_synthesis, no_clear_order_flow_read; u10.exit_liquidity => evidence_synthesis, exit_into_liquidity; u10.review_process => review_the_order_flow_read; u10.multi_source_evidence => review_the_order_flow_read; u10.combined_execution_read => review_the_order_flow_read
+JUMP QUESTIONS: 20
+JUMP PASSING SCORE: 16
+JUMP PREREQUISITES: u1.market_buy_routing, u2.thick_liquidity, u3.price_confirmation, u4.absorption_vs_exhaustion, u5.delta_vs_volume, u6.sweep_vs_acceptance, u7.failed_breakdown, u8.pullback_failure, u9.reversal_confirmation, u9.insufficient_evidence
