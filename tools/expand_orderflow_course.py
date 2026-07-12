@@ -817,6 +817,11 @@ def visual_description(screen):
             "trap": "Replay A breaks and holds with persistent buying. Replay B breaks, fails, returns inside, and gives control to sellers.",
             "trigger": "Replay A reaches the trigger level, shows confirming execution, and price responds. Replay B shows one fast print, no meaningful confirmation, and stalled price.",
             "absorption": "Replay A keeps strong buying against a replenishing offer with stalled price. Replay B shows buying pace itself fading as price stalls.",
+            "wall_challenge": "Replay A shows several uneven waves of selling absorbed by a bid that keeps returning while price holds. Replay B shows the bid thinning and price slipping through.",
+            "sweep_challenge": "Replay A briefly clears a prior extreme before snapping back into the range. Replay B retests the breached level and continues to hold beyond it.",
+            "trap_challenge": "Replay A pauses above the break, defends a deeper retest, and resumes higher. Replay B loses the level after an initially strong burst and sellers take control.",
+            "absorption_challenge": "Replay A shows varied buy sizes continuing into an offer that replenishes while price stays pinned. Replay B shows both buy size and pace fading before price stalls.",
+            "acceptance_challenge": "Replay A clears staggered offers, survives a retest, and establishes trade above. Replay B meets renewed offers and returns to the prior range.",
         }
         return replay_visuals.get(screen.get("event"), "Replay A shows offers clearing and price holding above resistance. Replay B shows replenishment and price falling back inside.")
     if kind in {"time_sales", "time_sales_tap"}:
@@ -1014,8 +1019,21 @@ def write_markdown(course):
             "COMPETENCY MAPPINGS: " + "; ".join(
                 f"{competency} => {', '.join(skills)}"
                 for competency, skills in test.get("competencyMappings", {}).items()),
+            "COMPETENCY SOURCE UNITS: " + "; ".join(
+                f"{competency} => {', '.join(str(unit + 1) for unit in units)}"
+                for competency, units in test.get("competencySourceUnits", {}).items()),
+            "COMPETENCY SOURCE NODES: " + "; ".join(
+                f"{competency} => {', '.join(str(node) for node in nodes)}"
+                for competency, nodes in test.get("competencySourceNodes", {}).items()),
+            "ELIGIBLE QUESTION IDS: " + "; ".join(
+                f"{competency} => {', '.join(question_ids)}"
+                for competency, question_ids in test.get("competencyEligibleQuestionIds", {}).items()),
             f"JUMP QUESTIONS: {test.get('jumpAheadQuestionCount', 'N/A')}",
             f"JUMP PASSING SCORE: {test.get('jumpPassingScore', 'N/A')}",
+            f"JUMP PREREQUISITE QUESTIONS: {len(test.get('jumpPrerequisiteBlueprint', [])) or 'N/A'}",
+            f"JUMP TARGET QUESTIONS: {len(test.get('jumpTargetBlueprint', [])) or 'N/A'}",
+            f"JUMP MIN PREREQUISITE SCORE: {test.get('jumpPrerequisiteMinimum', 'N/A')}",
+            f"JUMP MIN TARGET SCORE: {test.get('jumpTargetMinimum', 'N/A')}",
             "JUMP PREREQUISITES: " + (", ".join(
                 slot["competencyId"] for slot in test.get("jumpPrerequisiteBlueprint", [])) or "N/A"),
             "",
@@ -1317,6 +1335,106 @@ def apply_difficulty_progression(course):
 
 def condense_course(course):
     """Merge mirrored micro-lessons into the requested 77-lesson course."""
+    def evidence(question, options, explanation):
+        return {"type": "evidence_select", "question": question, "options": options,
+                "targets": [0, 1], "explanation": explanation}
+
+    def choice(question, options, explanation):
+        return {"type": "multiple_choice", "question": question, "options": options,
+                "correct": 0, "explanation": explanation}
+
+    def sequence(title):
+        return {"type": "sequence_builder", "question": f"Build the reading process for {title}.",
+                "items": ["Find the location", "Observe aggression", "Inspect liquidity", "Judge price response"],
+                "correct_order": ["Find the location", "Observe aggression", "Inspect liquidity", "Judge price response"],
+                "explanation": "Read context first, then action, liquidity, and response."}
+
+    extension_bank = {
+        "Repeated Prints & Sequence Breaks": [
+            evidence("Which two clues make repeated prints meaningful?", ["One side keeps initiating", "Price responds to the sequence", "One isolated print", "Candle color changes"], "Persistence matters when execution produces a matching response."),
+            choice("What makes a sequence break important?", ["The opposing print changes the established execution pattern", "It is always the largest print", "It guarantees a reversal"], "A sequence break matters when it interrupts persistent aggression."),
+        ],
+        "Tape at Key Levels": [
+            evidence("Which two clues make tape activity meaningful at a key level?", ["Execution reaches the level", "Price shows acceptance or rejection", "The session logo changes", "A distant candle is large"], "Location and response give tape activity context."),
+            choice("How should fast buying at resistance be interpreted?", ["Check whether price accepts above or rejects", "Assume buyers control the next candle", "Ignore the resting offer"], "Fast tape needs a confirming response at the level."),
+        ],
+        "What Is Absorption?": [
+            evidence("Which two clues best support absorption?", ["Aggressive execution stays active", "Price makes little corresponding progress", "Aggression disappears", "Price accepts cleanly through the level"], "Absorption combines continued pressure with weak price progress."),
+            choice("How should absorption be interpreted?", ["Passive liquidity is containing active pressure", "Aggression has completely stopped", "A reversal is guaranteed"], "Absorption describes pressure being contained, not a guaranteed reversal."),
+        ],
+        "What Is Exhaustion?": [
+            evidence("Which two clues best support exhaustion?", ["Print pace or size fades", "Price stops extending in the original direction", "Aggression accelerates", "Price accepts farther through the level"], "Exhaustion means the initiating pressure itself is fading."),
+            choice("How should exhaustion be interpreted?", ["The aggressive side is losing urgency", "Passive size must be hidden", "The opposing side has guaranteed control"], "Exhaustion weakens the prior move but still needs confirmation."),
+        ],
+        "Buyer vs. Seller Exhaustion": [
+            evidence("Which two observations identify the exhausting side?", ["Its initiated prints lose pace", "Its price progress weakens", "Opposing liquidity disappears", "The spread never changes"], "Compare each side's urgency with the progress it produces."),
+            choice("What separates buyer exhaustion from seller exhaustion?", ["Which initiating side loses pressure", "The candle color alone", "Whether total volume is high"], "Buyer and seller exhaustion mirror each other on opposite sides."),
+        ],
+        "Absorption vs. Exhaustion": [
+            evidence("Which two clues distinguish absorption from exhaustion?", ["Whether aggression remains strong", "Whether price still makes progress", "The company sector", "The latest candle color"], "Absorption keeps pressure active; exhaustion shows that pressure fading."),
+            choice("Strong aggression continues but price stalls. Which explanation fits?", ["Absorption", "Exhaustion", "Clean acceptance"], "Continued aggression without progress is the defining absorption pattern."),
+        ],
+        "Momentum Ignition": [
+            evidence("Which two clues support momentum ignition?", ["Aggression expands suddenly", "Price begins making directional progress", "Execution stays balanced", "Opposing depth grows untouched"], "Ignition needs a surge in pressure and a matching price response."),
+            choice("What makes a burst a possible momentum ignition?", ["It overwhelms nearby opposition and moves price", "It contains one large print", "It occurs after any green candle"], "A burst matters when it changes both liquidity and price."),
+        ],
+        "Stacked Pressure": [
+            evidence("Which evidence makes stacked pressure more meaningful?", ["Several consecutive directional imbalances", "Price progresses with the stack", "One isolated large cell", "Balanced execution at every price"], "A stack is consecutive and stronger when price responds."),
+            choice("What separates stacked pressure from one imbalance?", ["Directional imbalance repeats across adjacent prices", "The largest row has high volume", "Displayed depth is perfectly even"], "Stacking requires consecutive imbalances rather than one cell."),
+        ],
+        "Price and Pressure Divergence": [
+            evidence("Which two clues define price and pressure divergence?", ["Aggression points one way", "Price response points the other way", "The spread is unchanged", "Total volume is low"], "Divergence is disagreement between executed pressure and price response."),
+            choice("Positive pressure appears while price weakens. What is the best conclusion?", ["The buying is not achieving the expected response", "Higher prices are guaranteed later", "The execution data should be ignored"], "Pressure without its expected response is a warning, not a signal by itself."),
+        ],
+        "What Is a Liquidity Sweep?": [
+            evidence("Which two clues identify a liquidity sweep?", ["Price trades beyond an obvious level", "Price quickly returns without acceptance", "Price holds beyond the level", "Execution continues cleanly away"], "A sweep takes liquidity and then rejects rather than accepting."),
+            choice("How should a brief breach followed by immediate rejection be read?", ["Possible liquidity sweep", "Confirmed breakout acceptance", "Guaranteed reversal"], "The return inside shows that trade beyond the level was not accepted."),
+        ],
+        "Sweep vs. Breakout Acceptance": [
+            evidence("Which two clues favor breakout acceptance over a sweep?", ["Execution persists beyond the level", "Price holds outside the prior range", "Price immediately returns inside", "Aggression disappears after the breach"], "Acceptance requires continued trade and a hold beyond the level."),
+            choice("What best separates a sweep from an accepted breakout?", ["Whether price holds beyond the breached level", "Whether one large order traded", "The direction of the prior candle"], "The key distinction is rejection versus sustained acceptance."),
+        ],
+        "Icebergs & Hidden Replenishment": [
+            evidence("Which two clues suggest an iceberg?", ["Displayed size repeatedly refills", "Executions repeat at the same price", "Positive delta appears once", "A distant wall remains visible"], "Repeated fills plus replenishment suggest hidden size."),
+            choice("What makes repeated same price fills suspicious for hidden size?", ["Displayed liquidity keeps returning after it trades", "Every print has the same color", "Price must break out next"], "The visible amount understates what continues to execute."),
+        ],
+        "Breakout Acceptance Practice Replay": [
+            evidence("Which two observations confirm the replay gained acceptance?", ["Offers clear with persistent buying", "Price establishes trade above resistance", "Price immediately falls back inside", "The offer keeps rejecting every attempt"], "Execution and sustained trade above the level confirm acceptance."),
+            choice("Which response would invalidate this accepted breakout replay?", ["Price returns and holds below resistance", "Another buy prints at the ask", "The spread stays stable"], "A sustained return inside invalidates acceptance."),
+        ],
+        "Continuation Triggers": [
+            evidence("Which two clues show trend pressure has actually returned?", ["Trend side execution accelerates", "Price resumes progress from structure", "Counter pressure strengthens", "The defended level fails"], "A trigger needs renewed pressure and confirming movement."),
+            choice("What turns a pullback into a continuation setup?", ["Trend side aggression returns and price responds", "One fast print appears", "Volume is higher than yesterday"], "Continuation begins when the trend side regains effective control."),
+        ],
+        "Pullback Failure": [
+            evidence("Which two clues show the pullback is failing?", ["Countertrend aggression strengthens", "Trend structure breaks", "Trend pressure returns", "The reference level holds"], "Growing counter pressure plus lost structure weakens continuation."),
+            choice("When should a continuation idea be invalidated?", ["Counter pressure takes control and the key level fails", "One opposing print appears", "The tape briefly slows"], "Failure requires evidence that the original structure and control are gone."),
+        ],
+        "Reversal Pressure": [
+            evidence("Which two clues support a change in reversal pressure?", ["The prior side stops making progress", "Opposing aggression gains follow through", "One rejection wick forms", "Total volume stays constant"], "A reversal needs weakening prior control and effective opposing pressure."),
+            choice("What is the strongest evidence that control may be changing?", ["Opposing aggression begins producing price progress", "One large opposing print", "A familiar candle pattern appears"], "Control change is stronger when execution receives a confirming response."),
+        ],
+        "Exhaustion Reversals": [
+            evidence("Which two clues best support an exhaustion reversal?", ["Prior aggression fades", "Opposing price response develops", "Original aggression accelerates", "Price continues cleanly in the original direction"], "Exhaustion plus an opposing response supports reversal."),
+            choice("What must follow exhaustion before a reversal is stronger?", ["Opposing control and price confirmation", "A guaranteed target", "A larger candle wick"], "Fading pressure alone does not confirm that the other side has taken control."),
+        ],
+        "Absorption Reversals": [
+            evidence("Which two clues best support an absorption reversal?", ["Heavy aggression makes little progress", "Opposing execution begins moving price", "The defended level immediately fails", "Aggression disappears before reaching the level"], "Contained pressure followed by opposing control supports reversal."),
+            choice("When does absorption become a stronger reversal case?", ["The absorbed side fails and opposing pressure gains follow through", "Displayed size appears once", "Delta stays directional"], "Absorption needs a subsequent control change before it supports reversal."),
+        ],
+        "Order Flow Invalidation": [
+            evidence("Which two observations invalidate an order flow read?", ["Opposing aggression takes control", "The key structural level fails", "One small opposing print", "The spread remains unchanged"], "Invalidation should be tied to evidence that disproves the original read."),
+            choice("Where should invalidation be defined?", ["Beyond the evidence that would disprove the setup", "At an arbitrary fixed distance", "After the trade becomes profitable"], "Risk belongs where the underlying order flow thesis is no longer valid."),
+        ],
+        "No Clear Read": [
+            evidence("Which two clues justify a no clear read decision?", ["Evidence sources conflict", "Price response remains unconfirmed", "One clue points directionally", "The spread is stable"], "Conflicting evidence and no confirmation are valid reasons to wait."),
+            choice("What is the best action when book, tape, and price disagree?", ["Wait for clearer alignment", "Follow the fastest source", "Assume the footprint is always correct"], "No trade is a valid decision when evidence conflicts."),
+        ],
+        "Exiting Into Liquidity": [
+            evidence("Which two clues matter when exiting into liquidity?", ["Nearby opposing depth", "Current execution pace", "Candle color alone", "A distant moving average"], "Exit planning should account for available liquidity and current execution."),
+            choice("Why can opposing liquidity be useful for an exit?", ["It may provide counterparties near the planned price", "It guarantees zero slippage", "It predicts the next trend"], "Available counterparties can improve execution but never guarantee a fill."),
+        ],
+    }
     structures = [
         [
             ("What Is Order Flow?", ["What Is Order Flow?"], 6),
@@ -1431,27 +1549,46 @@ def condense_course(course):
         return selected
 
     def extend_short_lesson(title, screens, minimum):
-        additions = [
-            {"type": "evidence_select", "question": f"Select the two strongest evidence checks for {title}.",
-             "options": ["Execution behavior", "Confirming price response", "Candle color alone", "A company profile"],
-             "targets": [0, 1], "explanation": "The read needs executed activity and the price response it produces."},
-            {"type": "multiple_choice", "question": f"What is the best way to interpret {title}?",
-             "options": ["Combine location, execution, and response", "Treat one print as confirmation", "Assume displayed size cannot change"],
-             "correct": 0, "explanation": "Order flow conclusions are strongest when several evidence sources align."},
-            {"type": "sequence_builder", "question": f"Build the reading process for {title}.",
-             "items": ["Find the location", "Observe aggression", "Inspect liquidity", "Judge price response"],
-             "correct_order": ["Find the location", "Observe aggression", "Inspect liquidity", "Judge price response"],
-             "explanation": "Read context first, then action, liquidity, and response."},
-        ]
+        additions = extension_bank.get(title, []) + [sequence(title)]
         while len(screens) < minimum:
-            screens.append(additions[len(screens) % len(additions)])
+            if not additions:
+                raise AssertionError(f"Missing concept specific extension for {title}")
+            screens.append(additions[(len(screens) - 3) % len(additions)])
         return screens
 
     new_nodes, new_lessons = [], []
+    continuation_evidence = {
+        "Healthy Pullbacks & Pullback Depth": ("Select the clues showing the pullback remains healthy.", ["Counter pressure stays lighter", "Trend structure remains defended", "Counter pressure accelerates", "The key level fails"]),
+        "Bullish vs. Bearish Pullbacks": ("Select the clues supporting continuation after the pullback.", ["Trend side pressure returns", "Price resumes from defended structure", "Counter pressure takes control", "Price loses the reference level"]),
+        "Continuation Triggers": ("Select the clues showing trend pressure has actually returned.", ["Trend side execution accelerates", "Price makes renewed progress", "One isolated print appears", "Counter pressure strengthens"]),
+        "Order Flow at VWAP & Moving Averages": ("Select the clues confirming the reference level held.", ["Execution defends the reference", "Price responds in the trend direction", "Price accepts through the reference", "Counter tape accelerates"]),
+        "Confirmation & Continuation Challenge": ("Select the strongest continuation evidence.", ["Structure holds under the pullback", "Renewed trend pressure moves price", "One fast print appears", "The latest candle matches the trend"]),
+    }
     node = 1
     for section_index, specs in enumerate(structures):
         for title, sources, target in specs:
             screens = select_screens(sources, target)
+            if "Challenge" in title:
+                for screen in screens:
+                    if screen.get("question"):
+                        screen["question"] = f"{title} scenario: {screen['question']}"
+                    if screen["type"] == "replay_compare":
+                        screen["event"] = (screen.get("event") or "acceptance") + "_challenge"
+            if title == "What Is Order Flow?":
+                replacement = evidence("Select the three parts of a complete order flow read.",
+                                       ["Aggressor activity", "Available liquidity", "Price response", "Candle color alone"],
+                                       "A complete read combines who acts, where liquidity sits, and how price responds.")
+                replacement["targets"] = [0, 1, 2]
+                replace_index = next((i for i, screen in enumerate(screens)
+                                      if screen.get("question") in {"What does order flow reveal?", "Select the three parts of a complete order flow read."}),
+                                     min(4, len(screens) - 1))
+                screens[replace_index] = replacement
+            if title in continuation_evidence:
+                question, options = continuation_evidence[title]
+                for screen in screens:
+                    if screen.get("question") == "Select the two continuation clues.":
+                        screen.update({"question": question, "options": options, "targets": [0, 1],
+                                       "explanation": "Continuation needs lesson specific structure and confirming execution."})
             minimum = 4 if "Practice Replay" in title else 5
             screens = extend_short_lesson(title, screens, minimum)
             new_nodes.append({"num": node, "svg": NODE_SVGS[section_index % len(NODE_SVGS)],
@@ -1617,7 +1754,7 @@ def add_skill_tags_and_test_outs(course):
         ["entry_plan", "order_type", "slippage", "invalidation", "thin_liquidity_risk", "no_clear_read", "exit_liquidity", "review_process", "multi_source_evidence", "combined_execution_read"],
     ]
     competency_sources = [
-        ["Lifting the Offer & Hitting the Bid", "Lifting the Offer & Hitting the Bid", "Lifting the Offer & Hitting the Bid", "Lifting the Offer & Hitting the Bid", "The Bid, Ask & Spread", "Aggressive vs. Passive Orders", "Lifting the Offer & Hitting the Bid", "What Is Order Flow?"],
+        ["Lifting the Offer & Hitting the Bid", "Lifting the Offer & Hitting the Bid", "Aggressive vs. Passive Orders", "Aggressive vs. Passive Orders", "The Bid, Ask & Spread", "Aggressive vs. Passive Orders", "What Is Order Flow?", "What Is Order Flow?"],
         ["Reading the Order Book", "Reading the Order Book", "Size & Liquidity", "Size & Liquidity", "Large Orders as Walls", "Large Orders as Walls", "Pulling, Replenishment & Spoofing", "Order Book Challenge"],
         ["Buyer vs. Seller Initiated Prints", "Buyer vs. Seller Initiated Prints", "Speed & Size", "Speed & Size", "Repeated Prints & Sequence Breaks", "Repeated Prints & Sequence Breaks", "Acceleration, Slowdown & False Urgency", "Tape at Key Levels", "Reading Time & Sales"],
         ["What Is Absorption?", "Buyer vs. Seller Absorption", "Buyer vs. Seller Absorption", "Repeated Tests & Hidden Liquidity", "Repeated Tests & Hidden Liquidity", "Buyer vs. Seller Exhaustion", "Buyer vs. Seller Exhaustion", "Absorption vs. Exhaustion", "Absorption Practice Replays"],
@@ -1639,16 +1776,23 @@ def add_skill_tags_and_test_outs(course):
             "evidence_select": "evidence_synthesis", "aggressor": "aggressor_side",
             "book_drag": "order_routing", "sequence_builder": "market_sequence",
         }
-        return mechanic_skills.get(kind, title_key[:48])
+        title_skills = {
+            "The Bid, Ask & Spread": "bid_ask_spread",
+            "Lifting the Offer & Hitting the Bid": "lifting_offer_hitting_bid",
+            "Pulling, Replenishment & Spoofing": "pulling_and_spoofing",
+        }
+        return mechanic_skills.get(kind, title_skills.get(title, title_key[:48]))
 
     node_sections = {node["num"]: node["sectionIndex"] for node in course["nodes"]}
     pools = {index: [] for index in range(10)}
     for lesson_item in course["lessons"]:
         section_index = node_sections[lesson_item["node"]]
-        for screen in lesson_item["screens"]:
+        for screen_index, screen in enumerate(lesson_item["screens"]):
             screen["skillId"] = skill_for(lesson_item["title"], screen)
             if lesson_item["lessonType"] != "BOSS_BATTLE":
-                pools[section_index].append({**screen, "sourceLesson": lesson_item["title"]})
+                pools[section_index].append({**screen, "sourceLesson": lesson_item["title"],
+                                             "sourceUnit": section_index, "sourceNode": lesson_item["node"],
+                                             "questionId": f"orderflow.u{section_index + 1}.n{lesson_item['node']}.q{screen_index + 1}"})
 
     course["testOuts"] = []
     for section in course["sections"]:
@@ -1657,11 +1801,23 @@ def add_skill_tags_and_test_outs(course):
         blueprint = [f"u{index + 1}.{competency}" for competency in competency_blueprints[index]]
         assessment_pool = []
         source_offsets = {}
+        preferred_skills = {
+            "u1.aggressive_buyer": {"aggressor_side"},
+            "u1.aggressive_seller": {"aggressor_side"},
+            "u1.market_buy_routing": {"order_routing"},
+            "u1.market_sell_routing": {"order_routing"},
+            "u1.spread": {"bid_ask_spread"},
+            "u1.aggressive_vs_passive": {"aggressive_vs_passive_orders"},
+            "u1.order_price_chain": {"market_sequence"},
+            "u1.combined_read": {"evidence_synthesis"},
+        }
         # Each competency maps to questions from the lesson that actually teaches
         # it. Keep two candidates per slot so attempts vary without relabeling an
         # unrelated question as a different skill.
         for competency, source_title in zip(blueprint, competency_sources[index]):
             candidates = [question for question in pools[index] if question["sourceLesson"] == source_title]
+            if competency in preferred_skills:
+                candidates = [question for question in candidates if question["skillId"] in preferred_skills[competency]]
             if not candidates:
                 raise AssertionError(f"No assessment questions for {competency} from {source_title}")
             start = source_offsets.get(source_title, 0)
@@ -1673,6 +1829,14 @@ def add_skill_tags_and_test_outs(course):
             competency: sorted({q["skillId"] for q in assessment_pool if q["competencyId"] == competency})
             for competency in blueprint
         }
+        eligible_question_ids = {
+            competency: [q["questionId"] for q in assessment_pool if q["competencyId"] == competency]
+            for competency in blueprint
+        }
+        competency_source_nodes = {
+            competency: sorted({q["sourceNode"] for q in assessment_pool if q["competencyId"] == competency})
+            for competency in blueprint
+        }
         course["testOuts"].append({
             "unitIndex": index, "unitId": section["unitId"], "lessonType": "TEST_OUT",
             "questionCount": count, "passingScore": section["testOutPassingScore"],
@@ -1680,6 +1844,9 @@ def add_skill_tags_and_test_outs(course):
             "questionPool": assessment_pool,
             "competencyBlueprint": blueprint,
             "competencyMappings": competency_mappings,
+            "competencyEligibleQuestionIds": eligible_question_ids,
+            "competencySourceUnits": {competency: [index] for competency in blueprint},
+            "competencySourceNodes": competency_source_nodes,
         })
 
     jump_lengths = [0, 8, 10, 12, 14, 14, 16, 16, 18, 20]
