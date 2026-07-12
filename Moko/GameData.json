@@ -36588,7 +36588,7 @@
      "title": "Order Flow Foundations",
      "bg": "#14B8A6",
      "slab": "#0F766E",
-     "tier": "Foundation"
+     "tier": "Beginner"
     },
     {
      "index": 1,
@@ -36596,7 +36596,7 @@
      "title": "The Order Book",
      "bg": "#3B82F6",
      "slab": "#1D4ED8",
-     "tier": "Strategy"
+     "tier": "Beginner"
     },
     {
      "index": 2,
@@ -36604,7 +36604,7 @@
      "title": "Tape Reading",
      "bg": "#8B5CF6",
      "slab": "#6D28D9",
-     "tier": "Strategy"
+     "tier": "Intermediate"
     },
     {
      "index": 3,
@@ -36612,7 +36612,7 @@
      "title": "Absorption and Exhaustion",
      "bg": "#EC4899",
      "slab": "#BE185D",
-     "tier": "Strategy"
+     "tier": "Intermediate"
     },
     {
      "index": 4,
@@ -36620,7 +36620,7 @@
      "title": "Imbalances and Momentum",
      "bg": "#F59E0B",
      "slab": "#B45309",
-     "tier": "Strategy"
+     "tier": "Advanced"
     },
     {
      "index": 5,
@@ -36628,7 +36628,7 @@
      "title": "Liquidity and Sweeps",
      "bg": "#06B6D4",
      "slab": "#0E7490",
-     "tier": "Strategy"
+     "tier": "Advanced"
     },
     {
      "index": 6,
@@ -36636,7 +36636,7 @@
      "title": "Breakouts and Failures",
      "bg": "#22C55E",
      "slab": "#15803D",
-     "tier": "Strategy"
+     "tier": "Advanced"
     },
     {
      "index": 7,
@@ -36644,7 +36644,7 @@
      "title": "Pullbacks and Continuation",
      "bg": "#6366F1",
      "slab": "#4338CA",
-     "tier": "Strategy"
+     "tier": "Advanced"
     },
     {
      "index": 8,
@@ -36652,7 +36652,7 @@
      "title": "Reversals and Traps",
      "bg": "#EF4444",
      "slab": "#B91C1C",
-     "tier": "Strategy"
+     "tier": "Expert"
     },
     {
      "index": 9,
@@ -36660,7 +36660,7 @@
      "title": "Execution and Risk",
      "bg": "#64748B",
      "slab": "#334155",
-     "tier": "Strategy"
+     "tier": "Expert"
     }
    ],
    "nodes": [
@@ -37667,27 +37667,20 @@
        "explanation": "A market sell hits the bid."
       },
       {
-       "type": "matching",
-       "question": "Match each term.",
-       "pairs": [
-        [
-         "Bid",
-         "Best buyer price"
-        ],
-        [
-         "Ask",
-         "Best seller price"
-        ],
-        [
-         "Spread",
-         "Gap between bid and ask"
-        ],
-        [
-         "Imbalance",
-         "One side has more pressure"
-        ]
+       "type": "evidence_select",
+       "question": "Select the complete order flow read.",
+       "options": [
+        "Aggressor",
+        "Liquidity",
+        "Price response",
+        "Company logo"
        ],
-       "explanation": "These ideas form the base of order flow."
+       "targets": [
+        0,
+        1,
+        2
+       ],
+       "explanation": "A complete read combines who acts, where liquidity rests, and how price responds."
       },
       {
        "type": "multiple_choice",
@@ -37983,15 +37976,15 @@
      "celebration": "You can spot walls acting as support and resistance.",
      "screens": [
       {
-       "type": "multiple_choice",
-       "question": "A large resting bid can act as…",
+       "type": "book_compare",
+       "question": "Which book shows the larger wall?",
        "options": [
-        "Temporary support.",
-        "Temporary resistance.",
-        "A guaranteed floor."
+        "Book A",
+        "Book B",
+        "Both are equal"
        ],
        "correct": 0,
-       "explanation": "A big bid can hold price up for a while. but it can be pulled or absorbed, so it's not a guarantee."
+       "explanation": "Book A shows substantially more resting depth near price."
       },
       {
        "type": "multiple_choice",
@@ -38068,15 +38061,16 @@
      "celebration": "You know the book is live and can deceive.",
      "screens": [
       {
-       "type": "multiple_choice",
-       "question": "What can happen to a resting order before it fills?",
+       "type": "replay_compare",
+       "event": "wall",
+       "question": "Which wall absorbed selling?",
        "options": [
-        "It can be cancelled anytime.",
-        "It's locked until it fills.",
-        "It becomes a market order."
+        "Replay A",
+        "Replay B",
+        "Neither replay"
        ],
        "correct": 0,
-       "explanation": "Resting orders can be pulled at any moment. nothing forces them to trade."
+       "explanation": "Replay A replenishes while trading and price holds. Replay B pulls before the decline."
       },
       {
        "type": "multiple_choice",
@@ -38498,7 +38492,7 @@
       },
       {
        "type": "multiple_choice",
-       "chart": "volatile",
+       "chart": "uptrend",
        "question": "Did price confirm the tape?",
        "options": [
         "Yes. Price made upward progress",
@@ -38536,7 +38530,7 @@
       },
       {
        "type": "multiple_choice",
-       "chart": "marubozu",
+       "chart": "uptrend",
        "question": "Did price confirm the tape?",
        "options": [
         "Yes. Price made upward progress",
@@ -38619,7 +38613,7 @@
       },
       {
        "type": "multiple_choice",
-       "chart": "priceAboveVWAP",
+       "chart": "uptrend",
        "question": "Did price confirm the tape?",
        "options": [
         "Yes. Price made upward progress",
@@ -38630,11 +38624,19 @@
        "explanation": "Use the chart only to judge whether price confirmed the tape evidence."
       },
       {
-       "type": "aggressor",
-       "event": "lift",
-       "question": "Who's crossing the spread?",
-       "correct": 0,
-       "explanation": "Buyers take offers. Sellers take bids."
+       "type": "evidence_select",
+       "question": "Select both confirmation clues.",
+       "options": [
+        "Persistent tape pressure",
+        "Matching price response",
+        "One isolated print",
+        "Candle color alone"
+       ],
+       "targets": [
+        0,
+        1
+       ],
+       "explanation": "Intermediate tape reading combines executions with price follow through."
       }
      ]
     },
@@ -38664,7 +38666,7 @@
       },
       {
        "type": "multiple_choice",
-       "chart": "priceBelowVWAP",
+       "chart": "downtrend",
        "question": "Did price confirm the tape?",
        "options": [
         "Yes. Price made downward progress",
@@ -38702,7 +38704,7 @@
       },
       {
        "type": "multiple_choice",
-       "chart": "bandsWidening",
+       "chart": "uptrend",
        "question": "Did price confirm the tape?",
        "options": [
         "Yes. Price made upward progress",
@@ -38713,11 +38715,19 @@
        "explanation": "Use the chart only to judge whether price confirmed the tape evidence."
       },
       {
-       "type": "aggressor",
-       "event": "lift",
-       "question": "Who's crossing the spread?",
-       "correct": 0,
-       "explanation": "Buyers take offers. Sellers take bids."
+       "type": "evidence_select",
+       "question": "Select both confirmation clues.",
+       "options": [
+        "Persistent tape pressure",
+        "Matching price response",
+        "One isolated print",
+        "Candle color alone"
+       ],
+       "targets": [
+        0,
+        1
+       ],
+       "explanation": "Intermediate tape reading combines executions with price follow through."
       }
      ]
     },
@@ -38747,7 +38757,7 @@
       },
       {
        "type": "multiple_choice",
-       "chart": "resistanceRejection",
+       "chart": "downtrend",
        "question": "Did price confirm the tape?",
        "options": [
         "Yes. Price made downward progress",
@@ -38785,7 +38795,7 @@
       },
       {
        "type": "multiple_choice",
-       "chart": "spinningTop",
+       "chart": "sideways",
        "question": "Did price confirm the tape?",
        "options": [
         "No. Price failed to follow through",
@@ -38796,11 +38806,19 @@
        "explanation": "Use the chart only to judge whether price confirmed the tape evidence."
       },
       {
-       "type": "aggressor",
-       "event": "lift",
-       "question": "Who's crossing the spread?",
-       "correct": 0,
-       "explanation": "Buyers take offers. Sellers take bids."
+       "type": "evidence_select",
+       "question": "Select both confirmation clues.",
+       "options": [
+        "Persistent tape pressure",
+        "Matching price response",
+        "One isolated print",
+        "Candle color alone"
+       ],
+       "targets": [
+        0,
+        1
+       ],
+       "explanation": "Intermediate tape reading combines executions with price follow through."
       }
      ]
     },
@@ -38829,16 +38847,15 @@
        "explanation": "This bid side execution is the relevant opposing print."
       },
       {
-       "type": "multiple_choice",
-       "chart": "volatile",
-       "question": "Did price confirm the tape?",
+       "type": "replay_compare",
+       "question": "Which replay shows stronger buyer control?",
        "options": [
-        "Price response remains inconclusive",
-        "Price fully confirms buyers",
-        "Price fully confirms sellers"
+        "Replay A",
+        "Replay B",
+        "Both are equal"
        ],
        "correct": 0,
-       "explanation": "Use the chart only to judge whether price confirmed the tape evidence."
+       "explanation": "Both show buying, but only Replay A gains and holds higher prices."
       }
      ]
     },
@@ -39053,17 +39070,19 @@
        "explanation": "Absorption requires pressure plus a weak corresponding price response."
       },
       {
-       "type": "multiple_choice",
-       "chart": "range",
-       "question": "Which read needs fewer assumptions?",
+       "type": "evidence_select",
+       "question": "Select two hidden liquidity clues.",
        "options": [
-        "Refreshing liquidity can hide true available size",
-        "Repeated tests always make a liquidity level stronger",
-        "A fast rejection proves the resting wall was genuine",
-        "Stable displayed size means hidden liquidity cannot be present"
+        "Fast buy executions",
+        "Refreshing offer",
+        "Positive delta",
+        "Stalled price"
        ],
-       "correct": 0,
-       "explanation": "Refreshing liquidity can hide true available size."
+       "targets": [
+        1,
+        3
+       ],
+       "explanation": "Replenishment plus weak price progress are the strongest hidden liquidity clues."
       }
      ]
     },
@@ -39211,16 +39230,16 @@
        "explanation": "Fading aggression defines exhaustion."
       },
       {
-       "type": "multiple_choice",
-       "chart": "spinningTop",
-       "question": "Which comparison best separates these two ideas?",
+       "type": "replay_compare",
+       "event": "absorption",
+       "question": "Which replay shows absorption?",
        "options": [
-        "Absorption shows pressure without progress. Exhaustion shows pressure fading.",
-        "Both require price to accelerate immediately",
-        "They can be separated using order size alone"
+        "Replay A",
+        "Replay B",
+        "Both show exhaustion"
        ],
        "correct": 0,
-       "explanation": "Absorption shows pressure without progress. Exhaustion shows pressure fading."
+       "explanation": "Replay A keeps strong aggression while price stalls. Replay B shows aggression fading."
       }
      ]
     },
@@ -39444,10 +39463,10 @@
       },
       {
        "type": "footprint_tap",
-       "event": "balanced_target",
-       "target": 3,
-       "question": "Tap the row where bid and ask execution is most balanced.",
-       "explanation": "This row has the smallest difference between bid and ask volume."
+       "event": "total_target",
+       "target": 1,
+       "question": "Tap the row with most executed volume.",
+       "explanation": "This row has the largest bid plus ask total."
       },
       {
        "type": "multiple_choice",
@@ -39504,8 +39523,8 @@
        "type": "footprint_tap",
        "event": "diagonal_ask",
        "target": 4,
-       "question": "Tap the first ask side diagonal imbalance.",
-       "explanation": "Ask volume exceeds the diagonally adjacent lower bid volume by the required ratio."
+       "question": "Tap the first diagonal ask imbalance.",
+       "explanation": "Ask execution exceeds the adjacent lower bid by ratio."
       },
       {
        "type": "multiple_choice",
@@ -39562,9 +39581,9 @@
       {
        "type": "footprint_tap",
        "event": "lift",
-       "target": 2,
-       "question": "Tap the row with the greatest ask side execution advantage.",
-       "explanation": "This row has the largest positive same price execution difference."
+       "target": 1,
+       "question": "Tap the strongest execution imbalance.",
+       "explanation": "This row has the widest directional execution advantage."
       },
       {
        "type": "multiple_choice",
@@ -39600,10 +39619,10 @@
       },
       {
        "type": "footprint_tap",
-       "event": "hit",
-       "target": 5,
-       "question": "Tap the row with the greatest bid side execution advantage.",
-       "explanation": "This row has the largest negative same price execution difference."
+       "event": "lift",
+       "target": 4,
+       "question": "Tap the strongest ask side advantage.",
+       "explanation": "Aggressive buyers execute at the ask."
       },
       {
        "type": "multiple_choice",
@@ -39656,10 +39675,10 @@
       },
       {
        "type": "footprint_tap",
-       "event": "balanced_target",
+       "event": "hit",
        "target": 1,
-       "question": "Tap the row where bid and ask execution is most balanced.",
-       "explanation": "This row has the smallest difference between bid and ask volume."
+       "question": "Tap the strongest bid side advantage.",
+       "explanation": "Aggressive sellers execute at the bid."
       },
       {
        "type": "multiple_choice",
@@ -39695,10 +39714,10 @@
       },
       {
        "type": "footprint_tap",
-       "event": "total_target",
+       "event": "lift",
        "target": 4,
-       "question": "Tap the row with the largest total executed volume.",
-       "explanation": "This row has the highest combined bid and ask execution."
+       "question": "Tap the row where buyer pressure concentrates.",
+       "explanation": "Concentrated ask executions can help ignite momentum."
       },
       {
        "type": "multiple_choice",
@@ -39751,10 +39770,10 @@
       },
       {
        "type": "footprint_tap",
-       "event": "lift",
-       "target": 0,
-       "question": "Tap the row with the greatest ask side execution advantage.",
-       "explanation": "This row has the largest positive same price execution difference."
+       "event": "stacked_ask",
+       "target": 1,
+       "question": "Tap the first stacked ask imbalance.",
+       "explanation": "Consecutive ask imbalances support continued buyer pressure."
       },
       {
        "type": "multiple_choice",
@@ -39790,10 +39809,10 @@
       },
       {
        "type": "footprint_tap",
-       "event": "hit",
-       "target": 3,
-       "question": "Tap the row with the greatest bid side execution advantage.",
-       "explanation": "This row has the largest negative same price execution difference."
+       "event": "balanced_target",
+       "target": 4,
+       "question": "Tap where directional pressure disappears.",
+       "explanation": "Execution becomes balanced as momentum loses force."
       },
       {
        "type": "multiple_choice",
@@ -39846,10 +39865,10 @@
       },
       {
        "type": "footprint_tap",
-       "event": "balanced_target",
-       "target": 6,
-       "question": "Tap the row where bid and ask execution is most balanced.",
-       "explanation": "This row has the smallest difference between bid and ask volume."
+       "event": "stacked_ask",
+       "target": 1,
+       "question": "Tap the first row in the stack.",
+       "explanation": "The selected row begins consecutive ask side imbalances."
       },
       {
        "type": "multiple_choice",
@@ -39885,10 +39904,10 @@
       },
       {
        "type": "footprint_tap",
-       "event": "total_target",
-       "target": 2,
-       "question": "Tap the row with the largest total executed volume.",
-       "explanation": "This row has the highest combined bid and ask execution."
+       "event": "delta_positive",
+       "target": 4,
+       "question": "Tap the row adding most positive delta.",
+       "explanation": "This row contributes the largest ask minus bid volume."
       },
       {
        "type": "multiple_choice",
@@ -39954,10 +39973,10 @@
       },
       {
        "type": "footprint_tap",
-       "event": "lift",
-       "target": 5,
-       "question": "Tap the row with the greatest ask side execution advantage.",
-       "explanation": "This row has the largest positive same price execution difference."
+       "event": "total_target",
+       "target": 1,
+       "question": "Tap the highest volume row.",
+       "explanation": "Total volume adds bid and ask executions, unlike delta."
       },
       {
        "type": "sequence_builder",
@@ -40012,10 +40031,10 @@
       },
       {
        "type": "footprint_tap",
-       "event": "hit",
-       "target": 1,
-       "question": "Tap the row with the greatest bid side execution advantage.",
-       "explanation": "This row has the largest negative same price execution difference."
+       "event": "delta_positive",
+       "target": 4,
+       "question": "Tap the row contradicting falling price.",
+       "explanation": "Strong positive delta conflicts with the downward price response."
       },
       {
        "type": "sequence_builder",
@@ -40070,10 +40089,10 @@
       },
       {
        "type": "footprint_tap",
-       "event": "balanced_target",
-       "target": 4,
-       "question": "Tap the row where bid and ask execution is most balanced.",
-       "explanation": "This row has the smallest difference between bid and ask volume."
+       "event": "delta_negative",
+       "target": 1,
+       "question": "Tap the row contradicting rising price.",
+       "explanation": "Strong negative delta conflicts with the upward price response."
       },
       {
        "type": "sequence_builder",
@@ -40115,10 +40134,10 @@
       },
       {
        "type": "footprint_tap",
-       "event": "total_target",
-       "target": 0,
-       "question": "Tap the row with the largest total executed volume.",
-       "explanation": "This row has the highest combined bid and ask execution."
+       "event": "delta_negative",
+       "target": 4,
+       "question": "Tap the execution clue opposing price.",
+       "explanation": "The selected negative delta row contradicts the price direction."
       },
       {
        "type": "multiple_choice",
@@ -40171,10 +40190,10 @@
       },
       {
        "type": "footprint_tap",
-       "event": "lift",
-       "target": 3,
-       "question": "Tap the row with the greatest ask side execution advantage.",
-       "explanation": "This row has the largest positive same price execution difference."
+       "event": "stacked_ask",
+       "target": 1,
+       "question": "Tap where sustained pressure begins.",
+       "explanation": "The first stacked row begins persistent ask side pressure."
       },
       {
        "type": "multiple_choice",
@@ -40246,11 +40265,19 @@
      "celebration": "Resting Stops complete.",
      "screens": [
       {
-       "type": "aggressor",
-       "event": "hit",
-       "question": "Who's crossing the spread?",
-       "correct": 1,
-       "explanation": "Buyers take offers. Sellers take bids."
+       "type": "evidence_select",
+       "question": "Select the two liquidity clues.",
+       "options": [
+        "Nearby resting depth",
+        "Execution at the level",
+        "A distant candle",
+        "Company news"
+       ],
+       "targets": [
+        0,
+        1
+       ],
+       "explanation": "Advanced reads combine at least two aligned evidence sources."
       },
       {
        "type": "multiple_choice",
@@ -40280,24 +40307,26 @@
      "celebration": "Buy Stops complete.",
      "screens": [
       {
-       "type": "multiple_choice",
+       "type": "mark_level",
        "chart": "breakout",
-       "question": "Which conclusion fits the response?",
-       "options": [
-        "Buy stops can fuel an upside break",
-        "Acceptance is present as soon as one trade prints beyond a level",
-        "Passive absorption and fading aggression produce the same evidence",
-        "A high volume candle reveals which side initiated every trade"
-       ],
-       "correct": 0,
-       "explanation": "Buy stops can fuel an upside break."
+       "level_kind": "resistance",
+       "question": "Mark where buy stops may cluster.",
+       "explanation": "Buy stops may cluster beyond obvious resistance or prior highs."
       },
       {
-       "type": "book_drag",
-       "order": "market_buy",
-       "question": "Route this order.",
-       "correct": 1,
-       "explanation": "Market buys take asks. Market sells take bids."
+       "type": "evidence_select",
+       "question": "Select the two liquidity clues.",
+       "options": [
+        "Nearby resting depth",
+        "Execution at the level",
+        "A distant candle",
+        "Company news"
+       ],
+       "targets": [
+        0,
+        1
+       ],
+       "explanation": "Advanced reads combine at least two aligned evidence sources."
       },
       {
        "type": "matching",
@@ -40367,11 +40396,19 @@
      "celebration": "Liquidity Sweep complete.",
      "screens": [
       {
-       "type": "book_drag",
-       "order": "market_buy",
-       "question": "Route this order.",
-       "correct": 1,
-       "explanation": "Market buys take asks. Market sells take bids."
+       "type": "evidence_select",
+       "question": "Select the two liquidity clues.",
+       "options": [
+        "Nearby resting depth",
+        "Execution at the level",
+        "A distant candle",
+        "Company news"
+       ],
+       "targets": [
+        0,
+        1
+       ],
+       "explanation": "Advanced reads combine at least two aligned evidence sources."
       },
       {
        "type": "matching",
@@ -40420,11 +40457,19 @@
        "explanation": "The selected candle shows whether execution produced follow through."
       },
       {
-       "type": "aggressor",
-       "event": "hit",
-       "question": "Who's crossing the spread?",
-       "correct": 1,
-       "explanation": "Buyers take offers. Sellers take bids."
+       "type": "evidence_select",
+       "question": "Select the two liquidity clues.",
+       "options": [
+        "Nearby resting depth",
+        "Execution at the level",
+        "A distant candle",
+        "Company news"
+       ],
+       "targets": [
+        0,
+        1
+       ],
+       "explanation": "Advanced reads combine at least two aligned evidence sources."
       },
       {
        "type": "multiple_choice",
@@ -40511,24 +40556,31 @@
      "celebration": "Sweep or Breakout complete.",
      "screens": [
       {
-       "type": "aggressor",
-       "event": "lift",
-       "question": "Who's crossing the spread?",
-       "correct": 0,
-       "explanation": "Buyers take offers. Sellers take bids."
+       "type": "evidence_select",
+       "question": "Select the two liquidity clues.",
+       "options": [
+        "Nearby resting depth",
+        "Execution at the level",
+        "A distant candle",
+        "Company news"
+       ],
+       "targets": [
+        0,
+        1
+       ],
+       "explanation": "Advanced reads combine at least two aligned evidence sources."
       },
       {
-       "type": "multiple_choice",
-       "chart": "breakoutRetest",
-       "question": "What's the best read?",
+       "type": "replay_compare",
+       "event": "sweep",
+       "question": "Which replay gains acceptance?",
        "options": [
-        "Sweeps reject. Breakouts gain acceptance",
-        "Displayed liquidity is stronger evidence than completed executions",
-        "A short aggressive burst can outweigh a stalled price response",
-        "The candle response makes tape confirmation optional"
+        "Replay B",
+        "Replay A",
+        "Both replays"
        ],
        "correct": 0,
-       "explanation": "Acceptance beyond a level supports a breakout."
+       "explanation": "Replay B holds beyond the level. Replay A rejects immediately."
       },
       {
        "type": "multiple_choice",
@@ -40694,11 +40746,19 @@
        "explanation": "Repeated execution against refreshing displayed size is consistent with an iceberg."
       },
       {
-       "type": "aggressor",
-       "event": "hit",
-       "question": "Who's crossing the spread?",
-       "correct": 1,
-       "explanation": "Buyers take offers. Sellers take bids."
+       "type": "evidence_select",
+       "question": "Select the two liquidity clues.",
+       "options": [
+        "Nearby resting depth",
+        "Execution at the level",
+        "A distant candle",
+        "Company news"
+       ],
+       "targets": [
+        0,
+        1
+       ],
+       "explanation": "Advanced reads combine at least two aligned evidence sources."
       },
       {
        "type": "multiple_choice",
@@ -40782,11 +40842,19 @@
      "celebration": "Flow and Liquidity Mixed Review complete.",
      "screens": [
       {
-       "type": "aggressor",
-       "event": "hit",
-       "question": "Who's crossing the spread?",
-       "correct": 1,
-       "explanation": "Buyers take offers. Sellers take bids."
+       "type": "evidence_select",
+       "question": "Select the two liquidity clues.",
+       "options": [
+        "Nearby resting depth",
+        "Execution at the level",
+        "A distant candle",
+        "Company news"
+       ],
+       "targets": [
+        0,
+        1
+       ],
+       "explanation": "Advanced reads combine at least two aligned evidence sources."
       },
       {
        "type": "multiple_choice",
@@ -40824,24 +40892,31 @@
      "celebration": "Breakout Pressure complete.",
      "screens": [
       {
-       "type": "multiple_choice",
-       "chart": "breakout",
-       "question": "Which conclusion fits the response?",
+       "type": "replay_compare",
+       "event": "trap",
+       "question": "Which replay confirms a breakout?",
        "options": [
-        "Offers are consumed, withdrawn, or both",
-        "Acceptance is present as soon as one trade prints beyond a level",
-        "Passive absorption and fading aggression produce the same evidence",
-        "A high volume candle reveals which side initiated every trade"
+        "Replay A",
+        "Replay B",
+        "Not enough evidence"
        ],
        "correct": 0,
-       "explanation": "An upside breakout can develop as buyers consume offers sellers withdraw liquidity or both."
+       "explanation": "Acceptance needs continued execution and price holding beyond the level."
       },
       {
-       "type": "book_drag",
-       "order": "market_buy",
-       "question": "Route this order.",
-       "correct": 1,
-       "explanation": "Market buys take asks. Market sells take bids."
+       "type": "evidence_select",
+       "question": "Select the two acceptance clues.",
+       "options": [
+        "Persistent execution",
+        "Price holds beyond the level",
+        "Immediate return inside",
+        "One isolated print"
+       ],
+       "targets": [
+        0,
+        1
+       ],
+       "explanation": "Advanced reads combine at least two aligned evidence sources."
       },
       {
        "type": "matching",
@@ -40921,11 +40996,19 @@
      "celebration": "Acceptance Above complete.",
      "screens": [
       {
-       "type": "book_drag",
-       "order": "market_buy",
-       "question": "Route this order.",
-       "correct": 1,
-       "explanation": "Market buys take asks. Market sells take bids."
+       "type": "evidence_select",
+       "question": "Select the two acceptance clues.",
+       "options": [
+        "Execution persists",
+        "Price holds beyond the level",
+        "Price returns inside",
+        "Liquidity replenishes against the move"
+       ],
+       "targets": [
+        0,
+        1
+       ],
+       "explanation": "An advanced breakout read requires both pressure and acceptance."
       },
       {
        "type": "live_chart",
@@ -40986,11 +41069,19 @@
        "explanation": "The selected candle shows whether execution produced follow through."
       },
       {
-       "type": "aggressor",
-       "event": "hit",
-       "question": "Who's crossing the spread?",
-       "correct": 1,
-       "explanation": "Buyers take offers. Sellers take bids."
+       "type": "evidence_select",
+       "question": "Select the two acceptance clues.",
+       "options": [
+        "Execution persists",
+        "Price holds beyond the level",
+        "Price returns inside",
+        "Liquidity replenishes against the move"
+       ],
+       "targets": [
+        0,
+        1
+       ],
+       "explanation": "An advanced breakout read requires both pressure and acceptance."
       },
       {
        "type": "multiple_choice",
@@ -41083,11 +41174,16 @@
      "celebration": "Failed Breakout complete.",
      "screens": [
       {
-       "type": "aggressor",
-       "event": "hit",
-       "question": "Who's crossing the spread?",
-       "correct": 1,
-       "explanation": "Buyers take offers. Sellers take bids."
+       "type": "replay_compare",
+       "event": "trap",
+       "question": "Which replay traps breakout buyers?",
+       "options": [
+        "Replay B",
+        "Replay A",
+        "Not enough evidence"
+       ],
+       "correct": 0,
+       "explanation": "Acceptance needs continued execution and price holding beyond the level."
       },
       {
        "type": "live_chart",
@@ -41142,11 +41238,19 @@
        "explanation": "A quick return above support signals failure."
       },
       {
-       "type": "book_drag",
-       "order": "market_buy",
-       "question": "Route this order.",
-       "correct": 1,
-       "explanation": "Market buys take asks. Market sells take bids."
+       "type": "evidence_select",
+       "question": "Select the two acceptance clues.",
+       "options": [
+        "Execution persists",
+        "Price holds beyond the level",
+        "Price returns inside",
+        "Liquidity replenishes against the move"
+       ],
+       "targets": [
+        0,
+        1
+       ],
+       "explanation": "An advanced breakout read requires both pressure and acceptance."
       },
       {
        "type": "matching",
@@ -41182,17 +41286,16 @@
      "celebration": "Breakout Retest complete.",
      "screens": [
       {
-       "type": "multiple_choice",
-       "chart": "breakoutRetest",
-       "question": "Which explanation fits best?",
+       "type": "replay_compare",
+       "event": "trap",
+       "question": "Which replay shows a defended break?",
        "options": [
-        "A defended retest can confirm a breakout",
-        "High total volume normally implies strongly directional delta",
-        "A large wall deserves more weight than repeated fills against it",
-        "One unusually large trade is more reliable than subsequent response"
+        "Replay A",
+        "Replay B",
+        "Not enough evidence"
        ],
        "correct": 0,
-       "explanation": "A defended retest can confirm a breakout."
+       "explanation": "Acceptance needs continued execution and price holding beyond the level."
       },
       {
        "type": "tap_candle",
@@ -41216,11 +41319,19 @@
      "celebration": "Breakdown Retest complete.",
      "screens": [
       {
-       "type": "book_drag",
-       "order": "market_buy",
-       "question": "Route this order.",
-       "correct": 1,
-       "explanation": "Market buys take asks. Market sells take bids."
+       "type": "evidence_select",
+       "question": "Select the two acceptance clues.",
+       "options": [
+        "Execution persists",
+        "Price holds beyond the level",
+        "Price returns inside",
+        "Liquidity replenishes against the move"
+       ],
+       "targets": [
+        0,
+        1
+       ],
+       "explanation": "An advanced breakout read requires both pressure and acceptance."
       },
       {
        "type": "live_chart",
@@ -41281,11 +41392,19 @@
        "explanation": "The selected candle shows whether execution produced follow through."
       },
       {
-       "type": "aggressor",
-       "event": "hit",
-       "question": "Who's crossing the spread?",
-       "correct": 1,
-       "explanation": "Buyers take offers. Sellers take bids."
+       "type": "evidence_select",
+       "question": "Select the two acceptance clues.",
+       "options": [
+        "Execution persists",
+        "Price holds beyond the level",
+        "Price returns inside",
+        "Liquidity replenishes against the move"
+       ],
+       "targets": [
+        0,
+        1
+       ],
+       "explanation": "An advanced breakout read requires both pressure and acceptance."
       },
       {
        "type": "multiple_choice",
@@ -41341,17 +41460,16 @@
        "explanation": "A complete read separates aggression, liquidity, and price response."
       },
       {
-       "type": "multiple_choice",
-       "chart": "ascendingTriangle",
-       "question": "Which read needs fewer assumptions?",
+       "type": "replay_compare",
+       "event": "trap",
+       "question": "Which replay has genuine acceptance?",
        "options": [
-        "Combine pressure, level break, and acceptance",
-        "Repeated tests always make a liquidity level stronger",
-        "A fast rejection proves the resting wall was genuine",
-        "Stable displayed size means hidden liquidity cannot be present"
+        "Replay A",
+        "Replay B",
+        "Not enough evidence"
        ],
        "correct": 0,
-       "explanation": "Combine pressure, level break, and acceptance."
+       "explanation": "Acceptance needs continued execution and price holding beyond the level."
       },
       {
        "type": "matching",
@@ -41443,24 +41561,34 @@
      "celebration": "Healthy Pullbacks complete.",
      "screens": [
       {
-       "type": "multiple_choice",
-       "chart": "pullbackUptrend",
-       "question": "Which conclusion fits the response?",
+       "type": "evidence_select",
+       "question": "Select the two strongest clues.",
        "options": [
-        "A healthy pullback shows weaker counter pressure",
-        "Acceptance is present as soon as one trade prints beyond a level",
-        "Passive absorption and fading aggression produce the same evidence",
-        "A high volume candle reveals which side initiated every trade"
+        "Shallow pullback",
+        "Trend pressure returns",
+        "Counter pressure accelerates",
+        "Key level fails"
        ],
-       "correct": 0,
-       "explanation": "A healthy pullback shows weaker counter pressure."
+       "targets": [
+        0,
+        1
+       ],
+       "explanation": "Advanced continuation requires structure plus confirming execution evidence."
       },
       {
-       "type": "book_drag",
-       "order": "market_buy",
-       "question": "Route this order.",
-       "correct": 1,
-       "explanation": "Market buys take asks. Market sells take bids."
+       "type": "evidence_select",
+       "question": "Select the two continuation clues.",
+       "options": [
+        "Structure remains intact",
+        "Trend pressure returns",
+        "Counter pressure accelerates",
+        "The key level fails"
+       ],
+       "targets": [
+        0,
+        1
+       ],
+       "explanation": "Advanced reads combine at least two aligned evidence sources."
       },
       {
        "type": "matching",
@@ -41532,11 +41660,19 @@
      "celebration": "Seller Pullback complete.",
      "screens": [
       {
-       "type": "book_drag",
-       "order": "market_buy",
-       "question": "Route this order.",
-       "correct": 1,
-       "explanation": "Market buys take asks. Market sells take bids."
+       "type": "evidence_select",
+       "question": "Select the two continuation clues.",
+       "options": [
+        "Structure remains intact",
+        "Trend pressure returns",
+        "Counter pressure accelerates",
+        "The key level fails"
+       ],
+       "targets": [
+        0,
+        1
+       ],
+       "explanation": "Continuation needs intact structure plus returning trend pressure."
       },
       {
        "type": "live_chart",
@@ -41598,11 +41734,19 @@
        "explanation": "Structure supplies location. Execution evidence supplies the read."
       },
       {
-       "type": "aggressor",
-       "event": "lift",
-       "question": "Who's crossing the spread?",
-       "correct": 0,
-       "explanation": "Buyers take offers. Sellers take bids."
+       "type": "evidence_select",
+       "question": "Select the two continuation clues.",
+       "options": [
+        "Structure remains intact",
+        "Trend pressure returns",
+        "Counter pressure accelerates",
+        "The key level fails"
+       ],
+       "targets": [
+        0,
+        1
+       ],
+       "explanation": "Continuation needs intact structure plus returning trend pressure."
       },
       {
        "type": "multiple_choice",
@@ -41694,11 +41838,19 @@
      "celebration": "Order Flow at VWAP complete.",
      "screens": [
       {
-       "type": "aggressor",
-       "event": "lift",
-       "question": "Who's crossing the spread?",
-       "correct": 0,
-       "explanation": "Buyers take offers. Sellers take bids."
+       "type": "evidence_select",
+       "question": "Select the two strongest clues.",
+       "options": [
+        "VWAP holds as location",
+        "Trend aggression returns",
+        "Price loses VWAP",
+        "Counter tape accelerates"
+       ],
+       "targets": [
+        0,
+        1
+       ],
+       "explanation": "Advanced continuation requires structure plus confirming execution evidence."
       },
       {
        "type": "live_chart",
@@ -41753,11 +41905,19 @@
        "explanation": "The average provides location but execution evidence determines the read."
       },
       {
-       "type": "book_drag",
-       "order": "market_buy",
-       "question": "Route this order.",
-       "correct": 1,
-       "explanation": "Market buys take asks. Market sells take bids."
+       "type": "evidence_select",
+       "question": "Select the two continuation clues.",
+       "options": [
+        "Structure remains intact",
+        "Trend pressure returns",
+        "Counter pressure accelerates",
+        "The key level fails"
+       ],
+       "targets": [
+        0,
+        1
+       ],
+       "explanation": "Continuation needs intact structure plus returning trend pressure."
       },
       {
        "type": "matching",
@@ -41856,17 +42016,19 @@
        "explanation": "Conflicting signals call for patience and a weaker conclusion."
       },
       {
-       "type": "multiple_choice",
-       "chart": "spinningTop",
-       "question": "What's the strongest conclusion?",
+       "type": "evidence_select",
+       "question": "Select the two strongest clues.",
        "options": [
-        "Conflicting signals call for patience and a weaker conclusion",
-        "The current book is more useful than the executions that changed it",
-        "Location adds little once the tape accelerates",
-        "The earliest signal should anchor the read even after conditions change"
+        "Tape and delta disagree",
+        "Price response is weak",
+        "Every clue aligns",
+        "Acceptance is confirmed"
        ],
-       "correct": 0,
-       "explanation": "Conflicting signals call for patience and a weaker conclusion."
+       "targets": [
+        0,
+        1
+       ],
+       "explanation": "Advanced continuation requires structure plus confirming execution evidence."
       },
       {
        "type": "tap_candle",
@@ -42092,24 +42254,34 @@
      "celebration": "Entry After Confirmation complete.",
      "screens": [
       {
-       "type": "multiple_choice",
-       "chart": "breakoutRetest",
-       "question": "Which conclusion fits the response?",
+       "type": "evidence_select",
+       "question": "Select the two strongest clues.",
        "options": [
-        "Wait for pressure to return before entry",
-        "Acceptance is present as soon as one trade prints beyond a level",
-        "Passive absorption and fading aggression produce the same evidence",
-        "A high volume candle reveals which side initiated every trade"
+        "Trend side aggression",
+        "Confirming price response",
+        "One isolated print",
+        "An untested wall"
        ],
-       "correct": 0,
-       "explanation": "Wait for pressure to return before entry."
+       "targets": [
+        0,
+        1
+       ],
+       "explanation": "Advanced continuation requires structure plus confirming execution evidence."
       },
       {
-       "type": "book_drag",
-       "order": "market_buy",
-       "question": "Route this order.",
-       "correct": 1,
-       "explanation": "Market buys take asks. Market sells take bids."
+       "type": "evidence_select",
+       "question": "Select the two continuation clues.",
+       "options": [
+        "Structure remains intact",
+        "Trend pressure returns",
+        "Counter pressure accelerates",
+        "The key level fails"
+       ],
+       "targets": [
+        0,
+        1
+       ],
+       "explanation": "Advanced reads combine at least two aligned evidence sources."
       },
       {
        "type": "matching",
@@ -42185,11 +42357,19 @@
      "celebration": "Breakout and Continuation Mixed Review complete.",
      "screens": [
       {
-       "type": "book_drag",
-       "order": "market_buy",
-       "question": "Route this order.",
-       "correct": 1,
-       "explanation": "Market buys take asks. Market sells take bids."
+       "type": "evidence_select",
+       "question": "Select the two continuation clues.",
+       "options": [
+        "Structure remains intact",
+        "Trend pressure returns",
+        "Counter pressure accelerates",
+        "The key level fails"
+       ],
+       "targets": [
+        0,
+        1
+       ],
+       "explanation": "Continuation needs intact structure plus returning trend pressure."
       },
       {
        "type": "live_chart",
@@ -42311,17 +42491,16 @@
        "explanation": "Tape and footprint evidence reveal what changed beneath the candle pattern."
       },
       {
-       "type": "multiple_choice",
-       "chart": "shootingStar",
-       "question": "What's the most reasonable read?",
+       "type": "replay_compare",
+       "event": "trap",
+       "question": "Which replay trapped buyers?",
        "options": [
-        "A buyer trap forms when a breakout fails",
-        "Fast tape near resistance is stronger than failure to gain acceptance",
-        "A liquidity sweep and breakout differ mainly by candle size",
-        "Order flow evidence remains valid regardless of changing volatility"
+        "Replay B",
+        "Replay A",
+        "Neither replay"
        ],
        "correct": 0,
-       "explanation": "A buyer trap forms when a breakout fails."
+       "explanation": "Replay B returns below resistance and transfers control to sellers."
       }
      ]
     },
@@ -42355,17 +42534,16 @@
        "explanation": "Tape and footprint evidence reveal what changed beneath the candle pattern."
       },
       {
-       "type": "multiple_choice",
-       "chart": "hammer",
-       "question": "What's the best read?",
+       "type": "replay_compare",
+       "event": "sweep",
+       "question": "Which replay trapped sellers?",
        "options": [
-        "A seller trap forms when a breakdown fails",
-        "Displayed liquidity is stronger evidence than completed executions",
-        "A short aggressive burst can outweigh a stalled price response",
-        "The candle response makes tape confirmation optional"
+        "Replay A",
+        "Replay B",
+        "Not enough evidence"
        ],
        "correct": 0,
-       "explanation": "A seller trap forms when a breakdown fails."
+       "explanation": "The rejected break fails to gain acceptance and traps the initiating side."
       }
      ]
     },
@@ -42664,30 +42842,34 @@
        "explanation": "A clear trigger keeps execution disciplined."
       },
       {
-       "type": "book_drag",
-       "order": "market_buy",
-       "question": "Route this order.",
-       "correct": 1,
-       "explanation": "Market buys take asks. Market sells take bids."
+       "type": "evidence_select",
+       "question": "Select the two relevant clues.",
+       "options": [
+        "Defined trigger",
+        "Confirming response",
+        "One fast print",
+        "Candle color"
+       ],
+       "targets": [
+        0,
+        1
+       ],
+       "explanation": "Expert execution decisions combine market evidence with risk."
       },
       {
-       "type": "matching",
-       "question": "Match each clue.",
-       "pairs": [
-        [
-         "Plan the Entry",
-         "Defined trigger"
-        ],
-        [
-         "Fast tape without progress",
-         "Urgency without confirmation"
-        ],
-        [
-         "Sweep",
-         "Liquidity taken followed by rejection"
-        ]
+       "type": "evidence_select",
+       "question": "Select the two relevant clues.",
+       "options": [
+        "Defined trigger",
+        "Confirming response",
+        "One fast print",
+        "Candle color"
        ],
-       "explanation": "Match the signal with its order flow clue."
+       "targets": [
+        0,
+        1
+       ],
+       "explanation": "Expert execution decisions combine market evidence with risk."
       },
       {
        "type": "tap_candle",
@@ -42742,30 +42924,34 @@
      "celebration": "Manage Slippage complete.",
      "screens": [
       {
-       "type": "book_drag",
-       "order": "market_buy",
-       "question": "Route this order.",
-       "correct": 1,
-       "explanation": "Market buys take asks. Market sells take bids."
+       "type": "evidence_select",
+       "question": "Select the two relevant clues.",
+       "options": [
+        "Thin nearby depth",
+        "Widening spread",
+        "Positive delta",
+        "A resting wall far away"
+       ],
+       "targets": [
+        0,
+        1
+       ],
+       "explanation": "Expert execution decisions combine market evidence with risk."
       },
       {
-       "type": "matching",
-       "question": "Match each clue.",
-       "pairs": [
-        [
-         "Manage Slippage",
-         "Available liquidity"
-        ],
-        [
-         "Iceberg",
-         "Displayed size repeatedly replenishes"
-        ],
-        [
-         "Acceptance",
-         "Price holds beyond the level"
-        ]
+       "type": "evidence_select",
+       "question": "Select the two relevant clues.",
+       "options": [
+        "Thin nearby depth",
+        "Widening spread",
+        "Positive delta",
+        "A resting wall far away"
        ],
-       "explanation": "Match the signal with its order flow clue."
+       "targets": [
+        0,
+        1
+       ],
+       "explanation": "Expert execution decisions combine market evidence with risk."
       },
       {
        "type": "multiple_choice",
@@ -42795,11 +42981,19 @@
        "explanation": "The selected candle shows whether execution produced follow through."
       },
       {
-       "type": "aggressor",
-       "event": "lift",
-       "question": "Who's crossing the spread?",
-       "correct": 0,
-       "explanation": "Buyers take offers. Sellers take bids."
+       "type": "evidence_select",
+       "question": "Select the two relevant clues.",
+       "options": [
+        "Opposing aggression",
+        "Loss of the key level",
+        "One small print",
+        "Unchanged spread"
+       ],
+       "targets": [
+        0,
+        1
+       ],
+       "explanation": "Expert execution decisions combine market evidence with risk."
       },
       {
        "type": "multiple_choice",
@@ -42870,23 +43064,19 @@
        "explanation": "Thin liquidity can require smaller risk and more cautious execution."
       },
       {
-       "type": "matching",
-       "question": "Match each clue.",
-       "pairs": [
-        [
-         "Risk in Thin Liquidity",
-         "Slippage and unstable depth"
-        ],
-        [
-         "Fast tape without progress",
-         "Urgency without confirmation"
-        ],
-        [
-         "Sweep",
-         "Liquidity taken followed by rejection"
-        ]
+       "type": "evidence_select",
+       "question": "Select the two relevant clues.",
+       "options": [
+        "Sparse depth",
+        "Higher slippage risk",
+        "Large candle body",
+        "Positive delta"
        ],
-       "explanation": "Match the signal with its order flow clue."
+       "targets": [
+        0,
+        1
+       ],
+       "explanation": "Expert execution decisions combine market evidence with risk."
       }
      ]
     },
@@ -42896,11 +43086,19 @@
      "celebration": "No Clear Order Flow Read complete.",
      "screens": [
       {
-       "type": "aggressor",
-       "event": "hit",
-       "question": "Who's crossing the spread?",
-       "correct": 1,
-       "explanation": "Buyers take offers. Sellers take bids."
+       "type": "evidence_select",
+       "question": "Select the two relevant clues.",
+       "options": [
+        "Conflicting tape",
+        "Unconfirmed price response",
+        "One aligned clue",
+        "Stable spread"
+       ],
+       "targets": [
+        0,
+        1
+       ],
+       "explanation": "Expert execution decisions combine market evidence with risk."
       },
       {
        "type": "multiple_choice",
@@ -42947,30 +43145,34 @@
        "explanation": "Liquidity can improve planned exits."
       },
       {
-       "type": "book_drag",
-       "order": "market_buy",
-       "question": "Route this order.",
-       "correct": 1,
-       "explanation": "Market buys take asks. Market sells take bids."
+       "type": "evidence_select",
+       "question": "Select the two relevant clues.",
+       "options": [
+        "Available opposing liquidity",
+        "Current execution pace",
+        "Candle color",
+        "Moving average slope"
+       ],
+       "targets": [
+        0,
+        1
+       ],
+       "explanation": "Expert execution decisions combine market evidence with risk."
       },
       {
-       "type": "matching",
-       "question": "Match each clue.",
-       "pairs": [
-        [
-         "Exit Into Liquidity",
-         "Available buyers or sellers"
-        ],
-        [
-         "Iceberg",
-         "Displayed size repeatedly replenishes"
-        ],
-        [
-         "Acceptance",
-         "Price holds beyond the level"
-        ]
+       "type": "evidence_select",
+       "question": "Select the two relevant clues.",
+       "options": [
+        "Available opposing liquidity",
+        "Current execution pace",
+        "Candle color",
+        "Moving average slope"
        ],
-       "explanation": "Match the signal with its order flow clue."
+       "targets": [
+        0,
+        1
+       ],
+       "explanation": "Expert execution decisions combine market evidence with risk."
       },
       {
        "type": "tap_candle",
@@ -43028,46 +43230,92 @@
        "type": "orderflow_sim",
        "event": "championship",
        "direction": "neutral",
-       "question": "Buyers stay aggressive, but resistance holds. What's strongest?",
+       "question": "Who is aggressive?",
        "options": [
-        "Buyers are active but may be absorbed by refreshing sellers",
-        "The fastest evidence guarantees the next move",
-        "Displayed size alone determines the outcome",
-        "The candle should be read without execution context"
+        "Buyers lifting offers",
+        "Sellers hitting bids",
+        "Neither side trading"
        ],
        "correct": 0,
-       "explanation": "Build one read from book tape footprint price and risk."
+       "explanation": "Buyer initiated prints dominate the tape."
       },
       {
-       "type": "multiple_choice",
-       "chart": "volatile",
-       "question": "What's the strongest conclusion?",
+       "type": "orderflow_sim",
+       "event": "championship",
+       "direction": "neutral",
+       "question": "Where is liquidity defending?",
        "options": [
-        "Build one read from book tape footprint price and risk",
-        "The current book is more useful than the executions that changed it",
-        "Location adds little once the tape accelerates",
-        "The earliest signal should anchor the read even after conditions change"
+        "At the refreshing offer",
+        "Below the distant bid",
+        "No liquidity is visible"
        ],
        "correct": 0,
-       "explanation": "Build one read from book tape footprint price and risk."
+       "explanation": "The offer repeatedly replenishes after fills."
       },
       {
-       "type": "sequence_builder",
-       "chart": "volatile",
-       "question": "Build the read.",
-       "items": [
-        "Observe the order book",
-        "Compare trades with liquidity",
-        "Wait for price confirmation",
-        "Manage the risk"
+       "type": "orderflow_sim",
+       "event": "championship",
+       "direction": "neutral",
+       "question": "Is buying moving price?",
+       "options": [
+        "No. Price is stalling",
+        "Yes. Price is accepting higher",
+        "Price response is irrelevant"
        ],
-       "correct_order": [
-        "Observe the order book",
-        "Compare trades with liquidity",
-        "Wait for price confirmation",
-        "Manage the risk"
+       "correct": 0,
+       "explanation": "Aggression is strong, but upward progress remains weak."
+      },
+      {
+       "type": "orderflow_sim",
+       "event": "championship",
+       "direction": "neutral",
+       "question": "Which clue conflicts with delta?",
+       "options": [
+        "Price stalls at resistance",
+        "Buyer prints stay fast",
+        "Ask volume stays positive"
        ],
-       "explanation": "Read pressure, liquidity, price, then confirmation."
+       "correct": 0,
+       "explanation": "Positive delta conflicts with the lack of upward price progress."
+      },
+      {
+       "type": "orderflow_sim",
+       "event": "championship",
+       "direction": "neutral",
+       "question": "What's the strongest read?",
+       "options": [
+        "Possible seller absorption",
+        "Confirmed buyer continuation",
+        "Guaranteed reversal"
+       ],
+       "correct": 0,
+       "explanation": "Refreshing offers and stalled price support possible seller absorption."
+      },
+      {
+       "type": "orderflow_sim",
+       "event": "championship",
+       "direction": "neutral",
+       "question": "What would invalidate that read?",
+       "options": [
+        "Offers clear and price holds above",
+        "Another buy print appears",
+        "The spread stays unchanged"
+       ],
+       "correct": 0,
+       "explanation": "Acceptance above resistance would invalidate the absorption read."
+      },
+      {
+       "type": "orderflow_sim",
+       "event": "championship",
+       "direction": "neutral",
+       "question": "Is continuation confirmed?",
+       "options": [
+        "No. More acceptance is needed",
+        "Yes. Positive delta is enough",
+        "Yes. Fast tape is enough"
+       ],
+       "correct": 0,
+       "explanation": "Aggression without acceptance does not confirm continuation."
       }
      ]
     }

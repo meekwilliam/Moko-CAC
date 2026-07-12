@@ -389,14 +389,29 @@ struct ReplayCompareView: View {
             Text(player.screen.question ?? "Which replay shows acceptance?")
                 .font(Theme.questionFont(21, .heavy)).foregroundColor(ink)
             HStack(spacing: 10) {
-                replay(title: "REPLAY A", rows: ["Offers clear", "Buy tape persists", "Price holds above"], tint: bidColor)
-                replay(title: "REPLAY B", rows: ["Offer refreshes", "Buy tape stalls", "Price falls inside"], tint: askColor)
+                replay(title: "REPLAY A", rows: replayRows.a, tint: bidColor)
+                replay(title: "REPLAY B", rows: replayRows.b, tint: askColor)
             }
             VStack(spacing: 9) {
                 ForEach(Array(player.currentOptions.enumerated()), id: \.offset) { index, label in
                     replayChoice(index: index, label: label)
                 }
             }
+        }
+    }
+
+    private var replayRows: (a: [String], b: [String]) {
+        switch player.screen.event {
+        case "wall":
+            return (["Large bid is hit", "Bid replenishes", "Price holds"], ["Large bid appears", "Bid gets pulled", "Price falls through"])
+        case "sweep":
+            return (["Level trades through", "Price rejects quickly", "No acceptance"], ["Level trades through", "Execution persists", "Price holds beyond"])
+        case "trap":
+            return (["Break holds above", "Buying persists", "Retest succeeds"], ["Break fails quickly", "Sellers take control", "Price falls inside"])
+        case "absorption":
+            return (["Buying stays fast", "Offer replenishes", "Price stalls"], ["Buying pace fades", "Offer stays stable", "Price stalls"])
+        default:
+            return (["Offers clear", "Buy tape persists", "Price holds above"], ["Offer refreshes", "Buy tape stalls", "Price falls inside"])
         }
     }
 
@@ -603,10 +618,10 @@ private func makeFootprint(seed: UInt64, event: String, target: Int? = nil) -> [
         let bid: Int
         let ask: Int
         switch event {
-        case "lift":
+        case "lift", "delta_positive", "stacked_ask":
             bid = baseVolume
             ask = baseVolume + 60 + Int(rng.next() % 120)
-        case "hit":
+        case "hit", "delta_negative":
             bid = baseVolume + 60 + Int(rng.next() % 120)
             ask = baseVolume
         case "balanced_target":
@@ -621,7 +636,16 @@ private func makeFootprint(seed: UInt64, event: String, target: Int? = nil) -> [
         }
         let highlightedBid: Int
         let highlightedAsk: Int
-        if target == index && event == "diagonal_ask" {
+        if event == "stacked_ask", let target, (target...target + 2).contains(index) {
+            highlightedBid = bid
+            highlightedAsk = ask + 220
+        } else if target == index && event == "delta_positive" {
+            highlightedBid = bid
+            highlightedAsk = ask + 300
+        } else if target == index && event == "delta_negative" {
+            highlightedBid = bid + 300
+            highlightedAsk = ask
+        } else if target == index && event == "diagonal_ask" {
             highlightedBid = bid
             highlightedAsk = ask + 280
         } else if target == index && event == "balanced_target" {

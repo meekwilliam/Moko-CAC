@@ -20,9 +20,10 @@ Interactive mechanics:
 
 TOTAL UNITS: 10
 TOTAL LESSONS: 111
-TOTAL QUESTIONS: 428
+TOTAL QUESTIONS: 432
 
 UNIT 1 — Order Flow Foundations
+TIER: Beginner
 
 NODE 1
 TITLE: What Is Order Flow?
@@ -219,12 +220,14 @@ ORDER: market_sell
 ANSWER: the bid
 WHY: A market sell hits the bid.
 
-[MATCH] Match each term.
-Bid => Best buyer price
-Ask => Best seller price
-Spread => Gap between bid and ask
-Imbalance => One side has more pressure
-WHY: These ideas form the base of order flow.
+[EVIDENCE_SELECT] Select the complete order flow read.
+VISUAL: Four evidence cards separate aggression, liquidity, price response, and an irrelevant clue. The learner must select the required combination.
+SELECT: 0, 1, 2
+Aggressor
+Liquidity
+Price response
+Company logo
+WHY: A complete read combines who acts, where liquidity rests, and how price responds.
 
 [MC] Pick order flow.
 Live buying, selling, and liquidity
@@ -251,6 +254,7 @@ WHY: Sellers consume bids.
 
 
 UNIT 2 — The Order Book
+TIER: Beginner
 
 NODE 6
 TITLE: What the Order Book Shows
@@ -390,11 +394,12 @@ NODE 9
 TITLE: Large Orders as Walls
 CELEBRATION: You can spot walls acting as support and resistance.
 
-[MC] A large resting bid can act as…
-Temporary support.
-Temporary resistance.
-A guaranteed floor.
-WHY: A big bid can hold price up for a while. but it can be pulled or absorbed, so it's not a guarantee.
+[BOOK_COMPARE] Which book shows the larger wall?
+VISUAL: Two Level II ladders appear side by side. Book A has large resting size at every nearby price. Book B has small size and gaps between levels.
+Book A
+Book B
+Both are equal
+WHY: Book A shows substantially more resting depth near price.
 
 [MC] A large resting ask can act as…
 Temporary resistance.
@@ -435,11 +440,12 @@ NODE 10
 TITLE: Pulling & Spoofing
 CELEBRATION: You know the book is live and can deceive.
 
-[MC] What can happen to a resting order before it fills?
-It can be cancelled anytime.
-It's locked until it fills.
-It becomes a market order.
-WHY: Resting orders can be pulled at any moment. nothing forces them to trade.
+[REPLAY_COMPARE] Which wall absorbed selling?
+VISUAL: Replay A shows sellers hitting a large bid that replenishes while price holds. Replay B shows a large bid getting pulled before price falls through.
+Replay A
+Replay B
+Neither replay
+WHY: Replay A replenishes while trading and price holds. Replay B pulls before the decline.
 
 [MC] Repeated deceptive posting and cancellation intended to mislead may constitute…
 Spoofing.
@@ -602,6 +608,7 @@ WHY: Buyers take asks to move price higher.
 
 
 UNIT 3 — Tape Reading
+TIER: Intermediate
 
 NODE 14
 TITLE: Reading Time and Sales
@@ -686,8 +693,8 @@ TARGET: 6
 WHY: This print begins the faster arrival sequence.
 
 [MC] Did price confirm the tape?
-VISUAL: Alternating wide candles and long wicks show rapid movement with changing control.
-CHART: volatile
+VISUAL: A sequence of higher highs and higher lows moves from the lower left toward the upper right.
+CHART: uptrend
 Yes. Price made upward progress
 No. Price rejected the buying
 Not enough trades appeared
@@ -712,8 +719,8 @@ TARGET: 4
 WHY: This execution is much larger than the surrounding prints.
 
 [MC] Did price confirm the tape?
-VISUAL: A wide directional candle has almost no wick, showing sustained movement through its range.
-CHART: marubozu
+VISUAL: A sequence of higher highs and higher lows moves from the lower left toward the upper right.
+CHART: uptrend
 Yes. Price made upward progress
 No. Price rejected the buying
 Not enough trades appeared
@@ -770,18 +777,21 @@ TARGET: 7
 WHY: The selected trade executes at the ask and is buyer initiated.
 
 [MC] Did price confirm the tape?
-VISUAL: Candles trade above the VWAP line while pullbacks test it as potential support.
-CHART: priceAboveVWAP
+VISUAL: A sequence of higher highs and higher lows moves from the lower left toward the upper right.
+CHART: uptrend
 Yes. Price made upward progress
 No. Price rejected the buying
 Not enough trades appeared
 WHY: Use the chart only to judge whether price confirmed the tape evidence.
 
-[AGGRESSOR] Who's crossing the spread?
-VISUAL: An animated Level II ladder shows prices between bid and ask columns, with ask sizes being consumed by incoming buy orders.
-EVENT: lift
-ANSWER: The buyer
-WHY: Buyers take offers. Sellers take bids.
+[EVIDENCE_SELECT] Select both confirmation clues.
+VISUAL: Four evidence cards separate aggression, liquidity, price response, and an irrelevant clue. The learner must select the required combination.
+SELECT: 0, 1
+Persistent tape pressure
+Matching price response
+One isolated print
+Candle color alone
+WHY: Intermediate tape reading combines executions with price follow through.
 
 NODE 20
 TITLE: Seller Initiated Prints
@@ -802,8 +812,8 @@ TARGET: 5
 WHY: The selected trade executes at the bid and is seller initiated.
 
 [MC] Did price confirm the tape?
-VISUAL: Candles trade below the VWAP line while rebounds test it as potential resistance.
-CHART: priceBelowVWAP
+VISUAL: A sequence of lower highs and lower lows moves from the upper left toward the lower right.
+CHART: downtrend
 Yes. Price made downward progress
 No. Price absorbed the selling
 The chart cannot show response
@@ -828,18 +838,21 @@ TARGET: 3
 WHY: The interval between prints begins shrinking here.
 
 [MC] Did price confirm the tape?
-VISUAL: Candles expand in range as the surrounding volatility bands spread farther apart.
-CHART: bandsWidening
+VISUAL: A sequence of higher highs and higher lows moves from the lower left toward the upper right.
+CHART: uptrend
 Yes. Price made upward progress
 No. Price rejected the buying
 Not enough trades appeared
 WHY: Use the chart only to judge whether price confirmed the tape evidence.
 
-[AGGRESSOR] Who's crossing the spread?
-VISUAL: An animated Level II ladder shows prices between bid and ask columns, with ask sizes being consumed by incoming buy orders.
-EVENT: lift
-ANSWER: The buyer
-WHY: Buyers take offers. Sellers take bids.
+[EVIDENCE_SELECT] Select both confirmation clues.
+VISUAL: Four evidence cards separate aggression, liquidity, price response, and an irrelevant clue. The learner must select the required combination.
+SELECT: 0, 1
+Persistent tape pressure
+Matching price response
+One isolated print
+Candle color alone
+WHY: Intermediate tape reading combines executions with price follow through.
 
 NODE 22
 TITLE: Tape at Key Levels
@@ -860,8 +873,8 @@ TARGET: 1
 WHY: The selected print is the first opposing execution at the level.
 
 [MC] Did price confirm the tape?
-VISUAL: An advance reaches resistance and turns lower with visible upper wick rejection.
-CHART: resistanceRejection
+VISUAL: A sequence of lower highs and lower lows moves from the upper left toward the lower right.
+CHART: downtrend
 Yes. Price made downward progress
 No. Price absorbed the selling
 The chart cannot show response
@@ -886,18 +899,21 @@ TARGET: 6
 WHY: Prints continue but size and pace begin fading here.
 
 [MC] Did price confirm the tape?
-VISUAL: A small candle body with upper and lower wicks shows two sided movement and little progress.
-CHART: spinningTop
+VISUAL: Small mixed candles overlap inside a narrow horizontal trading area.
+CHART: sideways
 No. Price failed to follow through
 Yes. Speed confirmed acceptance
 No. The spread was too narrow
 WHY: Use the chart only to judge whether price confirmed the tape evidence.
 
-[AGGRESSOR] Who's crossing the spread?
-VISUAL: An animated Level II ladder shows prices between bid and ask columns, with ask sizes being consumed by incoming buy orders.
-EVENT: lift
-ANSWER: The buyer
-WHY: Buyers take offers. Sellers take bids.
+[EVIDENCE_SELECT] Select both confirmation clues.
+VISUAL: Four evidence cards separate aggression, liquidity, price response, and an irrelevant clue. The learner must select the required combination.
+SELECT: 0, 1
+Persistent tape pressure
+Matching price response
+One isolated print
+Candle color alone
+WHY: Intermediate tape reading combines executions with price follow through.
 
 NODE 24
 TITLE: Tape Reading Review
@@ -917,16 +933,16 @@ EVENT: seller_target
 TARGET: 4
 WHY: This bid side execution is the relevant opposing print.
 
-[MC] Did price confirm the tape?
-VISUAL: Alternating wide candles and long wicks show rapid movement with changing control.
-CHART: volatile
-Price response remains inconclusive
-Price fully confirms buyers
-Price fully confirms sellers
-WHY: Use the chart only to judge whether price confirmed the tape evidence.
+[REPLAY_COMPARE] Which replay shows stronger buyer control?
+VISUAL: Replay A shows offers clearing and price holding above resistance. Replay B shows replenishment and price falling back inside.
+Replay A
+Replay B
+Both are equal
+WHY: Both show buying, but only Replay A gains and holds higher prices.
 
 
 UNIT 4 — Absorption and Exhaustion
+TIER: Intermediate
 
 NODE 25
 TITLE: What Is Absorption
@@ -1064,14 +1080,14 @@ Pressure and price accelerate together
 No aggressive executions appear
 WHY: Absorption requires pressure plus a weak corresponding price response.
 
-[MC] Which read needs fewer assumptions?
-VISUAL: Candles rotate between clear upper and lower boundaries without sustained direction.
-CHART: range
-Refreshing liquidity can hide true available size
-Repeated tests always make a liquidity level stronger
-A fast rejection proves the resting wall was genuine
-Stable displayed size means hidden liquidity cannot be present
-WHY: Refreshing liquidity can hide true available size.
+[EVIDENCE_SELECT] Select two hidden liquidity clues.
+VISUAL: Four evidence cards separate aggression, liquidity, price response, and an irrelevant clue. The learner must select the required combination.
+SELECT: 1, 3
+Fast buy executions
+Refreshing offer
+Positive delta
+Stalled price
+WHY: Replenishment plus weak price progress are the strongest hidden liquidity clues.
 
 NODE 30
 TITLE: What Is Exhaustion
@@ -1171,13 +1187,12 @@ Absorption
 Breakout acceptance
 WHY: Fading aggression defines exhaustion.
 
-[MC] Which comparison best separates these two ideas?
-VISUAL: A small candle body with upper and lower wicks shows two sided movement and little progress.
-CHART: spinningTop
-Absorption shows pressure without progress. Exhaustion shows pressure fading.
-Both require price to accelerate immediately
-They can be separated using order size alone
-WHY: Absorption shows pressure without progress. Exhaustion shows pressure fading.
+[REPLAY_COMPARE] Which replay shows absorption?
+VISUAL: Replay A keeps strong buying against a replenishing offer with stalled price. Replay B shows buying pace itself fading as price stalls.
+Replay A
+Replay B
+Both show exhaustion
+WHY: Replay A keeps strong aggression while price stalls. Replay B shows aggression fading.
 
 NODE 34
 TITLE: Seller Absorption Simulation
@@ -1300,6 +1315,7 @@ WHY: The selected candle shows whether execution produced follow through.
 
 
 UNIT 5 — Imbalances and Momentum
+TIER: Advanced
 
 NODE 38
 TITLE: Reading a Footprint Chart
@@ -1313,11 +1329,11 @@ Resting limit orders waiting at each price
 Total candle volume without side separation
 WHY: A footprint separates executed bid volume from executed ask volume at each price.
 
-[FOOTPRINT_TAP] Tap the row where bid and ask execution is most balanced.
-VISUAL: A footprint grid places bid volume left of price and ask volume right of price, showing one target row with the smallest bid ask execution difference.
-EVENT: balanced_target
-TARGET: 3
-WHY: This row has the smallest difference between bid and ask volume.
+[FOOTPRINT_TAP] Tap the row with most executed volume.
+VISUAL: A footprint grid places bid volume left of price and ask volume right of price, showing one target row with the largest combined executed volume.
+EVENT: total_target
+TARGET: 1
+WHY: This row has the largest bid plus ask total.
 
 [MC] Which explanation fits best?
 VISUAL: Small mixed candles overlap inside a narrow horizontal trading area.
@@ -1346,11 +1362,11 @@ Use the largest same row difference
 Compare ask depth with bid executions
 WHY: Diagonal comparison and a defined ratio distinguish conventional imbalance from a simple same price execution difference.
 
-[FOOTPRINT_TAP] Tap the first ask side diagonal imbalance.
+[FOOTPRINT_TAP] Tap the first diagonal ask imbalance.
 VISUAL: A footprint grid places bid volume left of price and ask volume right of price, showing ask volume at the target price exceeding bid volume at the diagonally adjacent lower price by a clear ratio.
 EVENT: diagonal_ask
 TARGET: 4
-WHY: Ask volume exceeds the diagonally adjacent lower bid volume by the required ratio.
+WHY: Ask execution exceeds the adjacent lower bid by ratio.
 
 [MC] What's the strongest conclusion?
 VISUAL: Alternating wide candles and long wicks show rapid movement with changing control.
@@ -1380,11 +1396,11 @@ The bid ask split represents resting limit orders
 One same price difference confirms a stacked diagonal imbalance
 WHY: Imbalance means one side is more aggressive.
 
-[FOOTPRINT_TAP] Tap the row with the greatest ask side execution advantage.
+[FOOTPRINT_TAP] Tap the strongest execution imbalance.
 VISUAL: A footprint grid places bid volume left of price and ask volume right of price, showing one target row carrying the largest ask side execution advantage.
 EVENT: lift
-TARGET: 2
-WHY: This row has the largest positive same price execution difference.
+TARGET: 1
+WHY: This row has the widest directional execution advantage.
 
 [MC] What best connects the evidence?
 Imbalance means one side is more aggressive
@@ -1406,11 +1422,11 @@ A quiet row invalidates aggression elsewhere
 Absolute volume matters more than price response
 WHY: Buyer imbalance can push price higher.
 
-[FOOTPRINT_TAP] Tap the row with the greatest bid side execution advantage.
-VISUAL: A footprint grid places bid volume left of price and ask volume right of price, showing one target row carrying the largest bid side execution advantage.
-EVENT: hit
-TARGET: 5
-WHY: This row has the largest negative same price execution difference.
+[FOOTPRINT_TAP] Tap the strongest ask side advantage.
+VISUAL: A footprint grid places bid volume left of price and ask volume right of price, showing one target row carrying the largest ask side execution advantage.
+EVENT: lift
+TARGET: 4
+WHY: Aggressive buyers execute at the ask.
 
 [MC] Which read needs fewer assumptions?
 Buyer imbalance can push price higher
@@ -1439,11 +1455,11 @@ A same row advantage and diagonal imbalance are identical
 Displayed depth can be inferred directly from executed volume
 WHY: Seller imbalance can push price lower.
 
-[FOOTPRINT_TAP] Tap the row where bid and ask execution is most balanced.
-VISUAL: A footprint grid places bid volume left of price and ask volume right of price, showing one target row with the smallest bid ask execution difference.
-EVENT: balanced_target
+[FOOTPRINT_TAP] Tap the strongest bid side advantage.
+VISUAL: A footprint grid places bid volume left of price and ask volume right of price, showing one target row carrying the largest bid side execution advantage.
+EVENT: hit
 TARGET: 1
-WHY: This row has the smallest difference between bid and ask volume.
+WHY: Aggressive sellers execute at the bid.
 
 [MC] What matters most here?
 Seller imbalance can push price lower
@@ -1465,11 +1481,11 @@ High total volume must contain directional delta
 One footprint candle is enough to ignore location
 WHY: Sudden aggression can ignite momentum.
 
-[FOOTPRINT_TAP] Tap the row with the largest total executed volume.
-VISUAL: A footprint grid places bid volume left of price and ask volume right of price, showing one target row with the largest combined executed volume.
-EVENT: total_target
+[FOOTPRINT_TAP] Tap the row where buyer pressure concentrates.
+VISUAL: A footprint grid places bid volume left of price and ask volume right of price, showing one target row carrying the largest ask side execution advantage.
+EVENT: lift
 TARGET: 4
-WHY: This row has the highest combined bid and ask execution.
+WHY: Concentrated ask executions can help ignite momentum.
 
 [MC] Which conclusion fits the response?
 Sudden aggression can ignite momentum
@@ -1498,11 +1514,11 @@ The bid ask split represents resting limit orders
 One same price difference confirms a stacked diagonal imbalance
 WHY: Renewed buying can continue momentum.
 
-[FOOTPRINT_TAP] Tap the row with the greatest ask side execution advantage.
-VISUAL: A footprint grid places bid volume left of price and ask volume right of price, showing one target row carrying the largest ask side execution advantage.
-EVENT: lift
-TARGET: 0
-WHY: This row has the largest positive same price execution difference.
+[FOOTPRINT_TAP] Tap the first stacked ask imbalance.
+VISUAL: A footprint grid places bid volume left of price and ask volume right of price, showing three consecutive rows showing ask side execution imbalances.
+EVENT: stacked_ask
+TARGET: 1
+WHY: Consecutive ask imbalances support continued buyer pressure.
 
 [MC] How should this be interpreted?
 Renewed buying can continue momentum
@@ -1524,11 +1540,11 @@ A quiet row invalidates aggression elsewhere
 Absolute volume matters more than price response
 WHY: Momentum weakens when price stops responding.
 
-[FOOTPRINT_TAP] Tap the row with the greatest bid side execution advantage.
-VISUAL: A footprint grid places bid volume left of price and ask volume right of price, showing one target row carrying the largest bid side execution advantage.
-EVENT: hit
-TARGET: 3
-WHY: This row has the largest negative same price execution difference.
+[FOOTPRINT_TAP] Tap where directional pressure disappears.
+VISUAL: A footprint grid places bid volume left of price and ask volume right of price, showing one target row with the smallest bid ask execution difference.
+EVENT: balanced_target
+TARGET: 4
+WHY: Execution becomes balanced as momentum loses force.
 
 [MC] What does the response suggest?
 Momentum weakens when price stops responding
@@ -1557,11 +1573,11 @@ A same row advantage and diagonal imbalance are identical
 Displayed depth can be inferred directly from executed volume
 WHY: Pressure across several levels strengthens the move.
 
-[FOOTPRINT_TAP] Tap the row where bid and ask execution is most balanced.
-VISUAL: A footprint grid places bid volume left of price and ask volume right of price, showing one target row with the smallest bid ask execution difference.
-EVENT: balanced_target
-TARGET: 6
-WHY: This row has the smallest difference between bid and ask volume.
+[FOOTPRINT_TAP] Tap the first row in the stack.
+VISUAL: A footprint grid places bid volume left of price and ask volume right of price, showing three consecutive rows showing ask side execution imbalances.
+EVENT: stacked_ask
+TARGET: 1
+WHY: The selected row begins consecutive ask side imbalances.
 
 [MC] Which read is best supported?
 Pressure across several levels strengthens the move
@@ -1583,11 +1599,11 @@ High total volume must contain directional delta
 One footprint candle is enough to ignore location
 WHY: Net aggression compares buying with selling.
 
-[FOOTPRINT_TAP] Tap the row with the largest total executed volume.
-VISUAL: A footprint grid places bid volume left of price and ask volume right of price, showing one target row with the largest combined executed volume.
-EVENT: total_target
-TARGET: 2
-WHY: This row has the highest combined bid and ask execution.
+[FOOTPRINT_TAP] Tap the row adding most positive delta.
+VISUAL: A footprint grid places bid volume left of price and ask volume right of price, showing one row contributing the largest positive ask minus bid delta.
+EVENT: delta_positive
+TARGET: 4
+WHY: This row contributes the largest ask minus bid volume.
 
 [MC] What's the most reasonable read?
 Net aggression compares buying with selling
@@ -1625,11 +1641,11 @@ A short aggressive burst can outweigh a stalled price response
 The candle response makes tape confirmation optional
 WHY: Volume measures total trading while delta compares aggressive buying and selling.
 
-[FOOTPRINT_TAP] Tap the row with the greatest ask side execution advantage.
-VISUAL: A footprint grid places bid volume left of price and ask volume right of price, showing one target row carrying the largest ask side execution advantage.
-EVENT: lift
-TARGET: 5
-WHY: This row has the largest positive same price execution difference.
+[FOOTPRINT_TAP] Tap the highest volume row.
+VISUAL: A footprint grid places bid volume left of price and ask volume right of price, showing one target row with the largest combined executed volume.
+EVENT: total_target
+TARGET: 1
+WHY: Total volume adds bid and ask executions, unlike delta.
 
 [ORDER] Build the read.
 VISUAL: Alternating wide candles and long wicks show rapid movement with changing control.
@@ -1662,11 +1678,11 @@ A replenishing order is probably new unrelated liquidity
 Brief trade beyond the level is enough to establish acceptance
 WHY: Positive delta with falling price can reveal seller absorption or trapped buyers.
 
-[FOOTPRINT_TAP] Tap the row with the greatest bid side execution advantage.
-VISUAL: A footprint grid places bid volume left of price and ask volume right of price, showing one target row carrying the largest bid side execution advantage.
-EVENT: hit
-TARGET: 1
-WHY: This row has the largest negative same price execution difference.
+[FOOTPRINT_TAP] Tap the row contradicting falling price.
+VISUAL: A footprint grid places bid volume left of price and ask volume right of price, showing one row contributing the largest positive ask minus bid delta.
+EVENT: delta_positive
+TARGET: 4
+WHY: Strong positive delta conflicts with the downward price response.
 
 [ORDER] Build the read.
 VISUAL: A large bearish candle covers the prior bullish body after an attempted rise.
@@ -1699,11 +1715,11 @@ A large wall deserves more weight than repeated fills against it
 One unusually large trade is more reliable than subsequent response
 WHY: Negative delta with rising price can reveal buyer absorption or trapped sellers.
 
-[FOOTPRINT_TAP] Tap the row where bid and ask execution is most balanced.
-VISUAL: A footprint grid places bid volume left of price and ask volume right of price, showing one target row with the smallest bid ask execution difference.
-EVENT: balanced_target
-TARGET: 4
-WHY: This row has the smallest difference between bid and ask volume.
+[FOOTPRINT_TAP] Tap the row contradicting rising price.
+VISUAL: A footprint grid places bid volume left of price and ask volume right of price, showing one row contributing the largest negative ask minus bid delta.
+EVENT: delta_negative
+TARGET: 1
+WHY: Strong negative delta conflicts with the upward price response.
 
 [ORDER] Build the read.
 VISUAL: A large bullish candle covers the prior bearish body after an attempted decline.
@@ -1727,11 +1743,11 @@ High total volume must contain directional delta
 One footprint candle is enough to ignore location
 WHY: Price and pressure disagreement warns of weakness.
 
-[FOOTPRINT_TAP] Tap the row with the largest total executed volume.
-VISUAL: A footprint grid places bid volume left of price and ask volume right of price, showing one target row with the largest combined executed volume.
-EVENT: total_target
-TARGET: 0
-WHY: This row has the highest combined bid and ask execution.
+[FOOTPRINT_TAP] Tap the execution clue opposing price.
+VISUAL: A footprint grid places bid volume left of price and ask volume right of price, showing one row contributing the largest negative ask minus bid delta.
+EVENT: delta_negative
+TARGET: 4
+WHY: The selected negative delta row contradicts the price direction.
 
 [MC] What's the strongest conclusion?
 Price and pressure disagreement warns of weakness
@@ -1760,11 +1776,11 @@ The bid ask split represents resting limit orders
 One same price difference confirms a stacked diagonal imbalance
 WHY: Sustained imbalance matters more than one burst.
 
-[FOOTPRINT_TAP] Tap the row with the greatest ask side execution advantage.
-VISUAL: A footprint grid places bid volume left of price and ask volume right of price, showing one target row carrying the largest ask side execution advantage.
-EVENT: lift
-TARGET: 3
-WHY: This row has the largest positive same price execution difference.
+[FOOTPRINT_TAP] Tap where sustained pressure begins.
+VISUAL: A footprint grid places bid volume left of price and ask volume right of price, showing three consecutive rows showing ask side execution imbalances.
+EVENT: stacked_ask
+TARGET: 1
+WHY: The first stacked row begins persistent ask side pressure.
 
 [MC] What best connects the evidence?
 Sustained imbalance matters more than one burst
@@ -1775,6 +1791,7 @@ WHY: Sustained imbalance matters more than one burst.
 
 
 UNIT 6 — Liquidity and Sweeps
+TIER: Advanced
 
 NODE 53
 TITLE: Liquidity Pools
@@ -1806,11 +1823,14 @@ NODE 54
 TITLE: Resting Stops
 CELEBRATION: Resting Stops complete.
 
-[AGGRESSOR] Who's crossing the spread?
-VISUAL: An animated Level II ladder shows prices between bid and ask columns, with bid sizes being consumed by incoming sell orders.
-EVENT: hit
-ANSWER: The seller
-WHY: Buyers take offers. Sellers take bids.
+[EVIDENCE_SELECT] Select the two liquidity clues.
+VISUAL: Four evidence cards separate aggression, liquidity, price response, and an irrelevant clue. The learner must select the required combination.
+SELECT: 0, 1
+Nearby resting depth
+Execution at the level
+A distant candle
+Company news
+WHY: Advanced reads combine at least two aligned evidence sources.
 
 [MC] What matters most here?
 VISUAL: A decline reaches support and rebounds with buyers defending the lower area.
@@ -1830,20 +1850,19 @@ NODE 55
 TITLE: Buy Stops
 CELEBRATION: Buy Stops complete.
 
-[MC] Which conclusion fits the response?
+[MARK_LEVEL] Mark where buy stops may cluster.
 VISUAL: Price pushes through a visible resistance level with expanding bullish candles.
 CHART: breakout
-Buy stops can fuel an upside break
-Acceptance is present as soon as one trade prints beyond a level
-Passive absorption and fading aggression produce the same evidence
-A high volume candle reveals which side initiated every trade
-WHY: Buy stops can fuel an upside break.
+WHY: Buy stops may cluster beyond obvious resistance or prior highs.
 
-[BOOKDRAG] Route this order.
-VISUAL: A draggable market buy card sits beside a Level II ladder with bid and ask drop targets.
-ORDER: market_buy
-ANSWER: the ask
-WHY: Market buys take asks. Market sells take bids.
+[EVIDENCE_SELECT] Select the two liquidity clues.
+VISUAL: Four evidence cards separate aggression, liquidity, price response, and an irrelevant clue. The learner must select the required combination.
+SELECT: 0, 1
+Nearby resting depth
+Execution at the level
+A distant candle
+Company news
+WHY: Advanced reads combine at least two aligned evidence sources.
 
 [MATCH] Match each clue.
 Buy Stops => Stops above resistance
@@ -1885,11 +1904,14 @@ NODE 57
 TITLE: Liquidity Sweep
 CELEBRATION: Liquidity Sweep complete.
 
-[BOOKDRAG] Route this order.
-VISUAL: A draggable market buy card sits beside a Level II ladder with bid and ask drop targets.
-ORDER: market_buy
-ANSWER: the ask
-WHY: Market buys take asks. Market sells take bids.
+[EVIDENCE_SELECT] Select the two liquidity clues.
+VISUAL: Four evidence cards separate aggression, liquidity, price response, and an irrelevant clue. The learner must select the required combination.
+SELECT: 0, 1
+Nearby resting depth
+Execution at the level
+A distant candle
+Company news
+WHY: Advanced reads combine at least two aligned evidence sources.
 
 [MATCH] Match each clue.
 Liquidity Sweep => Quick level breach
@@ -1916,11 +1938,14 @@ CHART: rejectionWickUp
 TARGET: 0
 WHY: The selected candle shows whether execution produced follow through.
 
-[AGGRESSOR] Who's crossing the spread?
-VISUAL: An animated Level II ladder shows prices between bid and ask columns, with bid sizes being consumed by incoming sell orders.
-EVENT: hit
-ANSWER: The seller
-WHY: Buyers take offers. Sellers take bids.
+[EVIDENCE_SELECT] Select the two liquidity clues.
+VISUAL: Four evidence cards separate aggression, liquidity, price response, and an irrelevant clue. The learner must select the required combination.
+SELECT: 0, 1
+Nearby resting depth
+Execution at the level
+A distant candle
+Company news
+WHY: Advanced reads combine at least two aligned evidence sources.
 
 [MC] Which read is best supported?
 VISUAL: Price briefly trades above a level and closes back below it, leaving a long upper wick.
@@ -1969,20 +1994,21 @@ NODE 60
 TITLE: Sweep or Breakout
 CELEBRATION: Sweep or Breakout complete.
 
-[AGGRESSOR] Who's crossing the spread?
-VISUAL: An animated Level II ladder shows prices between bid and ask columns, with ask sizes being consumed by incoming buy orders.
-EVENT: lift
-ANSWER: The buyer
-WHY: Buyers take offers. Sellers take bids.
+[EVIDENCE_SELECT] Select the two liquidity clues.
+VISUAL: Four evidence cards separate aggression, liquidity, price response, and an irrelevant clue. The learner must select the required combination.
+SELECT: 0, 1
+Nearby resting depth
+Execution at the level
+A distant candle
+Company news
+WHY: Advanced reads combine at least two aligned evidence sources.
 
-[MC] What's the best read?
-VISUAL: Price breaks resistance, returns to test it from above, then attempts to continue higher.
-CHART: breakoutRetest
-Sweeps reject. Breakouts gain acceptance
-Displayed liquidity is stronger evidence than completed executions
-A short aggressive burst can outweigh a stalled price response
-The candle response makes tape confirmation optional
-WHY: Acceptance beyond a level supports a breakout.
+[REPLAY_COMPARE] Which replay gains acceptance?
+VISUAL: Replay A trades through a level and rejects immediately without acceptance. Replay B trades through with persistent execution and holds beyond the level.
+Replay B
+Replay A
+Both replays
+WHY: Replay B holds beyond the level. Replay A rejects immediately.
 
 [MC] Which comparison best separates these two ideas?
 VISUAL: Price breaks resistance, returns to test it from above, then attempts to continue higher.
@@ -2086,11 +2112,14 @@ The tape is showing canceled orders
 Displayed size cannot change after a fill
 WHY: Repeated execution against refreshing displayed size is consistent with an iceberg.
 
-[AGGRESSOR] Who's crossing the spread?
-VISUAL: An animated Level II ladder shows prices between bid and ask columns, with bid sizes being consumed by incoming sell orders.
-EVENT: hit
-ANSWER: The seller
-WHY: Buyers take offers. Sellers take bids.
+[EVIDENCE_SELECT] Select the two liquidity clues.
+VISUAL: Four evidence cards separate aggression, liquidity, price response, and an irrelevant clue. The learner must select the required combination.
+SELECT: 0, 1
+Nearby resting depth
+Execution at the level
+A distant candle
+Company news
+WHY: Advanced reads combine at least two aligned evidence sources.
 
 [MC] What best connects the evidence?
 VISUAL: Small mixed candles overlap inside a narrow horizontal trading area.
@@ -2139,11 +2168,14 @@ NODE 66
 TITLE: Flow and Liquidity Mixed Review
 CELEBRATION: Flow and Liquidity Mixed Review complete.
 
-[AGGRESSOR] Who's crossing the spread?
-VISUAL: An animated Level II ladder shows prices between bid and ask columns, with bid sizes being consumed by incoming sell orders.
-EVENT: hit
-ANSWER: The seller
-WHY: Buyers take offers. Sellers take bids.
+[EVIDENCE_SELECT] Select the two liquidity clues.
+VISUAL: Four evidence cards separate aggression, liquidity, price response, and an irrelevant clue. The learner must select the required combination.
+SELECT: 0, 1
+Nearby resting depth
+Execution at the level
+A distant candle
+Company news
+WHY: Advanced reads combine at least two aligned evidence sources.
 
 [MC] What matters most here?
 VISUAL: Price breaks resistance, returns to test it from above, then attempts to continue higher.
@@ -2165,25 +2197,27 @@ WHY: A complete read separates aggression, liquidity, and price response.
 
 
 UNIT 7 — Breakouts and Failures
+TIER: Advanced
 
 NODE 67
 TITLE: Breakout Pressure
 CELEBRATION: Breakout Pressure complete.
 
-[MC] Which conclusion fits the response?
-VISUAL: Price pushes through a visible resistance level with expanding bullish candles.
-CHART: breakout
-Offers are consumed, withdrawn, or both
-Acceptance is present as soon as one trade prints beyond a level
-Passive absorption and fading aggression produce the same evidence
-A high volume candle reveals which side initiated every trade
-WHY: An upside breakout can develop as buyers consume offers sellers withdraw liquidity or both.
+[REPLAY_COMPARE] Which replay confirms a breakout?
+VISUAL: Replay A breaks and holds with persistent buying. Replay B breaks, fails, returns inside, and gives control to sellers.
+Replay A
+Replay B
+Not enough evidence
+WHY: Acceptance needs continued execution and price holding beyond the level.
 
-[BOOKDRAG] Route this order.
-VISUAL: A draggable market buy card sits beside a Level II ladder with bid and ask drop targets.
-ORDER: market_buy
-ANSWER: the ask
-WHY: Market buys take asks. Market sells take bids.
+[EVIDENCE_SELECT] Select the two acceptance clues.
+VISUAL: Four evidence cards separate aggression, liquidity, price response, and an irrelevant clue. The learner must select the required combination.
+SELECT: 0, 1
+Persistent execution
+Price holds beyond the level
+Immediate return inside
+One isolated print
+WHY: Advanced reads combine at least two aligned evidence sources.
 
 [MATCH] Match each clue.
 Breakout Pressure => Offers consumed withdrawn or thin
@@ -2227,11 +2261,14 @@ NODE 69
 TITLE: Acceptance Above
 CELEBRATION: Acceptance Above complete.
 
-[BOOKDRAG] Route this order.
-VISUAL: A draggable market buy card sits beside a Level II ladder with bid and ask drop targets.
-ORDER: market_buy
-ANSWER: the ask
-WHY: Market buys take asks. Market sells take bids.
+[EVIDENCE_SELECT] Select the two acceptance clues.
+VISUAL: Four evidence cards separate aggression, liquidity, price response, and an irrelevant clue. The learner must select the required combination.
+SELECT: 0, 1
+Execution persists
+Price holds beyond the level
+Price returns inside
+Liquidity replenishes against the move
+WHY: An advanced breakout read requires both pressure and acceptance.
 
 [LIVE_CHART] Which price behavior supports the read?
 VISUAL: A live candlestick chart adds new candles over time, with price currently building upward.
@@ -2266,11 +2303,14 @@ CHART: breakdownRetest
 TARGET: 1
 WHY: The selected candle shows whether execution produced follow through.
 
-[AGGRESSOR] Who's crossing the spread?
-VISUAL: An animated Level II ladder shows prices between bid and ask columns, with bid sizes being consumed by incoming sell orders.
-EVENT: hit
-ANSWER: The seller
-WHY: Buyers take offers. Sellers take bids.
+[EVIDENCE_SELECT] Select the two acceptance clues.
+VISUAL: Four evidence cards separate aggression, liquidity, price response, and an irrelevant clue. The learner must select the required combination.
+SELECT: 0, 1
+Execution persists
+Price holds beyond the level
+Price returns inside
+Liquidity replenishes against the move
+WHY: An advanced breakout read requires both pressure and acceptance.
 
 [MC] Which read is best supported?
 VISUAL: Price breaks support, returns to test it from below, then reacts lower.
@@ -2324,11 +2364,12 @@ NODE 72
 TITLE: Failed Breakout
 CELEBRATION: Failed Breakout complete.
 
-[AGGRESSOR] Who's crossing the spread?
-VISUAL: An animated Level II ladder shows prices between bid and ask columns, with bid sizes being consumed by incoming sell orders.
-EVENT: hit
-ANSWER: The seller
-WHY: Buyers take offers. Sellers take bids.
+[REPLAY_COMPARE] Which replay traps breakout buyers?
+VISUAL: Replay A breaks and holds with persistent buying. Replay B breaks, fails, returns inside, and gives control to sellers.
+Replay B
+Replay A
+Not enough evidence
+WHY: Acceptance needs continued execution and price holding beyond the level.
 
 [LIVE_CHART] What changed in price response?
 VISUAL: A live candlestick chart adds new candles over time, with price currently building downward.
@@ -2366,11 +2407,14 @@ A replenishing order is probably new unrelated liquidity
 Brief trade beyond the level is enough to establish acceptance
 WHY: A quick return above support signals failure.
 
-[BOOKDRAG] Route this order.
-VISUAL: A draggable market buy card sits beside a Level II ladder with bid and ask drop targets.
-ORDER: market_buy
-ANSWER: the ask
-WHY: Market buys take asks. Market sells take bids.
+[EVIDENCE_SELECT] Select the two acceptance clues.
+VISUAL: Four evidence cards separate aggression, liquidity, price response, and an irrelevant clue. The learner must select the required combination.
+SELECT: 0, 1
+Execution persists
+Price holds beyond the level
+Price returns inside
+Liquidity replenishes against the move
+WHY: An advanced breakout read requires both pressure and acceptance.
 
 [MATCH] Match each clue.
 Failed Breakdown => Return above support
@@ -2388,14 +2432,12 @@ NODE 74
 TITLE: Breakout Retest
 CELEBRATION: Breakout Retest complete.
 
-[MC] Which explanation fits best?
-VISUAL: Price breaks resistance, returns to test it from above, then attempts to continue higher.
-CHART: breakoutRetest
-A defended retest can confirm a breakout
-High total volume normally implies strongly directional delta
-A large wall deserves more weight than repeated fills against it
-One unusually large trade is more reliable than subsequent response
-WHY: A defended retest can confirm a breakout.
+[REPLAY_COMPARE] Which replay shows a defended break?
+VISUAL: Replay A breaks and holds with persistent buying. Replay B breaks, fails, returns inside, and gives control to sellers.
+Replay A
+Replay B
+Not enough evidence
+WHY: Acceptance needs continued execution and price holding beyond the level.
 
 [TAP_CANDLE] Tap the clearest price response.
 VISUAL: Price breaks resistance, returns to test it from above, then attempts to continue higher. The candles are tappable and the learner must select the requested candle.
@@ -2413,11 +2455,14 @@ NODE 75
 TITLE: Breakdown Retest
 CELEBRATION: Breakdown Retest complete.
 
-[BOOKDRAG] Route this order.
-VISUAL: A draggable market buy card sits beside a Level II ladder with bid and ask drop targets.
-ORDER: market_buy
-ANSWER: the ask
-WHY: Market buys take asks. Market sells take bids.
+[EVIDENCE_SELECT] Select the two acceptance clues.
+VISUAL: Four evidence cards separate aggression, liquidity, price response, and an irrelevant clue. The learner must select the required combination.
+SELECT: 0, 1
+Execution persists
+Price holds beyond the level
+Price returns inside
+Liquidity replenishes against the move
+WHY: An advanced breakout read requires both pressure and acceptance.
 
 [LIVE_CHART] What does the developing response support?
 VISUAL: A live candlestick chart adds new candles over time, with price currently building downward.
@@ -2452,11 +2497,14 @@ CHART: gapUp
 TARGET: 4
 WHY: The selected candle shows whether execution produced follow through.
 
-[AGGRESSOR] Who's crossing the spread?
-VISUAL: An animated Level II ladder shows prices between bid and ask columns, with bid sizes being consumed by incoming sell orders.
-EVENT: hit
-ANSWER: The seller
-WHY: Buyers take offers. Sellers take bids.
+[EVIDENCE_SELECT] Select the two acceptance clues.
+VISUAL: Four evidence cards separate aggression, liquidity, price response, and an irrelevant clue. The learner must select the required combination.
+SELECT: 0, 1
+Execution persists
+Price holds beyond the level
+Price returns inside
+Liquidity replenishes against the move
+WHY: An advanced breakout read requires both pressure and acceptance.
 
 [MC] What best connects the evidence?
 VISUAL: Price opens well above the prior trading area with little activity between the two zones.
@@ -2489,14 +2537,12 @@ One large wall
 A brief wick through
 WHY: A complete read separates aggression, liquidity, and price response.
 
-[MC] Which read needs fewer assumptions?
-VISUAL: Higher lows press into a flat resistance level before price tests the upper boundary.
-CHART: ascendingTriangle
-Combine pressure, level break, and acceptance
-Repeated tests always make a liquidity level stronger
-A fast rejection proves the resting wall was genuine
-Stable displayed size means hidden liquidity cannot be present
-WHY: Combine pressure, level break, and acceptance.
+[REPLAY_COMPARE] Which replay has genuine acceptance?
+VISUAL: Replay A breaks and holds with persistent buying. Replay B breaks, fails, returns inside, and gives control to sellers.
+Replay A
+Replay B
+Not enough evidence
+WHY: Acceptance needs continued execution and price holding beyond the level.
 
 [MATCH] Match each clue.
 Breakout Review => Pressure and acceptance
@@ -2547,25 +2593,29 @@ WHY: Read pressure, liquidity, price, then confirmation.
 
 
 UNIT 8 — Pullbacks and Continuation
+TIER: Advanced
 
 NODE 79
 TITLE: Healthy Pullbacks
 CELEBRATION: Healthy Pullbacks complete.
 
-[MC] Which conclusion fits the response?
-VISUAL: An established rise pauses with smaller bearish candles before testing trend continuation.
-CHART: pullbackUptrend
-A healthy pullback shows weaker counter pressure
-Acceptance is present as soon as one trade prints beyond a level
-Passive absorption and fading aggression produce the same evidence
-A high volume candle reveals which side initiated every trade
-WHY: A healthy pullback shows weaker counter pressure.
+[EVIDENCE_SELECT] Select the two strongest clues.
+VISUAL: Four evidence cards separate aggression, liquidity, price response, and an irrelevant clue. The learner must select the required combination.
+SELECT: 0, 1
+Shallow pullback
+Trend pressure returns
+Counter pressure accelerates
+Key level fails
+WHY: Advanced continuation requires structure plus confirming execution evidence.
 
-[BOOKDRAG] Route this order.
-VISUAL: A draggable market buy card sits beside a Level II ladder with bid and ask drop targets.
-ORDER: market_buy
-ANSWER: the ask
-WHY: Market buys take asks. Market sells take bids.
+[EVIDENCE_SELECT] Select the two continuation clues.
+VISUAL: Four evidence cards separate aggression, liquidity, price response, and an irrelevant clue. The learner must select the required combination.
+SELECT: 0, 1
+Structure remains intact
+Trend pressure returns
+Counter pressure accelerates
+The key level fails
+WHY: Advanced reads combine at least two aligned evidence sources.
 
 [MATCH] Match each clue.
 Healthy Pullbacks => Lighter selling
@@ -2608,11 +2658,14 @@ NODE 81
 TITLE: Seller Pullback
 CELEBRATION: Seller Pullback complete.
 
-[BOOKDRAG] Route this order.
-VISUAL: A draggable market buy card sits beside a Level II ladder with bid and ask drop targets.
-ORDER: market_buy
-ANSWER: the ask
-WHY: Market buys take asks. Market sells take bids.
+[EVIDENCE_SELECT] Select the two continuation clues.
+VISUAL: Four evidence cards separate aggression, liquidity, price response, and an irrelevant clue. The learner must select the required combination.
+SELECT: 0, 1
+Structure remains intact
+Trend pressure returns
+Counter pressure accelerates
+The key level fails
+WHY: Continuation needs intact structure plus returning trend pressure.
 
 [LIVE_CHART] Which price behavior supports the read?
 VISUAL: A live candlestick chart adds new candles over time, with price currently building downward.
@@ -2647,11 +2700,14 @@ CHART: bullFlag
 TARGET: 0 => 4
 WHY: Structure supplies location. Execution evidence supplies the read.
 
-[AGGRESSOR] Who's crossing the spread?
-VISUAL: An animated Level II ladder shows prices between bid and ask columns, with ask sizes being consumed by incoming buy orders.
-EVENT: lift
-ANSWER: The buyer
-WHY: Buyers take offers. Sellers take bids.
+[EVIDENCE_SELECT] Select the two continuation clues.
+VISUAL: Four evidence cards separate aggression, liquidity, price response, and an irrelevant clue. The learner must select the required combination.
+SELECT: 0, 1
+Structure remains intact
+Trend pressure returns
+Counter pressure accelerates
+The key level fails
+WHY: Continuation needs intact structure plus returning trend pressure.
 
 [MC] Which read is best supported?
 VISUAL: A sharp advance pauses in a compact downward sloping channel before buyers test control again.
@@ -2702,11 +2758,14 @@ NODE 84
 TITLE: Order Flow at VWAP
 CELEBRATION: Order Flow at VWAP complete.
 
-[AGGRESSOR] Who's crossing the spread?
-VISUAL: An animated Level II ladder shows prices between bid and ask columns, with ask sizes being consumed by incoming buy orders.
-EVENT: lift
-ANSWER: The buyer
-WHY: Buyers take offers. Sellers take bids.
+[EVIDENCE_SELECT] Select the two strongest clues.
+VISUAL: Four evidence cards separate aggression, liquidity, price response, and an irrelevant clue. The learner must select the required combination.
+SELECT: 0, 1
+VWAP holds as location
+Trend aggression returns
+Price loses VWAP
+Counter tape accelerates
+WHY: Advanced continuation requires structure plus confirming execution evidence.
 
 [LIVE_CHART] What changed in price response?
 VISUAL: A live candlestick chart adds new candles over time, with price currently building upward.
@@ -2744,11 +2803,14 @@ A replenishing order is probably new unrelated liquidity
 Brief trade beyond the level is enough to establish acceptance
 WHY: The average provides location but execution evidence determines the read.
 
-[BOOKDRAG] Route this order.
-VISUAL: A draggable market buy card sits beside a Level II ladder with bid and ask drop targets.
-ORDER: market_buy
-ANSWER: the ask
-WHY: Market buys take asks. Market sells take bids.
+[EVIDENCE_SELECT] Select the two continuation clues.
+VISUAL: Four evidence cards separate aggression, liquidity, price response, and an irrelevant clue. The learner must select the required combination.
+SELECT: 0, 1
+Structure remains intact
+Trend pressure returns
+Counter pressure accelerates
+The key level fails
+WHY: Continuation needs intact structure plus returning trend pressure.
 
 [MATCH] Match each clue.
 Order Flow at a Moving Average => Aggression near the average
@@ -2809,14 +2871,14 @@ The largest cell decides direction
 Volume guarantees a trend
 WHY: Conflicting signals call for patience and a weaker conclusion.
 
-[MC] What's the strongest conclusion?
-VISUAL: A small candle body with upper and lower wicks shows two sided movement and little progress.
-CHART: spinningTop
-Conflicting signals call for patience and a weaker conclusion
-The current book is more useful than the executions that changed it
-Location adds little once the tape accelerates
-The earliest signal should anchor the read even after conditions change
-WHY: Conflicting signals call for patience and a weaker conclusion.
+[EVIDENCE_SELECT] Select the two strongest clues.
+VISUAL: Four evidence cards separate aggression, liquidity, price response, and an irrelevant clue. The learner must select the required combination.
+SELECT: 0, 1
+Tape and delta disagree
+Price response is weak
+Every clue aligns
+Acceptance is confirmed
+WHY: Advanced continuation requires structure plus confirming execution evidence.
 
 [TAP_CANDLE] Tap the clearest price response.
 VISUAL: A small candle body with upper and lower wicks shows two sided movement and little progress. The candles are tappable and the learner must select the requested candle.
@@ -2955,20 +3017,23 @@ NODE 91
 TITLE: Entry After Confirmation
 CELEBRATION: Entry After Confirmation complete.
 
-[MC] Which conclusion fits the response?
-VISUAL: Price breaks resistance, returns to test it from above, then attempts to continue higher.
-CHART: breakoutRetest
-Wait for pressure to return before entry
-Acceptance is present as soon as one trade prints beyond a level
-Passive absorption and fading aggression produce the same evidence
-A high volume candle reveals which side initiated every trade
-WHY: Wait for pressure to return before entry.
+[EVIDENCE_SELECT] Select the two strongest clues.
+VISUAL: Four evidence cards separate aggression, liquidity, price response, and an irrelevant clue. The learner must select the required combination.
+SELECT: 0, 1
+Trend side aggression
+Confirming price response
+One isolated print
+An untested wall
+WHY: Advanced continuation requires structure plus confirming execution evidence.
 
-[BOOKDRAG] Route this order.
-VISUAL: A draggable market buy card sits beside a Level II ladder with bid and ask drop targets.
-ORDER: market_buy
-ANSWER: the ask
-WHY: Market buys take asks. Market sells take bids.
+[EVIDENCE_SELECT] Select the two continuation clues.
+VISUAL: Four evidence cards separate aggression, liquidity, price response, and an irrelevant clue. The learner must select the required combination.
+SELECT: 0, 1
+Structure remains intact
+Trend pressure returns
+Counter pressure accelerates
+The key level fails
+WHY: Advanced reads combine at least two aligned evidence sources.
 
 [MATCH] Match each clue.
 Entry After Confirmation => Pressure returns
@@ -3013,11 +3078,14 @@ NODE 93
 TITLE: Breakout and Continuation Mixed Review
 CELEBRATION: Breakout and Continuation Mixed Review complete.
 
-[BOOKDRAG] Route this order.
-VISUAL: A draggable market buy card sits beside a Level II ladder with bid and ask drop targets.
-ORDER: market_buy
-ANSWER: the ask
-WHY: Market buys take asks. Market sells take bids.
+[EVIDENCE_SELECT] Select the two continuation clues.
+VISUAL: Four evidence cards separate aggression, liquidity, price response, and an irrelevant clue. The learner must select the required combination.
+SELECT: 0, 1
+Structure remains intact
+Trend pressure returns
+Counter pressure accelerates
+The key level fails
+WHY: Continuation needs intact structure plus returning trend pressure.
 
 [LIVE_CHART] Which price behavior supports the read?
 VISUAL: A live candlestick chart adds new candles over time, with price currently alternating inside a range.
@@ -3044,6 +3112,7 @@ WHY: Continuation needs both structure and returning pressure.
 
 
 UNIT 9 — Reversals and Traps
+TIER: Expert
 
 NODE 94
 TITLE: Reversal Pressure
@@ -3094,14 +3163,12 @@ The pattern target is guaranteed
 Only resting liquidity matters
 WHY: Tape and footprint evidence reveal what changed beneath the candle pattern.
 
-[MC] What's the most reasonable read?
-VISUAL: A small candle body with a long upper wick shows rejection of higher prices.
-CHART: shootingStar
-A buyer trap forms when a breakout fails
-Fast tape near resistance is stronger than failure to gain acceptance
-A liquidity sweep and breakout differ mainly by candle size
-Order flow evidence remains valid regardless of changing volatility
-WHY: A buyer trap forms when a breakout fails.
+[REPLAY_COMPARE] Which replay trapped buyers?
+VISUAL: Replay A breaks and holds with persistent buying. Replay B breaks, fails, returns inside, and gives control to sellers.
+Replay B
+Replay A
+Neither replay
+WHY: Replay B returns below resistance and transfers control to sellers.
 
 NODE 96
 TITLE: Seller Trap
@@ -3123,14 +3190,12 @@ The pattern target is guaranteed
 Only resting liquidity matters
 WHY: Tape and footprint evidence reveal what changed beneath the candle pattern.
 
-[MC] What's the best read?
-VISUAL: A candle with a small upper body and long lower wick shows rejection of lower prices.
-CHART: hammer
-A seller trap forms when a breakdown fails
-Displayed liquidity is stronger evidence than completed executions
-A short aggressive burst can outweigh a stalled price response
-The candle response makes tape confirmation optional
-WHY: A seller trap forms when a breakdown fails.
+[REPLAY_COMPARE] Which replay trapped sellers?
+VISUAL: Replay A trades through a level and rejects immediately without acceptance. Replay B trades through with persistent execution and holds beyond the level.
+Replay A
+Replay B
+Not enough evidence
+WHY: The rejected break fails to gain acceptance and traps the initiating side.
 
 NODE 97
 TITLE: Exhaustion Reversal
@@ -3315,6 +3380,7 @@ WHY: A reversal needs control change and confirmation.
 
 
 UNIT 10 — Execution and Risk
+TIER: Expert
 
 NODE 103
 TITLE: Plan the Entry
@@ -3329,17 +3395,23 @@ Passive absorption and fading aggression produce the same evidence
 A high volume candle reveals which side initiated every trade
 WHY: A clear trigger keeps execution disciplined.
 
-[BOOKDRAG] Route this order.
-VISUAL: A draggable market buy card sits beside a Level II ladder with bid and ask drop targets.
-ORDER: market_buy
-ANSWER: the ask
-WHY: Market buys take asks. Market sells take bids.
+[EVIDENCE_SELECT] Select the two relevant clues.
+VISUAL: Four evidence cards separate aggression, liquidity, price response, and an irrelevant clue. The learner must select the required combination.
+SELECT: 0, 1
+Defined trigger
+Confirming response
+One fast print
+Candle color
+WHY: Expert execution decisions combine market evidence with risk.
 
-[MATCH] Match each clue.
-Plan the Entry => Defined trigger
-Fast tape without progress => Urgency without confirmation
-Sweep => Liquidity taken followed by rejection
-WHY: Match the signal with its order flow clue.
+[EVIDENCE_SELECT] Select the two relevant clues.
+VISUAL: Four evidence cards separate aggression, liquidity, price response, and an irrelevant clue. The learner must select the required combination.
+SELECT: 0, 1
+Defined trigger
+Confirming response
+One fast print
+Candle color
+WHY: Expert execution decisions combine market evidence with risk.
 
 [TAP_CANDLE] Tap the clearest price response.
 VISUAL: Price breaks resistance, returns to test it from above, then attempts to continue higher. The candles are tappable and the learner must select the requested candle.
@@ -3376,17 +3448,23 @@ NODE 105
 TITLE: Manage Slippage
 CELEBRATION: Manage Slippage complete.
 
-[BOOKDRAG] Route this order.
-VISUAL: A draggable market buy card sits beside a Level II ladder with bid and ask drop targets.
-ORDER: market_buy
-ANSWER: the ask
-WHY: Market buys take asks. Market sells take bids.
+[EVIDENCE_SELECT] Select the two relevant clues.
+VISUAL: Four evidence cards separate aggression, liquidity, price response, and an irrelevant clue. The learner must select the required combination.
+SELECT: 0, 1
+Thin nearby depth
+Widening spread
+Positive delta
+A resting wall far away
+WHY: Expert execution decisions combine market evidence with risk.
 
-[MATCH] Match each clue.
-Manage Slippage => Available liquidity
-Iceberg => Displayed size repeatedly replenishes
-Acceptance => Price holds beyond the level
-WHY: Match the signal with its order flow clue.
+[EVIDENCE_SELECT] Select the two relevant clues.
+VISUAL: Four evidence cards separate aggression, liquidity, price response, and an irrelevant clue. The learner must select the required combination.
+SELECT: 0, 1
+Thin nearby depth
+Widening spread
+Positive delta
+A resting wall far away
+WHY: Expert execution decisions combine market evidence with risk.
 
 [MC] What does the response suggest?
 VISUAL: Alternating wide candles and long wicks show rapid movement with changing control.
@@ -3407,11 +3485,14 @@ CHART: supportBounce
 TARGET: 4
 WHY: The selected candle shows whether execution produced follow through.
 
-[AGGRESSOR] Who's crossing the spread?
-VISUAL: An animated Level II ladder shows prices between bid and ask columns, with ask sizes being consumed by incoming buy orders.
-EVENT: lift
-ANSWER: The buyer
-WHY: Buyers take offers. Sellers take bids.
+[EVIDENCE_SELECT] Select the two relevant clues.
+VISUAL: Four evidence cards separate aggression, liquidity, price response, and an irrelevant clue. The learner must select the required combination.
+SELECT: 0, 1
+Opposing aggression
+Loss of the key level
+One small print
+Unchanged spread
+WHY: Expert execution decisions combine market evidence with risk.
 
 [MC] Which read is best supported?
 VISUAL: A decline reaches support and rebounds with buyers defending the lower area.
@@ -3451,21 +3532,27 @@ A liquidity sweep and breakout differ mainly by candle size
 Order flow evidence remains valid regardless of changing volatility
 WHY: Thin liquidity can require smaller risk and more cautious execution.
 
-[MATCH] Match each clue.
-Risk in Thin Liquidity => Slippage and unstable depth
-Fast tape without progress => Urgency without confirmation
-Sweep => Liquidity taken followed by rejection
-WHY: Match the signal with its order flow clue.
+[EVIDENCE_SELECT] Select the two relevant clues.
+VISUAL: Four evidence cards separate aggression, liquidity, price response, and an irrelevant clue. The learner must select the required combination.
+SELECT: 0, 1
+Sparse depth
+Higher slippage risk
+Large candle body
+Positive delta
+WHY: Expert execution decisions combine market evidence with risk.
 
 NODE 108
 TITLE: No Clear Order Flow Read
 CELEBRATION: No Clear Order Flow Read complete.
 
-[AGGRESSOR] Who's crossing the spread?
-VISUAL: An animated Level II ladder shows prices between bid and ask columns, with bid sizes being consumed by incoming sell orders.
-EVENT: hit
-ANSWER: The seller
-WHY: Buyers take offers. Sellers take bids.
+[EVIDENCE_SELECT] Select the two relevant clues.
+VISUAL: Four evidence cards separate aggression, liquidity, price response, and an irrelevant clue. The learner must select the required combination.
+SELECT: 0, 1
+Conflicting tape
+Unconfirmed price response
+One aligned clue
+Stable spread
+WHY: Expert execution decisions combine market evidence with risk.
 
 [MC] What's the best read?
 VISUAL: A small candle body with upper and lower wicks shows two sided movement and little progress.
@@ -3495,17 +3582,23 @@ A replenishing order is probably new unrelated liquidity
 Brief trade beyond the level is enough to establish acceptance
 WHY: Liquidity can improve planned exits.
 
-[BOOKDRAG] Route this order.
-VISUAL: A draggable market buy card sits beside a Level II ladder with bid and ask drop targets.
-ORDER: market_buy
-ANSWER: the ask
-WHY: Market buys take asks. Market sells take bids.
+[EVIDENCE_SELECT] Select the two relevant clues.
+VISUAL: Four evidence cards separate aggression, liquidity, price response, and an irrelevant clue. The learner must select the required combination.
+SELECT: 0, 1
+Available opposing liquidity
+Current execution pace
+Candle color
+Moving average slope
+WHY: Expert execution decisions combine market evidence with risk.
 
-[MATCH] Match each clue.
-Exit Into Liquidity => Available buyers or sellers
-Iceberg => Displayed size repeatedly replenishes
-Acceptance => Price holds beyond the level
-WHY: Match the signal with its order flow clue.
+[EVIDENCE_SELECT] Select the two relevant clues.
+VISUAL: Four evidence cards separate aggression, liquidity, price response, and an irrelevant clue. The learner must select the required combination.
+SELECT: 0, 1
+Available opposing liquidity
+Current execution pace
+Candle color
+Moving average slope
+WHY: Expert execution decisions combine market evidence with risk.
 
 [TAP_CANDLE] Tap the clearest price response.
 VISUAL: An advance reaches resistance and turns lower with visible upper wick rejection. The candles are tappable and the learner must select the requested candle.
@@ -3533,7 +3626,7 @@ TARGET: 1
 WHY: The selected candle shows whether execution produced follow through.
 
 [REPLAY_COMPARE] Which replay shows acceptance?
-VISUAL: Replay A shows offers clearing, persistent buy executions, and price holding above resistance. Replay B shows a refreshing offer, stalled buying, and price falling back inside the level.
+VISUAL: Replay A shows offers clearing and price holding above resistance. Replay B shows replenishment and price falling back inside.
 Replay A
 Replay B
 Neither replay
@@ -3543,28 +3636,51 @@ NODE 111
 TITLE: Comprehensive Order Flow Simulation
 CELEBRATION: Comprehensive Order Flow Simulation complete.
 
-[ORDERFLOW_SIM] Buyers stay aggressive, but resistance holds. What's strongest?
+[ORDERFLOW_SIM] Who is aggressive?
 VISUAL: A championship replay combines price and VWAP, changing Level II liquidity, Time and Sales, and footprint delta so the learner must weigh all four evidence sources.
-Buyers are active but may be absorbed by refreshing sellers
-The fastest evidence guarantees the next move
-Displayed size alone determines the outcome
-The candle should be read without execution context
-WHY: Build one read from book tape footprint price and risk.
+Buyers lifting offers
+Sellers hitting bids
+Neither side trading
+WHY: Buyer initiated prints dominate the tape.
 
-[MC] What's the strongest conclusion?
-VISUAL: Alternating wide candles and long wicks show rapid movement with changing control.
-CHART: volatile
-Build one read from book tape footprint price and risk
-The current book is more useful than the executions that changed it
-Location adds little once the tape accelerates
-The earliest signal should anchor the read even after conditions change
-WHY: Build one read from book tape footprint price and risk.
+[ORDERFLOW_SIM] Where is liquidity defending?
+VISUAL: A championship replay combines price and VWAP, changing Level II liquidity, Time and Sales, and footprint delta so the learner must weigh all four evidence sources.
+At the refreshing offer
+Below the distant bid
+No liquidity is visible
+WHY: The offer repeatedly replenishes after fills.
 
-[ORDER] Build the read.
-VISUAL: Alternating wide candles and long wicks show rapid movement with changing control.
-CHART: volatile
-Observe the order book
-Compare trades with liquidity
-Wait for price confirmation
-Manage the risk
-WHY: Read pressure, liquidity, price, then confirmation.
+[ORDERFLOW_SIM] Is buying moving price?
+VISUAL: A championship replay combines price and VWAP, changing Level II liquidity, Time and Sales, and footprint delta so the learner must weigh all four evidence sources.
+No. Price is stalling
+Yes. Price is accepting higher
+Price response is irrelevant
+WHY: Aggression is strong, but upward progress remains weak.
+
+[ORDERFLOW_SIM] Which clue conflicts with delta?
+VISUAL: A championship replay combines price and VWAP, changing Level II liquidity, Time and Sales, and footprint delta so the learner must weigh all four evidence sources.
+Price stalls at resistance
+Buyer prints stay fast
+Ask volume stays positive
+WHY: Positive delta conflicts with the lack of upward price progress.
+
+[ORDERFLOW_SIM] What's the strongest read?
+VISUAL: A championship replay combines price and VWAP, changing Level II liquidity, Time and Sales, and footprint delta so the learner must weigh all four evidence sources.
+Possible seller absorption
+Confirmed buyer continuation
+Guaranteed reversal
+WHY: Refreshing offers and stalled price support possible seller absorption.
+
+[ORDERFLOW_SIM] What would invalidate that read?
+VISUAL: A championship replay combines price and VWAP, changing Level II liquidity, Time and Sales, and footprint delta so the learner must weigh all four evidence sources.
+Offers clear and price holds above
+Another buy print appears
+The spread stays unchanged
+WHY: Acceptance above resistance would invalidate the absorption read.
+
+[ORDERFLOW_SIM] Is continuation confirmed?
+VISUAL: A championship replay combines price and VWAP, changing Level II liquidity, Time and Sales, and footprint delta so the learner must weigh all four evidence sources.
+No. More acceptance is needed
+Yes. Positive delta is enough
+Yes. Fast tape is enough
+WHY: Aggression without acceptance does not confirm continuation.
