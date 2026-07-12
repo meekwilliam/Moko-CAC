@@ -32,6 +32,7 @@ struct PathView: View {
     @EnvironmentObject var theme: ThemeManager
     var showsHomeButton: Bool = true    // false when it's the home tab
     var onSelectNode: (Int) -> Void
+    var onTestOut: (Int) -> Void = { _ in }
     var onHome: () -> Void
     var onOpenHearts: () -> Void = {}
     var onOpenCourses: () -> Void = {}
@@ -374,6 +375,21 @@ struct PathView: View {
         let silhouette: AnyShape = node.isBoss ? AnyShape(Hexagon()) : AnyShape(Ellipse())
 
         return ZStack {
+            if shouldShowTestOut(for: node) {
+                Button {
+                    Haptics.selection()
+                    onTestOut(node.sectionIndex)
+                } label: {
+                    Text("TEST OUT?")
+                        .font(Theme.font(10, .black)).foregroundColor(Color(hex: "#0D1C3F"))
+                        .padding(.horizontal, 11).padding(.vertical, 7)
+                        .background(Capsule().fill(Color(hex: "#FBBF24")))
+                        .overlay(Capsule().strokeBorder(Color.white.opacity(0.55), lineWidth: 1.5))
+                }
+                .buttonStyle(RowPressStyle(scale: 0.94))
+                .offset(y: -48)
+                .zIndex(20)
+            }
             // Animated halo around the lesson you're on. Offset down + tilted
             // into the puck's 3D plane so it looks like it emerges from the
             // button's base rather than floating flat in front of it.
@@ -441,6 +457,13 @@ struct PathView: View {
                     ))
             }
         }
+    }
+
+    private func shouldShowTestOut(for node: PathNode) -> Bool {
+        guard store.section(node.sectionIndex)?.testOutEnabled == true,
+              store.nodes(inSection: node.sectionIndex).first?.num == node.num else { return false }
+        let unitNodes = store.nodes(inSection: node.sectionIndex).map(\.num)
+        return unitNodes.allSatisfy { !store.completed.contains($0) } && store.state(for: node.num) == .active
     }
 
     private func tradingNodeIcon(for node: PathNode, state: NodeState) -> some View {
@@ -690,7 +713,6 @@ private struct SectionOffsetKey: PreferenceKey {
         value.merge(nextValue(), uniquingKeysWith: { _, new in new })
     }
 }
-
 
 
 

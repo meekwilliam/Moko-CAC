@@ -168,6 +168,6 @@ enum MechanicsTestLesson {
         let data = try! JSONSerialization.data(withJSONObject: screens)
         let decoded = try! JSONDecoder().decode([LessonScreen].self, from: data)
         return Lesson(node: -1, title: "Mechanics Test", celebration: "You made it through every mechanic!",
-                     featurePromo: nil, screens: decoded)
+                     featurePromo: nil, lessonType: "TEST_OUT", screens: decoded)
     }
 }

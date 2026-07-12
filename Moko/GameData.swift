@@ -13,6 +13,18 @@ struct Course: Decodable, Identifiable {
     let sections: [PathSectionData]
     let nodes: [PathNodeData]
     let lessons: [Lesson]
+    let testOuts: [TestOutDefinition]?
+}
+
+struct TestOutDefinition: Decodable {
+    let unitIndex: Int
+    let unitId: String
+    let lessonType: String
+    let questionCount: Int
+    let passingScore: Int
+    let noHearts: Bool
+    let revealAnswersAtEnd: Bool
+    let questionPool: [LessonScreen]
 }
 
 struct GameData: Decodable {

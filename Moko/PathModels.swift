@@ -21,6 +21,13 @@ struct PathSectionData: Decodable {
     let bg: String      // hex
     let slab: String    // hex (darker slab / shadow)
     let tier: String?   // "Beginner" / "Intermediate" / … (optional grouping)
+    let unitId: String?
+    let difficulty: String?
+    let testOutEnabled: Bool?
+    let testOutQuestionCount: Int?
+    let testOutPassingScore: Int?
+    let bossLessonId: String?
+    let finalBossRequiredForCourseMastery: Bool?
 }
 
 struct PathNodeData: Decodable {

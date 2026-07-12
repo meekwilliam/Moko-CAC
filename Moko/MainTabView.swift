@@ -25,6 +25,7 @@ struct MainTabView: View {
                     store: store,
                     showsHomeButton: false,
                     onSelectNode: { router.onOpenLesson?($0) },
+                    onTestOut: { router.onOpenTestOut?($0) },
                     onHome: {},
                     onOpenHearts: { router.onOpenHearts?() },
                     onOpenCourses: { router.onOpenCourses?() }
