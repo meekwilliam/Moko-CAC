@@ -330,6 +330,109 @@ struct BookDepthCompareView: View {
     }
 }
 
+// MARK: - Evidence selection
+
+/// Learners separate aggression, liquidity, and response instead of recalling
+/// a missing word. The required number of cards comes from `targets`.
+struct EvidenceSelectView: View {
+    @ObservedObject var player: LessonPlayer
+    var ink: Color
+
+    var body: some View {
+        VStack(alignment: .leading, spacing: 14) {
+            Text(player.screen.question ?? "Select the strongest evidence.")
+                .font(Theme.questionFont(21, .heavy)).foregroundColor(ink)
+            Text("SELECT \(player.screen.targets?.count ?? 2)")
+                .font(Theme.font(10, .black)).foregroundColor(.purple)
+
+            ForEach(Array(player.currentOptions.enumerated()), id: \.offset) { index, label in
+                let selected = player.selectedSet.contains(index)
+                let correct = Set(player.screen.targets ?? []).contains(index)
+                let revealed = player.revealed
+                Button {
+                    guard !revealed else { return }
+                    Haptics.selection()
+                    if selected { player.selectedSet.remove(index) }
+                    else if player.selectedSet.count < (player.screen.targets?.count ?? 2) { player.selectedSet.insert(index) }
+                } label: {
+                    HStack(spacing: 11) {
+                        Image(systemName: selected ? "checkmark.circle.fill" : "circle")
+                            .font(.system(size: 20, weight: .bold))
+                        Text(label).font(Theme.font(15, .black)).frame(maxWidth: .infinity, alignment: .leading)
+                    }
+                    .foregroundColor(ink).padding(13)
+                    .background(RoundedRectangle(cornerRadius: 14).fill(cardTint(selected: selected, correct: correct, revealed: revealed).opacity(selected || (revealed && correct) ? 0.16 : 0.06)))
+                    .overlay(RoundedRectangle(cornerRadius: 14).strokeBorder(cardTint(selected: selected, correct: correct, revealed: revealed), lineWidth: selected || (revealed && correct) ? 2 : 1))
+                }
+                .buttonStyle(RowPressStyle())
+            }
+        }
+    }
+
+    private func cardTint(selected: Bool, correct: Bool, revealed: Bool) -> Color {
+        if revealed && correct { return bidColor }
+        if revealed && selected && !correct { return askColor }
+        return selected ? .purple : Theme.surfaceBorder
+    }
+}
+
+// MARK: - Replay comparison
+
+/// Two similar breakout replays with different underlying order flow. The
+/// learner must choose acceptance versus replenishment and rejection.
+struct ReplayCompareView: View {
+    @ObservedObject var player: LessonPlayer
+    var ink: Color
+
+    var body: some View {
+        VStack(alignment: .leading, spacing: 14) {
+            Text(player.screen.question ?? "Which replay shows acceptance?")
+                .font(Theme.questionFont(21, .heavy)).foregroundColor(ink)
+            HStack(spacing: 10) {
+                replay(title: "REPLAY A", rows: ["Offers clear", "Buy tape persists", "Price holds above"], tint: bidColor)
+                replay(title: "REPLAY B", rows: ["Offer refreshes", "Buy tape stalls", "Price falls inside"], tint: askColor)
+            }
+            VStack(spacing: 9) {
+                ForEach(Array(player.currentOptions.enumerated()), id: \.offset) { index, label in
+                    replayChoice(index: index, label: label)
+                }
+            }
+        }
+    }
+
+    private func replay(title: String, rows: [String], tint: Color) -> some View {
+        VStack(alignment: .leading, spacing: 8) {
+            Text(title).font(Theme.font(10, .black)).foregroundColor(tint)
+            ForEach(rows, id: \.self) { row in
+                HStack(spacing: 6) {
+                    Circle().fill(tint).frame(width: 6, height: 6)
+                    Text(row).font(Theme.font(11, .bold)).foregroundColor(ink)
+                }
+            }
+        }
+        .padding(11).frame(maxWidth: .infinity, minHeight: 118, alignment: .topLeading)
+        .background(RoundedRectangle(cornerRadius: 15).fill(tint.opacity(0.09)))
+        .overlay(RoundedRectangle(cornerRadius: 15).strokeBorder(tint.opacity(0.5), lineWidth: 1.5))
+    }
+
+    private func replayChoice(index: Int, label: String) -> some View {
+        let selected = player.selectedIndex == index
+        let correct = player.currentCorrectIndex == index
+        let revealed = player.revealed
+        let tint = revealed ? (correct ? bidColor : (selected ? askColor : Theme.surfaceBorder)) : Theme.answer
+        return Button {
+            guard !revealed else { return }
+            Haptics.selection(); player.selectedIndex = index
+        } label: {
+            Text(label).font(Theme.font(14, .black)).foregroundColor(ink)
+                .frame(maxWidth: .infinity).padding(.vertical, 12)
+                .background(RoundedRectangle(cornerRadius: 13).fill(selected ? tint.opacity(0.18) : Theme.surface))
+                .overlay(RoundedRectangle(cornerRadius: 13).strokeBorder(selected || (revealed && correct) ? tint : Theme.surfaceBorder, lineWidth: 2))
+        }
+        .buttonStyle(RowPressStyle())
+    }
+}
+
 // MARK: - Time and Sales
 
 private struct TapePrint: Identifiable {

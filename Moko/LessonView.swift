@@ -113,6 +113,9 @@ final class LessonPlayer: ObservableObject {
             return !builtOrder.isEmpty && builtOrder.count == (screen.items?.count ?? 0)
         case "tap_candles":
             return !selectedSet.isEmpty
+        case "evidence_select":
+            let needed = screen.targets?.count ?? 0
+            return needed > 0 && selectedSet.count == needed
         case "mark_level":
             return markedLevel != nil
         case "draw_trendline":
@@ -180,6 +183,8 @@ final class LessonPlayer: ObservableObject {
         case "time_sales_tap", "footprint_tap":
             correct = (selectedIndex == screen.target)
         case "tap_candles":
+            correct = (selectedSet == Set(screen.targets ?? []))
+        case "evidence_select":
             correct = (selectedSet == Set(screen.targets ?? []))
         case "mark_level":
             if let marked = markedLevel, let truth = markTrueLevel {
@@ -638,7 +643,8 @@ struct FeedbackBanner: View {
         let s = player.screen
         switch s.type {
         case "true_false", "multiple_choice", "fill_blank", "ingredient_match", "live_chart",
-             "aggressor", "book_drag":
+             "aggressor", "book_drag", "book_compare", "replay_compare", "time_sales",
+             "footprint", "orderflow_sim":
             let opts = player.currentOptions
             let i = player.currentCorrectIndex
             return opts.indices.contains(i) ? opts[i] : nil
@@ -647,6 +653,10 @@ struct FeedbackBanner: View {
             return parts.isEmpty ? nil : parts.joined(separator: ", ")
         case "sequence_builder", "drag_order":
             return s.correctOrder?.joined(separator: " → ")
+        case "evidence_select":
+            let options = s.options ?? []
+            let answers = (s.targets ?? []).compactMap { options[safe: $0] }
+            return answers.isEmpty ? nil : answers.joined(separator: ", ")
         default:
             return nil
         }

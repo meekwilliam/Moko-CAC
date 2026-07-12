@@ -37381,15 +37381,15 @@
        "explanation": "Orders create fills. Fills create price. Candles record it."
       },
       {
-       "type": "fill_blank",
-       "question": "Order flow reads the [___] of buyers and sellers.",
+       "type": "multiple_choice",
+       "question": "What does order flow reveal?",
        "options": [
-        "balance",
-        "volume",
-        "price"
+        "Buyer and seller pressure",
+        "Future prices with certainty",
+        "Only candle direction"
        ],
        "correct": 0,
-       "explanation": "The balance shows which side has more pressure."
+       "explanation": "Order flow compares active pressure, liquidity, and price response."
       },
       {
        "type": "sequence_builder",
@@ -37513,15 +37513,15 @@
        "explanation": "The ask is the best resting sell price."
       },
       {
-       "type": "fill_blank",
-       "question": "The gap between the bid and the ask is the [___].",
+       "type": "multiple_choice",
+       "question": "What's the bid ask gap called?",
        "options": [
-        "spread",
-        "range",
-        "gap"
+        "The spread",
+        "Delta",
+        "Depth"
        ],
        "correct": 0,
-       "explanation": "The spread is the distance between bid and ask."
+       "explanation": "The spread is the distance between the best bid and ask."
       },
       {
        "type": "book_drag",
@@ -37595,15 +37595,15 @@
        "explanation": "The seller is hitting the bid."
       },
       {
-       "type": "fill_blank",
-       "question": "Sellers push down by [___] the bid.",
+       "type": "multiple_choice",
+       "question": "How do sellers trade aggressively?",
        "options": [
-        "hitting",
-        "posting",
-        "raising"
+        "They hit the bid",
+        "They post above the ask",
+        "They raise the bid"
        ],
        "correct": 0,
-       "explanation": "Hitting bids can push price lower."
+       "explanation": "Aggressive sellers cross the spread and execute against bids."
       },
       {
        "type": "matching",
@@ -38268,17 +38268,20 @@
        "explanation": "A complete read combines who acts where liquidity rests and how price responds."
       },
       {
-       "type": "fill_blank",
-       "chart": "sideways",
-       "question": "The missing evidence is [___].",
+       "type": "evidence_select",
+       "question": "Select the full market read.",
        "options": [
-        "aggression liquidity and response",
-        "a single large print",
-        "displayed depth without execution",
-        "candle color without location"
+        "Aggressor side",
+        "Resting liquidity",
+        "Price response",
+        "Company headline"
        ],
-       "correct": 0,
-       "explanation": "Focus on aggression liquidity and response."
+       "targets": [
+        0,
+        1,
+        2
+       ],
+       "explanation": "A complete read separates aggression, liquidity, and price response."
       }
      ]
     },
@@ -38305,15 +38308,15 @@
        "explanation": "Displayed orders can change or disappear."
       },
       {
-       "type": "fill_blank",
-       "question": "Directional moves often develop from an order [___].",
+       "type": "multiple_choice",
+       "question": "What can create directional movement?",
        "options": [
-        "imbalance",
-        "average",
-        "schedule"
+        "Aggression overwhelms or outlasts liquidity",
+        "More candles appear",
+        "Displayed size never changes"
        ],
        "correct": 0,
-       "explanation": "Directional movement can develop when aggressive pressure overwhelms liquidity, opposing liquidity withdraws, or both."
+       "explanation": "Price can move when pressure consumes liquidity, liquidity withdraws, or both."
       },
       {
        "type": "sequence_builder",
@@ -40193,17 +40196,15 @@
      "celebration": "Liquidity Pools complete.",
      "screens": [
       {
-       "type": "fill_blank",
-       "chart": "range",
-       "question": "The missing evidence is [___].",
+       "type": "book_compare",
+       "question": "Which book holds the larger liquidity pool?",
        "options": [
-        "clustered orders",
-        "positive delta without progress",
-        "a wick without tape evidence",
-        "depth far from the active price"
+        "Book A, with thick clustered depth",
+        "Book B, with gaps and thin depth",
+        "Both show equal liquidity"
        ],
        "correct": 0,
-       "explanation": "Focus on clustered orders."
+       "explanation": "Nearby depth changes how much pressure price needs to travel."
       },
       {
        "type": "multiple_choice",
@@ -40265,17 +40266,11 @@
        "explanation": "Traders often infer that stops may cluster beyond obvious support resistance highs and lows."
       },
       {
-       "type": "fill_blank",
+       "type": "mark_level",
        "chart": "supportBounce",
-       "question": "The missing evidence is [___].",
-       "options": [
-        "inferred stop clusters beyond obvious levels",
-        "a single large print",
-        "displayed depth without execution",
-        "candle color without location"
-       ],
-       "correct": 0,
-       "explanation": "Focus on inferred stop clusters beyond obvious levels."
+       "level_kind": "support",
+       "question": "Mark the support hiding inferred sell stops.",
+       "explanation": "Stops are inferred beyond obvious levels rather than directly visible before triggering."
       }
      ]
     },
@@ -40358,17 +40353,11 @@
        "explanation": "The selected candle shows whether execution produced follow through."
       },
       {
-       "type": "fill_blank",
+       "type": "mark_level",
        "chart": "breakdown",
-       "question": "The missing evidence is [___].",
-       "options": [
-        "stops below support",
-        "resting size that never trades",
-        "one isolated footprint row",
-        "direction without follow through"
-       ],
-       "correct": 0,
-       "explanation": "Focus on stops below support."
+       "level_kind": "support",
+       "question": "Mark the level sell stops may sit below.",
+       "explanation": "Stops are inferred beyond obvious levels rather than directly visible before triggering."
       }
      ]
     },
@@ -40476,17 +40465,11 @@
      "celebration": "Downside Sweep complete.",
      "screens": [
       {
-       "type": "fill_blank",
-       "chart": "hammer",
-       "question": "The missing evidence is [___].",
-       "options": [
-        "failed push below",
-        "positive delta without progress",
-        "a wick without tape evidence",
-        "depth far from the active price"
-       ],
-       "correct": 0,
-       "explanation": "Focus on failed push below."
+       "type": "tap_candle",
+       "chart": "rejectionWickDown",
+       "target": 4,
+       "question": "Tap the rejection after the sweep.",
+       "explanation": "Price response distinguishes rejection from acceptance."
       },
       {
        "type": "multiple_choice",
@@ -40639,17 +40622,15 @@
        "explanation": "The selected candle shows whether execution produced follow through."
       },
       {
-       "type": "fill_blank",
-       "chart": "gapUp",
-       "question": "The missing evidence is [___].",
+       "type": "book_compare",
+       "question": "Which book should move more easily?",
        "options": [
-        "few nearby orders",
-        "resting size that never trades",
-        "one isolated footprint row",
-        "direction without follow through"
+        "Book B, because depth is thin",
+        "Book A, because depth is thick",
+        "Both should move equally"
        ],
        "correct": 0,
-       "explanation": "Focus on few nearby orders."
+       "explanation": "Nearby depth changes how much pressure price needs to travel."
       }
      ]
     },
@@ -40747,17 +40728,19 @@
      "celebration": "Liquidity Review complete.",
      "screens": [
       {
-       "type": "fill_blank",
-       "chart": "volatile",
-       "question": "The missing evidence is [___].",
+       "type": "evidence_select",
+       "question": "Select the two essential clues.",
        "options": [
-        "location and response",
-        "positive delta without progress",
-        "a wick without tape evidence",
-        "depth far from the active price"
+        "Event location",
+        "Price response",
+        "Candle color alone",
+        "One isolated print"
        ],
-       "correct": 0,
-       "explanation": "Focus on location and response."
+       "targets": [
+        0,
+        1
+       ],
+       "explanation": "A complete read separates aggression, liquidity, and price response."
       },
       {
        "type": "multiple_choice",
@@ -40819,17 +40802,19 @@
        "explanation": "Combine pressure with liquidity and price response."
       },
       {
-       "type": "fill_blank",
-       "chart": "breakoutRetest",
-       "question": "The missing evidence is [___].",
+       "type": "evidence_select",
+       "question": "Select the two confirmation clues.",
        "options": [
-        "pressure location and acceptance",
-        "a single large print",
-        "displayed depth without execution",
-        "candle color without location"
+        "Pressure at the level",
+        "Acceptance or rejection",
+        "Company size",
+        "Chart color"
        ],
-       "correct": 0,
-       "explanation": "Focus on pressure location and acceptance."
+       "targets": [
+        0,
+        1
+       ],
+       "explanation": "A complete read separates aggression, liquidity, and price response."
       }
      ]
     },
@@ -40912,17 +40897,21 @@
        "explanation": "The selected candle shows whether execution produced follow through."
       },
       {
-       "type": "fill_blank",
-       "chart": "breakdown",
-       "question": "The missing evidence is [___].",
-       "options": [
-        "bids consumed withdrawn or thin",
-        "resting size that never trades",
-        "one isolated footprint row",
-        "direction without follow through"
+       "type": "sequence_builder",
+       "question": "Build the decision sequence.",
+       "items": [
+        "Sellers hit bids",
+        "Bids trade or withdraw",
+        "Price moves below support",
+        "Acceptance is tested"
        ],
-       "correct": 0,
-       "explanation": "Focus on bids consumed withdrawn or thin."
+       "correct_order": [
+        "Sellers hit bids",
+        "Bids trade or withdraw",
+        "Price moves below support",
+        "Acceptance is tested"
+       ],
+       "explanation": "Order flow decisions move from evidence to response and risk."
       }
      ]
     },
@@ -41126,17 +41115,11 @@
        "explanation": "A quick return below resistance signals failure."
       },
       {
-       "type": "fill_blank",
+       "type": "tap_candle",
        "chart": "resistanceRejection",
-       "question": "The missing evidence is [___].",
-       "options": [
-        "return below resistance",
-        "a single large print",
-        "displayed depth without execution",
-        "candle color without location"
-       ],
-       "correct": 0,
-       "explanation": "Focus on return below resistance."
+       "target": 3,
+       "question": "Tap where the breakout fails.",
+       "explanation": "Price response distinguishes rejection from acceptance."
       }
      ]
     },
@@ -41219,17 +41202,11 @@
        "explanation": "The selected candle shows whether execution produced follow through."
       },
       {
-       "type": "fill_blank",
+       "type": "tap_candle",
        "chart": "breakoutRetest",
-       "question": "The missing evidence is [___].",
-       "options": [
-        "support on retest",
-        "resting size that never trades",
-        "one isolated footprint row",
-        "direction without follow through"
-       ],
-       "correct": 0,
-       "explanation": "Focus on support on retest."
+       "target": 2,
+       "question": "Tap the defended retest.",
+       "explanation": "Price response distinguishes rejection from acceptance."
       }
      ]
     },
@@ -41349,17 +41326,19 @@
      "celebration": "Breakout Review complete.",
      "screens": [
       {
-       "type": "fill_blank",
-       "chart": "ascendingTriangle",
-       "question": "The missing evidence is [___].",
+       "type": "evidence_select",
+       "question": "Select the two breakout clues.",
        "options": [
-        "pressure and acceptance",
-        "positive delta without progress",
-        "a wick without tape evidence",
-        "depth far from the active price"
+        "Aggressive pressure",
+        "Acceptance beyond the level",
+        "One large wall",
+        "A brief wick through"
        ],
-       "correct": 0,
-       "explanation": "Focus on pressure and acceptance."
+       "targets": [
+        0,
+        1
+       ],
+       "explanation": "A complete read separates aggression, liquidity, and price response."
       },
       {
        "type": "multiple_choice",
@@ -41539,17 +41518,11 @@
        "explanation": "Structure supplies location. Execution evidence supplies the read."
       },
       {
-       "type": "fill_blank",
-       "chart": "ascendingChannel",
-       "question": "The missing evidence is [___].",
-       "options": [
-        "defended structure",
-        "resting size that never trades",
-        "one isolated footprint row",
-        "direction without follow through"
-       ],
-       "correct": 0,
-       "explanation": "Focus on defended structure."
+       "type": "footprint_tap",
+       "event": "balanced_target",
+       "target": 3,
+       "question": "Tap the most balanced execution row.",
+       "explanation": "The selected row contains the requested execution profile."
       }
      ]
     },
@@ -41670,17 +41643,16 @@
      "celebration": "Bearish Continuation complete.",
      "screens": [
       {
-       "type": "fill_blank",
-       "chart": "bearFlag",
-       "question": "The missing evidence is [___].",
+       "type": "time_sales",
+       "event": "hit",
+       "question": "Which tape clue supports continuation?",
        "options": [
-        "sellers return",
-        "positive delta without progress",
-        "a wick without tape evidence",
-        "depth far from the active price"
+        "Seller prints regain persistence",
+        "Buy prints accelerate at support",
+        "Trade pace becomes balanced"
        ],
        "correct": 0,
-       "explanation": "Focus on sellers return."
+       "explanation": "Use completed executions to judge whether trend pressure returned."
       },
       {
        "type": "multiple_choice",
@@ -41754,17 +41726,11 @@
        "explanation": "VWAP provides location while order flow determines the response."
       },
       {
-       "type": "fill_blank",
-       "chart": "priceAboveVWAP",
-       "question": "The missing evidence is [___].",
-       "options": [
-        "response as price tests VWAP",
-        "a single large print",
-        "displayed depth without execution",
-        "candle color without location"
-       ],
-       "correct": 0,
-       "explanation": "Focus on response as price tests VWAP."
+       "type": "footprint_tap",
+       "event": "total_target",
+       "target": 1,
+       "question": "Tap the busiest row near VWAP.",
+       "explanation": "The selected row contains the requested execution profile."
       }
      ]
     },
@@ -41847,17 +41813,16 @@
        "explanation": "The selected candle shows whether execution produced follow through."
       },
       {
-       "type": "fill_blank",
-       "chart": "bearishEngulfing",
-       "question": "The missing evidence is [___].",
+       "type": "time_sales",
+       "event": "lift",
+       "question": "What changes as the pullback fails?",
        "options": [
-        "counter pressure grows",
-        "resting size that never trades",
-        "one isolated footprint row",
-        "direction without follow through"
+        "Counter pressure gains urgency",
+        "Aggression disappears",
+        "The spread proves continuation"
        ],
        "correct": 0,
-       "explanation": "Focus on counter pressure grows."
+       "explanation": "Use completed executions to judge whether trend pressure returned."
       }
      ]
     },
@@ -42201,17 +42166,16 @@
        "explanation": "Structure supplies location. Execution evidence supplies the read."
       },
       {
-       "type": "fill_blank",
-       "chart": "bullFlag",
-       "question": "The missing evidence is [___].",
+       "type": "time_sales",
+       "event": "accelerating",
+       "question": "What confirms continuation on tape?",
        "options": [
-        "trend pressure returns",
-        "resting size that never trades",
-        "one isolated footprint row",
-        "direction without follow through"
+        "Trend side pressure returns",
+        "One opposing print appears",
+        "Displayed depth stays unchanged"
        ],
        "correct": 0,
-       "explanation": "Focus on trend pressure returns."
+       "explanation": "Use completed executions to judge whether trend pressure returned."
       }
      ]
     },
@@ -42760,17 +42724,15 @@
        "explanation": "The selected candle shows whether execution produced follow through."
       },
       {
-       "type": "fill_blank",
-       "chart": "sideways",
-       "question": "The missing evidence is [___].",
+       "type": "multiple_choice",
+       "question": "What tradeoff guides order choice?",
        "options": [
-        "speed versus price",
-        "resting size that never trades",
-        "one isolated footprint row",
-        "direction without follow through"
+        "Speed versus price control",
+        "Candle color versus volume",
+        "Bid size versus chart scale"
        ],
        "correct": 0,
-       "explanation": "Focus on speed versus price."
+       "explanation": "Market and limit orders trade speed against control of execution price."
       }
      ]
     },
@@ -42878,17 +42840,21 @@
      "celebration": "Risk in Thin Liquidity complete.",
      "screens": [
       {
-       "type": "fill_blank",
-       "chart": "bandsWidening",
-       "question": "The missing evidence is [___].",
-       "options": [
-        "slippage and unstable depth",
-        "positive delta without progress",
-        "a wick without tape evidence",
-        "depth far from the active price"
+       "type": "sequence_builder",
+       "question": "Build the decision sequence.",
+       "items": [
+        "Inspect nearby depth",
+        "Estimate slippage risk",
+        "Reduce size if needed",
+        "Define invalidation"
        ],
-       "correct": 0,
-       "explanation": "Focus on slippage and unstable depth."
+       "correct_order": [
+        "Inspect nearby depth",
+        "Estimate slippage risk",
+        "Reduce size if needed",
+        "Define invalidation"
+       ],
+       "explanation": "Order flow decisions move from evidence to response and risk."
       },
       {
        "type": "multiple_choice",
@@ -42950,17 +42916,15 @@
        "explanation": "Conflicting evidence is a valid reason to stay out."
       },
       {
-       "type": "fill_blank",
-       "chart": "spinningTop",
-       "question": "The missing evidence is [___].",
+       "type": "multiple_choice",
+       "question": "What does conflicting evidence suggest?",
        "options": [
-        "conflicting evidence",
-        "a single large print",
-        "displayed depth without execution",
-        "candle color without location"
+        "No clear read yet",
+        "Follow the fastest signal",
+        "Ignore price response"
        ],
        "correct": 0,
-       "explanation": "Focus on conflicting evidence."
+       "explanation": "Conflicting evidence supports patience rather than a forced conclusion."
       }
      ]
     },
@@ -43043,17 +43007,15 @@
        "explanation": "The selected candle shows whether execution produced follow through."
       },
       {
-       "type": "fill_blank",
-       "chart": "sideways",
-       "question": "The missing evidence is [___].",
+       "type": "replay_compare",
+       "question": "Which replay shows acceptance?",
        "options": [
-        "whether book tape footprint and price behaved as expected",
-        "resting size that never trades",
-        "one isolated footprint row",
-        "direction without follow through"
+        "Replay A",
+        "Replay B",
+        "Neither replay"
        ],
        "correct": 0,
-       "explanation": "Focus on whether book tape footprint and price behaved as expected."
+       "explanation": "Replay A clears offers and holds above the level. Replay B refreshes and rejects."
       }
      ]
     },
