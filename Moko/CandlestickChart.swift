@@ -120,25 +120,22 @@ struct CandlestickChart: View {
                     let color = c.isBullish ? bullish : bearish
                     let dimmed = highlightIndex != nil && highlightIndex != i
 
-                    ZStack {
-                        // Wick — a filled bar, not a stroked Path. A stroke and a
-                        // fill of the exact same color still anti-alias their
-                        // edges slightly differently, which read as a seam where
-                        // the wick met the body; a fill matches the body's own
-                        // rendering exactly.
-                        Rectangle()
-                            .fill(color)
-                            .frame(width: 1.5, height: max(m.y(c.low) - m.y(c.high), 0))
-                            .position(x: cx, y: (m.y(c.high) + m.y(c.low)) / 2)
-
-                        // Body
-                        let top = m.y(max(c.open, c.close))
-                        let bottom = m.y(min(c.open, c.close))
-                        RoundedRectangle(cornerRadius: 3.5, style: .continuous)
-                            .fill(color)
-                            .frame(width: bodyWidth, height: max(bottom - top, 2))
-                            .position(x: cx, y: (top + bottom) / 2)
+                    // Wick + body as ONE Path, filled once. Two separately-filled
+                    // shapes of the identical color still each get their own
+                    // anti-aliased edge, and where those edges meet/overlap the
+                    // compositing can show as a faint seam — a single fill pass
+                    // over one Path makes that impossible.
+                    let top = m.y(max(c.open, c.close))
+                    let bottom = m.y(min(c.open, c.close))
+                    Path { p in
+                        p.addRect(CGRect(x: cx - 0.75, y: m.y(c.high),
+                                         width: 1.5, height: max(m.y(c.low) - m.y(c.high), 0)))
+                        p.addRoundedRect(
+                            in: CGRect(x: cx - bodyWidth / 2, y: top,
+                                      width: bodyWidth, height: max(bottom - top, 2)),
+                            cornerSize: CGSize(width: 3.5, height: 3.5))
                     }
+                    .fill(color)
                     .opacity(dimmed ? 0.3 : 1)
                 }
 
