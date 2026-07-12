@@ -423,17 +423,20 @@ struct PathView: View {
         }
         .frame(width: nodeSize, height: nodeSize)
         // Tap callout: title + Start / Continue / Replay button, anchored below.
-        .overlay(alignment: .top) {
+        // Boss (last node of a unit) shows its callout ABOVE, so it stays inside
+        // its own section instead of spilling down into the next unit's nodes.
+        .overlay(alignment: node.isBoss ? .bottom : .top) {
             if tooltipNode == node.num {
-                startTooltip(node, state: state, color: c)
+                let anchor: UnitPoint = node.isBoss ? .bottom : .top
+                startTooltip(node, state: state, color: c, flipped: node.isBoss)
                     .fixedSize()
-                    .offset(y: nodeSize + 8)
+                    .offset(y: node.isBoss ? -(nodeSize + 8) : (nodeSize + 8))
                     .transition(.asymmetric(
-                        insertion: .scale(scale: 0.78, anchor: .top)
-                            .combined(with: .offset(y: -10))
+                        insertion: .scale(scale: 0.78, anchor: anchor)
+                            .combined(with: .offset(y: node.isBoss ? 10 : -10))
                             .combined(with: .opacity),
-                        removal: .scale(scale: 0.92, anchor: .top)
-                            .combined(with: .offset(y: -6))
+                        removal: .scale(scale: 0.92, anchor: anchor)
+                            .combined(with: .offset(y: node.isBoss ? 6 : -6))
                             .combined(with: .opacity)
                     ))
             }
@@ -458,7 +461,8 @@ struct PathView: View {
             .accessibilityHidden(true)
     }
 
-    private func startTooltip(_ node: PathNode, state: NodeState, color: (main: Color, dark: Color)) -> some View {
+    private func startTooltip(_ node: PathNode, state: NodeState, color: (main: Color, dark: Color),
+                              flipped: Bool = false) -> some View {
         let locked = state == .locked
         let label = locked ? "LOCKED"
             : (store.inProgressNode == node.num ? "CONTINUE"
@@ -467,11 +471,8 @@ struct PathView: View {
         let cardFill = locked ? Color(hex: "#26364A") : Color.white
         let cardStroke = locked ? Color.white.opacity(0.08) : Color.black.opacity(0.07)
         let titleColor = locked ? Color.white.opacity(0.55) : Color(hex: "#0D1C3F")
-        return VStack(spacing: 0) {
-            Triangle().fill(cardFill)
-                .frame(width: 20, height: 11)
-                .rotationEffect(.degrees(180))   // point up toward the node
-            VStack(spacing: 12) {
+        let pointer = Triangle().fill(cardFill).frame(width: 20, height: 11)
+        let card = VStack(spacing: 12) {
                 Text(node.title)
                     .font(Theme.font(15, .heavy)).foregroundColor(titleColor)
                     .multilineTextAlignment(.center).fixedSize(horizontal: false, vertical: true)
@@ -494,15 +495,25 @@ struct PathView: View {
                 .buttonStyle(Chunky3DStyle(fill: color.main, slab: color.dark, depth: 4, radius: 12,
                                            font: Theme.font(14, .black)))
             }
-            .padding(18)
-            .frame(width: 220)
-            .background(
-                RoundedRectangle(cornerRadius: 18, style: .continuous).fill(cardFill)
-                    .overlay(RoundedRectangle(cornerRadius: 18, style: .continuous)
-                        .strokeBorder(cardStroke, lineWidth: 2))
-            )
+        .padding(18)
+        .frame(width: 220)
+        .background(
+            RoundedRectangle(cornerRadius: 18, style: .continuous).fill(cardFill)
+                .overlay(RoundedRectangle(cornerRadius: 18, style: .continuous)
+                    .strokeBorder(cardStroke, lineWidth: 2))
+        )
+        // `flipped` = callout sits ABOVE the node (a unit's last / boss node,
+        // so it doesn't spill down into the next unit); pointer faces down.
+        return VStack(spacing: 0) {
+            if flipped {
+                card
+                pointer
+            } else {
+                pointer.rotationEffect(.degrees(180))   // point up toward the node
+                card
+            }
         }
-        .shadow(color: .black.opacity(0.28), radius: 16, y: 10)
+        .shadow(color: .black.opacity(0.28), radius: 16, y: flipped ? -10 : 10)
     }
 
     // Recolor a parsed icon so white/translucent-white parts follow the node state.
