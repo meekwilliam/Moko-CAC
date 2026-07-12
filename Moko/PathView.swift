@@ -380,14 +380,26 @@ struct PathView: View {
                     Haptics.selection()
                     onTestOut(node.sectionIndex)
                 } label: {
-                    Text("TEST OUT?")
-                        .font(Theme.font(10, .black)).foregroundColor(Color(hex: "#0D1C3F"))
-                        .padding(.horizontal, 11).padding(.vertical, 7)
-                        .background(Capsule().fill(Color(hex: "#FBBF24")))
-                        .overlay(Capsule().strokeBorder(Color.white.opacity(0.55), lineWidth: 1.5))
+                    // Speech-bubble callout in the app's own colors (dark slate
+                    // + blue accent), not the unit color: solid fills, a crisp
+                    // edge, and a downward pointer to the node.
+                    VStack(spacing: 0) {
+                        Text("TEST OUT?")
+                            .font(Theme.font(14, .black))
+                            .foregroundColor(Color(hex: "#4CA9FF"))
+                            .fixedSize()          // keep it on one line
+                            .padding(.horizontal, 18).padding(.vertical, 10)
+                            .background(RoundedRectangle(cornerRadius: 15, style: .continuous)
+                                .fill(Theme.surfaceRaised))
+                            .overlay(RoundedRectangle(cornerRadius: 15, style: .continuous)
+                                .strokeBorder(Theme.surfaceBorder, lineWidth: 2))
+                        Triangle().fill(Theme.surfaceRaised)      // points down at the node
+                            .frame(width: 18, height: 10)
+                            .offset(y: -1)                        // tuck under the card's border
+                    }
                 }
                 .buttonStyle(RowPressStyle(scale: 0.94))
-                .offset(y: -48)
+                .offset(y: -54)
                 .zIndex(20)
             }
             // Animated halo around the lesson you're on. Offset down + tilted
