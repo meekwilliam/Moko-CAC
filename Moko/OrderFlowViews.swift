@@ -499,6 +499,7 @@ struct EvidenceSelectView: View {
 /// learner must choose acceptance versus replenishment and rejection.
 struct ReplayCompareView: View {
     @ObservedObject var player: LessonPlayer
+    @Environment(\.colorScheme) private var scheme
     var ink: Color
 
     var body: some View {
@@ -576,12 +577,11 @@ struct ReplayCompareView: View {
             }
         }
         .padding(11).frame(maxWidth: .infinity, minHeight: 118, alignment: .topLeading)
-        // A comparison should read as two proper lesson cards, not as colored
-        // overlays on the lesson background. Keep A/B's color on the chrome,
-        // with the same solid face and recessed slab as the rest of the app.
+        // Match the lesson's answer-choice face exactly; A/B's color lives in
+        // the title, bullets, and outline rather than a tinted background.
         .background(
             RoundedRectangle(cornerRadius: 15, style: .continuous)
-                .fill(Theme.surfaceRaised)
+                .fill(Theme.optionFill(scheme))
                 .overlay(
                     RoundedRectangle(cornerRadius: 15, style: .continuous)
                         .strokeBorder(tint.opacity(0.7), lineWidth: 1.5)
