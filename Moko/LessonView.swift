@@ -23,6 +23,7 @@ final class LessonPlayer: ObservableObject {
     @Published var missedSkills: [String: Int] = [:]
     @Published var correctCompetencies: [String: Int] = [:]
     @Published var missedCompetencies: [String: Int] = [:]
+    @Published var missedSourceLessons: [String: Int] = [:]
     @Published var finished = false      // reward screen
 
     // Single-choice selection (true_false / multiple_choice / fill_blank / ingredient_match)
@@ -235,6 +236,7 @@ final class LessonPlayer: ObservableObject {
         } else {
             if let skill = screen.skillId { missedSkills[skill, default: 0] += 1 }
             if let competency = screen.competencyId { missedCompetencies[competency, default: 0] += 1 }
+            if let sourceLesson = screen.sourceLesson { missedSourceLessons[sourceLesson, default: 0] += 1 }
         }
         revealed = true
         if !correct && lesson.lessonType != "TEST_OUT" {
@@ -285,6 +287,7 @@ final class LessonPlayer: ObservableObject {
         copy.missedSkills = missedSkills
         copy.correctCompetencies = correctCompetencies
         copy.missedCompetencies = missedCompetencies
+        copy.missedSourceLessons = missedSourceLessons
         copy.finished = finished
         copy.selectedIndex = selectedIndex
         copy.selectedSet = selectedSet
@@ -865,11 +868,8 @@ struct RewardView: View {
             if isJump { return "Prerequisites \(prerequisiteCorrect) · Target unit \(targetCorrect) · \(player.correctCount)/\(player.answeredCount) overall" }
             return "\(player.correctCount)/\(player.answeredCount) correct · Test Out passed"
         }
-        let skills = player.missedCompetencies.sorted { $0.value > $1.value }.prefix(3).map { entry in
-            let raw = entry.key.split(separator: ".").last.map(String.init) ?? entry.key
-            return raw.replacingOccurrences(of: "_", with: " ").capitalized
-        }
-        let review = skills.isEmpty ? "A few skills need work" : "Weak areas: " + skills.joined(separator: " · ")
+        let lessons = player.missedSourceLessons.sorted { $0.value > $1.value }.prefix(3).map(\.key)
+        let review = lessons.isEmpty ? "A few skills need work" : "Recommended: " + lessons.joined(separator: " · ")
         let score = isJump ? "Prerequisites \(prerequisiteCorrect) · Target unit \(targetCorrect) · \(player.correctCount)/\(player.answeredCount) overall" : "\(player.correctCount)/\(player.answeredCount) correct"
         return score + "\n" + review + "\nReview these areas before retrying."
     }
