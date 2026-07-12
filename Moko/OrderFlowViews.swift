@@ -48,6 +48,94 @@ private struct SplitMix {
     }
 }
 
+// MARK: - Shared 3D option buttons
+
+/// The app's standard chunky option button (sinks onto a slab on press, reveals
+/// green/red) — shared by every order-flow single-select question so their
+/// answers match the multiple-choice look instead of a flat card.
+struct OFOption: View {
+    @ObservedObject var player: LessonPlayer
+    @Environment(\.colorScheme) private var scheme
+    let index: Int
+    let label: String
+    var ink: Color
+
+    var body: some View {
+        let selected = player.selectedIndex == index
+        let revealed = player.revealed
+        let isCorrect = index == player.currentCorrectIndex
+        var fill = Theme.optionFill(scheme)
+        var border = Theme.optionBorder(scheme)
+        var slab = Theme.optionSlab(scheme)
+        var textColor = ink
+        if revealed {
+            if isCorrect { fill = Theme.correct; border = Theme.correctDark; slab = Theme.correctDark; textColor = .white }
+            else if selected { fill = Theme.incorrect; border = Theme.incorrectDark; slab = Theme.incorrectDark; textColor = .white }
+        } else if selected {
+            fill = Theme.answer; border = Theme.answerDark; slab = Theme.answerDark; textColor = .white
+        }
+        return Button {
+            guard !revealed else { return }
+            Haptics.selection(); player.selectedIndex = index
+        } label: {
+            HStack(spacing: 8) {
+                Text(label).font(Theme.questionFont(15, .bold))
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                if revealed && isCorrect { Image(systemName: "checkmark.circle.fill") }
+                else if revealed && selected { Image(systemName: "xmark.circle.fill") }
+            }
+            .modifier(OptionSurface(fill: fill, border: border, textColor: textColor))
+            .contentShape(Rectangle())
+        }
+        .buttonStyle(SinkButtonStyle(slab: slab, radius: 16, depth: 5))
+        .disabled(revealed)
+    }
+}
+
+/// Multi-select 3D option (evidence_select): toggles selectedSet, capped at the
+/// required number of picks.
+struct OFMultiOption: View {
+    @ObservedObject var player: LessonPlayer
+    @Environment(\.colorScheme) private var scheme
+    let index: Int
+    let label: String
+    var ink: Color
+
+    var body: some View {
+        let selected = player.selectedSet.contains(index)
+        let revealed = player.revealed
+        let isCorrect = Set(player.screen.targets ?? []).contains(index)
+        let needed = player.screen.targets?.count ?? 2
+        var fill = Theme.optionFill(scheme)
+        var border = Theme.optionBorder(scheme)
+        var slab = Theme.optionSlab(scheme)
+        var textColor = ink
+        if revealed {
+            if isCorrect { fill = Theme.correct; border = Theme.correctDark; slab = Theme.correctDark; textColor = .white }
+            else if selected { fill = Theme.incorrect; border = Theme.incorrectDark; slab = Theme.incorrectDark; textColor = .white }
+        } else if selected {
+            fill = Theme.answer; border = Theme.answerDark; slab = Theme.answerDark; textColor = .white
+        }
+        return Button {
+            guard !revealed else { return }
+            Haptics.selection()
+            if selected { player.selectedSet.remove(index) }
+            else if player.selectedSet.count < needed { player.selectedSet.insert(index) }
+        } label: {
+            HStack(spacing: 11) {
+                Image(systemName: selected ? "checkmark.circle.fill" : "circle")
+                    .font(.system(size: 20, weight: .bold))
+                Text(label).font(Theme.questionFont(15, .bold))
+                    .frame(maxWidth: .infinity, alignment: .leading)
+            }
+            .modifier(OptionSurface(fill: fill, border: border, textColor: textColor))
+            .contentShape(Rectangle())
+        }
+        .buttonStyle(SinkButtonStyle(slab: slab, radius: 16, depth: 5))
+        .disabled(revealed)
+    }
+}
+
 // MARK: - Ladder view
 
 /// A compact depth-of-market ladder. `consumedAsks` / `consumedBids` fade the
@@ -157,28 +245,7 @@ struct AggressorView: View {
     }
 
     private func choice(index: Int, label: String, tint: Color) -> some View {
-        let chosen = player.selectedIndex == index
-        let correct = player.currentCorrectIndex == index
-        let revealed = player.revealed
-        let fill: Color = revealed
-            ? (correct ? bidColor : (chosen ? askColor : Theme.surface))
-            : (chosen ? Theme.answer.opacity(0.25) : Theme.surface)
-        let border: Color = revealed
-            ? (correct ? bidColor : (chosen ? askColor : Theme.surfaceBorder))
-            : (chosen ? Theme.answer : Theme.surfaceBorder)
-        return Button(action: {
-            guard !player.revealed else { return }
-            Haptics.selection()
-            player.selectedIndex = index
-        }) {
-            Text(label)
-                .font(Theme.font(17, .black))
-                .foregroundColor(revealed && (correct || chosen) ? .white : ink)
-                .frame(maxWidth: .infinity).padding(.vertical, 16)
-                .background(RoundedRectangle(cornerRadius: 16, style: .continuous).fill(fill))
-                .overlay(RoundedRectangle(cornerRadius: 16, style: .continuous).strokeBorder(border, lineWidth: 2))
-        }
-        .buttonStyle(RowPressStyle())
+        OFOption(player: player, index: index, label: label, ink: ink)
     }
 }
 
@@ -323,20 +390,7 @@ struct BookDepthCompareView: View {
     }
 
     private func choice(index: Int, label: String) -> some View {
-        let selected = player.selectedIndex == index
-        let correct = player.currentCorrectIndex == index
-        let revealed = player.revealed
-        let tint = revealed ? (correct ? bidColor : (selected ? askColor : Theme.surfaceBorder)) : Theme.answer
-        return Button {
-            guard !revealed else { return }
-            Haptics.selection(); player.selectedIndex = index
-        } label: {
-            Text(label).font(Theme.font(14, .black)).foregroundColor(ink)
-                .frame(maxWidth: .infinity).padding(.vertical, 12)
-                .background(RoundedRectangle(cornerRadius: 13).fill(selected ? tint.opacity(0.18) : Theme.surface))
-                .overlay(RoundedRectangle(cornerRadius: 13).strokeBorder(selected || (revealed && correct) ? tint : Theme.surfaceBorder, lineWidth: 2))
-        }
-        .buttonStyle(RowPressStyle())
+        OFOption(player: player, index: index, label: label, ink: ink)
     }
 }
 
@@ -356,25 +410,7 @@ struct EvidenceSelectView: View {
                 .font(Theme.font(10, .black)).foregroundColor(.purple)
 
             ForEach(Array(player.currentOptions.enumerated()), id: \.offset) { index, label in
-                let selected = player.selectedSet.contains(index)
-                let correct = Set(player.screen.targets ?? []).contains(index)
-                let revealed = player.revealed
-                Button {
-                    guard !revealed else { return }
-                    Haptics.selection()
-                    if selected { player.selectedSet.remove(index) }
-                    else if player.selectedSet.count < (player.screen.targets?.count ?? 2) { player.selectedSet.insert(index) }
-                } label: {
-                    HStack(spacing: 11) {
-                        Image(systemName: selected ? "checkmark.circle.fill" : "circle")
-                            .font(.system(size: 20, weight: .bold))
-                        Text(label).font(Theme.font(15, .black)).frame(maxWidth: .infinity, alignment: .leading)
-                    }
-                    .foregroundColor(ink).padding(13)
-                    .background(RoundedRectangle(cornerRadius: 14).fill(cardTint(selected: selected, correct: correct, revealed: revealed).opacity(selected || (revealed && correct) ? 0.16 : 0.06)))
-                    .overlay(RoundedRectangle(cornerRadius: 14).strokeBorder(cardTint(selected: selected, correct: correct, revealed: revealed), lineWidth: selected || (revealed && correct) ? 2 : 1))
-                }
-                .buttonStyle(RowPressStyle())
+                OFMultiOption(player: player, index: index, label: label, ink: ink)
             }
         }
     }
@@ -451,20 +487,7 @@ struct ReplayCompareView: View {
     }
 
     private func replayChoice(index: Int, label: String) -> some View {
-        let selected = player.selectedIndex == index
-        let correct = player.currentCorrectIndex == index
-        let revealed = player.revealed
-        let tint = revealed ? (correct ? bidColor : (selected ? askColor : Theme.surfaceBorder)) : Theme.answer
-        return Button {
-            guard !revealed else { return }
-            Haptics.selection(); player.selectedIndex = index
-        } label: {
-            Text(label).font(Theme.font(14, .black)).foregroundColor(ink)
-                .frame(maxWidth: .infinity).padding(.vertical, 12)
-                .background(RoundedRectangle(cornerRadius: 13).fill(selected ? tint.opacity(0.18) : Theme.surface))
-                .overlay(RoundedRectangle(cornerRadius: 13).strokeBorder(selected || (revealed && correct) ? tint : Theme.surfaceBorder, lineWidth: 2))
-        }
-        .buttonStyle(RowPressStyle())
+        OFOption(player: player, index: index, label: label, ink: ink)
     }
 }
 
@@ -604,20 +627,7 @@ struct TimeSalesView: View {
     }
 
     private func flowChoice(index: Int, label: String) -> some View {
-        let selected = player.selectedIndex == index
-        let correct = player.currentCorrectIndex == index
-        let revealed = player.revealed
-        let tint = revealed ? (correct ? bidColor : (selected ? askColor : Theme.surfaceBorder)) : Theme.answer
-        return Button {
-            guard !revealed else { return }
-            Haptics.selection(); player.selectedIndex = index
-        } label: {
-            Text(label).font(Theme.font(15, .black)).foregroundColor(ink)
-                .frame(maxWidth: .infinity).padding(.vertical, 13)
-                .background(RoundedRectangle(cornerRadius: 14).fill(selected ? tint.opacity(0.2) : Theme.surface))
-                .overlay(RoundedRectangle(cornerRadius: 14).strokeBorder(selected || (revealed && correct) ? tint : Theme.surfaceBorder, lineWidth: 2))
-        }
-        .buttonStyle(RowPressStyle())
+        OFOption(player: player, index: index, label: label, ink: ink)
     }
 }
 
@@ -761,20 +771,7 @@ struct FootprintQuestionView: View {
     }
 
     private func footprintChoice(index: Int, label: String) -> some View {
-        let selected = player.selectedIndex == index
-        let correct = player.currentCorrectIndex == index
-        let revealed = player.revealed
-        let tint = revealed ? (correct ? bidColor : (selected ? askColor : Theme.surfaceBorder)) : Theme.answer
-        return Button {
-            guard !revealed else { return }
-            Haptics.selection(); player.selectedIndex = index
-        } label: {
-            Text(label).font(Theme.font(15, .black)).foregroundColor(ink)
-                .frame(maxWidth: .infinity).padding(.vertical, 13)
-                .background(RoundedRectangle(cornerRadius: 14).fill(selected ? tint.opacity(0.2) : Theme.surface))
-                .overlay(RoundedRectangle(cornerRadius: 14).strokeBorder(selected || (revealed && correct) ? tint : Theme.surfaceBorder, lineWidth: 2))
-        }
-        .buttonStyle(RowPressStyle())
+        OFOption(player: player, index: index, label: label, ink: ink)
     }
 }
 
@@ -870,19 +867,6 @@ struct OrderFlowSimulationView: View {
     }
 
     private func choice(index: Int, label: String) -> some View {
-        let selected = player.selectedIndex == index
-        let correct = player.currentCorrectIndex == index
-        let revealed = player.revealed
-        let tint = revealed ? (correct ? bidColor : (selected ? askColor : Theme.surfaceBorder)) : Color.purple
-        return Button {
-            guard !revealed else { return }
-            Haptics.selection(); player.selectedIndex = index
-        } label: {
-            Text(label).font(Theme.font(14, .black)).foregroundColor(ink)
-                .frame(maxWidth: .infinity, alignment: .leading).padding(12)
-                .background(RoundedRectangle(cornerRadius: 13).fill(selected ? tint.opacity(0.18) : Theme.surface))
-                .overlay(RoundedRectangle(cornerRadius: 13).strokeBorder(selected || (revealed && correct) ? tint : Theme.surfaceBorder, lineWidth: 2))
-        }
-        .buttonStyle(RowPressStyle())
+        OFOption(player: player, index: index, label: label, ink: ink)
     }
 }
