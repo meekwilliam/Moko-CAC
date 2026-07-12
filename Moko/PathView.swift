@@ -381,7 +381,7 @@ struct PathView: View {
             if testOutAvailable {
                 Button {
                     Haptics.selection()
-                    onTestOut(node.sectionIndex)
+                    setTooltip(tooltipNode == node.num ? nil : node.num)
                 } label: {
                     // Speech-bubble callout in the app's own colors (dark slate
                     // + blue accent), not the unit color: solid fills, a crisp
@@ -428,8 +428,7 @@ struct PathView: View {
             Button(action: {
                 if testOutAvailable {
                     Haptics.selection()
-                    setTooltip(nil)
-                    onTestOut(node.sectionIndex)
+                    setTooltip(tooltipNode == node.num ? nil : node.num)
                     return
                 }
                 // Locked nodes still open a callout — it just says "Locked".
@@ -492,7 +491,8 @@ struct PathView: View {
     }
 
     private func shouldShowTestOut(for node: PathNode) -> Bool {
-        guard store.section(node.sectionIndex)?.testOutEnabled == true,
+        guard node.sectionIndex > 0,
+              store.section(node.sectionIndex)?.testOutEnabled == true,
               let first = store.nodes(inSection: node.sectionIndex).first,
               first.num == node.num else { return false }
         let unitNodes = store.nodes(inSection: node.sectionIndex).map(\.num)
@@ -519,21 +519,27 @@ struct PathView: View {
 
     private func startTooltip(_ node: PathNode, state: NodeState, color: (main: Color, dark: Color),
                               flipped: Bool = false) -> some View {
-        let locked = state == .locked
-        let label = locked ? "LOCKED"
+        let testOut = shouldShowTestOut(for: node)
+        let locked = state == .locked && !testOut
+        let label = testOut ? "SKIP TO UNIT \(node.sectionIndex + 1)"
+            : (locked ? "LOCKED"
             : (store.inProgressNode == node.num ? "CONTINUE"
-               : (state == .done ? "REPLAY +25 XP" : "START +100 XP"))
+               : (state == .done ? "REPLAY +25 XP" : "START +100 XP")))
         // Locked callout is greyed: slate card + muted title, matching the node.
         let cardFill = locked ? Color(hex: "#26364A") : Color.white
         let cardStroke = locked ? Color.white.opacity(0.08) : Color.black.opacity(0.07)
         let titleColor = locked ? Color.white.opacity(0.55) : Color(hex: "#0D1C3F")
         let pointer = Triangle().fill(cardFill).frame(width: 20, height: 11)
         let card = VStack(spacing: 12) {
-                Text(node.title)
+                Text(testOut ? "Test out \(store.section(node.sectionIndex)?.title ?? "this unit")" : node.title)
                     .font(Theme.font(15, .heavy)).foregroundColor(titleColor)
                     .multilineTextAlignment(.center).fixedSize(horizontal: false, vertical: true)
                 Button(action: {
-                    if locked {
+                    if testOut {
+                        Haptics.selection()
+                        setTooltip(nil)
+                        onTestOut(node.sectionIndex)
+                    } else if locked {
                         Haptics.play(.locked)      // can't start a locked lesson
                     } else {
                         Haptics.selection()
