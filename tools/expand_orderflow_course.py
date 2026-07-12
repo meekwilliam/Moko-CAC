@@ -2091,6 +2091,32 @@ def apply_remaining_fix_list(course):
                     "question": "Buyer aggression remains high, but price stalls against a refreshing offer. What changed?",
                     "options": ["Momentum is failing to convert pressure into progress", "Buying is gaining clean acceptance", "The tape proves buyers control the next move"],
                     "correct": 0, "explanation": "Persistent aggression without expected price progress warns that momentum is weakening or being absorbed."})
+    update(30, 1, question="What does the highlighted ask heavy row show?",
+           options=["Concentrated ask side execution shows buyer aggression", "One row proves momentum ignition", "Displayed offers are increasing"],
+           explanation="The highlighted row directly shows aggressive buying at the ask; ignition still requires liquidity consumption and price response.")
+    update(31, 1, question="What does the highlighted ask heavy row show?",
+           options=["Ask side execution advantage shows buyer aggression", "The buying is proven to be renewed", "Price continuation is guaranteed"],
+           explanation="The row shows buyer aggression, while renewal and continuation require comparison with the earlier pause and subsequent price response.")
+    update(33, 1, question="What does the highlighted row contribute to delta?",
+           options=["Positive net aggression because ask execution exceeds bid execution", "Only total volume without direction", "Displayed resting depth at that price"],
+           explanation="Ask execution exceeding bid execution contributes positive delta at the highlighted price.")
+
+    advanced_sequences = {
+        29: ("Build the buyer and seller imbalance read.",
+             ["Identify the dominant execution side", "Check whether adjacent prices reinforce it", "Compare the pressure with nearby liquidity", "Confirm whether price responds"]),
+        30: ("Build the momentum ignition read.",
+             ["Sudden aggression appears", "Nearby liquidity is consumed", "Price expands rapidly", "Follow through confirms ignition"]),
+        31: ("Build the momentum continuation and failure read.",
+             ["Observe the prior directional pressure", "Track the pause or balanced execution", "Watch whether directional pressure renews or disappears", "Use price response to confirm continuation or failure"]),
+        33: ("Build the delta and volume comparison.",
+             ["Measure total executed volume", "Calculate net aggressive imbalance", "Compare delta with price response", "Interpret agreement or divergence"]),
+        35: ("Build the price and pressure divergence read.",
+             ["Identify the dominant executed pressure", "Compare it with price direction and progress", "Check the location and nearby liquidity", "Classify agreement or divergence"]),
+    }
+    for node, (question, items) in advanced_sequences.items():
+        sequence = next(item for item in lessons[node]["screens"] if item["type"] == "sequence_builder")
+        sequence.update({"question": question, "items": items, "correct_order": items,
+                         "explanation": "Each step connects executed pressure with liquidity, price response, and the lesson specific conclusion."})
     update(36, 5, question="Rising price is shown beside this footprint. Tap the negative delta row that conflicts with it.",
            explanation="The selected row shows aggressive selling even as price rises.")
     update(36, 6, options=["Delta matters most when price produces the expected response",
@@ -2233,6 +2259,12 @@ def apply_remaining_fix_list(course):
            explanation="Replay A clears staggered liquidity, survives the deeper retest, and rebuilds acceptance beyond the level.")
     update(53, 6, direction="sideways", question="Which live response would invalidate acceptance?", correct=2,
            explanation="Rangebound price that cannot build beyond the level fails to confirm continued acceptance.")
+    update(53, 3, explanation="Replay B fails to hold above the level, returns inside, and shifts control to sellers, trapping late buyers.")
+    replace(41, 7, {"type": "sequence_builder", "chart": "rejectionWickUp",
+                    "question": "Build the upside sweep read.",
+                    "items": ["Price approaches the prior high", "Buyers trade through the level", "Price fails to gain acceptance above it", "Price returns below the level"],
+                    "correct_order": ["Price approaches the prior high", "Buyers trade through the level", "Price fails to gain acceptance above it", "Price returns below the level"],
+                    "explanation": "An upside sweep trades through a prior high, fails to establish acceptance, and returns below the level."})
 
     # Every Unit 10 order type candidate now tests the execution tradeoff.
     replace(71, 2, {"type": "orderflow_sim", "event": "thin_risk",
@@ -2334,6 +2366,21 @@ def validate_remaining_fix_list(course):
     assert screen(69, 6).get("event") == "breakdown_pressure"
     assert screen(53, 4).get("event") == "acceptance_challenge"
     assert screen(53, 6).get("direction") == "sideways"
+    assert screen(41, 7).get("correct_order", [""])[0] == "Price approaches the prior high"
+    assert screen(30, 1)["options"][0] == "Concentrated ask side execution shows buyer aggression"
+    assert screen(31, 1)["options"][0] == "Ask side execution advantage shows buyer aggression"
+    assert "delta" in screen(33, 1)["question"].lower()
+    assert "trapping late buyers" in screen(53, 3)["explanation"]
+    expected_sequence_starts = {
+        29: "Identify the dominant execution side",
+        30: "Sudden aggression appears",
+        31: "Observe the prior directional pressure",
+        33: "Measure total executed volume",
+        35: "Identify the dominant executed pressure",
+    }
+    for node, first_step in expected_sequence_starts.items():
+        sequence = next(item for item in lessons[node]["screens"] if item["type"] == "sequence_builder")
+        assert sequence.get("correct_order", [""])[0] == first_step
     generic_explanations = {
         "The interaction must match the evidence required by this specific setup.",
         "Expert execution decisions combine market evidence with risk.",

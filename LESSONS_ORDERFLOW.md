@@ -1548,28 +1548,27 @@ A narrow spread confirms directional control
 The largest footprint row determines the entire candle read
 WHY: Seller imbalance can push price lower.
 
-[ORDER] Build the read.
+[ORDER] Build the buyer and seller imbalance read.
 SKILL: market_sequence
-Buyer pressure appears
-Offers get consumed
-Price reaches higher levels
-The chart confirms the move
-WHY: Read pressure, liquidity, price, then confirmation.
+Identify the dominant execution side
+Check whether adjacent prices reinforce it
+Compare the pressure with nearby liquidity
+Confirm whether price responds
+WHY: Each step connects executed pressure with liquidity, price response, and the lesson specific conclusion.
 
 NODE 30
 TITLE: Momentum Ignition
 TYPE: STANDARD
 CELEBRATION: Momentum Ignition complete.
 
-[FOOTPRINT] What's the best footprint read?
+[FOOTPRINT] What does the highlighted ask heavy row show?
 VISUAL: A footprint grid places bid volume left of price and ask volume right of price, showing one target row carrying the largest ask side execution advantage.
 SKILL: footprint_reading
 EVENT: lift
-Sudden aggression can ignite momentum
-Several ask heavy rows prove sellers withdrew
-High total volume must contain directional delta
-One footprint candle is enough to ignore location
-WHY: Sudden aggression can ignite momentum.
+Concentrated ask side execution shows buyer aggression
+One row proves momentum ignition
+Displayed offers are increasing
+WHY: The highlighted row directly shows aggressive buying at the ask; ignition still requires liquidity consumption and price response.
 
 [FOOTPRINT_TAP] Tap the row where buyer pressure concentrates.
 VISUAL: A footprint grid places bid volume left of price and ask volume right of price, showing one target row carrying the largest ask side execution advantage.
@@ -1588,11 +1587,11 @@ WHY: Sudden aggression can ignite momentum.
 
 [ORDER] Build the momentum ignition read.
 SKILL: market_sequence
-Buyer pressure appears
-Offers get consumed
-Price reaches higher levels
-The chart confirms the move
-WHY: Read pressure, liquidity, price, then confirmation.
+Sudden aggression appears
+Nearby liquidity is consumed
+Price expands rapidly
+Follow through confirms ignition
+WHY: Each step connects executed pressure with liquidity, price response, and the lesson specific conclusion.
 
 [MC] What makes a burst a possible momentum ignition?
 SKILL: momentum_ignition
@@ -1606,15 +1605,14 @@ TITLE: Momentum Continuation & Failure
 TYPE: STANDARD
 CELEBRATION: Momentum Continuation & Failure complete.
 
-[FOOTPRINT] What's the best footprint read?
+[FOOTPRINT] What does the highlighted ask heavy row show?
 VISUAL: A footprint grid places bid volume left of price and ask volume right of price, showing one target row carrying the largest ask side execution advantage.
 SKILL: footprint_reading
 EVENT: lift
-Renewed buying can continue momentum
-The largest total row proves directional delta
-The bid ask split represents resting limit orders
-One same price difference confirms a stacked diagonal imbalance
-WHY: Renewed buying can continue momentum.
+Ask side execution advantage shows buyer aggression
+The buying is proven to be renewed
+Price continuation is guaranteed
+WHY: The row shows buyer aggression, while renewal and continuation require comparison with the earlier pause and subsequent price response.
 
 [FOOTPRINT_TAP] Tap the first stacked ask imbalance.
 VISUAL: A footprint grid places bid volume left of price and ask volume right of price, showing three consecutive rows showing ask side execution imbalances.
@@ -1646,13 +1644,13 @@ More displayed depth necessarily means more actual liquidity
 A second test should be read the same way as the first
 WHY: Momentum weakens when price stops responding.
 
-[ORDER] Build the momentum continuation & failure read.
+[ORDER] Build the momentum continuation and failure read.
 SKILL: market_sequence
-Seller pressure appears
-Bids get consumed
-Price reaches lower levels
-The chart confirms the move
-WHY: Read pressure, liquidity, price, then confirmation.
+Observe the prior directional pressure
+Track the pause or balanced execution
+Watch whether directional pressure renews or disappears
+Use price response to confirm continuation or failure
+WHY: Each step connects executed pressure with liquidity, price response, and the lesson specific conclusion.
 
 NODE 32
 TITLE: Stacked Pressure
@@ -1706,15 +1704,14 @@ TITLE: Delta vs. Volume
 TYPE: STANDARD
 CELEBRATION: Delta vs. Volume complete.
 
-[FOOTPRINT] What's the best footprint read?
+[FOOTPRINT] What does the highlighted row contribute to delta?
 VISUAL: A footprint grid places bid volume left of price and ask volume right of price, showing one target row carrying the largest ask side execution advantage.
 SKILL: footprint_reading
 EVENT: lift
-Net aggression compares buying with selling
-Several ask heavy rows prove sellers withdrew
-High total volume must contain directional delta
-One footprint candle is enough to ignore location
-WHY: Net aggression compares buying with selling.
+Positive net aggression because ask execution exceeds bid execution
+Only total volume without direction
+Displayed resting depth at that price
+WHY: Ask execution exceeding bid execution contributes positive delta at the highlighted price.
 
 [FOOTPRINT] How do volume and delta differ?
 VISUAL: A footprint grid places bid volume left of price and ask volume right of price, showing one target row carrying the largest ask side execution advantage.
@@ -1757,13 +1754,13 @@ EVENT: total_target
 TARGET: 3
 WHY: Total volume adds bid and ask executions, unlike delta.
 
-[ORDER] Build the delta vs. volume read.
+[ORDER] Build the delta and volume comparison.
 SKILL: market_sequence
-Buyer pressure appears
-Offers get consumed
-Price reaches higher levels
-The chart confirms the move
-WHY: Read pressure, liquidity, price, then confirmation.
+Measure total executed volume
+Calculate net aggressive imbalance
+Compare delta with price response
+Interpret agreement or divergence
+WHY: Each step connects executed pressure with liquidity, price response, and the lesson specific conclusion.
 
 NODE 34
 TITLE: Positive vs. Negative Delta Divergence
@@ -1848,11 +1845,11 @@ WHY: Price and pressure disagreement warns of weakness.
 
 [ORDER] Build the price and pressure divergence read.
 SKILL: market_sequence
-Seller pressure appears
-Bids get consumed
-Price reaches lower levels
-The chart confirms the move
-WHY: Read pressure, liquidity, price, then confirmation.
+Identify the dominant executed pressure
+Compare it with price direction and progress
+Check the location and nearby liquidity
+Classify agreement or divergence
+WHY: Each step connects executed pressure with liquidity, price response, and the lesson specific conclusion.
 
 [MC] Positive pressure appears while price weakens. What is the best conclusion?
 SKILL: price_and_pressure_divergence
@@ -2207,15 +2204,15 @@ Fast tape without progress => Urgency without confirmation
 Sweep => Liquidity taken followed by rejection
 WHY: Match the signal with its order flow clue.
 
-[ORDER] Build the read.
+[ORDER] Build the upside sweep read.
 VISUAL: Price briefly trades above a level and closes back below it, leaving a long upper wick.
 SKILL: market_sequence
 CHART: rejectionWickUp
-Seller pressure appears
-Bids get consumed
-Price reaches lower levels
-The chart confirms the move
-WHY: Read pressure, liquidity, price, then confirmation.
+Price approaches the prior high
+Buyers trade through the level
+Price fails to gain acceptance above it
+Price returns below the level
+WHY: An upside sweep trades through a prior high, fails to establish acceptance, and returns below the level.
 
 NODE 42
 TITLE: Sweep vs. Breakout Acceptance
@@ -2894,7 +2891,7 @@ SKILL: scenario_comparison
 Replay B
 Replay A
 Not enough evidence
-WHY: Acceptance needs continued execution and price holding beyond the level.
+WHY: Replay B fails to hold above the level, returns inside, and shifts control to sellers, trapping late buyers.
 
 [REPLAY_COMPARE] Which replay survives a deeper retest and resumes beyond the level?
 VISUAL: Replay A clears staggered offers, survives a retest, and establishes trade above. Replay B meets renewed offers and returns to the prior range.
