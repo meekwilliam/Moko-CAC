@@ -13,9 +13,14 @@ struct Lesson: Decodable {
     let featurePromo: String?
     let lessonType: String?
     let screens: [LessonScreen]
+    var assessmentOverallMinimum: Int? = nil
+    var assessmentPrerequisiteMinimum: Int? = nil
+    var assessmentTargetMinimum: Int? = nil
+    var assessmentTargetCompetencies: [String]? = nil
 
     enum CodingKeys: String, CodingKey {
         case node, title, celebration, screens, lessonType
+        case assessmentOverallMinimum, assessmentPrerequisiteMinimum, assessmentTargetMinimum, assessmentTargetCompetencies
         case featurePromo = "feature_promo"
     }
 }

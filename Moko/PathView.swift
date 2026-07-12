@@ -519,7 +519,7 @@ struct PathView: View {
         let label = testOut ? "SKIP TO UNIT \(node.sectionIndex + 1)"
             : (locked ? "LOCKED"
             : (store.inProgressNode == node.num ? "CONTINUE"
-               : (state == .done ? "REPLAY +25 XP" : "START +100 XP")))
+               : (state == .done ? (store.testedOutUnits.contains(node.sectionIndex) ? "TESTED OUT · REPLAY" : "REPLAY +25 XP") : "START +100 XP")))
         // Locked callout is greyed: slate card + muted title, matching the node.
         let cardFill = locked ? Color(hex: "#26364A") : Color.white
         let cardStroke = locked ? Color.white.opacity(0.08) : Color.black.opacity(0.07)

@@ -10,6 +10,7 @@ class ViewController: UIViewController {
     private var themeManager = ThemeManager()
     private var routerHost: UIHostingController<AppRouterView>?
     private var activeTestOutUnit: Int?
+    private var activeTestOutIsJump = false
 
     private var progress: ProgressStore { ProgressStore.shared }
 
@@ -58,7 +59,10 @@ class ViewController: UIViewController {
 
         appRouter.onOpenLesson = { [weak self] node in self?.openLesson(node: node) }
         appRouter.onOpenTestOut = { [weak self] unit in self?.openTestOut(unit: unit) }
-        appRouter.onCompleteTestOut = { [weak self] correct, total in self?.completeTestOut(correct: correct, total: total) }
+        appRouter.onCompleteTestOut = { [weak self] correct, total, correctCompetencies, missedCompetencies in
+            self?.completeTestOut(correct: correct, total: total, correctCompetencies: correctCompetencies,
+                                  missedCompetencies: missedCompetencies)
+        }
 
         appRouter.onSaveLessonProgress = { [weak self] screen in
             guard let node = self?.appRouter.currentLesson?.node else { return }
@@ -347,7 +351,8 @@ class ViewController: UIViewController {
             completed: progress.completed,
             sections: course.sections,
             nodes: course.nodes,
-            inProgressNode: progress.inProgressNode
+            inProgressNode: progress.inProgressNode,
+            testedOutUnits: progress.testedOutUnits
         )
     }
 
@@ -356,7 +361,8 @@ class ViewController: UIViewController {
     private func presentNativePath() {
         if let store = appRouter.pathStore {
             store.update(completed: progress.completed, xp: progress.xp, treats: progress.treats,
-                         streak: progress.streak, inProgressNode: progress.inProgressNode)
+                         streak: progress.streak, inProgressNode: progress.inProgressNode,
+                         testedOutUnits: progress.testedOutUnits)
         } else {
             appRouter.pathStore = PathStore(payload: makePathPayload())
         }
@@ -369,42 +375,56 @@ class ViewController: UIViewController {
 
     private func refreshPathState() {
         appRouter.pathStore?.update(completed: progress.completed, xp: progress.xp, treats: progress.treats,
-                                    streak: progress.streak, inProgressNode: progress.inProgressNode)
+                                    streak: progress.streak, inProgressNode: progress.inProgressNode,
+                                    testedOutUnits: progress.testedOutUnits)
     }
 
     private func openTestOut(unit: Int) {
         let course = Game.course(progress.currentCourse)
         guard let test = course.testOuts?.first(where: { $0.unitIndex == unit }) else { return }
-        let shuffled = test.questionPool.shuffled()
         var screens: [LessonScreen] = []
-        // Select one question from every required competency first. This keeps
-        // random attempts varied without allowing a core unit concept to vanish.
-        for competency in test.competencyBlueprint ?? [] {
-            if let match = shuffled.first(where: { candidate in
+        let previousNodes = course.nodes.filter { $0.sectionIndex == unit - 1 }.map(\.num)
+        let isJump = unit > 0 && !previousNodes.allSatisfy { progress.completed.contains($0) }
+
+        func appendQuestion(from pool: [LessonScreen], competency: String) {
+            if let match = pool.shuffled().first(where: { candidate in
                 candidate.competencyId == competency && !screens.contains(where: { $0.id == candidate.id })
-            }) {
-                screens.append(match)
+            }) { screens.append(match) }
+        }
+
+        if isJump, let prerequisiteBlueprint = test.jumpPrerequisiteBlueprint,
+           let targetBlueprint = test.jumpTargetBlueprint {
+            for slot in prerequisiteBlueprint {
+                guard let source = course.testOuts?.first(where: { $0.unitIndex == slot.unitIndex }) else { continue }
+                appendQuestion(from: source.questionPool, competency: slot.competencyId)
+            }
+            for competency in targetBlueprint { appendQuestion(from: test.questionPool, competency: competency) }
+        } else {
+            for competency in test.competencyBlueprint ?? [] {
+                appendQuestion(from: test.questionPool, competency: competency)
             }
         }
-        var coveredSkills = Set(screens.map { $0.skillId ?? $0.type })
-        for screen in shuffled {
-            if screens.count >= test.questionCount { break }
-            guard !screens.contains(where: { $0.id == screen.id }) else { continue }
-            let skill = screen.skillId ?? screen.type
-            if coveredSkills.insert(skill).inserted { screens.append(screen) }
-        }
-        if screens.count < test.questionCount {
-            for screen in shuffled where !screens.contains(where: { $0.id == screen.id }) {
+        let questionCount = isJump ? (test.jumpAheadQuestionCount ?? test.questionCount) : test.questionCount
+        let fallbackPools = isJump
+            ? (course.testOuts ?? []).filter { $0.unitIndex <= unit }.flatMap(\.questionPool)
+            : test.questionPool
+        if screens.count < questionCount {
+            for screen in fallbackPools.shuffled() where !screens.contains(where: { $0.id == screen.id }) {
                 screens.append(screen)
-                if screens.count == test.questionCount { break }
+                if screens.count == questionCount { break }
             }
         }
-        screens = Array(screens.prefix(test.questionCount)).shuffled()
+        screens = Array(screens.prefix(questionCount)).shuffled()
         guard !screens.isEmpty else { return }
         activeTestOutUnit = unit
-        let lesson = Lesson(node: -(unit + 1), title: "TEST OUT: \(course.sections[unit].title)",
+        activeTestOutIsJump = isJump
+        let lesson = Lesson(node: -(unit + 1), title: "\(isJump ? "JUMP AHEAD" : "TEST OUT"): \(course.sections[unit].title)",
                             celebration: "Assessment complete.", featurePromo: nil,
-                            lessonType: "TEST_OUT", screens: screens)
+                            lessonType: "TEST_OUT", screens: screens,
+                            assessmentOverallMinimum: isJump ? test.jumpPassingScore : test.passingScore,
+                            assessmentPrerequisiteMinimum: isJump ? test.jumpPrerequisiteMinimum : nil,
+                            assessmentTargetMinimum: isJump ? test.jumpTargetMinimum : nil,
+                            assessmentTargetCompetencies: isJump ? test.jumpTargetBlueprint : nil)
         appRouter.currentLessonIsReplay = false
         appRouter.currentLessonUnitColor = (Color(hex: "#2563EB"), Color(hex: "#B7791F"))
         appRouter.currentLessonBonusEligible = false
@@ -413,15 +433,30 @@ class ViewController: UIViewController {
         presentNativeLesson(lesson: lesson, startIndex: 0)
     }
 
-    private func completeTestOut(correct: Int, total: Int) {
+    private func completeTestOut(correct: Int, total _: Int, correctCompetencies: [String: Int],
+                                 missedCompetencies _: [String: Int]) {
         guard let unit = activeTestOutUnit else { return }
         activeTestOutUnit = nil
+        let isJump = activeTestOutIsJump
+        activeTestOutIsJump = false
         let course = Game.course(progress.currentCourse)
         guard let test = course.testOuts?.first(where: { $0.unitIndex == unit }) else { return }
-        if correct >= test.passingScore {
-            let nodes = course.nodes.filter { $0.sectionIndex == unit }.map(\.num).sorted()
+        let targetCompetencies = Set(test.jumpTargetBlueprint ?? [])
+        let targetCorrect = correctCompetencies.filter { targetCompetencies.contains($0.key) }.values.reduce(0, +)
+        let prerequisiteCorrect = correctCompetencies.filter { !targetCompetencies.contains($0.key) }.values.reduce(0, +)
+        let passed = isJump
+            ? correct >= (test.jumpPassingScore ?? test.passingScore) &&
+              prerequisiteCorrect >= (test.jumpPrerequisiteMinimum ?? 0) &&
+              targetCorrect >= (test.jumpTargetMinimum ?? 0)
+            : correct >= test.passingScore
+        if passed {
+            let testedUnits = isJump ? Array(0...unit) : [unit]
+            var nodes = course.nodes.filter { testedUnits.contains($0.sectionIndex) }.map(\.num).sorted()
             // Unit 10's Final Boss remains required for full course mastery.
-            progress.recordTestOut(unit: unit, completedNodes: unit == 9 ? Array(nodes.dropLast()) : nodes)
+            if unit == 9, let finalBoss = course.nodes.filter({ $0.sectionIndex == 9 }).map(\.num).max() {
+                nodes.removeAll { $0 == finalBoss }
+            }
+            progress.recordTestOut(units: testedUnits, completedNodes: nodes)
         }
         appRouter.isTestLesson = false
         refreshPathState()

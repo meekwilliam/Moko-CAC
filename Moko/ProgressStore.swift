@@ -125,6 +125,7 @@ final class ProgressStore: ObservableObject {
     // MARK: Reads
 
     var completed: [Int] { cur.completed }
+    var testedOutUnits: [Int] { cur.testedOutUnits ?? [] }
     var xp: Int { s.xp }
     var treats: Int { s.treats }
     var streak: Int { s.streak }
@@ -274,12 +275,14 @@ final class ProgressStore: ObservableObject {
         return extendedStreakToday
     }
 
-    func recordTestOut(unit: Int, completedNodes: [Int]) {
+    func recordTestOut(units: [Int], completedNodes: [Int]) {
         var c = cur
         for node in completedNodes where !c.completed.contains(node) { c.completed.append(node) }
         var tested = c.testedOutUnits ?? []
-        if !tested.contains(unit) { tested.append(unit) }
+        for unit in units where !tested.contains(unit) { tested.append(unit) }
         c.testedOutUnits = tested
+        // A Test Out is a single assessment reward, not the sum of every
+        // skipped lesson's XP. This prevents jump-ahead farming.
         s.xp += 100
         cur = c
     }
