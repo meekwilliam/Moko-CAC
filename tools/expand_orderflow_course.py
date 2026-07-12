@@ -799,6 +799,9 @@ def visual_description(screen):
     if kind == "aggressor":
         side = "ask sizes being consumed by incoming buy orders" if screen.get("event") == "lift" else "bid sizes being consumed by incoming sell orders"
         return f"An animated Level II ladder shows prices between bid and ask columns, with {side}."
+    if kind == "dom_tap":
+        target = "highest resting bid" if screen.get("event") == "best_bid" else "lowest resting ask"
+        return f"A full DOM ladder shows several bid and ask price levels. The learner must identify the {target}, with the inside market highlighted only after selection."
     if kind == "book_drag":
         order = "market buy" if screen.get("order") == "market_buy" else "market sell"
         return f"A draggable {order} card sits beside a Level II ladder with bid and ask drop targets."
@@ -825,6 +828,9 @@ def visual_description(screen):
             "acceptance_challenge": "Replay A clears staggered offers, survives a retest, and establishes trade above. Replay B meets renewed offers and returns to the prior range.",
             "double_top_flow": "Replay A shows the first resistance test with strong buyer execution. Replay B shows a second test with weaker buying, stronger seller response, and a return below resistance.",
             "double_bottom_flow": "Replay A shows the first support test with strong seller execution. Replay B shows a second test with weaker selling, stronger buyer response, and a reclaim above support.",
+            "pulled_vs_consumed": "Replay A shows the ask disappearing before any matching trade prints. Replay B shows trades repeatedly executing against the ask until displayed size reaches zero.",
+            "cvd_agreement": "Replay A shows price and CVD rising together. Replay B shows price rising while CVD falls.",
+            "profile_concentration": "Replay A shows a Volume Profile with one dominant bulge around its POC. Replay B shows volume distributed more evenly across prices.",
         }
         return replay_visuals.get(screen.get("event"), "Replay A shows offers clearing and price holding above resistance. Replay B shows replenishment and price falling back inside.")
     if kind in {"time_sales", "time_sales_tap"}:
@@ -848,6 +854,10 @@ def visual_description(screen):
         return f"A footprint grid places bid volume left of price and ask volume right of price, showing {detail}."
     if kind == "cvd_chart":
         return "Price candles appear above a lower CVD panel whose line rises as positive execution delta accumulates."
+    if kind == "cvd_tap":
+        if screen.get("event") == "bullish_divergence":
+            return "Price forms two lows with the second below the first, while the lower CVD panel forms a higher second low. Both pivot zones are tappable."
+        return "Price forms two highs with the second above the first, while the lower CVD panel forms a lower second peak. Both pivot zones are tappable."
     if kind in {"volume_profile", "volume_profile_tap"}:
         detail = {
             "poc": "the longest horizontal volume bar at the target price, marking the Point of Control",
@@ -856,6 +866,9 @@ def visual_description(screen):
             "lvn": "a narrow low participation area between two larger volume clusters",
         }.get(screen.get("event"), "horizontal bars whose lengths represent executed volume at each price")
         return f"A horizontal Volume Profile appears beside a compact price chart, showing {detail}."
+    if kind == "mark_level" and screen.get("event") in {"profile_vah", "profile_val"}:
+        boundary = "upper" if screen.get("event") == "profile_vah" else "lower"
+        return f"A horizontal Volume Profile shows a shaded value region with labels hidden. The learner marks its {boundary} boundary."
     if kind == "live_chart":
         direction = screen.get("direction", "sideways")
         movement = {"up": "building upward", "down": "building downward", "sideways": "alternating inside a range"}.get(direction, "updating")
@@ -870,6 +883,7 @@ def visual_description(screen):
             "iceberg": "Level II repeatedly shows 100 shares at the offer. Each 100 share execution clears the display, then another 100 immediately reappears at the same price while Time and Sales keeps printing buys.",
             "chop": "A range shows little net progress while Time and Sales alternates rapidly between buyers and sellers and the footprint displays heavy balanced execution on both sides.",
             "volume_profile_context": "Price reaches a high volume profile node, buyer initiated prints slow, nearby offers replenish, and upward price progress stalls.",
+            "cvd_warning": "Price makes a new high while CVD makes a lower high, yet offers continue thinning and price holds above resistance instead of failing back inside.",
             "low_volume_trend": "Price advances steadily as Level II shows sparse opposing offers, Time and Sales prints at a measured pace, and the footprint shows modest directional execution rather than a volume surge.",
             "thin_risk": "Level II shows small nearby size with gaps, the spread widens during a market order, Time and Sales jumps across prices, and the simulated fill lands worse than the initial quote.",
             "downside_sweep": "Price trades below a prior low as sell stops trigger and seller initiated prints surge, then bids rebuild, buying responds, and price immediately reclaims the breached level.",
@@ -918,6 +932,8 @@ def markdown_screen(screen):
             f"ORDER: {order}",
             f"ANSWER: {'the ask' if order == 'market_buy' else 'the bid'}",
         ])
+    elif kind == "dom_tap":
+        lines.extend([f"[DOM_TAP] {question}", f"EVENT: {screen.get('event', 'best_bid')}", f"TARGET: {screen.get('target', 0)}"])
     elif kind == "book_compare":
         lines.append(f"[BOOK_COMPARE] {question}")
         lines.extend(answer_first(screen))
@@ -941,6 +957,8 @@ def markdown_screen(screen):
     elif kind == "cvd_chart":
         lines.extend([f"[CVD_CHART] {question}", f"EVENT: {screen.get('event', 'rising')}"])
         lines.extend(answer_first(screen))
+    elif kind == "cvd_tap":
+        lines.extend([f"[CVD_TAP] {question}", f"EVENT: {screen.get('event', 'bearish_divergence')}", f"TARGET: {screen.get('target', 0)}"])
     elif kind == "volume_profile":
         lines.extend([f"[VOLUME_PROFILE] {question}", f"EVENT: {screen.get('event', 'overview')}"])
         lines.extend(answer_first(screen))
@@ -2439,14 +2457,20 @@ def apply_dom_cvd_and_volume_profile(course):
     lessons[6]["title"] = "Reading the Order Book & DOM"
     lessons[6]["celebration"] = "Reading the Order Book & DOM complete."
     lessons[6]["screens"].extend([
-        {"type": "multiple_choice", "question": "What does DOM stand for?",
-         "options": ["Depth of Market", "Direction of Momentum", "Distribution of Market volume"],
-         "correct": 0,
-         "explanation": "DOM stands for Depth of Market and commonly refers to an order book ladder showing available bid and ask depth across price levels."},
-        {"type": "multiple_choice", "question": "How are DOM and Level II related?",
-         "options": ["Both can display available bid and ask depth across multiple price levels", "DOM only shows executed trades", "Level II only shows candle volume"],
-         "correct": 0,
-         "explanation": "DOM and Level II are closely related ways of viewing available order book depth, although exact data depends on the venue and feed."},
+        {"type": "dom_tap", "event": "best_bid", "target": 3,
+         "question": "Tap the current best bid.",
+         "explanation": "The best bid is the highest currently displayed resting buy price. DOM means Depth of Market and shows available depth from the relevant venue or feed."},
+        {"type": "dom_tap", "event": "best_ask", "target": 2,
+         "question": "Tap the current best ask.",
+         "explanation": "The best ask is the lowest currently displayed resting sell price on the DOM ladder."},
+        {"type": "replay_compare", "event": "pulled_vs_consumed",
+         "question": "Which replay shows ask liquidity being pulled rather than executed?",
+         "options": ["Replay A", "Replay B", "Neither"], "correct": 0,
+         "explanation": "Replay A removes the ask before a matching trade prints. Replay B consumes the ask through completed executions."},
+        {"type": "orderflow_sim", "event": "seller_absorption",
+         "question": "Buyers keep lifting offers, but a large ask replenishes and price cannot advance. What's strongest?",
+         "options": ["The replenishing ask is containing aggressive buying", "Buyers have clean acceptance above the ask", "The displayed ask guarantees a reversal"], "correct": 0,
+         "explanation": "The DOM, executed buying, replenishment, and weak price progress combine into a possible containment read."},
     ])
 
     # The lesson retains its original delta and volume work, then adds the
@@ -2455,17 +2479,23 @@ def apply_dom_cvd_and_volume_profile(course):
     lessons[33]["title"] = "Delta, Volume & CVD"
     lessons[33]["celebration"] = "Delta, Volume & CVD complete."
     lessons[33]["screens"].extend([
-        {"type": "multiple_choice", "question": "What does CVD stand for?",
-         "options": ["Cumulative Volume Delta", "Combined Volume Distribution", "Current Volatility Direction"],
-         "correct": 0,
-         "explanation": "CVD stands for Cumulative Volume Delta and tracks the running accumulation of aggressive buying minus aggressive selling."},
-        {"type": "cvd_chart", "event": "rising", "question": "What does a rising CVD line generally show?",
-         "options": ["Aggressive buying is cumulatively exceeding aggressive selling", "Price is guaranteed to rise", "Resting ask liquidity is increasing"],
-         "correct": 0,
-         "explanation": "Rising CVD means positive execution delta is accumulating, although price still needs to be evaluated separately."},
-        {"type": "replay_compare", "event": "cvd_divergence", "question": "Which replay shows price and CVD disagreeing?",
+        {"type": "sequence_builder", "question": "Build how CVD accumulates over time.",
+         "items": ["Positive delta prints", "CVD rises", "Negative delta prints", "CVD gives back part of the rise"],
+         "correct_order": ["Positive delta prints", "CVD rises", "Negative delta prints", "CVD gives back part of the rise"],
+         "explanation": "Cumulative Volume Delta, or CVD, accumulates execution delta over time."},
+        {"type": "cvd_tap", "event": "bearish_divergence", "target": 1,
+         "question": "Tap where price makes a new high but CVD fails to confirm it.",
+         "explanation": "Price makes a higher high while cumulative aggressive buying fails to make a corresponding higher high."},
+        {"type": "cvd_tap", "event": "bullish_divergence", "target": 1,
+         "question": "Tap where price makes a lower low while CVD makes a higher low.",
+         "explanation": "The second price low extends lower while the CVD low holds above its prior low, creating bullish disagreement."},
+        {"type": "replay_compare", "event": "cvd_agreement", "question": "Which replay shows price and CVD agreeing?",
          "options": ["Replay A", "Replay B", "Neither"], "correct": 0,
-         "explanation": "Replay A shows price reaching a new high without matching cumulative aggressive buying. This disagreement deserves context and confirmation but does not guarantee reversal."},
+         "explanation": "In Replay A, price and cumulative aggressive pressure move higher together."},
+        {"type": "orderflow_sim", "event": "cvd_warning",
+         "question": "Price makes a new high without CVD confirmation, but offers thin and price holds above resistance. What's strongest?",
+         "options": ["The CVD disagreement is a warning, but price acceptance remains strong", "CVD guarantees an immediate reversal", "The breakout has already failed"], "correct": 0,
+         "explanation": "CVD disagreement deserves attention, but thinning offers and acceptance above resistance still support the current price response."},
     ])
 
     # Absorption requires active aggression plus weak corresponding progress.
@@ -2495,30 +2525,27 @@ def apply_dom_cvd_and_volume_profile(course):
         if lesson["node"] >= 63:
             lesson["node"] += 1
     volume_screens = [
-        {"type": "volume_profile", "event": "overview", "question": "What does Volume Profile show?",
-         "options": ["How much volume traded at different price levels over a selected period", "Only aggressive buying minus selling", "The number of resting orders currently in Level II"], "correct": 0,
-         "explanation": "Volume Profile organizes executed volume by price rather than only by time."},
         {"type": "volume_profile_tap", "event": "poc", "target": 3, "question": "Tap the Point of Control.",
          "explanation": "The Point of Control, or POC, is the price with the greatest traded volume inside the selected profile."},
-        {"type": "volume_profile", "event": "value_area", "question": "What does the Value Area represent?",
-         "options": ["The price region containing a defined majority of the profile's traded volume", "Every price touched during the session", "Only prices above VWAP"], "correct": 0,
-         "explanation": "The Value Area contains a defined share of total profile volume, commonly centered around the highest volume region."},
-        {"type": "matching", "question": "Match each profile term.",
-         "pairs": [["VAH", "Upper boundary of the value area"], ["VAL", "Lower boundary of the value area"], ["POC", "Price with the greatest traded volume"]],
-         "explanation": "VAH and VAL define the value area's upper and lower boundaries, while POC marks the highest volume price."},
-        {"type": "volume_profile", "event": "hvn", "question": "What does a high volume node show?",
-         "options": ["A price region where substantial trading activity occurred", "A guaranteed future support level", "An area with no executed trades"], "correct": 0,
-         "explanation": "A high volume node marks a price region where trading activity accumulated, but it does not guarantee future support or resistance."},
-        {"type": "volume_profile", "event": "lvn", "question": "What does a low volume node show?",
-         "options": ["A price region with relatively little historical traded volume", "A guaranteed breakout level", "The strongest current bid"], "correct": 0,
-         "explanation": "A low volume node represents comparatively low historical participation at that price."},
-        {"type": "matching", "question": "Match each tool to what it shows.",
-         "pairs": [["Volume Profile", "Total traded volume organized by price"], ["Footprint", "Bid and ask executions separated inside price rows"], ["Level II or DOM", "Current displayed resting depth"], ["Time & Sales", "Individual completed executions"]],
-         "explanation": "Each tool answers a different question about historical execution, current resting liquidity, or completed trades."},
+        {"type": "mark_level", "event": "profile_vah", "level": 101.00, "question": "Mark the Value Area High.",
+         "explanation": "Value Area High is the upper boundary of the profile's shaded value region."},
+        {"type": "mark_level", "event": "profile_val", "level": 100.50, "question": "Mark the Value Area Low.",
+         "explanation": "Value Area Low is the lower boundary of the profile's shaded value region."},
+        {"type": "volume_profile_tap", "event": "hvn", "target": 1, "question": "Tap the strongest high volume node.",
+         "explanation": "The selected bulge is a price region where substantial trading activity accumulated, not a guaranteed future support level."},
+        {"type": "volume_profile_tap", "event": "lvn", "target": 3, "question": "Tap the thinnest low volume area between the two larger nodes.",
+         "explanation": "The narrow area between the larger volume clusters shows comparatively low historical participation."},
+        {"type": "replay_compare", "event": "profile_concentration", "question": "Which profile concentrates more volume around one accepted price area?",
+         "options": ["Replay A", "Replay B", "Neither"], "correct": 0,
+         "explanation": "Replay A forms one dominant bulge around its POC, while Replay B distributes volume more evenly."},
         {"type": "orderflow_sim", "event": "volume_profile_context",
-         "question": "Price reaches a high volume node while aggressive buying slows and upward progress stalls. What's strongest?",
-         "options": ["The high volume area provides context, but the stalled response and replenishment matter more for the immediate read", "The high volume node guarantees reversal", "Volume Profile alone confirms seller control"], "correct": 0,
-         "explanation": "Profile location provides context, while current execution, liquidity behavior, and price response determine the immediate order flow read."},
+         "question": "Price reaches the POC, aggressive buying increases, but the offer replenishes and price stalls. What's strongest?",
+         "options": ["The POC gives location while replenishment and stalled price suggest buying is being contained", "The POC guarantees reversal", "Volume Profile alone confirms seller control"], "correct": 0,
+         "explanation": "Profile location provides context, while current execution, liquidity behavior, and price response determine the immediate read."},
+        {"type": "evidence_select", "question": "Select the three clues that make this profile level meaningful right now.",
+         "options": ["Price reaches the high volume node", "Aggressive execution appears there", "Price shows a clear response", "The profile bar is blue"],
+         "targets": [0, 1, 2],
+         "explanation": "Location, active execution, and price response make the profile level relevant. Its display color does not."},
     ]
     course["nodes"].append({"num": 63, "svg": nodes[63]["svg"], "title": "Volume Profile & Key Trading Zones", "sectionIndex": 7})
     course["lessons"].append({"node": 63, "title": "Volume Profile & Key Trading Zones",
@@ -2604,7 +2631,7 @@ def add_skill_tags_and_test_outs(course):
         "u1.spread": ["orderflow.u1.n3.q1", "orderflow.u1.n3.q2", "orderflow.u1.n3.q3"],
         "u1.aggressive_vs_passive": ["orderflow.u1.n2.q1", "orderflow.u1.n2.q2", "orderflow.u1.n2.q6"],
         "u1.order_price_chain": ["orderflow.u1.n1.q6"], "u1.combined_read": ["orderflow.u1.n1.q5"],
-        "u2.level_two": ["orderflow.u2.n6.q1"], "u2.resting_sides": ["orderflow.u2.n6.q2", "orderflow.u2.n6.q4"],
+        "u2.level_two": ["orderflow.u2.n6.q1", "orderflow.u2.n6.q8", "orderflow.u2.n6.q9", "orderflow.u2.n6.q11"], "u2.resting_sides": ["orderflow.u2.n6.q2", "orderflow.u2.n6.q4", "orderflow.u2.n6.q10"],
         "u2.thick_liquidity": ["orderflow.u2.n7.q2"], "u2.thin_liquidity": ["orderflow.u2.n7.q3", "orderflow.u2.n7.q4"],
         "u2.wall": ["orderflow.u2.n8.q1", "orderflow.u2.n8.q2"], "u2.wall_behavior": ["orderflow.u2.n8.q3", "orderflow.u2.n8.q4", "orderflow.u2.n8.q5"],
         "u2.spoofing": ["orderflow.u2.n9.q2", "orderflow.u2.n9.q3"], "u2.combined_book_read": ["orderflow.u2.n11.q6", "orderflow.u2.n11.q7"],
@@ -2630,7 +2657,7 @@ def add_skill_tags_and_test_outs(course):
         "u5.positive_delta_divergence": ["orderflow.u5.n34.q2", "orderflow.u5.n34.q4"],
         "u5.negative_delta_divergence": ["orderflow.u5.n34.q3", "orderflow.u5.n34.q5"],
         "u5.combined_footprint_read": ["orderflow.u5.n36.q1", "orderflow.u5.n36.q5", "orderflow.u5.n36.q6"],
-        "u5.cumulative_volume_delta": ["orderflow.u5.n33.q8", "orderflow.u5.n33.q9", "orderflow.u5.n33.q10"],
+        "u5.cumulative_volume_delta": ["orderflow.u5.n33.q8", "orderflow.u5.n33.q9", "orderflow.u5.n33.q10", "orderflow.u5.n33.q11", "orderflow.u5.n33.q12"],
         "u6.liquidity_pool": ["orderflow.u6.n38.q1"], "u6.stop_cluster": ["orderflow.u6.n38.q2", "orderflow.u6.n38.q4", "orderflow.u6.n38.q6"],
         "u6.buy_stops": ["orderflow.u6.n39.q1", "orderflow.u6.n39.q3"], "u6.sell_stops": ["orderflow.u6.n39.q2", "orderflow.u6.n39.q6"],
         "u6.upside_sweep": ["orderflow.u6.n41.q3", "orderflow.u6.n41.q5"], "u6.downside_sweep": ["orderflow.u6.n41.q2", "orderflow.u6.n41.q4"],
@@ -2679,7 +2706,7 @@ def add_skill_tags_and_test_outs(course):
     def skill_for(title, screen):
         kind = screen["type"]
         title_key = re.sub(r"[^a-z0-9]+", "_", title.lower()).strip("_")
-        if kind == "cvd_chart" or screen.get("event") == "cvd_divergence" or "CVD" in (screen.get("question") or ""):
+        if kind in {"cvd_chart", "cvd_tap"} or screen.get("event") in {"cvd_divergence", "cvd_agreement", "cvd_warning"} or "CVD" in (screen.get("question") or ""):
             return "cumulative_volume_delta"
         if kind in {"volume_profile", "volume_profile_tap"} or (title == "Volume Profile & Key Trading Zones" and kind != "orderflow_sim"):
             return "volume_profile"
@@ -2689,7 +2716,7 @@ def add_skill_tags_and_test_outs(course):
             "book_compare": "book_depth", "mark_level": "liquidity_location",
             "replay_compare": "scenario_comparison", "orderflow_sim": "multi_signal_read",
             "evidence_select": "evidence_synthesis", "aggressor": "aggressor_side",
-            "book_drag": "order_routing", "sequence_builder": "market_sequence",
+            "book_drag": "order_routing", "dom_tap": "reading_the_order_book", "sequence_builder": "market_sequence",
         }
         title_skills = {
             "The Bid, Ask & Spread": "bid_ask_spread",
@@ -2909,7 +2936,7 @@ def main():
     validate_visual_alignment(course)
     expanded_lessons = {item["node"]: item for item in course["lessons"]}
     assert expanded_lessons[25]["screens"][0].get("event") == "seller_absorption"
-    assert expanded_lessons[33]["title"] == "Delta, Volume & CVD" and len(expanded_lessons[33]["screens"]) == 10
+    assert expanded_lessons[33]["title"] == "Delta, Volume & CVD" and len(expanded_lessons[33]["screens"]) == 12
     assert expanded_lessons[63]["title"] == "Volume Profile & Key Trading Zones" and len(expanded_lessons[63]["screens"]) == 8
     assert expanded_lessons[64]["screens"][5].get("event") == "chop"
     dedupe_exact_question_blocks(course)
@@ -2926,7 +2953,7 @@ def main():
     assert not any(screen["type"] == "fill_blank" for screen in all_screens)
     visual_screens = [
         screen for screen in all_screens
-        if screen["type"] in {"aggressor", "book_drag", "book_compare", "evidence_select", "replay_compare", "live_chart", "time_sales", "time_sales_tap", "footprint", "footprint_tap", "cvd_chart", "volume_profile", "volume_profile_tap", "orderflow_sim"} or "chart" in screen
+        if screen["type"] in {"aggressor", "book_drag", "dom_tap", "book_compare", "evidence_select", "replay_compare", "live_chart", "time_sales", "time_sales_tap", "footprint", "footprint_tap", "cvd_chart", "cvd_tap", "volume_profile", "volume_profile_tap", "orderflow_sim"} or "chart" in screen
     ]
     # The handcrafted foundation includes a few essential nonvisual checks.
     # Later units remain overwhelmingly visual despite shorter lesson lengths.

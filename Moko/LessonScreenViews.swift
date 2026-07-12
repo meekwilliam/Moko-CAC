@@ -184,7 +184,11 @@ struct LessonScreenRouter: View {
         case "tap_candles":
             TapCandlesView(player: player, ink: ink)
         case "mark_level":
-            MarkLevelView(player: player, ink: ink)
+            if player.screen.event == "profile_vah" || player.screen.event == "profile_val" {
+                VolumeProfileQuestionView(player: player, ink: ink)
+            } else {
+                MarkLevelView(player: player, ink: ink)
+            }
         case "draw_trendline":
             TrendlineView(player: player, ink: ink)
         case "mark_consolidation":
@@ -199,6 +203,8 @@ struct LessonScreenRouter: View {
             BookDragView(player: player, ink: ink)
         case "book_compare":
             BookDepthCompareView(player: player, ink: ink)
+        case "dom_tap":
+            DOMTapView(player: player, ink: ink)
         case "evidence_select":
             EvidenceSelectView(player: player, ink: ink)
         case "replay_compare":
@@ -211,7 +217,7 @@ struct LessonScreenRouter: View {
             FootprintQuestionView(player: player, ink: ink)
         case "footprint_tap":
             FootprintQuestionView(player: player, ink: ink)
-        case "cvd_chart":
+        case "cvd_chart", "cvd_tap":
             CVDChartQuestionView(player: player, ink: ink)
         case "volume_profile", "volume_profile_tap":
             VolumeProfileQuestionView(player: player, ink: ink)

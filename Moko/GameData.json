@@ -1131,28 +1131,46 @@
        "skillId": "aggressor_side"
       },
       {
-       "type": "multiple_choice",
-       "question": "What does DOM stand for?",
-       "options": [
-        "Depth of Market",
-        "Direction of Momentum",
-        "Distribution of Market volume"
-       ],
-       "correct": 0,
-       "explanation": "DOM stands for Depth of Market and commonly refers to an order book ladder showing available bid and ask depth across price levels.",
-       "skillId": "reading_the_order_book_dom"
+       "type": "dom_tap",
+       "event": "best_bid",
+       "target": 3,
+       "question": "Tap the current best bid.",
+       "explanation": "The best bid is the highest currently displayed resting buy price. DOM means Depth of Market and shows available depth from the relevant venue or feed.",
+       "skillId": "reading_the_order_book"
       },
       {
-       "type": "multiple_choice",
-       "question": "How are DOM and Level II related?",
+       "type": "dom_tap",
+       "event": "best_ask",
+       "target": 2,
+       "question": "Tap the current best ask.",
+       "explanation": "The best ask is the lowest currently displayed resting sell price on the DOM ladder.",
+       "skillId": "reading_the_order_book"
+      },
+      {
+       "type": "replay_compare",
+       "event": "pulled_vs_consumed",
+       "question": "Which replay shows ask liquidity being pulled rather than executed?",
        "options": [
-        "Both can display available bid and ask depth across multiple price levels",
-        "DOM only shows executed trades",
-        "Level II only shows candle volume"
+        "Replay A",
+        "Replay B",
+        "Neither"
        ],
        "correct": 0,
-       "explanation": "DOM and Level II are closely related ways of viewing available order book depth, although exact data depends on the venue and feed.",
-       "skillId": "reading_the_order_book_dom"
+       "explanation": "Replay A removes the ask before a matching trade prints. Replay B consumes the ask through completed executions.",
+       "skillId": "scenario_comparison"
+      },
+      {
+       "type": "orderflow_sim",
+       "event": "seller_absorption",
+       "question": "Buyers keep lifting offers, but a large ask replenishes and price cannot advance. What's strongest?",
+       "options": [
+        "The replenishing ask is containing aggressive buying",
+        "Buyers have clean acceptance above the ask",
+        "The displayed ask guarantees a reversal"
+       ],
+       "correct": 0,
+       "explanation": "The DOM, executed buying, replenishment, and weak price progress combine into a possible containment read.",
+       "skillId": "multi_signal_read"
       }
      ]
     },
@@ -3374,41 +3392,63 @@
        "skillId": "market_sequence"
       },
       {
-       "type": "multiple_choice",
-       "question": "What does CVD stand for?",
-       "options": [
-        "Cumulative Volume Delta",
-        "Combined Volume Distribution",
-        "Current Volatility Direction"
+       "type": "sequence_builder",
+       "question": "Build how CVD accumulates over time.",
+       "items": [
+        "Positive delta prints",
+        "CVD rises",
+        "Negative delta prints",
+        "CVD gives back part of the rise"
        ],
-       "correct": 0,
-       "explanation": "CVD stands for Cumulative Volume Delta and tracks the running accumulation of aggressive buying minus aggressive selling.",
+       "correct_order": [
+        "Positive delta prints",
+        "CVD rises",
+        "Negative delta prints",
+        "CVD gives back part of the rise"
+       ],
+       "explanation": "Cumulative Volume Delta, or CVD, accumulates execution delta over time.",
        "skillId": "cumulative_volume_delta"
       },
       {
-       "type": "cvd_chart",
-       "event": "rising",
-       "question": "What does a rising CVD line generally show?",
-       "options": [
-        "Aggressive buying is cumulatively exceeding aggressive selling",
-        "Price is guaranteed to rise",
-        "Resting ask liquidity is increasing"
-       ],
-       "correct": 0,
-       "explanation": "Rising CVD means positive execution delta is accumulating, although price still needs to be evaluated separately.",
+       "type": "cvd_tap",
+       "event": "bearish_divergence",
+       "target": 1,
+       "question": "Tap where price makes a new high but CVD fails to confirm it.",
+       "explanation": "Price makes a higher high while cumulative aggressive buying fails to make a corresponding higher high.",
+       "skillId": "cumulative_volume_delta"
+      },
+      {
+       "type": "cvd_tap",
+       "event": "bullish_divergence",
+       "target": 1,
+       "question": "Tap where price makes a lower low while CVD makes a higher low.",
+       "explanation": "The second price low extends lower while the CVD low holds above its prior low, creating bullish disagreement.",
        "skillId": "cumulative_volume_delta"
       },
       {
        "type": "replay_compare",
-       "event": "cvd_divergence",
-       "question": "Which replay shows price and CVD disagreeing?",
+       "event": "cvd_agreement",
+       "question": "Which replay shows price and CVD agreeing?",
        "options": [
         "Replay A",
         "Replay B",
         "Neither"
        ],
        "correct": 0,
-       "explanation": "Replay A shows price reaching a new high without matching cumulative aggressive buying. This disagreement deserves context and confirmation but does not guarantee reversal.",
+       "explanation": "In Replay A, price and cumulative aggressive pressure move higher together.",
+       "skillId": "cumulative_volume_delta"
+      },
+      {
+       "type": "orderflow_sim",
+       "event": "cvd_warning",
+       "question": "Price makes a new high without CVD confirmation, but offers thin and price holds above resistance. What's strongest?",
+       "options": [
+        "The CVD disagreement is a warning, but price acceptance remains strong",
+        "CVD guarantees an immediate reversal",
+        "The breakout has already failed"
+       ],
+       "correct": 0,
+       "explanation": "CVD disagreement deserves attention, but thinning offers and acceptance above resistance still support the current price response.",
        "skillId": "cumulative_volume_delta"
       }
      ]
@@ -6133,19 +6173,6 @@
      "lessonType": "STANDARD",
      "screens": [
       {
-       "type": "volume_profile",
-       "event": "overview",
-       "question": "What does Volume Profile show?",
-       "options": [
-        "How much volume traded at different price levels over a selected period",
-        "Only aggressive buying minus selling",
-        "The number of resting orders currently in Level II"
-       ],
-       "correct": 0,
-       "explanation": "Volume Profile organizes executed volume by price rather than only by time.",
-       "skillId": "volume_profile"
-      },
-      {
        "type": "volume_profile_tap",
        "event": "poc",
        "target": 3,
@@ -6154,100 +6181,79 @@
        "skillId": "volume_profile"
       },
       {
-       "type": "volume_profile",
-       "event": "value_area",
-       "question": "What does the Value Area represent?",
-       "options": [
-        "The price region containing a defined majority of the profile's traded volume",
-        "Every price touched during the session",
-        "Only prices above VWAP"
-       ],
-       "correct": 0,
-       "explanation": "The Value Area contains a defined share of total profile volume, commonly centered around the highest volume region.",
+       "type": "mark_level",
+       "event": "profile_vah",
+       "level": 101.0,
+       "question": "Mark the Value Area High.",
+       "explanation": "Value Area High is the upper boundary of the profile's shaded value region.",
        "skillId": "volume_profile"
       },
       {
-       "type": "matching",
-       "question": "Match each profile term.",
-       "pairs": [
-        [
-         "VAH",
-         "Upper boundary of the value area"
-        ],
-        [
-         "VAL",
-         "Lower boundary of the value area"
-        ],
-        [
-         "POC",
-         "Price with the greatest traded volume"
-        ]
-       ],
-       "explanation": "VAH and VAL define the value area's upper and lower boundaries, while POC marks the highest volume price.",
+       "type": "mark_level",
+       "event": "profile_val",
+       "level": 100.5,
+       "question": "Mark the Value Area Low.",
+       "explanation": "Value Area Low is the lower boundary of the profile's shaded value region.",
        "skillId": "volume_profile"
       },
       {
-       "type": "volume_profile",
+       "type": "volume_profile_tap",
        "event": "hvn",
-       "question": "What does a high volume node show?",
-       "options": [
-        "A price region where substantial trading activity occurred",
-        "A guaranteed future support level",
-        "An area with no executed trades"
-       ],
-       "correct": 0,
-       "explanation": "A high volume node marks a price region where trading activity accumulated, but it does not guarantee future support or resistance.",
+       "target": 1,
+       "question": "Tap the strongest high volume node.",
+       "explanation": "The selected bulge is a price region where substantial trading activity accumulated, not a guaranteed future support level.",
        "skillId": "volume_profile"
       },
       {
-       "type": "volume_profile",
+       "type": "volume_profile_tap",
        "event": "lvn",
-       "question": "What does a low volume node show?",
-       "options": [
-        "A price region with relatively little historical traded volume",
-        "A guaranteed breakout level",
-        "The strongest current bid"
-       ],
-       "correct": 0,
-       "explanation": "A low volume node represents comparatively low historical participation at that price.",
+       "target": 3,
+       "question": "Tap the thinnest low volume area between the two larger nodes.",
+       "explanation": "The narrow area between the larger volume clusters shows comparatively low historical participation.",
        "skillId": "volume_profile"
       },
       {
-       "type": "matching",
-       "question": "Match each tool to what it shows.",
-       "pairs": [
-        [
-         "Volume Profile",
-         "Total traded volume organized by price"
-        ],
-        [
-         "Footprint",
-         "Bid and ask executions separated inside price rows"
-        ],
-        [
-         "Level II or DOM",
-         "Current displayed resting depth"
-        ],
-        [
-         "Time & Sales",
-         "Individual completed executions"
-        ]
+       "type": "replay_compare",
+       "event": "profile_concentration",
+       "question": "Which profile concentrates more volume around one accepted price area?",
+       "options": [
+        "Replay A",
+        "Replay B",
+        "Neither"
        ],
-       "explanation": "Each tool answers a different question about historical execution, current resting liquidity, or completed trades.",
+       "correct": 0,
+       "explanation": "Replay A forms one dominant bulge around its POC, while Replay B distributes volume more evenly.",
        "skillId": "volume_profile"
       },
       {
        "type": "orderflow_sim",
        "event": "volume_profile_context",
-       "question": "Price reaches a high volume node while aggressive buying slows and upward progress stalls. What's strongest?",
+       "question": "Price reaches the POC, aggressive buying increases, but the offer replenishes and price stalls. What's strongest?",
        "options": [
-        "The high volume area provides context, but the stalled response and replenishment matter more for the immediate read",
-        "The high volume node guarantees reversal",
+        "The POC gives location while replenishment and stalled price suggest buying is being contained",
+        "The POC guarantees reversal",
         "Volume Profile alone confirms seller control"
        ],
        "correct": 0,
-       "explanation": "Profile location provides context, while current execution, liquidity behavior, and price response determine the immediate order flow read.",
+       "explanation": "Profile location provides context, while current execution, liquidity behavior, and price response determine the immediate read.",
        "skillId": "multi_signal_read"
+      },
+      {
+       "type": "evidence_select",
+       "question": "Select the three clues that make this profile level meaningful right now.",
+       "options": [
+        "Price reaches the high volume node",
+        "Aggressive execution appears there",
+        "Price shows a clear response",
+        "The profile bar is blue"
+       ],
+       "targets": [
+        0,
+        1,
+        2
+       ],
+       "explanation": "Location, active execution, and price response make the profile level relevant. Its display color does not.",
+       "skillId": "volume_profile"
       }
      ]
     },
@@ -7988,6 +7994,50 @@
        "competencyId": "u2.level_two"
       },
       {
+       "type": "dom_tap",
+       "event": "best_bid",
+       "target": 3,
+       "question": "Tap the current best bid.",
+       "explanation": "The best bid is the highest currently displayed resting buy price. DOM means Depth of Market and shows available depth from the relevant venue or feed.",
+       "skillId": "reading_the_order_book",
+       "sourceLesson": "Reading the Order Book & DOM",
+       "sourceUnit": 1,
+       "sourceNode": 6,
+       "questionId": "orderflow.u2.n6.q8",
+       "competencyId": "u2.level_two"
+      },
+      {
+       "type": "dom_tap",
+       "event": "best_ask",
+       "target": 2,
+       "question": "Tap the current best ask.",
+       "explanation": "The best ask is the lowest currently displayed resting sell price on the DOM ladder.",
+       "skillId": "reading_the_order_book",
+       "sourceLesson": "Reading the Order Book & DOM",
+       "sourceUnit": 1,
+       "sourceNode": 6,
+       "questionId": "orderflow.u2.n6.q9",
+       "competencyId": "u2.level_two"
+      },
+      {
+       "type": "orderflow_sim",
+       "event": "seller_absorption",
+       "question": "Buyers keep lifting offers, but a large ask replenishes and price cannot advance. What's strongest?",
+       "options": [
+        "The replenishing ask is containing aggressive buying",
+        "Buyers have clean acceptance above the ask",
+        "The displayed ask guarantees a reversal"
+       ],
+       "correct": 0,
+       "explanation": "The DOM, executed buying, replenishment, and weak price progress combine into a possible containment read.",
+       "skillId": "multi_signal_read",
+       "sourceLesson": "Reading the Order Book & DOM",
+       "sourceUnit": 1,
+       "sourceNode": 6,
+       "questionId": "orderflow.u2.n6.q11",
+       "competencyId": "u2.level_two"
+      },
+      {
        "type": "multiple_choice",
        "question": "Where do resting buy orders sit?",
        "options": [
@@ -8019,6 +8069,24 @@
        "sourceUnit": 1,
        "sourceNode": 6,
        "questionId": "orderflow.u2.n6.q4",
+       "competencyId": "u2.resting_sides"
+      },
+      {
+       "type": "replay_compare",
+       "event": "pulled_vs_consumed",
+       "question": "Which replay shows ask liquidity being pulled rather than executed?",
+       "options": [
+        "Replay A",
+        "Replay B",
+        "Neither"
+       ],
+       "correct": 0,
+       "explanation": "Replay A removes the ask before a matching trade prints. Replay B consumes the ask through completed executions.",
+       "skillId": "scenario_comparison",
+       "sourceLesson": "Reading the Order Book & DOM",
+       "sourceUnit": 1,
+       "sourceNode": 6,
+       "questionId": "orderflow.u2.n6.q10",
        "competencyId": "u2.resting_sides"
       },
       {
@@ -8250,10 +8318,13 @@
      ],
      "competencyMappings": {
       "u2.level_two": [
+       "multi_signal_read",
+       "reading_the_order_book",
        "reading_the_order_book_dom"
       ],
       "u2.resting_sides": [
-       "reading_the_order_book_dom"
+       "reading_the_order_book_dom",
+       "scenario_comparison"
       ],
       "u2.thick_liquidity": [
        "size_liquidity"
@@ -8279,11 +8350,15 @@
      },
      "competencyEligibleQuestionIds": {
       "u2.level_two": [
-       "orderflow.u2.n6.q1"
+       "orderflow.u2.n6.q1",
+       "orderflow.u2.n6.q8",
+       "orderflow.u2.n6.q9",
+       "orderflow.u2.n6.q11"
       ],
       "u2.resting_sides": [
        "orderflow.u2.n6.q2",
-       "orderflow.u2.n6.q4"
+       "orderflow.u2.n6.q4",
+       "orderflow.u2.n6.q10"
       ],
       "u2.thick_liquidity": [
        "orderflow.u2.n7.q2"
@@ -9868,15 +9943,21 @@
        "competencyId": "u5.combined_footprint_read"
       },
       {
-       "type": "multiple_choice",
-       "question": "What does CVD stand for?",
-       "options": [
-        "Cumulative Volume Delta",
-        "Combined Volume Distribution",
-        "Current Volatility Direction"
+       "type": "sequence_builder",
+       "question": "Build how CVD accumulates over time.",
+       "items": [
+        "Positive delta prints",
+        "CVD rises",
+        "Negative delta prints",
+        "CVD gives back part of the rise"
        ],
-       "correct": 0,
-       "explanation": "CVD stands for Cumulative Volume Delta and tracks the running accumulation of aggressive buying minus aggressive selling.",
+       "correct_order": [
+        "Positive delta prints",
+        "CVD rises",
+        "Negative delta prints",
+        "CVD gives back part of the rise"
+       ],
+       "explanation": "Cumulative Volume Delta, or CVD, accumulates execution delta over time.",
        "skillId": "cumulative_volume_delta",
        "sourceLesson": "Delta, Volume & CVD",
        "sourceUnit": 4,
@@ -9885,16 +9966,11 @@
        "competencyId": "u5.cumulative_volume_delta"
       },
       {
-       "type": "cvd_chart",
-       "event": "rising",
-       "question": "What does a rising CVD line generally show?",
-       "options": [
-        "Aggressive buying is cumulatively exceeding aggressive selling",
-        "Price is guaranteed to rise",
-        "Resting ask liquidity is increasing"
-       ],
-       "correct": 0,
-       "explanation": "Rising CVD means positive execution delta is accumulating, although price still needs to be evaluated separately.",
+       "type": "cvd_tap",
+       "event": "bearish_divergence",
+       "target": 1,
+       "question": "Tap where price makes a new high but CVD fails to confirm it.",
+       "explanation": "Price makes a higher high while cumulative aggressive buying fails to make a corresponding higher high.",
        "skillId": "cumulative_volume_delta",
        "sourceLesson": "Delta, Volume & CVD",
        "sourceUnit": 4,
@@ -9903,21 +9979,52 @@
        "competencyId": "u5.cumulative_volume_delta"
       },
       {
+       "type": "cvd_tap",
+       "event": "bullish_divergence",
+       "target": 1,
+       "question": "Tap where price makes a lower low while CVD makes a higher low.",
+       "explanation": "The second price low extends lower while the CVD low holds above its prior low, creating bullish disagreement.",
+       "skillId": "cumulative_volume_delta",
+       "sourceLesson": "Delta, Volume & CVD",
+       "sourceUnit": 4,
+       "sourceNode": 33,
+       "questionId": "orderflow.u5.n33.q10",
+       "competencyId": "u5.cumulative_volume_delta"
+      },
+      {
        "type": "replay_compare",
-       "event": "cvd_divergence",
-       "question": "Which replay shows price and CVD disagreeing?",
+       "event": "cvd_agreement",
+       "question": "Which replay shows price and CVD agreeing?",
        "options": [
         "Replay A",
         "Replay B",
         "Neither"
        ],
        "correct": 0,
-       "explanation": "Replay A shows price reaching a new high without matching cumulative aggressive buying. This disagreement deserves context and confirmation but does not guarantee reversal.",
+       "explanation": "In Replay A, price and cumulative aggressive pressure move higher together.",
        "skillId": "cumulative_volume_delta",
        "sourceLesson": "Delta, Volume & CVD",
        "sourceUnit": 4,
        "sourceNode": 33,
-       "questionId": "orderflow.u5.n33.q10",
+       "questionId": "orderflow.u5.n33.q11",
+       "competencyId": "u5.cumulative_volume_delta"
+      },
+      {
+       "type": "orderflow_sim",
+       "event": "cvd_warning",
+       "question": "Price makes a new high without CVD confirmation, but offers thin and price holds above resistance. What's strongest?",
+       "options": [
+        "The CVD disagreement is a warning, but price acceptance remains strong",
+        "CVD guarantees an immediate reversal",
+        "The breakout has already failed"
+       ],
+       "correct": 0,
+       "explanation": "CVD disagreement deserves attention, but thinning offers and acceptance above resistance still support the current price response.",
+       "skillId": "cumulative_volume_delta",
+       "sourceLesson": "Delta, Volume & CVD",
+       "sourceUnit": 4,
+       "sourceNode": 33,
+       "questionId": "orderflow.u5.n33.q12",
        "competencyId": "u5.cumulative_volume_delta"
       }
      ],
@@ -10029,7 +10136,9 @@
       "u5.cumulative_volume_delta": [
        "orderflow.u5.n33.q8",
        "orderflow.u5.n33.q9",
-       "orderflow.u5.n33.q10"
+       "orderflow.u5.n33.q10",
+       "orderflow.u5.n33.q11",
+       "orderflow.u5.n33.q12"
       ]
      },
      "competencySourceUnits": {
@@ -12019,24 +12128,6 @@
        "competencyId": "u8.no_clear_read"
       },
       {
-       "type": "volume_profile",
-       "event": "overview",
-       "question": "What does Volume Profile show?",
-       "options": [
-        "How much volume traded at different price levels over a selected period",
-        "Only aggressive buying minus selling",
-        "The number of resting orders currently in Level II"
-       ],
-       "correct": 0,
-       "explanation": "Volume Profile organizes executed volume by price rather than only by time.",
-       "skillId": "volume_profile",
-       "sourceLesson": "Volume Profile & Key Trading Zones",
-       "sourceUnit": 7,
-       "sourceNode": 63,
-       "questionId": "orderflow.u8.n63.q1",
-       "competencyId": "u8.volume_profile_context"
-      },
-      {
        "type": "volume_profile_tap",
        "event": "poc",
        "target": 3,
@@ -12046,20 +12137,28 @@
        "sourceLesson": "Volume Profile & Key Trading Zones",
        "sourceUnit": 7,
        "sourceNode": 63,
+       "questionId": "orderflow.u8.n63.q1",
+       "competencyId": "u8.volume_profile_context"
+      },
+      {
+       "type": "mark_level",
+       "event": "profile_vah",
+       "level": 101.0,
+       "question": "Mark the Value Area High.",
+       "explanation": "Value Area High is the upper boundary of the profile's shaded value region.",
+       "skillId": "volume_profile",
+       "sourceLesson": "Volume Profile & Key Trading Zones",
+       "sourceUnit": 7,
+       "sourceNode": 63,
        "questionId": "orderflow.u8.n63.q2",
        "competencyId": "u8.volume_profile_context"
       },
       {
-       "type": "volume_profile",
-       "event": "value_area",
-       "question": "What does the Value Area represent?",
-       "options": [
-        "The price region containing a defined majority of the profile's traded volume",
-        "Every price touched during the session",
-        "Only prices above VWAP"
-       ],
-       "correct": 0,
-       "explanation": "The Value Area contains a defined share of total profile volume, commonly centered around the highest volume region.",
+       "type": "mark_level",
+       "event": "profile_val",
+       "level": 100.5,
+       "question": "Mark the Value Area Low.",
+       "explanation": "Value Area Low is the lower boundary of the profile's shaded value region.",
        "skillId": "volume_profile",
        "sourceLesson": "Volume Profile & Key Trading Zones",
        "sourceUnit": 7,
@@ -12068,23 +12167,11 @@
        "competencyId": "u8.volume_profile_context"
       },
       {
-       "type": "matching",
-       "question": "Match each profile term.",
-       "pairs": [
-        [
-         "VAH",
-         "Upper boundary of the value area"
-        ],
-        [
-         "VAL",
-         "Lower boundary of the value area"
-        ],
-        [
-         "POC",
-         "Price with the greatest traded volume"
-        ]
-       ],
-       "explanation": "VAH and VAL define the value area's upper and lower boundaries, while POC marks the highest volume price.",
+       "type": "volume_profile_tap",
+       "event": "hvn",
+       "target": 1,
+       "question": "Tap the strongest high volume node.",
+       "explanation": "The selected bulge is a price region where substantial trading activity accumulated, not a guaranteed future support level.",
        "skillId": "volume_profile",
        "sourceLesson": "Volume Profile & Key Trading Zones",
        "sourceUnit": 7,
@@ -12093,16 +12180,11 @@
        "competencyId": "u8.volume_profile_context"
       },
       {
-       "type": "volume_profile",
-       "event": "hvn",
-       "question": "What does a high volume node show?",
-       "options": [
-        "A price region where substantial trading activity occurred",
-        "A guaranteed future support level",
-        "An area with no executed trades"
-       ],
-       "correct": 0,
-       "explanation": "A high volume node marks a price region where trading activity accumulated, but it does not guarantee future support or resistance.",
+       "type": "volume_profile_tap",
+       "event": "lvn",
+       "target": 3,
+       "question": "Tap the thinnest low volume area between the two larger nodes.",
+       "explanation": "The narrow area between the larger volume clusters shows comparatively low historical participation.",
        "skillId": "volume_profile",
        "sourceLesson": "Volume Profile & Key Trading Zones",
        "sourceUnit": 7,
@@ -12111,16 +12193,16 @@
        "competencyId": "u8.volume_profile_context"
       },
       {
-       "type": "volume_profile",
-       "event": "lvn",
-       "question": "What does a low volume node show?",
+       "type": "replay_compare",
+       "event": "profile_concentration",
+       "question": "Which profile concentrates more volume around one accepted price area?",
        "options": [
-        "A price region with relatively little historical traded volume",
-        "A guaranteed breakout level",
-        "The strongest current bid"
+        "Replay A",
+        "Replay B",
+        "Neither"
        ],
        "correct": 0,
-       "explanation": "A low volume node represents comparatively low historical participation at that price.",
+       "explanation": "Replay A forms one dominant bulge around its POC, while Replay B distributes volume more evenly.",
        "skillId": "volume_profile",
        "sourceLesson": "Volume Profile & Key Trading Zones",
        "sourceUnit": 7,
@@ -12129,28 +12211,17 @@
        "competencyId": "u8.volume_profile_context"
       },
       {
-       "type": "matching",
-       "question": "Match each tool to what it shows.",
-       "pairs": [
-        [
-         "Volume Profile",
-         "Total traded volume organized by price"
-        ],
-        [
-         "Footprint",
-         "Bid and ask executions separated inside price rows"
-        ],
-        [
-         "Level II or DOM",
-         "Current displayed resting depth"
-        ],
-        [
-         "Time & Sales",
-         "Individual completed executions"
-        ]
+       "type": "orderflow_sim",
+       "event": "volume_profile_context",
+       "question": "Price reaches the POC, aggressive buying increases, but the offer replenishes and price stalls. What's strongest?",
+       "options": [
+        "The POC gives location while replenishment and stalled price suggest buying is being contained",
+        "The POC guarantees reversal",
+        "Volume Profile alone confirms seller control"
        ],
-       "explanation": "Each tool answers a different question about historical execution, current resting liquidity, or completed trades.",
-       "skillId": "volume_profile",
+       "correct": 0,
+       "explanation": "Profile location provides context, while current execution, liquidity behavior, and price response determine the immediate read.",
+       "skillId": "multi_signal_read",
        "sourceLesson": "Volume Profile & Key Trading Zones",
        "sourceUnit": 7,
        "sourceNode": 63,
@@ -12158,17 +12229,21 @@
        "competencyId": "u8.volume_profile_context"
       },
       {
-       "type": "orderflow_sim",
-       "event": "volume_profile_context",
-       "question": "Price reaches a high volume node while aggressive buying slows and upward progress stalls. What's strongest?",
+       "type": "evidence_select",
+       "question": "Select the three clues that make this profile level meaningful right now.",
        "options": [
-        "The high volume area provides context, but the stalled response and replenishment matter more for the immediate read",
-        "The high volume node guarantees reversal",
-        "Volume Profile alone confirms seller control"
+        "Price reaches the high volume node",
+        "Aggressive execution appears there",
+        "Price shows a clear response",
+        "The profile bar is blue"
        ],
-       "correct": 0,
-       "explanation": "Profile location provides context, while current execution, liquidity behavior, and price response determine the immediate order flow read.",
-       "skillId": "multi_signal_read",
+       "targets": [
+        0,
+        1,
+        2
+       ],
+       "explanation": "Location, active execution, and price response make the profile level relevant. Its display color does not.",
+       "skillId": "volume_profile",
        "sourceLesson": "Volume Profile & Key Trading Zones",
        "sourceUnit": 7,
        "sourceNode": 63,

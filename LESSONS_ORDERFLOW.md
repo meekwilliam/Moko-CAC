@@ -22,7 +22,7 @@ Interactive mechanics:
 
 TOTAL UNITS: 10
 TOTAL LESSONS: 78
-TOTAL QUESTIONS: 492
+TOTAL QUESTIONS: 496
 
 UNIT 1 — Order Flow Foundations
 TIER: Beginner
@@ -331,19 +331,35 @@ EVENT: lift
 ANSWER: The buyer
 WHY: The offers are being taken, so the buyer is the aggressor lifting them.
 
-[MC] What does DOM stand for?
-SKILL: reading_the_order_book_dom
-Depth of Market
-Direction of Momentum
-Distribution of Market volume
-WHY: DOM stands for Depth of Market and commonly refers to an order book ladder showing available bid and ask depth across price levels.
+[DOM_TAP] Tap the current best bid.
+VISUAL: A full DOM ladder shows several bid and ask price levels. The learner must identify the highest resting bid, with the inside market highlighted only after selection.
+SKILL: reading_the_order_book
+EVENT: best_bid
+TARGET: 3
+WHY: The best bid is the highest currently displayed resting buy price. DOM means Depth of Market and shows available depth from the relevant venue or feed.
 
-[MC] How are DOM and Level II related?
-SKILL: reading_the_order_book_dom
-Both can display available bid and ask depth across multiple price levels
-DOM only shows executed trades
-Level II only shows candle volume
-WHY: DOM and Level II are closely related ways of viewing available order book depth, although exact data depends on the venue and feed.
+[DOM_TAP] Tap the current best ask.
+VISUAL: A full DOM ladder shows several bid and ask price levels. The learner must identify the lowest resting ask, with the inside market highlighted only after selection.
+SKILL: reading_the_order_book
+EVENT: best_ask
+TARGET: 2
+WHY: The best ask is the lowest currently displayed resting sell price on the DOM ladder.
+
+[REPLAY_COMPARE] Which replay shows ask liquidity being pulled rather than executed?
+VISUAL: Replay A shows the ask disappearing before any matching trade prints. Replay B shows trades repeatedly executing against the ask until displayed size reaches zero.
+SKILL: scenario_comparison
+Replay A
+Replay B
+Neither
+WHY: Replay A removes the ask before a matching trade prints. Replay B consumes the ask through completed executions.
+
+[ORDERFLOW_SIM] Buyers keep lifting offers, but a large ask replenishes and price cannot advance. What's strongest?
+VISUAL: Price stalls at resistance above VWAP while an offer refreshes, buyer initiated prints accelerate, and positive footprint delta produces little upward progress.
+SKILL: multi_signal_read
+The replenishing ask is containing aggressive buying
+Buyers have clean acceptance above the ask
+The displayed ask guarantees a reversal
+WHY: The DOM, executed buying, replenishment, and weak price progress combine into a possible containment read.
 
 NODE 7
 TITLE: Size & Liquidity
@@ -1775,29 +1791,43 @@ Compare delta with price response
 Interpret agreement or divergence
 WHY: Each step connects executed pressure with liquidity, price response, and the lesson specific conclusion.
 
-[MC] What does CVD stand for?
+[ORDER] Build how CVD accumulates over time.
 SKILL: cumulative_volume_delta
-Cumulative Volume Delta
-Combined Volume Distribution
-Current Volatility Direction
-WHY: CVD stands for Cumulative Volume Delta and tracks the running accumulation of aggressive buying minus aggressive selling.
+Positive delta prints
+CVD rises
+Negative delta prints
+CVD gives back part of the rise
+WHY: Cumulative Volume Delta, or CVD, accumulates execution delta over time.
 
-[CVD_CHART] What does a rising CVD line generally show?
-VISUAL: Price candles appear above a lower CVD panel whose line rises as positive execution delta accumulates.
+[CVD_TAP] Tap where price makes a new high but CVD fails to confirm it.
+VISUAL: Price forms two highs with the second above the first, while the lower CVD panel forms a lower second peak. Both pivot zones are tappable.
 SKILL: cumulative_volume_delta
-EVENT: rising
-Aggressive buying is cumulatively exceeding aggressive selling
-Price is guaranteed to rise
-Resting ask liquidity is increasing
-WHY: Rising CVD means positive execution delta is accumulating, although price still needs to be evaluated separately.
+EVENT: bearish_divergence
+TARGET: 1
+WHY: Price makes a higher high while cumulative aggressive buying fails to make a corresponding higher high.
 
-[REPLAY_COMPARE] Which replay shows price and CVD disagreeing?
-VISUAL: Replay A shows price making a new high while the CVD line makes a lower high. Replay B shows price and CVD advancing together.
+[CVD_TAP] Tap where price makes a lower low while CVD makes a higher low.
+VISUAL: Price forms two lows with the second below the first, while the lower CVD panel forms a higher second low. Both pivot zones are tappable.
+SKILL: cumulative_volume_delta
+EVENT: bullish_divergence
+TARGET: 1
+WHY: The second price low extends lower while the CVD low holds above its prior low, creating bullish disagreement.
+
+[REPLAY_COMPARE] Which replay shows price and CVD agreeing?
+VISUAL: Replay A shows price and CVD rising together. Replay B shows price rising while CVD falls.
 SKILL: cumulative_volume_delta
 Replay A
 Replay B
 Neither
-WHY: Replay A shows price reaching a new high without matching cumulative aggressive buying. This disagreement deserves context and confirmation but does not guarantee reversal.
+WHY: In Replay A, price and cumulative aggressive pressure move higher together.
+
+[ORDERFLOW_SIM] Price makes a new high without CVD confirmation, but offers thin and price holds above resistance. What's strongest?
+VISUAL: Price makes a new high while CVD makes a lower high, yet offers continue thinning and price holds above resistance instead of failing back inside.
+SKILL: cumulative_volume_delta
+The CVD disagreement is a warning, but price acceptance remains strong
+CVD guarantees an immediate reversal
+The breakout has already failed
+WHY: CVD disagreement deserves attention, but thinning offers and acceptance above resistance still support the current price response.
 
 NODE 34
 TITLE: Positive vs. Negative Delta Divergence
@@ -3519,15 +3549,6 @@ TITLE: Volume Profile & Key Trading Zones
 TYPE: STANDARD
 CELEBRATION: Volume Profile & Key Trading Zones complete.
 
-[VOLUME_PROFILE] What does Volume Profile show?
-VISUAL: A horizontal Volume Profile appears beside a compact price chart, showing horizontal bars whose lengths represent executed volume at each price.
-SKILL: volume_profile
-EVENT: overview
-How much volume traded at different price levels over a selected period
-Only aggressive buying minus selling
-The number of resting orders currently in Level II
-WHY: Volume Profile organizes executed volume by price rather than only by time.
-
 [VOLUME_PROFILE_TAP] Tap the Point of Control.
 VISUAL: A horizontal Volume Profile appears beside a compact price chart, showing the longest horizontal volume bar at the target price, marking the Point of Control.
 SKILL: volume_profile
@@ -3535,55 +3556,55 @@ EVENT: poc
 TARGET: 3
 WHY: The Point of Control, or POC, is the price with the greatest traded volume inside the selected profile.
 
-[VOLUME_PROFILE] What does the Value Area represent?
-VISUAL: A horizontal Volume Profile appears beside a compact price chart, showing a shaded value region around the central high volume prices with VAH and VAL boundaries.
+[MARK_LEVEL] Mark the Value Area High.
+VISUAL: A horizontal Volume Profile shows a shaded value region with labels hidden. The learner marks its upper boundary.
 SKILL: volume_profile
-EVENT: value_area
-The price region containing a defined majority of the profile's traded volume
-Every price touched during the session
-Only prices above VWAP
-WHY: The Value Area contains a defined share of total profile volume, commonly centered around the highest volume region.
+WHY: Value Area High is the upper boundary of the profile's shaded value region.
 
-[MATCH] Match each profile term.
+[MARK_LEVEL] Mark the Value Area Low.
+VISUAL: A horizontal Volume Profile shows a shaded value region with labels hidden. The learner marks its lower boundary.
 SKILL: volume_profile
-VAH => Upper boundary of the value area
-VAL => Lower boundary of the value area
-POC => Price with the greatest traded volume
-WHY: VAH and VAL define the value area's upper and lower boundaries, while POC marks the highest volume price.
+WHY: Value Area Low is the lower boundary of the profile's shaded value region.
 
-[VOLUME_PROFILE] What does a high volume node show?
+[VOLUME_PROFILE_TAP] Tap the strongest high volume node.
 VISUAL: A horizontal Volume Profile appears beside a compact price chart, showing a broad cluster of long bars forming a high volume node.
 SKILL: volume_profile
 EVENT: hvn
-A price region where substantial trading activity occurred
-A guaranteed future support level
-An area with no executed trades
-WHY: A high volume node marks a price region where trading activity accumulated, but it does not guarantee future support or resistance.
+TARGET: 1
+WHY: The selected bulge is a price region where substantial trading activity accumulated, not a guaranteed future support level.
 
-[VOLUME_PROFILE] What does a low volume node show?
+[VOLUME_PROFILE_TAP] Tap the thinnest low volume area between the two larger nodes.
 VISUAL: A horizontal Volume Profile appears beside a compact price chart, showing a narrow low participation area between two larger volume clusters.
 SKILL: volume_profile
 EVENT: lvn
-A price region with relatively little historical traded volume
-A guaranteed breakout level
-The strongest current bid
-WHY: A low volume node represents comparatively low historical participation at that price.
+TARGET: 3
+WHY: The narrow area between the larger volume clusters shows comparatively low historical participation.
 
-[MATCH] Match each tool to what it shows.
+[REPLAY_COMPARE] Which profile concentrates more volume around one accepted price area?
+VISUAL: Replay A shows a Volume Profile with one dominant bulge around its POC. Replay B shows volume distributed more evenly across prices.
 SKILL: volume_profile
-Volume Profile => Total traded volume organized by price
-Footprint => Bid and ask executions separated inside price rows
-Level II or DOM => Current displayed resting depth
-Time & Sales => Individual completed executions
-WHY: Each tool answers a different question about historical execution, current resting liquidity, or completed trades.
+Replay A
+Replay B
+Neither
+WHY: Replay A forms one dominant bulge around its POC, while Replay B distributes volume more evenly.
 
-[ORDERFLOW_SIM] Price reaches a high volume node while aggressive buying slows and upward progress stalls. What's strongest?
+[ORDERFLOW_SIM] Price reaches the POC, aggressive buying increases, but the offer replenishes and price stalls. What's strongest?
 VISUAL: Price reaches a high volume profile node, buyer initiated prints slow, nearby offers replenish, and upward price progress stalls.
 SKILL: multi_signal_read
-The high volume area provides context, but the stalled response and replenishment matter more for the immediate read
-The high volume node guarantees reversal
+The POC gives location while replenishment and stalled price suggest buying is being contained
+The POC guarantees reversal
 Volume Profile alone confirms seller control
-WHY: Profile location provides context, while current execution, liquidity behavior, and price response determine the immediate order flow read.
+WHY: Profile location provides context, while current execution, liquidity behavior, and price response determine the immediate read.
+
+[EVIDENCE_SELECT] Select the three clues that make this profile level meaningful right now.
+VISUAL: Four evidence cards separate aggression, liquidity, price response, and an irrelevant clue. The learner must select the required combination.
+SKILL: volume_profile
+SELECT: 0, 1, 2
+Price reaches the high volume node
+Aggressive execution appears there
+Price shows a clear response
+The profile bar is blue
+WHY: Location, active execution, and price response make the profile level relevant. Its display color does not.
 
 NODE 64
 TITLE: Boss Battle: Continue, Fail, or Wait?
@@ -4482,12 +4503,12 @@ JUMP PREREQUISITES: N/A
 UNIT 2
 QUESTIONS PER ATTEMPT: 8
 PASSING SCORE: 7
-POOL SIZE: 15
+POOL SIZE: 19
 COMPETENCY BLUEPRINT: u2.level_two, u2.resting_sides, u2.thick_liquidity, u2.thin_liquidity, u2.wall, u2.wall_behavior, u2.spoofing, u2.combined_book_read
-COMPETENCY MAPPINGS: u2.level_two => reading_the_order_book_dom; u2.resting_sides => reading_the_order_book_dom; u2.thick_liquidity => size_liquidity; u2.thin_liquidity => size_liquidity; u2.wall => book_depth, large_orders_as_walls; u2.wall_behavior => large_orders_as_walls, market_sequence; u2.spoofing => pulling_and_spoofing; u2.combined_book_read => evidence_synthesis, multi_signal_read
+COMPETENCY MAPPINGS: u2.level_two => multi_signal_read, reading_the_order_book, reading_the_order_book_dom; u2.resting_sides => reading_the_order_book_dom, scenario_comparison; u2.thick_liquidity => size_liquidity; u2.thin_liquidity => size_liquidity; u2.wall => book_depth, large_orders_as_walls; u2.wall_behavior => large_orders_as_walls, market_sequence; u2.spoofing => pulling_and_spoofing; u2.combined_book_read => evidence_synthesis, multi_signal_read
 COMPETENCY SOURCE UNITS: u2.level_two => 2; u2.resting_sides => 2; u2.thick_liquidity => 2; u2.thin_liquidity => 2; u2.wall => 2; u2.wall_behavior => 2; u2.spoofing => 2; u2.combined_book_read => 2
 COMPETENCY SOURCE NODES: u2.level_two => 6; u2.resting_sides => 6; u2.thick_liquidity => 7; u2.thin_liquidity => 7; u2.wall => 8; u2.wall_behavior => 8; u2.spoofing => 9; u2.combined_book_read => 11
-ELIGIBLE QUESTION IDS: u2.level_two => orderflow.u2.n6.q1; u2.resting_sides => orderflow.u2.n6.q2, orderflow.u2.n6.q4; u2.thick_liquidity => orderflow.u2.n7.q2; u2.thin_liquidity => orderflow.u2.n7.q3, orderflow.u2.n7.q4; u2.wall => orderflow.u2.n8.q1, orderflow.u2.n8.q2; u2.wall_behavior => orderflow.u2.n8.q3, orderflow.u2.n8.q4, orderflow.u2.n8.q5; u2.spoofing => orderflow.u2.n9.q2, orderflow.u2.n9.q3; u2.combined_book_read => orderflow.u2.n11.q6, orderflow.u2.n11.q7
+ELIGIBLE QUESTION IDS: u2.level_two => orderflow.u2.n6.q1, orderflow.u2.n6.q8, orderflow.u2.n6.q9, orderflow.u2.n6.q11; u2.resting_sides => orderflow.u2.n6.q2, orderflow.u2.n6.q4, orderflow.u2.n6.q10; u2.thick_liquidity => orderflow.u2.n7.q2; u2.thin_liquidity => orderflow.u2.n7.q3, orderflow.u2.n7.q4; u2.wall => orderflow.u2.n8.q1, orderflow.u2.n8.q2; u2.wall_behavior => orderflow.u2.n8.q3, orderflow.u2.n8.q4, orderflow.u2.n8.q5; u2.spoofing => orderflow.u2.n9.q2, orderflow.u2.n9.q3; u2.combined_book_read => orderflow.u2.n11.q6, orderflow.u2.n11.q7
 JUMP QUESTIONS: 8
 JUMP PASSING SCORE: 7
 JUMP PREREQUISITE QUESTIONS: 4
@@ -4533,12 +4554,12 @@ JUMP PREREQUISITES: u1.market_buy_routing, u2.thick_liquidity, u3.price_confirma
 UNIT 5
 QUESTIONS PER ATTEMPT: 11
 PASSING SCORE: 9
-POOL SIZE: 27
+POOL SIZE: 29
 COMPETENCY BLUEPRINT: u5.footprint_basics, u5.diagonal_imbalance, u5.buyer_imbalance, u5.seller_imbalance, u5.stacked_pressure, u5.momentum_failure, u5.delta_vs_volume, u5.positive_delta_divergence, u5.negative_delta_divergence, u5.combined_footprint_read, u5.cumulative_volume_delta
 COMPETENCY MAPPINGS: u5.footprint_basics => footprint_reading; u5.diagonal_imbalance => footprint_interaction, footprint_reading, reading_footprints_imbalances; u5.buyer_imbalance => footprint_interaction, footprint_reading; u5.seller_imbalance => footprint_interaction, footprint_reading; u5.stacked_pressure => evidence_synthesis, footprint_interaction, stacked_pressure; u5.momentum_failure => footprint_interaction, momentum_continuation_failure; u5.delta_vs_volume => footprint_interaction, footprint_reading; u5.positive_delta_divergence => footprint_interaction, footprint_reading; u5.negative_delta_divergence => footprint_interaction, footprint_reading; u5.combined_footprint_read => footprint_interaction, footprint_momentum_challenge, footprint_reading; u5.cumulative_volume_delta => cumulative_volume_delta
 COMPETENCY SOURCE UNITS: u5.footprint_basics => 5; u5.diagonal_imbalance => 5; u5.buyer_imbalance => 5; u5.seller_imbalance => 5; u5.stacked_pressure => 5; u5.momentum_failure => 5; u5.delta_vs_volume => 5; u5.positive_delta_divergence => 5; u5.negative_delta_divergence => 5; u5.combined_footprint_read => 5; u5.cumulative_volume_delta => 5
 COMPETENCY SOURCE NODES: u5.footprint_basics => 28; u5.diagonal_imbalance => 28; u5.buyer_imbalance => 29; u5.seller_imbalance => 29; u5.stacked_pressure => 32; u5.momentum_failure => 31; u5.delta_vs_volume => 33; u5.positive_delta_divergence => 34; u5.negative_delta_divergence => 34; u5.combined_footprint_read => 36; u5.cumulative_volume_delta => 33
-ELIGIBLE QUESTION IDS: u5.footprint_basics => orderflow.u5.n28.q1, orderflow.u5.n28.q5; u5.diagonal_imbalance => orderflow.u5.n28.q2, orderflow.u5.n28.q4, orderflow.u5.n28.q6; u5.buyer_imbalance => orderflow.u5.n29.q3, orderflow.u5.n29.q5; u5.seller_imbalance => orderflow.u5.n29.q4, orderflow.u5.n29.q6; u5.stacked_pressure => orderflow.u5.n32.q2, orderflow.u5.n32.q4, orderflow.u5.n32.q5; u5.momentum_failure => orderflow.u5.n31.q3, orderflow.u5.n31.q5; u5.delta_vs_volume => orderflow.u5.n33.q2, orderflow.u5.n33.q4, orderflow.u5.n33.q6; u5.positive_delta_divergence => orderflow.u5.n34.q2, orderflow.u5.n34.q4; u5.negative_delta_divergence => orderflow.u5.n34.q3, orderflow.u5.n34.q5; u5.combined_footprint_read => orderflow.u5.n36.q1, orderflow.u5.n36.q5, orderflow.u5.n36.q6; u5.cumulative_volume_delta => orderflow.u5.n33.q8, orderflow.u5.n33.q9, orderflow.u5.n33.q10
+ELIGIBLE QUESTION IDS: u5.footprint_basics => orderflow.u5.n28.q1, orderflow.u5.n28.q5; u5.diagonal_imbalance => orderflow.u5.n28.q2, orderflow.u5.n28.q4, orderflow.u5.n28.q6; u5.buyer_imbalance => orderflow.u5.n29.q3, orderflow.u5.n29.q5; u5.seller_imbalance => orderflow.u5.n29.q4, orderflow.u5.n29.q6; u5.stacked_pressure => orderflow.u5.n32.q2, orderflow.u5.n32.q4, orderflow.u5.n32.q5; u5.momentum_failure => orderflow.u5.n31.q3, orderflow.u5.n31.q5; u5.delta_vs_volume => orderflow.u5.n33.q2, orderflow.u5.n33.q4, orderflow.u5.n33.q6; u5.positive_delta_divergence => orderflow.u5.n34.q2, orderflow.u5.n34.q4; u5.negative_delta_divergence => orderflow.u5.n34.q3, orderflow.u5.n34.q5; u5.combined_footprint_read => orderflow.u5.n36.q1, orderflow.u5.n36.q5, orderflow.u5.n36.q6; u5.cumulative_volume_delta => orderflow.u5.n33.q8, orderflow.u5.n33.q9, orderflow.u5.n33.q10, orderflow.u5.n33.q11, orderflow.u5.n33.q12
 JUMP QUESTIONS: 14
 JUMP PASSING SCORE: 12
 JUMP PREREQUISITE QUESTIONS: 7
