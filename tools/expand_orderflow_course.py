@@ -2548,6 +2548,30 @@ def add_skill_tags_and_test_outs(course):
 def main():
     data = json.loads(DATA_PATH.read_text())
     course = next(c for c in data["courses"] if c["id"] == "orderflow")
+    course["name"] = "Order Flow"
+    # Order Flow is the only active course. Keep legal content, but remove the
+    # retired lesson catalogs so generation cannot silently restore them.
+    data["courses"] = [course]
+    data["legal"] = {
+        "privacy": {
+            "title": "Privacy Policy",
+            "date": "Last Updated: July 12, 2026",
+            "sections": [
+                {"heading": "1. Learning Data", "body": "The app stores course progress, assessment results, streaks, and preferences so your learning state can be restored. Signed in users may synchronize this information through the app's configured cloud services."},
+                {"heading": "2. Service Providers", "body": "Authentication and cloud synchronization may use third party service providers. The app does not sell personal learning data."},
+                {"heading": "3. Your Choices", "body": "You can reset local learning data from the app. Account or synchronized data controls may depend on the sign in and cloud services available in your version of the app."},
+            ],
+        },
+        "terms": {
+            "title": "Terms of Service / Educational Disclaimer",
+            "date": "Last Updated: July 12, 2026",
+            "sections": [
+                {"heading": "1. Educational Purpose Only", "body": "This application is an interactive educational resource about order flow, market mechanics, and trade execution concepts."},
+                {"heading": "2. No Financial Advice", "body": "The course provides general educational information and simulated examples. It does not provide personalized investment, trading, legal, tax, or financial advice and does not recommend that you buy, sell, or hold any financial instrument."},
+                {"heading": "3. Risk and Responsibility", "body": "Trading involves risk, including possible loss of capital. Market data and simulated scenarios may be incomplete or delayed. You remain responsible for your own decisions and should consult appropriately qualified professionals when needed."},
+            ],
+        },
+    }
 
     # Preserve the handcrafted foundation lessons by title so this remains
     # idempotent after renumbering and generated curriculum updates.

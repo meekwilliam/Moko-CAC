@@ -54,7 +54,7 @@ struct ProfileView: View {
                 }
                 VStack(alignment: .leading, spacing: 3) {
                     Text(store.userName).font(Theme.font(21, .black)).foregroundColor(theme.palette.ink)
-                    Text("Skincare Learner").font(Theme.font(14, .bold)).foregroundColor(muted)
+                    Text("Order Flow Learner").font(Theme.font(14, .bold)).foregroundColor(muted)
                 }
             }
 

@@ -1,9 +1,8 @@
  import Foundation
 
-// MARK: - Bundled game content (multi-course)
-// GameData.json holds several courses (Skincare, Personal Finance, …), each with
-// its own units / nodes / lessons — like Duolingo's language courses. Legal docs
-// are shared across courses.
+// MARK: - Bundled game content
+// GameData.json currently contains the standalone Order Flow course. The array
+// shape remains future-ready if another course is intentionally added later.
 
 struct Course: Decodable, Identifiable {
     let id: String
@@ -59,7 +58,7 @@ enum Game {
     }()
 
     static var courses: [Course] { data.courses }
-    static var defaultCourseId: String { data.courses.first?.id ?? "skincare" }
+    static var defaultCourseId: String { data.courses.first?.id ?? "orderflow" }
 
     static func course(_ id: String) -> Course {
         data.courses.first { $0.id == id } ?? data.courses[0]

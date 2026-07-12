@@ -301,6 +301,7 @@ class ViewController: UIViewController {
     }
 
     private func openCourses() {
+        guard Game.courses.count > 1 else { return }
         syncCourses()
         if case .courses = appRouter.currentScreen { return }
         withAnimation(.spring(response: 0.42, dampingFraction: 0.86)) {

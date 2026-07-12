@@ -69,11 +69,9 @@ python3 -c "import json; json.load(open('GameData.json'))"
 
 ## Content: `Moko/GameData.json`
 
-~47k lines, ~3000 live questions across **5 courses**:
-`dt_beginner` (54 lessons), `dt_intermediate` (145), `dt_advanced` (98),
-`dt_expert` (15), and a smaller `orderflow` course (6 lessons) — the user
-has said they'll likely remove `orderflow`; re-check it still exists before
-referencing it.
+The bundled catalog currently contains one course: `orderflow`, with 10
+units, 77 lessons, and 479 questions. Retired course sources and generated
+lesson data have been removed; do not restore them when regenerating content.
 
 Shape: `{ "courses": [Course...], "legal": {...} }`. Each course has
 `sections` (unit banners: `index`, `title`, `bg`/`slab` hex, `tier`, plus
