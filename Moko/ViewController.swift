@@ -377,11 +377,20 @@ class ViewController: UIViewController {
         guard let test = course.testOuts?.first(where: { $0.unitIndex == unit }) else { return }
         let shuffled = test.questionPool.shuffled()
         var screens: [LessonScreen] = []
-        var coveredSkills: Set<String> = []
+        // Competency blueprint first: every attempt must cover each slot's
+        // skill `count` times, so a random draw can't skip a core skill.
+        for slot in test.blueprint ?? [] {
+            let matches = shuffled.filter { candidate in
+                candidate.skillId == slot.skillId && !screens.contains(where: { $0.id == candidate.id })
+            }
+            screens.append(contentsOf: matches.prefix(slot.count))
+        }
+        var coveredSkills = Set(screens.map { $0.skillId ?? $0.type })
         for screen in shuffled {
+            if screens.count >= test.questionCount { break }
+            guard !screens.contains(where: { $0.id == screen.id }) else { continue }
             let skill = screen.skillId ?? screen.type
             if coveredSkills.insert(skill).inserted { screens.append(screen) }
-            if screens.count == test.questionCount { break }
         }
         if screens.count < test.questionCount {
             for screen in shuffled where !screens.contains(where: { $0.id == screen.id }) {
@@ -389,6 +398,7 @@ class ViewController: UIViewController {
                 if screens.count == test.questionCount { break }
             }
         }
+        screens = Array(screens.prefix(test.questionCount)).shuffled()
         guard !screens.isEmpty else { return }
         activeTestOutUnit = unit
         let lesson = Lesson(node: -(unit + 1), title: "TEST OUT: \(course.sections[unit].title)",
