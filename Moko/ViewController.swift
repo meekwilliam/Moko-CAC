@@ -352,7 +352,10 @@ class ViewController: UIViewController {
             sections: course.sections,
             nodes: course.nodes,
             inProgressNode: progress.inProgressNode,
-            testedOutUnits: progress.testedOutUnits
+            testedOutUnits: progress.testedOutUnits,
+            recommendedReviewNodes: progress.recommendedReviewNodes,
+            testOutBlockedUnits: progress.testOutBlockedUnits,
+            testOutRetryUnits: progress.testOutRetryUnits
         )
     }
 
@@ -362,7 +365,10 @@ class ViewController: UIViewController {
         if let store = appRouter.pathStore {
             store.update(completed: progress.completed, xp: progress.xp, treats: progress.treats,
                          streak: progress.streak, inProgressNode: progress.inProgressNode,
-                         testedOutUnits: progress.testedOutUnits)
+                         testedOutUnits: progress.testedOutUnits,
+                         recommendedReviewNodes: progress.recommendedReviewNodes,
+                         testOutBlockedUnits: progress.testOutBlockedUnits,
+                         testOutRetryUnits: progress.testOutRetryUnits)
         } else {
             appRouter.pathStore = PathStore(payload: makePathPayload())
         }
@@ -376,7 +382,10 @@ class ViewController: UIViewController {
     private func refreshPathState() {
         appRouter.pathStore?.update(completed: progress.completed, xp: progress.xp, treats: progress.treats,
                                     streak: progress.streak, inProgressNode: progress.inProgressNode,
-                                    testedOutUnits: progress.testedOutUnits)
+                                    testedOutUnits: progress.testedOutUnits,
+                                    recommendedReviewNodes: progress.recommendedReviewNodes,
+                                    testOutBlockedUnits: progress.testOutBlockedUnits,
+                                    testOutRetryUnits: progress.testOutRetryUnits)
     }
 
     private func openTestOut(unit: Int) {
@@ -445,7 +454,7 @@ class ViewController: UIViewController {
     }
 
     private func completeTestOut(correct: Int, total _: Int, correctCompetencies: [String: Int],
-                                 missedCompetencies _: [String: Int]) {
+                                 missedCompetencies: [String: Int]) {
         guard let unit = activeTestOutUnit else { return }
         activeTestOutUnit = nil
         let isJump = activeTestOutIsJump
@@ -468,6 +477,19 @@ class ViewController: UIViewController {
                 nodes.removeAll { $0 == finalBoss }
             }
             progress.recordTestOut(units: testedUnits, completedNodes: nodes)
+        } else {
+            var recommendations: [Int] = []
+            let weakCompetencies = missedCompetencies.sorted { $0.value > $1.value }.map(\.key)
+            for competency in weakCompetencies {
+                guard let definition = course.testOuts?.first(where: { $0.competencyBlueprint?.contains(competency) == true }),
+                      let nodes = definition.competencySourceNodes?[competency] else { continue }
+                for node in nodes where !progress.completed.contains(node) && !recommendations.contains(node) {
+                    recommendations.append(node)
+                    if recommendations.count == 3 { break }
+                }
+                if recommendations.count == 3 { break }
+            }
+            progress.recordTestOutFailure(unit: unit, recommendedNodes: recommendations)
         }
         appRouter.isTestLesson = false
         refreshPathState()

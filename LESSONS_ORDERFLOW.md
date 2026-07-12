@@ -362,7 +362,7 @@ Thin book => Easy to move
 Resting size => Liquidity at a price
 WHY: Depth is what absorbs aggression; without it, price jumps.
 
-[AGGRESSOR] Tap the aggressor.
+[AGGRESSOR] In Size & Liquidity, identify the side consuming resting liquidity.
 VISUAL: An animated Level II ladder shows prices between bid and ask columns, with ask sizes being consumed by incoming buy orders.
 SKILL: aggressor_side
 EVENT: lift
@@ -455,14 +455,14 @@ Refreshed order => Replenished after filling
 Spoof => Shown then pulled
 WHY: The book is live: orders appear, refill, and disappear.
 
-[AGGRESSOR] Tap the aggressor.
+[AGGRESSOR] In Pulling, Replenishment & Spoofing, identify the side consuming resting liquidity.
 VISUAL: An animated Level II ladder shows prices between bid and ask columns, with ask sizes being consumed by incoming buy orders.
 SKILL: aggressor_side
 EVENT: lift
 ANSWER: The buyer
 WHY: Offers being taken means the buyer is the aggressor.
 
-[BOOKDRAG] Tap the side this sell fills against.
+[BOOKDRAG] Route the sell used in Pulling, Replenishment & Spoofing to its execution side.
 VISUAL: A draggable market sell card sits beside a Level II ladder with bid and ask drop targets.
 SKILL: order_routing
 ORDER: market_sell
@@ -570,10 +570,10 @@ WHY: A complete read combines action, liquidity, and response.
 [ORDERFLOW_SIM] Buyers stay aggressive, the offer refreshes, and price stalls. What's strongest?
 VISUAL: Price stalls at resistance above VWAP while an offer refreshes, buyer initiated prints accelerate, and positive footprint delta produces little upward progress.
 SKILL: multi_signal_read
-Possible seller absorption
-Confirmed breakout acceptance
-Buyer exhaustion is proven
-WHY: Buying remains active but the refreshing offer prevents progress.
+The refreshing offer is containing aggressive buying
+Price is gaining clean acceptance above the offer
+Buyer urgency is clearly fading
+WHY: The beginner observation is that replenishing liquidity contains active buying. Unit 4 later names this behavior absorption.
 
 NODE 12
 TITLE: Boss Battle: Read the Book
@@ -686,14 +686,13 @@ EVENT: large_print
 TARGET: 3
 WHY: The selected execution carries the key tape evidence.
 
-[MC] Did price confirm the tape?
-VISUAL: Small mixed candles overlap inside a narrow horizontal trading area.
-SKILL: reading_time_sales
-CHART: sideways
+[ORDERFLOW_SIM] Did price confirm the tape?
+VISUAL: Price rises above VWAP with positive delta and fast buyer prints, but a large offer refreshes and upward price progress begins fading.
+SKILL: multi_signal_read
 Price response remains inconclusive
 Buyers are fully confirmed
 Sellers are fully confirmed
-WHY: Use the chart only to judge whether price confirmed the tape evidence.
+WHY: The composite view shows both executed pressure and the price response used to judge confirmation.
 
 [MATCH] Match each clue.
 SKILL: reading_time_sales
@@ -739,14 +738,13 @@ EVENT: large_print
 TARGET: 4
 WHY: This execution is much larger than the surrounding prints.
 
-[MC] Did price confirm the tape?
-VISUAL: Small mixed candles overlap inside a narrow horizontal trading area.
-SKILL: speed_size
-CHART: sideways
+[ORDERFLOW_SIM] Did price confirm the tape?
+VISUAL: Price stalls at resistance above VWAP while an offer refreshes, buyer initiated prints accelerate, and positive footprint delta produces little upward progress.
+SKILL: multi_signal_read
 No. Price barely moved
 Yes. Faster tape confirms buyers
 Yes. Volatility confirms direction
-WHY: Use the chart only to judge whether price confirmed the tape evidence.
+WHY: The composite view shows both executed pressure and the price response used to judge confirmation.
 
 [AGGRESSOR] Who's crossing the spread?
 VISUAL: An animated Level II ladder shows prices between bid and ask columns, with ask sizes being consumed by incoming buy orders.
@@ -792,14 +790,13 @@ EVENT: seller_target
 TARGET: 5
 WHY: The selected trade executes at the bid and is seller initiated.
 
-[MC] Did price confirm the tape?
-VISUAL: Candles rotate between clear upper and lower boundaries without sustained direction.
-SKILL: buyer_vs_seller_initiated_prints
-CHART: range
+[ORDERFLOW_SIM] Did price confirm the tape?
+VISUAL: Price rises above VWAP with positive delta and fast buyer prints, but a large offer refreshes and upward price progress begins fading.
+SKILL: multi_signal_read
 Price response remains inconclusive
 Buyer control is confirmed
 Seller control is confirmed
-WHY: Use the chart only to judge whether price confirmed the tape evidence.
+WHY: The composite view shows both executed pressure and the price response used to judge confirmation.
 
 [EVIDENCE_SELECT] Select both confirmation clues.
 VISUAL: Four evidence cards separate aggression, liquidity, price response, and an irrelevant clue. The learner must select the required combination.
@@ -832,14 +829,13 @@ EVENT: sequence_break
 TARGET: 2
 WHY: This print interrupts the persistent aggression shown before it.
 
-[MC] Did price confirm the tape?
-VISUAL: A sequence of higher highs and higher lows moves from the lower left toward the upper right.
-SKILL: repeated_prints_sequence_breaks
-CHART: uptrend
+[ORDERFLOW_SIM] Did price confirm the tape?
+VISUAL: Price approaches resistance, offers thin and are consumed, buyer initiated prints persist, stacked ask side execution appears, and price holds above the broken level.
+SKILL: multi_signal_read
 Yes. Higher prices continued
 No. Repetition never matters
 Inconclusive despite higher highs
-WHY: Use the chart only to judge whether price confirmed the tape evidence.
+WHY: The composite view shows both executed pressure and the price response used to judge confirmation.
 
 [EVIDENCE_SELECT] Which two clues make repeated prints meaningful?
 VISUAL: Four evidence cards separate aggression, liquidity, price response, and an irrelevant clue. The learner must select the required combination.
@@ -895,16 +891,15 @@ EVENT: stall
 TARGET: 6
 WHY: Prints continue but size and pace begin fading here.
 
-[MC] Did price confirm the tape?
-VISUAL: Price pushes through a visible resistance level with expanding bullish candles.
-SKILL: acceleration_slowdown_false_urgency
-CHART: breakout
+[ORDERFLOW_SIM] Did price confirm the tape?
+VISUAL: Price approaches resistance, offers thin and are consumed, buyer initiated prints persist, stacked ask side execution appears, and price holds above the broken level.
+SKILL: multi_signal_read
 Yes. Price expanded higher
 No. Pace cannot confirm
 Inconclusive after acceptance
-WHY: Use the chart only to judge whether price confirmed the tape evidence.
+WHY: The composite view shows both executed pressure and the price response used to judge confirmation.
 
-[EVIDENCE_SELECT] Select both confirmation clues.
+[EVIDENCE_SELECT] Select both confirmation clues for Acceleration, Slowdown & False Urgency.
 VISUAL: Four evidence cards separate aggression, liquidity, price response, and an irrelevant clue. The learner must select the required combination.
 SKILL: evidence_synthesis
 SELECT: 0, 1
@@ -935,14 +930,13 @@ EVENT: sequence_break
 TARGET: 1
 WHY: The selected print is the first opposing execution at the level.
 
-[MC] Did price confirm the tape?
-VISUAL: An advance reaches resistance and turns lower with visible upper wick rejection.
-SKILL: tape_at_key_levels
-CHART: resistanceRejection
+[ORDERFLOW_SIM] Did price confirm the tape?
+VISUAL: Price stalls at resistance above VWAP while an offer refreshes, buyer initiated prints accelerate, and positive footprint delta produces little upward progress.
+SKILL: multi_signal_read
 No. Buying failed at resistance
 Yes. Fast buying confirmed control
 Inconclusive despite rejection
-WHY: Use the chart only to judge whether price confirmed the tape evidence.
+WHY: The composite view shows both executed pressure and the price response used to judge confirmation.
 
 [EVIDENCE_SELECT] Which two clues make tape activity meaningful at a key level?
 VISUAL: Four evidence cards separate aggression, liquidity, price response, and an irrelevant clue. The learner must select the required combination.
@@ -1005,14 +999,13 @@ EVENT: sequence_break
 TARGET: 5
 WHY: This opposing print interrupts the dominant side.
 
-[MC] Did price confirm the buying?
-VISUAL: A sequence of higher highs and higher lows moves from the lower left toward the upper right.
-SKILL: boss_battle_read_the_tape
-CHART: uptrend
-Yes. Price advanced
-No. Price stalled
-Price cannot confirm tape
-WHY: Price made upward progress with the tape.
+[ORDERFLOW_SIM] Persistent buyer prints clear offers and price holds higher. Did price confirm the buying?
+VISUAL: Price approaches resistance, offers thin and are consumed, buyer initiated prints persist, stacked ask side execution appears, and price holds above the broken level.
+SKILL: multi_signal_read
+Yes. Price advanced and held
+No. Price stalled against replenishment
+The price response remains inconclusive
+WHY: The composite evidence shows both persistent buying and higher accepted prices.
 
 [REPLAY_COMPARE] Which replay shows false urgency?
 VISUAL: Replay A keeps strong buying against a replenishing offer with stalled price. Replay B shows buying pace itself fading as price stalls.
@@ -1106,25 +1099,21 @@ Pressure and price accelerate together
 No aggressive executions appear
 WHY: Absorption requires pressure plus a weak corresponding price response.
 
-[MC] Which explanation fits best?
-VISUAL: A decline reaches support and rebounds with buyers defending the lower area.
-SKILL: buyer_vs_seller_absorption
-CHART: supportBounce
-Buyers absorb selling near support
-High total volume normally implies strongly directional delta
-A large wall deserves more weight than repeated fills against it
-One unusually large trade is more reliable than subsequent response
-WHY: Buyers absorb selling near support.
+[ORDERFLOW_SIM] Sellers keep hitting a refreshing bid while support holds. What's strongest?
+VISUAL: Price holds support below VWAP while a bid refreshes, seller initiated prints accelerate, and negative footprint delta produces little downward progress.
+SKILL: multi_signal_read
+Possible buyer absorption
+Seller continuation remains favored
+Seller exhaustion is proven
+WHY: Active selling makes little progress while the bid replenishes.
 
-[MC] What's the strongest conclusion?
-VISUAL: An advance reaches resistance and turns lower with visible upper wick rejection.
-SKILL: buyer_vs_seller_absorption
-CHART: resistanceRejection
-Sellers absorb buying near resistance
-The current book is more useful than the executions that changed it
-Location adds little once the tape accelerates
-The earliest signal should anchor the read even after conditions change
-WHY: Sellers absorb buying near resistance.
+[ORDERFLOW_SIM] Buyers keep lifting a refreshing offer while resistance holds. What's strongest?
+VISUAL: Price stalls at resistance above VWAP while an offer refreshes, buyer initiated prints accelerate, and positive footprint delta produces little upward progress.
+SKILL: multi_signal_read
+Possible seller absorption
+Buyer continuation remains favored
+Buyer exhaustion is proven
+WHY: Active buying makes little progress while the offer replenishes.
 
 NODE 22
 TITLE: Repeated Tests & Hidden Liquidity
@@ -1157,15 +1146,13 @@ Pressure and price accelerate together
 No aggressive executions appear
 WHY: Absorption requires pressure plus a weak corresponding price response.
 
-[MC] What best connects the evidence?
-VISUAL: Price tests the same support area twice and rebounds after the second test.
-SKILL: repeated_tests_hidden_liquidity
-CHART: doubleBottom
-A level that survives tests may contain absorption
-Positive delta is usually sufficient confirmation for higher prices
-A pull in liquidity is equivalent to aggressive execution
-Slower counter pressure automatically confirms continuation
-WHY: A level that survives tests may contain absorption.
+[ORDERFLOW_SIM] Repeated selling tests the level, the bid replenishes, and price still holds. What's strongest?
+VISUAL: Price holds support below VWAP while a bid refreshes, seller initiated prints accelerate, and negative footprint delta produces little downward progress.
+SKILL: multi_signal_read
+Possible absorption at the defended level
+A downside break is confirmed
+The visible bid proves every hidden order
+WHY: Repeated execution with replenishment and weak downward progress supports possible absorption.
 
 [EVIDENCE_SELECT] Select two hidden liquidity clues.
 VISUAL: Four evidence cards separate aggression, liquidity, price response, and an irrelevant clue. The learner must select the required combination.
@@ -1191,21 +1178,21 @@ Resting depth proves reversal
 Execution gains urgency
 WHY: Exhaustion is defined by aggressive activity fading.
 
-[TIME_SALES_TAP] Tap where fast activity begins losing follow through.
+[TIME_SALES_TAP] Tap where activity starts losing follow through in What Is Exhaustion?.
 VISUAL: An animated Time and Sales table lists time, execution price, and trade size, with pace and trade size fading after the target row.
 SKILL: tape_interaction
 EVENT: stall
 TARGET: 6
 WHY: Prints continue but size and pace begin fading here.
 
-[FOOTPRINT] Which footprint change would support exhaustion?
-VISUAL: A footprint grid places bid volume left of price and ask volume right of price, showing similar bid and ask volume across the price rows.
-SKILL: footprint_reading
-EVENT: balanced
-Directional execution becomes less dominant near the extreme
-One large row guarantees reversal
-Displayed orders replace executed volume
-WHY: Fading directional execution can support an exhaustion read.
+[TIME_SALES] Which tape change would support exhaustion?
+VISUAL: An animated Time and Sales table lists time, execution price, and trade size, with pace and trade size fading after the target row.
+SKILL: tape_reading
+EVENT: stall
+Initiated pace and size fade near the extreme
+Aggression accelerates with price progress
+Displayed depth alone guarantees reversal
+WHY: Exhaustion is visible as aggressive activity itself fades.
 
 [EVIDENCE_SELECT] Which two clues best support exhaustion?
 VISUAL: Four evidence cards separate aggression, liquidity, price response, and an irrelevant clue. The learner must select the required combination.
@@ -1238,21 +1225,21 @@ Resting depth proves reversal
 Execution gains urgency
 WHY: Exhaustion is defined by aggressive activity fading.
 
-[TIME_SALES_TAP] Tap where fast activity begins losing follow through.
+[TIME_SALES_TAP] Tap where activity starts losing follow through in Buyer vs. Seller Exhaustion.
 VISUAL: An animated Time and Sales table lists time, execution price, and trade size, with pace and trade size fading after the target row.
 SKILL: tape_interaction
 EVENT: stall
 TARGET: 4
 WHY: Prints continue but size and pace begin fading here.
 
-[FOOTPRINT] Which footprint change would support exhaustion?
-VISUAL: A footprint grid places bid volume left of price and ask volume right of price, showing similar bid and ask volume across the price rows.
-SKILL: footprint_reading
-EVENT: balanced
-Directional execution becomes less dominant near the extreme
-One large row guarantees reversal
-Displayed orders replace executed volume
-WHY: Fading directional execution can support an exhaustion read.
+[TIME_SALES] Which tape change supports seller exhaustion near a low?
+VISUAL: An animated Time and Sales table lists time, execution price, and trade size, with pace and trade size fading after the target row.
+SKILL: tape_reading
+EVENT: stall
+Aggressive seller prints lose pace and size
+Seller prints accelerate through support
+Buyer initiated prints disappear completely
+WHY: Seller exhaustion means the initiating sellers themselves lose urgency.
 
 [EVIDENCE_SELECT] Which two observations identify the exhausting side?
 VISUAL: Four evidence cards separate aggression, liquidity, price response, and an irrelevant clue. The learner must select the required combination.
@@ -1351,34 +1338,29 @@ Aggression confirms continuation
 Displayed size reveals hidden liquidity
 WHY: Strong pressure with little movement suggests absorption.
 
-[MC] What does the evidence support?
-VISUAL: Price briefly trades below a level and closes back above it, leaving a long lower wick.
-SKILL: absorption_practice_replays
-CHART: rejectionWickDown
-Separate active pressure from the market response
-Tape speed matters more than the level where it occurs
-A replenishing order is probably new unrelated liquidity
-WHY: Separate active pressure from the market response.
+[REPLAY_COMPARE] Which replay shows sustained pressure being contained rather than pressure fading?
+VISUAL: Replay A shows varied buy sizes continuing into an offer that replenishes while price stays pinned. Replay B shows both buy size and pace fading before price stalls.
+SKILL: scenario_comparison
+Replay A
+Replay B
+Neither
+WHY: Replay A keeps aggression active against replenishment. Replay B shows exhaustion.
 
-[MC] Which read is best supported?
-VISUAL: An advance reaches resistance and turns lower with visible upper wick rejection.
-SKILL: absorption_practice_replays
-CHART: resistanceRejection
-Aggressive buyers can be absorbed by passive sellers at resistance
-Large executions are directional even when price does not respond
-A moving average reaction can substitute for execution evidence
-Balanced delta means neither side traded aggressively
-WHY: Aggressive buyers can be absorbed by passive sellers at resistance.
+[ORDERFLOW_SIM] Buying remains active, the offer refreshes, and price cannot clear resistance. What's strongest?
+VISUAL: Price stalls at resistance above VWAP while an offer refreshes, buyer initiated prints accelerate, and positive footprint delta produces little upward progress.
+SKILL: multi_signal_read
+Possible seller absorption
+Buyer continuation is confirmed
+Buying has completely stopped
+WHY: The simulation exposes active buying, replenishment, and weak upward response.
 
-[MC] What's the most reasonable read?
-VISUAL: A decline reaches support and rebounds with buyers defending the lower area.
-SKILL: absorption_practice_replays
-CHART: supportBounce
-Aggressive sellers can be absorbed by passive buyers at support
-Fast tape near resistance is stronger than failure to gain acceptance
-A liquidity sweep and breakout differ mainly by candle size
-Order flow evidence remains valid regardless of changing volatility
-WHY: Aggressive sellers can be absorbed by passive buyers at support.
+[ORDERFLOW_SIM] Selling remains active, the bid refreshes, and price cannot break support. What's strongest?
+VISUAL: Price holds support below VWAP while a bid refreshes, seller initiated prints accelerate, and negative footprint delta produces little downward progress.
+SKILL: multi_signal_read
+Possible buyer absorption
+Seller continuation is confirmed
+Selling has completely stopped
+WHY: The simulation exposes active selling, replenishment, and weak downward response.
 
 NODE 27
 TITLE: Boss Battle: Absorption or Exhaustion?
@@ -1545,21 +1527,23 @@ EVENT: hit
 TARGET: 4
 WHY: Aggressive sellers execute at the bid.
 
-[MC] What best connects the evidence?
-SKILL: buyer_vs_seller_imbalances
-Imbalance means one side is more aggressive
-Positive delta is usually sufficient confirmation for higher prices
-A pull in liquidity is equivalent to aggressive execution
-Slower counter pressure automatically confirms continuation
-WHY: Imbalance means one side is more aggressive.
+[FOOTPRINT] What does this ask heavy footprint support?
+VISUAL: A footprint grid places bid volume left of price and ask volume right of price, showing one target row carrying the largest ask side execution advantage.
+SKILL: footprint_reading
+EVENT: lift
+Buyer imbalance
+Seller imbalance
+Balanced execution
+WHY: Ask side execution dominates across the relevant prices.
 
-[MC] Which read needs fewer assumptions?
-SKILL: buyer_vs_seller_imbalances
-Buyer imbalance can push price higher
-Repeated tests always make a liquidity level stronger
-A fast rejection proves the resting wall was genuine
-Stable displayed size means hidden liquidity cannot be present
-WHY: Buyer imbalance can push price higher.
+[FOOTPRINT] What does this bid heavy footprint support?
+VISUAL: A footprint grid places bid volume left of price and ask volume right of price, showing one target row carrying the largest bid side execution advantage.
+SKILL: footprint_reading
+EVENT: hit
+Seller imbalance
+Buyer imbalance
+Balanced execution
+WHY: Bid side execution dominates across the relevant prices.
 
 [MC] What matters most here?
 SKILL: buyer_vs_seller_imbalances
@@ -1607,7 +1591,7 @@ Passive absorption and fading aggression produce the same evidence
 A high volume candle reveals which side initiated every trade
 WHY: Sudden aggression can ignite momentum.
 
-[ORDER] Build the read.
+[ORDER] Build the momentum ignition read.
 SKILL: market_sequence
 Buyer pressure appears
 Offers get consumed
@@ -1667,7 +1651,7 @@ More displayed depth necessarily means more actual liquidity
 A second test should be read the same way as the first
 WHY: Momentum weakens when price stops responding.
 
-[ORDER] Build the read.
+[ORDER] Build the momentum continuation & failure read.
 SKILL: market_sequence
 Seller pressure appears
 Bids get consumed
@@ -1754,15 +1738,14 @@ EVENT: delta_positive
 TARGET: 2
 WHY: This row contributes the largest ask minus bid volume.
 
-[MC] What's the best read?
-VISUAL: Alternating wide candles and long wicks show rapid movement with changing control.
-SKILL: delta_vs_volume
-CHART: volatile
-Volume is total activity. Delta is net aggression
-Displayed liquidity is stronger evidence than completed executions
-A short aggressive burst can outweigh a stalled price response
-The candle response makes tape confirmation optional
-WHY: Volume measures total trading while delta compares aggressive buying and selling.
+[FOOTPRINT] Which quantity measures net aggressive buying minus selling?
+VISUAL: A footprint grid places bid volume left of price and ask volume right of price, showing similar bid and ask volume across the price rows.
+SKILL: footprint_reading
+EVENT: balanced
+Delta
+Total volume
+Displayed depth
+WHY: Volume totals execution while delta nets ask and bid side execution.
 
 [MC] What's the most reasonable read?
 SKILL: delta_vs_volume
@@ -1779,7 +1762,7 @@ EVENT: total_target
 TARGET: 3
 WHY: Total volume adds bid and ask executions, unlike delta.
 
-[ORDER] Build the read.
+[ORDER] Build the delta vs. volume read.
 SKILL: market_sequence
 Buyer pressure appears
 Offers get consumed
@@ -1872,7 +1855,7 @@ Location adds little once the tape accelerates
 The earliest signal should anchor the read even after conditions change
 WHY: Price and pressure disagreement warns of weakness.
 
-[ORDER] Build the read.
+[ORDER] Build the price and pressure divergence read.
 SKILL: market_sequence
 Seller pressure appears
 Bids get consumed
@@ -2090,7 +2073,7 @@ SKILL: liquidity_location
 CHART: breakout
 WHY: Buy stops may cluster beyond obvious resistance or prior highs.
 
-[MC] How should this be interpreted?
+[MC] How can inferred sell stops below support affect a breakdown?
 VISUAL: Price drives below a visible support level with expanding bearish candles.
 SKILL: buy_stops_vs_sell_stops
 CHART: breakdown
@@ -2191,7 +2174,7 @@ CHART: rejectionWickUp
 TARGET: 0
 WHY: The selected candle shows whether execution produced follow through.
 
-[TAP_CANDLE] Tap the rejection after the sweep.
+[TAP_CANDLE] Tap the rejection after the downside sweep.
 VISUAL: Price briefly trades below a level and closes back above it, leaving a long lower wick. The candles are tappable and the learner must select the requested candle.
 SKILL: upside_vs_downside_sweeps
 CHART: rejectionWickDown
@@ -2208,17 +2191,15 @@ Price builds acceptance above
 Offers stay cleared
 WHY: The interaction must match the evidence required by this specific setup.
 
-[MC] What's the most reasonable read?
-VISUAL: A candle with a small upper body and long lower wick shows rejection of lower prices.
-SKILL: upside_vs_downside_sweeps
-CHART: hammer
-A downside sweep can trap late sellers
-Fast tape near resistance is stronger than failure to gain acceptance
-A liquidity sweep and breakout differ mainly by candle size
-Order flow evidence remains valid regardless of changing volatility
-WHY: A downside sweep can trap late sellers.
+[ORDERFLOW_SIM] Price trades below the prior low and immediately reclaims it. Is this a downside sweep or acceptance?
+VISUAL: Price trades below a prior low as sell stops trigger and seller initiated prints surge, then bids rebuild, buying responds, and price immediately reclaims the breached level.
+SKILL: multi_signal_read
+Possible downside sweep
+Accepted breakdown
+Seller continuation remains favored
+WHY: The breach takes liquidity but fails to gain acceptance below.
 
-[MC] Which read is best supported?
+[MC] Which upside sweep interpretation is best supported?
 VISUAL: Price briefly trades above a level and closes back below it, leaving a long upper wick.
 SKILL: upside_vs_downside_sweeps
 CHART: rejectionWickUp
@@ -2299,15 +2280,13 @@ TITLE: Thin vs. Thick Liquidity
 TYPE: STANDARD
 CELEBRATION: Thin vs. Thick Liquidity complete.
 
-[MC] Which explanation fits best?
-VISUAL: Price opens well above the prior trading area with little activity between the two zones.
-SKILL: thin_vs_thick_liquidity
-CHART: gapUp
-Thin liquidity lets price travel quickly
-High total volume normally implies strongly directional delta
-A large wall deserves more weight than repeated fills against it
-One unusually large trade is more reliable than subsequent response
-WHY: Thin liquidity lets price travel quickly.
+[BOOK_COMPARE] Which book lets price travel with less incoming pressure?
+VISUAL: Two Level II ladders appear side by side. Book A has large resting size at every nearby price. Book B has small size and gaps between levels.
+SKILL: book_depth
+Book B
+Book A
+Both equally
+WHY: Book B has thinner nearby depth and gaps.
 
 [BOOK_COMPARE] Which book should move more easily?
 VISUAL: Two Level II ladders appear side by side. Book A has large resting size at every nearby price. Book B has small size and gaps between levels.
@@ -2364,22 +2343,21 @@ Positive delta alone
 One large candle
 WHY: The interaction must match the evidence required by this specific setup.
 
-[MC] What best connects the evidence?
-VISUAL: Small mixed candles overlap inside a narrow horizontal trading area.
-SKILL: icebergs_hidden_replenishment
-CHART: sideways
-An iceberg can replenish displayed size while absorbing repeated trades
-Positive delta is usually sufficient confirmation for higher prices
-A pull in liquidity is equivalent to aggressive execution
-Slower counter pressure automatically confirms continuation
-WHY: An iceberg can replenish displayed size while absorbing repeated trades.
+[ORDERFLOW_SIM] Displayed size repeatedly refills after same price executions. What's strongest?
+VISUAL: Level II repeatedly shows 100 shares at the offer. Each 100 share execution clears the display, then another 100 immediately reappears at the same price while Time and Sales keeps printing buys.
+SKILL: multi_signal_read
+A possible iceberg is replenishing hidden size
+The candle proves a breakout
+Every cancelled order is spoofing
+WHY: Repeated fills plus replenishment may indicate hidden liquidity.
 
-[TIME_SALES_TAP] In iceberg orders, tap the most informative print.
-VISUAL: An animated Time and Sales table lists time, execution price, and trade size, with one unusually large execution among ordinary prints.
-SKILL: tape_interaction
-EVENT: large_print
-TARGET: 1
-WHY: The selected execution carries the key tape evidence.
+[REPLAY_COMPARE] Which replay shows repeated execution against replenishing displayed size?
+VISUAL: Replay A shows varied buy sizes continuing into an offer that replenishes while price stays pinned. Replay B shows both buy size and pace fading before price stalls.
+SKILL: scenario_comparison
+Replay A
+Replay B
+Neither
+WHY: Replay A keeps executing into liquidity that returns while price remains pinned.
 
 [MC] What makes repeated same price fills suspicious for hidden size?
 SKILL: icebergs_hidden_replenishment
@@ -2512,7 +2490,7 @@ Accepted breakdown
 Seller continuation remains favored
 WHY: Price trades below and returns inside.
 
-[BOOK_COMPARE] Which book should move more easily?
+[BOOK_COMPARE] Which depth profile in Boss Battle: Sweep or Acceptance? should let price travel more easily?
 VISUAL: Two Level II ladders appear side by side. Book A has large resting size at every nearby price. Book B has small size and gaps between levels.
 SKILL: book_depth
 Book B
@@ -2553,27 +2531,25 @@ Replay B
 Not enough evidence
 WHY: Acceptance needs continued execution and price holding beyond the level.
 
-[MC] How should this be interpreted?
-VISUAL: Price drives below a visible support level with expanding bearish candles.
-SKILL: breakout_vs_breakdown_pressure
-CHART: breakdown
-Bids are consumed, withdrawn, or both
-Thin liquidity implies the move has strong aggressive sponsorship
-Negative delta prevents price from rising
-Refreshing bids matter only after sellers stop trading
-WHY: A downside break can develop as sellers consume bids buyers withdraw liquidity or both.
+[ORDERFLOW_SIM] Seller initiated prints persist as bids thin and price accepts below support. What's strongest?
+VISUAL: Seller initiated prints persist into bids that are being consumed or withdrawn, footprint execution favors sellers, and price establishes sustained trade below support.
+SKILL: multi_signal_read
+Breakdown pressure is producing acceptance
+A downside sweep has already rejected
+Buyer absorption is confirmed
+WHY: The simulation shows selling, weakening bids, and sustained trade below support.
 
-[EVIDENCE_SELECT] Select the two acceptance clues.
+[EVIDENCE_SELECT] Select the two clues supporting breakdown pressure.
 VISUAL: Four evidence cards separate aggression, liquidity, price response, and an irrelevant clue. The learner must select the required combination.
 SKILL: evidence_synthesis
 SELECT: 0, 1
-Persistent execution
-Price holds beyond the level
-Immediate return inside
-One isolated print
-WHY: Advanced reads combine at least two aligned evidence sources.
+Seller execution persists
+Bids thin or get consumed
+Price immediately reclaims support
+Buying accelerates above the level
+WHY: Breakdown pressure combines active selling with weakening bid liquidity.
 
-[TAP_CANDLE] Tap the clearest price response.
+[TAP_CANDLE] Tap the price response that matters most for Breakout vs. Breakdown Pressure.
 VISUAL: Price drives below a visible support level with expanding bearish candles. The candles are tappable and the learner must select the requested candle.
 SKILL: breakout_vs_breakdown_pressure
 CHART: breakdown
@@ -2841,7 +2817,7 @@ TITLE: Chasing, Confirmation & Common Misconceptions
 TYPE: STANDARD
 CELEBRATION: Chasing, Confirmation & Common Misconceptions complete.
 
-[TAP_CANDLE] Tap the clearest price response.
+[TAP_CANDLE] Tap the price response that matters most for Chasing, Confirmation & Common Misconceptions.
 VISUAL: Price opens well above the prior trading area with little activity between the two zones. The candles are tappable and the learner must select the requested candle.
 SKILL: chasing_confirmation_common_misconceptions
 CHART: gapUp
@@ -2865,12 +2841,13 @@ One fast buy print
 A single wide candle
 WHY: The interaction must match the evidence required by this specific setup.
 
-[TF] Fast tape guarantees a breakout.
-VISUAL: Price pushes through a visible resistance level with expanding bullish candles.
-SKILL: chasing_confirmation_common_misconceptions
-CHART: breakout
-ANSWER: False
-WHY: Speed needs acceptance and follow through.
+[ORDERFLOW_SIM] Fast buying appears, but the offer refreshes and price stalls. Is breakout acceptance confirmed?
+VISUAL: Price rises above VWAP with positive delta and fast buyer prints, but a large offer refreshes and upward price progress begins fading.
+SKILL: multi_signal_read
+No. Fast tape still needs price acceptance
+Yes. Speed alone confirms it
+Yes. Positive delta guarantees it
+WHY: Fast tape is urgency, not confirmation.
 
 [MC] What best connects the evidence?
 VISUAL: Price opens well above the prior trading area with little activity between the two zones.
@@ -2882,14 +2859,13 @@ A pull in liquidity is equivalent to aggressive execution
 Slower counter pressure automatically confirms continuation
 WHY: Late entries carry worse risk and reward.
 
-[MC] Positive delta appears but price cannot rise. What is the best explanation?
-VISUAL: A small candle body with a long upper wick shows rejection of higher prices.
-SKILL: chasing_confirmation_common_misconceptions
-CHART: shootingStar
+[ORDERFLOW_SIM] Footprint delta stays positive while a refreshing offer prevents higher prices. What's strongest?
+VISUAL: Price stalls at resistance above VWAP while an offer refreshes, buyer initiated prints accelerate, and positive footprint delta produces little upward progress.
+SKILL: multi_signal_read
 Buying may be absorbed by passive sellers
 Positive delta guarantees delayed upside
-The chart invalidates all tape data
-WHY: Aggressive buying without progress can reveal seller absorption.
+The execution data should be ignored
+WHY: Positive delta with weak price progress can support possible seller absorption.
 
 [ORDER] Build the read.
 VISUAL: Price opens well above the prior trading area with little activity between the two zones.
@@ -3131,7 +3107,7 @@ Buy prints accelerate at support
 Trade pace becomes balanced
 WHY: Use completed executions to judge whether trend pressure returned.
 
-[LIVE_CHART] Which price behavior supports the read?
+[LIVE_CHART] Which live price behavior supports Bullish vs. Bearish Pullbacks?
 VISUAL: A live candlestick chart adds new candles over time, with price currently building downward.
 SKILL: bullish_vs_bearish_pullbacks
 DIRECTION: down
@@ -3241,7 +3217,7 @@ A replenishing order is probably new unrelated liquidity
 Brief trade beyond the level is enough to establish acceptance
 WHY: The average provides location but execution evidence determines the read.
 
-[LIVE_CHART] What changed in price response?
+[LIVE_CHART] What changed in the order flow at vwap & moving averages response?
 VISUAL: A live candlestick chart adds new candles over time, with price currently building upward.
 SKILL: order_flow_at_vwap_moving_averages
 DIRECTION: up
@@ -3580,8 +3556,8 @@ VISUAL: A footprint grid places bid volume left of price and ask volume right of
 SKILL: footprint_reading
 EVENT: balanced
 Possible high volume chop
-Strong trend confirmed
-No trading occurred
+Directional pressure is cleanly one sided
+The quieter side has already lost control
 WHY: Heavy two sided execution can produce chop.
 
 [ORDERFLOW_SIM] What's the best conclusion?
@@ -3718,23 +3694,23 @@ TITLE: Exhaustion Reversals
 TYPE: STANDARD
 CELEBRATION: Exhaustion Reversals complete.
 
-[TIME_SALES] What shows aggression fading?
+[TIME_SALES] At the low, which tape change supports a seller exhaustion reversal?
 VISUAL: An animated Time and Sales table lists time, execution price, and trade size, with pace and trade size fading after the target row.
 SKILL: tape_reading
 EVENT: stall
-Print pace and size decline
-A rejection wick proves passive absorption
-The second test should inherit the first test's order flow
-WHY: Exhaustion can prepare a reversal.
+Seller initiated prints lose pace and size
+Seller aggression accelerates lower
+Buyer pressure disappears
+WHY: Fading seller aggression can prepare a bullish control change.
 
-[FOOTPRINT] What weakens the prior side?
+[FOOTPRINT] At the high, which footprint change supports a buyer exhaustion reversal?
 VISUAL: A footprint grid places bid volume left of price and ask volume right of price, showing similar bid and ask volume across the price rows.
 SKILL: footprint_reading
 EVENT: balanced
-Directional execution loses dominance
-The pattern target is guaranteed
-Only resting liquidity matters
-WHY: Tape and footprint evidence reveal what changed beneath the candle pattern.
+Buyer execution loses directional dominance
+Ask execution accelerates higher
+Every row becomes strongly ask heavy
+WHY: Fading buyer dominance can prepare a bearish control change.
 
 [MC] What does the evidence support?
 VISUAL: A narrow candle body with wicks on both sides shows little net price progress.
@@ -3948,8 +3924,8 @@ TITLE: Boss Battle: Trap or Reversal?
 TYPE: BOSS_BATTLE
 CELEBRATION: Boss Battle: Trap or Reversal? complete.
 
-[REPLAY_COMPARE] Which replay traps buyers?
-VISUAL: Replay A breaks and holds with persistent buying. Replay B breaks, fails, returns inside, and gives control to sellers.
+[REPLAY_COMPARE] Which replay creates the buyer trap in Boss Battle: Trap or Reversal??
+VISUAL: Replay A pauses above the break, defends a deeper retest, and resumes higher. Replay B loses the level after an initially strong burst and sellers take control.
 SKILL: scenario_comparison
 Replay B
 Replay A
@@ -4100,7 +4076,7 @@ Positive delta
 A resting wall far away
 WHY: Expert execution decisions combine market evidence with risk.
 
-[ORDER] Build the decision sequence.
+[ORDER] Build the decision sequence for Slippage & Thin Liquidity Risk.
 SKILL: market_sequence
 Inspect nearby depth
 Estimate slippage risk
@@ -4298,7 +4274,7 @@ Sellers hitting bids
 Neither side trading
 WHY: Buyer initiated prints dominate the tape.
 
-[TAP_CANDLE] Tap the clearest price response.
+[TAP_CANDLE] Tap the price response that matters most for Reviewing the Full Order Flow Read.
 VISUAL: Small mixed candles overlap inside a narrow horizontal trading area. The candles are tappable and the learner must select the requested candle.
 SKILL: reviewing_the_full_order_flow_read
 CHART: sideways
@@ -4402,8 +4378,8 @@ WHY: Acceptance higher invalidates seller absorption.
 VISUAL: A championship replay combines price and VWAP, changing Level II liquidity, Time and Sales, and footprint delta so the learner must weigh all four evidence sources.
 SKILL: multi_signal_read
 Slippage near changing depth
-No execution risk
-Guaranteed fill price
+Stable displayed depth should limit most slippage
+The current spread is more important than depth changes
 WHY: Fast activity and changing depth increase slippage.
 
 [BOOK_COMPARE] Which book shows thinner liquidity?
@@ -4438,12 +4414,12 @@ TEST OUT METADATA
 UNIT 1
 QUESTIONS PER ATTEMPT: 8
 PASSING SCORE: 7
-POOL SIZE: 10
+POOL SIZE: 12
 COMPETENCY BLUEPRINT: u1.aggressive_buyer, u1.aggressive_seller, u1.market_buy_routing, u1.market_sell_routing, u1.spread, u1.aggressive_vs_passive, u1.order_price_chain, u1.combined_read
 COMPETENCY MAPPINGS: u1.aggressive_buyer => aggressor_side; u1.aggressive_seller => aggressor_side; u1.market_buy_routing => order_routing; u1.market_sell_routing => order_routing; u1.spread => bid_ask_spread; u1.aggressive_vs_passive => aggressive_vs_passive_orders; u1.order_price_chain => market_sequence; u1.combined_read => evidence_synthesis
 COMPETENCY SOURCE UNITS: u1.aggressive_buyer => 1; u1.aggressive_seller => 1; u1.market_buy_routing => 1; u1.market_sell_routing => 1; u1.spread => 1; u1.aggressive_vs_passive => 1; u1.order_price_chain => 1; u1.combined_read => 1
 COMPETENCY SOURCE NODES: u1.aggressive_buyer => 4; u1.aggressive_seller => 4; u1.market_buy_routing => 2; u1.market_sell_routing => 2; u1.spread => 3; u1.aggressive_vs_passive => 2; u1.order_price_chain => 1; u1.combined_read => 1
-ELIGIBLE QUESTION IDS: u1.aggressive_buyer => orderflow.u1.n4.q2; u1.aggressive_seller => orderflow.u1.n4.q3; u1.market_buy_routing => orderflow.u1.n2.q3; u1.market_sell_routing => orderflow.u1.n2.q4; u1.spread => orderflow.u1.n3.q1, orderflow.u1.n3.q2; u1.aggressive_vs_passive => orderflow.u1.n2.q1, orderflow.u1.n2.q2; u1.order_price_chain => orderflow.u1.n1.q6; u1.combined_read => orderflow.u1.n1.q5
+ELIGIBLE QUESTION IDS: u1.aggressive_buyer => orderflow.u1.n4.q2; u1.aggressive_seller => orderflow.u1.n4.q3; u1.market_buy_routing => orderflow.u1.n2.q3; u1.market_sell_routing => orderflow.u1.n2.q4; u1.spread => orderflow.u1.n3.q1, orderflow.u1.n3.q2, orderflow.u1.n3.q3; u1.aggressive_vs_passive => orderflow.u1.n2.q1, orderflow.u1.n2.q2, orderflow.u1.n2.q6; u1.order_price_chain => orderflow.u1.n1.q6; u1.combined_read => orderflow.u1.n1.q5
 JUMP QUESTIONS: N/A
 JUMP PASSING SCORE: N/A
 JUMP PREREQUISITE QUESTIONS: N/A
@@ -4455,12 +4431,12 @@ JUMP PREREQUISITES: N/A
 UNIT 2
 QUESTIONS PER ATTEMPT: 8
 PASSING SCORE: 7
-POOL SIZE: 16
+POOL SIZE: 15
 COMPETENCY BLUEPRINT: u2.level_two, u2.resting_sides, u2.thick_liquidity, u2.thin_liquidity, u2.wall, u2.wall_behavior, u2.spoofing, u2.combined_book_read
-COMPETENCY MAPPINGS: u2.level_two => reading_the_order_book; u2.resting_sides => reading_the_order_book; u2.thick_liquidity => size_liquidity; u2.thin_liquidity => size_liquidity; u2.wall => book_depth, large_orders_as_walls; u2.wall_behavior => large_orders_as_walls; u2.spoofing => pulling_and_spoofing, scenario_comparison; u2.combined_book_read => book_depth, order_book_challenge
+COMPETENCY MAPPINGS: u2.level_two => reading_the_order_book; u2.resting_sides => reading_the_order_book; u2.thick_liquidity => size_liquidity; u2.thin_liquidity => size_liquidity; u2.wall => book_depth, large_orders_as_walls; u2.wall_behavior => large_orders_as_walls, market_sequence; u2.spoofing => pulling_and_spoofing; u2.combined_book_read => evidence_synthesis, multi_signal_read
 COMPETENCY SOURCE UNITS: u2.level_two => 2; u2.resting_sides => 2; u2.thick_liquidity => 2; u2.thin_liquidity => 2; u2.wall => 2; u2.wall_behavior => 2; u2.spoofing => 2; u2.combined_book_read => 2
 COMPETENCY SOURCE NODES: u2.level_two => 6; u2.resting_sides => 6; u2.thick_liquidity => 7; u2.thin_liquidity => 7; u2.wall => 8; u2.wall_behavior => 8; u2.spoofing => 9; u2.combined_book_read => 11
-ELIGIBLE QUESTION IDS: u2.level_two => orderflow.u2.n6.q1, orderflow.u2.n6.q2; u2.resting_sides => orderflow.u2.n6.q3, orderflow.u2.n6.q4; u2.thick_liquidity => orderflow.u2.n7.q1, orderflow.u2.n7.q2; u2.thin_liquidity => orderflow.u2.n7.q3, orderflow.u2.n7.q4; u2.wall => orderflow.u2.n8.q1, orderflow.u2.n8.q2; u2.wall_behavior => orderflow.u2.n8.q3, orderflow.u2.n8.q4; u2.spoofing => orderflow.u2.n9.q1, orderflow.u2.n9.q2; u2.combined_book_read => orderflow.u2.n11.q1, orderflow.u2.n11.q2
+ELIGIBLE QUESTION IDS: u2.level_two => orderflow.u2.n6.q1; u2.resting_sides => orderflow.u2.n6.q2, orderflow.u2.n6.q4; u2.thick_liquidity => orderflow.u2.n7.q2; u2.thin_liquidity => orderflow.u2.n7.q3, orderflow.u2.n7.q4; u2.wall => orderflow.u2.n8.q1, orderflow.u2.n8.q2; u2.wall_behavior => orderflow.u2.n8.q3, orderflow.u2.n8.q4, orderflow.u2.n8.q5; u2.spoofing => orderflow.u2.n9.q2, orderflow.u2.n9.q3; u2.combined_book_read => orderflow.u2.n11.q6, orderflow.u2.n11.q7
 JUMP QUESTIONS: 8
 JUMP PASSING SCORE: 7
 JUMP PREREQUISITE QUESTIONS: 4
@@ -4474,10 +4450,10 @@ QUESTIONS PER ATTEMPT: 9
 PASSING SCORE: 8
 POOL SIZE: 18
 COMPETENCY BLUEPRINT: u3.buyer_initiated, u3.seller_initiated, u3.large_print, u3.tape_speed, u3.persistent_aggression, u3.sequence_break, u3.false_urgency, u3.price_confirmation, u3.combined_tape_read
-COMPETENCY MAPPINGS: u3.buyer_initiated => tape_reading; u3.seller_initiated => tape_interaction; u3.large_print => tape_reading; u3.tape_speed => tape_interaction; u3.persistent_aggression => tape_interaction, tape_reading; u3.sequence_break => evidence_synthesis, repeated_prints_sequence_breaks; u3.false_urgency => tape_reading; u3.price_confirmation => tape_interaction, tape_reading; u3.combined_tape_read => tape_reading
+COMPETENCY MAPPINGS: u3.buyer_initiated => tape_interaction, tape_reading; u3.seller_initiated => tape_interaction, tape_reading; u3.large_print => tape_interaction, tape_reading; u3.tape_speed => tape_interaction, tape_reading; u3.persistent_aggression => evidence_synthesis, tape_reading; u3.sequence_break => repeated_prints_sequence_breaks, tape_interaction; u3.false_urgency => tape_interaction, tape_reading; u3.price_confirmation => evidence_synthesis, multi_signal_read; u3.combined_tape_read => multi_signal_read, tape_reading
 COMPETENCY SOURCE UNITS: u3.buyer_initiated => 3; u3.seller_initiated => 3; u3.large_print => 3; u3.tape_speed => 3; u3.persistent_aggression => 3; u3.sequence_break => 3; u3.false_urgency => 3; u3.price_confirmation => 3; u3.combined_tape_read => 3
 COMPETENCY SOURCE NODES: u3.buyer_initiated => 15; u3.seller_initiated => 15; u3.large_print => 14; u3.tape_speed => 14; u3.persistent_aggression => 16; u3.sequence_break => 16; u3.false_urgency => 17; u3.price_confirmation => 18; u3.combined_tape_read => 13
-ELIGIBLE QUESTION IDS: u3.buyer_initiated => orderflow.u3.n15.q1, orderflow.u3.n15.q2; u3.seller_initiated => orderflow.u3.n15.q3, orderflow.u3.n15.q4; u3.large_print => orderflow.u3.n14.q1, orderflow.u3.n14.q2; u3.tape_speed => orderflow.u3.n14.q3, orderflow.u3.n14.q4; u3.persistent_aggression => orderflow.u3.n16.q1, orderflow.u3.n16.q2; u3.sequence_break => orderflow.u3.n16.q3, orderflow.u3.n16.q4; u3.false_urgency => orderflow.u3.n17.q1, orderflow.u3.n17.q2; u3.price_confirmation => orderflow.u3.n18.q1, orderflow.u3.n18.q2; u3.combined_tape_read => orderflow.u3.n13.q1, orderflow.u3.n13.q2
+ELIGIBLE QUESTION IDS: u3.buyer_initiated => orderflow.u3.n15.q1, orderflow.u3.n15.q3; u3.seller_initiated => orderflow.u3.n15.q2, orderflow.u3.n15.q4; u3.large_print => orderflow.u3.n14.q2, orderflow.u3.n14.q4; u3.tape_speed => orderflow.u3.n14.q1, orderflow.u3.n14.q3; u3.persistent_aggression => orderflow.u3.n16.q1, orderflow.u3.n16.q4; u3.sequence_break => orderflow.u3.n16.q2, orderflow.u3.n16.q5; u3.false_urgency => orderflow.u3.n17.q2, orderflow.u3.n17.q4; u3.price_confirmation => orderflow.u3.n18.q3, orderflow.u3.n18.q4; u3.combined_tape_read => orderflow.u3.n13.q1, orderflow.u3.n13.q6
 JUMP QUESTIONS: 10
 JUMP PASSING SCORE: 8
 JUMP PREREQUISITE QUESTIONS: 5
@@ -4489,12 +4465,12 @@ JUMP PREREQUISITES: u1.market_buy_routing, u2.thick_liquidity, u2.combined_book_
 UNIT 4
 QUESTIONS PER ATTEMPT: 9
 PASSING SCORE: 8
-POOL SIZE: 18
+POOL SIZE: 21
 COMPETENCY BLUEPRINT: u4.absorption, u4.buyer_absorption, u4.seller_absorption, u4.repeated_tests, u4.hidden_liquidity, u4.buyer_exhaustion, u4.seller_exhaustion, u4.absorption_vs_exhaustion, u4.combined_absorption_read
-COMPETENCY MAPPINGS: u4.absorption => multi_signal_read, tape_reading; u4.buyer_absorption => multi_signal_read, tape_reading; u4.seller_absorption => buyer_vs_seller_absorption, tape_reading; u4.repeated_tests => multi_signal_read, tape_reading; u4.hidden_liquidity => multi_signal_read, repeated_tests_hidden_liquidity; u4.buyer_exhaustion => tape_interaction, tape_reading; u4.seller_exhaustion => evidence_synthesis, footprint_reading; u4.absorption_vs_exhaustion => tape_reading; u4.combined_absorption_read => multi_signal_read
+COMPETENCY MAPPINGS: u4.absorption => evidence_synthesis, multi_signal_read, scenario_comparison; u4.buyer_absorption => multi_signal_read, tape_reading; u4.seller_absorption => multi_signal_read, tape_reading; u4.repeated_tests => multi_signal_read, tape_reading; u4.hidden_liquidity => evidence_synthesis, multi_signal_read; u4.buyer_exhaustion => tape_reading; u4.seller_exhaustion => tape_reading; u4.absorption_vs_exhaustion => scenario_comparison, tape_reading; u4.combined_absorption_read => multi_signal_read, scenario_comparison
 COMPETENCY SOURCE UNITS: u4.absorption => 4; u4.buyer_absorption => 4; u4.seller_absorption => 4; u4.repeated_tests => 4; u4.hidden_liquidity => 4; u4.buyer_exhaustion => 4; u4.seller_exhaustion => 4; u4.absorption_vs_exhaustion => 4; u4.combined_absorption_read => 4
 COMPETENCY SOURCE NODES: u4.absorption => 20; u4.buyer_absorption => 21; u4.seller_absorption => 21; u4.repeated_tests => 22; u4.hidden_liquidity => 22; u4.buyer_exhaustion => 24; u4.seller_exhaustion => 24; u4.absorption_vs_exhaustion => 25; u4.combined_absorption_read => 26
-ELIGIBLE QUESTION IDS: u4.absorption => orderflow.u4.n20.q1, orderflow.u4.n20.q2; u4.buyer_absorption => orderflow.u4.n21.q1, orderflow.u4.n21.q2; u4.seller_absorption => orderflow.u4.n21.q3, orderflow.u4.n21.q4; u4.repeated_tests => orderflow.u4.n22.q1, orderflow.u4.n22.q2; u4.hidden_liquidity => orderflow.u4.n22.q3, orderflow.u4.n22.q4; u4.buyer_exhaustion => orderflow.u4.n24.q1, orderflow.u4.n24.q2; u4.seller_exhaustion => orderflow.u4.n24.q3, orderflow.u4.n24.q4; u4.absorption_vs_exhaustion => orderflow.u4.n25.q1, orderflow.u4.n25.q2; u4.combined_absorption_read => orderflow.u4.n26.q1, orderflow.u4.n26.q2
+ELIGIBLE QUESTION IDS: u4.absorption => orderflow.u4.n20.q1, orderflow.u4.n20.q3, orderflow.u4.n20.q4; u4.buyer_absorption => orderflow.u4.n21.q1, orderflow.u4.n21.q2, orderflow.u4.n21.q4; u4.seller_absorption => orderflow.u4.n21.q3, orderflow.u4.n21.q5; u4.repeated_tests => orderflow.u4.n22.q1, orderflow.u4.n22.q2, orderflow.u4.n22.q4; u4.hidden_liquidity => orderflow.u4.n22.q3, orderflow.u4.n22.q5; u4.buyer_exhaustion => orderflow.u4.n24.q1; u4.seller_exhaustion => orderflow.u4.n24.q3; u4.absorption_vs_exhaustion => orderflow.u4.n25.q1, orderflow.u4.n25.q2, orderflow.u4.n25.q3; u4.combined_absorption_read => orderflow.u4.n26.q1, orderflow.u4.n26.q2, orderflow.u4.n26.q4
 JUMP QUESTIONS: 12
 JUMP PASSING SCORE: 10
 JUMP PREREQUISITE QUESTIONS: 6
@@ -4506,12 +4482,12 @@ JUMP PREREQUISITES: u1.market_buy_routing, u2.thick_liquidity, u3.price_confirma
 UNIT 5
 QUESTIONS PER ATTEMPT: 10
 PASSING SCORE: 8
-POOL SIZE: 20
+POOL SIZE: 24
 COMPETENCY BLUEPRINT: u5.footprint_basics, u5.diagonal_imbalance, u5.buyer_imbalance, u5.seller_imbalance, u5.stacked_pressure, u5.momentum_failure, u5.delta_vs_volume, u5.positive_delta_divergence, u5.negative_delta_divergence, u5.combined_footprint_read
-COMPETENCY MAPPINGS: u5.footprint_basics => footprint_reading; u5.diagonal_imbalance => footprint_interaction; u5.buyer_imbalance => footprint_interaction, footprint_reading; u5.seller_imbalance => footprint_interaction; u5.stacked_pressure => footprint_interaction, footprint_reading; u5.momentum_failure => footprint_interaction, footprint_reading; u5.delta_vs_volume => footprint_reading; u5.positive_delta_divergence => footprint_reading; u5.negative_delta_divergence => footprint_interaction, footprint_reading; u5.combined_footprint_read => footprint_interaction, footprint_reading
+COMPETENCY MAPPINGS: u5.footprint_basics => footprint_reading; u5.diagonal_imbalance => footprint_interaction, footprint_reading, reading_footprints_imbalances; u5.buyer_imbalance => footprint_interaction, footprint_reading; u5.seller_imbalance => footprint_interaction, footprint_reading; u5.stacked_pressure => evidence_synthesis, footprint_interaction, stacked_pressure; u5.momentum_failure => footprint_interaction, momentum_continuation_failure; u5.delta_vs_volume => footprint_interaction, footprint_reading; u5.positive_delta_divergence => footprint_interaction, footprint_reading; u5.negative_delta_divergence => footprint_interaction, footprint_reading; u5.combined_footprint_read => footprint_interaction, footprint_momentum_challenge, footprint_reading
 COMPETENCY SOURCE UNITS: u5.footprint_basics => 5; u5.diagonal_imbalance => 5; u5.buyer_imbalance => 5; u5.seller_imbalance => 5; u5.stacked_pressure => 5; u5.momentum_failure => 5; u5.delta_vs_volume => 5; u5.positive_delta_divergence => 5; u5.negative_delta_divergence => 5; u5.combined_footprint_read => 5
-COMPETENCY SOURCE NODES: u5.footprint_basics => 28; u5.diagonal_imbalance => 28; u5.buyer_imbalance => 29; u5.seller_imbalance => 29; u5.stacked_pressure => 32; u5.momentum_failure => 31; u5.delta_vs_volume => 33; u5.positive_delta_divergence => 34; u5.negative_delta_divergence => 34; u5.combined_footprint_read => 35
-ELIGIBLE QUESTION IDS: u5.footprint_basics => orderflow.u5.n28.q1, orderflow.u5.n28.q2; u5.diagonal_imbalance => orderflow.u5.n28.q3, orderflow.u5.n28.q4; u5.buyer_imbalance => orderflow.u5.n29.q1, orderflow.u5.n29.q2; u5.seller_imbalance => orderflow.u5.n29.q3, orderflow.u5.n29.q4; u5.stacked_pressure => orderflow.u5.n32.q1, orderflow.u5.n32.q2; u5.momentum_failure => orderflow.u5.n31.q1, orderflow.u5.n31.q2; u5.delta_vs_volume => orderflow.u5.n33.q1, orderflow.u5.n33.q2; u5.positive_delta_divergence => orderflow.u5.n34.q1, orderflow.u5.n34.q2; u5.negative_delta_divergence => orderflow.u5.n34.q3, orderflow.u5.n34.q4; u5.combined_footprint_read => orderflow.u5.n35.q1, orderflow.u5.n35.q2
+COMPETENCY SOURCE NODES: u5.footprint_basics => 28; u5.diagonal_imbalance => 28; u5.buyer_imbalance => 29; u5.seller_imbalance => 29; u5.stacked_pressure => 32; u5.momentum_failure => 31; u5.delta_vs_volume => 33; u5.positive_delta_divergence => 34; u5.negative_delta_divergence => 34; u5.combined_footprint_read => 36
+ELIGIBLE QUESTION IDS: u5.footprint_basics => orderflow.u5.n28.q1, orderflow.u5.n28.q5; u5.diagonal_imbalance => orderflow.u5.n28.q2, orderflow.u5.n28.q4, orderflow.u5.n28.q6; u5.buyer_imbalance => orderflow.u5.n29.q3, orderflow.u5.n29.q5; u5.seller_imbalance => orderflow.u5.n29.q4, orderflow.u5.n29.q6; u5.stacked_pressure => orderflow.u5.n32.q2, orderflow.u5.n32.q4, orderflow.u5.n32.q5; u5.momentum_failure => orderflow.u5.n31.q3, orderflow.u5.n31.q5; u5.delta_vs_volume => orderflow.u5.n33.q2, orderflow.u5.n33.q4, orderflow.u5.n33.q6; u5.positive_delta_divergence => orderflow.u5.n34.q2, orderflow.u5.n34.q4; u5.negative_delta_divergence => orderflow.u5.n34.q3, orderflow.u5.n34.q5; u5.combined_footprint_read => orderflow.u5.n36.q1, orderflow.u5.n36.q5, orderflow.u5.n36.q6
 JUMP QUESTIONS: 14
 JUMP PASSING SCORE: 12
 JUMP PREREQUISITE QUESTIONS: 7
@@ -4523,12 +4499,12 @@ JUMP PREREQUISITES: u1.market_buy_routing, u2.thick_liquidity, u3.price_confirma
 UNIT 6
 QUESTIONS PER ATTEMPT: 10
 PASSING SCORE: 8
-POOL SIZE: 20
+POOL SIZE: 26
 COMPETENCY BLUEPRINT: u6.liquidity_pool, u6.stop_cluster, u6.buy_stops, u6.sell_stops, u6.upside_sweep, u6.downside_sweep, u6.sweep_vs_acceptance, u6.book_depth, u6.iceberg, u6.combined_liquidity_read
-COMPETENCY MAPPINGS: u6.liquidity_pool => book_depth, evidence_synthesis; u6.stop_cluster => liquidity_pools_stop_clusters; u6.buy_stops => buy_stops_vs_sell_stops, liquidity_location; u6.sell_stops => buy_stops_vs_sell_stops, evidence_synthesis; u6.upside_sweep => upside_vs_downside_sweeps; u6.downside_sweep => evidence_synthesis, upside_vs_downside_sweeps; u6.sweep_vs_acceptance => evidence_synthesis, scenario_comparison; u6.book_depth => book_depth, thin_vs_thick_liquidity; u6.iceberg => evidence_synthesis, multi_signal_read; u6.combined_liquidity_read => evidence_synthesis, multi_signal_read
+COMPETENCY MAPPINGS: u6.liquidity_pool => book_depth; u6.stop_cluster => evidence_synthesis, liquidity_location, liquidity_pools_stop_clusters; u6.buy_stops => evidence_synthesis, liquidity_location; u6.sell_stops => buy_stops_vs_sell_stops, liquidity_location; u6.upside_sweep => evidence_synthesis, upside_vs_downside_sweeps; u6.downside_sweep => multi_signal_read, upside_vs_downside_sweeps; u6.sweep_vs_acceptance => evidence_synthesis, scenario_comparison, sweep_vs_breakout_acceptance; u6.book_depth => book_depth, thin_vs_thick_liquidity; u6.iceberg => evidence_synthesis, multi_signal_read, scenario_comparison; u6.combined_liquidity_read => evidence_synthesis, liquidity_challenge, multi_signal_read
 COMPETENCY SOURCE UNITS: u6.liquidity_pool => 6; u6.stop_cluster => 6; u6.buy_stops => 6; u6.sell_stops => 6; u6.upside_sweep => 6; u6.downside_sweep => 6; u6.sweep_vs_acceptance => 6; u6.book_depth => 6; u6.iceberg => 6; u6.combined_liquidity_read => 6
 COMPETENCY SOURCE NODES: u6.liquidity_pool => 38; u6.stop_cluster => 38; u6.buy_stops => 39; u6.sell_stops => 39; u6.upside_sweep => 41; u6.downside_sweep => 41; u6.sweep_vs_acceptance => 42; u6.book_depth => 43; u6.iceberg => 44; u6.combined_liquidity_read => 45
-ELIGIBLE QUESTION IDS: u6.liquidity_pool => orderflow.u6.n38.q1, orderflow.u6.n38.q2; u6.stop_cluster => orderflow.u6.n38.q3, orderflow.u6.n38.q4; u6.buy_stops => orderflow.u6.n39.q1, orderflow.u6.n39.q2; u6.sell_stops => orderflow.u6.n39.q3, orderflow.u6.n39.q4; u6.upside_sweep => orderflow.u6.n41.q1, orderflow.u6.n41.q2; u6.downside_sweep => orderflow.u6.n41.q3, orderflow.u6.n41.q4; u6.sweep_vs_acceptance => orderflow.u6.n42.q1, orderflow.u6.n42.q2; u6.book_depth => orderflow.u6.n43.q1, orderflow.u6.n43.q2; u6.iceberg => orderflow.u6.n44.q1, orderflow.u6.n44.q2; u6.combined_liquidity_read => orderflow.u6.n45.q1, orderflow.u6.n45.q2
+ELIGIBLE QUESTION IDS: u6.liquidity_pool => orderflow.u6.n38.q1; u6.stop_cluster => orderflow.u6.n38.q2, orderflow.u6.n38.q4, orderflow.u6.n38.q6; u6.buy_stops => orderflow.u6.n39.q1, orderflow.u6.n39.q3; u6.sell_stops => orderflow.u6.n39.q2, orderflow.u6.n39.q6; u6.upside_sweep => orderflow.u6.n41.q3, orderflow.u6.n41.q5; u6.downside_sweep => orderflow.u6.n41.q2, orderflow.u6.n41.q4; u6.sweep_vs_acceptance => orderflow.u6.n42.q1, orderflow.u6.n42.q2, orderflow.u6.n42.q4, orderflow.u6.n42.q5; u6.book_depth => orderflow.u6.n43.q1, orderflow.u6.n43.q2, orderflow.u6.n43.q4; u6.iceberg => orderflow.u6.n44.q1, orderflow.u6.n44.q2, orderflow.u6.n44.q3, orderflow.u6.n44.q4; u6.combined_liquidity_read => orderflow.u6.n45.q1, orderflow.u6.n45.q2, orderflow.u6.n45.q6
 JUMP QUESTIONS: 14
 JUMP PASSING SCORE: 12
 JUMP PREREQUISITE QUESTIONS: 7
@@ -4540,12 +4516,12 @@ JUMP PREREQUISITES: u1.market_buy_routing, u2.thick_liquidity, u3.price_confirma
 UNIT 7
 QUESTIONS PER ATTEMPT: 10
 PASSING SCORE: 8
-POOL SIZE: 20
+POOL SIZE: 21
 COMPETENCY BLUEPRINT: u7.breakout_pressure, u7.breakdown_pressure, u7.acceptance_above, u7.acceptance_below, u7.failed_breakout, u7.failed_breakdown, u7.breakout_retest, u7.breakdown_retest, u7.sweep_vs_breakout, u7.combined_breakout_read
-COMPETENCY MAPPINGS: u7.breakout_pressure => breakout_vs_breakdown_pressure, scenario_comparison; u7.breakdown_pressure => breakout_vs_breakdown_pressure, evidence_synthesis; u7.acceptance_above => acceptance_above_vs_below, evidence_synthesis; u7.acceptance_below => acceptance_above_vs_below, evidence_synthesis; u7.failed_breakout => failed_breakouts_vs_failed_breakdowns, scenario_comparison; u7.failed_breakdown => evidence_synthesis, failed_breakouts_vs_failed_breakdowns; u7.breakout_retest => evidence_synthesis, scenario_comparison; u7.breakdown_retest => breakout_and_breakdown_retests; u7.sweep_vs_breakout => chasing_confirmation_common_misconceptions; u7.combined_breakout_read => evidence_synthesis, scenario_comparison
+COMPETENCY MAPPINGS: u7.breakout_pressure => scenario_comparison; u7.breakdown_pressure => evidence_synthesis, multi_signal_read; u7.acceptance_above => acceptance_above_vs_below, evidence_synthesis; u7.acceptance_below => acceptance_above_vs_below, evidence_synthesis; u7.failed_breakout => failed_breakouts_vs_failed_breakdowns, scenario_comparison; u7.failed_breakdown => evidence_synthesis, failed_breakouts_vs_failed_breakdowns; u7.breakout_retest => breakout_and_breakdown_retests, scenario_comparison; u7.breakdown_retest => breakout_and_breakdown_retests, evidence_synthesis; u7.sweep_vs_breakout => evidence_synthesis, multi_signal_read; u7.combined_breakout_read => breakout_challenge, evidence_synthesis, scenario_comparison
 COMPETENCY SOURCE UNITS: u7.breakout_pressure => 7; u7.breakdown_pressure => 7; u7.acceptance_above => 7; u7.acceptance_below => 7; u7.failed_breakout => 7; u7.failed_breakdown => 7; u7.breakout_retest => 7; u7.breakdown_retest => 7; u7.sweep_vs_breakout => 7; u7.combined_breakout_read => 7
 COMPETENCY SOURCE NODES: u7.breakout_pressure => 47; u7.breakdown_pressure => 47; u7.acceptance_above => 48; u7.acceptance_below => 48; u7.failed_breakout => 50; u7.failed_breakdown => 50; u7.breakout_retest => 51; u7.breakdown_retest => 51; u7.sweep_vs_breakout => 52; u7.combined_breakout_read => 53
-ELIGIBLE QUESTION IDS: u7.breakout_pressure => orderflow.u7.n47.q1, orderflow.u7.n47.q2; u7.breakdown_pressure => orderflow.u7.n47.q3, orderflow.u7.n47.q4; u7.acceptance_above => orderflow.u7.n48.q1, orderflow.u7.n48.q2; u7.acceptance_below => orderflow.u7.n48.q3, orderflow.u7.n48.q4; u7.failed_breakout => orderflow.u7.n50.q1, orderflow.u7.n50.q2; u7.failed_breakdown => orderflow.u7.n50.q3, orderflow.u7.n50.q4; u7.breakout_retest => orderflow.u7.n51.q1, orderflow.u7.n51.q2; u7.breakdown_retest => orderflow.u7.n51.q3, orderflow.u7.n51.q4; u7.sweep_vs_breakout => orderflow.u7.n52.q1, orderflow.u7.n52.q2; u7.combined_breakout_read => orderflow.u7.n53.q1, orderflow.u7.n53.q2
+ELIGIBLE QUESTION IDS: u7.breakout_pressure => orderflow.u7.n47.q1; u7.breakdown_pressure => orderflow.u7.n47.q2, orderflow.u7.n47.q3; u7.acceptance_above => orderflow.u7.n48.q1, orderflow.u7.n48.q2; u7.acceptance_below => orderflow.u7.n48.q4, orderflow.u7.n48.q6; u7.failed_breakout => orderflow.u7.n50.q1, orderflow.u7.n50.q5, orderflow.u7.n50.q7; u7.failed_breakdown => orderflow.u7.n50.q2, orderflow.u7.n50.q4; u7.breakout_retest => orderflow.u7.n51.q1, orderflow.u7.n51.q5; u7.breakdown_retest => orderflow.u7.n51.q2, orderflow.u7.n51.q7; u7.sweep_vs_breakout => orderflow.u7.n52.q3, orderflow.u7.n52.q4; u7.combined_breakout_read => orderflow.u7.n53.q1, orderflow.u7.n53.q2, orderflow.u7.n53.q8
 JUMP QUESTIONS: 16
 JUMP PASSING SCORE: 13
 JUMP PREREQUISITE QUESTIONS: 8
@@ -4557,12 +4533,12 @@ JUMP PREREQUISITES: u1.market_buy_routing, u2.thick_liquidity, u3.price_confirma
 UNIT 8
 QUESTIONS PER ATTEMPT: 10
 PASSING SCORE: 8
-POOL SIZE: 20
+POOL SIZE: 30
 COMPETENCY BLUEPRINT: u8.healthy_pullback, u8.pullback_depth, u8.continuation_trigger, u8.bearish_continuation, u8.flow_at_vwap, u8.flow_at_average, u8.pullback_failure, u8.conflicting_signals, u8.volume_context, u8.no_clear_read
-COMPETENCY MAPPINGS: u8.healthy_pullback => evidence_synthesis, healthy_pullbacks_pullback_depth; u8.pullback_depth => evidence_synthesis, healthy_pullbacks_pullback_depth; u8.continuation_trigger => continuation_triggers, evidence_synthesis; u8.bearish_continuation => evidence_synthesis, tape_reading; u8.flow_at_vwap => evidence_synthesis, order_flow_at_vwap_moving_averages; u8.flow_at_average => evidence_synthesis, order_flow_at_vwap_moving_averages; u8.pullback_failure => pullback_failure; u8.conflicting_signals => footprint_reading, tape_reading; u8.volume_context => tape_reading; u8.no_clear_read => confirmation_continuation_challenge, evidence_synthesis
+COMPETENCY MAPPINGS: u8.healthy_pullback => evidence_synthesis; u8.pullback_depth => healthy_pullbacks_pullback_depth; u8.continuation_trigger => continuation_triggers, evidence_synthesis; u8.bearish_continuation => bullish_vs_bearish_pullbacks, evidence_synthesis, tape_reading; u8.flow_at_vwap => evidence_synthesis, footprint_interaction, order_flow_at_vwap_moving_averages; u8.flow_at_average => evidence_synthesis, order_flow_at_vwap_moving_averages; u8.pullback_failure => evidence_synthesis, pullback_failure, tape_reading; u8.conflicting_signals => evidence_synthesis, footprint_reading, tape_reading; u8.volume_context => footprint_reading, multi_signal_read, tape_reading; u8.no_clear_read => confirmation_continuation_challenge, multi_signal_read
 COMPETENCY SOURCE UNITS: u8.healthy_pullback => 8; u8.pullback_depth => 8; u8.continuation_trigger => 8; u8.bearish_continuation => 8; u8.flow_at_vwap => 8; u8.flow_at_average => 8; u8.pullback_failure => 8; u8.conflicting_signals => 8; u8.volume_context => 8; u8.no_clear_read => 8
 COMPETENCY SOURCE NODES: u8.healthy_pullback => 55; u8.pullback_depth => 55; u8.continuation_trigger => 57; u8.bearish_continuation => 56; u8.flow_at_vwap => 58; u8.flow_at_average => 58; u8.pullback_failure => 59; u8.conflicting_signals => 60; u8.volume_context => 61; u8.no_clear_read => 62
-ELIGIBLE QUESTION IDS: u8.healthy_pullback => orderflow.u8.n55.q1, orderflow.u8.n55.q2; u8.pullback_depth => orderflow.u8.n55.q3, orderflow.u8.n55.q4; u8.continuation_trigger => orderflow.u8.n57.q1, orderflow.u8.n57.q2; u8.bearish_continuation => orderflow.u8.n56.q1, orderflow.u8.n56.q2; u8.flow_at_vwap => orderflow.u8.n58.q1, orderflow.u8.n58.q2; u8.flow_at_average => orderflow.u8.n58.q3, orderflow.u8.n58.q4; u8.pullback_failure => orderflow.u8.n59.q1, orderflow.u8.n59.q2; u8.conflicting_signals => orderflow.u8.n60.q1, orderflow.u8.n60.q2; u8.volume_context => orderflow.u8.n61.q1, orderflow.u8.n61.q2; u8.no_clear_read => orderflow.u8.n62.q1, orderflow.u8.n62.q2
+ELIGIBLE QUESTION IDS: u8.healthy_pullback => orderflow.u8.n55.q1, orderflow.u8.n55.q3; u8.pullback_depth => orderflow.u8.n55.q2, orderflow.u8.n55.q4; u8.continuation_trigger => orderflow.u8.n57.q2, orderflow.u8.n57.q3, orderflow.u8.n57.q5; u8.bearish_continuation => orderflow.u8.n56.q1, orderflow.u8.n56.q2, orderflow.u8.n56.q4; u8.flow_at_vwap => orderflow.u8.n58.q1, orderflow.u8.n58.q5, orderflow.u8.n58.q7; u8.flow_at_average => orderflow.u8.n58.q2, orderflow.u8.n58.q4; u8.pullback_failure => orderflow.u8.n59.q1, orderflow.u8.n59.q3, orderflow.u8.n59.q4, orderflow.u8.n59.q5; u8.conflicting_signals => orderflow.u8.n60.q1, orderflow.u8.n60.q2, orderflow.u8.n60.q3; u8.volume_context => orderflow.u8.n61.q1, orderflow.u8.n61.q2, orderflow.u8.n61.q3, orderflow.u8.n61.q4, orderflow.u8.n61.q5, orderflow.u8.n61.q6; u8.no_clear_read => orderflow.u8.n62.q3, orderflow.u8.n62.q6
 JUMP QUESTIONS: 16
 JUMP PASSING SCORE: 13
 JUMP PREREQUISITE QUESTIONS: 8
@@ -4574,12 +4550,12 @@ JUMP PREREQUISITES: u1.market_buy_routing, u2.thick_liquidity, u3.price_confirma
 UNIT 9
 QUESTIONS PER ATTEMPT: 10
 PASSING SCORE: 8
-POOL SIZE: 20
+POOL SIZE: 28
 COMPETENCY BLUEPRINT: u9.reversal_pressure, u9.buyer_trap, u9.seller_trap, u9.buyer_exhaustion_reversal, u9.seller_exhaustion_reversal, u9.absorption_reversal, u9.double_top_flow, u9.double_bottom_flow, u9.reversal_confirmation, u9.insufficient_evidence
-COMPETENCY MAPPINGS: u9.reversal_pressure => footprint_reading, tape_reading; u9.buyer_trap => tape_reading; u9.seller_trap => footprint_reading; u9.buyer_exhaustion_reversal => footprint_reading, tape_reading; u9.seller_exhaustion_reversal => evidence_synthesis, exhaustion_reversals; u9.absorption_reversal => footprint_reading, tape_reading; u9.double_top_flow => tape_reading; u9.double_bottom_flow => footprint_reading; u9.reversal_confirmation => multi_signal_read, tape_reading; u9.insufficient_evidence => footprint_reading, tape_reading
+COMPETENCY MAPPINGS: u9.reversal_pressure => evidence_synthesis, footprint_reading, reversal_pressure, tape_reading; u9.buyer_trap => footprint_reading, scenario_comparison, tape_reading; u9.seller_trap => footprint_reading, scenario_comparison, tape_reading; u9.buyer_exhaustion_reversal => footprint_reading; u9.seller_exhaustion_reversal => tape_reading; u9.absorption_reversal => absorption_reversals, evidence_synthesis, footprint_reading, tape_reading; u9.double_top_flow => double_top_vs_double_bottom_flow, footprint_reading, tape_reading; u9.double_bottom_flow => double_top_vs_double_bottom_flow, footprint_reading, tape_reading; u9.reversal_confirmation => footprint_reading, reversal_confirmation_insufficient_evidence, tape_reading; u9.insufficient_evidence => multi_signal_read, reversal_confirmation_insufficient_evidence
 COMPETENCY SOURCE UNITS: u9.reversal_pressure => 9; u9.buyer_trap => 9; u9.seller_trap => 9; u9.buyer_exhaustion_reversal => 9; u9.seller_exhaustion_reversal => 9; u9.absorption_reversal => 9; u9.double_top_flow => 9; u9.double_bottom_flow => 9; u9.reversal_confirmation => 9; u9.insufficient_evidence => 9
 COMPETENCY SOURCE NODES: u9.reversal_pressure => 64; u9.buyer_trap => 65; u9.seller_trap => 65; u9.buyer_exhaustion_reversal => 66; u9.seller_exhaustion_reversal => 66; u9.absorption_reversal => 67; u9.double_top_flow => 68; u9.double_bottom_flow => 68; u9.reversal_confirmation => 69; u9.insufficient_evidence => 69
-ELIGIBLE QUESTION IDS: u9.reversal_pressure => orderflow.u9.n64.q1, orderflow.u9.n64.q2; u9.buyer_trap => orderflow.u9.n65.q1, orderflow.u9.n65.q2; u9.seller_trap => orderflow.u9.n65.q3, orderflow.u9.n65.q4; u9.buyer_exhaustion_reversal => orderflow.u9.n66.q1, orderflow.u9.n66.q2; u9.seller_exhaustion_reversal => orderflow.u9.n66.q3, orderflow.u9.n66.q4; u9.absorption_reversal => orderflow.u9.n67.q1, orderflow.u9.n67.q2; u9.double_top_flow => orderflow.u9.n68.q1, orderflow.u9.n68.q2; u9.double_bottom_flow => orderflow.u9.n68.q3, orderflow.u9.n68.q4; u9.reversal_confirmation => orderflow.u9.n69.q1, orderflow.u9.n69.q2; u9.insufficient_evidence => orderflow.u9.n69.q3, orderflow.u9.n69.q4
+ELIGIBLE QUESTION IDS: u9.reversal_pressure => orderflow.u9.n64.q1, orderflow.u9.n64.q2, orderflow.u9.n64.q4, orderflow.u9.n64.q5; u9.buyer_trap => orderflow.u9.n65.q1, orderflow.u9.n65.q3, orderflow.u9.n65.q5; u9.seller_trap => orderflow.u9.n65.q2, orderflow.u9.n65.q4, orderflow.u9.n65.q6; u9.buyer_exhaustion_reversal => orderflow.u9.n66.q2; u9.seller_exhaustion_reversal => orderflow.u9.n66.q1; u9.absorption_reversal => orderflow.u9.n67.q1, orderflow.u9.n67.q2, orderflow.u9.n67.q4, orderflow.u9.n67.q5; u9.double_top_flow => orderflow.u9.n68.q1, orderflow.u9.n68.q3, orderflow.u9.n68.q5; u9.double_bottom_flow => orderflow.u9.n68.q2, orderflow.u9.n68.q4, orderflow.u9.n68.q6; u9.reversal_confirmation => orderflow.u9.n69.q1, orderflow.u9.n69.q3, orderflow.u9.n69.q5, orderflow.u9.n69.q6; u9.insufficient_evidence => orderflow.u9.n69.q2, orderflow.u9.n69.q7
 JUMP QUESTIONS: 18
 JUMP PASSING SCORE: 15
 JUMP PREREQUISITE QUESTIONS: 9
@@ -4591,12 +4567,12 @@ JUMP PREREQUISITES: u1.market_buy_routing, u2.thick_liquidity, u3.price_confirma
 UNIT 10
 QUESTIONS PER ATTEMPT: 10
 PASSING SCORE: 8
-POOL SIZE: 20
+POOL SIZE: 31
 COMPETENCY BLUEPRINT: u10.entry_plan, u10.order_type, u10.slippage, u10.invalidation, u10.thin_liquidity_risk, u10.no_clear_read, u10.exit_liquidity, u10.review_process, u10.multi_source_evidence, u10.combined_execution_read
-COMPETENCY MAPPINGS: u10.entry_plan => planning_the_entry_choosing_the_order_type; u10.order_type => evidence_synthesis, planning_the_entry_choosing_the_order_type; u10.slippage => evidence_synthesis, market_sequence; u10.invalidation => evidence_synthesis, order_flow_invalidation; u10.thin_liquidity_risk => book_depth; u10.no_clear_read => evidence_synthesis, no_clear_read; u10.exit_liquidity => evidence_synthesis, exiting_into_liquidity; u10.review_process => multi_signal_read, reviewing_the_full_order_flow_read; u10.multi_source_evidence => multi_signal_read, reviewing_the_full_order_flow_read; u10.combined_execution_read => multi_signal_read, scenario_comparison
+COMPETENCY MAPPINGS: u10.entry_plan => evidence_synthesis, planning_the_entry_choosing_the_order_type, scenario_comparison; u10.order_type => planning_the_entry_choosing_the_order_type; u10.slippage => book_depth, evidence_synthesis, multi_signal_read; u10.invalidation => evidence_synthesis, order_flow_invalidation; u10.thin_liquidity_risk => book_depth, market_sequence, multi_signal_read; u10.no_clear_read => evidence_synthesis, no_clear_read; u10.exit_liquidity => evidence_synthesis, exiting_into_liquidity, liquidity_location; u10.review_process => reviewing_the_full_order_flow_read; u10.multi_source_evidence => multi_signal_read; u10.combined_execution_read => multi_signal_read, scenario_comparison
 COMPETENCY SOURCE UNITS: u10.entry_plan => 10; u10.order_type => 10; u10.slippage => 10; u10.invalidation => 10; u10.thin_liquidity_risk => 10; u10.no_clear_read => 10; u10.exit_liquidity => 10; u10.review_process => 10; u10.multi_source_evidence => 10; u10.combined_execution_read => 10
 COMPETENCY SOURCE NODES: u10.entry_plan => 71; u10.order_type => 71; u10.slippage => 72; u10.invalidation => 73; u10.thin_liquidity_risk => 72; u10.no_clear_read => 74; u10.exit_liquidity => 75; u10.review_process => 76; u10.multi_source_evidence => 76; u10.combined_execution_read => 76
-ELIGIBLE QUESTION IDS: u10.entry_plan => orderflow.u10.n71.q1, orderflow.u10.n71.q2; u10.order_type => orderflow.u10.n71.q3, orderflow.u10.n71.q4; u10.slippage => orderflow.u10.n72.q1, orderflow.u10.n72.q2; u10.invalidation => orderflow.u10.n73.q1, orderflow.u10.n73.q2; u10.thin_liquidity_risk => orderflow.u10.n72.q3, orderflow.u10.n72.q4; u10.no_clear_read => orderflow.u10.n74.q1, orderflow.u10.n74.q2; u10.exit_liquidity => orderflow.u10.n75.q1, orderflow.u10.n75.q2; u10.review_process => orderflow.u10.n76.q1, orderflow.u10.n76.q2; u10.multi_source_evidence => orderflow.u10.n76.q3, orderflow.u10.n76.q4; u10.combined_execution_read => orderflow.u10.n76.q5, orderflow.u10.n76.q6
+ELIGIBLE QUESTION IDS: u10.entry_plan => orderflow.u10.n71.q1, orderflow.u10.n71.q3, orderflow.u10.n71.q5; u10.order_type => orderflow.u10.n71.q2, orderflow.u10.n71.q4, orderflow.u10.n71.q6; u10.slippage => orderflow.u10.n72.q1, orderflow.u10.n72.q3, orderflow.u10.n72.q5; u10.invalidation => orderflow.u10.n73.q2, orderflow.u10.n73.q3, orderflow.u10.n73.q5; u10.thin_liquidity_risk => orderflow.u10.n72.q2, orderflow.u10.n72.q4, orderflow.u10.n72.q5; u10.no_clear_read => orderflow.u10.n74.q1, orderflow.u10.n74.q2, orderflow.u10.n74.q3, orderflow.u10.n74.q4, orderflow.u10.n74.q5; u10.exit_liquidity => orderflow.u10.n75.q1, orderflow.u10.n75.q2, orderflow.u10.n75.q3, orderflow.u10.n75.q5; u10.review_process => orderflow.u10.n76.q1; u10.multi_source_evidence => orderflow.u10.n76.q2, orderflow.u10.n76.q4, orderflow.u10.n76.q6, orderflow.u10.n76.q7; u10.combined_execution_read => orderflow.u10.n76.q5, orderflow.u10.n76.q8
 JUMP QUESTIONS: 20
 JUMP PASSING SCORE: 16
 JUMP PREREQUISITE QUESTIONS: 10

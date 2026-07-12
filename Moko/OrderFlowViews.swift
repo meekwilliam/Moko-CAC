@@ -277,6 +277,8 @@ struct BookDepthCompareView: View {
             return ([80, 95, 1500, 110, 90], [75, 90, 105, 100, 85])
         case "pool":
             return ([70, 940, 1180, 860, 65], [55, 80, 72, 60, 48])
+        case "thin_variant":
+            return ([610, 480, 720, 540, 430], [18, 42, 0, 27, 11])
         default:
             return ([920, 760, 1100, 840, 690], [45, 0, 72, 18, 0])
         }
@@ -834,6 +836,10 @@ struct OrderFlowSimulationView: View {
             return (["Price advances steadily", "Pullbacks stay shallow"], ["Opposing offers are sparse", "Few levels block progress"], ["Print pace stays measured", "Buyer prints remain persistent"], ["Modest positive delta", "Price responds efficiently"])
         case "thin_risk":
             return (["Quote starts at 101.20", "Fill lands at 101.35"], ["Small size near price", "Gaps between ask levels"], ["Spread widens", "Prints jump across prices"], ["Depth changes quickly", "Execution cost increases"])
+        case "downside_sweep":
+            return (["Prior low trades", "Price immediately reclaims it"], ["Bids vanish briefly", "Bid liquidity rebuilds"], ["Sell prints surge", "Buying responds after breach"], ["Negative delta spikes", "Selling fails to hold price lower"])
+        case "breakdown_pressure":
+            return (["Support trades", "Price holds below support"], ["Bids are consumed", "Remaining bids withdraw"], ["Seller prints persist", "Selling continues after break"], ["Bid execution dominates", "Negative delta supports downside progress"])
         case "buyer_absorption":
             return (["Testing support below VWAP", "Holding support despite selling"], ["Large bid at 99.40", "Bid refreshes after repeated fills"], ["Selling pace increasing", "Fast seller initiated prints"], ["Bid volume dominates", "Negative delta with little decline"])
         case "sweep":

@@ -490,6 +490,8 @@ struct PathView: View {
               store.section(node.sectionIndex)?.testOutEnabled == true,
               let first = store.nodes(inSection: node.sectionIndex).first,
               first.num == node.num else { return false }
+        if store.testOutBlockedUnits.contains(node.sectionIndex) { return false }
+        if store.testOutRetryUnits.contains(node.sectionIndex) { return true }
         let unitNodes = store.nodes(inSection: node.sectionIndex).map(\.num)
         return unitNodes.allSatisfy { !store.completed.contains($0) }
     }
@@ -516,10 +518,12 @@ struct PathView: View {
                               flipped: Bool = false) -> some View {
         let testOut = shouldShowTestOut(for: node)
         let locked = state == .locked && !testOut
+        let isRecommendedReview = store.recommendedReviewNodes.contains(node.num)
         let label = testOut ? "SKIP TO UNIT \(node.sectionIndex + 1)"
             : (locked ? "LOCKED"
             : (store.inProgressNode == node.num ? "CONTINUE"
-               : (state == .done ? (store.testedOutUnits.contains(node.sectionIndex) ? "TESTED OUT · REPLAY" : "REPLAY +25 XP") : "START +100 XP")))
+               : (state == .done ? (store.testedOutUnits.contains(node.sectionIndex) ? "TESTED OUT · REPLAY" : "REPLAY +25 XP")
+                  : (isRecommendedReview ? "RECOMMENDED REVIEW" : "START +100 XP"))))
         // Locked callout is greyed: slate card + muted title, matching the node.
         let cardFill = locked ? Color(hex: "#26364A") : Color.white
         let cardStroke = locked ? Color.white.opacity(0.08) : Color.black.opacity(0.07)

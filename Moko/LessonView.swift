@@ -862,16 +862,26 @@ struct RewardView: View {
         prerequisiteCorrect >= (player.lesson.assessmentPrerequisiteMinimum ?? 0) &&
         targetCorrect >= (player.lesson.assessmentTargetMinimum ?? 0)
     }
+    private func competencyLabel(_ id: String) -> String {
+        let name = id.split(separator: ".").last.map(String.init) ?? id
+        return name.replacingOccurrences(of: "_", with: " ")
+            .split(separator: " ")
+            .map { $0.prefix(1).uppercased() + $0.dropFirst() }
+            .joined(separator: " ")
+    }
     private var assessmentSummary: String {
         let isJump = player.lesson.assessmentPrerequisiteMinimum != nil
         if assessmentPassed {
             if isJump { return "Prerequisites \(prerequisiteCorrect) · Target unit \(targetCorrect) · \(player.correctCount)/\(player.answeredCount) overall" }
             return "\(player.correctCount)/\(player.answeredCount) correct · Test Out passed"
         }
+        let weak = player.missedCompetencies.sorted { $0.value > $1.value }.prefix(3)
+            .map { competencyLabel($0.key) }
         let lessons = player.missedSourceLessons.sorted { $0.value > $1.value }.prefix(3).map(\.key)
-        let review = lessons.isEmpty ? "A few skills need work" : "Recommended: " + lessons.joined(separator: " · ")
+        let weakSummary = weak.isEmpty ? "A few skills need work" : "Needs review: " + weak.joined(separator: " · ")
+        let review = lessons.isEmpty ? "Complete the highlighted review lessons" : "Recommended lessons: " + lessons.joined(separator: " · ")
         let score = isJump ? "Prerequisites \(prerequisiteCorrect) · Target unit \(targetCorrect) · \(player.correctCount)/\(player.answeredCount) overall" : "\(player.correctCount)/\(player.answeredCount) correct"
-        return score + "\n" + review + "\nReview these areas before retrying."
+        return score + "\n" + weakSummary + "\n" + review + "\nComplete these lessons to unlock retry."
     }
 
     var body: some View {
