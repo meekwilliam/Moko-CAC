@@ -388,7 +388,9 @@ class ViewController: UIViewController {
 
         func appendQuestion(from pool: [LessonScreen], competency: String) {
             if let match = pool.shuffled().first(where: { candidate in
-                candidate.competencyId == competency && !screens.contains(where: { $0.id == candidate.id })
+                candidate.competencyId == competency && !screens.contains(where: {
+                    $0.id == candidate.id || ($0.type == candidate.type && $0.question == candidate.question)
+                })
             }) { screens.append(match) }
         }
 
@@ -409,7 +411,9 @@ class ViewController: UIViewController {
             ? (course.testOuts ?? []).filter { $0.unitIndex <= unit }.flatMap(\.questionPool)
             : test.questionPool
         if screens.count < questionCount {
-            for screen in fallbackPools.shuffled() where !screens.contains(where: { $0.id == screen.id }) {
+            for screen in fallbackPools.shuffled() where !screens.contains(where: {
+                $0.id == screen.id || ($0.type == screen.type && $0.question == screen.question)
+            }) {
                 screens.append(screen)
                 if screens.count == questionCount { break }
             }

@@ -20,6 +20,7 @@ final class ProgressStore: ObservableObject {
         var inProgressNode: Int? = nil
         var inProgressScreen: Int = 0
         var testedOutUnits: [Int]? = nil
+        var contentVersion: Int? = nil
     }
 
     private struct Snapshot: Codable {
@@ -77,6 +78,7 @@ final class ProgressStore: ObservableObject {
                 inProgressScreen: s.inProgressScreen ?? 0)
         }
         s.completed = nil; s.inProgressNode = nil; s.inProgressScreen = nil
+        migrateCondensedOrderFlowProgressIfNeeded()
         if !s.unlimitedHearts, s.hearts == 5, s.heartAnchor == nil {
             s.hearts = Self.maxHearts
         }
@@ -91,7 +93,41 @@ final class ProgressStore: ObservableObject {
     /// The current course's unlock/resume bucket (created on first access).
     private var cur: CourseProgress {
         get { s.courses[s.currentCourse] ?? CourseProgress() }
-        set { s.courses[s.currentCourse] = newValue }
+        set {
+            var value = newValue
+            if s.currentCourse == "orderflow" { value.contentVersion = 2 }
+            s.courses[s.currentCourse] = value
+        }
+    }
+
+    /// Version 2 condenses Order Flow from 111 to 77 nodes. Preserve the user's
+    /// approximate progress by unit instead of letting old node numbers point at
+    /// unrelated new lessons.
+    private func migrateCondensedOrderFlowProgressIfNeeded() {
+        guard var progress = s.courses["orderflow"], progress.contentVersion != 2 else { return }
+        let oldCounts = [5, 8, 11, 13, 15, 14, 12, 14, 10, 9]
+        let newCounts = [5, 7, 7, 8, 10, 9, 8, 9, 7, 7]
+        var oldStart = 1
+        var newStart = 1
+        var remapped: [Int] = []
+        for unit in oldCounts.indices {
+            let oldRange = oldStart..<(oldStart + oldCounts[unit])
+            let completedInUnit = progress.completed.filter { oldRange.contains($0) }.count
+            let testedOut = progress.testedOutUnits?.contains(unit) == true
+            var newCompleted = testedOut ? newCounts[unit]
+                : Int(floor(Double(completedInUnit) / Double(oldCounts[unit]) * Double(newCounts[unit])))
+            if unit == 9 && testedOut { newCompleted = max(0, newCompleted - 1) }
+            remapped.append(contentsOf: newStart..<(newStart + newCompleted))
+            if let active = progress.inProgressNode, oldRange.contains(active) {
+                let fraction = Double(active - oldStart) / Double(max(1, oldCounts[unit] - 1))
+                progress.inProgressNode = newStart + Int(round(fraction * Double(max(0, newCounts[unit] - 1))))
+            }
+            oldStart += oldCounts[unit]
+            newStart += newCounts[unit]
+        }
+        progress.completed = Array(Set(remapped)).sorted()
+        progress.contentVersion = 2
+        s.courses["orderflow"] = progress
     }
 
     /// Completed-lesson count for any single course (drives the switcher's progress text).
