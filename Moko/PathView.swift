@@ -299,7 +299,7 @@ struct PathView: View {
                     .id("node-\(node.num)")
                     .offset(x: node.xOffset)
                     .padding(.top, CGFloat(i) * vStep + (vStep / 2) - (nodeSize / 2))
-                    .zIndex(tooltipNode == node.num ? 1_000 : (elevatedNodes.contains(node.num) ? 999 : 0))
+                    .zIndex(tooltipNode == node.num ? 1_000 : (elevatedNodes.contains(node.num) ? 999 : (shouldShowTestOut(for: node) ? 50 : 0)))
             }
         }
         .frame(width: width, height: height)
@@ -369,13 +369,15 @@ struct PathView: View {
 
     private func nodeButton(_ node: PathNode) -> some View {
         let state = store.state(for: node.num)
-        let c = store.colors(for: node.num, state: state)
+        let testOutAvailable = shouldShowTestOut(for: node)
+        let visualState: NodeState = testOutAvailable ? .active : state
+        let c = store.colors(for: node.num, state: visualState)
         // A unit's final lesson is its review test — a hexagon instead of the
         // usual coin, so it reads as a different kind of node at a glance.
         let silhouette: AnyShape = node.isBoss ? AnyShape(Hexagon()) : AnyShape(Ellipse())
 
         return ZStack {
-            if shouldShowTestOut(for: node) {
+            if testOutAvailable {
                 Button {
                     Haptics.selection()
                     onTestOut(node.sectionIndex)
@@ -405,7 +407,7 @@ struct PathView: View {
             // Animated halo around the lesson you're on. Offset down + tilted
             // into the puck's 3D plane so it looks like it emerges from the
             // button's base rather than floating flat in front of it.
-            if state == .active {
+            if state == .active && !testOutAvailable {
                 PulseRing(color: c.main, size: nodeSize, shape: silhouette)
                     .offset(y: 5)
                     .allowsHitTesting(false)
@@ -438,9 +440,9 @@ struct PathView: View {
                         .clipShape(silhouette)
 
                     if node.isBoss {
-                        bossCrown(locked: state == .locked)
+                        bossCrown(locked: visualState == .locked)
                     } else {
-                        tradingNodeIcon(for: node, state: state)
+                        tradingNodeIcon(for: node, state: visualState)
                     }
                 }
                 .frame(width: nodeSize, height: nodeSize)
@@ -474,14 +476,9 @@ struct PathView: View {
     private func shouldShowTestOut(for node: PathNode) -> Bool {
         guard store.section(node.sectionIndex)?.testOutEnabled == true,
               let first = store.nodes(inSection: node.sectionIndex).first,
-              first.num == node.num,
-              let activeNumber = store.activeNode,
-              let active = store.nodes.first(where: { $0.num == activeNumber }),
-              active.sectionIndex == node.sectionIndex else { return false }
-        // Keep Test Out visible while progressing through the available unit,
-        // even if its first lessons are already complete. Once the learner has
-        // reached the Boss, testing out no longer skips meaningful path work.
-        return !active.isBoss
+              first.num == node.num else { return false }
+        let unitNodes = store.nodes(inSection: node.sectionIndex).map(\.num)
+        return unitNodes.allSatisfy { !store.completed.contains($0) }
     }
 
     private func tradingNodeIcon(for node: PathNode, state: NodeState) -> some View {
@@ -731,5 +728,4 @@ private struct SectionOffsetKey: PreferenceKey {
         value.merge(nextValue(), uniquingKeysWith: { _, new in new })
     }
 }
-
 
