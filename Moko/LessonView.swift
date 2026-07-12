@@ -440,9 +440,7 @@ struct LessonView: View {
         VStack(spacing: 0) {
             ScrollView {
                 VStack(alignment: .leading, spacing: 10) {
-                    if pagePlayer.lesson.lessonType == "BOSS_BATTLE" { bossBattleBadge }
                     if pagePlayer.lesson.lessonType == "TEST_OUT" { testOutBadge }
-                    if pagePlayer.isUnitTest { unitTestBadge }
                     if pagePlayer.screen.isPreviousMistake { retryBadge }
                     LessonScreenRouter(player: pagePlayer, ink: ink)
                 }
@@ -509,14 +507,6 @@ struct LessonView: View {
         .foregroundColor(Color(hex: "#f87171"))
     }
 
-    private var bossBattleBadge: some View {
-        Label("BOSS BATTLE", systemImage: "crown.fill")
-            .font(Theme.font(12, .black)).tracking(0.7)
-            .foregroundColor(.white)
-            .padding(.horizontal, 11).padding(.vertical, 7)
-            .background(Capsule().fill(Color(hex: "#7C3AED")))
-    }
-
     private var testOutBadge: some View {
         Label("TEST OUT", systemImage: "bolt.shield.fill")
             .font(Theme.font(12, .black)).tracking(0.7)
@@ -524,19 +514,6 @@ struct LessonView: View {
             .padding(.horizontal, 11).padding(.vertical, 7)
             .background(Capsule().fill(Color(hex: "#2563EB")))
             .overlay(Capsule().strokeBorder(Color(hex: "#FBBF24"), lineWidth: 2))
-    }
-
-    /// Marks the unit's final lesson as a review test over everything it taught.
-    private var unitTestBadge: some View {
-        HStack(spacing: 6) {
-            Image(systemName: "crown.fill")
-                .font(.system(size: 11, weight: .black))
-            Text("Unit review")
-                .font(Theme.font(12, .black)).textCase(.uppercase).tracking(0.6)
-        }
-        .foregroundColor(Color(hex: "#7a4f00"))
-        .padding(.horizontal, 10).padding(.vertical, 6)
-        .background(Capsule().fill(Color(hex: "#FFC800")))
     }
 
     // MARK: Header — close, progress bar, hearts

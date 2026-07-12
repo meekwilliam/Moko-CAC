@@ -407,18 +407,12 @@ struct EvidenceSelectView: View {
             Text(player.screen.question ?? "Select the strongest evidence.")
                 .font(Theme.questionFont(21, .heavy)).foregroundColor(ink)
             Text("SELECT \(player.screen.targets?.count ?? 2)")
-                .font(Theme.font(10, .black)).foregroundColor(.purple)
+                .font(Theme.font(10, .black)).foregroundColor(.white)
 
             ForEach(Array(player.currentOptions.enumerated()), id: \.offset) { index, label in
                 OFMultiOption(player: player, index: index, label: label, ink: ink)
             }
         }
-    }
-
-    private func cardTint(selected: Bool, correct: Bool, revealed: Bool) -> Color {
-        if revealed && correct { return bidColor }
-        if revealed && selected && !correct { return askColor }
-        return selected ? .purple : Theme.surfaceBorder
     }
 }
 
@@ -435,8 +429,10 @@ struct ReplayCompareView: View {
             Text(player.screen.question ?? "Which replay shows acceptance?")
                 .font(Theme.questionFont(21, .heavy)).foregroundColor(ink)
             HStack(spacing: 10) {
-                replay(title: "REPLAY A", rows: replayRows.a, tint: bidColor)
-                replay(title: "REPLAY B", rows: replayRows.b, tint: askColor)
+                // Neutral tints (not bid/ask green/red) — A vs. B isn't a
+                // buy/sell choice, so it shouldn't borrow that color meaning.
+                replay(title: "REPLAY A", rows: replayRows.a, tint: .cyan)
+                replay(title: "REPLAY B", rows: replayRows.b, tint: .orange)
             }
             VStack(spacing: 9) {
                 ForEach(Array(player.currentOptions.enumerated()), id: \.offset) { index, label in
@@ -807,13 +803,7 @@ struct OrderFlowSimulationView: View {
 
     var body: some View {
         VStack(alignment: .leading, spacing: 13) {
-            HStack {
-                Text("BOSS BATTLE").font(Theme.font(11, .black)).foregroundColor(.white)
-                    .padding(.horizontal, 10).padding(.vertical, 5)
-                    .background(Capsule().fill(Color.purple))
-                Spacer()
-                Text("MULTI SIGNAL READ").font(Theme.font(10, .black)).foregroundColor(Theme.muted)
-            }
+            Text("MULTI SIGNAL READ").font(Theme.font(10, .black)).foregroundColor(Theme.muted)
 
             Text(screen.question ?? "What is the strongest current observation?")
                 .font(Theme.questionFont(20, .heavy)).foregroundColor(ink)

@@ -406,7 +406,7 @@ struct MarkLevelView: View {
 
                 ZStack(alignment: .topLeading) {
                     // Chart WITHOUT the level drawn (that's the answer).
-                    CandlestickChart(candles: m.candles, highlightIndex: nil)
+                    CandlestickChart(candles: m.candles, highlightIndex: nil, showsAxes: true)
                         .frame(height: chartHeight)
 
                     // The user's draggable line.
@@ -504,7 +504,7 @@ struct TrendlineView: View {
                     let correct = isCorrect
 
                     ZStack(alignment: .topLeading) {
-                        CandlestickChart(candles: m.candles, highlightIndex: nil)
+                        CandlestickChart(candles: m.candles, highlightIndex: nil, showsAxes: true)
                             .frame(width: geo.size.width, height: chartHeight)
 
                         if let a = player.trendStart, let b = player.trendEnd {
@@ -610,7 +610,7 @@ struct ConsolidationView: View {
                     let correct = isCorrect
 
                     ZStack(alignment: .topLeading) {
-                        CandlestickChart(candles: m.candles, highlightIndex: nil)
+                        CandlestickChart(candles: m.candles, highlightIndex: nil, showsAxes: true)
                             .frame(width: geo.size.width, height: chartHeight)
 
                         if let lo = player.consolidationLo, let hi = player.consolidationHi {
@@ -736,9 +736,13 @@ struct OHLCLabelView: View {
             let candleColor = bullish ? Color(hex: "#22C55E") : Color(hex: "#EF4444")
 
             ZStack(alignment: .topLeading) {
-                // Wick
-                Path { p in p.move(to: CGPoint(x: cx, y: ys[0])); p.addLine(to: CGPoint(x: cx, y: ys[3])) }
-                    .stroke(candleColor, lineWidth: 3)
+                // Wick — filled bar, matching the body's own rendering exactly
+                // (a stroked Path of the same color still shows a seam at the
+                // body edge due to differing anti-aliasing).
+                Rectangle()
+                    .fill(candleColor)
+                    .frame(width: 3, height: ys[3] - ys[0])
+                    .position(x: cx, y: (ys[0] + ys[3]) / 2)
                 // Body
                 RoundedRectangle(cornerRadius: 3, style: .continuous)
                     .fill(candleColor)

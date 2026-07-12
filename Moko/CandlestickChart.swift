@@ -121,12 +121,15 @@ struct CandlestickChart: View {
                     let dimmed = highlightIndex != nil && highlightIndex != i
 
                     ZStack {
-                        // Wick
-                        Path { p in
-                            p.move(to: CGPoint(x: cx, y: m.y(c.high)))
-                            p.addLine(to: CGPoint(x: cx, y: m.y(c.low)))
-                        }
-                        .stroke(color, lineWidth: 1.5)
+                        // Wick — a filled bar, not a stroked Path. A stroke and a
+                        // fill of the exact same color still anti-alias their
+                        // edges slightly differently, which read as a seam where
+                        // the wick met the body; a fill matches the body's own
+                        // rendering exactly.
+                        Rectangle()
+                            .fill(color)
+                            .frame(width: 1.5, height: max(m.y(c.low) - m.y(c.high), 0))
+                            .position(x: cx, y: (m.y(c.high) + m.y(c.low)) / 2)
 
                         // Body
                         let top = m.y(max(c.open, c.close))
