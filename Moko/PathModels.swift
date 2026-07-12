@@ -44,6 +44,9 @@ struct PathPayload: Decodable {
     let nodes: [PathNodeData]
     let inProgressNode: Int?
     let testedOutUnits: [Int]
+    let recommendedReviewNodes: [Int]
+    let testOutBlockedUnits: [Int]
+    let testOutRetryUnits: [Int]
 }
 
 /// Lightweight progress refresh pushed back after a lesson completes.
@@ -57,6 +60,15 @@ struct PathState: Decodable {
 // MARK: - Node model (icon parsed once)
 
 enum NodeState { case done, active, locked }
+
+enum UnitProgressState: String {
+    case locked = "LOCKED"
+    case available = "AVAILABLE"
+    case inProgress = "IN_PROGRESS"
+    case testedOut = "TESTED_OUT"
+    case completed = "COMPLETED"
+    case mastered = "MASTERED"
+}
 
 struct PathNode: Identifiable {
     let num: Int
@@ -92,6 +104,9 @@ final class PathStore: ObservableObject {
     @Published var energy: Int
     @Published var inProgressNode: Int?
     @Published var testedOutUnits: Set<Int>
+    @Published var recommendedReviewNodes: Set<Int>
+    @Published var testOutBlockedUnits: Set<Int>
+    @Published var testOutRetryUnits: Set<Int>
 
     let sections: [PathSectionData]
     let nodes: [PathNode]
@@ -106,6 +121,9 @@ final class PathStore: ObservableObject {
         self.energy = payload.stats.energy
         self.inProgressNode = payload.inProgressNode
         self.testedOutUnits = Set(payload.testedOutUnits)
+        self.recommendedReviewNodes = Set(payload.recommendedReviewNodes)
+        self.testOutBlockedUnits = Set(payload.testOutBlockedUnits)
+        self.testOutRetryUnits = Set(payload.testOutRetryUnits)
         self.sections = payload.sections.sorted { $0.index < $1.index }
         // The last node of each unit is that unit's review test.
         var lastInUnit: [Int: Int] = [:]
@@ -134,10 +152,24 @@ final class PathStore: ObservableObject {
     }
 
     func state(for num: Int) -> NodeState {
+        if recommendedReviewNodes.contains(num) && !completed.contains(num) { return .active }
         let f = frontier
         if num <= f { return .done }
         if num == activeNode { return .active }
         return .locked
+    }
+
+    func progressionState(forSection index: Int) -> UnitProgressState {
+        let unitNodes = nodes(inSection: index)
+        guard let first = unitNodes.first else { return .locked }
+        if index == sections.last?.index && unitNodes.allSatisfy({ completed.contains($0.num) }) { return .mastered }
+        if testedOutUnits.contains(index) { return .testedOut }
+        if unitNodes.allSatisfy({ completed.contains($0.num) }) {
+            return .completed
+        }
+        if unitNodes.contains(where: { completed.contains($0.num) }) ||
+            unitNodes.contains(where: { recommendedReviewNodes.contains($0.num) }) { return .inProgress }
+        return state(for: first.num) == .locked ? .locked : .available
     }
 
     /// done/active nodes take their unit's own banner color (from the
@@ -166,12 +198,15 @@ final class PathStore: ObservableObject {
         sections.count
     }
 
-    func update(completed: [Int], xp: Int, treats: Int, streak: Int, inProgressNode: Int?, testedOutUnits: [Int] = []) {
+    func update(completed: [Int], xp: Int, treats: Int, streak: Int, inProgressNode: Int?, testedOutUnits: [Int] = [], recommendedReviewNodes: [Int] = [], testOutBlockedUnits: [Int] = [], testOutRetryUnits: [Int] = []) {
         self.completed = Set(completed)
         self.xp = xp
         self.treats = treats
         self.streak = streak
         self.inProgressNode = inProgressNode
         self.testedOutUnits = Set(testedOutUnits)
+        self.recommendedReviewNodes = Set(recommendedReviewNodes)
+        self.testOutBlockedUnits = Set(testOutBlockedUnits)
+        self.testOutRetryUnits = Set(testOutRetryUnits)
     }
 }

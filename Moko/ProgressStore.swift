@@ -20,6 +20,8 @@ final class ProgressStore: ObservableObject {
         var inProgressNode: Int? = nil
         var inProgressScreen: Int = 0
         var testedOutUnits: [Int]? = nil
+        var testOutReviewNodes: [String: [Int]]? = nil
+        var testOutRetryUnits: [Int]? = nil
         var contentVersion: Int? = nil
     }
 
@@ -162,6 +164,9 @@ final class ProgressStore: ObservableObject {
 
     var completed: [Int] { cur.completed }
     var testedOutUnits: [Int] { cur.testedOutUnits ?? [] }
+    var recommendedReviewNodes: [Int] { Array(Set((cur.testOutReviewNodes ?? [:]).values.flatMap { $0 })).sorted() }
+    var testOutBlockedUnits: [Int] { (cur.testOutReviewNodes ?? [:]).compactMap { $0.value.isEmpty ? nil : Int($0.key) } }
+    var testOutRetryUnits: [Int] { cur.testOutRetryUnits ?? [] }
     var xp: Int { s.xp }
     var treats: Int { s.treats }
     var streak: Int { s.streak }
@@ -307,6 +312,10 @@ final class ProgressStore: ObservableObject {
             s.lastLessonDate = today
             s.activeDates.insert(today)
         }
+        if var reviews = c.testOutReviewNodes {
+            for key in Array(reviews.keys) { reviews[key]?.removeAll { $0 == node } }
+            c.testOutReviewNodes = reviews
+        }
         cur = c
         return extendedStreakToday
     }
@@ -317,9 +326,24 @@ final class ProgressStore: ObservableObject {
         var tested = c.testedOutUnits ?? []
         for unit in units where !tested.contains(unit) { tested.append(unit) }
         c.testedOutUnits = tested
+        var reviews = c.testOutReviewNodes ?? [:]
+        for unit in units { reviews.removeValue(forKey: String(unit)) }
+        c.testOutReviewNodes = reviews
+        c.testOutRetryUnits = (c.testOutRetryUnits ?? []).filter { !units.contains($0) }
         // A Test Out is a single assessment reward, not the sum of every
         // skipped lesson's XP. This prevents jump-ahead farming.
         s.xp += 100
+        cur = c
+    }
+
+    func recordTestOutFailure(unit: Int, recommendedNodes: [Int]) {
+        var c = cur
+        var reviews = c.testOutReviewNodes ?? [:]
+        reviews[String(unit)] = Array(Set(recommendedNodes)).sorted()
+        c.testOutReviewNodes = reviews
+        var retryUnits = c.testOutRetryUnits ?? []
+        if !retryUnits.contains(unit) { retryUnits.append(unit) }
+        c.testOutRetryUnits = retryUnits
         cur = c
     }
 
