@@ -451,8 +451,19 @@ struct BookDepthCompareView: View {
             }
         }
         .padding(9).frame(maxWidth: .infinity)
-        .background(RoundedRectangle(cornerRadius: 15).fill(Color.black.opacity(0.22)))
-        .overlay(RoundedRectangle(cornerRadius: 15).strokeBorder(tint.opacity(0.45), lineWidth: 1.5))
+        .background(
+            RoundedRectangle(cornerRadius: 15, style: .continuous)
+                .fill(Theme.surfaceRaised)
+                .overlay(
+                    RoundedRectangle(cornerRadius: 15, style: .continuous)
+                        .strokeBorder(tint.opacity(0.7), lineWidth: 1.5)
+                )
+        )
+        .background(
+            RoundedRectangle(cornerRadius: 15, style: .continuous)
+                .fill(Theme.surfaceSlab)
+                .offset(y: 5)
+        )
     }
 
     private func choice(index: Int, label: String) -> some View {
