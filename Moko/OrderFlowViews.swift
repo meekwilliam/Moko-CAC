@@ -656,7 +656,7 @@ private func makeFootprint(seed: UInt64, event: String, target: Int? = nil) -> [
         case "lift", "delta_positive", "stacked_ask":
             bid = baseVolume
             ask = baseVolume + 60 + Int(rng.next() % 120)
-        case "hit", "delta_negative":
+        case "hit", "delta_negative", "delta_negative_rising":
             bid = baseVolume + 60 + Int(rng.next() % 120)
             ask = baseVolume
         case "balanced_target":
@@ -677,7 +677,7 @@ private func makeFootprint(seed: UInt64, event: String, target: Int? = nil) -> [
         } else if target == index && event == "delta_positive" {
             highlightedBid = bid
             highlightedAsk = ask + 300
-        } else if target == index && event == "delta_negative" {
+        } else if target == index && (event == "delta_negative" || event == "delta_negative_rising") {
             highlightedBid = bid + 300
             highlightedAsk = ask
         } else if target == index && event == "diagonal_ask" {
@@ -717,35 +717,38 @@ struct FootprintQuestionView: View {
             Text(screen.question ?? "Read the footprint.")
                 .font(Theme.questionFont(21, .heavy)).foregroundColor(ink)
 
-            VStack(spacing: 4) {
-                HStack {
-                    Text("BID VOL").frame(maxWidth: .infinity)
-                    Text("PRICE").frame(width: 72)
-                    Text("ASK VOL").frame(maxWidth: .infinity)
-                }
-                .font(Theme.font(9, .black)).foregroundColor(Theme.muted)
-                ForEach(Array(levels.enumerated()), id: \.element.id) { index, level in
-                    HStack(spacing: 6) {
-                        volumeCell(level.bidVolume, color: askColor)
-                        ZStack(alignment: .trailing) {
-                            Text(String(format: "%.2f", level.price))
-                                .font(Theme.font(11, .heavy)).foregroundColor(ink).frame(width: 72)
-                            if screen.event == "vwap_target" && index == screen.target {
-                                Text("VWAP").font(Theme.font(7, .black)).foregroundColor(.cyan)
-                                    .padding(.horizontal, 4).padding(.vertical, 2)
-                                    .background(Capsule().fill(Color.cyan.opacity(0.16)))
-                            }
-                        }
-                        .frame(width: 72)
-                        volumeCell(level.askVolume, color: bidColor)
+            HStack(alignment: .top, spacing: 8) {
+                if screen.event == "delta_negative_rising" { risingPriceChart }
+                VStack(spacing: 4) {
+                    HStack {
+                        Text("BID VOL").frame(maxWidth: .infinity)
+                        Text("PRICE").frame(width: 72)
+                        Text("ASK VOL").frame(maxWidth: .infinity)
                     }
-                    .padding(2)
-                    .background(RoundedRectangle(cornerRadius: 9).fill(index == player.selectedIndex ? Theme.answer.opacity(0.14) : .clear))
-                    .overlay(RoundedRectangle(cornerRadius: 9).strokeBorder(footprintRowColor(index), lineWidth: footprintRowWidth(index)))
-                    .contentShape(Rectangle())
-                    .onTapGesture {
-                        guard screen.type == "footprint_tap", !player.revealed else { return }
-                        Haptics.selection(); player.selectedIndex = index
+                    .font(Theme.font(9, .black)).foregroundColor(Theme.muted)
+                    ForEach(Array(levels.enumerated()), id: \.element.id) { index, level in
+                        HStack(spacing: 6) {
+                            volumeCell(level.bidVolume, color: askColor)
+                            ZStack(alignment: .trailing) {
+                                Text(String(format: "%.2f", level.price))
+                                    .font(Theme.font(11, .heavy)).foregroundColor(ink).frame(width: 72)
+                                if screen.event == "vwap_target" && index == screen.target {
+                                    Text("VWAP").font(Theme.font(7, .black)).foregroundColor(.cyan)
+                                        .padding(.horizontal, 4).padding(.vertical, 2)
+                                        .background(Capsule().fill(Color.cyan.opacity(0.16)))
+                                }
+                            }
+                            .frame(width: 72)
+                            volumeCell(level.askVolume, color: bidColor)
+                        }
+                        .padding(2)
+                        .background(RoundedRectangle(cornerRadius: 9).fill(index == player.selectedIndex ? Theme.answer.opacity(0.14) : .clear))
+                        .overlay(RoundedRectangle(cornerRadius: 9).strokeBorder(footprintRowColor(index), lineWidth: footprintRowWidth(index)))
+                        .contentShape(Rectangle())
+                        .onTapGesture {
+                            guard screen.type == "footprint_tap", !player.revealed else { return }
+                            Haptics.selection(); player.selectedIndex = index
+                        }
                     }
                 }
             }
@@ -785,6 +788,26 @@ struct FootprintQuestionView: View {
 
     private func footprintChoice(index: Int, label: String) -> some View {
         OFOption(player: player, index: index, label: label, ink: ink)
+    }
+
+    private var risingPriceChart: some View {
+        VStack(spacing: 6) {
+            Text("PRICE").font(Theme.font(8, .black)).foregroundColor(Theme.muted)
+            HStack(alignment: .bottom, spacing: 3) {
+                ForEach(Array([12.0, 18.0, 16.0, 25.0, 32.0].enumerated()), id: \.offset) { _, height in
+                    RoundedRectangle(cornerRadius: 2).fill(bidColor.opacity(0.85))
+                        .frame(width: 7, height: height)
+                }
+            }
+            .frame(height: 36, alignment: .bottom)
+            Image(systemName: "arrow.up.right")
+                .font(.system(size: 11, weight: .black)).foregroundColor(bidColor)
+            Text("RISING").font(Theme.font(7, .black)).foregroundColor(bidColor)
+        }
+        .frame(width: 58)
+        .padding(.vertical, 9)
+        .background(RoundedRectangle(cornerRadius: 10).fill(bidColor.opacity(0.09)))
+        .overlay(RoundedRectangle(cornerRadius: 10).strokeBorder(bidColor.opacity(0.35), lineWidth: 1))
     }
 }
 
