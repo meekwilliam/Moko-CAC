@@ -38110,6 +38110,7 @@
        ],
        "correct": 0,
        "explanation": "The beginner observation is that replenishing liquidity contains active buying. Unit 4 later names this behavior absorption.",
+       "footprintPreview": true,
        "skillId": "multi_signal_read"
       }
      ]
@@ -38291,6 +38292,7 @@
        "correct": 0,
        "explanation": "The composite view shows both executed pressure and the price response used to judge confirmation.",
        "event": "conflict",
+       "footprintPreview": true,
        "skillId": "multi_signal_read"
       },
       {
@@ -38374,6 +38376,7 @@
        "correct": 0,
        "explanation": "The composite view shows both executed pressure and the price response used to judge confirmation.",
        "event": "seller_absorption",
+       "footprintPreview": true,
        "skillId": "multi_signal_read"
       },
       {
@@ -38445,6 +38448,7 @@
        "correct": 0,
        "explanation": "The composite view shows both executed pressure and the price response used to judge confirmation.",
        "event": "conflict",
+       "footprintPreview": true,
        "skillId": "multi_signal_read"
       },
       {
@@ -38503,6 +38507,7 @@
        "correct": 0,
        "explanation": "The composite view shows both executed pressure and the price response used to judge confirmation.",
        "event": "breakout",
+       "footprintPreview": true,
        "skillId": "multi_signal_read"
       },
       {
@@ -38594,6 +38599,7 @@
        "correct": 0,
        "explanation": "The composite view shows both executed pressure and the price response used to judge confirmation.",
        "event": "breakout",
+       "footprintPreview": true,
        "skillId": "multi_signal_read"
       },
       {
@@ -38652,6 +38658,7 @@
        "correct": 0,
        "explanation": "The composite view shows both executed pressure and the price response used to judge confirmation.",
        "event": "seller_absorption",
+       "footprintPreview": true,
        "skillId": "multi_signal_read"
       },
       {
@@ -38751,6 +38758,7 @@
        ],
        "correct": 0,
        "explanation": "The composite evidence shows both persistent buying and higher accepted prices.",
+       "footprintPreview": true,
        "skillId": "multi_signal_read"
       },
       {
@@ -38786,6 +38794,7 @@
        ],
        "correct": 0,
        "explanation": "Absorption appears when pressure fails to move price.",
+       "footprintPreview": true,
        "skillId": "multi_signal_read"
       },
       {
@@ -38862,6 +38871,7 @@
        ],
        "correct": 0,
        "explanation": "Buyers absorb selling near support.",
+       "footprintPreview": true,
        "skillId": "multi_signal_read"
       },
       {
@@ -38901,6 +38911,7 @@
        ],
        "correct": 0,
        "explanation": "Active selling makes little progress while the bid replenishes.",
+       "footprintPreview": true,
        "skillId": "multi_signal_read"
       },
       {
@@ -38914,6 +38925,7 @@
        ],
        "correct": 0,
        "explanation": "Active buying makes little progress while the offer replenishes.",
+       "footprintPreview": true,
        "skillId": "multi_signal_read"
       }
      ]
@@ -38936,6 +38948,7 @@
        ],
        "correct": 0,
        "explanation": "A level that survives tests may contain absorption.",
+       "footprintPreview": true,
        "skillId": "multi_signal_read"
       },
       {
@@ -38962,6 +38975,7 @@
        ],
        "correct": 0,
        "explanation": "Absorption requires pressure plus a weak corresponding price response.",
+       "footprintPreview": true,
        "skillId": "multi_signal_read"
       },
       {
@@ -38975,6 +38989,7 @@
        ],
        "correct": 0,
        "explanation": "Repeated execution with replenishment and weak downward progress supports possible absorption.",
+       "footprintPreview": true,
        "skillId": "multi_signal_read"
       },
       {
@@ -39230,6 +39245,7 @@
        ],
        "correct": 0,
        "explanation": "Aggressive buyers can be absorbed by passive sellers at resistance.",
+       "footprintPreview": true,
        "skillId": "multi_signal_read"
       },
       {
@@ -39245,6 +39261,7 @@
        ],
        "correct": 0,
        "explanation": "Aggressive sellers can be absorbed by passive buyers at support.",
+       "footprintPreview": true,
        "skillId": "multi_signal_read"
       },
       {
@@ -39259,6 +39276,7 @@
        ],
        "correct": 0,
        "explanation": "Strong pressure with little movement suggests absorption.",
+       "footprintPreview": true,
        "skillId": "multi_signal_read"
       },
       {
@@ -39285,6 +39303,7 @@
        ],
        "correct": 0,
        "explanation": "The simulation exposes active buying, replenishment, and weak upward response.",
+       "footprintPreview": true,
        "skillId": "multi_signal_read"
       },
       {
@@ -39298,6 +39317,7 @@
        ],
        "correct": 0,
        "explanation": "The simulation exposes active selling, replenishment, and weak downward response.",
+       "footprintPreview": true,
        "skillId": "multi_signal_read"
       }
      ]
@@ -39345,6 +39365,7 @@
        ],
        "correct": 0,
        "explanation": "Selling remains active while support holds.",
+       "footprintPreview": true,
        "skillId": "multi_signal_read"
       },
       {
@@ -39358,6 +39379,7 @@
        ],
        "correct": 0,
        "explanation": "Buying remains active while resistance holds.",
+       "footprintPreview": true,
        "skillId": "multi_signal_read"
       },
       {
@@ -39400,6 +39422,7 @@
        ],
        "correct": 0,
        "explanation": "Conflicting evidence does not confirm either interpretation.",
+       "footprintPreview": true,
        "skillId": "multi_signal_read"
       }
      ]
@@ -39885,7 +39908,7 @@
       },
       {
        "type": "multiple_choice",
-       "question": "What's the most reasonable read?",
+       "question": "What does net aggression compare?",
        "options": [
         "Net aggression compares buying with selling",
         "Fast tape near resistance is stronger than failure to gain acceptance",
@@ -39893,7 +39916,7 @@
         "Order flow evidence remains valid regardless of changing volatility"
        ],
        "correct": 0,
-       "explanation": "Net aggression compares buying with selling.",
+       "explanation": "Net aggression compares aggressive buying with aggressive selling.",
        "skillId": "delta_vs_volume"
       },
       {
@@ -40028,13 +40051,13 @@
        "type": "footprint_tap",
        "event": "delta_negative",
        "target": 6,
-       "question": "Tap the execution clue opposing price.",
-       "explanation": "The selected negative delta row contradicts the price direction.",
+       "question": "Rising price is shown beside this footprint. Tap the negative delta row opposing it.",
+       "explanation": "The selected negative delta row conflicts with the stated rising price context.",
        "skillId": "footprint_interaction"
       },
       {
        "type": "multiple_choice",
-       "question": "What's the strongest conclusion?",
+       "question": "What does price pressure disagreement suggest?",
        "options": [
         "Price and pressure disagreement warns of weakness",
         "The current book is more useful than the executions that changed it",
@@ -42791,18 +42814,17 @@
        "skillId": "footprint_reading"
       },
       {
-       "type": "multiple_choice",
-       "chart": "bullishEngulfing",
-       "question": "Which read is best supported?",
+       "type": "orderflow_sim",
+       "event": "seller_loses_control",
+       "question": "Which reversal read is best supported?",
        "options": [
-        "Reversals need a clear change in control",
-        "Large executions are directional even when price does not respond",
-        "A moving average reaction can substitute for execution evidence",
-        "Balanced delta means neither side traded aggressively"
+        "A visible control change is developing",
+        "The bullish candle alone confirms reversal",
+        "Seller aggression guarantees continuation"
        ],
        "correct": 0,
-       "explanation": "Reversals need a clear change in control.",
-       "skillId": "reversal_pressure"
+       "explanation": "Tape, liquidity, and price response show the prior side losing control and opposition emerging.",
+       "skillId": "multi_signal_read"
       },
       {
        "type": "evidence_select",
@@ -43130,32 +43152,30 @@
        "skillId": "scenario_comparison"
       },
       {
-       "type": "multiple_choice",
-       "chart": "doubleTop",
-       "question": "What's the strongest conclusion?",
+       "type": "replay_compare",
+       "event": "double_top_flow",
+       "question": "What is the strongest conclusion from both high tests?",
        "options": [
-        "Repeated failure can shift control to sellers",
-        "The current book is more useful than the executions that changed it",
-        "Location adds little once the tape accelerates",
-        "The earliest signal should anchor the read even after conditions change"
+        "Repeated failure with weaker buying can shift control toward sellers",
+        "The double top shape confirms a reversal by itself",
+        "Both tests show identical buyer pressure"
        ],
        "correct": 0,
-       "explanation": "Repeated failure can shift control to sellers.",
-       "skillId": "double_top_vs_double_bottom_flow"
+       "explanation": "The comparison shows weaker buying, stronger seller response, and failed acceptance on the second test.",
+       "skillId": "scenario_comparison"
       },
       {
-       "type": "multiple_choice",
-       "chart": "doubleBottom",
-       "question": "What best connects the evidence?",
+       "type": "replay_compare",
+       "event": "double_bottom_flow",
+       "question": "What is the strongest conclusion from both low tests?",
        "options": [
-        "Repeated failure can shift control to buyers",
-        "Positive delta is usually sufficient confirmation for higher prices",
-        "A pull in liquidity is equivalent to aggressive execution",
-        "Slower counter pressure automatically confirms continuation"
+        "Repeated failure with weaker selling can shift control toward buyers",
+        "The double bottom shape confirms a reversal by itself",
+        "Both tests show identical seller pressure"
        ],
        "correct": 0,
-       "explanation": "Repeated failure can shift control to buyers.",
-       "skillId": "double_top_vs_double_bottom_flow"
+       "explanation": "The comparison shows weaker selling, stronger buyer response, and a reclaim on the second test.",
+       "skillId": "scenario_comparison"
       }
      ]
     },
@@ -43218,18 +43238,17 @@
        "skillId": "multi_signal_read"
       },
       {
-       "type": "multiple_choice",
-       "chart": "bullishEngulfing",
-       "question": "Which read needs fewer assumptions?",
+       "type": "orderflow_sim",
+       "event": "seller_loses_control",
+       "question": "Which reversal entry needs fewer assumptions?",
        "options": [
-        "Confirmation reduces premature reversal entries",
-        "Repeated tests always make a liquidity level stronger",
-        "A fast rejection proves the resting wall was genuine",
-        "Stable displayed size means hidden liquidity cannot be present"
+        "Waiting for control change and confirming price response",
+        "Entering from the candle pattern alone",
+        "Entering after one opposing print"
        ],
        "correct": 0,
-       "explanation": "Confirmation reduces premature reversal entries.",
-       "skillId": "reversal_confirmation_insufficient_evidence"
+       "explanation": "Visible execution and price confirmation reduce reliance on pattern assumptions.",
+       "skillId": "multi_signal_read"
       },
       {
        "type": "orderflow_sim",
@@ -43245,18 +43264,17 @@
        "skillId": "multi_signal_read"
       },
       {
-       "type": "multiple_choice",
-       "chart": "inverseHeadShoulders",
-       "question": "What matters most here?",
+       "type": "orderflow_sim",
+       "event": "seller_loses_control",
+       "question": "What matters most before treating this as a reversal?",
        "options": [
-        "A reversal needs control change and confirmation",
-        "Price progress can be ignored when aggression is persistent",
-        "A narrow spread confirms directional control",
-        "The largest footprint row determines the entire candle read"
+        "Control change and confirming price response",
+        "The chart structure alone",
+        "One large opposing execution"
        ],
        "correct": 0,
-       "explanation": "A reversal needs control change and confirmation.",
-       "skillId": "reversal_confirmation_insufficient_evidence"
+       "explanation": "A reversal requires the prior side to lose control and the opposing side to produce a confirming response.",
+       "skillId": "multi_signal_read"
       }
      ]
     },
@@ -44625,6 +44643,7 @@
        ],
        "correct": 0,
        "explanation": "The beginner observation is that replenishing liquidity contains active buying. Unit 4 later names this behavior absorption.",
+       "footprintPreview": true,
        "skillId": "multi_signal_read",
        "sourceLesson": "Order Book Challenge",
        "sourceUnit": 1,
@@ -45030,6 +45049,7 @@
        "correct": 0,
        "explanation": "The composite view shows both executed pressure and the price response used to judge confirmation.",
        "event": "seller_absorption",
+       "footprintPreview": true,
        "skillId": "multi_signal_read",
        "sourceLesson": "Tape at Key Levels",
        "sourceUnit": 2,
@@ -45087,6 +45107,7 @@
        "correct": 0,
        "explanation": "The composite view shows both executed pressure and the price response used to judge confirmation.",
        "event": "conflict",
+       "footprintPreview": true,
        "skillId": "multi_signal_read",
        "sourceLesson": "Reading Time & Sales",
        "sourceUnit": 2,
@@ -45295,6 +45316,7 @@
        ],
        "correct": 0,
        "explanation": "Absorption appears when pressure fails to move price.",
+       "footprintPreview": true,
        "skillId": "multi_signal_read",
        "sourceLesson": "What Is Absorption?",
        "sourceUnit": 3,
@@ -45353,6 +45375,7 @@
        ],
        "correct": 0,
        "explanation": "Buyers absorb selling near support.",
+       "footprintPreview": true,
        "skillId": "multi_signal_read",
        "sourceLesson": "Buyer vs. Seller Absorption",
        "sourceUnit": 3,
@@ -45389,6 +45412,7 @@
        ],
        "correct": 0,
        "explanation": "Active selling makes little progress while the bid replenishes.",
+       "footprintPreview": true,
        "skillId": "multi_signal_read",
        "sourceLesson": "Buyer vs. Seller Absorption",
        "sourceUnit": 3,
@@ -45425,6 +45449,7 @@
        ],
        "correct": 0,
        "explanation": "Active buying makes little progress while the offer replenishes.",
+       "footprintPreview": true,
        "skillId": "multi_signal_read",
        "sourceLesson": "Buyer vs. Seller Absorption",
        "sourceUnit": 3,
@@ -45444,6 +45469,7 @@
        ],
        "correct": 0,
        "explanation": "A level that survives tests may contain absorption.",
+       "footprintPreview": true,
        "skillId": "multi_signal_read",
        "sourceLesson": "Repeated Tests & Hidden Liquidity",
        "sourceUnit": 3,
@@ -45480,6 +45506,7 @@
        ],
        "correct": 0,
        "explanation": "Repeated execution with replenishment and weak downward progress supports possible absorption.",
+       "footprintPreview": true,
        "skillId": "multi_signal_read",
        "sourceLesson": "Repeated Tests & Hidden Liquidity",
        "sourceUnit": 3,
@@ -45498,6 +45525,7 @@
        ],
        "correct": 0,
        "explanation": "Absorption requires pressure plus a weak corresponding price response.",
+       "footprintPreview": true,
        "skillId": "multi_signal_read",
        "sourceLesson": "Repeated Tests & Hidden Liquidity",
        "sourceUnit": 3,
@@ -45630,6 +45658,7 @@
        ],
        "correct": 0,
        "explanation": "Aggressive buyers can be absorbed by passive sellers at resistance.",
+       "footprintPreview": true,
        "skillId": "multi_signal_read",
        "sourceLesson": "Absorption Practice Replays",
        "sourceUnit": 3,
@@ -45650,6 +45679,7 @@
        ],
        "correct": 0,
        "explanation": "Aggressive sellers can be absorbed by passive buyers at support.",
+       "footprintPreview": true,
        "skillId": "multi_signal_read",
        "sourceLesson": "Absorption Practice Replays",
        "sourceUnit": 3,
@@ -48904,18 +48934,17 @@
        "competencyId": "u9.double_top_flow"
       },
       {
-       "type": "multiple_choice",
-       "chart": "doubleTop",
-       "question": "What's the strongest conclusion?",
+       "type": "replay_compare",
+       "event": "double_top_flow",
+       "question": "What is the strongest conclusion from both high tests?",
        "options": [
-        "Repeated failure can shift control to sellers",
-        "The current book is more useful than the executions that changed it",
-        "Location adds little once the tape accelerates",
-        "The earliest signal should anchor the read even after conditions change"
+        "Repeated failure with weaker buying can shift control toward sellers",
+        "The double top shape confirms a reversal by itself",
+        "Both tests show identical buyer pressure"
        ],
        "correct": 0,
-       "explanation": "Repeated failure can shift control to sellers.",
-       "skillId": "double_top_vs_double_bottom_flow",
+       "explanation": "The comparison shows weaker buying, stronger seller response, and failed acceptance on the second test.",
+       "skillId": "scenario_comparison",
        "sourceLesson": "Double Top vs. Double Bottom Flow",
        "sourceUnit": 8,
        "sourceNode": 68,
@@ -48959,18 +48988,17 @@
        "competencyId": "u9.double_bottom_flow"
       },
       {
-       "type": "multiple_choice",
-       "chart": "doubleBottom",
-       "question": "What best connects the evidence?",
+       "type": "replay_compare",
+       "event": "double_bottom_flow",
+       "question": "What is the strongest conclusion from both low tests?",
        "options": [
-        "Repeated failure can shift control to buyers",
-        "Positive delta is usually sufficient confirmation for higher prices",
-        "A pull in liquidity is equivalent to aggressive execution",
-        "Slower counter pressure automatically confirms continuation"
+        "Repeated failure with weaker selling can shift control toward buyers",
+        "The double bottom shape confirms a reversal by itself",
+        "Both tests show identical seller pressure"
        ],
        "correct": 0,
-       "explanation": "Repeated failure can shift control to buyers.",
-       "skillId": "double_top_vs_double_bottom_flow",
+       "explanation": "The comparison shows weaker selling, stronger buyer response, and a reclaim on the second test.",
+       "skillId": "scenario_comparison",
        "sourceLesson": "Double Top vs. Double Bottom Flow",
        "sourceUnit": 8,
        "sourceNode": 68,
@@ -49014,18 +49042,17 @@
        "competencyId": "u9.reversal_confirmation"
       },
       {
-       "type": "multiple_choice",
-       "chart": "bullishEngulfing",
-       "question": "Which read needs fewer assumptions?",
+       "type": "orderflow_sim",
+       "event": "seller_loses_control",
+       "question": "Which reversal entry needs fewer assumptions?",
        "options": [
-        "Confirmation reduces premature reversal entries",
-        "Repeated tests always make a liquidity level stronger",
-        "A fast rejection proves the resting wall was genuine",
-        "Stable displayed size means hidden liquidity cannot be present"
+        "Waiting for control change and confirming price response",
+        "Entering from the candle pattern alone",
+        "Entering after one opposing print"
        ],
        "correct": 0,
-       "explanation": "Confirmation reduces premature reversal entries.",
-       "skillId": "reversal_confirmation_insufficient_evidence",
+       "explanation": "Visible execution and price confirmation reduce reliance on pattern assumptions.",
+       "skillId": "multi_signal_read",
        "sourceLesson": "Reversal Confirmation & Insufficient Evidence",
        "sourceUnit": 8,
        "sourceNode": 69,
@@ -49069,18 +49096,17 @@
        "competencyId": "u9.insufficient_evidence"
       },
       {
-       "type": "multiple_choice",
-       "chart": "inverseHeadShoulders",
-       "question": "What matters most here?",
+       "type": "orderflow_sim",
+       "event": "seller_loses_control",
+       "question": "What matters most before treating this as a reversal?",
        "options": [
-        "A reversal needs control change and confirmation",
-        "Price progress can be ignored when aggression is persistent",
-        "A narrow spread confirms directional control",
-        "The largest footprint row determines the entire candle read"
+        "Control change and confirming price response",
+        "The chart structure alone",
+        "One large opposing execution"
        ],
        "correct": 0,
-       "explanation": "A reversal needs control change and confirmation.",
-       "skillId": "reversal_confirmation_insufficient_evidence",
+       "explanation": "A reversal requires the prior side to lose control and the opposing side to produce a confirming response.",
+       "skillId": "multi_signal_read",
        "sourceLesson": "Reversal Confirmation & Insufficient Evidence",
        "sourceUnit": 8,
        "sourceNode": 69,
@@ -49127,21 +49153,17 @@
        "multi_signal_read"
       ],
       "u9.double_top_flow": [
-       "double_top_vs_double_bottom_flow",
        "scenario_comparison"
       ],
       "u9.double_bottom_flow": [
-       "double_top_vs_double_bottom_flow",
        "scenario_comparison"
       ],
       "u9.reversal_confirmation": [
        "footprint_reading",
-       "multi_signal_read",
-       "reversal_confirmation_insufficient_evidence"
+       "multi_signal_read"
       ],
       "u9.insufficient_evidence": [
-       "multi_signal_read",
-       "reversal_confirmation_insufficient_evidence"
+       "multi_signal_read"
       ]
      },
      "competencyEligibleQuestionIds": {
