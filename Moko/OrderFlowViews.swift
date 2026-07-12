@@ -559,7 +559,7 @@ struct ReplayCompareView: View {
 
     private func replay(title: String, rows: [String], tint: Color) -> some View {
         VStack(alignment: .leading, spacing: 8) {
-            Text(title).font(Theme.font(10, .black)).foregroundColor(tint)
+            Text(title).font(Theme.font(10, .black)).foregroundColor(.white)
             if player.screen.event == "profile_concentration" {
                 VStack(alignment: .leading, spacing: 2) {
                     ForEach(Array((title == "REPLAY A" ? [18, 28, 64, 112, 58, 25] : [48, 55, 51, 59, 46, 53]).enumerated()), id: \.offset) { _, width in
@@ -571,7 +571,7 @@ struct ReplayCompareView: View {
             }
             ForEach(rows, id: \.self) { row in
                 HStack(spacing: 6) {
-                    Circle().fill(tint).frame(width: 6, height: 6)
+                    Circle().fill(.white).frame(width: 6, height: 6)
                     Text(row).font(Theme.font(11, .bold)).foregroundColor(ink)
                 }
             }
@@ -582,10 +582,6 @@ struct ReplayCompareView: View {
         .background(
             RoundedRectangle(cornerRadius: 15, style: .continuous)
                 .fill(Theme.optionFill(scheme))
-                .overlay(
-                    RoundedRectangle(cornerRadius: 15, style: .continuous)
-                        .strokeBorder(tint.opacity(0.7), lineWidth: 1.5)
-                )
         )
         .background(
             RoundedRectangle(cornerRadius: 15, style: .continuous)
