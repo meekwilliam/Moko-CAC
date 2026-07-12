@@ -377,13 +377,14 @@ class ViewController: UIViewController {
         guard let test = course.testOuts?.first(where: { $0.unitIndex == unit }) else { return }
         let shuffled = test.questionPool.shuffled()
         var screens: [LessonScreen] = []
-        // Competency blueprint first: every attempt must cover each slot's
-        // skill `count` times, so a random draw can't skip a core skill.
-        for slot in test.blueprint ?? [] {
-            let matches = shuffled.filter { candidate in
-                candidate.skillId == slot.skillId && !screens.contains(where: { $0.id == candidate.id })
+        // Select one question from every required competency first. This keeps
+        // random attempts varied without allowing a core unit concept to vanish.
+        for competency in test.competencyBlueprint ?? [] {
+            if let match = shuffled.first(where: { candidate in
+                candidate.competencyId == competency && !screens.contains(where: { $0.id == candidate.id })
+            }) {
+                screens.append(match)
             }
-            screens.append(contentsOf: matches.prefix(slot.count))
         }
         var coveredSkills = Set(screens.map { $0.skillId ?? $0.type })
         for screen in shuffled {

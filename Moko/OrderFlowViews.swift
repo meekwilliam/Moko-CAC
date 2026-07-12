@@ -271,8 +271,16 @@ struct BookDepthCompareView: View {
     var ink: Color
 
     private let prices = [101.10, 101.05, 101.00, 100.95, 100.90]
-    private let thick = [920, 760, 1100, 840, 690]
-    private let thin = [45, 0, 72, 18, 0]
+    private var bookSizes: (a: [Int], b: [Int]) {
+        switch player.screen.event {
+        case "wall":
+            return ([80, 95, 1500, 110, 90], [75, 90, 105, 100, 85])
+        case "pool":
+            return ([70, 940, 1180, 860, 65], [55, 80, 72, 60, 48])
+        default:
+            return ([920, 760, 1100, 840, 690], [45, 0, 72, 18, 0])
+        }
+    }
 
     var body: some View {
         VStack(alignment: .leading, spacing: 14) {
@@ -280,8 +288,8 @@ struct BookDepthCompareView: View {
                 .font(Theme.questionFont(21, .heavy)).foregroundColor(ink)
 
             HStack(spacing: 10) {
-                ladder(title: "BOOK A", sizes: thick, tint: .cyan)
-                ladder(title: "BOOK B", sizes: thin, tint: .orange)
+                ladder(title: "BOOK A", sizes: bookSizes.a, tint: .cyan)
+                ladder(title: "BOOK B", sizes: bookSizes.b, tint: .orange)
             }
 
             VStack(spacing: 9) {
@@ -808,6 +816,8 @@ struct OrderFlowSimulationView: View {
 
     private var evidence: (price: [String], book: [String], tape: [String], footprint: [String]) {
         switch screen.event {
+        case "iceberg":
+            return (["Price tests 101.25", "Price remains pinned at 101.25"], ["100 shown at the offer", "100 trades, then 100 reappears"], ["Buyer prints hit 101.25", "Repeated buys execute at one price"], ["Ask executions accumulate", "Large volume with little progress"])
         case "buyer_absorption":
             return (["Testing support below VWAP", "Holding support despite selling"], ["Large bid at 99.40", "Bid refreshes after repeated fills"], ["Selling pace increasing", "Fast seller initiated prints"], ["Bid volume dominates", "Negative delta with little decline"])
         case "sweep":
