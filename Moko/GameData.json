@@ -37649,7 +37649,7 @@
         "The day's executed trades."
        ],
        "correct": 0,
-       "explanation": "Level I is the top of the book. the single best bid and best ask.",
+       "explanation": "Level I is the top of the book: the single best bid and best ask.",
        "skillId": "reading_the_order_book"
       },
       {
@@ -37717,7 +37717,7 @@
         "Its distance from the last price."
        ],
        "correct": 0,
-       "explanation": "The number is resting size. how many shares sit waiting at that price.",
+       "explanation": "The number is resting size: how many shares sit waiting at that price.",
        "skillId": "size_liquidity"
       },
       {
@@ -37734,7 +37734,7 @@
       },
       {
        "type": "true_false",
-       "question": "A thin book moves on fewer orders than a thick one.",
+       "question": "A thin book can move on less incoming pressure than a thick book.",
        "correct": true,
        "explanation": "Sparse nearby depth can allow less incoming pressure to move price farther.",
        "skillId": "size_liquidity",
@@ -37833,7 +37833,7 @@
          "Level vanishes"
         ]
        ],
-       "explanation": "Big bids hold price up, big asks cap it. until they're pulled.",
+       "explanation": "Big bids can support price and big asks can cap it until they are pulled or traded.",
        "skillId": "large_orders_as_walls"
       },
       {
@@ -38376,7 +38376,6 @@
        "correct": 0,
        "explanation": "The composite view shows both executed pressure and the price response used to judge confirmation.",
        "event": "seller_absorption",
-       "footprintPreview": true,
        "skillId": "multi_signal_read"
       },
       {
@@ -38448,7 +38447,6 @@
        "correct": 0,
        "explanation": "The composite view shows both executed pressure and the price response used to judge confirmation.",
        "event": "conflict",
-       "footprintPreview": true,
        "skillId": "multi_signal_read"
       },
       {
@@ -38507,7 +38505,6 @@
        "correct": 0,
        "explanation": "The composite view shows both executed pressure and the price response used to judge confirmation.",
        "event": "breakout",
-       "footprintPreview": true,
        "skillId": "multi_signal_read"
       },
       {
@@ -38599,7 +38596,6 @@
        "correct": 0,
        "explanation": "The composite view shows both executed pressure and the price response used to judge confirmation.",
        "event": "breakout",
-       "footprintPreview": true,
        "skillId": "multi_signal_read"
       },
       {
@@ -38658,7 +38654,6 @@
        "correct": 0,
        "explanation": "The composite view shows both executed pressure and the price response used to judge confirmation.",
        "event": "seller_absorption",
-       "footprintPreview": true,
        "skillId": "multi_signal_read"
       },
       {
@@ -38758,7 +38753,6 @@
        ],
        "correct": 0,
        "explanation": "The composite evidence shows both persistent buying and higher accepted prices.",
-       "footprintPreview": true,
        "skillId": "multi_signal_read"
       },
       {
@@ -38798,17 +38792,17 @@
        "skillId": "multi_signal_read"
       },
       {
-       "type": "time_sales",
-       "event": "lift",
+       "type": "orderflow_sim",
+       "event": "seller_absorption",
        "question": "Is pressure moving price?",
        "options": [
-        "No. Execution is strong; progress is weak",
-        "Pressure and price accelerate together",
-        "No aggressive executions appear"
+        "No. Execution is strong while upward progress stays weak",
+        "Yes. Price is accepting above resistance",
+        "The response cannot be compared"
        ],
        "correct": 0,
-       "explanation": "Absorption requires pressure plus a weak corresponding price response.",
-       "skillId": "tape_reading"
+       "explanation": "The simulation shows buyer execution continuing while a refreshing offer limits upward progress.",
+       "skillId": "multi_signal_read"
       },
       {
        "type": "replay_compare",
@@ -38871,34 +38865,33 @@
        ],
        "correct": 0,
        "explanation": "Buyers absorb selling near support.",
-       "footprintPreview": true,
        "skillId": "multi_signal_read"
       },
       {
-       "type": "time_sales",
-       "event": "hit",
+       "type": "orderflow_sim",
+       "event": "buyer_absorption",
        "question": "What are sellers failing to do?",
        "options": [
         "Push price below support",
-        "Pressure and price accelerate together",
-        "No aggressive executions appear"
+        "Execute at the bid",
+        "Create negative delta"
        ],
        "correct": 0,
-       "explanation": "Absorption requires pressure plus a weak corresponding price response.",
-       "skillId": "tape_reading"
+       "explanation": "Seller initiated prints remain active, but the bid replenishes and support holds.",
+       "skillId": "multi_signal_read"
       },
       {
-       "type": "time_sales",
-       "event": "lift",
+       "type": "orderflow_sim",
+       "event": "seller_absorption",
        "question": "What are buyers failing to do?",
        "options": [
         "Clear the refreshing offer",
-        "Pressure and price accelerate together",
-        "No aggressive executions appear"
+        "Execute at the ask",
+        "Create positive delta"
        ],
        "correct": 0,
-       "explanation": "Absorption requires pressure plus a weak corresponding price response.",
-       "skillId": "tape_reading"
+       "explanation": "Buyer initiated prints remain active, but the offer replenishes and resistance holds.",
+       "skillId": "multi_signal_read"
       },
       {
        "type": "orderflow_sim",
@@ -38911,7 +38904,6 @@
        ],
        "correct": 0,
        "explanation": "Active selling makes little progress while the bid replenishes.",
-       "footprintPreview": true,
        "skillId": "multi_signal_read"
       },
       {
@@ -38925,7 +38917,6 @@
        ],
        "correct": 0,
        "explanation": "Active buying makes little progress while the offer replenishes.",
-       "footprintPreview": true,
        "skillId": "multi_signal_read"
       }
      ]
@@ -38948,21 +38939,20 @@
        ],
        "correct": 0,
        "explanation": "A level that survives tests may contain absorption.",
-       "footprintPreview": true,
        "skillId": "multi_signal_read"
       },
       {
-       "type": "time_sales",
-       "event": "hit",
+       "type": "orderflow_sim",
+       "event": "buyer_absorption",
        "question": "What keeps happening at the level?",
        "options": [
-        "Pressure trades, but the level holds",
-        "Pressure and price accelerate together",
-        "No aggressive executions appear"
+        "Selling trades repeatedly while support holds",
+        "Price accepts below support",
+        "Seller pressure disappears before the level"
        ],
        "correct": 0,
-       "explanation": "Absorption requires pressure plus a weak corresponding price response.",
-       "skillId": "tape_reading"
+       "explanation": "The support level, repeated selling, replenishing bid, and limited price progress are shown together.",
+       "skillId": "multi_signal_read"
       },
       {
        "type": "orderflow_sim",
@@ -38975,7 +38965,6 @@
        ],
        "correct": 0,
        "explanation": "Absorption requires pressure plus a weak corresponding price response.",
-       "footprintPreview": true,
        "skillId": "multi_signal_read"
       },
       {
@@ -38989,7 +38978,6 @@
        ],
        "correct": 0,
        "explanation": "Repeated execution with replenishment and weak downward progress supports possible absorption.",
-       "footprintPreview": true,
        "skillId": "multi_signal_read"
       },
       {
@@ -39033,7 +39021,7 @@
        "type": "time_sales_tap",
        "event": "stall",
        "target": 6,
-       "question": "Tap where activity starts losing follow through in What Is Exhaustion.",
+       "question": "Tap where activity starts losing follow through.",
        "explanation": "Prints continue but size and pace begin fading here.",
        "skillId": "tape_interaction"
       },
@@ -39104,7 +39092,7 @@
        "type": "time_sales_tap",
        "event": "stall",
        "target": 4,
-       "question": "Tap where activity starts losing follow through in Buyer vs. Seller Exhaustion.",
+       "question": "Tap where the initiating side starts losing follow through.",
        "explanation": "Prints continue but size and pace begin fading here.",
        "skillId": "tape_interaction"
       },
@@ -39245,7 +39233,6 @@
        ],
        "correct": 0,
        "explanation": "Aggressive buyers can be absorbed by passive sellers at resistance.",
-       "footprintPreview": true,
        "skillId": "multi_signal_read"
       },
       {
@@ -39261,7 +39248,6 @@
        ],
        "correct": 0,
        "explanation": "Aggressive sellers can be absorbed by passive buyers at support.",
-       "footprintPreview": true,
        "skillId": "multi_signal_read"
       },
       {
@@ -39276,7 +39262,6 @@
        ],
        "correct": 0,
        "explanation": "Strong pressure with little movement suggests absorption.",
-       "footprintPreview": true,
        "skillId": "multi_signal_read"
       },
       {
@@ -39303,7 +39288,6 @@
        ],
        "correct": 0,
        "explanation": "The simulation exposes active buying, replenishment, and weak upward response.",
-       "footprintPreview": true,
        "skillId": "multi_signal_read"
       },
       {
@@ -39317,7 +39301,6 @@
        ],
        "correct": 0,
        "explanation": "The simulation exposes active selling, replenishment, and weak downward response.",
-       "footprintPreview": true,
        "skillId": "multi_signal_read"
       }
      ]
@@ -39365,7 +39348,6 @@
        ],
        "correct": 0,
        "explanation": "Selling remains active while support holds.",
-       "footprintPreview": true,
        "skillId": "multi_signal_read"
       },
       {
@@ -39379,7 +39361,6 @@
        ],
        "correct": 0,
        "explanation": "Buying remains active while resistance holds.",
-       "footprintPreview": true,
        "skillId": "multi_signal_read"
       },
       {
@@ -39422,7 +39403,6 @@
        ],
        "correct": 0,
        "explanation": "Conflicting evidence does not confirm either interpretation.",
-       "footprintPreview": true,
        "skillId": "multi_signal_read"
       }
      ]
@@ -39594,7 +39574,7 @@
       },
       {
        "type": "multiple_choice",
-       "question": "What matters most here?",
+       "question": "What can seller imbalance contribute to?",
        "options": [
         "Seller imbalance can push price lower",
         "Price progress can be ignored when aggression is persistent",
@@ -39655,7 +39635,7 @@
       },
       {
        "type": "multiple_choice",
-       "question": "Which conclusion fits the response?",
+       "question": "What can sudden aggressive execution do?",
        "options": [
         "Sudden aggression can ignite momentum",
         "Acceptance is present as soon as one trade prints beyond a level",
@@ -39736,7 +39716,7 @@
       },
       {
        "type": "multiple_choice",
-       "question": "How should this be interpreted?",
+       "question": "What can renewed buying after a pause support?",
        "options": [
         "Renewed buying can continue momentum",
         "Thin liquidity implies the move has strong aggressive sponsorship",
@@ -39749,7 +39729,7 @@
       },
       {
        "type": "multiple_choice",
-       "question": "What does the response suggest?",
+       "question": "What does stalled price response suggest about momentum?",
        "options": [
         "Momentum weakens when price stops responding",
         "A failed breakout is confirmed before price returns through the level",
@@ -40108,7 +40088,7 @@
      "screens": [
       {
        "type": "footprint",
-       "event": "lift",
+       "event": "stacked_ask",
        "question": "How do the footprint rows combine into one directional read?",
        "options": [
         "Sustained imbalance matters more than one burst",
@@ -40117,7 +40097,8 @@
         "One same price difference confirms a stacked diagonal imbalance"
        ],
        "correct": 0,
-       "explanation": "Sustained imbalance matters more than one burst.",
+       "explanation": "Three consecutive ask side imbalances support a sustained directional read rather than one isolated burst.",
+       "target": 1,
        "skillId": "footprint_reading"
       },
       {
@@ -40167,7 +40148,7 @@
       },
       {
        "type": "multiple_choice",
-       "question": "Which momentum conclusion best fits this new response?",
+       "question": "In this footprint & momentum challenge setup, what can sudden aggressive execution do?",
        "options": [
         "Sudden aggression can ignite momentum",
         "Acceptance is present as soon as one trade prints beyond a level",
@@ -40180,7 +40161,7 @@
       },
       {
        "type": "multiple_choice",
-       "question": "What does the changing response imply about momentum?",
+       "question": "In this footprint & momentum challenge setup, what does stalled price response suggest about momentum?",
        "options": [
         "Momentum weakens when price stops responding",
         "A failed breakout is confirmed before price returns through the level",
@@ -41069,7 +41050,7 @@
       },
       {
        "type": "book_compare",
-       "question": "Which depth profile in Boss Battle: Sweep or Acceptance? should let price travel more easily?",
+       "question": "Which depth profile should let price travel more easily?",
        "options": [
         "Book B",
         "Book A",
@@ -41077,7 +41058,6 @@
        ],
        "correct": 0,
        "explanation": "Thin depth lets price travel more easily.",
-       "event": "thin_variant",
        "skillId": "book_depth"
       },
       {
@@ -42803,14 +42783,14 @@
       {
        "type": "footprint",
        "event": "lift",
-       "question": "What confirms the control change?",
+       "question": "What does this ask heavy footprint show?",
        "options": [
-        "Opposing aggression gains strength",
-        "The pattern target is guaranteed",
-        "Only resting liquidity matters"
+        "Opposing buyer aggression is gaining strength",
+        "A complete reversal is confirmed",
+        "Prior seller control is still increasing"
        ],
        "correct": 0,
-       "explanation": "Tape and footprint evidence reveal what changed beneath the candle pattern.",
+       "explanation": "The footprint shows stronger buyer aggression, while the surrounding lesson establishes the broader control transition.",
        "skillId": "footprint_reading"
       },
       {
@@ -42975,18 +42955,18 @@
        "skillId": "footprint_reading"
       },
       {
-       "type": "multiple_choice",
-       "chart": "doji",
-       "question": "What does the evidence support?",
+       "type": "time_sales",
+       "event": "stall",
+       "target": 4,
+       "question": "What does fading directional pace and size near the extreme support?",
        "options": [
-        "Exhaustion can prepare a reversal",
-        "Tape speed matters more than the level where it occurs",
-        "A replenishing order is probably new unrelated liquidity",
-        "Brief trade beyond the level is enough to establish acceptance"
+        "Possible exhaustion that still needs reversal confirmation",
+        "A confirmed reversal from price shape alone",
+        "Continued aggression with full acceptance"
        ],
        "correct": 0,
-       "explanation": "Exhaustion can prepare a reversal.",
-       "skillId": "exhaustion_reversals"
+       "explanation": "Fading aggressive activity can support exhaustion, but opposing control and price response still need confirmation.",
+       "skillId": "tape_reading"
       },
       {
        "type": "evidence_select",
@@ -43287,7 +43267,7 @@
       {
        "type": "replay_compare",
        "event": "trap",
-       "question": "Which replay creates the buyer trap in Boss Battle: Trap or Reversal?",
+       "question": "Which replay creates the buyer trap?",
        "options": [
         "Replay B",
         "Replay A",
@@ -43426,18 +43406,17 @@
        "skillId": "planning_the_entry_choosing_the_order_type"
       },
       {
-       "type": "multiple_choice",
-       "chart": "sideways",
-       "question": "How should this be interpreted?",
+       "type": "orderflow_sim",
+       "event": "thin_risk",
+       "question": "Price approaches a trigger as the spread widens and nearby depth changes. How should order choice be interpreted?",
        "options": [
-        "Order choice balances speed with price control",
-        "Thin liquidity implies the move has strong aggressive sponsorship",
-        "Negative delta prevents price from rising",
-        "Refreshing bids matter only after sellers stop trading"
+        "Balance execution speed with control over fill price",
+        "The chart direction determines the order type",
+        "Thin depth guarantees an immediate favorable fill"
        ],
        "correct": 0,
-       "explanation": "Order choice balances speed with price control.",
-       "skillId": "planning_the_entry_choosing_the_order_type"
+       "explanation": "Changing liquidity makes the tradeoff between urgency and price control directly relevant.",
+       "skillId": "multi_signal_read"
       },
       {
        "type": "evidence_select",
@@ -43800,18 +43779,17 @@
      "lessonType": "STANDARD",
      "screens": [
       {
-       "type": "multiple_choice",
-       "chart": "sideways",
-       "question": "Which explanation fits best?",
+       "type": "orderflow_sim",
+       "event": "championship",
+       "question": "After the replay ends, which review process is best?",
        "options": [
         "Review each evidence source separately from the trade outcome",
-        "High total volume normally implies strongly directional delta",
-        "A large wall deserves more weight than repeated fills against it",
-        "One unusually large trade is more reliable than subsequent response"
+        "Judge the read only by profit or loss",
+        "Review only the final candle"
        ],
        "correct": 0,
-       "explanation": "Review each evidence source separately from the trade outcome.",
-       "skillId": "reviewing_the_full_order_flow_read"
+       "explanation": "A multi source replay should be reviewed by separating book, tape, footprint, and price response from outcome.",
+       "skillId": "multi_signal_read"
       },
       {
        "type": "orderflow_sim",
@@ -44450,7 +44428,7 @@
       },
       {
        "type": "true_false",
-       "question": "A thin book moves on fewer orders than a thick one.",
+       "question": "A thin book can move on less incoming pressure than a thick book.",
        "correct": true,
        "explanation": "Sparse nearby depth can allow less incoming pressure to move price farther.",
        "skillId": "size_liquidity",
@@ -44550,7 +44528,7 @@
          "Level vanishes"
         ]
        ],
-       "explanation": "Big bids hold price up, big asks cap it. until they're pulled.",
+       "explanation": "Big bids can support price and big asks can cap it until they are pulled or traded.",
        "skillId": "large_orders_as_walls",
        "sourceLesson": "Large Orders as Walls",
        "sourceUnit": 1,
@@ -45049,7 +45027,6 @@
        "correct": 0,
        "explanation": "The composite view shows both executed pressure and the price response used to judge confirmation.",
        "event": "seller_absorption",
-       "footprintPreview": true,
        "skillId": "multi_signal_read",
        "sourceLesson": "Tape at Key Levels",
        "sourceUnit": 2,
@@ -45375,7 +45352,6 @@
        ],
        "correct": 0,
        "explanation": "Buyers absorb selling near support.",
-       "footprintPreview": true,
        "skillId": "multi_signal_read",
        "sourceLesson": "Buyer vs. Seller Absorption",
        "sourceUnit": 3,
@@ -45384,17 +45360,17 @@
        "competencyId": "u4.buyer_absorption"
       },
       {
-       "type": "time_sales",
-       "event": "hit",
+       "type": "orderflow_sim",
+       "event": "buyer_absorption",
        "question": "What are sellers failing to do?",
        "options": [
         "Push price below support",
-        "Pressure and price accelerate together",
-        "No aggressive executions appear"
+        "Execute at the bid",
+        "Create negative delta"
        ],
        "correct": 0,
-       "explanation": "Absorption requires pressure plus a weak corresponding price response.",
-       "skillId": "tape_reading",
+       "explanation": "Seller initiated prints remain active, but the bid replenishes and support holds.",
+       "skillId": "multi_signal_read",
        "sourceLesson": "Buyer vs. Seller Absorption",
        "sourceUnit": 3,
        "sourceNode": 21,
@@ -45412,7 +45388,6 @@
        ],
        "correct": 0,
        "explanation": "Active selling makes little progress while the bid replenishes.",
-       "footprintPreview": true,
        "skillId": "multi_signal_read",
        "sourceLesson": "Buyer vs. Seller Absorption",
        "sourceUnit": 3,
@@ -45421,17 +45396,17 @@
        "competencyId": "u4.buyer_absorption"
       },
       {
-       "type": "time_sales",
-       "event": "lift",
+       "type": "orderflow_sim",
+       "event": "seller_absorption",
        "question": "What are buyers failing to do?",
        "options": [
         "Clear the refreshing offer",
-        "Pressure and price accelerate together",
-        "No aggressive executions appear"
+        "Execute at the ask",
+        "Create positive delta"
        ],
        "correct": 0,
-       "explanation": "Absorption requires pressure plus a weak corresponding price response.",
-       "skillId": "tape_reading",
+       "explanation": "Buyer initiated prints remain active, but the offer replenishes and resistance holds.",
+       "skillId": "multi_signal_read",
        "sourceLesson": "Buyer vs. Seller Absorption",
        "sourceUnit": 3,
        "sourceNode": 21,
@@ -45449,7 +45424,6 @@
        ],
        "correct": 0,
        "explanation": "Active buying makes little progress while the offer replenishes.",
-       "footprintPreview": true,
        "skillId": "multi_signal_read",
        "sourceLesson": "Buyer vs. Seller Absorption",
        "sourceUnit": 3,
@@ -45469,7 +45443,6 @@
        ],
        "correct": 0,
        "explanation": "A level that survives tests may contain absorption.",
-       "footprintPreview": true,
        "skillId": "multi_signal_read",
        "sourceLesson": "Repeated Tests & Hidden Liquidity",
        "sourceUnit": 3,
@@ -45478,17 +45451,17 @@
        "competencyId": "u4.repeated_tests"
       },
       {
-       "type": "time_sales",
-       "event": "hit",
+       "type": "orderflow_sim",
+       "event": "buyer_absorption",
        "question": "What keeps happening at the level?",
        "options": [
-        "Pressure trades, but the level holds",
-        "Pressure and price accelerate together",
-        "No aggressive executions appear"
+        "Selling trades repeatedly while support holds",
+        "Price accepts below support",
+        "Seller pressure disappears before the level"
        ],
        "correct": 0,
-       "explanation": "Absorption requires pressure plus a weak corresponding price response.",
-       "skillId": "tape_reading",
+       "explanation": "The support level, repeated selling, replenishing bid, and limited price progress are shown together.",
+       "skillId": "multi_signal_read",
        "sourceLesson": "Repeated Tests & Hidden Liquidity",
        "sourceUnit": 3,
        "sourceNode": 22,
@@ -45506,7 +45479,6 @@
        ],
        "correct": 0,
        "explanation": "Repeated execution with replenishment and weak downward progress supports possible absorption.",
-       "footprintPreview": true,
        "skillId": "multi_signal_read",
        "sourceLesson": "Repeated Tests & Hidden Liquidity",
        "sourceUnit": 3,
@@ -45525,7 +45497,6 @@
        ],
        "correct": 0,
        "explanation": "Absorption requires pressure plus a weak corresponding price response.",
-       "footprintPreview": true,
        "skillId": "multi_signal_read",
        "sourceLesson": "Repeated Tests & Hidden Liquidity",
        "sourceUnit": 3,
@@ -45658,7 +45629,6 @@
        ],
        "correct": 0,
        "explanation": "Aggressive buyers can be absorbed by passive sellers at resistance.",
-       "footprintPreview": true,
        "skillId": "multi_signal_read",
        "sourceLesson": "Absorption Practice Replays",
        "sourceUnit": 3,
@@ -45679,7 +45649,6 @@
        ],
        "correct": 0,
        "explanation": "Aggressive sellers can be absorbed by passive buyers at support.",
-       "footprintPreview": true,
        "skillId": "multi_signal_read",
        "sourceLesson": "Absorption Practice Replays",
        "sourceUnit": 3,
@@ -45724,16 +45693,13 @@
        "scenario_comparison"
       ],
       "u4.buyer_absorption": [
-       "multi_signal_read",
-       "tape_reading"
+       "multi_signal_read"
       ],
       "u4.seller_absorption": [
-       "multi_signal_read",
-       "tape_reading"
+       "multi_signal_read"
       ],
       "u4.repeated_tests": [
-       "multi_signal_read",
-       "tape_reading"
+       "multi_signal_read"
       ],
       "u4.hidden_liquidity": [
        "evidence_synthesis",
@@ -46113,7 +46079,7 @@
       },
       {
        "type": "multiple_choice",
-       "question": "What does the response suggest?",
+       "question": "What does stalled price response suggest about momentum?",
        "options": [
         "Momentum weakens when price stops responding",
         "A failed breakout is confirmed before price returns through the level",
@@ -46243,7 +46209,7 @@
       },
       {
        "type": "footprint",
-       "event": "lift",
+       "event": "stacked_ask",
        "question": "How do the footprint rows combine into one directional read?",
        "options": [
         "Sustained imbalance matters more than one burst",
@@ -46252,7 +46218,8 @@
         "One same price difference confirms a stacked diagonal imbalance"
        ],
        "correct": 0,
-       "explanation": "Sustained imbalance matters more than one burst.",
+       "explanation": "Three consecutive ask side imbalances support a sustained directional read rather than one isolated burst.",
+       "target": 1,
        "skillId": "footprint_reading",
        "sourceLesson": "Footprint & Momentum Challenge",
        "sourceUnit": 4,
@@ -48626,14 +48593,14 @@
       {
        "type": "footprint",
        "event": "lift",
-       "question": "What confirms the control change?",
+       "question": "What does this ask heavy footprint show?",
        "options": [
-        "Opposing aggression gains strength",
-        "The pattern target is guaranteed",
-        "Only resting liquidity matters"
+        "Opposing buyer aggression is gaining strength",
+        "A complete reversal is confirmed",
+        "Prior seller control is still increasing"
        ],
        "correct": 0,
-       "explanation": "Tape and footprint evidence reveal what changed beneath the candle pattern.",
+       "explanation": "The footprint shows stronger buyer aggression, while the surrounding lesson establishes the broader control transition.",
        "skillId": "footprint_reading",
        "sourceLesson": "Reversal Pressure",
        "sourceUnit": 8,
@@ -49402,18 +49369,17 @@
        "competencyId": "u10.entry_plan"
       },
       {
-       "type": "multiple_choice",
-       "chart": "sideways",
-       "question": "How should this be interpreted?",
+       "type": "orderflow_sim",
+       "event": "thin_risk",
+       "question": "Price approaches a trigger as the spread widens and nearby depth changes. How should order choice be interpreted?",
        "options": [
-        "Order choice balances speed with price control",
-        "Thin liquidity implies the move has strong aggressive sponsorship",
-        "Negative delta prevents price from rising",
-        "Refreshing bids matter only after sellers stop trading"
+        "Balance execution speed with control over fill price",
+        "The chart direction determines the order type",
+        "Thin depth guarantees an immediate favorable fill"
        ],
        "correct": 0,
-       "explanation": "Order choice balances speed with price control.",
-       "skillId": "planning_the_entry_choosing_the_order_type",
+       "explanation": "Changing liquidity makes the tradeoff between urgency and price control directly relevant.",
+       "skillId": "multi_signal_read",
        "sourceLesson": "Planning the Entry & Choosing the Order Type",
        "sourceUnit": 9,
        "sourceNode": 71,
@@ -49772,18 +49738,17 @@
        "competencyId": "u10.exit_liquidity"
       },
       {
-       "type": "multiple_choice",
-       "chart": "sideways",
-       "question": "Which explanation fits best?",
+       "type": "orderflow_sim",
+       "event": "championship",
+       "question": "After the replay ends, which review process is best?",
        "options": [
         "Review each evidence source separately from the trade outcome",
-        "High total volume normally implies strongly directional delta",
-        "A large wall deserves more weight than repeated fills against it",
-        "One unusually large trade is more reliable than subsequent response"
+        "Judge the read only by profit or loss",
+        "Review only the final candle"
        ],
        "correct": 0,
-       "explanation": "Review each evidence source separately from the trade outcome.",
-       "skillId": "reviewing_the_full_order_flow_read",
+       "explanation": "A multi source replay should be reviewed by separating book, tape, footprint, and price response from outcome.",
+       "skillId": "multi_signal_read",
        "sourceLesson": "Reviewing the Full Order Flow Read",
        "sourceUnit": 9,
        "sourceNode": 76,
@@ -49922,6 +49887,7 @@
        "scenario_comparison"
       ],
       "u10.order_type": [
+       "multi_signal_read",
        "planning_the_entry_choosing_the_order_type"
       ],
       "u10.slippage": [
@@ -49948,7 +49914,7 @@
        "multi_signal_read"
       ],
       "u10.review_process": [
-       "reviewing_the_full_order_flow_read"
+       "multi_signal_read"
       ],
       "u10.multi_source_evidence": [
        "multi_signal_read"
