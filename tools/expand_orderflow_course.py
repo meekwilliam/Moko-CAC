@@ -291,7 +291,7 @@ def choice_screen(meta, node, advanced=False):
     ]
     wrong = distractor_sets[node % len(distractor_sets)]
     options = [signal_for(meta)] + (wrong if advanced else wrong[:2])
-    question = questions[node % len(questions)]
+    question = "Where might stops cluster?" if meta["title"] == "Resting Stops" else questions[node % len(questions)]
     return {"type": "multiple_choice", "chart": meta["chart"], "question": question,
             "options": options, "correct": 0, "explanation": meta["signal"] + "."}
 
@@ -495,19 +495,19 @@ def screens_for(meta, node, unit_index=2):
             ["Total tape volume reveals where every resting order sits", "The final print deserves more weight than the full sequence"],
             ["A faster feed confirms acceptance regardless of price response", "Alternating print colors mean no side can be aggressive"],
         ][node % 4]
-        if title == "False Urgency":
-            chart_answer = "No. Price failed to follow through"
-            chart_options = [chart_answer, "Yes. Speed confirmed acceptance", "No. The spread was too narrow"]
-        elif meta["bias"] == "up":
-            chart_answer = "Yes. Price made upward progress"
-            chart_options = [chart_answer, "No. Price rejected the buying", "Not enough trades appeared"]
-        elif meta["bias"] == "down":
-            chart_answer = "Yes. Price made downward progress"
-            chart_options = [chart_answer, "No. Price absorbed the selling", "The chart cannot show response"]
-        else:
-            chart_answer = "Price response remains inconclusive"
-            chart_options = [chart_answer, "Price fully confirms buyers", "Price fully confirms sellers"]
-        response_chart = "uptrend" if meta["bias"] == "up" else ("downtrend" if meta["bias"] == "down" else "sideways")
+        response_specs = {
+            "Reading the Tape": ("sideways", "Price response remains inconclusive", ["Buyers are fully confirmed", "Sellers are fully confirmed"]),
+            "Trade Speed": ("sideways", "No. Price barely moved", ["Yes. Faster tape confirms buyers", "Yes. Volatility confirms direction"]),
+            "Trade Size": ("resistanceRejection", "No. The large buy was rejected", ["Yes. One large print confirms control", "Yes. Size guarantees acceptance"]),
+            "Repeated Prints": ("uptrend", "Yes. Higher prices continued", ["No. Repetition never matters", "Inconclusive despite higher highs"]),
+            "Buyer Initiated Prints": ("range", "Price response remains inconclusive", ["Buyer control is confirmed", "Seller control is confirmed"]),
+            "Seller Initiated Prints": ("downtrend", "Yes. Price made downward progress", ["No. Selling was absorbed", "Inconclusive despite lower lows"]),
+            "Pace Changes": ("breakout", "Yes. Price expanded higher", ["No. Pace cannot confirm", "Inconclusive after acceptance"]),
+            "Tape at Key Levels": ("resistanceRejection", "No. Buying failed at resistance", ["Yes. Fast buying confirmed control", "Inconclusive despite rejection"]),
+            "False Urgency": ("sideways", "No. Price failed to follow through", ["Yes. Speed confirmed acceptance", "Yes. Activity guarantees control"]),
+        }
+        response_chart, chart_answer, chart_wrongs = response_specs.get(title, ("sideways", "Price response remains inconclusive", ["Buyers are confirmed", "Sellers are confirmed"]))
+        chart_options = [chart_answer] + chart_wrongs
         chart_response = {"type": "multiple_choice", "chart": response_chart,
                           "question": "Did price confirm the tape?",
                           "options": chart_options, "correct": 0,
@@ -736,6 +736,8 @@ def remove_text_dashes(value, key=None):
             "Directional movement often develops when aggressive and passive pressure create an order [___].": "Directional moves often develop from an order [___].",
             "An imbalance means one side is more aggressive.": "Directional movement can develop when aggressive pressure overwhelms liquidity, opposing liquidity withdraws, or both.",
             "You buy at the ask and sell at the bid when you trade aggressively.": "Aggressive buyers trade at asks; sellers trade at bids.",
+            "The full depth of resting orders on both sides.": "Depth of resting orders across price levels.",
+            "The full depth of resting orders.": "Available depth from the relevant venue or feed.",
         }
         value = replacements.get(value, value)
         return value.replace(" — ", ". ").replace("–", " ").replace("-", " ")
@@ -800,7 +802,11 @@ def visual_description(screen):
         order = "market buy" if screen.get("order") == "market_buy" else "market sell"
         return f"A draggable {order} card sits beside a Level II ladder with bid and ask drop targets."
     if kind == "book_compare":
-        return "Two Level II ladders appear side by side. Book A has large resting size at every nearby price. Book B has small size and gaps between levels."
+        book_visuals = {
+            "wall": "Two Level II ladders appear side by side. Book A concentrates 1,500 shares at one ask price while surrounding levels remain near 100. Book B has ordinary size across every level.",
+            "pool": "Two Level II ladders appear side by side. Book A clusters large resting orders across three adjacent prices near an obvious level. Book B has modest evenly distributed depth.",
+        }
+        return book_visuals.get(screen.get("event"), "Two Level II ladders appear side by side. Book A has large resting size at every nearby price. Book B has small size and gaps between levels.")
     if kind == "evidence_select":
         return "Four evidence cards separate aggression, liquidity, price response, and an irrelevant clue. The learner must select the required combination."
     if kind == "replay_compare":
@@ -839,6 +845,7 @@ def visual_description(screen):
             "sweep": "Price briefly trades above resistance as offers disappear and buy prints surge, then sell liquidity rebuilds and price immediately returns below the level.",
             "breakout": "Price approaches resistance, offers thin and are consumed, buyer initiated prints persist, stacked ask side execution appears, and price holds above the broken level.",
             "conflict": "Price rises above VWAP with positive delta and fast buyer prints, but a large offer refreshes and upward price progress begins fading.",
+            "iceberg": "Level II repeatedly shows 100 shares at the offer. Each 100 share execution clears the display, then another 100 immediately reappears at the same price while Time and Sales keeps printing buys.",
             "championship": "A championship replay combines price and VWAP, changing Level II liquidity, Time and Sales, and footprint delta so the learner must weigh all four evidence sources.",
         }
         return scenarios.get(screen.get("event"), scenarios["championship"])
@@ -999,6 +1006,7 @@ def write_markdown(course):
             f"QUESTIONS PER ATTEMPT: {test['questionCount']}",
             f"PASSING SCORE: {test['passingScore']}",
             f"POOL SIZE: {len(test['questionPool'])}",
+            f"COMPETENCY BLUEPRINT: {', '.join(test.get('competencyBlueprint', []))}",
             "",
         ])
     MARKDOWN_PATH.write_text("\n".join(lines).rstrip() + "\n")
@@ -1077,7 +1085,9 @@ def replace_fill_questions(course):
                 replacement = {"type": "footprint_tap", "event": event, "target": (node * 3 + 1) % 7, "question": question, "explanation": "The selected row contains the requested execution profile."}
             elif title in book_tasks:
                 question, options = book_tasks[title]
-                replacement = {"type": "book_compare", "question": question, "options": options, "correct": 0, "explanation": "Nearby depth changes how much pressure price needs to travel."}
+                replacement = {"type": "book_compare", "event": "pool" if title == "Liquidity Pools" else "thin",
+                               "question": question, "options": options, "correct": 0,
+                               "explanation": "Nearby depth changes how much pressure price needs to travel."}
             elif title in order_tasks:
                 items = order_tasks[title]
                 replacement = {"type": "sequence_builder", "question": "Build the decision sequence.", "items": items, "correct_order": items, "explanation": "Order flow decisions move from evidence to response and risk."}
@@ -1093,8 +1103,10 @@ def apply_difficulty_progression(course):
 
     def replace_first(title, kinds, replacement):
         screens = lessons[title]["screens"]
-        if any(screen["type"] == replacement["type"] and screen.get("question") == replacement.get("question") for screen in screens):
-            return
+        for screen in screens:
+            if screen["type"] == replacement["type"] and screen.get("question") == replacement.get("question"):
+                screen.update(replacement)
+                return
         for index, screen in enumerate(screens):
             if screen["type"] in kinds:
                 screens[index] = replacement
@@ -1103,7 +1115,7 @@ def apply_difficulty_progression(course):
 
     # Unit 2 peaks in direct book use and bridges into absorption.
     replace_first("Large Orders as Walls", {"multiple_choice"}, {
-        "type": "book_compare", "question": "Which book shows the larger wall?",
+        "type": "book_compare", "event": "wall", "question": "Which book shows the larger wall?",
         "options": ["Book A", "Book B", "Both are equal"], "correct": 0,
         "explanation": "Book A shows substantially more resting depth near price."})
     replace_first("Pulling & Spoofing", {"multiple_choice"}, {
@@ -1128,9 +1140,9 @@ def apply_difficulty_progression(course):
     # Unit 4 reinforces absorption versus exhaustion through direct comparison.
     replace_first("Hidden Liquidity", {"multiple_choice"}, {
         "type": "evidence_select", "question": "Select two hidden liquidity clues.",
-        "options": ["Fast buy executions", "Refreshing offer", "Positive delta", "Stalled price"],
-        "targets": [1, 3],
-        "explanation": "Replenishment plus weak price progress are the strongest hidden liquidity clues."})
+        "options": ["Refreshing displayed size", "Repeated executions at one price", "Positive delta alone", "Candle color"],
+        "targets": [0, 1],
+        "explanation": "Repeated same price fills plus replenishment directly suggest hidden liquidity."})
     replace_first("Absorption or Exhaustion", {"multiple_choice"}, {
         "type": "replay_compare", "event": "absorption", "question": "Which replay shows absorption?",
         "options": ["Replay A", "Replay B", "Both show exhaustion"], "correct": 0,
@@ -1253,7 +1265,7 @@ def apply_boss_structure(course):
         1: ("Boss Battle: Read the Book", [
             {"type": "multiple_choice", "question": "What does Level II add?", "options": ["Depth across price levels", "Only the last trade", "Future orders with certainty"], "correct": 0, "explanation": "Level II displays resting depth across prices."},
             {"type": "book_compare", "question": "Which book should move more easily?", "options": ["Book B", "Book A", "Both equally"], "correct": 0, "explanation": "Book B is thinner and contains gaps."},
-            {"type": "book_compare", "question": "Which book has thicker liquidity?", "options": ["Book A", "Book B", "Neither book"], "correct": 0, "explanation": "Book A shows more nearby resting size."},
+            {"type": "book_compare", "event": "wall", "question": "Which book has the larger wall?", "options": ["Book A", "Book B", "Neither book"], "correct": 0, "explanation": "Book A concentrates unusually large size at one level."},
             {"type": "replay_compare", "event": "wall", "question": "Which wall absorbed selling?", "options": ["Replay A", "Replay B", "Neither"], "correct": 0, "explanation": "Replay A replenishes while trading and price holds."},
             {"type": "multiple_choice", "question": "What happened when the bid vanished?", "options": ["Liquidity was pulled", "Selling was absorbed", "The spread closed"], "correct": 0, "explanation": "The displayed bid disappeared before trading."},
             {"type": "evidence_select", "question": "Select the holding wall clues.", "options": ["Repeated fills", "Replenishing size", "Price holds", "Wall pulls"], "targets": [0, 1, 2], "explanation": "Trading, replenishment, and response distinguish a holding wall."},
@@ -1270,8 +1282,8 @@ def apply_boss_structure(course):
         3: ("Boss Battle: Absorption or Exhaustion?", [
             {"type": "replay_compare", "event": "absorption", "question": "Which replay shows absorption?", "options": ["Replay A", "Replay B", "Neither"], "correct": 0, "explanation": "Aggression remains strong while price stalls."},
             {"type": "time_sales", "event": "stall", "question": "What does fading pace suggest?", "options": ["Exhaustion", "Absorption", "Acceptance"], "correct": 0, "explanation": "Exhaustion means aggression itself fades."},
-            {"type": "orderflow_sim", "event": "buyer_absorption", "question": "What's the strongest read?", "options": ["Possible buyer absorption", "Seller continuation confirmed", "No selling occurred"], "correct": 0, "explanation": "Selling remains active while support holds."},
-            {"type": "orderflow_sim", "event": "seller_absorption", "question": "What's the strongest read?", "options": ["Possible seller absorption", "Buyer continuation confirmed", "No buying occurred"], "correct": 0, "explanation": "Buying remains active while resistance holds."},
+            {"type": "orderflow_sim", "event": "buyer_absorption", "question": "What's the strongest read?", "options": ["Possible buyer absorption", "Seller continuation remains favored", "Seller exhaustion is developing"], "correct": 0, "explanation": "Selling remains active while support holds."},
+            {"type": "orderflow_sim", "event": "seller_absorption", "question": "What's the strongest read?", "options": ["Possible seller absorption", "Buyer continuation remains favored", "Buyer exhaustion is developing"], "correct": 0, "explanation": "Buying remains active while resistance holds."},
             {"type": "time_sales", "event": "stall", "question": "Which side loses urgency?", "options": ["The aggressive side", "The passive side", "Neither side"], "correct": 0, "explanation": "Exhaustion appears as initiating activity fades."},
             {"type": "evidence_select", "question": "Select seller absorption clues.", "options": ["Refreshing offer", "Stalled price", "Fading buy pace", "Price accepts higher"], "targets": [0, 1], "explanation": "Replenishment and stalled response support absorption."},
             {"type": "orderflow_sim", "event": "conflict", "question": "Is a clear read confirmed?", "options": ["Not enough evidence", "Buyer absorption", "Seller exhaustion"], "correct": 0, "explanation": "Conflicting evidence does not confirm either interpretation."},
@@ -1283,17 +1295,17 @@ def apply_boss_structure(course):
             {"type": "footprint_tap", "event": "hit", "target": 1, "question": "Tap the strongest bid advantage.", "explanation": "This row has the strongest aggressive selling."},
             {"type": "footprint_tap", "event": "stacked_ask", "target": 2, "question": "Tap where stacked pressure begins.", "explanation": "Three consecutive ask imbalances start here."},
             {"type": "multiple_choice", "question": "How do volume and delta differ?", "options": ["Volume totals trades; delta nets aggression", "They are identical", "Delta shows resting depth"], "correct": 0, "explanation": "Delta compares ask and bid executions."},
-            {"type": "orderflow_sim", "event": "seller_absorption", "question": "Positive delta, falling price. Why?", "options": ["Possible seller absorption", "Buyer control is confirmed", "Delta is invalid"], "correct": 0, "explanation": "Buying can be absorbed despite positive delta."},
+            {"type": "orderflow_sim", "event": "seller_absorption", "question": "Positive delta, stalled price. Why?", "options": ["Possible seller absorption", "Buyer control remains favored", "Buyer exhaustion is developing"], "correct": 0, "explanation": "Buying can be absorbed despite positive delta."},
             {"type": "orderflow_sim", "event": "conflict", "question": "Is momentum confirmed?", "options": ["No. Price and pressure diverge", "Yes. Delta is enough", "Yes. Volume is high"], "correct": 0, "explanation": "Conflicting response warns of momentum failure."},
         ]),
         5: ("Boss Battle: Sweep or Acceptance?", [
             {"type": "mark_level", "chart": "breakout", "level_kind": "resistance", "question": "Mark inferred buy stops.", "explanation": "Buy stops may cluster beyond resistance."},
             {"type": "mark_level", "chart": "breakdown", "level_kind": "support", "question": "Mark inferred sell stops.", "explanation": "Sell stops may cluster beyond support."},
             {"type": "replay_compare", "event": "sweep", "question": "Which replay gains acceptance?", "options": ["Replay B", "Replay A", "Both"], "correct": 0, "explanation": "Replay B holds beyond the level."},
-            {"type": "multiple_choice", "chart": "rejectionWickUp", "question": "What does the rejection suggest?", "options": ["Possible upside sweep", "Accepted breakout", "Guaranteed reversal"], "correct": 0, "explanation": "Price trades above and returns inside."},
-            {"type": "multiple_choice", "chart": "rejectionWickDown", "question": "What does this rejection suggest?", "options": ["Possible downside sweep", "Accepted breakdown", "No liquidity traded"], "correct": 0, "explanation": "Price trades below and returns inside."},
-            {"type": "book_compare", "question": "Which book should move faster?", "options": ["Book B", "Book A", "Both equally"], "correct": 0, "explanation": "Thin depth lets price travel more easily."},
-            {"type": "time_sales", "event": "lift", "question": "The offer keeps refilling. Why?", "options": ["Possible iceberg", "Buyer exhaustion", "Spread collapse"], "correct": 0, "explanation": "Repeated replenishment can indicate hidden size."},
+            {"type": "multiple_choice", "chart": "rejectionWickUp", "question": "What does the rejection suggest?", "options": ["Possible upside sweep", "Accepted breakout", "Buyer exhaustion at the level"], "correct": 0, "explanation": "Price trades above and returns inside."},
+            {"type": "multiple_choice", "chart": "rejectionWickDown", "question": "What does this rejection suggest?", "options": ["Possible downside sweep", "Accepted breakdown", "Seller continuation remains favored"], "correct": 0, "explanation": "Price trades below and returns inside."},
+            {"type": "book_compare", "question": "Which book should move more easily?", "options": ["Book B", "Book A", "Both equally"], "correct": 0, "explanation": "Thin depth lets price travel more easily."},
+            {"type": "orderflow_sim", "event": "iceberg", "question": "The offer keeps refilling. Why?", "options": ["Possible iceberg", "Buyer exhaustion", "Breakout acceptance"], "correct": 0, "explanation": "Repeated replenishment can indicate hidden size."},
             {"type": "orderflow_sim", "event": "sweep", "question": "What's the strongest read?", "options": ["Liquidity taken; acceptance failed", "Breakout confirmed", "No stops triggered"], "correct": 0, "explanation": "The breach rejects instead of holding."},
         ]),
         6: ("Boss Battle: Breakout or Failure?", [
@@ -1332,10 +1344,10 @@ def apply_boss_structure(course):
             {"type": "orderflow_sim", "event": "championship", "question": "Where is liquidity defending?", "options": ["At the refreshing offer", "Below the distant bid", "Nowhere"], "correct": 0, "explanation": "The offer replenishes after fills."},
             {"type": "orderflow_sim", "event": "championship", "question": "Is price responding?", "options": ["No. Price stalls", "Yes. Price accepts higher", "Response is irrelevant"], "correct": 0, "explanation": "Aggression makes little progress."},
             {"type": "orderflow_sim", "event": "championship", "question": "Which evidence conflicts?", "options": ["Positive delta and stalled price", "Fast tape and positive delta", "VWAP and resistance"], "correct": 0, "explanation": "Positive delta conflicts with weak price progress."},
-            {"type": "orderflow_sim", "event": "championship", "question": "What's the strongest read?", "options": ["Possible seller absorption", "Buyer continuation confirmed", "Guaranteed reversal"], "correct": 0, "explanation": "Refreshing offers and stalled price support absorption."},
+            {"type": "orderflow_sim", "event": "championship", "question": "What's the strongest read?", "options": ["Possible seller absorption", "Buyer continuation remains favored", "Buyer exhaustion is developing"], "correct": 0, "explanation": "Refreshing offers and stalled price support absorption."},
             {"type": "orderflow_sim", "event": "championship", "question": "What invalidates the read?", "options": ["Price accepts above resistance", "Another buy print", "Stable spread"], "correct": 0, "explanation": "Acceptance higher invalidates seller absorption."},
             {"type": "orderflow_sim", "event": "championship", "question": "What execution risk is present?", "options": ["Slippage near changing depth", "No execution risk", "Guaranteed fill price"], "correct": 0, "explanation": "Fast activity and changing depth increase slippage."},
-            {"type": "book_compare", "question": "Which side shows thin liquidity?", "options": ["Book B", "Book A", "Both"], "correct": 0, "explanation": "Book B has small size and gaps."},
+            {"type": "book_compare", "question": "Which book shows thinner liquidity?", "options": ["Book B", "Book A", "Both"], "correct": 0, "explanation": "Book B has small size and gaps."},
             {"type": "orderflow_sim", "event": "conflict", "question": "Is direction confirmed?", "options": ["Not enough evidence", "Buyers fully control", "Sellers fully control"], "correct": 0, "explanation": "Conflicting evidence prevents confirmation."},
             {"type": "evidence_select", "question": "Select what to review afterward.", "options": ["Book behavior", "Tape response", "Footprint delta", "Trade profit only"], "targets": [0, 1, 2], "explanation": "Review each evidence source separately from outcome."},
         ]),
@@ -1365,6 +1377,18 @@ def apply_boss_structure(course):
 
 def add_skill_tags_and_test_outs(course):
     """Tag every question and build larger assessment pools per unit."""
+    competency_blueprints = [
+        ["aggressive_buyer", "aggressive_seller", "market_buy_routing", "market_sell_routing", "spread", "aggressive_vs_passive", "order_price_chain", "combined_read"],
+        ["level_two", "resting_sides", "thick_liquidity", "thin_liquidity", "wall", "wall_behavior", "spoofing", "combined_book_read"],
+        ["buyer_initiated", "seller_initiated", "large_print", "tape_speed", "persistent_aggression", "sequence_break", "false_urgency", "price_confirmation", "combined_tape_read"],
+        ["absorption", "buyer_absorption", "seller_absorption", "repeated_tests", "hidden_liquidity", "buyer_exhaustion", "seller_exhaustion", "absorption_vs_exhaustion", "combined_absorption_read"],
+        ["footprint_basics", "diagonal_imbalance", "buyer_imbalance", "seller_imbalance", "stacked_pressure", "momentum_failure", "delta_vs_volume", "positive_delta_divergence", "negative_delta_divergence", "combined_footprint_read"],
+        ["liquidity_pool", "stop_cluster", "buy_stops", "sell_stops", "upside_sweep", "downside_sweep", "sweep_vs_acceptance", "book_depth", "iceberg", "combined_liquidity_read"],
+        ["breakout_pressure", "breakdown_pressure", "acceptance_above", "acceptance_below", "failed_breakout", "failed_breakdown", "breakout_retest", "breakdown_retest", "sweep_vs_breakout", "combined_breakout_read"],
+        ["healthy_pullback", "pullback_depth", "continuation_trigger", "bearish_continuation", "flow_at_vwap", "flow_at_average", "pullback_failure", "conflicting_signals", "volume_context", "no_clear_read"],
+        ["reversal_pressure", "buyer_trap", "seller_trap", "buyer_exhaustion_reversal", "seller_exhaustion_reversal", "absorption_reversal", "double_top_flow", "double_bottom_flow", "reversal_confirmation", "insufficient_evidence"],
+        ["entry_plan", "order_type", "slippage", "invalidation", "thin_liquidity_risk", "no_clear_read", "exit_liquidity", "review_process", "multi_source_evidence", "combined_execution_read"],
+    ]
     def skill_for(title, screen):
         kind = screen["type"]
         title_key = title.lower().replace(" ", "_").replace(":", "")
@@ -1392,11 +1416,19 @@ def add_skill_tags_and_test_outs(course):
         index = section["index"]
         count = section["testOutQuestionCount"]
         pool_size = min(len(pools[index]), max(count + 4, count * 2))
+        blueprint = competency_blueprints[index]
+        assessment_pool = pools[index][:pool_size]
+        # The source pool is ordered across different lessons and mechanics. Tag
+        # repeated passes through it with the explicit unit competencies so each
+        # assessment can enforce one question from every required category.
+        for question_index, question in enumerate(assessment_pool):
+            question["competencyId"] = blueprint[question_index % len(blueprint)]
         course["testOuts"].append({
             "unitIndex": index, "unitId": section["unitId"], "lessonType": "TEST_OUT",
             "questionCount": count, "passingScore": section["testOutPassingScore"],
             "noHearts": True, "revealAnswersAtEnd": True,
-            "questionPool": pools[index][:pool_size],
+            "questionPool": assessment_pool,
+            "competencyBlueprint": blueprint,
         })
 
 

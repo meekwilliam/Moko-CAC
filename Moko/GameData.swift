@@ -25,14 +25,7 @@ struct TestOutDefinition: Decodable {
     let noHearts: Bool
     let revealAnswersAtEnd: Bool
     let questionPool: [LessonScreen]
-    let blueprint: [TestOutBlueprintSlot]?
-}
-
-/// Competency blueprint: each slot guarantees `count` questions with the given
-/// skill in every generated Test Out, so a random draw can't skip a core skill.
-struct TestOutBlueprintSlot: Decodable {
-    let skillId: String
-    let count: Int
+    let competencyBlueprint: [String]?
 }
 
 struct GameData: Decodable {
