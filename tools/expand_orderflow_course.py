@@ -822,6 +822,8 @@ def visual_description(screen):
             "trap_challenge": "Replay A pauses above the break, defends a deeper retest, and resumes higher. Replay B loses the level after an initially strong burst and sellers take control.",
             "absorption_challenge": "Replay A shows varied buy sizes continuing into an offer that replenishes while price stays pinned. Replay B shows both buy size and pace fading before price stalls.",
             "acceptance_challenge": "Replay A clears staggered offers, survives a retest, and establishes trade above. Replay B meets renewed offers and returns to the prior range.",
+            "double_top_flow": "Replay A shows the first resistance test with strong buyer execution. Replay B shows a second test with weaker buying, stronger seller response, and a return below resistance.",
+            "double_bottom_flow": "Replay A shows the first support test with strong seller execution. Replay B shows a second test with weaker selling, stronger buyer response, and a reclaim above support.",
         }
         return replay_visuals.get(screen.get("event"), "Replay A shows offers clearing and price holding above resistance. Replay B shows replenishment and price falling back inside.")
     if kind in {"time_sales", "time_sales_tap"}:
@@ -834,12 +836,14 @@ def visual_description(screen):
             "sequence_break": "one opposing print interrupting a persistent buyer sequence",
             "buyer_target": "the target row showing a buyer initiated execution at the ask",
             "seller_target": "the target row showing a seller initiated execution at the bid",
+            "buyer_sequence_break": "one buyer initiated print at the ask interrupting a seller initiated sequence",
+            "buyer_fading": "buyer initiated prints at the ask losing pace and trade size",
         }
         detail = tape_details.get(screen.get("event"), "mixed buyer and seller initiated executions")
         return f"An animated Time and Sales table lists time, execution price, and trade size, with {detail}."
     if kind in {"footprint", "footprint_tap"}:
         event = screen.get("event", "balanced")
-        detail = {"lift": "one target row carrying the largest ask side execution advantage", "hit": "one target row carrying the largest bid side execution advantage", "balanced": "similar bid and ask volume across the price rows", "balanced_target": "one target row with the smallest bid ask execution difference", "total_target": "one target row with the largest combined executed volume", "diagonal_ask": "ask volume at the target price exceeding bid volume at the diagonally adjacent lower price by a clear ratio", "stacked_ask": "three consecutive rows showing ask side execution imbalances", "delta_positive": "one row contributing the largest positive ask minus bid delta", "delta_negative": "one row contributing the largest negative ask minus bid delta"}.get(event, "bid and ask execution volume by price")
+        detail = {"lift": "one target row carrying the largest ask side execution advantage", "hit": "one target row carrying the largest bid side execution advantage", "balanced": "similar bid and ask volume across the price rows", "balanced_target": "one target row with the smallest bid ask execution difference", "total_target": "one target row with the largest combined executed volume", "vwap_target": "a VWAP badge aligned with the target row carrying the largest combined executed volume", "diagonal_ask": "ask volume at the target price exceeding bid volume at the diagonally adjacent lower price by a clear ratio", "stacked_ask": "three consecutive rows showing ask side execution imbalances", "delta_positive": "one row contributing the largest positive ask minus bid delta", "delta_negative": "one row contributing the largest negative ask minus bid delta"}.get(event, "bid and ask execution volume by price")
         return f"A footprint grid places bid volume left of price and ask volume right of price, showing {detail}."
     if kind == "live_chart":
         direction = screen.get("direction", "sideways")
@@ -858,6 +862,8 @@ def visual_description(screen):
             "thin_risk": "Level II shows small nearby size with gaps, the spread widens during a market order, Time and Sales jumps across prices, and the simulated fill lands worse than the initial quote.",
             "downside_sweep": "Price trades below a prior low as sell stops trigger and seller initiated prints surge, then bids rebuild, buying responds, and price immediately reclaims the breached level.",
             "breakdown_pressure": "Seller initiated prints persist into bids that are being consumed or withdrawn, footprint execution favors sellers, and price establishes sustained trade below support.",
+            "seller_loses_control": "Seller initiated prints dominate into support, price stops falling, seller pace weakens, buyers begin lifting offers, and price starts responding upward.",
+            "exit_liquidity": "Price approaches resistance while Level II shows concentrated opposing ask depth, Time and Sales remains active, and the chart identifies the planned exit area without guaranteeing the displayed liquidity will remain.",
             "championship": "A championship replay combines price and VWAP, changing Level II liquidity, Time and Sales, and footprint delta so the learner must weigh all four evidence sources.",
         }
         return scenarios.get(screen.get("event"), scenarios["championship"])
@@ -1986,6 +1992,196 @@ def validate_visual_alignment(course):
         raise AssertionError("Chart-only order-flow evidence mismatch:\n" + "\n".join(errors))
 
 
+def apply_remaining_fix_list(course):
+    """Apply the final evidence and wording QA pass without changing lesson size."""
+    lessons = {item["node"]: item for item in course["lessons"]}
+
+    def replace(node, index, screen):
+        screens = lessons[node]["screens"]
+        if not 1 <= index <= len(screens):
+            raise AssertionError(f"Missing order flow question n{node}.q{index}")
+        screens[index - 1] = screen
+
+    def update(node, index, **changes):
+        lessons[node]["screens"][index - 1].update(changes)
+
+    # Venue/feed language and intent based spoofing language.
+    update(6, 1, options=["Available depth across price levels from the relevant venue or feed.",
+                           "Only the best bid and ask.", "Every trade already executed."],
+           explanation="Level II shows available resting depth across prices from the relevant venue or feed.")
+    update(6, 3, options=["Only the best bid and ask.",
+                           "Available depth across prices from the relevant venue or feed.",
+                           "The day's executed trades."])
+    update(6, 5, pairs=[["Level I", "Best bid and ask"],
+                         ["Level II", "Available depth from the relevant venue or feed"],
+                         ["Time & Sales", "Executed trades"]],
+           explanation="These lenses show top of book, available feed depth, and completed trades.")
+    update(7, 2, question="A book with large displayed size at every nearby level...",
+           options=["Shows greater displayed liquidity.", "Proves every order will remain.", "Guarantees low volatility."],
+           explanation="Large displayed size suggests greater displayed liquidity, but orders can change or cancel.")
+    update(7, 3, text="A thin book can move on less incoming pressure than a thick book.", correct=True,
+           explanation="Sparse nearby depth can allow less incoming pressure to move price farther.")
+    update(9, 4, pairs=[["Pulled order", "Cancelled before filling"],
+                         ["Refreshed order", "Replenished after filling"],
+                         ["Spoofing", "Deceptive order placement intended to mislead"]],
+           explanation="Cancellation alone is not spoofing. Intent to mislead is central to the definition.")
+
+    # Replace a redundant large print task with a genuine sequence break.
+    replace(13, 5, {"type": "time_sales_tap", "event": "buyer_sequence_break", "target": 3,
+                    "question": "Tap the buyer initiated print that breaks the seller sequence.",
+                    "explanation": "This ask side execution interrupts the seller initiated sequence."})
+
+    update(23, 2, question="Tap where activity starts losing follow through in What Is Exhaustion.")
+    update(24, 1, event="buyer_fading", target=4, question="Which side is losing urgency?",
+           options=["Aggressive buyers", "Aggressive sellers", "Neither initiating side"],
+           explanation="Buyer initiated prints at the ask visibly lose pace and size.")
+
+    # Delta questions must display both execution pressure and price response.
+    update(33, 2, question="How do volume and delta differ?",
+           explanation="Volume totals executed activity while delta nets aggressive buying against aggressive selling.")
+    replace(34, 1, {"type": "orderflow_sim", "event": "seller_absorption",
+                    "question": "Positive delta builds while price stalls at resistance. What best explains the disagreement?",
+                    "options": ["Possible seller absorption or trapped buyers", "Positive delta guarantees delayed upside", "The price response should be ignored"],
+                    "correct": 0, "explanation": "Aggressive buying is visible, but it is not producing the expected upward response."})
+    replace(35, 1, {"type": "orderflow_sim", "event": "conflict",
+                    "question": "Positive execution pressure grows while upward price progress fades. What's strongest?",
+                    "options": ["Price and pressure disagreement warns of weakness", "Positive delta confirms continuation", "The refreshing offer is irrelevant"],
+                    "correct": 0, "explanation": "The multi source view makes the execution and price contradiction visible."})
+    update(36, 5, question="Rising price is shown beside this footprint. Tap the negative delta row that conflicts with it.",
+           explanation="The selected row shows aggressive selling even as price rises.")
+    update(36, 6, options=["Delta matters most when price produces the expected response",
+                            "Positive delta is sufficient confirmation for higher prices",
+                            "The largest footprint row determines the next move",
+                            "Price response can be ignored when delta is persistent"],
+           explanation="Delta and the corresponding price response must be interpreted together.")
+
+    # A failure requires an actual breach followed by a reclaim.
+    replace(50, 2, {"type": "orderflow_sim", "event": "downside_sweep",
+                    "question": "Price breaks support, fails to hold below it, and quickly reclaims it. What's strongest?",
+                    "options": ["The breakdown failed", "Downside acceptance is established", "The initial breach guarantees continuation"],
+                    "correct": 0, "explanation": "Trading below support followed by an immediate reclaim shows failed acceptance."})
+    replace(50, 5, {"type": "orderflow_sim", "event": "sweep",
+                    "question": "Price trades above resistance, fails to hold, and returns below it. What's strongest?",
+                    "options": ["The breakout failed", "Upside acceptance is established", "Positive delta guarantees continuation"],
+                    "correct": 0, "explanation": "The visible breach and return inside show failed acceptance."})
+    replace(50, 7, {"type": "replay_compare", "event": "trap",
+                    "question": "Which replay shows a breakout attempt failing back below resistance?",
+                    "options": ["Replay B", "Replay A", "Neither replay"], "correct": 0,
+                    "explanation": "Replay B first trades above resistance, then loses the level and returns inside."})
+    replace(54, 3, {"type": "orderflow_sim", "event": "breakdown_pressure",
+                    "question": "What supports the breakdown?",
+                    "options": ["Persistent seller execution and acceptance below support", "One bearish candle", "A distant resting offer"],
+                    "correct": 0, "explanation": "Tape, Level II, footprint, and price all support sustained downside acceptance."})
+    replace(54, 5, {"type": "orderflow_sim", "event": "sweep", "question": "What invalidates the breakout?",
+                    "options": ["Price returns below resistance after trading above it", "Buyer prints remain visible", "Positive delta appears during the breach"],
+                    "correct": 0, "explanation": "The break is visible before price loses the level and returns inside."})
+    replace(54, 6, {"type": "orderflow_sim", "event": "downside_sweep", "question": "What invalidates the breakdown?",
+                    "options": ["Price returns above support after trading below it", "Seller prints remain visible", "Negative delta appears during the breach"],
+                    "correct": 0, "explanation": "The break below support fails when price quickly reclaims the level."})
+
+    update(58, 7, event="vwap_target", question="Tap the busiest footprint row aligned with VWAP.",
+           explanation="The VWAP badge identifies the relevant price row, which also carries the highest total execution.")
+    update(59, 3, event="hit", options=["Seller initiated prints accelerate at the bid", "Buyer pressure regains control", "The spread proves continuation"],
+           explanation="Accelerating seller initiated execution is the counterpressure invalidating the bullish continuation attempt.")
+    replace(60, 2, {"type": "orderflow_sim", "event": "conflict", "question": "What contradicts the fast buyer tape?",
+                    "options": ["Positive delta and price response diverge", "The largest footprint cell decides direction", "Tape speed guarantees acceptance"],
+                    "correct": 0, "explanation": "The tape is aggressive, but the footprint, refreshing offer, and fading price response conflict with it."})
+    replace(61, 1, {"type": "orderflow_sim", "event": "chop", "question": "What defines this high volume chop?",
+                    "options": ["Fast two sided execution with little price progress", "Measured one sided tape with efficient travel", "Sparse opposing depth and low activity"],
+                    "correct": 0, "explanation": "Heavy alternating execution produces volume without directional progress."})
+    replace(61, 2, {"type": "orderflow_sim", "event": "low_volume_trend", "question": "What defines this low volume trend?",
+                    "options": ["Measured execution and thin opposition allow steady travel", "Fast two sided execution pins price", "Heavy opposing depth blocks every move"],
+                    "correct": 0, "explanation": "Sparse opposition allows modest execution to move price efficiently."})
+    replace(61, 4, {"type": "orderflow_sim", "event": "low_volume_trend", "question": "Is execution strongly directional?",
+                    "options": ["No. Modest pressure travels through thin opposing depth", "Yes. A large directional footprint proves it", "No. Price is not moving"],
+                    "correct": 0, "explanation": "Level II shows thin opposition while execution remains modest and price still travels."})
+    update(62, 6, question="What's the strongest conclusion from the conflicting continuation evidence?")
+    update(62, 7, question="Which live response fails to confirm that trend pressure returned?")
+
+    # Reversal evidence now shows the transition, relevant level, and response.
+    replace(64, 1, {"type": "orderflow_sim", "event": "seller_loses_control", "question": "What changed in control?",
+                    "options": ["Seller aggression stopped moving price and buyer pressure emerged", "Seller control strengthened through support", "One opposing print guaranteed reversal"],
+                    "correct": 0, "explanation": "The sequence shows selling, stalled downside progress, fading seller pace, and an opposing response."})
+    replace(65, 1, {"type": "orderflow_sim", "event": "sweep", "question": "What shows buyers became trapped?",
+                    "options": ["Buying above resistance fails and price returns below", "Buyer prints appear above resistance", "Positive delta remains visible"],
+                    "correct": 0, "explanation": "The attempted break fails to hold and reverses back below the level."})
+    replace(65, 2, {"type": "orderflow_sim", "event": "downside_sweep", "question": "What shows sellers became trapped?",
+                    "options": ["Selling below support fails and price reclaims above", "Seller prints appear below support", "Negative delta remains visible"],
+                    "correct": 0, "explanation": "The attempted breakdown fails to hold and reverses above the level."})
+    replace(65, 3, {"type": "orderflow_sim", "event": "sweep", "question": "What contradicts the positive delta?",
+                    "options": ["Price returns below resistance", "Buyer initiated prints appear", "Offers briefly thin"],
+                    "correct": 0, "explanation": "Positive delta fails to produce acceptance and price returns inside."})
+    replace(65, 4, {"type": "orderflow_sim", "event": "downside_sweep", "question": "What contradicts the negative delta?",
+                    "options": ["Price returns above support", "Seller initiated prints appear", "Bids briefly thin"],
+                    "correct": 0, "explanation": "Negative delta fails to produce acceptance and price reclaims support."})
+    replace(67, 1, {"type": "orderflow_sim", "event": "buyer_absorption", "question": "What shows pressure being absorbed?",
+                    "options": ["Heavy seller prints make little downward progress", "Seller execution disappears before support", "Negative delta guarantees a breakdown"],
+                    "correct": 0, "explanation": "Strong selling is visible while price barely declines against a replenishing bid."})
+    replace(67, 2, {"type": "orderflow_sim", "event": "buyer_absorption", "question": "What supports possible passive defense?",
+                    "options": ["The bid replenishes as repeated selling stalls", "One ask heavy footprint row", "A lower wick without execution evidence"],
+                    "correct": 0, "explanation": "Repeated executions, replenishment, and stalled price jointly support possible passive defense."})
+    replace(67, 3, {"type": "orderflow_sim", "event": "buyer_absorption", "question": "Which explanation fits best?",
+                    "options": ["Possible buyer absorption can support a reversal", "The lower wick alone proves absorption", "Negative delta guarantees continuation"],
+                    "correct": 0, "explanation": "Tape, Level II, and price response support possible buyer absorption without making it certain."})
+    replace(68, 1, {"type": "replay_compare", "event": "double_top_flow", "question": "How does the second high test differ?",
+                    "options": ["Replay B shows weaker buyer urgency", "Replay A shows weaker buyer urgency", "The tests show identical execution"], "correct": 0,
+                    "explanation": "The second panel shows buying weakening while seller response strengthens."})
+    replace(68, 2, {"type": "replay_compare", "event": "double_bottom_flow", "question": "Which side weakens on the second low test?",
+                    "options": ["Aggressive sellers", "Aggressive buyers", "Neither side"], "correct": 0,
+                    "explanation": "The second panel shows seller pace and size fading before buyers respond."})
+    replace(68, 3, {"type": "replay_compare", "event": "double_top_flow", "question": "What changes on the second high test?",
+                    "options": ["Seller response strengthens", "Buyer acceptance strengthens", "Execution remains identical"], "correct": 0,
+                    "explanation": "The comparison shows stronger seller response on the retest."})
+    replace(68, 4, {"type": "replay_compare", "event": "double_bottom_flow", "question": "What changes on the second low test?",
+                    "options": ["Buyer response strengthens", "Seller acceptance strengthens", "Execution remains identical"], "correct": 0,
+                    "explanation": "The comparison shows stronger buyer response on the retest."})
+    for question, prompt in [(1, "What confirms the reversal?"), (4, "What completes the reversal read?"), (6, "What verifies that aggressive control changed?")]:
+        replace(69, question, {"type": "orderflow_sim", "event": "seller_loses_control", "question": prompt,
+                               "options": ["The prior side stalls, opposing pressure strengthens, and price responds", "One opposing print appears", "A candle pattern forms without execution confirmation"],
+                               "correct": 0, "explanation": "The full transition from prior control to opposing follow through is visible."})
+    update(70, 1, question="Which replay creates the buyer trap in Boss Battle: Trap or Reversal?")
+    replace(70, 5, {"type": "replay_compare", "event": "double_top_flow", "question": "What matters on the second high test?",
+                    "options": ["Replay B shows weaker buying and stronger defense", "The double top shape alone", "Both tests have the same execution"],
+                    "correct": 0, "explanation": "The side by side execution comparison reveals weakening buying and firmer defense."})
+    replace(70, 6, {"type": "replay_compare", "event": "double_bottom_flow", "question": "What matters on the second low test?",
+                    "options": ["Replay B shows weaker selling and stronger defense", "The double bottom shape alone", "Both tests have the same execution"],
+                    "correct": 0, "explanation": "The side by side execution comparison reveals weakening selling and firmer defense."})
+
+    # Every Unit 10 order type candidate now tests the execution tradeoff.
+    replace(71, 4, {"type": "multiple_choice", "question": "When urgency matters more than exact price control, which order best fits?",
+                    "options": ["A market order", "A distant limit order", "An unsubmitted order"], "correct": 0,
+                    "explanation": "A market order prioritizes immediate execution while accepting less price control."})
+    update(73, 3, question="Where should the read be invalidated?")
+    replace(75, 1, {"type": "orderflow_sim", "event": "exit_liquidity", "question": "What does the evidence support?",
+                    "options": ["Visible opposing depth can help plan an exit area", "The exit price is guaranteed", "Resistance predicts the next trend"],
+                    "correct": 0, "explanation": "Level II shows potential counterparties near the planned exit, but displayed liquidity can change."})
+    update(75, 3, question="Mark the area where opposing liquidity may be expected.",
+           explanation="The chart marks a potential exit area near resistance, not directly observed resting orders.")
+
+
+def validate_remaining_fix_list(course):
+    """Regression checks for the final review's named evidence defects."""
+    lessons = {item["node"]: item for item in course["lessons"]}
+    screen = lambda node, question: lessons[node]["screens"][question - 1]
+    assert screen(24, 1).get("event") == "buyer_fading"
+    assert screen(58, 7).get("event") == "vwap_target"
+    assert screen(59, 3).get("event") == "hit"
+    assert screen(62, 7).get("direction") == "sideways" and "fails to confirm" in screen(62, 7)["question"]
+    assert screen(71, 4)["type"] == "multiple_choice" and "order" in screen(71, 4)["question"]
+    assert screen(75, 1).get("event") == "exit_liquidity"
+    # Before formal footprint instruction, footprint data may be supplemental
+    # inside simulations but cannot be necessary to answer a scored prompt.
+    node_sections = {node["num"]: node["sectionIndex"] for node in course["nodes"]}
+    for lesson in course["lessons"]:
+        if node_sections[lesson["node"]] >= 4:
+            continue
+        for item in lesson["screens"]:
+            correct = item.get("options", [""])[item.get("correct", 0)] if item.get("options") else ""
+            required = f"{item.get('question', '')} {correct}".lower()
+            if re.search(r"\b(footprint|delta|stacked imbalance)\b", required):
+                raise AssertionError(f"Early footprint evidence is required in node {lesson['node']}: {item.get('question')}")
+
+
 def validate_test_out_semantics(course):
     """Verify scoped pools and guard known side-specific competencies."""
     semantic_rules = {
@@ -2125,7 +2321,7 @@ def add_skill_tags_and_test_outs(course):
         "u10.order_type": ["orderflow.u10.n71.q2", "orderflow.u10.n71.q4", "orderflow.u10.n71.q6"],
         "u10.slippage": ["orderflow.u10.n72.q1", "orderflow.u10.n72.q3", "orderflow.u10.n72.q5"],
         "u10.invalidation": ["orderflow.u10.n73.q2", "orderflow.u10.n73.q3", "orderflow.u10.n73.q5"],
-        "u10.thin_liquidity_risk": ["orderflow.u10.n72.q2", "orderflow.u10.n72.q4", "orderflow.u10.n72.q5"],
+        "u10.thin_liquidity_risk": ["orderflow.u10.n72.q2", "orderflow.u10.n72.q4"],
         "u10.no_clear_read": ["orderflow.u10.n74.q1", "orderflow.u10.n74.q2", "orderflow.u10.n74.q3", "orderflow.u10.n74.q4", "orderflow.u10.n74.q5"],
         "u10.exit_liquidity": ["orderflow.u10.n75.q1", "orderflow.u10.n75.q2", "orderflow.u10.n75.q3", "orderflow.u10.n75.q5"],
         "u10.review_process": ["orderflow.u10.n76.q1"],
@@ -2328,7 +2524,9 @@ def main():
     apply_difficulty_progression(course)
     condense_course(course)
     apply_boss_structure(course)
+    apply_remaining_fix_list(course)
     validate_visual_alignment(course)
+    validate_remaining_fix_list(course)
     dedupe_exact_question_blocks(course)
     add_skill_tags_and_test_outs(course)
     validate_test_out_semantics(course)

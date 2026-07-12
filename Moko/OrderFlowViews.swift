@@ -466,6 +466,10 @@ struct ReplayCompareView: View {
             return (["Buy size varies", "Offer keeps returning", "Price stays pinned"], ["Buy size and pace fade", "Offer stays stable", "Price stalls"])
         case "acceptance_challenge":
             return (["Staggered offers clear", "Retest survives", "Trade builds above"], ["Offers renew", "Buying loses progress", "Price returns inside"])
+        case "double_top_flow":
+            return (["First test: buys stay strong", "Resistance contains price", "Price rotates lower"], ["Second test: buying weakens", "Seller response strengthens", "Price loses resistance"])
+        case "double_bottom_flow":
+            return (["First test: sells stay strong", "Support contains price", "Price rotates higher"], ["Second test: selling weakens", "Buyer response strengthens", "Price reclaims support"])
         default:
             return (["Offers clear", "Buy tape persists", "Price holds above"], ["Offer refreshes", "Buy tape stalls", "Price falls inside"])
         }
@@ -513,6 +517,10 @@ private func makeTape(seed: UInt64, event: String, target: Int? = nil) -> [TapeP
             buyerInitiated = index == target ? false : index % 3 == 0
         case "sequence_break":
             buyerInitiated = index != target
+        case "buyer_sequence_break":
+            buyerInitiated = index == target
+        case "buyer_fading":
+            buyerInitiated = index % 5 != 0
         case "balanced", "large_print", "accelerating", "stall":
             buyerInitiated = index % 2 == 0
         default:
@@ -520,7 +528,8 @@ private func makeTape(seed: UInt64, event: String, target: Int? = nil) -> [TapeP
             buyerInitiated = index % 4 != 0 ? favoredBuy : !favoredBuy
         }
         price += buyerInitiated ? 0.02 : -0.02
-        let ordinarySize = 20 + Int(rng.next() % (event == "stall" && index >= (target ?? 6) ? 80 : 480))
+        let fading = (event == "stall" || event == "buyer_fading") && index >= (target ?? 4)
+        let ordinarySize = 20 + Int(rng.next() % (fading ? 80 : 480))
         return TapePrint(
             time: String(format: "10:04:%02d", 12 + index),
             price: price,
@@ -589,7 +598,7 @@ struct TimeSalesView: View {
                 if event == "accelerating" {
                     let change = screen.target ?? 5
                     cadence = visibleRows < change ? 4 : (visibleRows < change + 2 ? 2 : 1)
-                } else if event == "stall" {
+                } else if event == "stall" || event == "buyer_fading" {
                     cadence = visibleRows < (screen.target ?? 6) ? 1 : 4
                 } else {
                     cadence = 2
@@ -681,7 +690,7 @@ private func makeFootprint(seed: UInt64, event: String, target: Int? = nil) -> [
         } else if target == index && event == "balanced_target" {
             highlightedBid = baseVolume + 30
             highlightedAsk = baseVolume + 31
-        } else if target == index && event == "total_target" {
+        } else if target == index && (event == "total_target" || event == "vwap_target") {
             highlightedBid = bid + 220
             highlightedAsk = ask + 220
         } else {
@@ -722,8 +731,16 @@ struct FootprintQuestionView: View {
                 ForEach(Array(levels.enumerated()), id: \.element.id) { index, level in
                     HStack(spacing: 6) {
                         volumeCell(level.bidVolume, color: askColor)
-                        Text(String(format: "%.2f", level.price))
-                            .font(Theme.font(11, .heavy)).foregroundColor(ink).frame(width: 72)
+                        ZStack(alignment: .trailing) {
+                            Text(String(format: "%.2f", level.price))
+                                .font(Theme.font(11, .heavy)).foregroundColor(ink).frame(width: 72)
+                            if screen.event == "vwap_target" && index == screen.target {
+                                Text("VWAP").font(Theme.font(7, .black)).foregroundColor(.cyan)
+                                    .padding(.horizontal, 4).padding(.vertical, 2)
+                                    .background(Capsule().fill(Color.cyan.opacity(0.16)))
+                            }
+                        }
+                        .frame(width: 72)
                         volumeCell(level.askVolume, color: bidColor)
                     }
                     .padding(2)
@@ -837,6 +854,10 @@ struct OrderFlowSimulationView: View {
             return (["Prior low trades", "Price immediately reclaims it"], ["Bids vanish briefly", "Bid liquidity rebuilds"], ["Sell prints surge", "Buying responds after breach"], ["Negative delta spikes", "Selling fails to hold price lower"])
         case "breakdown_pressure":
             return (["Support trades", "Price holds below support"], ["Bids are consumed", "Remaining bids withdraw"], ["Seller prints persist", "Selling continues after break"], ["Bid execution dominates", "Negative delta supports downside progress"])
+        case "seller_loses_control":
+            return (["Sellers press into support", "Price stops falling, then lifts"], ["Bid absorbs repeated trades", "Offers begin clearing above"], ["Seller prints dominate", "Seller pace fades; buyers respond"], ["Negative delta stops moving price", "Opposing ask execution strengthens"])
+        case "exit_liquidity":
+            return (["Price approaches resistance", "Planned exit area is tested"], ["Ask depth clusters near 101.25", "Displayed depth remains changeable"], ["Buyer prints approach the level", "Counterparties trade near the exit"], ["Execution stays active", "Liquidity quality must be monitored"])
         case "buyer_absorption":
             return (["Testing support below VWAP", "Holding support despite selling"], ["Large bid at 99.40", "Bid refreshes after repeated fills"], ["Selling pace increasing", "Fast seller initiated prints"], ["Bid volume dominates", "Negative delta with little decline"])
         case "sweep":

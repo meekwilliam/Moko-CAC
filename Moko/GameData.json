@@ -37620,12 +37620,12 @@
        "type": "multiple_choice",
        "question": "What does Level II show?",
        "options": [
-        "Depth of resting orders across price levels.",
+        "Available depth across price levels from the relevant venue or feed.",
         "Only the best bid and ask.",
         "Every trade already executed."
        ],
        "correct": 0,
-       "explanation": "Level II is the whole ladder of resting limit orders. Level I is just the top of book; executed trades live in time & sales.",
+       "explanation": "Level II shows available resting depth across prices from the relevant venue or feed.",
        "skillId": "reading_the_order_book"
       },
       {
@@ -37645,7 +37645,7 @@
        "question": "What does Level I show?",
        "options": [
         "Only the best bid and ask.",
-        "The full resting depth on both sides.",
+        "Available depth across prices from the relevant venue or feed.",
         "The day's executed trades."
        ],
        "correct": 0,
@@ -37674,14 +37674,14 @@
         ],
         [
          "Level II",
-         "Full resting depth"
+         "Available depth from the relevant venue or feed"
         ],
         [
          "Time & Sales",
          "Executed trades"
         ]
        ],
-       "explanation": "Three lenses: top of book, the full book, and the trades that already happened.",
+       "explanation": "These lenses show top of book, available feed depth, and completed trades.",
        "skillId": "reading_the_order_book"
       },
       {
@@ -37722,22 +37722,23 @@
       },
       {
        "type": "multiple_choice",
-       "question": "A book with large size at every level is…",
+       "question": "A book with large displayed size at every nearby level...",
        "options": [
-        "Liquid.",
-        "Illiquid.",
-        "Volatile."
+        "Shows greater displayed liquidity.",
+        "Proves every order will remain.",
+        "Guarantees low volatility."
        ],
        "correct": 0,
-       "explanation": "Plenty of resting size means liquid: price needs a lot of aggression to move.",
+       "explanation": "Large displayed size suggests greater displayed liquidity, but orders can change or cancel.",
        "skillId": "size_liquidity"
       },
       {
        "type": "true_false",
        "question": "A thin book moves on fewer orders than a thick one.",
        "correct": true,
-       "explanation": "Less resting size means each aggressive order pushes price further.",
-       "skillId": "size_liquidity"
+       "explanation": "Sparse nearby depth can allow less incoming pressure to move price farther.",
+       "skillId": "size_liquidity",
+       "text": "A thin book can move on less incoming pressure than a thick book."
       },
       {
        "type": "matching",
@@ -37914,11 +37915,11 @@
          "Replenished after filling"
         ],
         [
-         "Spoof",
-         "Shown then pulled"
+         "Spoofing",
+         "Deceptive order placement intended to mislead"
         ]
        ],
-       "explanation": "The book is live: orders appear, refill, and disappear.",
+       "explanation": "Cancellation alone is not spoofing. Intent to mislead is central to the definition.",
        "skillId": "pulling_and_spoofing"
       },
       {
@@ -38273,10 +38274,10 @@
       },
       {
        "type": "time_sales_tap",
-       "event": "large_print",
+       "event": "buyer_sequence_break",
        "target": 3,
-       "question": "In reading time and sales, tap the most informative print.",
-       "explanation": "The selected execution carries the key tape evidence.",
+       "question": "Tap the buyer initiated print that breaks the seller sequence.",
+       "explanation": "This ask side execution interrupts the seller initiated sequence.",
        "skillId": "tape_interaction"
       },
       {
@@ -39017,7 +39018,7 @@
        "type": "time_sales_tap",
        "event": "stall",
        "target": 6,
-       "question": "Tap where activity starts losing follow through in What Is Exhaustion?.",
+       "question": "Tap where activity starts losing follow through in What Is Exhaustion.",
        "explanation": "Prints continue but size and pace begin fading here.",
        "skillId": "tape_interaction"
       },
@@ -39072,15 +39073,16 @@
      "screens": [
       {
        "type": "time_sales",
-       "event": "stall",
+       "event": "buyer_fading",
        "question": "Which side is losing urgency?",
        "options": [
         "Aggressive buyers",
-        "Resting depth proves reversal",
-        "Execution gains urgency"
+        "Aggressive sellers",
+        "Neither initiating side"
        ],
        "correct": 0,
-       "explanation": "Exhaustion is defined by aggressive activity fading.",
+       "explanation": "Buyer initiated prints at the ask visibly lose pace and size.",
+       "target": 4,
        "skillId": "tape_reading"
       },
       {
@@ -39849,7 +39851,7 @@
       {
        "type": "footprint",
        "event": "lift",
-       "question": "Price and delta disagree. Why?",
+       "question": "How do volume and delta differ?",
        "options": [
         "Volume is total activity. Delta is net aggression",
         "Delta determines the next price",
@@ -39857,7 +39859,7 @@
         "The disagreement cancels both readings"
        ],
        "correct": 0,
-       "explanation": "Volume measures total trading while delta compares aggressive buying and selling.",
+       "explanation": "Volume totals executed activity while delta nets aggressive buying against aggressive selling.",
        "skillId": "footprint_reading"
       },
       {
@@ -39929,18 +39931,17 @@
      "lessonType": "STANDARD",
      "screens": [
       {
-       "type": "footprint",
-       "event": "lift",
-       "question": "Price and delta disagree. Why?",
+       "type": "orderflow_sim",
+       "event": "seller_absorption",
+       "question": "Positive delta builds while price stalls at resistance. What best explains the disagreement?",
        "options": [
         "Possible seller absorption or trapped buyers",
-        "Delta determines the next price",
-        "Volume and delta are identical",
-        "The disagreement cancels both readings"
+        "Positive delta guarantees delayed upside",
+        "The price response should be ignored"
        ],
        "correct": 0,
-       "explanation": "Positive delta with falling price can reveal seller absorption or trapped buyers.",
-       "skillId": "footprint_reading"
+       "explanation": "Aggressive buying is visible, but it is not producing the expected upward response.",
+       "skillId": "multi_signal_read"
       },
       {
        "type": "footprint",
@@ -40011,18 +40012,17 @@
      "lessonType": "STANDARD",
      "screens": [
       {
-       "type": "footprint",
-       "event": "hit",
-       "question": "What's the best footprint read?",
+       "type": "orderflow_sim",
+       "event": "conflict",
+       "question": "Positive execution pressure grows while upward price progress fades. What's strongest?",
        "options": [
         "Price and pressure disagreement warns of weakness",
-        "Several ask heavy rows prove sellers withdrew",
-        "High total volume must contain directional delta",
-        "One footprint candle is enough to ignore location"
+        "Positive delta confirms continuation",
+        "The refreshing offer is irrelevant"
        ],
        "correct": 0,
-       "explanation": "Price and pressure disagreement warns of weakness.",
-       "skillId": "footprint_reading"
+       "explanation": "The multi source view makes the execution and price contradiction visible.",
+       "skillId": "multi_signal_read"
       },
       {
        "type": "footprint_tap",
@@ -40125,21 +40125,21 @@
        "type": "footprint_tap",
        "event": "delta_negative",
        "target": 3,
-       "question": "Tap the footprint row that most clearly conflicts with price.",
-       "explanation": "The selected negative delta row contradicts the price direction.",
+       "question": "Rising price is shown beside this footprint. Tap the negative delta row that conflicts with it.",
+       "explanation": "The selected row shows aggressive selling even as price rises.",
        "skillId": "footprint_interaction"
       },
       {
        "type": "multiple_choice",
        "question": "Which interpretation best combines delta with price response?",
        "options": [
-        "Sustained imbalance matters more than one burst",
-        "Positive delta is usually sufficient confirmation for higher prices",
-        "A pull in liquidity is equivalent to aggressive execution",
-        "Slower counter pressure automatically confirms continuation"
+        "Delta matters most when price produces the expected response",
+        "Positive delta is sufficient confirmation for higher prices",
+        "The largest footprint row determines the next move",
+        "Price response can be ignored when delta is persistent"
        ],
        "correct": 0,
-       "explanation": "Sustained imbalance matters more than one burst.",
+       "explanation": "Delta and the corresponding price response must be interpreted together.",
        "skillId": "footprint_momentum_challenge"
       },
       {
@@ -41382,18 +41382,17 @@
        "skillId": "scenario_comparison"
       },
       {
-       "type": "multiple_choice",
-       "chart": "supportBounce",
-       "question": "What does the evidence support?",
+       "type": "orderflow_sim",
+       "event": "downside_sweep",
+       "question": "Price breaks support, fails to hold below it, and quickly reclaims it. What's strongest?",
        "options": [
-        "A quick return above support signals failure",
-        "Tape speed matters more than the level where it occurs",
-        "A replenishing order is probably new unrelated liquidity",
-        "Brief trade beyond the level is enough to establish acceptance"
+        "The breakdown failed",
+        "Downside acceptance is established",
+        "The initial breach guarantees continuation"
        ],
        "correct": 0,
-       "explanation": "A quick return above support signals failure.",
-       "skillId": "failed_breakouts_vs_failed_breakdowns"
+       "explanation": "Trading below support followed by an immediate reclaim shows failed acceptance.",
+       "skillId": "multi_signal_read"
       },
       {
        "type": "live_chart",
@@ -41425,18 +41424,17 @@
        "skillId": "evidence_synthesis"
       },
       {
-       "type": "multiple_choice",
-       "chart": "resistanceRejection",
-       "question": "What's the best read?",
+       "type": "orderflow_sim",
+       "event": "sweep",
+       "question": "Price trades above resistance, fails to hold, and returns below it. What's strongest?",
        "options": [
-        "A quick return below resistance signals failure",
-        "Displayed liquidity is stronger evidence than completed executions",
-        "A short aggressive burst can outweigh a stalled price response",
-        "The candle response makes tape confirmation optional"
+        "The breakout failed",
+        "Upside acceptance is established",
+        "Positive delta guarantees continuation"
        ],
        "correct": 0,
-       "explanation": "A quick return below resistance signals failure.",
-       "skillId": "failed_breakouts_vs_failed_breakdowns"
+       "explanation": "The visible breach and return inside show failed acceptance.",
+       "skillId": "multi_signal_read"
       },
       {
        "type": "matching",
@@ -41459,12 +41457,17 @@
        "skillId": "failed_breakouts_vs_failed_breakdowns"
       },
       {
-       "type": "tap_candle",
-       "chart": "resistanceRejection",
-       "target": 3,
-       "question": "Tap where the breakout fails.",
-       "explanation": "Price response distinguishes rejection from acceptance.",
-       "skillId": "failed_breakouts_vs_failed_breakdowns"
+       "type": "replay_compare",
+       "event": "trap",
+       "question": "Which replay shows a breakout attempt failing back below resistance?",
+       "options": [
+        "Replay B",
+        "Replay A",
+        "Neither replay"
+       ],
+       "correct": 0,
+       "explanation": "Replay B first trades above resistance, then loses the level and returns inside.",
+       "skillId": "scenario_comparison"
       }
      ]
     },
@@ -41810,17 +41813,17 @@
        "skillId": "scenario_comparison"
       },
       {
-       "type": "multiple_choice",
-       "chart": "breakdown",
-       "question": "What supports a breakdown?",
+       "type": "orderflow_sim",
+       "event": "breakdown_pressure",
+       "question": "What supports the breakdown?",
        "options": [
-        "Persistent selling and acceptance",
-        "One red candle",
-        "A large distant offer"
+        "Persistent seller execution and acceptance below support",
+        "One bearish candle",
+        "A distant resting offer"
        ],
        "correct": 0,
-       "explanation": "Pressure must produce trade below support.",
-       "skillId": "boss_battle_breakout_or_failure"
+       "explanation": "Tape, Level II, footprint, and price all support sustained downside acceptance.",
+       "skillId": "multi_signal_read"
       },
       {
        "type": "evidence_select",
@@ -41839,30 +41842,30 @@
        "skillId": "evidence_synthesis"
       },
       {
-       "type": "multiple_choice",
-       "chart": "resistanceRejection",
+       "type": "orderflow_sim",
+       "event": "sweep",
        "question": "What invalidates the breakout?",
        "options": [
-        "Price returns below resistance",
-        "Tape stays fast",
-        "Delta stays positive"
+        "Price returns below resistance after trading above it",
+        "Buyer prints remain visible",
+        "Positive delta appears during the breach"
        ],
        "correct": 0,
-       "explanation": "Returning inside shows failed acceptance.",
-       "skillId": "boss_battle_breakout_or_failure"
+       "explanation": "The break is visible before price loses the level and returns inside.",
+       "skillId": "multi_signal_read"
       },
       {
-       "type": "multiple_choice",
-       "chart": "supportBounce",
+       "type": "orderflow_sim",
+       "event": "downside_sweep",
        "question": "What invalidates the breakdown?",
        "options": [
-        "Price returns above support",
-        "Tape stays fast",
-        "Delta stays negative"
+        "Price returns above support after trading below it",
+        "Seller prints remain visible",
+        "Negative delta appears during the breach"
        ],
        "correct": 0,
-       "explanation": "Returning inside shows failed acceptance.",
-       "skillId": "boss_battle_breakout_or_failure"
+       "explanation": "The break below support fails when price quickly reclaims the level.",
+       "skillId": "multi_signal_read"
       },
       {
        "type": "multiple_choice",
@@ -42259,10 +42262,10 @@
       },
       {
        "type": "footprint_tap",
-       "event": "total_target",
+       "event": "vwap_target",
        "target": 2,
-       "question": "Tap the busiest row near VWAP.",
-       "explanation": "The selected row contains the requested execution profile.",
+       "question": "Tap the busiest footprint row aligned with VWAP.",
+       "explanation": "The VWAP badge identifies the relevant price row, which also carries the highest total execution.",
        "skillId": "footprint_interaction"
       }
      ]
@@ -42297,15 +42300,15 @@
       },
       {
        "type": "time_sales",
-       "event": "lift",
+       "event": "hit",
        "question": "What changes as the pullback fails?",
        "options": [
-        "Counter pressure gains urgency",
-        "Aggression disappears",
+        "Seller initiated prints accelerate at the bid",
+        "Buyer pressure regains control",
         "The spread proves continuation"
        ],
        "correct": 0,
-       "explanation": "Use completed executions to judge whether trend pressure returned.",
+       "explanation": "Accelerating seller initiated execution is the counterpressure invalidating the bullish continuation attempt.",
        "skillId": "tape_reading"
       },
       {
@@ -42358,17 +42361,17 @@
        "skillId": "tape_reading"
       },
       {
-       "type": "footprint",
-       "event": "balanced",
-       "question": "What contradicts the tape?",
+       "type": "orderflow_sim",
+       "event": "conflict",
+       "question": "What contradicts the fast buyer tape?",
        "options": [
-        "Delta and price response disagree",
-        "The largest cell decides direction",
-        "Volume guarantees a trend"
+        "Positive delta and price response diverge",
+        "The largest footprint cell decides direction",
+        "Tape speed guarantees acceptance"
        ],
        "correct": 0,
-       "explanation": "Conflicting signals call for patience and a weaker conclusion.",
-       "skillId": "footprint_reading"
+       "explanation": "The tape is aggressive, but the footprint, refreshing offer, and fading price response conflict with it.",
+       "skillId": "multi_signal_read"
       },
       {
        "type": "evidence_select",
@@ -42422,30 +42425,30 @@
      "lessonType": "STANDARD",
      "screens": [
       {
-       "type": "time_sales",
-       "event": "stall",
-       "question": "What defines the tape?",
+       "type": "orderflow_sim",
+       "event": "chop",
+       "question": "What defines this high volume chop?",
        "options": [
-        "Fast two sided execution",
-        "Tape speed confirms acceptance",
-        "One print resolves the read"
+        "Fast two sided execution with little price progress",
+        "Measured one sided tape with efficient travel",
+        "Sparse opposing depth and low activity"
        ],
        "correct": 0,
-       "explanation": "High volume without directional progress can show two sided absorption.",
-       "skillId": "tape_reading"
+       "explanation": "Heavy alternating execution produces volume without directional progress.",
+       "skillId": "multi_signal_read"
       },
       {
-       "type": "time_sales",
-       "event": "stall",
-       "question": "What does the tape show?",
+       "type": "orderflow_sim",
+       "event": "low_volume_trend",
+       "question": "What defines this low volume trend?",
        "options": [
-        "Steady movement without urgent prints",
-        "Tape speed confirms acceptance",
-        "One print resolves the read"
+        "Measured execution and thin opposition allow steady travel",
+        "Fast two sided execution pins price",
+        "Heavy opposing depth blocks every move"
        ],
        "correct": 0,
-       "explanation": "A trend can travel on low volume when little liquidity opposes it.",
-       "skillId": "tape_reading"
+       "explanation": "Sparse opposition allows modest execution to move price efficiently.",
+       "skillId": "multi_signal_read"
       },
       {
        "type": "footprint",
@@ -42461,17 +42464,17 @@
        "skillId": "footprint_reading"
       },
       {
-       "type": "footprint",
-       "event": "lift",
+       "type": "orderflow_sim",
+       "event": "low_volume_trend",
        "question": "Is execution strongly directional?",
        "options": [
-        "No. Thin opposition still allows travel",
-        "The largest cell decides direction",
-        "Volume guarantees a trend"
+        "No. Modest pressure travels through thin opposing depth",
+        "Yes. A large directional footprint proves it",
+        "No. Price is not moving"
        ],
        "correct": 0,
-       "explanation": "A trend can travel on low volume when little liquidity opposes it.",
-       "skillId": "footprint_reading"
+       "explanation": "Level II shows thin opposition while execution remains modest and price still travels.",
+       "skillId": "multi_signal_read"
       },
       {
        "type": "orderflow_sim",
@@ -42588,7 +42591,7 @@
       {
        "type": "multiple_choice",
        "chart": "spinningTop",
-       "question": "Which continuation evidence should carry the most weight?",
+       "question": "What's the strongest conclusion from the conflicting continuation evidence?",
        "options": [
         "Conflicting evidence means no confirmed read",
         "Price progress can be ignored when aggression is persistent",
@@ -42602,7 +42605,7 @@
       {
        "type": "live_chart",
        "direction": "sideways",
-       "question": "Which live response confirms that trend pressure returned?",
+       "question": "Which live response fails to confirm that trend pressure returned?",
        "options": [
         "Upward price response is developing",
         "Downward price response is developing",
@@ -42762,17 +42765,17 @@
      "lessonType": "STANDARD",
      "screens": [
       {
-       "type": "time_sales",
-       "event": "hit",
-       "question": "What changed on the tape?",
+       "type": "orderflow_sim",
+       "event": "seller_loses_control",
+       "question": "What changed in control?",
        "options": [
-        "The initiating side lost control",
-        "Positive delta confirms a reversal regardless of price response",
-        "Slower tape guarantees the opposing side has control"
+        "Seller aggression stopped moving price and buyer pressure emerged",
+        "Seller control strengthened through support",
+        "One opposing print guaranteed reversal"
        ],
        "correct": 0,
-       "explanation": "Reversals need a clear change in control.",
-       "skillId": "tape_reading"
+       "explanation": "The sequence shows selling, stalled downside progress, fading seller pace, and an opposing response.",
+       "skillId": "multi_signal_read"
       },
       {
        "type": "footprint",
@@ -42838,56 +42841,56 @@
      "lessonType": "STANDARD",
      "screens": [
       {
-       "type": "time_sales",
-       "event": "lift",
+       "type": "orderflow_sim",
+       "event": "sweep",
        "question": "What shows buyers became trapped?",
        "options": [
-        "Buy prints fail above resistance",
-        "A large opposing print outweighs the executions that follow",
-        "Price location is unnecessary once a reversal candle closes"
+        "Buying above resistance fails and price returns below",
+        "Buyer prints appear above resistance",
+        "Positive delta remains visible"
        ],
        "correct": 0,
-       "explanation": "A buyer trap forms when a breakout fails.",
-       "skillId": "tape_reading"
+       "explanation": "The attempted break fails to hold and reverses back below the level.",
+       "skillId": "multi_signal_read"
       },
       {
-       "type": "time_sales",
-       "event": "hit",
+       "type": "orderflow_sim",
+       "event": "downside_sweep",
        "question": "What shows sellers became trapped?",
        "options": [
-        "Sell prints fail below support",
-        "The candle pattern identifies every initiating trade",
-        "The earliest pressure cannot be contradicted later"
+        "Selling below support fails and price reclaims above",
+        "Seller prints appear below support",
+        "Negative delta remains visible"
        ],
        "correct": 0,
-       "explanation": "A seller trap forms when a breakdown fails.",
-       "skillId": "tape_reading"
+       "explanation": "The attempted breakdown fails to hold and reverses above the level.",
+       "skillId": "multi_signal_read"
       },
       {
-       "type": "footprint",
-       "event": "hit",
+       "type": "orderflow_sim",
+       "event": "sweep",
        "question": "What contradicts the positive delta?",
        "options": [
         "Price returns below resistance",
-        "The pattern target is guaranteed",
-        "Only resting liquidity matters"
+        "Buyer initiated prints appear",
+        "Offers briefly thin"
        ],
        "correct": 0,
-       "explanation": "Tape and footprint evidence reveal what changed beneath the candle pattern.",
-       "skillId": "footprint_reading"
+       "explanation": "Positive delta fails to produce acceptance and price returns inside.",
+       "skillId": "multi_signal_read"
       },
       {
-       "type": "footprint",
-       "event": "lift",
+       "type": "orderflow_sim",
+       "event": "downside_sweep",
        "question": "What contradicts the negative delta?",
        "options": [
         "Price returns above support",
-        "The pattern target is guaranteed",
-        "Only resting liquidity matters"
+        "Seller initiated prints appear",
+        "Bids briefly thin"
        ],
        "correct": 0,
-       "explanation": "Tape and footprint evidence reveal what changed beneath the candle pattern.",
-       "skillId": "footprint_reading"
+       "explanation": "Negative delta fails to produce acceptance and price reclaims support.",
+       "skillId": "multi_signal_read"
       },
       {
        "type": "replay_compare",
@@ -43000,44 +43003,43 @@
      "lessonType": "STANDARD",
      "screens": [
       {
-       "type": "time_sales",
-       "event": "hit",
+       "type": "orderflow_sim",
+       "event": "buyer_absorption",
        "question": "What shows pressure being absorbed?",
        "options": [
-        "Heavy prints make little progress",
-        "Positive delta confirms a reversal regardless of price response",
-        "Slower tape guarantees the opposing side has control"
+        "Heavy seller prints make little downward progress",
+        "Seller execution disappears before support",
+        "Negative delta guarantees a breakdown"
        ],
        "correct": 0,
-       "explanation": "Absorbed selling can support a reversal.",
-       "skillId": "tape_reading"
+       "explanation": "Strong selling is visible while price barely declines against a replenishing bid.",
+       "skillId": "multi_signal_read"
       },
       {
-       "type": "footprint",
-       "event": "lift",
-       "question": "What confirms passive defense?",
+       "type": "orderflow_sim",
+       "event": "buyer_absorption",
+       "question": "What supports possible passive defense?",
        "options": [
-        "Aggression stalls at one level",
-        "The pattern target is guaranteed",
-        "Only resting liquidity matters"
+        "The bid replenishes as repeated selling stalls",
+        "One ask heavy footprint row",
+        "A lower wick without execution evidence"
        ],
        "correct": 0,
-       "explanation": "Tape and footprint evidence reveal what changed beneath the candle pattern.",
-       "skillId": "footprint_reading"
+       "explanation": "Repeated executions, replenishment, and stalled price jointly support possible passive defense.",
+       "skillId": "multi_signal_read"
       },
       {
-       "type": "multiple_choice",
-       "chart": "rejectionWickDown",
+       "type": "orderflow_sim",
+       "event": "buyer_absorption",
        "question": "Which explanation fits best?",
        "options": [
-        "Absorbed selling can support a reversal",
-        "High total volume normally implies strongly directional delta",
-        "A large wall deserves more weight than repeated fills against it",
-        "One unusually large trade is more reliable than subsequent response"
+        "Possible buyer absorption can support a reversal",
+        "The lower wick alone proves absorption",
+        "Negative delta guarantees continuation"
        ],
        "correct": 0,
-       "explanation": "Absorbed selling can support a reversal.",
-       "skillId": "absorption_reversals"
+       "explanation": "Tape, Level II, and price response support possible buyer absorption without making it certain.",
+       "skillId": "multi_signal_read"
       },
       {
        "type": "evidence_select",
@@ -43076,56 +43078,56 @@
      "lessonType": "STANDARD",
      "screens": [
       {
-       "type": "time_sales",
-       "event": "lift",
-       "question": "How does the second test differ?",
+       "type": "replay_compare",
+       "event": "double_top_flow",
+       "question": "How does the second high test differ?",
        "options": [
-        "Buyer urgency is weaker",
-        "A large opposing print outweighs the executions that follow",
-        "Price location is unnecessary once a reversal candle closes"
+        "Replay B shows weaker buyer urgency",
+        "Replay A shows weaker buyer urgency",
+        "The tests show identical execution"
        ],
        "correct": 0,
-       "explanation": "Repeated failure can shift control to sellers.",
-       "skillId": "tape_reading"
+       "explanation": "The second panel shows buying weakening while seller response strengthens.",
+       "skillId": "scenario_comparison"
       },
       {
-       "type": "time_sales",
-       "event": "hit",
-       "question": "Which side weakens on the retest?",
+       "type": "replay_compare",
+       "event": "double_bottom_flow",
+       "question": "Which side weakens on the second low test?",
        "options": [
         "Aggressive sellers",
-        "The candle pattern identifies every initiating trade",
-        "The earliest pressure cannot be contradicted later"
+        "Aggressive buyers",
+        "Neither side"
        ],
        "correct": 0,
-       "explanation": "Repeated failure can shift control to buyers.",
-       "skillId": "tape_reading"
+       "explanation": "The second panel shows seller pace and size fading before buyers respond.",
+       "skillId": "scenario_comparison"
       },
       {
-       "type": "footprint",
-       "event": "hit",
-       "question": "What changes on the retest?",
+       "type": "replay_compare",
+       "event": "double_top_flow",
+       "question": "What changes on the second high test?",
        "options": [
         "Seller response strengthens",
-        "The pattern target is guaranteed",
-        "Only resting liquidity matters"
+        "Buyer acceptance strengthens",
+        "Execution remains identical"
        ],
        "correct": 0,
-       "explanation": "Tape and footprint evidence reveal what changed beneath the candle pattern.",
-       "skillId": "footprint_reading"
+       "explanation": "The comparison shows stronger seller response on the retest.",
+       "skillId": "scenario_comparison"
       },
       {
-       "type": "footprint",
-       "event": "lift",
-       "question": "What changes on the second test?",
+       "type": "replay_compare",
+       "event": "double_bottom_flow",
+       "question": "What changes on the second low test?",
        "options": [
         "Buyer response strengthens",
-        "The pattern target is guaranteed",
-        "Only resting liquidity matters"
+        "Seller acceptance strengthens",
+        "Execution remains identical"
        ],
        "correct": 0,
-       "explanation": "Tape and footprint evidence reveal what changed beneath the candle pattern.",
-       "skillId": "footprint_reading"
+       "explanation": "The comparison shows stronger buyer response on the retest.",
+       "skillId": "scenario_comparison"
       },
       {
        "type": "multiple_choice",
@@ -43164,17 +43166,17 @@
      "lessonType": "STANDARD",
      "screens": [
       {
-       "type": "time_sales",
-       "event": "hit",
+       "type": "orderflow_sim",
+       "event": "seller_loses_control",
        "question": "What confirms the reversal?",
        "options": [
-        "Opposing prints gain follow through",
-        "A rejection wick proves passive absorption",
-        "The second test should inherit the first test's order flow"
+        "The prior side stalls, opposing pressure strengthens, and price responds",
+        "One opposing print appears",
+        "A candle pattern forms without execution confirmation"
        ],
        "correct": 0,
-       "explanation": "Confirmation reduces premature reversal entries.",
-       "skillId": "tape_reading"
+       "explanation": "The full transition from prior control to opposing follow through is visible.",
+       "skillId": "multi_signal_read"
       },
       {
        "type": "orderflow_sim",
@@ -43203,17 +43205,17 @@
        "skillId": "footprint_reading"
       },
       {
-       "type": "time_sales",
-       "event": "hit",
+       "type": "orderflow_sim",
+       "event": "seller_loses_control",
        "question": "What completes the reversal read?",
        "options": [
-        "Control change plus confirmation",
-        "Positive delta confirms a reversal regardless of price response",
-        "Slower tape guarantees the opposing side has control"
+        "The prior side stalls, opposing pressure strengthens, and price responds",
+        "One opposing print appears",
+        "A candle pattern forms without execution confirmation"
        ],
        "correct": 0,
-       "explanation": "A reversal needs control change and confirmation.",
-       "skillId": "tape_reading"
+       "explanation": "The full transition from prior control to opposing follow through is visible.",
+       "skillId": "multi_signal_read"
       },
       {
        "type": "multiple_choice",
@@ -43230,17 +43232,17 @@
        "skillId": "reversal_confirmation_insufficient_evidence"
       },
       {
-       "type": "footprint",
-       "event": "lift",
-       "question": "What does the footprint verify?",
+       "type": "orderflow_sim",
+       "event": "seller_loses_control",
+       "question": "What verifies that aggressive control changed?",
        "options": [
-        "Aggressive control changed",
-        "The pattern target is guaranteed",
-        "Only resting liquidity matters"
+        "The prior side stalls, opposing pressure strengthens, and price responds",
+        "One opposing print appears",
+        "A candle pattern forms without execution confirmation"
        ],
        "correct": 0,
-       "explanation": "Tape and footprint evidence reveal what changed beneath the candle pattern.",
-       "skillId": "footprint_reading"
+       "explanation": "The full transition from prior control to opposing follow through is visible.",
+       "skillId": "multi_signal_read"
       },
       {
        "type": "multiple_choice",
@@ -43266,8 +43268,8 @@
      "screens": [
       {
        "type": "replay_compare",
-       "event": "trap_challenge",
-       "question": "Which replay creates the buyer trap in Boss Battle: Trap or Reversal??",
+       "event": "trap",
+       "question": "Which replay creates the buyer trap in Boss Battle: Trap or Reversal?",
        "options": [
         "Replay B",
         "Replay A",
@@ -43317,30 +43319,30 @@
        "skillId": "multi_signal_read"
       },
       {
-       "type": "multiple_choice",
-       "chart": "doubleTop",
+       "type": "replay_compare",
+       "event": "double_top_flow",
        "question": "What matters on the second high test?",
        "options": [
-        "Weaker buying and stronger defense",
-        "The shape alone",
-        "Equal candle colors"
+        "Replay B shows weaker buying and stronger defense",
+        "The double top shape alone",
+        "Both tests have the same execution"
        ],
        "correct": 0,
-       "explanation": "Compare execution and response across tests.",
-       "skillId": "boss_battle_trap_or_reversal"
+       "explanation": "The side by side execution comparison reveals weakening buying and firmer defense.",
+       "skillId": "scenario_comparison"
       },
       {
-       "type": "multiple_choice",
-       "chart": "doubleBottom",
+       "type": "replay_compare",
+       "event": "double_bottom_flow",
        "question": "What matters on the second low test?",
        "options": [
-        "Weaker selling and stronger defense",
-        "The shape alone",
-        "Equal candle colors"
+        "Replay B shows weaker selling and stronger defense",
+        "The double bottom shape alone",
+        "Both tests have the same execution"
        ],
        "correct": 0,
-       "explanation": "Compare execution and response across tests.",
-       "skillId": "boss_battle_trap_or_reversal"
+       "explanation": "The side by side execution comparison reveals weakening selling and firmer defense.",
+       "skillId": "scenario_comparison"
       },
       {
        "type": "evidence_select",
@@ -43436,11 +43438,15 @@
        "skillId": "evidence_synthesis"
       },
       {
-       "type": "tap_candle",
-       "chart": "sideways",
-       "question": "Tap the clearest price response.",
-       "target": 3,
-       "explanation": "The selected candle shows whether execution produced follow through.",
+       "type": "multiple_choice",
+       "question": "When urgency matters more than exact price control, which order best fits?",
+       "options": [
+        "A market order",
+        "A distant limit order",
+        "An unsubmitted order"
+       ],
+       "correct": 0,
+       "explanation": "A market order prioritizes immediate execution while accepting less price control.",
        "skillId": "planning_the_entry_choosing_the_order_type"
       },
       {
@@ -43582,7 +43588,7 @@
       {
        "type": "multiple_choice",
        "chart": "supportBounce",
-       "question": "Which read is best supported?",
+       "question": "Where should the read be invalidated?",
        "options": [
         "Beyond the level that disproves the read",
         "Large executions are directional even when price does not respond",
@@ -43711,18 +43717,17 @@
      "lessonType": "STANDARD",
      "screens": [
       {
-       "type": "multiple_choice",
-       "chart": "resistanceRejection",
+       "type": "orderflow_sim",
+       "event": "exit_liquidity",
        "question": "What does the evidence support?",
        "options": [
-        "Liquidity can improve planned exits",
-        "Tape speed matters more than the level where it occurs",
-        "A replenishing order is probably new unrelated liquidity",
-        "Brief trade beyond the level is enough to establish acceptance"
+        "Visible opposing depth can help plan an exit area",
+        "The exit price is guaranteed",
+        "Resistance predicts the next trend"
        ],
        "correct": 0,
-       "explanation": "Liquidity can improve planned exits.",
-       "skillId": "exiting_into_liquidity"
+       "explanation": "Level II shows potential counterparties near the planned exit, but displayed liquidity can change.",
+       "skillId": "multi_signal_read"
       },
       {
        "type": "evidence_select",
@@ -43744,8 +43749,8 @@
        "type": "mark_level",
        "chart": "resistanceRejection",
        "level_kind": "resistance",
-       "question": "Mark the opposing liquidity relevant to the exit.",
-       "explanation": "Nearby opposing liquidity is more relevant than a distant level.",
+       "question": "Mark the area where opposing liquidity may be expected.",
+       "explanation": "The chart marks a potential exit area near resistance, not directly observed resting orders.",
        "skillId": "liquidity_location"
       },
       {
@@ -43807,7 +43812,7 @@
       {
        "type": "tap_candle",
        "chart": "sideways",
-       "question": "Tap the price response that matters most for Reviewing the Full Order Flow Read.",
+       "question": "Tap the clearest price response.",
        "target": 1,
        "explanation": "The selected candle shows whether execution produced follow through.",
        "skillId": "reviewing_the_full_order_flow_read"
@@ -44361,12 +44366,12 @@
        "type": "multiple_choice",
        "question": "What does Level II show?",
        "options": [
-        "Depth of resting orders across price levels.",
+        "Available depth across price levels from the relevant venue or feed.",
         "Only the best bid and ask.",
         "Every trade already executed."
        ],
        "correct": 0,
-       "explanation": "Level II is the whole ladder of resting limit orders. Level I is just the top of book; executed trades live in time & sales.",
+       "explanation": "Level II shows available resting depth across prices from the relevant venue or feed.",
        "skillId": "reading_the_order_book",
        "sourceLesson": "Reading the Order Book",
        "sourceUnit": 1,
@@ -44410,14 +44415,14 @@
       },
       {
        "type": "multiple_choice",
-       "question": "A book with large size at every level is…",
+       "question": "A book with large displayed size at every nearby level...",
        "options": [
-        "Liquid.",
-        "Illiquid.",
-        "Volatile."
+        "Shows greater displayed liquidity.",
+        "Proves every order will remain.",
+        "Guarantees low volatility."
        ],
        "correct": 0,
-       "explanation": "Plenty of resting size means liquid: price needs a lot of aggression to move.",
+       "explanation": "Large displayed size suggests greater displayed liquidity, but orders can change or cancel.",
        "skillId": "size_liquidity",
        "sourceLesson": "Size & Liquidity",
        "sourceUnit": 1,
@@ -44429,8 +44434,9 @@
        "type": "true_false",
        "question": "A thin book moves on fewer orders than a thick one.",
        "correct": true,
-       "explanation": "Less resting size means each aggressive order pushes price further.",
+       "explanation": "Sparse nearby depth can allow less incoming pressure to move price farther.",
        "skillId": "size_liquidity",
+       "text": "A thin book can move on less incoming pressure than a thick book.",
        "sourceLesson": "Size & Liquidity",
        "sourceUnit": 1,
        "sourceNode": 7,
@@ -45522,15 +45528,16 @@
       },
       {
        "type": "time_sales",
-       "event": "stall",
+       "event": "buyer_fading",
        "question": "Which side is losing urgency?",
        "options": [
         "Aggressive buyers",
-        "Resting depth proves reversal",
-        "Execution gains urgency"
+        "Aggressive sellers",
+        "Neither initiating side"
        ],
        "correct": 0,
-       "explanation": "Exhaustion is defined by aggressive activity fading.",
+       "explanation": "Buyer initiated prints at the ask visibly lose pace and size.",
+       "target": 4,
        "skillId": "tape_reading",
        "sourceLesson": "Buyer vs. Seller Exhaustion",
        "sourceUnit": 3,
@@ -46095,7 +46102,7 @@
       {
        "type": "footprint",
        "event": "lift",
-       "question": "Price and delta disagree. Why?",
+       "question": "How do volume and delta differ?",
        "options": [
         "Volume is total activity. Delta is net aggression",
         "Delta determines the next price",
@@ -46103,7 +46110,7 @@
         "The disagreement cancels both readings"
        ],
        "correct": 0,
-       "explanation": "Volume measures total trading while delta compares aggressive buying and selling.",
+       "explanation": "Volume totals executed activity while delta nets aggressive buying against aggressive selling.",
        "skillId": "footprint_reading",
        "sourceLesson": "Delta vs. Volume",
        "sourceUnit": 4,
@@ -46227,8 +46234,8 @@
        "type": "footprint_tap",
        "event": "delta_negative",
        "target": 3,
-       "question": "Tap the footprint row that most clearly conflicts with price.",
-       "explanation": "The selected negative delta row contradicts the price direction.",
+       "question": "Rising price is shown beside this footprint. Tap the negative delta row that conflicts with it.",
+       "explanation": "The selected row shows aggressive selling even as price rises.",
        "skillId": "footprint_interaction",
        "sourceLesson": "Footprint & Momentum Challenge",
        "sourceUnit": 4,
@@ -46240,13 +46247,13 @@
        "type": "multiple_choice",
        "question": "Which interpretation best combines delta with price response?",
        "options": [
-        "Sustained imbalance matters more than one burst",
-        "Positive delta is usually sufficient confirmation for higher prices",
-        "A pull in liquidity is equivalent to aggressive execution",
-        "Slower counter pressure automatically confirms continuation"
+        "Delta matters most when price produces the expected response",
+        "Positive delta is sufficient confirmation for higher prices",
+        "The largest footprint row determines the next move",
+        "Price response can be ignored when delta is persistent"
        ],
        "correct": 0,
-       "explanation": "Sustained imbalance matters more than one burst.",
+       "explanation": "Delta and the corresponding price response must be interpreted together.",
        "skillId": "footprint_momentum_challenge",
        "sourceLesson": "Footprint & Momentum Challenge",
        "sourceUnit": 4,
@@ -47319,18 +47326,17 @@
        "competencyId": "u7.failed_breakout"
       },
       {
-       "type": "multiple_choice",
-       "chart": "resistanceRejection",
-       "question": "What's the best read?",
+       "type": "orderflow_sim",
+       "event": "sweep",
+       "question": "Price trades above resistance, fails to hold, and returns below it. What's strongest?",
        "options": [
-        "A quick return below resistance signals failure",
-        "Displayed liquidity is stronger evidence than completed executions",
-        "A short aggressive burst can outweigh a stalled price response",
-        "The candle response makes tape confirmation optional"
+        "The breakout failed",
+        "Upside acceptance is established",
+        "Positive delta guarantees continuation"
        ],
        "correct": 0,
-       "explanation": "A quick return below resistance signals failure.",
-       "skillId": "failed_breakouts_vs_failed_breakdowns",
+       "explanation": "The visible breach and return inside show failed acceptance.",
+       "skillId": "multi_signal_read",
        "sourceLesson": "Failed Breakouts vs. Failed Breakdowns",
        "sourceUnit": 6,
        "sourceNode": 50,
@@ -47338,12 +47344,17 @@
        "competencyId": "u7.failed_breakout"
       },
       {
-       "type": "tap_candle",
-       "chart": "resistanceRejection",
-       "target": 3,
-       "question": "Tap where the breakout fails.",
-       "explanation": "Price response distinguishes rejection from acceptance.",
-       "skillId": "failed_breakouts_vs_failed_breakdowns",
+       "type": "replay_compare",
+       "event": "trap",
+       "question": "Which replay shows a breakout attempt failing back below resistance?",
+       "options": [
+        "Replay B",
+        "Replay A",
+        "Neither replay"
+       ],
+       "correct": 0,
+       "explanation": "Replay B first trades above resistance, then loses the level and returns inside.",
+       "skillId": "scenario_comparison",
        "sourceLesson": "Failed Breakouts vs. Failed Breakdowns",
        "sourceUnit": 6,
        "sourceNode": 50,
@@ -47351,18 +47362,17 @@
        "competencyId": "u7.failed_breakout"
       },
       {
-       "type": "multiple_choice",
-       "chart": "supportBounce",
-       "question": "What does the evidence support?",
+       "type": "orderflow_sim",
+       "event": "downside_sweep",
+       "question": "Price breaks support, fails to hold below it, and quickly reclaims it. What's strongest?",
        "options": [
-        "A quick return above support signals failure",
-        "Tape speed matters more than the level where it occurs",
-        "A replenishing order is probably new unrelated liquidity",
-        "Brief trade beyond the level is enough to establish acceptance"
+        "The breakdown failed",
+        "Downside acceptance is established",
+        "The initial breach guarantees continuation"
        ],
        "correct": 0,
-       "explanation": "A quick return above support signals failure.",
-       "skillId": "failed_breakouts_vs_failed_breakdowns",
+       "explanation": "Trading below support followed by an immediate reclaim shows failed acceptance.",
+       "skillId": "multi_signal_read",
        "sourceLesson": "Failed Breakouts vs. Failed Breakdowns",
        "sourceUnit": 6,
        "sourceNode": 50,
@@ -47582,12 +47592,12 @@
        "evidence_synthesis"
       ],
       "u7.failed_breakout": [
-       "failed_breakouts_vs_failed_breakdowns",
+       "multi_signal_read",
        "scenario_comparison"
       ],
       "u7.failed_breakdown": [
        "evidence_synthesis",
-       "failed_breakouts_vs_failed_breakdowns"
+       "multi_signal_read"
       ],
       "u7.breakout_retest": [
        "breakout_and_breakdown_retests",
@@ -48004,10 +48014,10 @@
       },
       {
        "type": "footprint_tap",
-       "event": "total_target",
+       "event": "vwap_target",
        "target": 2,
-       "question": "Tap the busiest row near VWAP.",
-       "explanation": "The selected row contains the requested execution profile.",
+       "question": "Tap the busiest footprint row aligned with VWAP.",
+       "explanation": "The VWAP badge identifies the relevant price row, which also carries the highest total execution.",
        "skillId": "footprint_interaction",
        "sourceLesson": "Order Flow at VWAP & Moving Averages",
        "sourceUnit": 7,
@@ -48076,15 +48086,15 @@
       },
       {
        "type": "time_sales",
-       "event": "lift",
+       "event": "hit",
        "question": "What changes as the pullback fails?",
        "options": [
-        "Counter pressure gains urgency",
-        "Aggression disappears",
+        "Seller initiated prints accelerate at the bid",
+        "Buyer pressure regains control",
         "The spread proves continuation"
        ],
        "correct": 0,
-       "explanation": "Use completed executions to judge whether trend pressure returned.",
+       "explanation": "Accelerating seller initiated execution is the counterpressure invalidating the bullish continuation attempt.",
        "skillId": "tape_reading",
        "sourceLesson": "Pullback Failure",
        "sourceUnit": 7,
@@ -48149,17 +48159,17 @@
        "competencyId": "u8.conflicting_signals"
       },
       {
-       "type": "footprint",
-       "event": "balanced",
-       "question": "What contradicts the tape?",
+       "type": "orderflow_sim",
+       "event": "conflict",
+       "question": "What contradicts the fast buyer tape?",
        "options": [
-        "Delta and price response disagree",
-        "The largest cell decides direction",
-        "Volume guarantees a trend"
+        "Positive delta and price response diverge",
+        "The largest footprint cell decides direction",
+        "Tape speed guarantees acceptance"
        ],
        "correct": 0,
-       "explanation": "Conflicting signals call for patience and a weaker conclusion.",
-       "skillId": "footprint_reading",
+       "explanation": "The tape is aggressive, but the footprint, refreshing offer, and fading price response conflict with it.",
+       "skillId": "multi_signal_read",
        "sourceLesson": "Conflicting Signals",
        "sourceUnit": 7,
        "sourceNode": 60,
@@ -48188,17 +48198,17 @@
        "competencyId": "u8.conflicting_signals"
       },
       {
-       "type": "time_sales",
-       "event": "stall",
-       "question": "What defines the tape?",
+       "type": "orderflow_sim",
+       "event": "chop",
+       "question": "What defines this high volume chop?",
        "options": [
-        "Fast two sided execution",
-        "Tape speed confirms acceptance",
-        "One print resolves the read"
+        "Fast two sided execution with little price progress",
+        "Measured one sided tape with efficient travel",
+        "Sparse opposing depth and low activity"
        ],
        "correct": 0,
-       "explanation": "High volume without directional progress can show two sided absorption.",
-       "skillId": "tape_reading",
+       "explanation": "Heavy alternating execution produces volume without directional progress.",
+       "skillId": "multi_signal_read",
        "sourceLesson": "Volume Context: Chop vs. Low Volume Trend",
        "sourceUnit": 7,
        "sourceNode": 61,
@@ -48206,17 +48216,17 @@
        "competencyId": "u8.volume_context"
       },
       {
-       "type": "time_sales",
-       "event": "stall",
-       "question": "What does the tape show?",
+       "type": "orderflow_sim",
+       "event": "low_volume_trend",
+       "question": "What defines this low volume trend?",
        "options": [
-        "Steady movement without urgent prints",
-        "Tape speed confirms acceptance",
-        "One print resolves the read"
+        "Measured execution and thin opposition allow steady travel",
+        "Fast two sided execution pins price",
+        "Heavy opposing depth blocks every move"
        ],
        "correct": 0,
-       "explanation": "A trend can travel on low volume when little liquidity opposes it.",
-       "skillId": "tape_reading",
+       "explanation": "Sparse opposition allows modest execution to move price efficiently.",
+       "skillId": "multi_signal_read",
        "sourceLesson": "Volume Context: Chop vs. Low Volume Trend",
        "sourceUnit": 7,
        "sourceNode": 61,
@@ -48242,17 +48252,17 @@
        "competencyId": "u8.volume_context"
       },
       {
-       "type": "footprint",
-       "event": "lift",
+       "type": "orderflow_sim",
+       "event": "low_volume_trend",
        "question": "Is execution strongly directional?",
        "options": [
-        "No. Thin opposition still allows travel",
-        "The largest cell decides direction",
-        "Volume guarantees a trend"
+        "No. Modest pressure travels through thin opposing depth",
+        "Yes. A large directional footprint proves it",
+        "No. Price is not moving"
        ],
        "correct": 0,
-       "explanation": "A trend can travel on low volume when little liquidity opposes it.",
-       "skillId": "footprint_reading",
+       "explanation": "Level II shows thin opposition while execution remains modest and price still travels.",
+       "skillId": "multi_signal_read",
        "sourceLesson": "Volume Context: Chop vs. Low Volume Trend",
        "sourceUnit": 7,
        "sourceNode": 61,
@@ -48318,7 +48328,7 @@
       {
        "type": "multiple_choice",
        "chart": "spinningTop",
-       "question": "Which continuation evidence should carry the most weight?",
+       "question": "What's the strongest conclusion from the conflicting continuation evidence?",
        "options": [
         "Conflicting evidence means no confirmed read",
         "Price progress can be ignored when aggression is persistent",
@@ -48379,13 +48389,12 @@
       ],
       "u8.conflicting_signals": [
        "evidence_synthesis",
-       "footprint_reading",
+       "multi_signal_read",
        "tape_reading"
       ],
       "u8.volume_context": [
        "footprint_reading",
-       "multi_signal_read",
-       "tape_reading"
+       "multi_signal_read"
       ],
       "u8.no_clear_read": [
        "confirmation_continuation_challenge",
@@ -48567,17 +48576,17 @@
      "revealAnswersAtEnd": true,
      "questionPool": [
       {
-       "type": "time_sales",
-       "event": "hit",
-       "question": "What changed on the tape?",
+       "type": "orderflow_sim",
+       "event": "seller_loses_control",
+       "question": "What changed in control?",
        "options": [
-        "The initiating side lost control",
-        "Positive delta confirms a reversal regardless of price response",
-        "Slower tape guarantees the opposing side has control"
+        "Seller aggression stopped moving price and buyer pressure emerged",
+        "Seller control strengthened through support",
+        "One opposing print guaranteed reversal"
        ],
        "correct": 0,
-       "explanation": "Reversals need a clear change in control.",
-       "skillId": "tape_reading",
+       "explanation": "The sequence shows selling, stalled downside progress, fading seller pace, and an opposing response.",
+       "skillId": "multi_signal_read",
        "sourceLesson": "Reversal Pressure",
        "sourceUnit": 8,
        "sourceNode": 64,
@@ -48641,17 +48650,17 @@
        "competencyId": "u9.reversal_pressure"
       },
       {
-       "type": "time_sales",
-       "event": "lift",
+       "type": "orderflow_sim",
+       "event": "sweep",
        "question": "What shows buyers became trapped?",
        "options": [
-        "Buy prints fail above resistance",
-        "A large opposing print outweighs the executions that follow",
-        "Price location is unnecessary once a reversal candle closes"
+        "Buying above resistance fails and price returns below",
+        "Buyer prints appear above resistance",
+        "Positive delta remains visible"
        ],
        "correct": 0,
-       "explanation": "A buyer trap forms when a breakout fails.",
-       "skillId": "tape_reading",
+       "explanation": "The attempted break fails to hold and reverses back below the level.",
+       "skillId": "multi_signal_read",
        "sourceLesson": "Buyer Traps vs. Seller Traps",
        "sourceUnit": 8,
        "sourceNode": 65,
@@ -48659,17 +48668,17 @@
        "competencyId": "u9.buyer_trap"
       },
       {
-       "type": "footprint",
-       "event": "hit",
+       "type": "orderflow_sim",
+       "event": "sweep",
        "question": "What contradicts the positive delta?",
        "options": [
         "Price returns below resistance",
-        "The pattern target is guaranteed",
-        "Only resting liquidity matters"
+        "Buyer initiated prints appear",
+        "Offers briefly thin"
        ],
        "correct": 0,
-       "explanation": "Tape and footprint evidence reveal what changed beneath the candle pattern.",
-       "skillId": "footprint_reading",
+       "explanation": "Positive delta fails to produce acceptance and price returns inside.",
+       "skillId": "multi_signal_read",
        "sourceLesson": "Buyer Traps vs. Seller Traps",
        "sourceUnit": 8,
        "sourceNode": 65,
@@ -48695,17 +48704,17 @@
        "competencyId": "u9.buyer_trap"
       },
       {
-       "type": "time_sales",
-       "event": "hit",
+       "type": "orderflow_sim",
+       "event": "downside_sweep",
        "question": "What shows sellers became trapped?",
        "options": [
-        "Sell prints fail below support",
-        "The candle pattern identifies every initiating trade",
-        "The earliest pressure cannot be contradicted later"
+        "Selling below support fails and price reclaims above",
+        "Seller prints appear below support",
+        "Negative delta remains visible"
        ],
        "correct": 0,
-       "explanation": "A seller trap forms when a breakdown fails.",
-       "skillId": "tape_reading",
+       "explanation": "The attempted breakdown fails to hold and reverses above the level.",
+       "skillId": "multi_signal_read",
        "sourceLesson": "Buyer Traps vs. Seller Traps",
        "sourceUnit": 8,
        "sourceNode": 65,
@@ -48713,17 +48722,17 @@
        "competencyId": "u9.seller_trap"
       },
       {
-       "type": "footprint",
-       "event": "lift",
+       "type": "orderflow_sim",
+       "event": "downside_sweep",
        "question": "What contradicts the negative delta?",
        "options": [
         "Price returns above support",
-        "The pattern target is guaranteed",
-        "Only resting liquidity matters"
+        "Seller initiated prints appear",
+        "Bids briefly thin"
        ],
        "correct": 0,
-       "explanation": "Tape and footprint evidence reveal what changed beneath the candle pattern.",
-       "skillId": "footprint_reading",
+       "explanation": "Negative delta fails to produce acceptance and price reclaims support.",
+       "skillId": "multi_signal_read",
        "sourceLesson": "Buyer Traps vs. Seller Traps",
        "sourceUnit": 8,
        "sourceNode": 65,
@@ -48785,17 +48794,17 @@
        "competencyId": "u9.seller_exhaustion_reversal"
       },
       {
-       "type": "time_sales",
-       "event": "hit",
+       "type": "orderflow_sim",
+       "event": "buyer_absorption",
        "question": "What shows pressure being absorbed?",
        "options": [
-        "Heavy prints make little progress",
-        "Positive delta confirms a reversal regardless of price response",
-        "Slower tape guarantees the opposing side has control"
+        "Heavy seller prints make little downward progress",
+        "Seller execution disappears before support",
+        "Negative delta guarantees a breakdown"
        ],
        "correct": 0,
-       "explanation": "Absorbed selling can support a reversal.",
-       "skillId": "tape_reading",
+       "explanation": "Strong selling is visible while price barely declines against a replenishing bid.",
+       "skillId": "multi_signal_read",
        "sourceLesson": "Absorption Reversals",
        "sourceUnit": 8,
        "sourceNode": 67,
@@ -48803,17 +48812,17 @@
        "competencyId": "u9.absorption_reversal"
       },
       {
-       "type": "footprint",
-       "event": "lift",
-       "question": "What confirms passive defense?",
+       "type": "orderflow_sim",
+       "event": "buyer_absorption",
+       "question": "What supports possible passive defense?",
        "options": [
-        "Aggression stalls at one level",
-        "The pattern target is guaranteed",
-        "Only resting liquidity matters"
+        "The bid replenishes as repeated selling stalls",
+        "One ask heavy footprint row",
+        "A lower wick without execution evidence"
        ],
        "correct": 0,
-       "explanation": "Tape and footprint evidence reveal what changed beneath the candle pattern.",
-       "skillId": "footprint_reading",
+       "explanation": "Repeated executions, replenishment, and stalled price jointly support possible passive defense.",
+       "skillId": "multi_signal_read",
        "sourceLesson": "Absorption Reversals",
        "sourceUnit": 8,
        "sourceNode": 67,
@@ -48859,17 +48868,17 @@
        "competencyId": "u9.absorption_reversal"
       },
       {
-       "type": "time_sales",
-       "event": "lift",
-       "question": "How does the second test differ?",
+       "type": "replay_compare",
+       "event": "double_top_flow",
+       "question": "How does the second high test differ?",
        "options": [
-        "Buyer urgency is weaker",
-        "A large opposing print outweighs the executions that follow",
-        "Price location is unnecessary once a reversal candle closes"
+        "Replay B shows weaker buyer urgency",
+        "Replay A shows weaker buyer urgency",
+        "The tests show identical execution"
        ],
        "correct": 0,
-       "explanation": "Repeated failure can shift control to sellers.",
-       "skillId": "tape_reading",
+       "explanation": "The second panel shows buying weakening while seller response strengthens.",
+       "skillId": "scenario_comparison",
        "sourceLesson": "Double Top vs. Double Bottom Flow",
        "sourceUnit": 8,
        "sourceNode": 68,
@@ -48877,17 +48886,17 @@
        "competencyId": "u9.double_top_flow"
       },
       {
-       "type": "footprint",
-       "event": "hit",
-       "question": "What changes on the retest?",
+       "type": "replay_compare",
+       "event": "double_top_flow",
+       "question": "What changes on the second high test?",
        "options": [
         "Seller response strengthens",
-        "The pattern target is guaranteed",
-        "Only resting liquidity matters"
+        "Buyer acceptance strengthens",
+        "Execution remains identical"
        ],
        "correct": 0,
-       "explanation": "Tape and footprint evidence reveal what changed beneath the candle pattern.",
-       "skillId": "footprint_reading",
+       "explanation": "The comparison shows stronger seller response on the retest.",
+       "skillId": "scenario_comparison",
        "sourceLesson": "Double Top vs. Double Bottom Flow",
        "sourceUnit": 8,
        "sourceNode": 68,
@@ -48914,17 +48923,17 @@
        "competencyId": "u9.double_top_flow"
       },
       {
-       "type": "time_sales",
-       "event": "hit",
-       "question": "Which side weakens on the retest?",
+       "type": "replay_compare",
+       "event": "double_bottom_flow",
+       "question": "Which side weakens on the second low test?",
        "options": [
         "Aggressive sellers",
-        "The candle pattern identifies every initiating trade",
-        "The earliest pressure cannot be contradicted later"
+        "Aggressive buyers",
+        "Neither side"
        ],
        "correct": 0,
-       "explanation": "Repeated failure can shift control to buyers.",
-       "skillId": "tape_reading",
+       "explanation": "The second panel shows seller pace and size fading before buyers respond.",
+       "skillId": "scenario_comparison",
        "sourceLesson": "Double Top vs. Double Bottom Flow",
        "sourceUnit": 8,
        "sourceNode": 68,
@@ -48932,17 +48941,17 @@
        "competencyId": "u9.double_bottom_flow"
       },
       {
-       "type": "footprint",
-       "event": "lift",
-       "question": "What changes on the second test?",
+       "type": "replay_compare",
+       "event": "double_bottom_flow",
+       "question": "What changes on the second low test?",
        "options": [
         "Buyer response strengthens",
-        "The pattern target is guaranteed",
-        "Only resting liquidity matters"
+        "Seller acceptance strengthens",
+        "Execution remains identical"
        ],
        "correct": 0,
-       "explanation": "Tape and footprint evidence reveal what changed beneath the candle pattern.",
-       "skillId": "footprint_reading",
+       "explanation": "The comparison shows stronger buyer response on the retest.",
+       "skillId": "scenario_comparison",
        "sourceLesson": "Double Top vs. Double Bottom Flow",
        "sourceUnit": 8,
        "sourceNode": 68,
@@ -48969,17 +48978,17 @@
        "competencyId": "u9.double_bottom_flow"
       },
       {
-       "type": "time_sales",
-       "event": "hit",
+       "type": "orderflow_sim",
+       "event": "seller_loses_control",
        "question": "What confirms the reversal?",
        "options": [
-        "Opposing prints gain follow through",
-        "A rejection wick proves passive absorption",
-        "The second test should inherit the first test's order flow"
+        "The prior side stalls, opposing pressure strengthens, and price responds",
+        "One opposing print appears",
+        "A candle pattern forms without execution confirmation"
        ],
        "correct": 0,
-       "explanation": "Confirmation reduces premature reversal entries.",
-       "skillId": "tape_reading",
+       "explanation": "The full transition from prior control to opposing follow through is visible.",
+       "skillId": "multi_signal_read",
        "sourceLesson": "Reversal Confirmation & Insufficient Evidence",
        "sourceUnit": 8,
        "sourceNode": 69,
@@ -49024,17 +49033,17 @@
        "competencyId": "u9.reversal_confirmation"
       },
       {
-       "type": "footprint",
-       "event": "lift",
-       "question": "What does the footprint verify?",
+       "type": "orderflow_sim",
+       "event": "seller_loses_control",
+       "question": "What verifies that aggressive control changed?",
        "options": [
-        "Aggressive control changed",
-        "The pattern target is guaranteed",
-        "Only resting liquidity matters"
+        "The prior side stalls, opposing pressure strengthens, and price responds",
+        "One opposing print appears",
+        "A candle pattern forms without execution confirmation"
        ],
        "correct": 0,
-       "explanation": "Tape and footprint evidence reveal what changed beneath the candle pattern.",
-       "skillId": "footprint_reading",
+       "explanation": "The full transition from prior control to opposing follow through is visible.",
+       "skillId": "multi_signal_read",
        "sourceLesson": "Reversal Confirmation & Insufficient Evidence",
        "sourceUnit": 8,
        "sourceNode": 69,
@@ -49095,18 +49104,16 @@
       "u9.reversal_pressure": [
        "evidence_synthesis",
        "footprint_reading",
-       "reversal_pressure",
-       "tape_reading"
+       "multi_signal_read",
+       "reversal_pressure"
       ],
       "u9.buyer_trap": [
-       "footprint_reading",
-       "scenario_comparison",
-       "tape_reading"
+       "multi_signal_read",
+       "scenario_comparison"
       ],
       "u9.seller_trap": [
-       "footprint_reading",
-       "scenario_comparison",
-       "tape_reading"
+       "multi_signal_read",
+       "scenario_comparison"
       ],
       "u9.buyer_exhaustion_reversal": [
        "footprint_reading"
@@ -49117,23 +49124,20 @@
       "u9.absorption_reversal": [
        "absorption_reversals",
        "evidence_synthesis",
-       "footprint_reading",
-       "tape_reading"
+       "multi_signal_read"
       ],
       "u9.double_top_flow": [
        "double_top_vs_double_bottom_flow",
-       "footprint_reading",
-       "tape_reading"
+       "scenario_comparison"
       ],
       "u9.double_bottom_flow": [
        "double_top_vs_double_bottom_flow",
-       "footprint_reading",
-       "tape_reading"
+       "scenario_comparison"
       ],
       "u9.reversal_confirmation": [
        "footprint_reading",
-       "reversal_confirmation_insufficient_evidence",
-       "tape_reading"
+       "multi_signal_read",
+       "reversal_confirmation_insufficient_evidence"
       ],
       "u9.insufficient_evidence": [
        "multi_signal_read",
@@ -49395,11 +49399,15 @@
        "competencyId": "u10.order_type"
       },
       {
-       "type": "tap_candle",
-       "chart": "sideways",
-       "question": "Tap the clearest price response.",
-       "target": 3,
-       "explanation": "The selected candle shows whether execution produced follow through.",
+       "type": "multiple_choice",
+       "question": "When urgency matters more than exact price control, which order best fits?",
+       "options": [
+        "A market order",
+        "A distant limit order",
+        "An unsubmitted order"
+       ],
+       "correct": 0,
+       "explanation": "A market order prioritizes immediate execution while accepting less price control.",
        "skillId": "planning_the_entry_choosing_the_order_type",
        "sourceLesson": "Planning the Entry & Choosing the Order Type",
        "sourceUnit": 9,
@@ -49504,7 +49512,7 @@
       {
        "type": "multiple_choice",
        "chart": "supportBounce",
-       "question": "Which read is best supported?",
+       "question": "Where should the read be invalidated?",
        "options": [
         "Beyond the level that disproves the read",
         "Large executions are directional even when price does not respond",
@@ -49575,24 +49583,6 @@
        "sourceUnit": 9,
        "sourceNode": 72,
        "questionId": "orderflow.u10.n72.q4",
-       "competencyId": "u10.thin_liquidity_risk"
-      },
-      {
-       "type": "orderflow_sim",
-       "event": "thin_risk",
-       "question": "Nearby depth is sparse and the spread widens during execution. What's strongest?",
-       "options": [
-        "Slippage risk is elevated",
-        "The fill price is guaranteed",
-        "Delta removes execution risk"
-       ],
-       "correct": 0,
-       "explanation": "Sparse depth and a widening spread can move the fill away from the intended price.",
-       "skillId": "multi_signal_read",
-       "sourceLesson": "Slippage & Thin Liquidity Risk",
-       "sourceUnit": 9,
-       "sourceNode": 72,
-       "questionId": "orderflow.u10.n72.q5",
        "competencyId": "u10.thin_liquidity_risk"
       },
       {
@@ -49691,18 +49681,17 @@
        "competencyId": "u10.no_clear_read"
       },
       {
-       "type": "multiple_choice",
-       "chart": "resistanceRejection",
+       "type": "orderflow_sim",
+       "event": "exit_liquidity",
        "question": "What does the evidence support?",
        "options": [
-        "Liquidity can improve planned exits",
-        "Tape speed matters more than the level where it occurs",
-        "A replenishing order is probably new unrelated liquidity",
-        "Brief trade beyond the level is enough to establish acceptance"
+        "Visible opposing depth can help plan an exit area",
+        "The exit price is guaranteed",
+        "Resistance predicts the next trend"
        ],
        "correct": 0,
-       "explanation": "Liquidity can improve planned exits.",
-       "skillId": "exiting_into_liquidity",
+       "explanation": "Level II shows potential counterparties near the planned exit, but displayed liquidity can change.",
+       "skillId": "multi_signal_read",
        "sourceLesson": "Exiting Into Liquidity",
        "sourceUnit": 9,
        "sourceNode": 75,
@@ -49734,8 +49723,8 @@
        "type": "mark_level",
        "chart": "resistanceRejection",
        "level_kind": "resistance",
-       "question": "Mark the opposing liquidity relevant to the exit.",
-       "explanation": "Nearby opposing liquidity is more relevant than a distant level.",
+       "question": "Mark the area where opposing liquidity may be expected.",
+       "explanation": "The chart marks a potential exit area near resistance, not directly observed resting orders.",
        "skillId": "liquidity_location",
        "sourceLesson": "Exiting Into Liquidity",
        "sourceUnit": 9,
@@ -49924,8 +49913,7 @@
       ],
       "u10.thin_liquidity_risk": [
        "book_depth",
-       "market_sequence",
-       "multi_signal_read"
+       "market_sequence"
       ],
       "u10.no_clear_read": [
        "evidence_synthesis",
@@ -49934,7 +49922,8 @@
       "u10.exit_liquidity": [
        "evidence_synthesis",
        "exiting_into_liquidity",
-       "liquidity_location"
+       "liquidity_location",
+       "multi_signal_read"
       ],
       "u10.review_process": [
        "reviewing_the_full_order_flow_read"
@@ -49970,8 +49959,7 @@
       ],
       "u10.thin_liquidity_risk": [
        "orderflow.u10.n72.q2",
-       "orderflow.u10.n72.q4",
-       "orderflow.u10.n72.q5"
+       "orderflow.u10.n72.q4"
       ],
       "u10.no_clear_read": [
        "orderflow.u10.n74.q1",
