@@ -162,10 +162,10 @@ struct AggressorView: View {
         let revealed = player.revealed
         let fill: Color = revealed
             ? (correct ? bidColor : (chosen ? askColor : Theme.surface))
-            : (chosen ? tint.opacity(0.25) : Theme.surface)
+            : (chosen ? Theme.answer.opacity(0.25) : Theme.surface)
         let border: Color = revealed
             ? (correct ? bidColor : (chosen ? askColor : Theme.surfaceBorder))
-            : (chosen ? tint : Theme.surfaceBorder)
+            : (chosen ? Theme.answer : Theme.surfaceBorder)
         return Button(action: {
             guard !player.revealed else { return }
             Haptics.selection()
@@ -241,7 +241,7 @@ struct BookDragView: View {
         let revealed = player.revealed
         // Neutral until tapped; green for the correct side on reveal, red for a
         // wrong pick.
-        let signal: Color? = revealed ? (correct ? bidColor : (chosen ? askColor : nil)) : (chosen ? tint : nil)
+        let signal: Color? = revealed ? (correct ? bidColor : (chosen ? askColor : nil)) : (chosen ? Theme.answer : nil)
         return ZStack(alignment: .trailing) {
             RoundedRectangle(cornerRadius: 12, style: .continuous)
                 .fill((signal ?? .white).opacity(signal == nil ? 0.0 : 0.16))
