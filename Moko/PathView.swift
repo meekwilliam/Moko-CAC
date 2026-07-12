@@ -46,6 +46,7 @@ struct PathView: View {
     // callout cannot slide underneath its neighbours on the way out.
     @State private var elevatedNodes: Set<Int> = []
     @State private var tooltipRequest = 0
+    @State private var testOutBob = false
 
     private let nodeSize: CGFloat = 82
     private let ovalRatio: CGFloat = 0.78     // puck height / width — a wide coin
@@ -384,24 +385,35 @@ struct PathView: View {
                 } label: {
                     // Speech-bubble callout in the app's own colors (dark slate
                     // + blue accent), not the unit color: solid fills, a crisp
-                    // edge, and a downward pointer to the node.
+                    // edge, and a downward pointer to the node. The card and
+                    // its pointer share one continuous outline (the pointer
+                    // tucks up under the card far enough to hide its own top
+                    // edge, so only the seamless V of its two outer sides
+                    // shows, unbroken from the card's corners).
                     VStack(spacing: 0) {
                         Text("TEST OUT?")
                             .font(Theme.font(14, .black))
-                            .foregroundColor(Color(hex: "#4CA9FF"))
+                            .foregroundColor(.white)
                             .fixedSize()          // keep it on one line
                             .padding(.horizontal, 18).padding(.vertical, 10)
                             .background(RoundedRectangle(cornerRadius: 15, style: .continuous)
                                 .fill(Theme.surfaceRaised))
                             .overlay(RoundedRectangle(cornerRadius: 15, style: .continuous)
                                 .strokeBorder(Theme.surfaceBorder, lineWidth: 2))
-                        Triangle().fill(Theme.surfaceRaised)      // points down at the node
+                        Triangle()
+                            .fill(Theme.surfaceRaised)      // points down at the node
+                            .overlay(Triangle().stroke(Theme.surfaceBorder, lineWidth: 2))
                             .frame(width: 18, height: 10)
-                            .offset(y: -1)                        // tuck under the card's border
+                            .offset(y: -4)                  // tuck under the card, hiding the seam
                     }
                 }
                 .buttonStyle(RowPressStyle(scale: 0.94))
-                .offset(y: -54)
+                .offset(y: -64 + (testOutBob ? -6 : 6))
+                .onAppear {
+                    withAnimation(.easeInOut(duration: 1.3).repeatForever(autoreverses: true)) {
+                        testOutBob = true
+                    }
+                }
                 .zIndex(20)
             }
             // Animated halo around the lesson you're on. Offset down + tilted
