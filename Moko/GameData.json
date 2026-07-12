@@ -3007,20 +3007,20 @@
       },
       {
        "type": "sequence_builder",
-       "question": "Build the read.",
+       "question": "Build the buyer and seller imbalance read.",
        "items": [
-        "Buyer pressure appears",
-        "Offers get consumed",
-        "Price reaches higher levels",
-        "The chart confirms the move"
+        "Identify the dominant execution side",
+        "Check whether adjacent prices reinforce it",
+        "Compare the pressure with nearby liquidity",
+        "Confirm whether price responds"
        ],
        "correct_order": [
-        "Buyer pressure appears",
-        "Offers get consumed",
-        "Price reaches higher levels",
-        "The chart confirms the move"
+        "Identify the dominant execution side",
+        "Check whether adjacent prices reinforce it",
+        "Compare the pressure with nearby liquidity",
+        "Confirm whether price responds"
        ],
-       "explanation": "Read pressure, liquidity, price, then confirmation.",
+       "explanation": "Each step connects executed pressure with liquidity, price response, and the lesson specific conclusion.",
        "skillId": "market_sequence"
       }
      ]
@@ -3034,15 +3034,14 @@
       {
        "type": "footprint",
        "event": "lift",
-       "question": "What's the best footprint read?",
+       "question": "What does the highlighted ask heavy row show?",
        "options": [
-        "Sudden aggression can ignite momentum",
-        "Several ask heavy rows prove sellers withdrew",
-        "High total volume must contain directional delta",
-        "One footprint candle is enough to ignore location"
+        "Concentrated ask side execution shows buyer aggression",
+        "One row proves momentum ignition",
+        "Displayed offers are increasing"
        ],
        "correct": 0,
-       "explanation": "Sudden aggression can ignite momentum.",
+       "explanation": "The highlighted row directly shows aggressive buying at the ask; ignition still requires liquidity consumption and price response.",
        "skillId": "footprint_reading"
       },
       {
@@ -3070,18 +3069,18 @@
        "type": "sequence_builder",
        "question": "Build the momentum ignition read.",
        "items": [
-        "Buyer pressure appears",
-        "Offers get consumed",
-        "Price reaches higher levels",
-        "The chart confirms the move"
+        "Sudden aggression appears",
+        "Nearby liquidity is consumed",
+        "Price expands rapidly",
+        "Follow through confirms ignition"
        ],
        "correct_order": [
-        "Buyer pressure appears",
-        "Offers get consumed",
-        "Price reaches higher levels",
-        "The chart confirms the move"
+        "Sudden aggression appears",
+        "Nearby liquidity is consumed",
+        "Price expands rapidly",
+        "Follow through confirms ignition"
        ],
-       "explanation": "Read pressure, liquidity, price, then confirmation.",
+       "explanation": "Each step connects executed pressure with liquidity, price response, and the lesson specific conclusion.",
        "skillId": "market_sequence"
       },
       {
@@ -3107,15 +3106,14 @@
       {
        "type": "footprint",
        "event": "lift",
-       "question": "What's the best footprint read?",
+       "question": "What does the highlighted ask heavy row show?",
        "options": [
-        "Renewed buying can continue momentum",
-        "The largest total row proves directional delta",
-        "The bid ask split represents resting limit orders",
-        "One same price difference confirms a stacked diagonal imbalance"
+        "Ask side execution advantage shows buyer aggression",
+        "The buying is proven to be renewed",
+        "Price continuation is guaranteed"
        ],
        "correct": 0,
-       "explanation": "Renewed buying can continue momentum.",
+       "explanation": "The row shows buyer aggression, while renewal and continuation require comparison with the earlier pause and subsequent price response.",
        "skillId": "footprint_reading"
       },
       {
@@ -3162,20 +3160,20 @@
       },
       {
        "type": "sequence_builder",
-       "question": "Build the momentum continuation & failure read.",
+       "question": "Build the momentum continuation and failure read.",
        "items": [
-        "Seller pressure appears",
-        "Bids get consumed",
-        "Price reaches lower levels",
-        "The chart confirms the move"
+        "Observe the prior directional pressure",
+        "Track the pause or balanced execution",
+        "Watch whether directional pressure renews or disappears",
+        "Use price response to confirm continuation or failure"
        ],
        "correct_order": [
-        "Seller pressure appears",
-        "Bids get consumed",
-        "Price reaches lower levels",
-        "The chart confirms the move"
+        "Observe the prior directional pressure",
+        "Track the pause or balanced execution",
+        "Watch whether directional pressure renews or disappears",
+        "Use price response to confirm continuation or failure"
        ],
-       "explanation": "Read pressure, liquidity, price, then confirmation.",
+       "explanation": "Each step connects executed pressure with liquidity, price response, and the lesson specific conclusion.",
        "skillId": "market_sequence"
       }
      ]
@@ -3261,15 +3259,14 @@
       {
        "type": "footprint",
        "event": "lift",
-       "question": "What's the best footprint read?",
+       "question": "What does the highlighted row contribute to delta?",
        "options": [
-        "Net aggression compares buying with selling",
-        "Several ask heavy rows prove sellers withdrew",
-        "High total volume must contain directional delta",
-        "One footprint candle is enough to ignore location"
+        "Positive net aggression because ask execution exceeds bid execution",
+        "Only total volume without direction",
+        "Displayed resting depth at that price"
        ],
        "correct": 0,
-       "explanation": "Net aggression compares buying with selling.",
+       "explanation": "Ask execution exceeding bid execution contributes positive delta at the highlighted price.",
        "skillId": "footprint_reading"
       },
       {
@@ -3330,20 +3327,20 @@
       },
       {
        "type": "sequence_builder",
-       "question": "Build the delta vs. volume read.",
+       "question": "Build the delta and volume comparison.",
        "items": [
-        "Buyer pressure appears",
-        "Offers get consumed",
-        "Price reaches higher levels",
-        "The chart confirms the move"
+        "Measure total executed volume",
+        "Calculate net aggressive imbalance",
+        "Compare delta with price response",
+        "Interpret agreement or divergence"
        ],
        "correct_order": [
-        "Buyer pressure appears",
-        "Offers get consumed",
-        "Price reaches higher levels",
-        "The chart confirms the move"
+        "Measure total executed volume",
+        "Calculate net aggressive imbalance",
+        "Compare delta with price response",
+        "Interpret agreement or divergence"
        ],
-       "explanation": "Read pressure, liquidity, price, then confirmation.",
+       "explanation": "Each step connects executed pressure with liquidity, price response, and the lesson specific conclusion.",
        "skillId": "market_sequence"
       }
      ]
@@ -3473,18 +3470,18 @@
        "type": "sequence_builder",
        "question": "Build the price and pressure divergence read.",
        "items": [
-        "Seller pressure appears",
-        "Bids get consumed",
-        "Price reaches lower levels",
-        "The chart confirms the move"
+        "Identify the dominant executed pressure",
+        "Compare it with price direction and progress",
+        "Check the location and nearby liquidity",
+        "Classify agreement or divergence"
        ],
        "correct_order": [
-        "Seller pressure appears",
-        "Bids get consumed",
-        "Price reaches lower levels",
-        "The chart confirms the move"
+        "Identify the dominant executed pressure",
+        "Compare it with price direction and progress",
+        "Check the location and nearby liquidity",
+        "Classify agreement or divergence"
        ],
-       "explanation": "Read pressure, liquidity, price, then confirmation.",
+       "explanation": "Each step connects executed pressure with liquidity, price response, and the lesson specific conclusion.",
        "skillId": "market_sequence"
       },
       {
@@ -4035,20 +4032,20 @@
       {
        "type": "sequence_builder",
        "chart": "rejectionWickUp",
-       "question": "Build the read.",
+       "question": "Build the upside sweep read.",
        "items": [
-        "Seller pressure appears",
-        "Bids get consumed",
-        "Price reaches lower levels",
-        "The chart confirms the move"
+        "Price approaches the prior high",
+        "Buyers trade through the level",
+        "Price fails to gain acceptance above it",
+        "Price returns below the level"
        ],
        "correct_order": [
-        "Seller pressure appears",
-        "Bids get consumed",
-        "Price reaches lower levels",
-        "The chart confirms the move"
+        "Price approaches the prior high",
+        "Buyers trade through the level",
+        "Price fails to gain acceptance above it",
+        "Price returns below the level"
        ],
-       "explanation": "Read pressure, liquidity, price, then confirmation.",
+       "explanation": "An upside sweep trades through a prior high, fails to establish acceptance, and returns below the level.",
        "skillId": "market_sequence"
       }
      ]
@@ -5139,7 +5136,7 @@
         "Not enough evidence"
        ],
        "correct": 0,
-       "explanation": "Acceptance needs continued execution and price holding beyond the level.",
+       "explanation": "Replay B fails to hold above the level, returns inside, and shifts control to sellers, trapping late buyers.",
        "skillId": "scenario_comparison"
       },
       {
