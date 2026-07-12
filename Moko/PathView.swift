@@ -461,9 +461,15 @@ struct PathView: View {
 
     private func shouldShowTestOut(for node: PathNode) -> Bool {
         guard store.section(node.sectionIndex)?.testOutEnabled == true,
-              store.nodes(inSection: node.sectionIndex).first?.num == node.num else { return false }
-        let unitNodes = store.nodes(inSection: node.sectionIndex).map(\.num)
-        return unitNodes.allSatisfy { !store.completed.contains($0) } && store.state(for: node.num) == .active
+              let first = store.nodes(inSection: node.sectionIndex).first,
+              first.num == node.num,
+              let activeNumber = store.activeNode,
+              let active = store.nodes.first(where: { $0.num == activeNumber }),
+              active.sectionIndex == node.sectionIndex else { return false }
+        // Keep Test Out visible while progressing through the available unit,
+        // even if its first lessons are already complete. Once the learner has
+        // reached the Boss, testing out no longer skips meaningful path work.
+        return !active.isBoss
     }
 
     private func tradingNodeIcon(for node: PathNode, state: NodeState) -> some View {
@@ -713,6 +719,5 @@ private struct SectionOffsetKey: PreferenceKey {
         value.merge(nextValue(), uniquingKeysWith: { _, new in new })
     }
 }
-
 
 
