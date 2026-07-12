@@ -339,6 +339,10 @@ struct LessonView: View {
         p.onAdvance = onSaveProgress
         p.onSpendHeart = onSpendHeart
         _player = StateObject(wrappedValue: p)
+        // Start at the right width so the bar slides in already-filled with the
+        // rest of the lesson, rather than doing a separate fill-from-empty on
+        // open. It only animates on advance from here.
+        _displayedProgress = State(initialValue: p.progress)
         self.hearts = hearts
         self.isUnlimitedHearts = isUnlimitedHearts
         self.onClose = onClose
@@ -552,7 +556,6 @@ struct LessonView: View {
                             alignment: .top
                         )
                 }
-                .onAppear { displayedProgress = player.progress }
             }
             .frame(height: 20)
             .animation(.spring(response: 0.36, dampingFraction: 0.82), value: displayedProgress)
