@@ -53,6 +53,9 @@ struct CandlestickChart: View {
     /// interactive draw-on-chart views, which overlay their own full-bleed
     /// geometry and expect candles to span the entire frame.
     var showsAxes: Bool = false
+    /// Draw price/time gridlines without reserving space for axis labels.
+    /// Used by the onboarding hero so its live chart remains a clean backdrop.
+    var showsGrid: Bool = false
 
     /// Pin the vertical price range instead of auto-fitting to the candles. The
     /// live chart uses this so a forming candle can tick up and down within a
@@ -109,7 +112,9 @@ struct CandlestickChart: View {
             let bodyWidth = slot * 0.55
 
             ZStack(alignment: .topLeading) {
-                if showsAxes { gridAndAxes(m: m, n: n, leftG: leftG, plotW: plotW, plotH: plotH) }
+                if showsAxes || showsGrid {
+                    gridAndAxes(m: m, n: n, leftG: leftG, plotW: plotW, plotH: plotH)
+                }
 
                 // Candles draw BEFORE the overlay lines/levels and their pill
                 // labels, so a candle body can never paint over a label — the
@@ -177,10 +182,12 @@ struct CandlestickChart: View {
                 let y = plotH * CGFloat(r) / CGFloat(rows)
                 Path { p in p.move(to: CGPoint(x: leftG, y: y)); p.addLine(to: CGPoint(x: leftG + plotW, y: y)) }
                     .stroke(gridColor.opacity(0.4), lineWidth: 1)
-                Text(String(format: "%.1f", m.value(y)))
-                    .font(Theme.font(8, .bold)).foregroundColor(axisText)
-                    .frame(width: leftG - 5, alignment: .trailing)
-                    .position(x: (leftG - 5) / 2, y: y)
+                if showsAxes {
+                    Text(String(format: "%.1f", m.value(y)))
+                        .font(Theme.font(8, .bold)).foregroundColor(axisText)
+                        .frame(width: leftG - 5, alignment: .trailing)
+                        .position(x: (leftG - 5) / 2, y: y)
+                }
             }
             // Vertical gridlines at slot boundaries + x-axis candle numbers.
             ForEach(0..<n, id: \.self) { i in
@@ -190,7 +197,7 @@ struct CandlestickChart: View {
                 // Time label (live chart) or candle number. Time labels are
                 // sparse — empty entries are skipped so they don't overlap.
                 let label = xLabels.flatMap { $0.indices.contains(i) ? $0[i] : nil } ?? "\(i + 1)"
-                if !label.isEmpty {
+                if showsAxes && !label.isEmpty {
                     Text(label)
                         .font(Theme.font(8, .bold)).foregroundColor(axisText)
                         .fixedSize()
@@ -1155,6 +1162,8 @@ struct LiveChart: View {
     /// Freeze the tape — e.g. while its screen is sliding away, so it isn't
     /// re-rendering candles mid-transition.
     var paused = false
+    /// Keep axes for lesson charts; onboarding opts into a grid-only backdrop.
+    var showsAxes = true
 
     private let tick = Timer.publish(every: 0.11, on: .main, in: .common).autoconnect()
 
@@ -1167,7 +1176,8 @@ struct LiveChart: View {
     var body: some View {
         GeometryReader { geo in
             ZStack(alignment: .topLeading) {
-                CandlestickChart(candles: committed + [forming], showsAxes: true,
+                CandlestickChart(candles: committed + [forming], showsAxes: showsAxes,
+                                 showsGrid: true,
                                  fixedRange: range, xLabels: timeLabels(committed.count + 1))
                 let slotW = geo.size.width / CGFloat(committedCount + 1)
                 NewCandleFlash(key: popID)
