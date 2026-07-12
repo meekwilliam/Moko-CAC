@@ -21,8 +21,8 @@ Interactive mechanics:
   [FOOTPRINT_TAP] Select an imbalance directly on the footprint.
 
 TOTAL UNITS: 10
-TOTAL LESSONS: 77
-TOTAL QUESTIONS: 479
+TOTAL LESSONS: 78
+TOTAL QUESTIONS: 492
 
 UNIT 1 — Order Flow Foundations
 TIER: Beginner
@@ -278,40 +278,40 @@ UNIT 2 — The Order Book
 TIER: Beginner
 
 NODE 6
-TITLE: Reading the Order Book
+TITLE: Reading the Order Book & DOM
 TYPE: STANDARD
-CELEBRATION: Reading the Order Book complete.
+CELEBRATION: Reading the Order Book & DOM complete.
 
 [MC] What does Level II show?
-SKILL: reading_the_order_book
+SKILL: reading_the_order_book_dom
 Available depth across price levels from the relevant venue or feed.
 Only the best bid and ask.
 Every trade already executed.
 WHY: Level II shows available resting depth across prices from the relevant venue or feed.
 
 [MC] Where do resting buy orders sit?
-SKILL: reading_the_order_book
+SKILL: reading_the_order_book_dom
 The bid side.
 The ask side.
 The spread.
 WHY: Buyers rest on the bid. Sellers rest on the ask, and the spread is the gap between them.
 
 [MC] What does Level I show?
-SKILL: reading_the_order_book
+SKILL: reading_the_order_book_dom
 Only the best bid and ask.
 Available depth across prices from the relevant venue or feed.
 The day's executed trades.
 WHY: Level I is the top of the book: the single best bid and best ask.
 
 [MC] Where do resting sell orders sit?
-SKILL: reading_the_order_book
+SKILL: reading_the_order_book_dom
 The ask side.
 The bid side.
 The spread.
 WHY: Sellers rest on the ask side, above the spread.
 
 [MATCH] Match each feed to what it shows.
-SKILL: reading_the_order_book
+SKILL: reading_the_order_book_dom
 Level I => Best bid and ask
 Level II => Available depth from the relevant venue or feed
 Time & Sales => Executed trades
@@ -330,6 +330,20 @@ SKILL: aggressor_side
 EVENT: lift
 ANSWER: The buyer
 WHY: The offers are being taken, so the buyer is the aggressor lifting them.
+
+[MC] What does DOM stand for?
+SKILL: reading_the_order_book_dom
+Depth of Market
+Direction of Momentum
+Distribution of Market volume
+WHY: DOM stands for Depth of Market and commonly refers to an order book ladder showing available bid and ask depth across price levels.
+
+[MC] How are DOM and Level II related?
+SKILL: reading_the_order_book_dom
+Both can display available bid and ask depth across multiple price levels
+DOM only shows executed trades
+Level II only shows candle volume
+WHY: DOM and Level II are closely related ways of viewing available order book depth, although exact data depends on the venue and feed.
 
 NODE 7
 TITLE: Size & Liquidity
@@ -1258,14 +1272,13 @@ TITLE: Absorption vs. Exhaustion
 TYPE: STANDARD
 CELEBRATION: Absorption vs. Exhaustion complete.
 
-[TIME_SALES] Pressure stays strong, but price stalls. Which is it?
-VISUAL: An animated Time and Sales table lists time, execution price, and trade size, with buyer initiated prints dominating at the ask.
-SKILL: tape_reading
-EVENT: lift
+[ORDERFLOW_SIM] Buyer initiated prints remain strong, but price stalls at a replenishing offer. Which is it?
+VISUAL: Price stalls at resistance above VWAP while an offer refreshes, buyer initiated prints accelerate, and positive footprint delta produces little upward progress.
+SKILL: multi_signal_read
 Absorption
 Exhaustion
-Acceptance
-WHY: Absorption keeps strong aggression but loses price progress. Exhaustion means aggression itself fades.
+Clean acceptance
+WHY: Aggression remains active while price makes little progress, which supports possible absorption rather than exhaustion.
 
 [TIME_SALES] Aggressive pace now fades. Which is it?
 VISUAL: An animated Time and Sales table lists time, execution price, and trade size, with pace and trade size fading after the target row.
@@ -1700,9 +1713,9 @@ Displayed depth is perfectly even
 WHY: Stacking requires consecutive imbalances rather than one cell.
 
 NODE 33
-TITLE: Delta vs. Volume
+TITLE: Delta, Volume & CVD
 TYPE: STANDARD
-CELEBRATION: Delta vs. Volume complete.
+CELEBRATION: Delta, Volume & CVD complete.
 
 [FOOTPRINT] What does the highlighted row contribute to delta?
 VISUAL: A footprint grid places bid volume left of price and ask volume right of price, showing one target row carrying the largest ask side execution advantage.
@@ -1740,7 +1753,7 @@ Displayed depth
 WHY: Volume totals execution while delta nets ask and bid side execution.
 
 [MC] What does net aggression compare?
-SKILL: delta_vs_volume
+SKILL: delta_volume_cvd
 Net aggression compares buying with selling
 Fast tape near resistance is stronger than failure to gain acceptance
 A liquidity sweep and breakout differ mainly by candle size
@@ -1761,6 +1774,30 @@ Calculate net aggressive imbalance
 Compare delta with price response
 Interpret agreement or divergence
 WHY: Each step connects executed pressure with liquidity, price response, and the lesson specific conclusion.
+
+[MC] What does CVD stand for?
+SKILL: cumulative_volume_delta
+Cumulative Volume Delta
+Combined Volume Distribution
+Current Volatility Direction
+WHY: CVD stands for Cumulative Volume Delta and tracks the running accumulation of aggressive buying minus aggressive selling.
+
+[CVD_CHART] What does a rising CVD line generally show?
+VISUAL: Price candles appear above a lower CVD panel whose line rises as positive execution delta accumulates.
+SKILL: cumulative_volume_delta
+EVENT: rising
+Aggressive buying is cumulatively exceeding aggressive selling
+Price is guaranteed to rise
+Resting ask liquidity is increasing
+WHY: Rising CVD means positive execution delta is accumulating, although price still needs to be evaluated separately.
+
+[REPLAY_COMPARE] Which replay shows price and CVD disagreeing?
+VISUAL: Replay A shows price making a new high while the CVD line makes a lower high. Replay B shows price and CVD advancing together.
+SKILL: cumulative_volume_delta
+Replay A
+Replay B
+Neither
+WHY: Replay A shows price reaching a new high without matching cumulative aggressive buying. This disagreement deserves context and confirmation but does not guarantee reversal.
 
 NODE 34
 TITLE: Positive vs. Negative Delta Divergence
@@ -3478,6 +3515,77 @@ Sweep => Liquidity taken followed by rejection
 WHY: Match the signal with its order flow clue.
 
 NODE 63
+TITLE: Volume Profile & Key Trading Zones
+TYPE: STANDARD
+CELEBRATION: Volume Profile & Key Trading Zones complete.
+
+[VOLUME_PROFILE] What does Volume Profile show?
+VISUAL: A horizontal Volume Profile appears beside a compact price chart, showing horizontal bars whose lengths represent executed volume at each price.
+SKILL: volume_profile
+EVENT: overview
+How much volume traded at different price levels over a selected period
+Only aggressive buying minus selling
+The number of resting orders currently in Level II
+WHY: Volume Profile organizes executed volume by price rather than only by time.
+
+[VOLUME_PROFILE_TAP] Tap the Point of Control.
+VISUAL: A horizontal Volume Profile appears beside a compact price chart, showing the longest horizontal volume bar at the target price, marking the Point of Control.
+SKILL: volume_profile
+EVENT: poc
+TARGET: 3
+WHY: The Point of Control, or POC, is the price with the greatest traded volume inside the selected profile.
+
+[VOLUME_PROFILE] What does the Value Area represent?
+VISUAL: A horizontal Volume Profile appears beside a compact price chart, showing a shaded value region around the central high volume prices with VAH and VAL boundaries.
+SKILL: volume_profile
+EVENT: value_area
+The price region containing a defined majority of the profile's traded volume
+Every price touched during the session
+Only prices above VWAP
+WHY: The Value Area contains a defined share of total profile volume, commonly centered around the highest volume region.
+
+[MATCH] Match each profile term.
+SKILL: volume_profile
+VAH => Upper boundary of the value area
+VAL => Lower boundary of the value area
+POC => Price with the greatest traded volume
+WHY: VAH and VAL define the value area's upper and lower boundaries, while POC marks the highest volume price.
+
+[VOLUME_PROFILE] What does a high volume node show?
+VISUAL: A horizontal Volume Profile appears beside a compact price chart, showing a broad cluster of long bars forming a high volume node.
+SKILL: volume_profile
+EVENT: hvn
+A price region where substantial trading activity occurred
+A guaranteed future support level
+An area with no executed trades
+WHY: A high volume node marks a price region where trading activity accumulated, but it does not guarantee future support or resistance.
+
+[VOLUME_PROFILE] What does a low volume node show?
+VISUAL: A horizontal Volume Profile appears beside a compact price chart, showing a narrow low participation area between two larger volume clusters.
+SKILL: volume_profile
+EVENT: lvn
+A price region with relatively little historical traded volume
+A guaranteed breakout level
+The strongest current bid
+WHY: A low volume node represents comparatively low historical participation at that price.
+
+[MATCH] Match each tool to what it shows.
+SKILL: volume_profile
+Volume Profile => Total traded volume organized by price
+Footprint => Bid and ask executions separated inside price rows
+Level II or DOM => Current displayed resting depth
+Time & Sales => Individual completed executions
+WHY: Each tool answers a different question about historical execution, current resting liquidity, or completed trades.
+
+[ORDERFLOW_SIM] Price reaches a high volume node while aggressive buying slows and upward progress stalls. What's strongest?
+VISUAL: Price reaches a high volume profile node, buyer initiated prints slow, nearby offers replenish, and upward price progress stalls.
+SKILL: multi_signal_read
+The high volume area provides context, but the stalled response and replenishment matter more for the immediate read
+The high volume node guarantees reversal
+Volume Profile alone confirms seller control
+WHY: Profile location provides context, while current execution, liquidity behavior, and price response determine the immediate order flow read.
+
+NODE 64
 TITLE: Boss Battle: Continue, Fail, or Wait?
 TYPE: BOSS_BATTLE
 CELEBRATION: Boss Battle: Continue, Fail, or Wait? complete.
@@ -3529,14 +3637,14 @@ Continuation is confirmed
 Location is irrelevant
 WHY: Fading pressure weakens the continuation case.
 
-[FOOTPRINT] Heavy volume, little progress. Why?
-VISUAL: A footprint grid places bid volume left of price and ask volume right of price, showing similar bid and ask volume across the price rows.
-SKILL: footprint_reading
-EVENT: balanced
+[ORDERFLOW_SIM] Heavy volume produces little progress. What best explains it?
+VISUAL: A range shows little net progress while Time and Sales alternates rapidly between buyers and sellers and the footprint displays heavy balanced execution on both sides.
+SKILL: multi_signal_read
 Possible high volume chop
-Directional pressure is cleanly one sided
-The quieter side has already lost control
-WHY: Heavy two sided execution can produce chop.
+Strong directional continuation
+Confirmed liquidity sweep
+One side has uncontested control
+WHY: Heavy two sided execution with little directional price progress is consistent with high volume chop rather than clean directional control.
 
 [ORDERFLOW_SIM] What's the best conclusion?
 VISUAL: Price rises above VWAP with positive delta and fast buyer prints, but a large offer refreshes and upward price progress begins fading.
@@ -3560,7 +3668,7 @@ WHY: Growing counter pressure and lost structure signal failure.
 UNIT 9 — Reversals and Traps
 TIER: Expert
 
-NODE 64
+NODE 65
 TITLE: Reversal Pressure
 TYPE: STANDARD
 CELEBRATION: Reversal Pressure complete.
@@ -3607,7 +3715,7 @@ One large opposing print
 A familiar candle pattern appears
 WHY: Control change is stronger when execution receives a confirming response.
 
-NODE 65
+NODE 66
 TITLE: Buyer Traps vs. Seller Traps
 TYPE: STANDARD
 CELEBRATION: Buyer Traps vs. Seller Traps complete.
@@ -3660,7 +3768,7 @@ Replay B
 Not enough evidence
 WHY: The rejected break fails to gain acceptance and traps the initiating side.
 
-NODE 66
+NODE 67
 TITLE: Exhaustion Reversals
 TYPE: STANDARD
 CELEBRATION: Exhaustion Reversals complete.
@@ -3709,7 +3817,7 @@ A guaranteed target
 A larger candle wick
 WHY: Fading pressure alone does not confirm that the other side has taken control.
 
-NODE 67
+NODE 68
 TITLE: Absorption Reversals
 TYPE: STANDARD
 CELEBRATION: Absorption Reversals complete.
@@ -3755,7 +3863,7 @@ Displayed size appears once
 Delta stays directional
 WHY: Absorption needs a subsequent control change before it supports reversal.
 
-NODE 68
+NODE 69
 TITLE: Double Top vs. Double Bottom Flow
 TYPE: STANDARD
 CELEBRATION: Double Top vs. Double Bottom Flow complete.
@@ -3808,7 +3916,7 @@ The double bottom shape confirms a reversal by itself
 Both tests show identical seller pressure
 WHY: The comparison shows weaker selling, stronger buyer response, and a reclaim on the second test.
 
-NODE 69
+NODE 70
 TITLE: Reversal Confirmation & Insufficient Evidence
 TYPE: STANDARD
 CELEBRATION: Reversal Confirmation & Insufficient Evidence complete.
@@ -3870,7 +3978,7 @@ The chart structure alone
 One large opposing execution
 WHY: A reversal requires the prior side to lose control and the opposing side to produce a confirming response.
 
-NODE 70
+NODE 71
 TITLE: Boss Battle: Trap or Reversal?
 TYPE: BOSS_BATTLE
 CELEBRATION: Boss Battle: Trap or Reversal? complete.
@@ -3953,7 +4061,7 @@ WHY: Expert reversal reads require confirmation.
 UNIT 10 — Execution and Risk
 TIER: Expert
 
-NODE 71
+NODE 72
 TITLE: Planning the Entry & Choosing the Order Type
 TYPE: STANDARD
 CELEBRATION: Planning the Entry & Choosing the Order Type complete.
@@ -4008,7 +4116,7 @@ Candle color versus volume
 Bid size versus chart scale
 WHY: Market and limit orders trade speed against control of execution price.
 
-NODE 72
+NODE 73
 TITLE: Slippage & Thin Liquidity Risk
 TYPE: STANDARD
 CELEBRATION: Slippage & Thin Liquidity Risk complete.
@@ -4055,7 +4163,7 @@ The fill price is guaranteed
 Delta removes execution risk
 WHY: Sparse depth and a widening spread can move the fill away from the intended price.
 
-NODE 73
+NODE 74
 TITLE: Order Flow Invalidation
 TYPE: STANDARD
 CELEBRATION: Order Flow Invalidation complete.
@@ -4104,7 +4212,7 @@ At an arbitrary fixed distance
 After the trade becomes profitable
 WHY: Risk belongs where the underlying order flow thesis is no longer valid.
 
-NODE 74
+NODE 75
 TITLE: No Clear Read
 TYPE: STANDARD
 CELEBRATION: No Clear Read complete.
@@ -4153,7 +4261,7 @@ Follow the fastest source
 Assume the footprint is always correct
 WHY: No trade is a valid decision when evidence conflicts.
 
-NODE 75
+NODE 76
 TITLE: Exiting Into Liquidity
 TYPE: STANDARD
 CELEBRATION: Exiting Into Liquidity complete.
@@ -4196,7 +4304,7 @@ It guarantees zero slippage
 It predicts the next trend
 WHY: Available counterparties can improve execution but never guarantee a fill.
 
-NODE 76
+NODE 77
 TITLE: Reviewing the Full Order Flow Read
 TYPE: STANDARD
 CELEBRATION: Reviewing the Full Order Flow Read complete.
@@ -4264,7 +4372,7 @@ Confirmed buyer continuation
 Guaranteed reversal
 WHY: Refreshing offers and stalled price support possible seller absorption.
 
-NODE 77
+NODE 78
 TITLE: FINAL BOSS: The Complete Order Flow Read
 TYPE: BOSS_BATTLE
 CELEBRATION: FINAL BOSS: The Complete Order Flow Read complete.
@@ -4376,7 +4484,7 @@ QUESTIONS PER ATTEMPT: 8
 PASSING SCORE: 7
 POOL SIZE: 15
 COMPETENCY BLUEPRINT: u2.level_two, u2.resting_sides, u2.thick_liquidity, u2.thin_liquidity, u2.wall, u2.wall_behavior, u2.spoofing, u2.combined_book_read
-COMPETENCY MAPPINGS: u2.level_two => reading_the_order_book; u2.resting_sides => reading_the_order_book; u2.thick_liquidity => size_liquidity; u2.thin_liquidity => size_liquidity; u2.wall => book_depth, large_orders_as_walls; u2.wall_behavior => large_orders_as_walls, market_sequence; u2.spoofing => pulling_and_spoofing; u2.combined_book_read => evidence_synthesis, multi_signal_read
+COMPETENCY MAPPINGS: u2.level_two => reading_the_order_book_dom; u2.resting_sides => reading_the_order_book_dom; u2.thick_liquidity => size_liquidity; u2.thin_liquidity => size_liquidity; u2.wall => book_depth, large_orders_as_walls; u2.wall_behavior => large_orders_as_walls, market_sequence; u2.spoofing => pulling_and_spoofing; u2.combined_book_read => evidence_synthesis, multi_signal_read
 COMPETENCY SOURCE UNITS: u2.level_two => 2; u2.resting_sides => 2; u2.thick_liquidity => 2; u2.thin_liquidity => 2; u2.wall => 2; u2.wall_behavior => 2; u2.spoofing => 2; u2.combined_book_read => 2
 COMPETENCY SOURCE NODES: u2.level_two => 6; u2.resting_sides => 6; u2.thick_liquidity => 7; u2.thin_liquidity => 7; u2.wall => 8; u2.wall_behavior => 8; u2.spoofing => 9; u2.combined_book_read => 11
 ELIGIBLE QUESTION IDS: u2.level_two => orderflow.u2.n6.q1; u2.resting_sides => orderflow.u2.n6.q2, orderflow.u2.n6.q4; u2.thick_liquidity => orderflow.u2.n7.q2; u2.thin_liquidity => orderflow.u2.n7.q3, orderflow.u2.n7.q4; u2.wall => orderflow.u2.n8.q1, orderflow.u2.n8.q2; u2.wall_behavior => orderflow.u2.n8.q3, orderflow.u2.n8.q4, orderflow.u2.n8.q5; u2.spoofing => orderflow.u2.n9.q2, orderflow.u2.n9.q3; u2.combined_book_read => orderflow.u2.n11.q6, orderflow.u2.n11.q7
@@ -4410,7 +4518,7 @@ QUESTIONS PER ATTEMPT: 9
 PASSING SCORE: 8
 POOL SIZE: 21
 COMPETENCY BLUEPRINT: u4.absorption, u4.buyer_absorption, u4.seller_absorption, u4.repeated_tests, u4.hidden_liquidity, u4.buyer_exhaustion, u4.seller_exhaustion, u4.absorption_vs_exhaustion, u4.combined_absorption_read
-COMPETENCY MAPPINGS: u4.absorption => evidence_synthesis, multi_signal_read, scenario_comparison; u4.buyer_absorption => multi_signal_read; u4.seller_absorption => multi_signal_read; u4.repeated_tests => multi_signal_read; u4.hidden_liquidity => evidence_synthesis, multi_signal_read; u4.buyer_exhaustion => tape_reading; u4.seller_exhaustion => tape_reading; u4.absorption_vs_exhaustion => scenario_comparison, tape_reading; u4.combined_absorption_read => multi_signal_read, scenario_comparison
+COMPETENCY MAPPINGS: u4.absorption => evidence_synthesis, multi_signal_read, scenario_comparison; u4.buyer_absorption => multi_signal_read; u4.seller_absorption => multi_signal_read; u4.repeated_tests => multi_signal_read; u4.hidden_liquidity => evidence_synthesis, multi_signal_read; u4.buyer_exhaustion => tape_reading; u4.seller_exhaustion => tape_reading; u4.absorption_vs_exhaustion => multi_signal_read, scenario_comparison, tape_reading; u4.combined_absorption_read => multi_signal_read, scenario_comparison
 COMPETENCY SOURCE UNITS: u4.absorption => 4; u4.buyer_absorption => 4; u4.seller_absorption => 4; u4.repeated_tests => 4; u4.hidden_liquidity => 4; u4.buyer_exhaustion => 4; u4.seller_exhaustion => 4; u4.absorption_vs_exhaustion => 4; u4.combined_absorption_read => 4
 COMPETENCY SOURCE NODES: u4.absorption => 20; u4.buyer_absorption => 21; u4.seller_absorption => 21; u4.repeated_tests => 22; u4.hidden_liquidity => 22; u4.buyer_exhaustion => 24; u4.seller_exhaustion => 24; u4.absorption_vs_exhaustion => 25; u4.combined_absorption_read => 26
 ELIGIBLE QUESTION IDS: u4.absorption => orderflow.u4.n20.q1, orderflow.u4.n20.q3, orderflow.u4.n20.q4; u4.buyer_absorption => orderflow.u4.n21.q1, orderflow.u4.n21.q2, orderflow.u4.n21.q4; u4.seller_absorption => orderflow.u4.n21.q3, orderflow.u4.n21.q5; u4.repeated_tests => orderflow.u4.n22.q1, orderflow.u4.n22.q2, orderflow.u4.n22.q4; u4.hidden_liquidity => orderflow.u4.n22.q3, orderflow.u4.n22.q5; u4.buyer_exhaustion => orderflow.u4.n24.q1; u4.seller_exhaustion => orderflow.u4.n24.q3; u4.absorption_vs_exhaustion => orderflow.u4.n25.q1, orderflow.u4.n25.q2, orderflow.u4.n25.q3; u4.combined_absorption_read => orderflow.u4.n26.q1, orderflow.u4.n26.q2, orderflow.u4.n26.q4
@@ -4423,14 +4531,14 @@ JUMP MIN TARGET SCORE: 5
 JUMP PREREQUISITES: u1.market_buy_routing, u2.thick_liquidity, u3.price_confirmation, u3.combined_tape_read, u1.aggressive_seller, u2.resting_sides
 
 UNIT 5
-QUESTIONS PER ATTEMPT: 10
-PASSING SCORE: 8
-POOL SIZE: 24
-COMPETENCY BLUEPRINT: u5.footprint_basics, u5.diagonal_imbalance, u5.buyer_imbalance, u5.seller_imbalance, u5.stacked_pressure, u5.momentum_failure, u5.delta_vs_volume, u5.positive_delta_divergence, u5.negative_delta_divergence, u5.combined_footprint_read
-COMPETENCY MAPPINGS: u5.footprint_basics => footprint_reading; u5.diagonal_imbalance => footprint_interaction, footprint_reading, reading_footprints_imbalances; u5.buyer_imbalance => footprint_interaction, footprint_reading; u5.seller_imbalance => footprint_interaction, footprint_reading; u5.stacked_pressure => evidence_synthesis, footprint_interaction, stacked_pressure; u5.momentum_failure => footprint_interaction, momentum_continuation_failure; u5.delta_vs_volume => footprint_interaction, footprint_reading; u5.positive_delta_divergence => footprint_interaction, footprint_reading; u5.negative_delta_divergence => footprint_interaction, footprint_reading; u5.combined_footprint_read => footprint_interaction, footprint_momentum_challenge, footprint_reading
-COMPETENCY SOURCE UNITS: u5.footprint_basics => 5; u5.diagonal_imbalance => 5; u5.buyer_imbalance => 5; u5.seller_imbalance => 5; u5.stacked_pressure => 5; u5.momentum_failure => 5; u5.delta_vs_volume => 5; u5.positive_delta_divergence => 5; u5.negative_delta_divergence => 5; u5.combined_footprint_read => 5
-COMPETENCY SOURCE NODES: u5.footprint_basics => 28; u5.diagonal_imbalance => 28; u5.buyer_imbalance => 29; u5.seller_imbalance => 29; u5.stacked_pressure => 32; u5.momentum_failure => 31; u5.delta_vs_volume => 33; u5.positive_delta_divergence => 34; u5.negative_delta_divergence => 34; u5.combined_footprint_read => 36
-ELIGIBLE QUESTION IDS: u5.footprint_basics => orderflow.u5.n28.q1, orderflow.u5.n28.q5; u5.diagonal_imbalance => orderflow.u5.n28.q2, orderflow.u5.n28.q4, orderflow.u5.n28.q6; u5.buyer_imbalance => orderflow.u5.n29.q3, orderflow.u5.n29.q5; u5.seller_imbalance => orderflow.u5.n29.q4, orderflow.u5.n29.q6; u5.stacked_pressure => orderflow.u5.n32.q2, orderflow.u5.n32.q4, orderflow.u5.n32.q5; u5.momentum_failure => orderflow.u5.n31.q3, orderflow.u5.n31.q5; u5.delta_vs_volume => orderflow.u5.n33.q2, orderflow.u5.n33.q4, orderflow.u5.n33.q6; u5.positive_delta_divergence => orderflow.u5.n34.q2, orderflow.u5.n34.q4; u5.negative_delta_divergence => orderflow.u5.n34.q3, orderflow.u5.n34.q5; u5.combined_footprint_read => orderflow.u5.n36.q1, orderflow.u5.n36.q5, orderflow.u5.n36.q6
+QUESTIONS PER ATTEMPT: 11
+PASSING SCORE: 9
+POOL SIZE: 27
+COMPETENCY BLUEPRINT: u5.footprint_basics, u5.diagonal_imbalance, u5.buyer_imbalance, u5.seller_imbalance, u5.stacked_pressure, u5.momentum_failure, u5.delta_vs_volume, u5.positive_delta_divergence, u5.negative_delta_divergence, u5.combined_footprint_read, u5.cumulative_volume_delta
+COMPETENCY MAPPINGS: u5.footprint_basics => footprint_reading; u5.diagonal_imbalance => footprint_interaction, footprint_reading, reading_footprints_imbalances; u5.buyer_imbalance => footprint_interaction, footprint_reading; u5.seller_imbalance => footprint_interaction, footprint_reading; u5.stacked_pressure => evidence_synthesis, footprint_interaction, stacked_pressure; u5.momentum_failure => footprint_interaction, momentum_continuation_failure; u5.delta_vs_volume => footprint_interaction, footprint_reading; u5.positive_delta_divergence => footprint_interaction, footprint_reading; u5.negative_delta_divergence => footprint_interaction, footprint_reading; u5.combined_footprint_read => footprint_interaction, footprint_momentum_challenge, footprint_reading; u5.cumulative_volume_delta => cumulative_volume_delta
+COMPETENCY SOURCE UNITS: u5.footprint_basics => 5; u5.diagonal_imbalance => 5; u5.buyer_imbalance => 5; u5.seller_imbalance => 5; u5.stacked_pressure => 5; u5.momentum_failure => 5; u5.delta_vs_volume => 5; u5.positive_delta_divergence => 5; u5.negative_delta_divergence => 5; u5.combined_footprint_read => 5; u5.cumulative_volume_delta => 5
+COMPETENCY SOURCE NODES: u5.footprint_basics => 28; u5.diagonal_imbalance => 28; u5.buyer_imbalance => 29; u5.seller_imbalance => 29; u5.stacked_pressure => 32; u5.momentum_failure => 31; u5.delta_vs_volume => 33; u5.positive_delta_divergence => 34; u5.negative_delta_divergence => 34; u5.combined_footprint_read => 36; u5.cumulative_volume_delta => 33
+ELIGIBLE QUESTION IDS: u5.footprint_basics => orderflow.u5.n28.q1, orderflow.u5.n28.q5; u5.diagonal_imbalance => orderflow.u5.n28.q2, orderflow.u5.n28.q4, orderflow.u5.n28.q6; u5.buyer_imbalance => orderflow.u5.n29.q3, orderflow.u5.n29.q5; u5.seller_imbalance => orderflow.u5.n29.q4, orderflow.u5.n29.q6; u5.stacked_pressure => orderflow.u5.n32.q2, orderflow.u5.n32.q4, orderflow.u5.n32.q5; u5.momentum_failure => orderflow.u5.n31.q3, orderflow.u5.n31.q5; u5.delta_vs_volume => orderflow.u5.n33.q2, orderflow.u5.n33.q4, orderflow.u5.n33.q6; u5.positive_delta_divergence => orderflow.u5.n34.q2, orderflow.u5.n34.q4; u5.negative_delta_divergence => orderflow.u5.n34.q3, orderflow.u5.n34.q5; u5.combined_footprint_read => orderflow.u5.n36.q1, orderflow.u5.n36.q5, orderflow.u5.n36.q6; u5.cumulative_volume_delta => orderflow.u5.n33.q8, orderflow.u5.n33.q9, orderflow.u5.n33.q10
 JUMP QUESTIONS: 14
 JUMP PASSING SCORE: 12
 JUMP PREREQUISITE QUESTIONS: 7
@@ -4454,7 +4562,7 @@ JUMP PREREQUISITE QUESTIONS: 7
 JUMP TARGET QUESTIONS: 7
 JUMP MIN PREREQUISITE SCORE: 6
 JUMP MIN TARGET SCORE: 6
-JUMP PREREQUISITES: u1.market_buy_routing, u2.thick_liquidity, u3.price_confirmation, u4.absorption_vs_exhaustion, u5.delta_vs_volume, u5.combined_footprint_read, u1.aggressive_seller
+JUMP PREREQUISITES: u1.market_buy_routing, u2.thick_liquidity, u3.price_confirmation, u4.absorption_vs_exhaustion, u5.delta_vs_volume, u5.cumulative_volume_delta, u1.aggressive_seller
 
 UNIT 7
 QUESTIONS PER ATTEMPT: 10
@@ -4474,14 +4582,14 @@ JUMP MIN TARGET SCORE: 6
 JUMP PREREQUISITES: u1.market_buy_routing, u2.thick_liquidity, u3.price_confirmation, u4.absorption_vs_exhaustion, u5.delta_vs_volume, u6.sweep_vs_acceptance, u6.combined_liquidity_read, u1.aggressive_seller
 
 UNIT 8
-QUESTIONS PER ATTEMPT: 10
-PASSING SCORE: 8
-POOL SIZE: 30
-COMPETENCY BLUEPRINT: u8.healthy_pullback, u8.pullback_depth, u8.continuation_trigger, u8.bearish_continuation, u8.flow_at_vwap, u8.flow_at_average, u8.pullback_failure, u8.conflicting_signals, u8.volume_context, u8.no_clear_read
-COMPETENCY MAPPINGS: u8.healthy_pullback => evidence_synthesis; u8.pullback_depth => healthy_pullbacks_pullback_depth; u8.continuation_trigger => continuation_triggers, evidence_synthesis; u8.bearish_continuation => bullish_vs_bearish_pullbacks, evidence_synthesis, tape_reading; u8.flow_at_vwap => evidence_synthesis, footprint_interaction, order_flow_at_vwap_moving_averages; u8.flow_at_average => evidence_synthesis, order_flow_at_vwap_moving_averages; u8.pullback_failure => evidence_synthesis, pullback_failure, tape_reading; u8.conflicting_signals => evidence_synthesis, multi_signal_read, tape_reading; u8.volume_context => footprint_reading, multi_signal_read; u8.no_clear_read => confirmation_continuation_challenge, multi_signal_read
-COMPETENCY SOURCE UNITS: u8.healthy_pullback => 8; u8.pullback_depth => 8; u8.continuation_trigger => 8; u8.bearish_continuation => 8; u8.flow_at_vwap => 8; u8.flow_at_average => 8; u8.pullback_failure => 8; u8.conflicting_signals => 8; u8.volume_context => 8; u8.no_clear_read => 8
-COMPETENCY SOURCE NODES: u8.healthy_pullback => 55; u8.pullback_depth => 55; u8.continuation_trigger => 57; u8.bearish_continuation => 56; u8.flow_at_vwap => 58; u8.flow_at_average => 58; u8.pullback_failure => 59; u8.conflicting_signals => 60; u8.volume_context => 61; u8.no_clear_read => 62
-ELIGIBLE QUESTION IDS: u8.healthy_pullback => orderflow.u8.n55.q1, orderflow.u8.n55.q3; u8.pullback_depth => orderflow.u8.n55.q2, orderflow.u8.n55.q4; u8.continuation_trigger => orderflow.u8.n57.q2, orderflow.u8.n57.q3, orderflow.u8.n57.q5; u8.bearish_continuation => orderflow.u8.n56.q1, orderflow.u8.n56.q2, orderflow.u8.n56.q4; u8.flow_at_vwap => orderflow.u8.n58.q1, orderflow.u8.n58.q5, orderflow.u8.n58.q7; u8.flow_at_average => orderflow.u8.n58.q2, orderflow.u8.n58.q4; u8.pullback_failure => orderflow.u8.n59.q1, orderflow.u8.n59.q3, orderflow.u8.n59.q4, orderflow.u8.n59.q5; u8.conflicting_signals => orderflow.u8.n60.q1, orderflow.u8.n60.q2, orderflow.u8.n60.q3; u8.volume_context => orderflow.u8.n61.q1, orderflow.u8.n61.q2, orderflow.u8.n61.q3, orderflow.u8.n61.q4, orderflow.u8.n61.q5, orderflow.u8.n61.q6; u8.no_clear_read => orderflow.u8.n62.q3, orderflow.u8.n62.q6
+QUESTIONS PER ATTEMPT: 11
+PASSING SCORE: 9
+POOL SIZE: 38
+COMPETENCY BLUEPRINT: u8.healthy_pullback, u8.pullback_depth, u8.continuation_trigger, u8.bearish_continuation, u8.flow_at_vwap, u8.flow_at_average, u8.pullback_failure, u8.conflicting_signals, u8.volume_context, u8.no_clear_read, u8.volume_profile_context
+COMPETENCY MAPPINGS: u8.healthy_pullback => evidence_synthesis; u8.pullback_depth => healthy_pullbacks_pullback_depth; u8.continuation_trigger => continuation_triggers, evidence_synthesis; u8.bearish_continuation => bullish_vs_bearish_pullbacks, evidence_synthesis, tape_reading; u8.flow_at_vwap => evidence_synthesis, footprint_interaction, order_flow_at_vwap_moving_averages; u8.flow_at_average => evidence_synthesis, order_flow_at_vwap_moving_averages; u8.pullback_failure => evidence_synthesis, pullback_failure, tape_reading; u8.conflicting_signals => evidence_synthesis, multi_signal_read, tape_reading; u8.volume_context => footprint_reading, multi_signal_read; u8.no_clear_read => confirmation_continuation_challenge, multi_signal_read; u8.volume_profile_context => multi_signal_read, volume_profile
+COMPETENCY SOURCE UNITS: u8.healthy_pullback => 8; u8.pullback_depth => 8; u8.continuation_trigger => 8; u8.bearish_continuation => 8; u8.flow_at_vwap => 8; u8.flow_at_average => 8; u8.pullback_failure => 8; u8.conflicting_signals => 8; u8.volume_context => 8; u8.no_clear_read => 8; u8.volume_profile_context => 8
+COMPETENCY SOURCE NODES: u8.healthy_pullback => 55; u8.pullback_depth => 55; u8.continuation_trigger => 57; u8.bearish_continuation => 56; u8.flow_at_vwap => 58; u8.flow_at_average => 58; u8.pullback_failure => 59; u8.conflicting_signals => 60; u8.volume_context => 61; u8.no_clear_read => 62; u8.volume_profile_context => 63
+ELIGIBLE QUESTION IDS: u8.healthy_pullback => orderflow.u8.n55.q1, orderflow.u8.n55.q3; u8.pullback_depth => orderflow.u8.n55.q2, orderflow.u8.n55.q4; u8.continuation_trigger => orderflow.u8.n57.q2, orderflow.u8.n57.q3, orderflow.u8.n57.q5; u8.bearish_continuation => orderflow.u8.n56.q1, orderflow.u8.n56.q2, orderflow.u8.n56.q4; u8.flow_at_vwap => orderflow.u8.n58.q1, orderflow.u8.n58.q5, orderflow.u8.n58.q7; u8.flow_at_average => orderflow.u8.n58.q2, orderflow.u8.n58.q4; u8.pullback_failure => orderflow.u8.n59.q1, orderflow.u8.n59.q3, orderflow.u8.n59.q4, orderflow.u8.n59.q5; u8.conflicting_signals => orderflow.u8.n60.q1, orderflow.u8.n60.q2, orderflow.u8.n60.q3; u8.volume_context => orderflow.u8.n61.q1, orderflow.u8.n61.q2, orderflow.u8.n61.q3, orderflow.u8.n61.q4, orderflow.u8.n61.q5, orderflow.u8.n61.q6; u8.no_clear_read => orderflow.u8.n62.q3, orderflow.u8.n62.q6; u8.volume_profile_context => orderflow.u8.n63.q1, orderflow.u8.n63.q2, orderflow.u8.n63.q3, orderflow.u8.n63.q4, orderflow.u8.n63.q5, orderflow.u8.n63.q6, orderflow.u8.n63.q7, orderflow.u8.n63.q8
 JUMP QUESTIONS: 16
 JUMP PASSING SCORE: 13
 JUMP PREREQUISITE QUESTIONS: 8
@@ -4497,15 +4605,15 @@ POOL SIZE: 28
 COMPETENCY BLUEPRINT: u9.reversal_pressure, u9.buyer_trap, u9.seller_trap, u9.buyer_exhaustion_reversal, u9.seller_exhaustion_reversal, u9.absorption_reversal, u9.double_top_flow, u9.double_bottom_flow, u9.reversal_confirmation, u9.insufficient_evidence
 COMPETENCY MAPPINGS: u9.reversal_pressure => evidence_synthesis, footprint_reading, multi_signal_read, reversal_pressure; u9.buyer_trap => multi_signal_read, scenario_comparison; u9.seller_trap => multi_signal_read, scenario_comparison; u9.buyer_exhaustion_reversal => footprint_reading; u9.seller_exhaustion_reversal => tape_reading; u9.absorption_reversal => absorption_reversals, evidence_synthesis, multi_signal_read; u9.double_top_flow => scenario_comparison; u9.double_bottom_flow => scenario_comparison; u9.reversal_confirmation => footprint_reading, multi_signal_read; u9.insufficient_evidence => multi_signal_read
 COMPETENCY SOURCE UNITS: u9.reversal_pressure => 9; u9.buyer_trap => 9; u9.seller_trap => 9; u9.buyer_exhaustion_reversal => 9; u9.seller_exhaustion_reversal => 9; u9.absorption_reversal => 9; u9.double_top_flow => 9; u9.double_bottom_flow => 9; u9.reversal_confirmation => 9; u9.insufficient_evidence => 9
-COMPETENCY SOURCE NODES: u9.reversal_pressure => 64; u9.buyer_trap => 65; u9.seller_trap => 65; u9.buyer_exhaustion_reversal => 66; u9.seller_exhaustion_reversal => 66; u9.absorption_reversal => 67; u9.double_top_flow => 68; u9.double_bottom_flow => 68; u9.reversal_confirmation => 69; u9.insufficient_evidence => 69
-ELIGIBLE QUESTION IDS: u9.reversal_pressure => orderflow.u9.n64.q1, orderflow.u9.n64.q2, orderflow.u9.n64.q4, orderflow.u9.n64.q5; u9.buyer_trap => orderflow.u9.n65.q1, orderflow.u9.n65.q3, orderflow.u9.n65.q5; u9.seller_trap => orderflow.u9.n65.q2, orderflow.u9.n65.q4, orderflow.u9.n65.q6; u9.buyer_exhaustion_reversal => orderflow.u9.n66.q2; u9.seller_exhaustion_reversal => orderflow.u9.n66.q1; u9.absorption_reversal => orderflow.u9.n67.q1, orderflow.u9.n67.q2, orderflow.u9.n67.q4, orderflow.u9.n67.q5; u9.double_top_flow => orderflow.u9.n68.q1, orderflow.u9.n68.q3, orderflow.u9.n68.q5; u9.double_bottom_flow => orderflow.u9.n68.q2, orderflow.u9.n68.q4, orderflow.u9.n68.q6; u9.reversal_confirmation => orderflow.u9.n69.q1, orderflow.u9.n69.q3, orderflow.u9.n69.q5, orderflow.u9.n69.q6; u9.insufficient_evidence => orderflow.u9.n69.q2, orderflow.u9.n69.q7
+COMPETENCY SOURCE NODES: u9.reversal_pressure => 65; u9.buyer_trap => 66; u9.seller_trap => 66; u9.buyer_exhaustion_reversal => 67; u9.seller_exhaustion_reversal => 67; u9.absorption_reversal => 68; u9.double_top_flow => 69; u9.double_bottom_flow => 69; u9.reversal_confirmation => 70; u9.insufficient_evidence => 70
+ELIGIBLE QUESTION IDS: u9.reversal_pressure => orderflow.u9.n65.q1, orderflow.u9.n65.q2, orderflow.u9.n65.q4, orderflow.u9.n65.q5; u9.buyer_trap => orderflow.u9.n66.q1, orderflow.u9.n66.q3, orderflow.u9.n66.q5; u9.seller_trap => orderflow.u9.n66.q2, orderflow.u9.n66.q4, orderflow.u9.n66.q6; u9.buyer_exhaustion_reversal => orderflow.u9.n67.q2; u9.seller_exhaustion_reversal => orderflow.u9.n67.q1; u9.absorption_reversal => orderflow.u9.n68.q1, orderflow.u9.n68.q2, orderflow.u9.n68.q4, orderflow.u9.n68.q5; u9.double_top_flow => orderflow.u9.n69.q1, orderflow.u9.n69.q3, orderflow.u9.n69.q5; u9.double_bottom_flow => orderflow.u9.n69.q2, orderflow.u9.n69.q4, orderflow.u9.n69.q6; u9.reversal_confirmation => orderflow.u9.n70.q1, orderflow.u9.n70.q3, orderflow.u9.n70.q5, orderflow.u9.n70.q6; u9.insufficient_evidence => orderflow.u9.n70.q2, orderflow.u9.n70.q7
 JUMP QUESTIONS: 18
 JUMP PASSING SCORE: 15
 JUMP PREREQUISITE QUESTIONS: 9
 JUMP TARGET QUESTIONS: 9
 JUMP MIN PREREQUISITE SCORE: 7
 JUMP MIN TARGET SCORE: 7
-JUMP PREREQUISITES: u1.market_buy_routing, u2.thick_liquidity, u3.price_confirmation, u4.absorption_vs_exhaustion, u5.delta_vs_volume, u6.sweep_vs_acceptance, u7.failed_breakdown, u8.pullback_failure, u8.no_clear_read
+JUMP PREREQUISITES: u1.market_buy_routing, u2.thick_liquidity, u3.price_confirmation, u4.absorption_vs_exhaustion, u5.delta_vs_volume, u6.sweep_vs_acceptance, u7.failed_breakdown, u8.pullback_failure, u8.volume_profile_context
 
 UNIT 10
 QUESTIONS PER ATTEMPT: 10
@@ -4514,8 +4622,8 @@ POOL SIZE: 30
 COMPETENCY BLUEPRINT: u10.entry_plan, u10.order_type, u10.slippage, u10.invalidation, u10.thin_liquidity_risk, u10.no_clear_read, u10.exit_liquidity, u10.review_process, u10.multi_source_evidence, u10.combined_execution_read
 COMPETENCY MAPPINGS: u10.entry_plan => evidence_synthesis, planning_the_entry_choosing_the_order_type, scenario_comparison; u10.order_type => multi_signal_read, planning_the_entry_choosing_the_order_type; u10.slippage => book_depth, evidence_synthesis, multi_signal_read; u10.invalidation => evidence_synthesis, order_flow_invalidation; u10.thin_liquidity_risk => book_depth, market_sequence; u10.no_clear_read => evidence_synthesis, no_clear_read; u10.exit_liquidity => evidence_synthesis, exiting_into_liquidity, liquidity_location, multi_signal_read; u10.review_process => multi_signal_read; u10.multi_source_evidence => multi_signal_read; u10.combined_execution_read => multi_signal_read, scenario_comparison
 COMPETENCY SOURCE UNITS: u10.entry_plan => 10; u10.order_type => 10; u10.slippage => 10; u10.invalidation => 10; u10.thin_liquidity_risk => 10; u10.no_clear_read => 10; u10.exit_liquidity => 10; u10.review_process => 10; u10.multi_source_evidence => 10; u10.combined_execution_read => 10
-COMPETENCY SOURCE NODES: u10.entry_plan => 71; u10.order_type => 71; u10.slippage => 72; u10.invalidation => 73; u10.thin_liquidity_risk => 72; u10.no_clear_read => 74; u10.exit_liquidity => 75; u10.review_process => 76; u10.multi_source_evidence => 76; u10.combined_execution_read => 76
-ELIGIBLE QUESTION IDS: u10.entry_plan => orderflow.u10.n71.q1, orderflow.u10.n71.q3, orderflow.u10.n71.q5; u10.order_type => orderflow.u10.n71.q2, orderflow.u10.n71.q4, orderflow.u10.n71.q6; u10.slippage => orderflow.u10.n72.q1, orderflow.u10.n72.q3, orderflow.u10.n72.q5; u10.invalidation => orderflow.u10.n73.q2, orderflow.u10.n73.q3, orderflow.u10.n73.q5; u10.thin_liquidity_risk => orderflow.u10.n72.q2, orderflow.u10.n72.q4; u10.no_clear_read => orderflow.u10.n74.q1, orderflow.u10.n74.q2, orderflow.u10.n74.q3, orderflow.u10.n74.q4, orderflow.u10.n74.q5; u10.exit_liquidity => orderflow.u10.n75.q1, orderflow.u10.n75.q2, orderflow.u10.n75.q3, orderflow.u10.n75.q5; u10.review_process => orderflow.u10.n76.q1; u10.multi_source_evidence => orderflow.u10.n76.q2, orderflow.u10.n76.q4, orderflow.u10.n76.q6, orderflow.u10.n76.q7; u10.combined_execution_read => orderflow.u10.n76.q5, orderflow.u10.n76.q8
+COMPETENCY SOURCE NODES: u10.entry_plan => 72; u10.order_type => 72; u10.slippage => 73; u10.invalidation => 74; u10.thin_liquidity_risk => 73; u10.no_clear_read => 75; u10.exit_liquidity => 76; u10.review_process => 77; u10.multi_source_evidence => 77; u10.combined_execution_read => 77
+ELIGIBLE QUESTION IDS: u10.entry_plan => orderflow.u10.n72.q1, orderflow.u10.n72.q3, orderflow.u10.n72.q5; u10.order_type => orderflow.u10.n72.q2, orderflow.u10.n72.q4, orderflow.u10.n72.q6; u10.slippage => orderflow.u10.n73.q1, orderflow.u10.n73.q3, orderflow.u10.n73.q5; u10.invalidation => orderflow.u10.n74.q2, orderflow.u10.n74.q3, orderflow.u10.n74.q5; u10.thin_liquidity_risk => orderflow.u10.n73.q2, orderflow.u10.n73.q4; u10.no_clear_read => orderflow.u10.n75.q1, orderflow.u10.n75.q2, orderflow.u10.n75.q3, orderflow.u10.n75.q4, orderflow.u10.n75.q5; u10.exit_liquidity => orderflow.u10.n76.q1, orderflow.u10.n76.q2, orderflow.u10.n76.q3, orderflow.u10.n76.q5; u10.review_process => orderflow.u10.n77.q1; u10.multi_source_evidence => orderflow.u10.n77.q2, orderflow.u10.n77.q4, orderflow.u10.n77.q6, orderflow.u10.n77.q7; u10.combined_execution_read => orderflow.u10.n77.q5, orderflow.u10.n77.q8
 JUMP QUESTIONS: 20
 JUMP PASSING SCORE: 16
 JUMP PREREQUISITE QUESTIONS: 10

@@ -76,6 +76,7 @@ final class ProgressStore: ObservableObject {
         s.completed = nil; s.inProgressNode = nil; s.inProgressScreen = nil
         keepOnlyOrderFlowCourse()
         migrateCondensedOrderFlowProgressIfNeeded()
+        migrateVolumeProfileOrderFlowProgressIfNeeded()
         if !s.unlimitedHearts, s.hearts == 5, s.heartAnchor == nil {
             s.hearts = Self.maxHearts
         }
@@ -105,7 +106,7 @@ final class ProgressStore: ObservableObject {
         get { s.courses[s.currentCourse] ?? CourseProgress() }
         set {
             var value = newValue
-            if s.currentCourse == "orderflow" { value.contentVersion = 2 }
+            if s.currentCourse == "orderflow" { value.contentVersion = 3 }
             s.courses[s.currentCourse] = value
         }
     }
@@ -114,7 +115,7 @@ final class ProgressStore: ObservableObject {
     /// approximate progress by unit instead of letting old node numbers point at
     /// unrelated new lessons.
     private func migrateCondensedOrderFlowProgressIfNeeded() {
-        guard var progress = s.courses["orderflow"], progress.contentVersion != 2 else { return }
+        guard var progress = s.courses["orderflow"], (progress.contentVersion ?? 0) < 2 else { return }
         let oldCounts = [5, 8, 11, 13, 15, 14, 12, 14, 10, 9]
         let newCounts = [5, 7, 7, 8, 10, 9, 8, 9, 7, 7]
         var oldStart = 1
@@ -137,6 +138,22 @@ final class ProgressStore: ObservableObject {
         }
         progress.completed = Array(Set(remapped)).sorted()
         progress.contentVersion = 2
+        s.courses["orderflow"] = progress
+    }
+
+    /// Version 3 inserts Volume Profile at node 63, shifting the former Unit 8
+    /// boss and all Unit 9 and 10 lessons by one. Keep saved lesson identity
+    /// intact instead of attaching completion to the next lesson.
+    private func migrateVolumeProfileOrderFlowProgressIfNeeded() {
+        guard var progress = s.courses["orderflow"], (progress.contentVersion ?? 0) < 3 else { return }
+        func shifted(_ node: Int) -> Int { node >= 63 ? node + 1 : node }
+        progress.completed = Array(Set(progress.completed.map(shifted))).sorted()
+        if let active = progress.inProgressNode { progress.inProgressNode = shifted(active) }
+        if var reviews = progress.testOutReviewNodes {
+            for (unit, nodes) in reviews { reviews[unit] = nodes.map(shifted) }
+            progress.testOutReviewNodes = reviews
+        }
+        progress.contentVersion = 3
         s.courses["orderflow"] = progress
     }
 
@@ -165,6 +182,8 @@ final class ProgressStore: ObservableObject {
         suppressChange = true
         s = decoded
         keepOnlyOrderFlowCourse()
+        migrateCondensedOrderFlowProgressIfNeeded()
+        migrateVolumeProfileOrderFlowProgressIfNeeded()
         suppressChange = false
         onExternalReplace?()
     }
