@@ -289,6 +289,11 @@ struct LessonView: View {
     @State private var outgoingPlayer: LessonPlayer?
     @State private var questionSlideProgress: CGFloat = 0
     @State private var questionSlideGeneration = 0
+    // The progress bar reads this instead of player.progress directly, so it can
+    // ease forward on its own timing. Advancing changes player.progress inside a
+    // disablesAnimations transaction (to install the slide pages instantly),
+    // which would otherwise make the bar jump.
+    @State private var displayedProgress: CGFloat = 0
     let hearts: Int
     let isUnlimitedHearts: Bool
     var onClose: () -> Void
@@ -429,6 +434,9 @@ struct LessonView: View {
         }
 
         DispatchQueue.main.async {
+            // Set outside the disablesAnimations transaction so the bar's
+            // .animation(value: displayedProgress) eases it forward.
+            displayedProgress = player.progress
             withAnimation(.easeInOut(duration: 0.32)) {
                 questionSlideProgress = 1
             }
@@ -490,16 +498,17 @@ struct LessonView: View {
                     Capsule().fill(
                         LinearGradient(colors: [Color(hex: "#4CA9FF"), Color(hex: "#2B70C9")],
                                        startPoint: .top, endPoint: .bottom))
-                        .frame(width: max(16, geo.size.width * player.progress))
+                        .frame(width: max(16, geo.size.width * displayedProgress))
                         .overlay(
                             Capsule().fill(Color.white.opacity(0.5))
                                 .frame(height: 4).padding(.horizontal, 6).padding(.top, 4),
                             alignment: .top
                         )
                 }
+                .onAppear { displayedProgress = player.progress }
             }
             .frame(height: 20)
-            .animation(.spring(response: 0.36, dampingFraction: 0.82), value: player.progress)
+            .animation(.spring(response: 0.36, dampingFraction: 0.82), value: displayedProgress)
 
             lessonHeartBadge
         }
