@@ -301,7 +301,7 @@ SKILL: reading_the_order_book
 Only the best bid and ask.
 Available depth across prices from the relevant venue or feed.
 The day's executed trades.
-WHY: Level I is the top of the book. the single best bid and best ask.
+WHY: Level I is the top of the book: the single best bid and best ask.
 
 [MC] Where do resting sell orders sit?
 SKILL: reading_the_order_book
@@ -341,7 +341,7 @@ SKILL: size_liquidity
 The size resting there.
 The trades done there.
 Its distance from the last price.
-WHY: The number is resting size. how many shares sit waiting at that price.
+WHY: The number is resting size: how many shares sit waiting at that price.
 
 [MC] A book with large displayed size at every nearby level...
 SKILL: size_liquidity
@@ -350,7 +350,7 @@ Proves every order will remain.
 Guarantees low volatility.
 WHY: Large displayed size suggests greater displayed liquidity, but orders can change or cancel.
 
-[TF] A thin book moves on fewer orders than a thick one.
+[TF] A thin book can move on less incoming pressure than a thick book.
 SKILL: size_liquidity
 ANSWER: True
 WHY: Sparse nearby depth can allow less incoming pressure to move price farther.
@@ -406,7 +406,7 @@ SKILL: large_orders_as_walls
 Large bid => Support
 Large ask => Resistance
 Pulled wall => Level vanishes
-WHY: Big bids hold price up, big asks cap it. until they're pulled.
+WHY: Big bids can support price and big asks can cap it until they are pulled or traded.
 
 [ORDER] Order how a defended bid holds.
 SKILL: market_sequence
@@ -739,7 +739,7 @@ TARGET: 4
 WHY: This execution is much larger than the surrounding prints.
 
 [ORDERFLOW_SIM] Did price confirm the tape?
-VISUAL: Price stalls at resistance above VWAP while an offer refreshes, buyer initiated prints accelerate, and positive footprint delta produces little upward progress. A preview label explains that delta compares aggressive buying with selling, is supplemental here, and will be taught in Unit 5.
+VISUAL: Price stalls at resistance above VWAP while an offer refreshes, buyer initiated prints accelerate, and positive footprint delta produces little upward progress.
 SKILL: multi_signal_read
 No. Price barely moved
 Yes. Faster tape confirms buyers
@@ -791,7 +791,7 @@ TARGET: 5
 WHY: The selected trade executes at the bid and is seller initiated.
 
 [ORDERFLOW_SIM] Did price confirm the tape?
-VISUAL: Price rises above VWAP with positive delta and fast buyer prints, but a large offer refreshes and upward price progress begins fading. A preview label explains that delta compares aggressive buying with selling, is supplemental here, and will be taught in Unit 5.
+VISUAL: Price rises above VWAP with positive delta and fast buyer prints, but a large offer refreshes and upward price progress begins fading.
 SKILL: multi_signal_read
 Price response remains inconclusive
 Buyer control is confirmed
@@ -830,7 +830,7 @@ TARGET: 2
 WHY: This print interrupts the persistent aggression shown before it.
 
 [ORDERFLOW_SIM] Did price confirm the tape?
-VISUAL: Price approaches resistance, offers thin and are consumed, buyer initiated prints persist, stacked ask side execution appears, and price holds above the broken level. A preview label explains that delta compares aggressive buying with selling, is supplemental here, and will be taught in Unit 5.
+VISUAL: Price approaches resistance, offers thin and are consumed, buyer initiated prints persist, stacked ask side execution appears, and price holds above the broken level.
 SKILL: multi_signal_read
 Yes. Higher prices continued
 No. Repetition never matters
@@ -892,7 +892,7 @@ TARGET: 6
 WHY: Prints continue but size and pace begin fading here.
 
 [ORDERFLOW_SIM] Did price confirm the tape?
-VISUAL: Price approaches resistance, offers thin and are consumed, buyer initiated prints persist, stacked ask side execution appears, and price holds above the broken level. A preview label explains that delta compares aggressive buying with selling, is supplemental here, and will be taught in Unit 5.
+VISUAL: Price approaches resistance, offers thin and are consumed, buyer initiated prints persist, stacked ask side execution appears, and price holds above the broken level.
 SKILL: multi_signal_read
 Yes. Price expanded higher
 No. Pace cannot confirm
@@ -931,7 +931,7 @@ TARGET: 1
 WHY: The selected print is the first opposing execution at the level.
 
 [ORDERFLOW_SIM] Did price confirm the tape?
-VISUAL: Price stalls at resistance above VWAP while an offer refreshes, buyer initiated prints accelerate, and positive footprint delta produces little upward progress. A preview label explains that delta compares aggressive buying with selling, is supplemental here, and will be taught in Unit 5.
+VISUAL: Price stalls at resistance above VWAP while an offer refreshes, buyer initiated prints accelerate, and positive footprint delta produces little upward progress.
 SKILL: multi_signal_read
 No. Buying failed at resistance
 Yes. Fast buying confirmed control
@@ -1000,7 +1000,7 @@ TARGET: 5
 WHY: This opposing print interrupts the dominant side.
 
 [ORDERFLOW_SIM] Persistent buyer prints clear offers and price holds higher. Did price confirm the buying?
-VISUAL: Price approaches resistance, offers thin and are consumed, buyer initiated prints persist, stacked ask side execution appears, and price holds above the broken level. A preview label explains that delta compares aggressive buying with selling, is supplemental here, and will be taught in Unit 5.
+VISUAL: Price approaches resistance, offers thin and are consumed, buyer initiated prints persist, stacked ask side execution appears, and price holds above the broken level.
 SKILL: multi_signal_read
 Yes. Price advanced and held
 No. Price stalled against replenishment
@@ -1033,14 +1033,13 @@ Aggression confirms continuation
 Displayed size reveals hidden liquidity
 WHY: Absorption appears when pressure fails to move price.
 
-[TIME_SALES] Is pressure moving price?
-VISUAL: An animated Time and Sales table lists time, execution price, and trade size, with buyer initiated prints dominating at the ask.
-SKILL: tape_reading
-EVENT: lift
-No. Execution is strong; progress is weak
-Pressure and price accelerate together
-No aggressive executions appear
-WHY: Absorption requires pressure plus a weak corresponding price response.
+[ORDERFLOW_SIM] Is pressure moving price?
+VISUAL: Price stalls at resistance above VWAP while an offer refreshes, buyer initiated prints accelerate, and positive footprint delta produces little upward progress.
+SKILL: multi_signal_read
+No. Execution is strong while upward progress stays weak
+Yes. Price is accepting above resistance
+The response cannot be compared
+WHY: The simulation shows buyer execution continuing while a refreshing offer limits upward progress.
 
 [REPLAY_COMPARE] Which replay shows pressure being absorbed?
 VISUAL: Replay A shows varied buy sizes continuing into an offer that replenishes while price stays pinned. Replay B shows both buy size and pace fading before price stalls.
@@ -1073,7 +1072,7 @@ TYPE: STANDARD
 CELEBRATION: Buyer vs. Seller Absorption complete.
 
 [ORDERFLOW_SIM] What does the combined evidence show?
-VISUAL: Price holds support below VWAP while a bid refreshes, seller initiated prints accelerate, and negative footprint delta produces little downward progress. A preview label explains that delta compares aggressive buying with selling, is supplemental here, and will be taught in Unit 5.
+VISUAL: Price holds support below VWAP while a bid refreshes, seller initiated prints accelerate, and negative footprint delta produces little downward progress.
 SKILL: multi_signal_read
 Buyers absorb selling near support
 The candle alone proves the cause
@@ -1081,26 +1080,24 @@ Aggression confirms continuation
 Displayed size reveals hidden liquidity
 WHY: Buyers absorb selling near support.
 
-[TIME_SALES] What are sellers failing to do?
-VISUAL: An animated Time and Sales table lists time, execution price, and trade size, with seller initiated prints dominating at the bid.
-SKILL: tape_reading
-EVENT: hit
+[ORDERFLOW_SIM] What are sellers failing to do?
+VISUAL: Price holds support below VWAP while a bid refreshes, seller initiated prints accelerate, and negative footprint delta produces little downward progress.
+SKILL: multi_signal_read
 Push price below support
-Pressure and price accelerate together
-No aggressive executions appear
-WHY: Absorption requires pressure plus a weak corresponding price response.
+Execute at the bid
+Create negative delta
+WHY: Seller initiated prints remain active, but the bid replenishes and support holds.
 
-[TIME_SALES] What are buyers failing to do?
-VISUAL: An animated Time and Sales table lists time, execution price, and trade size, with buyer initiated prints dominating at the ask.
-SKILL: tape_reading
-EVENT: lift
+[ORDERFLOW_SIM] What are buyers failing to do?
+VISUAL: Price stalls at resistance above VWAP while an offer refreshes, buyer initiated prints accelerate, and positive footprint delta produces little upward progress.
+SKILL: multi_signal_read
 Clear the refreshing offer
-Pressure and price accelerate together
-No aggressive executions appear
-WHY: Absorption requires pressure plus a weak corresponding price response.
+Execute at the ask
+Create positive delta
+WHY: Buyer initiated prints remain active, but the offer replenishes and resistance holds.
 
 [ORDERFLOW_SIM] Sellers keep hitting a refreshing bid while support holds. What's strongest?
-VISUAL: Price holds support below VWAP while a bid refreshes, seller initiated prints accelerate, and negative footprint delta produces little downward progress. A preview label explains that delta compares aggressive buying with selling, is supplemental here, and will be taught in Unit 5.
+VISUAL: Price holds support below VWAP while a bid refreshes, seller initiated prints accelerate, and negative footprint delta produces little downward progress.
 SKILL: multi_signal_read
 Possible buyer absorption
 Seller continuation remains favored
@@ -1108,7 +1105,7 @@ Seller exhaustion is proven
 WHY: Active selling makes little progress while the bid replenishes.
 
 [ORDERFLOW_SIM] Buyers keep lifting a refreshing offer while resistance holds. What's strongest?
-VISUAL: Price stalls at resistance above VWAP while an offer refreshes, buyer initiated prints accelerate, and positive footprint delta produces little upward progress. A preview label explains that delta compares aggressive buying with selling, is supplemental here, and will be taught in Unit 5.
+VISUAL: Price stalls at resistance above VWAP while an offer refreshes, buyer initiated prints accelerate, and positive footprint delta produces little upward progress.
 SKILL: multi_signal_read
 Possible seller absorption
 Buyer continuation remains favored
@@ -1121,7 +1118,7 @@ TYPE: STANDARD
 CELEBRATION: Repeated Tests & Hidden Liquidity complete.
 
 [ORDERFLOW_SIM] What does the combined evidence show?
-VISUAL: Price holds support below VWAP while a bid refreshes, seller initiated prints accelerate, and negative footprint delta produces little downward progress. A preview label explains that delta compares aggressive buying with selling, is supplemental here, and will be taught in Unit 5.
+VISUAL: Price holds support below VWAP while a bid refreshes, seller initiated prints accelerate, and negative footprint delta produces little downward progress.
 SKILL: multi_signal_read
 A level that survives tests may contain absorption
 The candle alone proves the cause
@@ -1129,17 +1126,16 @@ Aggression confirms continuation
 Displayed size reveals hidden liquidity
 WHY: A level that survives tests may contain absorption.
 
-[TIME_SALES] What keeps happening at the level?
-VISUAL: An animated Time and Sales table lists time, execution price, and trade size, with seller initiated prints dominating at the bid.
-SKILL: tape_reading
-EVENT: hit
-Pressure trades, but the level holds
-Pressure and price accelerate together
-No aggressive executions appear
-WHY: Absorption requires pressure plus a weak corresponding price response.
+[ORDERFLOW_SIM] What keeps happening at the level?
+VISUAL: Price holds support below VWAP while a bid refreshes, seller initiated prints accelerate, and negative footprint delta produces little downward progress.
+SKILL: multi_signal_read
+Selling trades repeatedly while support holds
+Price accepts below support
+Seller pressure disappears before the level
+WHY: The support level, repeated selling, replenishing bid, and limited price progress are shown together.
 
 [ORDERFLOW_SIM] What suggests hidden liquidity?
-VISUAL: Level II repeatedly shows 100 shares at the offer. Each 100 share execution clears the display, then another 100 immediately reappears at the same price while Time and Sales keeps printing buys. A preview label explains that delta compares aggressive buying with selling, is supplemental here, and will be taught in Unit 5.
+VISUAL: Level II repeatedly shows 100 shares at the offer. Each 100 share execution clears the display, then another 100 immediately reappears at the same price while Time and Sales keeps printing buys.
 SKILL: multi_signal_read
 Displayed size keeps replenishing
 Pressure and price accelerate together
@@ -1147,7 +1143,7 @@ No aggressive executions appear
 WHY: Absorption requires pressure plus a weak corresponding price response.
 
 [ORDERFLOW_SIM] Repeated selling tests the level, the bid replenishes, and price still holds. What's strongest?
-VISUAL: Price holds support below VWAP while a bid refreshes, seller initiated prints accelerate, and negative footprint delta produces little downward progress. A preview label explains that delta compares aggressive buying with selling, is supplemental here, and will be taught in Unit 5.
+VISUAL: Price holds support below VWAP while a bid refreshes, seller initiated prints accelerate, and negative footprint delta produces little downward progress.
 SKILL: multi_signal_read
 Possible absorption at the defended level
 A downside break is confirmed
@@ -1178,7 +1174,7 @@ Resting depth proves reversal
 Execution gains urgency
 WHY: Exhaustion is defined by aggressive activity fading.
 
-[TIME_SALES_TAP] Tap where activity starts losing follow through in What Is Exhaustion.
+[TIME_SALES_TAP] Tap where activity starts losing follow through.
 VISUAL: An animated Time and Sales table lists time, execution price, and trade size, with pace and trade size fading after the target row.
 SKILL: tape_interaction
 EVENT: stall
@@ -1225,7 +1221,7 @@ Aggressive sellers
 Neither initiating side
 WHY: Buyer initiated prints at the ask visibly lose pace and size.
 
-[TIME_SALES_TAP] Tap where activity starts losing follow through in Buyer vs. Seller Exhaustion.
+[TIME_SALES_TAP] Tap where the initiating side starts losing follow through.
 VISUAL: An animated Time and Sales table lists time, execution price, and trade size, with pace and trade size fading after the target row.
 SKILL: tape_interaction
 EVENT: stall
@@ -1312,7 +1308,7 @@ TYPE: PRACTICE_REPLAY
 CELEBRATION: Absorption Practice Replays complete.
 
 [ORDERFLOW_SIM] Buying is aggressive but price cannot clear resistance. What is strongest?
-VISUAL: Price stalls at resistance above VWAP while an offer refreshes, buyer initiated prints accelerate, and positive footprint delta produces little upward progress. A preview label explains that delta compares aggressive buying with selling, is supplemental here, and will be taught in Unit 5.
+VISUAL: Price stalls at resistance above VWAP while an offer refreshes, buyer initiated prints accelerate, and positive footprint delta produces little upward progress.
 SKILL: multi_signal_read
 Buyers are active but may be absorbed by refreshing sellers
 The fastest evidence guarantees the next move
@@ -1321,7 +1317,7 @@ The candle should be read without execution context
 WHY: Aggressive buyers can be absorbed by passive sellers at resistance.
 
 [ORDERFLOW_SIM] Selling is aggressive but price cannot break support. What is strongest?
-VISUAL: Price holds support below VWAP while a bid refreshes, seller initiated prints accelerate, and negative footprint delta produces little downward progress. A preview label explains that delta compares aggressive buying with selling, is supplemental here, and will be taught in Unit 5.
+VISUAL: Price holds support below VWAP while a bid refreshes, seller initiated prints accelerate, and negative footprint delta produces little downward progress.
 SKILL: multi_signal_read
 Sellers are active but may be absorbed by refreshing buyers
 The fastest evidence guarantees the next move
@@ -1330,7 +1326,7 @@ The candle should be read without execution context
 WHY: Aggressive sellers can be absorbed by passive buyers at support.
 
 [ORDERFLOW_SIM] What does the combined evidence show?
-VISUAL: Price holds support below VWAP while a bid refreshes, seller initiated prints accelerate, and negative footprint delta produces little downward progress. A preview label explains that delta compares aggressive buying with selling, is supplemental here, and will be taught in Unit 5.
+VISUAL: Price holds support below VWAP while a bid refreshes, seller initiated prints accelerate, and negative footprint delta produces little downward progress.
 SKILL: multi_signal_read
 Strong pressure with little movement suggests absorption
 The candle alone proves the cause
@@ -1347,7 +1343,7 @@ Neither
 WHY: Replay A keeps aggression active against replenishment. Replay B shows exhaustion.
 
 [ORDERFLOW_SIM] Buying remains active, the offer refreshes, and price cannot clear resistance. What's strongest?
-VISUAL: Price stalls at resistance above VWAP while an offer refreshes, buyer initiated prints accelerate, and positive footprint delta produces little upward progress. A preview label explains that delta compares aggressive buying with selling, is supplemental here, and will be taught in Unit 5.
+VISUAL: Price stalls at resistance above VWAP while an offer refreshes, buyer initiated prints accelerate, and positive footprint delta produces little upward progress.
 SKILL: multi_signal_read
 Possible seller absorption
 Buyer continuation is confirmed
@@ -1355,7 +1351,7 @@ Buying has completely stopped
 WHY: The simulation exposes active buying, replenishment, and weak upward response.
 
 [ORDERFLOW_SIM] Selling remains active, the bid refreshes, and price cannot break support. What's strongest?
-VISUAL: Price holds support below VWAP while a bid refreshes, seller initiated prints accelerate, and negative footprint delta produces little downward progress. A preview label explains that delta compares aggressive buying with selling, is supplemental here, and will be taught in Unit 5.
+VISUAL: Price holds support below VWAP while a bid refreshes, seller initiated prints accelerate, and negative footprint delta produces little downward progress.
 SKILL: multi_signal_read
 Possible buyer absorption
 Seller continuation is confirmed
@@ -1385,7 +1381,7 @@ Acceptance
 WHY: Exhaustion means aggression itself fades.
 
 [ORDERFLOW_SIM] Selling stays aggressive while support holds. What's strongest?
-VISUAL: Price holds support below VWAP while a bid refreshes, seller initiated prints accelerate, and negative footprint delta produces little downward progress. A preview label explains that delta compares aggressive buying with selling, is supplemental here, and will be taught in Unit 5.
+VISUAL: Price holds support below VWAP while a bid refreshes, seller initiated prints accelerate, and negative footprint delta produces little downward progress.
 SKILL: multi_signal_read
 Possible buyer absorption
 Seller continuation remains favored
@@ -1393,7 +1389,7 @@ Seller exhaustion is developing
 WHY: Selling remains active while support holds.
 
 [ORDERFLOW_SIM] Buying stays aggressive while resistance holds. What's strongest?
-VISUAL: Price stalls at resistance above VWAP while an offer refreshes, buyer initiated prints accelerate, and positive footprint delta produces little upward progress. A preview label explains that delta compares aggressive buying with selling, is supplemental here, and will be taught in Unit 5.
+VISUAL: Price stalls at resistance above VWAP while an offer refreshes, buyer initiated prints accelerate, and positive footprint delta produces little upward progress.
 SKILL: multi_signal_read
 Possible seller absorption
 Buyer continuation remains favored
@@ -1420,7 +1416,7 @@ Price accepts higher
 WHY: Replenishment and stalled response support absorption.
 
 [ORDERFLOW_SIM] Is a clear read confirmed?
-VISUAL: Price rises above VWAP with positive delta and fast buyer prints, but a large offer refreshes and upward price progress begins fading. A preview label explains that delta compares aggressive buying with selling, is supplemental here, and will be taught in Unit 5.
+VISUAL: Price rises above VWAP with positive delta and fast buyer prints, but a large offer refreshes and upward price progress begins fading.
 SKILL: multi_signal_read
 Not enough evidence
 Buyer absorption
@@ -1545,7 +1541,7 @@ Buyer imbalance
 Balanced execution
 WHY: Bid side execution dominates across the relevant prices.
 
-[MC] What matters most here?
+[MC] What can seller imbalance contribute to?
 SKILL: buyer_vs_seller_imbalances
 Seller imbalance can push price lower
 Price progress can be ignored when aggression is persistent
@@ -1583,7 +1579,7 @@ EVENT: lift
 TARGET: 5
 WHY: Concentrated ask executions can help ignite momentum.
 
-[MC] Which conclusion fits the response?
+[MC] What can sudden aggressive execution do?
 SKILL: momentum_ignition
 Sudden aggression can ignite momentum
 Acceptance is present as soon as one trade prints beyond a level
@@ -1635,7 +1631,7 @@ EVENT: balanced_target
 TARGET: 0
 WHY: Execution becomes balanced as momentum loses force.
 
-[MC] How should this be interpreted?
+[MC] What can renewed buying after a pause support?
 SKILL: momentum_continuation_failure
 Renewed buying can continue momentum
 Thin liquidity implies the move has strong aggressive sponsorship
@@ -1643,7 +1639,7 @@ Negative delta prevents price from rising
 Refreshing bids matter only after sellers stop trading
 WHY: Renewed buying can continue momentum.
 
-[MC] What does the response suggest?
+[MC] What does stalled price response suggest about momentum?
 SKILL: momentum_continuation_failure
 Momentum weakens when price stops responding
 A failed breakout is confirmed before price returns through the level
@@ -1872,14 +1868,14 @@ TYPE: STANDARD
 CELEBRATION: Footprint & Momentum Challenge complete.
 
 [FOOTPRINT] How do the footprint rows combine into one directional read?
-VISUAL: A footprint grid places bid volume left of price and ask volume right of price, showing one target row carrying the largest ask side execution advantage.
+VISUAL: A footprint grid places bid volume left of price and ask volume right of price, showing three consecutive rows showing ask side execution imbalances.
 SKILL: footprint_reading
-EVENT: lift
+EVENT: stacked_ask
 Sustained imbalance matters more than one burst
 The largest total row proves directional delta
 The bid ask split represents resting limit orders
 One same price difference confirms a stacked diagonal imbalance
-WHY: Sustained imbalance matters more than one burst.
+WHY: Three consecutive ask side imbalances support a sustained directional read rather than one isolated burst.
 
 [FOOTPRINT_TAP] Tap where sustained pressure begins.
 VISUAL: A footprint grid places bid volume left of price and ask volume right of price, showing three consecutive rows showing ask side execution imbalances.
@@ -1917,7 +1913,7 @@ The largest footprint row determines the next move
 Price response can be ignored when delta is persistent
 WHY: Delta and the corresponding price response must be interpreted together.
 
-[MC] Which momentum conclusion best fits this new response?
+[MC] In this footprint & momentum challenge setup, what can sudden aggressive execution do?
 SKILL: footprint_momentum_challenge
 Sudden aggression can ignite momentum
 Acceptance is present as soon as one trade prints beyond a level
@@ -1925,7 +1921,7 @@ Passive absorption and fading aggression produce the same evidence
 A high volume candle reveals which side initiated every trade
 WHY: Sudden aggression can ignite momentum.
 
-[MC] What does the changing response imply about momentum?
+[MC] In this footprint & momentum challenge setup, what does stalled price response suggest about momentum?
 SKILL: footprint_momentum_challenge
 Momentum weakens when price stops responding
 A failed breakout is confirmed before price returns through the level
@@ -2486,7 +2482,7 @@ Accepted breakdown
 Seller continuation remains favored
 WHY: Price trades below and returns inside.
 
-[BOOK_COMPARE] Which depth profile in Boss Battle: Sweep or Acceptance? should let price travel more easily?
+[BOOK_COMPARE] Which depth profile should let price travel more easily?
 VISUAL: Two Level II ladders appear side by side. Book A has large resting size at every nearby price. Book B has small size and gaps between levels.
 SKILL: book_depth
 Book B
@@ -3581,14 +3577,14 @@ Seller control strengthened through support
 One opposing print guaranteed reversal
 WHY: The sequence shows selling, stalled downside progress, fading seller pace, and an opposing response.
 
-[FOOTPRINT] What confirms the control change?
+[FOOTPRINT] What does this ask heavy footprint show?
 VISUAL: A footprint grid places bid volume left of price and ask volume right of price, showing one target row carrying the largest ask side execution advantage.
 SKILL: footprint_reading
 EVENT: lift
-Opposing aggression gains strength
-The pattern target is guaranteed
-Only resting liquidity matters
-WHY: Tape and footprint evidence reveal what changed beneath the candle pattern.
+Opposing buyer aggression is gaining strength
+A complete reversal is confirmed
+Prior seller control is still increasing
+WHY: The footprint shows stronger buyer aggression, while the surrounding lesson establishes the broader control transition.
 
 [ORDERFLOW_SIM] Which reversal read is best supported?
 VISUAL: Seller initiated prints dominate into support, price stops falling, seller pace weakens, buyers begin lifting offers, and price starts responding upward.
@@ -3691,15 +3687,14 @@ Ask execution accelerates higher
 Every row becomes strongly ask heavy
 WHY: Fading buyer dominance can prepare a bearish control change.
 
-[MC] What does the evidence support?
-VISUAL: A narrow candle body with wicks on both sides shows little net price progress.
-SKILL: exhaustion_reversals
-CHART: doji
-Exhaustion can prepare a reversal
-Tape speed matters more than the level where it occurs
-A replenishing order is probably new unrelated liquidity
-Brief trade beyond the level is enough to establish acceptance
-WHY: Exhaustion can prepare a reversal.
+[TIME_SALES] What does fading directional pace and size near the extreme support?
+VISUAL: An animated Time and Sales table lists time, execution price, and trade size, with pace and trade size fading after the target row.
+SKILL: tape_reading
+EVENT: stall
+Possible exhaustion that still needs reversal confirmation
+A confirmed reversal from price shape alone
+Continued aggression with full acceptance
+WHY: Fading aggressive activity can support exhaustion, but opposing control and price response still need confirmation.
 
 [EVIDENCE_SELECT] Which two clues best support an exhaustion reversal?
 VISUAL: Four evidence cards separate aggression, liquidity, price response, and an irrelevant clue. The learner must select the required combination.
@@ -3884,7 +3879,7 @@ TITLE: Boss Battle: Trap or Reversal?
 TYPE: BOSS_BATTLE
 CELEBRATION: Boss Battle: Trap or Reversal? complete.
 
-[REPLAY_COMPARE] Which replay creates the buyer trap in Boss Battle: Trap or Reversal?
+[REPLAY_COMPARE] Which replay creates the buyer trap?
 VISUAL: Replay A breaks and holds with persistent buying. Replay B breaks, fails, returns inside, and gives control to sellers.
 SKILL: scenario_comparison
 Replay B
@@ -3977,15 +3972,13 @@ Passive absorption and fading aggression produce the same evidence
 A high volume candle reveals which side initiated every trade
 WHY: A clear trigger keeps execution disciplined.
 
-[MC] How should this be interpreted?
-VISUAL: Small mixed candles overlap inside a narrow horizontal trading area.
-SKILL: planning_the_entry_choosing_the_order_type
-CHART: sideways
-Order choice balances speed with price control
-Thin liquidity implies the move has strong aggressive sponsorship
-Negative delta prevents price from rising
-Refreshing bids matter only after sellers stop trading
-WHY: Order choice balances speed with price control.
+[ORDERFLOW_SIM] Price approaches a trigger as the spread widens and nearby depth changes. How should order choice be interpreted?
+VISUAL: Level II shows small nearby size with gaps, the spread widens during a market order, Time and Sales jumps across prices, and the simulated fill lands worse than the initial quote.
+SKILL: multi_signal_read
+Balance execution speed with control over fill price
+The chart direction determines the order type
+Thin depth guarantees an immediate favorable fill
+WHY: Changing liquidity makes the tradeoff between urgency and price control directly relevant.
 
 [EVIDENCE_SELECT] Select the two relevant clues.
 VISUAL: Four evidence cards separate aggression, liquidity, price response, and an irrelevant clue. The learner must select the required combination.
@@ -4212,15 +4205,13 @@ TITLE: Reviewing the Full Order Flow Read
 TYPE: STANDARD
 CELEBRATION: Reviewing the Full Order Flow Read complete.
 
-[MC] Which explanation fits best?
-VISUAL: Small mixed candles overlap inside a narrow horizontal trading area.
-SKILL: reviewing_the_full_order_flow_read
-CHART: sideways
+[ORDERFLOW_SIM] After the replay ends, which review process is best?
+VISUAL: A championship replay combines price and VWAP, changing Level II liquidity, Time and Sales, and footprint delta so the learner must weigh all four evidence sources.
+SKILL: multi_signal_read
 Review each evidence source separately from the trade outcome
-High total volume normally implies strongly directional delta
-A large wall deserves more weight than repeated fills against it
-One unusually large trade is more reliable than subsequent response
-WHY: Review each evidence source separately from the trade outcome.
+Judge the read only by profit or loss
+Review only the final candle
+WHY: A multi source replay should be reviewed by separating book, tape, footprint, and price response from outcome.
 
 [ORDERFLOW_SIM] Who is aggressive?
 VISUAL: A championship replay combines price and VWAP, changing Level II liquidity, Time and Sales, and footprint delta so the learner must weigh all four evidence sources.
@@ -4423,7 +4414,7 @@ QUESTIONS PER ATTEMPT: 9
 PASSING SCORE: 8
 POOL SIZE: 21
 COMPETENCY BLUEPRINT: u4.absorption, u4.buyer_absorption, u4.seller_absorption, u4.repeated_tests, u4.hidden_liquidity, u4.buyer_exhaustion, u4.seller_exhaustion, u4.absorption_vs_exhaustion, u4.combined_absorption_read
-COMPETENCY MAPPINGS: u4.absorption => evidence_synthesis, multi_signal_read, scenario_comparison; u4.buyer_absorption => multi_signal_read, tape_reading; u4.seller_absorption => multi_signal_read, tape_reading; u4.repeated_tests => multi_signal_read, tape_reading; u4.hidden_liquidity => evidence_synthesis, multi_signal_read; u4.buyer_exhaustion => tape_reading; u4.seller_exhaustion => tape_reading; u4.absorption_vs_exhaustion => scenario_comparison, tape_reading; u4.combined_absorption_read => multi_signal_read, scenario_comparison
+COMPETENCY MAPPINGS: u4.absorption => evidence_synthesis, multi_signal_read, scenario_comparison; u4.buyer_absorption => multi_signal_read; u4.seller_absorption => multi_signal_read; u4.repeated_tests => multi_signal_read; u4.hidden_liquidity => evidence_synthesis, multi_signal_read; u4.buyer_exhaustion => tape_reading; u4.seller_exhaustion => tape_reading; u4.absorption_vs_exhaustion => scenario_comparison, tape_reading; u4.combined_absorption_read => multi_signal_read, scenario_comparison
 COMPETENCY SOURCE UNITS: u4.absorption => 4; u4.buyer_absorption => 4; u4.seller_absorption => 4; u4.repeated_tests => 4; u4.hidden_liquidity => 4; u4.buyer_exhaustion => 4; u4.seller_exhaustion => 4; u4.absorption_vs_exhaustion => 4; u4.combined_absorption_read => 4
 COMPETENCY SOURCE NODES: u4.absorption => 20; u4.buyer_absorption => 21; u4.seller_absorption => 21; u4.repeated_tests => 22; u4.hidden_liquidity => 22; u4.buyer_exhaustion => 24; u4.seller_exhaustion => 24; u4.absorption_vs_exhaustion => 25; u4.combined_absorption_read => 26
 ELIGIBLE QUESTION IDS: u4.absorption => orderflow.u4.n20.q1, orderflow.u4.n20.q3, orderflow.u4.n20.q4; u4.buyer_absorption => orderflow.u4.n21.q1, orderflow.u4.n21.q2, orderflow.u4.n21.q4; u4.seller_absorption => orderflow.u4.n21.q3, orderflow.u4.n21.q5; u4.repeated_tests => orderflow.u4.n22.q1, orderflow.u4.n22.q2, orderflow.u4.n22.q4; u4.hidden_liquidity => orderflow.u4.n22.q3, orderflow.u4.n22.q5; u4.buyer_exhaustion => orderflow.u4.n24.q1; u4.seller_exhaustion => orderflow.u4.n24.q3; u4.absorption_vs_exhaustion => orderflow.u4.n25.q1, orderflow.u4.n25.q2, orderflow.u4.n25.q3; u4.combined_absorption_read => orderflow.u4.n26.q1, orderflow.u4.n26.q2, orderflow.u4.n26.q4
@@ -4525,7 +4516,7 @@ QUESTIONS PER ATTEMPT: 10
 PASSING SCORE: 8
 POOL SIZE: 30
 COMPETENCY BLUEPRINT: u10.entry_plan, u10.order_type, u10.slippage, u10.invalidation, u10.thin_liquidity_risk, u10.no_clear_read, u10.exit_liquidity, u10.review_process, u10.multi_source_evidence, u10.combined_execution_read
-COMPETENCY MAPPINGS: u10.entry_plan => evidence_synthesis, planning_the_entry_choosing_the_order_type, scenario_comparison; u10.order_type => planning_the_entry_choosing_the_order_type; u10.slippage => book_depth, evidence_synthesis, multi_signal_read; u10.invalidation => evidence_synthesis, order_flow_invalidation; u10.thin_liquidity_risk => book_depth, market_sequence; u10.no_clear_read => evidence_synthesis, no_clear_read; u10.exit_liquidity => evidence_synthesis, exiting_into_liquidity, liquidity_location, multi_signal_read; u10.review_process => reviewing_the_full_order_flow_read; u10.multi_source_evidence => multi_signal_read; u10.combined_execution_read => multi_signal_read, scenario_comparison
+COMPETENCY MAPPINGS: u10.entry_plan => evidence_synthesis, planning_the_entry_choosing_the_order_type, scenario_comparison; u10.order_type => multi_signal_read, planning_the_entry_choosing_the_order_type; u10.slippage => book_depth, evidence_synthesis, multi_signal_read; u10.invalidation => evidence_synthesis, order_flow_invalidation; u10.thin_liquidity_risk => book_depth, market_sequence; u10.no_clear_read => evidence_synthesis, no_clear_read; u10.exit_liquidity => evidence_synthesis, exiting_into_liquidity, liquidity_location, multi_signal_read; u10.review_process => multi_signal_read; u10.multi_source_evidence => multi_signal_read; u10.combined_execution_read => multi_signal_read, scenario_comparison
 COMPETENCY SOURCE UNITS: u10.entry_plan => 10; u10.order_type => 10; u10.slippage => 10; u10.invalidation => 10; u10.thin_liquidity_risk => 10; u10.no_clear_read => 10; u10.exit_liquidity => 10; u10.review_process => 10; u10.multi_source_evidence => 10; u10.combined_execution_read => 10
 COMPETENCY SOURCE NODES: u10.entry_plan => 71; u10.order_type => 71; u10.slippage => 72; u10.invalidation => 73; u10.thin_liquidity_risk => 72; u10.no_clear_read => 74; u10.exit_liquidity => 75; u10.review_process => 76; u10.multi_source_evidence => 76; u10.combined_execution_read => 76
 ELIGIBLE QUESTION IDS: u10.entry_plan => orderflow.u10.n71.q1, orderflow.u10.n71.q3, orderflow.u10.n71.q5; u10.order_type => orderflow.u10.n71.q2, orderflow.u10.n71.q4, orderflow.u10.n71.q6; u10.slippage => orderflow.u10.n72.q1, orderflow.u10.n72.q3, orderflow.u10.n72.q5; u10.invalidation => orderflow.u10.n73.q2, orderflow.u10.n73.q3, orderflow.u10.n73.q5; u10.thin_liquidity_risk => orderflow.u10.n72.q2, orderflow.u10.n72.q4; u10.no_clear_read => orderflow.u10.n74.q1, orderflow.u10.n74.q2, orderflow.u10.n74.q3, orderflow.u10.n74.q4, orderflow.u10.n74.q5; u10.exit_liquidity => orderflow.u10.n75.q1, orderflow.u10.n75.q2, orderflow.u10.n75.q3, orderflow.u10.n75.q5; u10.review_process => orderflow.u10.n76.q1; u10.multi_source_evidence => orderflow.u10.n76.q2, orderflow.u10.n76.q4, orderflow.u10.n76.q6, orderflow.u10.n76.q7; u10.combined_execution_read => orderflow.u10.n76.q5, orderflow.u10.n76.q8
