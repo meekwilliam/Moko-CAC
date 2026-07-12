@@ -642,7 +642,7 @@ struct LessonView: View {
                 .animation(.spring(response: 0.22, dampingFraction: 0.52), value: checkReadyPulse)
         } else if pagePlayer.lesson.lessonType == "TEST_OUT" {
             Button(pagePlayer.isLastScreen ? "Finish Assessment" : "Next Question") { advanceQuestion() }
-                .buttonStyle(Chunky3DStyle(fill: Color(hex: "#2563EB"), slab: Color(hex: "#B7791F")))
+                .buttonStyle(Chunky3DStyle(fill: accent, slab: accentDark))
         } else {
             Button(pagePlayer.isLastScreen ? "Finish" : "Continue") { advanceQuestion() }
                 .buttonStyle(Chunky3DStyle(
