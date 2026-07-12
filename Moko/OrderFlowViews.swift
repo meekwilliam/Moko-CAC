@@ -816,6 +816,8 @@ struct OrderFlowSimulationView: View {
             return (["Testing resistance", "Holding above resistance and VWAP"], ["Offers begin thinning", "Offers consumed across levels"], ["Buying pace increases", "Buyer prints persist after the break"], ["Ask volume dominates", "Stacked ask imbalances continue"])
         case "conflict":
             return (["Price rises above VWAP", "Price loses momentum near resistance"], ["Offers thin briefly", "A large offer begins refreshing"], ["Buyer prints accelerate", "Large sell prints interrupt the run"], ["Positive delta builds", "Delta and price response diverge"])
+        case "thin_liquidity":
+            return (["Testing resistance", "Price gaps between prints"], ["Depth thins near price", "Spread widens after each fill"], ["Prints arrive faster", "Fills land at worse prices"], ["Volume light at each level", "Delta swings on little size"])
         default:
             return (["Testing resistance above VWAP", "Stalling at resistance above VWAP"], ["Large offer at 101.25", "Offer refreshes after repeated fills"], ["Buying pace increasing", "Fast buyer initiated prints"], ["Ask volume dominates", "+840 delta with little progress"])
         }
