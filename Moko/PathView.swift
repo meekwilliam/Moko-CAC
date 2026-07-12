@@ -414,6 +414,12 @@ struct PathView: View {
             }
 
             Button(action: {
+                if testOutAvailable {
+                    Haptics.selection()
+                    setTooltip(nil)
+                    onTestOut(node.sectionIndex)
+                    return
+                }
                 // Locked nodes still open a callout — it just says "Locked".
                 if state == .locked { Haptics.play(.locked) } else { Haptics.play(.puckPress) }
                 setTooltip(tooltipNode == node.num ? nil : node.num)
@@ -728,4 +734,3 @@ private struct SectionOffsetKey: PreferenceKey {
         value.merge(nextValue(), uniquingKeysWith: { _, new in new })
     }
 }
-
