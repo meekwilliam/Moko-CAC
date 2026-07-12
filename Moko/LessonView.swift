@@ -18,6 +18,9 @@ final class LessonPlayer: ObservableObject {
     @Published var index = 0
     @Published var revealed = false      // an answer has been graded / step resolved
     @Published var lastCorrect = false
+    @Published var correctCount = 0
+    @Published var answeredCount = 0
+    @Published var missedSkills: [String: Int] = [:]
     @Published var finished = false      // reward screen
 
     // Single-choice selection (true_false / multiple_choice / fill_blank / ingredient_match)
@@ -46,6 +49,7 @@ final class LessonPlayer: ObservableObject {
     @Published var matchingSelections: [Int: Int] = [:]
     // sequence_builder / drag_order
     @Published var builtOrder: [String] = []
+    @Published var optionOrder: [Int] = []
 
     var onFinished: (() -> Void)?
     /// Called with the new screen index each time the player advances, so the
@@ -72,6 +76,7 @@ final class LessonPlayer: ObservableObject {
         // guess only if the caller doesn't have section data on hand.
         self.unit = unitColor ?? Theme.unitColor(lesson.node)
         self.index = min(max(0, startIndex), max(0, self.screens.count - 1))
+        configureOptionOrder()
         if self.index > 0 { resetForScreen() }
     }
 
@@ -88,14 +93,16 @@ final class LessonPlayer: ObservableObject {
         if screen.type == "ingredient_match" { return (screen.ingredientOptions ?? []).map { $0.label } }
         if screen.type == "aggressor" { return ["The buyer", "The seller"] }
         if screen.type == "book_drag" { return ["the bid", "the ask"] }
-        return screen.options ?? []
+        let options = screen.options ?? []
+        return optionOrder.count == options.count ? optionOrder.map { options[$0] } : options
     }
     var currentCorrectIndex: Int {
         if screen.type == "true_false" { return (screen.correctBool ?? false) ? 0 : 1 }
         if screen.type == "ingredient_match" {
             return screen.ingredientOptions?.firstIndex(where: { $0.correct == true }) ?? 0
         }
-        return screen.correctIndex ?? 0
+        let original = screen.correctIndex ?? 0
+        return optionOrder.firstIndex(of: original) ?? original
     }
 
     /// Whether the primary button can be tapped in the "check" phase.
@@ -147,6 +154,7 @@ final class LessonPlayer: ObservableObject {
         revealed = false
         lastCorrect = false
         builtOrder = []
+        configureOptionOrder()
         if screen.type == "fill_blank_multi" {
             multiSelections = Array(repeating: nil, count: screen.blanks?.count ?? 0)
             multiSelectionLabels = Array(repeating: nil, count: screen.blanks?.count ?? 0)
@@ -156,6 +164,12 @@ final class LessonPlayer: ObservableObject {
             multiSelectionLabels = []
             multiSelectionIDs = []
         }
+    }
+
+    private func configureOptionOrder() {
+        let options = screen.options ?? []
+        let shuffleTypes: Set<String> = ["multiple_choice", "time_sales", "footprint", "orderflow_sim", "book_compare", "replay_compare"]
+        optionOrder = shuffleTypes.contains(screen.type) ? Array(options.indices).shuffled() : Array(options.indices)
     }
 
     func check() {
@@ -212,8 +226,11 @@ final class LessonPlayer: ObservableObject {
             correct = (selectedIndex == currentCorrectIndex)
         }
         lastCorrect = correct
+        answeredCount += 1
+        if correct { correctCount += 1 }
+        else if let skill = screen.skillId { missedSkills[skill, default: 0] += 1 }
         revealed = true
-        if !correct {
+        if !correct && lesson.lessonType != "TEST_OUT" {
             var missed = screen          // requeue the missed question to the end
             missed.isPreviousMistake = true
             screens.append(missed)
@@ -256,6 +273,9 @@ final class LessonPlayer: ObservableObject {
         copy.index = index
         copy.revealed = revealed
         copy.lastCorrect = lastCorrect
+        copy.correctCount = correctCount
+        copy.answeredCount = answeredCount
+        copy.missedSkills = missedSkills
         copy.finished = finished
         copy.selectedIndex = selectedIndex
         copy.selectedSet = selectedSet
@@ -274,6 +294,7 @@ final class LessonPlayer: ObservableObject {
         copy.multiSelectionIDs = multiSelectionIDs
         copy.matchingSelections = matchingSelections
         copy.builtOrder = builtOrder
+        copy.optionOrder = optionOrder
         return copy
     }
 }
@@ -298,6 +319,7 @@ struct LessonView: View {
     let isUnlimitedHearts: Bool
     var onClose: () -> Void
     var onComplete: (Int) -> Void   // node number
+    var onAssessmentComplete: (Int, Int) -> Void
 
     init(lesson: Lesson, startIndex: Int = 0, isReplay: Bool = false,
          unitColor: (main: Color, dark: Color)? = nil,
@@ -308,6 +330,7 @@ struct LessonView: View {
          isUnlimitedHearts: Bool = false,
          onClose: @escaping () -> Void,
          onComplete: @escaping (Int) -> Void,
+         onAssessmentComplete: @escaping (Int, Int) -> Void = { _, _ in },
          onSaveProgress: @escaping (Int) -> Void = { _ in },
          onSpendHeart: @escaping () -> Bool = { true }) {
         let p = LessonPlayer(lesson: lesson, startIndex: startIndex, isReplay: isReplay,
@@ -320,6 +343,7 @@ struct LessonView: View {
         self.isUnlimitedHearts = isUnlimitedHearts
         self.onClose = onClose
         self.onComplete = onComplete
+        self.onAssessmentComplete = onAssessmentComplete
     }
 
     private var bg: Color { theme.palette.base }   // same source as the path background
@@ -337,7 +361,11 @@ struct LessonView: View {
 
             if player.finished {
                 RewardView(player: player) {
-                    onComplete(player.lesson.node)
+                    if player.lesson.lessonType == "TEST_OUT" {
+                        onAssessmentComplete(player.correctCount, player.answeredCount)
+                    } else {
+                        onComplete(player.lesson.node)
+                    }
                 }
                 .transition(.opacity)
             } else {
@@ -395,6 +423,8 @@ struct LessonView: View {
         VStack(spacing: 0) {
             ScrollView {
                 VStack(alignment: .leading, spacing: 10) {
+                    if pagePlayer.lesson.lessonType == "BOSS_BATTLE" { bossBattleBadge }
+                    if pagePlayer.lesson.lessonType == "TEST_OUT" { testOutBadge }
                     if pagePlayer.isUnitTest { unitTestBadge }
                     if pagePlayer.screen.isPreviousMistake { retryBadge }
                     LessonScreenRouter(player: pagePlayer, ink: ink)
@@ -460,6 +490,23 @@ struct LessonView: View {
                 .font(Theme.font(13, .black)).textCase(.uppercase).tracking(0.5)
         }
         .foregroundColor(Color(hex: "#f87171"))
+    }
+
+    private var bossBattleBadge: some View {
+        Label("BOSS BATTLE", systemImage: "crown.fill")
+            .font(Theme.font(12, .black)).tracking(0.7)
+            .foregroundColor(.white)
+            .padding(.horizontal, 11).padding(.vertical, 7)
+            .background(Capsule().fill(Color(hex: "#7C3AED")))
+    }
+
+    private var testOutBadge: some View {
+        Label("TEST OUT", systemImage: "bolt.shield.fill")
+            .font(Theme.font(12, .black)).tracking(0.7)
+            .foregroundColor(.white)
+            .padding(.horizontal, 11).padding(.vertical, 7)
+            .background(Capsule().fill(Color(hex: "#2563EB")))
+            .overlay(Capsule().strokeBorder(Color(hex: "#FBBF24"), lineWidth: 2))
     }
 
     /// Marks the unit's final lesson as a review test over everything it taught.
@@ -539,7 +586,7 @@ struct LessonView: View {
 
     private func footer(for pagePlayer: LessonPlayer) -> some View {
         VStack(spacing: 0) {
-            if pagePlayer.isTestLesson {
+            if pagePlayer.isTestLesson && pagePlayer.lesson.lessonType != "TEST_OUT" {
                 Button("Skip →") { advanceQuestion() }
                     .font(Theme.font(13, .black))
                     .foregroundColor(Theme.muted)
@@ -547,7 +594,7 @@ struct LessonView: View {
                     .frame(maxWidth: .infinity, alignment: .trailing)
                     .padding(.horizontal, 20)
             }
-            if pagePlayer.revealed && !pagePlayer.isIntro {
+            if pagePlayer.revealed && !pagePlayer.isIntro && pagePlayer.lesson.lessonType != "TEST_OUT" {
                 // The feedback card carries its own WHY? / Got It / Continue
                 // buttons, so it replaces the primary button entirely.
                 FeedbackBanner(player: pagePlayer) { advanceQuestion() }
@@ -593,6 +640,9 @@ struct LessonView: View {
                 .disabled(!pagePlayer.canCheck)
                 .scaleEffect(checkReadyPulse ? 1.025 : 1)
                 .animation(.spring(response: 0.22, dampingFraction: 0.52), value: checkReadyPulse)
+        } else if pagePlayer.lesson.lessonType == "TEST_OUT" {
+            Button(pagePlayer.isLastScreen ? "Finish Assessment" : "Next Question") { advanceQuestion() }
+                .buttonStyle(Chunky3DStyle(fill: Color(hex: "#2563EB"), slab: Color(hex: "#B7791F")))
         } else {
             Button(pagePlayer.isLastScreen ? "Finish" : "Continue") { advanceQuestion() }
                 .buttonStyle(Chunky3DStyle(
@@ -786,6 +836,16 @@ struct RewardView: View {
     @State private var stage = 0
 
     private var ink: Color { scheme == .dark ? Theme.inkDark : Theme.ink }
+    private var isAssessment: Bool { player.lesson.lessonType == "TEST_OUT" }
+    private var passingScore: Int { Int(ceil(Double(player.lesson.screens.count) * 0.8)) }
+    private var assessmentPassed: Bool { player.correctCount >= passingScore }
+    private var assessmentSummary: String {
+        if assessmentPassed { return "\(player.correctCount)/\(player.answeredCount) correct · Test Out passed" }
+        let skills = player.missedSkills.sorted { $0.value > $1.value }.prefix(2)
+            .map { $0.key.replacingOccurrences(of: "_", with: " ").capitalized }
+        let review = skills.isEmpty ? "A few skills need work" : "Review: " + skills.joined(separator: " · ")
+        return "\(player.correctCount)/\(player.answeredCount) correct · \(review)"
+    }
 
     var body: some View {
         VStack(spacing: 22) {
@@ -794,7 +854,7 @@ struct RewardView: View {
                 Circle().fill(player.unit.main.opacity(0.15)).frame(width: 150, height: 150)
                     .scaleEffect(stage >= 1 ? 1.08 : 0.65)
                     .opacity(stage >= 1 ? 1 : 0)
-                Image(systemName: player.isUnitTest ? "crown.fill" : "checkmark.seal.fill")
+                Image(systemName: isAssessment ? (assessmentPassed ? "bolt.shield.fill" : "arrow.trianglehead.2.clockwise.rotate.90") : (player.isUnitTest ? "crown.fill" : "checkmark.seal.fill"))
                     .font(.system(size: 92, weight: .bold))
                     .foregroundColor(player.unit.main)
                     .rotationEffect(.degrees(stage >= 1 ? 0 : -14))
@@ -802,13 +862,13 @@ struct RewardView: View {
             }
             .opacity(stage >= 1 ? 1 : 0)
 
-            Text(player.isUnitTest ? "Unit Complete!" : "Lesson Complete!")
+            Text(isAssessment ? (assessmentPassed ? "UNIT MASTERED!" : "Almost there.") : (player.isUnitTest ? "Unit Complete!" : "Lesson Complete!"))
                 .font(Theme.font(28, .black))
                 .foregroundColor(ink)
                 .opacity(stage >= 2 ? 1 : 0)
                 .offset(y: stage >= 2 ? 0 : 12)
 
-            Text(player.lesson.celebration ?? "\(player.lesson.title) mastered")
+            Text(isAssessment ? assessmentSummary : (player.lesson.celebration ?? "\(player.lesson.title) mastered"))
                 .font(Theme.font(15, .semibold))
                 .foregroundColor(Theme.muted)
                 .multilineTextAlignment(.center)
@@ -817,7 +877,7 @@ struct RewardView: View {
                 .offset(y: stage >= 2 ? 0 : 10)
 
             HStack(spacing: 12) {
-                xpPill(text: player.isReplay ? "+25 XP" : "+100 XP")
+                if !isAssessment || assessmentPassed { xpPill(text: isAssessment ? "+100 XP" : (player.isReplay ? "+25 XP" : "+100 XP")) }
                 if treatsEarned > 0 { treatPill(value: treatsEarned) }
             }
             .opacity(stage >= 3 ? 1 : 0)
@@ -853,6 +913,7 @@ struct RewardView: View {
     // Treats earned this completion: 1 per new lesson, +3 more when it finishes
     // the whole unit (any unit size); replays award none.
     private var treatsEarned: Int {
+        if isAssessment { return 0 }
         guard !player.isReplay else { return 0 }
         return 1 + (player.unitBonusEligible ? 3 : 0)
     }

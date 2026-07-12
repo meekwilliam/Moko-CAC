@@ -11,10 +11,11 @@ struct Lesson: Decodable {
     let title: String
     let celebration: String?
     let featurePromo: String?
+    let lessonType: String?
     let screens: [LessonScreen]
 
     enum CodingKeys: String, CodingKey {
-        case node, title, celebration, screens
+        case node, title, celebration, screens, lessonType
         case featurePromo = "feature_promo"
     }
 }
@@ -41,6 +42,7 @@ struct IngredientOption: Decodable {
 struct LessonScreen: Decodable, Identifiable {
     let id = UUID()
     let type: String
+    let skillId: String?
 
     // Set when a missed question is re-queued, so the UI can flag it.
     var isPreviousMistake = false
@@ -113,7 +115,7 @@ struct LessonScreen: Decodable, Identifiable {
     let numberUnit: String?
 
     enum CodingKeys: String, CodingKey {
-        case type, text, question, explanation, options, pairs, template, blanks, direction, event, order
+        case type, text, question, explanation, options, pairs, template, blanks, direction, event, order, skillId
         case concern, items, chart, target, targets, level
         case levelKind = "level_kind"
         case targetStart = "target_start"
@@ -135,6 +137,7 @@ struct LessonScreen: Decodable, Identifiable {
     init(from decoder: Decoder) throws {
         let c = try decoder.container(keyedBy: CodingKeys.self)
         type = try c.decode(String.self, forKey: .type)
+        skillId = try c.decodeIfPresent(String.self, forKey: .skillId)
         screenTitle = try c.decodeIfPresent(String.self, forKey: .screenTitle)
         text = try c.decodeIfPresent(String.self, forKey: .text)
         chart = try c.decodeIfPresent(String.self, forKey: .chart)

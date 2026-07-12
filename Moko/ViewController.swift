@@ -9,6 +9,7 @@ class ViewController: UIViewController {
     private var appRouter = AppRouter()
     private var themeManager = ThemeManager()
     private var routerHost: UIHostingController<AppRouterView>?
+    private var activeTestOutUnit: Int?
 
     private var progress: ProgressStore { ProgressStore.shared }
 
@@ -56,6 +57,8 @@ class ViewController: UIViewController {
         routerHost = host
 
         appRouter.onOpenLesson = { [weak self] node in self?.openLesson(node: node) }
+        appRouter.onOpenTestOut = { [weak self] unit in self?.openTestOut(unit: unit) }
+        appRouter.onCompleteTestOut = { [weak self] correct, total in self?.completeTestOut(correct: correct, total: total) }
 
         appRouter.onSaveLessonProgress = { [weak self] screen in
             guard let node = self?.appRouter.currentLesson?.node else { return }
@@ -367,6 +370,51 @@ class ViewController: UIViewController {
     private func refreshPathState() {
         appRouter.pathStore?.update(completed: progress.completed, xp: progress.xp, treats: progress.treats,
                                     streak: progress.streak, inProgressNode: progress.inProgressNode)
+    }
+
+    private func openTestOut(unit: Int) {
+        let course = Game.course(progress.currentCourse)
+        guard let test = course.testOuts?.first(where: { $0.unitIndex == unit }) else { return }
+        let shuffled = test.questionPool.shuffled()
+        var screens: [LessonScreen] = []
+        var coveredSkills: Set<String> = []
+        for screen in shuffled {
+            let skill = screen.skillId ?? screen.type
+            if coveredSkills.insert(skill).inserted { screens.append(screen) }
+            if screens.count == test.questionCount { break }
+        }
+        if screens.count < test.questionCount {
+            for screen in shuffled where !screens.contains(where: { $0.id == screen.id }) {
+                screens.append(screen)
+                if screens.count == test.questionCount { break }
+            }
+        }
+        guard !screens.isEmpty else { return }
+        activeTestOutUnit = unit
+        let lesson = Lesson(node: -(unit + 1), title: "TEST OUT: \(course.sections[unit].title)",
+                            celebration: "Assessment complete.", featurePromo: nil,
+                            lessonType: "TEST_OUT", screens: screens)
+        appRouter.currentLessonIsReplay = false
+        appRouter.currentLessonUnitColor = (Color(hex: "#2563EB"), Color(hex: "#B7791F"))
+        appRouter.currentLessonBonusEligible = false
+        appRouter.currentLessonIsUnitTest = false
+        appRouter.isTestLesson = true
+        presentNativeLesson(lesson: lesson, startIndex: 0)
+    }
+
+    private func completeTestOut(correct: Int, total: Int) {
+        guard let unit = activeTestOutUnit else { return }
+        activeTestOutUnit = nil
+        let course = Game.course(progress.currentCourse)
+        guard let test = course.testOuts?.first(where: { $0.unitIndex == unit }) else { return }
+        if correct >= test.passingScore {
+            let nodes = course.nodes.filter { $0.sectionIndex == unit }.map(\.num).sorted()
+            // Unit 10's Final Boss remains required for full course mastery.
+            progress.recordTestOut(unit: unit, completedNodes: unit == 9 ? Array(nodes.dropLast()) : nodes)
+        }
+        appRouter.isTestLesson = false
+        refreshPathState()
+        withAnimation(.easeInOut(duration: 0.28)) { appRouter.currentScreen = .main }
     }
 
     private func openLesson(node: Int) {

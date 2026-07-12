@@ -19,6 +19,7 @@ final class ProgressStore: ObservableObject {
         var completed: [Int] = []
         var inProgressNode: Int? = nil
         var inProgressScreen: Int = 0
+        var testedOutUnits: [Int]? = nil
     }
 
     private struct Snapshot: Codable {
@@ -271,6 +272,16 @@ final class ProgressStore: ObservableObject {
         }
         cur = c
         return extendedStreakToday
+    }
+
+    func recordTestOut(unit: Int, completedNodes: [Int]) {
+        var c = cur
+        for node in completedNodes where !c.completed.contains(node) { c.completed.append(node) }
+        var tested = c.testedOutUnits ?? []
+        if !tested.contains(unit) { tested.append(unit) }
+        c.testedOutUnits = tested
+        s.xp += 100
+        cur = c
     }
 
     /// This calendar week (Monday–Sunday), each day flagged whether it counted
