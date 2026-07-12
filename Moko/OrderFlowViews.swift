@@ -828,6 +828,12 @@ struct OrderFlowSimulationView: View {
         switch screen.event {
         case "iceberg":
             return (["Price tests 101.25", "Price remains pinned at 101.25"], ["100 shown at the offer", "100 trades, then 100 reappears"], ["Buyer prints hit 101.25", "Repeated buys execute at one price"], ["Ask executions accumulate", "Large volume with little progress"])
+        case "chop":
+            return (["Price rotates inside a range", "Little net progress"], ["Bid and offer both replenish", "Depth stays two sided"], ["Buy and sell prints alternate", "Execution remains fast"], ["Heavy volume on both sides", "Delta stays near balanced"])
+        case "low_volume_trend":
+            return (["Price advances steadily", "Pullbacks stay shallow"], ["Opposing offers are sparse", "Few levels block progress"], ["Print pace stays measured", "Buyer prints remain persistent"], ["Modest positive delta", "Price responds efficiently"])
+        case "thin_risk":
+            return (["Quote starts at 101.20", "Fill lands at 101.35"], ["Small size near price", "Gaps between ask levels"], ["Spread widens", "Prints jump across prices"], ["Depth changes quickly", "Execution cost increases"])
         case "buyer_absorption":
             return (["Testing support below VWAP", "Holding support despite selling"], ["Large bid at 99.40", "Bid refreshes after repeated fills"], ["Selling pace increasing", "Fast seller initiated prints"], ["Bid volume dominates", "Negative delta with little decline"])
         case "sweep":

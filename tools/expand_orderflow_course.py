@@ -853,6 +853,9 @@ def visual_description(screen):
             "breakout": "Price approaches resistance, offers thin and are consumed, buyer initiated prints persist, stacked ask side execution appears, and price holds above the broken level.",
             "conflict": "Price rises above VWAP with positive delta and fast buyer prints, but a large offer refreshes and upward price progress begins fading.",
             "iceberg": "Level II repeatedly shows 100 shares at the offer. Each 100 share execution clears the display, then another 100 immediately reappears at the same price while Time and Sales keeps printing buys.",
+            "chop": "A range shows little net progress while Time and Sales alternates rapidly between buyers and sellers and the footprint displays heavy balanced execution on both sides.",
+            "low_volume_trend": "Price advances steadily as Level II shows sparse opposing offers, Time and Sales prints at a measured pace, and the footprint shows modest directional execution rather than a volume surge.",
+            "thin_risk": "Level II shows small nearby size with gaps, the spread widens during a market order, Time and Sales jumps across prices, and the simulated fill lands worse than the initial quote.",
             "championship": "A championship replay combines price and VWAP, changing Level II liquidity, Time and Sales, and footprint delta so the learner must weigh all four evidence sources.",
         }
         return scenarios.get(screen.get("event"), scenarios["championship"])
@@ -1564,16 +1567,57 @@ def condense_course(course):
         "Order Flow at VWAP & Moving Averages": ("Select the clues confirming the reference level held.", ["Execution defends the reference", "Price responds in the trend direction", "Price accepts through the reference", "Counter tape accelerates"]),
         "Confirmation & Continuation Challenge": ("Select the strongest continuation evidence.", ["Structure holds under the pullback", "Renewed trend pressure moves price", "One fast print appears", "The latest candle matches the trend"]),
     }
+    challenge_prompt_overrides = {
+        ("Footprint & Momentum Challenge", "What's the best footprint read?"): "How do the footprint rows combine into one directional read?",
+        ("Footprint & Momentum Challenge", "Tap the row where buyer pressure concentrates."): "Tap where sustained buyer pressure is most concentrated.",
+        ("Footprint & Momentum Challenge", "Tap where directional pressure disappears."): "Tap where the prior directional footprint loses control.",
+        ("Footprint & Momentum Challenge", "Tap the execution clue opposing price."): "Tap the footprint row that most clearly conflicts with price.",
+        ("Footprint & Momentum Challenge", "What best connects the evidence?"): "Which interpretation best combines delta with price response?",
+        ("Footprint & Momentum Challenge", "Which conclusion fits the response?"): "Which momentum conclusion best fits this new response?",
+        ("Footprint & Momentum Challenge", "What does the response suggest?"): "What does the changing response imply about momentum?",
+        ("Liquidity Challenge", "What does the evidence support?"): "Which liquidity conclusion is best supported by the full setup?",
+        ("Liquidity Challenge", "Which read needs fewer assumptions?"): "Which sweep interpretation needs fewer assumptions here?",
+        ("Liquidity Challenge", "What matters most here?"): "Which liquidity behavior carries the most weight?",
+        ("Liquidity Challenge", "Build the read."): "Order the liquidity evidence from location to response.",
+        ("Liquidity Challenge", "Match each clue."): "Match each liquidity clue with the behavior it supports.",
+        ("Breakout Challenge", "Select the clues showing price accepted above resistance."): "Select the clues showing trade became established beyond the level.",
+        ("Breakout Challenge", "Which replay traps breakout buyers?"): "Which replay turns the initial break into a buyer trap?",
+        ("Breakout Challenge", "Which replay shows a defended break?"): "Which replay survives the deeper retest?",
+        ("Breakout Challenge", "Which price behavior supports the read?"): "Which evolving price response confirms acceptance?",
+        ("Breakout Challenge", "What changed in price response?"): "Where does breakout follow through begin to fail?",
+        ("Breakout Challenge", "Tap the clearest price response."): "Tap the candle that best confirms the order flow response.",
+        ("Confirmation & Continuation Challenge", "Select the two strongest clues."): "Select the two clues that survive the mixed continuation test.",
+        ("Confirmation & Continuation Challenge", "How should this be interpreted?"): "Which interpretation best resolves the mixed continuation evidence?",
+        ("Confirmation & Continuation Challenge", "Mark the structure that provides location for the order flow read."): "Connect the structural anchors relevant to this continuation read.",
+        ("Confirmation & Continuation Challenge", "What matters most here?"): "Which continuation evidence should carry the most weight?",
+        ("Confirmation & Continuation Challenge", "Which price behavior supports the read?"): "Which live response confirms that trend pressure returned?",
+        ("Confirmation & Continuation Challenge", "Match each clue."): "Match each continuation clue with the conclusion it supports.",
+    }
+
+    order_book_challenge = [
+        {"type": "multiple_choice", "question": "What does Level II add to the inside bid and ask?", "options": ["Resting depth across multiple price levels", "Only the last completed trade", "Guaranteed future orders"], "correct": 0, "explanation": "Level II adds visible resting depth from the relevant feed."},
+        {"type": "book_compare", "question": "Which book has thinner nearby depth?", "options": ["Book B", "Book A", "Both are equal"], "correct": 0, "explanation": "Book B has smaller size and gaps near price."},
+        {"type": "book_drag", "order": "market_sell", "question": "Route the market sell to its fill side.", "explanation": "A market sell executes against the bid."},
+        {"type": "replay_compare", "event": "wall_challenge", "question": "Which replay shows a wall holding rather than pulling?", "options": ["Replay A", "Replay B", "Neither"], "correct": 0, "explanation": "Replay A trades, replenishes, and holds price."},
+        {"type": "aggressor", "event": "lift", "question": "Offers are being consumed. Who is aggressive?", "explanation": "Buyers are lifting the offer."},
+        {"type": "evidence_select", "question": "Select the three parts of a complete book read.", "options": ["Aggressor activity", "Resting liquidity behavior", "Price response", "Candle color alone"], "targets": [0, 1, 2], "explanation": "A complete read combines action, liquidity, and response."},
+        {"type": "orderflow_sim", "event": "seller_absorption", "question": "Buyers stay aggressive, the offer refreshes, and price stalls. What's strongest?", "options": ["Possible seller absorption", "Confirmed breakout acceptance", "Buyer exhaustion is proven"], "correct": 0, "explanation": "Buying remains active but the refreshing offer prevents progress."},
+    ]
     node = 1
     for section_index, specs in enumerate(structures):
         for title, sources, target in specs:
             screens = select_screens(sources, target)
+            if title == "Order Book Challenge":
+                screens = [dict(screen) for screen in order_book_challenge]
             if "Challenge" in title:
                 for screen in screens:
-                    if screen.get("question"):
-                        screen["question"] = f"{title} scenario: {screen['question']}"
+                    override = challenge_prompt_overrides.get((title, screen.get("question")))
+                    if override:
+                        screen["question"] = override
                     if screen["type"] == "replay_compare":
-                        screen["event"] = (screen.get("event") or "acceptance") + "_challenge"
+                        event = screen.get("event") or "acceptance"
+                        if not event.endswith("_challenge"):
+                            screen["event"] = event + "_challenge"
             if title == "What Is Order Flow?":
                 replacement = evidence("Select the three parts of a complete order flow read.",
                                        ["Aggressor activity", "Available liquidity", "Price response", "Candle color alone"],
@@ -1591,6 +1635,61 @@ def condense_course(course):
                                        "explanation": "Continuation needs lesson specific structure and confirming execution."})
             minimum = 4 if "Practice Replay" in title else 5
             screens = extend_short_lesson(title, screens, minimum)
+
+            # Every scored conclusion must expose the order flow evidence it
+            # depends on rather than asking a candle chart to imply hidden data.
+            if title == "What Is Absorption?":
+                for index, screen in enumerate(screens):
+                    if screen["type"] == "multiple_choice" and screen.get("chart") == "sideways":
+                        screens[index] = {"type": "replay_compare", "event": "absorption_challenge",
+                                          "question": "Which replay shows pressure being absorbed?",
+                                          "options": ["Replay A", "Replay B", "Neither"], "correct": 0,
+                                          "explanation": "Replay A keeps aggression active while replenishment prevents progress."}
+            if title == "Reading Footprints & Imbalances":
+                duplicate_seen = False
+                for screen in screens:
+                    if screen.get("question") == "What comparison defines the imbalance?":
+                        if duplicate_seen:
+                            screen.update({"question": "Why isn't the largest same price difference automatically a diagonal imbalance?",
+                                           "options": ["A conventional imbalance compares diagonally adjacent executions by ratio", "The largest cell always determines direction", "Only total candle volume matters"],
+                                           "correct": 0,
+                                           "explanation": "Diagonal imbalance uses adjacent prices and a defined ratio rather than one same price difference."})
+                            screen.pop("chart", None)
+                        duplicate_seen = True
+                for index, screen in enumerate(screens):
+                    if screen["type"] == "multiple_choice" and screen.get("chart") == "sideways":
+                        screens[index] = {"type": "footprint", "event": "balanced",
+                                          "question": "What information does this balanced footprint provide?",
+                                          "options": ["Executed bid and ask volume at each price", "Resting orders that have not traded", "Only the candle's final direction"],
+                                          "correct": 0,
+                                          "explanation": "A footprint displays completed executions separated by side and price."}
+            if title == "Positive vs. Negative Delta Divergence":
+                replacements = [
+                    {"type": "footprint", "event": "delta_positive", "question": "Price falls while footprint delta remains positive. What's strongest?", "options": ["Possible seller absorption or trapped buyers", "Positive delta guarantees higher prices", "The footprint should be ignored"], "correct": 0, "explanation": "Aggressive buying is failing to produce the expected upward response."},
+                    {"type": "footprint", "event": "delta_negative", "question": "Price rises while footprint delta remains negative. What's strongest?", "options": ["Possible buyer absorption or trapped sellers", "Negative delta guarantees lower prices", "Price and execution cannot disagree"], "correct": 0, "explanation": "Aggressive selling is failing to produce the expected downward response."},
+                ]
+                replacement_index = 0
+                for index, screen in enumerate(screens):
+                    if screen["type"] == "multiple_choice" and screen.get("chart") in {"bearishEngulfing", "bullishEngulfing"}:
+                        screens[index] = replacements[replacement_index]
+                        replacement_index += 1
+                    elif screen["type"] == "sequence_builder" and screen.get("chart"):
+                        screens[index] = {"type": "sequence_builder", "question": "Build the divergence reading process.",
+                                          "items": ["Measure executed delta", "Compare the price response", "Inspect location and liquidity", "Form the divergence hypothesis"],
+                                          "correct_order": ["Measure executed delta", "Compare the price response", "Inspect location and liquidity", "Form the divergence hypothesis"],
+                                          "explanation": "Divergence starts by comparing executed pressure with the response it actually produced."}
+            if title == "Volume Context: Chop vs. Low Volume Trend":
+                for index, screen in enumerate(screens):
+                    if screen["type"] == "multiple_choice" and screen.get("chart") == "range":
+                        screens[index] = {"type": "orderflow_sim", "event": "chop", "question": "Heavy two sided execution produces little price progress. What's strongest?", "options": ["Possible high volume chop", "Clean directional momentum", "No meaningful trading occurred"], "correct": 0, "explanation": "High execution volume without directional progress can reflect two sided absorption."}
+                    elif screen["type"] == "multiple_choice" and screen.get("chart") == "ascendingChannel":
+                        screens[index] = {"type": "orderflow_sim", "event": "low_volume_trend", "question": "Price trends steadily while the opposing book stays thin. What's strongest?", "options": ["Thin opposition can allow a low volume trend", "High volume is required for every trend", "The tape proves absorption"], "correct": 0, "explanation": "Price can travel efficiently when little liquidity opposes it."}
+            if title == "Slippage & Thin Liquidity Risk":
+                for index, screen in enumerate(screens):
+                    if screen["type"] == "multiple_choice" and screen.get("chart") == "bandsWidening":
+                        screens[index] = {"type": "book_compare", "question": "Which book requires more cautious risk sizing?", "options": ["Book B", "Book A", "Both equally"], "correct": 0, "explanation": "Thin, unstable depth can increase execution risk."}
+                    elif screen["type"] == "multiple_choice" and screen.get("chart") == "volatile":
+                        screens[index] = {"type": "orderflow_sim", "event": "thin_risk", "question": "Nearby depth is sparse and the spread widens during execution. What's strongest?", "options": ["Slippage risk is elevated", "The fill price is guaranteed", "Delta removes execution risk"], "correct": 0, "explanation": "Sparse depth and a widening spread can move the fill away from the intended price."}
             new_nodes.append({"num": node, "svg": NODE_SVGS[section_index % len(NODE_SVGS)],
                               "title": title, "sectionIndex": section_index})
             new_lessons.append({"node": node, "title": title, "celebration": title + " complete.",
@@ -1811,6 +1910,12 @@ def add_skill_tags_and_test_outs(course):
             "u1.order_price_chain": {"market_sequence"},
             "u1.combined_read": {"evidence_synthesis"},
         }
+        preferred_questions = {
+            "u1.aggressive_buyer": "Offers are getting eaten.",
+            "u1.aggressive_seller": "Bids are getting eaten.",
+            "u1.market_buy_routing": "Market buy.",
+            "u1.market_sell_routing": "Market sell.",
+        }
         # Each competency maps to questions from the lesson that actually teaches
         # it. Keep two candidates per slot so attempts vary without relabeling an
         # unrelated question as a different skill.
@@ -1818,6 +1923,9 @@ def add_skill_tags_and_test_outs(course):
             candidates = [question for question in pools[index] if question["sourceLesson"] == source_title]
             if competency in preferred_skills:
                 candidates = [question for question in candidates if question["skillId"] in preferred_skills[competency]]
+            if competency in preferred_questions:
+                candidates = [question for question in candidates
+                              if preferred_questions[competency] in question.get("question", "")]
             if not candidates:
                 raise AssertionError(f"No assessment questions for {competency} from {source_title}")
             start = source_offsets.get(source_title, 0)
