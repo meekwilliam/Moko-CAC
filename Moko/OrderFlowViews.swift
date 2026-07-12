@@ -823,6 +823,12 @@ struct OrderFlowSimulationView: View {
                 evidenceRow(icon: "list.bullet.rectangle", title: "LEVEL II", value: evidence.book[phase > 1 ? 1 : 0], tint: askColor)
                 evidenceRow(icon: "bolt.fill", title: "TIME & SALES", value: evidence.tape[phase > 2 ? 1 : 0], tint: bidColor)
                 evidenceRow(icon: "square.grid.3x3.fill", title: "FOOTPRINT", value: evidence.footprint[phase > 3 ? 1 : 0], tint: .orange)
+                if screen.footprintPreview == true {
+                    Text("EXTRA PREVIEW  Delta compares aggressive buying with selling. This clue is supplemental and is taught in Unit 5.")
+                        .font(Theme.font(9, .bold)).foregroundColor(.orange)
+                        .multilineTextAlignment(.leading).frame(maxWidth: .infinity, alignment: .leading)
+                        .padding(.horizontal, 5).padding(.top, 3)
+                }
             }
             .padding(10)
             .background(RoundedRectangle(cornerRadius: 16).fill(Color.black.opacity(0.24)))

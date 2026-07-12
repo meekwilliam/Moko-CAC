@@ -866,7 +866,10 @@ def visual_description(screen):
             "exit_liquidity": "Price approaches resistance while Level II shows concentrated opposing ask depth, Time and Sales remains active, and the chart identifies the planned exit area without guaranteeing the displayed liquidity will remain.",
             "championship": "A championship replay combines price and VWAP, changing Level II liquidity, Time and Sales, and footprint delta so the learner must weigh all four evidence sources.",
         }
-        return scenarios.get(screen.get("event"), scenarios["championship"])
+        description = scenarios.get(screen.get("event"), scenarios["championship"])
+        if screen.get("footprintPreview"):
+            description += " A preview label explains that delta compares aggressive buying with selling, is supplemental here, and will be taught in Unit 5."
+        return description
     if kind == "tap_candle":
         return chart_copy + " The candles are tappable and the learner must select the requested candle."
     if kind == "draw_trendline":
@@ -2039,6 +2042,8 @@ def apply_remaining_fix_list(course):
     # Delta questions must display both execution pressure and price response.
     update(33, 2, question="How do volume and delta differ?",
            explanation="Volume totals executed activity while delta nets aggressive buying against aggressive selling.")
+    update(33, 5, question="What does net aggression compare?",
+           explanation="Net aggression compares aggressive buying with aggressive selling.")
     replace(34, 1, {"type": "orderflow_sim", "event": "seller_absorption",
                     "question": "Positive delta builds while price stalls at resistance. What best explains the disagreement?",
                     "options": ["Possible seller absorption or trapped buyers", "Positive delta guarantees delayed upside", "The price response should be ignored"],
@@ -2047,6 +2052,9 @@ def apply_remaining_fix_list(course):
                     "question": "Positive execution pressure grows while upward price progress fades. What's strongest?",
                     "options": ["Price and pressure disagreement warns of weakness", "Positive delta confirms continuation", "The refreshing offer is irrelevant"],
                     "correct": 0, "explanation": "The multi source view makes the execution and price contradiction visible."})
+    update(35, 2, question="Rising price is shown beside this footprint. Tap the negative delta row opposing it.",
+           explanation="The selected negative delta row conflicts with the stated rising price context.")
+    update(35, 3, question="What does price pressure disagreement suggest?")
     update(36, 5, question="Rising price is shown beside this footprint. Tap the negative delta row that conflicts with it.",
            explanation="The selected row shows aggressive selling even as price rises.")
     update(36, 6, options=["Delta matters most when price produces the expected response",
@@ -2102,6 +2110,9 @@ def apply_remaining_fix_list(course):
     replace(64, 1, {"type": "orderflow_sim", "event": "seller_loses_control", "question": "What changed in control?",
                     "options": ["Seller aggression stopped moving price and buyer pressure emerged", "Seller control strengthened through support", "One opposing print guaranteed reversal"],
                     "correct": 0, "explanation": "The sequence shows selling, stalled downside progress, fading seller pace, and an opposing response."})
+    replace(64, 3, {"type": "orderflow_sim", "event": "seller_loses_control", "question": "Which reversal read is best supported?",
+                    "options": ["A visible control change is developing", "The bullish candle alone confirms reversal", "Seller aggression guarantees continuation"],
+                    "correct": 0, "explanation": "Tape, liquidity, and price response show the prior side losing control and opposition emerging."})
     replace(65, 1, {"type": "orderflow_sim", "event": "sweep", "question": "What shows buyers became trapped?",
                     "options": ["Buying above resistance fails and price returns below", "Buyer prints appear above resistance", "Positive delta remains visible"],
                     "correct": 0, "explanation": "The attempted break fails to hold and reverses back below the level."})
@@ -2135,10 +2146,22 @@ def apply_remaining_fix_list(course):
     replace(68, 4, {"type": "replay_compare", "event": "double_bottom_flow", "question": "What changes on the second low test?",
                     "options": ["Buyer response strengthens", "Seller acceptance strengthens", "Execution remains identical"], "correct": 0,
                     "explanation": "The comparison shows stronger buyer response on the retest."})
+    replace(68, 5, {"type": "replay_compare", "event": "double_top_flow", "question": "What is the strongest conclusion from both high tests?",
+                    "options": ["Repeated failure with weaker buying can shift control toward sellers", "The double top shape confirms a reversal by itself", "Both tests show identical buyer pressure"],
+                    "correct": 0, "explanation": "The comparison shows weaker buying, stronger seller response, and failed acceptance on the second test."})
+    replace(68, 6, {"type": "replay_compare", "event": "double_bottom_flow", "question": "What is the strongest conclusion from both low tests?",
+                    "options": ["Repeated failure with weaker selling can shift control toward buyers", "The double bottom shape confirms a reversal by itself", "Both tests show identical seller pressure"],
+                    "correct": 0, "explanation": "The comparison shows weaker selling, stronger buyer response, and a reclaim on the second test."})
     for question, prompt in [(1, "What confirms the reversal?"), (4, "What completes the reversal read?"), (6, "What verifies that aggressive control changed?")]:
         replace(69, question, {"type": "orderflow_sim", "event": "seller_loses_control", "question": prompt,
                                "options": ["The prior side stalls, opposing pressure strengthens, and price responds", "One opposing print appears", "A candle pattern forms without execution confirmation"],
                                "correct": 0, "explanation": "The full transition from prior control to opposing follow through is visible."})
+    replace(69, 5, {"type": "orderflow_sim", "event": "seller_loses_control", "question": "Which reversal entry needs fewer assumptions?",
+                    "options": ["Waiting for control change and confirming price response", "Entering from the candle pattern alone", "Entering after one opposing print"],
+                    "correct": 0, "explanation": "Visible execution and price confirmation reduce reliance on pattern assumptions."})
+    replace(69, 7, {"type": "orderflow_sim", "event": "seller_loses_control", "question": "What matters most before treating this as a reversal?",
+                    "options": ["Control change and confirming price response", "The chart structure alone", "One large opposing execution"],
+                    "correct": 0, "explanation": "A reversal requires the prior side to lose control and the opposing side to produce a confirming response."})
     update(70, 1, question="Which replay creates the buyer trap in Boss Battle: Trap or Reversal?")
     replace(70, 5, {"type": "replay_compare", "event": "double_top_flow", "question": "What matters on the second high test?",
                     "options": ["Replay B shows weaker buying and stronger defense", "The double top shape alone", "Both tests have the same execution"],
@@ -2158,6 +2181,17 @@ def apply_remaining_fix_list(course):
     update(75, 3, question="Mark the area where opposing liquidity may be expected.",
            explanation="The chart marks a potential exit area near resistance, not directly observed resting orders.")
 
+    # Delta appears before its formal Unit 5 lesson only as clearly labeled,
+    # nonessential context. Questions and correct answers remain solvable from
+    # price, book, and tape evidence already taught in Units 1 through 4.
+    node_sections = {node["num"]: node["sectionIndex"] for node in course["nodes"]}
+    for lesson in course["lessons"]:
+        if node_sections[lesson["node"]] >= 4:
+            continue
+        for item in lesson["screens"]:
+            if item["type"] == "orderflow_sim":
+                item["footprintPreview"] = True
+
 
 def validate_remaining_fix_list(course):
     """Regression checks for the final review's named evidence defects."""
@@ -2169,6 +2203,13 @@ def validate_remaining_fix_list(course):
     assert screen(62, 7).get("direction") == "sideways" and "fails to confirm" in screen(62, 7)["question"]
     assert screen(71, 4)["type"] == "multiple_choice" and "order" in screen(71, 4)["question"]
     assert screen(75, 1).get("event") == "exit_liquidity"
+    assert screen(33, 5)["question"] == "What does net aggression compare?"
+    assert screen(35, 2)["question"].startswith("Rising price is shown")
+    assert screen(35, 3)["question"] == "What does price pressure disagreement suggest?"
+    for node, question in [(64, 3), (69, 5), (69, 7)]:
+        assert screen(node, question)["type"] == "orderflow_sim"
+    for node, question in [(68, 5), (68, 6)]:
+        assert screen(node, question)["type"] == "replay_compare"
     # Before formal footprint instruction, footprint data may be supplemental
     # inside simulations but cannot be necessary to answer a scored prompt.
     node_sections = {node["num"]: node["sectionIndex"] for node in course["nodes"]}
@@ -2180,6 +2221,8 @@ def validate_remaining_fix_list(course):
             required = f"{item.get('question', '')} {correct}".lower()
             if re.search(r"\b(footprint|delta|stacked imbalance)\b", required):
                 raise AssertionError(f"Early footprint evidence is required in node {lesson['node']}: {item.get('question')}")
+            if item["type"] == "orderflow_sim" and item.get("footprintPreview") is not True:
+                raise AssertionError(f"Early simulation lacks supplemental delta preview in node {lesson['node']}")
 
 
 def validate_test_out_semantics(course):
