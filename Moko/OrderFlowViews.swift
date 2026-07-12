@@ -444,6 +444,8 @@ struct ReplayCompareView: View {
 
     private var replayRows: (a: [String], b: [String]) {
         switch player.screen.event {
+        case "cvd_divergence":
+            return (["Price makes new high", "CVD makes lower high", "Pressure disagrees"], ["Price advances", "CVD advances", "Pressure agrees"])
         case "wall":
             return (["Large bid is hit", "Bid replenishes", "Price holds"], ["Large bid appears", "Bid gets pulled", "Price falls through"])
         case "sweep":
@@ -811,6 +813,146 @@ struct FootprintQuestionView: View {
     }
 }
 
+// MARK: - Cumulative Volume Delta
+
+struct CVDChartQuestionView: View {
+    @ObservedObject var player: LessonPlayer
+    var ink: Color
+
+    var body: some View {
+        VStack(alignment: .leading, spacing: 14) {
+            Text(player.screen.question ?? "Read price and CVD.")
+                .font(Theme.questionFont(21, .heavy)).foregroundColor(ink)
+
+            VStack(alignment: .leading, spacing: 8) {
+                Text("PRICE").font(Theme.font(9, .black)).foregroundColor(Theme.muted)
+                HStack(alignment: .bottom, spacing: 7) {
+                    ForEach(Array([28.0, 37.0, 32.0, 46.0, 42.0, 55.0, 61.0].enumerated()), id: \.offset) { index, height in
+                        RoundedRectangle(cornerRadius: 3)
+                            .fill(index.isMultiple(of: 3) ? askColor.opacity(0.85) : bidColor.opacity(0.85))
+                            .frame(maxWidth: .infinity).frame(height: height)
+                    }
+                }
+                .frame(height: 65, alignment: .bottom)
+
+                Divider().overlay(Theme.surfaceBorder)
+                Text("CUMULATIVE VOLUME DELTA").font(Theme.font(9, .black)).foregroundColor(Theme.muted)
+                GeometryReader { proxy in
+                    let points: [CGFloat] = [0.76, 0.67, 0.70, 0.51, 0.43, 0.28, 0.16]
+                    Path { path in
+                        for (index, value) in points.enumerated() {
+                            let x = proxy.size.width * CGFloat(index) / CGFloat(points.count - 1)
+                            let y = proxy.size.height * value
+                            if index == 0 { path.move(to: CGPoint(x: x, y: y)) }
+                            else { path.addLine(to: CGPoint(x: x, y: y)) }
+                        }
+                    }
+                    .stroke(Color.cyan, style: StrokeStyle(lineWidth: 4, lineCap: .round, lineJoin: .round))
+                }
+                .frame(height: 72)
+            }
+            .padding(14)
+            .background(RoundedRectangle(cornerRadius: 16).fill(Color.black.opacity(0.24)))
+            .overlay(RoundedRectangle(cornerRadius: 16).strokeBorder(Color.cyan.opacity(0.45), lineWidth: 1.5))
+
+            VStack(spacing: 9) {
+                ForEach(Array(player.currentOptions.enumerated()), id: \.offset) { index, label in
+                    OFOption(player: player, index: index, label: label, ink: ink)
+                }
+            }
+        }
+    }
+}
+
+// MARK: - Volume Profile
+
+struct VolumeProfileQuestionView: View {
+    @ObservedObject var player: LessonPlayer
+    var ink: Color
+    private let volumes = [34, 58, 92, 160, 124, 68, 25]
+    private let prices = [101.50, 101.25, 101.00, 100.75, 100.50, 100.25, 100.00]
+
+    private var screen: LessonScreen { player.screen }
+
+    var body: some View {
+        VStack(alignment: .leading, spacing: 14) {
+            Text(screen.question ?? "Read the Volume Profile.")
+                .font(Theme.questionFont(21, .heavy)).foregroundColor(ink)
+
+            VStack(spacing: 5) {
+                HStack {
+                    Text("PRICE").frame(width: 64, alignment: .leading)
+                    Text("EXECUTED VOLUME").frame(maxWidth: .infinity, alignment: .leading)
+                }
+                .font(Theme.font(9, .black)).foregroundColor(Theme.muted)
+
+                ForEach(volumes.indices, id: \.self) { index in
+                    HStack(spacing: 8) {
+                        Text(String(format: "%.2f", prices[index]))
+                            .font(Theme.font(11, .heavy)).foregroundColor(ink).frame(width: 64, alignment: .leading)
+                        GeometryReader { proxy in
+                            RoundedRectangle(cornerRadius: 5)
+                                .fill(barColor(index))
+                                .frame(width: max(12, proxy.size.width * CGFloat(volumes[index]) / 160))
+                        }
+                        .frame(height: 23)
+                        if index == 3 {
+                            Text("POC").font(Theme.font(8, .black)).foregroundColor(.cyan).frame(width: 28)
+                        } else {
+                            Color.clear.frame(width: 28, height: 1)
+                        }
+                    }
+                    .padding(.vertical, 3).padding(.horizontal, 5)
+                    .background(RoundedRectangle(cornerRadius: 8).fill(rowBackground(index)))
+                    .overlay(RoundedRectangle(cornerRadius: 8).strokeBorder(rowBorder(index), lineWidth: rowBorderWidth(index)))
+                    .contentShape(Rectangle())
+                    .onTapGesture {
+                        guard screen.type == "volume_profile_tap", !player.revealed else { return }
+                        Haptics.selection()
+                        player.selectedIndex = index
+                    }
+                }
+            }
+            .padding(12)
+            .background(RoundedRectangle(cornerRadius: 16).fill(Color.black.opacity(0.24)))
+            .overlay(RoundedRectangle(cornerRadius: 16).strokeBorder(Color.cyan.opacity(0.42), lineWidth: 1.5))
+
+            if screen.type == "volume_profile_tap" {
+                Label("Tap the price row that answers the question", systemImage: "hand.tap.fill")
+                    .font(Theme.font(12, .bold)).foregroundColor(Theme.muted)
+            } else {
+                VStack(spacing: 9) {
+                    ForEach(Array(player.currentOptions.enumerated()), id: \.offset) { index, label in
+                        OFOption(player: player, index: index, label: label, ink: ink)
+                    }
+                }
+            }
+        }
+    }
+
+    private func barColor(_ index: Int) -> Color {
+        if screen.event == "lvn" && (index == 0 || index == 6) { return Color.purple.opacity(0.35) }
+        return index == 3 ? Color.cyan.opacity(0.85) : Color.purple.opacity(0.62)
+    }
+
+    private func rowBackground(_ index: Int) -> Color {
+        if index == player.selectedIndex { return Theme.answer.opacity(0.14) }
+        if screen.event == "value_area" && (2...4).contains(index) { return Color.cyan.opacity(0.08) }
+        return .clear
+    }
+
+    private func rowBorder(_ index: Int) -> Color {
+        if player.revealed && index == screen.target { return bidColor }
+        if player.revealed && index == player.selectedIndex { return askColor }
+        if index == player.selectedIndex { return Theme.answer }
+        return .clear
+    }
+
+    private func rowBorderWidth(_ index: Int) -> CGFloat {
+        index == player.selectedIndex || (player.revealed && index == screen.target) ? 2 : 0
+    }
+}
+
 // MARK: - Comprehensive order flow simulation
 
 /// A compact boss screen that puts several sources of evidence in one market
@@ -861,6 +1003,8 @@ struct OrderFlowSimulationView: View {
 
     private var evidence: (price: [String], book: [String], tape: [String], footprint: [String]) {
         switch screen.event {
+        case "volume_profile_context":
+            return (["Price reaches a high volume node", "Upward progress stalls"], ["Offers sit near the profile node", "Nearby offers replenish"], ["Buyer prints remain visible", "Buyer pace begins slowing"], ["Executed volume is elevated", "Buying no longer moves price efficiently"])
         case "iceberg":
             return (["Price tests 101.25", "Price remains pinned at 101.25"], ["100 shown at the offer", "100 trades, then 100 reappears"], ["Buyer prints hit 101.25", "Repeated buys execute at one price"], ["Ask executions accumulate", "Large volume with little progress"])
         case "chop":

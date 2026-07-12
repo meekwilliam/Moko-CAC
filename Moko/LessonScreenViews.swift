@@ -211,6 +211,10 @@ struct LessonScreenRouter: View {
             FootprintQuestionView(player: player, ink: ink)
         case "footprint_tap":
             FootprintQuestionView(player: player, ink: ink)
+        case "cvd_chart":
+            CVDChartQuestionView(player: player, ink: ink)
+        case "volume_profile", "volume_profile_tap":
+            VolumeProfileQuestionView(player: player, ink: ink)
         case "orderflow_sim":
             OrderFlowSimulationView(player: player, ink: ink)
         default:

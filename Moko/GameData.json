@@ -76,8 +76,8 @@
      "unitId": "orderflow_5",
      "difficulty": "advanced",
      "testOutEnabled": true,
-     "testOutQuestionCount": 10,
-     "testOutPassingScore": 8,
+     "testOutQuestionCount": 11,
+     "testOutPassingScore": 9,
      "bossLessonId": "orderflow_5_boss",
      "finalBossRequiredForCourseMastery": false
     },
@@ -121,8 +121,8 @@
      "unitId": "orderflow_8",
      "difficulty": "advanced",
      "testOutEnabled": true,
-     "testOutQuestionCount": 10,
-     "testOutPassingScore": 8,
+     "testOutQuestionCount": 11,
+     "testOutPassingScore": 9,
      "bossLessonId": "orderflow_8_boss",
      "finalBossRequiredForCourseMastery": false
     },
@@ -191,7 +191,7 @@
     {
      "num": 6,
      "svg": "<svg viewBox=\"0 0 32 32\" fill=\"white\"><path d=\"M16 4 L27 16 L16 28 L5 16 Z\"/></svg>",
-     "title": "Reading the Order Book",
+     "title": "Reading the Order Book & DOM",
      "sectionIndex": 1
     },
     {
@@ -353,7 +353,7 @@
     {
      "num": 33,
      "svg": "<svg viewBox=\"0 0 32 32\" fill=\"white\"><circle cx=\"16\" cy=\"16\" r=\"9\"/></svg>",
-     "title": "Delta vs. Volume",
+     "title": "Delta, Volume & CVD",
      "sectionIndex": 4
     },
     {
@@ -533,89 +533,95 @@
     {
      "num": 63,
      "svg": "<svg viewBox=\"0 0 32 32\" fill=\"white\"><rect x=\"6\" y=\"8\" width=\"20\" height=\"4\" rx=\"2\"/><rect x=\"6\" y=\"15\" width=\"15\" height=\"4\" rx=\"2\"/><rect x=\"6\" y=\"22\" width=\"10\" height=\"4\" rx=\"2\"/></svg>",
-     "title": "Boss Battle: Continue, Fail, or Wait?",
+     "title": "Volume Profile & Key Trading Zones",
      "sectionIndex": 7
     },
     {
      "num": 64,
+     "svg": "<svg viewBox=\"0 0 32 32\" fill=\"white\"><rect x=\"6\" y=\"8\" width=\"20\" height=\"4\" rx=\"2\"/><rect x=\"6\" y=\"15\" width=\"15\" height=\"4\" rx=\"2\"/><rect x=\"6\" y=\"22\" width=\"10\" height=\"4\" rx=\"2\"/></svg>",
+     "title": "Boss Battle: Continue, Fail, or Wait?",
+     "sectionIndex": 7
+    },
+    {
+     "num": 65,
      "svg": "<svg viewBox=\"0 0 32 32\" fill=\"white\"><circle cx=\"16\" cy=\"16\" r=\"9\"/></svg>",
      "title": "Reversal Pressure",
      "sectionIndex": 8
     },
     {
-     "num": 65,
+     "num": 66,
      "svg": "<svg viewBox=\"0 0 32 32\" fill=\"white\"><circle cx=\"16\" cy=\"16\" r=\"9\"/></svg>",
      "title": "Buyer Traps vs. Seller Traps",
      "sectionIndex": 8
     },
     {
-     "num": 66,
+     "num": 67,
      "svg": "<svg viewBox=\"0 0 32 32\" fill=\"white\"><circle cx=\"16\" cy=\"16\" r=\"9\"/></svg>",
      "title": "Exhaustion Reversals",
      "sectionIndex": 8
     },
     {
-     "num": 67,
+     "num": 68,
      "svg": "<svg viewBox=\"0 0 32 32\" fill=\"white\"><circle cx=\"16\" cy=\"16\" r=\"9\"/></svg>",
      "title": "Absorption Reversals",
      "sectionIndex": 8
     },
     {
-     "num": 68,
+     "num": 69,
      "svg": "<svg viewBox=\"0 0 32 32\" fill=\"white\"><circle cx=\"16\" cy=\"16\" r=\"9\"/></svg>",
      "title": "Double Top vs. Double Bottom Flow",
      "sectionIndex": 8
     },
     {
-     "num": 69,
+     "num": 70,
      "svg": "<svg viewBox=\"0 0 32 32\" fill=\"white\"><circle cx=\"16\" cy=\"16\" r=\"9\"/></svg>",
      "title": "Reversal Confirmation & Insufficient Evidence",
      "sectionIndex": 8
     },
     {
-     "num": 70,
+     "num": 71,
      "svg": "<svg viewBox=\"0 0 32 32\" fill=\"white\"><circle cx=\"16\" cy=\"16\" r=\"9\"/></svg>",
      "title": "Boss Battle: Trap or Reversal?",
      "sectionIndex": 8
     },
     {
-     "num": 71,
+     "num": 72,
      "svg": "<svg viewBox=\"0 0 32 32\" fill=\"white\"><path d=\"M16 4 L27 16 L16 28 L5 16 Z\"/></svg>",
      "title": "Planning the Entry & Choosing the Order Type",
      "sectionIndex": 9
     },
     {
-     "num": 72,
+     "num": 73,
      "svg": "<svg viewBox=\"0 0 32 32\" fill=\"white\"><path d=\"M16 4 L27 16 L16 28 L5 16 Z\"/></svg>",
      "title": "Slippage & Thin Liquidity Risk",
      "sectionIndex": 9
     },
     {
-     "num": 73,
+     "num": 74,
      "svg": "<svg viewBox=\"0 0 32 32\" fill=\"white\"><path d=\"M16 4 L27 16 L16 28 L5 16 Z\"/></svg>",
      "title": "Order Flow Invalidation",
      "sectionIndex": 9
     },
     {
-     "num": 74,
+     "num": 75,
      "svg": "<svg viewBox=\"0 0 32 32\" fill=\"white\"><path d=\"M16 4 L27 16 L16 28 L5 16 Z\"/></svg>",
      "title": "No Clear Read",
      "sectionIndex": 9
     },
     {
-     "num": 75,
+     "num": 76,
      "svg": "<svg viewBox=\"0 0 32 32\" fill=\"white\"><path d=\"M16 4 L27 16 L16 28 L5 16 Z\"/></svg>",
      "title": "Exiting Into Liquidity",
      "sectionIndex": 9
     },
     {
-     "num": 76,
+     "num": 77,
      "svg": "<svg viewBox=\"0 0 32 32\" fill=\"white\"><path d=\"M16 4 L27 16 L16 28 L5 16 Z\"/></svg>",
      "title": "Reviewing the Full Order Flow Read",
      "sectionIndex": 9
     },
     {
-     "num": 77,
+     "num": 78,
      "svg": "<svg viewBox=\"0 0 32 32\" fill=\"white\"><path d=\"M16 4 L27 16 L16 28 L5 16 Z\"/></svg>",
      "title": "FINAL BOSS: The Complete Order Flow Read",
      "sectionIndex": 9
@@ -1036,8 +1042,8 @@
     },
     {
      "node": 6,
-     "title": "Reading the Order Book",
-     "celebration": "Reading the Order Book complete.",
+     "title": "Reading the Order Book & DOM",
+     "celebration": "Reading the Order Book & DOM complete.",
      "lessonType": "STANDARD",
      "screens": [
       {
@@ -1050,7 +1056,7 @@
        ],
        "correct": 0,
        "explanation": "Level II shows available resting depth across prices from the relevant venue or feed.",
-       "skillId": "reading_the_order_book"
+       "skillId": "reading_the_order_book_dom"
       },
       {
        "type": "multiple_choice",
@@ -1062,7 +1068,7 @@
        ],
        "correct": 0,
        "explanation": "Buyers rest on the bid. Sellers rest on the ask, and the spread is the gap between them.",
-       "skillId": "reading_the_order_book"
+       "skillId": "reading_the_order_book_dom"
       },
       {
        "type": "multiple_choice",
@@ -1074,7 +1080,7 @@
        ],
        "correct": 0,
        "explanation": "Level I is the top of the book: the single best bid and best ask.",
-       "skillId": "reading_the_order_book"
+       "skillId": "reading_the_order_book_dom"
       },
       {
        "type": "multiple_choice",
@@ -1086,7 +1092,7 @@
        ],
        "correct": 0,
        "explanation": "Sellers rest on the ask side, above the spread.",
-       "skillId": "reading_the_order_book"
+       "skillId": "reading_the_order_book_dom"
       },
       {
        "type": "matching",
@@ -1106,7 +1112,7 @@
         ]
        ],
        "explanation": "These lenses show top of book, available feed depth, and completed trades.",
-       "skillId": "reading_the_order_book"
+       "skillId": "reading_the_order_book_dom"
       },
       {
        "type": "book_drag",
@@ -1123,6 +1129,30 @@
        "correct": 0,
        "explanation": "The offers are being taken, so the buyer is the aggressor lifting them.",
        "skillId": "aggressor_side"
+      },
+      {
+       "type": "multiple_choice",
+       "question": "What does DOM stand for?",
+       "options": [
+        "Depth of Market",
+        "Direction of Momentum",
+        "Distribution of Market volume"
+       ],
+       "correct": 0,
+       "explanation": "DOM stands for Depth of Market and commonly refers to an order book ladder showing available bid and ask depth across price levels.",
+       "skillId": "reading_the_order_book_dom"
+      },
+      {
+       "type": "multiple_choice",
+       "question": "How are DOM and Level II related?",
+       "options": [
+        "Both can display available bid and ask depth across multiple price levels",
+        "DOM only shows executed trades",
+        "Level II only shows candle volume"
+       ],
+       "correct": 0,
+       "explanation": "DOM and Level II are closely related ways of viewing available order book depth, although exact data depends on the venue and feed.",
+       "skillId": "reading_the_order_book_dom"
       }
      ]
     },
@@ -2566,17 +2596,17 @@
      "lessonType": "STANDARD",
      "screens": [
       {
-       "type": "time_sales",
-       "event": "lift",
-       "question": "Pressure stays strong, but price stalls. Which is it?",
+       "type": "orderflow_sim",
+       "event": "seller_absorption",
+       "question": "Buyer initiated prints remain strong, but price stalls at a replenishing offer. Which is it?",
        "options": [
         "Absorption",
         "Exhaustion",
-        "Acceptance"
+        "Clean acceptance"
        ],
        "correct": 0,
-       "explanation": "Absorption keeps strong aggression but loses price progress. Exhaustion means aggression itself fades.",
-       "skillId": "tape_reading"
+       "explanation": "Aggression remains active while price makes little progress, which supports possible absorption rather than exhaustion.",
+       "skillId": "multi_signal_read"
       },
       {
        "type": "time_sales",
@@ -3252,8 +3282,8 @@
     },
     {
      "node": 33,
-     "title": "Delta vs. Volume",
-     "celebration": "Delta vs. Volume complete.",
+     "title": "Delta, Volume & CVD",
+     "celebration": "Delta, Volume & CVD complete.",
      "lessonType": "STANDARD",
      "screens": [
       {
@@ -3315,7 +3345,7 @@
        ],
        "correct": 0,
        "explanation": "Net aggression compares aggressive buying with aggressive selling.",
-       "skillId": "delta_vs_volume"
+       "skillId": "delta_volume_cvd"
       },
       {
        "type": "footprint_tap",
@@ -3342,6 +3372,44 @@
        ],
        "explanation": "Each step connects executed pressure with liquidity, price response, and the lesson specific conclusion.",
        "skillId": "market_sequence"
+      },
+      {
+       "type": "multiple_choice",
+       "question": "What does CVD stand for?",
+       "options": [
+        "Cumulative Volume Delta",
+        "Combined Volume Distribution",
+        "Current Volatility Direction"
+       ],
+       "correct": 0,
+       "explanation": "CVD stands for Cumulative Volume Delta and tracks the running accumulation of aggressive buying minus aggressive selling.",
+       "skillId": "cumulative_volume_delta"
+      },
+      {
+       "type": "cvd_chart",
+       "event": "rising",
+       "question": "What does a rising CVD line generally show?",
+       "options": [
+        "Aggressive buying is cumulatively exceeding aggressive selling",
+        "Price is guaranteed to rise",
+        "Resting ask liquidity is increasing"
+       ],
+       "correct": 0,
+       "explanation": "Rising CVD means positive execution delta is accumulating, although price still needs to be evaluated separately.",
+       "skillId": "cumulative_volume_delta"
+      },
+      {
+       "type": "replay_compare",
+       "event": "cvd_divergence",
+       "question": "Which replay shows price and CVD disagreeing?",
+       "options": [
+        "Replay A",
+        "Replay B",
+        "Neither"
+       ],
+       "correct": 0,
+       "explanation": "Replay A shows price reaching a new high without matching cumulative aggressive buying. This disagreement deserves context and confirmation but does not guarantee reversal.",
+       "skillId": "cumulative_volume_delta"
       }
      ]
     },
@@ -6060,6 +6128,131 @@
     },
     {
      "node": 63,
+     "title": "Volume Profile & Key Trading Zones",
+     "celebration": "Volume Profile & Key Trading Zones complete.",
+     "lessonType": "STANDARD",
+     "screens": [
+      {
+       "type": "volume_profile",
+       "event": "overview",
+       "question": "What does Volume Profile show?",
+       "options": [
+        "How much volume traded at different price levels over a selected period",
+        "Only aggressive buying minus selling",
+        "The number of resting orders currently in Level II"
+       ],
+       "correct": 0,
+       "explanation": "Volume Profile organizes executed volume by price rather than only by time.",
+       "skillId": "volume_profile"
+      },
+      {
+       "type": "volume_profile_tap",
+       "event": "poc",
+       "target": 3,
+       "question": "Tap the Point of Control.",
+       "explanation": "The Point of Control, or POC, is the price with the greatest traded volume inside the selected profile.",
+       "skillId": "volume_profile"
+      },
+      {
+       "type": "volume_profile",
+       "event": "value_area",
+       "question": "What does the Value Area represent?",
+       "options": [
+        "The price region containing a defined majority of the profile's traded volume",
+        "Every price touched during the session",
+        "Only prices above VWAP"
+       ],
+       "correct": 0,
+       "explanation": "The Value Area contains a defined share of total profile volume, commonly centered around the highest volume region.",
+       "skillId": "volume_profile"
+      },
+      {
+       "type": "matching",
+       "question": "Match each profile term.",
+       "pairs": [
+        [
+         "VAH",
+         "Upper boundary of the value area"
+        ],
+        [
+         "VAL",
+         "Lower boundary of the value area"
+        ],
+        [
+         "POC",
+         "Price with the greatest traded volume"
+        ]
+       ],
+       "explanation": "VAH and VAL define the value area's upper and lower boundaries, while POC marks the highest volume price.",
+       "skillId": "volume_profile"
+      },
+      {
+       "type": "volume_profile",
+       "event": "hvn",
+       "question": "What does a high volume node show?",
+       "options": [
+        "A price region where substantial trading activity occurred",
+        "A guaranteed future support level",
+        "An area with no executed trades"
+       ],
+       "correct": 0,
+       "explanation": "A high volume node marks a price region where trading activity accumulated, but it does not guarantee future support or resistance.",
+       "skillId": "volume_profile"
+      },
+      {
+       "type": "volume_profile",
+       "event": "lvn",
+       "question": "What does a low volume node show?",
+       "options": [
+        "A price region with relatively little historical traded volume",
+        "A guaranteed breakout level",
+        "The strongest current bid"
+       ],
+       "correct": 0,
+       "explanation": "A low volume node represents comparatively low historical participation at that price.",
+       "skillId": "volume_profile"
+      },
+      {
+       "type": "matching",
+       "question": "Match each tool to what it shows.",
+       "pairs": [
+        [
+         "Volume Profile",
+         "Total traded volume organized by price"
+        ],
+        [
+         "Footprint",
+         "Bid and ask executions separated inside price rows"
+        ],
+        [
+         "Level II or DOM",
+         "Current displayed resting depth"
+        ],
+        [
+         "Time & Sales",
+         "Individual completed executions"
+        ]
+       ],
+       "explanation": "Each tool answers a different question about historical execution, current resting liquidity, or completed trades.",
+       "skillId": "volume_profile"
+      },
+      {
+       "type": "orderflow_sim",
+       "event": "volume_profile_context",
+       "question": "Price reaches a high volume node while aggressive buying slows and upward progress stalls. What's strongest?",
+       "options": [
+        "The high volume area provides context, but the stalled response and replenishment matter more for the immediate read",
+        "The high volume node guarantees reversal",
+        "Volume Profile alone confirms seller control"
+       ],
+       "correct": 0,
+       "explanation": "Profile location provides context, while current execution, liquidity behavior, and price response determine the immediate order flow read.",
+       "skillId": "multi_signal_read"
+      }
+     ]
+    },
+    {
+     "node": 64,
      "title": "Boss Battle: Continue, Fail, or Wait?",
      "celebration": "Boss Battle: Continue, Fail, or Wait? complete.",
      "lessonType": "BOSS_BATTLE",
@@ -6136,17 +6329,18 @@
        "skillId": "tape_reading"
       },
       {
-       "type": "footprint",
-       "event": "balanced",
-       "question": "Heavy volume, little progress. Why?",
+       "type": "orderflow_sim",
+       "event": "chop",
+       "question": "Heavy volume produces little progress. What best explains it?",
        "options": [
         "Possible high volume chop",
-        "Directional pressure is cleanly one sided",
-        "The quieter side has already lost control"
+        "Strong directional continuation",
+        "Confirmed liquidity sweep",
+        "One side has uncontested control"
        ],
        "correct": 0,
-       "explanation": "Heavy two sided execution can produce chop.",
-       "skillId": "footprint_reading"
+       "explanation": "Heavy two sided execution with little directional price progress is consistent with high volume chop rather than clean directional control.",
+       "skillId": "multi_signal_read"
       },
       {
        "type": "orderflow_sim",
@@ -6180,7 +6374,7 @@
      ]
     },
     {
-     "node": 64,
+     "node": 65,
      "title": "Reversal Pressure",
      "celebration": "Reversal Pressure complete.",
      "lessonType": "STANDARD",
@@ -6255,7 +6449,7 @@
      ]
     },
     {
-     "node": 65,
+     "node": 66,
      "title": "Buyer Traps vs. Seller Traps",
      "celebration": "Buyer Traps vs. Seller Traps complete.",
      "lessonType": "STANDARD",
@@ -6341,7 +6535,7 @@
      ]
     },
     {
-     "node": 66,
+     "node": 67,
      "title": "Exhaustion Reversals",
      "celebration": "Exhaustion Reversals complete.",
      "lessonType": "STANDARD",
@@ -6417,7 +6611,7 @@
      ]
     },
     {
-     "node": 67,
+     "node": 68,
      "title": "Absorption Reversals",
      "celebration": "Absorption Reversals complete.",
      "lessonType": "STANDARD",
@@ -6492,7 +6686,7 @@
      ]
     },
     {
-     "node": 68,
+     "node": 69,
      "title": "Double Top vs. Double Bottom Flow",
      "celebration": "Double Top vs. Double Bottom Flow complete.",
      "lessonType": "STANDARD",
@@ -6578,7 +6772,7 @@
      ]
     },
     {
-     "node": 69,
+     "node": 70,
      "title": "Reversal Confirmation & Insufficient Evidence",
      "celebration": "Reversal Confirmation & Insufficient Evidence complete.",
      "lessonType": "STANDARD",
@@ -6677,7 +6871,7 @@
      ]
     },
     {
-     "node": 70,
+     "node": 71,
      "title": "Boss Battle: Trap or Reversal?",
      "celebration": "Boss Battle: Trap or Reversal? complete.",
      "lessonType": "BOSS_BATTLE",
@@ -6804,7 +6998,7 @@
      ]
     },
     {
-     "node": 71,
+     "node": 72,
      "title": "Planning the Entry & Choosing the Order Type",
      "celebration": "Planning the Entry & Choosing the Order Type complete.",
      "lessonType": "STANDARD",
@@ -6892,7 +7086,7 @@
      ]
     },
     {
-     "node": 72,
+     "node": 73,
      "title": "Slippage & Thin Liquidity Risk",
      "celebration": "Slippage & Thin Liquidity Risk complete.",
      "lessonType": "STANDARD",
@@ -6971,7 +7165,7 @@
      ]
     },
     {
-     "node": 73,
+     "node": 74,
      "title": "Order Flow Invalidation",
      "celebration": "Order Flow Invalidation complete.",
      "lessonType": "STANDARD",
@@ -7048,7 +7242,7 @@
      ]
     },
     {
-     "node": 74,
+     "node": 75,
      "title": "No Clear Read",
      "celebration": "No Clear Read complete.",
      "lessonType": "STANDARD",
@@ -7126,7 +7320,7 @@
      ]
     },
     {
-     "node": 75,
+     "node": 76,
      "title": "Exiting Into Liquidity",
      "celebration": "Exiting Into Liquidity complete.",
      "lessonType": "STANDARD",
@@ -7191,7 +7385,7 @@
      ]
     },
     {
-     "node": 76,
+     "node": 77,
      "title": "Reviewing the Full Order Flow Read",
      "celebration": "Reviewing the Full Order Flow Read complete.",
      "lessonType": "STANDARD",
@@ -7302,7 +7496,7 @@
      ]
     },
     {
-     "node": 77,
+     "node": 78,
      "title": "FINAL BOSS: The Complete Order Flow Read",
      "celebration": "FINAL BOSS: The Complete Order Flow Read complete.",
      "lessonType": "BOSS_BATTLE",
@@ -7786,8 +7980,8 @@
        ],
        "correct": 0,
        "explanation": "Level II shows available resting depth across prices from the relevant venue or feed.",
-       "skillId": "reading_the_order_book",
-       "sourceLesson": "Reading the Order Book",
+       "skillId": "reading_the_order_book_dom",
+       "sourceLesson": "Reading the Order Book & DOM",
        "sourceUnit": 1,
        "sourceNode": 6,
        "questionId": "orderflow.u2.n6.q1",
@@ -7803,8 +7997,8 @@
        ],
        "correct": 0,
        "explanation": "Buyers rest on the bid. Sellers rest on the ask, and the spread is the gap between them.",
-       "skillId": "reading_the_order_book",
-       "sourceLesson": "Reading the Order Book",
+       "skillId": "reading_the_order_book_dom",
+       "sourceLesson": "Reading the Order Book & DOM",
        "sourceUnit": 1,
        "sourceNode": 6,
        "questionId": "orderflow.u2.n6.q2",
@@ -7820,8 +8014,8 @@
        ],
        "correct": 0,
        "explanation": "Sellers rest on the ask side, above the spread.",
-       "skillId": "reading_the_order_book",
-       "sourceLesson": "Reading the Order Book",
+       "skillId": "reading_the_order_book_dom",
+       "sourceLesson": "Reading the Order Book & DOM",
        "sourceUnit": 1,
        "sourceNode": 6,
        "questionId": "orderflow.u2.n6.q4",
@@ -8056,10 +8250,10 @@
      ],
      "competencyMappings": {
       "u2.level_two": [
-       "reading_the_order_book"
+       "reading_the_order_book_dom"
       ],
       "u2.resting_sides": [
-       "reading_the_order_book"
+       "reading_the_order_book_dom"
       ],
       "u2.thick_liquidity": [
        "size_liquidity"
@@ -8977,17 +9171,17 @@
        "competencyId": "u4.seller_exhaustion"
       },
       {
-       "type": "time_sales",
-       "event": "lift",
-       "question": "Pressure stays strong, but price stalls. Which is it?",
+       "type": "orderflow_sim",
+       "event": "seller_absorption",
+       "question": "Buyer initiated prints remain strong, but price stalls at a replenishing offer. Which is it?",
        "options": [
         "Absorption",
         "Exhaustion",
-        "Acceptance"
+        "Clean acceptance"
        ],
        "correct": 0,
-       "explanation": "Absorption keeps strong aggression but loses price progress. Exhaustion means aggression itself fades.",
-       "skillId": "tape_reading",
+       "explanation": "Aggression remains active while price makes little progress, which supports possible absorption rather than exhaustion.",
+       "skillId": "multi_signal_read",
        "sourceLesson": "Absorption vs. Exhaustion",
        "sourceUnit": 3,
        "sourceNode": 25,
@@ -9126,6 +9320,7 @@
        "tape_reading"
       ],
       "u4.absorption_vs_exhaustion": [
+       "multi_signal_read",
        "scenario_comparison",
        "tape_reading"
       ],
@@ -9276,8 +9471,8 @@
      "unitIndex": 4,
      "unitId": "orderflow_5",
      "lessonType": "TEST_OUT",
-     "questionCount": 10,
-     "passingScore": 8,
+     "questionCount": 11,
+     "passingScore": 9,
      "noHearts": true,
      "revealAnswersAtEnd": true,
      "questionPool": [
@@ -9522,7 +9717,7 @@
        "correct": 0,
        "explanation": "Volume totals executed activity while delta nets aggressive buying against aggressive selling.",
        "skillId": "footprint_reading",
-       "sourceLesson": "Delta vs. Volume",
+       "sourceLesson": "Delta, Volume & CVD",
        "sourceUnit": 4,
        "sourceNode": 33,
        "questionId": "orderflow.u5.n33.q2",
@@ -9540,7 +9735,7 @@
        "correct": 0,
        "explanation": "Volume totals execution while delta nets ask and bid side execution.",
        "skillId": "footprint_reading",
-       "sourceLesson": "Delta vs. Volume",
+       "sourceLesson": "Delta, Volume & CVD",
        "sourceUnit": 4,
        "sourceNode": 33,
        "questionId": "orderflow.u5.n33.q4",
@@ -9553,7 +9748,7 @@
        "question": "Tap the highest volume row.",
        "explanation": "Total volume adds bid and ask executions, unlike delta.",
        "skillId": "footprint_interaction",
-       "sourceLesson": "Delta vs. Volume",
+       "sourceLesson": "Delta, Volume & CVD",
        "sourceUnit": 4,
        "sourceNode": 33,
        "questionId": "orderflow.u5.n33.q6",
@@ -9671,6 +9866,59 @@
        "sourceNode": 36,
        "questionId": "orderflow.u5.n36.q6",
        "competencyId": "u5.combined_footprint_read"
+      },
+      {
+       "type": "multiple_choice",
+       "question": "What does CVD stand for?",
+       "options": [
+        "Cumulative Volume Delta",
+        "Combined Volume Distribution",
+        "Current Volatility Direction"
+       ],
+       "correct": 0,
+       "explanation": "CVD stands for Cumulative Volume Delta and tracks the running accumulation of aggressive buying minus aggressive selling.",
+       "skillId": "cumulative_volume_delta",
+       "sourceLesson": "Delta, Volume & CVD",
+       "sourceUnit": 4,
+       "sourceNode": 33,
+       "questionId": "orderflow.u5.n33.q8",
+       "competencyId": "u5.cumulative_volume_delta"
+      },
+      {
+       "type": "cvd_chart",
+       "event": "rising",
+       "question": "What does a rising CVD line generally show?",
+       "options": [
+        "Aggressive buying is cumulatively exceeding aggressive selling",
+        "Price is guaranteed to rise",
+        "Resting ask liquidity is increasing"
+       ],
+       "correct": 0,
+       "explanation": "Rising CVD means positive execution delta is accumulating, although price still needs to be evaluated separately.",
+       "skillId": "cumulative_volume_delta",
+       "sourceLesson": "Delta, Volume & CVD",
+       "sourceUnit": 4,
+       "sourceNode": 33,
+       "questionId": "orderflow.u5.n33.q9",
+       "competencyId": "u5.cumulative_volume_delta"
+      },
+      {
+       "type": "replay_compare",
+       "event": "cvd_divergence",
+       "question": "Which replay shows price and CVD disagreeing?",
+       "options": [
+        "Replay A",
+        "Replay B",
+        "Neither"
+       ],
+       "correct": 0,
+       "explanation": "Replay A shows price reaching a new high without matching cumulative aggressive buying. This disagreement deserves context and confirmation but does not guarantee reversal.",
+       "skillId": "cumulative_volume_delta",
+       "sourceLesson": "Delta, Volume & CVD",
+       "sourceUnit": 4,
+       "sourceNode": 33,
+       "questionId": "orderflow.u5.n33.q10",
+       "competencyId": "u5.cumulative_volume_delta"
       }
      ],
      "competencyBlueprint": [
@@ -9683,7 +9931,8 @@
       "u5.delta_vs_volume",
       "u5.positive_delta_divergence",
       "u5.negative_delta_divergence",
-      "u5.combined_footprint_read"
+      "u5.combined_footprint_read",
+      "u5.cumulative_volume_delta"
      ],
      "competencyMappings": {
       "u5.footprint_basics": [
@@ -9727,6 +9976,9 @@
        "footprint_interaction",
        "footprint_momentum_challenge",
        "footprint_reading"
+      ],
+      "u5.cumulative_volume_delta": [
+       "cumulative_volume_delta"
       ]
      },
      "competencyEligibleQuestionIds": {
@@ -9773,6 +10025,11 @@
        "orderflow.u5.n36.q1",
        "orderflow.u5.n36.q5",
        "orderflow.u5.n36.q6"
+      ],
+      "u5.cumulative_volume_delta": [
+       "orderflow.u5.n33.q8",
+       "orderflow.u5.n33.q9",
+       "orderflow.u5.n33.q10"
       ]
      },
      "competencySourceUnits": {
@@ -9804,6 +10061,9 @@
        4
       ],
       "u5.combined_footprint_read": [
+       4
+      ],
+      "u5.cumulative_volume_delta": [
        4
       ]
      },
@@ -9837,6 +10097,9 @@
       ],
       "u5.combined_footprint_read": [
        36
+      ],
+      "u5.cumulative_volume_delta": [
+       33
       ]
      },
      "jumpAheadQuestionCount": 14,
@@ -10561,7 +10824,7 @@
       },
       {
        "unitIndex": 4,
-       "competencyId": "u5.combined_footprint_read"
+       "competencyId": "u5.cumulative_volume_delta"
       },
       {
        "unitIndex": 0,
@@ -11188,8 +11451,8 @@
      "unitIndex": 7,
      "unitId": "orderflow_8",
      "lessonType": "TEST_OUT",
-     "questionCount": 10,
-     "passingScore": 8,
+     "questionCount": 11,
+     "passingScore": 9,
      "noHearts": true,
      "revealAnswersAtEnd": true,
      "questionPool": [
@@ -11754,6 +12017,163 @@
        "sourceNode": 62,
        "questionId": "orderflow.u8.n62.q6",
        "competencyId": "u8.no_clear_read"
+      },
+      {
+       "type": "volume_profile",
+       "event": "overview",
+       "question": "What does Volume Profile show?",
+       "options": [
+        "How much volume traded at different price levels over a selected period",
+        "Only aggressive buying minus selling",
+        "The number of resting orders currently in Level II"
+       ],
+       "correct": 0,
+       "explanation": "Volume Profile organizes executed volume by price rather than only by time.",
+       "skillId": "volume_profile",
+       "sourceLesson": "Volume Profile & Key Trading Zones",
+       "sourceUnit": 7,
+       "sourceNode": 63,
+       "questionId": "orderflow.u8.n63.q1",
+       "competencyId": "u8.volume_profile_context"
+      },
+      {
+       "type": "volume_profile_tap",
+       "event": "poc",
+       "target": 3,
+       "question": "Tap the Point of Control.",
+       "explanation": "The Point of Control, or POC, is the price with the greatest traded volume inside the selected profile.",
+       "skillId": "volume_profile",
+       "sourceLesson": "Volume Profile & Key Trading Zones",
+       "sourceUnit": 7,
+       "sourceNode": 63,
+       "questionId": "orderflow.u8.n63.q2",
+       "competencyId": "u8.volume_profile_context"
+      },
+      {
+       "type": "volume_profile",
+       "event": "value_area",
+       "question": "What does the Value Area represent?",
+       "options": [
+        "The price region containing a defined majority of the profile's traded volume",
+        "Every price touched during the session",
+        "Only prices above VWAP"
+       ],
+       "correct": 0,
+       "explanation": "The Value Area contains a defined share of total profile volume, commonly centered around the highest volume region.",
+       "skillId": "volume_profile",
+       "sourceLesson": "Volume Profile & Key Trading Zones",
+       "sourceUnit": 7,
+       "sourceNode": 63,
+       "questionId": "orderflow.u8.n63.q3",
+       "competencyId": "u8.volume_profile_context"
+      },
+      {
+       "type": "matching",
+       "question": "Match each profile term.",
+       "pairs": [
+        [
+         "VAH",
+         "Upper boundary of the value area"
+        ],
+        [
+         "VAL",
+         "Lower boundary of the value area"
+        ],
+        [
+         "POC",
+         "Price with the greatest traded volume"
+        ]
+       ],
+       "explanation": "VAH and VAL define the value area's upper and lower boundaries, while POC marks the highest volume price.",
+       "skillId": "volume_profile",
+       "sourceLesson": "Volume Profile & Key Trading Zones",
+       "sourceUnit": 7,
+       "sourceNode": 63,
+       "questionId": "orderflow.u8.n63.q4",
+       "competencyId": "u8.volume_profile_context"
+      },
+      {
+       "type": "volume_profile",
+       "event": "hvn",
+       "question": "What does a high volume node show?",
+       "options": [
+        "A price region where substantial trading activity occurred",
+        "A guaranteed future support level",
+        "An area with no executed trades"
+       ],
+       "correct": 0,
+       "explanation": "A high volume node marks a price region where trading activity accumulated, but it does not guarantee future support or resistance.",
+       "skillId": "volume_profile",
+       "sourceLesson": "Volume Profile & Key Trading Zones",
+       "sourceUnit": 7,
+       "sourceNode": 63,
+       "questionId": "orderflow.u8.n63.q5",
+       "competencyId": "u8.volume_profile_context"
+      },
+      {
+       "type": "volume_profile",
+       "event": "lvn",
+       "question": "What does a low volume node show?",
+       "options": [
+        "A price region with relatively little historical traded volume",
+        "A guaranteed breakout level",
+        "The strongest current bid"
+       ],
+       "correct": 0,
+       "explanation": "A low volume node represents comparatively low historical participation at that price.",
+       "skillId": "volume_profile",
+       "sourceLesson": "Volume Profile & Key Trading Zones",
+       "sourceUnit": 7,
+       "sourceNode": 63,
+       "questionId": "orderflow.u8.n63.q6",
+       "competencyId": "u8.volume_profile_context"
+      },
+      {
+       "type": "matching",
+       "question": "Match each tool to what it shows.",
+       "pairs": [
+        [
+         "Volume Profile",
+         "Total traded volume organized by price"
+        ],
+        [
+         "Footprint",
+         "Bid and ask executions separated inside price rows"
+        ],
+        [
+         "Level II or DOM",
+         "Current displayed resting depth"
+        ],
+        [
+         "Time & Sales",
+         "Individual completed executions"
+        ]
+       ],
+       "explanation": "Each tool answers a different question about historical execution, current resting liquidity, or completed trades.",
+       "skillId": "volume_profile",
+       "sourceLesson": "Volume Profile & Key Trading Zones",
+       "sourceUnit": 7,
+       "sourceNode": 63,
+       "questionId": "orderflow.u8.n63.q7",
+       "competencyId": "u8.volume_profile_context"
+      },
+      {
+       "type": "orderflow_sim",
+       "event": "volume_profile_context",
+       "question": "Price reaches a high volume node while aggressive buying slows and upward progress stalls. What's strongest?",
+       "options": [
+        "The high volume area provides context, but the stalled response and replenishment matter more for the immediate read",
+        "The high volume node guarantees reversal",
+        "Volume Profile alone confirms seller control"
+       ],
+       "correct": 0,
+       "explanation": "Profile location provides context, while current execution, liquidity behavior, and price response determine the immediate order flow read.",
+       "skillId": "multi_signal_read",
+       "sourceLesson": "Volume Profile & Key Trading Zones",
+       "sourceUnit": 7,
+       "sourceNode": 63,
+       "questionId": "orderflow.u8.n63.q8",
+       "competencyId": "u8.volume_profile_context"
       }
      ],
      "competencyBlueprint": [
@@ -11766,7 +12186,8 @@
       "u8.pullback_failure",
       "u8.conflicting_signals",
       "u8.volume_context",
-      "u8.no_clear_read"
+      "u8.no_clear_read",
+      "u8.volume_profile_context"
      ],
      "competencyMappings": {
       "u8.healthy_pullback": [
@@ -11810,6 +12231,10 @@
       "u8.no_clear_read": [
        "confirmation_continuation_challenge",
        "multi_signal_read"
+      ],
+      "u8.volume_profile_context": [
+       "multi_signal_read",
+       "volume_profile"
       ]
      },
      "competencyEligibleQuestionIds": {
@@ -11862,6 +12287,16 @@
       "u8.no_clear_read": [
        "orderflow.u8.n62.q3",
        "orderflow.u8.n62.q6"
+      ],
+      "u8.volume_profile_context": [
+       "orderflow.u8.n63.q1",
+       "orderflow.u8.n63.q2",
+       "orderflow.u8.n63.q3",
+       "orderflow.u8.n63.q4",
+       "orderflow.u8.n63.q5",
+       "orderflow.u8.n63.q6",
+       "orderflow.u8.n63.q7",
+       "orderflow.u8.n63.q8"
       ]
      },
      "competencySourceUnits": {
@@ -11893,6 +12328,9 @@
        7
       ],
       "u8.no_clear_read": [
+       7
+      ],
+      "u8.volume_profile_context": [
        7
       ]
      },
@@ -11926,6 +12364,9 @@
       ],
       "u8.no_clear_read": [
        62
+      ],
+      "u8.volume_profile_context": [
+       63
       ]
      },
      "jumpAheadQuestionCount": 16,
@@ -11973,8 +12414,8 @@
       "u8.bearish_continuation",
       "u8.flow_at_vwap",
       "u8.pullback_failure",
-      "u8.conflicting_signals",
-      "u8.no_clear_read"
+      "u8.no_clear_read",
+      "u8.volume_profile_context"
      ]
     },
     {
@@ -12000,8 +12441,8 @@
        "skillId": "multi_signal_read",
        "sourceLesson": "Reversal Pressure",
        "sourceUnit": 8,
-       "sourceNode": 64,
-       "questionId": "orderflow.u9.n64.q1",
+       "sourceNode": 65,
+       "questionId": "orderflow.u9.n65.q1",
        "competencyId": "u9.reversal_pressure"
       },
       {
@@ -12018,8 +12459,8 @@
        "skillId": "footprint_reading",
        "sourceLesson": "Reversal Pressure",
        "sourceUnit": 8,
-       "sourceNode": 64,
-       "questionId": "orderflow.u9.n64.q2",
+       "sourceNode": 65,
+       "questionId": "orderflow.u9.n65.q2",
        "competencyId": "u9.reversal_pressure"
       },
       {
@@ -12039,8 +12480,8 @@
        "skillId": "evidence_synthesis",
        "sourceLesson": "Reversal Pressure",
        "sourceUnit": 8,
-       "sourceNode": 64,
-       "questionId": "orderflow.u9.n64.q4",
+       "sourceNode": 65,
+       "questionId": "orderflow.u9.n65.q4",
        "competencyId": "u9.reversal_pressure"
       },
       {
@@ -12056,8 +12497,8 @@
        "skillId": "reversal_pressure",
        "sourceLesson": "Reversal Pressure",
        "sourceUnit": 8,
-       "sourceNode": 64,
-       "questionId": "orderflow.u9.n64.q5",
+       "sourceNode": 65,
+       "questionId": "orderflow.u9.n65.q5",
        "competencyId": "u9.reversal_pressure"
       },
       {
@@ -12074,8 +12515,8 @@
        "skillId": "multi_signal_read",
        "sourceLesson": "Buyer Traps vs. Seller Traps",
        "sourceUnit": 8,
-       "sourceNode": 65,
-       "questionId": "orderflow.u9.n65.q1",
+       "sourceNode": 66,
+       "questionId": "orderflow.u9.n66.q1",
        "competencyId": "u9.buyer_trap"
       },
       {
@@ -12092,8 +12533,8 @@
        "skillId": "multi_signal_read",
        "sourceLesson": "Buyer Traps vs. Seller Traps",
        "sourceUnit": 8,
-       "sourceNode": 65,
-       "questionId": "orderflow.u9.n65.q3",
+       "sourceNode": 66,
+       "questionId": "orderflow.u9.n66.q3",
        "competencyId": "u9.buyer_trap"
       },
       {
@@ -12110,8 +12551,8 @@
        "skillId": "scenario_comparison",
        "sourceLesson": "Buyer Traps vs. Seller Traps",
        "sourceUnit": 8,
-       "sourceNode": 65,
-       "questionId": "orderflow.u9.n65.q5",
+       "sourceNode": 66,
+       "questionId": "orderflow.u9.n66.q5",
        "competencyId": "u9.buyer_trap"
       },
       {
@@ -12128,8 +12569,8 @@
        "skillId": "multi_signal_read",
        "sourceLesson": "Buyer Traps vs. Seller Traps",
        "sourceUnit": 8,
-       "sourceNode": 65,
-       "questionId": "orderflow.u9.n65.q2",
+       "sourceNode": 66,
+       "questionId": "orderflow.u9.n66.q2",
        "competencyId": "u9.seller_trap"
       },
       {
@@ -12146,8 +12587,8 @@
        "skillId": "multi_signal_read",
        "sourceLesson": "Buyer Traps vs. Seller Traps",
        "sourceUnit": 8,
-       "sourceNode": 65,
-       "questionId": "orderflow.u9.n65.q4",
+       "sourceNode": 66,
+       "questionId": "orderflow.u9.n66.q4",
        "competencyId": "u9.seller_trap"
       },
       {
@@ -12164,8 +12605,8 @@
        "skillId": "scenario_comparison",
        "sourceLesson": "Buyer Traps vs. Seller Traps",
        "sourceUnit": 8,
-       "sourceNode": 65,
-       "questionId": "orderflow.u9.n65.q6",
+       "sourceNode": 66,
+       "questionId": "orderflow.u9.n66.q6",
        "competencyId": "u9.seller_trap"
       },
       {
@@ -12182,8 +12623,8 @@
        "skillId": "footprint_reading",
        "sourceLesson": "Exhaustion Reversals",
        "sourceUnit": 8,
-       "sourceNode": 66,
-       "questionId": "orderflow.u9.n66.q2",
+       "sourceNode": 67,
+       "questionId": "orderflow.u9.n67.q2",
        "competencyId": "u9.buyer_exhaustion_reversal"
       },
       {
@@ -12200,8 +12641,8 @@
        "skillId": "tape_reading",
        "sourceLesson": "Exhaustion Reversals",
        "sourceUnit": 8,
-       "sourceNode": 66,
-       "questionId": "orderflow.u9.n66.q1",
+       "sourceNode": 67,
+       "questionId": "orderflow.u9.n67.q1",
        "competencyId": "u9.seller_exhaustion_reversal"
       },
       {
@@ -12218,8 +12659,8 @@
        "skillId": "multi_signal_read",
        "sourceLesson": "Absorption Reversals",
        "sourceUnit": 8,
-       "sourceNode": 67,
-       "questionId": "orderflow.u9.n67.q1",
+       "sourceNode": 68,
+       "questionId": "orderflow.u9.n68.q1",
        "competencyId": "u9.absorption_reversal"
       },
       {
@@ -12236,8 +12677,8 @@
        "skillId": "multi_signal_read",
        "sourceLesson": "Absorption Reversals",
        "sourceUnit": 8,
-       "sourceNode": 67,
-       "questionId": "orderflow.u9.n67.q2",
+       "sourceNode": 68,
+       "questionId": "orderflow.u9.n68.q2",
        "competencyId": "u9.absorption_reversal"
       },
       {
@@ -12257,8 +12698,8 @@
        "skillId": "evidence_synthesis",
        "sourceLesson": "Absorption Reversals",
        "sourceUnit": 8,
-       "sourceNode": 67,
-       "questionId": "orderflow.u9.n67.q4",
+       "sourceNode": 68,
+       "questionId": "orderflow.u9.n68.q4",
        "competencyId": "u9.absorption_reversal"
       },
       {
@@ -12274,8 +12715,8 @@
        "skillId": "absorption_reversals",
        "sourceLesson": "Absorption Reversals",
        "sourceUnit": 8,
-       "sourceNode": 67,
-       "questionId": "orderflow.u9.n67.q5",
+       "sourceNode": 68,
+       "questionId": "orderflow.u9.n68.q5",
        "competencyId": "u9.absorption_reversal"
       },
       {
@@ -12292,8 +12733,8 @@
        "skillId": "scenario_comparison",
        "sourceLesson": "Double Top vs. Double Bottom Flow",
        "sourceUnit": 8,
-       "sourceNode": 68,
-       "questionId": "orderflow.u9.n68.q1",
+       "sourceNode": 69,
+       "questionId": "orderflow.u9.n69.q1",
        "competencyId": "u9.double_top_flow"
       },
       {
@@ -12310,8 +12751,8 @@
        "skillId": "scenario_comparison",
        "sourceLesson": "Double Top vs. Double Bottom Flow",
        "sourceUnit": 8,
-       "sourceNode": 68,
-       "questionId": "orderflow.u9.n68.q3",
+       "sourceNode": 69,
+       "questionId": "orderflow.u9.n69.q3",
        "competencyId": "u9.double_top_flow"
       },
       {
@@ -12328,8 +12769,8 @@
        "skillId": "scenario_comparison",
        "sourceLesson": "Double Top vs. Double Bottom Flow",
        "sourceUnit": 8,
-       "sourceNode": 68,
-       "questionId": "orderflow.u9.n68.q5",
+       "sourceNode": 69,
+       "questionId": "orderflow.u9.n69.q5",
        "competencyId": "u9.double_top_flow"
       },
       {
@@ -12346,8 +12787,8 @@
        "skillId": "scenario_comparison",
        "sourceLesson": "Double Top vs. Double Bottom Flow",
        "sourceUnit": 8,
-       "sourceNode": 68,
-       "questionId": "orderflow.u9.n68.q2",
+       "sourceNode": 69,
+       "questionId": "orderflow.u9.n69.q2",
        "competencyId": "u9.double_bottom_flow"
       },
       {
@@ -12364,8 +12805,8 @@
        "skillId": "scenario_comparison",
        "sourceLesson": "Double Top vs. Double Bottom Flow",
        "sourceUnit": 8,
-       "sourceNode": 68,
-       "questionId": "orderflow.u9.n68.q4",
+       "sourceNode": 69,
+       "questionId": "orderflow.u9.n69.q4",
        "competencyId": "u9.double_bottom_flow"
       },
       {
@@ -12382,8 +12823,8 @@
        "skillId": "scenario_comparison",
        "sourceLesson": "Double Top vs. Double Bottom Flow",
        "sourceUnit": 8,
-       "sourceNode": 68,
-       "questionId": "orderflow.u9.n68.q6",
+       "sourceNode": 69,
+       "questionId": "orderflow.u9.n69.q6",
        "competencyId": "u9.double_bottom_flow"
       },
       {
@@ -12400,8 +12841,8 @@
        "skillId": "multi_signal_read",
        "sourceLesson": "Reversal Confirmation & Insufficient Evidence",
        "sourceUnit": 8,
-       "sourceNode": 69,
-       "questionId": "orderflow.u9.n69.q1",
+       "sourceNode": 70,
+       "questionId": "orderflow.u9.n70.q1",
        "competencyId": "u9.reversal_confirmation"
       },
       {
@@ -12418,8 +12859,8 @@
        "skillId": "footprint_reading",
        "sourceLesson": "Reversal Confirmation & Insufficient Evidence",
        "sourceUnit": 8,
-       "sourceNode": 69,
-       "questionId": "orderflow.u9.n69.q3",
+       "sourceNode": 70,
+       "questionId": "orderflow.u9.n70.q3",
        "competencyId": "u9.reversal_confirmation"
       },
       {
@@ -12436,8 +12877,8 @@
        "skillId": "multi_signal_read",
        "sourceLesson": "Reversal Confirmation & Insufficient Evidence",
        "sourceUnit": 8,
-       "sourceNode": 69,
-       "questionId": "orderflow.u9.n69.q5",
+       "sourceNode": 70,
+       "questionId": "orderflow.u9.n70.q5",
        "competencyId": "u9.reversal_confirmation"
       },
       {
@@ -12454,8 +12895,8 @@
        "skillId": "multi_signal_read",
        "sourceLesson": "Reversal Confirmation & Insufficient Evidence",
        "sourceUnit": 8,
-       "sourceNode": 69,
-       "questionId": "orderflow.u9.n69.q6",
+       "sourceNode": 70,
+       "questionId": "orderflow.u9.n70.q6",
        "competencyId": "u9.reversal_confirmation"
       },
       {
@@ -12472,8 +12913,8 @@
        "skillId": "multi_signal_read",
        "sourceLesson": "Reversal Confirmation & Insufficient Evidence",
        "sourceUnit": 8,
-       "sourceNode": 69,
-       "questionId": "orderflow.u9.n69.q2",
+       "sourceNode": 70,
+       "questionId": "orderflow.u9.n70.q2",
        "competencyId": "u9.insufficient_evidence"
       },
       {
@@ -12490,8 +12931,8 @@
        "skillId": "multi_signal_read",
        "sourceLesson": "Reversal Confirmation & Insufficient Evidence",
        "sourceUnit": 8,
-       "sourceNode": 69,
-       "questionId": "orderflow.u9.n69.q7",
+       "sourceNode": 70,
+       "questionId": "orderflow.u9.n70.q7",
        "competencyId": "u9.insufficient_evidence"
       }
      ],
@@ -12549,52 +12990,52 @@
      },
      "competencyEligibleQuestionIds": {
       "u9.reversal_pressure": [
-       "orderflow.u9.n64.q1",
-       "orderflow.u9.n64.q2",
-       "orderflow.u9.n64.q4",
-       "orderflow.u9.n64.q5"
-      ],
-      "u9.buyer_trap": [
        "orderflow.u9.n65.q1",
-       "orderflow.u9.n65.q3",
-       "orderflow.u9.n65.q5"
-      ],
-      "u9.seller_trap": [
        "orderflow.u9.n65.q2",
        "orderflow.u9.n65.q4",
-       "orderflow.u9.n65.q6"
+       "orderflow.u9.n65.q5"
+      ],
+      "u9.buyer_trap": [
+       "orderflow.u9.n66.q1",
+       "orderflow.u9.n66.q3",
+       "orderflow.u9.n66.q5"
+      ],
+      "u9.seller_trap": [
+       "orderflow.u9.n66.q2",
+       "orderflow.u9.n66.q4",
+       "orderflow.u9.n66.q6"
       ],
       "u9.buyer_exhaustion_reversal": [
-       "orderflow.u9.n66.q2"
+       "orderflow.u9.n67.q2"
       ],
       "u9.seller_exhaustion_reversal": [
-       "orderflow.u9.n66.q1"
+       "orderflow.u9.n67.q1"
       ],
       "u9.absorption_reversal": [
-       "orderflow.u9.n67.q1",
-       "orderflow.u9.n67.q2",
-       "orderflow.u9.n67.q4",
-       "orderflow.u9.n67.q5"
-      ],
-      "u9.double_top_flow": [
        "orderflow.u9.n68.q1",
-       "orderflow.u9.n68.q3",
-       "orderflow.u9.n68.q5"
-      ],
-      "u9.double_bottom_flow": [
        "orderflow.u9.n68.q2",
        "orderflow.u9.n68.q4",
-       "orderflow.u9.n68.q6"
+       "orderflow.u9.n68.q5"
       ],
-      "u9.reversal_confirmation": [
+      "u9.double_top_flow": [
        "orderflow.u9.n69.q1",
        "orderflow.u9.n69.q3",
-       "orderflow.u9.n69.q5",
+       "orderflow.u9.n69.q5"
+      ],
+      "u9.double_bottom_flow": [
+       "orderflow.u9.n69.q2",
+       "orderflow.u9.n69.q4",
        "orderflow.u9.n69.q6"
       ],
+      "u9.reversal_confirmation": [
+       "orderflow.u9.n70.q1",
+       "orderflow.u9.n70.q3",
+       "orderflow.u9.n70.q5",
+       "orderflow.u9.n70.q6"
+      ],
       "u9.insufficient_evidence": [
-       "orderflow.u9.n69.q2",
-       "orderflow.u9.n69.q7"
+       "orderflow.u9.n70.q2",
+       "orderflow.u9.n70.q7"
       ]
      },
      "competencySourceUnits": {
@@ -12631,34 +13072,34 @@
      },
      "competencySourceNodes": {
       "u9.reversal_pressure": [
-       64
+       65
       ],
       "u9.buyer_trap": [
-       65
+       66
       ],
       "u9.seller_trap": [
-       65
+       66
       ],
       "u9.buyer_exhaustion_reversal": [
-       66
-      ],
-      "u9.seller_exhaustion_reversal": [
-       66
-      ],
-      "u9.absorption_reversal": [
        67
       ],
-      "u9.double_top_flow": [
+      "u9.seller_exhaustion_reversal": [
+       67
+      ],
+      "u9.absorption_reversal": [
        68
+      ],
+      "u9.double_top_flow": [
+       69
       ],
       "u9.double_bottom_flow": [
-       68
+       69
       ],
       "u9.reversal_confirmation": [
-       69
+       70
       ],
       "u9.insufficient_evidence": [
-       69
+       70
       ]
      },
      "jumpAheadQuestionCount": 18,
@@ -12700,7 +13141,7 @@
       },
       {
        "unitIndex": 7,
-       "competencyId": "u8.no_clear_read"
+       "competencyId": "u8.volume_profile_context"
       }
      ],
      "jumpTargetBlueprint": [
@@ -12739,8 +13180,8 @@
        "skillId": "planning_the_entry_choosing_the_order_type",
        "sourceLesson": "Planning the Entry & Choosing the Order Type",
        "sourceUnit": 9,
-       "sourceNode": 71,
-       "questionId": "orderflow.u10.n71.q1",
+       "sourceNode": 72,
+       "questionId": "orderflow.u10.n72.q1",
        "competencyId": "u10.entry_plan"
       },
       {
@@ -12760,8 +13201,8 @@
        "skillId": "evidence_synthesis",
        "sourceLesson": "Planning the Entry & Choosing the Order Type",
        "sourceUnit": 9,
-       "sourceNode": 71,
-       "questionId": "orderflow.u10.n71.q3",
+       "sourceNode": 72,
+       "questionId": "orderflow.u10.n72.q3",
        "competencyId": "u10.entry_plan"
       },
       {
@@ -12778,8 +13219,8 @@
        "skillId": "scenario_comparison",
        "sourceLesson": "Planning the Entry & Choosing the Order Type",
        "sourceUnit": 9,
-       "sourceNode": 71,
-       "questionId": "orderflow.u10.n71.q5",
+       "sourceNode": 72,
+       "questionId": "orderflow.u10.n72.q5",
        "competencyId": "u10.entry_plan"
       },
       {
@@ -12796,8 +13237,8 @@
        "skillId": "multi_signal_read",
        "sourceLesson": "Planning the Entry & Choosing the Order Type",
        "sourceUnit": 9,
-       "sourceNode": 71,
-       "questionId": "orderflow.u10.n71.q2",
+       "sourceNode": 72,
+       "questionId": "orderflow.u10.n72.q2",
        "competencyId": "u10.order_type"
       },
       {
@@ -12813,8 +13254,8 @@
        "skillId": "planning_the_entry_choosing_the_order_type",
        "sourceLesson": "Planning the Entry & Choosing the Order Type",
        "sourceUnit": 9,
-       "sourceNode": 71,
-       "questionId": "orderflow.u10.n71.q4",
+       "sourceNode": 72,
+       "questionId": "orderflow.u10.n72.q4",
        "competencyId": "u10.order_type"
       },
       {
@@ -12830,8 +13271,8 @@
        "skillId": "planning_the_entry_choosing_the_order_type",
        "sourceLesson": "Planning the Entry & Choosing the Order Type",
        "sourceUnit": 9,
-       "sourceNode": 71,
-       "questionId": "orderflow.u10.n71.q6",
+       "sourceNode": 72,
+       "questionId": "orderflow.u10.n72.q6",
        "competencyId": "u10.order_type"
       },
       {
@@ -12851,8 +13292,8 @@
        "skillId": "evidence_synthesis",
        "sourceLesson": "Slippage & Thin Liquidity Risk",
        "sourceUnit": 9,
-       "sourceNode": 72,
-       "questionId": "orderflow.u10.n72.q1",
+       "sourceNode": 73,
+       "questionId": "orderflow.u10.n73.q1",
        "competencyId": "u10.slippage"
       },
       {
@@ -12868,8 +13309,8 @@
        "skillId": "book_depth",
        "sourceLesson": "Slippage & Thin Liquidity Risk",
        "sourceUnit": 9,
-       "sourceNode": 72,
-       "questionId": "orderflow.u10.n72.q3",
+       "sourceNode": 73,
+       "questionId": "orderflow.u10.n73.q3",
        "competencyId": "u10.slippage"
       },
       {
@@ -12886,8 +13327,8 @@
        "skillId": "multi_signal_read",
        "sourceLesson": "Slippage & Thin Liquidity Risk",
        "sourceUnit": 9,
-       "sourceNode": 72,
-       "questionId": "orderflow.u10.n72.q5",
+       "sourceNode": 73,
+       "questionId": "orderflow.u10.n73.q5",
        "competencyId": "u10.slippage"
       },
       {
@@ -12907,8 +13348,8 @@
        "skillId": "evidence_synthesis",
        "sourceLesson": "Order Flow Invalidation",
        "sourceUnit": 9,
-       "sourceNode": 73,
-       "questionId": "orderflow.u10.n73.q2",
+       "sourceNode": 74,
+       "questionId": "orderflow.u10.n74.q2",
        "competencyId": "u10.invalidation"
       },
       {
@@ -12926,8 +13367,8 @@
        "skillId": "order_flow_invalidation",
        "sourceLesson": "Order Flow Invalidation",
        "sourceUnit": 9,
-       "sourceNode": 73,
-       "questionId": "orderflow.u10.n73.q3",
+       "sourceNode": 74,
+       "questionId": "orderflow.u10.n74.q3",
        "competencyId": "u10.invalidation"
       },
       {
@@ -12943,8 +13384,8 @@
        "skillId": "order_flow_invalidation",
        "sourceLesson": "Order Flow Invalidation",
        "sourceUnit": 9,
-       "sourceNode": 73,
-       "questionId": "orderflow.u10.n73.q5",
+       "sourceNode": 74,
+       "questionId": "orderflow.u10.n74.q5",
        "competencyId": "u10.invalidation"
       },
       {
@@ -12966,8 +13407,8 @@
        "skillId": "market_sequence",
        "sourceLesson": "Slippage & Thin Liquidity Risk",
        "sourceUnit": 9,
-       "sourceNode": 72,
-       "questionId": "orderflow.u10.n72.q2",
+       "sourceNode": 73,
+       "questionId": "orderflow.u10.n73.q2",
        "competencyId": "u10.thin_liquidity_risk"
       },
       {
@@ -12983,8 +13424,8 @@
        "skillId": "book_depth",
        "sourceLesson": "Slippage & Thin Liquidity Risk",
        "sourceUnit": 9,
-       "sourceNode": 72,
-       "questionId": "orderflow.u10.n72.q4",
+       "sourceNode": 73,
+       "questionId": "orderflow.u10.n73.q4",
        "competencyId": "u10.thin_liquidity_risk"
       },
       {
@@ -13004,8 +13445,8 @@
        "skillId": "evidence_synthesis",
        "sourceLesson": "No Clear Read",
        "sourceUnit": 9,
-       "sourceNode": 74,
-       "questionId": "orderflow.u10.n74.q1",
+       "sourceNode": 75,
+       "questionId": "orderflow.u10.n75.q1",
        "competencyId": "u10.no_clear_read"
       },
       {
@@ -13023,8 +13464,8 @@
        "skillId": "no_clear_read",
        "sourceLesson": "No Clear Read",
        "sourceUnit": 9,
-       "sourceNode": 74,
-       "questionId": "orderflow.u10.n74.q2",
+       "sourceNode": 75,
+       "questionId": "orderflow.u10.n75.q2",
        "competencyId": "u10.no_clear_read"
       },
       {
@@ -13040,8 +13481,8 @@
        "skillId": "no_clear_read",
        "sourceLesson": "No Clear Read",
        "sourceUnit": 9,
-       "sourceNode": 74,
-       "questionId": "orderflow.u10.n74.q3",
+       "sourceNode": 75,
+       "questionId": "orderflow.u10.n75.q3",
        "competencyId": "u10.no_clear_read"
       },
       {
@@ -13061,8 +13502,8 @@
        "skillId": "evidence_synthesis",
        "sourceLesson": "No Clear Read",
        "sourceUnit": 9,
-       "sourceNode": 74,
-       "questionId": "orderflow.u10.n74.q4",
+       "sourceNode": 75,
+       "questionId": "orderflow.u10.n75.q4",
        "competencyId": "u10.no_clear_read"
       },
       {
@@ -13078,8 +13519,8 @@
        "skillId": "no_clear_read",
        "sourceLesson": "No Clear Read",
        "sourceUnit": 9,
-       "sourceNode": 74,
-       "questionId": "orderflow.u10.n74.q5",
+       "sourceNode": 75,
+       "questionId": "orderflow.u10.n75.q5",
        "competencyId": "u10.no_clear_read"
       },
       {
@@ -13096,8 +13537,8 @@
        "skillId": "multi_signal_read",
        "sourceLesson": "Exiting Into Liquidity",
        "sourceUnit": 9,
-       "sourceNode": 75,
-       "questionId": "orderflow.u10.n75.q1",
+       "sourceNode": 76,
+       "questionId": "orderflow.u10.n76.q1",
        "competencyId": "u10.exit_liquidity"
       },
       {
@@ -13117,8 +13558,8 @@
        "skillId": "evidence_synthesis",
        "sourceLesson": "Exiting Into Liquidity",
        "sourceUnit": 9,
-       "sourceNode": 75,
-       "questionId": "orderflow.u10.n75.q2",
+       "sourceNode": 76,
+       "questionId": "orderflow.u10.n76.q2",
        "competencyId": "u10.exit_liquidity"
       },
       {
@@ -13130,8 +13571,8 @@
        "skillId": "liquidity_location",
        "sourceLesson": "Exiting Into Liquidity",
        "sourceUnit": 9,
-       "sourceNode": 75,
-       "questionId": "orderflow.u10.n75.q3",
+       "sourceNode": 76,
+       "questionId": "orderflow.u10.n76.q3",
        "competencyId": "u10.exit_liquidity"
       },
       {
@@ -13147,8 +13588,8 @@
        "skillId": "exiting_into_liquidity",
        "sourceLesson": "Exiting Into Liquidity",
        "sourceUnit": 9,
-       "sourceNode": 75,
-       "questionId": "orderflow.u10.n75.q5",
+       "sourceNode": 76,
+       "questionId": "orderflow.u10.n76.q5",
        "competencyId": "u10.exit_liquidity"
       },
       {
@@ -13165,8 +13606,8 @@
        "skillId": "multi_signal_read",
        "sourceLesson": "Reviewing the Full Order Flow Read",
        "sourceUnit": 9,
-       "sourceNode": 76,
-       "questionId": "orderflow.u10.n76.q1",
+       "sourceNode": 77,
+       "questionId": "orderflow.u10.n77.q1",
        "competencyId": "u10.review_process"
       },
       {
@@ -13184,8 +13625,8 @@
        "skillId": "multi_signal_read",
        "sourceLesson": "Reviewing the Full Order Flow Read",
        "sourceUnit": 9,
-       "sourceNode": 76,
-       "questionId": "orderflow.u10.n76.q2",
+       "sourceNode": 77,
+       "questionId": "orderflow.u10.n77.q2",
        "competencyId": "u10.multi_source_evidence"
       },
       {
@@ -13203,8 +13644,8 @@
        "skillId": "multi_signal_read",
        "sourceLesson": "Reviewing the Full Order Flow Read",
        "sourceUnit": 9,
-       "sourceNode": 76,
-       "questionId": "orderflow.u10.n76.q4",
+       "sourceNode": 77,
+       "questionId": "orderflow.u10.n77.q4",
        "competencyId": "u10.multi_source_evidence"
       },
       {
@@ -13222,8 +13663,8 @@
        "skillId": "multi_signal_read",
        "sourceLesson": "Reviewing the Full Order Flow Read",
        "sourceUnit": 9,
-       "sourceNode": 76,
-       "questionId": "orderflow.u10.n76.q6",
+       "sourceNode": 77,
+       "questionId": "orderflow.u10.n77.q6",
        "competencyId": "u10.multi_source_evidence"
       },
       {
@@ -13241,8 +13682,8 @@
        "skillId": "multi_signal_read",
        "sourceLesson": "Reviewing the Full Order Flow Read",
        "sourceUnit": 9,
-       "sourceNode": 76,
-       "questionId": "orderflow.u10.n76.q7",
+       "sourceNode": 77,
+       "questionId": "orderflow.u10.n77.q7",
        "competencyId": "u10.multi_source_evidence"
       },
       {
@@ -13258,8 +13699,8 @@
        "skillId": "scenario_comparison",
        "sourceLesson": "Reviewing the Full Order Flow Read",
        "sourceUnit": 9,
-       "sourceNode": 76,
-       "questionId": "orderflow.u10.n76.q5",
+       "sourceNode": 77,
+       "questionId": "orderflow.u10.n77.q5",
        "competencyId": "u10.combined_execution_read"
       },
       {
@@ -13277,8 +13718,8 @@
        "skillId": "multi_signal_read",
        "sourceLesson": "Reviewing the Full Order Flow Read",
        "sourceUnit": 9,
-       "sourceNode": 76,
-       "questionId": "orderflow.u10.n76.q8",
+       "sourceNode": 77,
+       "questionId": "orderflow.u10.n77.q8",
        "competencyId": "u10.combined_execution_read"
       }
      ],
@@ -13340,54 +13781,54 @@
      },
      "competencyEligibleQuestionIds": {
       "u10.entry_plan": [
-       "orderflow.u10.n71.q1",
-       "orderflow.u10.n71.q3",
-       "orderflow.u10.n71.q5"
-      ],
-      "u10.order_type": [
-       "orderflow.u10.n71.q2",
-       "orderflow.u10.n71.q4",
-       "orderflow.u10.n71.q6"
-      ],
-      "u10.slippage": [
        "orderflow.u10.n72.q1",
        "orderflow.u10.n72.q3",
        "orderflow.u10.n72.q5"
       ],
-      "u10.invalidation": [
-       "orderflow.u10.n73.q2",
+      "u10.order_type": [
+       "orderflow.u10.n72.q2",
+       "orderflow.u10.n72.q4",
+       "orderflow.u10.n72.q6"
+      ],
+      "u10.slippage": [
+       "orderflow.u10.n73.q1",
        "orderflow.u10.n73.q3",
        "orderflow.u10.n73.q5"
       ],
-      "u10.thin_liquidity_risk": [
-       "orderflow.u10.n72.q2",
-       "orderflow.u10.n72.q4"
-      ],
-      "u10.no_clear_read": [
-       "orderflow.u10.n74.q1",
+      "u10.invalidation": [
        "orderflow.u10.n74.q2",
        "orderflow.u10.n74.q3",
-       "orderflow.u10.n74.q4",
        "orderflow.u10.n74.q5"
       ],
-      "u10.exit_liquidity": [
+      "u10.thin_liquidity_risk": [
+       "orderflow.u10.n73.q2",
+       "orderflow.u10.n73.q4"
+      ],
+      "u10.no_clear_read": [
        "orderflow.u10.n75.q1",
        "orderflow.u10.n75.q2",
        "orderflow.u10.n75.q3",
+       "orderflow.u10.n75.q4",
        "orderflow.u10.n75.q5"
       ],
+      "u10.exit_liquidity": [
+       "orderflow.u10.n76.q1",
+       "orderflow.u10.n76.q2",
+       "orderflow.u10.n76.q3",
+       "orderflow.u10.n76.q5"
+      ],
       "u10.review_process": [
-       "orderflow.u10.n76.q1"
+       "orderflow.u10.n77.q1"
       ],
       "u10.multi_source_evidence": [
-       "orderflow.u10.n76.q2",
-       "orderflow.u10.n76.q4",
-       "orderflow.u10.n76.q6",
-       "orderflow.u10.n76.q7"
+       "orderflow.u10.n77.q2",
+       "orderflow.u10.n77.q4",
+       "orderflow.u10.n77.q6",
+       "orderflow.u10.n77.q7"
       ],
       "u10.combined_execution_read": [
-       "orderflow.u10.n76.q5",
-       "orderflow.u10.n76.q8"
+       "orderflow.u10.n77.q5",
+       "orderflow.u10.n77.q8"
       ]
      },
      "competencySourceUnits": {
@@ -13424,34 +13865,34 @@
      },
      "competencySourceNodes": {
       "u10.entry_plan": [
-       71
+       72
       ],
       "u10.order_type": [
-       71
+       72
       ],
       "u10.slippage": [
-       72
-      ],
-      "u10.invalidation": [
        73
       ],
-      "u10.thin_liquidity_risk": [
-       72
-      ],
-      "u10.no_clear_read": [
+      "u10.invalidation": [
        74
       ],
-      "u10.exit_liquidity": [
+      "u10.thin_liquidity_risk": [
+       73
+      ],
+      "u10.no_clear_read": [
        75
       ],
-      "u10.review_process": [
+      "u10.exit_liquidity": [
        76
+      ],
+      "u10.review_process": [
+       77
       ],
       "u10.multi_source_evidence": [
-       76
+       77
       ],
       "u10.combined_execution_read": [
-       76
+       77
       ]
      },
      "jumpAheadQuestionCount": 20,
