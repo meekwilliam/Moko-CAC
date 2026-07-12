@@ -1315,6 +1315,162 @@ def apply_difficulty_progression(course):
                 footprint_tap_index += 1
 
 
+def condense_course(course):
+    """Merge mirrored micro-lessons into the requested 77-lesson course."""
+    structures = [
+        [
+            ("What Is Order Flow?", ["What Is Order Flow?"], 6),
+            ("Aggressive vs. Passive Orders", ["Aggressive vs. Passive Orders"], 6),
+            ("The Bid, Ask & Spread", ["The Bid, Ask & Spread"], 6),
+            ("Lifting the Offer & Hitting the Bid", ["Lifting the Offer & Hitting the Bid"], 6),
+        ],
+        [
+            ("Reading the Order Book", ["What the Order Book Shows", "Bid Side vs. Ask Side"], 7),
+            ("Size & Liquidity", ["Size & Liquidity"], 6),
+            ("Large Orders as Walls", ["Large Orders as Walls"], 6),
+            ("Pulling, Replenishment & Spoofing", ["Pulling & Spoofing"], 6),
+            ("What Actually Moves Price", ["What Actually Moves Price"], 6),
+            ("Order Book Challenge", ["The Order Book Review", "Foundations and Book Mixed Review"], 7),
+        ],
+        [
+            ("Reading Time & Sales", ["Reading Time and Sales", "Reading the Tape"], 7),
+            ("Speed & Size", ["Trade Speed", "Trade Size"], 7),
+            ("Buyer vs. Seller Initiated Prints", ["Buyer Initiated Prints", "Seller Initiated Prints"], 7),
+            ("Repeated Prints & Sequence Breaks", ["Repeated Prints"], 6),
+            ("Acceleration, Slowdown & False Urgency", ["Pace Changes", "False Urgency"], 7),
+            ("Tape at Key Levels", ["Tape at Key Levels"], 6),
+        ],
+        [
+            ("What Is Absorption?", ["What Is Absorption"], 6),
+            ("Buyer vs. Seller Absorption", ["Buyer Absorption", "Seller Absorption"], 7),
+            ("Repeated Tests & Hidden Liquidity", ["Repeated Tests", "Hidden Liquidity"], 7),
+            ("What Is Exhaustion?", ["What Is Exhaustion"], 6),
+            ("Buyer vs. Seller Exhaustion", ["Buyer Exhaustion", "Seller Exhaustion"], 7),
+            ("Absorption vs. Exhaustion", ["Absorption or Exhaustion"], 6),
+            ("Absorption Practice Replays", ["Seller Absorption Simulation", "Buyer Absorption Simulation", "Absorption Review", "Tape and Absorption Mixed Review"], 6),
+        ],
+        [
+            ("Reading Footprints & Imbalances", ["Reading a Footprint Chart", "Footprint Imbalances"], 7),
+            ("Buyer vs. Seller Imbalances", ["Order Imbalance", "Buyer Imbalance", "Seller Imbalance"], 8),
+            ("Momentum Ignition", ["Momentum Ignition"], 6),
+            ("Momentum Continuation & Failure", ["Momentum Continuation", "Momentum Failure"], 7),
+            ("Stacked Pressure", ["Stacked Pressure"], 6),
+            ("Delta vs. Volume", ["Delta Thinking", "Delta vs Volume"], 7),
+            ("Positive vs. Negative Delta Divergence", ["Positive Delta While Price Falls", "Negative Delta While Price Rises"], 7),
+            ("Price and Pressure Divergence", ["Price and Pressure Divergence"], 6),
+            ("Footprint & Momentum Challenge", ["Imbalance Review", "Momentum Ignition", "Momentum Failure", "Price and Pressure Divergence"], 8),
+        ],
+        [
+            ("Liquidity Pools & Stop Clusters", ["Liquidity Pools", "Resting Stops"], 7),
+            ("Buy Stops vs. Sell Stops", ["Buy Stops", "Sell Stops"], 7),
+            ("What Is a Liquidity Sweep?", ["Liquidity Sweep"], 6),
+            ("Upside vs. Downside Sweeps", ["Upside Sweep", "Downside Sweep"], 7),
+            ("Sweep vs. Breakout Acceptance", ["Sweep or Breakout"], 6),
+            ("Thin vs. Thick Liquidity", ["Thin Liquidity", "Thick Book vs Thin Book"], 7),
+            ("Icebergs & Hidden Replenishment", ["Iceberg Orders"], 6),
+            ("Liquidity Challenge", ["Liquidity Sweep Rejection Simulation", "Liquidity Review", "Flow and Liquidity Mixed Review"], 8),
+        ],
+        [
+            ("Breakout vs. Breakdown Pressure", ["Breakout Pressure", "Breakdown Pressure"], 7),
+            ("Acceptance Above vs. Below", ["Acceptance Above", "Acceptance Below"], 7),
+            ("Breakout Acceptance Practice Replay", ["Breakout Acceptance Simulation"], 6),
+            ("Failed Breakouts vs. Failed Breakdowns", ["Failed Breakout", "Failed Breakdown"], 7),
+            ("Breakout and Breakdown Retests", ["Breakout Retest", "Breakdown Retest"], 7),
+            ("Chasing, Confirmation & Common Misconceptions", ["Chasing Breakouts", "Common Order Flow Misconceptions"], 7),
+            ("Breakout Challenge", ["Breakout Review", "Acceptance Above", "Failed Breakout", "Breakout Retest"], 8),
+        ],
+        [
+            ("Healthy Pullbacks & Pullback Depth", ["Healthy Pullbacks", "Pullback Depth"], 7),
+            ("Bullish vs. Bearish Pullbacks", ["Seller Pullback", "Bearish Continuation"], 7),
+            ("Continuation Triggers", ["Continuation Trigger"], 6),
+            ("Order Flow at VWAP & Moving Averages", ["Order Flow at VWAP", "Order Flow at a Moving Average"], 7),
+            ("Pullback Failure", ["Pullback Failure"], 6),
+            ("Conflicting Signals", ["Conflicting Order Flow Signals"], 6),
+            ("Volume Context: Chop vs. Low Volume Trend", ["High Volume Chop", "Low Volume Trend"], 7),
+            ("Confirmation & Continuation Challenge", ["Entry After Confirmation", "Continuation Review", "No Clear Read Simulation", "Breakout and Continuation Mixed Review"], 8),
+        ],
+        [
+            ("Reversal Pressure", ["Reversal Pressure"], 6),
+            ("Buyer Traps vs. Seller Traps", ["Buyer Trap", "Seller Trap"], 7),
+            ("Exhaustion Reversals", ["Exhaustion Reversal"], 6),
+            ("Absorption Reversals", ["Absorption Reversal"], 6),
+            ("Double Top vs. Double Bottom Flow", ["Double Top Flow", "Double Bottom Flow"], 7),
+            ("Reversal Confirmation & Insufficient Evidence", ["Confirmation Before Entry", "Reversal Review"], 7),
+        ],
+        [
+            ("Planning the Entry & Choosing the Order Type", ["Plan the Entry", "Choose the Order Type"], 7),
+            ("Slippage & Thin Liquidity Risk", ["Manage Slippage", "Risk in Thin Liquidity"], 7),
+            ("Order Flow Invalidation", ["Order Flow Invalidation"], 6),
+            ("No Clear Read", ["No Clear Order Flow Read"], 6),
+            ("Exiting Into Liquidity", ["Exit Into Liquidity"], 6),
+            ("Reviewing the Full Order Flow Read", ["Review the Order Flow Read", "Comprehensive Order Flow Simulation"], 8),
+        ],
+    ]
+    old_lessons = {item["title"]: item for item in course["lessons"]}
+
+    def select_screens(source_titles, target):
+        groups = []
+        for source_title in source_titles:
+            if source_title not in old_lessons:
+                raise AssertionError(f"Missing condensed source lesson: {source_title}")
+            groups.append(old_lessons[source_title]["screens"])
+        selected, seen = [], set()
+        depth = 0
+        while len(selected) < target and any(depth < len(group) for group in groups):
+            for group in groups:
+                if depth >= len(group):
+                    continue
+                screen = group[depth]
+                key = (screen["type"], screen.get("question"))
+                if key not in seen:
+                    selected.append(dict(screen))
+                    seen.add(key)
+                    if len(selected) == target:
+                        break
+            depth += 1
+        return selected
+
+    def extend_short_lesson(title, screens, minimum):
+        additions = [
+            {"type": "evidence_select", "question": f"Select the two strongest evidence checks for {title}.",
+             "options": ["Execution behavior", "Confirming price response", "Candle color alone", "A company profile"],
+             "targets": [0, 1], "explanation": "The read needs executed activity and the price response it produces."},
+            {"type": "multiple_choice", "question": f"What is the best way to interpret {title}?",
+             "options": ["Combine location, execution, and response", "Treat one print as confirmation", "Assume displayed size cannot change"],
+             "correct": 0, "explanation": "Order flow conclusions are strongest when several evidence sources align."},
+            {"type": "sequence_builder", "question": f"Build the reading process for {title}.",
+             "items": ["Find the location", "Observe aggression", "Inspect liquidity", "Judge price response"],
+             "correct_order": ["Find the location", "Observe aggression", "Inspect liquidity", "Judge price response"],
+             "explanation": "Read context first, then action, liquidity, and response."},
+        ]
+        while len(screens) < minimum:
+            screens.append(additions[len(screens) % len(additions)])
+        return screens
+
+    new_nodes, new_lessons = [], []
+    node = 1
+    for section_index, specs in enumerate(structures):
+        for title, sources, target in specs:
+            screens = select_screens(sources, target)
+            minimum = 4 if "Practice Replay" in title else 5
+            screens = extend_short_lesson(title, screens, minimum)
+            new_nodes.append({"num": node, "svg": NODE_SVGS[section_index % len(NODE_SVGS)],
+                              "title": title, "sectionIndex": section_index})
+            new_lessons.append({"node": node, "title": title, "celebration": title + " complete.",
+                                "lessonType": "PRACTICE_REPLAY" if "Practice Replay" in title else "STANDARD",
+                                "screens": screens})
+            node += 1
+        # apply_boss_structure replaces this explicit final placeholder.
+        new_nodes.append({"num": node, "svg": NODE_SVGS[section_index % len(NODE_SVGS)],
+                          "title": "Boss Battle", "sectionIndex": section_index})
+        new_lessons.append({"node": node, "title": "Boss Battle", "celebration": "Boss complete.",
+                            "lessonType": "BOSS_BATTLE", "screens": []})
+        node += 1
+    course["nodes"] = new_nodes
+    course["lessons"] = new_lessons
+    assert len(new_lessons) == 77
+
+
 def apply_boss_structure(course):
     """Convert each existing final review into one tier-appropriate Boss."""
     boss_specs = {
@@ -1324,6 +1480,8 @@ def apply_boss_structure(course):
             {"type": "book_drag", "order": "market_sell", "question": "Where does a market sell execute?", "correct": 0, "explanation": "Market sells hit the bid."},
             {"type": "multiple_choice", "question": "Which order is passive?", "options": ["A limit order resting at price", "A market order crossing now", "A completed execution"], "correct": 0, "explanation": "Passive orders rest as liquidity."},
             {"type": "evidence_select", "question": "Select the complete market read.", "options": ["Aggressor", "Liquidity", "Price response", "Candle color"], "targets": [0, 1, 2], "explanation": "A complete read combines action, liquidity, and response."},
+            {"type": "multiple_choice", "question": "What does the spread measure?", "options": ["The distance between best bid and ask", "The last candle range", "Total traded volume"], "correct": 0, "explanation": "The spread separates the best resting bid and ask."},
+            {"type": "sequence_builder", "question": "Build the order to price chain.", "items": ["Aggressor crosses the spread", "Resting liquidity trades", "Available price changes", "Chart records the response"], "correct_order": ["Aggressor crosses the spread", "Resting liquidity trades", "Available price changes", "Chart records the response"], "explanation": "Aggression interacts with liquidity before price records the result."},
         ]),
         1: ("Boss Battle: Read the Book", [
             {"type": "multiple_choice", "question": "What does Level II add?", "options": ["Depth across price levels", "Only the last trade", "Future orders with certainty"], "correct": 0, "explanation": "Level II displays resting depth across prices."},
@@ -1332,6 +1490,7 @@ def apply_boss_structure(course):
             {"type": "replay_compare", "event": "wall", "question": "Which wall absorbed selling?", "options": ["Replay A", "Replay B", "Neither"], "correct": 0, "explanation": "Replay A replenishes while trading and price holds."},
             {"type": "multiple_choice", "question": "What happened when the bid vanished?", "options": ["Liquidity was pulled", "Selling was absorbed", "The spread closed"], "correct": 0, "explanation": "The displayed bid disappeared before trading."},
             {"type": "evidence_select", "question": "Select the holding wall clues.", "options": ["Repeated fills", "Replenishing size", "Price holds", "Wall pulls"], "targets": [0, 1, 2], "explanation": "Trading, replenishment, and response distinguish a holding wall."},
+            {"type": "sequence_builder", "question": "Build the wall validation process.", "items": ["Locate unusual resting size", "Watch executions reach it", "Check whether size replenishes", "Judge the price response"], "correct_order": ["Locate unusual resting size", "Watch executions reach it", "Check whether size replenishes", "Judge the price response"], "explanation": "A wall matters only after its behavior and price response are observed."},
         ]),
         2: ("Boss Battle: Read the Tape", [
             {"type": "time_sales", "event": "lift", "question": "Who initiates these prints?", "options": ["Buyers", "Sellers", "Neither"], "correct": 0, "explanation": "Trades at the ask are buyer initiated."},
@@ -1345,8 +1504,8 @@ def apply_boss_structure(course):
         3: ("Boss Battle: Absorption or Exhaustion?", [
             {"type": "replay_compare", "event": "absorption", "question": "Which replay shows absorption?", "options": ["Replay A", "Replay B", "Neither"], "correct": 0, "explanation": "Aggression remains strong while price stalls."},
             {"type": "time_sales", "event": "stall", "question": "What does fading pace suggest?", "options": ["Exhaustion", "Absorption", "Acceptance"], "correct": 0, "explanation": "Exhaustion means aggression itself fades."},
-            {"type": "orderflow_sim", "event": "buyer_absorption", "question": "What's the strongest read?", "options": ["Possible buyer absorption", "Seller continuation remains favored", "Seller exhaustion is developing"], "correct": 0, "explanation": "Selling remains active while support holds."},
-            {"type": "orderflow_sim", "event": "seller_absorption", "question": "What's the strongest read?", "options": ["Possible seller absorption", "Buyer continuation remains favored", "Buyer exhaustion is developing"], "correct": 0, "explanation": "Buying remains active while resistance holds."},
+            {"type": "orderflow_sim", "event": "buyer_absorption", "question": "Selling stays aggressive while support holds. What's strongest?", "options": ["Possible buyer absorption", "Seller continuation remains favored", "Seller exhaustion is developing"], "correct": 0, "explanation": "Selling remains active while support holds."},
+            {"type": "orderflow_sim", "event": "seller_absorption", "question": "Buying stays aggressive while resistance holds. What's strongest?", "options": ["Possible seller absorption", "Buyer continuation remains favored", "Buyer exhaustion is developing"], "correct": 0, "explanation": "Buying remains active while resistance holds."},
             {"type": "time_sales", "event": "stall", "question": "Which side loses urgency?", "options": ["The aggressive side", "The passive side", "Neither side"], "correct": 0, "explanation": "Exhaustion appears as initiating activity fades."},
             {"type": "evidence_select", "question": "Select seller absorption clues.", "options": ["Refreshing offer", "Stalled price", "Fading buy pace", "Price accepts higher"], "targets": [0, 1], "explanation": "Replenishment and stalled response support absorption."},
             {"type": "orderflow_sim", "event": "conflict", "question": "Is a clear read confirmed?", "options": ["Not enough evidence", "Buyer absorption", "Seller exhaustion"], "correct": 0, "explanation": "Conflicting evidence does not confirm either interpretation."},
@@ -1396,8 +1555,8 @@ def apply_boss_structure(course):
             {"type": "replay_compare", "event": "sweep", "question": "Which replay traps sellers?", "options": ["Replay A", "Replay B", "Neither"], "correct": 0, "explanation": "The rejected breach traps the initiating side."},
             {"type": "time_sales", "event": "stall", "question": "What supports exhaustion reversal?", "options": ["Aggression fades", "Aggression stays strong", "Price accepts lower"], "correct": 0, "explanation": "Exhaustion begins with fading aggression."},
             {"type": "orderflow_sim", "event": "buyer_absorption", "question": "What supports buyer absorption reversal?", "options": ["Selling stalls at support", "Selling accepts lower", "No bids replenish"], "correct": 0, "explanation": "Repeated selling fails to make progress."},
-            {"type": "multiple_choice", "chart": "doubleTop", "question": "What matters on the second test?", "options": ["Weaker buying and stronger defense", "The shape alone", "Equal candle colors"], "correct": 0, "explanation": "Compare execution and response across tests."},
-            {"type": "multiple_choice", "chart": "doubleBottom", "question": "What matters on the second test?", "options": ["Weaker selling and stronger defense", "The shape alone", "Equal candle colors"], "correct": 0, "explanation": "Compare execution and response across tests."},
+            {"type": "multiple_choice", "chart": "doubleTop", "question": "What matters on the second high test?", "options": ["Weaker buying and stronger defense", "The shape alone", "Equal candle colors"], "correct": 0, "explanation": "Compare execution and response across tests."},
+            {"type": "multiple_choice", "chart": "doubleBottom", "question": "What matters on the second low test?", "options": ["Weaker selling and stronger defense", "The shape alone", "Equal candle colors"], "correct": 0, "explanation": "Compare execution and response across tests."},
             {"type": "evidence_select", "question": "Select reversal confirmation clues.", "options": ["Control changes", "Price confirms", "One rejection wick", "Mixed tape"], "targets": [0, 1], "explanation": "A reversal needs control change and response."},
             {"type": "orderflow_sim", "event": "conflict", "question": "Is a reversal confirmed?", "options": ["Not enough evidence", "Yes. The wick is enough", "Yes. Neutral delta confirms it"], "correct": 0, "explanation": "Mixed tape and balanced execution remain inconclusive."},
             {"type": "multiple_choice", "question": "When should entry wait?", "options": ["Until control and response align", "Until one large print", "Until any wick appears"], "correct": 0, "explanation": "Expert reversal reads require confirmation."},
@@ -1419,7 +1578,8 @@ def apply_boss_structure(course):
     # Practice simulations remain ordinary replay lessons.
     for lesson_item in course["lessons"]:
         lesson_item["lessonType"] = "STANDARD"
-        if "Simulation" in lesson_item["title"] and lesson_item["title"] != "Comprehensive Order Flow Simulation":
+        if (("Simulation" in lesson_item["title"] and lesson_item["title"] != "Comprehensive Order Flow Simulation")
+                or "Practice Replay" in lesson_item["title"]):
             lesson_item["lessonType"] = "PRACTICE_REPLAY"
             lesson_item["title"] = lesson_item["title"].replace("Simulation", "Practice Replay")
 
@@ -1458,15 +1618,15 @@ def add_skill_tags_and_test_outs(course):
     ]
     competency_sources = [
         ["Lifting the Offer & Hitting the Bid", "Lifting the Offer & Hitting the Bid", "Lifting the Offer & Hitting the Bid", "Lifting the Offer & Hitting the Bid", "The Bid, Ask & Spread", "Aggressive vs. Passive Orders", "Lifting the Offer & Hitting the Bid", "What Is Order Flow?"],
-        ["What the Order Book Shows", "Bid Side vs. Ask Side", "Size & Liquidity", "Size & Liquidity", "Large Orders as Walls", "Large Orders as Walls", "Pulling & Spoofing", "The Order Book Review"],
-        ["Buyer Initiated Prints", "Seller Initiated Prints", "Trade Size", "Trade Speed", "Repeated Prints", "Repeated Prints", "False Urgency", "Tape at Key Levels", "Reading the Tape"],
-        ["What Is Absorption", "Buyer Absorption", "Seller Absorption", "Repeated Tests", "Hidden Liquidity", "Buyer Exhaustion", "Seller Exhaustion", "Absorption or Exhaustion", "Absorption Review"],
-        ["Reading a Footprint Chart", "Footprint Imbalances", "Buyer Imbalance", "Seller Imbalance", "Stacked Pressure", "Momentum Failure", "Delta vs Volume", "Positive Delta While Price Falls", "Negative Delta While Price Rises", "Price and Pressure Divergence"],
-        ["Liquidity Pools", "Resting Stops", "Buy Stops", "Sell Stops", "Upside Sweep", "Downside Sweep", "Sweep or Breakout", "Thick Book vs Thin Book", "Iceberg Orders", "Liquidity Review"],
-        ["Breakout Pressure", "Breakdown Pressure", "Acceptance Above", "Acceptance Below", "Failed Breakout", "Failed Breakdown", "Breakout Retest", "Breakdown Retest", "Chasing Breakouts", "Common Order Flow Misconceptions"],
-        ["Healthy Pullbacks", "Pullback Depth", "Continuation Trigger", "Bearish Continuation", "Order Flow at VWAP", "Order Flow at a Moving Average", "Pullback Failure", "Conflicting Order Flow Signals", "High Volume Chop", "No Clear Read Practice Replay"],
-        ["Reversal Pressure", "Buyer Trap", "Seller Trap", "Exhaustion Reversal", "Exhaustion Reversal", "Absorption Reversal", "Double Top Flow", "Double Bottom Flow", "Confirmation Before Entry", "Confirmation Before Entry"],
-        ["Plan the Entry", "Choose the Order Type", "Manage Slippage", "Order Flow Invalidation", "Risk in Thin Liquidity", "No Clear Order Flow Read", "Exit Into Liquidity", "Review the Order Flow Read", "Review the Order Flow Read", "Review the Order Flow Read"],
+        ["Reading the Order Book", "Reading the Order Book", "Size & Liquidity", "Size & Liquidity", "Large Orders as Walls", "Large Orders as Walls", "Pulling, Replenishment & Spoofing", "Order Book Challenge"],
+        ["Buyer vs. Seller Initiated Prints", "Buyer vs. Seller Initiated Prints", "Speed & Size", "Speed & Size", "Repeated Prints & Sequence Breaks", "Repeated Prints & Sequence Breaks", "Acceleration, Slowdown & False Urgency", "Tape at Key Levels", "Reading Time & Sales"],
+        ["What Is Absorption?", "Buyer vs. Seller Absorption", "Buyer vs. Seller Absorption", "Repeated Tests & Hidden Liquidity", "Repeated Tests & Hidden Liquidity", "Buyer vs. Seller Exhaustion", "Buyer vs. Seller Exhaustion", "Absorption vs. Exhaustion", "Absorption Practice Replays"],
+        ["Reading Footprints & Imbalances", "Reading Footprints & Imbalances", "Buyer vs. Seller Imbalances", "Buyer vs. Seller Imbalances", "Stacked Pressure", "Momentum Continuation & Failure", "Delta vs. Volume", "Positive vs. Negative Delta Divergence", "Positive vs. Negative Delta Divergence", "Price and Pressure Divergence"],
+        ["Liquidity Pools & Stop Clusters", "Liquidity Pools & Stop Clusters", "Buy Stops vs. Sell Stops", "Buy Stops vs. Sell Stops", "Upside vs. Downside Sweeps", "Upside vs. Downside Sweeps", "Sweep vs. Breakout Acceptance", "Thin vs. Thick Liquidity", "Icebergs & Hidden Replenishment", "Liquidity Challenge"],
+        ["Breakout vs. Breakdown Pressure", "Breakout vs. Breakdown Pressure", "Acceptance Above vs. Below", "Acceptance Above vs. Below", "Failed Breakouts vs. Failed Breakdowns", "Failed Breakouts vs. Failed Breakdowns", "Breakout and Breakdown Retests", "Breakout and Breakdown Retests", "Chasing, Confirmation & Common Misconceptions", "Breakout Challenge"],
+        ["Healthy Pullbacks & Pullback Depth", "Healthy Pullbacks & Pullback Depth", "Continuation Triggers", "Bullish vs. Bearish Pullbacks", "Order Flow at VWAP & Moving Averages", "Order Flow at VWAP & Moving Averages", "Pullback Failure", "Conflicting Signals", "Volume Context: Chop vs. Low Volume Trend", "Confirmation & Continuation Challenge"],
+        ["Reversal Pressure", "Buyer Traps vs. Seller Traps", "Buyer Traps vs. Seller Traps", "Exhaustion Reversals", "Exhaustion Reversals", "Absorption Reversals", "Double Top vs. Double Bottom Flow", "Double Top vs. Double Bottom Flow", "Reversal Confirmation & Insufficient Evidence", "Reversal Confirmation & Insufficient Evidence"],
+        ["Planning the Entry & Choosing the Order Type", "Planning the Entry & Choosing the Order Type", "Slippage & Thin Liquidity Risk", "Order Flow Invalidation", "Slippage & Thin Liquidity Risk", "No Clear Read", "Exiting Into Liquidity", "Reviewing the Full Order Flow Read", "Reviewing the Full Order Flow Read", "Reviewing the Full Order Flow Read"],
     ]
     def skill_for(title, screen):
         kind = screen["type"]
@@ -1496,6 +1656,7 @@ def add_skill_tags_and_test_outs(course):
         count = section["testOutQuestionCount"]
         blueprint = [f"u{index + 1}.{competency}" for competency in competency_blueprints[index]]
         assessment_pool = []
+        source_offsets = {}
         # Each competency maps to questions from the lesson that actually teaches
         # it. Keep two candidates per slot so attempts vary without relabeling an
         # unrelated question as a different skill.
@@ -1503,7 +1664,10 @@ def add_skill_tags_and_test_outs(course):
             candidates = [question for question in pools[index] if question["sourceLesson"] == source_title]
             if not candidates:
                 raise AssertionError(f"No assessment questions for {competency} from {source_title}")
-            for question in candidates[:2]:
+            start = source_offsets.get(source_title, 0)
+            rotated = candidates[start:] + candidates[:start]
+            source_offsets[source_title] = (start + 2) % len(candidates)
+            for question in rotated[:2]:
                 assessment_pool.append({**question, "competencyId": competency})
         competency_mappings = {
             competency: sorted({q["skillId"] for q in assessment_pool if q["competencyId"] == competency})
@@ -1572,7 +1736,13 @@ def main():
         "What Actually Moves Price",
     ]
     existing = {item["title"]: item for item in course["lessons"]}
-    authored_aliases = {"Order Flow Foundations Review": "Boss Battle: Foundations Under Pressure"}
+    authored_aliases = {
+        "Order Flow Foundations Review": "Boss Battle: Foundations Under Pressure",
+        "What the Order Book Shows": "Reading the Order Book",
+        "Bid Side vs. Ask Side": "Reading the Order Book",
+        "Pulling & Spoofing": "Pulling, Replenishment & Spoofing",
+        "The Order Book Review": "Order Book Challenge",
+    }
     authored = {title: existing.get(title) or existing[authored_aliases[title]] for title in authored_titles}
     original_sections = course["sections"][:2]
     original_sections[0]["tier"] = "Beginner"
@@ -1630,11 +1800,12 @@ def main():
 
     replace_fill_questions(course)
     apply_difficulty_progression(course)
+    condense_course(course)
     apply_boss_structure(course)
     add_skill_tags_and_test_outs(course)
 
     assert len(course["sections"]) == 10
-    assert 80 <= len(course["nodes"]) <= 120
+    assert len(course["nodes"]) == 77
     assert len(course["lessons"]) == len(course["nodes"])
     expected_nodes = list(range(1, len(course["nodes"]) + 1))
     assert [node["num"] for node in course["nodes"]] == expected_nodes
