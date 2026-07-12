@@ -329,6 +329,72 @@ struct BookDragView: View {
     }
 }
 
+// MARK: - Interactive DOM ladder
+
+struct DOMTapView: View {
+    @ObservedObject var player: LessonPlayer
+    var ink: Color
+
+    private let prices = [101.15, 101.10, 101.05, 101.00, 100.95, 100.90]
+    private let sizes = [180, 420, 95, 140, 310, 205]
+
+    var body: some View {
+        VStack(alignment: .leading, spacing: 14) {
+            Text(player.screen.question ?? "Read the DOM.")
+                .font(Theme.questionFont(21, .heavy)).foregroundColor(ink)
+
+            VStack(spacing: 4) {
+                HStack {
+                    Text("BID SIZE").frame(maxWidth: .infinity)
+                    Text("PRICE").frame(width: 82)
+                    Text("ASK SIZE").frame(maxWidth: .infinity)
+                }
+                .font(Theme.font(9, .black)).foregroundColor(Theme.muted)
+
+                ForEach(prices.indices, id: \.self) { index in
+                    let isAsk = index < 3
+                    HStack(spacing: 8) {
+                        Text(isAsk ? "" : "\(sizes[index])")
+                            .frame(maxWidth: .infinity, alignment: .trailing)
+                            .foregroundColor(bidColor)
+                        Text(String(format: "%.2f", prices[index]))
+                            .frame(width: 82).foregroundColor(ink)
+                        Text(isAsk ? "\(sizes[index])" : "")
+                            .frame(maxWidth: .infinity, alignment: .leading)
+                            .foregroundColor(askColor)
+                    }
+                    .font(Theme.font(13, .black)).padding(.vertical, 8).padding(.horizontal, 10)
+                    .background(RoundedRectangle(cornerRadius: 9).fill(index == player.selectedIndex ? Theme.answer.opacity(0.14) : (isAsk ? askColor : bidColor).opacity(0.06)))
+                    .overlay(RoundedRectangle(cornerRadius: 9).strokeBorder(rowColor(index), lineWidth: rowWidth(index)))
+                    .contentShape(Rectangle())
+                    .onTapGesture {
+                        guard !player.revealed else { return }
+                        Haptics.selection()
+                        player.selectedIndex = index
+                    }
+                }
+            }
+            .padding(12)
+            .background(RoundedRectangle(cornerRadius: 16).fill(Color.black.opacity(0.24)))
+            .overlay(RoundedRectangle(cornerRadius: 16).strokeBorder(Theme.surfaceBorder, lineWidth: 1.5))
+
+            Label("Tap the price row that answers the question", systemImage: "hand.tap.fill")
+                .font(Theme.font(12, .bold)).foregroundColor(Theme.muted)
+        }
+    }
+
+    private func rowColor(_ index: Int) -> Color {
+        if player.revealed && index == player.screen.target { return bidColor }
+        if player.revealed && index == player.selectedIndex { return askColor }
+        if index == player.selectedIndex { return Theme.answer }
+        return .clear
+    }
+
+    private func rowWidth(_ index: Int) -> CGFloat {
+        index == player.selectedIndex || (player.revealed && index == player.screen.target) ? 2 : 0
+    }
+}
+
 // MARK: - Book depth comparison
 
 /// Side by side ladders make depth tangible: the thick book has large nearby
@@ -446,6 +512,12 @@ struct ReplayCompareView: View {
         switch player.screen.event {
         case "cvd_divergence":
             return (["Price makes new high", "CVD makes lower high", "Pressure disagrees"], ["Price advances", "CVD advances", "Pressure agrees"])
+        case "cvd_agreement":
+            return (["Price rises", "CVD rises", "Pressure agrees"], ["Price rises", "CVD falls", "Pressure disagrees"])
+        case "pulled_vs_consumed":
+            return (["Ask disappears", "No trade prints", "Liquidity was pulled"], ["Trades hit the ask", "Displayed size declines", "Liquidity was consumed"])
+        case "profile_concentration":
+            return (["One dominant bulge", "Clear central POC", "Concentrated acceptance"], ["Bars stay similar", "No dominant bulge", "Volume is distributed"])
         case "wall":
             return (["Large bid is hit", "Bid replenishes", "Price holds"], ["Large bid appears", "Bid gets pulled", "Price falls through"])
         case "sweep":
@@ -476,6 +548,15 @@ struct ReplayCompareView: View {
     private func replay(title: String, rows: [String], tint: Color) -> some View {
         VStack(alignment: .leading, spacing: 8) {
             Text(title).font(Theme.font(10, .black)).foregroundColor(tint)
+            if player.screen.event == "profile_concentration" {
+                VStack(alignment: .leading, spacing: 2) {
+                    ForEach(Array((title == "REPLAY A" ? [18, 28, 64, 112, 58, 25] : [48, 55, 51, 59, 46, 53]).enumerated()), id: \.offset) { _, width in
+                        RoundedRectangle(cornerRadius: 2).fill(tint.opacity(0.75))
+                            .frame(width: CGFloat(width) / 2.2, height: 3)
+                    }
+                }
+                .frame(height: 28)
+            }
             ForEach(rows, id: \.self) { row in
                 HStack(spacing: 6) {
                     Circle().fill(tint).frame(width: 6, height: 6)
@@ -825,42 +906,88 @@ struct CVDChartQuestionView: View {
                 .font(Theme.questionFont(21, .heavy)).foregroundColor(ink)
 
             VStack(alignment: .leading, spacing: 8) {
-                Text("PRICE").font(Theme.font(9, .black)).foregroundColor(Theme.muted)
-                HStack(alignment: .bottom, spacing: 7) {
-                    ForEach(Array([28.0, 37.0, 32.0, 46.0, 42.0, 55.0, 61.0].enumerated()), id: \.offset) { index, height in
-                        RoundedRectangle(cornerRadius: 3)
-                            .fill(index.isMultiple(of: 3) ? askColor.opacity(0.85) : bidColor.opacity(0.85))
-                            .frame(maxWidth: .infinity).frame(height: height)
-                    }
-                }
-                .frame(height: 65, alignment: .bottom)
-
+                linePanel(title: "PRICE", values: priceValues, color: bidColor, interactive: false)
                 Divider().overlay(Theme.surfaceBorder)
-                Text("CUMULATIVE VOLUME DELTA").font(Theme.font(9, .black)).foregroundColor(Theme.muted)
-                GeometryReader { proxy in
-                    let points: [CGFloat] = [0.76, 0.67, 0.70, 0.51, 0.43, 0.28, 0.16]
-                    Path { path in
-                        for (index, value) in points.enumerated() {
-                            let x = proxy.size.width * CGFloat(index) / CGFloat(points.count - 1)
-                            let y = proxy.size.height * value
-                            if index == 0 { path.move(to: CGPoint(x: x, y: y)) }
-                            else { path.addLine(to: CGPoint(x: x, y: y)) }
-                        }
-                    }
-                    .stroke(Color.cyan, style: StrokeStyle(lineWidth: 4, lineCap: .round, lineJoin: .round))
-                }
-                .frame(height: 72)
+                linePanel(title: "CUMULATIVE VOLUME DELTA", values: cvdValues, color: .cyan, interactive: player.screen.type == "cvd_tap")
             }
             .padding(14)
             .background(RoundedRectangle(cornerRadius: 16).fill(Color.black.opacity(0.24)))
             .overlay(RoundedRectangle(cornerRadius: 16).strokeBorder(Color.cyan.opacity(0.45), lineWidth: 1.5))
 
-            VStack(spacing: 9) {
-                ForEach(Array(player.currentOptions.enumerated()), id: \.offset) { index, label in
-                    OFOption(player: player, index: index, label: label, ink: ink)
+            if player.screen.type == "cvd_tap" {
+                Label("Tap the CVD pivot that answers the question", systemImage: "hand.tap.fill")
+                    .font(Theme.font(12, .bold)).foregroundColor(Theme.muted)
+            } else {
+                VStack(spacing: 9) {
+                    ForEach(Array(player.currentOptions.enumerated()), id: \.offset) { index, label in
+                        OFOption(player: player, index: index, label: label, ink: ink)
+                    }
                 }
             }
         }
+    }
+
+    private var isBullish: Bool { player.screen.event == "bullish_divergence" }
+    private var priceValues: [CGFloat] {
+        isBullish ? [0.20, 0.38, 0.72, 0.44, 0.34, 0.55, 0.86, 0.58]
+                  : [0.82, 0.56, 0.28, 0.52, 0.64, 0.38, 0.13, 0.35]
+    }
+    private var cvdValues: [CGFloat] {
+        isBullish ? [0.18, 0.45, 0.82, 0.58, 0.48, 0.52, 0.64, 0.43]
+                  : [0.80, 0.50, 0.16, 0.39, 0.46, 0.42, 0.31, 0.47]
+    }
+
+    private func linePanel(title: String, values: [CGFloat], color: Color, interactive: Bool) -> some View {
+        VStack(alignment: .leading, spacing: 4) {
+            Text(title).font(Theme.font(9, .black)).foregroundColor(Theme.muted)
+            GeometryReader { proxy in
+                ZStack {
+                    Path { path in
+                        for (index, value) in values.enumerated() {
+                            let x = proxy.size.width * CGFloat(index) / CGFloat(values.count - 1)
+                            let y = proxy.size.height * value
+                            if index == 0 { path.move(to: CGPoint(x: x, y: y)) }
+                            else { path.addLine(to: CGPoint(x: x, y: y)) }
+                        }
+                    }
+                    .stroke(color, style: StrokeStyle(lineWidth: 4, lineCap: .round, lineJoin: .round))
+
+                    if interactive {
+                        ForEach(0..<2, id: \.self) { pivot in
+                            let pointIndex = pivot == 0 ? 2 : 6
+                            Circle()
+                                .fill(pivotFill(pivot))
+                                .overlay(Circle().strokeBorder(pivotBorder(pivot), lineWidth: pivotWidth(pivot)))
+                                .frame(width: 34, height: 34)
+                                .contentShape(Circle())
+                                .position(x: proxy.size.width * CGFloat(pointIndex) / CGFloat(values.count - 1),
+                                          y: proxy.size.height * values[pointIndex])
+                                .onTapGesture {
+                                    guard !player.revealed else { return }
+                                    Haptics.selection()
+                                    player.selectedIndex = pivot
+                                }
+                        }
+                    }
+                }
+            }
+            .frame(height: 78)
+        }
+    }
+
+    private func pivotFill(_ pivot: Int) -> Color {
+        pivot == player.selectedIndex ? Theme.answer.opacity(0.28) : Color.black.opacity(0.08)
+    }
+
+    private func pivotBorder(_ pivot: Int) -> Color {
+        if player.revealed && pivot == player.screen.target { return bidColor }
+        if player.revealed && pivot == player.selectedIndex { return askColor }
+        if pivot == player.selectedIndex { return Theme.answer }
+        return Color.white.opacity(0.38)
+    }
+
+    private func pivotWidth(_ pivot: Int) -> CGFloat {
+        pivot == player.selectedIndex || (player.revealed && pivot == player.screen.target) ? 3 : 1.5
     }
 }
 
@@ -869,7 +996,6 @@ struct CVDChartQuestionView: View {
 struct VolumeProfileQuestionView: View {
     @ObservedObject var player: LessonPlayer
     var ink: Color
-    private let volumes = [34, 58, 92, 160, 124, 68, 25]
     private let prices = [101.50, 101.25, 101.00, 100.75, 100.50, 100.25, 100.00]
 
     private var screen: LessonScreen { player.screen }
@@ -896,7 +1022,7 @@ struct VolumeProfileQuestionView: View {
                                 .frame(width: max(12, proxy.size.width * CGFloat(volumes[index]) / 160))
                         }
                         .frame(height: 23)
-                        if index == 3 {
+                        if index == 3 && player.revealed && screen.event == "poc" {
                             Text("POC").font(Theme.font(8, .black)).foregroundColor(.cyan).frame(width: 28)
                         } else {
                             Color.clear.frame(width: 28, height: 1)
@@ -907,9 +1033,15 @@ struct VolumeProfileQuestionView: View {
                     .overlay(RoundedRectangle(cornerRadius: 8).strokeBorder(rowBorder(index), lineWidth: rowBorderWidth(index)))
                     .contentShape(Rectangle())
                     .onTapGesture {
-                        guard screen.type == "volume_profile_tap", !player.revealed else { return }
+                        guard !player.revealed, screen.type == "volume_profile_tap" || screen.type == "mark_level" else { return }
                         Haptics.selection()
-                        player.selectedIndex = index
+                        if screen.type == "mark_level" {
+                            player.markedLevel = prices[index]
+                            player.markTrueLevel = screen.level
+                            player.markTolerance = 0.01
+                        } else {
+                            player.selectedIndex = index
+                        }
                     }
                 }
             }
@@ -917,7 +1049,7 @@ struct VolumeProfileQuestionView: View {
             .background(RoundedRectangle(cornerRadius: 16).fill(Color.black.opacity(0.24)))
             .overlay(RoundedRectangle(cornerRadius: 16).strokeBorder(Color.cyan.opacity(0.42), lineWidth: 1.5))
 
-            if screen.type == "volume_profile_tap" {
+            if screen.type == "volume_profile_tap" || screen.type == "mark_level" {
                 Label("Tap the price row that answers the question", systemImage: "hand.tap.fill")
                     .font(Theme.font(12, .bold)).foregroundColor(Theme.muted)
             } else {
@@ -930,26 +1062,42 @@ struct VolumeProfileQuestionView: View {
         }
     }
 
+    private var volumes: [Int] {
+        switch screen.event {
+        case "hvn": return [30, 150, 118, 62, 103, 126, 28]
+        case "lvn": return [34, 136, 112, 18, 106, 129, 26]
+        default: return [34, 58, 92, 160, 124, 68, 25]
+        }
+    }
+
     private func barColor(_ index: Int) -> Color {
-        if screen.event == "lvn" && (index == 0 || index == 6) { return Color.purple.opacity(0.35) }
-        return index == 3 ? Color.cyan.opacity(0.85) : Color.purple.opacity(0.62)
+        if screen.event == "lvn" && index == 3 { return Color.purple.opacity(0.28) }
+        if screen.event == "hvn" && index == 1 { return Color.cyan.opacity(0.85) }
+        return index == 3 && screen.event == "poc" ? Color.cyan.opacity(0.85) : Color.purple.opacity(0.62)
     }
 
     private func rowBackground(_ index: Int) -> Color {
-        if index == player.selectedIndex { return Theme.answer.opacity(0.14) }
-        if screen.event == "value_area" && (2...4).contains(index) { return Color.cyan.opacity(0.08) }
+        if index == player.selectedIndex || (screen.type == "mark_level" && player.markedLevel == prices[index]) { return Theme.answer.opacity(0.14) }
+        if screen.event == "profile_vah" || screen.event == "profile_val", (2...4).contains(index) { return Color.cyan.opacity(0.08) }
         return .clear
     }
 
     private func rowBorder(_ index: Int) -> Color {
-        if player.revealed && index == screen.target { return bidColor }
-        if player.revealed && index == player.selectedIndex { return askColor }
+        if player.revealed && index == correctIndex { return bidColor }
+        if player.revealed && (index == player.selectedIndex || player.markedLevel == prices[index]) { return askColor }
         if index == player.selectedIndex { return Theme.answer }
+        if screen.type == "mark_level" && player.markedLevel == prices[index] { return Theme.answer }
         return .clear
     }
 
     private func rowBorderWidth(_ index: Int) -> CGFloat {
-        index == player.selectedIndex || (player.revealed && index == screen.target) ? 2 : 0
+        index == player.selectedIndex || player.markedLevel == prices[index] || (player.revealed && index == correctIndex) ? 2 : 0
+    }
+
+    private var correctIndex: Int? {
+        if let target = screen.target { return target }
+        guard let level = screen.level else { return nil }
+        return prices.enumerated().min(by: { abs($0.element - level) < abs($1.element - level) })?.offset
     }
 }
 
@@ -1003,8 +1151,10 @@ struct OrderFlowSimulationView: View {
 
     private var evidence: (price: [String], book: [String], tape: [String], footprint: [String]) {
         switch screen.event {
+        case "cvd_warning":
+            return (["Price makes a new high", "Price holds above resistance"], ["Offers thin into the break", "No large offer rebuilds"], ["Buyer prints continue", "Buying remains effective"], ["CVD makes a lower high", "Cumulative pressure disagrees"])
         case "volume_profile_context":
-            return (["Price reaches a high volume node", "Upward progress stalls"], ["Offers sit near the profile node", "Nearby offers replenish"], ["Buyer prints remain visible", "Buyer pace begins slowing"], ["Executed volume is elevated", "Buying no longer moves price efficiently"])
+            return (["Price reaches the profile POC", "Upward progress stalls"], ["Offers sit near the POC", "Nearby offers replenish"], ["Buyer prints increase", "Buying stays active at the level"], ["POC provides location", "Buying no longer moves price efficiently"])
         case "iceberg":
             return (["Price tests 101.25", "Price remains pinned at 101.25"], ["100 shown at the offer", "100 trades, then 100 reappears"], ["Buyer prints hit 101.25", "Repeated buys execute at one price"], ["Ask executions accumulate", "Large volume with little progress"])
         case "chop":
