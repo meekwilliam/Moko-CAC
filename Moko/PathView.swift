@@ -179,8 +179,11 @@ struct PathView: View {
 
     // Top-left slot — opens the course switcher (like Duolingo's flag).
     private var placeholderButton: some View {
-        Button(action: { Haptics.selection(); onOpenCourses() }) {
-            Image(systemName: "square.grid.2x2.fill")
+        Button(action: {
+            guard Game.courses.count > 1 else { return }
+            Haptics.selection(); onOpenCourses()
+        }) {
+            Image(systemName: Game.courses.count > 1 ? "square.grid.2x2.fill" : "chart.xyaxis.line")
                 .font(.system(size: 16, weight: .black))
                 .foregroundColor(theme.palette.ink)
                 .frame(width: 38, height: 38)
@@ -234,8 +237,10 @@ struct PathView: View {
         let sec = store.section(visibleSection) ?? store.sections.first
         let bgc = Color(hex: sec?.bg ?? "#2B70C9")
         let slab = Color(hex: sec?.slab ?? "#0369a1")
-        // Tapping the banner opens the level picker (Beginner → Expert).
-        return Button(action: { Haptics.selection(); onOpenCourses() }) {
+        return Button(action: {
+            guard Game.courses.count > 1 else { return }
+            Haptics.selection(); onOpenCourses()
+        }) {
             HStack(spacing: 12) {
                 VStack(alignment: .leading, spacing: 2) {
                     Text(sec?.eyebrow ?? "UNIT 1")
@@ -246,9 +251,11 @@ struct PathView: View {
                         .lineLimit(1).minimumScaleFactor(0.7)
                 }
                 Spacer(minLength: 0)
-                Image(systemName: "square.stack.3d.up.fill")
-                    .font(.system(size: 17, weight: .bold))
-                    .foregroundColor(.white.opacity(0.85))
+                if Game.courses.count > 1 {
+                    Image(systemName: "square.stack.3d.up.fill")
+                        .font(.system(size: 17, weight: .bold))
+                        .foregroundColor(.white.opacity(0.85))
+                }
             }
             .frame(maxWidth: .infinity, alignment: .leading)
             .padding(.vertical, 18).padding(.horizontal, 20)   // ~12% taller
@@ -786,4 +793,3 @@ private struct SectionOffsetKey: PreferenceKey {
         value.merge(nextValue(), uniquingKeysWith: { _, new in new })
     }
 }
-

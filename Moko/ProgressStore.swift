@@ -5,11 +5,9 @@ import Combine
 // Single source of truth for completion / XP / streak / mid-lesson resume,
 // persisted in UserDefaults. Mirrors LessonEngine.recordCompletion exactly.
 //
-// XP, treats, streak, and hearts are GLOBAL — they carry across every course,
-// like a single Duolingo profile. Only which lessons are completed (and any
-// in-progress lesson) is tracked per course, since node numbers overlap
-// between courses (node 1 in Skincare and node 1 in Finance are different
-// lessons and must unlock independently).
+// XP, treats, streak, and hearts are global profile state. Course progress is
+// still stored in a keyed bucket so additional courses can be added later,
+// but Order Flow is currently the only active catalog.
 
 final class ProgressStore: ObservableObject {
     static let shared = ProgressStore()
@@ -27,7 +25,7 @@ final class ProgressStore: ObservableObject {
 
     private struct Snapshot: Codable {
         var courses: [String: CourseProgress] = [:]
-        var currentCourse: String = "skincare"
+        var currentCourse: String = "orderflow"
         var userName: String = "Guest"
         var reminderOn: Bool = true
 
@@ -73,13 +71,10 @@ final class ProgressStore: ObservableObject {
         } else {
             s = Snapshot()
         }
-        // One-time migration: fold any legacy flat progress into the skincare course.
-        if s.courses.isEmpty, let done = s.completed {
-            s.courses["skincare"] = CourseProgress(
-                completed: done, inProgressNode: s.inProgressNode,
-                inProgressScreen: s.inProgressScreen ?? 0)
-        }
+        // Retired flat-course progress is intentionally discarded. Order Flow
+        // keeps its own keyed progress bucket when one already exists.
         s.completed = nil; s.inProgressNode = nil; s.inProgressScreen = nil
+        keepOnlyOrderFlowCourse()
         migrateCondensedOrderFlowProgressIfNeeded()
         if !s.unlimitedHearts, s.hearts == 5, s.heartAnchor == nil {
             s.hearts = Self.maxHearts
@@ -90,7 +85,20 @@ final class ProgressStore: ObservableObject {
 
     var currentCourse: String { s.currentCourse }
 
-    func switchCourse(_ id: String) { s.currentCourse = id }
+    func switchCourse(_ id: String) {
+        guard id == "orderflow" else { return }
+        s.currentCourse = id
+    }
+
+    /// Drop retired local course buckets and make Order Flow authoritative.
+    /// This also normalizes older cloud snapshots after they are downloaded.
+    private func keepOnlyOrderFlowCourse() {
+        var snapshot = s
+        let orderFlow = snapshot.courses["orderflow"] ?? CourseProgress()
+        snapshot.courses = ["orderflow": orderFlow]
+        snapshot.currentCourse = "orderflow"
+        s = snapshot
+    }
 
     /// The current course's unlock/resume bucket (created on first access).
     private var cur: CourseProgress {
@@ -156,6 +164,7 @@ final class ProgressStore: ObservableObject {
         guard let decoded = try? JSONDecoder().decode(Snapshot.self, from: data) else { return }
         suppressChange = true
         s = decoded
+        keepOnlyOrderFlowCourse()
         suppressChange = false
         onExternalReplace?()
     }
