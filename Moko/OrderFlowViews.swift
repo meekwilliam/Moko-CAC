@@ -418,6 +418,16 @@ struct ReplayCompareView: View {
             return (["Break holds above", "Buying persists", "Retest succeeds"], ["Break fails quickly", "Sellers take control", "Price falls inside"])
         case "absorption":
             return (["Buying stays fast", "Offer replenishes", "Price stalls"], ["Buying pace fades", "Offer stays stable", "Price stalls"])
+        case "wall_challenge":
+            return (["Several sell waves hit", "Bid returns unevenly", "Price still holds"], ["Bid depth keeps thinning", "Selling persists", "Price slips through"])
+        case "sweep_challenge":
+            return (["Prior extreme trades", "Price snaps inside", "Range is reclaimed"], ["Level trades through", "Deeper retest holds", "Price continues beyond"])
+        case "trap_challenge":
+            return (["Break pauses above", "Deeper retest holds", "Buying resumes"], ["Strong burst loses level", "Sellers take control", "Price returns inside"])
+        case "absorption_challenge":
+            return (["Buy size varies", "Offer keeps returning", "Price stays pinned"], ["Buy size and pace fade", "Offer stays stable", "Price stalls"])
+        case "acceptance_challenge":
+            return (["Staggered offers clear", "Retest survives", "Trade builds above"], ["Offers renew", "Buying loses progress", "Price returns inside"])
         default:
             return (["Offers clear", "Buy tape persists", "Price holds above"], ["Offer refreshes", "Buy tape stalls", "Price falls inside"])
         }

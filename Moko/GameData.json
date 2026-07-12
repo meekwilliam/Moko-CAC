@@ -37252,16 +37252,21 @@
        "skillId": "what_is_order_flow"
       },
       {
-       "type": "multiple_choice",
-       "question": "What does order flow reveal?",
+       "type": "evidence_select",
+       "question": "Select the three parts of a complete order flow read.",
        "options": [
-        "Buyer and seller pressure",
-        "Future prices with certainty",
-        "Only candle direction"
+        "Aggressor activity",
+        "Available liquidity",
+        "Price response",
+        "Candle color alone"
        ],
-       "correct": 0,
-       "explanation": "Order flow compares active pressure, liquidity, and price response.",
-       "skillId": "what_is_order_flow"
+       "targets": [
+        0,
+        1,
+        2
+       ],
+       "explanation": "A complete read combines who acts, where liquidity sits, and how price responds.",
+       "skillId": "evidence_synthesis"
       },
       {
        "type": "sequence_builder",
@@ -37374,7 +37379,7 @@
        ],
        "correct": 0,
        "explanation": "The bid is the best resting buy price.",
-       "skillId": "the_bid_ask_spread"
+       "skillId": "bid_ask_spread"
       },
       {
        "type": "multiple_choice",
@@ -37386,7 +37391,7 @@
        ],
        "correct": 0,
        "explanation": "The ask is the best resting sell price.",
-       "skillId": "the_bid_ask_spread"
+       "skillId": "bid_ask_spread"
       },
       {
        "type": "multiple_choice",
@@ -37398,7 +37403,7 @@
        ],
        "correct": 0,
        "explanation": "The spread is the distance between the best bid and ask.",
-       "skillId": "the_bid_ask_spread"
+       "skillId": "bid_ask_spread"
       },
       {
        "type": "book_drag",
@@ -37434,7 +37439,7 @@
         ]
        ],
        "explanation": "Buy at the ask. Sell at the bid.",
-       "skillId": "the_bid_ask_spread"
+       "skillId": "bid_ask_spread"
       }
      ]
     },
@@ -37454,7 +37459,7 @@
        ],
        "correct": 0,
        "explanation": "Lifting the offer means buying the ask.",
-       "skillId": "lifting_the_offer_hitting_the_bid"
+       "skillId": "lifting_offer_hitting_bid"
       },
       {
        "type": "aggressor",
@@ -37482,7 +37487,7 @@
        ],
        "correct": 0,
        "explanation": "Aggressive sellers cross the spread and execute against bids.",
-       "skillId": "lifting_the_offer_hitting_the_bid"
+       "skillId": "lifting_offer_hitting_bid"
       },
       {
        "type": "matching",
@@ -37502,7 +37507,7 @@
         ]
        ],
        "explanation": "Aggression consumes liquidity and can move price.",
-       "skillId": "lifting_the_offer_hitting_the_bid"
+       "skillId": "lifting_offer_hitting_bid"
       },
       {
        "type": "book_drag",
@@ -37887,14 +37892,14 @@
        ],
        "correct": 0,
        "explanation": "Repeated deceptive posting and cancellation intended to mislead may constitute spoofing. One cancelled order alone does not prove intent.",
-       "skillId": "pulling_replenishment_spoofing"
+       "skillId": "pulling_and_spoofing"
       },
       {
        "type": "true_false",
        "question": "A resting order is a firm promise to trade.",
        "correct": false,
        "explanation": "It can be cancelled before anyone hits it.",
-       "skillId": "pulling_replenishment_spoofing"
+       "skillId": "pulling_and_spoofing"
       },
       {
        "type": "matching",
@@ -37914,7 +37919,7 @@
         ]
        ],
        "explanation": "The book is live: orders appear, refill, and disappear.",
-       "skillId": "pulling_replenishment_spoofing"
+       "skillId": "pulling_and_spoofing"
       },
       {
        "type": "aggressor",
@@ -38027,7 +38032,7 @@
      "screens": [
       {
        "type": "multiple_choice",
-       "question": "What does Level II show?",
+       "question": "Order Book Challenge scenario: Order Book Challenge scenario: What does Level II show?",
        "options": [
         "Available depth from the relevant venue or feed.",
         "Just the best bid and ask.",
@@ -38040,7 +38045,20 @@
       {
        "type": "multiple_choice",
        "chart": "sideways",
-       "question": "What does the evidence support?",
+       "question": "Order Book Challenge scenario: What does the evidence support?",
+       "options": [
+        "Combine aggression, liquidity, and price response",
+        "Tape speed matters more than the level where it occurs",
+        "A replenishing order is probably new unrelated liquidity"
+       ],
+       "correct": 0,
+       "explanation": "A complete read combines who acts where liquidity rests and how price responds.",
+       "skillId": "order_book_challenge"
+      },
+      {
+       "type": "multiple_choice",
+       "chart": "sideways",
+       "question": "Order Book Challenge scenario: Order Book Challenge scenario: What does the evidence support?",
        "options": [
         "Combine aggression, liquidity, and price response",
         "Tape speed matters more than the level where it occurs",
@@ -38053,14 +38071,22 @@
       {
        "type": "book_drag",
        "order": "market_buy",
-       "question": "Route this order.",
+       "question": "Order Book Challenge scenario: Route this order.",
+       "correct": 1,
+       "explanation": "Market buys take asks. Market sells take bids.",
+       "skillId": "order_routing"
+      },
+      {
+       "type": "book_drag",
+       "order": "market_buy",
+       "question": "Order Book Challenge scenario: Order Book Challenge scenario: Route this order.",
        "correct": 1,
        "explanation": "Market buys take asks. Market sells take bids.",
        "skillId": "order_routing"
       },
       {
        "type": "matching",
-       "question": "Match each clue.",
+       "question": "Order Book Challenge scenario: Match each clue.",
        "pairs": [
         [
          "Foundations and Book Mixed Review",
@@ -38079,28 +38105,24 @@
        "skillId": "order_book_challenge"
       },
       {
-       "type": "tap_candle",
-       "chart": "sideways",
-       "question": "Tap the clearest price response.",
-       "target": 0,
-       "explanation": "The selected candle shows whether execution produced follow through.",
+       "type": "matching",
+       "question": "Order Book Challenge scenario: Order Book Challenge scenario: Match each clue.",
+       "pairs": [
+        [
+         "Foundations and Book Mixed Review",
+         "Aggression liquidity and response"
+        ],
+        [
+         "Aggressive order",
+         "Trades immediately"
+        ],
+        [
+         "Passive order",
+         "Rests as liquidity"
+        ]
+       ],
+       "explanation": "Match the signal with its order flow clue.",
        "skillId": "order_book_challenge"
-      },
-      {
-       "type": "book_drag",
-       "order": "market_buy",
-       "question": "Tap the side this buy fills against.",
-       "correct": 1,
-       "explanation": "A market buy takes the ask.",
-       "skillId": "order_routing"
-      },
-      {
-       "type": "book_drag",
-       "order": "market_sell",
-       "question": "Tap the side this sell fills against.",
-       "correct": 0,
-       "explanation": "A market sell hits the bid.",
-       "skillId": "order_routing"
       }
      ]
     },
@@ -38497,30 +38519,30 @@
       },
       {
        "type": "evidence_select",
-       "question": "Select the two strongest evidence checks for Repeated Prints & Sequence Breaks.",
+       "question": "Which two clues make repeated prints meaningful?",
        "options": [
-        "Execution behavior",
-        "Confirming price response",
-        "Candle color alone",
-        "A company profile"
+        "One side keeps initiating",
+        "Price responds to the sequence",
+        "One isolated print",
+        "Candle color changes"
        ],
        "targets": [
         0,
         1
        ],
-       "explanation": "The read needs executed activity and the price response it produces.",
+       "explanation": "Persistence matters when execution produces a matching response.",
        "skillId": "evidence_synthesis"
       },
       {
        "type": "multiple_choice",
-       "question": "What is the best way to interpret Repeated Prints & Sequence Breaks?",
+       "question": "What makes a sequence break important?",
        "options": [
-        "Combine location, execution, and response",
-        "Treat one print as confirmation",
-        "Assume displayed size cannot change"
+        "The opposing print changes the established execution pattern",
+        "It is always the largest print",
+        "It guarantees a reversal"
        ],
        "correct": 0,
-       "explanation": "Order flow conclusions are strongest when several evidence sources align.",
+       "explanation": "A sequence break matters when it interrupts persistent aggression.",
        "skillId": "repeated_prints_sequence_breaks"
       }
      ]
@@ -38646,30 +38668,30 @@
       },
       {
        "type": "evidence_select",
-       "question": "Select the two strongest evidence checks for Tape at Key Levels.",
+       "question": "Which two clues make tape activity meaningful at a key level?",
        "options": [
-        "Execution behavior",
-        "Confirming price response",
-        "Candle color alone",
-        "A company profile"
+        "Execution reaches the level",
+        "Price shows acceptance or rejection",
+        "The session logo changes",
+        "A distant candle is large"
        ],
        "targets": [
         0,
         1
        ],
-       "explanation": "The read needs executed activity and the price response it produces.",
+       "explanation": "Location and response give tape activity context.",
        "skillId": "evidence_synthesis"
       },
       {
        "type": "multiple_choice",
-       "question": "What is the best way to interpret Tape at Key Levels?",
+       "question": "How should fast buying at resistance be interpreted?",
        "options": [
-        "Combine location, execution, and response",
-        "Treat one print as confirmation",
-        "Assume displayed size cannot change"
+        "Check whether price accepts above or rejects",
+        "Assume buyers control the next candle",
+        "Ignore the resting offer"
        ],
        "correct": 0,
-       "explanation": "Order flow conclusions are strongest when several evidence sources align.",
+       "explanation": "Fast tape needs a confirming response at the level.",
        "skillId": "tape_at_key_levels"
       }
      ]
@@ -38807,30 +38829,30 @@
       },
       {
        "type": "evidence_select",
-       "question": "Select the two strongest evidence checks for What Is Absorption?.",
+       "question": "Which two clues best support absorption?",
        "options": [
-        "Execution behavior",
-        "Confirming price response",
-        "Candle color alone",
-        "A company profile"
+        "Aggressive execution stays active",
+        "Price makes little corresponding progress",
+        "Aggression disappears",
+        "Price accepts cleanly through the level"
        ],
        "targets": [
         0,
         1
        ],
-       "explanation": "The read needs executed activity and the price response it produces.",
+       "explanation": "Absorption combines continued pressure with weak price progress.",
        "skillId": "evidence_synthesis"
       },
       {
        "type": "multiple_choice",
-       "question": "What is the best way to interpret What Is Absorption??",
+       "question": "How should absorption be interpreted?",
        "options": [
-        "Combine location, execution, and response",
-        "Treat one print as confirmation",
-        "Assume displayed size cannot change"
+        "Passive liquidity is containing active pressure",
+        "Aggression has completely stopped",
+        "A reversal is guaranteed"
        ],
        "correct": 0,
-       "explanation": "Order flow conclusions are strongest when several evidence sources align.",
+       "explanation": "Absorption describes pressure being contained, not a guaranteed reversal.",
        "skillId": "what_is_absorption"
       }
      ]
@@ -39031,30 +39053,30 @@
       },
       {
        "type": "evidence_select",
-       "question": "Select the two strongest evidence checks for What Is Exhaustion?.",
+       "question": "Which two clues best support exhaustion?",
        "options": [
-        "Execution behavior",
-        "Confirming price response",
-        "Candle color alone",
-        "A company profile"
+        "Print pace or size fades",
+        "Price stops extending in the original direction",
+        "Aggression accelerates",
+        "Price accepts farther through the level"
        ],
        "targets": [
         0,
         1
        ],
-       "explanation": "The read needs executed activity and the price response it produces.",
+       "explanation": "Exhaustion means the initiating pressure itself is fading.",
        "skillId": "evidence_synthesis"
       },
       {
        "type": "multiple_choice",
-       "question": "What is the best way to interpret What Is Exhaustion??",
+       "question": "How should exhaustion be interpreted?",
        "options": [
-        "Combine location, execution, and response",
-        "Treat one print as confirmation",
-        "Assume displayed size cannot change"
+        "The aggressive side is losing urgency",
+        "Passive size must be hidden",
+        "The opposing side has guaranteed control"
        ],
        "correct": 0,
-       "explanation": "Order flow conclusions are strongest when several evidence sources align.",
+       "explanation": "Exhaustion weakens the prior move but still needs confirmation.",
        "skillId": "what_is_exhaustion"
       }
      ]
@@ -39101,30 +39123,30 @@
       },
       {
        "type": "evidence_select",
-       "question": "Select the two strongest evidence checks for Buyer vs. Seller Exhaustion.",
+       "question": "Which two observations identify the exhausting side?",
        "options": [
-        "Execution behavior",
-        "Confirming price response",
-        "Candle color alone",
-        "A company profile"
+        "Its initiated prints lose pace",
+        "Its price progress weakens",
+        "Opposing liquidity disappears",
+        "The spread never changes"
        ],
        "targets": [
         0,
         1
        ],
-       "explanation": "The read needs executed activity and the price response it produces.",
+       "explanation": "Compare each side's urgency with the progress it produces.",
        "skillId": "evidence_synthesis"
       },
       {
        "type": "multiple_choice",
-       "question": "What is the best way to interpret Buyer vs. Seller Exhaustion?",
+       "question": "What separates buyer exhaustion from seller exhaustion?",
        "options": [
-        "Combine location, execution, and response",
-        "Treat one print as confirmation",
-        "Assume displayed size cannot change"
+        "Which initiating side loses pressure",
+        "The candle color alone",
+        "Whether total volume is high"
        ],
        "correct": 0,
-       "explanation": "Order flow conclusions are strongest when several evidence sources align.",
+       "explanation": "Buyer and seller exhaustion mirror each other on opposite sides.",
        "skillId": "buyer_vs_seller_exhaustion"
       }
      ]
@@ -39176,30 +39198,30 @@
       },
       {
        "type": "evidence_select",
-       "question": "Select the two strongest evidence checks for Absorption vs. Exhaustion.",
+       "question": "Which two clues distinguish absorption from exhaustion?",
        "options": [
-        "Execution behavior",
-        "Confirming price response",
-        "Candle color alone",
-        "A company profile"
+        "Whether aggression remains strong",
+        "Whether price still makes progress",
+        "The company sector",
+        "The latest candle color"
        ],
        "targets": [
         0,
         1
        ],
-       "explanation": "The read needs executed activity and the price response it produces.",
+       "explanation": "Absorption keeps pressure active; exhaustion shows that pressure fading.",
        "skillId": "evidence_synthesis"
       },
       {
        "type": "multiple_choice",
-       "question": "What is the best way to interpret Absorption vs. Exhaustion?",
+       "question": "Strong aggression continues but price stalls. Which explanation fits?",
        "options": [
-        "Combine location, execution, and response",
-        "Treat one print as confirmation",
-        "Assume displayed size cannot change"
+        "Absorption",
+        "Exhaustion",
+        "Clean acceptance"
        ],
        "correct": 0,
-       "explanation": "Order flow conclusions are strongest when several evidence sources align.",
+       "explanation": "Continued aggression without progress is the defining absorption pattern.",
        "skillId": "absorption_vs_exhaustion"
       }
      ]
@@ -39661,14 +39683,14 @@
       },
       {
        "type": "multiple_choice",
-       "question": "What is the best way to interpret Momentum Ignition?",
+       "question": "What makes a burst a possible momentum ignition?",
        "options": [
-        "Combine location, execution, and response",
-        "Treat one print as confirmation",
-        "Assume displayed size cannot change"
+        "It overwhelms nearby opposition and moves price",
+        "It contains one large print",
+        "It occurs after any green candle"
        ],
        "correct": 0,
-       "explanation": "Order flow conclusions are strongest when several evidence sources align.",
+       "explanation": "A burst matters when it changes both liquidity and price.",
        "skillId": "momentum_ignition"
       }
      ]
@@ -39798,30 +39820,30 @@
       },
       {
        "type": "evidence_select",
-       "question": "Select the two strongest evidence checks for Stacked Pressure.",
+       "question": "Which evidence makes stacked pressure more meaningful?",
        "options": [
-        "Execution behavior",
-        "Confirming price response",
-        "Candle color alone",
-        "A company profile"
+        "Several consecutive directional imbalances",
+        "Price progresses with the stack",
+        "One isolated large cell",
+        "Balanced execution at every price"
        ],
        "targets": [
         0,
         1
        ],
-       "explanation": "The read needs executed activity and the price response it produces.",
+       "explanation": "A stack is consecutive and stronger when price responds.",
        "skillId": "evidence_synthesis"
       },
       {
        "type": "multiple_choice",
-       "question": "What is the best way to interpret Stacked Pressure?",
+       "question": "What separates stacked pressure from one imbalance?",
        "options": [
-        "Combine location, execution, and response",
-        "Treat one print as confirmation",
-        "Assume displayed size cannot change"
+        "Directional imbalance repeats across adjacent prices",
+        "The largest row has high volume",
+        "Displayed depth is perfectly even"
        ],
        "correct": 0,
-       "explanation": "Order flow conclusions are strongest when several evidence sources align.",
+       "explanation": "Stacking requires consecutive imbalances rather than one cell.",
        "skillId": "stacked_pressure"
       }
      ]
@@ -40069,14 +40091,14 @@
       },
       {
        "type": "multiple_choice",
-       "question": "What is the best way to interpret Price and Pressure Divergence?",
+       "question": "Positive pressure appears while price weakens. What is the best conclusion?",
        "options": [
-        "Combine location, execution, and response",
-        "Treat one print as confirmation",
-        "Assume displayed size cannot change"
+        "The buying is not achieving the expected response",
+        "Higher prices are guaranteed later",
+        "The execution data should be ignored"
        ],
        "correct": 0,
-       "explanation": "Order flow conclusions are strongest when several evidence sources align.",
+       "explanation": "Pressure without its expected response is a warning, not a signal by itself.",
        "skillId": "price_and_pressure_divergence"
       }
      ]
@@ -40090,7 +40112,7 @@
       {
        "type": "footprint",
        "event": "lift",
-       "question": "What's the best footprint read?",
+       "question": "Footprint & Momentum Challenge scenario: What's the best footprint read?",
        "options": [
         "Sustained imbalance matters more than one burst",
         "The largest total row proves directional delta",
@@ -40105,7 +40127,7 @@
        "type": "footprint_tap",
        "event": "stacked_ask",
        "target": 0,
-       "question": "Tap where sustained pressure begins.",
+       "question": "Footprint & Momentum Challenge scenario: Tap where sustained pressure begins.",
        "explanation": "The first stacked row begins persistent ask side pressure.",
        "skillId": "footprint_interaction"
       },
@@ -40113,7 +40135,7 @@
        "type": "footprint_tap",
        "event": "lift",
        "target": 1,
-       "question": "Tap the row where buyer pressure concentrates.",
+       "question": "Footprint & Momentum Challenge scenario: Tap the row where buyer pressure concentrates.",
        "explanation": "Concentrated ask executions can help ignite momentum.",
        "skillId": "footprint_interaction"
       },
@@ -40121,7 +40143,7 @@
        "type": "footprint_tap",
        "event": "balanced_target",
        "target": 2,
-       "question": "Tap where directional pressure disappears.",
+       "question": "Footprint & Momentum Challenge scenario: Tap where directional pressure disappears.",
        "explanation": "Execution becomes balanced as momentum loses force.",
        "skillId": "footprint_interaction"
       },
@@ -40129,13 +40151,13 @@
        "type": "footprint_tap",
        "event": "delta_negative",
        "target": 3,
-       "question": "Tap the execution clue opposing price.",
+       "question": "Footprint & Momentum Challenge scenario: Tap the execution clue opposing price.",
        "explanation": "The selected negative delta row contradicts the price direction.",
        "skillId": "footprint_interaction"
       },
       {
        "type": "multiple_choice",
-       "question": "What best connects the evidence?",
+       "question": "Footprint & Momentum Challenge scenario: What best connects the evidence?",
        "options": [
         "Sustained imbalance matters more than one burst",
         "Positive delta is usually sufficient confirmation for higher prices",
@@ -40148,7 +40170,7 @@
       },
       {
        "type": "multiple_choice",
-       "question": "Which conclusion fits the response?",
+       "question": "Footprint & Momentum Challenge scenario: Which conclusion fits the response?",
        "options": [
         "Sudden aggression can ignite momentum",
         "Acceptance is present as soon as one trade prints beyond a level",
@@ -40161,7 +40183,7 @@
       },
       {
        "type": "multiple_choice",
-       "question": "What does the response suggest?",
+       "question": "Footprint & Momentum Challenge scenario: What does the response suggest?",
        "options": [
         "Momentum weakens when price stops responding",
         "A failed breakout is confirmed before price returns through the level",
@@ -40498,30 +40520,30 @@
       },
       {
        "type": "evidence_select",
-       "question": "Select the two strongest evidence checks for What Is a Liquidity Sweep?.",
+       "question": "Which two clues identify a liquidity sweep?",
        "options": [
-        "Execution behavior",
-        "Confirming price response",
-        "Candle color alone",
-        "A company profile"
+        "Price trades beyond an obvious level",
+        "Price quickly returns without acceptance",
+        "Price holds beyond the level",
+        "Execution continues cleanly away"
        ],
        "targets": [
         0,
         1
        ],
-       "explanation": "The read needs executed activity and the price response it produces.",
+       "explanation": "A sweep takes liquidity and then rejects rather than accepting.",
        "skillId": "evidence_synthesis"
       },
       {
        "type": "multiple_choice",
-       "question": "What is the best way to interpret What Is a Liquidity Sweep??",
+       "question": "How should a brief breach followed by immediate rejection be read?",
        "options": [
-        "Combine location, execution, and response",
-        "Treat one print as confirmation",
-        "Assume displayed size cannot change"
+        "Possible liquidity sweep",
+        "Confirmed breakout acceptance",
+        "Guaranteed reversal"
        ],
        "correct": 0,
-       "explanation": "Order flow conclusions are strongest when several evidence sources align.",
+       "explanation": "The return inside shows that trade beyond the level was not accepted.",
        "skillId": "what_is_a_liquidity_sweep"
       }
      ]
@@ -40683,30 +40705,30 @@
       },
       {
        "type": "evidence_select",
-       "question": "Select the two strongest evidence checks for Sweep vs. Breakout Acceptance.",
+       "question": "Which two clues favor breakout acceptance over a sweep?",
        "options": [
-        "Execution behavior",
-        "Confirming price response",
-        "Candle color alone",
-        "A company profile"
+        "Execution persists beyond the level",
+        "Price holds outside the prior range",
+        "Price immediately returns inside",
+        "Aggression disappears after the breach"
        ],
        "targets": [
         0,
         1
        ],
-       "explanation": "The read needs executed activity and the price response it produces.",
+       "explanation": "Acceptance requires continued trade and a hold beyond the level.",
        "skillId": "evidence_synthesis"
       },
       {
        "type": "multiple_choice",
-       "question": "What is the best way to interpret Sweep vs. Breakout Acceptance?",
+       "question": "What best separates a sweep from an accepted breakout?",
        "options": [
-        "Combine location, execution, and response",
-        "Treat one print as confirmation",
-        "Assume displayed size cannot change"
+        "Whether price holds beyond the breached level",
+        "Whether one large order traded",
+        "The direction of the prior candle"
        ],
        "correct": 0,
-       "explanation": "Order flow conclusions are strongest when several evidence sources align.",
+       "explanation": "The key distinction is rejection versus sustained acceptance.",
        "skillId": "sweep_vs_breakout_acceptance"
       }
      ]
@@ -40838,14 +40860,14 @@
       },
       {
        "type": "multiple_choice",
-       "question": "What is the best way to interpret Icebergs & Hidden Replenishment?",
+       "question": "What makes repeated same price fills suspicious for hidden size?",
        "options": [
-        "Combine location, execution, and response",
-        "Treat one print as confirmation",
-        "Assume displayed size cannot change"
+        "Displayed liquidity keeps returning after it trades",
+        "Every print has the same color",
+        "Price must break out next"
        ],
        "correct": 0,
-       "explanation": "Order flow conclusions are strongest when several evidence sources align.",
+       "explanation": "The visible amount understates what continues to execute.",
        "skillId": "icebergs_hidden_replenishment"
       }
      ]
@@ -40860,7 +40882,7 @@
        "type": "orderflow_sim",
        "event": "sweep",
        "direction": "down",
-       "question": "Price trades beyond the level and immediately returns. What is strongest?",
+       "question": "Liquidity Challenge scenario: Price trades beyond the level and immediately returns. What is strongest?",
        "options": [
         "Liquidity was taken but acceptance failed",
         "The fastest evidence guarantees the next move",
@@ -40873,7 +40895,7 @@
       },
       {
        "type": "evidence_select",
-       "question": "Select the two essential clues.",
+       "question": "Liquidity Challenge scenario: Select the two essential clues.",
        "options": [
         "Event location",
         "Price response",
@@ -40889,7 +40911,7 @@
       },
       {
        "type": "evidence_select",
-       "question": "Select the two liquidity clues.",
+       "question": "Liquidity Challenge scenario: Select the two liquidity clues.",
        "options": [
         "Nearby resting depth",
         "Execution at the level",
@@ -40906,7 +40928,7 @@
       {
        "type": "multiple_choice",
        "chart": "rejectionWickUp",
-       "question": "What does the evidence support?",
+       "question": "Liquidity Challenge scenario: What does the evidence support?",
        "options": [
         "A sweep takes liquidity but fails to gain acceptance",
         "Tape speed matters more than the level where it occurs",
@@ -40920,7 +40942,7 @@
       {
        "type": "multiple_choice",
        "chart": "volatile",
-       "question": "Which read needs fewer assumptions?",
+       "question": "Liquidity Challenge scenario: Which read needs fewer assumptions?",
        "options": [
         "Judge liquidity events by location and response",
         "Repeated tests always make a liquidity level stronger",
@@ -40934,7 +40956,7 @@
       {
        "type": "multiple_choice",
        "chart": "breakoutRetest",
-       "question": "What matters most here?",
+       "question": "Liquidity Challenge scenario: What matters most here?",
        "options": [
         "Combine pressure with liquidity and price response",
         "Price progress can be ignored when aggression is persistent",
@@ -40948,7 +40970,7 @@
       {
        "type": "sequence_builder",
        "chart": "rejectionWickUp",
-       "question": "Build the read.",
+       "question": "Liquidity Challenge scenario: Build the read.",
        "items": [
         "Seller pressure appears",
         "Bids get consumed",
@@ -40966,7 +40988,7 @@
       },
       {
        "type": "matching",
-       "question": "Match each clue.",
+       "question": "Liquidity Challenge scenario: Match each clue.",
        "pairs": [
         [
          "Liquidity Review",
@@ -41349,18 +41371,18 @@
       },
       {
        "type": "evidence_select",
-       "question": "Select the two strongest evidence checks for Breakout Acceptance Practice Replay.",
+       "question": "Which two observations confirm the replay gained acceptance?",
        "options": [
-        "Execution behavior",
-        "Confirming price response",
-        "Candle color alone",
-        "A company profile"
+        "Offers clear with persistent buying",
+        "Price establishes trade above resistance",
+        "Price immediately falls back inside",
+        "The offer keeps rejecting every attempt"
        ],
        "targets": [
         0,
         1
        ],
-       "explanation": "The read needs executed activity and the price response it produces.",
+       "explanation": "Execution and sustained trade above the level confirm acceptance.",
        "skillId": "evidence_synthesis"
       }
      ]
@@ -41673,8 +41695,8 @@
      "screens": [
       {
        "type": "replay_compare",
-       "event": "trap",
-       "question": "Which replay has genuine acceptance?",
+       "event": "trap_challenge",
+       "question": "Breakout Challenge scenario: Which replay has genuine acceptance?",
        "options": [
         "Replay A",
         "Replay B",
@@ -41686,7 +41708,7 @@
       },
       {
        "type": "evidence_select",
-       "question": "Select the clues showing price accepted above resistance.",
+       "question": "Breakout Challenge scenario: Select the clues showing price accepted above resistance.",
        "options": [
         "Buying persists above the level",
         "Price holds above resistance",
@@ -41702,8 +41724,8 @@
       },
       {
        "type": "replay_compare",
-       "event": "trap",
-       "question": "Which replay traps breakout buyers?",
+       "event": "trap_challenge",
+       "question": "Breakout Challenge scenario: Which replay traps breakout buyers?",
        "options": [
         "Replay B",
         "Replay A",
@@ -41715,8 +41737,8 @@
       },
       {
        "type": "replay_compare",
-       "event": "trap",
-       "question": "Which replay shows a defended break?",
+       "event": "trap_challenge",
+       "question": "Breakout Challenge scenario: Which replay shows a defended break?",
        "options": [
         "Replay A",
         "Replay B",
@@ -41729,7 +41751,7 @@
       {
        "type": "live_chart",
        "direction": "up",
-       "question": "What does follow through add?",
+       "question": "Breakout Challenge scenario: What does follow through add?",
        "options": [
         "Upward price response is developing",
         "Downward price response is developing",
@@ -41742,7 +41764,7 @@
       {
        "type": "live_chart",
        "direction": "up",
-       "question": "Which price behavior supports the read?",
+       "question": "Breakout Challenge scenario: Which price behavior supports the read?",
        "options": [
         "Upward price response is developing",
         "Downward price response is developing",
@@ -41755,7 +41777,7 @@
       {
        "type": "live_chart",
        "direction": "down",
-       "question": "What changed in price response?",
+       "question": "Breakout Challenge scenario: What changed in price response?",
        "options": [
         "Upward price response is developing",
         "Downward price response is developing",
@@ -41768,7 +41790,7 @@
       {
        "type": "tap_candle",
        "chart": "breakoutRetest",
-       "question": "Tap the clearest price response.",
+       "question": "Breakout Challenge scenario: Tap the clearest price response.",
        "target": 3,
        "explanation": "The selected candle shows whether execution produced follow through.",
        "skillId": "breakout_challenge"
@@ -41927,10 +41949,10 @@
       },
       {
        "type": "evidence_select",
-       "question": "Select the two continuation clues.",
+       "question": "Select the clues showing the pullback remains healthy.",
        "options": [
-        "Structure remains intact",
-        "Trend pressure returns",
+        "Counter pressure stays lighter",
+        "Trend structure remains defended",
         "Counter pressure accelerates",
         "The key level fails"
        ],
@@ -41938,7 +41960,7 @@
         0,
         1
        ],
-       "explanation": "Advanced reads combine at least two aligned evidence sources.",
+       "explanation": "Continuation needs lesson specific structure and confirming execution.",
        "skillId": "evidence_synthesis"
       },
       {
@@ -41988,18 +42010,18 @@
      "screens": [
       {
        "type": "evidence_select",
-       "question": "Select the two continuation clues.",
+       "question": "Select the clues supporting continuation after the pullback.",
        "options": [
-        "Structure remains intact",
-        "Trend pressure returns",
-        "Counter pressure accelerates",
-        "The key level fails"
+        "Trend side pressure returns",
+        "Price resumes from defended structure",
+        "Counter pressure takes control",
+        "Price loses the reference level"
        ],
        "targets": [
         0,
         1
        ],
-       "explanation": "Continuation needs intact structure plus returning trend pressure.",
+       "explanation": "Continuation needs lesson specific structure and confirming execution.",
        "skillId": "evidence_synthesis"
       },
       {
@@ -42095,18 +42117,18 @@
       },
       {
        "type": "evidence_select",
-       "question": "Select the two continuation clues.",
+       "question": "Select the clues showing trend pressure has actually returned.",
        "options": [
-        "Structure remains intact",
-        "Trend pressure returns",
-        "Counter pressure accelerates",
-        "The key level fails"
+        "Trend side execution accelerates",
+        "Price makes renewed progress",
+        "One isolated print appears",
+        "Counter pressure strengthens"
        ],
        "targets": [
         0,
         1
        ],
-       "explanation": "Continuation needs intact structure plus returning trend pressure.",
+       "explanation": "Continuation needs lesson specific structure and confirming execution.",
        "skillId": "evidence_synthesis"
       },
       {
@@ -42144,14 +42166,14 @@
       },
       {
        "type": "multiple_choice",
-       "question": "What is the best way to interpret Continuation Triggers?",
+       "question": "What turns a pullback into a continuation setup?",
        "options": [
-        "Combine location, execution, and response",
-        "Treat one print as confirmation",
-        "Assume displayed size cannot change"
+        "Trend side aggression returns and price responds",
+        "One fast print appears",
+        "Volume is higher than yesterday"
        ],
        "correct": 0,
-       "explanation": "Order flow conclusions are strongest when several evidence sources align.",
+       "explanation": "Continuation begins when the trend side regains effective control.",
        "skillId": "continuation_triggers"
       }
      ]
@@ -42207,18 +42229,18 @@
       },
       {
        "type": "evidence_select",
-       "question": "Select the two continuation clues.",
+       "question": "Select the clues confirming the reference level held.",
        "options": [
-        "Structure remains intact",
-        "Trend pressure returns",
-        "Counter pressure accelerates",
-        "The key level fails"
+        "Execution defends the reference",
+        "Price responds in the trend direction",
+        "Price accepts through the reference",
+        "Counter tape accelerates"
        ],
        "targets": [
         0,
         1
        ],
-       "explanation": "Continuation needs intact structure plus returning trend pressure.",
+       "explanation": "Continuation needs lesson specific structure and confirming execution.",
        "skillId": "evidence_synthesis"
       },
       {
@@ -42308,30 +42330,30 @@
       },
       {
        "type": "evidence_select",
-       "question": "Select the two strongest evidence checks for Pullback Failure.",
+       "question": "Which two clues show the pullback is failing?",
        "options": [
-        "Execution behavior",
-        "Confirming price response",
-        "Candle color alone",
-        "A company profile"
+        "Countertrend aggression strengthens",
+        "Trend structure breaks",
+        "Trend pressure returns",
+        "The reference level holds"
        ],
        "targets": [
         0,
         1
        ],
-       "explanation": "The read needs executed activity and the price response it produces.",
+       "explanation": "Growing counter pressure plus lost structure weakens continuation.",
        "skillId": "evidence_synthesis"
       },
       {
        "type": "multiple_choice",
-       "question": "What is the best way to interpret Pullback Failure?",
+       "question": "When should a continuation idea be invalidated?",
        "options": [
-        "Combine location, execution, and response",
-        "Treat one print as confirmation",
-        "Assume displayed size cannot change"
+        "Counter pressure takes control and the key level fails",
+        "One opposing print appears",
+        "The tape briefly slows"
        ],
        "correct": 0,
-       "explanation": "Order flow conclusions are strongest when several evidence sources align.",
+       "explanation": "Failure requires evidence that the original structure and control are gone.",
        "skillId": "pullback_failure"
       }
      ]
@@ -42517,7 +42539,7 @@
      "screens": [
       {
        "type": "evidence_select",
-       "question": "Select the two strongest clues.",
+       "question": "Confirmation & Continuation Challenge scenario: Select the two strongest clues.",
        "options": [
         "Trend side aggression",
         "Confirming price response",
@@ -42534,7 +42556,7 @@
       {
        "type": "multiple_choice",
        "chart": "bullFlag",
-       "question": "How should this be interpreted?",
+       "question": "Confirmation & Continuation Challenge scenario: How should this be interpreted?",
        "options": [
         "Continuation needs structure and renewed pressure",
         "Thin liquidity implies the move has strong aggressive sponsorship",
@@ -42549,7 +42571,7 @@
        "type": "orderflow_sim",
        "event": "conflict",
        "direction": "neutral",
-       "question": "Book tape and price response disagree. What is strongest?",
+       "question": "Confirmation & Continuation Challenge scenario: Book tape and price response disagree. What is strongest?",
        "options": [
         "The evidence conflicts so no directional read is confirmed",
         "The fastest evidence guarantees the next move",
@@ -42562,7 +42584,7 @@
       },
       {
        "type": "evidence_select",
-       "question": "Select the two continuation clues.",
+       "question": "Confirmation & Continuation Challenge scenario: Select the two continuation clues.",
        "options": [
         "Structure remains intact",
         "Trend pressure returns",
@@ -42579,7 +42601,7 @@
       {
        "type": "draw_trendline",
        "chart": "bullFlag",
-       "question": "Mark the structure that provides location for the order flow read.",
+       "question": "Confirmation & Continuation Challenge scenario: Mark the structure that provides location for the order flow read.",
        "target_start": 0,
        "target_end": 4,
        "explanation": "Structure supplies location. Execution evidence supplies the read.",
@@ -42588,7 +42610,7 @@
       {
        "type": "multiple_choice",
        "chart": "spinningTop",
-       "question": "What matters most here?",
+       "question": "Confirmation & Continuation Challenge scenario: What matters most here?",
        "options": [
         "Conflicting evidence means no confirmed read",
         "Price progress can be ignored when aggression is persistent",
@@ -42602,7 +42624,7 @@
       {
        "type": "live_chart",
        "direction": "sideways",
-       "question": "Which price behavior supports the read?",
+       "question": "Confirmation & Continuation Challenge scenario: Which price behavior supports the read?",
        "options": [
         "Upward price response is developing",
         "Downward price response is developing",
@@ -42614,7 +42636,7 @@
       },
       {
        "type": "matching",
-       "question": "Match each clue.",
+       "question": "Confirmation & Continuation Challenge scenario: Match each clue.",
        "pairs": [
         [
          "Entry After Confirmation",
@@ -42803,30 +42825,30 @@
       },
       {
        "type": "evidence_select",
-       "question": "Select the two strongest evidence checks for Reversal Pressure.",
+       "question": "Which two clues support a change in reversal pressure?",
        "options": [
-        "Execution behavior",
-        "Confirming price response",
-        "Candle color alone",
-        "A company profile"
+        "The prior side stops making progress",
+        "Opposing aggression gains follow through",
+        "One rejection wick forms",
+        "Total volume stays constant"
        ],
        "targets": [
         0,
         1
        ],
-       "explanation": "The read needs executed activity and the price response it produces.",
+       "explanation": "A reversal needs weakening prior control and effective opposing pressure.",
        "skillId": "evidence_synthesis"
       },
       {
        "type": "multiple_choice",
-       "question": "What is the best way to interpret Reversal Pressure?",
+       "question": "What is the strongest evidence that control may be changing?",
        "options": [
-        "Combine location, execution, and response",
-        "Treat one print as confirmation",
-        "Assume displayed size cannot change"
+        "Opposing aggression begins producing price progress",
+        "One large opposing print",
+        "A familiar candle pattern appears"
        ],
        "correct": 0,
-       "explanation": "Order flow conclusions are strongest when several evidence sources align.",
+       "explanation": "Control change is stronger when execution receives a confirming response.",
        "skillId": "reversal_pressure"
       }
      ]
@@ -42965,30 +42987,30 @@
       },
       {
        "type": "evidence_select",
-       "question": "Select the two strongest evidence checks for Exhaustion Reversals.",
+       "question": "Which two clues best support an exhaustion reversal?",
        "options": [
-        "Execution behavior",
-        "Confirming price response",
-        "Candle color alone",
-        "A company profile"
+        "Prior aggression fades",
+        "Opposing price response develops",
+        "Original aggression accelerates",
+        "Price continues cleanly in the original direction"
        ],
        "targets": [
         0,
         1
        ],
-       "explanation": "The read needs executed activity and the price response it produces.",
+       "explanation": "Exhaustion plus an opposing response supports reversal.",
        "skillId": "evidence_synthesis"
       },
       {
        "type": "multiple_choice",
-       "question": "What is the best way to interpret Exhaustion Reversals?",
+       "question": "What must follow exhaustion before a reversal is stronger?",
        "options": [
-        "Combine location, execution, and response",
-        "Treat one print as confirmation",
-        "Assume displayed size cannot change"
+        "Opposing control and price confirmation",
+        "A guaranteed target",
+        "A larger candle wick"
        ],
        "correct": 0,
-       "explanation": "Order flow conclusions are strongest when several evidence sources align.",
+       "explanation": "Fading pressure alone does not confirm that the other side has taken control.",
        "skillId": "exhaustion_reversals"
       }
      ]
@@ -43041,30 +43063,30 @@
       },
       {
        "type": "evidence_select",
-       "question": "Select the two strongest evidence checks for Absorption Reversals.",
+       "question": "Which two clues best support an absorption reversal?",
        "options": [
-        "Execution behavior",
-        "Confirming price response",
-        "Candle color alone",
-        "A company profile"
+        "Heavy aggression makes little progress",
+        "Opposing execution begins moving price",
+        "The defended level immediately fails",
+        "Aggression disappears before reaching the level"
        ],
        "targets": [
         0,
         1
        ],
-       "explanation": "The read needs executed activity and the price response it produces.",
+       "explanation": "Contained pressure followed by opposing control supports reversal.",
        "skillId": "evidence_synthesis"
       },
       {
        "type": "multiple_choice",
-       "question": "What is the best way to interpret Absorption Reversals?",
+       "question": "When does absorption become a stronger reversal case?",
        "options": [
-        "Combine location, execution, and response",
-        "Treat one print as confirmation",
-        "Assume displayed size cannot change"
+        "The absorbed side fails and opposing pressure gains follow through",
+        "Displayed size appears once",
+        "Delta stays directional"
        ],
        "correct": 0,
-       "explanation": "Order flow conclusions are strongest when several evidence sources align.",
+       "explanation": "Absorption needs a subsequent control change before it supports reversal.",
        "skillId": "absorption_reversals"
       }
      ]
@@ -43617,14 +43639,14 @@
       },
       {
        "type": "multiple_choice",
-       "question": "What is the best way to interpret Order Flow Invalidation?",
+       "question": "Where should invalidation be defined?",
        "options": [
-        "Combine location, execution, and response",
-        "Treat one print as confirmation",
-        "Assume displayed size cannot change"
+        "Beyond the evidence that would disprove the setup",
+        "At an arbitrary fixed distance",
+        "After the trade becomes profitable"
        ],
        "correct": 0,
-       "explanation": "Order flow conclusions are strongest when several evidence sources align.",
+       "explanation": "Risk belongs where the underlying order flow thesis is no longer valid.",
        "skillId": "order_flow_invalidation"
       }
      ]
@@ -43679,30 +43701,30 @@
       },
       {
        "type": "evidence_select",
-       "question": "Select the two strongest evidence checks for No Clear Read.",
+       "question": "Which two clues justify a no clear read decision?",
        "options": [
-        "Execution behavior",
-        "Confirming price response",
-        "Candle color alone",
-        "A company profile"
+        "Evidence sources conflict",
+        "Price response remains unconfirmed",
+        "One clue points directionally",
+        "The spread is stable"
        ],
        "targets": [
         0,
         1
        ],
-       "explanation": "The read needs executed activity and the price response it produces.",
+       "explanation": "Conflicting evidence and no confirmation are valid reasons to wait.",
        "skillId": "evidence_synthesis"
       },
       {
        "type": "multiple_choice",
-       "question": "What is the best way to interpret No Clear Read?",
+       "question": "What is the best action when book, tape, and price disagree?",
        "options": [
-        "Combine location, execution, and response",
-        "Treat one print as confirmation",
-        "Assume displayed size cannot change"
+        "Wait for clearer alignment",
+        "Follow the fastest source",
+        "Assume the footprint is always correct"
        ],
        "correct": 0,
-       "explanation": "Order flow conclusions are strongest when several evidence sources align.",
+       "explanation": "No trade is a valid decision when evidence conflicts.",
        "skillId": "no_clear_read"
       }
      ]
@@ -43761,14 +43783,14 @@
       },
       {
        "type": "multiple_choice",
-       "question": "What is the best way to interpret Exiting Into Liquidity?",
+       "question": "Why can opposing liquidity be useful for an exit?",
        "options": [
-        "Combine location, execution, and response",
-        "Treat one print as confirmation",
-        "Assume displayed size cannot change"
+        "It may provide counterparties near the planned price",
+        "It guarantees zero slippage",
+        "It predicts the next trend"
        ],
        "correct": 0,
-       "explanation": "Order flow conclusions are strongest when several evidence sources align.",
+       "explanation": "Available counterparties can improve execution but never guarantee a fill.",
        "skillId": "exiting_into_liquidity"
       }
      ]
@@ -44038,20 +44060,6 @@
      "revealAnswersAtEnd": true,
      "questionPool": [
       {
-       "type": "multiple_choice",
-       "question": "Which action lifts the offer?",
-       "options": [
-        "Buying the ask",
-        "Canceling a sell order",
-        "Posting a higher offer"
-       ],
-       "correct": 0,
-       "explanation": "Lifting the offer means buying the ask.",
-       "skillId": "lifting_the_offer_hitting_the_bid",
-       "sourceLesson": "Lifting the Offer & Hitting the Bid",
-       "competencyId": "u1.aggressive_buyer"
-      },
-      {
        "type": "aggressor",
        "event": "lift",
        "question": "Offers are getting eaten. Who is aggressive?",
@@ -44059,6 +44067,9 @@
        "explanation": "The buyer is lifting the offer.",
        "skillId": "aggressor_side",
        "sourceLesson": "Lifting the Offer & Hitting the Bid",
+       "sourceUnit": 0,
+       "sourceNode": 4,
+       "questionId": "orderflow.u1.n4.q2",
        "competencyId": "u1.aggressive_buyer"
       },
       {
@@ -44069,67 +44080,10 @@
        "explanation": "The seller is hitting the bid.",
        "skillId": "aggressor_side",
        "sourceLesson": "Lifting the Offer & Hitting the Bid",
-       "competencyId": "u1.aggressive_seller"
-      },
-      {
-       "type": "multiple_choice",
-       "question": "How do sellers trade aggressively?",
-       "options": [
-        "They hit the bid",
-        "They post above the ask",
-        "They raise the bid"
-       ],
-       "correct": 0,
-       "explanation": "Aggressive sellers cross the spread and execute against bids.",
-       "skillId": "lifting_the_offer_hitting_the_bid",
-       "sourceLesson": "Lifting the Offer & Hitting the Bid",
-       "competencyId": "u1.aggressive_seller"
-      },
-      {
-       "type": "matching",
-       "question": "Match each action.",
-       "pairs": [
-        [
-         "Lift the offer",
-         "May push price up"
-        ],
-        [
-         "Hit the bid",
-         "May push price down"
-        ],
-        [
-         "Only resting orders",
-         "Price may stay still"
-        ]
-       ],
-       "explanation": "Aggression consumes liquidity and can move price.",
-       "skillId": "lifting_the_offer_hitting_the_bid",
-       "sourceLesson": "Lifting the Offer & Hitting the Bid",
-       "competencyId": "u1.market_buy_routing"
-      },
-      {
-       "type": "book_drag",
-       "order": "market_buy",
-       "question": "Lift the offer. Tap the side taken.",
-       "correct": 1,
-       "explanation": "A market buy takes the ask.",
-       "skillId": "order_routing",
-       "sourceLesson": "Lifting the Offer & Hitting the Bid",
-       "competencyId": "u1.market_buy_routing"
-      },
-      {
-       "type": "multiple_choice",
-       "question": "Which action lifts the offer?",
-       "options": [
-        "Buying the ask",
-        "Canceling a sell order",
-        "Posting a higher offer"
-       ],
-       "correct": 0,
-       "explanation": "Lifting the offer means buying the ask.",
-       "skillId": "lifting_the_offer_hitting_the_bid",
-       "sourceLesson": "Lifting the Offer & Hitting the Bid",
-       "competencyId": "u1.market_sell_routing"
+       "sourceUnit": 0,
+       "sourceNode": 4,
+       "questionId": "orderflow.u1.n4.q3",
+       "competencyId": "u1.aggressive_buyer"
       },
       {
        "type": "aggressor",
@@ -44139,6 +44093,74 @@
        "explanation": "The buyer is lifting the offer.",
        "skillId": "aggressor_side",
        "sourceLesson": "Lifting the Offer & Hitting the Bid",
+       "sourceUnit": 0,
+       "sourceNode": 4,
+       "questionId": "orderflow.u1.n4.q2",
+       "competencyId": "u1.aggressive_seller"
+      },
+      {
+       "type": "aggressor",
+       "event": "hit",
+       "question": "Bids are getting eaten. Who is aggressive?",
+       "correct": 1,
+       "explanation": "The seller is hitting the bid.",
+       "skillId": "aggressor_side",
+       "sourceLesson": "Lifting the Offer & Hitting the Bid",
+       "sourceUnit": 0,
+       "sourceNode": 4,
+       "questionId": "orderflow.u1.n4.q3",
+       "competencyId": "u1.aggressive_seller"
+      },
+      {
+       "type": "book_drag",
+       "order": "market_buy",
+       "question": "Market buy. Tap its fill side.",
+       "correct": 1,
+       "explanation": "A market buy takes the ask.",
+       "skillId": "order_routing",
+       "sourceLesson": "Aggressive vs. Passive Orders",
+       "sourceUnit": 0,
+       "sourceNode": 2,
+       "questionId": "orderflow.u1.n2.q3",
+       "competencyId": "u1.market_buy_routing"
+      },
+      {
+       "type": "book_drag",
+       "order": "market_sell",
+       "question": "Market sell. Tap its fill side.",
+       "correct": 0,
+       "explanation": "A market sell hits the bid.",
+       "skillId": "order_routing",
+       "sourceLesson": "Aggressive vs. Passive Orders",
+       "sourceUnit": 0,
+       "sourceNode": 2,
+       "questionId": "orderflow.u1.n2.q4",
+       "competencyId": "u1.market_buy_routing"
+      },
+      {
+       "type": "book_drag",
+       "order": "market_buy",
+       "question": "Market buy. Tap its fill side.",
+       "correct": 1,
+       "explanation": "A market buy takes the ask.",
+       "skillId": "order_routing",
+       "sourceLesson": "Aggressive vs. Passive Orders",
+       "sourceUnit": 0,
+       "sourceNode": 2,
+       "questionId": "orderflow.u1.n2.q3",
+       "competencyId": "u1.market_sell_routing"
+      },
+      {
+       "type": "book_drag",
+       "order": "market_sell",
+       "question": "Market sell. Tap its fill side.",
+       "correct": 0,
+       "explanation": "A market sell hits the bid.",
+       "skillId": "order_routing",
+       "sourceLesson": "Aggressive vs. Passive Orders",
+       "sourceUnit": 0,
+       "sourceNode": 2,
+       "questionId": "orderflow.u1.n2.q4",
        "competencyId": "u1.market_sell_routing"
       },
       {
@@ -44151,8 +44173,11 @@
        ],
        "correct": 0,
        "explanation": "The bid is the best resting buy price.",
-       "skillId": "the_bid_ask_spread",
+       "skillId": "bid_ask_spread",
        "sourceLesson": "The Bid, Ask & Spread",
+       "sourceUnit": 0,
+       "sourceNode": 3,
+       "questionId": "orderflow.u1.n3.q1",
        "competencyId": "u1.spread"
       },
       {
@@ -44165,8 +44190,11 @@
        ],
        "correct": 0,
        "explanation": "The ask is the best resting sell price.",
-       "skillId": "the_bid_ask_spread",
+       "skillId": "bid_ask_spread",
        "sourceLesson": "The Bid, Ask & Spread",
+       "sourceUnit": 0,
+       "sourceNode": 3,
+       "questionId": "orderflow.u1.n3.q2",
        "competencyId": "u1.spread"
       },
       {
@@ -44181,6 +44209,9 @@
        "explanation": "Aggressive orders trade now and remove liquidity.",
        "skillId": "aggressive_vs_passive_orders",
        "sourceLesson": "Aggressive vs. Passive Orders",
+       "sourceUnit": 0,
+       "sourceNode": 2,
+       "questionId": "orderflow.u1.n2.q1",
        "competencyId": "u1.aggressive_vs_passive"
       },
       {
@@ -44195,53 +44226,54 @@
        "explanation": "Passive orders wait and provide liquidity.",
        "skillId": "aggressive_vs_passive_orders",
        "sourceLesson": "Aggressive vs. Passive Orders",
+       "sourceUnit": 0,
+       "sourceNode": 2,
+       "questionId": "orderflow.u1.n2.q2",
        "competencyId": "u1.aggressive_vs_passive"
       },
       {
-       "type": "aggressor",
-       "event": "hit",
-       "question": "Bids are getting eaten. Who is aggressive?",
-       "correct": 1,
-       "explanation": "The seller is hitting the bid.",
-       "skillId": "aggressor_side",
-       "sourceLesson": "Lifting the Offer & Hitting the Bid",
+       "type": "sequence_builder",
+       "question": "Build the order flow chain.",
+       "items": [
+        "Buyers and sellers place orders",
+        "Orders execute against each other",
+        "Price moves to the last fill",
+        "The candle updates on the chart"
+       ],
+       "correct_order": [
+        "Buyers and sellers place orders",
+        "Orders execute against each other",
+        "Price moves to the last fill",
+        "The candle updates on the chart"
+       ],
+       "explanation": "Orders create fills. Fills update price and the chart.",
+       "skillId": "market_sequence",
+       "sourceLesson": "What Is Order Flow?",
+       "sourceUnit": 0,
+       "sourceNode": 1,
+       "questionId": "orderflow.u1.n1.q6",
        "competencyId": "u1.order_price_chain"
       },
       {
-       "type": "multiple_choice",
-       "question": "How do sellers trade aggressively?",
+       "type": "evidence_select",
+       "question": "Select the three parts of a complete order flow read.",
        "options": [
-        "They hit the bid",
-        "They post above the ask",
-        "They raise the bid"
+        "Aggressor activity",
+        "Available liquidity",
+        "Price response",
+        "Candle color alone"
        ],
-       "correct": 0,
-       "explanation": "Aggressive sellers cross the spread and execute against bids.",
-       "skillId": "lifting_the_offer_hitting_the_bid",
-       "sourceLesson": "Lifting the Offer & Hitting the Bid",
-       "competencyId": "u1.order_price_chain"
-      },
-      {
-       "type": "multiple_choice",
-       "question": "What is order flow?",
-       "options": [
-        "Live buying, selling, and liquidity",
-        "The order candles appear in",
-        "A sequence of chart patterns"
+       "targets": [
+        0,
+        1,
+        2
        ],
-       "correct": 0,
-       "explanation": "Order flow shows live trading pressure and liquidity.",
-       "skillId": "what_is_order_flow",
+       "explanation": "A complete read combines who acts, where liquidity sits, and how price responds.",
+       "skillId": "evidence_synthesis",
        "sourceLesson": "What Is Order Flow?",
-       "competencyId": "u1.combined_read"
-      },
-      {
-       "type": "true_false",
-       "question": "Order flow shows more than a finished price line.",
-       "correct": true,
-       "explanation": "It adds context about current pressure and liquidity.",
-       "skillId": "what_is_order_flow",
-       "sourceLesson": "What Is Order Flow?",
+       "sourceUnit": 0,
+       "sourceNode": 1,
+       "questionId": "orderflow.u1.n1.q5",
        "competencyId": "u1.combined_read"
       }
      ],
@@ -44257,33 +44289,112 @@
      ],
      "competencyMappings": {
       "u1.aggressive_buyer": [
-       "aggressor_side",
-       "lifting_the_offer_hitting_the_bid"
+       "aggressor_side"
       ],
       "u1.aggressive_seller": [
-       "aggressor_side",
-       "lifting_the_offer_hitting_the_bid"
+       "aggressor_side"
       ],
       "u1.market_buy_routing": [
-       "lifting_the_offer_hitting_the_bid",
        "order_routing"
       ],
       "u1.market_sell_routing": [
-       "aggressor_side",
-       "lifting_the_offer_hitting_the_bid"
+       "order_routing"
       ],
       "u1.spread": [
-       "the_bid_ask_spread"
+       "bid_ask_spread"
       ],
       "u1.aggressive_vs_passive": [
        "aggressive_vs_passive_orders"
       ],
       "u1.order_price_chain": [
-       "aggressor_side",
-       "lifting_the_offer_hitting_the_bid"
+       "market_sequence"
       ],
       "u1.combined_read": [
-       "what_is_order_flow"
+       "evidence_synthesis"
+      ]
+     },
+     "competencyEligibleQuestionIds": {
+      "u1.aggressive_buyer": [
+       "orderflow.u1.n4.q2",
+       "orderflow.u1.n4.q3"
+      ],
+      "u1.aggressive_seller": [
+       "orderflow.u1.n4.q2",
+       "orderflow.u1.n4.q3"
+      ],
+      "u1.market_buy_routing": [
+       "orderflow.u1.n2.q3",
+       "orderflow.u1.n2.q4"
+      ],
+      "u1.market_sell_routing": [
+       "orderflow.u1.n2.q3",
+       "orderflow.u1.n2.q4"
+      ],
+      "u1.spread": [
+       "orderflow.u1.n3.q1",
+       "orderflow.u1.n3.q2"
+      ],
+      "u1.aggressive_vs_passive": [
+       "orderflow.u1.n2.q1",
+       "orderflow.u1.n2.q2"
+      ],
+      "u1.order_price_chain": [
+       "orderflow.u1.n1.q6"
+      ],
+      "u1.combined_read": [
+       "orderflow.u1.n1.q5"
+      ]
+     },
+     "competencySourceUnits": {
+      "u1.aggressive_buyer": [
+       0
+      ],
+      "u1.aggressive_seller": [
+       0
+      ],
+      "u1.market_buy_routing": [
+       0
+      ],
+      "u1.market_sell_routing": [
+       0
+      ],
+      "u1.spread": [
+       0
+      ],
+      "u1.aggressive_vs_passive": [
+       0
+      ],
+      "u1.order_price_chain": [
+       0
+      ],
+      "u1.combined_read": [
+       0
+      ]
+     },
+     "competencySourceNodes": {
+      "u1.aggressive_buyer": [
+       4
+      ],
+      "u1.aggressive_seller": [
+       4
+      ],
+      "u1.market_buy_routing": [
+       2
+      ],
+      "u1.market_sell_routing": [
+       2
+      ],
+      "u1.spread": [
+       3
+      ],
+      "u1.aggressive_vs_passive": [
+       2
+      ],
+      "u1.order_price_chain": [
+       1
+      ],
+      "u1.combined_read": [
+       1
       ]
      }
     },
@@ -44308,6 +44419,9 @@
        "explanation": "Level II is the whole ladder of resting limit orders. Level I is just the top of book; executed trades live in time & sales.",
        "skillId": "reading_the_order_book",
        "sourceLesson": "Reading the Order Book",
+       "sourceUnit": 1,
+       "sourceNode": 6,
+       "questionId": "orderflow.u2.n6.q1",
        "competencyId": "u2.level_two"
       },
       {
@@ -44322,6 +44436,9 @@
        "explanation": "Buyers rest on the bid. Sellers rest on the ask, and the spread is the gap between them.",
        "skillId": "reading_the_order_book",
        "sourceLesson": "Reading the Order Book",
+       "sourceUnit": 1,
+       "sourceNode": 6,
+       "questionId": "orderflow.u2.n6.q2",
        "competencyId": "u2.level_two"
       },
       {
@@ -44336,6 +44453,9 @@
        "explanation": "Level I is the top of the book. the single best bid and best ask.",
        "skillId": "reading_the_order_book",
        "sourceLesson": "Reading the Order Book",
+       "sourceUnit": 1,
+       "sourceNode": 6,
+       "questionId": "orderflow.u2.n6.q3",
        "competencyId": "u2.resting_sides"
       },
       {
@@ -44350,6 +44470,9 @@
        "explanation": "Sellers rest on the ask side, above the spread.",
        "skillId": "reading_the_order_book",
        "sourceLesson": "Reading the Order Book",
+       "sourceUnit": 1,
+       "sourceNode": 6,
+       "questionId": "orderflow.u2.n6.q4",
        "competencyId": "u2.resting_sides"
       },
       {
@@ -44364,6 +44487,9 @@
        "explanation": "The number is resting size. how many shares sit waiting at that price.",
        "skillId": "size_liquidity",
        "sourceLesson": "Size & Liquidity",
+       "sourceUnit": 1,
+       "sourceNode": 7,
+       "questionId": "orderflow.u2.n7.q1",
        "competencyId": "u2.thick_liquidity"
       },
       {
@@ -44378,6 +44504,9 @@
        "explanation": "Plenty of resting size means liquid: price needs a lot of aggression to move.",
        "skillId": "size_liquidity",
        "sourceLesson": "Size & Liquidity",
+       "sourceUnit": 1,
+       "sourceNode": 7,
+       "questionId": "orderflow.u2.n7.q2",
        "competencyId": "u2.thick_liquidity"
       },
       {
@@ -44387,6 +44516,9 @@
        "explanation": "Less resting size means each aggressive order pushes price further.",
        "skillId": "size_liquidity",
        "sourceLesson": "Size & Liquidity",
+       "sourceUnit": 1,
+       "sourceNode": 7,
+       "questionId": "orderflow.u2.n7.q3",
        "competencyId": "u2.thin_liquidity"
       },
       {
@@ -44409,6 +44541,9 @@
        "explanation": "Depth is what absorbs aggression; without it, price jumps.",
        "skillId": "size_liquidity",
        "sourceLesson": "Size & Liquidity",
+       "sourceUnit": 1,
+       "sourceNode": 7,
+       "questionId": "orderflow.u2.n7.q4",
        "competencyId": "u2.thin_liquidity"
       },
       {
@@ -44424,6 +44559,9 @@
        "skillId": "book_depth",
        "event": "wall",
        "sourceLesson": "Large Orders as Walls",
+       "sourceUnit": 1,
+       "sourceNode": 8,
+       "questionId": "orderflow.u2.n8.q1",
        "competencyId": "u2.wall"
       },
       {
@@ -44438,6 +44576,9 @@
        "explanation": "A big ask can cap price temporarily; it isn't a certainty.",
        "skillId": "large_orders_as_walls",
        "sourceLesson": "Large Orders as Walls",
+       "sourceUnit": 1,
+       "sourceNode": 8,
+       "questionId": "orderflow.u2.n8.q2",
        "competencyId": "u2.wall"
       },
       {
@@ -44447,6 +44588,9 @@
        "explanation": "It can be absorbed or pulled. It's a clue, not a guarantee.",
        "skillId": "large_orders_as_walls",
        "sourceLesson": "Large Orders as Walls",
+       "sourceUnit": 1,
+       "sourceNode": 8,
+       "questionId": "orderflow.u2.n8.q3",
        "competencyId": "u2.wall_behavior"
       },
       {
@@ -44469,6 +44613,9 @@
        "explanation": "Big bids hold price up, big asks cap it. until they're pulled.",
        "skillId": "large_orders_as_walls",
        "sourceLesson": "Large Orders as Walls",
+       "sourceUnit": 1,
+       "sourceNode": 8,
+       "questionId": "orderflow.u2.n8.q4",
        "competencyId": "u2.wall_behavior"
       },
       {
@@ -44484,6 +44631,9 @@
        "explanation": "Replay A replenishes while trading and price holds. Replay B pulls before the decline.",
        "skillId": "scenario_comparison",
        "sourceLesson": "Pulling, Replenishment & Spoofing",
+       "sourceUnit": 1,
+       "sourceNode": 9,
+       "questionId": "orderflow.u2.n9.q1",
        "competencyId": "u2.spoofing"
       },
       {
@@ -44496,13 +44646,16 @@
        ],
        "correct": 0,
        "explanation": "Repeated deceptive posting and cancellation intended to mislead may constitute spoofing. One cancelled order alone does not prove intent.",
-       "skillId": "pulling_replenishment_spoofing",
+       "skillId": "pulling_and_spoofing",
        "sourceLesson": "Pulling, Replenishment & Spoofing",
+       "sourceUnit": 1,
+       "sourceNode": 9,
+       "questionId": "orderflow.u2.n9.q2",
        "competencyId": "u2.spoofing"
       },
       {
        "type": "multiple_choice",
-       "question": "What does Level II show?",
+       "question": "Order Book Challenge scenario: Order Book Challenge scenario: What does Level II show?",
        "options": [
         "Available depth from the relevant venue or feed.",
         "Just the best bid and ask.",
@@ -44512,12 +44665,15 @@
        "explanation": "Level II is the full ladder of resting orders on both sides.",
        "skillId": "order_book_challenge",
        "sourceLesson": "Order Book Challenge",
+       "sourceUnit": 1,
+       "sourceNode": 11,
+       "questionId": "orderflow.u2.n11.q1",
        "competencyId": "u2.combined_book_read"
       },
       {
        "type": "multiple_choice",
        "chart": "sideways",
-       "question": "What does the evidence support?",
+       "question": "Order Book Challenge scenario: What does the evidence support?",
        "options": [
         "Combine aggression, liquidity, and price response",
         "Tape speed matters more than the level where it occurs",
@@ -44527,6 +44683,9 @@
        "explanation": "A complete read combines who acts where liquidity rests and how price responds.",
        "skillId": "order_book_challenge",
        "sourceLesson": "Order Book Challenge",
+       "sourceUnit": 1,
+       "sourceNode": 11,
+       "questionId": "orderflow.u2.n11.q2",
        "competencyId": "u2.combined_book_read"
       }
      ],
@@ -44561,11 +44720,97 @@
        "large_orders_as_walls"
       ],
       "u2.spoofing": [
-       "pulling_replenishment_spoofing",
+       "pulling_and_spoofing",
        "scenario_comparison"
       ],
       "u2.combined_book_read": [
        "order_book_challenge"
+      ]
+     },
+     "competencyEligibleQuestionIds": {
+      "u2.level_two": [
+       "orderflow.u2.n6.q1",
+       "orderflow.u2.n6.q2"
+      ],
+      "u2.resting_sides": [
+       "orderflow.u2.n6.q3",
+       "orderflow.u2.n6.q4"
+      ],
+      "u2.thick_liquidity": [
+       "orderflow.u2.n7.q1",
+       "orderflow.u2.n7.q2"
+      ],
+      "u2.thin_liquidity": [
+       "orderflow.u2.n7.q3",
+       "orderflow.u2.n7.q4"
+      ],
+      "u2.wall": [
+       "orderflow.u2.n8.q1",
+       "orderflow.u2.n8.q2"
+      ],
+      "u2.wall_behavior": [
+       "orderflow.u2.n8.q3",
+       "orderflow.u2.n8.q4"
+      ],
+      "u2.spoofing": [
+       "orderflow.u2.n9.q1",
+       "orderflow.u2.n9.q2"
+      ],
+      "u2.combined_book_read": [
+       "orderflow.u2.n11.q1",
+       "orderflow.u2.n11.q2"
+      ]
+     },
+     "competencySourceUnits": {
+      "u2.level_two": [
+       1
+      ],
+      "u2.resting_sides": [
+       1
+      ],
+      "u2.thick_liquidity": [
+       1
+      ],
+      "u2.thin_liquidity": [
+       1
+      ],
+      "u2.wall": [
+       1
+      ],
+      "u2.wall_behavior": [
+       1
+      ],
+      "u2.spoofing": [
+       1
+      ],
+      "u2.combined_book_read": [
+       1
+      ]
+     },
+     "competencySourceNodes": {
+      "u2.level_two": [
+       6
+      ],
+      "u2.resting_sides": [
+       6
+      ],
+      "u2.thick_liquidity": [
+       7
+      ],
+      "u2.thin_liquidity": [
+       7
+      ],
+      "u2.wall": [
+       8
+      ],
+      "u2.wall_behavior": [
+       8
+      ],
+      "u2.spoofing": [
+       9
+      ],
+      "u2.combined_book_read": [
+       11
       ]
      },
      "jumpAheadQuestionCount": 8,
@@ -44619,6 +44864,9 @@
        "explanation": "Trades at the ask suggest buyer aggression.",
        "skillId": "tape_reading",
        "sourceLesson": "Buyer vs. Seller Initiated Prints",
+       "sourceUnit": 2,
+       "sourceNode": 15,
+       "questionId": "orderflow.u3.n15.q1",
        "competencyId": "u3.buyer_initiated"
       },
       {
@@ -44634,6 +44882,9 @@
        "explanation": "Trades at the bid suggest seller aggression.",
        "skillId": "tape_reading",
        "sourceLesson": "Buyer vs. Seller Initiated Prints",
+       "sourceUnit": 2,
+       "sourceNode": 15,
+       "questionId": "orderflow.u3.n15.q2",
        "competencyId": "u3.buyer_initiated"
       },
       {
@@ -44644,6 +44895,9 @@
        "explanation": "The selected trade executes at the ask and is buyer initiated.",
        "skillId": "tape_interaction",
        "sourceLesson": "Buyer vs. Seller Initiated Prints",
+       "sourceUnit": 2,
+       "sourceNode": 15,
+       "questionId": "orderflow.u3.n15.q3",
        "competencyId": "u3.seller_initiated"
       },
       {
@@ -44654,6 +44908,9 @@
        "explanation": "The selected trade executes at the bid and is seller initiated.",
        "skillId": "tape_interaction",
        "sourceLesson": "Buyer vs. Seller Initiated Prints",
+       "sourceUnit": 2,
+       "sourceNode": 15,
+       "questionId": "orderflow.u3.n15.q4",
        "competencyId": "u3.seller_initiated"
       },
       {
@@ -44669,6 +44926,9 @@
        "explanation": "Faster prints can reveal rising activity.",
        "skillId": "tape_reading",
        "sourceLesson": "Speed & Size",
+       "sourceUnit": 2,
+       "sourceNode": 14,
+       "questionId": "orderflow.u3.n14.q1",
        "competencyId": "u3.large_print"
       },
       {
@@ -44684,6 +44944,9 @@
        "explanation": "Larger trades can show stronger participation.",
        "skillId": "tape_reading",
        "sourceLesson": "Speed & Size",
+       "sourceUnit": 2,
+       "sourceNode": 14,
+       "questionId": "orderflow.u3.n14.q2",
        "competencyId": "u3.large_print"
       },
       {
@@ -44694,6 +44957,9 @@
        "explanation": "This print begins the faster arrival sequence.",
        "skillId": "tape_interaction",
        "sourceLesson": "Speed & Size",
+       "sourceUnit": 2,
+       "sourceNode": 14,
+       "questionId": "orderflow.u3.n14.q3",
        "competencyId": "u3.tape_speed"
       },
       {
@@ -44704,6 +44970,9 @@
        "explanation": "This execution is much larger than the surrounding prints.",
        "skillId": "tape_interaction",
        "sourceLesson": "Speed & Size",
+       "sourceUnit": 2,
+       "sourceNode": 14,
+       "questionId": "orderflow.u3.n14.q4",
        "competencyId": "u3.tape_speed"
       },
       {
@@ -44719,6 +44988,9 @@
        "explanation": "Repeated buys can show persistent demand.",
        "skillId": "tape_reading",
        "sourceLesson": "Repeated Prints & Sequence Breaks",
+       "sourceUnit": 2,
+       "sourceNode": 16,
+       "questionId": "orderflow.u3.n16.q1",
        "competencyId": "u3.persistent_aggression"
       },
       {
@@ -44729,6 +45001,9 @@
        "explanation": "This print interrupts the persistent aggression shown before it.",
        "skillId": "tape_interaction",
        "sourceLesson": "Repeated Prints & Sequence Breaks",
+       "sourceUnit": 2,
+       "sourceNode": 16,
+       "questionId": "orderflow.u3.n16.q2",
        "competencyId": "u3.persistent_aggression"
       },
       {
@@ -44744,24 +45019,30 @@
        "explanation": "Use the chart only to judge whether price confirmed the tape evidence.",
        "skillId": "repeated_prints_sequence_breaks",
        "sourceLesson": "Repeated Prints & Sequence Breaks",
+       "sourceUnit": 2,
+       "sourceNode": 16,
+       "questionId": "orderflow.u3.n16.q3",
        "competencyId": "u3.sequence_break"
       },
       {
        "type": "evidence_select",
-       "question": "Select the two strongest evidence checks for Repeated Prints & Sequence Breaks.",
+       "question": "Which two clues make repeated prints meaningful?",
        "options": [
-        "Execution behavior",
-        "Confirming price response",
-        "Candle color alone",
-        "A company profile"
+        "One side keeps initiating",
+        "Price responds to the sequence",
+        "One isolated print",
+        "Candle color changes"
        ],
        "targets": [
         0,
         1
        ],
-       "explanation": "The read needs executed activity and the price response it produces.",
+       "explanation": "Persistence matters when execution produces a matching response.",
        "skillId": "evidence_synthesis",
        "sourceLesson": "Repeated Prints & Sequence Breaks",
+       "sourceUnit": 2,
+       "sourceNode": 16,
+       "questionId": "orderflow.u3.n16.q4",
        "competencyId": "u3.sequence_break"
       },
       {
@@ -44777,6 +45058,9 @@
        "explanation": "A faster pace can precede expansion.",
        "skillId": "tape_reading",
        "sourceLesson": "Acceleration, Slowdown & False Urgency",
+       "sourceUnit": 2,
+       "sourceNode": 17,
+       "questionId": "orderflow.u3.n17.q1",
        "competencyId": "u3.false_urgency"
       },
       {
@@ -44792,6 +45076,9 @@
        "explanation": "Fast prints need price confirmation.",
        "skillId": "tape_reading",
        "sourceLesson": "Acceleration, Slowdown & False Urgency",
+       "sourceUnit": 2,
+       "sourceNode": 17,
+       "questionId": "orderflow.u3.n17.q2",
        "competencyId": "u3.false_urgency"
       },
       {
@@ -44807,6 +45094,9 @@
        "explanation": "Tape reaction matters most near key levels.",
        "skillId": "tape_reading",
        "sourceLesson": "Tape at Key Levels",
+       "sourceUnit": 2,
+       "sourceNode": 18,
+       "questionId": "orderflow.u3.n18.q1",
        "competencyId": "u3.price_confirmation"
       },
       {
@@ -44817,6 +45107,9 @@
        "explanation": "The selected print is the first opposing execution at the level.",
        "skillId": "tape_interaction",
        "sourceLesson": "Tape at Key Levels",
+       "sourceUnit": 2,
+       "sourceNode": 18,
+       "questionId": "orderflow.u3.n18.q2",
        "competencyId": "u3.price_confirmation"
       },
       {
@@ -44832,6 +45125,9 @@
        "explanation": "Each row is a completed trade with time price size and side.",
        "skillId": "tape_reading",
        "sourceLesson": "Reading Time & Sales",
+       "sourceUnit": 2,
+       "sourceNode": 13,
+       "questionId": "orderflow.u3.n13.q1",
        "competencyId": "u3.combined_tape_read"
       },
       {
@@ -44847,6 +45143,9 @@
        "explanation": "Prints reveal completed trades.",
        "skillId": "tape_reading",
        "sourceLesson": "Reading Time & Sales",
+       "sourceUnit": 2,
+       "sourceNode": 13,
+       "questionId": "orderflow.u3.n13.q2",
        "competencyId": "u3.combined_tape_read"
       }
      ],
@@ -44891,6 +45190,102 @@
       ],
       "u3.combined_tape_read": [
        "tape_reading"
+      ]
+     },
+     "competencyEligibleQuestionIds": {
+      "u3.buyer_initiated": [
+       "orderflow.u3.n15.q1",
+       "orderflow.u3.n15.q2"
+      ],
+      "u3.seller_initiated": [
+       "orderflow.u3.n15.q3",
+       "orderflow.u3.n15.q4"
+      ],
+      "u3.large_print": [
+       "orderflow.u3.n14.q1",
+       "orderflow.u3.n14.q2"
+      ],
+      "u3.tape_speed": [
+       "orderflow.u3.n14.q3",
+       "orderflow.u3.n14.q4"
+      ],
+      "u3.persistent_aggression": [
+       "orderflow.u3.n16.q1",
+       "orderflow.u3.n16.q2"
+      ],
+      "u3.sequence_break": [
+       "orderflow.u3.n16.q3",
+       "orderflow.u3.n16.q4"
+      ],
+      "u3.false_urgency": [
+       "orderflow.u3.n17.q1",
+       "orderflow.u3.n17.q2"
+      ],
+      "u3.price_confirmation": [
+       "orderflow.u3.n18.q1",
+       "orderflow.u3.n18.q2"
+      ],
+      "u3.combined_tape_read": [
+       "orderflow.u3.n13.q1",
+       "orderflow.u3.n13.q2"
+      ]
+     },
+     "competencySourceUnits": {
+      "u3.buyer_initiated": [
+       2
+      ],
+      "u3.seller_initiated": [
+       2
+      ],
+      "u3.large_print": [
+       2
+      ],
+      "u3.tape_speed": [
+       2
+      ],
+      "u3.persistent_aggression": [
+       2
+      ],
+      "u3.sequence_break": [
+       2
+      ],
+      "u3.false_urgency": [
+       2
+      ],
+      "u3.price_confirmation": [
+       2
+      ],
+      "u3.combined_tape_read": [
+       2
+      ]
+     },
+     "competencySourceNodes": {
+      "u3.buyer_initiated": [
+       15
+      ],
+      "u3.seller_initiated": [
+       15
+      ],
+      "u3.large_print": [
+       14
+      ],
+      "u3.tape_speed": [
+       14
+      ],
+      "u3.persistent_aggression": [
+       16
+      ],
+      "u3.sequence_break": [
+       16
+      ],
+      "u3.false_urgency": [
+       17
+      ],
+      "u3.price_confirmation": [
+       18
+      ],
+      "u3.combined_tape_read": [
+       13
       ]
      },
      "jumpAheadQuestionCount": 10,
@@ -44950,6 +45345,9 @@
        "explanation": "Absorption appears when pressure fails to move price.",
        "skillId": "multi_signal_read",
        "sourceLesson": "What Is Absorption?",
+       "sourceUnit": 3,
+       "sourceNode": 20,
+       "questionId": "orderflow.u4.n20.q1",
        "competencyId": "u4.absorption"
       },
       {
@@ -44965,6 +45363,9 @@
        "explanation": "Absorption requires pressure plus a weak corresponding price response.",
        "skillId": "tape_reading",
        "sourceLesson": "What Is Absorption?",
+       "sourceUnit": 3,
+       "sourceNode": 20,
+       "questionId": "orderflow.u4.n20.q2",
        "competencyId": "u4.absorption"
       },
       {
@@ -44981,6 +45382,9 @@
        "explanation": "Buyers absorb selling near support.",
        "skillId": "multi_signal_read",
        "sourceLesson": "Buyer vs. Seller Absorption",
+       "sourceUnit": 3,
+       "sourceNode": 21,
+       "questionId": "orderflow.u4.n21.q1",
        "competencyId": "u4.buyer_absorption"
       },
       {
@@ -44996,6 +45400,9 @@
        "explanation": "Absorption requires pressure plus a weak corresponding price response.",
        "skillId": "tape_reading",
        "sourceLesson": "Buyer vs. Seller Absorption",
+       "sourceUnit": 3,
+       "sourceNode": 21,
+       "questionId": "orderflow.u4.n21.q2",
        "competencyId": "u4.buyer_absorption"
       },
       {
@@ -45011,6 +45418,9 @@
        "explanation": "Absorption requires pressure plus a weak corresponding price response.",
        "skillId": "tape_reading",
        "sourceLesson": "Buyer vs. Seller Absorption",
+       "sourceUnit": 3,
+       "sourceNode": 21,
+       "questionId": "orderflow.u4.n21.q3",
        "competencyId": "u4.seller_absorption"
       },
       {
@@ -45027,6 +45437,9 @@
        "explanation": "Buyers absorb selling near support.",
        "skillId": "buyer_vs_seller_absorption",
        "sourceLesson": "Buyer vs. Seller Absorption",
+       "sourceUnit": 3,
+       "sourceNode": 21,
+       "questionId": "orderflow.u4.n21.q4",
        "competencyId": "u4.seller_absorption"
       },
       {
@@ -45043,6 +45456,9 @@
        "explanation": "A level that survives tests may contain absorption.",
        "skillId": "multi_signal_read",
        "sourceLesson": "Repeated Tests & Hidden Liquidity",
+       "sourceUnit": 3,
+       "sourceNode": 22,
+       "questionId": "orderflow.u4.n22.q1",
        "competencyId": "u4.repeated_tests"
       },
       {
@@ -45058,6 +45474,9 @@
        "explanation": "Absorption requires pressure plus a weak corresponding price response.",
        "skillId": "tape_reading",
        "sourceLesson": "Repeated Tests & Hidden Liquidity",
+       "sourceUnit": 3,
+       "sourceNode": 22,
+       "questionId": "orderflow.u4.n22.q2",
        "competencyId": "u4.repeated_tests"
       },
       {
@@ -45073,6 +45492,9 @@
        "explanation": "Absorption requires pressure plus a weak corresponding price response.",
        "skillId": "multi_signal_read",
        "sourceLesson": "Repeated Tests & Hidden Liquidity",
+       "sourceUnit": 3,
+       "sourceNode": 22,
+       "questionId": "orderflow.u4.n22.q3",
        "competencyId": "u4.hidden_liquidity"
       },
       {
@@ -45089,6 +45511,9 @@
        "explanation": "A level that survives tests may contain absorption.",
        "skillId": "repeated_tests_hidden_liquidity",
        "sourceLesson": "Repeated Tests & Hidden Liquidity",
+       "sourceUnit": 3,
+       "sourceNode": 22,
+       "questionId": "orderflow.u4.n22.q4",
        "competencyId": "u4.hidden_liquidity"
       },
       {
@@ -45104,6 +45529,9 @@
        "explanation": "Exhaustion is defined by aggressive activity fading.",
        "skillId": "tape_reading",
        "sourceLesson": "Buyer vs. Seller Exhaustion",
+       "sourceUnit": 3,
+       "sourceNode": 24,
+       "questionId": "orderflow.u4.n24.q1",
        "competencyId": "u4.buyer_exhaustion"
       },
       {
@@ -45114,6 +45542,9 @@
        "explanation": "Prints continue but size and pace begin fading here.",
        "skillId": "tape_interaction",
        "sourceLesson": "Buyer vs. Seller Exhaustion",
+       "sourceUnit": 3,
+       "sourceNode": 24,
+       "questionId": "orderflow.u4.n24.q2",
        "competencyId": "u4.buyer_exhaustion"
       },
       {
@@ -45129,24 +45560,30 @@
        "explanation": "Fading directional execution can support an exhaustion read.",
        "skillId": "footprint_reading",
        "sourceLesson": "Buyer vs. Seller Exhaustion",
+       "sourceUnit": 3,
+       "sourceNode": 24,
+       "questionId": "orderflow.u4.n24.q3",
        "competencyId": "u4.seller_exhaustion"
       },
       {
        "type": "evidence_select",
-       "question": "Select the two strongest evidence checks for Buyer vs. Seller Exhaustion.",
+       "question": "Which two observations identify the exhausting side?",
        "options": [
-        "Execution behavior",
-        "Confirming price response",
-        "Candle color alone",
-        "A company profile"
+        "Its initiated prints lose pace",
+        "Its price progress weakens",
+        "Opposing liquidity disappears",
+        "The spread never changes"
        ],
        "targets": [
         0,
         1
        ],
-       "explanation": "The read needs executed activity and the price response it produces.",
+       "explanation": "Compare each side's urgency with the progress it produces.",
        "skillId": "evidence_synthesis",
        "sourceLesson": "Buyer vs. Seller Exhaustion",
+       "sourceUnit": 3,
+       "sourceNode": 24,
+       "questionId": "orderflow.u4.n24.q4",
        "competencyId": "u4.seller_exhaustion"
       },
       {
@@ -45162,6 +45599,9 @@
        "explanation": "Absorption keeps strong aggression but loses price progress. Exhaustion means aggression itself fades.",
        "skillId": "tape_reading",
        "sourceLesson": "Absorption vs. Exhaustion",
+       "sourceUnit": 3,
+       "sourceNode": 25,
+       "questionId": "orderflow.u4.n25.q1",
        "competencyId": "u4.absorption_vs_exhaustion"
       },
       {
@@ -45177,6 +45617,9 @@
        "explanation": "Fading aggression defines exhaustion.",
        "skillId": "tape_reading",
        "sourceLesson": "Absorption vs. Exhaustion",
+       "sourceUnit": 3,
+       "sourceNode": 25,
+       "questionId": "orderflow.u4.n25.q2",
        "competencyId": "u4.absorption_vs_exhaustion"
       },
       {
@@ -45194,6 +45637,9 @@
        "explanation": "Aggressive buyers can be absorbed by passive sellers at resistance.",
        "skillId": "multi_signal_read",
        "sourceLesson": "Absorption Practice Replays",
+       "sourceUnit": 3,
+       "sourceNode": 26,
+       "questionId": "orderflow.u4.n26.q1",
        "competencyId": "u4.combined_absorption_read"
       },
       {
@@ -45211,6 +45657,9 @@
        "explanation": "Aggressive sellers can be absorbed by passive buyers at support.",
        "skillId": "multi_signal_read",
        "sourceLesson": "Absorption Practice Replays",
+       "sourceUnit": 3,
+       "sourceNode": 26,
+       "questionId": "orderflow.u4.n26.q2",
        "competencyId": "u4.combined_absorption_read"
       }
      ],
@@ -45259,6 +45708,102 @@
       ],
       "u4.combined_absorption_read": [
        "multi_signal_read"
+      ]
+     },
+     "competencyEligibleQuestionIds": {
+      "u4.absorption": [
+       "orderflow.u4.n20.q1",
+       "orderflow.u4.n20.q2"
+      ],
+      "u4.buyer_absorption": [
+       "orderflow.u4.n21.q1",
+       "orderflow.u4.n21.q2"
+      ],
+      "u4.seller_absorption": [
+       "orderflow.u4.n21.q3",
+       "orderflow.u4.n21.q4"
+      ],
+      "u4.repeated_tests": [
+       "orderflow.u4.n22.q1",
+       "orderflow.u4.n22.q2"
+      ],
+      "u4.hidden_liquidity": [
+       "orderflow.u4.n22.q3",
+       "orderflow.u4.n22.q4"
+      ],
+      "u4.buyer_exhaustion": [
+       "orderflow.u4.n24.q1",
+       "orderflow.u4.n24.q2"
+      ],
+      "u4.seller_exhaustion": [
+       "orderflow.u4.n24.q3",
+       "orderflow.u4.n24.q4"
+      ],
+      "u4.absorption_vs_exhaustion": [
+       "orderflow.u4.n25.q1",
+       "orderflow.u4.n25.q2"
+      ],
+      "u4.combined_absorption_read": [
+       "orderflow.u4.n26.q1",
+       "orderflow.u4.n26.q2"
+      ]
+     },
+     "competencySourceUnits": {
+      "u4.absorption": [
+       3
+      ],
+      "u4.buyer_absorption": [
+       3
+      ],
+      "u4.seller_absorption": [
+       3
+      ],
+      "u4.repeated_tests": [
+       3
+      ],
+      "u4.hidden_liquidity": [
+       3
+      ],
+      "u4.buyer_exhaustion": [
+       3
+      ],
+      "u4.seller_exhaustion": [
+       3
+      ],
+      "u4.absorption_vs_exhaustion": [
+       3
+      ],
+      "u4.combined_absorption_read": [
+       3
+      ]
+     },
+     "competencySourceNodes": {
+      "u4.absorption": [
+       20
+      ],
+      "u4.buyer_absorption": [
+       21
+      ],
+      "u4.seller_absorption": [
+       21
+      ],
+      "u4.repeated_tests": [
+       22
+      ],
+      "u4.hidden_liquidity": [
+       22
+      ],
+      "u4.buyer_exhaustion": [
+       24
+      ],
+      "u4.seller_exhaustion": [
+       24
+      ],
+      "u4.absorption_vs_exhaustion": [
+       25
+      ],
+      "u4.combined_absorption_read": [
+       26
       ]
      },
      "jumpAheadQuestionCount": 12,
@@ -45322,6 +45867,9 @@
        "explanation": "A footprint separates executed bid volume from executed ask volume at each price.",
        "skillId": "footprint_reading",
        "sourceLesson": "Reading Footprints & Imbalances",
+       "sourceUnit": 4,
+       "sourceNode": 28,
+       "questionId": "orderflow.u5.n28.q1",
        "competencyId": "u5.footprint_basics"
       },
       {
@@ -45337,6 +45885,9 @@
        "explanation": "Diagonal comparison and a defined ratio distinguish conventional imbalance from a simple same price execution difference.",
        "skillId": "footprint_reading",
        "sourceLesson": "Reading Footprints & Imbalances",
+       "sourceUnit": 4,
+       "sourceNode": 28,
+       "questionId": "orderflow.u5.n28.q2",
        "competencyId": "u5.footprint_basics"
       },
       {
@@ -45347,6 +45898,9 @@
        "explanation": "This row has the largest bid plus ask total.",
        "skillId": "footprint_interaction",
        "sourceLesson": "Reading Footprints & Imbalances",
+       "sourceUnit": 4,
+       "sourceNode": 28,
+       "questionId": "orderflow.u5.n28.q3",
        "competencyId": "u5.diagonal_imbalance"
       },
       {
@@ -45357,6 +45911,9 @@
        "explanation": "Ask execution exceeds the adjacent lower bid by ratio.",
        "skillId": "footprint_interaction",
        "sourceLesson": "Reading Footprints & Imbalances",
+       "sourceUnit": 4,
+       "sourceNode": 28,
+       "questionId": "orderflow.u5.n28.q4",
        "competencyId": "u5.diagonal_imbalance"
       },
       {
@@ -45373,6 +45930,9 @@
        "explanation": "Imbalance means one side is more aggressive.",
        "skillId": "footprint_reading",
        "sourceLesson": "Buyer vs. Seller Imbalances",
+       "sourceUnit": 4,
+       "sourceNode": 29,
+       "questionId": "orderflow.u5.n29.q1",
        "competencyId": "u5.buyer_imbalance"
       },
       {
@@ -45383,6 +45943,9 @@
        "explanation": "This row has the widest directional execution advantage.",
        "skillId": "footprint_interaction",
        "sourceLesson": "Buyer vs. Seller Imbalances",
+       "sourceUnit": 4,
+       "sourceNode": 29,
+       "questionId": "orderflow.u5.n29.q2",
        "competencyId": "u5.buyer_imbalance"
       },
       {
@@ -45393,6 +45956,9 @@
        "explanation": "Aggressive buyers execute at the ask.",
        "skillId": "footprint_interaction",
        "sourceLesson": "Buyer vs. Seller Imbalances",
+       "sourceUnit": 4,
+       "sourceNode": 29,
+       "questionId": "orderflow.u5.n29.q3",
        "competencyId": "u5.seller_imbalance"
       },
       {
@@ -45403,6 +45969,9 @@
        "explanation": "Aggressive sellers execute at the bid.",
        "skillId": "footprint_interaction",
        "sourceLesson": "Buyer vs. Seller Imbalances",
+       "sourceUnit": 4,
+       "sourceNode": 29,
+       "questionId": "orderflow.u5.n29.q4",
        "competencyId": "u5.seller_imbalance"
       },
       {
@@ -45419,6 +45988,9 @@
        "explanation": "Pressure across several levels strengthens the move.",
        "skillId": "footprint_reading",
        "sourceLesson": "Stacked Pressure",
+       "sourceUnit": 4,
+       "sourceNode": 32,
+       "questionId": "orderflow.u5.n32.q1",
        "competencyId": "u5.stacked_pressure"
       },
       {
@@ -45429,6 +46001,9 @@
        "explanation": "The selected row begins consecutive ask side imbalances.",
        "skillId": "footprint_interaction",
        "sourceLesson": "Stacked Pressure",
+       "sourceUnit": 4,
+       "sourceNode": 32,
+       "questionId": "orderflow.u5.n32.q2",
        "competencyId": "u5.stacked_pressure"
       },
       {
@@ -45445,6 +46020,9 @@
        "explanation": "Renewed buying can continue momentum.",
        "skillId": "footprint_reading",
        "sourceLesson": "Momentum Continuation & Failure",
+       "sourceUnit": 4,
+       "sourceNode": 31,
+       "questionId": "orderflow.u5.n31.q1",
        "competencyId": "u5.momentum_failure"
       },
       {
@@ -45455,6 +46033,9 @@
        "explanation": "Consecutive ask imbalances support continued buyer pressure.",
        "skillId": "footprint_interaction",
        "sourceLesson": "Momentum Continuation & Failure",
+       "sourceUnit": 4,
+       "sourceNode": 31,
+       "questionId": "orderflow.u5.n31.q2",
        "competencyId": "u5.momentum_failure"
       },
       {
@@ -45471,6 +46052,9 @@
        "explanation": "Net aggression compares buying with selling.",
        "skillId": "footprint_reading",
        "sourceLesson": "Delta vs. Volume",
+       "sourceUnit": 4,
+       "sourceNode": 33,
+       "questionId": "orderflow.u5.n33.q1",
        "competencyId": "u5.delta_vs_volume"
       },
       {
@@ -45487,6 +46071,9 @@
        "explanation": "Volume measures total trading while delta compares aggressive buying and selling.",
        "skillId": "footprint_reading",
        "sourceLesson": "Delta vs. Volume",
+       "sourceUnit": 4,
+       "sourceNode": 33,
+       "questionId": "orderflow.u5.n33.q2",
        "competencyId": "u5.delta_vs_volume"
       },
       {
@@ -45503,6 +46090,9 @@
        "explanation": "Positive delta with falling price can reveal seller absorption or trapped buyers.",
        "skillId": "footprint_reading",
        "sourceLesson": "Positive vs. Negative Delta Divergence",
+       "sourceUnit": 4,
+       "sourceNode": 34,
+       "questionId": "orderflow.u5.n34.q1",
        "competencyId": "u5.positive_delta_divergence"
       },
       {
@@ -45519,6 +46109,9 @@
        "explanation": "Positive delta with falling price can reveal seller absorption or trapped buyers.",
        "skillId": "positive_vs_negative_delta_divergence",
        "sourceLesson": "Positive vs. Negative Delta Divergence",
+       "sourceUnit": 4,
+       "sourceNode": 34,
+       "questionId": "orderflow.u5.n34.q2",
        "competencyId": "u5.positive_delta_divergence"
       },
       {
@@ -45535,6 +46128,9 @@
        "explanation": "Negative delta with rising price can reveal buyer absorption or trapped sellers.",
        "skillId": "positive_vs_negative_delta_divergence",
        "sourceLesson": "Positive vs. Negative Delta Divergence",
+       "sourceUnit": 4,
+       "sourceNode": 34,
+       "questionId": "orderflow.u5.n34.q3",
        "competencyId": "u5.negative_delta_divergence"
       },
       {
@@ -45545,6 +46141,9 @@
        "explanation": "Strong positive delta conflicts with the downward price response.",
        "skillId": "footprint_interaction",
        "sourceLesson": "Positive vs. Negative Delta Divergence",
+       "sourceUnit": 4,
+       "sourceNode": 34,
+       "questionId": "orderflow.u5.n34.q4",
        "competencyId": "u5.negative_delta_divergence"
       },
       {
@@ -45561,6 +46160,9 @@
        "explanation": "Price and pressure disagreement warns of weakness.",
        "skillId": "footprint_reading",
        "sourceLesson": "Price and Pressure Divergence",
+       "sourceUnit": 4,
+       "sourceNode": 35,
+       "questionId": "orderflow.u5.n35.q1",
        "competencyId": "u5.combined_footprint_read"
       },
       {
@@ -45571,6 +46173,9 @@
        "explanation": "The selected negative delta row contradicts the price direction.",
        "skillId": "footprint_interaction",
        "sourceLesson": "Price and Pressure Divergence",
+       "sourceUnit": 4,
+       "sourceNode": 35,
+       "questionId": "orderflow.u5.n35.q2",
        "competencyId": "u5.combined_footprint_read"
       }
      ],
@@ -45622,6 +46227,112 @@
       "u5.combined_footprint_read": [
        "footprint_interaction",
        "footprint_reading"
+      ]
+     },
+     "competencyEligibleQuestionIds": {
+      "u5.footprint_basics": [
+       "orderflow.u5.n28.q1",
+       "orderflow.u5.n28.q2"
+      ],
+      "u5.diagonal_imbalance": [
+       "orderflow.u5.n28.q3",
+       "orderflow.u5.n28.q4"
+      ],
+      "u5.buyer_imbalance": [
+       "orderflow.u5.n29.q1",
+       "orderflow.u5.n29.q2"
+      ],
+      "u5.seller_imbalance": [
+       "orderflow.u5.n29.q3",
+       "orderflow.u5.n29.q4"
+      ],
+      "u5.stacked_pressure": [
+       "orderflow.u5.n32.q1",
+       "orderflow.u5.n32.q2"
+      ],
+      "u5.momentum_failure": [
+       "orderflow.u5.n31.q1",
+       "orderflow.u5.n31.q2"
+      ],
+      "u5.delta_vs_volume": [
+       "orderflow.u5.n33.q1",
+       "orderflow.u5.n33.q2"
+      ],
+      "u5.positive_delta_divergence": [
+       "orderflow.u5.n34.q1",
+       "orderflow.u5.n34.q2"
+      ],
+      "u5.negative_delta_divergence": [
+       "orderflow.u5.n34.q3",
+       "orderflow.u5.n34.q4"
+      ],
+      "u5.combined_footprint_read": [
+       "orderflow.u5.n35.q1",
+       "orderflow.u5.n35.q2"
+      ]
+     },
+     "competencySourceUnits": {
+      "u5.footprint_basics": [
+       4
+      ],
+      "u5.diagonal_imbalance": [
+       4
+      ],
+      "u5.buyer_imbalance": [
+       4
+      ],
+      "u5.seller_imbalance": [
+       4
+      ],
+      "u5.stacked_pressure": [
+       4
+      ],
+      "u5.momentum_failure": [
+       4
+      ],
+      "u5.delta_vs_volume": [
+       4
+      ],
+      "u5.positive_delta_divergence": [
+       4
+      ],
+      "u5.negative_delta_divergence": [
+       4
+      ],
+      "u5.combined_footprint_read": [
+       4
+      ]
+     },
+     "competencySourceNodes": {
+      "u5.footprint_basics": [
+       28
+      ],
+      "u5.diagonal_imbalance": [
+       28
+      ],
+      "u5.buyer_imbalance": [
+       29
+      ],
+      "u5.seller_imbalance": [
+       29
+      ],
+      "u5.stacked_pressure": [
+       32
+      ],
+      "u5.momentum_failure": [
+       31
+      ],
+      "u5.delta_vs_volume": [
+       33
+      ],
+      "u5.positive_delta_divergence": [
+       34
+      ],
+      "u5.negative_delta_divergence": [
+       34
+      ],
+      "u5.combined_footprint_read": [
+       35
       ]
      },
      "jumpAheadQuestionCount": 14,
@@ -45690,6 +46401,9 @@
        "explanation": "Nearby depth changes how much pressure price needs to travel.",
        "skillId": "book_depth",
        "sourceLesson": "Liquidity Pools & Stop Clusters",
+       "sourceUnit": 5,
+       "sourceNode": 38,
+       "questionId": "orderflow.u6.n38.q1",
        "competencyId": "u6.liquidity_pool"
       },
       {
@@ -45708,6 +46422,9 @@
        "explanation": "The interaction must match the evidence required by this specific setup.",
        "skillId": "evidence_synthesis",
        "sourceLesson": "Liquidity Pools & Stop Clusters",
+       "sourceUnit": 5,
+       "sourceNode": 38,
+       "questionId": "orderflow.u6.n38.q2",
        "competencyId": "u6.liquidity_pool"
       },
       {
@@ -45724,6 +46441,9 @@
        "explanation": "Liquidity often gathers near obvious levels.",
        "skillId": "liquidity_pools_stop_clusters",
        "sourceLesson": "Liquidity Pools & Stop Clusters",
+       "sourceUnit": 5,
+       "sourceNode": 38,
+       "questionId": "orderflow.u6.n38.q3",
        "competencyId": "u6.stop_cluster"
       },
       {
@@ -45740,6 +46460,9 @@
        "explanation": "Traders often infer that stops may cluster beyond obvious support resistance highs and lows.",
        "skillId": "liquidity_pools_stop_clusters",
        "sourceLesson": "Liquidity Pools & Stop Clusters",
+       "sourceUnit": 5,
+       "sourceNode": 38,
+       "questionId": "orderflow.u6.n38.q4",
        "competencyId": "u6.stop_cluster"
       },
       {
@@ -45750,6 +46473,9 @@
        "explanation": "Buy stops may cluster beyond obvious resistance or prior highs.",
        "skillId": "liquidity_location",
        "sourceLesson": "Buy Stops vs. Sell Stops",
+       "sourceUnit": 5,
+       "sourceNode": 39,
+       "questionId": "orderflow.u6.n39.q1",
        "competencyId": "u6.buy_stops"
       },
       {
@@ -45766,6 +46492,9 @@
        "explanation": "Sell stops can fuel a downside break.",
        "skillId": "buy_stops_vs_sell_stops",
        "sourceLesson": "Buy Stops vs. Sell Stops",
+       "sourceUnit": 5,
+       "sourceNode": 39,
+       "questionId": "orderflow.u6.n39.q2",
        "competencyId": "u6.buy_stops"
       },
       {
@@ -45784,6 +46513,9 @@
        "explanation": "The interaction must match the evidence required by this specific setup.",
        "skillId": "evidence_synthesis",
        "sourceLesson": "Buy Stops vs. Sell Stops",
+       "sourceUnit": 5,
+       "sourceNode": 39,
+       "questionId": "orderflow.u6.n39.q3",
        "competencyId": "u6.sell_stops"
       },
       {
@@ -45794,6 +46526,9 @@
        "explanation": "The selected candle shows whether execution produced follow through.",
        "skillId": "buy_stops_vs_sell_stops",
        "sourceLesson": "Buy Stops vs. Sell Stops",
+       "sourceUnit": 5,
+       "sourceNode": 39,
+       "questionId": "orderflow.u6.n39.q4",
        "competencyId": "u6.sell_stops"
       },
       {
@@ -45804,6 +46539,9 @@
        "explanation": "The selected candle shows whether execution produced follow through.",
        "skillId": "upside_vs_downside_sweeps",
        "sourceLesson": "Upside vs. Downside Sweeps",
+       "sourceUnit": 5,
+       "sourceNode": 41,
+       "questionId": "orderflow.u6.n41.q1",
        "competencyId": "u6.upside_sweep"
       },
       {
@@ -45814,6 +46552,9 @@
        "explanation": "Price response distinguishes rejection from acceptance.",
        "skillId": "upside_vs_downside_sweeps",
        "sourceLesson": "Upside vs. Downside Sweeps",
+       "sourceUnit": 5,
+       "sourceNode": 41,
+       "questionId": "orderflow.u6.n41.q2",
        "competencyId": "u6.upside_sweep"
       },
       {
@@ -45832,6 +46573,9 @@
        "explanation": "The interaction must match the evidence required by this specific setup.",
        "skillId": "evidence_synthesis",
        "sourceLesson": "Upside vs. Downside Sweeps",
+       "sourceUnit": 5,
+       "sourceNode": 41,
+       "questionId": "orderflow.u6.n41.q3",
        "competencyId": "u6.downside_sweep"
       },
       {
@@ -45848,6 +46592,9 @@
        "explanation": "A downside sweep can trap late sellers.",
        "skillId": "upside_vs_downside_sweeps",
        "sourceLesson": "Upside vs. Downside Sweeps",
+       "sourceUnit": 5,
+       "sourceNode": 41,
+       "questionId": "orderflow.u6.n41.q4",
        "competencyId": "u6.downside_sweep"
       },
       {
@@ -45866,6 +46613,9 @@
        "explanation": "The interaction must match the evidence required by this specific setup.",
        "skillId": "evidence_synthesis",
        "sourceLesson": "Sweep vs. Breakout Acceptance",
+       "sourceUnit": 5,
+       "sourceNode": 42,
+       "questionId": "orderflow.u6.n42.q1",
        "competencyId": "u6.sweep_vs_acceptance"
       },
       {
@@ -45881,6 +46631,9 @@
        "explanation": "Replay B holds beyond the level. Replay A rejects immediately.",
        "skillId": "scenario_comparison",
        "sourceLesson": "Sweep vs. Breakout Acceptance",
+       "sourceUnit": 5,
+       "sourceNode": 42,
+       "questionId": "orderflow.u6.n42.q2",
        "competencyId": "u6.sweep_vs_acceptance"
       },
       {
@@ -45897,6 +46650,9 @@
        "explanation": "Thin liquidity lets price travel quickly.",
        "skillId": "thin_vs_thick_liquidity",
        "sourceLesson": "Thin vs. Thick Liquidity",
+       "sourceUnit": 5,
+       "sourceNode": 43,
+       "questionId": "orderflow.u6.n43.q1",
        "competencyId": "u6.book_depth"
       },
       {
@@ -45911,6 +46667,9 @@
        "explanation": "Thin nearby depth and gaps can let price travel with less incoming pressure.",
        "skillId": "book_depth",
        "sourceLesson": "Thin vs. Thick Liquidity",
+       "sourceUnit": 5,
+       "sourceNode": 43,
+       "questionId": "orderflow.u6.n43.q2",
        "competencyId": "u6.book_depth"
       },
       {
@@ -45927,6 +46686,9 @@
        "explanation": "Repeated execution against refreshing displayed size is consistent with an iceberg.",
        "skillId": "multi_signal_read",
        "sourceLesson": "Icebergs & Hidden Replenishment",
+       "sourceUnit": 5,
+       "sourceNode": 44,
+       "questionId": "orderflow.u6.n44.q1",
        "competencyId": "u6.iceberg"
       },
       {
@@ -45945,13 +46707,16 @@
        "explanation": "The interaction must match the evidence required by this specific setup.",
        "skillId": "evidence_synthesis",
        "sourceLesson": "Icebergs & Hidden Replenishment",
+       "sourceUnit": 5,
+       "sourceNode": 44,
+       "questionId": "orderflow.u6.n44.q2",
        "competencyId": "u6.iceberg"
       },
       {
        "type": "orderflow_sim",
        "event": "sweep",
        "direction": "down",
-       "question": "Price trades beyond the level and immediately returns. What is strongest?",
+       "question": "Liquidity Challenge scenario: Price trades beyond the level and immediately returns. What is strongest?",
        "options": [
         "Liquidity was taken but acceptance failed",
         "The fastest evidence guarantees the next move",
@@ -45962,11 +46727,14 @@
        "explanation": "A sweep takes liquidity but fails to gain acceptance.",
        "skillId": "multi_signal_read",
        "sourceLesson": "Liquidity Challenge",
+       "sourceUnit": 5,
+       "sourceNode": 45,
+       "questionId": "orderflow.u6.n45.q1",
        "competencyId": "u6.combined_liquidity_read"
       },
       {
        "type": "evidence_select",
-       "question": "Select the two essential clues.",
+       "question": "Liquidity Challenge scenario: Select the two essential clues.",
        "options": [
         "Event location",
         "Price response",
@@ -45980,6 +46748,9 @@
        "explanation": "A complete read separates aggression, liquidity, and price response.",
        "skillId": "evidence_synthesis",
        "sourceLesson": "Liquidity Challenge",
+       "sourceUnit": 5,
+       "sourceNode": 45,
+       "questionId": "orderflow.u6.n45.q2",
        "competencyId": "u6.combined_liquidity_read"
       }
      ],
@@ -46033,6 +46804,112 @@
       "u6.combined_liquidity_read": [
        "evidence_synthesis",
        "multi_signal_read"
+      ]
+     },
+     "competencyEligibleQuestionIds": {
+      "u6.liquidity_pool": [
+       "orderflow.u6.n38.q1",
+       "orderflow.u6.n38.q2"
+      ],
+      "u6.stop_cluster": [
+       "orderflow.u6.n38.q3",
+       "orderflow.u6.n38.q4"
+      ],
+      "u6.buy_stops": [
+       "orderflow.u6.n39.q1",
+       "orderflow.u6.n39.q2"
+      ],
+      "u6.sell_stops": [
+       "orderflow.u6.n39.q3",
+       "orderflow.u6.n39.q4"
+      ],
+      "u6.upside_sweep": [
+       "orderflow.u6.n41.q1",
+       "orderflow.u6.n41.q2"
+      ],
+      "u6.downside_sweep": [
+       "orderflow.u6.n41.q3",
+       "orderflow.u6.n41.q4"
+      ],
+      "u6.sweep_vs_acceptance": [
+       "orderflow.u6.n42.q1",
+       "orderflow.u6.n42.q2"
+      ],
+      "u6.book_depth": [
+       "orderflow.u6.n43.q1",
+       "orderflow.u6.n43.q2"
+      ],
+      "u6.iceberg": [
+       "orderflow.u6.n44.q1",
+       "orderflow.u6.n44.q2"
+      ],
+      "u6.combined_liquidity_read": [
+       "orderflow.u6.n45.q1",
+       "orderflow.u6.n45.q2"
+      ]
+     },
+     "competencySourceUnits": {
+      "u6.liquidity_pool": [
+       5
+      ],
+      "u6.stop_cluster": [
+       5
+      ],
+      "u6.buy_stops": [
+       5
+      ],
+      "u6.sell_stops": [
+       5
+      ],
+      "u6.upside_sweep": [
+       5
+      ],
+      "u6.downside_sweep": [
+       5
+      ],
+      "u6.sweep_vs_acceptance": [
+       5
+      ],
+      "u6.book_depth": [
+       5
+      ],
+      "u6.iceberg": [
+       5
+      ],
+      "u6.combined_liquidity_read": [
+       5
+      ]
+     },
+     "competencySourceNodes": {
+      "u6.liquidity_pool": [
+       38
+      ],
+      "u6.stop_cluster": [
+       38
+      ],
+      "u6.buy_stops": [
+       39
+      ],
+      "u6.sell_stops": [
+       39
+      ],
+      "u6.upside_sweep": [
+       41
+      ],
+      "u6.downside_sweep": [
+       41
+      ],
+      "u6.sweep_vs_acceptance": [
+       42
+      ],
+      "u6.book_depth": [
+       43
+      ],
+      "u6.iceberg": [
+       44
+      ],
+      "u6.combined_liquidity_read": [
+       45
       ]
      },
      "jumpAheadQuestionCount": 14,
@@ -46101,6 +46978,9 @@
        "explanation": "Acceptance needs continued execution and price holding beyond the level.",
        "skillId": "scenario_comparison",
        "sourceLesson": "Breakout vs. Breakdown Pressure",
+       "sourceUnit": 6,
+       "sourceNode": 47,
+       "questionId": "orderflow.u7.n47.q1",
        "competencyId": "u7.breakout_pressure"
       },
       {
@@ -46117,6 +46997,9 @@
        "explanation": "A downside break can develop as sellers consume bids buyers withdraw liquidity or both.",
        "skillId": "breakout_vs_breakdown_pressure",
        "sourceLesson": "Breakout vs. Breakdown Pressure",
+       "sourceUnit": 6,
+       "sourceNode": 47,
+       "questionId": "orderflow.u7.n47.q2",
        "competencyId": "u7.breakout_pressure"
       },
       {
@@ -46135,6 +47018,9 @@
        "explanation": "Advanced reads combine at least two aligned evidence sources.",
        "skillId": "evidence_synthesis",
        "sourceLesson": "Breakout vs. Breakdown Pressure",
+       "sourceUnit": 6,
+       "sourceNode": 47,
+       "questionId": "orderflow.u7.n47.q3",
        "competencyId": "u7.breakdown_pressure"
       },
       {
@@ -46145,6 +47031,9 @@
        "explanation": "The selected candle shows whether execution produced follow through.",
        "skillId": "breakout_vs_breakdown_pressure",
        "sourceLesson": "Breakout vs. Breakdown Pressure",
+       "sourceUnit": 6,
+       "sourceNode": 47,
+       "questionId": "orderflow.u7.n47.q4",
        "competencyId": "u7.breakdown_pressure"
       },
       {
@@ -46163,6 +47052,9 @@
        "explanation": "The interaction must match the evidence required by this specific setup.",
        "skillId": "evidence_synthesis",
        "sourceLesson": "Acceptance Above vs. Below",
+       "sourceUnit": 6,
+       "sourceNode": 48,
+       "questionId": "orderflow.u7.n48.q1",
        "competencyId": "u7.acceptance_above"
       },
       {
@@ -46173,6 +47065,9 @@
        "explanation": "The selected candle shows whether execution produced follow through.",
        "skillId": "acceptance_above_vs_below",
        "sourceLesson": "Acceptance Above vs. Below",
+       "sourceUnit": 6,
+       "sourceNode": 48,
+       "questionId": "orderflow.u7.n48.q2",
        "competencyId": "u7.acceptance_above"
       },
       {
@@ -46188,6 +47083,9 @@
        "explanation": "Price response confirms or contradicts the execution evidence shown elsewhere in the lesson.",
        "skillId": "acceptance_above_vs_below",
        "sourceLesson": "Acceptance Above vs. Below",
+       "sourceUnit": 6,
+       "sourceNode": 48,
+       "questionId": "orderflow.u7.n48.q3",
        "competencyId": "u7.acceptance_below"
       },
       {
@@ -46206,6 +47104,9 @@
        "explanation": "The interaction must match the evidence required by this specific setup.",
        "skillId": "evidence_synthesis",
        "sourceLesson": "Acceptance Above vs. Below",
+       "sourceUnit": 6,
+       "sourceNode": 48,
+       "questionId": "orderflow.u7.n48.q4",
        "competencyId": "u7.acceptance_below"
       },
       {
@@ -46221,6 +47122,9 @@
        "explanation": "Acceptance needs continued execution and price holding beyond the level.",
        "skillId": "scenario_comparison",
        "sourceLesson": "Failed Breakouts vs. Failed Breakdowns",
+       "sourceUnit": 6,
+       "sourceNode": 50,
+       "questionId": "orderflow.u7.n50.q1",
        "competencyId": "u7.failed_breakout"
       },
       {
@@ -46237,6 +47141,9 @@
        "explanation": "A quick return above support signals failure.",
        "skillId": "failed_breakouts_vs_failed_breakdowns",
        "sourceLesson": "Failed Breakouts vs. Failed Breakdowns",
+       "sourceUnit": 6,
+       "sourceNode": 50,
+       "questionId": "orderflow.u7.n50.q2",
        "competencyId": "u7.failed_breakout"
       },
       {
@@ -46252,6 +47159,9 @@
        "explanation": "Price response confirms or contradicts the execution evidence shown elsewhere in the lesson.",
        "skillId": "failed_breakouts_vs_failed_breakdowns",
        "sourceLesson": "Failed Breakouts vs. Failed Breakdowns",
+       "sourceUnit": 6,
+       "sourceNode": 50,
+       "questionId": "orderflow.u7.n50.q3",
        "competencyId": "u7.failed_breakdown"
       },
       {
@@ -46270,6 +47180,9 @@
        "explanation": "The interaction must match the evidence required by this specific setup.",
        "skillId": "evidence_synthesis",
        "sourceLesson": "Failed Breakouts vs. Failed Breakdowns",
+       "sourceUnit": 6,
+       "sourceNode": 50,
+       "questionId": "orderflow.u7.n50.q4",
        "competencyId": "u7.failed_breakdown"
       },
       {
@@ -46285,6 +47198,9 @@
        "explanation": "Acceptance needs continued execution and price holding beyond the level.",
        "skillId": "scenario_comparison",
        "sourceLesson": "Breakout and Breakdown Retests",
+       "sourceUnit": 6,
+       "sourceNode": 51,
+       "questionId": "orderflow.u7.n51.q1",
        "competencyId": "u7.breakout_retest"
       },
       {
@@ -46303,6 +47219,9 @@
        "explanation": "The interaction must match the evidence required by this specific setup.",
        "skillId": "evidence_synthesis",
        "sourceLesson": "Breakout and Breakdown Retests",
+       "sourceUnit": 6,
+       "sourceNode": 51,
+       "questionId": "orderflow.u7.n51.q2",
        "competencyId": "u7.breakout_retest"
       },
       {
@@ -46313,6 +47232,9 @@
        "explanation": "The selected candle shows whether execution produced follow through.",
        "skillId": "breakout_and_breakdown_retests",
        "sourceLesson": "Breakout and Breakdown Retests",
+       "sourceUnit": 6,
+       "sourceNode": 51,
+       "questionId": "orderflow.u7.n51.q3",
        "competencyId": "u7.breakdown_retest"
       },
       {
@@ -46328,6 +47250,9 @@
        "explanation": "Price response confirms or contradicts the execution evidence shown elsewhere in the lesson.",
        "skillId": "breakout_and_breakdown_retests",
        "sourceLesson": "Breakout and Breakdown Retests",
+       "sourceUnit": 6,
+       "sourceNode": 51,
+       "questionId": "orderflow.u7.n51.q4",
        "competencyId": "u7.breakdown_retest"
       },
       {
@@ -46338,6 +47263,9 @@
        "explanation": "The selected candle shows whether execution produced follow through.",
        "skillId": "chasing_confirmation_common_misconceptions",
        "sourceLesson": "Chasing, Confirmation & Common Misconceptions",
+       "sourceUnit": 6,
+       "sourceNode": 52,
+       "questionId": "orderflow.u7.n52.q1",
        "competencyId": "u7.sweep_vs_breakout"
       },
       {
@@ -46348,12 +47276,15 @@
        "explanation": "Walls can trade pull or fail.",
        "skillId": "chasing_confirmation_common_misconceptions",
        "sourceLesson": "Chasing, Confirmation & Common Misconceptions",
+       "sourceUnit": 6,
+       "sourceNode": 52,
+       "questionId": "orderflow.u7.n52.q2",
        "competencyId": "u7.sweep_vs_breakout"
       },
       {
        "type": "replay_compare",
-       "event": "trap",
-       "question": "Which replay has genuine acceptance?",
+       "event": "trap_challenge",
+       "question": "Breakout Challenge scenario: Which replay has genuine acceptance?",
        "options": [
         "Replay A",
         "Replay B",
@@ -46363,11 +47294,14 @@
        "explanation": "Acceptance needs continued execution and price holding beyond the level.",
        "skillId": "scenario_comparison",
        "sourceLesson": "Breakout Challenge",
+       "sourceUnit": 6,
+       "sourceNode": 53,
+       "questionId": "orderflow.u7.n53.q1",
        "competencyId": "u7.combined_breakout_read"
       },
       {
        "type": "evidence_select",
-       "question": "Select the clues showing price accepted above resistance.",
+       "question": "Breakout Challenge scenario: Select the clues showing price accepted above resistance.",
        "options": [
         "Buying persists above the level",
         "Price holds above resistance",
@@ -46381,6 +47315,9 @@
        "explanation": "The interaction must match the evidence required by this specific setup.",
        "skillId": "evidence_synthesis",
        "sourceLesson": "Breakout Challenge",
+       "sourceUnit": 6,
+       "sourceNode": 53,
+       "questionId": "orderflow.u7.n53.q2",
        "competencyId": "u7.combined_breakout_read"
       }
      ],
@@ -46434,6 +47371,112 @@
       "u7.combined_breakout_read": [
        "evidence_synthesis",
        "scenario_comparison"
+      ]
+     },
+     "competencyEligibleQuestionIds": {
+      "u7.breakout_pressure": [
+       "orderflow.u7.n47.q1",
+       "orderflow.u7.n47.q2"
+      ],
+      "u7.breakdown_pressure": [
+       "orderflow.u7.n47.q3",
+       "orderflow.u7.n47.q4"
+      ],
+      "u7.acceptance_above": [
+       "orderflow.u7.n48.q1",
+       "orderflow.u7.n48.q2"
+      ],
+      "u7.acceptance_below": [
+       "orderflow.u7.n48.q3",
+       "orderflow.u7.n48.q4"
+      ],
+      "u7.failed_breakout": [
+       "orderflow.u7.n50.q1",
+       "orderflow.u7.n50.q2"
+      ],
+      "u7.failed_breakdown": [
+       "orderflow.u7.n50.q3",
+       "orderflow.u7.n50.q4"
+      ],
+      "u7.breakout_retest": [
+       "orderflow.u7.n51.q1",
+       "orderflow.u7.n51.q2"
+      ],
+      "u7.breakdown_retest": [
+       "orderflow.u7.n51.q3",
+       "orderflow.u7.n51.q4"
+      ],
+      "u7.sweep_vs_breakout": [
+       "orderflow.u7.n52.q1",
+       "orderflow.u7.n52.q2"
+      ],
+      "u7.combined_breakout_read": [
+       "orderflow.u7.n53.q1",
+       "orderflow.u7.n53.q2"
+      ]
+     },
+     "competencySourceUnits": {
+      "u7.breakout_pressure": [
+       6
+      ],
+      "u7.breakdown_pressure": [
+       6
+      ],
+      "u7.acceptance_above": [
+       6
+      ],
+      "u7.acceptance_below": [
+       6
+      ],
+      "u7.failed_breakout": [
+       6
+      ],
+      "u7.failed_breakdown": [
+       6
+      ],
+      "u7.breakout_retest": [
+       6
+      ],
+      "u7.breakdown_retest": [
+       6
+      ],
+      "u7.sweep_vs_breakout": [
+       6
+      ],
+      "u7.combined_breakout_read": [
+       6
+      ]
+     },
+     "competencySourceNodes": {
+      "u7.breakout_pressure": [
+       47
+      ],
+      "u7.breakdown_pressure": [
+       47
+      ],
+      "u7.acceptance_above": [
+       48
+      ],
+      "u7.acceptance_below": [
+       48
+      ],
+      "u7.failed_breakout": [
+       50
+      ],
+      "u7.failed_breakdown": [
+       50
+      ],
+      "u7.breakout_retest": [
+       51
+      ],
+      "u7.breakdown_retest": [
+       51
+      ],
+      "u7.sweep_vs_breakout": [
+       52
+      ],
+      "u7.combined_breakout_read": [
+       53
       ]
      },
      "jumpAheadQuestionCount": 16,
@@ -46510,6 +47553,9 @@
        "explanation": "Advanced continuation requires structure plus confirming execution evidence.",
        "skillId": "evidence_synthesis",
        "sourceLesson": "Healthy Pullbacks & Pullback Depth",
+       "sourceUnit": 7,
+       "sourceNode": 55,
+       "questionId": "orderflow.u8.n55.q1",
        "competencyId": "u8.healthy_pullback"
       },
       {
@@ -46526,14 +47572,17 @@
        "explanation": "Shallow defended pullbacks show trend strength.",
        "skillId": "healthy_pullbacks_pullback_depth",
        "sourceLesson": "Healthy Pullbacks & Pullback Depth",
+       "sourceUnit": 7,
+       "sourceNode": 55,
+       "questionId": "orderflow.u8.n55.q2",
        "competencyId": "u8.healthy_pullback"
       },
       {
        "type": "evidence_select",
-       "question": "Select the two continuation clues.",
+       "question": "Select the clues showing the pullback remains healthy.",
        "options": [
-        "Structure remains intact",
-        "Trend pressure returns",
+        "Counter pressure stays lighter",
+        "Trend structure remains defended",
         "Counter pressure accelerates",
         "The key level fails"
        ],
@@ -46541,9 +47590,12 @@
         0,
         1
        ],
-       "explanation": "Advanced reads combine at least two aligned evidence sources.",
+       "explanation": "Continuation needs lesson specific structure and confirming execution.",
        "skillId": "evidence_synthesis",
        "sourceLesson": "Healthy Pullbacks & Pullback Depth",
+       "sourceUnit": 7,
+       "sourceNode": 55,
+       "questionId": "orderflow.u8.n55.q3",
        "competencyId": "u8.pullback_depth"
       },
       {
@@ -46555,6 +47607,9 @@
        "explanation": "Structure supplies location. Execution evidence supplies the read.",
        "skillId": "healthy_pullbacks_pullback_depth",
        "sourceLesson": "Healthy Pullbacks & Pullback Depth",
+       "sourceUnit": 7,
+       "sourceNode": 55,
+       "questionId": "orderflow.u8.n55.q4",
        "competencyId": "u8.pullback_depth"
       },
       {
@@ -46566,42 +47621,51 @@
        "explanation": "Structure supplies location. Execution evidence supplies the read.",
        "skillId": "continuation_triggers",
        "sourceLesson": "Continuation Triggers",
+       "sourceUnit": 7,
+       "sourceNode": 57,
+       "questionId": "orderflow.u8.n57.q1",
        "competencyId": "u8.continuation_trigger"
       },
       {
        "type": "evidence_select",
-       "question": "Select the two continuation clues.",
+       "question": "Select the clues showing trend pressure has actually returned.",
        "options": [
-        "Structure remains intact",
-        "Trend pressure returns",
-        "Counter pressure accelerates",
-        "The key level fails"
+        "Trend side execution accelerates",
+        "Price makes renewed progress",
+        "One isolated print appears",
+        "Counter pressure strengthens"
        ],
        "targets": [
         0,
         1
        ],
-       "explanation": "Continuation needs intact structure plus returning trend pressure.",
+       "explanation": "Continuation needs lesson specific structure and confirming execution.",
        "skillId": "evidence_synthesis",
        "sourceLesson": "Continuation Triggers",
+       "sourceUnit": 7,
+       "sourceNode": 57,
+       "questionId": "orderflow.u8.n57.q2",
        "competencyId": "u8.continuation_trigger"
       },
       {
        "type": "evidence_select",
-       "question": "Select the two continuation clues.",
+       "question": "Select the clues supporting continuation after the pullback.",
        "options": [
-        "Structure remains intact",
-        "Trend pressure returns",
-        "Counter pressure accelerates",
-        "The key level fails"
+        "Trend side pressure returns",
+        "Price resumes from defended structure",
+        "Counter pressure takes control",
+        "Price loses the reference level"
        ],
        "targets": [
         0,
         1
        ],
-       "explanation": "Continuation needs intact structure plus returning trend pressure.",
+       "explanation": "Continuation needs lesson specific structure and confirming execution.",
        "skillId": "evidence_synthesis",
        "sourceLesson": "Bullish vs. Bearish Pullbacks",
+       "sourceUnit": 7,
+       "sourceNode": 56,
+       "questionId": "orderflow.u8.n56.q1",
        "competencyId": "u8.bearish_continuation"
       },
       {
@@ -46617,6 +47681,9 @@
        "explanation": "Use completed executions to judge whether trend pressure returned.",
        "skillId": "tape_reading",
        "sourceLesson": "Bullish vs. Bearish Pullbacks",
+       "sourceUnit": 7,
+       "sourceNode": 56,
+       "questionId": "orderflow.u8.n56.q2",
        "competencyId": "u8.bearish_continuation"
       },
       {
@@ -46635,6 +47702,9 @@
        "explanation": "Advanced continuation requires structure plus confirming execution evidence.",
        "skillId": "evidence_synthesis",
        "sourceLesson": "Order Flow at VWAP & Moving Averages",
+       "sourceUnit": 7,
+       "sourceNode": 58,
+       "questionId": "orderflow.u8.n58.q1",
        "competencyId": "u8.flow_at_vwap"
       },
       {
@@ -46651,6 +47721,9 @@
        "explanation": "The average provides location but execution evidence determines the read.",
        "skillId": "order_flow_at_vwap_moving_averages",
        "sourceLesson": "Order Flow at VWAP & Moving Averages",
+       "sourceUnit": 7,
+       "sourceNode": 58,
+       "questionId": "orderflow.u8.n58.q2",
        "competencyId": "u8.flow_at_vwap"
       },
       {
@@ -46666,24 +47739,30 @@
        "explanation": "Price response confirms or contradicts the execution evidence shown elsewhere in the lesson.",
        "skillId": "order_flow_at_vwap_moving_averages",
        "sourceLesson": "Order Flow at VWAP & Moving Averages",
+       "sourceUnit": 7,
+       "sourceNode": 58,
+       "questionId": "orderflow.u8.n58.q3",
        "competencyId": "u8.flow_at_average"
       },
       {
        "type": "evidence_select",
-       "question": "Select the two continuation clues.",
+       "question": "Select the clues confirming the reference level held.",
        "options": [
-        "Structure remains intact",
-        "Trend pressure returns",
-        "Counter pressure accelerates",
-        "The key level fails"
+        "Execution defends the reference",
+        "Price responds in the trend direction",
+        "Price accepts through the reference",
+        "Counter tape accelerates"
        ],
        "targets": [
         0,
         1
        ],
-       "explanation": "Continuation needs intact structure plus returning trend pressure.",
+       "explanation": "Continuation needs lesson specific structure and confirming execution.",
        "skillId": "evidence_synthesis",
        "sourceLesson": "Order Flow at VWAP & Moving Averages",
+       "sourceUnit": 7,
+       "sourceNode": 58,
+       "questionId": "orderflow.u8.n58.q4",
        "competencyId": "u8.flow_at_average"
       },
       {
@@ -46700,6 +47779,9 @@
        "explanation": "Strong counter pressure can end continuation.",
        "skillId": "pullback_failure",
        "sourceLesson": "Pullback Failure",
+       "sourceUnit": 7,
+       "sourceNode": 59,
+       "questionId": "orderflow.u8.n59.q1",
        "competencyId": "u8.pullback_failure"
       },
       {
@@ -46710,6 +47792,9 @@
        "explanation": "The selected candle shows whether execution produced follow through.",
        "skillId": "pullback_failure",
        "sourceLesson": "Pullback Failure",
+       "sourceUnit": 7,
+       "sourceNode": 59,
+       "questionId": "orderflow.u8.n59.q2",
        "competencyId": "u8.pullback_failure"
       },
       {
@@ -46725,6 +47810,9 @@
        "explanation": "Conflicting signals call for patience and a weaker conclusion.",
        "skillId": "tape_reading",
        "sourceLesson": "Conflicting Signals",
+       "sourceUnit": 7,
+       "sourceNode": 60,
+       "questionId": "orderflow.u8.n60.q1",
        "competencyId": "u8.conflicting_signals"
       },
       {
@@ -46740,6 +47828,9 @@
        "explanation": "Conflicting signals call for patience and a weaker conclusion.",
        "skillId": "footprint_reading",
        "sourceLesson": "Conflicting Signals",
+       "sourceUnit": 7,
+       "sourceNode": 60,
+       "questionId": "orderflow.u8.n60.q2",
        "competencyId": "u8.conflicting_signals"
       },
       {
@@ -46755,6 +47846,9 @@
        "explanation": "High volume without directional progress can show two sided absorption.",
        "skillId": "tape_reading",
        "sourceLesson": "Volume Context: Chop vs. Low Volume Trend",
+       "sourceUnit": 7,
+       "sourceNode": 61,
+       "questionId": "orderflow.u8.n61.q1",
        "competencyId": "u8.volume_context"
       },
       {
@@ -46770,11 +47864,14 @@
        "explanation": "A trend can travel on low volume when little liquidity opposes it.",
        "skillId": "tape_reading",
        "sourceLesson": "Volume Context: Chop vs. Low Volume Trend",
+       "sourceUnit": 7,
+       "sourceNode": 61,
+       "questionId": "orderflow.u8.n61.q2",
        "competencyId": "u8.volume_context"
       },
       {
        "type": "evidence_select",
-       "question": "Select the two strongest clues.",
+       "question": "Confirmation & Continuation Challenge scenario: Select the two strongest clues.",
        "options": [
         "Trend side aggression",
         "Confirming price response",
@@ -46788,12 +47885,15 @@
        "explanation": "Advanced continuation requires structure plus confirming execution evidence.",
        "skillId": "evidence_synthesis",
        "sourceLesson": "Confirmation & Continuation Challenge",
+       "sourceUnit": 7,
+       "sourceNode": 62,
+       "questionId": "orderflow.u8.n62.q1",
        "competencyId": "u8.no_clear_read"
       },
       {
        "type": "multiple_choice",
        "chart": "bullFlag",
-       "question": "How should this be interpreted?",
+       "question": "Confirmation & Continuation Challenge scenario: How should this be interpreted?",
        "options": [
         "Continuation needs structure and renewed pressure",
         "Thin liquidity implies the move has strong aggressive sponsorship",
@@ -46804,6 +47904,9 @@
        "explanation": "Continuation needs structure and renewed pressure.",
        "skillId": "confirmation_continuation_challenge",
        "sourceLesson": "Confirmation & Continuation Challenge",
+       "sourceUnit": 7,
+       "sourceNode": 62,
+       "questionId": "orderflow.u8.n62.q2",
        "competencyId": "u8.no_clear_read"
       }
      ],
@@ -46857,6 +47960,112 @@
       "u8.no_clear_read": [
        "confirmation_continuation_challenge",
        "evidence_synthesis"
+      ]
+     },
+     "competencyEligibleQuestionIds": {
+      "u8.healthy_pullback": [
+       "orderflow.u8.n55.q1",
+       "orderflow.u8.n55.q2"
+      ],
+      "u8.pullback_depth": [
+       "orderflow.u8.n55.q3",
+       "orderflow.u8.n55.q4"
+      ],
+      "u8.continuation_trigger": [
+       "orderflow.u8.n57.q1",
+       "orderflow.u8.n57.q2"
+      ],
+      "u8.bearish_continuation": [
+       "orderflow.u8.n56.q1",
+       "orderflow.u8.n56.q2"
+      ],
+      "u8.flow_at_vwap": [
+       "orderflow.u8.n58.q1",
+       "orderflow.u8.n58.q2"
+      ],
+      "u8.flow_at_average": [
+       "orderflow.u8.n58.q3",
+       "orderflow.u8.n58.q4"
+      ],
+      "u8.pullback_failure": [
+       "orderflow.u8.n59.q1",
+       "orderflow.u8.n59.q2"
+      ],
+      "u8.conflicting_signals": [
+       "orderflow.u8.n60.q1",
+       "orderflow.u8.n60.q2"
+      ],
+      "u8.volume_context": [
+       "orderflow.u8.n61.q1",
+       "orderflow.u8.n61.q2"
+      ],
+      "u8.no_clear_read": [
+       "orderflow.u8.n62.q1",
+       "orderflow.u8.n62.q2"
+      ]
+     },
+     "competencySourceUnits": {
+      "u8.healthy_pullback": [
+       7
+      ],
+      "u8.pullback_depth": [
+       7
+      ],
+      "u8.continuation_trigger": [
+       7
+      ],
+      "u8.bearish_continuation": [
+       7
+      ],
+      "u8.flow_at_vwap": [
+       7
+      ],
+      "u8.flow_at_average": [
+       7
+      ],
+      "u8.pullback_failure": [
+       7
+      ],
+      "u8.conflicting_signals": [
+       7
+      ],
+      "u8.volume_context": [
+       7
+      ],
+      "u8.no_clear_read": [
+       7
+      ]
+     },
+     "competencySourceNodes": {
+      "u8.healthy_pullback": [
+       55
+      ],
+      "u8.pullback_depth": [
+       55
+      ],
+      "u8.continuation_trigger": [
+       57
+      ],
+      "u8.bearish_continuation": [
+       56
+      ],
+      "u8.flow_at_vwap": [
+       58
+      ],
+      "u8.flow_at_average": [
+       58
+      ],
+      "u8.pullback_failure": [
+       59
+      ],
+      "u8.conflicting_signals": [
+       60
+      ],
+      "u8.volume_context": [
+       61
+      ],
+      "u8.no_clear_read": [
+       62
       ]
      },
      "jumpAheadQuestionCount": 16,
@@ -46930,6 +48139,9 @@
        "explanation": "Reversals need a clear change in control.",
        "skillId": "tape_reading",
        "sourceLesson": "Reversal Pressure",
+       "sourceUnit": 8,
+       "sourceNode": 64,
+       "questionId": "orderflow.u9.n64.q1",
        "competencyId": "u9.reversal_pressure"
       },
       {
@@ -46945,6 +48157,9 @@
        "explanation": "Tape and footprint evidence reveal what changed beneath the candle pattern.",
        "skillId": "footprint_reading",
        "sourceLesson": "Reversal Pressure",
+       "sourceUnit": 8,
+       "sourceNode": 64,
+       "questionId": "orderflow.u9.n64.q2",
        "competencyId": "u9.reversal_pressure"
       },
       {
@@ -46960,6 +48175,9 @@
        "explanation": "A buyer trap forms when a breakout fails.",
        "skillId": "tape_reading",
        "sourceLesson": "Buyer Traps vs. Seller Traps",
+       "sourceUnit": 8,
+       "sourceNode": 65,
+       "questionId": "orderflow.u9.n65.q1",
        "competencyId": "u9.buyer_trap"
       },
       {
@@ -46975,6 +48193,9 @@
        "explanation": "A seller trap forms when a breakdown fails.",
        "skillId": "tape_reading",
        "sourceLesson": "Buyer Traps vs. Seller Traps",
+       "sourceUnit": 8,
+       "sourceNode": 65,
+       "questionId": "orderflow.u9.n65.q2",
        "competencyId": "u9.buyer_trap"
       },
       {
@@ -46990,6 +48211,9 @@
        "explanation": "Tape and footprint evidence reveal what changed beneath the candle pattern.",
        "skillId": "footprint_reading",
        "sourceLesson": "Buyer Traps vs. Seller Traps",
+       "sourceUnit": 8,
+       "sourceNode": 65,
+       "questionId": "orderflow.u9.n65.q3",
        "competencyId": "u9.seller_trap"
       },
       {
@@ -47005,6 +48229,9 @@
        "explanation": "Tape and footprint evidence reveal what changed beneath the candle pattern.",
        "skillId": "footprint_reading",
        "sourceLesson": "Buyer Traps vs. Seller Traps",
+       "sourceUnit": 8,
+       "sourceNode": 65,
+       "questionId": "orderflow.u9.n65.q4",
        "competencyId": "u9.seller_trap"
       },
       {
@@ -47020,6 +48247,9 @@
        "explanation": "Exhaustion can prepare a reversal.",
        "skillId": "tape_reading",
        "sourceLesson": "Exhaustion Reversals",
+       "sourceUnit": 8,
+       "sourceNode": 66,
+       "questionId": "orderflow.u9.n66.q1",
        "competencyId": "u9.buyer_exhaustion_reversal"
       },
       {
@@ -47035,6 +48265,9 @@
        "explanation": "Tape and footprint evidence reveal what changed beneath the candle pattern.",
        "skillId": "footprint_reading",
        "sourceLesson": "Exhaustion Reversals",
+       "sourceUnit": 8,
+       "sourceNode": 66,
+       "questionId": "orderflow.u9.n66.q2",
        "competencyId": "u9.buyer_exhaustion_reversal"
       },
       {
@@ -47051,24 +48284,30 @@
        "explanation": "Exhaustion can prepare a reversal.",
        "skillId": "exhaustion_reversals",
        "sourceLesson": "Exhaustion Reversals",
+       "sourceUnit": 8,
+       "sourceNode": 66,
+       "questionId": "orderflow.u9.n66.q3",
        "competencyId": "u9.seller_exhaustion_reversal"
       },
       {
        "type": "evidence_select",
-       "question": "Select the two strongest evidence checks for Exhaustion Reversals.",
+       "question": "Which two clues best support an exhaustion reversal?",
        "options": [
-        "Execution behavior",
-        "Confirming price response",
-        "Candle color alone",
-        "A company profile"
+        "Prior aggression fades",
+        "Opposing price response develops",
+        "Original aggression accelerates",
+        "Price continues cleanly in the original direction"
        ],
        "targets": [
         0,
         1
        ],
-       "explanation": "The read needs executed activity and the price response it produces.",
+       "explanation": "Exhaustion plus an opposing response supports reversal.",
        "skillId": "evidence_synthesis",
        "sourceLesson": "Exhaustion Reversals",
+       "sourceUnit": 8,
+       "sourceNode": 66,
+       "questionId": "orderflow.u9.n66.q4",
        "competencyId": "u9.seller_exhaustion_reversal"
       },
       {
@@ -47084,6 +48323,9 @@
        "explanation": "Absorbed selling can support a reversal.",
        "skillId": "tape_reading",
        "sourceLesson": "Absorption Reversals",
+       "sourceUnit": 8,
+       "sourceNode": 67,
+       "questionId": "orderflow.u9.n67.q1",
        "competencyId": "u9.absorption_reversal"
       },
       {
@@ -47099,6 +48341,9 @@
        "explanation": "Tape and footprint evidence reveal what changed beneath the candle pattern.",
        "skillId": "footprint_reading",
        "sourceLesson": "Absorption Reversals",
+       "sourceUnit": 8,
+       "sourceNode": 67,
+       "questionId": "orderflow.u9.n67.q2",
        "competencyId": "u9.absorption_reversal"
       },
       {
@@ -47114,6 +48359,9 @@
        "explanation": "Repeated failure can shift control to sellers.",
        "skillId": "tape_reading",
        "sourceLesson": "Double Top vs. Double Bottom Flow",
+       "sourceUnit": 8,
+       "sourceNode": 68,
+       "questionId": "orderflow.u9.n68.q1",
        "competencyId": "u9.double_top_flow"
       },
       {
@@ -47129,6 +48377,9 @@
        "explanation": "Repeated failure can shift control to buyers.",
        "skillId": "tape_reading",
        "sourceLesson": "Double Top vs. Double Bottom Flow",
+       "sourceUnit": 8,
+       "sourceNode": 68,
+       "questionId": "orderflow.u9.n68.q2",
        "competencyId": "u9.double_top_flow"
       },
       {
@@ -47144,6 +48395,9 @@
        "explanation": "Tape and footprint evidence reveal what changed beneath the candle pattern.",
        "skillId": "footprint_reading",
        "sourceLesson": "Double Top vs. Double Bottom Flow",
+       "sourceUnit": 8,
+       "sourceNode": 68,
+       "questionId": "orderflow.u9.n68.q3",
        "competencyId": "u9.double_bottom_flow"
       },
       {
@@ -47159,6 +48413,9 @@
        "explanation": "Tape and footprint evidence reveal what changed beneath the candle pattern.",
        "skillId": "footprint_reading",
        "sourceLesson": "Double Top vs. Double Bottom Flow",
+       "sourceUnit": 8,
+       "sourceNode": 68,
+       "questionId": "orderflow.u9.n68.q4",
        "competencyId": "u9.double_bottom_flow"
       },
       {
@@ -47174,6 +48431,9 @@
        "explanation": "Confirmation reduces premature reversal entries.",
        "skillId": "tape_reading",
        "sourceLesson": "Reversal Confirmation & Insufficient Evidence",
+       "sourceUnit": 8,
+       "sourceNode": 69,
+       "questionId": "orderflow.u9.n69.q1",
        "competencyId": "u9.reversal_confirmation"
       },
       {
@@ -47189,6 +48449,9 @@
        "explanation": "A reversal needs a control change and confirming response.",
        "skillId": "multi_signal_read",
        "sourceLesson": "Reversal Confirmation & Insufficient Evidence",
+       "sourceUnit": 8,
+       "sourceNode": 69,
+       "questionId": "orderflow.u9.n69.q2",
        "competencyId": "u9.reversal_confirmation"
       },
       {
@@ -47204,6 +48467,9 @@
        "explanation": "Tape and footprint evidence reveal what changed beneath the candle pattern.",
        "skillId": "footprint_reading",
        "sourceLesson": "Reversal Confirmation & Insufficient Evidence",
+       "sourceUnit": 8,
+       "sourceNode": 69,
+       "questionId": "orderflow.u9.n69.q3",
        "competencyId": "u9.insufficient_evidence"
       },
       {
@@ -47219,6 +48485,9 @@
        "explanation": "A reversal needs control change and confirmation.",
        "skillId": "tape_reading",
        "sourceLesson": "Reversal Confirmation & Insufficient Evidence",
+       "sourceUnit": 8,
+       "sourceNode": 69,
+       "questionId": "orderflow.u9.n69.q4",
        "competencyId": "u9.insufficient_evidence"
       }
      ],
@@ -47270,6 +48539,112 @@
       "u9.insufficient_evidence": [
        "footprint_reading",
        "tape_reading"
+      ]
+     },
+     "competencyEligibleQuestionIds": {
+      "u9.reversal_pressure": [
+       "orderflow.u9.n64.q1",
+       "orderflow.u9.n64.q2"
+      ],
+      "u9.buyer_trap": [
+       "orderflow.u9.n65.q1",
+       "orderflow.u9.n65.q2"
+      ],
+      "u9.seller_trap": [
+       "orderflow.u9.n65.q3",
+       "orderflow.u9.n65.q4"
+      ],
+      "u9.buyer_exhaustion_reversal": [
+       "orderflow.u9.n66.q1",
+       "orderflow.u9.n66.q2"
+      ],
+      "u9.seller_exhaustion_reversal": [
+       "orderflow.u9.n66.q3",
+       "orderflow.u9.n66.q4"
+      ],
+      "u9.absorption_reversal": [
+       "orderflow.u9.n67.q1",
+       "orderflow.u9.n67.q2"
+      ],
+      "u9.double_top_flow": [
+       "orderflow.u9.n68.q1",
+       "orderflow.u9.n68.q2"
+      ],
+      "u9.double_bottom_flow": [
+       "orderflow.u9.n68.q3",
+       "orderflow.u9.n68.q4"
+      ],
+      "u9.reversal_confirmation": [
+       "orderflow.u9.n69.q1",
+       "orderflow.u9.n69.q2"
+      ],
+      "u9.insufficient_evidence": [
+       "orderflow.u9.n69.q3",
+       "orderflow.u9.n69.q4"
+      ]
+     },
+     "competencySourceUnits": {
+      "u9.reversal_pressure": [
+       8
+      ],
+      "u9.buyer_trap": [
+       8
+      ],
+      "u9.seller_trap": [
+       8
+      ],
+      "u9.buyer_exhaustion_reversal": [
+       8
+      ],
+      "u9.seller_exhaustion_reversal": [
+       8
+      ],
+      "u9.absorption_reversal": [
+       8
+      ],
+      "u9.double_top_flow": [
+       8
+      ],
+      "u9.double_bottom_flow": [
+       8
+      ],
+      "u9.reversal_confirmation": [
+       8
+      ],
+      "u9.insufficient_evidence": [
+       8
+      ]
+     },
+     "competencySourceNodes": {
+      "u9.reversal_pressure": [
+       64
+      ],
+      "u9.buyer_trap": [
+       65
+      ],
+      "u9.seller_trap": [
+       65
+      ],
+      "u9.buyer_exhaustion_reversal": [
+       66
+      ],
+      "u9.seller_exhaustion_reversal": [
+       66
+      ],
+      "u9.absorption_reversal": [
+       67
+      ],
+      "u9.double_top_flow": [
+       68
+      ],
+      "u9.double_bottom_flow": [
+       68
+      ],
+      "u9.reversal_confirmation": [
+       69
+      ],
+      "u9.insufficient_evidence": [
+       69
       ]
      },
      "jumpAheadQuestionCount": 18,
@@ -47349,6 +48724,9 @@
        "explanation": "A clear trigger keeps execution disciplined.",
        "skillId": "planning_the_entry_choosing_the_order_type",
        "sourceLesson": "Planning the Entry & Choosing the Order Type",
+       "sourceUnit": 9,
+       "sourceNode": 71,
+       "questionId": "orderflow.u10.n71.q1",
        "competencyId": "u10.entry_plan"
       },
       {
@@ -47365,6 +48743,9 @@
        "explanation": "Order choice balances speed with price control.",
        "skillId": "planning_the_entry_choosing_the_order_type",
        "sourceLesson": "Planning the Entry & Choosing the Order Type",
+       "sourceUnit": 9,
+       "sourceNode": 71,
+       "questionId": "orderflow.u10.n71.q2",
        "competencyId": "u10.entry_plan"
       },
       {
@@ -47383,6 +48764,9 @@
        "explanation": "Expert execution decisions combine market evidence with risk.",
        "skillId": "evidence_synthesis",
        "sourceLesson": "Planning the Entry & Choosing the Order Type",
+       "sourceUnit": 9,
+       "sourceNode": 71,
+       "questionId": "orderflow.u10.n71.q3",
        "competencyId": "u10.order_type"
       },
       {
@@ -47393,6 +48777,9 @@
        "explanation": "The selected candle shows whether execution produced follow through.",
        "skillId": "planning_the_entry_choosing_the_order_type",
        "sourceLesson": "Planning the Entry & Choosing the Order Type",
+       "sourceUnit": 9,
+       "sourceNode": 71,
+       "questionId": "orderflow.u10.n71.q4",
        "competencyId": "u10.order_type"
       },
       {
@@ -47411,6 +48798,9 @@
        "explanation": "Expert execution decisions combine market evidence with risk.",
        "skillId": "evidence_synthesis",
        "sourceLesson": "Slippage & Thin Liquidity Risk",
+       "sourceUnit": 9,
+       "sourceNode": 72,
+       "questionId": "orderflow.u10.n72.q1",
        "competencyId": "u10.slippage"
       },
       {
@@ -47431,6 +48821,9 @@
        "explanation": "Order flow decisions move from evidence to response and risk.",
        "skillId": "market_sequence",
        "sourceLesson": "Slippage & Thin Liquidity Risk",
+       "sourceUnit": 9,
+       "sourceNode": 72,
+       "questionId": "orderflow.u10.n72.q2",
        "competencyId": "u10.slippage"
       },
       {
@@ -47441,6 +48834,9 @@
        "explanation": "The selected candle shows whether execution produced follow through.",
        "skillId": "order_flow_invalidation",
        "sourceLesson": "Order Flow Invalidation",
+       "sourceUnit": 9,
+       "sourceNode": 73,
+       "questionId": "orderflow.u10.n73.q1",
        "competencyId": "u10.invalidation"
       },
       {
@@ -47459,6 +48855,9 @@
        "explanation": "Expert execution decisions combine market evidence with risk.",
        "skillId": "evidence_synthesis",
        "sourceLesson": "Order Flow Invalidation",
+       "sourceUnit": 9,
+       "sourceNode": 73,
+       "questionId": "orderflow.u10.n73.q2",
        "competencyId": "u10.invalidation"
       },
       {
@@ -47473,6 +48872,9 @@
        "explanation": "Book B has thinner nearby depth and gaps.",
        "skillId": "book_depth",
        "sourceLesson": "Slippage & Thin Liquidity Risk",
+       "sourceUnit": 9,
+       "sourceNode": 72,
+       "questionId": "orderflow.u10.n72.q3",
        "competencyId": "u10.thin_liquidity_risk"
       },
       {
@@ -47489,6 +48891,9 @@
        "explanation": "Thin liquidity can require smaller risk and more cautious execution.",
        "skillId": "slippage_thin_liquidity_risk",
        "sourceLesson": "Slippage & Thin Liquidity Risk",
+       "sourceUnit": 9,
+       "sourceNode": 72,
+       "questionId": "orderflow.u10.n72.q4",
        "competencyId": "u10.thin_liquidity_risk"
       },
       {
@@ -47507,6 +48912,9 @@
        "explanation": "Expert execution decisions combine market evidence with risk.",
        "skillId": "evidence_synthesis",
        "sourceLesson": "No Clear Read",
+       "sourceUnit": 9,
+       "sourceNode": 74,
+       "questionId": "orderflow.u10.n74.q1",
        "competencyId": "u10.no_clear_read"
       },
       {
@@ -47523,6 +48931,9 @@
        "explanation": "Conflicting evidence is a valid reason to stay out.",
        "skillId": "no_clear_read",
        "sourceLesson": "No Clear Read",
+       "sourceUnit": 9,
+       "sourceNode": 74,
+       "questionId": "orderflow.u10.n74.q2",
        "competencyId": "u10.no_clear_read"
       },
       {
@@ -47539,6 +48950,9 @@
        "explanation": "Liquidity can improve planned exits.",
        "skillId": "exiting_into_liquidity",
        "sourceLesson": "Exiting Into Liquidity",
+       "sourceUnit": 9,
+       "sourceNode": 75,
+       "questionId": "orderflow.u10.n75.q1",
        "competencyId": "u10.exit_liquidity"
       },
       {
@@ -47557,6 +48971,9 @@
        "explanation": "Expert execution decisions combine market evidence with risk.",
        "skillId": "evidence_synthesis",
        "sourceLesson": "Exiting Into Liquidity",
+       "sourceUnit": 9,
+       "sourceNode": 75,
+       "questionId": "orderflow.u10.n75.q2",
        "competencyId": "u10.exit_liquidity"
       },
       {
@@ -47573,6 +48990,9 @@
        "explanation": "Review each evidence source separately from the trade outcome.",
        "skillId": "reviewing_the_full_order_flow_read",
        "sourceLesson": "Reviewing the Full Order Flow Read",
+       "sourceUnit": 9,
+       "sourceNode": 76,
+       "questionId": "orderflow.u10.n76.q1",
        "competencyId": "u10.review_process"
       },
       {
@@ -47589,6 +49009,9 @@
        "explanation": "Buyer initiated prints dominate the tape.",
        "skillId": "multi_signal_read",
        "sourceLesson": "Reviewing the Full Order Flow Read",
+       "sourceUnit": 9,
+       "sourceNode": 76,
+       "questionId": "orderflow.u10.n76.q2",
        "competencyId": "u10.review_process"
       },
       {
@@ -47599,6 +49022,9 @@
        "explanation": "The selected candle shows whether execution produced follow through.",
        "skillId": "reviewing_the_full_order_flow_read",
        "sourceLesson": "Reviewing the Full Order Flow Read",
+       "sourceUnit": 9,
+       "sourceNode": 76,
+       "questionId": "orderflow.u10.n76.q3",
        "competencyId": "u10.multi_source_evidence"
       },
       {
@@ -47615,6 +49041,9 @@
        "explanation": "The offer repeatedly replenishes after fills.",
        "skillId": "multi_signal_read",
        "sourceLesson": "Reviewing the Full Order Flow Read",
+       "sourceUnit": 9,
+       "sourceNode": 76,
+       "questionId": "orderflow.u10.n76.q4",
        "competencyId": "u10.multi_source_evidence"
       },
       {
@@ -47629,6 +49058,9 @@
        "explanation": "Replay A clears offers and holds above the level. Replay B refreshes and rejects.",
        "skillId": "scenario_comparison",
        "sourceLesson": "Reviewing the Full Order Flow Read",
+       "sourceUnit": 9,
+       "sourceNode": 76,
+       "questionId": "orderflow.u10.n76.q5",
        "competencyId": "u10.combined_execution_read"
       },
       {
@@ -47645,6 +49077,9 @@
        "explanation": "Aggression is strong, but upward progress remains weak.",
        "skillId": "multi_signal_read",
        "sourceLesson": "Reviewing the Full Order Flow Read",
+       "sourceUnit": 9,
+       "sourceNode": 76,
+       "questionId": "orderflow.u10.n76.q6",
        "competencyId": "u10.combined_execution_read"
       }
      ],
@@ -47699,6 +49134,112 @@
       "u10.combined_execution_read": [
        "multi_signal_read",
        "scenario_comparison"
+      ]
+     },
+     "competencyEligibleQuestionIds": {
+      "u10.entry_plan": [
+       "orderflow.u10.n71.q1",
+       "orderflow.u10.n71.q2"
+      ],
+      "u10.order_type": [
+       "orderflow.u10.n71.q3",
+       "orderflow.u10.n71.q4"
+      ],
+      "u10.slippage": [
+       "orderflow.u10.n72.q1",
+       "orderflow.u10.n72.q2"
+      ],
+      "u10.invalidation": [
+       "orderflow.u10.n73.q1",
+       "orderflow.u10.n73.q2"
+      ],
+      "u10.thin_liquidity_risk": [
+       "orderflow.u10.n72.q3",
+       "orderflow.u10.n72.q4"
+      ],
+      "u10.no_clear_read": [
+       "orderflow.u10.n74.q1",
+       "orderflow.u10.n74.q2"
+      ],
+      "u10.exit_liquidity": [
+       "orderflow.u10.n75.q1",
+       "orderflow.u10.n75.q2"
+      ],
+      "u10.review_process": [
+       "orderflow.u10.n76.q1",
+       "orderflow.u10.n76.q2"
+      ],
+      "u10.multi_source_evidence": [
+       "orderflow.u10.n76.q3",
+       "orderflow.u10.n76.q4"
+      ],
+      "u10.combined_execution_read": [
+       "orderflow.u10.n76.q5",
+       "orderflow.u10.n76.q6"
+      ]
+     },
+     "competencySourceUnits": {
+      "u10.entry_plan": [
+       9
+      ],
+      "u10.order_type": [
+       9
+      ],
+      "u10.slippage": [
+       9
+      ],
+      "u10.invalidation": [
+       9
+      ],
+      "u10.thin_liquidity_risk": [
+       9
+      ],
+      "u10.no_clear_read": [
+       9
+      ],
+      "u10.exit_liquidity": [
+       9
+      ],
+      "u10.review_process": [
+       9
+      ],
+      "u10.multi_source_evidence": [
+       9
+      ],
+      "u10.combined_execution_read": [
+       9
+      ]
+     },
+     "competencySourceNodes": {
+      "u10.entry_plan": [
+       71
+      ],
+      "u10.order_type": [
+       71
+      ],
+      "u10.slippage": [
+       72
+      ],
+      "u10.invalidation": [
+       73
+      ],
+      "u10.thin_liquidity_risk": [
+       72
+      ],
+      "u10.no_clear_read": [
+       74
+      ],
+      "u10.exit_liquidity": [
+       75
+      ],
+      "u10.review_process": [
+       76
+      ],
+      "u10.multi_source_evidence": [
+       76
+      ],
+      "u10.combined_execution_read": [
+       76
       ]
      },
      "jumpAheadQuestionCount": 20,

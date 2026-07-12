@@ -50,6 +50,9 @@ struct LessonScreen: Decodable, Identifiable {
     let skillId: String?
     let competencyId: String?
     let sourceLesson: String?
+    let sourceUnit: Int?
+    let sourceNode: Int?
+    let questionId: String?
 
     // Set when a missed question is re-queued, so the UI can flag it.
     var isPreviousMistake = false
@@ -122,7 +125,7 @@ struct LessonScreen: Decodable, Identifiable {
     let numberUnit: String?
 
     enum CodingKeys: String, CodingKey {
-        case type, text, question, explanation, options, pairs, template, blanks, direction, event, order, skillId, competencyId, sourceLesson
+        case type, text, question, explanation, options, pairs, template, blanks, direction, event, order, skillId, competencyId, sourceLesson, sourceUnit, sourceNode, questionId
         case concern, items, chart, target, targets, level
         case levelKind = "level_kind"
         case targetStart = "target_start"
@@ -147,6 +150,9 @@ struct LessonScreen: Decodable, Identifiable {
         skillId = try c.decodeIfPresent(String.self, forKey: .skillId)
         competencyId = try c.decodeIfPresent(String.self, forKey: .competencyId)
         sourceLesson = try c.decodeIfPresent(String.self, forKey: .sourceLesson)
+        sourceUnit = try c.decodeIfPresent(Int.self, forKey: .sourceUnit)
+        sourceNode = try c.decodeIfPresent(Int.self, forKey: .sourceNode)
+        questionId = try c.decodeIfPresent(String.self, forKey: .questionId)
         screenTitle = try c.decodeIfPresent(String.self, forKey: .screenTitle)
         text = try c.decodeIfPresent(String.self, forKey: .text)
         chart = try c.decodeIfPresent(String.self, forKey: .chart)

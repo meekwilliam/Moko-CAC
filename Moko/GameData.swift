@@ -27,6 +27,9 @@ struct TestOutDefinition: Decodable {
     let questionPool: [LessonScreen]
     let competencyBlueprint: [String]?
     let competencyMappings: [String: [String]]?
+    let competencyEligibleQuestionIds: [String: [String]]?
+    let competencySourceUnits: [String: [Int]]?
+    let competencySourceNodes: [String: [Int]]?
     let jumpAheadQuestionCount: Int?
     let jumpPassingScore: Int?
     let jumpPrerequisiteMinimum: Int?

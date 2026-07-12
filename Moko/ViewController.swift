@@ -386,9 +386,16 @@ class ViewController: UIViewController {
         let previousNodes = course.nodes.filter { $0.sectionIndex == unit - 1 }.map(\.num)
         let isJump = unit > 0 && !previousNodes.allSatisfy { progress.completed.contains($0) }
 
-        func appendQuestion(from pool: [LessonScreen], competency: String) {
-            if let match = pool.shuffled().first(where: { candidate in
-                candidate.competencyId == competency && !screens.contains(where: {
+        func appendQuestion(from definition: TestOutDefinition, competency: String) {
+            let eligibleIds = Set(definition.competencyEligibleQuestionIds?[competency] ?? [])
+            let sourceUnits = Set(definition.competencySourceUnits?[competency] ?? [])
+            let sourceNodes = Set(definition.competencySourceNodes?[competency] ?? [])
+            if let match = definition.questionPool.shuffled().first(where: { candidate in
+                candidate.competencyId == competency &&
+                (eligibleIds.isEmpty || candidate.questionId.map(eligibleIds.contains) == true) &&
+                (sourceUnits.isEmpty || candidate.sourceUnit.map(sourceUnits.contains) == true) &&
+                (sourceNodes.isEmpty || candidate.sourceNode.map(sourceNodes.contains) == true) &&
+                !screens.contains(where: {
                     $0.id == candidate.id || ($0.type == candidate.type && $0.question == candidate.question)
                 })
             }) { screens.append(match) }
@@ -398,12 +405,12 @@ class ViewController: UIViewController {
            let targetBlueprint = test.jumpTargetBlueprint {
             for slot in prerequisiteBlueprint {
                 guard let source = course.testOuts?.first(where: { $0.unitIndex == slot.unitIndex }) else { continue }
-                appendQuestion(from: source.questionPool, competency: slot.competencyId)
+                appendQuestion(from: source, competency: slot.competencyId)
             }
-            for competency in targetBlueprint { appendQuestion(from: test.questionPool, competency: competency) }
+            for competency in targetBlueprint { appendQuestion(from: test, competency: competency) }
         } else {
             for competency in test.competencyBlueprint ?? [] {
-                appendQuestion(from: test.questionPool, competency: competency)
+                appendQuestion(from: test, competency: competency)
             }
         }
         let questionCount = isJump ? (test.jumpAheadQuestionCount ?? test.questionCount) : test.questionCount
