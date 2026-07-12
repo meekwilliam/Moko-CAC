@@ -1170,18 +1170,14 @@
        "pairs": [
         [
          "Thick book",
-         "Hard to move"
+         "Generally resists travel more"
         ],
         [
          "Thin book",
-         "Easy to move"
-        ],
-        [
-         "Resting size",
-         "Liquidity at a price"
+         "Can allow easier travel"
         ]
        ],
-       "explanation": "Depth is what absorbs aggression; without it, price jumps.",
+       "explanation": "Greater displayed depth can resist travel more, while sparse depth can let price move with less incoming pressure.",
        "skillId": "size_liquidity"
       },
       {
@@ -1666,7 +1662,7 @@
       {
        "type": "time_sales",
        "event": "lift",
-       "question": "Which tape behavior best supports the reading the tape read?",
+       "question": "What does Time & Sales reveal?",
        "options": [
         "Prints reveal completed trades",
         "A faster feed confirms acceptance regardless of price response",
@@ -2049,7 +2045,7 @@
       {
        "type": "time_sales",
        "event": "lift",
-       "question": "Which tape behavior best supports the tape at key levels read?",
+       "question": "Why does tape activity matter more near a key level?",
        "options": [
         "Tape reaction matters most near key levels",
         "Total tape volume reveals where every resting order sits",
@@ -2388,7 +2384,7 @@
         "No aggressive executions appear"
        ],
        "correct": 0,
-       "explanation": "Absorption requires pressure plus a weak corresponding price response.",
+       "explanation": "Repeated executions against displayed size that keeps replenishing can suggest hidden liquidity.",
        "skillId": "multi_signal_read"
       },
       {
@@ -3192,7 +3188,7 @@
      "screens": [
       {
        "type": "footprint",
-       "event": "lift",
+       "event": "stacked_ask",
        "question": "What's the best footprint read?",
        "options": [
         "Pressure across several levels strengthens the move",
@@ -3201,7 +3197,8 @@
         "Displayed depth can be inferred directly from executed volume"
        ],
        "correct": 0,
-       "explanation": "Pressure across several levels strengthens the move.",
+       "explanation": "Three consecutive ask side imbalances show pressure repeating across adjacent levels.",
+       "target": 1,
        "skillId": "footprint_reading"
       },
       {
@@ -3453,7 +3450,7 @@
       },
       {
        "type": "footprint_tap",
-       "event": "delta_negative",
+       "event": "delta_negative_rising",
        "target": 6,
        "question": "Rising price is shown beside this footprint. Tap the negative delta row opposing it.",
        "explanation": "The selected negative delta row conflicts with the stated rising price context.",
@@ -3551,7 +3548,7 @@
       },
       {
        "type": "footprint_tap",
-       "event": "delta_negative",
+       "event": "delta_negative_rising",
        "target": 3,
        "question": "Rising price is shown beside this footprint. Tap the negative delta row that conflicts with it.",
        "explanation": "The selected row shows aggressive selling even as price rises.",
@@ -3571,30 +3568,30 @@
        "skillId": "footprint_momentum_challenge"
       },
       {
-       "type": "multiple_choice",
-       "question": "In this footprint & momentum challenge setup, what can sudden aggressive execution do?",
+       "type": "orderflow_sim",
+       "event": "breakout",
+       "question": "Buying accelerates, offers clear, and price holds higher. What does this show about momentum?",
        "options": [
-        "Sudden aggression can ignite momentum",
-        "Acceptance is present as soon as one trade prints beyond a level",
-        "Passive absorption and fading aggression produce the same evidence",
-        "A high volume candle reveals which side initiated every trade"
+        "Aggression is producing confirming price progress",
+        "One fast burst is enough without acceptance",
+        "Displayed depth alone proves continuation"
        ],
        "correct": 0,
-       "explanation": "Sudden aggression can ignite momentum.",
-       "skillId": "footprint_momentum_challenge"
+       "explanation": "Momentum strengthens when aggressive execution clears liquidity and receives a confirming price response.",
+       "skillId": "multi_signal_read"
       },
       {
-       "type": "multiple_choice",
-       "question": "In this footprint & momentum challenge setup, what does stalled price response suggest about momentum?",
+       "type": "orderflow_sim",
+       "event": "seller_absorption",
+       "question": "Buyer aggression remains high, but price stalls against a refreshing offer. What changed?",
        "options": [
-        "Momentum weakens when price stops responding",
-        "A failed breakout is confirmed before price returns through the level",
-        "More displayed depth necessarily means more actual liquidity",
-        "A second test should be read the same way as the first"
+        "Momentum is failing to convert pressure into progress",
+        "Buying is gaining clean acceptance",
+        "The tape proves buyers control the next move"
        ],
        "correct": 0,
-       "explanation": "Momentum weakens when price stops responding.",
-       "skillId": "footprint_momentum_challenge"
+       "explanation": "Persistent aggression without expected price progress warns that momentum is weakening or being absorbed.",
+       "skillId": "multi_signal_read"
       }
      ]
     },
@@ -3721,7 +3718,7 @@
         0,
         1
        ],
-       "explanation": "The interaction must match the evidence required by this specific setup.",
+       "explanation": "An obvious prior low and repeated tests make a nearby inferred stop cluster more plausible, though the stops are not directly visible.",
        "skillId": "evidence_synthesis"
       },
       {
@@ -3776,7 +3773,7 @@
        "type": "mark_level",
        "chart": "supportBounce",
        "level_kind": "support",
-       "question": "Mark the support hiding inferred sell stops.",
+       "question": "Mark the support level below which sell stops may cluster.",
        "explanation": "Stops are inferred beyond obvious levels rather than directly visible before triggering.",
        "skillId": "liquidity_location"
       }
@@ -3823,7 +3820,7 @@
         0,
         1
        ],
-       "explanation": "The interaction must match the evidence required by this specific setup.",
+       "explanation": "An obvious high plus buying pressure toward it can trigger inferred buy stops and add fuel to an upside move.",
        "skillId": "evidence_synthesis"
       },
       {
@@ -3883,7 +3880,7 @@
         0,
         1
        ],
-       "explanation": "The interaction must match the evidence required by this specific setup.",
+       "explanation": "A sweep trades beyond an obvious level, takes nearby liquidity, and then rejects instead of establishing acceptance.",
        "skillId": "evidence_synthesis"
       },
       {
@@ -3985,7 +3982,7 @@
         0,
         1
        ],
-       "explanation": "The interaction must match the evidence required by this specific setup.",
+       "explanation": "An upside sweep breaches the prior high and quickly returns below it rather than holding above.",
        "skillId": "evidence_synthesis"
       },
       {
@@ -4075,7 +4072,7 @@
         0,
         1
        ],
-       "explanation": "The interaction must match the evidence required by this specific setup.",
+       "explanation": "Acceptance requires execution beyond the level and price continuing to hold there instead of immediately returning inside.",
        "skillId": "evidence_synthesis"
       },
       {
@@ -4232,7 +4229,7 @@
         0,
         1
        ],
-       "explanation": "The interaction must match the evidence required by this specific setup.",
+       "explanation": "Repeated fills at one price plus displayed size that keeps replenishing can suggest hidden liquidity.",
        "skillId": "evidence_synthesis"
       },
       {
@@ -4373,20 +4370,20 @@
       {
        "type": "sequence_builder",
        "chart": "rejectionWickUp",
-       "question": "Order the liquidity evidence from location to response.",
+       "question": "Order the upside sweep evidence from location to response.",
        "items": [
-        "Seller pressure appears",
-        "Bids get consumed",
-        "Price reaches lower levels",
-        "The chart confirms the move"
+        "Price reaches an obvious prior high",
+        "Liquidity beyond the high is triggered",
+        "Price quickly returns below the level",
+        "The rejection confirms failed acceptance"
        ],
        "correct_order": [
-        "Seller pressure appears",
-        "Bids get consumed",
-        "Price reaches lower levels",
-        "The chart confirms the move"
+        "Price reaches an obvious prior high",
+        "Liquidity beyond the high is triggered",
+        "Price quickly returns below the level",
+        "The rejection confirms failed acceptance"
        ],
-       "explanation": "Read pressure, liquidity, price, then confirmation.",
+       "explanation": "An upside sweep begins at an obvious high, triggers liquidity beyond it, then rejects back below instead of accepting higher.",
        "skillId": "market_sequence"
       },
       {
@@ -4627,7 +4624,7 @@
         0,
         1
        ],
-       "explanation": "The interaction must match the evidence required by this specific setup.",
+       "explanation": "Acceptance above resistance combines continued execution above the level with price holding beyond it.",
        "skillId": "evidence_synthesis"
       },
       {
@@ -4664,7 +4661,7 @@
         0,
         1
        ],
-       "explanation": "The interaction must match the evidence required by this specific setup.",
+       "explanation": "Acceptance below support combines continued seller execution below the level with price holding beneath it.",
        "skillId": "evidence_synthesis"
       },
       {
@@ -4847,7 +4844,7 @@
         0,
         1
        ],
-       "explanation": "The interaction must match the evidence required by this specific setup.",
+       "explanation": "A failed breakdown first trades below support, then loses seller follow through and reclaims the level.",
        "skillId": "evidence_synthesis"
       },
       {
@@ -4930,7 +4927,7 @@
         0,
         1
        ],
-       "explanation": "The interaction must match the evidence required by this specific setup.",
+       "explanation": "A successful retest holds the broken level and receives renewed execution in the breakout direction.",
        "skillId": "evidence_synthesis"
       },
       {
@@ -5033,7 +5030,7 @@
         0,
         1
        ],
-       "explanation": "The interaction must match the evidence required by this specific setup.",
+       "explanation": "Without continued execution and price holding beyond the level, the initial break has not established acceptance.",
        "skillId": "evidence_synthesis"
       },
       {
@@ -5129,7 +5126,7 @@
         0,
         1
        ],
-       "explanation": "The interaction must match the evidence required by this specific setup.",
+       "explanation": "Trade becomes established when buying persists above resistance and price continues holding beyond the broken level.",
        "skillId": "evidence_synthesis"
       },
       {
@@ -5147,15 +5144,15 @@
       },
       {
        "type": "replay_compare",
-       "event": "trap_challenge",
-       "question": "Which replay survives the deeper retest?",
+       "event": "acceptance_challenge",
+       "question": "Which replay survives a deeper retest and resumes beyond the level?",
        "options": [
         "Replay A",
         "Replay B",
         "Not enough evidence"
        ],
        "correct": 0,
-       "explanation": "Acceptance needs continued execution and price holding beyond the level.",
+       "explanation": "Replay A clears staggered liquidity, survives the deeper retest, and rebuilds acceptance beyond the level.",
        "skillId": "scenario_comparison"
       },
       {
@@ -5173,15 +5170,15 @@
       },
       {
        "type": "live_chart",
-       "direction": "up",
-       "question": "Which evolving price response confirms acceptance?",
+       "direction": "sideways",
+       "question": "Which live response would invalidate acceptance?",
        "options": [
         "Upward price response is developing",
         "Downward price response is developing",
         "Price is not gaining directional acceptance"
        ],
-       "correct": 0,
-       "explanation": "Price response confirms or contradicts the execution evidence shown elsewhere in the lesson.",
+       "correct": 2,
+       "explanation": "Rangebound price that cannot build beyond the level fails to confirm continued acceptance.",
        "skillId": "breakout_challenge"
       },
       {
@@ -5627,7 +5624,7 @@
       {
        "type": "live_chart",
        "direction": "up",
-       "question": "What changed in the order flow at vwap & moving averages response?",
+       "question": "What does the developing price response show?",
        "options": [
         "Upward price response is developing",
         "Downward price response is developing",
@@ -5882,12 +5879,12 @@
        "event": "balanced",
        "question": "What does the footprint add?",
        "options": [
-        "Heavy volume without directional progress",
+        "Balanced execution across the footprint",
         "The largest cell decides direction",
         "Volume guarantees a trend"
        ],
        "correct": 0,
-       "explanation": "High volume without directional progress can show two sided absorption.",
+       "explanation": "Similar bid and ask execution across the rows shows balance; the composite questions separately establish volume and price progress.",
        "skillId": "footprint_reading"
       },
       {
@@ -6630,15 +6627,15 @@
       },
       {
        "type": "orderflow_sim",
-       "event": "seller_loses_control",
-       "question": "What completes the reversal read?",
+       "event": "conflict",
+       "question": "Which evidence is still missing before reversal confirmation?",
        "options": [
-        "The prior side stalls, opposing pressure strengthens, and price responds",
-        "One opposing print appears",
-        "A candle pattern forms without execution confirmation"
+        "Clear alignment between opposing aggression and price response",
+        "One opposing execution",
+        "A familiar reversal shape"
        ],
        "correct": 0,
-       "explanation": "The full transition from prior control to opposing follow through is visible.",
+       "explanation": "Conflicting execution and price response mean the opposing side has not yet confirmed control.",
        "skillId": "multi_signal_read"
       },
       {
@@ -6656,15 +6653,15 @@
       },
       {
        "type": "orderflow_sim",
-       "event": "seller_loses_control",
-       "question": "What verifies that aggressive control changed?",
+       "event": "breakdown_pressure",
+       "question": "Which event would invalidate the bullish reversal hypothesis?",
        "options": [
-        "The prior side stalls, opposing pressure strengthens, and price responds",
-        "One opposing print appears",
-        "A candle pattern forms without execution confirmation"
+        "Seller pressure regains progress and price accepts below support",
+        "Buyer prints begin appearing",
+        "The spread stays unchanged"
        ],
        "correct": 0,
-       "explanation": "The full transition from prior control to opposing follow through is visible.",
+       "explanation": "Renewed seller execution with acceptance below support disproves the proposed bullish control change.",
        "skillId": "multi_signal_read"
       },
       {
@@ -6855,7 +6852,7 @@
         0,
         1
        ],
-       "explanation": "Expert execution decisions combine market evidence with risk.",
+       "explanation": "A defined trigger plus confirming price response provides the evidence needed before choosing how to execute.",
        "skillId": "evidence_synthesis"
       },
       {
@@ -6916,7 +6913,7 @@
         0,
         1
        ],
-       "explanation": "Expert execution decisions combine market evidence with risk.",
+       "explanation": "Thin nearby depth and a widening spread both raise the chance that execution occurs away from the intended price.",
        "skillId": "evidence_synthesis"
       },
       {
@@ -7003,7 +7000,7 @@
         0,
         1
        ],
-       "explanation": "Expert execution decisions combine market evidence with risk.",
+       "explanation": "Opposing aggression plus loss of the key level directly challenge the evidence behind the original read.",
        "skillId": "evidence_synthesis"
       },
       {
@@ -7072,7 +7069,7 @@
         0,
         1
        ],
-       "explanation": "Expert execution decisions combine market evidence with risk.",
+       "explanation": "Conflicting tape and an unconfirmed price response justify waiting rather than forcing a directional conclusion.",
        "skillId": "evidence_synthesis"
       },
       {
@@ -7163,7 +7160,7 @@
         0,
         1
        ],
-       "explanation": "Expert execution decisions combine market evidence with risk.",
+       "explanation": "Available opposing liquidity identifies potential counterparties, while current execution pace helps judge whether that liquidity may be reachable.",
        "skillId": "evidence_synthesis"
       },
       {
@@ -7869,18 +7866,14 @@
        "pairs": [
         [
          "Thick book",
-         "Hard to move"
+         "Generally resists travel more"
         ],
         [
          "Thin book",
-         "Easy to move"
-        ],
-        [
-         "Resting size",
-         "Liquidity at a price"
+         "Can allow easier travel"
         ]
        ],
-       "explanation": "Depth is what absorbs aggression; without it, price jumps.",
+       "explanation": "Greater displayed depth can resist travel more, while sparse depth can let price move with less incoming pressure.",
        "skillId": "size_liquidity",
        "sourceLesson": "Size & Liquidity",
        "sourceUnit": 1,
@@ -8920,7 +8913,7 @@
         "No aggressive executions appear"
        ],
        "correct": 0,
-       "explanation": "Absorption requires pressure plus a weak corresponding price response.",
+       "explanation": "Repeated executions against displayed size that keeps replenishing can suggest hidden liquidity.",
        "skillId": "multi_signal_read",
        "sourceLesson": "Repeated Tests & Hidden Liquidity",
        "sourceUnit": 3,
@@ -9653,7 +9646,7 @@
       },
       {
        "type": "footprint_tap",
-       "event": "delta_negative",
+       "event": "delta_negative_rising",
        "target": 3,
        "question": "Rising price is shown beside this footprint. Tap the negative delta row that conflicts with it.",
        "explanation": "The selected row shows aggressive selling even as price rises.",
@@ -9933,7 +9926,7 @@
         0,
         1
        ],
-       "explanation": "The interaction must match the evidence required by this specific setup.",
+       "explanation": "An obvious prior low and repeated tests make a nearby inferred stop cluster more plausible, though the stops are not directly visible.",
        "skillId": "evidence_synthesis",
        "sourceLesson": "Liquidity Pools & Stop Clusters",
        "sourceUnit": 5,
@@ -9964,7 +9957,7 @@
        "type": "mark_level",
        "chart": "supportBounce",
        "level_kind": "support",
-       "question": "Mark the support hiding inferred sell stops.",
+       "question": "Mark the support level below which sell stops may cluster.",
        "explanation": "Stops are inferred beyond obvious levels rather than directly visible before triggering.",
        "skillId": "liquidity_location",
        "sourceLesson": "Liquidity Pools & Stop Clusters",
@@ -9999,7 +9992,7 @@
         0,
         1
        ],
-       "explanation": "The interaction must match the evidence required by this specific setup.",
+       "explanation": "An obvious high plus buying pressure toward it can trigger inferred buy stops and add fuel to an upside move.",
        "skillId": "evidence_synthesis",
        "sourceLesson": "Buy Stops vs. Sell Stops",
        "sourceUnit": 5,
@@ -10052,7 +10045,7 @@
         0,
         1
        ],
-       "explanation": "The interaction must match the evidence required by this specific setup.",
+       "explanation": "An upside sweep breaches the prior high and quickly returns below it rather than holding above.",
        "skillId": "evidence_synthesis",
        "sourceLesson": "Upside vs. Downside Sweeps",
        "sourceUnit": 5,
@@ -10123,7 +10116,7 @@
         0,
         1
        ],
-       "explanation": "The interaction must match the evidence required by this specific setup.",
+       "explanation": "Acceptance requires execution beyond the level and price continuing to hold there instead of immediately returning inside.",
        "skillId": "evidence_synthesis",
        "sourceLesson": "Sweep vs. Breakout Acceptance",
        "sourceUnit": 5,
@@ -10270,7 +10263,7 @@
         0,
         1
        ],
-       "explanation": "The interaction must match the evidence required by this specific setup.",
+       "explanation": "Repeated fills at one price plus displayed size that keeps replenishing can suggest hidden liquidity.",
        "skillId": "evidence_synthesis",
        "sourceLesson": "Icebergs & Hidden Replenishment",
        "sourceUnit": 5,
@@ -10667,7 +10660,7 @@
         0,
         1
        ],
-       "explanation": "The interaction must match the evidence required by this specific setup.",
+       "explanation": "Acceptance above resistance combines continued execution above the level with price holding beyond it.",
        "skillId": "evidence_synthesis",
        "sourceLesson": "Acceptance Above vs. Below",
        "sourceUnit": 6,
@@ -10701,7 +10694,7 @@
         0,
         1
        ],
-       "explanation": "The interaction must match the evidence required by this specific setup.",
+       "explanation": "Acceptance below support combines continued seller execution below the level with price holding beneath it.",
        "skillId": "evidence_synthesis",
        "sourceLesson": "Acceptance Above vs. Below",
        "sourceUnit": 6,
@@ -10813,7 +10806,7 @@
         0,
         1
        ],
-       "explanation": "The interaction must match the evidence required by this specific setup.",
+       "explanation": "A failed breakdown first trades below support, then loses seller follow through and reclaims the level.",
        "skillId": "evidence_synthesis",
        "sourceLesson": "Failed Breakouts vs. Failed Breakdowns",
        "sourceUnit": 6,
@@ -10865,7 +10858,7 @@
         0,
         1
        ],
-       "explanation": "The interaction must match the evidence required by this specific setup.",
+       "explanation": "A successful retest holds the broken level and receives renewed execution in the breakout direction.",
        "skillId": "evidence_synthesis",
        "sourceLesson": "Breakout and Breakdown Retests",
        "sourceUnit": 6,
@@ -10905,7 +10898,7 @@
         0,
         1
        ],
-       "explanation": "The interaction must match the evidence required by this specific setup.",
+       "explanation": "Without continued execution and price holding beyond the level, the initial break has not established acceptance.",
        "skillId": "evidence_synthesis",
        "sourceLesson": "Chasing, Confirmation & Common Misconceptions",
        "sourceUnit": 6,
@@ -10962,7 +10955,7 @@
         0,
         1
        ],
-       "explanation": "The interaction must match the evidence required by this specific setup.",
+       "explanation": "Trade becomes established when buying persists above resistance and price continues holding beyond the broken level.",
        "skillId": "evidence_synthesis",
        "sourceLesson": "Breakout Challenge",
        "sourceUnit": 6,
@@ -11659,12 +11652,12 @@
        "event": "balanced",
        "question": "What does the footprint add?",
        "options": [
-        "Heavy volume without directional progress",
+        "Balanced execution across the footprint",
         "The largest cell decides direction",
         "Volume guarantees a trend"
        ],
        "correct": 0,
-       "explanation": "High volume without directional progress can show two sided absorption.",
+       "explanation": "Similar bid and ask execution across the rows shows balance; the composite questions separately establish volume and price progress.",
        "skillId": "footprint_reading",
        "sourceLesson": "Volume Context: Chop vs. Low Volume Trend",
        "sourceUnit": 7,
@@ -12452,15 +12445,15 @@
       },
       {
        "type": "orderflow_sim",
-       "event": "seller_loses_control",
-       "question": "What verifies that aggressive control changed?",
+       "event": "breakdown_pressure",
+       "question": "Which event would invalidate the bullish reversal hypothesis?",
        "options": [
-        "The prior side stalls, opposing pressure strengthens, and price responds",
-        "One opposing print appears",
-        "A candle pattern forms without execution confirmation"
+        "Seller pressure regains progress and price accepts below support",
+        "Buyer prints begin appearing",
+        "The spread stays unchanged"
        ],
        "correct": 0,
-       "explanation": "The full transition from prior control to opposing follow through is visible.",
+       "explanation": "Renewed seller execution with acceptance below support disproves the proposed bullish control change.",
        "skillId": "multi_signal_read",
        "sourceLesson": "Reversal Confirmation & Insufficient Evidence",
        "sourceUnit": 8,
@@ -12766,7 +12759,7 @@
         0,
         1
        ],
-       "explanation": "Expert execution decisions combine market evidence with risk.",
+       "explanation": "A defined trigger plus confirming price response provides the evidence needed before choosing how to execute.",
        "skillId": "evidence_synthesis",
        "sourceLesson": "Planning the Entry & Choosing the Order Type",
        "sourceUnit": 9,
@@ -12857,7 +12850,7 @@
         0,
         1
        ],
-       "explanation": "Expert execution decisions combine market evidence with risk.",
+       "explanation": "Thin nearby depth and a widening spread both raise the chance that execution occurs away from the intended price.",
        "skillId": "evidence_synthesis",
        "sourceLesson": "Slippage & Thin Liquidity Risk",
        "sourceUnit": 9,
@@ -12913,7 +12906,7 @@
         0,
         1
        ],
-       "explanation": "Expert execution decisions combine market evidence with risk.",
+       "explanation": "Opposing aggression plus loss of the key level directly challenge the evidence behind the original read.",
        "skillId": "evidence_synthesis",
        "sourceLesson": "Order Flow Invalidation",
        "sourceUnit": 9,
@@ -13010,7 +13003,7 @@
         0,
         1
        ],
-       "explanation": "Expert execution decisions combine market evidence with risk.",
+       "explanation": "Conflicting tape and an unconfirmed price response justify waiting rather than forcing a directional conclusion.",
        "skillId": "evidence_synthesis",
        "sourceLesson": "No Clear Read",
        "sourceUnit": 9,
@@ -13123,7 +13116,7 @@
         0,
         1
        ],
-       "explanation": "Expert execution decisions combine market evidence with risk.",
+       "explanation": "Available opposing liquidity identifies potential counterparties, while current execution pace helps judge whether that liquidity may be reachable.",
        "skillId": "evidence_synthesis",
        "sourceLesson": "Exiting Into Liquidity",
        "sourceUnit": 9,

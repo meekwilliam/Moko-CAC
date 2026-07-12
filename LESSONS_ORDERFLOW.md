@@ -357,10 +357,9 @@ WHY: Sparse nearby depth can allow less incoming pressure to move price farther.
 
 [MATCH] Match each book to how it moves.
 SKILL: size_liquidity
-Thick book => Hard to move
-Thin book => Easy to move
-Resting size => Liquidity at a price
-WHY: Depth is what absorbs aggression; without it, price jumps.
+Thick book => Generally resists travel more
+Thin book => Can allow easier travel
+WHY: Greater displayed depth can resist travel more, while sparse depth can let price move with less incoming pressure.
 
 [AGGRESSOR] In Size & Liquidity, identify the side consuming resting liquidity.
 VISUAL: An animated Level II ladder shows prices between bid and ask columns, with ask sizes being consumed by incoming buy orders.
@@ -654,7 +653,7 @@ Resting bid and ask size before execution
 Total candle volume without trade direction
 WHY: Each row is a completed trade with time price size and side.
 
-[TIME_SALES] Which tape behavior best supports the reading the tape read?
+[TIME_SALES] What does Time & Sales reveal?
 VISUAL: An animated Time and Sales table lists time, execution price, and trade size, with buyer initiated prints dominating at the ask.
 SKILL: tape_reading
 EVENT: lift
@@ -914,7 +913,7 @@ TITLE: Tape at Key Levels
 TYPE: STANDARD
 CELEBRATION: Tape at Key Levels complete.
 
-[TIME_SALES] Which tape behavior best supports the tape at key levels read?
+[TIME_SALES] Why does tape activity matter more near a key level?
 VISUAL: An animated Time and Sales table lists time, execution price, and trade size, with buyer initiated prints dominating at the ask.
 SKILL: tape_reading
 EVENT: lift
@@ -1140,7 +1139,7 @@ SKILL: multi_signal_read
 Displayed size keeps replenishing
 Pressure and price accelerate together
 No aggressive executions appear
-WHY: Absorption requires pressure plus a weak corresponding price response.
+WHY: Repeated executions against displayed size that keeps replenishing can suggest hidden liquidity.
 
 [ORDERFLOW_SIM] Repeated selling tests the level, the bid replenishes, and price still holds. What's strongest?
 VISUAL: Price holds support below VWAP while a bid refreshes, seller initiated prints accelerate, and negative footprint delta produces little downward progress.
@@ -1661,14 +1660,14 @@ TYPE: STANDARD
 CELEBRATION: Stacked Pressure complete.
 
 [FOOTPRINT] What's the best footprint read?
-VISUAL: A footprint grid places bid volume left of price and ask volume right of price, showing one target row carrying the largest ask side execution advantage.
+VISUAL: A footprint grid places bid volume left of price and ask volume right of price, showing three consecutive rows showing ask side execution imbalances.
 SKILL: footprint_reading
-EVENT: lift
+EVENT: stacked_ask
 Pressure across several levels strengthens the move
 The brightest cell identifies the next candle direction
 A same row advantage and diagonal imbalance are identical
 Displayed depth can be inferred directly from executed volume
-WHY: Pressure across several levels strengthens the move.
+WHY: Three consecutive ask side imbalances show pressure repeating across adjacent levels.
 
 [FOOTPRINT_TAP] Tap the first row in the stack.
 VISUAL: A footprint grid places bid volume left of price and ask volume right of price, showing three consecutive rows showing ask side execution imbalances.
@@ -1833,9 +1832,9 @@ The refreshing offer is irrelevant
 WHY: The multi source view makes the execution and price contradiction visible.
 
 [FOOTPRINT_TAP] Rising price is shown beside this footprint. Tap the negative delta row opposing it.
-VISUAL: A footprint grid places bid volume left of price and ask volume right of price, showing one row contributing the largest negative ask minus bid delta.
+VISUAL: A footprint grid places bid volume left of price and ask volume right of price, showing a compact rising price chart beside the grid and one row contributing the largest negative ask minus bid delta.
 SKILL: footprint_interaction
-EVENT: delta_negative
+EVENT: delta_negative_rising
 TARGET: 6
 WHY: The selected negative delta row conflicts with the stated rising price context.
 
@@ -1899,9 +1898,9 @@ TARGET: 2
 WHY: Execution becomes balanced as momentum loses force.
 
 [FOOTPRINT_TAP] Rising price is shown beside this footprint. Tap the negative delta row that conflicts with it.
-VISUAL: A footprint grid places bid volume left of price and ask volume right of price, showing one row contributing the largest negative ask minus bid delta.
+VISUAL: A footprint grid places bid volume left of price and ask volume right of price, showing a compact rising price chart beside the grid and one row contributing the largest negative ask minus bid delta.
 SKILL: footprint_interaction
-EVENT: delta_negative
+EVENT: delta_negative_rising
 TARGET: 3
 WHY: The selected row shows aggressive selling even as price rises.
 
@@ -1913,21 +1912,21 @@ The largest footprint row determines the next move
 Price response can be ignored when delta is persistent
 WHY: Delta and the corresponding price response must be interpreted together.
 
-[MC] In this footprint & momentum challenge setup, what can sudden aggressive execution do?
-SKILL: footprint_momentum_challenge
-Sudden aggression can ignite momentum
-Acceptance is present as soon as one trade prints beyond a level
-Passive absorption and fading aggression produce the same evidence
-A high volume candle reveals which side initiated every trade
-WHY: Sudden aggression can ignite momentum.
+[ORDERFLOW_SIM] Buying accelerates, offers clear, and price holds higher. What does this show about momentum?
+VISUAL: Price approaches resistance, offers thin and are consumed, buyer initiated prints persist, stacked ask side execution appears, and price holds above the broken level.
+SKILL: multi_signal_read
+Aggression is producing confirming price progress
+One fast burst is enough without acceptance
+Displayed depth alone proves continuation
+WHY: Momentum strengthens when aggressive execution clears liquidity and receives a confirming price response.
 
-[MC] In this footprint & momentum challenge setup, what does stalled price response suggest about momentum?
-SKILL: footprint_momentum_challenge
-Momentum weakens when price stops responding
-A failed breakout is confirmed before price returns through the level
-More displayed depth necessarily means more actual liquidity
-A second test should be read the same way as the first
-WHY: Momentum weakens when price stops responding.
+[ORDERFLOW_SIM] Buyer aggression remains high, but price stalls against a refreshing offer. What changed?
+VISUAL: Price stalls at resistance above VWAP while an offer refreshes, buyer initiated prints accelerate, and positive footprint delta produces little upward progress.
+SKILL: multi_signal_read
+Momentum is failing to convert pressure into progress
+Buying is gaining clean acceptance
+The tape proves buyers control the next move
+WHY: Persistent aggression without expected price progress warns that momentum is weakening or being absorbed.
 
 NODE 37
 TITLE: Boss Battle: Footprint & Momentum
@@ -2019,7 +2018,7 @@ An obvious prior low
 Repeated tests of that level
 A distant candle
 Displayed bids alone prove stops
-WHY: The interaction must match the evidence required by this specific setup.
+WHY: An obvious prior low and repeated tests make a nearby inferred stop cluster more plausible, though the stops are not directly visible.
 
 [MC] Which read needs fewer assumptions?
 VISUAL: Candles rotate between clear upper and lower boundaries without sustained direction.
@@ -2048,7 +2047,7 @@ Iceberg => Displayed size repeatedly replenishes
 Acceptance => Price holds beyond the level
 WHY: Match the signal with its order flow clue.
 
-[MARK_LEVEL] Mark the support hiding inferred sell stops.
+[MARK_LEVEL] Mark the support level below which sell stops may cluster.
 VISUAL: A decline reaches support and rebounds with buyers defending the lower area.
 SKILL: liquidity_location
 CHART: supportBounce
@@ -2083,7 +2082,7 @@ An obvious prior high
 Price pressing beneath it
 A slow print far below
 A bid wall under support
-WHY: The interaction must match the evidence required by this specific setup.
+WHY: An obvious high plus buying pressure toward it can trigger inferred buy stops and add fuel to an upside move.
 
 [TAP_CANDLE] Tap the clearest price response.
 VISUAL: Price drives below a visible support level with expanding bearish candles. The candles are tappable and the learner must select the requested candle.
@@ -2118,7 +2117,7 @@ Price trades through the level
 Price immediately returns inside
 Price holds beyond the level
 Execution continues away
-WHY: The interaction must match the evidence required by this specific setup.
+WHY: A sweep trades beyond an obvious level, takes nearby liquidity, and then rejects instead of establishing acceptance.
 
 [MATCH] Match each clue.
 SKILL: what_is_a_liquidity_sweep
@@ -2181,7 +2180,7 @@ The prior high trades
 Price rejects back below it
 Price builds acceptance above
 Offers stay cleared
-WHY: The interaction must match the evidence required by this specific setup.
+WHY: An upside sweep breaches the prior high and quickly returns below it rather than holding above.
 
 [ORDERFLOW_SIM] Price trades below the prior low and immediately reclaims it. Is this a downside sweep or acceptance?
 VISUAL: Price trades below a prior low as sell stops trigger and seller initiated prints surge, then bids rebuild, buying responds, and price immediately reclaims the breached level.
@@ -2231,7 +2230,7 @@ Execution persists beyond the level
 Price holds outside the range
 Price immediately returns inside
 Aggression disappears
-WHY: The interaction must match the evidence required by this specific setup.
+WHY: Acceptance requires execution beyond the level and price continuing to hold there instead of immediately returning inside.
 
 [REPLAY_COMPARE] Which replay gains acceptance?
 VISUAL: Replay A trades through a level and rejects immediately without acceptance. Replay B trades through with persistent execution and holds beyond the level.
@@ -2333,7 +2332,7 @@ Displayed size repeatedly refills
 Executions repeat at one price
 Positive delta alone
 One large candle
-WHY: The interaction must match the evidence required by this specific setup.
+WHY: Repeated fills at one price plus displayed size that keeps replenishing can suggest hidden liquidity.
 
 [ORDERFLOW_SIM] Displayed size repeatedly refills after same price executions. What's strongest?
 VISUAL: Level II repeatedly shows 100 shares at the offer. Each 100 share execution clears the display, then another 100 immediately reappears at the same price while Time and Sales keeps printing buys.
@@ -2422,15 +2421,15 @@ A narrow spread confirms directional control
 The largest footprint row determines the entire candle read
 WHY: Combine pressure with liquidity and price response.
 
-[ORDER] Order the liquidity evidence from location to response.
+[ORDER] Order the upside sweep evidence from location to response.
 VISUAL: Price briefly trades above a level and closes back below it, leaving a long upper wick.
 SKILL: market_sequence
 CHART: rejectionWickUp
-Seller pressure appears
-Bids get consumed
-Price reaches lower levels
-The chart confirms the move
-WHY: Read pressure, liquidity, price, then confirmation.
+Price reaches an obvious prior high
+Liquidity beyond the high is triggered
+Price quickly returns below the level
+The rejection confirms failed acceptance
+WHY: An upside sweep begins at an obvious high, triggers liquidity beyond it, then rejects back below instead of accepting higher.
 
 [MATCH] Match each liquidity clue with the behavior it supports.
 SKILL: liquidity_challenge
@@ -2576,7 +2575,7 @@ Buying persists above the level
 Price holds above resistance
 Price immediately returns inside
 The offer keeps rejecting price
-WHY: The interaction must match the evidence required by this specific setup.
+WHY: Acceptance above resistance combines continued execution above the level with price holding beyond it.
 
 [TAP_CANDLE] Tap the clearest price response.
 VISUAL: Price breaks support, returns to test it from below, then reacts lower. The candles are tappable and the learner must select the requested candle.
@@ -2602,7 +2601,7 @@ Selling persists below the level
 Price holds below support
 Price immediately reclaims support
 The bid repeatedly absorbs selling
-WHY: The interaction must match the evidence required by this specific setup.
+WHY: Acceptance below support combines continued seller execution below the level with price holding beneath it.
 
 [MATCH] Match each clue.
 SKILL: acceptance_above_vs_below
@@ -2713,7 +2712,7 @@ Price reclaims support
 Selling loses follow through
 Price holds below support
 Seller execution accelerates lower
-WHY: The interaction must match the evidence required by this specific setup.
+WHY: A failed breakdown first trades below support, then loses seller follow through and reclaims the level.
 
 [ORDERFLOW_SIM] Price trades above resistance, fails to hold, and returns below it. What's strongest?
 VISUAL: Price briefly trades above resistance as offers disappear and buy prints surge, then sell liquidity rebuilds and price immediately returns below the level.
@@ -2759,7 +2758,7 @@ Former support rejects price
 Selling resumes after the retest
 Price reclaims the range
 Buyers clear the nearby offer
-WHY: The interaction must match the evidence required by this specific setup.
+WHY: A successful retest holds the broken level and receives renewed execution in the breakout direction.
 
 [TAP_CANDLE] Tap the clearest price response.
 VISUAL: Price breaks resistance, returns to test it from above, then attempts to continue higher. The candles are tappable and the learner must select the requested candle.
@@ -2828,7 +2827,7 @@ Sustained trade above the level
 A hold or successful retest
 One fast buy print
 A single wide candle
-WHY: The interaction must match the evidence required by this specific setup.
+WHY: Without continued execution and price holding beyond the level, the initial break has not established acceptance.
 
 [ORDERFLOW_SIM] Fast buying appears, but the offer refreshes and price stalls. Is breakout acceptance confirmed?
 VISUAL: Price rises above VWAP with positive delta and fast buyer prints, but a large offer refreshes and upward price progress begins fading.
@@ -2887,7 +2886,7 @@ Buying persists above the level
 Price holds above resistance
 Price immediately returns inside
 The offer keeps rejecting price
-WHY: The interaction must match the evidence required by this specific setup.
+WHY: Trade becomes established when buying persists above resistance and price continues holding beyond the broken level.
 
 [REPLAY_COMPARE] Which replay turns the initial break into a buyer trap?
 VISUAL: Replay A pauses above the break, defends a deeper retest, and resumes higher. Replay B loses the level after an initially strong burst and sellers take control.
@@ -2897,13 +2896,13 @@ Replay A
 Not enough evidence
 WHY: Acceptance needs continued execution and price holding beyond the level.
 
-[REPLAY_COMPARE] Which replay survives the deeper retest?
-VISUAL: Replay A pauses above the break, defends a deeper retest, and resumes higher. Replay B loses the level after an initially strong burst and sellers take control.
+[REPLAY_COMPARE] Which replay survives a deeper retest and resumes beyond the level?
+VISUAL: Replay A clears staggered offers, survives a retest, and establishes trade above. Replay B meets renewed offers and returns to the prior range.
 SKILL: scenario_comparison
 Replay A
 Replay B
 Not enough evidence
-WHY: Acceptance needs continued execution and price holding beyond the level.
+WHY: Replay A clears staggered liquidity, survives the deeper retest, and rebuilds acceptance beyond the level.
 
 [LIVE_CHART] What does follow through add?
 VISUAL: A live candlestick chart adds new candles over time, with price currently building upward.
@@ -2914,14 +2913,14 @@ Downward price response is developing
 Price is not gaining directional acceptance
 WHY: Price response confirms or contradicts the execution evidence shown elsewhere in the lesson.
 
-[LIVE_CHART] Which evolving price response confirms acceptance?
-VISUAL: A live candlestick chart adds new candles over time, with price currently building upward.
+[LIVE_CHART] Which live response would invalidate acceptance?
+VISUAL: A live candlestick chart adds new candles over time, with price currently alternating inside a range.
 SKILL: breakout_challenge
-DIRECTION: up
+DIRECTION: sideways
+Price is not gaining directional acceptance
 Upward price response is developing
 Downward price response is developing
-Price is not gaining directional acceptance
-WHY: Price response confirms or contradicts the execution evidence shown elsewhere in the lesson.
+WHY: Rangebound price that cannot build beyond the level fails to confirm continued acceptance.
 
 [LIVE_CHART] Where does breakout follow through begin to fail?
 VISUAL: A live candlestick chart adds new candles over time, with price currently building downward.
@@ -3203,7 +3202,7 @@ A replenishing order is probably new unrelated liquidity
 Brief trade beyond the level is enough to establish acceptance
 WHY: The average provides location but execution evidence determines the read.
 
-[LIVE_CHART] What changed in the order flow at vwap & moving averages response?
+[LIVE_CHART] What does the developing price response show?
 VISUAL: A live candlestick chart adds new candles over time, with price currently building upward.
 SKILL: order_flow_at_vwap_moving_averages
 DIRECTION: up
@@ -3368,10 +3367,10 @@ WHY: Sparse opposition allows modest execution to move price efficiently.
 VISUAL: A footprint grid places bid volume left of price and ask volume right of price, showing similar bid and ask volume across the price rows.
 SKILL: footprint_reading
 EVENT: balanced
-Heavy volume without directional progress
+Balanced execution across the footprint
 The largest cell decides direction
 Volume guarantees a trend
-WHY: High volume without directional progress can show two sided absorption.
+WHY: Similar bid and ask execution across the rows shows balance; the composite questions separately establish volume and price progress.
 
 [ORDERFLOW_SIM] Is execution strongly directional?
 VISUAL: Price advances steadily as Level II shows sparse opposing offers, Time and Sales prints at a measured pace, and the footprint shows modest directional execution rather than a volume surge.
@@ -3842,13 +3841,13 @@ The pattern target is guaranteed
 Only resting liquidity matters
 WHY: Tape and footprint evidence reveal what changed beneath the candle pattern.
 
-[ORDERFLOW_SIM] What completes the reversal read?
-VISUAL: Seller initiated prints dominate into support, price stops falling, seller pace weakens, buyers begin lifting offers, and price starts responding upward.
+[ORDERFLOW_SIM] Which evidence is still missing before reversal confirmation?
+VISUAL: Price rises above VWAP with positive delta and fast buyer prints, but a large offer refreshes and upward price progress begins fading.
 SKILL: multi_signal_read
-The prior side stalls, opposing pressure strengthens, and price responds
-One opposing print appears
-A candle pattern forms without execution confirmation
-WHY: The full transition from prior control to opposing follow through is visible.
+Clear alignment between opposing aggression and price response
+One opposing execution
+A familiar reversal shape
+WHY: Conflicting execution and price response mean the opposing side has not yet confirmed control.
 
 [ORDERFLOW_SIM] Which reversal entry needs fewer assumptions?
 VISUAL: Seller initiated prints dominate into support, price stops falling, seller pace weakens, buyers begin lifting offers, and price starts responding upward.
@@ -3858,13 +3857,13 @@ Entering from the candle pattern alone
 Entering after one opposing print
 WHY: Visible execution and price confirmation reduce reliance on pattern assumptions.
 
-[ORDERFLOW_SIM] What verifies that aggressive control changed?
-VISUAL: Seller initiated prints dominate into support, price stops falling, seller pace weakens, buyers begin lifting offers, and price starts responding upward.
+[ORDERFLOW_SIM] Which event would invalidate the bullish reversal hypothesis?
+VISUAL: Seller initiated prints persist into bids that are being consumed or withdrawn, footprint execution favors sellers, and price establishes sustained trade below support.
 SKILL: multi_signal_read
-The prior side stalls, opposing pressure strengthens, and price responds
-One opposing print appears
-A candle pattern forms without execution confirmation
-WHY: The full transition from prior control to opposing follow through is visible.
+Seller pressure regains progress and price accepts below support
+Buyer prints begin appearing
+The spread stays unchanged
+WHY: Renewed seller execution with acceptance below support disproves the proposed bullish control change.
 
 [ORDERFLOW_SIM] What matters most before treating this as a reversal?
 VISUAL: Seller initiated prints dominate into support, price stops falling, seller pace weakens, buyers begin lifting offers, and price starts responding upward.
@@ -3988,7 +3987,7 @@ Defined trigger
 Confirming response
 One fast print
 Candle color
-WHY: Expert execution decisions combine market evidence with risk.
+WHY: A defined trigger plus confirming price response provides the evidence needed before choosing how to execute.
 
 [MC] When urgency matters more than exact price control, which order best fits?
 SKILL: planning_the_entry_choosing_the_order_type
@@ -4025,7 +4024,7 @@ Thin nearby depth
 Widening spread
 Positive delta
 A resting wall far away
-WHY: Expert execution decisions combine market evidence with risk.
+WHY: Thin nearby depth and a widening spread both raise the chance that execution occurs away from the intended price.
 
 [ORDER] Build the decision sequence for Slippage & Thin Liquidity Risk.
 SKILL: market_sequence
@@ -4079,7 +4078,7 @@ Opposing aggression
 Loss of the key level
 One small print
 Unchanged spread
-WHY: Expert execution decisions combine market evidence with risk.
+WHY: Opposing aggression plus loss of the key level directly challenge the evidence behind the original read.
 
 [MC] Where should the read be invalidated?
 VISUAL: A decline reaches support and rebounds with buyers defending the lower area.
@@ -4121,7 +4120,7 @@ Conflicting tape
 Unconfirmed price response
 One aligned clue
 Stable spread
-WHY: Expert execution decisions combine market evidence with risk.
+WHY: Conflicting tape and an unconfirmed price response justify waiting rather than forcing a directional conclusion.
 
 [MC] What's the best read?
 VISUAL: A small candle body with upper and lower wicks shows two sided movement and little progress.
@@ -4178,7 +4177,7 @@ Available opposing liquidity
 Current execution pace
 Candle color
 Moving average slope
-WHY: Expert execution decisions combine market evidence with risk.
+WHY: Available opposing liquidity identifies potential counterparties, while current execution pace helps judge whether that liquidity may be reachable.
 
 [MARK_LEVEL] Mark the area where opposing liquidity may be expected.
 VISUAL: An advance reaches resistance and turns lower with visible upper wick rejection.
