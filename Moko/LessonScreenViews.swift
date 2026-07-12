@@ -199,6 +199,10 @@ struct LessonScreenRouter: View {
             BookDragView(player: player, ink: ink)
         case "book_compare":
             BookDepthCompareView(player: player, ink: ink)
+        case "evidence_select":
+            EvidenceSelectView(player: player, ink: ink)
+        case "replay_compare":
+            ReplayCompareView(player: player, ink: ink)
         case "time_sales":
             TimeSalesView(player: player, ink: ink)
         case "time_sales_tap":

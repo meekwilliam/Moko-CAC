@@ -756,6 +756,10 @@ def visual_description(screen):
         return f"A draggable {order} card sits beside a Level II ladder with bid and ask drop targets."
     if kind == "book_compare":
         return "Two Level II ladders appear side by side. Book A has large resting size at every nearby price. Book B has small size and gaps between levels."
+    if kind == "evidence_select":
+        return "Four evidence cards separate aggression, liquidity, price response, and an irrelevant clue. The learner must select the required combination."
+    if kind == "replay_compare":
+        return "Replay A shows offers clearing, persistent buy executions, and price holding above resistance. Replay B shows a refreshing offer, stalled buying, and price falling back inside the level."
     if kind in {"time_sales", "time_sales_tap"}:
         tape_details = {
             "lift": "buyer initiated prints dominating at the ask",
@@ -825,6 +829,13 @@ def markdown_screen(screen):
         ])
     elif kind == "book_compare":
         lines.append(f"[BOOK_COMPARE] {question}")
+        lines.extend(answer_first(screen))
+    elif kind == "evidence_select":
+        lines.append(f"[EVIDENCE_SELECT] {question}")
+        lines.append("SELECT: " + ", ".join(str(i) for i in screen.get("targets", [])))
+        lines.extend(screen.get("options", []))
+    elif kind == "replay_compare":
+        lines.append(f"[REPLAY_COMPARE] {question}")
         lines.extend(answer_first(screen))
     elif kind == "time_sales":
         lines.extend([f"[TIME_SALES] {question}", f"EVENT: {screen.get('event', 'lift')}"])
@@ -896,6 +907,8 @@ def write_markdown(course):
         "  [AGGRESSOR] Watch a live ladder and choose the aggressive side.",
         "  [BOOKDRAG] Route a market order to the bid or ask.",
         "  [BOOK_COMPARE] Compare thick and thin Level II depth.",
+        "  [EVIDENCE_SELECT] Choose the clues that complete an evidence stack.",
+        "  [REPLAY_COMPARE] Compare acceptance with replenishment and rejection.",
         "  [TAP_CANDLE] Select a candle directly on a chart.",
         "  [TRENDLINE] Connect two candles on a chart.",
         "  [LIVE_CHART] Read pressure while candles update.",
@@ -926,6 +939,89 @@ def write_markdown(course):
                 lines.append("")
         lines.append("")
     MARKDOWN_PATH.write_text("\n".join(lines).rstrip() + "\n")
+
+
+def replace_fill_questions(course):
+    """Replace every Order Flow fill with concept-specific market practice."""
+    scenario_mc = {
+        "What Is Order Flow?": ("What does order flow reveal?", ["Buyer and seller pressure", "Future prices with certainty", "Only candle direction"], "Order flow compares active pressure, liquidity, and price response."),
+        "The Bid, Ask & Spread": ("What's the bid ask gap called?", ["The spread", "Delta", "Depth"], "The spread is the distance between the best bid and ask."),
+        "Lifting the Offer & Hitting the Bid": ("How do sellers trade aggressively?", ["They hit the bid", "They post above the ask", "They raise the bid"], "Aggressive sellers cross the spread and execute against bids."),
+        "What Actually Moves Price": ("What can create directional movement?", ["Aggression overwhelms or outlasts liquidity", "More candles appear", "Displayed size never changes"], "Price can move when pressure consumes liquidity, liquidity withdraws, or both."),
+        "Choose the Order Type": ("What tradeoff guides order choice?", ["Speed versus price control", "Candle color versus volume", "Bid size versus chart scale"], "Market and limit orders trade speed against control of execution price."),
+        "No Clear Order Flow Read": ("What does conflicting evidence suggest?", ["No clear read yet", "Follow the fastest signal", "Ignore price response"], "Conflicting evidence supports patience rather than a forced conclusion."),
+    }
+    evidence_select = {
+        "Foundations and Book Mixed Review": ("Select the full market read.", ["Aggressor side", "Resting liquidity", "Price response", "Company headline"], [0, 1, 2]),
+        "Liquidity Review": ("Select the two essential clues.", ["Event location", "Price response", "Candle color alone", "One isolated print"], [0, 1]),
+        "Flow and Liquidity Mixed Review": ("Select the two confirmation clues.", ["Pressure at the level", "Acceptance or rejection", "Company size", "Chart color"], [0, 1]),
+        "Breakout Review": ("Select the two breakout clues.", ["Aggressive pressure", "Acceptance beyond the level", "One large wall", "A brief wick through"], [0, 1]),
+    }
+    mark_levels = {
+        "Resting Stops": ("supportBounce", "support", "Mark the support hiding inferred sell stops."),
+        "Sell Stops": ("breakdown", "support", "Mark the level sell stops may sit below."),
+    }
+    candle_taps = {
+        "Downside Sweep": ("rejectionWickDown", 4, "Tap the rejection after the sweep."),
+        "Failed Breakout": ("resistanceRejection", 3, "Tap where the breakout fails."),
+        "Breakout Retest": ("breakoutRetest", 2, "Tap the defended retest."),
+    }
+    tape_tasks = {
+        "Bearish Continuation": ("hit", "Which tape clue supports continuation?", ["Seller prints regain persistence", "Buy prints accelerate at support", "Trade pace becomes balanced"]),
+        "Pullback Failure": ("lift", "What changes as the pullback fails?", ["Counter pressure gains urgency", "Aggression disappears", "The spread proves continuation"]),
+        "Continuation Review": ("accelerating", "What confirms continuation on tape?", ["Trend side pressure returns", "One opposing print appears", "Displayed depth stays unchanged"]),
+    }
+    footprint_tasks = {
+        "Pullback Depth": ("balanced_target", "Tap the most balanced execution row."),
+        "Order Flow at VWAP": ("total_target", "Tap the busiest row near VWAP."),
+    }
+    book_tasks = {
+        "Liquidity Pools": ("Which book holds the larger liquidity pool?", ["Book A, with thick clustered depth", "Book B, with gaps and thin depth", "Both show equal liquidity"]),
+        "Thin Liquidity": ("Which book should move more easily?", ["Book B, because depth is thin", "Book A, because depth is thick", "Both should move equally"]),
+    }
+    order_tasks = {
+        "Breakdown Pressure": ["Sellers hit bids", "Bids trade or withdraw", "Price moves below support", "Acceptance is tested"],
+        "Risk in Thin Liquidity": ["Inspect nearby depth", "Estimate slippage risk", "Reduce size if needed", "Define invalidation"],
+    }
+
+    for lesson_item in course["lessons"]:
+        title = lesson_item["title"]
+        replaced = []
+        for screen in lesson_item["screens"]:
+            if screen["type"] != "fill_blank":
+                replaced.append(screen)
+                continue
+            node = lesson_item["node"]
+            if title in scenario_mc:
+                question, options, explanation = scenario_mc[title]
+                replacement = {"type": "multiple_choice", "question": question, "options": options, "correct": 0, "explanation": explanation}
+            elif title == "Review the Order Flow Read":
+                replacement = {"type": "replay_compare", "question": "Which replay shows acceptance?", "options": ["Replay A", "Replay B", "Neither replay"], "correct": 0, "explanation": "Replay A clears offers and holds above the level. Replay B refreshes and rejects."}
+            elif title in evidence_select:
+                question, options, targets = evidence_select[title]
+                replacement = {"type": "evidence_select", "question": question, "options": options, "targets": targets, "explanation": "A complete read separates aggression, liquidity, and price response."}
+            elif title in mark_levels:
+                chart, level_kind, question = mark_levels[title]
+                replacement = {"type": "mark_level", "chart": chart, "level_kind": level_kind, "question": question, "explanation": "Stops are inferred beyond obvious levels rather than directly visible before triggering."}
+            elif title in candle_taps:
+                chart, target, question = candle_taps[title]
+                replacement = {"type": "tap_candle", "chart": chart, "target": target, "question": question, "explanation": "Price response distinguishes rejection from acceptance."}
+            elif title in tape_tasks:
+                event, question, options = tape_tasks[title]
+                replacement = {"type": "time_sales", "event": event, "question": question, "options": options, "correct": 0, "explanation": "Use completed executions to judge whether trend pressure returned."}
+            elif title in footprint_tasks:
+                event, question = footprint_tasks[title]
+                replacement = {"type": "footprint_tap", "event": event, "target": (node * 3 + 1) % 7, "question": question, "explanation": "The selected row contains the requested execution profile."}
+            elif title in book_tasks:
+                question, options = book_tasks[title]
+                replacement = {"type": "book_compare", "question": question, "options": options, "correct": 0, "explanation": "Nearby depth changes how much pressure price needs to travel."}
+            elif title in order_tasks:
+                items = order_tasks[title]
+                replacement = {"type": "sequence_builder", "question": "Build the decision sequence.", "items": items, "correct_order": items, "explanation": "Order flow decisions move from evidence to response and risk."}
+            else:
+                raise AssertionError(f"Unmapped fill question in {title}")
+            replaced.append(replacement)
+        lesson_item["screens"] = replaced
 
 
 def main():
@@ -993,6 +1089,8 @@ def main():
             })
             node += 1
 
+    replace_fill_questions(course)
+
     assert len(course["sections"]) == 10
     assert 80 <= len(course["nodes"]) <= 120
     assert len(course["lessons"]) == len(course["nodes"])
@@ -1000,9 +1098,10 @@ def main():
     assert [node["num"] for node in course["nodes"]] == expected_nodes
     assert [item["node"] for item in course["lessons"]] == expected_nodes
     all_screens = [screen for item in course["lessons"] for screen in item["screens"]]
+    assert not any(screen["type"] == "fill_blank" for screen in all_screens)
     visual_screens = [
         screen for screen in all_screens
-        if screen["type"] in {"aggressor", "book_drag", "book_compare", "live_chart", "time_sales", "time_sales_tap", "footprint", "footprint_tap", "orderflow_sim"} or "chart" in screen
+        if screen["type"] in {"aggressor", "book_drag", "book_compare", "evidence_select", "replay_compare", "live_chart", "time_sales", "time_sales_tap", "footprint", "footprint_tap", "orderflow_sim"} or "chart" in screen
     ]
     # The handcrafted foundation includes a few essential nonvisual checks.
     # Later units remain overwhelmingly visual despite shorter lesson lengths.
