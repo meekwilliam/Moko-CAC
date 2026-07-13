@@ -390,9 +390,14 @@ struct PathView: View {
         // Unit 1 uses the unit1b.svg badge shape and its own blue palette; every
         // other unit keeps the shared badge in its unit color.
         let isUnit1 = node.sectionIndex == 0
-        let silhouette = isUnit1 ? AnyShape(Unit1Badge()) : AnyShape(ButtonBadge())
+        let silhouette = isUnit1 ? AnyShape(Unit1BadgeBack()) : AnyShape(ButtonBadge())
+        let faceSilhouette = isUnit1 ? AnyShape(Unit1Badge()) : silhouette
         let face = isUnit1 ? Color(hex: "#3366E8") : c.main
         let wall = isUnit1 ? Color(hex: "#2257DB") : c.main.brightnessShifted(-0.15)
+        // unit1b.svg is nearly square (265×259). Do not squash it into the
+        // shared puck's 0.78 height ratio—the shared viewBox is part of the
+        // supplied silhouette.
+        let buttonHeightRatio: CGFloat = isUnit1 ? 259.0 / 265.0 : ovalRatio
 
         return ZStack {
             if testOutAvailable {
@@ -428,7 +433,7 @@ struct PathView: View {
             // into the puck's 3D plane so it looks like it emerges from the
             // button's base rather than floating flat in front of it.
             if state == .active && !testOutAvailable {
-                PulseRing(color: face, size: nodeSize, shape: silhouette)
+                PulseRing(color: face, size: nodeSize, heightRatio: buttonHeightRatio, shape: silhouette)
                     .offset(y: 5)
                     .allowsHitTesting(false)
             }
@@ -450,19 +455,19 @@ struct PathView: View {
                     // gradient (brighter top, base at the bottom) so it reads as
                     // a domed surface rather than a flat fill — the wall shading
                     // lives in PuckButtonStyle's slab.
-                    silhouette
-                        .fill(LinearGradient(
+                    faceSilhouette
+                        .fill(isUnit1 ? AnyShapeStyle(face) : AnyShapeStyle(LinearGradient(
                             colors: [face.brightnessShifted(0.07), face,
                                      face.brightnessShifted(-0.05)],
-                            startPoint: .top, endPoint: .bottom))
-                        .frame(width: nodeSize, height: nodeSize * ovalRatio)
+                            startPoint: .top, endPoint: .bottom)))
+                        .frame(width: nodeSize, height: nodeSize * buttonHeightRatio)
                         // Inner bottom shading for a rounded, puffed look.
                         .overlay(
-                            silhouette.stroke(Color.black.opacity(0.20), lineWidth: 4)
+                            faceSilhouette.stroke(Color.black.opacity(isUnit1 ? 0 : 0.20), lineWidth: 4)
                                 .padding(1).mask(
                                     LinearGradient(colors: [.clear, .black], startPoint: .center, endPoint: .bottom))
                         )
-                        .clipShape(silhouette)
+                        .clipShape(faceSilhouette)
 
                     // Completed lessons get a glossy sheen across the top, like
                     // a polished glass badge (reference).
@@ -474,7 +479,7 @@ struct PathView: View {
                             .frame(width: nodeSize * 0.72, height: nodeSize * 0.40)
                             .offset(y: -nodeSize * 0.16)
                             .blur(radius: 3)
-                            .clipShape(silhouette)
+                            .clipShape(faceSilhouette)
                             .allowsHitTesting(false)
                     }
 
@@ -487,8 +492,12 @@ struct PathView: View {
                 .frame(width: nodeSize, height: nodeSize)
                 .contentShape(silhouette)
             }
-            .buttonStyle(PuckButtonStyle(slab: wall, size: nodeSize, ovalRatio: ovalRatio,
-                                         shape: silhouette))
+            .buttonStyle(PuckButtonStyle(
+                slab: wall, size: nodeSize, ovalRatio: buttonHeightRatio,
+                depth: isUnit1 ? nodeSize * (21.0 / 259.0) : 10,
+                shape: silhouette,
+                exactBackShape: isUnit1 ? AnyShape(Unit1BadgeBack()) : nil
+            ))
         }
         .frame(width: nodeSize, height: nodeSize)
         // Tap callout: title + Start / Continue / Replay button, anchored below.
@@ -688,13 +697,14 @@ struct ButtonBadge: Shape {
     }
 }
 
-/// The Unit 1 node silhouette, traced from `unit1b.svg`'s face path.
+/// The Unit 1 face, mapped in the SVG's original shared 265×259 viewBox. Keeping
+/// the artboard coordinates (rather than normalizing the face's own bounds) is
+/// what preserves the supplied relationship between its face and blue back.
 struct Unit1Badge: Shape {
     func path(in rect: CGRect) -> Path {
-        let box = CGRect(x: -1.85903, y: -1.153, width: 267.874, height: 238.971)
         func pt(_ x: CGFloat, _ y: CGFloat) -> CGPoint {
-            CGPoint(x: rect.minX + (x - box.minX) / box.width * rect.width,
-                    y: rect.minY + (y - box.minY) / box.height * rect.height)
+            CGPoint(x: rect.minX + x / 265.0 * rect.width,
+                    y: rect.minY + y / 259.0 * rect.height)
         }
         var p = Path()
         p.move(to: pt(120.836, 3.45896))
@@ -707,6 +717,31 @@ struct Unit1Badge: Shape {
         p.addCurve(to: pt(43.3582, 224.38), control1: pt(53.7347, 237.818), control2: pt(46.1524, 232.425))
         p.addLine(to: pt(1.10884, 102.738))
         p.addCurve(to: pt(8.75919, 79.6345), control1: pt(-1.85903, 94.1926), control2: pt(1.27795, 84.7193))
+        p.closeSubpath()
+        return p
+    }
+}
+
+/// The darker rear path from unit1b.svg. It is not a shifted copy of the face:
+/// the SVG gives it a distinct lower edge and side geometry, so render it as
+/// its own exact layer.
+struct Unit1BadgeBack: Shape {
+    func path(in rect: CGRect) -> Path {
+        func pt(_ x: CGFloat, _ y: CGFloat) -> CGPoint {
+            CGPoint(x: rect.minX + x / 265.0 * rect.width,
+                    y: rect.minY + y / 259.0 * rect.height)
+        }
+        var p = Path()
+        p.move(to: pt(120.268, 5.43294))
+        p.addCurve(to: pt(143.887, 5.43294), control1: pt(127.245, 0.122866), control2: pt(136.909, 0.12286))
+        p.addLine(to: pt(252.639, 88.1976))
+        p.addCurve(to: pt(259.454, 109.493), control1: pt(259.158, 93.1593), control2: pt(261.881, 101.667))
+        p.addLine(to: pt(217.546, 244.595))
+        p.addCurve(to: pt(198.921, 258.318), control1: pt(215.014, 252.756), control2: pt(207.465, 258.318))
+        p.addLine(to: pt(65.2324, 258.318))
+        p.addCurve(to: pt(46.6083, 244.595), control1: pt(56.6885, 258.317), control2: pt(49.1397, 252.755))
+        p.addLine(to: pt(4.70014, 109.493))
+        p.addCurve(to: pt(11.5156, 88.1976), control1: pt(2.27288, 101.667), control2: pt(4.996, 93.1593))
         p.closeSubpath()
         return p
     }
@@ -747,13 +782,14 @@ struct Hexagon: Shape {
 private struct PulseRing: View {
     var color: Color
     var size: CGFloat
+    var heightRatio: CGFloat = 0.78
     var shape: AnyShape = AnyShape(Ellipse())
     @State private var breathe = false
 
     var body: some View {
         shape
             .fill(color.opacity(0.28))
-            .frame(width: size + 30, height: size * 0.78 + 30)
+            .frame(width: size + 30, height: size * heightRatio + 30)
             .scaleEffect(breathe ? 1.0 : 0.8)
             .onAppear {
                 withAnimation(.easeInOut(duration: 2.8).repeatForever(autoreverses: true)) {
@@ -834,6 +870,7 @@ private struct PuckButtonStyle: ButtonStyle {
     var ovalRatio: CGFloat = 0.78
     var depth: CGFloat = 10
     var shape: AnyShape = AnyShape(Ellipse())
+    var exactBackShape: AnyShape? = nil
     func makeBody(configuration: Configuration) -> some View {
         let h = size * ovalRatio
         return PressSink(isPressed: configuration.isPressed, minDown: 0.05, releaseResponse: 0.2) { down in
@@ -842,11 +879,18 @@ private struct PuckButtonStyle: ButtonStyle {
                 // (lit at the top of the wall, shadowed at the bottom) so the
                 // exposed rim reads as a real vertical surface instead of a
                 // flat block of colour sitting under the face.
-                shape
-                    .fill(LinearGradient(
-                        colors: [slab.brightnessShifted(0.05), slab.brightnessShifted(-0.08)],
-                        startPoint: .top, endPoint: .bottom))
-                    .frame(width: size, height: h).offset(y: depth)
+                if let exactBackShape {
+                    exactBackShape
+                        .fill(slab)
+                        .overlay(exactBackShape.stroke(Color.black.opacity(0.75), lineWidth: 0.5))
+                        .frame(width: size, height: h)
+                } else {
+                    shape
+                        .fill(LinearGradient(
+                            colors: [slab.brightnessShifted(0.05), slab.brightnessShifted(-0.08)],
+                            startPoint: .top, endPoint: .bottom))
+                        .frame(width: size, height: h).offset(y: depth)
+                }
                 configuration.label
                     // Full depth on press — the face lands flush on the slab so
                     // there's no visible lip (fully flat/2D). PressSink holds the
