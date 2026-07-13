@@ -1,6 +1,6 @@
 import Foundation
 
-// MARK: - Debug: focused evidence and trade-decision mechanic lab
+// MARK: - Debug: focused multi-signal mechanic lab
 // Reachable from Profile → Preferences. It never spends hearts or writes
 // progress, and exercises replay/history plus the new card-answer variants.
 
@@ -8,31 +8,34 @@ enum MultiSignalTestLesson {
     static func build() -> Lesson {
         let screens: [[String: Any]] = [
             [
-                "type": "orderflow_sim",
+                "type": "trade_decision",
                 "event": "seller_absorption",
                 "render_mode": "summary",
-                "question": "What's the strongest current read?",
-                "options": ["Possible seller absorption", "Clean upside acceptance", "Buyer aggression has disappeared"],
-                "correct": 0,
-                "explanation": "Aggressive buying remains active while a replenishing offer limits upward price progress.",
+                "scenario": "seller_absorption",
+                "question": "Buyers remain aggressive, but a replenishing offer stalls price. What's your decision?",
+                "options": ["LONG", "SHORT", "WAIT"],
+                "correct": 2,
+                "explanation": "Possible seller absorption is developing, but rejection and seller control are not confirmed. WAIT.",
             ],
             [
-                "type": "orderflow_sim",
+                "type": "trade_decision",
                 "event": "seller_absorption",
                 "render_mode": "raw_simplified",
-                "question": "What does the combined evidence suggest?",
-                "options": ["Possible seller absorption", "Clean upside acceptance", "Not enough market data is visible"],
-                "correct": 0,
-                "explanation": "The simplified chart, DOM, tape, and footprint show buying pressing into replenishing sell liquidity without matching price progress.",
+                "scenario": "seller_absorption",
+                "question": "Buying presses into replenishing sell liquidity without price progress. What's your decision?",
+                "options": ["LONG", "SHORT", "WAIT"],
+                "correct": 2,
+                "explanation": "Aggression is visible, but neither upside acceptance nor confirmed seller control supports a directional trade.",
             ],
             [
-                "type": "orderflow_sim",
+                "type": "trade_decision",
                 "event": "conflict",
                 "render_mode": "raw_full",
-                "question": "What's strongest?",
-                "options": ["Evidence conflicts, so direction is not confirmed", "Buyer continuation is fully confirmed", "The footprint should override price"],
-                "correct": 0,
-                "explanation": "The denser synchronized board contains both bullish pressure and evidence that the pressure is losing effectiveness.",
+                "scenario": "conflict",
+                "question": "Bullish pressure is losing effectiveness as the evidence diverges. What's your decision?",
+                "options": ["LONG", "SHORT", "WAIT"],
+                "correct": 2,
+                "explanation": "Conflicting pressure and price response leave direction unconfirmed, so WAIT.",
             ],
             [
                 "type": "orderflow_sim_tap",
@@ -59,13 +62,14 @@ enum MultiSignalTestLesson {
                 "explanation": "Small nearby depth and gaps in Level II create the clearest immediate slippage risk.",
             ],
             [
-                "type": "orderflow_sim",
+                "type": "trade_decision",
                 "event": "conflict",
                 "render_mode": "raw_full",
-                "question": "How strong is the current directional read?",
-                "options": ["Developing, but not confirmed", "Strong and fully confirmed", "The first signal cannot be contradicted", "No evidence is available"],
-                "correct": 0,
-                "explanation": "Several directional clues appear, but replenishment and weakening price response keep the read unresolved.",
+                "scenario": "conflict",
+                "question": "Directional clues appear, but replenishment and price response disagree. What's your decision?",
+                "options": ["LONG", "SHORT", "WAIT"],
+                "correct": 2,
+                "explanation": "The read remains unresolved, so neither directional entry is justified yet.",
             ],
             [
                 "type": "sequence_builder",
@@ -110,37 +114,37 @@ enum MultiSignalTestLesson {
                 "explanation": "Each decision is graded from the evidence visible at that stage.",
             ],
             [
-                "type": "trade_manage",
+                "type": "trade_decision",
                 "scenario": "cvd_warning",
-                "question": "You are long. Buying fades and CVD fails to confirm the latest high. What now?",
-                "options": ["HOLD", "EXIT", "REDUCE", "WAIT FOR MORE EVIDENCE"],
+                "question": "Buying fades and CVD fails to confirm the latest high. What's your decision?",
+                "options": ["LONG", "SHORT", "WAIT"],
                 "correct": 2,
-                "decision_quality": "Risk is increasing while confirmation weakens.",
+                "decision_quality": "Directional confirmation is weakening.",
                 "trade_outcome": "loss",
                 "explanation": "Reducing is the best-supported response because the long thesis has weakened without being fully invalidated.",
             ],
             [
-                "type": "entry_select",
+                "type": "trade_decision",
                 "scenario": "thin_risk",
-                "question": "The spread widens as price jumps through thin depth. Which entry is best supported?",
-                "options": ["MARKET", "LIMIT", "NO ENTRY"],
+                "question": "The spread widens as price jumps through thin depth. What's your decision?",
+                "options": ["LONG", "SHORT", "WAIT"],
                 "correct": 2,
-                "explanation": "Execution risk is too unstable. No entry is stronger than forcing an order into widening spread and sparse depth.",
+                "explanation": "Execution risk is too unstable to justify either directional entry, so WAIT.",
             ],
             [
-                "type": "invalidation_mark",
-                "scenario": "breakout",
-                "question": "You are long after acceptance. Tap the level whose loss invalidates the read.",
-                "options": ["101.40 extension", "101.00 reclaimed resistance", "100.65 distant swing low"],
+                "type": "trade_decision",
+                "scenario": "breakdown_pressure",
+                "question": "Seller pressure regains control and price accepts below support. What's your decision?",
+                "options": ["LONG", "SHORT", "WAIT"],
                 "correct": 1,
-                "explanation": "Losing the reclaimed resistance removes the acceptance evidence supporting the long thesis.",
+                "explanation": "Renewed seller aggression and downside acceptance align for SHORT.",
             ],
         ]
 
         let data = try! JSONSerialization.data(withJSONObject: screens)
         let decoded = try! JSONDecoder().decode([LessonScreen].self, from: data)
-        return Lesson(node: -2, title: "Trade Decision Lab",
-                      celebration: "Trade decision mechanic test complete.", featurePromo: nil,
+        return Lesson(node: -2, title: "Multi Signal Read Lab",
+                      celebration: "Multi signal mechanic test complete.", featurePromo: nil,
                       lessonType: "TEST_OUT", screens: decoded)
     }
 }
