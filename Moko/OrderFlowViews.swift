@@ -906,20 +906,24 @@ struct FootprintPanel: View {
             }
             .overlay(candleOverlay.allowsHitTesting(false))
 
-            HStack(spacing: 4) {
+            HStack(spacing: 0) {
                 Text(fmtVol(bidTotal)).foregroundColor(askColor)
                     .frame(maxWidth: .infinity).lineLimit(1).minimumScaleFactor(0.6)
-                Text("Δ " + (delta >= 0 ? "+" : "") + fmtVol(delta))
-                    .font(Theme.font(12, .black))
-                    .foregroundColor(delta >= 0 ? bidColor : askColor)
-                    .lineLimit(1).fixedSize().layoutPriority(1)
-                    .padding(.horizontal, 7).padding(.vertical, 4)
-                    .background(RoundedRectangle(cornerRadius: 7)
-                        .fill((delta >= 0 ? bidColor : askColor).opacity(0.16)))
+                Color.clear.frame(width: 44)
                 Text(fmtVol(askTotal)).foregroundColor(bidColor)
                     .frame(maxWidth: .infinity).lineLimit(1).minimumScaleFactor(0.6)
             }
-            .font(Theme.font(15, .black)).padding(.top, 6).padding(.bottom, 8)
+            .font(Theme.font(15, .black)).padding(.top, 6).padding(.bottom, 6)
+
+            Text("Δ " + (delta >= 0 ? "+" : "") + fmtVol(delta))
+                .font(Theme.font(13, .black))
+                .foregroundColor(delta >= 0 ? bidColor : askColor)
+                .lineLimit(1).minimumScaleFactor(0.7)
+                .frame(maxWidth: .infinity)
+                .padding(.vertical, 5)
+                .background(RoundedRectangle(cornerRadius: 7)
+                    .fill((delta >= 0 ? bidColor : askColor).opacity(0.16)))
+                .padding(.bottom, 8)
 
             HStack(spacing: 10) {
                 Text("CVD").font(Theme.font(10, .black)).foregroundColor(Theme.muted)
@@ -1359,32 +1363,14 @@ struct OrderFlowSimulationView: View {
 
     var body: some View {
         VStack(alignment: .leading, spacing: 13) {
-            HStack {
-                Text("MULTI SIGNAL READ").font(Theme.font(10, .black)).foregroundColor(Theme.muted)
-                if player.isTestLesson {
-                    Text(difficultyLabel)
-                        .font(Theme.font(8, .black)).foregroundColor(.purple)
-                        .padding(.horizontal, 6).padding(.vertical, 3)
-                        .background(Capsule().fill(Color.purple.opacity(0.12)))
-                }
-                Spacer()
-                if isDecisionMechanic {
-                    Button(action: togglePause) {
-                        Image(systemName: simulationPaused ? "play.fill" : "pause.fill")
-                            .font(.system(size: 11, weight: .black)).foregroundColor(.purple)
-                            .frame(width: 28, height: 28)
-                    }
-                    .buttonStyle(.plain)
-                    .accessibilityLabel(simulationPaused ? "Resume market simulation" : "Pause market simulation")
-                    Button(action: restartDecisionReplay) {
-                        Image(systemName: "arrow.counterclockwise")
-                            .font(.system(size: 11, weight: .black)).foregroundColor(.purple)
-                            .frame(width: 28, height: 28)
-                    }
-                    .buttonStyle(.plain)
-                    .accessibilityLabel("Restart market simulation")
-                } else if renderMode == .summary {
-                    if sequenceFinished {
+            // The rich-panel board is the whole read — no "MULTI SIGNAL READ"
+            // heading, difficulty chip, or pause/replay chrome. Legacy evidence
+            // card modes keep their header.
+            if !useRichPanels {
+                HStack {
+                    Text("MULTI SIGNAL READ").font(Theme.font(10, .black)).foregroundColor(Theme.muted)
+                    Spacer()
+                    if renderMode == .summary && sequenceFinished {
                         Button(action: restartEvidence) {
                             Label("Replay evidence", systemImage: "arrow.counterclockwise")
                                 .font(Theme.font(10, .black)).foregroundColor(.purple)
@@ -1395,8 +1381,12 @@ struct OrderFlowSimulationView: View {
                 }
             }
 
-            Text(displayQuestion)
-                .font(Theme.questionFont(20, .heavy)).foregroundColor(ink)
+            // Decision scenarios (Long/Wait/Short) are just charts + buttons —
+            // no prompt text. Other sim questions keep their question.
+            if !isDecisionMechanic {
+                Text(displayQuestion)
+                    .font(Theme.questionFont(20, .heavy)).foregroundColor(ink)
+            }
 
             if screen.type == "trade_scenario", let stages = screen.tradeStages {
                 HStack(spacing: 6) {

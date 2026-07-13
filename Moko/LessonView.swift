@@ -471,11 +471,18 @@ struct LessonView: View {
         }
     }
 
+    /// The order-flow simulation/decision boards are meant to read as a clean
+    /// live chart with just answer buttons — no TEST OUT badge on top.
+    private func isCleanBoard(_ type: String) -> Bool {
+        ["trade_decision", "trade_scenario", "trade_manage", "entry_select",
+         "invalidation_mark", "orderflow_sim", "orderflow_sim_tap", "orderflow_sim_select"].contains(type)
+    }
+
     private func questionPage(_ pagePlayer: LessonPlayer) -> some View {
         VStack(spacing: 0) {
             ScrollView {
                 VStack(alignment: .leading, spacing: 10) {
-                    if pagePlayer.lesson.lessonType == "TEST_OUT" { testOutBadge }
+                    if pagePlayer.lesson.lessonType == "TEST_OUT" && !isCleanBoard(pagePlayer.screen.type) { testOutBadge }
                     if pagePlayer.screen.isPreviousMistake { retryBadge }
                     LessonScreenRouter(player: pagePlayer, ink: ink)
                 }
