@@ -679,7 +679,9 @@ struct TimeSalesView: View {
                 // start; unrevealed rows are just transparent. Otherwise the box
                 // grows as prints reveal and shoves the answer choices down.
                 ForEach(Array(prints.enumerated()), id: \.element.id) { index, print in
-                    let shown = index >= prints.count - visibleRows
+                    // Reveal from the top down (newest prints fill downward) rather
+                    // than lighting up the bottom rows and growing upward.
+                    let shown = index < visibleRows
                     HStack {
                         Text(print.time).frame(maxWidth: .infinity, alignment: .leading)
                         Text(String(format: "%.2f", print.price)).frame(maxWidth: .infinity)
