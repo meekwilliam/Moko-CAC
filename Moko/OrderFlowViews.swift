@@ -1143,21 +1143,47 @@ struct OrderFlowSimulationView: View {
     var ink: Color
 
     private var screen: LessonScreen { player.screen }
-    @State private var phase = 0
-    private let ticker = Timer.publish(every: 0.65, on: .main, in: .common).autoconnect()
+    @State private var stages = [0, 0, 0, 0]
+    @State private var sequenceFinished = false
+    @State private var replayID = 0
+    @State private var expandedCard: Int?
+    @State private var inspectedStages: [Int: Int] = [:]
 
     var body: some View {
         VStack(alignment: .leading, spacing: 13) {
-            Text("MULTI SIGNAL READ").font(Theme.font(10, .black)).foregroundColor(Theme.muted)
+            HStack {
+                Text("MULTI SIGNAL READ").font(Theme.font(10, .black)).foregroundColor(Theme.muted)
+                Spacer()
+                if sequenceFinished {
+                    Button(action: replay) {
+                        Label("Replay evidence", systemImage: "arrow.counterclockwise")
+                            .font(Theme.font(10, .black)).foregroundColor(.purple)
+                    }
+                    .buttonStyle(.plain)
+                    .accessibilityLabel("Replay evidence sequence")
+                }
+            }
 
-            Text(screen.question ?? "What is the strongest current observation?")
+            Text(displayQuestion)
                 .font(Theme.questionFont(20, .heavy)).foregroundColor(ink)
 
             VStack(spacing: 7) {
-                evidenceRow(icon: "chart.xyaxis.line", title: "PRICE + VWAP", value: evidence.price[phase > 0 ? 1 : 0], tint: .cyan)
-                evidenceRow(icon: "list.bullet.rectangle", title: "LEVEL II", value: evidence.book[phase > 1 ? 1 : 0], tint: askColor)
-                evidenceRow(icon: "bolt.fill", title: "TIME & SALES", value: evidence.tape[phase > 2 ? 1 : 0], tint: bidColor)
-                evidenceRow(icon: "square.grid.3x3.fill", title: "FOOTPRINT", value: evidence.footprint[phase > 3 ? 1 : 0], tint: .orange)
+                ForEach(Array(tracks.enumerated()), id: \.offset) { index, track in
+                    MultiSignalEvidenceCard(
+                        track: track,
+                        currentStage: stages[index],
+                        inspectedStage: inspectedStages[index],
+                        expanded: expandedCard == index,
+                        selected: isCardSelected(index),
+                        revealed: player.revealed,
+                        isCorrect: isCorrectCard(index),
+                        replayID: replayID,
+                        ink: ink,
+                        onTap: { cardTapped(index) },
+                        onToggleHistory: { toggleHistory(index) },
+                        onInspect: { inspectedStages[index] = $0 }
+                    )
+                }
                 if screen.footprintPreview == true {
                     Text("EXTRA PREVIEW  Delta compares aggressive buying with selling. This clue is supplemental and is taught in Unit 5.")
                         .font(Theme.font(9, .bold)).foregroundColor(.orange)
@@ -1168,17 +1194,102 @@ struct OrderFlowSimulationView: View {
             .padding(10)
             .background(RoundedRectangle(cornerRadius: 16).fill(Color.black.opacity(0.24)))
             .overlay(RoundedRectangle(cornerRadius: 16).strokeBorder(Color.purple.opacity(0.55), lineWidth: 1.5))
-            .onReceive(ticker) { _ in
-                guard !player.revealed, phase < 4 else { return }
-                withAnimation(.easeInOut(duration: 0.25)) { phase += 1 }
-            }
 
-            VStack(spacing: 8) {
-                ForEach(Array(player.currentOptions.enumerated()), id: \.offset) { index, label in
-                    choice(index: index, label: label)
+            if screen.type == "orderflow_sim_tap" {
+                Label(sequenceFinished ? "Tap the evidence card that answers the question" : "Watch the evidence develop", systemImage: "hand.tap.fill")
+                    .font(Theme.font(12, .bold)).foregroundColor(Theme.muted)
+            } else if screen.type == "orderflow_sim_select" {
+                Label(sequenceFinished ? "Select \(screen.targets?.count ?? 2) evidence cards" : "Watch the evidence develop", systemImage: "checklist")
+                    .font(Theme.font(12, .bold)).foregroundColor(Theme.muted)
+            } else {
+                VStack(spacing: 8) {
+                    ForEach(Array(player.currentOptions.enumerated()), id: \.offset) { index, label in
+                        choice(index: index, label: label)
+                    }
                 }
+                .allowsHitTesting(sequenceFinished || player.revealed)
+                .opacity(sequenceFinished || player.revealed ? 1 : 0.55)
             }
         }
+        .task(id: replayID) { await playEvidence() }
+    }
+
+    private var tracks: [MultiSignalTrack] {
+        [
+            MultiSignalTrack(icon: "chart.xyaxis.line", title: "PRICE + VWAP", states: evidence.price, tint: .cyan),
+            MultiSignalTrack(icon: "list.bullet.rectangle", title: "LEVEL II", states: evidence.book, tint: askColor),
+            MultiSignalTrack(icon: "bolt.fill", title: "TIME & SALES", states: evidence.tape, tint: bidColor),
+            MultiSignalTrack(icon: "square.grid.3x3.fill", title: "FOOTPRINT", states: evidence.footprint, tint: .orange),
+        ]
+    }
+
+    /// Advanced and expert scenarios should make the evidence carry the read
+    /// instead of restating most of it in the prompt. Specific tasks such as
+    /// identifying an aggressor or invalidation keep their authored wording.
+    private var displayQuestion: String {
+        let authored = screen.question ?? "What is the strongest current observation?"
+        guard player.lesson.node >= 28,
+              authored.localizedCaseInsensitiveContains("what's strongest") else { return authored }
+        return "What's strongest?"
+    }
+
+    @MainActor private func playEvidence() async {
+        stages = [0, 0, 0, 0]
+        sequenceFinished = false
+        expandedCard = nil
+        inspectedStages = [:]
+        do {
+            try await Task.sleep(nanoseconds: 1_800_000_000)
+            guard !Task.isCancelled else { return }
+            withAnimation(.easeInOut(duration: 0.22)) { stages[2] = min(1, tracks[2].states.count - 1) }
+            try await Task.sleep(nanoseconds: 220_000_000)
+            guard !Task.isCancelled else { return }
+            withAnimation(.easeInOut(duration: 0.22)) { stages[3] = min(1, tracks[3].states.count - 1) }
+            try await Task.sleep(nanoseconds: 1_280_000_000)
+            guard !Task.isCancelled else { return }
+            withAnimation(.easeInOut(duration: 0.22)) { stages[0] = min(1, tracks[0].states.count - 1) }
+            try await Task.sleep(nanoseconds: 220_000_000)
+            guard !Task.isCancelled else { return }
+            withAnimation(.easeInOut(duration: 0.22)) { stages[1] = min(1, tracks[1].states.count - 1) }
+            sequenceFinished = true
+        } catch { }
+    }
+
+    private func replay() {
+        Haptics.selection()
+        replayID += 1
+    }
+
+    private func cardTapped(_ index: Int) {
+        guard !player.revealed else { return }
+        switch screen.type {
+        case "orderflow_sim_tap":
+            guard sequenceFinished else { return }
+            Haptics.selection()
+            player.selectedIndex = index
+        case "orderflow_sim_select":
+            guard sequenceFinished else { return }
+            Haptics.selection()
+            if player.selectedSet.contains(index) { player.selectedSet.remove(index) }
+            else if player.selectedSet.count < (screen.targets?.count ?? 2) { player.selectedSet.insert(index) }
+        default:
+            toggleHistory(index)
+        }
+    }
+
+    private func toggleHistory(_ index: Int) {
+        Haptics.selection()
+        expandedCard = expandedCard == index ? nil : index
+        if expandedCard == index { inspectedStages[index] = stages[index] }
+    }
+
+    private func isCardSelected(_ index: Int) -> Bool {
+        screen.type == "orderflow_sim_select" ? player.selectedSet.contains(index) : player.selectedIndex == index
+    }
+
+    private func isCorrectCard(_ index: Int) -> Bool {
+        if screen.type == "orderflow_sim_select" { return Set(screen.targets ?? []).contains(index) }
+        return screen.target == index
     }
 
     private var evidence: (price: [String], book: [String], tape: [String], footprint: [String]) {
@@ -1214,25 +1325,142 @@ struct OrderFlowSimulationView: View {
         case "thin_liquidity":
             return (["Testing resistance", "Price gaps between prints"], ["Depth thins near price", "Spread widens after each fill"], ["Prints arrive faster", "Fills land at worse prices"], ["Volume light at each level", "Delta swings on little size"])
         default:
-            return (["Testing resistance above VWAP", "Stalling at resistance above VWAP"], ["Large offer at 101.25", "Offer refreshes after repeated fills"], ["Buying pace increasing", "Fast buyer initiated prints"], ["Ask volume dominates", "+840 delta with little progress"])
+            return (["Approaching resistance above VWAP", "Stalling at resistance above VWAP"], ["Large offer appears", "Offer refreshes after repeated fills"], ["Buyer initiated prints begin", "Buying pace increasing"], ["Execution is near balanced", "Ask volume begins dominating"])
         }
-    }
-
-    private func evidenceRow(icon: String, title: String, value: String, tint: Color) -> some View {
-        HStack(spacing: 10) {
-            Image(systemName: icon).font(.system(size: 14, weight: .black)).foregroundColor(tint).frame(width: 22)
-            VStack(alignment: .leading, spacing: 2) {
-                Text(title).font(Theme.font(9, .black)).foregroundColor(Theme.muted)
-                Text(value).font(Theme.font(12, .bold)).foregroundColor(ink).lineLimit(1).minimumScaleFactor(0.8)
-            }
-            Spacer()
-            Circle().fill(tint).frame(width: 7, height: 7)
-        }
-        .padding(.horizontal, 9).padding(.vertical, 7)
-        .background(RoundedRectangle(cornerRadius: 10).fill(tint.opacity(0.09)))
     }
 
     private func choice(index: Int, label: String) -> some View {
         OFOption(player: player, index: index, label: label, ink: ink)
+    }
+}
+
+private struct MultiSignalTrack {
+    let icon: String
+    let title: String
+    let states: [String]
+    let tint: Color
+}
+
+private struct MultiSignalEvidenceCard: View {
+    let track: MultiSignalTrack
+    let currentStage: Int
+    let inspectedStage: Int?
+    let expanded: Bool
+    let selected: Bool
+    let revealed: Bool
+    let isCorrect: Bool
+    let replayID: Int
+    let ink: Color
+    let onTap: () -> Void
+    let onToggleHistory: () -> Void
+    let onInspect: (Int) -> Void
+
+    @State private var displayedValue: String
+    @State private var textOpacity = 1.0
+    @State private var textOffset: CGFloat = 0
+    @State private var pulse = false
+
+    init(track: MultiSignalTrack, currentStage: Int, inspectedStage: Int?, expanded: Bool,
+         selected: Bool, revealed: Bool, isCorrect: Bool, replayID: Int, ink: Color,
+         onTap: @escaping () -> Void, onToggleHistory: @escaping () -> Void,
+         onInspect: @escaping (Int) -> Void) {
+        self.track = track
+        self.currentStage = currentStage
+        self.inspectedStage = inspectedStage
+        self.expanded = expanded
+        self.selected = selected
+        self.revealed = revealed
+        self.isCorrect = isCorrect
+        self.replayID = replayID
+        self.ink = ink
+        self.onTap = onTap
+        self.onToggleHistory = onToggleHistory
+        self.onInspect = onInspect
+        _displayedValue = State(initialValue: track.states[min(inspectedStage ?? currentStage, track.states.count - 1)])
+    }
+
+    private var effectiveStage: Int { min(inspectedStage ?? currentStage, track.states.count - 1) }
+    private var effectiveValue: String { track.states[effectiveStage] }
+
+    var body: some View {
+        VStack(alignment: .leading, spacing: 7) {
+            HStack(spacing: 10) {
+                Image(systemName: track.icon)
+                    .font(.system(size: 14, weight: .black)).foregroundColor(track.tint).frame(width: 22)
+                    .scaleEffect(pulse ? 1.08 : 1)
+                VStack(alignment: .leading, spacing: 3) {
+                    HStack(spacing: 7) {
+                        Text(track.title).font(Theme.font(9, .black)).foregroundColor(Theme.muted)
+                        Spacer()
+                        if track.states.count > 1 {
+                            HStack(spacing: 4) {
+                                ForEach(track.states.indices, id: \.self) { index in
+                                    Circle().fill(index == currentStage ? track.tint : track.tint.opacity(0.22))
+                                        .frame(width: 6, height: 6)
+                                }
+                            }
+                        }
+                        Image(systemName: expanded ? "chevron.up" : "clock.arrow.circlepath")
+                            .font(.system(size: 10, weight: .bold)).foregroundColor(Theme.muted)
+                            .frame(width: 22, height: 22).contentShape(Rectangle())
+                            .highPriorityGesture(TapGesture().onEnded { onToggleHistory() })
+                    }
+                    Text(displayedValue)
+                        .font(Theme.font(12, .bold)).foregroundColor(ink)
+                        .lineLimit(2).fixedSize(horizontal: false, vertical: true)
+                        .frame(maxWidth: .infinity, minHeight: 32, alignment: .topLeading)
+                        .opacity(textOpacity).offset(y: textOffset)
+                }
+            }
+
+            if expanded {
+                VStack(alignment: .leading, spacing: 5) {
+                    ForEach(Array(track.states.indices.prefix(currentStage + 1)), id: \.self) { index in
+                        Button(action: { onInspect(index) }) {
+                            HStack(alignment: .top, spacing: 7) {
+                                Circle().fill(index == currentStage ? track.tint : track.tint.opacity(0.22))
+                                    .frame(width: 7, height: 7).padding(.top, 4)
+                                Text("\(index + 1). \(track.states[index])")
+                                    .font(Theme.font(10, index == currentStage ? .black : .bold))
+                                    .foregroundColor(index == effectiveStage ? ink : Theme.muted)
+                                    .multilineTextAlignment(.leading)
+                                Spacer(minLength: 0)
+                            }
+                        }
+                        .buttonStyle(.plain)
+                    }
+                }
+                .padding(.leading, 32).padding(.top, 2)
+            }
+        }
+        .padding(.horizontal, 9).padding(.vertical, 7)
+        .background(RoundedRectangle(cornerRadius: 10).fill(track.tint.opacity(selected ? 0.16 : 0.09)))
+        .overlay(RoundedRectangle(cornerRadius: 10).strokeBorder(borderColor, lineWidth: selected || (revealed && isCorrect) ? 2 : 1))
+        .contentShape(Rectangle())
+        .onTapGesture(perform: onTap)
+        .onChange(of: effectiveValue) { _, newValue in transition(to: newValue) }
+        .onChange(of: currentStage) { _, _ in pulseChange() }
+    }
+
+    private var borderColor: Color {
+        if revealed && isCorrect { return bidColor }
+        if revealed && selected && !isCorrect { return askColor }
+        return selected ? Theme.answer : track.tint.opacity(0.28)
+    }
+
+    private func transition(to newValue: String) {
+        withAnimation(.easeOut(duration: 0.10)) { textOpacity = 0; textOffset = -4 }
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.11) {
+            displayedValue = newValue
+            textOffset = 4
+            withAnimation(.easeIn(duration: 0.12)) { textOpacity = 1; textOffset = 0 }
+        }
+    }
+
+    private func pulseChange() {
+        withAnimation(.easeOut(duration: 0.10)) { pulse = true }
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.11) {
+            withAnimation(.easeIn(duration: 0.12)) { pulse = false }
+        }
     }
 }

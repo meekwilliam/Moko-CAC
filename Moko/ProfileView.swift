@@ -15,6 +15,7 @@ struct ProfileView: View {
     var onUnlockAll: () -> Void = {}
     var onGrantTestTreats: () -> Void = {}
     var onTestMechanics: () -> Void = {}
+    var onTestMultiSignal: () -> Void = {}
     var onPreviewStreak: () -> Void = {}
     var onBumpStreak: () -> Void = {}
     var onTestOnboarding: () -> Void = {}
@@ -144,6 +145,10 @@ struct ProfileView: View {
                 prefButton(iconSystem: "hammer.fill", iconColor: Color(hex: "#8B5CF6"),
                            iconBg: Color(hex: "#8B5CF6").opacity(0.12), label: "Test All Question Mechanics") {
                     onTestMechanics()
+                }
+                prefButton(iconSystem: "square.stack.3d.up.fill", iconColor: Color(hex: "#A855F7"),
+                           iconBg: Color(hex: "#A855F7").opacity(0.12), label: "Test Multi Signal Read") {
+                    onTestMultiSignal()
                 }
                 prefButton(iconSystem: "flame.fill", iconColor: Color(hex: "#F59E0B"),
                            iconBg: Color(hex: "#F59E0B").opacity(0.12), label: "Preview Streak Screen (Test)") {

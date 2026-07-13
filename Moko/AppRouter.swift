@@ -51,6 +51,7 @@ final class AppRouter: ObservableObject {
     var onOpenHearts: (() -> Void)?
     var onUnlockAll: (() -> Void)?
     var onOpenMechanicsTest: (() -> Void)?
+    var onOpenMultiSignalTest: (() -> Void)?
     var onPreviewStreak: (() -> Void)?
     var onBumpStreak: (() -> Void)?
     var onGrantTestTreats: (() -> Void)?

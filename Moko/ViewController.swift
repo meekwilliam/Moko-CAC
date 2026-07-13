@@ -117,6 +117,7 @@ class ViewController: UIViewController {
             Haptics.impact(.medium)
         }
         appRouter.onOpenMechanicsTest = { [weak self] in self?.openMechanicsTestLesson() }
+        appRouter.onOpenMultiSignalTest = { [weak self] in self?.openMultiSignalTestLesson() }
         appRouter.onPreviewStreak = { [weak self] in
             guard let self = self else { return }
             // Preview only — doesn't touch real streak/progress data.
@@ -553,6 +554,16 @@ class ViewController: UIViewController {
         appRouter.currentLessonIsUnitTest = false
         appRouter.isTestLesson = true
         presentNativeLesson(lesson: MechanicsTestLesson.build(), startIndex: 0)
+    }
+
+    /// Debug: focused lab for the evolving multi-signal evidence container.
+    private func openMultiSignalTestLesson() {
+        appRouter.currentLessonIsReplay = false
+        appRouter.currentLessonUnitColor = (Color(hex: "#A855F7"), Color(hex: "#7E22CE"))
+        appRouter.currentLessonBonusEligible = false
+        appRouter.currentLessonIsUnitTest = false
+        appRouter.isTestLesson = true
+        presentNativeLesson(lesson: MultiSignalTestLesson.build(), startIndex: 0)
     }
 
     private func presentNativeLesson(lesson: Lesson, startIndex: Int) {
