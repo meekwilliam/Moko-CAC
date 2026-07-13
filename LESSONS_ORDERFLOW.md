@@ -592,15 +592,15 @@ Price response
 Candle color alone
 WHY: A complete read combines action, liquidity, and response.
 
-[TRADE_DECISION] Buyers repeatedly lift the offer at resistance, but each push makes less price progress. What's your decision?
+[TRADE_DECISION] Support breaks, price accepts below, and sellers keep hitting the bid. What's your decision?
 VISUAL: The full synchronized Trade Decision board shows Price and Context, DOM and Tape, and Footprint and Delta evolving from one market event.
 SKILL: trade_decision_quality
-SCENARIO: conflict
+SCENARIO: hit
 LONG
 SHORT
 WAIT
-ANSWER: WAIT
-WHY: Buyer effort is rising while price progress fades — momentum is stalling but sellers haven't confirmed control. WAIT.
+ANSWER: SHORT
+WHY: A broken support with acceptance below and sellers pressing the bid is confirmed seller control — go short.
 
 NODE 12
 TITLE: Boss Battle: Read the Book
@@ -713,15 +713,15 @@ EVENT: buyer_sequence_break
 TARGET: 3
 WHY: This ask side execution interrupts the seller initiated sequence.
 
-[TRADE_DECISION] Positive delta expands while a large offer keeps rebuilding and the latest high fails to hold. What's your decision?
+[TRADE_DECISION] Buyers repeatedly lift the offer at resistance, but each push makes less price progress. What's your decision?
 VISUAL: The full synchronized Trade Decision board shows Price and Context, DOM and Tape, and Footprint and Delta evolving from one market event.
 SKILL: trade_decision_quality
-SCENARIO: chop
+SCENARIO: conflict
 LONG
 SHORT
 WAIT
 ANSWER: WAIT
-WHY: Delta is positive but a refreshing offer is capping price and the high failed — buying isn't producing acceptance. WAIT.
+WHY: Buyer effort is rising while price progress fades — momentum is stalling but sellers haven't confirmed control. WAIT.
 
 [MATCH] Match each clue.
 SKILL: reading_time_sales
@@ -767,15 +767,15 @@ EVENT: large_print
 TARGET: 4
 WHY: This execution is much larger than the surrounding prints.
 
-[TRADE_DECISION] Support breaks, price accepts below, and sellers keep hitting the bid. What's your decision?
+[TRADE_DECISION] Bids replenish under price while each dip is bought and the high extends. What's your decision?
 VISUAL: The full synchronized Trade Decision board shows Price and Context, DOM and Tape, and Footprint and Delta evolving from one market event.
 SKILL: trade_decision_quality
-SCENARIO: hit
+SCENARIO: delta_positive
 LONG
 SHORT
 WAIT
-ANSWER: SHORT
-WHY: A broken support with acceptance below and sellers pressing the bid is confirmed seller control — go short.
+ANSWER: LONG
+WHY: Demand refreshing beneath price while every pullback is absorbed and highs extend is confirmed buyer control — go long.
 
 [AGGRESSOR] Who's crossing the spread?
 VISUAL: An animated Level II ladder shows prices between bid and ask columns, with ask sizes being consumed by incoming buy orders.
@@ -821,15 +821,15 @@ EVENT: seller_target
 TARGET: 5
 WHY: The selected trade executes at the bid and is seller initiated.
 
-[TRADE_DECISION] Buyer-initiated tape accelerates into the POC, yet price stays trapped beneath the same offer. What's your decision?
+[TRADE_DECISION] Buyers sweep the offer stack and price accepts above the breakout with no pullback. What's your decision?
 VISUAL: The full synchronized Trade Decision board shows Price and Context, DOM and Tape, and Footprint and Delta evolving from one market event.
 SKILL: trade_decision_quality
-SCENARIO: balanced_target
+SCENARIO: lift
 LONG
 SHORT
 WAIT
-ANSWER: WAIT
-WHY: Aggression is high but price is pinned under supply with no breakout — no acceptance yet. WAIT.
+ANSWER: LONG
+WHY: A completed sweep with acceptance above the breakout and no supply response is decisive buyer control — go long.
 
 [EVIDENCE_SELECT] Select both confirmation clues.
 VISUAL: Four evidence cards separate aggression, liquidity, price response, and an irrelevant clue. The learner must select the required combination.
@@ -926,15 +926,15 @@ EVENT: stall
 TARGET: 6
 WHY: Prints continue but size and pace begin fading here.
 
-[TRADE_DECISION] Ask-side footprint dominates, but price rejects the breakout level and returns inside value. What's your decision?
+[TRADE_DECISION] Sellers sweep the bid stack and price accepts under the breakdown. What's your decision?
 VISUAL: The full synchronized Trade Decision board shows Price and Context, DOM and Tape, and Footprint and Delta evolving from one market event.
 SKILL: trade_decision_quality
-SCENARIO: buyer_absorption
+SCENARIO: hit
 LONG
 SHORT
 WAIT
-ANSWER: WAIT
-WHY: The footprint favors buyers, yet price rejected the level and fell back into value — the breakout failed to confirm. WAIT.
+ANSWER: SHORT
+WHY: A completed bid sweep with acceptance below the breakdown is confirmed selling — take the short.
 
 [EVIDENCE_SELECT] Select both confirmation clues for Acceleration, Slowdown & False Urgency.
 VISUAL: Four evidence cards separate aggression, liquidity, price response, and an irrelevant clue. The learner must select the required combination.
@@ -967,7 +967,7 @@ EVENT: sequence_break
 TARGET: 1
 WHY: The selected print is the first opposing execution at the level.
 
-[TRADE_DECISION] Bids replenish under price while each dip is bought and the high extends. What's your decision?
+[TRADE_DECISION] CVD makes new highs with price and the offer above keeps getting lifted. What's your decision?
 VISUAL: The full synchronized Trade Decision board shows Price and Context, DOM and Tape, and Footprint and Delta evolving from one market event.
 SKILL: trade_decision_quality
 SCENARIO: delta_positive
@@ -975,7 +975,7 @@ LONG
 SHORT
 WAIT
 ANSWER: LONG
-WHY: Demand refreshing beneath price while every pullback is absorbed and highs extend is confirmed buyer control — go long.
+WHY: Rising CVD confirming new price highs while offers are consumed is aligned buying pressure — the long is supported.
 
 [EVIDENCE_SELECT] Which two clues make tape activity meaningful at a key level?
 VISUAL: Four evidence cards separate aggression, liquidity, price response, and an irrelevant clue. The learner must select the required combination.
@@ -1038,15 +1038,15 @@ EVENT: sequence_break
 TARGET: 5
 WHY: This opposing print interrupts the dominant side.
 
-[TRADE_DECISION] Buyers sweep the offer stack and price accepts above the breakout with no pullback. What's your decision?
+[TRADE_DECISION] CVD makes new lows with price and the bid below keeps getting hit. What's your decision?
 VISUAL: The full synchronized Trade Decision board shows Price and Context, DOM and Tape, and Footprint and Delta evolving from one market event.
 SKILL: trade_decision_quality
-SCENARIO: lift
+SCENARIO: delta_negative
 LONG
 SHORT
 WAIT
-ANSWER: LONG
-WHY: A completed sweep with acceptance above the breakout and no supply response is decisive buyer control — go long.
+ANSWER: SHORT
+WHY: Falling CVD confirming new lows while bids are consumed is aligned selling pressure — go short.
 
 [REPLAY_COMPARE] Which replay shows false urgency?
 VISUAL: Replay A keeps strong buying against a replenishing offer with stalled price. Replay B shows buying pace itself fading as price stalls.
@@ -1065,25 +1065,25 @@ TITLE: What Is Absorption?
 TYPE: STANDARD
 CELEBRATION: What Is Absorption? complete.
 
-[TRADE_DECISION] Sellers hit the bid steadily, but price holds support and refuses to break. What's your decision?
+[TRADE_DECISION] Positive delta expands while a large offer keeps rebuilding and the latest high fails to hold. What's your decision?
 VISUAL: The full synchronized Trade Decision board shows Price and Context, DOM and Tape, and Footprint and Delta evolving from one market event.
 SKILL: trade_decision_quality
-SCENARIO: seller_absorption
+SCENARIO: chop
 LONG
 SHORT
 WAIT
 ANSWER: WAIT
-WHY: Selling pressure is present but support is holding — seller control isn't confirmed. WAIT.
+WHY: Delta is positive but a refreshing offer is capping price and the high failed — buying isn't producing acceptance. WAIT.
 
-[TRADE_DECISION] Price probes above resistance intrabar but closes back inside every time. What's your decision?
+[TRADE_DECISION] Support holds on the retest, delta flips positive, and price pushes off the bid. What's your decision?
 VISUAL: The full synchronized Trade Decision board shows Price and Context, DOM and Tape, and Footprint and Delta evolving from one market event.
 SKILL: trade_decision_quality
-SCENARIO: iceberg
+SCENARIO: lift
 LONG
 SHORT
 WAIT
-ANSWER: WAIT
-WHY: Repeated probes without acceptance above resistance means the breakout is unconfirmed. WAIT.
+ANSWER: LONG
+WHY: A held retest with positive delta and price lifting off support is confirmation — buyers have the edge.
 
 [REPLAY_COMPARE] Which replay shows pressure being absorbed?
 VISUAL: Replay A shows varied buy sizes continuing into an offer that replenishes while price stays pinned. Replay B shows both buy size and pace fading before price stalls.
@@ -1115,27 +1115,7 @@ TITLE: Buyer vs. Seller Absorption
 TYPE: STANDARD
 CELEBRATION: Buyer vs. Seller Absorption complete.
 
-[TRADE_DECISION] CVD makes new highs with price and the offer above keeps getting lifted. What's your decision?
-VISUAL: The full synchronized Trade Decision board shows Price and Context, DOM and Tape, and Footprint and Delta evolving from one market event.
-SKILL: trade_decision_quality
-SCENARIO: delta_positive
-LONG
-SHORT
-WAIT
-ANSWER: LONG
-WHY: Rising CVD confirming new price highs while offers are consumed is aligned buying pressure — the long is supported.
-
-[TRADE_DECISION] Delta is negative but the bid keeps refreshing and price won't accept lower. What's your decision?
-VISUAL: The full synchronized Trade Decision board shows Price and Context, DOM and Tape, and Footprint and Delta evolving from one market event.
-SKILL: trade_decision_quality
-SCENARIO: low_volume_trend
-LONG
-SHORT
-WAIT
-ANSWER: WAIT
-WHY: Negative delta without lower acceptance means sellers aren't in control yet. WAIT.
-
-[TRADE_DECISION] Sellers sweep the bid stack and price accepts under the breakdown. What's your decision?
+[TRADE_DECISION] Resistance rejects, delta flips negative, and price drops off the offer. What's your decision?
 VISUAL: The full synchronized Trade Decision board shows Price and Context, DOM and Tape, and Footprint and Delta evolving from one market event.
 SKILL: trade_decision_quality
 SCENARIO: hit
@@ -1143,42 +1123,17 @@ LONG
 SHORT
 WAIT
 ANSWER: SHORT
-WHY: A completed bid sweep with acceptance below the breakdown is confirmed selling — take the short.
+WHY: A rejection with negative delta and price falling from the offer is confirmation — sellers have the edge.
 
-[TRADE_DECISION] Support holds on the retest, delta flips positive, and price pushes off the bid. What's your decision?
+[TRADE_DECISION] Buyer-initiated tape accelerates into the POC, yet price stays trapped beneath the same offer. What's your decision?
 VISUAL: The full synchronized Trade Decision board shows Price and Context, DOM and Tape, and Footprint and Delta evolving from one market event.
 SKILL: trade_decision_quality
-SCENARIO: lift
-LONG
-SHORT
-WAIT
-ANSWER: LONG
-WHY: A held retest with positive delta and price lifting off support is confirmation — buyers have the edge.
-
-[TRADE_DECISION] Both sides trade heavily at the POC with no directional acceptance. What's your decision?
-VISUAL: The full synchronized Trade Decision board shows Price and Context, DOM and Tape, and Footprint and Delta evolving from one market event.
-SKILL: trade_decision_quality
-SCENARIO: conflict
+SCENARIO: balanced_target
 LONG
 SHORT
 WAIT
 ANSWER: WAIT
-WHY: Heavy two-sided trade with no acceptance is balance, not a trend — there's no edge. WAIT.
-
-NODE 22
-TITLE: Repeated Tests & Hidden Liquidity
-TYPE: STANDARD
-CELEBRATION: Repeated Tests & Hidden Liquidity complete.
-
-[TRADE_DECISION] A sweep spikes price but it immediately returns to the prior range. What's your decision?
-VISUAL: The full synchronized Trade Decision board shows Price and Context, DOM and Tape, and Footprint and Delta evolving from one market event.
-SKILL: trade_decision_quality
-SCENARIO: chop
-LONG
-SHORT
-WAIT
-ANSWER: WAIT
-WHY: A sweep that fully reverts is a liquidity grab, not acceptance — direction is unconfirmed. WAIT.
+WHY: Aggression is high but price is pinned under supply with no breakout — no acceptance yet. WAIT.
 
 [TRADE_DECISION] Sellers fail to reclaim after a flush and buyers lift every offer back through VWAP. What's your decision?
 VISUAL: The full synchronized Trade Decision board shows Price and Context, DOM and Tape, and Footprint and Delta evolving from one market event.
@@ -1190,17 +1145,7 @@ WAIT
 ANSWER: LONG
 WHY: A failed seller reclaim plus buyers driving price back above VWAP is a confirmed long — control shifted up.
 
-[TRADE_DECISION] Buyers absorb the offer, but price hasn't yet reclaimed the level above. What's your decision?
-VISUAL: The full synchronized Trade Decision board shows Price and Context, DOM and Tape, and Footprint and Delta evolving from one market event.
-SKILL: trade_decision_quality
-SCENARIO: balanced_target
-LONG
-SHORT
-WAIT
-ANSWER: WAIT
-WHY: Absorption is visible but the reclaim hasn't happened — the read isn't confirmed. WAIT.
-
-[TRADE_DECISION] Price chops in a tight range with alternating buy and sell prints. What's your decision?
+[TRADE_DECISION] Ask-side footprint dominates, but price rejects the breakout level and returns inside value. What's your decision?
 VISUAL: The full synchronized Trade Decision board shows Price and Context, DOM and Tape, and Footprint and Delta evolving from one market event.
 SKILL: trade_decision_quality
 SCENARIO: buyer_absorption
@@ -1208,7 +1153,62 @@ LONG
 SHORT
 WAIT
 ANSWER: WAIT
-WHY: Alternating prints in a tight range is chop — there's no directional edge to trade. WAIT.
+WHY: The footprint favors buyers, yet price rejected the level and fell back into value — the breakout failed to confirm. WAIT.
+
+[TRADE_DECISION] Buyers get trapped above support as sellers drive acceptance below it. What's your decision?
+VISUAL: The full synchronized Trade Decision board shows Price and Context, DOM and Tape, and Footprint and Delta evolving from one market event.
+SKILL: trade_decision_quality
+SCENARIO: delta_negative
+LONG
+SHORT
+WAIT
+ANSWER: SHORT
+WHY: Trapped buyers plus seller-driven acceptance below support is decisive — the short is well supported.
+
+NODE 22
+TITLE: Repeated Tests & Hidden Liquidity
+TYPE: STANDARD
+CELEBRATION: Repeated Tests & Hidden Liquidity complete.
+
+[TRADE_DECISION] The offer at resistance thins, buyers stack the bid, and price breaks and holds. What's your decision?
+VISUAL: The full synchronized Trade Decision board shows Price and Context, DOM and Tape, and Footprint and Delta evolving from one market event.
+SKILL: trade_decision_quality
+SCENARIO: lift
+LONG
+SHORT
+WAIT
+ANSWER: LONG
+WHY: Thinning supply, a stacking bid, and a held break is decisive — buyers are progressing price higher.
+
+[TRADE_DECISION] Sellers hit the bid steadily, but price holds support and refuses to break. What's your decision?
+VISUAL: The full synchronized Trade Decision board shows Price and Context, DOM and Tape, and Footprint and Delta evolving from one market event.
+SKILL: trade_decision_quality
+SCENARIO: seller_absorption
+LONG
+SHORT
+WAIT
+ANSWER: WAIT
+WHY: Selling pressure is present but support is holding — seller control isn't confirmed. WAIT.
+
+[TRADE_DECISION] The offer stacks at resistance, the bid evaporates, and price trends down. What's your decision?
+VISUAL: The full synchronized Trade Decision board shows Price and Context, DOM and Tape, and Footprint and Delta evolving from one market event.
+SKILL: trade_decision_quality
+SCENARIO: hit
+LONG
+SHORT
+WAIT
+ANSWER: SHORT
+WHY: A stacking offer, vanishing demand, and a downtrend is confirmed control — sellers are in charge.
+
+[TRADE_DECISION] Price probes above resistance intrabar but closes back inside every time. What's your decision?
+VISUAL: The full synchronized Trade Decision board shows Price and Context, DOM and Tape, and Footprint and Delta evolving from one market event.
+SKILL: trade_decision_quality
+SCENARIO: iceberg
+LONG
+SHORT
+WAIT
+ANSWER: WAIT
+WHY: Repeated probes without acceptance above resistance means the breakout is unconfirmed. WAIT.
 
 [EVIDENCE_SELECT] Select two hidden liquidity clues.
 VISUAL: Four evidence cards separate aggression, liquidity, price response, and an irrelevant clue. The learner must select the required combination.
@@ -1319,15 +1319,15 @@ TITLE: Absorption vs. Exhaustion
 TYPE: STANDARD
 CELEBRATION: Absorption vs. Exhaustion complete.
 
-[TRADE_DECISION] CVD ticks up but price makes no new high and the offer stays stacked. What's your decision?
+[TRADE_DECISION] Aggressive buying prints into the POC and price accepts above value. What's your decision?
 VISUAL: The full synchronized Trade Decision board shows Price and Context, DOM and Tape, and Footprint and Delta evolving from one market event.
 SKILL: trade_decision_quality
-SCENARIO: seller_absorption
+SCENARIO: delta_positive
 LONG
 SHORT
 WAIT
-ANSWER: WAIT
-WHY: Rising CVD without a new high against a stacked offer is effort without result. WAIT.
+ANSWER: LONG
+WHY: Buyer aggression carrying price to acceptance above the value area is confirmed demand — the long is justified.
 
 [TIME_SALES] Aggressive pace now fades. Which is it?
 VISUAL: An animated Time and Sales table lists time, execution price, and trade size, with pace and trade size fading after the target row.
@@ -1368,7 +1368,7 @@ TITLE: Absorption Practice Replays
 TYPE: PRACTICE_REPLAY
 CELEBRATION: Absorption Practice Replays complete.
 
-[TRADE_DECISION] The offer at resistance thins, buyers stack the bid, and price breaks and holds. What's your decision?
+[TRADE_DECISION] Each higher low is defended and the ask-side footprint dominates on the push. What's your decision?
 VISUAL: The full synchronized Trade Decision board shows Price and Context, DOM and Tape, and Footprint and Delta evolving from one market event.
 SKILL: trade_decision_quality
 SCENARIO: lift
@@ -1376,9 +1376,9 @@ LONG
 SHORT
 WAIT
 ANSWER: LONG
-WHY: Thinning supply, a stacking bid, and a held break is decisive — buyers are progressing price higher.
+WHY: Defended higher lows with ask-side footprint dominance on the advance is aligned buying — go long.
 
-[TRADE_DECISION] CVD makes new lows with price and the bid below keeps getting hit. What's your decision?
+[TRADE_DECISION] Aggressive selling prints into the POC and price accepts below value. What's your decision?
 VISUAL: The full synchronized Trade Decision board shows Price and Context, DOM and Tape, and Footprint and Delta evolving from one market event.
 SKILL: trade_decision_quality
 SCENARIO: delta_negative
@@ -1386,17 +1386,17 @@ LONG
 SHORT
 WAIT
 ANSWER: SHORT
-WHY: Falling CVD confirming new lows while bids are consumed is aligned selling pressure — go short.
+WHY: Seller aggression carrying price to acceptance below value is confirmed supply — the short is justified.
 
-[TRADE_DECISION] Sellers press the bid into support, but no acceptance forms below it. What's your decision?
+[TRADE_DECISION] Each lower high is capped and the bid-side footprint dominates on the drop. What's your decision?
 VISUAL: The full synchronized Trade Decision board shows Price and Context, DOM and Tape, and Footprint and Delta evolving from one market event.
 SKILL: trade_decision_quality
-SCENARIO: iceberg
+SCENARIO: hit
 LONG
 SHORT
 WAIT
-ANSWER: WAIT
-WHY: Pressure without acceptance below support means the breakdown isn't confirmed. WAIT.
+ANSWER: SHORT
+WHY: Capped lower highs with bid-side footprint dominance on the decline is aligned selling — go short.
 
 [REPLAY_COMPARE] Which replay shows sustained pressure being contained rather than pressure fading?
 VISUAL: Replay A shows varied buy sizes continuing into an offer that replenishes while price stays pinned. Replay B shows both buy size and pace fading before price stalls.
@@ -1406,17 +1406,7 @@ Replay B
 Neither
 WHY: Replay A keeps aggression active against replenishment. Replay B shows exhaustion.
 
-[TRADE_DECISION] Aggressive buying prints into the POC and price accepts above value. What's your decision?
-VISUAL: The full synchronized Trade Decision board shows Price and Context, DOM and Tape, and Footprint and Delta evolving from one market event.
-SKILL: trade_decision_quality
-SCENARIO: delta_positive
-LONG
-SHORT
-WAIT
-ANSWER: LONG
-WHY: Buyer aggression carrying price to acceptance above the value area is confirmed demand — the long is justified.
-
-[TRADE_DECISION] Price stalls at VWAP with balanced delta and no clear aggressor. What's your decision?
+[TRADE_DECISION] Delta is negative but the bid keeps refreshing and price won't accept lower. What's your decision?
 VISUAL: The full synchronized Trade Decision board shows Price and Context, DOM and Tape, and Footprint and Delta evolving from one market event.
 SKILL: trade_decision_quality
 SCENARIO: low_volume_trend
@@ -1424,7 +1414,17 @@ LONG
 SHORT
 WAIT
 ANSWER: WAIT
-WHY: Balanced delta and a stall at VWAP is indecision — wait for one side to take control. WAIT.
+WHY: Negative delta without lower acceptance means sellers aren't in control yet. WAIT.
+
+[TRADE_DECISION] Price bases below the broken level and sellers absorb the bounce bid. What's your decision?
+VISUAL: The full synchronized Trade Decision board shows Price and Context, DOM and Tape, and Footprint and Delta evolving from one market event.
+SKILL: trade_decision_quality
+SCENARIO: delta_negative
+LONG
+SHORT
+WAIT
+ANSWER: SHORT
+WHY: A base below the breakdown with sellers absorbing demand on the bounce confirms acceptance — the short stands.
 
 NODE 27
 TITLE: Boss Battle: Absorption or Exhaustion?
@@ -1448,17 +1448,7 @@ Absorption
 Acceptance
 WHY: Exhaustion means aggression itself fades.
 
-[TRADE_DECISION] The offer thins but buyers hesitate and price drifts sideways. What's your decision?
-VISUAL: The full synchronized Trade Decision board shows Price and Context, DOM and Tape, and Footprint and Delta evolving from one market event.
-SKILL: trade_decision_quality
-SCENARIO: conflict
-LONG
-SHORT
-WAIT
-ANSWER: WAIT
-WHY: Thinning supply without buyers stepping in isn't a signal on its own — nothing is confirmed. WAIT.
-
-[TRADE_DECISION] Resistance rejects, delta flips negative, and price drops off the offer. What's your decision?
+[TRADE_DECISION] A large offer holds, the bid below thins, and price trends down on rising negative delta. What's your decision?
 VISUAL: The full synchronized Trade Decision board shows Price and Context, DOM and Tape, and Footprint and Delta evolving from one market event.
 SKILL: trade_decision_quality
 SCENARIO: hit
@@ -1466,7 +1456,17 @@ LONG
 SHORT
 WAIT
 ANSWER: SHORT
-WHY: A rejection with negative delta and price falling from the offer is confirmation — sellers have the edge.
+WHY: A held offer, thinning demand, and a downtrend on expanding negative delta is confirmed control — go short.
+
+[TRADE_DECISION] Price bases above the reclaimed level and buyers absorb the pullback offer. What's your decision?
+VISUAL: The full synchronized Trade Decision board shows Price and Context, DOM and Tape, and Footprint and Delta evolving from one market event.
+SKILL: trade_decision_quality
+SCENARIO: delta_positive
+LONG
+SHORT
+WAIT
+ANSWER: LONG
+WHY: A base above the reclaim with buyers absorbing supply on the dip confirms acceptance — the long stands.
 
 [TIME_SALES] Which side loses urgency?
 VISUAL: An animated Time and Sales table lists time, execution price, and trade size, with pace and trade size fading after the target row.
@@ -1487,15 +1487,15 @@ Fading buy pace
 Price accepts higher
 WHY: Replenishment and stalled response support absorption.
 
-[TRADE_DECISION] Buyers get trapped above support as sellers drive acceptance below it. What's your decision?
+[TRADE_DECISION] A large bid holds, the offer above evaporates, and price trends up on rising delta. What's your decision?
 VISUAL: The full synchronized Trade Decision board shows Price and Context, DOM and Tape, and Footprint and Delta evolving from one market event.
 SKILL: trade_decision_quality
-SCENARIO: delta_negative
+SCENARIO: lift
 LONG
 SHORT
 WAIT
-ANSWER: SHORT
-WHY: Trapped buyers plus seller-driven acceptance below support is decisive — the short is well supported.
+ANSWER: LONG
+WHY: A held bid, vanishing supply, and an uptrend on expanding delta is confirmed control — buyers are in charge.
 
 
 UNIT 5 — Imbalances and Momentum
@@ -1850,30 +1850,30 @@ Replay B
 Neither
 WHY: In Replay A, price and cumulative aggressive pressure move higher together.
 
-[TRADE_DECISION] The offer stacks at resistance, the bid evaporates, and price trends down. What's your decision?
+[TRADE_DECISION] Buyers reclaim VWAP, retest it from above, and continue higher on strong prints. What's your decision?
 VISUAL: The full synchronized Trade Decision board shows Price and Context, DOM and Tape, and Footprint and Delta evolving from one market event.
 SKILL: trade_decision_quality
-SCENARIO: hit
+SCENARIO: delta_positive
 LONG
 SHORT
 WAIT
-ANSWER: SHORT
-WHY: A stacking offer, vanishing demand, and a downtrend is confirmed control — sellers are in charge.
+ANSWER: LONG
+WHY: A VWAP reclaim that holds as support with continuation is a confirmed long — price is accepting higher.
 
 NODE 34
 TITLE: Positive vs. Negative Delta Divergence
 TYPE: STANDARD
 CELEBRATION: Positive vs. Negative Delta Divergence complete.
 
-[TRADE_DECISION] Each higher low is defended and the ask-side footprint dominates on the push. What's your decision?
+[TRADE_DECISION] Sellers reject VWAP, retest it from below, and continue lower on heavy prints. What's your decision?
 VISUAL: The full synchronized Trade Decision board shows Price and Context, DOM and Tape, and Footprint and Delta evolving from one market event.
 SKILL: trade_decision_quality
-SCENARIO: lift
+SCENARIO: delta_negative
 LONG
 SHORT
 WAIT
-ANSWER: LONG
-WHY: Defended higher lows with ask-side footprint dominance on the advance is aligned buying — go long.
+ANSWER: SHORT
+WHY: A VWAP rejection that holds as resistance with continuation is a confirmed short — price is accepting lower.
 
 [FOOTPRINT] Price falls while footprint delta remains positive. What's strongest?
 VISUAL: A footprint grid places bid volume left of price and ask volume right of price, showing one row contributing the largest positive ask minus bid delta.
@@ -1920,15 +1920,15 @@ TITLE: Price and Pressure Divergence
 TYPE: STANDARD
 CELEBRATION: Price and Pressure Divergence complete.
 
-[TRADE_DECISION] Aggressive selling prints into the POC and price accepts below value. What's your decision?
+[TRADE_DECISION] The breakdown retest fails exactly, negative delta expands, and bids pull. What's your decision?
 VISUAL: The full synchronized Trade Decision board shows Price and Context, DOM and Tape, and Footprint and Delta evolving from one market event.
 SKILL: trade_decision_quality
-SCENARIO: delta_negative
+SCENARIO: hit
 LONG
 SHORT
 WAIT
 ANSWER: SHORT
-WHY: Seller aggression carrying price to acceptance below value is confirmed supply — the short is justified.
+WHY: An exact failed retest with expanding negative delta and pulled bids is textbook confirmation — take the short.
 
 [FOOTPRINT_TAP] Rising price is shown beside this footprint. Tap the negative delta row opposing it.
 VISUAL: A footprint grid places bid volume left of price and ask volume right of price, showing a compact rising price chart beside the grid and one row contributing the largest negative ask minus bid delta.
@@ -2011,25 +2011,25 @@ The largest footprint row determines the next move
 Price response can be ignored when delta is persistent
 WHY: Delta and the corresponding price response must be interpreted together.
 
-[TRADE_DECISION] A big bid appears but price hasn't reacted to it yet. What's your decision?
+[TRADE_DECISION] The breakout retest holds exactly, delta expands, and offers pull. What's your decision?
 VISUAL: The full synchronized Trade Decision board shows Price and Context, DOM and Tape, and Footprint and Delta evolving from one market event.
 SKILL: trade_decision_quality
-SCENARIO: chop
+SCENARIO: lift
 LONG
 SHORT
 WAIT
-ANSWER: WAIT
-WHY: A resting bid is potential support, not a confirmed response — wait for price to react. WAIT.
+ANSWER: LONG
+WHY: An exact retest hold with expanding delta and pulled offers is textbook confirmation — take the long.
 
-[TRADE_DECISION] Buyer volume rises into resistance while the high stays capped. What's your decision?
+[TRADE_DECISION] Sellers get trapped below prior resistance as buyers drive acceptance above it. What's your decision?
 VISUAL: The full synchronized Trade Decision board shows Price and Context, DOM and Tape, and Footprint and Delta evolving from one market event.
 SKILL: trade_decision_quality
-SCENARIO: balanced_target
+SCENARIO: delta_positive
 LONG
 SHORT
 WAIT
-ANSWER: WAIT
-WHY: Rising buyer volume against a capped high is stalling effort — no acceptance yet. WAIT.
+ANSWER: LONG
+WHY: Trapped sellers plus buyer-driven acceptance above resistance is decisive — the long is well supported.
 
 NODE 37
 TITLE: Boss Battle: Footprint & Momentum
@@ -2080,25 +2080,25 @@ They are identical
 Delta shows resting depth
 WHY: Delta compares ask and bid executions.
 
-[TRADE_DECISION] Price retests the breakout but the hold is still ambiguous. What's your decision?
+[TRADE_DECISION] Buyers exhaust into resistance and sellers immediately reclaim on rising supply. What's your decision?
 VISUAL: The full synchronized Trade Decision board shows Price and Context, DOM and Tape, and Footprint and Delta evolving from one market event.
 SKILL: trade_decision_quality
-SCENARIO: buyer_absorption
+SCENARIO: delta_negative
+LONG
+SHORT
+WAIT
+ANSWER: SHORT
+WHY: Buyer exhaustion at resistance with an immediate seller reclaim is a confirmed reversal — go short.
+
+[TRADE_DECISION] Both sides trade heavily at the POC with no directional acceptance. What's your decision?
+VISUAL: The full synchronized Trade Decision board shows Price and Context, DOM and Tape, and Footprint and Delta evolving from one market event.
+SKILL: trade_decision_quality
+SCENARIO: conflict
 LONG
 SHORT
 WAIT
 ANSWER: WAIT
-WHY: An ambiguous retest hasn't confirmed support — wait for a clean hold or a failure. WAIT.
-
-[TRADE_DECISION] Price bases above the reclaimed level and buyers absorb the pullback offer. What's your decision?
-VISUAL: The full synchronized Trade Decision board shows Price and Context, DOM and Tape, and Footprint and Delta evolving from one market event.
-SKILL: trade_decision_quality
-SCENARIO: delta_positive
-LONG
-SHORT
-WAIT
-ANSWER: LONG
-WHY: A base above the reclaim with buyers absorbing supply on the dip confirms acceptance — the long stands.
+WHY: Heavy two-sided trade with no acceptance is balance, not a trend — there's no edge. WAIT.
 
 
 UNIT 6 — Liquidity and Sweeps
@@ -2289,14 +2289,14 @@ Price builds acceptance above
 Offers stay cleared
 WHY: An upside sweep breaches the prior high and quickly returns below it rather than holding above.
 
-[TRADE_DECISION] Sellers lean on the offer, but buyers keep defending the bid below. What's your decision?
+[TRADE_DECISION] A sweep spikes price but it immediately returns to the prior range. What's your decision?
 SKILL: trade_decision_quality
-SCENARIO: seller_absorption
+SCENARIO: chop
 LONG
 SHORT
 WAIT
 ANSWER: WAIT
-WHY: Offer pressure met by defended bids is a standoff — neither side is confirmed. WAIT.
+WHY: A sweep that fully reverts is a liquidity grab, not acceptance — direction is unconfirmed. WAIT.
 
 [MC] Which upside sweep interpretation is best supported?
 VISUAL: Price briefly trades above a level and closes back below it, leaving a long upper wick.
@@ -2423,15 +2423,15 @@ TITLE: Icebergs & Hidden Replenishment
 TYPE: STANDARD
 CELEBRATION: Icebergs & Hidden Replenishment complete.
 
-[TRADE_DECISION] Each lower high is capped and the bid-side footprint dominates on the drop. What's your decision?
+[TRADE_DECISION] Demand absorbs the sweep, price snaps back above support, and CVD turns up. What's your decision?
 VISUAL: The full synchronized Trade Decision board shows Price and Context, DOM and Tape, and Footprint and Delta evolving from one market event.
 SKILL: trade_decision_quality
-SCENARIO: hit
+SCENARIO: lift
 LONG
 SHORT
 WAIT
-ANSWER: SHORT
-WHY: Capped lower highs with bid-side footprint dominance on the decline is aligned selling — go short.
+ANSWER: LONG
+WHY: An absorbed downside sweep with a reclaim and rising CVD is a confirmed reversal long — buyers stepped in.
 
 [EVIDENCE_SELECT] Select clues suggesting hidden replenishment.
 VISUAL: Four evidence cards separate aggression, liquidity, price response, and an irrelevant clue. The learner must select the required combination.
@@ -2443,15 +2443,15 @@ Positive delta alone
 One large candle
 WHY: Repeated fills at one price plus displayed size that keeps replenishing can suggest hidden liquidity.
 
-[TRADE_DECISION] A large bid holds, the offer above evaporates, and price trends up on rising delta. What's your decision?
+[TRADE_DECISION] Every offer into the high is lifted and price makes a clean new high with volume. What's your decision?
 VISUAL: The full synchronized Trade Decision board shows Price and Context, DOM and Tape, and Footprint and Delta evolving from one market event.
 SKILL: trade_decision_quality
-SCENARIO: lift
+SCENARIO: delta_positive
 LONG
 SHORT
 WAIT
 ANSWER: LONG
-WHY: A held bid, vanishing supply, and an uptrend on expanding delta is confirmed control — buyers are in charge.
+WHY: Consistent offer lifting into a volume-backed new high is confirmed buying — go long.
 
 [REPLAY_COMPARE] Which replay shows repeated execution against replenishing displayed size?
 VISUAL: Replay A shows varied buy sizes continuing into an offer that replenishes while price stays pinned. Replay B shows both buy size and pace fading before price stalls.
@@ -2473,15 +2473,15 @@ TITLE: Liquidity Challenge
 TYPE: STANDARD
 CELEBRATION: Liquidity Challenge complete.
 
-[TRADE_DECISION] Buyers reclaim VWAP, retest it from above, and continue higher on strong prints. What's your decision?
+[TRADE_DECISION] Buyers absorb the offer, but price hasn't yet reclaimed the level above. What's your decision?
 VISUAL: The full synchronized Trade Decision board shows Price and Context, DOM and Tape, and Footprint and Delta evolving from one market event.
 SKILL: trade_decision_quality
-SCENARIO: delta_positive
+SCENARIO: balanced_target
 LONG
 SHORT
 WAIT
-ANSWER: LONG
-WHY: A VWAP reclaim that holds as support with continuation is a confirmed long — price is accepting higher.
+ANSWER: WAIT
+WHY: Absorption is visible but the reclaim hasn't happened — the read isn't confirmed. WAIT.
 
 [EVIDENCE_SELECT] Select the two essential clues.
 VISUAL: Four evidence cards separate aggression, liquidity, price response, and an irrelevant clue. The learner must select the required combination.
@@ -2601,17 +2601,17 @@ Book A
 Both equally
 WHY: Thin depth lets price travel more easily.
 
-[TRADE_DECISION] Delta and price disagree: delta up, price flat under supply. What's your decision?
+[TRADE_DECISION] Demand fails to absorb the sweep and price accepts each new tick lower. What's your decision?
 VISUAL: The full synchronized Trade Decision board shows Price and Context, DOM and Tape, and Footprint and Delta evolving from one market event.
 SKILL: trade_decision_quality
-SCENARIO: iceberg
+SCENARIO: hit
 LONG
 SHORT
 WAIT
-ANSWER: WAIT
-WHY: A delta/price divergence under supply is a warning, not a confirmed reversal — wait for resolution. WAIT.
+ANSWER: SHORT
+WHY: Failed absorption with acceptance at each lower tick is decisive supply — the short is justified.
 
-[TRADE_DECISION] Price bases below the broken level and sellers absorb the bounce bid. What's your decision?
+[TRADE_DECISION] Every bid into the low is hit and price makes a clean new low with volume. What's your decision?
 VISUAL: The full synchronized Trade Decision board shows Price and Context, DOM and Tape, and Footprint and Delta evolving from one market event.
 SKILL: trade_decision_quality
 SCENARIO: delta_negative
@@ -2619,7 +2619,7 @@ LONG
 SHORT
 WAIT
 ANSWER: SHORT
-WHY: A base below the breakdown with sellers absorbing demand on the bounce confirms acceptance — the short stands.
+WHY: Consistent bid hitting into a volume-backed new low is confirmed selling — go short.
 
 
 UNIT 7 — Breakouts and Failures
@@ -2638,15 +2638,15 @@ Replay B
 Not enough evidence
 WHY: Acceptance needs continued execution and price holding beyond the level.
 
-[TRADE_DECISION] The breakout retest holds exactly, delta expands, and offers pull. What's your decision?
+[TRADE_DECISION] Offer depth builds, the bounce stalls below resistance, and sellers resume hitting. What's your decision?
 VISUAL: The full synchronized Trade Decision board shows Price and Context, DOM and Tape, and Footprint and Delta evolving from one market event.
 SKILL: trade_decision_quality
-SCENARIO: lift
+SCENARIO: hit
 LONG
 SHORT
 WAIT
-ANSWER: LONG
-WHY: An exact retest hold with expanding delta and pulled offers is textbook confirmation — take the long.
+ANSWER: SHORT
+WHY: Building offer depth with a weak bounce and resumed selling is aligned supply — the short is supported.
 
 [EVIDENCE_SELECT] Select the two clues supporting breakdown pressure.
 VISUAL: Four evidence cards separate aggression, liquidity, price response, and an irrelevant clue. The learner must select the required combination.
@@ -2753,14 +2753,14 @@ TITLE: Breakout Acceptance Practice Replay
 TYPE: PRACTICE_REPLAY
 CELEBRATION: Breakout Acceptance Practice Replay complete.
 
-[TRADE_DECISION] The bounce stalls mid-range with no follow-through either way. What's your decision?
+[TRADE_DECISION] Price holds below the value-area low and sellers keep paying the bid. What's your decision?
 SKILL: trade_decision_quality
-SCENARIO: low_volume_trend
+SCENARIO: delta_negative
 LONG
 SHORT
 WAIT
-ANSWER: WAIT
-WHY: A stalled mid-range bounce offers no edge — direction is unresolved. WAIT.
+ANSWER: SHORT
+WHY: Acceptance below the value-area low with sellers still hitting is confirmed control — take the short.
 
 [MC] What's the most reasonable read?
 VISUAL: Price breaks resistance, returns to test it from above, then attempts to continue higher.
@@ -2805,15 +2805,15 @@ Replay A
 Not enough evidence
 WHY: Acceptance needs continued execution and price holding beyond the level.
 
-[TRADE_DECISION] Sellers get trapped below prior resistance as buyers drive acceptance above it. What's your decision?
+[TRADE_DECISION] A failed breakout reverses hard and sellers reclaim the range on heavy prints. What's your decision?
 VISUAL: The full synchronized Trade Decision board shows Price and Context, DOM and Tape, and Footprint and Delta evolving from one market event.
 SKILL: trade_decision_quality
-SCENARIO: delta_positive
+SCENARIO: hit
 LONG
 SHORT
 WAIT
-ANSWER: LONG
-WHY: Trapped sellers plus buyer-driven acceptance above resistance is decisive — the long is well supported.
+ANSWER: SHORT
+WHY: A failed breakout with an aggressive seller reclaim is a confirmed short — buyers lost the level.
 
 [LIVE_CHART] What changed in price response?
 VISUAL: A live candlestick chart adds new candles over time, with price currently building downward.
@@ -2834,15 +2834,15 @@ Price holds below support
 Seller execution accelerates lower
 WHY: A failed breakdown first trades below support, then loses seller follow through and reclaims the level.
 
-[TRADE_DECISION] A large offer holds, the bid below thins, and price trends down on rising negative delta. What's your decision?
+[TRADE_DECISION] Bids keep getting swept and price accepts each tick lower. What's your decision?
 VISUAL: The full synchronized Trade Decision board shows Price and Context, DOM and Tape, and Footprint and Delta evolving from one market event.
 SKILL: trade_decision_quality
-SCENARIO: hit
+SCENARIO: delta_negative
 LONG
 SHORT
 WAIT
 ANSWER: SHORT
-WHY: A held offer, thinning demand, and a downtrend on expanding negative delta is confirmed control — go short.
+WHY: Repeated bid sweeps with lower acceptance is decisive supply — the short is justified.
 
 [MATCH] Match each clue.
 SKILL: failed_breakouts_vs_failed_breakdowns
@@ -2951,14 +2951,14 @@ One fast buy print
 A single wide candle
 WHY: Without continued execution and price holding beyond the level, the initial break has not established acceptance.
 
-[TRADE_DECISION] Sellers reject VWAP, retest it from below, and continue lower on heavy prints. What's your decision?
+[TRADE_DECISION] Bid depth builds, the pullback stalls above support, and buyers resume lifting. What's your decision?
 SKILL: trade_decision_quality
-SCENARIO: delta_negative
+SCENARIO: lift
 LONG
 SHORT
 WAIT
-ANSWER: SHORT
-WHY: A VWAP rejection that holds as resistance with continuation is a confirmed short — price is accepting lower.
+ANSWER: LONG
+WHY: Building bid depth with a shallow pullback and resumed buying is aligned demand — the long is supported.
 
 [MC] What best connects the evidence?
 VISUAL: Price opens well above the prior trading area with little activity between the two zones.
@@ -2970,15 +2970,15 @@ A pull in liquidity is equivalent to aggressive execution
 Slower counter pressure automatically confirms continuation
 WHY: Late entries carry worse risk and reward.
 
-[TRADE_DECISION] Demand absorbs the sweep, price snaps back above support, and CVD turns up. What's your decision?
+[TRADE_DECISION] Price holds above the value-area high and buyers keep paying the offer. What's your decision?
 VISUAL: The full synchronized Trade Decision board shows Price and Context, DOM and Tape, and Footprint and Delta evolving from one market event.
 SKILL: trade_decision_quality
-SCENARIO: lift
+SCENARIO: delta_positive
 LONG
 SHORT
 WAIT
 ANSWER: LONG
-WHY: An absorbed downside sweep with a reclaim and rising CVD is a confirmed reversal long — buyers stepped in.
+WHY: Acceptance above the value-area high with buyers still paying up is confirmed control — take the long.
 
 [ORDER] Build the read.
 VISUAL: Price opens well above the prior trading area with little activity between the two zones.
@@ -3084,15 +3084,15 @@ Replay A
 Neither
 WHY: Replay B falls back inside.
 
-[TRADE_DECISION] Aggressive prints hit both sides as price hovers at the value-area high. What's your decision?
+[TRADE_DECISION] A failed breakdown reverses hard and buyers reclaim the range on heavy prints. What's your decision?
 VISUAL: The full synchronized Trade Decision board shows Price and Context, DOM and Tape, and Footprint and Delta evolving from one market event.
 SKILL: trade_decision_quality
-SCENARIO: conflict
+SCENARIO: lift
 LONG
 SHORT
 WAIT
-ANSWER: WAIT
-WHY: Two-sided aggression at the value edge without acceptance is unresolved — there's no confirmed trade. WAIT.
+ANSWER: LONG
+WHY: A failed breakdown with an aggressive reclaim on heavy buying is a confirmed long — sellers lost the level.
 
 [EVIDENCE_SELECT] Select acceptance clues.
 VISUAL: Four evidence cards separate aggression, liquidity, price response, and an irrelevant clue. The learner must select the required combination.
@@ -3104,25 +3104,25 @@ Immediate return inside
 Refreshing opposition
 WHY: Execution and holding response support acceptance.
 
-[TRADE_DECISION] Price ticks lower but the bid keeps stepping in to absorb it. What's your decision?
+[TRADE_DECISION] Offers keep getting swept and price accepts each new tick higher. What's your decision?
 VISUAL: The full synchronized Trade Decision board shows Price and Context, DOM and Tape, and Footprint and Delta evolving from one market event.
 SKILL: trade_decision_quality
-SCENARIO: chop
+SCENARIO: delta_positive
 LONG
 SHORT
 WAIT
-ANSWER: WAIT
-WHY: Lower ticks met by absorbing bids means sellers haven't won control. WAIT.
+ANSWER: LONG
+WHY: Repeated offer sweeps with acceptance at each higher tick is decisive demand — the long is justified.
 
-[TRADE_DECISION] Buyers reclaim VWAP but immediately stall beneath resistance. What's your decision?
+[TRADE_DECISION] Price chops in a tight range with alternating buy and sell prints. What's your decision?
 VISUAL: The full synchronized Trade Decision board shows Price and Context, DOM and Tape, and Footprint and Delta evolving from one market event.
 SKILL: trade_decision_quality
-SCENARIO: balanced_target
+SCENARIO: buyer_absorption
 LONG
 SHORT
 WAIT
 ANSWER: WAIT
-WHY: A reclaim that stalls under the next level isn't confirmed continuation. WAIT.
+WHY: Alternating prints in a tight range is chop — there's no directional edge to trade. WAIT.
 
 [MC] Why wait for a retest?
 SKILL: boss_battle_breakout_or_failure
@@ -3447,15 +3447,15 @@ Tape speed confirms acceptance
 One print resolves the read
 WHY: Conflicting signals call for patience and a weaker conclusion.
 
-[TRADE_DECISION] Volume dries up and price coils without direction. What's your decision?
+[TRADE_DECISION] CVD ticks up but price makes no new high and the offer stays stacked. What's your decision?
 VISUAL: The full synchronized Trade Decision board shows Price and Context, DOM and Tape, and Footprint and Delta evolving from one market event.
 SKILL: trade_decision_quality
-SCENARIO: buyer_absorption
+SCENARIO: seller_absorption
 LONG
 SHORT
 WAIT
 ANSWER: WAIT
-WHY: Drying volume in a coil is indecision — wait for expansion to show a side. WAIT.
+WHY: Rising CVD without a new high against a stacked offer is effort without result. WAIT.
 
 [EVIDENCE_SELECT] Select the two strongest clues.
 VISUAL: Four evidence cards separate aggression, liquidity, price response, and an irrelevant clue. The learner must select the required combination.
@@ -3489,17 +3489,7 @@ TITLE: Volume Context: Chop vs. Low Volume Trend
 TYPE: STANDARD
 CELEBRATION: Volume Context: Chop vs. Low Volume Trend complete.
 
-[TRADE_DECISION] Every offer into the high is lifted and price makes a clean new high with volume. What's your decision?
-VISUAL: The full synchronized Trade Decision board shows Price and Context, DOM and Tape, and Footprint and Delta evolving from one market event.
-SKILL: trade_decision_quality
-SCENARIO: delta_positive
-LONG
-SHORT
-WAIT
-ANSWER: LONG
-WHY: Consistent offer lifting into a volume-backed new high is confirmed buying — go long.
-
-[TRADE_DECISION] Bid depth builds, the pullback stalls above support, and buyers resume lifting. What's your decision?
+[TRADE_DECISION] The bid refreshes larger on each test while price grinds up through supply. What's your decision?
 VISUAL: The full synchronized Trade Decision board shows Price and Context, DOM and Tape, and Footprint and Delta evolving from one market event.
 SKILL: trade_decision_quality
 SCENARIO: lift
@@ -3507,7 +3497,17 @@ LONG
 SHORT
 WAIT
 ANSWER: LONG
-WHY: Building bid depth with a shallow pullback and resumed buying is aligned demand — the long is supported.
+WHY: A bid refreshing larger while price eats through supply is confirmed buyer control — go long.
+
+[TRADE_DECISION] The offer refreshes larger on each test while price grinds down through demand. What's your decision?
+VISUAL: The full synchronized Trade Decision board shows Price and Context, DOM and Tape, and Footprint and Delta evolving from one market event.
+SKILL: trade_decision_quality
+SCENARIO: hit
+LONG
+SHORT
+WAIT
+ANSWER: SHORT
+WHY: An offer refreshing larger while price eats through demand is confirmed seller control — go short.
 
 [FOOTPRINT] What does the footprint add?
 VISUAL: A footprint grid places bid volume left of price and ask volume right of price, showing similar bid and ask volume across the price rows.
@@ -3518,17 +3518,17 @@ The largest cell decides direction
 Volume guarantees a trend
 WHY: Similar bid and ask execution across the rows shows balance; the composite questions separately establish volume and price progress.
 
-[TRADE_DECISION] An iceberg keeps refilling the offer as buyers keep paying up with no progress. What's your decision?
+[TRADE_DECISION] Sellers defend the breakdown level and negative delta expands as price extends. What's your decision?
 VISUAL: The full synchronized Trade Decision board shows Price and Context, DOM and Tape, and Footprint and Delta evolving from one market event.
 SKILL: trade_decision_quality
-SCENARIO: seller_absorption
+SCENARIO: delta_negative
 LONG
 SHORT
 WAIT
-ANSWER: WAIT
-WHY: Hidden supply absorbing buyers with no price progress is stalling, not a confirmed short yet. WAIT.
+ANSWER: SHORT
+WHY: A defended breakdown with expanding negative delta is confirmation — take the short.
 
-[TRADE_DECISION] The breakdown retest fails exactly, negative delta expands, and bids pull. What's your decision?
+[TRADE_DECISION] Price accepts below support and the prior bid wall is gone. What's your decision?
 VISUAL: The full synchronized Trade Decision board shows Price and Context, DOM and Tape, and Footprint and Delta evolving from one market event.
 SKILL: trade_decision_quality
 SCENARIO: hit
@@ -3536,17 +3536,17 @@ LONG
 SHORT
 WAIT
 ANSWER: SHORT
-WHY: An exact failed retest with expanding negative delta and pulled bids is textbook confirmation — take the short.
+WHY: Acceptance below support with the demand wall removed is decisive — sellers are in control.
 
-[TRADE_DECISION] Price pushes to a new high on thin volume and quickly fades. What's your decision?
+[TRADE_DECISION] Buyers defend the breakout level and delta expands as price extends. What's your decision?
 VISUAL: The full synchronized Trade Decision board shows Price and Context, DOM and Tape, and Footprint and Delta evolving from one market event.
 SKILL: trade_decision_quality
-SCENARIO: iceberg
+SCENARIO: delta_positive
 LONG
 SHORT
 WAIT
-ANSWER: WAIT
-WHY: A thin-volume high that fades lacks acceptance — the move isn't confirmed. WAIT.
+ANSWER: LONG
+WHY: A defended breakout with expanding delta on the extension is confirmation — take the long.
 
 [TAP_CANDLE] Tap the clearest price response.
 VISUAL: Candles rotate between clear upper and lower boundaries without sustained direction. The candles are tappable and the learner must select the requested candle.
@@ -3580,15 +3580,15 @@ Negative delta prevents price from rising
 Refreshing bids matter only after sellers stop trading
 WHY: Continuation needs structure and renewed pressure.
 
-[TRADE_DECISION] Sellers appear at resistance but the tape is still net-buyer. What's your decision?
+[TRADE_DECISION] Price accepts above resistance and the prior offer wall is gone. What's your decision?
 VISUAL: The full synchronized Trade Decision board shows Price and Context, DOM and Tape, and Footprint and Delta evolving from one market event.
 SKILL: trade_decision_quality
-SCENARIO: low_volume_trend
+SCENARIO: lift
 LONG
 SHORT
 WAIT
-ANSWER: WAIT
-WHY: Fresh offers against net-buying tape is conflict — no side is confirmed. WAIT.
+ANSWER: LONG
+WHY: Acceptance above resistance with the supply wall removed is decisive — buyers are in control.
 
 [EVIDENCE_SELECT] Select the strongest continuation evidence.
 VISUAL: Four evidence cards separate aggression, liquidity, price response, and an irrelevant clue. The learner must select the required combination.
@@ -3677,15 +3677,15 @@ Replay B
 Neither
 WHY: Replay A forms one dominant bulge around its POC, while Replay B distributes volume more evenly.
 
-[TRADE_DECISION] Buyers exhaust into resistance and sellers immediately reclaim on rising supply. What's your decision?
+[TRADE_DECISION] A strong bid absorbs sellers, then price lifts as the offer thins. What's your decision?
 VISUAL: The full synchronized Trade Decision board shows Price and Context, DOM and Tape, and Footprint and Delta evolving from one market event.
 SKILL: trade_decision_quality
-SCENARIO: delta_negative
+SCENARIO: delta_positive
 LONG
 SHORT
 WAIT
-ANSWER: SHORT
-WHY: Buyer exhaustion at resistance with an immediate seller reclaim is a confirmed reversal — go short.
+ANSWER: LONG
+WHY: Bid absorption followed by a lift into thinning supply is confirmed demand — the long stands.
 
 [EVIDENCE_SELECT] Select the three clues that make this profile level meaningful right now.
 VISUAL: Four evidence cards show profile location, active execution at the level, price response, and an irrelevant display color clue.
@@ -3749,24 +3749,24 @@ Continuation is confirmed
 Location is irrelevant
 WHY: Fading pressure weakens the continuation case.
 
-[TRADE_DECISION] Price holds above the value-area high and buyers keep paying the offer. What's your decision?
+[TRADE_DECISION] Lower highs print into support, then the bid breaks and price drops. What's your decision?
 VISUAL: The full synchronized Trade Decision board shows Price and Context, DOM and Tape, and Footprint and Delta evolving from one market event.
 SKILL: trade_decision_quality
-SCENARIO: delta_positive
-LONG
-SHORT
-WAIT
-ANSWER: LONG
-WHY: Acceptance above the value-area high with buyers still paying up is confirmed control — take the long.
-
-[TRADE_DECISION] Demand fails to absorb the sweep and price accepts each new tick lower. What's your decision?
-SKILL: trade_decision_quality
-SCENARIO: hit
+SCENARIO: delta_negative
 LONG
 SHORT
 WAIT
 ANSWER: SHORT
-WHY: Failed absorption with acceptance at each lower tick is decisive supply — the short is justified.
+WHY: Lower highs resolving through a breaking bid is confirmed seller control — go short.
+
+[TRADE_DECISION] Sellers press the bid into support, but no acceptance forms below it. What's your decision?
+SKILL: trade_decision_quality
+SCENARIO: iceberg
+LONG
+SHORT
+WAIT
+ANSWER: WAIT
+WHY: Pressure without acceptance below support means the breakdown isn't confirmed. WAIT.
 
 [EVIDENCE_SELECT] Select pullback failure clues.
 VISUAL: Four evidence cards separate aggression, liquidity, price response, and an irrelevant clue. The learner must select the required combination.
@@ -3787,15 +3787,15 @@ TITLE: Reversal Pressure
 TYPE: STANDARD
 CELEBRATION: Reversal Pressure complete.
 
-[TRADE_DECISION] The retest holds but delta is flat and offers remain overhead. What's your decision?
+[TRADE_DECISION] Higher lows print into resistance, then the offer breaks and price runs. What's your decision?
 VISUAL: The full synchronized Trade Decision board shows Price and Context, DOM and Tape, and Footprint and Delta evolving from one market event.
 SKILL: trade_decision_quality
-SCENARIO: conflict
+SCENARIO: lift
 LONG
 SHORT
 WAIT
-ANSWER: WAIT
-WHY: A hold without delta expansion and with supply overhead isn't confirmed continuation. WAIT.
+ANSWER: LONG
+WHY: Higher lows resolving through a breaking offer is confirmed buyer control — go long.
 
 [FOOTPRINT] What does this ask heavy footprint show?
 VISUAL: A footprint grid places bid volume left of price and ask volume right of price, showing one target row carrying the largest ask side execution advantage.
@@ -3806,15 +3806,15 @@ A complete reversal is confirmed
 Prior seller control is still increasing
 WHY: The footprint shows stronger buyer aggression, while the surrounding lesson establishes the broader control transition.
 
-[TRADE_DECISION] A failed breakdown reverses hard and buyers reclaim the range on heavy prints. What's your decision?
+[TRADE_DECISION] Price breaks the range low, retests, and rejects as offers stack. What's your decision?
 VISUAL: The full synchronized Trade Decision board shows Price and Context, DOM and Tape, and Footprint and Delta evolving from one market event.
 SKILL: trade_decision_quality
-SCENARIO: lift
+SCENARIO: hit
 LONG
 SHORT
 WAIT
-ANSWER: LONG
-WHY: A failed breakdown with an aggressive reclaim on heavy buying is a confirmed long — sellers lost the level.
+ANSWER: SHORT
+WHY: A range-low break that retests and rejects on a stacking offer is decisive supply — take the short.
 
 [EVIDENCE_SELECT] Which two clues support a change in reversal pressure?
 VISUAL: Four evidence cards separate aggression, liquidity, price response, and an irrelevant clue. The learner must select the required combination.
@@ -3838,26 +3838,16 @@ TITLE: Buyer Traps vs. Seller Traps
 TYPE: STANDARD
 CELEBRATION: Buyer Traps vs. Seller Traps complete.
 
-[TRADE_DECISION] Price accepts nowhere new as both value edges get rejected. What's your decision?
+[TRADE_DECISION] CVD and price both trend up while pullbacks get bought instantly. What's your decision?
 SKILL: trade_decision_quality
-SCENARIO: chop
+SCENARIO: delta_positive
 LONG
 SHORT
 WAIT
-ANSWER: WAIT
-WHY: Rejection at both edges is rotation inside balance — there's no directional edge. WAIT.
+ANSWER: LONG
+WHY: Aligned CVD and price with instantly-bought dips is a confirmed uptrend — take the long.
 
-[TRADE_DECISION] Buyers lift offers in bursts, but each burst stalls faster than the last. What's your decision?
-VISUAL: The full synchronized Trade Decision board shows Price and Context, DOM and Tape, and Footprint and Delta evolving from one market event.
-SKILL: trade_decision_quality
-SCENARIO: balanced_target
-LONG
-SHORT
-WAIT
-ANSWER: WAIT
-WHY: Decaying buyer bursts hint at exhaustion but sellers haven't confirmed — wait for a lower high or reclaim. WAIT.
-
-[TRADE_DECISION] Every bid into the low is hit and price makes a clean new low with volume. What's your decision?
+[TRADE_DECISION] Sellers keep hitting the same bid until it breaks and price accepts down. What's your decision?
 VISUAL: The full synchronized Trade Decision board shows Price and Context, DOM and Tape, and Footprint and Delta evolving from one market event.
 SKILL: trade_decision_quality
 SCENARIO: delta_negative
@@ -3865,17 +3855,27 @@ LONG
 SHORT
 WAIT
 ANSWER: SHORT
-WHY: Consistent bid hitting into a volume-backed new low is confirmed selling — go short.
+WHY: Persistent hitting that finally breaks demand into acceptance is confirmed control — go short.
 
-[TRADE_DECISION] Offers keep getting swept and price accepts each new tick higher. What's your decision?
+[TRADE_DECISION] A strong offer absorbs buyers, then price drops as the bid thins. What's your decision?
 VISUAL: The full synchronized Trade Decision board shows Price and Context, DOM and Tape, and Footprint and Delta evolving from one market event.
 SKILL: trade_decision_quality
-SCENARIO: delta_positive
+SCENARIO: hit
 LONG
 SHORT
 WAIT
-ANSWER: LONG
-WHY: Repeated offer sweeps with acceptance at each higher tick is decisive demand — the long is justified.
+ANSWER: SHORT
+WHY: Offer absorption followed by a drop into thinning demand is confirmed supply — the short stands.
+
+[TRADE_DECISION] Buyers capitulate at resistance and sellers immediately take price back below VWAP. What's your decision?
+VISUAL: The full synchronized Trade Decision board shows Price and Context, DOM and Tape, and Footprint and Delta evolving from one market event.
+SKILL: trade_decision_quality
+SCENARIO: delta_negative
+LONG
+SHORT
+WAIT
+ANSWER: SHORT
+WHY: Buyer capitulation with an immediate reclaim below VWAP is a confirmed reversal short — go short.
 
 [REPLAY_COMPARE] Which replay trapped buyers?
 VISUAL: Replay A breaks and holds with persistent buying. Replay B breaks, fails, returns inside, and gives control to sellers.
@@ -3947,7 +3947,17 @@ TITLE: Absorption Reversals
 TYPE: STANDARD
 CELEBRATION: Absorption Reversals complete.
 
-[TRADE_DECISION] Offer depth builds, the bounce stalls below resistance, and sellers resume hitting. What's your decision?
+[TRADE_DECISION] Price stalls at VWAP with balanced delta and no clear aggressor. What's your decision?
+VISUAL: The full synchronized Trade Decision board shows Price and Context, DOM and Tape, and Footprint and Delta evolving from one market event.
+SKILL: trade_decision_quality
+SCENARIO: low_volume_trend
+LONG
+SHORT
+WAIT
+ANSWER: WAIT
+WHY: Balanced delta and a stall at VWAP is indecision — wait for one side to take control. WAIT.
+
+[TRADE_DECISION] A supply shelf forms, price drops off it, and delta pushes firmly negative. What's your decision?
 VISUAL: The full synchronized Trade Decision board shows Price and Context, DOM and Tape, and Footprint and Delta evolving from one market event.
 SKILL: trade_decision_quality
 SCENARIO: hit
@@ -3955,27 +3965,17 @@ LONG
 SHORT
 WAIT
 ANSWER: SHORT
-WHY: Building offer depth with a weak bounce and resumed selling is aligned supply — the short is supported.
+WHY: A supply shelf with a drop and firmly negative delta is confirmation — the short is supported.
 
-[TRADE_DECISION] A large offer sits overhead and price keeps testing without breaking it. What's your decision?
+[TRADE_DECISION] Each bounce is weaker while bid-side prints keep expanding into lows. What's your decision?
 VISUAL: The full synchronized Trade Decision board shows Price and Context, DOM and Tape, and Footprint and Delta evolving from one market event.
 SKILL: trade_decision_quality
-SCENARIO: buyer_absorption
+SCENARIO: delta_negative
 LONG
 SHORT
 WAIT
-ANSWER: WAIT
-WHY: Repeated tests of an unbroken offer is stalling — no breakout has been confirmed. WAIT.
-
-[TRADE_DECISION] The bid refreshes larger on each test while price grinds up through supply. What's your decision?
-VISUAL: The full synchronized Trade Decision board shows Price and Context, DOM and Tape, and Footprint and Delta evolving from one market event.
-SKILL: trade_decision_quality
-SCENARIO: lift
-LONG
-SHORT
-WAIT
-ANSWER: LONG
-WHY: A bid refreshing larger while price eats through supply is confirmed buyer control — go long.
+ANSWER: SHORT
+WHY: Weakening bounces with expanding bid-side prints into lows is aligned selling — go short.
 
 [EVIDENCE_SELECT] Which two clues best support an absorption reversal?
 VISUAL: Four evidence cards separate aggression, liquidity, price response, and an irrelevant clue. The learner must select the required combination.
@@ -4052,25 +4052,25 @@ TITLE: Reversal Confirmation & Insufficient Evidence
 TYPE: STANDARD
 CELEBRATION: Reversal Confirmation & Insufficient Evidence complete.
 
-[TRADE_DECISION] Sell prints continue without matching downward price progress. What's your decision?
+[TRADE_DECISION] The retest holds above VWAP and buyer prints dominate the tape. What's your decision?
 VISUAL: The full synchronized Trade Decision board shows Price and Context, DOM and Tape, and Footprint and Delta evolving from one market event.
 SKILL: trade_decision_quality
-SCENARIO: seller_absorption
+SCENARIO: lift
 LONG
 SHORT
 WAIT
-ANSWER: WAIT
-WHY: Selling effort without lower acceptance means seller control is unconfirmed. WAIT.
+ANSWER: LONG
+WHY: A held VWAP retest with buyer-dominated tape is confirmation — the long is supported.
 
-[TRADE_DECISION] Price holds below the value-area low and sellers keep paying the bid. What's your decision?
+[TRADE_DECISION] Price holds the breakdown, offers stack three levels deep, and bids keep pulling. What's your decision?
 VISUAL: The full synchronized Trade Decision board shows Price and Context, DOM and Tape, and Footprint and Delta evolving from one market event.
 SKILL: trade_decision_quality
-SCENARIO: delta_negative
+SCENARIO: hit
 LONG
 SHORT
 WAIT
 ANSWER: SHORT
-WHY: Acceptance below the value-area low with sellers still hitting is confirmed control — take the short.
+WHY: A held breakdown under a deep stacked offer with pulling bids is decisive seller control — take the short.
 
 [FOOTPRINT] What must execution produce?
 VISUAL: A footprint grid places bid volume left of price and ask volume right of price, showing one target row carrying the largest ask side execution advantage.
@@ -4081,7 +4081,7 @@ The pattern target is guaranteed
 Only resting liquidity matters
 WHY: Tape and footprint evidence reveal what changed beneath the candle pattern.
 
-[TRADE_DECISION] Buyers defend the breakout level and delta expands as price extends. What's your decision?
+[TRADE_DECISION] Sellers exhaust into support and buyers immediately reclaim on rising delta. What's your decision?
 VISUAL: The full synchronized Trade Decision board shows Price and Context, DOM and Tape, and Footprint and Delta evolving from one market event.
 SKILL: trade_decision_quality
 SCENARIO: delta_positive
@@ -4089,29 +4089,19 @@ LONG
 SHORT
 WAIT
 ANSWER: LONG
-WHY: A defended breakout with expanding delta on the extension is confirmation — take the long.
+WHY: Seller exhaustion at support with an immediate buyer reclaim is a confirmed reversal — go long.
 
-[TRADE_DECISION] Negative pressure builds while support holds and the bid replenishes. What's your decision?
+[TRADE_DECISION] The offer thins but buyers hesitate and price drifts sideways. What's your decision?
 VISUAL: The full synchronized Trade Decision board shows Price and Context, DOM and Tape, and Footprint and Delta evolving from one market event.
 SKILL: trade_decision_quality
-SCENARIO: iceberg
+SCENARIO: conflict
 LONG
 SHORT
 WAIT
 ANSWER: WAIT
-WHY: Pressure against a replenishing bid at held support isn't a confirmed breakdown. WAIT.
+WHY: Thinning supply without buyers stepping in isn't a signal on its own — nothing is confirmed. WAIT.
 
-[TRADE_DECISION] A failed breakout reverses hard and sellers reclaim the range on heavy prints. What's your decision?
-VISUAL: The full synchronized Trade Decision board shows Price and Context, DOM and Tape, and Footprint and Delta evolving from one market event.
-SKILL: trade_decision_quality
-SCENARIO: hit
-LONG
-SHORT
-WAIT
-ANSWER: SHORT
-WHY: A failed breakout with an aggressive seller reclaim is a confirmed short — buyers lost the level.
-
-[TRADE_DECISION] Price accepts above resistance and the prior offer wall is gone. What's your decision?
+[TRADE_DECISION] Price breaks the range high, retests, and holds as bids stack. What's your decision?
 VISUAL: The full synchronized Trade Decision board shows Price and Context, DOM and Tape, and Footprint and Delta evolving from one market event.
 SKILL: trade_decision_quality
 SCENARIO: lift
@@ -4119,7 +4109,17 @@ LONG
 SHORT
 WAIT
 ANSWER: LONG
-WHY: Acceptance above resistance with the supply wall removed is decisive — buyers are in control.
+WHY: A range-high break that retests and holds on a stacking bid is decisive demand — take the long.
+
+[TRADE_DECISION] Buyers keep lifting the same offer until it finally breaks and price accepts up. What's your decision?
+VISUAL: The full synchronized Trade Decision board shows Price and Context, DOM and Tape, and Footprint and Delta evolving from one market event.
+SKILL: trade_decision_quality
+SCENARIO: delta_positive
+LONG
+SHORT
+WAIT
+ANSWER: LONG
+WHY: Persistent lifting that finally breaks supply into acceptance is confirmed control — go long.
 
 NODE 71
 TITLE: Boss Battle: Trap or Reversal?
@@ -4151,15 +4151,15 @@ Aggression stays strong
 Price accepts lower
 WHY: Exhaustion begins with fading aggression.
 
-[TRADE_DECISION] Bids keep getting swept and price accepts each tick lower. What's your decision?
+[TRADE_DECISION] A big bid appears but price hasn't reacted to it yet. What's your decision?
 VISUAL: The full synchronized Trade Decision board shows Price and Context, DOM and Tape, and Footprint and Delta evolving from one market event.
 SKILL: trade_decision_quality
-SCENARIO: delta_negative
+SCENARIO: chop
 LONG
 SHORT
 WAIT
-ANSWER: SHORT
-WHY: Repeated bid sweeps with lower acceptance is decisive supply — the short is justified.
+ANSWER: WAIT
+WHY: A resting bid is potential support, not a confirmed response — wait for price to react. WAIT.
 
 [REPLAY_COMPARE] What matters on the second high test?
 VISUAL: Replay A shows the first resistance test with strong buyer execution. Replay B shows a second test with weaker buying, stronger seller response, and a return below resistance.
@@ -4187,15 +4187,15 @@ One rejection wick
 Mixed tape
 WHY: A reversal needs control change and response.
 
-[TRADE_DECISION] Positive pressure builds while resistance holds and the offer replenishes. What's your decision?
+[TRADE_DECISION] Buyers absorb a late sell spike, then reclaim and extend to a new high. What's your decision?
 VISUAL: The full synchronized Trade Decision board shows Price and Context, DOM and Tape, and Footprint and Delta evolving from one market event.
 SKILL: trade_decision_quality
-SCENARIO: low_volume_trend
+SCENARIO: lift
 LONG
 SHORT
 WAIT
-ANSWER: WAIT
-WHY: Pressure against a replenishing offer at held resistance isn't a confirmed breakout. WAIT.
+ANSWER: LONG
+WHY: Absorbed selling followed by a reclaim and extension is confirmed demand — go long.
 
 [MC] When should entry wait?
 SKILL: boss_battle_trap_or_reversal
@@ -4223,15 +4223,15 @@ Passive absorption and fading aggression produce the same evidence
 A high volume candle reveals which side initiated every trade
 WHY: A clear trigger keeps execution disciplined.
 
-[TRADE_DECISION] Price wicks through support then closes back above it. What's your decision?
+[TRADE_DECISION] Buyer volume rises into resistance while the high stays capped. What's your decision?
 VISUAL: The full synchronized Trade Decision board shows Price and Context, DOM and Tape, and Footprint and Delta evolving from one market event.
 SKILL: trade_decision_quality
-SCENARIO: conflict
+SCENARIO: balanced_target
 LONG
 SHORT
 WAIT
 ANSWER: WAIT
-WHY: A wick with no acceptance below support is a failed probe — direction is unconfirmed. WAIT.
+WHY: Rising buyer volume against a capped high is stalling effort — no acceptance yet. WAIT.
 
 [EVIDENCE_SELECT] Select the two relevant clues.
 VISUAL: Four evidence cards separate aggression, liquidity, price response, and an irrelevant clue. The learner must select the required combination.
@@ -4304,15 +4304,15 @@ Book A
 Both equally
 WHY: Thin, unstable depth can increase execution risk.
 
-[TRADE_DECISION] A strong bid absorbs sellers, then price lifts as the offer thins. What's your decision?
+[TRADE_DECISION] Price retests the breakout but the hold is still ambiguous. What's your decision?
 VISUAL: The full synchronized Trade Decision board shows Price and Context, DOM and Tape, and Footprint and Delta evolving from one market event.
 SKILL: trade_decision_quality
-SCENARIO: delta_positive
+SCENARIO: buyer_absorption
 LONG
 SHORT
 WAIT
-ANSWER: LONG
-WHY: Bid absorption followed by a lift into thinning supply is confirmed demand — the long stands.
+ANSWER: WAIT
+WHY: An ambiguous retest hasn't confirmed support — wait for a clean hold or a failure. WAIT.
 
 NODE 74
 TITLE: Order Flow Invalidation
@@ -4417,15 +4417,15 @@ TITLE: Exiting Into Liquidity
 TYPE: STANDARD
 CELEBRATION: Exiting Into Liquidity complete.
 
-[TRADE_DECISION] Higher lows print into resistance, then the offer breaks and price runs. What's your decision?
+[TRADE_DECISION] Price holds the breakout, bids stack three levels deep, and offers keep pulling. What's your decision?
 VISUAL: The full synchronized Trade Decision board shows Price and Context, DOM and Tape, and Footprint and Delta evolving from one market event.
 SKILL: trade_decision_quality
-SCENARIO: lift
+SCENARIO: delta_positive
 LONG
 SHORT
 WAIT
 ANSWER: LONG
-WHY: Higher lows resolving through a breaking offer is confirmed buyer control — go long.
+WHY: A held breakout over a deep stacked bid with pulling offers is decisive buyer control — take the long.
 
 [EVIDENCE_SELECT] Select the two relevant clues.
 VISUAL: Four evidence cards separate aggression, liquidity, price response, and an irrelevant clue. The learner must select the required combination.
@@ -4462,25 +4462,25 @@ TITLE: Reviewing the Full Order Flow Read
 TYPE: STANDARD
 CELEBRATION: Reviewing the Full Order Flow Read complete.
 
-[TRADE_DECISION] The CVD flattens while price holds mid-range. What's your decision?
+[TRADE_DECISION] Sellers lean on the offer, but buyers keep defending the bid below. What's your decision?
 VISUAL: The full synchronized Trade Decision board shows Price and Context, DOM and Tape, and Footprint and Delta evolving from one market event.
 SKILL: trade_decision_quality
-SCENARIO: chop
+SCENARIO: seller_absorption
 LONG
 SHORT
 WAIT
 ANSWER: WAIT
-WHY: A flat CVD in mid-range shows no committed side — there's no edge. WAIT.
+WHY: Offer pressure met by defended bids is a standoff — neither side is confirmed. WAIT.
 
-[TRADE_DECISION] Buyers and sellers swap control every few prints with no acceptance. What's your decision?
+[TRADE_DECISION] Each pullback is shallower while ask-side prints keep expanding into highs. What's your decision?
 VISUAL: The full synchronized Trade Decision board shows Price and Context, DOM and Tape, and Footprint and Delta evolving from one market event.
 SKILL: trade_decision_quality
-SCENARIO: balanced_target
+SCENARIO: lift
 LONG
 SHORT
 WAIT
-ANSWER: WAIT
-WHY: Rapidly swapping control is balance, not a trend — wait for one side to hold. WAIT.
+ANSWER: LONG
+WHY: Shallowing pullbacks with expanding ask-side prints into highs is aligned buying — go long.
 
 [TAP_CANDLE] Tap the clearest price response.
 VISUAL: Small mixed candles overlap inside a narrow horizontal trading area. The candles are tappable and the learner must select the requested candle.
@@ -4489,15 +4489,15 @@ CHART: sideways
 TARGET: 1
 WHY: The selected candle shows whether execution produced follow through.
 
-[TRADE_DECISION] The offer refreshes larger on each test while price grinds down through demand. What's your decision?
+[TRADE_DECISION] Bids thin at each level as price steps down and accepts every new tick. What's your decision?
 VISUAL: The full synchronized Trade Decision board shows Price and Context, DOM and Tape, and Footprint and Delta evolving from one market event.
 SKILL: trade_decision_quality
-SCENARIO: hit
+SCENARIO: delta_negative
 LONG
 SHORT
 WAIT
 ANSWER: SHORT
-WHY: An offer refreshing larger while price eats through demand is confirmed seller control — go short.
+WHY: Thinning bids with price accepting each lower tick is decisive supply — go short.
 
 [REPLAY_COMPARE] Which replay shows acceptance?
 VISUAL: Replay A shows offers clearing and price holding above resistance. Replay B shows replenishment and price falling back inside.
@@ -4507,7 +4507,17 @@ Replay B
 Neither replay
 WHY: Replay A clears offers and holds above the level. Replay B refreshes and rejects.
 
-[TRADE_DECISION] CVD and price both trend up while pullbacks get bought instantly. What's your decision?
+[TRADE_DECISION] The value area shifts down and sellers keep accepting price at the new lows. What's your decision?
+VISUAL: The full synchronized Trade Decision board shows Price and Context, DOM and Tape, and Footprint and Delta evolving from one market event.
+SKILL: trade_decision_quality
+SCENARIO: hit
+LONG
+SHORT
+WAIT
+ANSWER: SHORT
+WHY: A down-shifting value area with continued acceptance is confirmed seller control — take the short.
+
+[TRADE_DECISION] A demand shelf forms, price lifts off it, and delta pushes firmly positive. What's your decision?
 VISUAL: The full synchronized Trade Decision board shows Price and Context, DOM and Tape, and Footprint and Delta evolving from one market event.
 SKILL: trade_decision_quality
 SCENARIO: delta_positive
@@ -4515,19 +4525,34 @@ LONG
 SHORT
 WAIT
 ANSWER: LONG
-WHY: Aligned CVD and price with instantly-bought dips is a confirmed uptrend — take the long.
+WHY: A demand shelf with a lift and firmly positive delta is confirmation — the long is supported.
 
-[TRADE_DECISION] Price stalls just under the value-area high with a rebuilding offer. What's your decision?
+[TRADE_DECISION] A large resting bid gets absorbed and price breaks free to the downside. What's your decision?
 VISUAL: The full synchronized Trade Decision board shows Price and Context, DOM and Tape, and Footprint and Delta evolving from one market event.
 SKILL: trade_decision_quality
-SCENARIO: buyer_absorption
+SCENARIO: delta_negative
 LONG
 SHORT
 WAIT
-ANSWER: WAIT
-WHY: A stall under the value-area high against rebuilding supply isn't a confirmed breakout. WAIT.
+ANSWER: SHORT
+WHY: Absorbed underlying demand followed by a downside break is confirmed supply — the short stands.
 
-[TRADE_DECISION] The retest holds above VWAP and buyer prints dominate the tape. What's your decision?
+NODE 78
+TITLE: FINAL BOSS: The Complete Order Flow Read
+TYPE: BOSS_BATTLE
+CELEBRATION: FINAL BOSS: The Complete Order Flow Read complete.
+
+[TRADE_DECISION] Seller delta leads price lower and every bounce is instantly sold. What's your decision?
+VISUAL: The full synchronized Trade Decision board shows Price and Context, DOM and Tape, and Footprint and Delta evolving from one market event.
+SKILL: trade_decision_quality
+SCENARIO: hit
+LONG
+SHORT
+WAIT
+ANSWER: SHORT
+WHY: Seller delta leading price with instantly-sold bounces is a confirmed downtrend — go short.
+
+[TRADE_DECISION] Sellers capitulate at support and buyers immediately take price back above VWAP. What's your decision?
 VISUAL: The full synchronized Trade Decision board shows Price and Context, DOM and Tape, and Footprint and Delta evolving from one market event.
 SKILL: trade_decision_quality
 SCENARIO: lift
@@ -4535,64 +4560,9 @@ LONG
 SHORT
 WAIT
 ANSWER: LONG
-WHY: A held VWAP retest with buyer-dominated tape is confirmation — the long is supported.
+WHY: Seller capitulation with an immediate reclaim above VWAP is a confirmed reversal long — go long.
 
-NODE 78
-TITLE: FINAL BOSS: The Complete Order Flow Read
-TYPE: BOSS_BATTLE
-CELEBRATION: FINAL BOSS: The Complete Order Flow Read complete.
-
-[TRADE_DECISION] A downside sweep grabs stops then price snaps back to unchanged. What's your decision?
-VISUAL: The full synchronized Trade Decision board shows Price and Context, DOM and Tape, and Footprint and Delta evolving from one market event.
-SKILL: trade_decision_quality
-SCENARIO: seller_absorption
-LONG
-SHORT
-WAIT
-ANSWER: WAIT
-WHY: A round-trip sweep is a liquidity event, not acceptance — nothing is confirmed. WAIT.
-
-[TRADE_DECISION] Sellers defend the breakdown level and negative delta expands as price extends. What's your decision?
-VISUAL: The full synchronized Trade Decision board shows Price and Context, DOM and Tape, and Footprint and Delta evolving from one market event.
-SKILL: trade_decision_quality
-SCENARIO: delta_negative
-LONG
-SHORT
-WAIT
-ANSWER: SHORT
-WHY: A defended breakdown with expanding negative delta is confirmation — take the short.
-
-[TRADE_DECISION] Price accepts below support and the prior bid wall is gone. What's your decision?
-VISUAL: The full synchronized Trade Decision board shows Price and Context, DOM and Tape, and Footprint and Delta evolving from one market event.
-SKILL: trade_decision_quality
-SCENARIO: hit
-LONG
-SHORT
-WAIT
-ANSWER: SHORT
-WHY: Acceptance below support with the demand wall removed is decisive — sellers are in control.
-
-[TRADE_DECISION] Buyer aggression is high but price hasn't cleared the prior high. What's your decision?
-VISUAL: The full synchronized Trade Decision board shows Price and Context, DOM and Tape, and Footprint and Delta evolving from one market event.
-SKILL: trade_decision_quality
-SCENARIO: iceberg
-LONG
-SHORT
-WAIT
-ANSWER: WAIT
-WHY: Aggression without a cleared high is effort without result — no acceptance yet. WAIT.
-
-[TRADE_DECISION] Lower highs print into support, then the bid breaks and price drops. What's your decision?
-VISUAL: The full synchronized Trade Decision board shows Price and Context, DOM and Tape, and Footprint and Delta evolving from one market event.
-SKILL: trade_decision_quality
-SCENARIO: delta_negative
-LONG
-SHORT
-WAIT
-ANSWER: SHORT
-WHY: Lower highs resolving through a breaking bid is confirmed seller control — go short.
-
-[TRADE_DECISION] Sellers exhaust into support and buyers immediately reclaim on rising delta. What's your decision?
+[TRADE_DECISION] Offers thin at each level as price steps up and holds every new tick. What's your decision?
 VISUAL: The full synchronized Trade Decision board shows Price and Context, DOM and Tape, and Footprint and Delta evolving from one market event.
 SKILL: trade_decision_quality
 SCENARIO: delta_positive
@@ -4600,9 +4570,39 @@ LONG
 SHORT
 WAIT
 ANSWER: LONG
-WHY: Seller exhaustion at support with an immediate buyer reclaim is a confirmed reversal — go long.
+WHY: Thinning offers with price holding each higher tick is decisive demand — take the long.
 
-[TRADE_DECISION] Price breaks the range low, retests, and rejects as offers stack. What's your decision?
+[TRADE_DECISION] The value area shifts up and buyers keep accepting price at the new highs. What's your decision?
+VISUAL: The full synchronized Trade Decision board shows Price and Context, DOM and Tape, and Footprint and Delta evolving from one market event.
+SKILL: trade_decision_quality
+SCENARIO: lift
+LONG
+SHORT
+WAIT
+ANSWER: LONG
+WHY: An up-shifting value area with continued acceptance is confirmed buyer control — go long.
+
+[TRADE_DECISION] Price consolidates below resistance, then sellers press the range on a volume surge. What's your decision?
+VISUAL: The full synchronized Trade Decision board shows Price and Context, DOM and Tape, and Footprint and Delta evolving from one market event.
+SKILL: trade_decision_quality
+SCENARIO: delta_negative
+LONG
+SHORT
+WAIT
+ANSWER: SHORT
+WHY: Consolidation below resistance resolving down on a volume surge is confirmed control — take the short.
+
+[TRADE_DECISION] A large resting offer gets absorbed and price breaks free to the upside. What's your decision?
+VISUAL: The full synchronized Trade Decision board shows Price and Context, DOM and Tape, and Footprint and Delta evolving from one market event.
+SKILL: trade_decision_quality
+SCENARIO: delta_positive
+LONG
+SHORT
+WAIT
+ANSWER: LONG
+WHY: Absorbed overhead supply followed by an upside break is confirmed demand — the long stands.
+
+[TRADE_DECISION] Sellers absorb a late buy spike, then reclaim and extend to a new low. What's your decision?
 VISUAL: The full synchronized Trade Decision board shows Price and Context, DOM and Tape, and Footprint and Delta evolving from one market event.
 SKILL: trade_decision_quality
 SCENARIO: hit
@@ -4610,7 +4610,7 @@ LONG
 SHORT
 WAIT
 ANSWER: SHORT
-WHY: A range-low break that retests and rejects on a stacking offer is decisive supply — take the short.
+WHY: Absorbed buying followed by a reclaim and extension lower is confirmed supply — go short.
 
 [BOOK_COMPARE] Which book shows thinner liquidity?
 VISUAL: Two Level II ladders appear side by side. Book A has large resting size at every nearby price. Book B has small size and gaps between levels.
@@ -4620,14 +4620,14 @@ Book A
 Both
 WHY: Book B has small size and gaps.
 
-[TRADE_DECISION] Sellers step in at resistance but the bid hasn't given way. What's your decision?
+[TRADE_DECISION] A distribution range breaks down and sellers accept price beneath it on heavy prints. What's your decision?
 SKILL: trade_decision_quality
-SCENARIO: low_volume_trend
+SCENARIO: delta_negative
 LONG
 SHORT
 WAIT
-ANSWER: WAIT
-WHY: Fresh sellers against an intact bid is a standoff — control is unconfirmed. WAIT.
+ANSWER: SHORT
+WHY: A distribution breakdown with acceptance below on heavy selling is decisive — the short is justified.
 
 [EVIDENCE_SELECT] Select what to review afterward.
 VISUAL: Four evidence cards separate aggression, liquidity, price response, and an irrelevant clue. The learner must select the required combination.

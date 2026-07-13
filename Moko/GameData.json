@@ -1573,26 +1573,26 @@
             },
             {
               "type": "trade_decision",
-              "event": "conflict",
-              "question": "Buyers repeatedly lift the offer at resistance, but each push makes less price progress. What's your decision?",
+              "event": "hit",
+              "question": "Support breaks, price accepts below, and sellers keep hitting the bid. What's your decision?",
               "options": [
                 "LONG",
                 "SHORT",
                 "WAIT"
               ],
-              "correct": 2,
-              "explanation": "Buyer effort is rising while price progress fades — momentum is stalling but sellers haven't confirmed control. WAIT.",
+              "correct": 1,
+              "explanation": "A broken support with acceptance below and sellers pressing the bid is confirmed seller control — go short.",
               "footprintPreview": true,
               "skillId": "trade_decision_quality",
-              "scenario": "conflict",
+              "scenario": "hit",
               "render_mode": "raw_full",
               "difficulty": "advanced",
               "wrong_explanations": [
                 "A LONG needs confirmed buyer control with price actually accepting higher — not here.",
-                "A SHORT needs confirmed seller control with price actually accepting lower — not here.",
-                null
+                null,
+                "WAIT would pass up a read where the evidence already aligns to act."
               ],
-              "decision_quality": "Buyer effort is rising while price progress fades — momentum is stalling but sellers haven't confirmed control. WAIT."
+              "decision_quality": "A broken support with acceptance below and sellers pressing the bid is confirmed seller control — go short."
             }
           ]
         },
@@ -1764,26 +1764,26 @@
             },
             {
               "type": "trade_decision",
-              "question": "Positive delta expands while a large offer keeps rebuilding and the latest high fails to hold. What's your decision?",
+              "question": "Buyers repeatedly lift the offer at resistance, but each push makes less price progress. What's your decision?",
               "options": [
                 "LONG",
                 "SHORT",
                 "WAIT"
               ],
               "correct": 2,
-              "explanation": "Delta is positive but a refreshing offer is capping price and the high failed — buying isn't producing acceptance. WAIT.",
-              "event": "chop",
+              "explanation": "Buyer effort is rising while price progress fades — momentum is stalling but sellers haven't confirmed control. WAIT.",
+              "event": "conflict",
               "footprintPreview": true,
               "skillId": "trade_decision_quality",
-              "scenario": "chop",
+              "scenario": "conflict",
               "render_mode": "raw_full",
               "difficulty": "advanced",
               "wrong_explanations": [
-                "Going long here ignores that buyers aren't producing higher acceptance yet.",
-                "Shorting here ignores that sellers aren't producing lower acceptance yet.",
+                "A LONG needs confirmed buyer control with price actually accepting higher — not here.",
+                "A SHORT needs confirmed seller control with price actually accepting lower — not here.",
                 null
               ],
-              "decision_quality": "Delta is positive but a refreshing offer is capping price and the high failed — buying isn't producing acceptance. WAIT."
+              "decision_quality": "Buyer effort is rising while price progress fades — momentum is stalling but sellers haven't confirmed control. WAIT."
             },
             {
               "type": "matching",
@@ -1857,25 +1857,25 @@
             },
             {
               "type": "trade_decision",
-              "question": "Support breaks, price accepts below, and sellers keep hitting the bid. What's your decision?",
+              "question": "Bids replenish under price while each dip is bought and the high extends. What's your decision?",
               "options": [
                 "LONG",
                 "SHORT",
                 "WAIT"
               ],
-              "correct": 1,
-              "explanation": "A broken support with acceptance below and sellers pressing the bid is confirmed seller control — go short.",
-              "event": "hit",
+              "correct": 0,
+              "explanation": "Demand refreshing beneath price while every pullback is absorbed and highs extend is confirmed buyer control — go long.",
+              "event": "delta_positive",
               "skillId": "trade_decision_quality",
-              "scenario": "hit",
+              "scenario": "delta_positive",
               "render_mode": "raw_full",
               "difficulty": "advanced",
               "wrong_explanations": [
-                "A LONG needs confirmed buyer control with price actually accepting higher — not here.",
                 null,
-                "WAIT would pass up a read where the evidence already aligns to act."
+                "Shorting here ignores that sellers aren't producing lower acceptance yet.",
+                "Sitting out ignores that the board is confirmed, not conflicted."
               ],
-              "decision_quality": "A broken support with acceptance below and sellers pressing the bid is confirmed seller control — go short."
+              "decision_quality": "Demand refreshing beneath price while every pullback is absorbed and highs extend is confirmed buyer control — go long."
             },
             {
               "type": "aggressor",
@@ -1937,25 +1937,25 @@
             },
             {
               "type": "trade_decision",
-              "question": "Buyer-initiated tape accelerates into the POC, yet price stays trapped beneath the same offer. What's your decision?",
+              "question": "Buyers sweep the offer stack and price accepts above the breakout with no pullback. What's your decision?",
               "options": [
                 "LONG",
                 "SHORT",
                 "WAIT"
               ],
-              "correct": 2,
-              "explanation": "Aggression is high but price is pinned under supply with no breakout — no acceptance yet. WAIT.",
-              "event": "balanced_target",
+              "correct": 0,
+              "explanation": "A completed sweep with acceptance above the breakout and no supply response is decisive buyer control — go long.",
+              "event": "lift",
               "skillId": "trade_decision_quality",
-              "scenario": "balanced_target",
+              "scenario": "lift",
               "render_mode": "raw_full",
               "difficulty": "advanced",
               "wrong_explanations": [
-                "A long is premature — upside follow-through hasn't shown.",
+                null,
                 "A short is premature — downside follow-through hasn't shown.",
-                null
+                "WAIT is too passive here — the signal is decisive, not ambiguous."
               ],
-              "decision_quality": "Aggression is high but price is pinned under supply with no breakout — no acceptance yet. WAIT."
+              "decision_quality": "A completed sweep with acceptance above the breakout and no supply response is decisive buyer control — go long."
             },
             {
               "type": "evidence_select",
@@ -2104,25 +2104,25 @@
             },
             {
               "type": "trade_decision",
-              "question": "Ask-side footprint dominates, but price rejects the breakout level and returns inside value. What's your decision?",
+              "question": "Sellers sweep the bid stack and price accepts under the breakdown. What's your decision?",
               "options": [
                 "LONG",
                 "SHORT",
                 "WAIT"
               ],
-              "correct": 2,
-              "explanation": "The footprint favors buyers, yet price rejected the level and fell back into value — the breakout failed to confirm. WAIT.",
-              "event": "buyer_absorption",
+              "correct": 1,
+              "explanation": "A completed bid sweep with acceptance below the breakdown is confirmed selling — take the short.",
+              "event": "hit",
               "skillId": "trade_decision_quality",
-              "scenario": "buyer_absorption",
+              "scenario": "hit",
               "render_mode": "raw_full",
               "difficulty": "advanced",
               "wrong_explanations": [
-                "A LONG needs confirmed buyer control with price actually accepting higher — not here.",
-                "A SHORT needs confirmed seller control with price actually accepting lower — not here.",
-                null
+                "A long is premature — upside follow-through hasn't shown.",
+                null,
+                "WAIT is too passive here — the signal is decisive, not ambiguous."
               ],
-              "decision_quality": "The footprint favors buyers, yet price rejected the level and fell back into value — the breakout failed to confirm. WAIT."
+              "decision_quality": "A completed bid sweep with acceptance below the breakdown is confirmed selling — take the short."
             },
             {
               "type": "evidence_select",
@@ -2171,14 +2171,14 @@
             },
             {
               "type": "trade_decision",
-              "question": "Bids replenish under price while each dip is bought and the high extends. What's your decision?",
+              "question": "CVD makes new highs with price and the offer above keeps getting lifted. What's your decision?",
               "options": [
                 "LONG",
                 "SHORT",
                 "WAIT"
               ],
               "correct": 0,
-              "explanation": "Demand refreshing beneath price while every pullback is absorbed and highs extend is confirmed buyer control — go long.",
+              "explanation": "Rising CVD confirming new price highs while offers are consumed is aligned buying pressure — the long is supported.",
               "event": "delta_positive",
               "skillId": "trade_decision_quality",
               "scenario": "delta_positive",
@@ -2186,10 +2186,10 @@
               "difficulty": "advanced",
               "wrong_explanations": [
                 null,
-                "Shorting here ignores that sellers aren't producing lower acceptance yet.",
-                "Sitting out ignores that the board is confirmed, not conflicted."
+                "A SHORT needs confirmed seller control with price actually accepting lower — not here.",
+                "WAIT would pass up a read where the evidence already aligns to act."
               ],
-              "decision_quality": "Demand refreshing beneath price while every pullback is absorbed and highs extend is confirmed buyer control — go long."
+              "decision_quality": "Rising CVD confirming new price highs while offers are consumed is aligned buying pressure — the long is supported."
             },
             {
               "type": "evidence_select",
@@ -2279,25 +2279,25 @@
             },
             {
               "type": "trade_decision",
-              "event": "lift",
-              "question": "Buyers sweep the offer stack and price accepts above the breakout with no pullback. What's your decision?",
+              "event": "delta_negative",
+              "question": "CVD makes new lows with price and the bid below keeps getting hit. What's your decision?",
               "options": [
                 "LONG",
                 "SHORT",
                 "WAIT"
               ],
-              "correct": 0,
-              "explanation": "A completed sweep with acceptance above the breakout and no supply response is decisive buyer control — go long.",
+              "correct": 1,
+              "explanation": "Falling CVD confirming new lows while bids are consumed is aligned selling pressure — go short.",
               "skillId": "trade_decision_quality",
-              "scenario": "lift",
+              "scenario": "delta_negative",
               "render_mode": "raw_full",
               "difficulty": "advanced",
               "wrong_explanations": [
+                "A LONG needs confirmed buyer control with price actually accepting higher — not here.",
                 null,
-                "A short is premature — downside follow-through hasn't shown.",
-                "WAIT is too passive here — the signal is decisive, not ambiguous."
+                "WAIT would pass up a read where the evidence already aligns to act."
               ],
-              "decision_quality": "A completed sweep with acceptance above the breakout and no supply response is decisive buyer control — go long."
+              "decision_quality": "Falling CVD confirming new lows while bids are consumed is aligned selling pressure — go short."
             },
             {
               "type": "replay_compare",
@@ -2322,18 +2322,18 @@
           "screens": [
             {
               "type": "trade_decision",
-              "event": "seller_absorption",
-              "question": "Sellers hit the bid steadily, but price holds support and refuses to break. What's your decision?",
+              "event": "chop",
+              "question": "Positive delta expands while a large offer keeps rebuilding and the latest high fails to hold. What's your decision?",
               "options": [
                 "LONG",
                 "SHORT",
                 "WAIT"
               ],
               "correct": 2,
-              "explanation": "Selling pressure is present but support is holding — seller control isn't confirmed. WAIT.",
+              "explanation": "Delta is positive but a refreshing offer is capping price and the high failed — buying isn't producing acceptance. WAIT.",
               "footprintPreview": true,
               "skillId": "trade_decision_quality",
-              "scenario": "seller_absorption",
+              "scenario": "chop",
               "render_mode": "raw_full",
               "difficulty": "advanced",
               "wrong_explanations": [
@@ -2341,29 +2341,29 @@
                 "Shorting here ignores that sellers aren't producing lower acceptance yet.",
                 null
               ],
-              "decision_quality": "Selling pressure is present but support is holding — seller control isn't confirmed. WAIT."
+              "decision_quality": "Delta is positive but a refreshing offer is capping price and the high failed — buying isn't producing acceptance. WAIT."
             },
             {
               "type": "trade_decision",
-              "event": "iceberg",
-              "question": "Price probes above resistance intrabar but closes back inside every time. What's your decision?",
+              "event": "lift",
+              "question": "Support holds on the retest, delta flips positive, and price pushes off the bid. What's your decision?",
               "options": [
                 "LONG",
                 "SHORT",
                 "WAIT"
               ],
-              "correct": 2,
-              "explanation": "Repeated probes without acceptance above resistance means the breakout is unconfirmed. WAIT.",
+              "correct": 0,
+              "explanation": "A held retest with positive delta and price lifting off support is confirmation — buyers have the edge.",
               "skillId": "trade_decision_quality",
-              "scenario": "iceberg",
+              "scenario": "lift",
               "render_mode": "raw_full",
               "difficulty": "advanced",
               "wrong_explanations": [
-                "A long is premature — upside follow-through hasn't shown.",
-                "A short is premature — downside follow-through hasn't shown.",
-                null
+                null,
+                "Shorting here ignores that sellers aren't producing lower acceptance yet.",
+                "Sitting out ignores that the board is confirmed, not conflicted."
               ],
-              "decision_quality": "Repeated probes without acceptance above resistance means the breakout is unconfirmed. WAIT."
+              "decision_quality": "A held retest with positive delta and price lifting off support is confirmation — buyers have the edge."
             },
             {
               "type": "replay_compare",
@@ -2416,135 +2416,39 @@
           "screens": [
             {
               "type": "trade_decision",
-              "event": "delta_positive",
-              "question": "CVD makes new highs with price and the offer above keeps getting lifted. What's your decision?",
-              "options": [
-                "LONG",
-                "SHORT",
-                "WAIT"
-              ],
-              "correct": 0,
-              "explanation": "Rising CVD confirming new price highs while offers are consumed is aligned buying pressure — the long is supported.",
-              "skillId": "trade_decision_quality",
-              "scenario": "delta_positive",
-              "render_mode": "raw_full",
-              "difficulty": "advanced",
-              "wrong_explanations": [
-                null,
-                "A SHORT needs confirmed seller control with price actually accepting lower — not here.",
-                "WAIT would pass up a read where the evidence already aligns to act."
-              ],
-              "decision_quality": "Rising CVD confirming new price highs while offers are consumed is aligned buying pressure — the long is supported."
-            },
-            {
-              "type": "trade_decision",
-              "event": "low_volume_trend",
-              "question": "Delta is negative but the bid keeps refreshing and price won't accept lower. What's your decision?",
-              "options": [
-                "LONG",
-                "SHORT",
-                "WAIT"
-              ],
-              "correct": 2,
-              "explanation": "Negative delta without lower acceptance means sellers aren't in control yet. WAIT.",
-              "skillId": "trade_decision_quality",
-              "scenario": "low_volume_trend",
-              "render_mode": "raw_full",
-              "difficulty": "advanced",
-              "wrong_explanations": [
-                "A LONG needs confirmed buyer control with price actually accepting higher — not here.",
-                "A SHORT needs confirmed seller control with price actually accepting lower — not here.",
-                null
-              ],
-              "decision_quality": "Negative delta without lower acceptance means sellers aren't in control yet. WAIT."
-            },
-            {
-              "type": "trade_decision",
               "event": "hit",
-              "question": "Sellers sweep the bid stack and price accepts under the breakdown. What's your decision?",
+              "question": "Resistance rejects, delta flips negative, and price drops off the offer. What's your decision?",
               "options": [
                 "LONG",
                 "SHORT",
                 "WAIT"
               ],
               "correct": 1,
-              "explanation": "A completed bid sweep with acceptance below the breakdown is confirmed selling — take the short.",
+              "explanation": "A rejection with negative delta and price falling from the offer is confirmation — sellers have the edge.",
               "skillId": "trade_decision_quality",
               "scenario": "hit",
               "render_mode": "raw_full",
               "difficulty": "advanced",
               "wrong_explanations": [
-                "A long is premature — upside follow-through hasn't shown.",
+                "Going long here ignores that buyers aren't producing higher acceptance yet.",
                 null,
-                "WAIT is too passive here — the signal is decisive, not ambiguous."
-              ],
-              "decision_quality": "A completed bid sweep with acceptance below the breakdown is confirmed selling — take the short."
-            },
-            {
-              "type": "trade_decision",
-              "event": "lift",
-              "question": "Support holds on the retest, delta flips positive, and price pushes off the bid. What's your decision?",
-              "options": [
-                "LONG",
-                "SHORT",
-                "WAIT"
-              ],
-              "correct": 0,
-              "explanation": "A held retest with positive delta and price lifting off support is confirmation — buyers have the edge.",
-              "skillId": "trade_decision_quality",
-              "scenario": "lift",
-              "render_mode": "raw_full",
-              "difficulty": "advanced",
-              "wrong_explanations": [
-                null,
-                "Shorting here ignores that sellers aren't producing lower acceptance yet.",
                 "Sitting out ignores that the board is confirmed, not conflicted."
               ],
-              "decision_quality": "A held retest with positive delta and price lifting off support is confirmation — buyers have the edge."
+              "decision_quality": "A rejection with negative delta and price falling from the offer is confirmation — sellers have the edge."
             },
             {
               "type": "trade_decision",
-              "event": "conflict",
-              "question": "Both sides trade heavily at the POC with no directional acceptance. What's your decision?",
+              "event": "balanced_target",
+              "question": "Buyer-initiated tape accelerates into the POC, yet price stays trapped beneath the same offer. What's your decision?",
               "options": [
                 "LONG",
                 "SHORT",
                 "WAIT"
               ],
               "correct": 2,
-              "explanation": "Heavy two-sided trade with no acceptance is balance, not a trend — there's no edge. WAIT.",
+              "explanation": "Aggression is high but price is pinned under supply with no breakout — no acceptance yet. WAIT.",
               "skillId": "trade_decision_quality",
-              "scenario": "conflict",
-              "render_mode": "raw_full",
-              "difficulty": "advanced",
-              "wrong_explanations": [
-                "Going long here ignores that buyers aren't producing higher acceptance yet.",
-                "Shorting here ignores that sellers aren't producing lower acceptance yet.",
-                null
-              ],
-              "decision_quality": "Heavy two-sided trade with no acceptance is balance, not a trend — there's no edge. WAIT."
-            }
-          ]
-        },
-        {
-          "node": 22,
-          "title": "Repeated Tests & Hidden Liquidity",
-          "celebration": "Repeated Tests & Hidden Liquidity complete.",
-          "lessonType": "STANDARD",
-          "screens": [
-            {
-              "type": "trade_decision",
-              "event": "chop",
-              "question": "A sweep spikes price but it immediately returns to the prior range. What's your decision?",
-              "options": [
-                "LONG",
-                "SHORT",
-                "WAIT"
-              ],
-              "correct": 2,
-              "explanation": "A sweep that fully reverts is a liquidity grab, not acceptance — direction is unconfirmed. WAIT.",
-              "skillId": "trade_decision_quality",
-              "scenario": "chop",
+              "scenario": "balanced_target",
               "render_mode": "raw_full",
               "difficulty": "advanced",
               "wrong_explanations": [
@@ -2552,7 +2456,7 @@
                 "A short is premature — downside follow-through hasn't shown.",
                 null
               ],
-              "decision_quality": "A sweep that fully reverts is a liquidity grab, not acceptance — direction is unconfirmed. WAIT."
+              "decision_quality": "Aggression is high but price is pinned under supply with no breakout — no acceptance yet. WAIT."
             },
             {
               "type": "trade_decision",
@@ -2578,17 +2482,17 @@
             },
             {
               "type": "trade_decision",
-              "event": "balanced_target",
-              "question": "Buyers absorb the offer, but price hasn't yet reclaimed the level above. What's your decision?",
+              "event": "buyer_absorption",
+              "question": "Ask-side footprint dominates, but price rejects the breakout level and returns inside value. What's your decision?",
               "options": [
                 "LONG",
                 "SHORT",
                 "WAIT"
               ],
               "correct": 2,
-              "explanation": "Absorption is visible but the reclaim hasn't happened — the read isn't confirmed. WAIT.",
+              "explanation": "The footprint favors buyers, yet price rejected the level and fell back into value — the breakout failed to confirm. WAIT.",
               "skillId": "trade_decision_quality",
-              "scenario": "balanced_target",
+              "scenario": "buyer_absorption",
               "render_mode": "raw_full",
               "difficulty": "advanced",
               "wrong_explanations": [
@@ -2596,21 +2500,73 @@
                 "A SHORT needs confirmed seller control with price actually accepting lower — not here.",
                 null
               ],
-              "decision_quality": "Absorption is visible but the reclaim hasn't happened — the read isn't confirmed. WAIT."
+              "decision_quality": "The footprint favors buyers, yet price rejected the level and fell back into value — the breakout failed to confirm. WAIT."
             },
             {
               "type": "trade_decision",
-              "event": "buyer_absorption",
-              "question": "Price chops in a tight range with alternating buy and sell prints. What's your decision?",
+              "event": "delta_negative",
+              "question": "Buyers get trapped above support as sellers drive acceptance below it. What's your decision?",
+              "options": [
+                "LONG",
+                "SHORT",
+                "WAIT"
+              ],
+              "correct": 1,
+              "explanation": "Trapped buyers plus seller-driven acceptance below support is decisive — the short is well supported.",
+              "skillId": "trade_decision_quality",
+              "scenario": "delta_negative",
+              "render_mode": "raw_full",
+              "difficulty": "advanced",
+              "wrong_explanations": [
+                "A long is premature — upside follow-through hasn't shown.",
+                null,
+                "WAIT is too passive here — the signal is decisive, not ambiguous."
+              ],
+              "decision_quality": "Trapped buyers plus seller-driven acceptance below support is decisive — the short is well supported."
+            }
+          ]
+        },
+        {
+          "node": 22,
+          "title": "Repeated Tests & Hidden Liquidity",
+          "celebration": "Repeated Tests & Hidden Liquidity complete.",
+          "lessonType": "STANDARD",
+          "screens": [
+            {
+              "type": "trade_decision",
+              "event": "lift",
+              "question": "The offer at resistance thins, buyers stack the bid, and price breaks and holds. What's your decision?",
+              "options": [
+                "LONG",
+                "SHORT",
+                "WAIT"
+              ],
+              "correct": 0,
+              "explanation": "Thinning supply, a stacking bid, and a held break is decisive — buyers are progressing price higher.",
+              "skillId": "trade_decision_quality",
+              "scenario": "lift",
+              "render_mode": "raw_full",
+              "difficulty": "advanced",
+              "wrong_explanations": [
+                null,
+                "A SHORT needs confirmed seller control with price actually accepting lower — not here.",
+                "WAIT would pass up a read where the evidence already aligns to act."
+              ],
+              "decision_quality": "Thinning supply, a stacking bid, and a held break is decisive — buyers are progressing price higher."
+            },
+            {
+              "type": "trade_decision",
+              "event": "seller_absorption",
+              "question": "Sellers hit the bid steadily, but price holds support and refuses to break. What's your decision?",
               "options": [
                 "LONG",
                 "SHORT",
                 "WAIT"
               ],
               "correct": 2,
-              "explanation": "Alternating prints in a tight range is chop — there's no directional edge to trade. WAIT.",
+              "explanation": "Selling pressure is present but support is holding — seller control isn't confirmed. WAIT.",
               "skillId": "trade_decision_quality",
-              "scenario": "buyer_absorption",
+              "scenario": "seller_absorption",
               "render_mode": "raw_full",
               "difficulty": "advanced",
               "wrong_explanations": [
@@ -2618,7 +2574,51 @@
                 "Shorting here ignores that sellers aren't producing lower acceptance yet.",
                 null
               ],
-              "decision_quality": "Alternating prints in a tight range is chop — there's no directional edge to trade. WAIT."
+              "decision_quality": "Selling pressure is present but support is holding — seller control isn't confirmed. WAIT."
+            },
+            {
+              "type": "trade_decision",
+              "event": "hit",
+              "question": "The offer stacks at resistance, the bid evaporates, and price trends down. What's your decision?",
+              "options": [
+                "LONG",
+                "SHORT",
+                "WAIT"
+              ],
+              "correct": 1,
+              "explanation": "A stacking offer, vanishing demand, and a downtrend is confirmed control — sellers are in charge.",
+              "skillId": "trade_decision_quality",
+              "scenario": "hit",
+              "render_mode": "raw_full",
+              "difficulty": "advanced",
+              "wrong_explanations": [
+                "A LONG needs confirmed buyer control with price actually accepting higher — not here.",
+                null,
+                "WAIT would pass up a read where the evidence already aligns to act."
+              ],
+              "decision_quality": "A stacking offer, vanishing demand, and a downtrend is confirmed control — sellers are in charge."
+            },
+            {
+              "type": "trade_decision",
+              "event": "iceberg",
+              "question": "Price probes above resistance intrabar but closes back inside every time. What's your decision?",
+              "options": [
+                "LONG",
+                "SHORT",
+                "WAIT"
+              ],
+              "correct": 2,
+              "explanation": "Repeated probes without acceptance above resistance means the breakout is unconfirmed. WAIT.",
+              "skillId": "trade_decision_quality",
+              "scenario": "iceberg",
+              "render_mode": "raw_full",
+              "difficulty": "advanced",
+              "wrong_explanations": [
+                "A long is premature — upside follow-through hasn't shown.",
+                "A short is premature — downside follow-through hasn't shown.",
+                null
+              ],
+              "decision_quality": "Repeated probes without acceptance above resistance means the breakout is unconfirmed. WAIT."
             },
             {
               "type": "evidence_select",
@@ -2787,25 +2787,25 @@
           "screens": [
             {
               "type": "trade_decision",
-              "event": "seller_absorption",
-              "question": "CVD ticks up but price makes no new high and the offer stays stacked. What's your decision?",
+              "event": "delta_positive",
+              "question": "Aggressive buying prints into the POC and price accepts above value. What's your decision?",
               "options": [
                 "LONG",
                 "SHORT",
                 "WAIT"
               ],
-              "correct": 2,
-              "explanation": "Rising CVD without a new high against a stacked offer is effort without result. WAIT.",
+              "correct": 0,
+              "explanation": "Buyer aggression carrying price to acceptance above the value area is confirmed demand — the long is justified.",
               "skillId": "trade_decision_quality",
-              "scenario": "seller_absorption",
+              "scenario": "delta_positive",
               "render_mode": "raw_full",
               "difficulty": "advanced",
               "wrong_explanations": [
-                "A long is premature — upside follow-through hasn't shown.",
-                "A short is premature — downside follow-through hasn't shown.",
-                null
+                null,
+                "Shorting here ignores that sellers aren't producing lower acceptance yet.",
+                "Sitting out ignores that the board is confirmed, not conflicted."
               ],
-              "decision_quality": "Rising CVD without a new high against a stacked offer is effort without result. WAIT."
+              "decision_quality": "Buyer aggression carrying price to acceptance above the value area is confirmed demand — the long is justified."
             },
             {
               "type": "time_sales",
@@ -2873,69 +2873,69 @@
               "type": "trade_decision",
               "event": "lift",
               "direction": "down",
-              "question": "The offer at resistance thins, buyers stack the bid, and price breaks and holds. What's your decision?",
+              "question": "Each higher low is defended and the ask-side footprint dominates on the push. What's your decision?",
               "options": [
                 "LONG",
                 "SHORT",
                 "WAIT"
               ],
               "correct": 0,
-              "explanation": "Thinning supply, a stacking bid, and a held break is decisive — buyers are progressing price higher.",
+              "explanation": "Defended higher lows with ask-side footprint dominance on the advance is aligned buying — go long.",
               "skillId": "trade_decision_quality",
               "scenario": "lift",
               "render_mode": "raw_full",
               "difficulty": "advanced",
               "wrong_explanations": [
                 null,
-                "A SHORT needs confirmed seller control with price actually accepting lower — not here.",
-                "WAIT would pass up a read where the evidence already aligns to act."
+                "A short is premature — downside follow-through hasn't shown.",
+                "WAIT is too passive here — the signal is decisive, not ambiguous."
               ],
-              "decision_quality": "Thinning supply, a stacking bid, and a held break is decisive — buyers are progressing price higher."
+              "decision_quality": "Defended higher lows with ask-side footprint dominance on the advance is aligned buying — go long."
             },
             {
               "type": "trade_decision",
               "event": "delta_negative",
               "direction": "up",
-              "question": "CVD makes new lows with price and the bid below keeps getting hit. What's your decision?",
+              "question": "Aggressive selling prints into the POC and price accepts below value. What's your decision?",
               "options": [
                 "LONG",
                 "SHORT",
                 "WAIT"
               ],
               "correct": 1,
-              "explanation": "Falling CVD confirming new lows while bids are consumed is aligned selling pressure — go short.",
+              "explanation": "Seller aggression carrying price to acceptance below value is confirmed supply — the short is justified.",
               "skillId": "trade_decision_quality",
               "scenario": "delta_negative",
               "render_mode": "raw_full",
               "difficulty": "advanced",
               "wrong_explanations": [
-                "A LONG needs confirmed buyer control with price actually accepting higher — not here.",
+                "Going long here ignores that buyers aren't producing higher acceptance yet.",
                 null,
-                "WAIT would pass up a read where the evidence already aligns to act."
+                "Sitting out ignores that the board is confirmed, not conflicted."
               ],
-              "decision_quality": "Falling CVD confirming new lows while bids are consumed is aligned selling pressure — go short."
+              "decision_quality": "Seller aggression carrying price to acceptance below value is confirmed supply — the short is justified."
             },
             {
               "type": "trade_decision",
-              "event": "iceberg",
-              "question": "Sellers press the bid into support, but no acceptance forms below it. What's your decision?",
+              "event": "hit",
+              "question": "Each lower high is capped and the bid-side footprint dominates on the drop. What's your decision?",
               "options": [
                 "LONG",
                 "SHORT",
                 "WAIT"
               ],
-              "correct": 2,
-              "explanation": "Pressure without acceptance below support means the breakdown isn't confirmed. WAIT.",
+              "correct": 1,
+              "explanation": "Capped lower highs with bid-side footprint dominance on the decline is aligned selling — go short.",
               "skillId": "trade_decision_quality",
-              "scenario": "iceberg",
+              "scenario": "hit",
               "render_mode": "raw_full",
               "difficulty": "advanced",
               "wrong_explanations": [
-                "A LONG needs confirmed buyer control with price actually accepting higher — not here.",
-                "A SHORT needs confirmed seller control with price actually accepting lower — not here.",
-                null
+                "A long is premature — upside follow-through hasn't shown.",
+                null,
+                "WAIT is too passive here — the signal is decisive, not ambiguous."
               ],
-              "decision_quality": "Pressure without acceptance below support means the breakdown isn't confirmed. WAIT."
+              "decision_quality": "Capped lower highs with bid-side footprint dominance on the decline is aligned selling — go short."
             },
             {
               "type": "replay_compare",
@@ -2952,47 +2952,47 @@
             },
             {
               "type": "trade_decision",
-              "event": "delta_positive",
-              "question": "Aggressive buying prints into the POC and price accepts above value. What's your decision?",
-              "options": [
-                "LONG",
-                "SHORT",
-                "WAIT"
-              ],
-              "correct": 0,
-              "explanation": "Buyer aggression carrying price to acceptance above the value area is confirmed demand — the long is justified.",
-              "skillId": "trade_decision_quality",
-              "scenario": "delta_positive",
-              "render_mode": "raw_full",
-              "difficulty": "advanced",
-              "wrong_explanations": [
-                null,
-                "Shorting here ignores that sellers aren't producing lower acceptance yet.",
-                "Sitting out ignores that the board is confirmed, not conflicted."
-              ],
-              "decision_quality": "Buyer aggression carrying price to acceptance above the value area is confirmed demand — the long is justified."
-            },
-            {
-              "type": "trade_decision",
               "event": "low_volume_trend",
-              "question": "Price stalls at VWAP with balanced delta and no clear aggressor. What's your decision?",
+              "question": "Delta is negative but the bid keeps refreshing and price won't accept lower. What's your decision?",
               "options": [
                 "LONG",
                 "SHORT",
                 "WAIT"
               ],
               "correct": 2,
-              "explanation": "Balanced delta and a stall at VWAP is indecision — wait for one side to take control. WAIT.",
+              "explanation": "Negative delta without lower acceptance means sellers aren't in control yet. WAIT.",
               "skillId": "trade_decision_quality",
               "scenario": "low_volume_trend",
               "render_mode": "raw_full",
               "difficulty": "advanced",
               "wrong_explanations": [
-                "Going long here ignores that buyers aren't producing higher acceptance yet.",
-                "Shorting here ignores that sellers aren't producing lower acceptance yet.",
+                "A LONG needs confirmed buyer control with price actually accepting higher — not here.",
+                "A SHORT needs confirmed seller control with price actually accepting lower — not here.",
                 null
               ],
-              "decision_quality": "Balanced delta and a stall at VWAP is indecision — wait for one side to take control. WAIT."
+              "decision_quality": "Negative delta without lower acceptance means sellers aren't in control yet. WAIT."
+            },
+            {
+              "type": "trade_decision",
+              "event": "delta_negative",
+              "question": "Price bases below the broken level and sellers absorb the bounce bid. What's your decision?",
+              "options": [
+                "LONG",
+                "SHORT",
+                "WAIT"
+              ],
+              "correct": 1,
+              "explanation": "A base below the breakdown with sellers absorbing demand on the bounce confirms acceptance — the short stands.",
+              "skillId": "trade_decision_quality",
+              "scenario": "delta_negative",
+              "render_mode": "raw_full",
+              "difficulty": "advanced",
+              "wrong_explanations": [
+                "A LONG needs confirmed buyer control with price actually accepting higher — not here.",
+                null,
+                "WAIT would pass up a read where the evidence already aligns to act."
+              ],
+              "decision_quality": "A base below the breakdown with sellers absorbing demand on the bounce confirms acceptance — the short stands."
             }
           ]
         },
@@ -3030,37 +3030,15 @@
             },
             {
               "type": "trade_decision",
-              "event": "conflict",
-              "question": "The offer thins but buyers hesitate and price drifts sideways. What's your decision?",
-              "options": [
-                "LONG",
-                "SHORT",
-                "WAIT"
-              ],
-              "correct": 2,
-              "explanation": "Thinning supply without buyers stepping in isn't a signal on its own — nothing is confirmed. WAIT.",
-              "skillId": "trade_decision_quality",
-              "scenario": "conflict",
-              "render_mode": "raw_full",
-              "difficulty": "advanced",
-              "wrong_explanations": [
-                "A long is premature — upside follow-through hasn't shown.",
-                "A short is premature — downside follow-through hasn't shown.",
-                null
-              ],
-              "decision_quality": "Thinning supply without buyers stepping in isn't a signal on its own — nothing is confirmed. WAIT."
-            },
-            {
-              "type": "trade_decision",
               "event": "hit",
-              "question": "Resistance rejects, delta flips negative, and price drops off the offer. What's your decision?",
+              "question": "A large offer holds, the bid below thins, and price trends down on rising negative delta. What's your decision?",
               "options": [
                 "LONG",
                 "SHORT",
                 "WAIT"
               ],
               "correct": 1,
-              "explanation": "A rejection with negative delta and price falling from the offer is confirmation — sellers have the edge.",
+              "explanation": "A held offer, thinning demand, and a downtrend on expanding negative delta is confirmed control — go short.",
               "skillId": "trade_decision_quality",
               "scenario": "hit",
               "render_mode": "raw_full",
@@ -3070,7 +3048,29 @@
                 null,
                 "Sitting out ignores that the board is confirmed, not conflicted."
               ],
-              "decision_quality": "A rejection with negative delta and price falling from the offer is confirmation — sellers have the edge."
+              "decision_quality": "A held offer, thinning demand, and a downtrend on expanding negative delta is confirmed control — go short."
+            },
+            {
+              "type": "trade_decision",
+              "event": "delta_positive",
+              "question": "Price bases above the reclaimed level and buyers absorb the pullback offer. What's your decision?",
+              "options": [
+                "LONG",
+                "SHORT",
+                "WAIT"
+              ],
+              "correct": 0,
+              "explanation": "A base above the reclaim with buyers absorbing supply on the dip confirms acceptance — the long stands.",
+              "skillId": "trade_decision_quality",
+              "scenario": "delta_positive",
+              "render_mode": "raw_full",
+              "difficulty": "advanced",
+              "wrong_explanations": [
+                null,
+                "A SHORT needs confirmed seller control with price actually accepting lower — not here.",
+                "WAIT would pass up a read where the evidence already aligns to act."
+              ],
+              "decision_quality": "A base above the reclaim with buyers absorbing supply on the dip confirms acceptance — the long stands."
             },
             {
               "type": "time_sales",
@@ -3103,25 +3103,25 @@
             },
             {
               "type": "trade_decision",
-              "event": "delta_negative",
-              "question": "Buyers get trapped above support as sellers drive acceptance below it. What's your decision?",
+              "event": "lift",
+              "question": "A large bid holds, the offer above evaporates, and price trends up on rising delta. What's your decision?",
               "options": [
                 "LONG",
                 "SHORT",
                 "WAIT"
               ],
-              "correct": 1,
-              "explanation": "Trapped buyers plus seller-driven acceptance below support is decisive — the short is well supported.",
+              "correct": 0,
+              "explanation": "A held bid, vanishing supply, and an uptrend on expanding delta is confirmed control — buyers are in charge.",
               "skillId": "trade_decision_quality",
-              "scenario": "delta_negative",
+              "scenario": "lift",
               "render_mode": "raw_full",
               "difficulty": "advanced",
               "wrong_explanations": [
-                "A long is premature — upside follow-through hasn't shown.",
                 null,
-                "WAIT is too passive here — the signal is decisive, not ambiguous."
+                "Shorting here ignores that sellers aren't producing lower acceptance yet.",
+                "Sitting out ignores that the board is confirmed, not conflicted."
               ],
-              "decision_quality": "Trapped buyers plus seller-driven acceptance below support is decisive — the short is well supported."
+              "decision_quality": "A held bid, vanishing supply, and an uptrend on expanding delta is confirmed control — buyers are in charge."
             }
           ]
         },
@@ -3664,25 +3664,25 @@
             },
             {
               "type": "trade_decision",
-              "event": "hit",
-              "question": "The offer stacks at resistance, the bid evaporates, and price trends down. What's your decision?",
+              "event": "delta_positive",
+              "question": "Buyers reclaim VWAP, retest it from above, and continue higher on strong prints. What's your decision?",
               "options": [
                 "LONG",
                 "SHORT",
                 "WAIT"
               ],
-              "correct": 1,
-              "explanation": "A stacking offer, vanishing demand, and a downtrend is confirmed control — sellers are in charge.",
+              "correct": 0,
+              "explanation": "A VWAP reclaim that holds as support with continuation is a confirmed long — price is accepting higher.",
               "skillId": "trade_decision_quality",
-              "scenario": "hit",
+              "scenario": "delta_positive",
               "render_mode": "raw_full",
               "difficulty": "advanced",
               "wrong_explanations": [
-                "A LONG needs confirmed buyer control with price actually accepting higher — not here.",
                 null,
-                "WAIT would pass up a read where the evidence already aligns to act."
+                "A short is premature — downside follow-through hasn't shown.",
+                "WAIT is too passive here — the signal is decisive, not ambiguous."
               ],
-              "decision_quality": "A stacking offer, vanishing demand, and a downtrend is confirmed control — sellers are in charge."
+              "decision_quality": "A VWAP reclaim that holds as support with continuation is a confirmed long — price is accepting higher."
             }
           ]
         },
@@ -3694,25 +3694,25 @@
           "screens": [
             {
               "type": "trade_decision",
-              "event": "lift",
-              "question": "Each higher low is defended and the ask-side footprint dominates on the push. What's your decision?",
+              "event": "delta_negative",
+              "question": "Sellers reject VWAP, retest it from below, and continue lower on heavy prints. What's your decision?",
               "options": [
                 "LONG",
                 "SHORT",
                 "WAIT"
               ],
-              "correct": 0,
-              "explanation": "Defended higher lows with ask-side footprint dominance on the advance is aligned buying — go long.",
+              "correct": 1,
+              "explanation": "A VWAP rejection that holds as resistance with continuation is a confirmed short — price is accepting lower.",
               "skillId": "trade_decision_quality",
-              "scenario": "lift",
+              "scenario": "delta_negative",
               "render_mode": "raw_full",
               "difficulty": "advanced",
               "wrong_explanations": [
+                "A long is premature — upside follow-through hasn't shown.",
                 null,
-                "A short is premature — downside follow-through hasn't shown.",
                 "WAIT is too passive here — the signal is decisive, not ambiguous."
               ],
-              "decision_quality": "Defended higher lows with ask-side footprint dominance on the advance is aligned buying — go long."
+              "decision_quality": "A VWAP rejection that holds as resistance with continuation is a confirmed short — price is accepting lower."
             },
             {
               "type": "footprint",
@@ -3784,25 +3784,25 @@
           "screens": [
             {
               "type": "trade_decision",
-              "event": "delta_negative",
-              "question": "Aggressive selling prints into the POC and price accepts below value. What's your decision?",
+              "event": "hit",
+              "question": "The breakdown retest fails exactly, negative delta expands, and bids pull. What's your decision?",
               "options": [
                 "LONG",
                 "SHORT",
                 "WAIT"
               ],
               "correct": 1,
-              "explanation": "Seller aggression carrying price to acceptance below value is confirmed supply — the short is justified.",
+              "explanation": "An exact failed retest with expanding negative delta and pulled bids is textbook confirmation — take the short.",
               "skillId": "trade_decision_quality",
-              "scenario": "delta_negative",
+              "scenario": "hit",
               "render_mode": "raw_full",
               "difficulty": "advanced",
               "wrong_explanations": [
-                "Going long here ignores that buyers aren't producing higher acceptance yet.",
+                "A LONG needs confirmed buyer control with price actually accepting higher — not here.",
                 null,
-                "Sitting out ignores that the board is confirmed, not conflicted."
+                "WAIT would pass up a read where the evidence already aligns to act."
               ],
-              "decision_quality": "Seller aggression carrying price to acceptance below value is confirmed supply — the short is justified."
+              "decision_quality": "An exact failed retest with expanding negative delta and pulled bids is textbook confirmation — take the short."
             },
             {
               "type": "footprint_tap",
@@ -3925,47 +3925,47 @@
             },
             {
               "type": "trade_decision",
-              "event": "chop",
-              "question": "A big bid appears but price hasn't reacted to it yet. What's your decision?",
+              "event": "lift",
+              "question": "The breakout retest holds exactly, delta expands, and offers pull. What's your decision?",
               "options": [
                 "LONG",
                 "SHORT",
                 "WAIT"
               ],
-              "correct": 2,
-              "explanation": "A resting bid is potential support, not a confirmed response — wait for price to react. WAIT.",
+              "correct": 0,
+              "explanation": "An exact retest hold with expanding delta and pulled offers is textbook confirmation — take the long.",
               "skillId": "trade_decision_quality",
-              "scenario": "chop",
+              "scenario": "lift",
               "render_mode": "raw_full",
               "difficulty": "advanced",
               "wrong_explanations": [
-                "A LONG needs confirmed buyer control with price actually accepting higher — not here.",
+                null,
                 "A SHORT needs confirmed seller control with price actually accepting lower — not here.",
-                null
+                "WAIT would pass up a read where the evidence already aligns to act."
               ],
-              "decision_quality": "A resting bid is potential support, not a confirmed response — wait for price to react. WAIT."
+              "decision_quality": "An exact retest hold with expanding delta and pulled offers is textbook confirmation — take the long."
             },
             {
               "type": "trade_decision",
-              "event": "balanced_target",
-              "question": "Buyer volume rises into resistance while the high stays capped. What's your decision?",
+              "event": "delta_positive",
+              "question": "Sellers get trapped below prior resistance as buyers drive acceptance above it. What's your decision?",
               "options": [
                 "LONG",
                 "SHORT",
                 "WAIT"
               ],
-              "correct": 2,
-              "explanation": "Rising buyer volume against a capped high is stalling effort — no acceptance yet. WAIT.",
+              "correct": 0,
+              "explanation": "Trapped sellers plus buyer-driven acceptance above resistance is decisive — the long is well supported.",
               "skillId": "trade_decision_quality",
-              "scenario": "balanced_target",
+              "scenario": "delta_positive",
               "render_mode": "raw_full",
               "difficulty": "advanced",
               "wrong_explanations": [
-                "Going long here ignores that buyers aren't producing higher acceptance yet.",
+                null,
                 "Shorting here ignores that sellers aren't producing lower acceptance yet.",
-                null
+                "Sitting out ignores that the board is confirmed, not conflicted."
               ],
-              "decision_quality": "Rising buyer volume against a capped high is stalling effort — no acceptance yet. WAIT."
+              "decision_quality": "Trapped sellers plus buyer-driven acceptance above resistance is decisive — the long is well supported."
             }
           ]
         },
@@ -4034,47 +4034,47 @@
             },
             {
               "type": "trade_decision",
-              "event": "buyer_absorption",
-              "question": "Price retests the breakout but the hold is still ambiguous. What's your decision?",
+              "event": "delta_negative",
+              "question": "Buyers exhaust into resistance and sellers immediately reclaim on rising supply. What's your decision?",
+              "options": [
+                "LONG",
+                "SHORT",
+                "WAIT"
+              ],
+              "correct": 1,
+              "explanation": "Buyer exhaustion at resistance with an immediate seller reclaim is a confirmed reversal — go short.",
+              "skillId": "trade_decision_quality",
+              "scenario": "delta_negative",
+              "render_mode": "raw_full",
+              "difficulty": "advanced",
+              "wrong_explanations": [
+                "Going long here ignores that buyers aren't producing higher acceptance yet.",
+                null,
+                "Sitting out ignores that the board is confirmed, not conflicted."
+              ],
+              "decision_quality": "Buyer exhaustion at resistance with an immediate seller reclaim is a confirmed reversal — go short."
+            },
+            {
+              "type": "trade_decision",
+              "event": "conflict",
+              "question": "Both sides trade heavily at the POC with no directional acceptance. What's your decision?",
               "options": [
                 "LONG",
                 "SHORT",
                 "WAIT"
               ],
               "correct": 2,
-              "explanation": "An ambiguous retest hasn't confirmed support — wait for a clean hold or a failure. WAIT.",
+              "explanation": "Heavy two-sided trade with no acceptance is balance, not a trend — there's no edge. WAIT.",
               "skillId": "trade_decision_quality",
-              "scenario": "buyer_absorption",
+              "scenario": "conflict",
               "render_mode": "raw_full",
               "difficulty": "advanced",
               "wrong_explanations": [
-                "A long is premature — upside follow-through hasn't shown.",
-                "A short is premature — downside follow-through hasn't shown.",
+                "Going long here ignores that buyers aren't producing higher acceptance yet.",
+                "Shorting here ignores that sellers aren't producing lower acceptance yet.",
                 null
               ],
-              "decision_quality": "An ambiguous retest hasn't confirmed support — wait for a clean hold or a failure. WAIT."
-            },
-            {
-              "type": "trade_decision",
-              "event": "delta_positive",
-              "question": "Price bases above the reclaimed level and buyers absorb the pullback offer. What's your decision?",
-              "options": [
-                "LONG",
-                "SHORT",
-                "WAIT"
-              ],
-              "correct": 0,
-              "explanation": "A base above the reclaim with buyers absorbing supply on the dip confirms acceptance — the long stands.",
-              "skillId": "trade_decision_quality",
-              "scenario": "delta_positive",
-              "render_mode": "raw_full",
-              "difficulty": "advanced",
-              "wrong_explanations": [
-                null,
-                "A SHORT needs confirmed seller control with price actually accepting lower — not here.",
-                "WAIT would pass up a read where the evidence already aligns to act."
-              ],
-              "decision_quality": "A base above the reclaim with buyers absorbing supply on the dip confirms acceptance — the long stands."
+              "decision_quality": "Heavy two-sided trade with no acceptance is balance, not a trend — there's no edge. WAIT."
             }
           ]
         },
@@ -4382,8 +4382,8 @@
               "skillId": "trade_decision_quality",
               "difficulty": "advanced",
               "render_mode": "raw_full",
-              "scenario": "seller_absorption",
-              "question": "Sellers lean on the offer, but buyers keep defending the bid below. What's your decision?",
+              "scenario": "chop",
+              "question": "A sweep spikes price but it immediately returns to the prior range. What's your decision?",
               "options": [
                 "LONG",
                 "SHORT",
@@ -4391,13 +4391,13 @@
               ],
               "correct": 2,
               "wrong_explanations": [
-                "A LONG needs confirmed buyer control with price actually accepting higher — not here.",
-                "A SHORT needs confirmed seller control with price actually accepting lower — not here.",
+                "A long is premature — upside follow-through hasn't shown.",
+                "A short is premature — downside follow-through hasn't shown.",
                 null
               ],
-              "explanation": "Offer pressure met by defended bids is a standoff — neither side is confirmed. WAIT.",
-              "decision_quality": "Offer pressure met by defended bids is a standoff — neither side is confirmed. WAIT.",
-              "event": "seller_absorption"
+              "explanation": "A sweep that fully reverts is a liquidity grab, not acceptance — direction is unconfirmed. WAIT.",
+              "decision_quality": "A sweep that fully reverts is a liquidity grab, not acceptance — direction is unconfirmed. WAIT.",
+              "event": "chop"
             },
             {
               "type": "multiple_choice",
@@ -4605,25 +4605,25 @@
           "screens": [
             {
               "type": "trade_decision",
-              "event": "hit",
-              "question": "Each lower high is capped and the bid-side footprint dominates on the drop. What's your decision?",
+              "event": "lift",
+              "question": "Demand absorbs the sweep, price snaps back above support, and CVD turns up. What's your decision?",
               "options": [
                 "LONG",
                 "SHORT",
                 "WAIT"
               ],
-              "correct": 1,
-              "explanation": "Capped lower highs with bid-side footprint dominance on the decline is aligned selling — go short.",
+              "correct": 0,
+              "explanation": "An absorbed downside sweep with a reclaim and rising CVD is a confirmed reversal long — buyers stepped in.",
               "skillId": "trade_decision_quality",
-              "scenario": "hit",
+              "scenario": "lift",
               "render_mode": "raw_full",
               "difficulty": "advanced",
               "wrong_explanations": [
-                "A long is premature — upside follow-through hasn't shown.",
                 null,
+                "A short is premature — downside follow-through hasn't shown.",
                 "WAIT is too passive here — the signal is decisive, not ambiguous."
               ],
-              "decision_quality": "Capped lower highs with bid-side footprint dominance on the decline is aligned selling — go short."
+              "decision_quality": "An absorbed downside sweep with a reclaim and rising CVD is a confirmed reversal long — buyers stepped in."
             },
             {
               "type": "evidence_select",
@@ -4643,25 +4643,25 @@
             },
             {
               "type": "trade_decision",
-              "event": "lift",
-              "question": "A large bid holds, the offer above evaporates, and price trends up on rising delta. What's your decision?",
+              "event": "delta_positive",
+              "question": "Every offer into the high is lifted and price makes a clean new high with volume. What's your decision?",
               "options": [
                 "LONG",
                 "SHORT",
                 "WAIT"
               ],
               "correct": 0,
-              "explanation": "A held bid, vanishing supply, and an uptrend on expanding delta is confirmed control — buyers are in charge.",
+              "explanation": "Consistent offer lifting into a volume-backed new high is confirmed buying — go long.",
               "skillId": "trade_decision_quality",
-              "scenario": "lift",
+              "scenario": "delta_positive",
               "render_mode": "raw_full",
               "difficulty": "advanced",
               "wrong_explanations": [
                 null,
-                "Shorting here ignores that sellers aren't producing lower acceptance yet.",
-                "Sitting out ignores that the board is confirmed, not conflicted."
+                "A SHORT needs confirmed seller control with price actually accepting lower — not here.",
+                "WAIT would pass up a read where the evidence already aligns to act."
               ],
-              "decision_quality": "A held bid, vanishing supply, and an uptrend on expanding delta is confirmed control — buyers are in charge."
+              "decision_quality": "Consistent offer lifting into a volume-backed new high is confirmed buying — go long."
             },
             {
               "type": "replay_compare",
@@ -4698,26 +4698,26 @@
           "screens": [
             {
               "type": "trade_decision",
-              "event": "delta_positive",
+              "event": "balanced_target",
               "direction": "down",
-              "question": "Buyers reclaim VWAP, retest it from above, and continue higher on strong prints. What's your decision?",
+              "question": "Buyers absorb the offer, but price hasn't yet reclaimed the level above. What's your decision?",
               "options": [
                 "LONG",
                 "SHORT",
                 "WAIT"
               ],
-              "correct": 0,
-              "explanation": "A VWAP reclaim that holds as support with continuation is a confirmed long — price is accepting higher.",
+              "correct": 2,
+              "explanation": "Absorption is visible but the reclaim hasn't happened — the read isn't confirmed. WAIT.",
               "skillId": "trade_decision_quality",
-              "scenario": "delta_positive",
+              "scenario": "balanced_target",
               "render_mode": "raw_full",
               "difficulty": "advanced",
               "wrong_explanations": [
-                null,
-                "A short is premature — downside follow-through hasn't shown.",
-                "WAIT is too passive here — the signal is decisive, not ambiguous."
+                "A LONG needs confirmed buyer control with price actually accepting higher — not here.",
+                "A SHORT needs confirmed seller control with price actually accepting lower — not here.",
+                null
               ],
-              "decision_quality": "A VWAP reclaim that holds as support with continuation is a confirmed long — price is accepting higher."
+              "decision_quality": "Absorption is visible but the reclaim hasn't happened — the read isn't confirmed. WAIT."
             },
             {
               "type": "evidence_select",
@@ -4909,37 +4909,37 @@
             },
             {
               "type": "trade_decision",
-              "event": "iceberg",
-              "question": "Delta and price disagree: delta up, price flat under supply. What's your decision?",
-              "options": [
-                "LONG",
-                "SHORT",
-                "WAIT"
-              ],
-              "correct": 2,
-              "explanation": "A delta/price divergence under supply is a warning, not a confirmed reversal — wait for resolution. WAIT.",
-              "skillId": "trade_decision_quality",
-              "scenario": "iceberg",
-              "render_mode": "raw_full",
-              "difficulty": "advanced",
-              "wrong_explanations": [
-                "Going long here ignores that buyers aren't producing higher acceptance yet.",
-                "Shorting here ignores that sellers aren't producing lower acceptance yet.",
-                null
-              ],
-              "decision_quality": "A delta/price divergence under supply is a warning, not a confirmed reversal — wait for resolution. WAIT."
-            },
-            {
-              "type": "trade_decision",
-              "event": "delta_negative",
-              "question": "Price bases below the broken level and sellers absorb the bounce bid. What's your decision?",
+              "event": "hit",
+              "question": "Demand fails to absorb the sweep and price accepts each new tick lower. What's your decision?",
               "options": [
                 "LONG",
                 "SHORT",
                 "WAIT"
               ],
               "correct": 1,
-              "explanation": "A base below the breakdown with sellers absorbing demand on the bounce confirms acceptance — the short stands.",
+              "explanation": "Failed absorption with acceptance at each lower tick is decisive supply — the short is justified.",
+              "skillId": "trade_decision_quality",
+              "scenario": "hit",
+              "render_mode": "raw_full",
+              "difficulty": "advanced",
+              "wrong_explanations": [
+                "A long is premature — upside follow-through hasn't shown.",
+                null,
+                "WAIT is too passive here — the signal is decisive, not ambiguous."
+              ],
+              "decision_quality": "Failed absorption with acceptance at each lower tick is decisive supply — the short is justified."
+            },
+            {
+              "type": "trade_decision",
+              "event": "delta_negative",
+              "question": "Every bid into the low is hit and price makes a clean new low with volume. What's your decision?",
+              "options": [
+                "LONG",
+                "SHORT",
+                "WAIT"
+              ],
+              "correct": 1,
+              "explanation": "Consistent bid hitting into a volume-backed new low is confirmed selling — go short.",
               "skillId": "trade_decision_quality",
               "scenario": "delta_negative",
               "render_mode": "raw_full",
@@ -4949,7 +4949,7 @@
                 null,
                 "WAIT would pass up a read where the evidence already aligns to act."
               ],
-              "decision_quality": "A base below the breakdown with sellers absorbing demand on the bounce confirms acceptance — the short stands."
+              "decision_quality": "Consistent bid hitting into a volume-backed new low is confirmed selling — go short."
             }
           ]
         },
@@ -4974,25 +4974,25 @@
             },
             {
               "type": "trade_decision",
-              "event": "lift",
-              "question": "The breakout retest holds exactly, delta expands, and offers pull. What's your decision?",
+              "event": "hit",
+              "question": "Offer depth builds, the bounce stalls below resistance, and sellers resume hitting. What's your decision?",
               "options": [
                 "LONG",
                 "SHORT",
                 "WAIT"
               ],
-              "correct": 0,
-              "explanation": "An exact retest hold with expanding delta and pulled offers is textbook confirmation — take the long.",
+              "correct": 1,
+              "explanation": "Building offer depth with a weak bounce and resumed selling is aligned supply — the short is supported.",
               "skillId": "trade_decision_quality",
-              "scenario": "lift",
+              "scenario": "hit",
               "render_mode": "raw_full",
               "difficulty": "advanced",
               "wrong_explanations": [
+                "Going long here ignores that buyers aren't producing higher acceptance yet.",
                 null,
-                "A SHORT needs confirmed seller control with price actually accepting lower — not here.",
-                "WAIT would pass up a read where the evidence already aligns to act."
+                "Sitting out ignores that the board is confirmed, not conflicted."
               ],
-              "decision_quality": "An exact retest hold with expanding delta and pulled offers is textbook confirmation — take the long."
+              "decision_quality": "Building offer depth with a weak bounce and resumed selling is aligned supply — the short is supported."
             },
             {
               "type": "evidence_select",
@@ -5178,22 +5178,22 @@
               "skillId": "trade_decision_quality",
               "difficulty": "advanced",
               "render_mode": "raw_full",
-              "scenario": "low_volume_trend",
-              "question": "The bounce stalls mid-range with no follow-through either way. What's your decision?",
+              "scenario": "delta_negative",
+              "question": "Price holds below the value-area low and sellers keep paying the bid. What's your decision?",
               "options": [
                 "LONG",
                 "SHORT",
                 "WAIT"
               ],
-              "correct": 2,
+              "correct": 1,
               "wrong_explanations": [
                 "A long is premature — upside follow-through hasn't shown.",
-                "A short is premature — downside follow-through hasn't shown.",
-                null
+                null,
+                "WAIT is too passive here — the signal is decisive, not ambiguous."
               ],
-              "explanation": "A stalled mid-range bounce offers no edge — direction is unresolved. WAIT.",
-              "decision_quality": "A stalled mid-range bounce offers no edge — direction is unresolved. WAIT.",
-              "event": "low_volume_trend"
+              "explanation": "Acceptance below the value-area low with sellers still hitting is confirmed control — take the short.",
+              "decision_quality": "Acceptance below the value-area low with sellers still hitting is confirmed control — take the short.",
+              "event": "delta_negative"
             },
             {
               "type": "multiple_choice",
@@ -5267,25 +5267,25 @@
             },
             {
               "type": "trade_decision",
-              "event": "delta_positive",
-              "question": "Sellers get trapped below prior resistance as buyers drive acceptance above it. What's your decision?",
+              "event": "hit",
+              "question": "A failed breakout reverses hard and sellers reclaim the range on heavy prints. What's your decision?",
               "options": [
                 "LONG",
                 "SHORT",
                 "WAIT"
               ],
-              "correct": 0,
-              "explanation": "Trapped sellers plus buyer-driven acceptance above resistance is decisive — the long is well supported.",
+              "correct": 1,
+              "explanation": "A failed breakout with an aggressive seller reclaim is a confirmed short — buyers lost the level.",
               "skillId": "trade_decision_quality",
-              "scenario": "delta_positive",
+              "scenario": "hit",
               "render_mode": "raw_full",
               "difficulty": "advanced",
               "wrong_explanations": [
+                "A LONG needs confirmed buyer control with price actually accepting higher — not here.",
                 null,
-                "Shorting here ignores that sellers aren't producing lower acceptance yet.",
-                "Sitting out ignores that the board is confirmed, not conflicted."
+                "WAIT would pass up a read where the evidence already aligns to act."
               ],
-              "decision_quality": "Trapped sellers plus buyer-driven acceptance above resistance is decisive — the long is well supported."
+              "decision_quality": "A failed breakout with an aggressive seller reclaim is a confirmed short — buyers lost the level."
             },
             {
               "type": "live_chart",
@@ -5318,17 +5318,17 @@
             },
             {
               "type": "trade_decision",
-              "event": "hit",
-              "question": "A large offer holds, the bid below thins, and price trends down on rising negative delta. What's your decision?",
+              "event": "delta_negative",
+              "question": "Bids keep getting swept and price accepts each tick lower. What's your decision?",
               "options": [
                 "LONG",
                 "SHORT",
                 "WAIT"
               ],
               "correct": 1,
-              "explanation": "A held offer, thinning demand, and a downtrend on expanding negative delta is confirmed control — go short.",
+              "explanation": "Repeated bid sweeps with lower acceptance is decisive supply — the short is justified.",
               "skillId": "trade_decision_quality",
-              "scenario": "hit",
+              "scenario": "delta_negative",
               "render_mode": "raw_full",
               "difficulty": "advanced",
               "wrong_explanations": [
@@ -5336,7 +5336,7 @@
                 null,
                 "Sitting out ignores that the board is confirmed, not conflicted."
               ],
-              "decision_quality": "A held offer, thinning demand, and a downtrend on expanding negative delta is confirmed control — go short."
+              "decision_quality": "Repeated bid sweeps with lower acceptance is decisive supply — the short is justified."
             },
             {
               "type": "matching",
@@ -5516,22 +5516,22 @@
               "skillId": "trade_decision_quality",
               "difficulty": "advanced",
               "render_mode": "raw_full",
-              "scenario": "delta_negative",
-              "question": "Sellers reject VWAP, retest it from below, and continue lower on heavy prints. What's your decision?",
+              "scenario": "lift",
+              "question": "Bid depth builds, the pullback stalls above support, and buyers resume lifting. What's your decision?",
               "options": [
                 "LONG",
                 "SHORT",
                 "WAIT"
               ],
-              "correct": 1,
+              "correct": 0,
               "wrong_explanations": [
-                "A long is premature — upside follow-through hasn't shown.",
                 null,
-                "WAIT is too passive here — the signal is decisive, not ambiguous."
+                "Shorting here ignores that sellers aren't producing lower acceptance yet.",
+                "Sitting out ignores that the board is confirmed, not conflicted."
               ],
-              "explanation": "A VWAP rejection that holds as resistance with continuation is a confirmed short — price is accepting lower.",
-              "decision_quality": "A VWAP rejection that holds as resistance with continuation is a confirmed short — price is accepting lower.",
-              "event": "delta_negative"
+              "explanation": "Building bid depth with a shallow pullback and resumed buying is aligned demand — the long is supported.",
+              "decision_quality": "Building bid depth with a shallow pullback and resumed buying is aligned demand — the long is supported.",
+              "event": "lift"
             },
             {
               "type": "multiple_choice",
@@ -5549,17 +5549,17 @@
             },
             {
               "type": "trade_decision",
-              "event": "lift",
-              "question": "Demand absorbs the sweep, price snaps back above support, and CVD turns up. What's your decision?",
+              "event": "delta_positive",
+              "question": "Price holds above the value-area high and buyers keep paying the offer. What's your decision?",
               "options": [
                 "LONG",
                 "SHORT",
                 "WAIT"
               ],
               "correct": 0,
-              "explanation": "An absorbed downside sweep with a reclaim and rising CVD is a confirmed reversal long — buyers stepped in.",
+              "explanation": "Acceptance above the value-area high with buyers still paying up is confirmed control — take the long.",
               "skillId": "trade_decision_quality",
-              "scenario": "lift",
+              "scenario": "delta_positive",
               "render_mode": "raw_full",
               "difficulty": "advanced",
               "wrong_explanations": [
@@ -5567,7 +5567,7 @@
                 "A short is premature — downside follow-through hasn't shown.",
                 "WAIT is too passive here — the signal is decisive, not ambiguous."
               ],
-              "decision_quality": "An absorbed downside sweep with a reclaim and rising CVD is a confirmed reversal long — buyers stepped in."
+              "decision_quality": "Acceptance above the value-area high with buyers still paying up is confirmed control — take the long."
             },
             {
               "type": "sequence_builder",
@@ -5734,25 +5734,25 @@
             },
             {
               "type": "trade_decision",
-              "event": "conflict",
-              "question": "Aggressive prints hit both sides as price hovers at the value-area high. What's your decision?",
+              "event": "lift",
+              "question": "A failed breakdown reverses hard and buyers reclaim the range on heavy prints. What's your decision?",
               "options": [
                 "LONG",
                 "SHORT",
                 "WAIT"
               ],
-              "correct": 2,
-              "explanation": "Two-sided aggression at the value edge without acceptance is unresolved — there's no confirmed trade. WAIT.",
+              "correct": 0,
+              "explanation": "A failed breakdown with an aggressive reclaim on heavy buying is a confirmed long — sellers lost the level.",
               "skillId": "trade_decision_quality",
-              "scenario": "conflict",
+              "scenario": "lift",
               "render_mode": "raw_full",
               "difficulty": "advanced",
               "wrong_explanations": [
-                "A LONG needs confirmed buyer control with price actually accepting higher — not here.",
+                null,
                 "A SHORT needs confirmed seller control with price actually accepting lower — not here.",
-                null
+                "WAIT would pass up a read where the evidence already aligns to act."
               ],
-              "decision_quality": "Two-sided aggression at the value edge without acceptance is unresolved — there's no confirmed trade. WAIT."
+              "decision_quality": "A failed breakdown with an aggressive reclaim on heavy buying is a confirmed long — sellers lost the level."
             },
             {
               "type": "evidence_select",
@@ -5772,17 +5772,39 @@
             },
             {
               "type": "trade_decision",
-              "event": "chop",
-              "question": "Price ticks lower but the bid keeps stepping in to absorb it. What's your decision?",
+              "event": "delta_positive",
+              "question": "Offers keep getting swept and price accepts each new tick higher. What's your decision?",
+              "options": [
+                "LONG",
+                "SHORT",
+                "WAIT"
+              ],
+              "correct": 0,
+              "explanation": "Repeated offer sweeps with acceptance at each higher tick is decisive demand — the long is justified.",
+              "skillId": "trade_decision_quality",
+              "scenario": "delta_positive",
+              "render_mode": "raw_full",
+              "difficulty": "advanced",
+              "wrong_explanations": [
+                null,
+                "Shorting here ignores that sellers aren't producing lower acceptance yet.",
+                "Sitting out ignores that the board is confirmed, not conflicted."
+              ],
+              "decision_quality": "Repeated offer sweeps with acceptance at each higher tick is decisive demand — the long is justified."
+            },
+            {
+              "type": "trade_decision",
+              "event": "buyer_absorption",
+              "question": "Price chops in a tight range with alternating buy and sell prints. What's your decision?",
               "options": [
                 "LONG",
                 "SHORT",
                 "WAIT"
               ],
               "correct": 2,
-              "explanation": "Lower ticks met by absorbing bids means sellers haven't won control. WAIT.",
+              "explanation": "Alternating prints in a tight range is chop — there's no directional edge to trade. WAIT.",
               "skillId": "trade_decision_quality",
-              "scenario": "chop",
+              "scenario": "buyer_absorption",
               "render_mode": "raw_full",
               "difficulty": "advanced",
               "wrong_explanations": [
@@ -5790,29 +5812,7 @@
                 "Shorting here ignores that sellers aren't producing lower acceptance yet.",
                 null
               ],
-              "decision_quality": "Lower ticks met by absorbing bids means sellers haven't won control. WAIT."
-            },
-            {
-              "type": "trade_decision",
-              "event": "balanced_target",
-              "question": "Buyers reclaim VWAP but immediately stall beneath resistance. What's your decision?",
-              "options": [
-                "LONG",
-                "SHORT",
-                "WAIT"
-              ],
-              "correct": 2,
-              "explanation": "A reclaim that stalls under the next level isn't confirmed continuation. WAIT.",
-              "skillId": "trade_decision_quality",
-              "scenario": "balanced_target",
-              "render_mode": "raw_full",
-              "difficulty": "advanced",
-              "wrong_explanations": [
-                "A long is premature — upside follow-through hasn't shown.",
-                "A short is premature — downside follow-through hasn't shown.",
-                null
-              ],
-              "decision_quality": "A reclaim that stalls under the next level isn't confirmed continuation. WAIT."
+              "decision_quality": "Alternating prints in a tight range is chop — there's no directional edge to trade. WAIT."
             },
             {
               "type": "multiple_choice",
@@ -6354,25 +6354,25 @@
             },
             {
               "type": "trade_decision",
-              "event": "buyer_absorption",
-              "question": "Volume dries up and price coils without direction. What's your decision?",
+              "event": "seller_absorption",
+              "question": "CVD ticks up but price makes no new high and the offer stays stacked. What's your decision?",
               "options": [
                 "LONG",
                 "SHORT",
                 "WAIT"
               ],
               "correct": 2,
-              "explanation": "Drying volume in a coil is indecision — wait for expansion to show a side. WAIT.",
+              "explanation": "Rising CVD without a new high against a stacked offer is effort without result. WAIT.",
               "skillId": "trade_decision_quality",
-              "scenario": "buyer_absorption",
+              "scenario": "seller_absorption",
               "render_mode": "raw_full",
               "difficulty": "advanced",
               "wrong_explanations": [
-                "A LONG needs confirmed buyer control with price actually accepting higher — not here.",
-                "A SHORT needs confirmed seller control with price actually accepting lower — not here.",
+                "A long is premature — upside follow-through hasn't shown.",
+                "A short is premature — downside follow-through hasn't shown.",
                 null
               ],
-              "decision_quality": "Drying volume in a coil is indecision — wait for expansion to show a side. WAIT."
+              "decision_quality": "Rising CVD without a new high against a stacked offer is effort without result. WAIT."
             },
             {
               "type": "evidence_select",
@@ -6427,47 +6427,47 @@
           "screens": [
             {
               "type": "trade_decision",
-              "event": "delta_positive",
-              "question": "Every offer into the high is lifted and price makes a clean new high with volume. What's your decision?",
-              "options": [
-                "LONG",
-                "SHORT",
-                "WAIT"
-              ],
-              "correct": 0,
-              "explanation": "Consistent offer lifting into a volume-backed new high is confirmed buying — go long.",
-              "skillId": "trade_decision_quality",
-              "scenario": "delta_positive",
-              "render_mode": "raw_full",
-              "difficulty": "advanced",
-              "wrong_explanations": [
-                null,
-                "A SHORT needs confirmed seller control with price actually accepting lower — not here.",
-                "WAIT would pass up a read where the evidence already aligns to act."
-              ],
-              "decision_quality": "Consistent offer lifting into a volume-backed new high is confirmed buying — go long."
-            },
-            {
-              "type": "trade_decision",
               "event": "lift",
-              "question": "Bid depth builds, the pullback stalls above support, and buyers resume lifting. What's your decision?",
+              "question": "The bid refreshes larger on each test while price grinds up through supply. What's your decision?",
               "options": [
                 "LONG",
                 "SHORT",
                 "WAIT"
               ],
               "correct": 0,
-              "explanation": "Building bid depth with a shallow pullback and resumed buying is aligned demand — the long is supported.",
+              "explanation": "A bid refreshing larger while price eats through supply is confirmed buyer control — go long.",
               "skillId": "trade_decision_quality",
               "scenario": "lift",
               "render_mode": "raw_full",
               "difficulty": "advanced",
               "wrong_explanations": [
                 null,
-                "Shorting here ignores that sellers aren't producing lower acceptance yet.",
-                "Sitting out ignores that the board is confirmed, not conflicted."
+                "A short is premature — downside follow-through hasn't shown.",
+                "WAIT is too passive here — the signal is decisive, not ambiguous."
               ],
-              "decision_quality": "Building bid depth with a shallow pullback and resumed buying is aligned demand — the long is supported."
+              "decision_quality": "A bid refreshing larger while price eats through supply is confirmed buyer control — go long."
+            },
+            {
+              "type": "trade_decision",
+              "event": "hit",
+              "question": "The offer refreshes larger on each test while price grinds down through demand. What's your decision?",
+              "options": [
+                "LONG",
+                "SHORT",
+                "WAIT"
+              ],
+              "correct": 1,
+              "explanation": "An offer refreshing larger while price eats through demand is confirmed seller control — go short.",
+              "skillId": "trade_decision_quality",
+              "scenario": "hit",
+              "render_mode": "raw_full",
+              "difficulty": "advanced",
+              "wrong_explanations": [
+                "A long is premature — upside follow-through hasn't shown.",
+                null,
+                "WAIT is too passive here — the signal is decisive, not ambiguous."
+              ],
+              "decision_quality": "An offer refreshing larger while price eats through demand is confirmed seller control — go short."
             },
             {
               "type": "footprint",
@@ -6484,39 +6484,17 @@
             },
             {
               "type": "trade_decision",
-              "event": "seller_absorption",
-              "question": "An iceberg keeps refilling the offer as buyers keep paying up with no progress. What's your decision?",
-              "options": [
-                "LONG",
-                "SHORT",
-                "WAIT"
-              ],
-              "correct": 2,
-              "explanation": "Hidden supply absorbing buyers with no price progress is stalling, not a confirmed short yet. WAIT.",
-              "skillId": "trade_decision_quality",
-              "scenario": "seller_absorption",
-              "render_mode": "raw_full",
-              "difficulty": "advanced",
-              "wrong_explanations": [
-                "Going long here ignores that buyers aren't producing higher acceptance yet.",
-                "Shorting here ignores that sellers aren't producing lower acceptance yet.",
-                null
-              ],
-              "decision_quality": "Hidden supply absorbing buyers with no price progress is stalling, not a confirmed short yet. WAIT."
-            },
-            {
-              "type": "trade_decision",
-              "event": "hit",
-              "question": "The breakdown retest fails exactly, negative delta expands, and bids pull. What's your decision?",
+              "event": "delta_negative",
+              "question": "Sellers defend the breakdown level and negative delta expands as price extends. What's your decision?",
               "options": [
                 "LONG",
                 "SHORT",
                 "WAIT"
               ],
               "correct": 1,
-              "explanation": "An exact failed retest with expanding negative delta and pulled bids is textbook confirmation — take the short.",
+              "explanation": "A defended breakdown with expanding negative delta is confirmation — take the short.",
               "skillId": "trade_decision_quality",
-              "scenario": "hit",
+              "scenario": "delta_negative",
               "render_mode": "raw_full",
               "difficulty": "advanced",
               "wrong_explanations": [
@@ -6524,29 +6502,51 @@
                 null,
                 "WAIT would pass up a read where the evidence already aligns to act."
               ],
-              "decision_quality": "An exact failed retest with expanding negative delta and pulled bids is textbook confirmation — take the short."
+              "decision_quality": "A defended breakdown with expanding negative delta is confirmation — take the short."
             },
             {
               "type": "trade_decision",
-              "event": "iceberg",
-              "question": "Price pushes to a new high on thin volume and quickly fades. What's your decision?",
+              "event": "hit",
+              "question": "Price accepts below support and the prior bid wall is gone. What's your decision?",
               "options": [
                 "LONG",
                 "SHORT",
                 "WAIT"
               ],
-              "correct": 2,
-              "explanation": "A thin-volume high that fades lacks acceptance — the move isn't confirmed. WAIT.",
+              "correct": 1,
+              "explanation": "Acceptance below support with the demand wall removed is decisive — sellers are in control.",
               "skillId": "trade_decision_quality",
-              "scenario": "iceberg",
+              "scenario": "hit",
               "render_mode": "raw_full",
               "difficulty": "advanced",
               "wrong_explanations": [
-                "A long is premature — upside follow-through hasn't shown.",
-                "A short is premature — downside follow-through hasn't shown.",
-                null
+                "Going long here ignores that buyers aren't producing higher acceptance yet.",
+                null,
+                "Sitting out ignores that the board is confirmed, not conflicted."
               ],
-              "decision_quality": "A thin-volume high that fades lacks acceptance — the move isn't confirmed. WAIT."
+              "decision_quality": "Acceptance below support with the demand wall removed is decisive — sellers are in control."
+            },
+            {
+              "type": "trade_decision",
+              "event": "delta_positive",
+              "question": "Buyers defend the breakout level and delta expands as price extends. What's your decision?",
+              "options": [
+                "LONG",
+                "SHORT",
+                "WAIT"
+              ],
+              "correct": 0,
+              "explanation": "A defended breakout with expanding delta on the extension is confirmation — take the long.",
+              "skillId": "trade_decision_quality",
+              "scenario": "delta_positive",
+              "render_mode": "raw_full",
+              "difficulty": "advanced",
+              "wrong_explanations": [
+                null,
+                "A SHORT needs confirmed seller control with price actually accepting lower — not here.",
+                "WAIT would pass up a read where the evidence already aligns to act."
+              ],
+              "decision_quality": "A defended breakout with expanding delta on the extension is confirmation — take the long."
             },
             {
               "type": "tap_candle",
@@ -6596,26 +6596,26 @@
             },
             {
               "type": "trade_decision",
-              "event": "low_volume_trend",
+              "event": "lift",
               "direction": "neutral",
-              "question": "Sellers appear at resistance but the tape is still net-buyer. What's your decision?",
+              "question": "Price accepts above resistance and the prior offer wall is gone. What's your decision?",
               "options": [
                 "LONG",
                 "SHORT",
                 "WAIT"
               ],
-              "correct": 2,
-              "explanation": "Fresh offers against net-buying tape is conflict — no side is confirmed. WAIT.",
+              "correct": 0,
+              "explanation": "Acceptance above resistance with the supply wall removed is decisive — buyers are in control.",
               "skillId": "trade_decision_quality",
-              "scenario": "low_volume_trend",
+              "scenario": "lift",
               "render_mode": "raw_full",
               "difficulty": "advanced",
               "wrong_explanations": [
-                "A LONG needs confirmed buyer control with price actually accepting higher — not here.",
-                "A SHORT needs confirmed seller control with price actually accepting lower — not here.",
-                null
+                null,
+                "Shorting here ignores that sellers aren't producing lower acceptance yet.",
+                "Sitting out ignores that the board is confirmed, not conflicted."
               ],
-              "decision_quality": "Fresh offers against net-buying tape is conflict — no side is confirmed. WAIT."
+              "decision_quality": "Acceptance above resistance with the supply wall removed is decisive — buyers are in control."
             },
             {
               "type": "evidence_select",
@@ -6752,25 +6752,25 @@
             },
             {
               "type": "trade_decision",
-              "event": "delta_negative",
-              "question": "Buyers exhaust into resistance and sellers immediately reclaim on rising supply. What's your decision?",
+              "event": "delta_positive",
+              "question": "A strong bid absorbs sellers, then price lifts as the offer thins. What's your decision?",
               "options": [
                 "LONG",
                 "SHORT",
                 "WAIT"
               ],
-              "correct": 1,
-              "explanation": "Buyer exhaustion at resistance with an immediate seller reclaim is a confirmed reversal — go short.",
+              "correct": 0,
+              "explanation": "Bid absorption followed by a lift into thinning supply is confirmed demand — the long stands.",
               "skillId": "trade_decision_quality",
-              "scenario": "delta_negative",
+              "scenario": "delta_positive",
               "render_mode": "raw_full",
               "difficulty": "advanced",
               "wrong_explanations": [
-                "Going long here ignores that buyers aren't producing higher acceptance yet.",
                 null,
-                "Sitting out ignores that the board is confirmed, not conflicted."
+                "A short is premature — downside follow-through hasn't shown.",
+                "WAIT is too passive here — the signal is decisive, not ambiguous."
               ],
-              "decision_quality": "Buyer exhaustion at resistance with an immediate seller reclaim is a confirmed reversal — go short."
+              "decision_quality": "Bid absorption followed by a lift into thinning supply is confirmed demand — the long stands."
             },
             {
               "type": "evidence_select",
@@ -6870,47 +6870,47 @@
             },
             {
               "type": "trade_decision",
-              "event": "delta_positive",
-              "question": "Price holds above the value-area high and buyers keep paying the offer. What's your decision?",
-              "options": [
-                "LONG",
-                "SHORT",
-                "WAIT"
-              ],
-              "correct": 0,
-              "explanation": "Acceptance above the value-area high with buyers still paying up is confirmed control — take the long.",
-              "skillId": "trade_decision_quality",
-              "scenario": "delta_positive",
-              "render_mode": "raw_full",
-              "difficulty": "advanced",
-              "wrong_explanations": [
-                null,
-                "A short is premature — downside follow-through hasn't shown.",
-                "WAIT is too passive here — the signal is decisive, not ambiguous."
-              ],
-              "decision_quality": "Acceptance above the value-area high with buyers still paying up is confirmed control — take the long."
-            },
-            {
-              "type": "trade_decision",
-              "skillId": "trade_decision_quality",
-              "difficulty": "advanced",
-              "render_mode": "raw_full",
-              "scenario": "hit",
-              "question": "Demand fails to absorb the sweep and price accepts each new tick lower. What's your decision?",
+              "event": "delta_negative",
+              "question": "Lower highs print into support, then the bid breaks and price drops. What's your decision?",
               "options": [
                 "LONG",
                 "SHORT",
                 "WAIT"
               ],
               "correct": 1,
+              "explanation": "Lower highs resolving through a breaking bid is confirmed seller control — go short.",
+              "skillId": "trade_decision_quality",
+              "scenario": "delta_negative",
+              "render_mode": "raw_full",
+              "difficulty": "advanced",
               "wrong_explanations": [
                 "A long is premature — upside follow-through hasn't shown.",
                 null,
                 "WAIT is too passive here — the signal is decisive, not ambiguous."
               ],
-              "explanation": "Failed absorption with acceptance at each lower tick is decisive supply — the short is justified.",
-              "decision_quality": "Failed absorption with acceptance at each lower tick is decisive supply — the short is justified.",
-              "event": "hit"
+              "decision_quality": "Lower highs resolving through a breaking bid is confirmed seller control — go short."
+            },
+            {
+              "type": "trade_decision",
+              "skillId": "trade_decision_quality",
+              "difficulty": "advanced",
+              "render_mode": "raw_full",
+              "scenario": "iceberg",
+              "question": "Sellers press the bid into support, but no acceptance forms below it. What's your decision?",
+              "options": [
+                "LONG",
+                "SHORT",
+                "WAIT"
+              ],
+              "correct": 2,
+              "wrong_explanations": [
+                "A LONG needs confirmed buyer control with price actually accepting higher — not here.",
+                "A SHORT needs confirmed seller control with price actually accepting lower — not here.",
+                null
+              ],
+              "explanation": "Pressure without acceptance below support means the breakdown isn't confirmed. WAIT.",
+              "decision_quality": "Pressure without acceptance below support means the breakdown isn't confirmed. WAIT.",
+              "event": "iceberg"
             },
             {
               "type": "evidence_select",
@@ -6938,25 +6938,25 @@
           "screens": [
             {
               "type": "trade_decision",
-              "event": "conflict",
-              "question": "The retest holds but delta is flat and offers remain overhead. What's your decision?",
+              "event": "lift",
+              "question": "Higher lows print into resistance, then the offer breaks and price runs. What's your decision?",
               "options": [
                 "LONG",
                 "SHORT",
                 "WAIT"
               ],
-              "correct": 2,
-              "explanation": "A hold without delta expansion and with supply overhead isn't confirmed continuation. WAIT.",
+              "correct": 0,
+              "explanation": "Higher lows resolving through a breaking offer is confirmed buyer control — go long.",
               "skillId": "trade_decision_quality",
-              "scenario": "conflict",
+              "scenario": "lift",
               "render_mode": "raw_full",
               "difficulty": "advanced",
               "wrong_explanations": [
-                "Going long here ignores that buyers aren't producing higher acceptance yet.",
-                "Shorting here ignores that sellers aren't producing lower acceptance yet.",
-                null
+                null,
+                "A SHORT needs confirmed seller control with price actually accepting lower — not here.",
+                "WAIT would pass up a read where the evidence already aligns to act."
               ],
-              "decision_quality": "A hold without delta expansion and with supply overhead isn't confirmed continuation. WAIT."
+              "decision_quality": "Higher lows resolving through a breaking offer is confirmed buyer control — go long."
             },
             {
               "type": "footprint",
@@ -6973,25 +6973,25 @@
             },
             {
               "type": "trade_decision",
-              "event": "lift",
-              "question": "A failed breakdown reverses hard and buyers reclaim the range on heavy prints. What's your decision?",
+              "event": "hit",
+              "question": "Price breaks the range low, retests, and rejects as offers stack. What's your decision?",
               "options": [
                 "LONG",
                 "SHORT",
                 "WAIT"
               ],
-              "correct": 0,
-              "explanation": "A failed breakdown with an aggressive reclaim on heavy buying is a confirmed long — sellers lost the level.",
+              "correct": 1,
+              "explanation": "A range-low break that retests and rejects on a stacking offer is decisive supply — take the short.",
               "skillId": "trade_decision_quality",
-              "scenario": "lift",
+              "scenario": "hit",
               "render_mode": "raw_full",
               "difficulty": "advanced",
               "wrong_explanations": [
+                "A LONG needs confirmed buyer control with price actually accepting higher — not here.",
                 null,
-                "A SHORT needs confirmed seller control with price actually accepting lower — not here.",
                 "WAIT would pass up a read where the evidence already aligns to act."
               ],
-              "decision_quality": "A failed breakdown with an aggressive reclaim on heavy buying is a confirmed long — sellers lost the level."
+              "decision_quality": "A range-low break that retests and rejects on a stacking offer is decisive supply — take the short."
             },
             {
               "type": "evidence_select",
@@ -7034,56 +7034,78 @@
               "skillId": "trade_decision_quality",
               "difficulty": "advanced",
               "render_mode": "raw_full",
-              "scenario": "chop",
-              "question": "Price accepts nowhere new as both value edges get rejected. What's your decision?",
+              "scenario": "delta_positive",
+              "question": "CVD and price both trend up while pullbacks get bought instantly. What's your decision?",
               "options": [
                 "LONG",
                 "SHORT",
                 "WAIT"
               ],
-              "correct": 2,
+              "correct": 0,
               "wrong_explanations": [
-                "A long is premature — upside follow-through hasn't shown.",
-                "A short is premature — downside follow-through hasn't shown.",
-                null
+                null,
+                "Shorting here ignores that sellers aren't producing lower acceptance yet.",
+                "Sitting out ignores that the board is confirmed, not conflicted."
               ],
-              "explanation": "Rejection at both edges is rotation inside balance — there's no directional edge. WAIT.",
-              "decision_quality": "Rejection at both edges is rotation inside balance — there's no directional edge. WAIT.",
-              "event": "chop"
-            },
-            {
-              "type": "trade_decision",
-              "event": "balanced_target",
-              "question": "Buyers lift offers in bursts, but each burst stalls faster than the last. What's your decision?",
-              "options": [
-                "LONG",
-                "SHORT",
-                "WAIT"
-              ],
-              "correct": 2,
-              "explanation": "Decaying buyer bursts hint at exhaustion but sellers haven't confirmed — wait for a lower high or reclaim. WAIT.",
-              "skillId": "trade_decision_quality",
-              "scenario": "balanced_target",
-              "render_mode": "raw_full",
-              "difficulty": "advanced",
-              "wrong_explanations": [
-                "A LONG needs confirmed buyer control with price actually accepting higher — not here.",
-                "A SHORT needs confirmed seller control with price actually accepting lower — not here.",
-                null
-              ],
-              "decision_quality": "Decaying buyer bursts hint at exhaustion but sellers haven't confirmed — wait for a lower high or reclaim. WAIT."
+              "explanation": "Aligned CVD and price with instantly-bought dips is a confirmed uptrend — take the long.",
+              "decision_quality": "Aligned CVD and price with instantly-bought dips is a confirmed uptrend — take the long.",
+              "event": "delta_positive"
             },
             {
               "type": "trade_decision",
               "event": "delta_negative",
-              "question": "Every bid into the low is hit and price makes a clean new low with volume. What's your decision?",
+              "question": "Sellers keep hitting the same bid until it breaks and price accepts down. What's your decision?",
               "options": [
                 "LONG",
                 "SHORT",
                 "WAIT"
               ],
               "correct": 1,
-              "explanation": "Consistent bid hitting into a volume-backed new low is confirmed selling — go short.",
+              "explanation": "Persistent hitting that finally breaks demand into acceptance is confirmed control — go short.",
+              "skillId": "trade_decision_quality",
+              "scenario": "delta_negative",
+              "render_mode": "raw_full",
+              "difficulty": "advanced",
+              "wrong_explanations": [
+                "Going long here ignores that buyers aren't producing higher acceptance yet.",
+                null,
+                "Sitting out ignores that the board is confirmed, not conflicted."
+              ],
+              "decision_quality": "Persistent hitting that finally breaks demand into acceptance is confirmed control — go short."
+            },
+            {
+              "type": "trade_decision",
+              "event": "hit",
+              "question": "A strong offer absorbs buyers, then price drops as the bid thins. What's your decision?",
+              "options": [
+                "LONG",
+                "SHORT",
+                "WAIT"
+              ],
+              "correct": 1,
+              "explanation": "Offer absorption followed by a drop into thinning demand is confirmed supply — the short stands.",
+              "skillId": "trade_decision_quality",
+              "scenario": "hit",
+              "render_mode": "raw_full",
+              "difficulty": "advanced",
+              "wrong_explanations": [
+                "A long is premature — upside follow-through hasn't shown.",
+                null,
+                "WAIT is too passive here — the signal is decisive, not ambiguous."
+              ],
+              "decision_quality": "Offer absorption followed by a drop into thinning demand is confirmed supply — the short stands."
+            },
+            {
+              "type": "trade_decision",
+              "event": "delta_negative",
+              "question": "Buyers capitulate at resistance and sellers immediately take price back below VWAP. What's your decision?",
+              "options": [
+                "LONG",
+                "SHORT",
+                "WAIT"
+              ],
+              "correct": 1,
+              "explanation": "Buyer capitulation with an immediate reclaim below VWAP is a confirmed reversal short — go short.",
               "skillId": "trade_decision_quality",
               "scenario": "delta_negative",
               "render_mode": "raw_full",
@@ -7093,29 +7115,7 @@
                 null,
                 "WAIT would pass up a read where the evidence already aligns to act."
               ],
-              "decision_quality": "Consistent bid hitting into a volume-backed new low is confirmed selling — go short."
-            },
-            {
-              "type": "trade_decision",
-              "event": "delta_positive",
-              "question": "Offers keep getting swept and price accepts each new tick higher. What's your decision?",
-              "options": [
-                "LONG",
-                "SHORT",
-                "WAIT"
-              ],
-              "correct": 0,
-              "explanation": "Repeated offer sweeps with acceptance at each higher tick is decisive demand — the long is justified.",
-              "skillId": "trade_decision_quality",
-              "scenario": "delta_positive",
-              "render_mode": "raw_full",
-              "difficulty": "advanced",
-              "wrong_explanations": [
-                null,
-                "Shorting here ignores that sellers aren't producing lower acceptance yet.",
-                "Sitting out ignores that the board is confirmed, not conflicted."
-              ],
-              "decision_quality": "Repeated offer sweeps with acceptance at each higher tick is decisive demand — the long is justified."
+              "decision_quality": "Buyer capitulation with an immediate reclaim below VWAP is a confirmed reversal short — go short."
             },
             {
               "type": "replay_compare",
@@ -7229,15 +7229,37 @@
           "screens": [
             {
               "type": "trade_decision",
+              "event": "low_volume_trend",
+              "question": "Price stalls at VWAP with balanced delta and no clear aggressor. What's your decision?",
+              "options": [
+                "LONG",
+                "SHORT",
+                "WAIT"
+              ],
+              "correct": 2,
+              "explanation": "Balanced delta and a stall at VWAP is indecision — wait for one side to take control. WAIT.",
+              "skillId": "trade_decision_quality",
+              "scenario": "low_volume_trend",
+              "render_mode": "raw_full",
+              "difficulty": "advanced",
+              "wrong_explanations": [
+                "Going long here ignores that buyers aren't producing higher acceptance yet.",
+                "Shorting here ignores that sellers aren't producing lower acceptance yet.",
+                null
+              ],
+              "decision_quality": "Balanced delta and a stall at VWAP is indecision — wait for one side to take control. WAIT."
+            },
+            {
+              "type": "trade_decision",
               "event": "hit",
-              "question": "Offer depth builds, the bounce stalls below resistance, and sellers resume hitting. What's your decision?",
+              "question": "A supply shelf forms, price drops off it, and delta pushes firmly negative. What's your decision?",
               "options": [
                 "LONG",
                 "SHORT",
                 "WAIT"
               ],
               "correct": 1,
-              "explanation": "Building offer depth with a weak bounce and resumed selling is aligned supply — the short is supported.",
+              "explanation": "A supply shelf with a drop and firmly negative delta is confirmation — the short is supported.",
               "skillId": "trade_decision_quality",
               "scenario": "hit",
               "render_mode": "raw_full",
@@ -7247,51 +7269,29 @@
                 null,
                 "Sitting out ignores that the board is confirmed, not conflicted."
               ],
-              "decision_quality": "Building offer depth with a weak bounce and resumed selling is aligned supply — the short is supported."
+              "decision_quality": "A supply shelf with a drop and firmly negative delta is confirmation — the short is supported."
             },
             {
               "type": "trade_decision",
-              "event": "buyer_absorption",
-              "question": "A large offer sits overhead and price keeps testing without breaking it. What's your decision?",
+              "event": "delta_negative",
+              "question": "Each bounce is weaker while bid-side prints keep expanding into lows. What's your decision?",
               "options": [
                 "LONG",
                 "SHORT",
                 "WAIT"
               ],
-              "correct": 2,
-              "explanation": "Repeated tests of an unbroken offer is stalling — no breakout has been confirmed. WAIT.",
+              "correct": 1,
+              "explanation": "Weakening bounces with expanding bid-side prints into lows is aligned selling — go short.",
               "skillId": "trade_decision_quality",
-              "scenario": "buyer_absorption",
+              "scenario": "delta_negative",
               "render_mode": "raw_full",
               "difficulty": "advanced",
               "wrong_explanations": [
-                "Going long here ignores that buyers aren't producing higher acceptance yet.",
-                "Shorting here ignores that sellers aren't producing lower acceptance yet.",
-                null
-              ],
-              "decision_quality": "Repeated tests of an unbroken offer is stalling — no breakout has been confirmed. WAIT."
-            },
-            {
-              "type": "trade_decision",
-              "event": "lift",
-              "question": "The bid refreshes larger on each test while price grinds up through supply. What's your decision?",
-              "options": [
-                "LONG",
-                "SHORT",
-                "WAIT"
-              ],
-              "correct": 0,
-              "explanation": "A bid refreshing larger while price eats through supply is confirmed buyer control — go long.",
-              "skillId": "trade_decision_quality",
-              "scenario": "lift",
-              "render_mode": "raw_full",
-              "difficulty": "advanced",
-              "wrong_explanations": [
+                "A long is premature — upside follow-through hasn't shown.",
                 null,
-                "A short is premature — downside follow-through hasn't shown.",
                 "WAIT is too passive here — the signal is decisive, not ambiguous."
               ],
-              "decision_quality": "A bid refreshing larger while price eats through supply is confirmed buyer control — go long."
+              "decision_quality": "Weakening bounces with expanding bid-side prints into lows is aligned selling — go short."
             },
             {
               "type": "evidence_select",
@@ -7417,47 +7417,47 @@
           "screens": [
             {
               "type": "trade_decision",
-              "event": "seller_absorption",
-              "question": "Sell prints continue without matching downward price progress. What's your decision?",
+              "event": "lift",
+              "question": "The retest holds above VWAP and buyer prints dominate the tape. What's your decision?",
               "options": [
                 "LONG",
                 "SHORT",
                 "WAIT"
               ],
-              "correct": 2,
-              "explanation": "Selling effort without lower acceptance means seller control is unconfirmed. WAIT.",
+              "correct": 0,
+              "explanation": "A held VWAP retest with buyer-dominated tape is confirmation — the long is supported.",
               "skillId": "trade_decision_quality",
-              "scenario": "seller_absorption",
+              "scenario": "lift",
               "render_mode": "raw_full",
               "difficulty": "advanced",
               "wrong_explanations": [
-                "A long is premature — upside follow-through hasn't shown.",
+                null,
                 "A short is premature — downside follow-through hasn't shown.",
-                null
+                "WAIT is too passive here — the signal is decisive, not ambiguous."
               ],
-              "decision_quality": "Selling effort without lower acceptance means seller control is unconfirmed. WAIT."
+              "decision_quality": "A held VWAP retest with buyer-dominated tape is confirmation — the long is supported."
             },
             {
               "type": "trade_decision",
-              "event": "delta_negative",
-              "question": "Price holds below the value-area low and sellers keep paying the bid. What's your decision?",
+              "event": "hit",
+              "question": "Price holds the breakdown, offers stack three levels deep, and bids keep pulling. What's your decision?",
               "options": [
                 "LONG",
                 "SHORT",
                 "WAIT"
               ],
               "correct": 1,
-              "explanation": "Acceptance below the value-area low with sellers still hitting is confirmed control — take the short.",
+              "explanation": "A held breakdown under a deep stacked offer with pulling bids is decisive seller control — take the short.",
               "skillId": "trade_decision_quality",
-              "scenario": "delta_negative",
+              "scenario": "hit",
               "render_mode": "raw_full",
               "difficulty": "advanced",
               "wrong_explanations": [
-                "A long is premature — upside follow-through hasn't shown.",
+                "A LONG needs confirmed buyer control with price actually accepting higher — not here.",
                 null,
-                "WAIT is too passive here — the signal is decisive, not ambiguous."
+                "WAIT would pass up a read where the evidence already aligns to act."
               ],
-              "decision_quality": "Acceptance below the value-area low with sellers still hitting is confirmed control — take the short."
+              "decision_quality": "A held breakdown under a deep stacked offer with pulling bids is decisive seller control — take the short."
             },
             {
               "type": "footprint",
@@ -7475,14 +7475,14 @@
             {
               "type": "trade_decision",
               "event": "delta_positive",
-              "question": "Buyers defend the breakout level and delta expands as price extends. What's your decision?",
+              "question": "Sellers exhaust into support and buyers immediately reclaim on rising delta. What's your decision?",
               "options": [
                 "LONG",
                 "SHORT",
                 "WAIT"
               ],
               "correct": 0,
-              "explanation": "A defended breakout with expanding delta on the extension is confirmation — take the long.",
+              "explanation": "Seller exhaustion at support with an immediate buyer reclaim is a confirmed reversal — go long.",
               "skillId": "trade_decision_quality",
               "scenario": "delta_positive",
               "render_mode": "raw_full",
@@ -7492,73 +7492,73 @@
                 "A SHORT needs confirmed seller control with price actually accepting lower — not here.",
                 "WAIT would pass up a read where the evidence already aligns to act."
               ],
-              "decision_quality": "A defended breakout with expanding delta on the extension is confirmation — take the long."
+              "decision_quality": "Seller exhaustion at support with an immediate buyer reclaim is a confirmed reversal — go long."
             },
             {
               "type": "trade_decision",
-              "event": "iceberg",
-              "question": "Negative pressure builds while support holds and the bid replenishes. What's your decision?",
+              "event": "conflict",
+              "question": "The offer thins but buyers hesitate and price drifts sideways. What's your decision?",
               "options": [
                 "LONG",
                 "SHORT",
                 "WAIT"
               ],
               "correct": 2,
-              "explanation": "Pressure against a replenishing bid at held support isn't a confirmed breakdown. WAIT.",
+              "explanation": "Thinning supply without buyers stepping in isn't a signal on its own — nothing is confirmed. WAIT.",
               "skillId": "trade_decision_quality",
-              "scenario": "iceberg",
+              "scenario": "conflict",
               "render_mode": "raw_full",
               "difficulty": "advanced",
               "wrong_explanations": [
-                "A LONG needs confirmed buyer control with price actually accepting higher — not here.",
-                "A SHORT needs confirmed seller control with price actually accepting lower — not here.",
+                "A long is premature — upside follow-through hasn't shown.",
+                "A short is premature — downside follow-through hasn't shown.",
                 null
               ],
-              "decision_quality": "Pressure against a replenishing bid at held support isn't a confirmed breakdown. WAIT."
+              "decision_quality": "Thinning supply without buyers stepping in isn't a signal on its own — nothing is confirmed. WAIT."
             },
             {
               "type": "trade_decision",
               "skillId": "trade_decision_quality",
               "difficulty": "expert",
               "render_mode": "raw_full",
-              "scenario": "hit",
-              "question": "A failed breakout reverses hard and sellers reclaim the range on heavy prints. What's your decision?",
-              "options": [
-                "LONG",
-                "SHORT",
-                "WAIT"
-              ],
-              "correct": 1,
-              "wrong_explanations": [
-                "A LONG needs confirmed buyer control with price actually accepting higher — not here.",
-                null,
-                "WAIT would pass up a read where the evidence already aligns to act."
-              ],
-              "explanation": "A failed breakout with an aggressive seller reclaim is a confirmed short — buyers lost the level.",
-              "decision_quality": "A failed breakout with an aggressive seller reclaim is a confirmed short — buyers lost the level.",
-              "event": "hit"
-            },
-            {
-              "type": "trade_decision",
-              "event": "lift",
-              "question": "Price accepts above resistance and the prior offer wall is gone. What's your decision?",
+              "scenario": "lift",
+              "question": "Price breaks the range high, retests, and holds as bids stack. What's your decision?",
               "options": [
                 "LONG",
                 "SHORT",
                 "WAIT"
               ],
               "correct": 0,
-              "explanation": "Acceptance above resistance with the supply wall removed is decisive — buyers are in control.",
-              "skillId": "trade_decision_quality",
-              "scenario": "lift",
-              "render_mode": "raw_full",
-              "difficulty": "advanced",
               "wrong_explanations": [
                 null,
                 "Shorting here ignores that sellers aren't producing lower acceptance yet.",
                 "Sitting out ignores that the board is confirmed, not conflicted."
               ],
-              "decision_quality": "Acceptance above resistance with the supply wall removed is decisive — buyers are in control."
+              "explanation": "A range-high break that retests and holds on a stacking bid is decisive demand — take the long.",
+              "decision_quality": "A range-high break that retests and holds on a stacking bid is decisive demand — take the long.",
+              "event": "lift"
+            },
+            {
+              "type": "trade_decision",
+              "event": "delta_positive",
+              "question": "Buyers keep lifting the same offer until it finally breaks and price accepts up. What's your decision?",
+              "options": [
+                "LONG",
+                "SHORT",
+                "WAIT"
+              ],
+              "correct": 0,
+              "explanation": "Persistent lifting that finally breaks supply into acceptance is confirmed control — go long.",
+              "skillId": "trade_decision_quality",
+              "scenario": "delta_positive",
+              "render_mode": "raw_full",
+              "difficulty": "advanced",
+              "wrong_explanations": [
+                null,
+                "A short is premature — downside follow-through hasn't shown.",
+                "WAIT is too passive here — the signal is decisive, not ambiguous."
+              ],
+              "decision_quality": "Persistent lifting that finally breaks supply into acceptance is confirmed control — go long."
             }
           ]
         },
@@ -7609,25 +7609,25 @@
             },
             {
               "type": "trade_decision",
-              "event": "delta_negative",
-              "question": "Bids keep getting swept and price accepts each tick lower. What's your decision?",
+              "event": "chop",
+              "question": "A big bid appears but price hasn't reacted to it yet. What's your decision?",
               "options": [
                 "LONG",
                 "SHORT",
                 "WAIT"
               ],
-              "correct": 1,
-              "explanation": "Repeated bid sweeps with lower acceptance is decisive supply — the short is justified.",
+              "correct": 2,
+              "explanation": "A resting bid is potential support, not a confirmed response — wait for price to react. WAIT.",
               "skillId": "trade_decision_quality",
-              "scenario": "delta_negative",
+              "scenario": "chop",
               "render_mode": "raw_full",
               "difficulty": "advanced",
               "wrong_explanations": [
-                "Going long here ignores that buyers aren't producing higher acceptance yet.",
-                null,
-                "Sitting out ignores that the board is confirmed, not conflicted."
+                "A LONG needs confirmed buyer control with price actually accepting higher — not here.",
+                "A SHORT needs confirmed seller control with price actually accepting lower — not here.",
+                null
               ],
-              "decision_quality": "Repeated bid sweeps with lower acceptance is decisive supply — the short is justified."
+              "decision_quality": "A resting bid is potential support, not a confirmed response — wait for price to react. WAIT."
             },
             {
               "type": "replay_compare",
@@ -7673,25 +7673,25 @@
             },
             {
               "type": "trade_decision",
-              "event": "low_volume_trend",
-              "question": "Positive pressure builds while resistance holds and the offer replenishes. What's your decision?",
+              "event": "lift",
+              "question": "Buyers absorb a late sell spike, then reclaim and extend to a new high. What's your decision?",
               "options": [
                 "LONG",
                 "SHORT",
                 "WAIT"
               ],
-              "correct": 2,
-              "explanation": "Pressure against a replenishing offer at held resistance isn't a confirmed breakout. WAIT.",
+              "correct": 0,
+              "explanation": "Absorbed selling followed by a reclaim and extension is confirmed demand — go long.",
               "skillId": "trade_decision_quality",
-              "scenario": "low_volume_trend",
+              "scenario": "lift",
               "render_mode": "raw_full",
               "difficulty": "advanced",
               "wrong_explanations": [
-                "Going long here ignores that buyers aren't producing higher acceptance yet.",
-                "Shorting here ignores that sellers aren't producing lower acceptance yet.",
-                null
+                null,
+                "A SHORT needs confirmed seller control with price actually accepting lower — not here.",
+                "WAIT would pass up a read where the evidence already aligns to act."
               ],
-              "decision_quality": "Pressure against a replenishing offer at held resistance isn't a confirmed breakout. WAIT."
+              "decision_quality": "Absorbed selling followed by a reclaim and extension is confirmed demand — go long."
             },
             {
               "type": "multiple_choice",
@@ -7732,8 +7732,8 @@
               "skillId": "trade_decision_quality",
               "difficulty": "expert",
               "render_mode": "raw_full",
-              "scenario": "conflict",
-              "question": "Price wicks through support then closes back above it. What's your decision?",
+              "scenario": "balanced_target",
+              "question": "Buyer volume rises into resistance while the high stays capped. What's your decision?",
               "options": [
                 "LONG",
                 "SHORT",
@@ -7741,13 +7741,13 @@
               ],
               "correct": 2,
               "wrong_explanations": [
-                "A long is premature — upside follow-through hasn't shown.",
-                "A short is premature — downside follow-through hasn't shown.",
+                "Going long here ignores that buyers aren't producing higher acceptance yet.",
+                "Shorting here ignores that sellers aren't producing lower acceptance yet.",
                 null
               ],
-              "explanation": "A wick with no acceptance below support is a failed probe — direction is unconfirmed. WAIT.",
-              "decision_quality": "A wick with no acceptance below support is a failed probe — direction is unconfirmed. WAIT.",
-              "event": "conflict"
+              "explanation": "Rising buyer volume against a capped high is stalling effort — no acceptance yet. WAIT.",
+              "decision_quality": "Rising buyer volume against a capped high is stalling effort — no acceptance yet. WAIT.",
+              "event": "balanced_target"
             },
             {
               "type": "evidence_select",
@@ -7870,25 +7870,25 @@
             },
             {
               "type": "trade_decision",
-              "event": "delta_positive",
-              "question": "A strong bid absorbs sellers, then price lifts as the offer thins. What's your decision?",
+              "event": "buyer_absorption",
+              "question": "Price retests the breakout but the hold is still ambiguous. What's your decision?",
               "options": [
                 "LONG",
                 "SHORT",
                 "WAIT"
               ],
-              "correct": 0,
-              "explanation": "Bid absorption followed by a lift into thinning supply is confirmed demand — the long stands.",
+              "correct": 2,
+              "explanation": "An ambiguous retest hasn't confirmed support — wait for a clean hold or a failure. WAIT.",
               "skillId": "trade_decision_quality",
-              "scenario": "delta_positive",
+              "scenario": "buyer_absorption",
               "render_mode": "raw_full",
               "difficulty": "advanced",
               "wrong_explanations": [
-                null,
+                "A long is premature — upside follow-through hasn't shown.",
                 "A short is premature — downside follow-through hasn't shown.",
-                "WAIT is too passive here — the signal is decisive, not ambiguous."
+                null
               ],
-              "decision_quality": "Bid absorption followed by a lift into thinning supply is confirmed demand — the long stands."
+              "decision_quality": "An ambiguous retest hasn't confirmed support — wait for a clean hold or a failure. WAIT."
             }
           ]
         },
@@ -8058,8 +8058,8 @@
               "skillId": "trade_decision_quality",
               "difficulty": "expert",
               "render_mode": "raw_full",
-              "scenario": "lift",
-              "question": "Higher lows print into resistance, then the offer breaks and price runs. What's your decision?",
+              "scenario": "delta_positive",
+              "question": "Price holds the breakout, bids stack three levels deep, and offers keep pulling. What's your decision?",
               "options": [
                 "LONG",
                 "SHORT",
@@ -8068,13 +8068,13 @@
               "correct": 0,
               "wrong_explanations": [
                 null,
-                "A SHORT needs confirmed seller control with price actually accepting lower — not here.",
-                "WAIT would pass up a read where the evidence already aligns to act."
+                "Shorting here ignores that sellers aren't producing lower acceptance yet.",
+                "Sitting out ignores that the board is confirmed, not conflicted."
               ],
-              "explanation": "Higher lows resolving through a breaking offer is confirmed buyer control — go long.",
-              "decision_quality": "Higher lows resolving through a breaking offer is confirmed buyer control — go long.",
+              "explanation": "A held breakout over a deep stacked bid with pulling offers is decisive buyer control — take the long.",
+              "decision_quality": "A held breakout over a deep stacked bid with pulling offers is decisive buyer control — take the long.",
               "trade_outcome": "profit",
-              "event": "lift"
+              "event": "delta_positive"
             },
             {
               "type": "evidence_select",
@@ -8130,17 +8130,17 @@
           "screens": [
             {
               "type": "trade_decision",
-              "event": "chop",
-              "question": "The CVD flattens while price holds mid-range. What's your decision?",
+              "event": "seller_absorption",
+              "question": "Sellers lean on the offer, but buyers keep defending the bid below. What's your decision?",
               "options": [
                 "LONG",
                 "SHORT",
                 "WAIT"
               ],
               "correct": 2,
-              "explanation": "A flat CVD in mid-range shows no committed side — there's no edge. WAIT.",
+              "explanation": "Offer pressure met by defended bids is a standoff — neither side is confirmed. WAIT.",
               "skillId": "trade_decision_quality",
-              "scenario": "chop",
+              "scenario": "seller_absorption",
               "render_mode": "raw_full",
               "difficulty": "advanced",
               "wrong_explanations": [
@@ -8148,30 +8148,30 @@
                 "A SHORT needs confirmed seller control with price actually accepting lower — not here.",
                 null
               ],
-              "decision_quality": "A flat CVD in mid-range shows no committed side — there's no edge. WAIT."
+              "decision_quality": "Offer pressure met by defended bids is a standoff — neither side is confirmed. WAIT."
             },
             {
               "type": "trade_decision",
-              "event": "balanced_target",
+              "event": "lift",
               "direction": "neutral",
-              "question": "Buyers and sellers swap control every few prints with no acceptance. What's your decision?",
+              "question": "Each pullback is shallower while ask-side prints keep expanding into highs. What's your decision?",
               "options": [
                 "LONG",
                 "SHORT",
                 "WAIT"
               ],
-              "correct": 2,
-              "explanation": "Rapidly swapping control is balance, not a trend — wait for one side to hold. WAIT.",
+              "correct": 0,
+              "explanation": "Shallowing pullbacks with expanding ask-side prints into highs is aligned buying — go long.",
               "skillId": "trade_decision_quality",
-              "scenario": "balanced_target",
+              "scenario": "lift",
               "render_mode": "raw_full",
               "difficulty": "advanced",
               "wrong_explanations": [
-                "Going long here ignores that buyers aren't producing higher acceptance yet.",
-                "Shorting here ignores that sellers aren't producing lower acceptance yet.",
-                null
+                null,
+                "A short is premature — downside follow-through hasn't shown.",
+                "WAIT is too passive here — the signal is decisive, not ambiguous."
               ],
-              "decision_quality": "Rapidly swapping control is balance, not a trend — wait for one side to hold. WAIT."
+              "decision_quality": "Shallowing pullbacks with expanding ask-side prints into highs is aligned buying — go long."
             },
             {
               "type": "tap_candle",
@@ -8183,26 +8183,26 @@
             },
             {
               "type": "trade_decision",
-              "event": "hit",
+              "event": "delta_negative",
               "direction": "neutral",
-              "question": "The offer refreshes larger on each test while price grinds down through demand. What's your decision?",
+              "question": "Bids thin at each level as price steps down and accepts every new tick. What's your decision?",
               "options": [
                 "LONG",
                 "SHORT",
                 "WAIT"
               ],
               "correct": 1,
-              "explanation": "An offer refreshing larger while price eats through demand is confirmed seller control — go short.",
+              "explanation": "Thinning bids with price accepting each lower tick is decisive supply — go short.",
               "skillId": "trade_decision_quality",
-              "scenario": "hit",
+              "scenario": "delta_negative",
               "render_mode": "raw_full",
               "difficulty": "advanced",
               "wrong_explanations": [
-                "A long is premature — upside follow-through hasn't shown.",
+                "Going long here ignores that buyers aren't producing higher acceptance yet.",
                 null,
-                "WAIT is too passive here — the signal is decisive, not ambiguous."
+                "Sitting out ignores that the board is confirmed, not conflicted."
               ],
-              "decision_quality": "An offer refreshing larger while price eats through demand is confirmed seller control — go short."
+              "decision_quality": "Thinning bids with price accepting each lower tick is decisive supply — go short."
             },
             {
               "type": "replay_compare",
@@ -8218,72 +8218,72 @@
             },
             {
               "type": "trade_decision",
+              "event": "hit",
+              "direction": "neutral",
+              "question": "The value area shifts down and sellers keep accepting price at the new lows. What's your decision?",
+              "options": [
+                "LONG",
+                "SHORT",
+                "WAIT"
+              ],
+              "correct": 1,
+              "explanation": "A down-shifting value area with continued acceptance is confirmed seller control — take the short.",
+              "skillId": "trade_decision_quality",
+              "scenario": "hit",
+              "render_mode": "raw_full",
+              "difficulty": "advanced",
+              "wrong_explanations": [
+                "A long is premature — upside follow-through hasn't shown.",
+                null,
+                "WAIT is too passive here — the signal is decisive, not ambiguous."
+              ],
+              "decision_quality": "A down-shifting value area with continued acceptance is confirmed seller control — take the short."
+            },
+            {
+              "type": "trade_decision",
               "event": "delta_positive",
               "direction": "neutral",
-              "question": "CVD and price both trend up while pullbacks get bought instantly. What's your decision?",
+              "question": "A demand shelf forms, price lifts off it, and delta pushes firmly positive. What's your decision?",
               "options": [
                 "LONG",
                 "SHORT",
                 "WAIT"
               ],
               "correct": 0,
-              "explanation": "Aligned CVD and price with instantly-bought dips is a confirmed uptrend — take the long.",
+              "explanation": "A demand shelf with a lift and firmly positive delta is confirmation — the long is supported.",
               "skillId": "trade_decision_quality",
               "scenario": "delta_positive",
               "render_mode": "raw_full",
               "difficulty": "advanced",
               "wrong_explanations": [
                 null,
-                "Shorting here ignores that sellers aren't producing lower acceptance yet.",
-                "Sitting out ignores that the board is confirmed, not conflicted."
+                "A SHORT needs confirmed seller control with price actually accepting lower — not here.",
+                "WAIT would pass up a read where the evidence already aligns to act."
               ],
-              "decision_quality": "Aligned CVD and price with instantly-bought dips is a confirmed uptrend — take the long."
+              "decision_quality": "A demand shelf with a lift and firmly positive delta is confirmation — the long is supported."
             },
             {
               "type": "trade_decision",
-              "event": "buyer_absorption",
+              "event": "delta_negative",
               "direction": "neutral",
-              "question": "Price stalls just under the value-area high with a rebuilding offer. What's your decision?",
+              "question": "A large resting bid gets absorbed and price breaks free to the downside. What's your decision?",
               "options": [
                 "LONG",
                 "SHORT",
                 "WAIT"
               ],
-              "correct": 2,
-              "explanation": "A stall under the value-area high against rebuilding supply isn't a confirmed breakout. WAIT.",
+              "correct": 1,
+              "explanation": "Absorbed underlying demand followed by a downside break is confirmed supply — the short stands.",
               "skillId": "trade_decision_quality",
-              "scenario": "buyer_absorption",
+              "scenario": "delta_negative",
               "render_mode": "raw_full",
               "difficulty": "advanced",
               "wrong_explanations": [
-                "A long is premature — upside follow-through hasn't shown.",
-                "A short is premature — downside follow-through hasn't shown.",
-                null
-              ],
-              "decision_quality": "A stall under the value-area high against rebuilding supply isn't a confirmed breakout. WAIT."
-            },
-            {
-              "type": "trade_decision",
-              "event": "lift",
-              "direction": "neutral",
-              "question": "The retest holds above VWAP and buyer prints dominate the tape. What's your decision?",
-              "options": [
-                "LONG",
-                "SHORT",
-                "WAIT"
-              ],
-              "correct": 0,
-              "explanation": "A held VWAP retest with buyer-dominated tape is confirmation — the long is supported.",
-              "skillId": "trade_decision_quality",
-              "scenario": "lift",
-              "render_mode": "raw_full",
-              "difficulty": "advanced",
-              "wrong_explanations": [
+                "A LONG needs confirmed buyer control with price actually accepting higher — not here.",
                 null,
-                "A short is premature — downside follow-through hasn't shown.",
-                "WAIT is too passive here — the signal is decisive, not ambiguous."
+                "WAIT would pass up a read where the evidence already aligns to act."
               ],
-              "decision_quality": "A held VWAP retest with buyer-dominated tape is confirmation — the long is supported."
+              "decision_quality": "Absorbed underlying demand followed by a downside break is confirmed supply — the short stands."
             }
           ]
         },
@@ -8295,59 +8295,15 @@
           "screens": [
             {
               "type": "trade_decision",
-              "event": "seller_absorption",
-              "question": "A downside sweep grabs stops then price snaps back to unchanged. What's your decision?",
-              "options": [
-                "LONG",
-                "SHORT",
-                "WAIT"
-              ],
-              "correct": 2,
-              "explanation": "A round-trip sweep is a liquidity event, not acceptance — nothing is confirmed. WAIT.",
-              "skillId": "trade_decision_quality",
-              "scenario": "seller_absorption",
-              "render_mode": "raw_full",
-              "difficulty": "advanced",
-              "wrong_explanations": [
-                "A LONG needs confirmed buyer control with price actually accepting higher — not here.",
-                "A SHORT needs confirmed seller control with price actually accepting lower — not here.",
-                null
-              ],
-              "decision_quality": "A round-trip sweep is a liquidity event, not acceptance — nothing is confirmed. WAIT."
-            },
-            {
-              "type": "trade_decision",
-              "event": "delta_negative",
-              "question": "Sellers defend the breakdown level and negative delta expands as price extends. What's your decision?",
-              "options": [
-                "LONG",
-                "SHORT",
-                "WAIT"
-              ],
-              "correct": 1,
-              "explanation": "A defended breakdown with expanding negative delta is confirmation — take the short.",
-              "skillId": "trade_decision_quality",
-              "scenario": "delta_negative",
-              "render_mode": "raw_full",
-              "difficulty": "advanced",
-              "wrong_explanations": [
-                "A LONG needs confirmed buyer control with price actually accepting higher — not here.",
-                null,
-                "WAIT would pass up a read where the evidence already aligns to act."
-              ],
-              "decision_quality": "A defended breakdown with expanding negative delta is confirmation — take the short."
-            },
-            {
-              "type": "trade_decision",
               "event": "hit",
-              "question": "Price accepts below support and the prior bid wall is gone. What's your decision?",
+              "question": "Seller delta leads price lower and every bounce is instantly sold. What's your decision?",
               "options": [
                 "LONG",
                 "SHORT",
                 "WAIT"
               ],
               "correct": 1,
-              "explanation": "Acceptance below support with the demand wall removed is decisive — sellers are in control.",
+              "explanation": "Seller delta leading price with instantly-sold bounces is a confirmed downtrend — go short.",
               "skillId": "trade_decision_quality",
               "scenario": "hit",
               "render_mode": "raw_full",
@@ -8357,41 +8313,85 @@
                 null,
                 "Sitting out ignores that the board is confirmed, not conflicted."
               ],
-              "decision_quality": "Acceptance below support with the demand wall removed is decisive — sellers are in control."
+              "decision_quality": "Seller delta leading price with instantly-sold bounces is a confirmed downtrend — go short."
             },
             {
               "type": "trade_decision",
-              "event": "iceberg",
-              "question": "Buyer aggression is high but price hasn't cleared the prior high. What's your decision?",
+              "event": "lift",
+              "question": "Sellers capitulate at support and buyers immediately take price back above VWAP. What's your decision?",
               "options": [
                 "LONG",
                 "SHORT",
                 "WAIT"
               ],
-              "correct": 2,
-              "explanation": "Aggression without a cleared high is effort without result — no acceptance yet. WAIT.",
+              "correct": 0,
+              "explanation": "Seller capitulation with an immediate reclaim above VWAP is a confirmed reversal long — go long.",
               "skillId": "trade_decision_quality",
-              "scenario": "iceberg",
+              "scenario": "lift",
               "render_mode": "raw_full",
               "difficulty": "advanced",
               "wrong_explanations": [
-                "Going long here ignores that buyers aren't producing higher acceptance yet.",
+                null,
                 "Shorting here ignores that sellers aren't producing lower acceptance yet.",
-                null
+                "Sitting out ignores that the board is confirmed, not conflicted."
               ],
-              "decision_quality": "Aggression without a cleared high is effort without result — no acceptance yet. WAIT."
+              "decision_quality": "Seller capitulation with an immediate reclaim above VWAP is a confirmed reversal long — go long."
+            },
+            {
+              "type": "trade_decision",
+              "event": "delta_positive",
+              "question": "Offers thin at each level as price steps up and holds every new tick. What's your decision?",
+              "options": [
+                "LONG",
+                "SHORT",
+                "WAIT"
+              ],
+              "correct": 0,
+              "explanation": "Thinning offers with price holding each higher tick is decisive demand — take the long.",
+              "skillId": "trade_decision_quality",
+              "scenario": "delta_positive",
+              "render_mode": "raw_full",
+              "difficulty": "advanced",
+              "wrong_explanations": [
+                null,
+                "A short is premature — downside follow-through hasn't shown.",
+                "WAIT is too passive here — the signal is decisive, not ambiguous."
+              ],
+              "decision_quality": "Thinning offers with price holding each higher tick is decisive demand — take the long."
+            },
+            {
+              "type": "trade_decision",
+              "event": "lift",
+              "question": "The value area shifts up and buyers keep accepting price at the new highs. What's your decision?",
+              "options": [
+                "LONG",
+                "SHORT",
+                "WAIT"
+              ],
+              "correct": 0,
+              "explanation": "An up-shifting value area with continued acceptance is confirmed buyer control — go long.",
+              "skillId": "trade_decision_quality",
+              "scenario": "lift",
+              "render_mode": "raw_full",
+              "difficulty": "advanced",
+              "wrong_explanations": [
+                null,
+                "A SHORT needs confirmed seller control with price actually accepting lower — not here.",
+                "WAIT would pass up a read where the evidence already aligns to act."
+              ],
+              "decision_quality": "An up-shifting value area with continued acceptance is confirmed buyer control — go long."
             },
             {
               "type": "trade_decision",
               "event": "delta_negative",
-              "question": "Lower highs print into support, then the bid breaks and price drops. What's your decision?",
+              "question": "Price consolidates below resistance, then sellers press the range on a volume surge. What's your decision?",
               "options": [
                 "LONG",
                 "SHORT",
                 "WAIT"
               ],
               "correct": 1,
-              "explanation": "Lower highs resolving through a breaking bid is confirmed seller control — go short.",
+              "explanation": "Consolidation below resistance resolving down on a volume surge is confirmed control — take the short.",
               "skillId": "trade_decision_quality",
               "scenario": "delta_negative",
               "render_mode": "raw_full",
@@ -8401,41 +8401,41 @@
                 null,
                 "WAIT is too passive here — the signal is decisive, not ambiguous."
               ],
-              "decision_quality": "Lower highs resolving through a breaking bid is confirmed seller control — go short."
+              "decision_quality": "Consolidation below resistance resolving down on a volume surge is confirmed control — take the short."
             },
             {
               "type": "trade_decision",
               "event": "delta_positive",
-              "question": "Sellers exhaust into support and buyers immediately reclaim on rising delta. What's your decision?",
+              "question": "A large resting offer gets absorbed and price breaks free to the upside. What's your decision?",
               "options": [
                 "LONG",
                 "SHORT",
                 "WAIT"
               ],
               "correct": 0,
-              "explanation": "Seller exhaustion at support with an immediate buyer reclaim is a confirmed reversal — go long.",
+              "explanation": "Absorbed overhead supply followed by an upside break is confirmed demand — the long stands.",
               "skillId": "trade_decision_quality",
               "scenario": "delta_positive",
               "render_mode": "raw_full",
               "difficulty": "advanced",
               "wrong_explanations": [
                 null,
-                "A SHORT needs confirmed seller control with price actually accepting lower — not here.",
-                "WAIT would pass up a read where the evidence already aligns to act."
+                "Shorting here ignores that sellers aren't producing lower acceptance yet.",
+                "Sitting out ignores that the board is confirmed, not conflicted."
               ],
-              "decision_quality": "Seller exhaustion at support with an immediate buyer reclaim is a confirmed reversal — go long."
+              "decision_quality": "Absorbed overhead supply followed by an upside break is confirmed demand — the long stands."
             },
             {
               "type": "trade_decision",
               "event": "hit",
-              "question": "Price breaks the range low, retests, and rejects as offers stack. What's your decision?",
+              "question": "Sellers absorb a late buy spike, then reclaim and extend to a new low. What's your decision?",
               "options": [
                 "LONG",
                 "SHORT",
                 "WAIT"
               ],
               "correct": 1,
-              "explanation": "A range-low break that retests and rejects on a stacking offer is decisive supply — take the short.",
+              "explanation": "Absorbed buying followed by a reclaim and extension lower is confirmed supply — go short.",
               "skillId": "trade_decision_quality",
               "scenario": "hit",
               "render_mode": "raw_full",
@@ -8445,7 +8445,7 @@
                 null,
                 "WAIT would pass up a read where the evidence already aligns to act."
               ],
-              "decision_quality": "A range-low break that retests and rejects on a stacking offer is decisive supply — take the short."
+              "decision_quality": "Absorbed buying followed by a reclaim and extension lower is confirmed supply — go short."
             },
             {
               "type": "book_compare",
@@ -8464,22 +8464,22 @@
               "skillId": "trade_decision_quality",
               "difficulty": "advanced",
               "render_mode": "raw_full",
-              "scenario": "low_volume_trend",
-              "question": "Sellers step in at resistance but the bid hasn't given way. What's your decision?",
+              "scenario": "delta_negative",
+              "question": "A distribution range breaks down and sellers accept price beneath it on heavy prints. What's your decision?",
               "options": [
                 "LONG",
                 "SHORT",
                 "WAIT"
               ],
-              "correct": 2,
+              "correct": 1,
               "wrong_explanations": [
-                "A long is premature — upside follow-through hasn't shown.",
-                "A short is premature — downside follow-through hasn't shown.",
-                null
+                "Going long here ignores that buyers aren't producing higher acceptance yet.",
+                null,
+                "Sitting out ignores that the board is confirmed, not conflicted."
               ],
-              "explanation": "Fresh sellers against an intact bid is a standoff — control is unconfirmed. WAIT.",
-              "decision_quality": "Fresh sellers against an intact bid is a standoff — control is unconfirmed. WAIT.",
-              "event": "low_volume_trend"
+              "explanation": "A distribution breakdown with acceptance below on heavy selling is decisive — the short is justified.",
+              "decision_quality": "A distribution breakdown with acceptance below on heavy selling is decisive — the short is justified.",
+              "event": "delta_negative"
             },
             {
               "type": "evidence_select",
