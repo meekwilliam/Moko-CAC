@@ -4060,17 +4060,25 @@
        "skillId": "evidence_synthesis"
       },
       {
-       "type": "orderflow_sim",
-       "event": "downside_sweep",
-       "question": "Price trades below the prior low and immediately reclaims it. Is this a downside sweep or acceptance?",
+       "type": "trade_decision",
+       "skillId": "trade_decision_quality",
+       "difficulty": "advanced",
+       "render_mode": "raw_full",
+       "scenario": "downside_sweep",
+       "question": "The prior low is swept and reclaimed, but buyer control is still developing. What's your decision?",
        "options": [
-        "Possible downside sweep",
-        "Accepted breakdown",
-        "Seller continuation remains favored"
+        "LONG",
+        "SHORT",
+        "WAIT"
        ],
-       "correct": 0,
-       "explanation": "The breach takes liquidity but fails to gain acceptance below.",
-       "skillId": "multi_signal_read"
+       "correct": 2,
+       "wrong_explanations": [
+        "The reclaim is constructive, but buyer control is not confirmed.",
+        "Price failed to accept below the low, so a short is no longer best supported.",
+        null
+       ],
+       "explanation": "The reclaim weakens the breakdown, but stronger buyer follow through is still needed before a long.",
+       "decision_quality": "The reclaim weakens the breakdown, but stronger buyer follow through is still needed before a long."
       },
       {
        "type": "multiple_choice",
@@ -4795,19 +4803,25 @@
      "lessonType": "PRACTICE_REPLAY",
      "screens": [
       {
-       "type": "orderflow_sim",
-       "event": "breakout",
-       "direction": "up",
-       "question": "Offers are consumed and price holds beyond resistance. What is strongest?",
+       "type": "trade_decision",
+       "skillId": "trade_decision_quality",
+       "difficulty": "advanced",
+       "render_mode": "raw_full",
+       "scenario": "breakout",
+       "question": "Price holds above resistance after offers are consumed. What's your decision?",
        "options": [
-        "Aggression is receiving confirming price acceptance",
-        "The fastest evidence guarantees the next move",
-        "Displayed size alone determines the outcome",
-        "The candle should be read without execution context"
+        "LONG",
+        "SHORT",
+        "WAIT"
        ],
        "correct": 0,
-       "explanation": "A real breakout combines pressure with sustained trade beyond the level.",
-       "skillId": "multi_signal_read"
+       "wrong_explanations": [
+        null,
+        "Sellers have not reclaimed the broken level.",
+        "Acceptance and continued buyer pressure provide enough confirmation to act."
+       ],
+       "explanation": "Buyer aggression, acceptance above resistance, and continued price response align for a long decision.",
+       "decision_quality": "Buyer aggression, acceptance above resistance, and continued price response align for a long decision."
       },
       {
        "type": "multiple_choice",
@@ -5108,17 +5122,25 @@
        "skillId": "evidence_synthesis"
       },
       {
-       "type": "orderflow_sim",
-       "event": "conflict",
-       "question": "Fast buying appears, but the offer refreshes and price stalls. Is breakout acceptance confirmed?",
+       "type": "trade_decision",
+       "skillId": "trade_decision_quality",
+       "difficulty": "advanced",
+       "render_mode": "raw_full",
+       "scenario": "seller_absorption_developing",
+       "question": "Fast buying hits a replenishing offer while price stalls. What's your decision?",
        "options": [
-        "No. Fast tape still needs price acceptance",
-        "Yes. Speed alone confirms it",
-        "Yes. Positive delta guarantees it"
+        "LONG",
+        "SHORT",
+        "WAIT"
        ],
-       "correct": 0,
-       "explanation": "Fast tape is urgency, not confirmation.",
-       "skillId": "multi_signal_read"
+       "correct": 2,
+       "wrong_explanations": [
+        "Aggression alone does not confirm a long while price cannot advance.",
+        "Absorption may be developing, but rejection and seller control are not confirmed.",
+        null
+       ],
+       "explanation": "Buying is aggressive, but neither upside acceptance nor confirmed seller control is present.",
+       "decision_quality": "Buying is aggressive, but neither upside acceptance nor confirmed seller control is present."
       },
       {
        "type": "multiple_choice",
@@ -5378,17 +5400,62 @@
        "skillId": "boss_battle_breakout_or_failure"
       },
       {
-       "type": "orderflow_sim",
-       "event": "breakout",
-       "question": "What's the strongest read?",
-       "options": [
-        "Accepted breakout",
-        "Liquidity sweep",
-        "Not enough trading"
+       "type": "trade_scenario",
+       "skillId": "trade_decision_quality",
+       "difficulty": "expert",
+       "render_mode": "raw_full",
+       "scenario": "breakout_acceptance_sequence",
+       "stages": [
+        {
+         "prompt": "Price reaches resistance. What's your decision?",
+         "options": [
+          "LONG",
+          "SHORT",
+          "WAIT"
+         ],
+         "correct": 2,
+         "start_tick": 0,
+         "wrong_explanations": [
+          "Buyer activity is increasing, but resistance has not broken.",
+          "Resistance is present, but sellers have not confirmed control.",
+          null
+         ],
+         "explanation": "The setup is developing, but no breakout or rejection has occurred."
+        },
+        {
+         "prompt": "Price breaks resistance but has not held. What's your decision?",
+         "options": [
+          "LONG",
+          "SHORT",
+          "WAIT"
+         ],
+         "correct": 2,
+         "start_tick": 6,
+         "wrong_explanations": [
+          "A break without acceptance can still fail.",
+          "The break has not failed or returned below resistance yet.",
+          null
+         ],
+         "explanation": "The break is visible, but acceptance beyond resistance is not confirmed."
+        },
+        {
+         "prompt": "The retest holds and buyer aggression resumes. What's your decision?",
+         "options": [
+          "LONG",
+          "SHORT",
+          "WAIT"
+         ],
+         "correct": 0,
+         "start_tick": 12,
+         "wrong_explanations": [
+          null,
+          "Sellers failed to reclaim resistance while buyers regained pressure.",
+          "Waiting now ignores the aligned acceptance, retest, aggression, and price response."
+         ],
+         "explanation": "Acceptance, a successful retest, renewed aggression, and price response align for a long decision."
+        }
        ],
-       "correct": 0,
-       "explanation": "Pressure persists and price holds beyond.",
-       "skillId": "multi_signal_read"
+       "explanation": "Each decision is graded from the evidence visible at that stage, not the later trade outcome."
       }
      ]
     },
@@ -6318,17 +6385,25 @@
        "skillId": "multi_signal_read"
       },
       {
-       "type": "orderflow_sim",
-       "event": "conflict",
-       "question": "What's the best conclusion?",
+       "type": "trade_decision",
+       "skillId": "trade_decision_quality",
+       "difficulty": "advanced",
+       "render_mode": "raw_full",
+       "scenario": "conflict",
+       "question": "Book, tape, footprint, and price response still conflict. What's your decision?",
        "options": [
-        "No clear read yet",
-        "Bullish continuation",
-        "Bearish continuation"
+        "LONG",
+        "SHORT",
+        "WAIT"
        ],
-       "correct": 0,
-       "explanation": "The evidence conflicts.",
-       "skillId": "multi_signal_read"
+       "correct": 2,
+       "wrong_explanations": [
+        "Bullish clues are being contradicted by replenishment and weak response.",
+        "Seller control is not confirmed either.",
+        null
+       ],
+       "explanation": "Conflicting evidence leaves neither direction sufficiently confirmed.",
+       "decision_quality": "Conflicting evidence leaves neither direction sufficiently confirmed."
       },
       {
        "type": "evidence_select",
@@ -6430,17 +6505,25 @@
      "lessonType": "STANDARD",
      "screens": [
       {
-       "type": "orderflow_sim",
-       "event": "sweep",
-       "question": "What shows buyers became trapped?",
+       "type": "trade_decision",
+       "skillId": "trade_decision_quality",
+       "difficulty": "advanced",
+       "render_mode": "raw_full",
+       "scenario": "sweep",
+       "question": "The breakout fails, price returns below resistance, and sellers begin hitting bids. What's your decision?",
        "options": [
-        "Buying above resistance fails and price returns below",
-        "Buyer prints appear above resistance",
-        "Positive delta remains visible"
+        "LONG",
+        "SHORT",
+        "WAIT"
        ],
-       "correct": 0,
-       "explanation": "The attempted break fails to hold and reverses back below the level.",
-       "skillId": "multi_signal_read"
+       "correct": 1,
+       "wrong_explanations": [
+        "Buyers failed to hold the breakout and lost control.",
+        null,
+        "The return below resistance and seller pressure provide confirmation beyond a developing trap."
+       ],
+       "explanation": "Failed acceptance and confirmed seller response align for a short decision.",
+       "decision_quality": "Failed acceptance and confirmed seller response align for a short decision."
       },
       {
        "type": "orderflow_sim",
@@ -6818,17 +6901,25 @@
        "skillId": "multi_signal_read"
       },
       {
-       "type": "orderflow_sim",
-       "event": "breakdown_pressure",
-       "question": "Which event would invalidate the bullish reversal hypothesis?",
+       "type": "invalidation_mark",
+       "skillId": "trade_decision_quality",
+       "difficulty": "expert",
+       "render_mode": "raw_full",
+       "scenario": "breakdown_pressure",
+       "question": "You are long after a bullish reversal. Tap the level whose loss invalidates the read.",
        "options": [
-        "Seller pressure regains progress and price accepts below support",
-        "Buyer prints begin appearing",
-        "The spread stays unchanged"
+        "101.35 extension",
+        "100.90 reclaimed support",
+        "100.45 distant swing low"
        ],
-       "correct": 0,
-       "explanation": "Renewed seller execution with acceptance below support disproves the proposed bullish control change.",
-       "skillId": "multi_signal_read"
+       "correct": 1,
+       "wrong_explanations": [
+        "The extension target does not define the thesis.",
+        null,
+        "A distant level gives the failed read too much room."
+       ],
+       "explanation": "Losing reclaimed support with renewed seller acceptance invalidates the bullish control change.",
+       "decision_quality": "Losing reclaimed support with renewed seller acceptance invalidates the bullish control change."
       },
       {
        "type": "orderflow_sim",
@@ -6993,17 +7084,25 @@
        "skillId": "planning_the_entry_choosing_the_order_type"
       },
       {
-       "type": "orderflow_sim",
-       "event": "thin_risk",
-       "question": "Price approaches a trigger as the spread widens and nearby depth changes. How should order choice be interpreted?",
+       "type": "entry_select",
+       "skillId": "trade_decision_quality",
+       "difficulty": "expert",
+       "render_mode": "raw_full",
+       "scenario": "thin_risk",
+       "question": "The spread widens and nearby depth becomes unstable. Which entry is best supported?",
        "options": [
-        "Balance execution speed with control over fill price",
-        "The chart direction determines the order type",
-        "Thin depth guarantees an immediate favorable fill"
+        "MARKET",
+        "LIMIT",
+        "NO ENTRY"
        ],
-       "correct": 0,
-       "explanation": "Changing liquidity makes the tradeoff between urgency and price control directly relevant.",
-       "skillId": "multi_signal_read"
+       "correct": 2,
+       "wrong_explanations": [
+        "A market order accepts the worst execution risk in this thin book.",
+        "A limit controls price but does not make the unstable setup worth entering.",
+        null
+       ],
+       "explanation": "No entry is best while fill quality and slippage risk are unstable.",
+       "decision_quality": "No entry is best while fill quality and slippage risk are unstable."
       },
       {
        "type": "evidence_select",
@@ -7301,17 +7400,28 @@
      "lessonType": "STANDARD",
      "screens": [
       {
-       "type": "orderflow_sim",
-       "event": "exit_liquidity",
-       "question": "What does the evidence support?",
+       "type": "trade_manage",
+       "skillId": "trade_decision_quality",
+       "difficulty": "expert",
+       "render_mode": "raw_full",
+       "scenario": "exit_liquidity",
+       "question": "You are long into resistance as buying slows and the offer replenishes. What now?",
        "options": [
-        "Visible opposing depth can help plan an exit area",
-        "The exit price is guaranteed",
-        "Resistance predicts the next trend"
+        "HOLD",
+        "EXIT",
+        "REDUCE",
+        "WAIT FOR MORE EVIDENCE"
        ],
-       "correct": 0,
-       "explanation": "Level II shows potential counterparties near the planned exit, but displayed liquidity can change.",
-       "skillId": "multi_signal_read"
+       "correct": 1,
+       "wrong_explanations": [
+        "Holding ignores deteriorating pressure at the planned exit.",
+        null,
+        "Reducing leaves exposure after the exit evidence has fully aligned.",
+        "More evidence is unnecessary once the planned exit condition is met."
+       ],
+       "explanation": "Exiting into available liquidity is best supported as buying weakens at the planned resistance area.",
+       "decision_quality": "Exiting into available liquidity is best supported as buying weakens at the planned resistance area.",
+       "trade_outcome": "profit"
       },
       {
        "type": "evidence_select",
@@ -7580,17 +7690,25 @@
        "skillId": "book_depth"
       },
       {
-       "type": "orderflow_sim",
-       "event": "conflict",
-       "question": "Is direction confirmed?",
+       "type": "trade_decision",
+       "skillId": "trade_decision_quality",
+       "difficulty": "advanced",
+       "render_mode": "raw_full",
+       "scenario": "conflict",
+       "question": "The final evidence stack remains conflicted. What's your decision?",
        "options": [
-        "Not enough evidence",
-        "Buyers fully control",
-        "Sellers fully control"
+        "LONG",
+        "SHORT",
+        "WAIT"
        ],
-       "correct": 0,
-       "explanation": "Conflicting evidence prevents confirmation.",
-       "skillId": "multi_signal_read"
+       "correct": 2,
+       "wrong_explanations": [
+        "Buyer aggression is contradicted by the price response.",
+        "Possible absorption is not yet confirmed seller control.",
+        null
+       ],
+       "explanation": "Expert execution includes staying out when the evidence does not establish control.",
+       "decision_quality": "Expert execution includes staying out when the evidence does not establish control."
       },
       {
        "type": "evidence_select",

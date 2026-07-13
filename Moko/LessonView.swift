@@ -53,6 +53,9 @@ final class LessonPlayer: ObservableObject {
     // sequence_builder / drag_order
     @Published var builtOrder: [String] = []
     @Published var optionOrder: [Int] = []
+    @Published var scenarioStage = 0
+    @Published var decisionTick: Int? = nil
+    @Published var scenarioHadMistake = false
 
     var onFinished: (() -> Void)?
     /// Called with the new screen index each time the player advances, so the
@@ -90,8 +93,20 @@ final class LessonPlayer: ObservableObject {
     var isIntro: Bool { screen.type == "intro" }
     var isMatching: Bool { screen.type == "matching" }
     var isOrdering: Bool { screen.type == "sequence_builder" || screen.type == "drag_order" }
+    var activeTradeStage: TradeStage? {
+        guard screen.type == "trade_scenario", let stages = screen.tradeStages,
+              stages.indices.contains(scenarioStage) else { return nil }
+        return stages[scenarioStage]
+    }
+    var hasMoreScenarioStages: Bool {
+        screen.type == "trade_scenario" && scenarioStage + 1 < (screen.tradeStages?.count ?? 0)
+    }
 
     var currentOptions: [String] {
+        if let stage = activeTradeStage { return stage.options ?? ["LONG", "SHORT", "WAIT"] }
+        if screen.type == "trade_decision" { return screen.options ?? ["LONG", "SHORT", "WAIT"] }
+        if screen.type == "trade_manage" { return screen.options ?? ["HOLD", "EXIT", "REDUCE", "WAIT FOR MORE EVIDENCE"] }
+        if screen.type == "entry_select" { return screen.options ?? ["MARKET", "LIMIT", "NO ENTRY"] }
         if screen.type == "true_false" { return ["True", "False"] }
         if screen.type == "ingredient_match" { return (screen.ingredientOptions ?? []).map { $0.label } }
         if screen.type == "aggressor" { return ["The buyer", "The seller"] }
@@ -100,6 +115,7 @@ final class LessonPlayer: ObservableObject {
         return optionOrder.count == options.count ? optionOrder.map { options[$0] } : options
     }
     var currentCorrectIndex: Int {
+        if let stage = activeTradeStage { return stage.correct }
         if screen.type == "true_false" { return (screen.correctBool ?? false) ? 0 : 1 }
         if screen.type == "ingredient_match" {
             return screen.ingredientOptions?.firstIndex(where: { $0.correct == true }) ?? 0
@@ -156,6 +172,7 @@ final class LessonPlayer: ObservableObject {
         ohlcPlacement = [:]
         ohlcExpected = [:]
         numberValue = nil
+        decisionTick = nil
         matchingSelections = [:]
         revealed = false
         lastCorrect = false
@@ -244,7 +261,10 @@ final class LessonPlayer: ObservableObject {
             if let sourceLesson = screen.sourceLesson { missedSourceLessons[sourceLesson, default: 0] += 1 }
         }
         revealed = true
-        if !correct && lesson.lessonType != "TEST_OUT" {
+        if screen.type == "trade_scenario" && !correct { scenarioHadMistake = true }
+        let shouldRequeueScenario = screen.type == "trade_scenario" && !hasMoreScenarioStages && scenarioHadMistake
+        let shouldRequeueQuestion = screen.type != "trade_scenario" && !correct
+        if (shouldRequeueQuestion || shouldRequeueScenario) && lesson.lessonType != "TEST_OUT" {
             var missed = screen          // requeue the missed question to the end
             missed.isPreviousMistake = true
             screens.append(missed)
@@ -260,11 +280,18 @@ final class LessonPlayer: ObservableObject {
 
     func advance() {
         if isIntro { revealed = true } // intro has nothing to grade
+        if hasMoreScenarioStages {
+            scenarioStage += 1
+            resetForScreen()
+            return
+        }
         if isLastScreen {
             finished = true
             Haptics.impact(.medium)
             return
         }
+        scenarioStage = 0
+        scenarioHadMistake = false
         index += 1
         resetForScreen()
         onAdvance?(index)
@@ -312,6 +339,9 @@ final class LessonPlayer: ObservableObject {
         copy.matchingSelections = matchingSelections
         copy.builtOrder = builtOrder
         copy.optionOrder = optionOrder
+        copy.scenarioStage = scenarioStage
+        copy.decisionTick = decisionTick
+        copy.scenarioHadMistake = scenarioHadMistake
         return copy
     }
 }
@@ -461,6 +491,13 @@ struct LessonView: View {
 
     private func advanceQuestion() {
         guard outgoingPlayer == nil else { return }
+
+        // A trade scenario is one uninterrupted replay. Move its decision
+        // point forward without replacing or sliding the simulation view.
+        if player.hasMoreScenarioStages {
+            withAnimation(.easeInOut(duration: 0.22)) { player.advance() }
+            return
+        }
 
         // The reward screen has its own transition; only question changes use
         // the horizontal pager.
@@ -663,6 +700,16 @@ struct FeedbackBanner: View {
     private var correct: Bool { player.lastCorrect }
     private var tint: Color { correct ? Theme.correct : Theme.incorrect }
     private var tintDark: Color { correct ? Theme.correctDark : Theme.incorrectDark }
+    private var isTradeDecision: Bool {
+        ["trade_decision", "trade_scenario", "trade_manage", "entry_select", "invalidation_mark"].contains(player.screen.type)
+    }
+    private var feedbackTitle: String {
+        guard isTradeDecision else { return correct ? "Correct" : "Oops!" }
+        if correct { return "Good Decision" }
+        let chosen = player.selectedIndex.flatMap { player.currentOptions[safe: $0] }
+        return (chosen == "LONG" || chosen == "SHORT") && player.currentOptions[safe: player.currentCorrectIndex] == "WAIT"
+            ? "Not Yet" : "Decision Missed"
+    }
 
     // Vector icons (rendered by SVGIconView) instead of emoji, so they stay
     // crisp and match the banner tints exactly.
@@ -682,6 +729,11 @@ struct FeedbackBanner: View {
 
     private var explanationText: String? {
         let s = player.screen
+        if let stage = player.activeTradeStage {
+            if !correct, let idx = player.selectedIndex,
+               let wrong = stage.wrongExplanations?[safe: idx] ?? nil { return wrong }
+            return stage.explanation
+        }
         // Prefer a targeted wrong-explanation for the chosen option, else the general one.
         if !correct, let idx = player.selectedIndex {
             if s.type == "ingredient_match", let opt = s.ingredientOptions?[safe: idx],
@@ -701,7 +753,8 @@ struct FeedbackBanner: View {
         switch s.type {
         case "true_false", "multiple_choice", "fill_blank", "ingredient_match", "live_chart",
              "aggressor", "book_drag", "book_compare", "replay_compare", "time_sales",
-             "footprint", "orderflow_sim":
+             "footprint", "orderflow_sim", "trade_decision", "trade_scenario",
+             "trade_manage", "entry_select", "invalidation_mark":
             let opts = player.currentOptions
             let i = player.currentCorrectIndex
             return opts.indices.contains(i) ? opts[i] : nil
@@ -724,7 +777,7 @@ struct FeedbackBanner: View {
             HStack(spacing: 10) {
                 SVGIconView(svg: correct ? Self.sparklesSVG : Self.brokenHeartSVG)
                     .frame(width: 26, height: 26)
-                Text(correct ? "Correct" : "Oops!")
+                Text(feedbackTitle)
                     .font(Theme.font(24, .black)).foregroundColor(tint)
                 // No XP callout when re-doing a missed question.
                 if correct && !player.screen.isPreviousMistake {
@@ -741,6 +794,17 @@ struct FeedbackBanner: View {
                     + Text(ans).font(Theme.font(17, .bold)))
                     .foregroundColor(tint.opacity(0.95))
                     .fixedSize(horizontal: false, vertical: true)
+            }
+
+            if isTradeDecision {
+                HStack(spacing: 8) {
+                    Text("DECISION QUALITY: \(correct ? "STRONG" : "WEAK")")
+                        .font(Theme.font(10, .black)).foregroundColor(tint)
+                    if let outcome = player.screen.tradeOutcome {
+                        Text("TRADE OUTCOME: \(outcome.uppercased())")
+                            .font(Theme.font(10, .black)).foregroundColor(Theme.muted)
+                    }
+                }
             }
 
             if showWhy, let ex = explanationText {
@@ -773,6 +837,9 @@ struct FeedbackBanner: View {
         .frame(maxWidth: .infinity)
         // Background is drawn by the footer so it fills the bottom safe area.
         .onChange(of: player.index) { _ in
+            showWhy = false
+        }
+        .onChange(of: player.scenarioStage) { _ in
             showWhy = false
         }
     }
