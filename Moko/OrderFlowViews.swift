@@ -1352,6 +1352,7 @@ struct VolumeProfileQuestionView: View {
 /// full response instead of recognizing one isolated pattern.
 struct OrderFlowSimulationView: View {
     @ObservedObject var player: LessonPlayer
+    @Environment(\.colorScheme) private var scheme
     var ink: Color
 
     private var screen: LessonScreen { player.screen }
@@ -1693,23 +1694,42 @@ struct OrderFlowSimulationView: View {
     }
 
     private func compactTradeChoice(index: Int, label: String) -> some View {
+        // Same chunky 3D slab + MCQ color language as OFOption, just a vertical
+        // icon+label face so three fit on one row.
         let selected = player.selectedIndex == index
+        let revealed = player.revealed
+        let isCorrect = index == player.currentCorrectIndex
+        var fill = Theme.optionFill(scheme)
+        var border = Theme.optionBorder(scheme)
+        var slab = Theme.optionSlab(scheme)
+        var textColor = ink
+        if revealed {
+            if isCorrect { fill = Theme.correct; border = Theme.correctDark; slab = Theme.correctDark; textColor = .white }
+            else if selected { fill = Theme.incorrect; border = Theme.incorrectDark; slab = Theme.incorrectDark; textColor = .white }
+        } else if selected {
+            fill = Theme.answer; border = Theme.answerDark; slab = Theme.answerDark; textColor = .white
+        }
         return Button {
-            guard !player.revealed else { return }
+            guard !revealed else { return }
             Haptics.selection()
             player.selectedIndex = index
             player.decisionTick = simulationTick
         } label: {
             VStack(spacing: 5) {
                 Image(systemName: decisionIcon(label)).font(.system(size: 16, weight: .black))
-                Text(label).font(Theme.questionFont(15, .heavy)).lineLimit(1).minimumScaleFactor(0.7)
+                Text(label).font(Theme.questionFont(15, .bold)).lineLimit(1).minimumScaleFactor(0.7)
             }
-            .foregroundColor(ink)
-            .frame(maxWidth: .infinity).frame(height: 58)
-            .background(RoundedRectangle(cornerRadius: 14).fill(Color.purple.opacity(selected ? 0.18 : 0.07)))
-            .overlay(RoundedRectangle(cornerRadius: 14).strokeBorder(selected ? Color.purple : Color.purple.opacity(0.28), lineWidth: selected ? 2 : 1))
+            .foregroundColor(textColor)
+            .frame(maxWidth: .infinity).padding(.vertical, 14)
+            .background(
+                RoundedRectangle(cornerRadius: 16, style: .continuous)
+                    .fill(fill)
+                    .overlay(RoundedRectangle(cornerRadius: 16, style: .continuous).strokeBorder(border, lineWidth: 2))
+            )
+            .contentShape(Rectangle())
         }
-        .buttonStyle(.plain)
+        .buttonStyle(SinkButtonStyle(slab: slab, radius: 16, depth: 5))
+        .disabled(revealed)
     }
 
     private func decisionIcon(_ label: String) -> String {
