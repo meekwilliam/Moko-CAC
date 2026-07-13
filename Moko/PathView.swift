@@ -49,7 +49,7 @@ struct PathView: View {
     @State private var testOutBob = false
 
     private let nodeSize: CGFloat = 82
-    private let ovalRatio: CGFloat = 0.78     // puck height / width — a wide coin
+    private let ovalRatio: CGFloat = 0.9      // puck height / width (badge is near-square)
     private let vStep: CGFloat = 106          // node center-to-center spacing
 
     var body: some View {
@@ -387,7 +387,7 @@ struct PathView: View {
         // Every node is a hexagon now (boss included); the boss still reads apart
         // via its crown. The 3D wall uses a shade close to the face color rather
         // than the much-darker unit `dark`, so the lip reads as the same button.
-        let silhouette = AnyShape(Hexagon())
+        let silhouette = AnyShape(ButtonBadge())
         let wall = c.main.brightnessShifted(-0.15)
 
         return ZStack {
@@ -657,6 +657,33 @@ struct PathView: View {
 /// gives the 3D slab a clean seam, the way the ellipse's bottom arc does.
 /// Corners are rounded so it sits with the app's soft, chunky geometry rather
 /// than reading as a spiky badge.
+/// The node button silhouette, traced from `button.svg` — a rounded shield /
+/// badge (peaked top, tapering to a flat bottom). Drawn in the SVG's 266×266
+/// space, then scaled to fill whatever rect it's given.
+struct ButtonBadge: Shape {
+    func path(in rect: CGRect) -> Path {
+        // Bounding box of the SVG face path (the lighter inner shape).
+        let box = CGRect(x: -1.18241, y: 5.89519, width: 267.874, height: 238.971)
+        func pt(_ x: CGFloat, _ y: CGFloat) -> CGPoint {
+            CGPoint(x: rect.minX + (x - box.minX) / box.width * rect.width,
+                    y: rect.minY + (y - box.minY) / box.height * rect.height)
+        }
+        var p = Path()
+        p.move(to: pt(121.512, 10.5072))
+        p.addCurve(to: pt(143.997, 10.5071), control1: pt(128.298, 5.89519), control2: pt(137.212, 5.89519))
+        p.addLine(to: pt(256.074, 86.6827))
+        p.addCurve(to: pt(263.724, 109.786), control1: pt(263.555, 91.7675), control2: pt(266.692, 101.241))
+        p.addLine(to: pt(221.475, 231.428))
+        p.addCurve(to: pt(202.582, 244.866), control1: pt(218.681, 239.473), control2: pt(211.098, 244.866))
+        p.addLine(to: pt(62.9277, 244.866))
+        p.addCurve(to: pt(44.0348, 231.428), control1: pt(54.4113, 244.866), control2: pt(46.829, 239.473))
+        p.addLine(to: pt(1.78546, 109.786))
+        p.addCurve(to: pt(9.43581, 86.6827), control1: pt(-1.18241, 101.241), control2: pt(1.95457, 91.7675))
+        p.closeSubpath()
+        return p
+    }
+}
+
 struct Hexagon: Shape {
     // Generously rounded: the sharp side points otherwise leave a hard vertical
     // step where the offset-down slab peeks out, reading as a doubled outline.
