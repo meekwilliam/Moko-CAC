@@ -387,17 +387,17 @@ struct PathView: View {
         // Every node is a hexagon now (boss included); the boss still reads apart
         // via its crown. The 3D wall uses a shade close to the face color rather
         // than the much-darker unit `dark`, so the lip reads as the same button.
-        // Unit 1 uses the unit1b.svg badge shape and its own blue palette; every
+        // Unit 1 uses the bigbutton.svg badge shape and its own blue palette; every
         // other unit keeps the shared badge in its unit color.
         let isUnit1 = node.sectionIndex == 0
-        let silhouette = isUnit1 ? AnyShape(Unit1BadgeBack()) : AnyShape(ButtonBadge())
-        let faceSilhouette = isUnit1 ? AnyShape(Unit1Badge()) : silhouette
-        let face = isUnit1 ? Color(hex: "#3366E8") : c.main
-        let wall = isUnit1 ? Color(hex: "#2257DB") : c.main.brightnessShifted(-0.15)
-        // unit1b.svg is nearly square (265×259). Do not squash it into the
+        let silhouette = isUnit1 ? AnyShape(Unit1BigButtonBack()) : AnyShape(ButtonBadge())
+        let faceSilhouette = isUnit1 ? AnyShape(Unit1BigButtonFace()) : silhouette
+        let face = isUnit1 ? Color(hex: "#2257DB") : c.main
+        let wall = isUnit1 ? Color(hex: "#0D46D8") : c.main.brightnessShifted(-0.15)
+        // bigbutton.svg is nearly square (317×321). Do not squash it into the
         // shared puck's 0.78 height ratio—the shared viewBox is part of the
         // supplied silhouette.
-        let buttonHeightRatio: CGFloat = isUnit1 ? 259.0 / 265.0 : ovalRatio
+        let buttonHeightRatio: CGFloat = isUnit1 ? 321.0 / 317.0 : ovalRatio
 
         return ZStack {
             if testOutAvailable {
@@ -471,7 +471,7 @@ struct PathView: View {
 
                     // Completed lessons get a glossy sheen across the top, like
                     // a polished glass badge (reference).
-                    if visualState == .done {
+                    if visualState == .done && !isUnit1 {
                         Ellipse()
                             .fill(LinearGradient(
                                 colors: [Color.white.opacity(0.55), Color.white.opacity(0.0)],
@@ -494,9 +494,9 @@ struct PathView: View {
             }
             .buttonStyle(PuckButtonStyle(
                 slab: wall, size: nodeSize, ovalRatio: buttonHeightRatio,
-                depth: isUnit1 ? nodeSize * (21.0 / 259.0) : 10,
+                depth: isUnit1 ? nodeSize * (27.0 / 321.0) : 10,
                 shape: silhouette,
-                exactBackShape: isUnit1 ? AnyShape(Unit1BadgeBack()) : nil
+                exactBackShape: isUnit1 ? AnyShape(Unit1BigButtonBack()) : nil
             ))
         }
         .frame(width: nodeSize, height: nodeSize)
@@ -697,51 +697,52 @@ struct ButtonBadge: Shape {
     }
 }
 
-/// The Unit 1 face, mapped in the SVG's original shared 265×259 viewBox. Keeping
-/// the artboard coordinates (rather than normalizing the face's own bounds) is
-/// what preserves the supplied relationship between its face and blue back.
-struct Unit1Badge: Shape {
+/// The lighter face from bigbutton.svg, mapped in its original shared 317×321
+/// viewBox so its position remains exact relative to the darker rear layer.
+struct Unit1BigButtonFace: Shape {
     func path(in rect: CGRect) -> Path {
         func pt(_ x: CGFloat, _ y: CGFloat) -> CGPoint {
-            CGPoint(x: rect.minX + x / 265.0 * rect.width,
-                    y: rect.minY + y / 259.0 * rect.height)
+            CGPoint(x: rect.minX + x / 317.0 * rect.width,
+                    y: rect.minY + y / 321.0 * rect.height)
         }
         var p = Path()
-        p.move(to: pt(120.836, 3.45896))
-        p.addCurve(to: pt(143.321, 3.45896), control1: pt(127.621, -1.153), control2: pt(136.535, -1.153))
-        p.addLine(to: pt(255.397, 79.6345))
-        p.addCurve(to: pt(263.048, 102.738), control1: pt(262.878, 84.7193), control2: pt(266.015, 94.1926))
-        p.addLine(to: pt(220.798, 224.38))
-        p.addCurve(to: pt(201.905, 237.818), control1: pt(218.004, 232.425), control2: pt(210.422, 237.818))
-        p.addLine(to: pt(62.2511, 237.818))
-        p.addCurve(to: pt(43.3582, 224.38), control1: pt(53.7347, 237.818), control2: pt(46.1524, 232.425))
-        p.addLine(to: pt(1.10884, 102.738))
-        p.addCurve(to: pt(8.75919, 79.6345), control1: pt(-1.85903, 94.1926), control2: pt(1.27795, 84.7193))
+        p.move(to: pt(145.188, 2.89677))
+        p.addCurve(to: pt(170.911, 2.89676), control1: pt(153.328, -0.965616), control2: pt(162.772, -0.965621))
+        p.addLine(to: pt(298.961, 63.6607))
+        p.addCurve(to: pt(316.099, 90.7639), control1: pt(309.428, 68.6278), control2: pt(316.099, 79.178))
+        p.addLine(to: pt(316.099, 202.823))
+        p.addCurve(to: pt(298.961, 229.926), control1: pt(316.099, 214.409), control2: pt(309.428, 224.959))
+        p.addLine(to: pt(170.911, 290.69))
+        p.addCurve(to: pt(145.188, 290.69), control1: pt(162.772, 294.553), control2: pt(153.328, 294.553))
+        p.addLine(to: pt(17.1386, 229.926))
+        p.addCurve(to: pt(-0.0000152588, 202.823), control1: pt(6.67143, 224.959), control2: pt(-0.0000152588, 214.409))
+        p.addLine(to: pt(-0.0000152588, 90.7639))
+        p.addCurve(to: pt(17.1386, 63.6607), control1: pt(-0.0000152588, 79.1781), control2: pt(6.67142, 68.6278))
         p.closeSubpath()
         return p
     }
 }
 
-/// The darker rear path from unit1b.svg. It is not a shifted copy of the face:
-/// the SVG gives it a distinct lower edge and side geometry, so render it as
-/// its own exact layer.
-struct Unit1BadgeBack: Shape {
+/// The darker rear path from bigbutton.svg.
+struct Unit1BigButtonBack: Shape {
     func path(in rect: CGRect) -> Path {
         func pt(_ x: CGFloat, _ y: CGFloat) -> CGPoint {
-            CGPoint(x: rect.minX + x / 265.0 * rect.width,
-                    y: rect.minY + y / 259.0 * rect.height)
+            CGPoint(x: rect.minX + x / 317.0 * rect.width,
+                    y: rect.minY + y / 321.0 * rect.height)
         }
         var p = Path()
-        p.move(to: pt(120.268, 5.43294))
-        p.addCurve(to: pt(143.887, 5.43294), control1: pt(127.245, 0.122866), control2: pt(136.909, 0.12286))
-        p.addLine(to: pt(252.639, 88.1976))
-        p.addCurve(to: pt(259.454, 109.493), control1: pt(259.158, 93.1593), control2: pt(261.881, 101.667))
-        p.addLine(to: pt(217.546, 244.595))
-        p.addCurve(to: pt(198.921, 258.318), control1: pt(215.014, 252.756), control2: pt(207.465, 258.318))
-        p.addLine(to: pt(65.2324, 258.318))
-        p.addCurve(to: pt(46.6083, 244.595), control1: pt(56.6885, 258.317), control2: pt(49.1397, 252.755))
-        p.addLine(to: pt(4.70014, 109.493))
-        p.addCurve(to: pt(11.5156, 88.1976), control1: pt(2.27288, 101.667), control2: pt(4.996, 93.1593))
+        p.move(to: pt(145.188, 29.8968))
+        p.addCurve(to: pt(170.911, 29.8968), control1: pt(153.328, 26.0344), control2: pt(162.772, 26.0344))
+        p.addLine(to: pt(298.961, 90.6607))
+        p.addCurve(to: pt(316.099, 117.764), control1: pt(309.428, 95.6278), control2: pt(316.099, 106.178))
+        p.addLine(to: pt(316.099, 229.823))
+        p.addCurve(to: pt(298.961, 256.926), control1: pt(316.099, 241.409), control2: pt(309.428, 251.959))
+        p.addLine(to: pt(170.911, 317.69))
+        p.addCurve(to: pt(145.188, 317.69), control1: pt(162.772, 321.553), control2: pt(153.328, 321.553))
+        p.addLine(to: pt(17.1386, 256.926))
+        p.addCurve(to: pt(-0.0000152588, 229.823), control1: pt(6.67143, 251.959), control2: pt(-0.0000152588, 241.409))
+        p.addLine(to: pt(-0.0000152588, 117.764))
+        p.addCurve(to: pt(17.1386, 90.6607), control1: pt(-0.0000152588, 106.178), control2: pt(6.67142, 95.6278))
         p.closeSubpath()
         return p
     }
@@ -882,7 +883,6 @@ private struct PuckButtonStyle: ButtonStyle {
                 if let exactBackShape {
                     exactBackShape
                         .fill(slab)
-                        .overlay(exactBackShape.stroke(Color.black.opacity(0.75), lineWidth: 0.5))
                         .frame(width: size, height: h)
                 } else {
                     shape
