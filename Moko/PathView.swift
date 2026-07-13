@@ -387,8 +387,12 @@ struct PathView: View {
         // Every node is a hexagon now (boss included); the boss still reads apart
         // via its crown. The 3D wall uses a shade close to the face color rather
         // than the much-darker unit `dark`, so the lip reads as the same button.
-        let silhouette = AnyShape(ButtonBadge())
-        let wall = c.main.brightnessShifted(-0.15)
+        // Unit 1 uses the unit1b.svg badge shape and its own blue palette; every
+        // other unit keeps the shared badge in its unit color.
+        let isUnit1 = node.sectionIndex == 0
+        let silhouette = isUnit1 ? AnyShape(Unit1Badge()) : AnyShape(ButtonBadge())
+        let face = isUnit1 ? Color(hex: "#3366E8") : c.main
+        let wall = isUnit1 ? Color(hex: "#2257DB") : c.main.brightnessShifted(-0.15)
 
         return ZStack {
             if testOutAvailable {
@@ -424,7 +428,7 @@ struct PathView: View {
             // into the puck's 3D plane so it looks like it emerges from the
             // button's base rather than floating flat in front of it.
             if state == .active && !testOutAvailable {
-                PulseRing(color: c.main, size: nodeSize, shape: silhouette)
+                PulseRing(color: face, size: nodeSize, shape: silhouette)
                     .offset(y: 5)
                     .allowsHitTesting(false)
             }
@@ -448,8 +452,8 @@ struct PathView: View {
                     // lives in PuckButtonStyle's slab.
                     silhouette
                         .fill(LinearGradient(
-                            colors: [c.main.brightnessShifted(0.07), c.main,
-                                     c.main.brightnessShifted(-0.05)],
+                            colors: [face.brightnessShifted(0.07), face,
+                                     face.brightnessShifted(-0.05)],
                             startPoint: .top, endPoint: .bottom))
                         .frame(width: nodeSize, height: nodeSize * ovalRatio)
                         // Inner bottom shading for a rounded, puffed look.
@@ -679,6 +683,30 @@ struct ButtonBadge: Shape {
         p.addCurve(to: pt(44.0348, 231.428), control1: pt(54.4113, 244.866), control2: pt(46.829, 239.473))
         p.addLine(to: pt(1.78546, 109.786))
         p.addCurve(to: pt(9.43581, 86.6827), control1: pt(-1.18241, 101.241), control2: pt(1.95457, 91.7675))
+        p.closeSubpath()
+        return p
+    }
+}
+
+/// The Unit 1 node silhouette, traced from `unit1b.svg`'s face path.
+struct Unit1Badge: Shape {
+    func path(in rect: CGRect) -> Path {
+        let box = CGRect(x: -1.85903, y: -1.153, width: 267.874, height: 238.971)
+        func pt(_ x: CGFloat, _ y: CGFloat) -> CGPoint {
+            CGPoint(x: rect.minX + (x - box.minX) / box.width * rect.width,
+                    y: rect.minY + (y - box.minY) / box.height * rect.height)
+        }
+        var p = Path()
+        p.move(to: pt(120.836, 3.45896))
+        p.addCurve(to: pt(143.321, 3.45896), control1: pt(127.621, -1.153), control2: pt(136.535, -1.153))
+        p.addLine(to: pt(255.397, 79.6345))
+        p.addCurve(to: pt(263.048, 102.738), control1: pt(262.878, 84.7193), control2: pt(266.015, 94.1926))
+        p.addLine(to: pt(220.798, 224.38))
+        p.addCurve(to: pt(201.905, 237.818), control1: pt(218.004, 232.425), control2: pt(210.422, 237.818))
+        p.addLine(to: pt(62.2511, 237.818))
+        p.addCurve(to: pt(43.3582, 224.38), control1: pt(53.7347, 237.818), control2: pt(46.1524, 232.425))
+        p.addLine(to: pt(1.10884, 102.738))
+        p.addCurve(to: pt(8.75919, 79.6345), control1: pt(-1.85903, 94.1926), control2: pt(1.27795, 84.7193))
         p.closeSubpath()
         return p
     }
