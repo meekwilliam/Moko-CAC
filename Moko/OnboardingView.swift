@@ -2,7 +2,8 @@ import SwiftUI
 import Combine
 
 // MARK: - Onboarding flow
-// Seven-screen Duolingo-style intake: welcome (live-chart hero) → experience
+// Eight-screen Duolingo-style intake: welcome (live-chart hero) → strategy →
+// experience
 // level → goals (choose any) → daily goal → sign-up → course build → commit.
 // Finishing bursts
 // the commit color across the screen and launches Lesson 1 directly (never the
@@ -17,23 +18,30 @@ struct OnboardingView: View {
     @State private var hasPresentedInitialStep = false
 
     // Selections
+    @State private var strategy: Int? = nil
     @State private var experience: Int? = nil
     @State private var goals: Set<Int> = []
     @State private var dailyGoal: Int? = nil
     @State private var authInFlight = false
     @State private var showingSignIn = false   // returning-user login overlay
 
-    private let totalSteps = 7
+    private let totalSteps = 8
     private var stepSlideDistance: CGFloat { UIScreen.main.bounds.width + 64 }
-    private var showsChoiceFooter: Bool { (1...3).contains(step) }
+    private var showsChoiceFooter: Bool { (1...4).contains(step) }
     private var currentStepCanContinue: Bool {
         switch step {
-        case 1: return experience != nil
-        case 2: return !goals.isEmpty
-        case 3: return dailyGoal != nil
+        case 1: return strategy != nil
+        case 2: return experience != nil
+        case 3: return !goals.isEmpty
+        case 4: return dailyGoal != nil
         default: return true
         }
     }
+
+    // Only Order Flow is available today; more strategies will unlock later.
+    private let strategyOptions: [(emoji: String, label: String, detail: String)] = [
+        ("🌊", "Order Flow", "Read live buying and selling to time trades"),
+    ]
 
     private let experienceOptions: [(emoji: String, label: String)] = [
         ("🌱", "I'm completely new"),
@@ -71,11 +79,12 @@ struct OnboardingView: View {
                     Group {
                         switch step {
                         case 0: welcomeScreen
-                        case 1: experienceScreen
-                        case 2: goalsScreen
-                        case 3: dailyGoalScreen
-                        case 4: signUpScreen
-                        case 5: CourseBuildView(onComplete: advance)
+                        case 1: strategyScreen
+                        case 2: experienceScreen
+                        case 3: goalsScreen
+                        case 4: dailyGoalScreen
+                        case 5: signUpScreen
+                        case 6: CourseBuildView(onComplete: advance)
                         default: CommitScreen(router: router, onCommitted: persistAnswers)
                         }
                     }
@@ -187,6 +196,7 @@ struct OnboardingView: View {
         // screen swap to the lesson is driven by CommitScreen, timed with the
         // curtain animation (see AppRouter.curtainColor).
         let d = UserDefaults.standard
+        if let s = strategy { d.set(strategyOptions[s].label, forKey: "onboarding.strategy") }
         if let e = experience { d.set(experienceOptions[e].label, forKey: "onboarding.experience") }
         d.set(goals.sorted().map { goalOptions[$0].label }, forKey: "onboarding.goals")
         if let g = dailyGoal { d.set(dailyGoalOptions[g].label, forKey: "onboarding.dailyGoal") }
@@ -245,7 +255,27 @@ struct OnboardingView: View {
         }
     }
 
-    // MARK: Screen 2 — Experience
+    // MARK: Screen 2 — Strategy
+    // Which day-trading strategy to learn. Order Flow is the only one available
+    // today; the list is built to grow as more strategies ship.
+
+    private var strategyScreen: some View {
+        chooserScreen(
+            title: "Which strategy do you want to learn?",
+            subtitle: "More strategies coming soon."
+        ) {
+            ForEach(strategyOptions.indices, id: \.self) { i in
+                optionRow(emoji: strategyOptions[i].emoji,
+                          label: strategyOptions[i].label,
+                          detail: strategyOptions[i].detail,
+                          selected: strategy == i) {
+                    strategy = i
+                }
+            }
+        }
+    }
+
+    // MARK: Screen 3 — Experience
 
     private var experienceScreen: some View {
         chooserScreen(
@@ -262,7 +292,7 @@ struct OnboardingView: View {
         }
     }
 
-    // MARK: Screen 3 — Goals (choose any)
+    // MARK: Screen 4 — Goals (choose any)
 
     private var goalsScreen: some View {
         chooserScreen(
@@ -279,7 +309,7 @@ struct OnboardingView: View {
         }
     }
 
-    // MARK: Screen 4 — Daily goal
+    // MARK: Screen 5 — Daily goal
 
     private var dailyGoalScreen: some View {
         chooserScreen(
@@ -297,7 +327,7 @@ struct OnboardingView: View {
         }
     }
 
-    // MARK: Screen 5 — Sign up
+    // MARK: Screen 6 — Sign up
     // Sits right before the commit screen — reached only via GET STARTED on
     // the welcome screen (returning users skip all of this via "I already
     // have an account").
@@ -498,7 +528,7 @@ struct OnboardingView: View {
     }
 }
 
-// MARK: - Screen 6 — Course build
+// MARK: - Screen 7 — Course build
 
 /// Plain `Text` only reads `progress` once per state change — the number
 /// would jump straight to 100% while the ring animates smoothly. Conforming
@@ -573,7 +603,7 @@ private struct CourseBuildView: View {
     }
 }
 
-// MARK: - Screen 7 — Hold-to-commit
+// MARK: - Screen 8 — Hold-to-commit
 // "Make yourself a promise": press and hold the button; it charges up with a
 // pulse, then the commit color bursts outward FROM THE BUTTON'S OWN SCREEN
 // POSITION (via the router-level curtain, not a locally-centered circle),
