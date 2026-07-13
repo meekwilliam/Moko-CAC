@@ -1060,18 +1060,6 @@
       },
       {
        "type": "multiple_choice",
-       "question": "Where do resting buy orders sit?",
-       "options": [
-        "The bid side.",
-        "The ask side.",
-        "The spread."
-       ],
-       "correct": 0,
-       "explanation": "Buyers rest on the bid. Sellers rest on the ask, and the spread is the gap between them.",
-       "skillId": "reading_the_order_book_dom"
-      },
-      {
-       "type": "multiple_choice",
        "question": "What does Level I show?",
        "options": [
         "Only the best bid and ask.",
@@ -1080,18 +1068,6 @@
        ],
        "correct": 0,
        "explanation": "Level I is the top of the book: the single best bid and best ask.",
-       "skillId": "reading_the_order_book_dom"
-      },
-      {
-       "type": "multiple_choice",
-       "question": "Where do resting sell orders sit?",
-       "options": [
-        "The ask side.",
-        "The bid side.",
-        "The spread."
-       ],
-       "correct": 0,
-       "explanation": "Sellers rest on the ask side, above the spread.",
        "skillId": "reading_the_order_book_dom"
       },
       {
@@ -1111,8 +1087,13 @@
          "Executed trades"
         ]
        ],
-       "explanation": "These lenses show top of book, available feed depth, and completed trades.",
-       "skillId": "reading_the_order_book_dom"
+       "explanation": "Level I is the top of the book: the single best bid and best ask.",
+       "skillId": "reading_the_order_book_dom",
+       "options": [
+        "Only the best bid and ask.",
+        "Available depth across prices from the relevant venue or feed.",
+        "The day's executed trades."
+       ]
       },
       {
        "type": "book_drag",
@@ -1120,15 +1101,29 @@
        "question": "Tap the side this buy fills against.",
        "correct": 1,
        "explanation": "A market buy lifts the ask.",
-       "skillId": "order_routing"
+       "skillId": "reading_the_order_book_dom"
       },
       {
        "type": "aggressor",
        "event": "lift",
        "question": "Tap the aggressor.",
        "correct": 0,
-       "explanation": "The offers are being taken, so the buyer is the aggressor lifting them.",
-       "skillId": "aggressor_side"
+       "explanation": "These lenses show top of book, available feed depth, and completed trades.",
+       "skillId": "reading_the_order_book_dom",
+       "pairs": [
+        [
+         "Level I",
+         "Best bid and ask"
+        ],
+        [
+         "Level II",
+         "Available depth from the relevant venue or feed"
+        ],
+        [
+         "Time & Sales",
+         "Executed trades"
+        ]
+       ]
       },
       {
        "type": "dom_tap",
@@ -1136,7 +1131,7 @@
        "target": 3,
        "question": "Tap the current best bid.",
        "explanation": "The best bid is the highest currently displayed resting buy price. DOM means Depth of Market and shows available depth from the relevant venue or feed.",
-       "skillId": "reading_the_order_book"
+       "skillId": "reading_the_order_book_dom"
       },
       {
        "type": "dom_tap",
@@ -1144,7 +1139,7 @@
        "target": 2,
        "question": "Tap the current best ask.",
        "explanation": "The best ask is the lowest currently displayed resting sell price on the DOM ladder.",
-       "skillId": "reading_the_order_book"
+       "skillId": "reading_the_order_book_dom"
       },
       {
        "type": "replay_compare",
@@ -1157,7 +1152,7 @@
        ],
        "correct": 0,
        "explanation": "Replay A removes the ask before a matching trade prints. Replay B consumes the ask through completed executions.",
-       "skillId": "scenario_comparison"
+       "skillId": "reading_the_order_book_dom"
       },
       {
        "type": "orderflow_sim",
@@ -1170,7 +1165,7 @@
        ],
        "correct": 0,
        "explanation": "The DOM, executed buying, replenishment, and weak price progress combine into a possible containment read.",
-       "skillId": "multi_signal_read"
+       "skillId": "reading_the_order_book_dom"
       }
      ]
     },
@@ -3340,32 +3335,6 @@
        "skillId": "footprint_interaction"
       },
       {
-       "type": "footprint",
-       "event": "balanced",
-       "question": "Which quantity measures net aggressive buying minus selling?",
-       "options": [
-        "Delta",
-        "Total volume",
-        "Displayed depth"
-       ],
-       "correct": 0,
-       "explanation": "Volume totals execution while delta nets ask and bid side execution.",
-       "skillId": "footprint_reading"
-      },
-      {
-       "type": "multiple_choice",
-       "question": "What does net aggression compare?",
-       "options": [
-        "Net aggression compares buying with selling",
-        "Fast tape near resistance is stronger than failure to gain acceptance",
-        "A liquidity sweep and breakout differ mainly by candle size",
-        "Order flow evidence remains valid regardless of changing volatility"
-       ],
-       "correct": 0,
-       "explanation": "Net aggression compares aggressive buying with aggressive selling.",
-       "skillId": "delta_volume_cvd"
-      },
-      {
        "type": "footprint_tap",
        "event": "total_target",
        "target": 3,
@@ -3413,7 +3382,7 @@
        "type": "cvd_tap",
        "event": "bearish_divergence",
        "target": 1,
-       "question": "Tap where price makes a new high but CVD fails to confirm it.",
+       "question": "Tap the second CVD peak that fails to confirm the new price high.",
        "explanation": "Price makes a higher high while cumulative aggressive buying fails to make a corresponding higher high.",
        "skillId": "cumulative_volume_delta"
       },
@@ -3421,7 +3390,7 @@
        "type": "cvd_tap",
        "event": "bullish_divergence",
        "target": 1,
-       "question": "Tap where price makes a lower low while CVD makes a higher low.",
+       "question": "Tap the second CVD low that fails to confirm the new price low.",
        "explanation": "The second price low extends lower while the CVD low holds above its prior low, creating bullish disagreement.",
        "skillId": "cumulative_volume_delta"
       },
@@ -7999,11 +7968,11 @@
        "target": 3,
        "question": "Tap the current best bid.",
        "explanation": "The best bid is the highest currently displayed resting buy price. DOM means Depth of Market and shows available depth from the relevant venue or feed.",
-       "skillId": "reading_the_order_book",
+       "skillId": "reading_the_order_book_dom",
        "sourceLesson": "Reading the Order Book & DOM",
        "sourceUnit": 1,
        "sourceNode": 6,
-       "questionId": "orderflow.u2.n6.q8",
+       "questionId": "orderflow.u2.n6.q6",
        "competencyId": "u2.level_two"
       },
       {
@@ -8012,11 +7981,11 @@
        "target": 2,
        "question": "Tap the current best ask.",
        "explanation": "The best ask is the lowest currently displayed resting sell price on the DOM ladder.",
-       "skillId": "reading_the_order_book",
+       "skillId": "reading_the_order_book_dom",
        "sourceLesson": "Reading the Order Book & DOM",
        "sourceUnit": 1,
        "sourceNode": 6,
-       "questionId": "orderflow.u2.n6.q9",
+       "questionId": "orderflow.u2.n6.q7",
        "competencyId": "u2.level_two"
       },
       {
@@ -8030,45 +7999,41 @@
        ],
        "correct": 0,
        "explanation": "The DOM, executed buying, replenishment, and weak price progress combine into a possible containment read.",
-       "skillId": "multi_signal_read",
+       "skillId": "reading_the_order_book_dom",
        "sourceLesson": "Reading the Order Book & DOM",
        "sourceUnit": 1,
        "sourceNode": 6,
-       "questionId": "orderflow.u2.n6.q11",
+       "questionId": "orderflow.u2.n6.q9",
        "competencyId": "u2.level_two"
       },
       {
-       "type": "multiple_choice",
-       "question": "Where do resting buy orders sit?",
-       "options": [
-        "The bid side.",
-        "The ask side.",
-        "The spread."
+       "type": "matching",
+       "question": "Match each feed to what it shows.",
+       "pairs": [
+        [
+         "Level I",
+         "Best bid and ask"
+        ],
+        [
+         "Level II",
+         "Available depth from the relevant venue or feed"
+        ],
+        [
+         "Time & Sales",
+         "Executed trades"
+        ]
        ],
-       "correct": 0,
-       "explanation": "Buyers rest on the bid. Sellers rest on the ask, and the spread is the gap between them.",
+       "explanation": "Level I is the top of the book: the single best bid and best ask.",
        "skillId": "reading_the_order_book_dom",
+       "options": [
+        "Only the best bid and ask.",
+        "Available depth across prices from the relevant venue or feed.",
+        "The day's executed trades."
+       ],
        "sourceLesson": "Reading the Order Book & DOM",
        "sourceUnit": 1,
        "sourceNode": 6,
-       "questionId": "orderflow.u2.n6.q2",
-       "competencyId": "u2.resting_sides"
-      },
-      {
-       "type": "multiple_choice",
-       "question": "Where do resting sell orders sit?",
-       "options": [
-        "The ask side.",
-        "The bid side.",
-        "The spread."
-       ],
-       "correct": 0,
-       "explanation": "Sellers rest on the ask side, above the spread.",
-       "skillId": "reading_the_order_book_dom",
-       "sourceLesson": "Reading the Order Book & DOM",
-       "sourceUnit": 1,
-       "sourceNode": 6,
-       "questionId": "orderflow.u2.n6.q4",
+       "questionId": "orderflow.u2.n6.q3",
        "competencyId": "u2.resting_sides"
       },
       {
@@ -8082,11 +8047,11 @@
        ],
        "correct": 0,
        "explanation": "Replay A removes the ask before a matching trade prints. Replay B consumes the ask through completed executions.",
-       "skillId": "scenario_comparison",
+       "skillId": "reading_the_order_book_dom",
        "sourceLesson": "Reading the Order Book & DOM",
        "sourceUnit": 1,
        "sourceNode": 6,
-       "questionId": "orderflow.u2.n6.q10",
+       "questionId": "orderflow.u2.n6.q8",
        "competencyId": "u2.resting_sides"
       },
       {
@@ -8318,13 +8283,10 @@
      ],
      "competencyMappings": {
       "u2.level_two": [
-       "multi_signal_read",
-       "reading_the_order_book",
        "reading_the_order_book_dom"
       ],
       "u2.resting_sides": [
-       "reading_the_order_book_dom",
-       "scenario_comparison"
+       "reading_the_order_book_dom"
       ],
       "u2.thick_liquidity": [
        "size_liquidity"
@@ -8351,14 +8313,13 @@
      "competencyEligibleQuestionIds": {
       "u2.level_two": [
        "orderflow.u2.n6.q1",
-       "orderflow.u2.n6.q8",
-       "orderflow.u2.n6.q9",
-       "orderflow.u2.n6.q11"
+       "orderflow.u2.n6.q6",
+       "orderflow.u2.n6.q7",
+       "orderflow.u2.n6.q9"
       ],
       "u2.resting_sides": [
-       "orderflow.u2.n6.q2",
-       "orderflow.u2.n6.q4",
-       "orderflow.u2.n6.q10"
+       "orderflow.u2.n6.q3",
+       "orderflow.u2.n6.q8"
       ],
       "u2.thick_liquidity": [
        "orderflow.u2.n7.q2"
@@ -9799,24 +9760,6 @@
        "competencyId": "u5.delta_vs_volume"
       },
       {
-       "type": "footprint",
-       "event": "balanced",
-       "question": "Which quantity measures net aggressive buying minus selling?",
-       "options": [
-        "Delta",
-        "Total volume",
-        "Displayed depth"
-       ],
-       "correct": 0,
-       "explanation": "Volume totals execution while delta nets ask and bid side execution.",
-       "skillId": "footprint_reading",
-       "sourceLesson": "Delta, Volume & CVD",
-       "sourceUnit": 4,
-       "sourceNode": 33,
-       "questionId": "orderflow.u5.n33.q4",
-       "competencyId": "u5.delta_vs_volume"
-      },
-      {
        "type": "footprint_tap",
        "event": "total_target",
        "target": 3,
@@ -9826,7 +9769,30 @@
        "sourceLesson": "Delta, Volume & CVD",
        "sourceUnit": 4,
        "sourceNode": 33,
-       "questionId": "orderflow.u5.n33.q6",
+       "questionId": "orderflow.u5.n33.q4",
+       "competencyId": "u5.delta_vs_volume"
+      },
+      {
+       "type": "sequence_builder",
+       "question": "Build the delta and volume comparison.",
+       "items": [
+        "Measure total executed volume",
+        "Calculate net aggressive imbalance",
+        "Compare delta with price response",
+        "Interpret agreement or divergence"
+       ],
+       "correct_order": [
+        "Measure total executed volume",
+        "Calculate net aggressive imbalance",
+        "Compare delta with price response",
+        "Interpret agreement or divergence"
+       ],
+       "explanation": "Each step connects executed pressure with liquidity, price response, and the lesson specific conclusion.",
+       "skillId": "market_sequence",
+       "sourceLesson": "Delta, Volume & CVD",
+       "sourceUnit": 4,
+       "sourceNode": 33,
+       "questionId": "orderflow.u5.n33.q5",
        "competencyId": "u5.delta_vs_volume"
       },
       {
@@ -9962,33 +9928,33 @@
        "sourceLesson": "Delta, Volume & CVD",
        "sourceUnit": 4,
        "sourceNode": 33,
-       "questionId": "orderflow.u5.n33.q8",
+       "questionId": "orderflow.u5.n33.q6",
        "competencyId": "u5.cumulative_volume_delta"
       },
       {
        "type": "cvd_tap",
        "event": "bearish_divergence",
        "target": 1,
-       "question": "Tap where price makes a new high but CVD fails to confirm it.",
+       "question": "Tap the second CVD peak that fails to confirm the new price high.",
        "explanation": "Price makes a higher high while cumulative aggressive buying fails to make a corresponding higher high.",
        "skillId": "cumulative_volume_delta",
        "sourceLesson": "Delta, Volume & CVD",
        "sourceUnit": 4,
        "sourceNode": 33,
-       "questionId": "orderflow.u5.n33.q9",
+       "questionId": "orderflow.u5.n33.q7",
        "competencyId": "u5.cumulative_volume_delta"
       },
       {
        "type": "cvd_tap",
        "event": "bullish_divergence",
        "target": 1,
-       "question": "Tap where price makes a lower low while CVD makes a higher low.",
+       "question": "Tap the second CVD low that fails to confirm the new price low.",
        "explanation": "The second price low extends lower while the CVD low holds above its prior low, creating bullish disagreement.",
        "skillId": "cumulative_volume_delta",
        "sourceLesson": "Delta, Volume & CVD",
        "sourceUnit": 4,
        "sourceNode": 33,
-       "questionId": "orderflow.u5.n33.q10",
+       "questionId": "orderflow.u5.n33.q8",
        "competencyId": "u5.cumulative_volume_delta"
       },
       {
@@ -10006,7 +9972,7 @@
        "sourceLesson": "Delta, Volume & CVD",
        "sourceUnit": 4,
        "sourceNode": 33,
-       "questionId": "orderflow.u5.n33.q11",
+       "questionId": "orderflow.u5.n33.q9",
        "competencyId": "u5.cumulative_volume_delta"
       },
       {
@@ -10024,7 +9990,7 @@
        "sourceLesson": "Delta, Volume & CVD",
        "sourceUnit": 4,
        "sourceNode": 33,
-       "questionId": "orderflow.u5.n33.q12",
+       "questionId": "orderflow.u5.n33.q10",
        "competencyId": "u5.cumulative_volume_delta"
       }
      ],
@@ -10069,7 +10035,8 @@
       ],
       "u5.delta_vs_volume": [
        "footprint_interaction",
-       "footprint_reading"
+       "footprint_reading",
+       "market_sequence"
       ],
       "u5.positive_delta_divergence": [
        "footprint_interaction",
@@ -10118,7 +10085,7 @@
       "u5.delta_vs_volume": [
        "orderflow.u5.n33.q2",
        "orderflow.u5.n33.q4",
-       "orderflow.u5.n33.q6"
+       "orderflow.u5.n33.q5"
       ],
       "u5.positive_delta_divergence": [
        "orderflow.u5.n34.q2",
@@ -10134,11 +10101,11 @@
        "orderflow.u5.n36.q6"
       ],
       "u5.cumulative_volume_delta": [
+       "orderflow.u5.n33.q6",
+       "orderflow.u5.n33.q7",
        "orderflow.u5.n33.q8",
        "orderflow.u5.n33.q9",
-       "orderflow.u5.n33.q10",
-       "orderflow.u5.n33.q11",
-       "orderflow.u5.n33.q12"
+       "orderflow.u5.n33.q10"
       ]
      },
      "competencySourceUnits": {
