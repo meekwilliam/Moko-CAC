@@ -879,14 +879,20 @@ struct FootprintQuestionView: View {
             }
             .font(Theme.font(16, .black)).padding(.top, 7).padding(.bottom, 9)
 
-            VStack(spacing: 1) {
-                Text("Delta ").foregroundColor(.white)
-                    + Text(fmtVol(delta)).foregroundColor(delta >= 0 ? bidColor : askColor)
-                Text("Total ").foregroundColor(.white)
-                    + Text(fmtVol(bidTotal + askTotal)).foregroundColor(.white)
+            VStack(spacing: 8) {
+                HStack {
+                    Text("CANDLE DELTA").font(Theme.font(10, .black)).foregroundColor(Theme.muted)
+                    Spacer()
+                    Text((delta >= 0 ? "+" : "") + fmtVol(delta))
+                        .font(Theme.font(16, .black))
+                        .foregroundColor(delta >= 0 ? bidColor : askColor)
+                }
+                HStack(spacing: 10) {
+                    Text("CVD").font(Theme.font(10, .black)).foregroundColor(Theme.muted)
+                    cvdSparkline
+                }
             }
-            .font(Theme.font(15, .black))
-            .frame(maxWidth: .infinity).padding(.vertical, 8)
+            .padding(.horizontal, 12).padding(.vertical, 10)
             .background(RoundedRectangle(cornerRadius: 9).fill(Color.black.opacity(0.55)))
         }
         .padding(10)
@@ -914,6 +920,38 @@ struct FootprintQuestionView: View {
             .foregroundColor(poc ? .black : .white)
             .frame(maxWidth: .infinity, maxHeight: .infinity)
             .background(poc ? Color(hex: "#E8ECEF") : tint.opacity(min(0.85, 0.14 + Double(v) / 360)))
+    }
+
+    /// Cumulative delta: accumulates per-bar delta, biased toward this candle's
+    /// direction so the trend agrees with the footprint.
+    private var cvdSeries: [Double] {
+        var rng = SplitMix(seed: chartSeed(screen) &+ 7919)
+        let bias = delta >= 0 ? 1.0 : -1.0
+        var v = 0.0
+        return (0..<14).map { _ in
+            v += bias * Double(rng.next() % 26) / 10.0 + (Double(Int(rng.next() % 20)) - 10) / 10.0
+            return v
+        }
+    }
+
+    private var cvdSparkline: some View {
+        let pts = cvdSeries
+        let lo = pts.min() ?? 0, hi = pts.max() ?? 1
+        let range = max(hi - lo, 0.0001)
+        let up = (pts.last ?? 0) >= (pts.first ?? 0)
+        return GeometryReader { geo in
+            Path { p in
+                for (i, v) in pts.enumerated() {
+                    let x = geo.size.width * CGFloat(i) / CGFloat(max(pts.count - 1, 1))
+                    let y = geo.size.height * (1 - CGFloat((v - lo) / range))
+                    if i == 0 { p.move(to: CGPoint(x: x, y: y)) }
+                    else { p.addLine(to: CGPoint(x: x, y: y)) }
+                }
+            }
+            .stroke(up ? bidColor : askColor,
+                    style: StrokeStyle(lineWidth: 2, lineCap: .round, lineJoin: .round))
+        }
+        .frame(height: 26)
     }
 
     private var candleOverlay: some View {
