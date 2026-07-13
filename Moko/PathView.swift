@@ -392,12 +392,12 @@ struct PathView: View {
         let isUnit1 = node.sectionIndex == 0
         let silhouette = isUnit1 ? AnyShape(Unit1BigButtonBack()) : AnyShape(ButtonBadge())
         let faceSilhouette = isUnit1 ? AnyShape(Unit1BigButtonFace()) : silhouette
-        let face = isUnit1 ? Color(hex: "#2257DB") : c.main
-        let wall = isUnit1 ? Color(hex: "#0D46D8") : c.main.brightnessShifted(-0.15)
-        // bigbutton.svg is nearly square (317×321). Do not squash it into the
+        let face = isUnit1 ? Color(hex: "#0091E7") : c.main
+        let wall = isUnit1 ? Color(hex: "#007CBF") : c.main.brightnessShifted(-0.15)
+        // bigbutton.svg is nearly square (317×331). Do not squash it into the
         // shared puck's 0.78 height ratio—the shared viewBox is part of the
         // supplied silhouette.
-        let buttonHeightRatio: CGFloat = isUnit1 ? 321.0 / 317.0 : ovalRatio
+        let buttonHeightRatio: CGFloat = isUnit1 ? 331.0 / 317.0 : ovalRatio
 
         return ZStack {
             if testOutAvailable {
@@ -494,7 +494,7 @@ struct PathView: View {
             }
             .buttonStyle(PuckButtonStyle(
                 slab: wall, size: nodeSize, ovalRatio: buttonHeightRatio,
-                depth: isUnit1 ? nodeSize * (27.0 / 321.0) : 10,
+                depth: isUnit1 ? nodeSize * (41.0 / 331.0) : 10,
                 shape: silhouette,
                 exactBackShape: isUnit1 ? AnyShape(Unit1BigButtonBack()) : nil
             ))
@@ -697,27 +697,27 @@ struct ButtonBadge: Shape {
     }
 }
 
-/// The lighter face from bigbutton.svg, mapped in its original shared 317×321
+/// The lighter face from bigbutton.svg, mapped in its original shared 317×331
 /// viewBox so its position remains exact relative to the darker rear layer.
 struct Unit1BigButtonFace: Shape {
     func path(in rect: CGRect) -> Path {
         func pt(_ x: CGFloat, _ y: CGFloat) -> CGPoint {
             CGPoint(x: rect.minX + x / 317.0 * rect.width,
-                    y: rect.minY + y / 321.0 * rect.height)
+                    y: rect.minY + y / 331.0 * rect.height)
         }
         var p = Path()
-        p.move(to: pt(145.188, 2.89677))
-        p.addCurve(to: pt(170.911, 2.89676), control1: pt(153.328, -0.965616), control2: pt(162.772, -0.965621))
-        p.addLine(to: pt(298.961, 63.6607))
-        p.addCurve(to: pt(316.099, 90.7639), control1: pt(309.428, 68.6278), control2: pt(316.099, 79.178))
-        p.addLine(to: pt(316.099, 202.823))
-        p.addCurve(to: pt(298.961, 229.926), control1: pt(316.099, 214.409), control2: pt(309.428, 224.959))
-        p.addLine(to: pt(170.911, 290.69))
-        p.addCurve(to: pt(145.188, 290.69), control1: pt(162.772, 294.553), control2: pt(153.328, 294.553))
-        p.addLine(to: pt(17.1386, 229.926))
-        p.addCurve(to: pt(-0.0000152588, 202.823), control1: pt(6.67143, 224.959), control2: pt(-0.0000152588, 214.409))
-        p.addLine(to: pt(-0.0000152588, 90.7639))
-        p.addCurve(to: pt(17.1386, 63.6607), control1: pt(-0.0000152588, 79.1781), control2: pt(6.67142, 68.6278))
+        p.move(to: pt(136.614, 4.82798))
+        p.addCurve(to: pt(179.485, 4.82798), control1: pt(150.179, -1.60932), control2: pt(165.92, -1.60933))
+        p.addLine(to: pt(287.535, 56.1012))
+        p.addCurve(to: pt(316.099, 101.273), control1: pt(304.98, 64.3796), control2: pt(316.099, 81.9635))
+        p.addLine(to: pt(316.099, 188.039))
+        p.addCurve(to: pt(287.535, 233.211), control1: pt(316.099, 207.349), control2: pt(304.98, 224.932))
+        p.addLine(to: pt(179.485, 284.484))
+        p.addCurve(to: pt(136.614, 284.484), control1: pt(165.92, 290.921), control2: pt(150.179, 290.921))
+        p.addLine(to: pt(28.5643, 233.211))
+        p.addCurve(to: pt(-0.0000152588, 188.039), control1: pt(11.119, 224.932), control2: pt(-0.0000152588, 207.349))
+        p.addLine(to: pt(-0.0000152588, 101.273))
+        p.addCurve(to: pt(28.5643, 56.1013), control1: pt(-0.0000152588, 81.9635), control2: pt(11.119, 64.3796))
         p.closeSubpath()
         return p
     }
@@ -728,21 +728,21 @@ struct Unit1BigButtonBack: Shape {
     func path(in rect: CGRect) -> Path {
         func pt(_ x: CGFloat, _ y: CGFloat) -> CGPoint {
             CGPoint(x: rect.minX + x / 317.0 * rect.width,
-                    y: rect.minY + y / 321.0 * rect.height)
+                    y: rect.minY + y / 331.0 * rect.height)
         }
         var p = Path()
-        p.move(to: pt(145.188, 29.8968))
-        p.addCurve(to: pt(170.911, 29.8968), control1: pt(153.328, 26.0344), control2: pt(162.772, 26.0344))
-        p.addLine(to: pt(298.961, 90.6607))
-        p.addCurve(to: pt(316.099, 117.764), control1: pt(309.428, 95.6278), control2: pt(316.099, 106.178))
-        p.addLine(to: pt(316.099, 229.823))
-        p.addCurve(to: pt(298.961, 256.926), control1: pt(316.099, 241.409), control2: pt(309.428, 251.959))
-        p.addLine(to: pt(170.911, 317.69))
-        p.addCurve(to: pt(145.188, 317.69), control1: pt(162.772, 321.553), control2: pt(153.328, 321.553))
-        p.addLine(to: pt(17.1386, 256.926))
-        p.addCurve(to: pt(-0.0000152588, 229.823), control1: pt(6.67143, 251.959), control2: pt(-0.0000152588, 241.409))
-        p.addLine(to: pt(-0.0000152588, 117.764))
-        p.addCurve(to: pt(17.1386, 90.6607), control1: pt(-0.0000152588, 106.178), control2: pt(6.67142, 95.6278))
+        p.move(to: pt(136.614, 45.828))
+        p.addCurve(to: pt(179.485, 45.828), control1: pt(150.179, 39.3907), control2: pt(165.92, 39.3907))
+        p.addLine(to: pt(287.535, 97.1012))
+        p.addCurve(to: pt(316.099, 142.273), control1: pt(304.98, 105.38), control2: pt(316.099, 122.963))
+        p.addLine(to: pt(316.099, 229.039))
+        p.addCurve(to: pt(287.535, 274.211), control1: pt(316.099, 248.349), control2: pt(304.98, 265.932))
+        p.addLine(to: pt(179.485, 325.484))
+        p.addCurve(to: pt(136.614, 325.484), control1: pt(165.92, 331.921), control2: pt(150.179, 331.921))
+        p.addLine(to: pt(28.5643, 274.211))
+        p.addCurve(to: pt(-0.0000152588, 229.039), control1: pt(11.119, 265.932), control2: pt(-0.0000152588, 248.349))
+        p.addLine(to: pt(-0.0000152588, 142.273))
+        p.addCurve(to: pt(28.5643, 97.1013), control1: pt(-0.0000152588, 122.963), control2: pt(11.119, 105.38))
         p.closeSubpath()
         return p
     }
