@@ -669,7 +669,11 @@ struct TimeSalesView: View {
                 .font(Theme.font(10, .black)).foregroundColor(Theme.muted)
                 .padding(.horizontal, 12).padding(.vertical, 9)
 
-                ForEach(Array(prints.enumerated().suffix(visibleRows)), id: \.element.id) { index, print in
+                // Render every row so the tape's height is fixed from the
+                // start; unrevealed rows are just transparent. Otherwise the box
+                // grows as prints reveal and shoves the answer choices down.
+                ForEach(Array(prints.enumerated()), id: \.element.id) { index, print in
+                    let shown = index >= prints.count - visibleRows
                     HStack {
                         Text(print.time).frame(maxWidth: .infinity, alignment: .leading)
                         Text(String(format: "%.2f", print.price)).frame(maxWidth: .infinity)
@@ -681,6 +685,8 @@ struct TimeSalesView: View {
                     .background((print.buyerInitiated ? bidColor : askColor).opacity(0.08))
                     .overlay(RoundedRectangle(cornerRadius: 5).strokeBorder(tapeRowColor(index), lineWidth: tapeRowWidth(index)))
                     .contentShape(Rectangle())
+                    .opacity(shown ? 1 : 0)
+                    .allowsHitTesting(shown)
                     .onTapGesture {
                         guard screen.type == "time_sales_tap", !player.revealed else { return }
                         Haptics.selection(); player.selectedIndex = index
