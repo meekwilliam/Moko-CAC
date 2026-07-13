@@ -402,6 +402,7 @@ struct DOMTapView: View {
 struct BookDepthCompareView: View {
     @ObservedObject var player: LessonPlayer
     var ink: Color
+    @Environment(\.colorScheme) private var scheme
 
     private let prices = [101.10, 101.05, 101.00, 100.95, 100.90]
     private var bookSizes: (a: [Int], b: [Int]) {
@@ -456,7 +457,7 @@ struct BookDepthCompareView: View {
                 .fill(Theme.surfaceRaised)
                 .overlay(
                     RoundedRectangle(cornerRadius: 15, style: .continuous)
-                        .strokeBorder(tint.opacity(0.7), lineWidth: 1.5)
+                        .strokeBorder(Theme.optionBorder(scheme), lineWidth: 1.5)
                 )
         )
         .background(
