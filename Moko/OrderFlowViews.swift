@@ -812,6 +812,128 @@ private func makeFootprint(seed: UInt64, event: String, target: Int? = nil) -> [
     }
 }
 
+/// Display-only footprint (Panel 3): the same bid/ask ladder, center candle,
+/// heatmap POC, totals, CANDLE DELTA and CVD as `FootprintQuestionView`, but
+/// with no tap grading. Used inside the combined `OrderFlowSimulationView`
+/// panels so the synthesis boss shows a real footprint alongside price and DOM.
+struct FootprintPanel: View {
+    var seed: UInt64
+    var event: String = "balanced"
+    private let levels: [FootprintLevel]
+
+    init(seed: UInt64, event: String = "balanced") {
+        self.seed = seed
+        self.event = event
+        self.levels = makeFootprint(seed: seed, event: event)
+    }
+
+    private var maxBidIdx: Int { levels.indices.max(by: { levels[$0].bidVolume < levels[$1].bidVolume }) ?? -1 }
+    private var maxAskIdx: Int { levels.indices.max(by: { levels[$0].askVolume < levels[$1].askVolume }) ?? -1 }
+    private var bidTotal: Int { levels.reduce(0) { $0 + $1.bidVolume } }
+    private var askTotal: Int { levels.reduce(0) { $0 + $1.askVolume } }
+    private var delta: Int { askTotal - bidTotal }
+
+    private func fmtVol(_ v: Int) -> String {
+        let scaled = Double(abs(v)) * 42_000
+        let sign = v < 0 ? "-" : ""
+        if scaled >= 1_000_000 { return sign + String(format: "%.2fM", scaled / 1_000_000) }
+        return sign + String(format: "%.0fK", scaled / 1_000)
+    }
+
+    private func fpCell(_ v: Int, tint: Color, poc: Bool) -> some View {
+        Text(fmtVol(v))
+            .font(Theme.font(12, .black))
+            .foregroundColor(poc ? .black : .white)
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
+            .background(poc ? Color(hex: "#E8ECEF") : tint.opacity(min(0.85, 0.14 + Double(v) / 360)))
+    }
+
+    private var candleOverlay: some View {
+        let color = delta >= 0 ? bidColor : askColor
+        return ZStack {
+            Rectangle().fill(color.opacity(0.5)).frame(width: 3)
+            GeometryReader { geo in
+                RoundedRectangle(cornerRadius: 3, style: .continuous).fill(color)
+                    .frame(width: 22, height: geo.size.height * 0.6)
+                    .position(x: geo.size.width / 2, y: geo.size.height * 0.46)
+            }
+        }
+        .frame(width: 44)
+    }
+
+    private var cvdSeries: [Double] {
+        var rng = SplitMix(seed: seed &+ 7919)
+        let bias = delta >= 0 ? 1.0 : -1.0
+        var v = 0.0
+        return (0..<14).map { _ in
+            v += bias * Double(rng.next() % 26) / 10.0 + (Double(Int(rng.next() % 20)) - 10) / 10.0
+            return v
+        }
+    }
+
+    private var cvdSparkline: some View {
+        let pts = cvdSeries
+        let lo = pts.min() ?? 0, hi = pts.max() ?? 1
+        let range = max(hi - lo, 0.0001)
+        let up = (pts.last ?? 0) >= (pts.first ?? 0)
+        return GeometryReader { geo in
+            Path { p in
+                for (i, v) in pts.enumerated() {
+                    let x = geo.size.width * CGFloat(i) / CGFloat(max(pts.count - 1, 1))
+                    let y = geo.size.height * (1 - CGFloat((v - lo) / range))
+                    if i == 0 { p.move(to: CGPoint(x: x, y: y)) } else { p.addLine(to: CGPoint(x: x, y: y)) }
+                }
+            }
+            .stroke(up ? bidColor : askColor, style: StrokeStyle(lineWidth: 2, lineCap: .round, lineJoin: .round))
+        }
+        .frame(height: 24)
+    }
+
+    var body: some View {
+        VStack(alignment: .leading, spacing: 0) {
+            Text("FOOTPRINT + DELTA").font(Theme.font(10, .black)).foregroundColor(Theme.muted)
+                .padding(.bottom, 8)
+            VStack(spacing: 3) {
+                ForEach(Array(levels.enumerated()), id: \.element.id) { index, level in
+                    HStack(spacing: 0) {
+                        fpCell(level.bidVolume, tint: askColor, poc: index == maxBidIdx)
+                        Color.clear.frame(width: 44)
+                        fpCell(level.askVolume, tint: bidColor, poc: index == maxAskIdx)
+                    }
+                    .frame(height: 30)
+                }
+            }
+            .overlay(candleOverlay.allowsHitTesting(false))
+
+            HStack(spacing: 0) {
+                Text(fmtVol(bidTotal)).foregroundColor(askColor).frame(maxWidth: .infinity)
+                Color.clear.frame(width: 44)
+                Text(fmtVol(askTotal)).foregroundColor(bidColor).frame(maxWidth: .infinity)
+            }
+            .font(Theme.font(15, .black)).padding(.top, 6).padding(.bottom, 8)
+
+            VStack(spacing: 7) {
+                HStack {
+                    Text("CANDLE DELTA").font(Theme.font(10, .black)).foregroundColor(Theme.muted)
+                    Spacer()
+                    Text((delta >= 0 ? "+" : "") + fmtVol(delta))
+                        .font(Theme.font(15, .black))
+                        .foregroundColor(delta >= 0 ? bidColor : askColor)
+                }
+                HStack(spacing: 10) {
+                    Text("CVD").font(Theme.font(10, .black)).foregroundColor(Theme.muted)
+                    cvdSparkline
+                }
+            }
+            .padding(.horizontal, 11).padding(.vertical, 9)
+            .background(RoundedRectangle(cornerRadius: 9).fill(Color.black.opacity(0.55)))
+        }
+        .padding(12)
+        .background(RoundedRectangle(cornerRadius: 16).fill(Color.black.opacity(0.28)))
+        .overlay(RoundedRectangle(cornerRadius: 16).strokeBorder(Theme.surfaceBorder, lineWidth: 1.5))
+    }
+}
+
 /// Bid volume prints on the left and ask volume on the right at each price,
 /// giving late course lessons a real footprint style comparison mechanic.
 struct FootprintQuestionView: View {
@@ -1287,28 +1409,42 @@ struct OrderFlowSimulationView: View {
                 }
             }
 
-            VStack(spacing: 7) {
-                if renderMode == .rawFull {
-                    LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible())], alignment: .leading, spacing: 7) {
+            if useRichPanels {
+                VStack(spacing: 10) {
+                    PriceContextPanel(seed: panelSeed, bullish: panelBullish)
+                    DOMTapePanel(seed: panelSeed &+ 101, bullish: panelBullish)
+                    FootprintPanel(seed: panelSeed &+ 202, event: eventKey)
+                    if screen.footprintPreview == true {
+                        Text("EXTRA PREVIEW  Delta compares aggressive buying with selling. This clue is supplemental and is taught in Unit 5.")
+                            .font(Theme.font(9, .bold)).foregroundColor(.orange)
+                            .multilineTextAlignment(.leading).frame(maxWidth: .infinity, alignment: .leading)
+                            .padding(.horizontal, 5)
+                    }
+                }
+            } else {
+                VStack(spacing: 7) {
+                    if renderMode == .rawFull {
+                        LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible())], alignment: .leading, spacing: 7) {
+                            ForEach(Array(tracks.enumerated()), id: \.offset) { index, track in
+                                evidenceCard(index: index, track: track)
+                            }
+                        }
+                    } else {
                         ForEach(Array(tracks.enumerated()), id: \.offset) { index, track in
                             evidenceCard(index: index, track: track)
                         }
                     }
-                } else {
-                    ForEach(Array(tracks.enumerated()), id: \.offset) { index, track in
-                        evidenceCard(index: index, track: track)
+                    if screen.footprintPreview == true {
+                        Text("EXTRA PREVIEW  Delta compares aggressive buying with selling. This clue is supplemental and is taught in Unit 5.")
+                            .font(Theme.font(9, .bold)).foregroundColor(.orange)
+                            .multilineTextAlignment(.leading).frame(maxWidth: .infinity, alignment: .leading)
+                            .padding(.horizontal, 5).padding(.top, 3)
                     }
                 }
-                if screen.footprintPreview == true {
-                    Text("EXTRA PREVIEW  Delta compares aggressive buying with selling. This clue is supplemental and is taught in Unit 5.")
-                        .font(Theme.font(9, .bold)).foregroundColor(.orange)
-                        .multilineTextAlignment(.leading).frame(maxWidth: .infinity, alignment: .leading)
-                        .padding(.horizontal, 5).padding(.top, 3)
-                }
+                .padding(10)
+                .background(RoundedRectangle(cornerRadius: 16).fill(Color.black.opacity(0.24)))
+                .overlay(RoundedRectangle(cornerRadius: 16).strokeBorder(Color.purple.opacity(0.55), lineWidth: 1.5))
             }
-            .padding(10)
-            .background(RoundedRectangle(cornerRadius: 16).fill(Color.black.opacity(0.24)))
-            .overlay(RoundedRectangle(cornerRadius: 16).strokeBorder(Color.purple.opacity(0.55), lineWidth: 1.5))
 
             if screen.type == "orderflow_sim_tap" {
                 Label(evidenceReady ? "Tap the evidence card that answers the question" : "Watch the evidence develop", systemImage: "hand.tap.fill")
@@ -1459,6 +1595,23 @@ struct OrderFlowSimulationView: View {
     }
 
     private var eventKey: String { screen.scenarioId ?? screen.event ?? "seller_absorption" }
+
+    /// The synthesis boss shows the real market via the three combined panels
+    /// (Price+Context / DOM+Tape / Footprint+Delta) whenever the learner answers
+    /// through options. The card-tap/select modes keep the abstract evidence
+    /// cards because those cards are themselves the tappable answer surface.
+    private var useRichPanels: Bool {
+        screen.type != "orderflow_sim_tap" && screen.type != "orderflow_sim_select"
+    }
+
+    private var panelSeed: UInt64 { chartSeed(screen) }
+
+    private var panelBullish: Bool {
+        let e = eventKey.lowercased()
+        if e.contains("lift") || e.contains("positive") || e.contains("bull") || e.contains("bid") || e.contains("stacked_bid") { return true }
+        if e.contains("hit") || e.contains("negative") || e.contains("bear") || e.contains("ask") { return false }
+        return true
+    }
 
     private func restartEvidence() {
         Haptics.selection()
