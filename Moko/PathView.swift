@@ -384,20 +384,19 @@ struct PathView: View {
         let testOutAvailable = shouldShowTestOut(for: node)
         let visualState: NodeState = testOutAvailable ? .active : state
         let c = store.colors(for: node.num, state: visualState)
-        // Every node is a hexagon now (boss included); the boss still reads apart
-        // via its crown. The 3D wall uses a shade close to the face color rather
-        // than the much-darker unit `dark`, so the lip reads as the same button.
-        // Unit 1 uses the bigbutton.svg badge shape and its own blue palette; every
-        // other unit keeps the shared badge in its unit color.
-        let isUnit1 = node.sectionIndex == 0
-        let silhouette = isUnit1 ? AnyShape(Unit1BigButtonBack()) : AnyShape(ButtonBadge())
-        let faceSilhouette = isUnit1 ? AnyShape(Unit1BigButtonFace()) : silhouette
-        let face = isUnit1 ? Color(hex: "#0091E7") : c.main
-        let wall = isUnit1 ? Color(hex: "#007CBF") : c.main.brightnessShifted(-0.15)
+        // Every node uses the same large SVG silhouette (boss included); the
+        // boss still reads apart via its crown.
+        // Every unit uses the exact bigbutton.svg geometry. The section's own
+        // bg/slab pair supplies the face and rear-layer colors, preserving the
+        // distinct palette for each unit and the muted locked state.
+        let silhouette = AnyShape(BigButtonBack())
+        let faceSilhouette = AnyShape(BigButtonFace())
+        let face = c.main
+        let wall = c.dark
         // bigbutton.svg is nearly square (317×331). Do not squash it into the
         // shared puck's 0.78 height ratio—the shared viewBox is part of the
         // supplied silhouette.
-        let buttonHeightRatio: CGFloat = isUnit1 ? 331.0 / 317.0 : ovalRatio
+        let buttonHeightRatio: CGFloat = 331.0 / 317.0
 
         return ZStack {
             if testOutAvailable {
@@ -451,37 +450,12 @@ struct PathView: View {
                 // Just the face (+ icon + badge); the slab is drawn fixed by the
                 // button style so the face sinks onto it on press.
                 ZStack {
-                    // A coin facing up. The face carries a gentle top-lit
-                    // gradient (brighter top, base at the bottom) so it reads as
-                    // a domed surface rather than a flat fill — the wall shading
-                    // lives in PuckButtonStyle's slab.
+                    // Exact flat face from bigbutton.svg. Its separate darker
+                    // rear layer is drawn by PuckButtonStyle.
                     faceSilhouette
-                        .fill(isUnit1 ? AnyShapeStyle(face) : AnyShapeStyle(LinearGradient(
-                            colors: [face.brightnessShifted(0.07), face,
-                                     face.brightnessShifted(-0.05)],
-                            startPoint: .top, endPoint: .bottom)))
+                        .fill(face)
                         .frame(width: nodeSize, height: nodeSize * buttonHeightRatio)
-                        // Inner bottom shading for a rounded, puffed look.
-                        .overlay(
-                            faceSilhouette.stroke(Color.black.opacity(isUnit1 ? 0 : 0.20), lineWidth: 4)
-                                .padding(1).mask(
-                                    LinearGradient(colors: [.clear, .black], startPoint: .center, endPoint: .bottom))
-                        )
                         .clipShape(faceSilhouette)
-
-                    // Completed lessons get a glossy sheen across the top, like
-                    // a polished glass badge (reference).
-                    if visualState == .done && !isUnit1 {
-                        Ellipse()
-                            .fill(LinearGradient(
-                                colors: [Color.white.opacity(0.55), Color.white.opacity(0.0)],
-                                startPoint: .top, endPoint: .bottom))
-                            .frame(width: nodeSize * 0.72, height: nodeSize * 0.40)
-                            .offset(y: -nodeSize * 0.16)
-                            .blur(radius: 3)
-                            .clipShape(faceSilhouette)
-                            .allowsHitTesting(false)
-                    }
 
                     if node.isBoss {
                         bossCrown(locked: visualState == .locked)
@@ -494,9 +468,9 @@ struct PathView: View {
             }
             .buttonStyle(PuckButtonStyle(
                 slab: wall, size: nodeSize, ovalRatio: buttonHeightRatio,
-                depth: isUnit1 ? nodeSize * (41.0 / 331.0) : 10,
+                depth: nodeSize * (41.0 / 331.0),
                 shape: silhouette,
-                exactBackShape: isUnit1 ? AnyShape(Unit1BigButtonBack()) : nil
+                exactBackShape: AnyShape(BigButtonBack())
             ))
         }
         .frame(width: nodeSize, height: nodeSize)
@@ -670,36 +644,9 @@ struct PathView: View {
 /// gives the 3D slab a clean seam, the way the ellipse's bottom arc does.
 /// Corners are rounded so it sits with the app's soft, chunky geometry rather
 /// than reading as a spiky badge.
-/// The node button silhouette, traced from `button.svg` — a rounded shield /
-/// badge (peaked top, tapering to a flat bottom). Drawn in the SVG's 266×266
-/// space, then scaled to fill whatever rect it's given.
-struct ButtonBadge: Shape {
-    func path(in rect: CGRect) -> Path {
-        // Bounding box of the SVG face path (the lighter inner shape).
-        let box = CGRect(x: -1.18241, y: 5.89519, width: 267.874, height: 238.971)
-        func pt(_ x: CGFloat, _ y: CGFloat) -> CGPoint {
-            CGPoint(x: rect.minX + (x - box.minX) / box.width * rect.width,
-                    y: rect.minY + (y - box.minY) / box.height * rect.height)
-        }
-        var p = Path()
-        p.move(to: pt(121.512, 10.5072))
-        p.addCurve(to: pt(143.997, 10.5071), control1: pt(128.298, 5.89519), control2: pt(137.212, 5.89519))
-        p.addLine(to: pt(256.074, 86.6827))
-        p.addCurve(to: pt(263.724, 109.786), control1: pt(263.555, 91.7675), control2: pt(266.692, 101.241))
-        p.addLine(to: pt(221.475, 231.428))
-        p.addCurve(to: pt(202.582, 244.866), control1: pt(218.681, 239.473), control2: pt(211.098, 244.866))
-        p.addLine(to: pt(62.9277, 244.866))
-        p.addCurve(to: pt(44.0348, 231.428), control1: pt(54.4113, 244.866), control2: pt(46.829, 239.473))
-        p.addLine(to: pt(1.78546, 109.786))
-        p.addCurve(to: pt(9.43581, 86.6827), control1: pt(-1.18241, 101.241), control2: pt(1.95457, 91.7675))
-        p.closeSubpath()
-        return p
-    }
-}
-
 /// The lighter face from bigbutton.svg, mapped in its original shared 317×331
 /// viewBox so its position remains exact relative to the darker rear layer.
-struct Unit1BigButtonFace: Shape {
+struct BigButtonFace: Shape {
     func path(in rect: CGRect) -> Path {
         func pt(_ x: CGFloat, _ y: CGFloat) -> CGPoint {
             CGPoint(x: rect.minX + x / 317.0 * rect.width,
@@ -724,7 +671,7 @@ struct Unit1BigButtonFace: Shape {
 }
 
 /// The darker rear path from bigbutton.svg.
-struct Unit1BigButtonBack: Shape {
+struct BigButtonBack: Shape {
     func path(in rect: CGRect) -> Path {
         func pt(_ x: CGFloat, _ y: CGFloat) -> CGPoint {
             CGPoint(x: rect.minX + x / 317.0 * rect.width,
