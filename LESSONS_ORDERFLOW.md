@@ -15,8 +15,8 @@ Interactive mechanics:
   [TAP_CANDLE] Select a candle directly on a chart.
   [TRENDLINE] Connect two candles on a chart.
   [LIVE_CHART] Read pressure while candles update.
-  [ORDERFLOW_SIM] Combine book, tape, footprint, and price response.
-  [TRADE_DECISION] Read synchronized raw evidence and choose LONG, SHORT, or WAIT.
+  [ORDERFLOW_SIM] Show only the focused evidence needed for an interpretation question.
+  [TRADE_DECISION] Use the full synchronized board and choose LONG, SHORT, or WAIT.
   [TRADE_SCENARIO] Make several decisions during one continuous market replay.
   [TRADE_MANAGE] Manage an open position from evolving evidence.
   [ENTRY_SELECT] Choose MARKET, LIMIT, or NO ENTRY from execution conditions.

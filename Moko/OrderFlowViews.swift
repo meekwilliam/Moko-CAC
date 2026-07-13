@@ -1360,7 +1360,8 @@ struct OrderFlowSimulationView: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 13) {
             HStack {
-                Text("MULTI SIGNAL READ").font(Theme.font(10, .black)).foregroundColor(Theme.muted)
+                Text(usesTradeDecisionBoard ? "TRADE DECISION" : "FOCUSED EVIDENCE")
+                    .font(Theme.font(10, .black)).foregroundColor(Theme.muted)
                 if player.isTestLesson {
                     Text(difficultyLabel)
                         .font(Theme.font(8, .black)).foregroundColor(.purple)
@@ -1368,7 +1369,7 @@ struct OrderFlowSimulationView: View {
                         .background(Capsule().fill(Color.purple.opacity(0.12)))
                 }
                 Spacer()
-                if isDecisionMechanic {
+                if usesTradeDecisionBoard {
                     Button(action: togglePause) {
                         Image(systemName: simulationPaused ? "play.fill" : "pause.fill")
                             .font(.system(size: 11, weight: .black)).foregroundColor(.purple)
@@ -1409,44 +1410,26 @@ struct OrderFlowSimulationView: View {
                 }
             }
 
-            if useRichPanels {
-                VStack(spacing: 8) {
-                    PriceContextPanel(seed: panelSeed, bullish: panelBullish)
-                    HStack(alignment: .top, spacing: 8) {
-                        DOMTapePanel(seed: panelSeed &+ 101, bullish: panelBullish)
-                        FootprintPanel(seed: panelSeed &+ 202, event: eventKey)
-                    }
-                    if screen.footprintPreview == true {
-                        Text("EXTRA PREVIEW  Delta compares aggressive buying with selling. This clue is supplemental and is taught in Unit 5.")
-                            .font(Theme.font(9, .bold)).foregroundColor(.orange)
-                            .multilineTextAlignment(.leading).frame(maxWidth: .infinity, alignment: .leading)
-                            .padding(.horizontal, 5)
-                    }
-                }
-            } else {
-                VStack(spacing: 7) {
-                    if renderMode == .rawFull {
-                        LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible())], alignment: .leading, spacing: 7) {
-                            ForEach(Array(tracks.enumerated()), id: \.offset) { index, track in
-                                evidenceCard(index: index, track: track)
-                            }
+            Group {
+                if usesTradeDecisionBoard {
+                    tradeDecisionBoard
+                } else {
+                    VStack(spacing: 7) {
+                        ForEach(visibleTracks, id: \.index) { item in
+                            evidenceCard(index: item.index, track: item.track)
                         }
-                    } else {
-                        ForEach(Array(tracks.enumerated()), id: \.offset) { index, track in
-                            evidenceCard(index: index, track: track)
+                        if screen.footprintPreview == true {
+                            Text("EXTRA PREVIEW  Delta compares aggressive buying with selling. This clue is supplemental and is taught in Unit 5.")
+                                .font(Theme.font(9, .bold)).foregroundColor(.orange)
+                                .multilineTextAlignment(.leading).frame(maxWidth: .infinity, alignment: .leading)
+                                .padding(.horizontal, 5).padding(.top, 3)
                         }
                     }
-                    if screen.footprintPreview == true {
-                        Text("EXTRA PREVIEW  Delta compares aggressive buying with selling. This clue is supplemental and is taught in Unit 5.")
-                            .font(Theme.font(9, .bold)).foregroundColor(.orange)
-                            .multilineTextAlignment(.leading).frame(maxWidth: .infinity, alignment: .leading)
-                            .padding(.horizontal, 5).padding(.top, 3)
-                    }
                 }
-                .padding(10)
+            }
+            .padding(10)
                 .background(RoundedRectangle(cornerRadius: 16).fill(Color.black.opacity(0.24)))
                 .overlay(RoundedRectangle(cornerRadius: 16).strokeBorder(Color.purple.opacity(0.55), lineWidth: 1.5))
-            }
 
             if screen.type == "orderflow_sim_tap" {
                 Label(evidenceReady ? "Tap the evidence card that answers the question" : "Watch the evidence develop", systemImage: "hand.tap.fill")
@@ -1497,13 +1480,120 @@ struct OrderFlowSimulationView: View {
         ]
     }
 
+    /// Interpretation questions get only the sources needed to answer them.
+    /// Direct evidence-tap targets are always retained even if the wording
+    /// would otherwise select a different focused panel.
+    private var visibleTracks: [(index: Int, track: MultiSignalTrack)] {
+        var indices = focusedTrackIndices
+        if let target = screen.target { indices.insert(target) }
+        for target in screen.targets ?? [] { indices.insert(target) }
+        if indices.count > 3 {
+            let required = Set(([screen.target].compactMap { $0 }) + (screen.targets ?? []))
+            let optional = indices.filter { !required.contains($0) }
+            for index in optional where indices.count > 3 { indices.remove(index) }
+        }
+        return indices.sorted().compactMap { index in
+            tracks.indices.contains(index) ? (index, tracks[index]) : nil
+        }
+    }
+
+    private var focusedTrackIndices: Set<Int> {
+        let prompt = displayQuestion.lowercased()
+        if prompt.contains("who is aggressive") || prompt.contains("tape") || prompt.contains("print") {
+            return [2]
+        }
+        if prompt.contains("footprint") || prompt.contains("delta") || prompt.contains("cvd") {
+            return prompt.contains("conflict") || prompt.contains("diverge") ? [0, 3] : [3]
+        }
+        if prompt.contains("book") || prompt.contains("dom") || prompt.contains("depth") ||
+            prompt.contains("offer") || prompt.contains("bid") || prompt.contains("liquidity") ||
+            prompt.contains("slippage") || prompt.contains("order choice") {
+            return prompt.contains("refill") || prompt.contains("replenish") || prompt.contains("iceberg") ? [1, 2] : [1]
+        }
+        if prompt.contains("price responding") || prompt.contains("acceptance") || prompt.contains("hold") ||
+            prompt.contains("invalidation") || screen.type == "invalidation_mark" {
+            return [0, 1]
+        }
+        switch eventKey {
+        case "seller_absorption", "seller_absorption_developing", "buyer_absorption": return [0, 1, 2]
+        case "conflict", "chop", "championship": return [0, 2, 3]
+        case "sweep", "downside_sweep", "seller_loses_control": return [0, 2]
+        case "breakout", "breakdown_pressure", "low_volume_trend": return [0, 1, 2]
+        case "iceberg": return [1, 2]
+        case "thin_risk", "thin_liquidity", "exit_liquidity": return [0, 1]
+        case "cvd_warning", "volume_profile_context": return [0, 3]
+        default: return [0, 1]
+        }
+    }
+
     private var renderMode: MultiSignalRenderMode {
-        if isDecisionMechanic { return .rawFull }
-        if let explicit = screen.renderMode.flatMap(MultiSignalRenderMode.init(rawValue:)) { return explicit }
+        if usesTradeDecisionBoard { return .rawFull }
+        if let explicit = screen.renderMode.flatMap(MultiSignalRenderMode.init(rawValue:)) {
+            return explicit == .summary ? .summary : .rawSimplified
+        }
         let sourceNode = screen.sourceNode ?? player.lesson.node
         if sourceNode <= 12 { return .summary }
-        if sourceNode <= 27 { return .rawSimplified }
-        return .rawFull
+        return .rawSimplified
+    }
+
+    private var usesTradeDecisionBoard: Bool {
+        guard screen.type == "trade_decision" || screen.type == "trade_scenario" else { return false }
+        return Set(player.currentOptions) == Set(["LONG", "SHORT", "WAIT"])
+    }
+
+    private var tradeDecisionBoard: some View {
+        VStack(spacing: 7) {
+            decisionPanel(title: "PRICE + CONTEXT", icon: "chart.xyaxis.line", tint: .cyan) {
+                RawMarketEvidencePanel(panelIndex: 0, event: eventKey, tick: simulationTick,
+                                       loopVariant: loopVariant, scenarioPhase: player.scenarioStage,
+                                       full: true, tint: .cyan, ink: ink)
+                    .frame(height: 82)
+            }
+            HStack(alignment: .top, spacing: 7) {
+                decisionPanel(title: "DOM + TAPE", icon: "list.bullet.rectangle", tint: askColor) {
+                    VStack(spacing: 5) {
+                        RawMarketEvidencePanel(panelIndex: 1, event: eventKey, tick: simulationTick,
+                                               loopVariant: loopVariant, scenarioPhase: player.scenarioStage,
+                                               full: true, tint: askColor, ink: ink)
+                            .frame(height: 68)
+                        Divider().overlay(Theme.muted.opacity(0.25))
+                        RawMarketEvidencePanel(panelIndex: 2, event: eventKey, tick: simulationTick,
+                                               loopVariant: loopVariant, scenarioPhase: player.scenarioStage,
+                                               full: true, tint: bidColor, ink: ink)
+                            .frame(height: 62)
+                    }
+                }
+                decisionPanel(title: decisionAuxiliaryTitle, icon: decisionAuxiliaryIcon, tint: .orange) {
+                    RawMarketEvidencePanel(panelIndex: 3, event: eventKey, tick: simulationTick,
+                                           loopVariant: loopVariant, scenarioPhase: player.scenarioStage,
+                                           full: true, tint: .orange, ink: ink)
+                        .frame(height: 137)
+                }
+            }
+        }
+    }
+
+    private func decisionPanel<Content: View>(title: String, icon: String, tint: Color,
+                                              @ViewBuilder content: () -> Content) -> some View {
+        VStack(alignment: .leading, spacing: 6) {
+            Label(title, systemImage: icon)
+                .font(Theme.font(8, .black)).foregroundColor(tint)
+            content()
+        }
+        .padding(8).frame(maxWidth: .infinity, alignment: .topLeading)
+        .background(RoundedRectangle(cornerRadius: 10).fill(tint.opacity(0.08)))
+        .overlay(RoundedRectangle(cornerRadius: 10).strokeBorder(tint.opacity(0.28), lineWidth: 1))
+    }
+
+    private var decisionAuxiliaryTitle: String {
+        if eventKey == "cvd_warning" { return "CVD + DELTA" }
+        if eventKey == "volume_profile_context" { return "PROFILE + DELTA" }
+        return "FOOTPRINT + DELTA"
+    }
+
+    private var decisionAuxiliaryIcon: String {
+        eventKey == "cvd_warning" ? "waveform.path.ecg" :
+            (eventKey == "volume_profile_context" ? "chart.bar.fill" : "square.grid.3x3.fill")
     }
 
     private func evidenceCard(index: Int, track: MultiSignalTrack) -> some View {
@@ -1598,31 +1688,8 @@ struct OrderFlowSimulationView: View {
 
     private var eventKey: String { screen.scenarioId ?? screen.event ?? "seller_absorption" }
 
-    /// The synthesis boss shows the real market via the three combined panels
-    /// (Price+Context / DOM+Tape / Footprint+Delta) whenever the learner answers
-    /// through options. The card-tap/select modes keep the abstract evidence
-    /// cards because those cards are themselves the tappable answer surface.
-    private var useRichPanels: Bool {
-        screen.type != "orderflow_sim_tap" && screen.type != "orderflow_sim_select"
-    }
-
-    private var panelSeed: UInt64 { chartSeed(screen) }
-
-    /// The rich panels show raw candles/DOM/tape/footprint, so the difficulty
-    /// chip must never read "BEGINNER SUMMARY" here — that label belongs to the
-    /// old pre-digested evidence cards, not a raw multi-signal board.
     private var difficultyLabel: String {
-        if useRichPanels {
-            return renderMode == .rawFull ? "ADVANCED FULL RAW" : "INTERMEDIATE RAW"
-        }
         return renderMode.label
-    }
-
-    private var panelBullish: Bool {
-        let e = eventKey.lowercased()
-        if e.contains("lift") || e.contains("positive") || e.contains("bull") || e.contains("bid") || e.contains("stacked_bid") { return true }
-        if e.contains("hit") || e.contains("negative") || e.contains("bear") || e.contains("ask") { return false }
-        return true
     }
 
     private func restartEvidence() {

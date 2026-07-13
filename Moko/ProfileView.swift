@@ -147,7 +147,7 @@ struct ProfileView: View {
                     onTestMechanics()
                 }
                 prefButton(iconSystem: "square.stack.3d.up.fill", iconColor: Color(hex: "#A855F7"),
-                           iconBg: Color(hex: "#A855F7").opacity(0.12), label: "Test Multi Signal Read") {
+                           iconBg: Color(hex: "#A855F7").opacity(0.12), label: "Test Trade Decision") {
                     onTestMultiSignal()
                 }
                 prefButton(iconSystem: "flame.fill", iconColor: Color(hex: "#F59E0B"),

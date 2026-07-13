@@ -1,6 +1,6 @@
 import Foundation
 
-// MARK: - Debug: focused multi-signal mechanic lab
+// MARK: - Debug: focused evidence and trade-decision mechanic lab
 // Reachable from Profile → Preferences. It never spends hearts or writes
 // progress, and exercises replay/history plus the new card-answer variants.
 
@@ -139,8 +139,8 @@ enum MultiSignalTestLesson {
 
         let data = try! JSONSerialization.data(withJSONObject: screens)
         let decoded = try! JSONDecoder().decode([LessonScreen].self, from: data)
-        return Lesson(node: -2, title: "Multi Signal Read Lab",
-                      celebration: "Multi signal mechanic test complete.", featurePromo: nil,
+        return Lesson(node: -2, title: "Trade Decision Lab",
+                      celebration: "Trade decision mechanic test complete.", featurePromo: nil,
                       lessonType: "TEST_OUT", screens: decoded)
     }
 }
