@@ -1149,7 +1149,6 @@ struct OrderFlowSimulationView: View {
     @State private var expandedCard: Int?
     @State private var inspectedStages: [Int: Int] = [:]
     @State private var simulationTick = 0
-    @State private var simulationPaused = false
     @State private var loopVariant = 0
 
     var body: some View {
@@ -1172,21 +1171,6 @@ struct OrderFlowSimulationView: View {
                         .buttonStyle(.plain)
                         .accessibilityLabel("Replay evidence sequence")
                     }
-                } else {
-                    Button(action: togglePause) {
-                        Image(systemName: simulationPaused ? "play.fill" : "pause.fill")
-                            .font(.system(size: 11, weight: .black)).foregroundColor(.purple)
-                            .frame(width: 26, height: 26)
-                    }
-                    .buttonStyle(.plain)
-                    .accessibilityLabel(simulationPaused ? "Resume market simulation" : "Pause market simulation")
-                    Button(action: restartEvidence) {
-                        Image(systemName: "arrow.counterclockwise")
-                            .font(.system(size: 11, weight: .black)).foregroundColor(.purple)
-                            .frame(width: 26, height: 26)
-                    }
-                    .buttonStyle(.plain)
-                    .accessibilityLabel("Restart market simulation")
                 }
             }
 
@@ -1329,10 +1313,6 @@ struct OrderFlowSimulationView: View {
         let finalTick = renderMode == .rawFull ? 16 : 12
         do {
             while !Task.isCancelled && !player.revealed {
-                if simulationPaused {
-                    try await Task.sleep(nanoseconds: 120_000_000)
-                    continue
-                }
                 try await Task.sleep(nanoseconds: 750_000_000)
                 guard !Task.isCancelled, !player.revealed else { return }
                 if simulationTick >= finalTick {
@@ -1353,13 +1333,7 @@ struct OrderFlowSimulationView: View {
 
     private func restartEvidence() {
         Haptics.selection()
-        simulationPaused = false
         replayID += 1
-    }
-
-    private func togglePause() {
-        Haptics.selection()
-        simulationPaused.toggle()
     }
 
     private func cardTapped(_ index: Int) {
@@ -1693,26 +1667,33 @@ private struct RawMarketEvidencePanel: View {
         let thinBook = event == "thin_risk" || event == "thin_liquidity"
         let refreshSequence = [108, 86, 72, 45, 31, 126, 104, 68, 33, 121]
         let consumeSequence = [142, 119, 91, 64, 38, 17, 4, 0, 0, 0]
-        return VStack(spacing: 1) {
-            ForEach(0..<rows, id: \.self) { index in
-                let ask = index < rows / 2
-                let highlighted = sellerDriven ? index == rows / 2 : index == rows / 2 - 1
-                let base = 70 + index * 19 + loopVariant * 7 + ((tick + index) % 3) * 3
-                let consumesLiquidity = event == "breakout" || event == "breakdown_pressure" || event == "low_volume_trend"
-                let activeSequence = consumesLiquidity ? consumeSequence : refreshSequence
-                let size = thinBook ? (index.isMultiple(of: 3) ? 0 : 8 + index * 4)
-                    : (highlighted ? activeSequence[(tick + loopVariant) % activeSequence.count] : base)
-                HStack(spacing: 3) {
-                    Text(ask ? "" : "\(size)").frame(maxWidth: .infinity, alignment: .trailing)
-                    Text(String(format: "%.2f", 100.20 + Double(rows / 2 - index) * 0.05))
-                        .foregroundColor(ink).frame(width: full ? 42 : 54)
-                    Text(ask ? "\(size)" : "").frame(maxWidth: .infinity, alignment: .leading)
+        return GeometryReader { proxy in
+            let rowHeight = max(1, (proxy.size.height - CGFloat(rows - 1)) / CGFloat(rows))
+            VStack(spacing: 1) {
+                ForEach(0..<rows, id: \.self) { index in
+                    let ask = index < rows / 2
+                    let highlighted = sellerDriven ? index == rows / 2 : index == rows / 2 - 1
+                    let base = 70 + index * 19 + loopVariant * 7 + ((tick + index) % 3) * 3
+                    let consumesLiquidity = event == "breakout" || event == "breakdown_pressure" || event == "low_volume_trend"
+                    let activeSequence = consumesLiquidity ? consumeSequence : refreshSequence
+                    let size = thinBook ? (index.isMultiple(of: 3) ? 0 : 8 + index * 4)
+                        : (highlighted ? activeSequence[(tick + loopVariant) % activeSequence.count] : base)
+                    HStack(spacing: 3) {
+                        Text(ask ? "" : "\(size)").frame(maxWidth: .infinity, alignment: .trailing)
+                        Text(String(format: "%.2f", 100.20 + Double(rows / 2 - index) * 0.05))
+                            .foregroundColor(ink).frame(width: full ? 42 : 54)
+                        Text(ask ? "\(size)" : "").frame(maxWidth: .infinity, alignment: .leading)
+                    }
+                    .font(Theme.font(full ? 6 : 7, highlighted ? .black : .bold))
+                    .foregroundColor(ask ? askColor : bidColor)
+                    .background(highlighted ? tint.opacity(0.11) : .clear)
+                    .contentTransition(.numericText())
+                    .lineLimit(1)
+                    .frame(height: rowHeight)
                 }
-                .font(Theme.font(full ? 6 : 7, highlighted ? .black : .bold))
-                .foregroundColor(ask ? askColor : bidColor)
-                .background(highlighted ? tint.opacity(0.11) : .clear)
-                .contentTransition(.numericText())
             }
+            .frame(width: proxy.size.width, height: proxy.size.height, alignment: .top)
+            .clipped()
         }
     }
 
