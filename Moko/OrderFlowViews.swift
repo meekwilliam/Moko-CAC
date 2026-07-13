@@ -887,13 +887,13 @@ struct FootprintPanel: View {
             }
             .stroke(up ? bidColor : askColor, style: StrokeStyle(lineWidth: 2, lineCap: .round, lineJoin: .round))
         }
-        .frame(height: 24)
+        .frame(height: 18)
     }
 
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
             Text("FOOTPRINT + DELTA").font(Theme.font(10, .black)).foregroundColor(Theme.muted)
-                .padding(.bottom, 8)
+                .padding(.bottom, 6)
             VStack(spacing: 3) {
                 ForEach(Array(levels.enumerated()), id: \.element.id) { index, level in
                     HStack(spacing: 0) {
@@ -901,7 +901,7 @@ struct FootprintPanel: View {
                         Color.clear.frame(width: 44)
                         fpCell(level.askVolume, tint: bidColor, poc: index == maxAskIdx)
                     }
-                    .frame(height: 24)
+                    .frame(height: 20)
                 }
             }
             .fixedSize(horizontal: false, vertical: true)
@@ -914,23 +914,18 @@ struct FootprintPanel: View {
                 Text(fmtVol(askTotal)).foregroundColor(bidColor)
                     .frame(maxWidth: .infinity).lineLimit(1).minimumScaleFactor(0.6)
             }
-            .font(Theme.font(15, .black)).padding(.top, 6).padding(.bottom, 6)
+            .font(Theme.font(15, .black)).padding(.top, 5).padding(.bottom, 6)
 
-            Text("Δ " + (delta >= 0 ? "+" : "") + fmtVol(delta))
-                .font(Theme.font(13, .black))
-                .foregroundColor(delta >= 0 ? bidColor : askColor)
-                .lineLimit(1).minimumScaleFactor(0.7)
-                .frame(maxWidth: .infinity)
-                .padding(.vertical, 5)
-                .background(RoundedRectangle(cornerRadius: 7)
-                    .fill((delta >= 0 ? bidColor : askColor).opacity(0.16)))
-                .padding(.bottom, 8)
-
-            HStack(spacing: 10) {
-                Text("CVD").font(Theme.font(10, .black)).foregroundColor(Theme.muted)
+            // Δ and CVD share one row to keep the panel short under the board.
+            HStack(spacing: 8) {
+                Text("Δ " + (delta >= 0 ? "+" : "") + fmtVol(delta))
+                    .font(Theme.font(13, .black))
+                    .foregroundColor(delta >= 0 ? bidColor : askColor)
+                    .lineLimit(1).fixedSize()
+                Text("CVD").font(Theme.font(9, .black)).foregroundColor(Theme.muted)
                 cvdSparkline
             }
-            .padding(.horizontal, 11).padding(.vertical, 8)
+            .padding(.horizontal, 10).padding(.vertical, 7)
             .background(RoundedRectangle(cornerRadius: 9).fill(Color.black.opacity(0.55)))
 
             Spacer(minLength: 0)   // pack content to top when the row equalizes height
@@ -1366,7 +1361,7 @@ struct OrderFlowSimulationView: View {
     @State private var loopVariant = 0
 
     var body: some View {
-        VStack(alignment: .leading, spacing: 10) {
+        VStack(alignment: .leading, spacing: 8) {
             // The rich-panel board is the whole read — no "MULTI SIGNAL READ"
             // heading, difficulty chip, or pause/replay chrome. Legacy evidence
             // card modes keep their header.
@@ -1734,12 +1729,12 @@ struct OrderFlowSimulationView: View {
             player.selectedIndex = index
             player.decisionTick = simulationTick
         } label: {
-            VStack(spacing: 5) {
-                Image(systemName: decisionIcon(label)).font(.system(size: 16, weight: .black))
-                Text(label).font(Theme.questionFont(15, .bold)).lineLimit(1).minimumScaleFactor(0.7)
+            VStack(spacing: 3) {
+                Image(systemName: decisionIcon(label)).font(.system(size: 15, weight: .black))
+                Text(label).font(Theme.questionFont(14, .bold)).lineLimit(1).minimumScaleFactor(0.7)
             }
             .foregroundColor(textColor)
-            .frame(maxWidth: .infinity).padding(.vertical, 14)
+            .frame(maxWidth: .infinity).padding(.vertical, 10)
             .background(
                 RoundedRectangle(cornerRadius: 16, style: .continuous)
                     .fill(fill)
@@ -2245,7 +2240,7 @@ struct PriceContextPanel: View {
                         .position(x: 28, y: mapY(vw.first ?? plo, geo.size.height, plo, phi) - 9)
                 }
             }
-            .frame(height: 128)
+            .frame(height: 92)
         }
         .padding(10)
         .background(RoundedRectangle(cornerRadius: 16).fill(Color.black.opacity(0.28)))
@@ -2438,7 +2433,7 @@ struct DOMTapePanel: View {
     }
 
     private func pushTrade(_ t: Trade, flash: Double) {
-        withAnimation(.easeOut(duration: 0.2)) { tape = Array(([t] + tape).prefix(5)) }
+        withAnimation(.easeOut(duration: 0.2)) { tape = Array(([t] + tape).prefix(4)) }
         flashPrice = flash
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) { if flashPrice == flash { flashPrice = nil } }
     }
