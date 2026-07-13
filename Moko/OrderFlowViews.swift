@@ -1971,3 +1971,129 @@ private struct RawMarketEvidencePanel: View {
         }
     }
 }
+
+// MARK: - Panel 1: Price + context (candles + VWAP + volume profile + POC)
+
+/// Combined "where are we?" panel: candlesticks with a VWAP line and a volume
+/// profile along the right edge, the point-of-control bucket highlighted. Used
+/// by the synthesis/boss questions (not the focused teaching questions).
+struct PriceContextPanel: View {
+    var seed: UInt64
+    var bullish: Bool = true
+
+    struct VPBar { let lo: Double; let hi: Double; let vol: Double }
+
+    var body: some View {
+        let cs = Self.makeCandles(seed: seed, bullish: bullish)
+        let vw = Self.vwapLine(cs)
+        let vp = Self.volumeProfile(cs)
+        let pocIdx = vp.indices.max(by: { vp[$0].vol < vp[$1].vol }) ?? 0
+        let maxVol = vp.map { $0.vol }.max() ?? 1
+        let vals = cs.flatMap { [$0.high, $0.low] }
+        let rawHi = vals.max() ?? 1, rawLo = vals.min() ?? 0
+        let pad = max(rawHi - rawLo, 0.001) * 0.08
+        let plo = rawLo - pad, phi = rawHi + pad
+
+        return VStack(alignment: .leading, spacing: 8) {
+            Text("PRICE + CONTEXT").font(Theme.font(10, .black)).foregroundColor(Theme.muted)
+            GeometryReader { geo in
+                ZStack(alignment: .topLeading) {
+                    ForEach(vp.indices, id: \.self) { i in
+                        vpBarView(vp[i], isPOC: i == pocIdx, maxVol: maxVol, geo: geo.size, plo: plo, phi: phi)
+                    }
+                    ForEach(cs.indices, id: \.self) { i in
+                        candleView(cs[i], i: i, n: cs.count, geo: geo.size, plo: plo, phi: phi)
+                    }
+                    vwapPath(vw, geo: geo.size, plo: plo, phi: phi)
+                    Text("POC").font(Theme.font(8, .black)).foregroundColor(.cyan)
+                        .position(x: geo.size.width - 22,
+                                  y: mapY((vp[pocIdx].lo + vp[pocIdx].hi) / 2, geo.size.height, plo, phi) - 9)
+                    Text("VWAP").font(Theme.font(8, .black)).foregroundColor(Color(hex: "#F59E0B"))
+                        .position(x: 28, y: mapY(vw.first ?? plo, geo.size.height, plo, phi) - 9)
+                }
+            }
+            .frame(height: 190)
+        }
+        .padding(12)
+        .background(RoundedRectangle(cornerRadius: 16).fill(Color.black.opacity(0.28)))
+        .overlay(RoundedRectangle(cornerRadius: 16).strokeBorder(Theme.surfaceBorder, lineWidth: 1.5))
+    }
+
+    private func mapY(_ p: Double, _ H: CGFloat, _ plo: Double, _ phi: Double) -> CGFloat {
+        H * (1 - CGFloat((p - plo) / (phi - plo)))
+    }
+
+    private func vpBarView(_ b: VPBar, isPOC: Bool, maxVol: Double, geo: CGSize, plo: Double, phi: Double) -> some View {
+        let barW = geo.width * 0.32 * CGFloat(b.vol / maxVol)
+        let yTop = mapY(b.hi, geo.height, plo, phi)
+        let yBot = mapY(b.lo, geo.height, plo, phi)
+        return Rectangle()
+            .fill((isPOC ? Color.cyan : Color.white).opacity(isPOC ? 0.45 : 0.12))
+            .frame(width: max(barW, 1), height: max(yBot - yTop - 1, 1))
+            .position(x: geo.width - barW / 2, y: (yTop + yBot) / 2)
+    }
+
+    private func candleView(_ c: Candle, i: Int, n: Int, geo: CGSize, plo: Double, phi: Double) -> some View {
+        let slot = geo.width / CGFloat(n)
+        let cx = slot * (CGFloat(i) + 0.5)
+        let col: Color = c.close >= c.open ? bidColor : askColor
+        let top = mapY(max(c.open, c.close), geo.height, plo, phi)
+        let bot = mapY(min(c.open, c.close), geo.height, plo, phi)
+        return ZStack {
+            Path { p in
+                p.move(to: CGPoint(x: cx, y: mapY(c.high, geo.height, plo, phi)))
+                p.addLine(to: CGPoint(x: cx, y: mapY(c.low, geo.height, plo, phi)))
+            }.stroke(col, lineWidth: 1.5)
+            RoundedRectangle(cornerRadius: 2).fill(col)
+                .frame(width: slot * 0.5, height: max(bot - top, 1.5))
+                .position(x: cx, y: (top + bot) / 2)
+        }
+    }
+
+    private func vwapPath(_ vw: [Double], geo: CGSize, plo: Double, phi: Double) -> some View {
+        let slot = geo.width / CGFloat(max(vw.count, 1))
+        return Path { p in
+            for (i, v) in vw.enumerated() {
+                let x = slot * (CGFloat(i) + 0.5)
+                let y = mapY(v, geo.height, plo, phi)
+                if i == 0 { p.move(to: CGPoint(x: x, y: y)) } else { p.addLine(to: CGPoint(x: x, y: y)) }
+            }
+        }.stroke(Color(hex: "#F59E0B"), style: StrokeStyle(lineWidth: 2, dash: [5, 3]))
+    }
+
+    static func makeCandles(seed: UInt64, bullish: Bool) -> [Candle] {
+        var rng = SplitMix(seed: seed)
+        var price = 100.0
+        return (0..<16).map { _ in
+            let open = price
+            let drift = (bullish ? 0.5 : -0.5) + Double(Int(rng.next() % 40) - 20) / 10.0
+            let close = max(20, open + drift)
+            let hi = max(open, close) + Double(rng.next() % 16) / 10.0
+            let lo = min(open, close) - Double(rng.next() % 16) / 10.0
+            price = close
+            return Candle(open: open, high: hi, low: lo, close: close)
+        }
+    }
+    static func vwapLine(_ candles: [Candle]) -> [Double] {
+        var cumPV = 0.0, cumV = 0.0
+        return candles.map { c in
+            let typ = (c.high + c.low + c.close) / 3
+            let v = (c.high - c.low) * 100 + 20
+            cumPV += typ * v; cumV += v
+            return cumV > 0 ? cumPV / cumV : typ
+        }
+    }
+    static func volumeProfile(_ candles: [Candle], buckets: Int = 14) -> [VPBar] {
+        let allHi = candles.map { $0.high }.max() ?? 1
+        let allLo = candles.map { $0.low }.min() ?? 0
+        let step = max(allHi - allLo, 0.001) / Double(buckets)
+        var vols = Array(repeating: 0.0, count: buckets)
+        for c in candles {
+            let v = (c.high - c.low) * 100 + 20
+            let loB = max(0, min(buckets - 1, Int((c.low - allLo) / step)))
+            let hiB = max(0, min(buckets - 1, Int((c.high - allLo) / step)))
+            for b in loB...hiB { vols[b] += v / Double(max(hiB - loB + 1, 1)) }
+        }
+        return (0..<buckets).map { VPBar(lo: allLo + Double($0) * step, hi: allLo + Double($0 + 1) * step, vol: vols[$0]) }
+    }
+}
