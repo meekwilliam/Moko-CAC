@@ -583,6 +583,10 @@ struct ReplayCompareView: View {
         .background(
             RoundedRectangle(cornerRadius: 15, style: .continuous)
                 .fill(Theme.optionFill(scheme))
+                .overlay(
+                    RoundedRectangle(cornerRadius: 15, style: .continuous)
+                        .strokeBorder(tint.opacity(0.7), lineWidth: 1.5)
+                )
         )
         .background(
             RoundedRectangle(cornerRadius: 15, style: .continuous)
