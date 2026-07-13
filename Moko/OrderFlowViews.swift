@@ -843,6 +843,7 @@ struct FootprintPanel: View {
     private func fpCell(_ v: Int, tint: Color, poc: Bool) -> some View {
         Text(fmtVol(v))
             .font(Theme.font(12, .black))
+            .lineLimit(1).minimumScaleFactor(0.6)
             .foregroundColor(poc ? .black : .white)
             .frame(maxWidth: .infinity, maxHeight: .infinity)
             .background(poc ? Color(hex: "#E8ECEF") : tint.opacity(min(0.85, 0.14 + Double(v) / 360)))
@@ -910,7 +911,7 @@ struct FootprintPanel: View {
                 Color.clear.frame(width: 44)
                 Text(fmtVol(askTotal)).foregroundColor(bidColor).frame(maxWidth: .infinity)
             }
-            .font(Theme.font(15, .black)).padding(.top, 6).padding(.bottom, 8)
+            .font(Theme.font(15, .black)).lineLimit(1).minimumScaleFactor(0.6).padding(.top, 6).padding(.bottom, 8)
 
             VStack(spacing: 7) {
                 HStack {
@@ -1410,10 +1411,12 @@ struct OrderFlowSimulationView: View {
             }
 
             if useRichPanels {
-                VStack(spacing: 10) {
+                VStack(spacing: 8) {
                     PriceContextPanel(seed: panelSeed, bullish: panelBullish)
-                    DOMTapePanel(seed: panelSeed &+ 101, bullish: panelBullish)
-                    FootprintPanel(seed: panelSeed &+ 202, event: eventKey)
+                    HStack(alignment: .top, spacing: 8) {
+                        DOMTapePanel(seed: panelSeed &+ 101, bullish: panelBullish)
+                        FootprintPanel(seed: panelSeed &+ 202, event: eventKey)
+                    }
                     if screen.footprintPreview == true {
                         Text("EXTRA PREVIEW  Delta compares aggressive buying with selling. This clue is supplemental and is taught in Unit 5.")
                             .font(Theme.font(9, .bold)).foregroundColor(.orange)
@@ -2280,9 +2283,9 @@ struct DOMTapePanel: View {
         VStack(alignment: .leading, spacing: 8) {
             Text("DOM + TAPE").font(Theme.font(10, .black)).foregroundColor(Theme.muted)
             HStack {
-                Text("BID SIZE").frame(maxWidth: .infinity, alignment: .leading)
-                Text("PRICE").frame(width: 72)
-                Text("ASK SIZE").frame(maxWidth: .infinity, alignment: .trailing)
+                Text("BID").frame(maxWidth: .infinity, alignment: .leading)
+                Text("PRICE").frame(width: 62)
+                Text("ASK").frame(maxWidth: .infinity, alignment: .trailing)
             }
             .font(Theme.font(9, .black)).foregroundColor(Theme.muted).padding(.horizontal, 8)
 
@@ -2304,7 +2307,7 @@ struct DOMTapePanel: View {
         let flashed = flashPrice == lv.price
         return HStack {
             Text(lv.bidSize.map { "\($0)" } ?? "").frame(maxWidth: .infinity, alignment: .leading).foregroundColor(bidColor)
-            Text(String(format: "%.2f", lv.price)).frame(width: 72).foregroundColor(.white)
+            Text(String(format: "%.2f", lv.price)).frame(width: 62).foregroundColor(.white).lineLimit(1).minimumScaleFactor(0.7)
             Text(lv.askSize.map { "\($0)" } ?? "").frame(maxWidth: .infinity, alignment: .trailing).foregroundColor(askColor)
         }
         .font(Theme.font(13, .bold)).padding(.horizontal, 8).frame(height: 26)
@@ -2326,12 +2329,13 @@ struct DOMTapePanel: View {
     }
 
     private func tradeRow(_ t: Trade) -> some View {
-        HStack {
+        HStack(spacing: 2) {
             Text(String(format: "%.2f", t.price)).frame(maxWidth: .infinity, alignment: .leading)
             Text("\(t.size)").frame(maxWidth: .infinity)
             Text(t.buy ? "BUY" : "SELL").frame(maxWidth: .infinity, alignment: .trailing)
         }
         .font(Theme.font(12, .black)).foregroundColor(t.buy ? bidColor : askColor)
+        .lineLimit(1).minimumScaleFactor(0.7)
         .padding(.horizontal, 8).padding(.vertical, 3)
         .background(RoundedRectangle(cornerRadius: 5).fill((t.buy ? bidColor : askColor).opacity(0.08)))
     }
