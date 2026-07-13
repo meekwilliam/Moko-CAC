@@ -901,9 +901,10 @@ struct FootprintPanel: View {
                         Color.clear.frame(width: 44)
                         fpCell(level.askVolume, tint: bidColor, poc: index == maxAskIdx)
                     }
-                    .frame(height: 30)
+                    .frame(height: 24)
                 }
             }
+            .fixedSize(horizontal: false, vertical: true)
             .overlay(candleOverlay.allowsHitTesting(false))
 
             HStack(spacing: 0) {
@@ -929,8 +930,10 @@ struct FootprintPanel: View {
                 Text("CVD").font(Theme.font(10, .black)).foregroundColor(Theme.muted)
                 cvdSparkline
             }
-            .padding(.horizontal, 11).padding(.vertical, 9)
+            .padding(.horizontal, 11).padding(.vertical, 8)
             .background(RoundedRectangle(cornerRadius: 9).fill(Color.black.opacity(0.55)))
+
+            Spacer(minLength: 0)   // pack content to top when the row equalizes height
         }
         .padding(12)
         .background(RoundedRectangle(cornerRadius: 16).fill(Color.black.opacity(0.28)))
@@ -1362,7 +1365,7 @@ struct OrderFlowSimulationView: View {
     @State private var loopVariant = 0
 
     var body: some View {
-        VStack(alignment: .leading, spacing: 13) {
+        VStack(alignment: .leading, spacing: 10) {
             // The rich-panel board is the whole read — no "MULTI SIGNAL READ"
             // heading, difficulty chip, or pause/replay chrome. Legacy evidence
             // card modes keep their header.
@@ -1445,9 +1448,17 @@ struct OrderFlowSimulationView: View {
                 Label(evidenceReady ? "Select \(screen.targets?.count ?? 2) evidence cards" : "Watch the evidence develop", systemImage: "checklist")
                     .font(Theme.font(12, .bold)).foregroundColor(Theme.muted)
             } else if isDecisionMechanic {
-                VStack(spacing: 8) {
-                    ForEach(Array(player.currentOptions.enumerated()), id: \.offset) { index, label in
-                        tradeChoice(index: index, label: label)
+                if useCompactDecisionRow {
+                    HStack(spacing: 8) {
+                        ForEach(Array(player.currentOptions.enumerated()), id: \.offset) { index, label in
+                            compactTradeChoice(index: index, label: label)
+                        }
+                    }
+                } else {
+                    VStack(spacing: 8) {
+                        ForEach(Array(player.currentOptions.enumerated()), id: \.offset) { index, label in
+                            tradeChoice(index: index, label: label)
+                        }
                     }
                 }
             } else {
@@ -1669,6 +1680,34 @@ struct OrderFlowSimulationView: View {
             .padding(.horizontal, 16).frame(maxWidth: .infinity, minHeight: 50)
             .background(RoundedRectangle(cornerRadius: 14).fill(Color.purple.opacity(player.selectedIndex == index ? 0.18 : 0.07)))
             .overlay(RoundedRectangle(cornerRadius: 14).strokeBorder(player.selectedIndex == index ? Color.purple : Color.purple.opacity(0.28), lineWidth: player.selectedIndex == index ? 2 : 1))
+        }
+        .buttonStyle(.plain)
+    }
+
+    /// Short decision sets (LONG / WAIT / SHORT) fit on one row, which keeps the
+    /// buttons above the fold under the live board instead of stacking three tall
+    /// rows that push them off-screen.
+    private var useCompactDecisionRow: Bool {
+        let opts = player.currentOptions
+        return opts.count <= 3 && opts.allSatisfy { $0.count <= 6 }
+    }
+
+    private func compactTradeChoice(index: Int, label: String) -> some View {
+        let selected = player.selectedIndex == index
+        return Button {
+            guard !player.revealed else { return }
+            Haptics.selection()
+            player.selectedIndex = index
+            player.decisionTick = simulationTick
+        } label: {
+            VStack(spacing: 5) {
+                Image(systemName: decisionIcon(label)).font(.system(size: 16, weight: .black))
+                Text(label).font(Theme.questionFont(15, .heavy)).lineLimit(1).minimumScaleFactor(0.7)
+            }
+            .foregroundColor(ink)
+            .frame(maxWidth: .infinity).frame(height: 58)
+            .background(RoundedRectangle(cornerRadius: 14).fill(Color.purple.opacity(selected ? 0.18 : 0.07)))
+            .overlay(RoundedRectangle(cornerRadius: 14).strokeBorder(selected ? Color.purple : Color.purple.opacity(0.28), lineWidth: selected ? 2 : 1))
         }
         .buttonStyle(.plain)
     }
@@ -2167,9 +2206,9 @@ struct PriceContextPanel: View {
                         .position(x: 28, y: mapY(vw.first ?? plo, geo.size.height, plo, phi) - 9)
                 }
             }
-            .frame(height: 162)
+            .frame(height: 128)
         }
-        .padding(12)
+        .padding(10)
         .background(RoundedRectangle(cornerRadius: 16).fill(Color.black.opacity(0.28)))
         .overlay(RoundedRectangle(cornerRadius: 16).strokeBorder(Theme.surfaceBorder, lineWidth: 1.5))
     }
@@ -2295,12 +2334,14 @@ struct DOMTapePanel: View {
                 ForEach(tape) { tradeRow($0) }
                 if tape.isEmpty { Text("—").font(Theme.font(11, .bold)).foregroundColor(Theme.muted) }
             }
+
+            Spacer(minLength: 0)   // pack content to top when the row equalizes height
         }
         .padding(12)
         .background(RoundedRectangle(cornerRadius: 16).fill(Color.black.opacity(0.28)))
         .overlay(RoundedRectangle(cornerRadius: 16).strokeBorder(Theme.surfaceBorder, lineWidth: 1.5))
         .onReceive(ticker) { _ in step() }
-        .onAppear { if tape.isEmpty { for _ in 0..<5 { step() } } }
+        .onAppear { if tape.isEmpty { for _ in 0..<4 { step() } } }
     }
 
     private func domRow(_ lv: DOMLevel) -> some View {
@@ -2310,7 +2351,7 @@ struct DOMTapePanel: View {
             Text(String(format: "%.2f", lv.price)).frame(width: 62).foregroundColor(.white).lineLimit(1).minimumScaleFactor(0.7)
             Text(lv.askSize.map { "\($0)" } ?? "").frame(maxWidth: .infinity, alignment: .trailing).foregroundColor(askColor)
         }
-        .font(Theme.font(13, .bold)).padding(.horizontal, 8).frame(height: 26)
+        .font(Theme.font(13, .bold)).padding(.horizontal, 8).frame(height: 22)
         .background(
             GeometryReader { g in
                 ZStack(alignment: .leading) {
@@ -2358,7 +2399,7 @@ struct DOMTapePanel: View {
     }
 
     private func pushTrade(_ t: Trade, flash: Double) {
-        withAnimation(.easeOut(duration: 0.2)) { tape = Array(([t] + tape).prefix(6)) }
+        withAnimation(.easeOut(duration: 0.2)) { tape = Array(([t] + tape).prefix(5)) }
         flashPrice = flash
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) { if flashPrice == flash { flashPrice = nil } }
     }
@@ -2368,10 +2409,10 @@ struct DOMTapePanel: View {
         let mid = 100.0 + Double(rng.next() % 40) / 10.0
         let tick = 0.05
         var out: [DOMLevel] = []
-        for i in stride(from: 4, through: 1, by: -1) {
+        for i in stride(from: 3, through: 1, by: -1) {
             out.append(DOMLevel(price: mid + Double(i) * tick, bidSize: nil, askSize: 70 + Int(rng.next() % 150)))
         }
-        for i in 1...4 {
+        for i in 1...3 {
             out.append(DOMLevel(price: mid - Double(i) * tick, bidSize: 70 + Int(rng.next() % 150), askSize: nil))
         }
         return out
