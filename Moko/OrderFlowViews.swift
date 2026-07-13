@@ -832,44 +832,7 @@ struct FootprintQuestionView: View {
             Text(screen.question ?? "Read the footprint.")
                 .font(Theme.questionFont(21, .heavy)).foregroundColor(ink)
 
-            HStack(alignment: .top, spacing: 8) {
-                if screen.event == "delta_negative_rising" { risingPriceChart }
-                VStack(spacing: 4) {
-                    HStack {
-                        Text("BID VOL").frame(maxWidth: .infinity)
-                        Text("PRICE").frame(width: 72)
-                        Text("ASK VOL").frame(maxWidth: .infinity)
-                    }
-                    .font(Theme.font(9, .black)).foregroundColor(Theme.muted)
-                    ForEach(Array(levels.enumerated()), id: \.element.id) { index, level in
-                        HStack(spacing: 6) {
-                            volumeCell(level.bidVolume, color: askColor)
-                            ZStack(alignment: .trailing) {
-                                Text(String(format: "%.2f", level.price))
-                                    .font(Theme.font(11, .heavy)).foregroundColor(ink).frame(width: 72)
-                                if screen.event == "vwap_target" && index == screen.target {
-                                    Text("VWAP").font(Theme.font(7, .black)).foregroundColor(.cyan)
-                                        .padding(.horizontal, 4).padding(.vertical, 2)
-                                        .background(Capsule().fill(Color.cyan.opacity(0.16)))
-                                }
-                            }
-                            .frame(width: 72)
-                            volumeCell(level.askVolume, color: bidColor)
-                        }
-                        .padding(2)
-                        .background(RoundedRectangle(cornerRadius: 9).fill(index == player.selectedIndex ? Theme.answer.opacity(0.14) : .clear))
-                        .overlay(RoundedRectangle(cornerRadius: 9).strokeBorder(footprintRowColor(index), lineWidth: footprintRowWidth(index)))
-                        .contentShape(Rectangle())
-                        .onTapGesture {
-                            guard screen.type == "footprint_tap", !player.revealed else { return }
-                            Haptics.selection(); player.selectedIndex = index
-                        }
-                    }
-                }
-            }
-            .padding(12)
-            .background(RoundedRectangle(cornerRadius: 16).fill(Color.black.opacity(0.24)))
-            .overlay(RoundedRectangle(cornerRadius: 16).strokeBorder(Theme.surfaceBorder, lineWidth: 1.5))
+            footprintChart
 
             if screen.type == "footprint_tap" {
                 Label("Tap the price row that answers the question", systemImage: "hand.tap.fill")
@@ -882,6 +845,88 @@ struct FootprintQuestionView: View {
                 }
             }
         }
+    }
+
+    // Footprint chart styled after a real bid/ask volume footprint: red bid
+    // column (left), teal ask column (right), a candle body down the middle,
+    // heatmap-shaded cells with the point-of-control (max) cell in white, and a
+    // bid/ask total row + Delta/Total footer.
+    private var footprintChart: some View {
+        VStack(spacing: 0) {
+            VStack(spacing: 3) {
+                ForEach(Array(levels.enumerated()), id: \.element.id) { index, level in
+                    HStack(spacing: 0) {
+                        fpCell(level.bidVolume, tint: askColor, poc: index == maxBidIdx)
+                        Color.clear.frame(width: 46)
+                        fpCell(level.askVolume, tint: bidColor, poc: index == maxAskIdx)
+                    }
+                    .frame(height: 34)
+                    .overlay(RoundedRectangle(cornerRadius: 6, style: .continuous)
+                        .strokeBorder(footprintRowColor(index), lineWidth: footprintRowWidth(index)))
+                    .contentShape(Rectangle())
+                    .onTapGesture {
+                        guard screen.type == "footprint_tap", !player.revealed else { return }
+                        Haptics.selection(); player.selectedIndex = index
+                    }
+                }
+            }
+            .overlay(candleOverlay.allowsHitTesting(false))
+
+            HStack(spacing: 0) {
+                Text(fmtVol(bidTotal)).foregroundColor(askColor).frame(maxWidth: .infinity)
+                Color.clear.frame(width: 46)
+                Text(fmtVol(askTotal)).foregroundColor(bidColor).frame(maxWidth: .infinity)
+            }
+            .font(Theme.font(16, .black)).padding(.top, 7).padding(.bottom, 9)
+
+            VStack(spacing: 1) {
+                Text("Delta ").foregroundColor(.white)
+                    + Text(fmtVol(delta)).foregroundColor(delta >= 0 ? bidColor : askColor)
+                Text("Total ").foregroundColor(.white)
+                    + Text(fmtVol(bidTotal + askTotal)).foregroundColor(.white)
+            }
+            .font(Theme.font(15, .black))
+            .frame(maxWidth: .infinity).padding(.vertical, 8)
+            .background(RoundedRectangle(cornerRadius: 9).fill(Color.black.opacity(0.55)))
+        }
+        .padding(10)
+        .background(RoundedRectangle(cornerRadius: 16).fill(Color.black.opacity(0.28)))
+        .overlay(RoundedRectangle(cornerRadius: 16).strokeBorder(Theme.surfaceBorder, lineWidth: 1.5))
+    }
+
+    private var maxBidIdx: Int { levels.indices.max(by: { levels[$0].bidVolume < levels[$1].bidVolume }) ?? -1 }
+    private var maxAskIdx: Int { levels.indices.max(by: { levels[$0].askVolume < levels[$1].askVolume }) ?? -1 }
+    private var bidTotal: Int { levels.reduce(0) { $0 + $1.bidVolume } }
+    private var askTotal: Int { levels.reduce(0) { $0 + $1.askVolume } }
+    private var delta: Int { askTotal - bidTotal }
+
+    /// Scale the small internal volumes into the K/M range for a real-tape look.
+    private func fmtVol(_ v: Int) -> String {
+        let scaled = Double(abs(v)) * 42_000
+        let sign = v < 0 ? "-" : ""
+        if scaled >= 1_000_000 { return sign + String(format: "%.2fM", scaled / 1_000_000) }
+        return sign + String(format: "%.0fK", scaled / 1_000)
+    }
+
+    private func fpCell(_ v: Int, tint: Color, poc: Bool) -> some View {
+        Text(fmtVol(v))
+            .font(Theme.font(13, .black))
+            .foregroundColor(poc ? .black : .white)
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
+            .background(poc ? Color(hex: "#E8ECEF") : tint.opacity(min(0.85, 0.14 + Double(v) / 360)))
+    }
+
+    private var candleOverlay: some View {
+        let color = delta >= 0 ? bidColor : askColor
+        return ZStack {
+            Rectangle().fill(color.opacity(0.5)).frame(width: 3)   // wick, full height
+            GeometryReader { geo in
+                RoundedRectangle(cornerRadius: 3, style: .continuous).fill(color)
+                    .frame(width: 24, height: geo.size.height * 0.6)
+                    .position(x: geo.size.width / 2, y: geo.size.height * 0.46)
+            }
+        }
+        .frame(width: 46)
     }
 
     private func footprintRowColor(_ index: Int) -> Color {
