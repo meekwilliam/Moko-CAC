@@ -15,8 +15,8 @@ Interactive mechanics:
   [TAP_CANDLE] Select a candle directly on a chart.
   [TRENDLINE] Connect two candles on a chart.
   [LIVE_CHART] Read pressure while candles update.
-  [ORDERFLOW_SIM] Show only the focused evidence needed for an interpretation question.
-  [TRADE_DECISION] Use the full synchronized board and choose LONG, SHORT, or WAIT.
+  [ORDERFLOW_SIM] Combine book, tape, footprint, and price response.
+  [TRADE_DECISION] Read synchronized raw evidence and choose LONG, SHORT, or WAIT.
   [TRADE_SCENARIO] Make several decisions during one continuous market replay.
   [TRADE_MANAGE] Manage an open position from evolving evidence.
   [ENTRY_SELECT] Choose MARKET, LIMIT, or NO ENTRY from execution conditions.
@@ -347,13 +347,15 @@ Replay B
 Neither
 WHY: Replay A removes the ask before a matching trade prints. Replay B consumes the ask through completed executions.
 
-[ORDERFLOW_SIM] Buyers keep lifting offers, but a large ask replenishes and price cannot advance. What's strongest?
-VISUAL: Price stalls at resistance above VWAP while an offer refreshes, buyer initiated prints accelerate, and positive footprint delta produces little upward progress.
-SKILL: reading_the_order_book_dom
-The replenishing ask is containing aggressive buying
-Buyers have clean acceptance above the ask
-The displayed ask guarantees a reversal
-WHY: The DOM, executed buying, replenishment, and weak price progress combine into a possible containment read.
+[TRADE_DECISION] Buyers remain aggressive, but a refreshing offer stalls price. What's your decision?
+VISUAL: The full synchronized Trade Decision board shows Price and Context, DOM and Tape, and Footprint and Delta evolving from one market event.
+SKILL: trade_decision_quality
+SCENARIO: seller_absorption
+LONG
+SHORT
+WAIT
+ANSWER: WAIT
+WHY: Buyer aggression is not producing acceptance, but seller control is not confirmed yet. WAIT is best supported.
 
 NODE 7
 TITLE: Size & Liquidity
@@ -590,13 +592,15 @@ Price response
 Candle color alone
 WHY: A complete read combines action, liquidity, and response.
 
-[ORDERFLOW_SIM] Buyers stay aggressive, the offer refreshes, and price stalls. What's strongest?
-VISUAL: Price stalls at resistance above VWAP while an offer refreshes, buyer initiated prints accelerate, and positive footprint delta produces little upward progress. A preview label explains that delta compares aggressive buying with selling, is supplemental here, and will be taught in Unit 5.
-SKILL: multi_signal_read
-The refreshing offer is containing aggressive buying
-Price is gaining clean acceptance above the offer
-Buyer urgency is clearly fading
-WHY: The beginner observation is that replenishing liquidity contains active buying. Unit 4 later names this behavior absorption.
+[TRADE_DECISION] Positive pressure builds while resistance holds and the offer replenishes. What's your decision?
+VISUAL: The full synchronized Trade Decision board shows Price and Context, DOM and Tape, and Footprint and Delta evolving from one market event.
+SKILL: trade_decision_quality
+SCENARIO: seller_absorption
+LONG
+SHORT
+WAIT
+ANSWER: WAIT
+WHY: Buyer aggression is not producing acceptance, but seller control is not confirmed yet. WAIT is best supported.
 
 NODE 12
 TITLE: Boss Battle: Read the Book
@@ -709,13 +713,15 @@ EVENT: buyer_sequence_break
 TARGET: 3
 WHY: This ask side execution interrupts the seller initiated sequence.
 
-[ORDERFLOW_SIM] Did price confirm the tape?
-VISUAL: Price rises above VWAP with positive delta and fast buyer prints, but a large offer refreshes and upward price progress begins fading. A preview label explains that delta compares aggressive buying with selling, is supplemental here, and will be taught in Unit 5.
-SKILL: multi_signal_read
-Price response remains inconclusive
-Buyers are fully confirmed
-Sellers are fully confirmed
-WHY: The composite view shows both executed pressure and the price response used to judge confirmation.
+[TRADE_DECISION] The tape is directional while the book, footprint, and price response remain conflicted. What's your decision?
+VISUAL: The full synchronized Trade Decision board shows Price and Context, DOM and Tape, and Footprint and Delta evolving from one market event.
+SKILL: trade_decision_quality
+SCENARIO: conflict
+LONG
+SHORT
+WAIT
+ANSWER: WAIT
+WHY: The evidence stack does not establish control in either direction, so WAIT.
 
 [MATCH] Match each clue.
 SKILL: reading_time_sales
@@ -761,13 +767,15 @@ EVENT: large_print
 TARGET: 4
 WHY: This execution is much larger than the surrounding prints.
 
-[ORDERFLOW_SIM] Did price confirm the tape?
-VISUAL: Price stalls at resistance above VWAP while an offer refreshes, buyer initiated prints accelerate, and positive footprint delta produces little upward progress.
-SKILL: multi_signal_read
-No. Price barely moved
-Yes. Faster tape confirms buyers
-Yes. Volatility confirms direction
-WHY: The composite view shows both executed pressure and the price response used to judge confirmation.
+[TRADE_DECISION] Buyers remain aggressive, but a refreshing offer stalls price. What's your decision?
+VISUAL: The full synchronized Trade Decision board shows Price and Context, DOM and Tape, and Footprint and Delta evolving from one market event.
+SKILL: trade_decision_quality
+SCENARIO: seller_absorption
+LONG
+SHORT
+WAIT
+ANSWER: WAIT
+WHY: Buyer aggression is not producing acceptance, but seller control is not confirmed yet. WAIT is best supported.
 
 [AGGRESSOR] Who's crossing the spread?
 VISUAL: An animated Level II ladder shows prices between bid and ask columns, with ask sizes being consumed by incoming buy orders.
@@ -813,13 +821,15 @@ EVENT: seller_target
 TARGET: 5
 WHY: The selected trade executes at the bid and is seller initiated.
 
-[ORDERFLOW_SIM] Did price confirm the tape?
-VISUAL: Price rises above VWAP with positive delta and fast buyer prints, but a large offer refreshes and upward price progress begins fading.
-SKILL: multi_signal_read
-Price response remains inconclusive
-Buyer control is confirmed
-Seller control is confirmed
-WHY: The composite view shows both executed pressure and the price response used to judge confirmation.
+[TRADE_DECISION] Buyer pressure appears, but replenishment and weak price response contradict it. What's your decision?
+VISUAL: The full synchronized Trade Decision board shows Price and Context, DOM and Tape, and Footprint and Delta evolving from one market event.
+SKILL: trade_decision_quality
+SCENARIO: conflict
+LONG
+SHORT
+WAIT
+ANSWER: WAIT
+WHY: The evidence stack does not establish control in either direction, so WAIT.
 
 [EVIDENCE_SELECT] Select both confirmation clues.
 VISUAL: Four evidence cards separate aggression, liquidity, price response, and an irrelevant clue. The learner must select the required combination.
@@ -852,13 +862,15 @@ EVENT: sequence_break
 TARGET: 2
 WHY: This print interrupts the persistent aggression shown before it.
 
-[ORDERFLOW_SIM] Did price confirm the tape?
-VISUAL: Price approaches resistance, offers thin and are consumed, buyer initiated prints persist, stacked ask side execution appears, and price holds above the broken level.
-SKILL: multi_signal_read
-Yes. Higher prices continued
-No. Repetition never matters
-Inconclusive despite higher highs
-WHY: The composite view shows both executed pressure and the price response used to judge confirmation.
+[TRADE_DECISION] Offers thin, buyer prints persist, and price keeps its upward progress. What's your decision?
+VISUAL: The full synchronized Trade Decision board shows Price and Context, DOM and Tape, and Footprint and Delta evolving from one market event.
+SKILL: trade_decision_quality
+SCENARIO: breakout
+LONG
+SHORT
+WAIT
+ANSWER: LONG
+WHY: Buyer aggression is producing price progress and holding beyond the level, so LONG is the best-supported decision.
 
 [EVIDENCE_SELECT] Which two clues make repeated prints meaningful?
 VISUAL: Four evidence cards separate aggression, liquidity, price response, and an irrelevant clue. The learner must select the required combination.
@@ -914,13 +926,15 @@ EVENT: stall
 TARGET: 6
 WHY: Prints continue but size and pace begin fading here.
 
-[ORDERFLOW_SIM] Did price confirm the tape?
-VISUAL: Price approaches resistance, offers thin and are consumed, buyer initiated prints persist, stacked ask side execution appears, and price holds above the broken level.
-SKILL: multi_signal_read
-Yes. Price expanded higher
-No. Pace cannot confirm
-Inconclusive after acceptance
-WHY: The composite view shows both executed pressure and the price response used to judge confirmation.
+[TRADE_DECISION] Buyers clear offers and price holds higher. What's your decision?
+VISUAL: The full synchronized Trade Decision board shows Price and Context, DOM and Tape, and Footprint and Delta evolving from one market event.
+SKILL: trade_decision_quality
+SCENARIO: breakout
+LONG
+SHORT
+WAIT
+ANSWER: LONG
+WHY: Buyer aggression is producing price progress and holding beyond the level, so LONG is the best-supported decision.
 
 [EVIDENCE_SELECT] Select both confirmation clues for Acceleration, Slowdown & False Urgency.
 VISUAL: Four evidence cards separate aggression, liquidity, price response, and an irrelevant clue. The learner must select the required combination.
@@ -953,13 +967,15 @@ EVENT: sequence_break
 TARGET: 1
 WHY: The selected print is the first opposing execution at the level.
 
-[ORDERFLOW_SIM] Did price confirm the tape?
-VISUAL: Price stalls at resistance above VWAP while an offer refreshes, buyer initiated prints accelerate, and positive footprint delta produces little upward progress.
-SKILL: multi_signal_read
-No. Buying failed at resistance
-Yes. Fast buying confirmed control
-Inconclusive despite rejection
-WHY: The composite view shows both executed pressure and the price response used to judge confirmation.
+[TRADE_DECISION] Positive pressure builds while resistance holds and the offer replenishes. What's your decision?
+VISUAL: The full synchronized Trade Decision board shows Price and Context, DOM and Tape, and Footprint and Delta evolving from one market event.
+SKILL: trade_decision_quality
+SCENARIO: seller_absorption
+LONG
+SHORT
+WAIT
+ANSWER: WAIT
+WHY: Buyer aggression is not producing acceptance, but seller control is not confirmed yet. WAIT is best supported.
 
 [EVIDENCE_SELECT] Which two clues make tape activity meaningful at a key level?
 VISUAL: Four evidence cards separate aggression, liquidity, price response, and an irrelevant clue. The learner must select the required combination.
@@ -1022,13 +1038,15 @@ EVENT: sequence_break
 TARGET: 5
 WHY: This opposing print interrupts the dominant side.
 
-[ORDERFLOW_SIM] Persistent buyer prints clear offers and price holds higher. Did price confirm the buying?
-VISUAL: Price approaches resistance, offers thin and are consumed, buyer initiated prints persist, stacked ask side execution appears, and price holds above the broken level.
-SKILL: multi_signal_read
-Yes. Price advanced and held
-No. Price stalled against replenishment
-The price response remains inconclusive
-WHY: The composite evidence shows both persistent buying and higher accepted prices.
+[TRADE_DECISION] Offers thin, buyer prints persist, and price keeps its upward progress. What's your decision?
+VISUAL: The full synchronized Trade Decision board shows Price and Context, DOM and Tape, and Footprint and Delta evolving from one market event.
+SKILL: trade_decision_quality
+SCENARIO: breakout
+LONG
+SHORT
+WAIT
+ANSWER: LONG
+WHY: Buyer aggression is producing price progress and holding beyond the level, so LONG is the best-supported decision.
 
 [REPLAY_COMPARE] Which replay shows false urgency?
 VISUAL: Replay A keeps strong buying against a replenishing offer with stalled price. Replay B shows buying pace itself fading as price stalls.
@@ -1047,22 +1065,25 @@ TITLE: What Is Absorption?
 TYPE: STANDARD
 CELEBRATION: What Is Absorption? complete.
 
-[ORDERFLOW_SIM] What does the combined evidence show?
-VISUAL: Price stalls at resistance above VWAP while an offer refreshes, buyer initiated prints accelerate, and positive footprint delta produces little upward progress. A preview label explains that delta compares aggressive buying with selling, is supplemental here, and will be taught in Unit 5.
-SKILL: multi_signal_read
-Absorption appears when pressure fails to move price
-The candle alone proves the cause
-Aggression confirms continuation
-Displayed size reveals hidden liquidity
-WHY: Absorption appears when pressure fails to move price.
+[TRADE_DECISION] Buyers remain aggressive, but a refreshing offer stalls price. What's your decision?
+VISUAL: The full synchronized Trade Decision board shows Price and Context, DOM and Tape, and Footprint and Delta evolving from one market event.
+SKILL: trade_decision_quality
+SCENARIO: seller_absorption
+LONG
+SHORT
+WAIT
+ANSWER: WAIT
+WHY: Buyer aggression is not producing acceptance, but seller control is not confirmed yet. WAIT is best supported.
 
-[ORDERFLOW_SIM] Is pressure moving price?
-VISUAL: Price stalls at resistance above VWAP while an offer refreshes, buyer initiated prints accelerate, and positive footprint delta produces little upward progress.
-SKILL: multi_signal_read
-No. Execution is strong while upward progress stays weak
-Yes. Price is accepting above resistance
-The response cannot be compared
-WHY: The simulation shows buyer execution continuing while a refreshing offer limits upward progress.
+[TRADE_DECISION] Positive pressure builds while resistance holds and the offer replenishes. What's your decision?
+VISUAL: The full synchronized Trade Decision board shows Price and Context, DOM and Tape, and Footprint and Delta evolving from one market event.
+SKILL: trade_decision_quality
+SCENARIO: seller_absorption
+LONG
+SHORT
+WAIT
+ANSWER: WAIT
+WHY: Buyer aggression is not producing acceptance, but seller control is not confirmed yet. WAIT is best supported.
 
 [REPLAY_COMPARE] Which replay shows pressure being absorbed?
 VISUAL: Replay A shows varied buy sizes continuing into an offer that replenishes while price stays pinned. Replay B shows both buy size and pace fading before price stalls.
@@ -1094,84 +1115,100 @@ TITLE: Buyer vs. Seller Absorption
 TYPE: STANDARD
 CELEBRATION: Buyer vs. Seller Absorption complete.
 
-[ORDERFLOW_SIM] What does the combined evidence show?
-VISUAL: Price holds support below VWAP while a bid refreshes, seller initiated prints accelerate, and negative footprint delta produces little downward progress.
-SKILL: multi_signal_read
-Buyers absorb selling near support
-The candle alone proves the cause
-Aggression confirms continuation
-Displayed size reveals hidden liquidity
-WHY: Buyers absorb selling near support.
+[TRADE_DECISION] Seller prints continue without matching downward price progress. What's your decision?
+VISUAL: The full synchronized Trade Decision board shows Price and Context, DOM and Tape, and Footprint and Delta evolving from one market event.
+SKILL: trade_decision_quality
+SCENARIO: buyer_absorption
+LONG
+SHORT
+WAIT
+ANSWER: WAIT
+WHY: Seller aggression is failing to move price lower, but buyer control is not confirmed yet. WAIT is best supported.
 
-[ORDERFLOW_SIM] What are sellers failing to do?
-VISUAL: Price holds support below VWAP while a bid refreshes, seller initiated prints accelerate, and negative footprint delta produces little downward progress.
-SKILL: multi_signal_read
-Push price below support
-Execute at the bid
-Create negative delta
-WHY: Seller initiated prints remain active, but the bid replenishes and support holds.
+[TRADE_DECISION] Sellers remain aggressive, but a refreshing bid holds support. What's your decision?
+VISUAL: The full synchronized Trade Decision board shows Price and Context, DOM and Tape, and Footprint and Delta evolving from one market event.
+SKILL: trade_decision_quality
+SCENARIO: buyer_absorption
+LONG
+SHORT
+WAIT
+ANSWER: WAIT
+WHY: Seller aggression is failing to move price lower, but buyer control is not confirmed yet. WAIT is best supported.
 
-[ORDERFLOW_SIM] What are buyers failing to do?
-VISUAL: Price stalls at resistance above VWAP while an offer refreshes, buyer initiated prints accelerate, and positive footprint delta produces little upward progress.
-SKILL: multi_signal_read
-Clear the refreshing offer
-Execute at the ask
-Create positive delta
-WHY: Buyer initiated prints remain active, but the offer replenishes and resistance holds.
+[TRADE_DECISION] Positive pressure builds while resistance holds and the offer replenishes. What's your decision?
+VISUAL: The full synchronized Trade Decision board shows Price and Context, DOM and Tape, and Footprint and Delta evolving from one market event.
+SKILL: trade_decision_quality
+SCENARIO: seller_absorption
+LONG
+SHORT
+WAIT
+ANSWER: WAIT
+WHY: Buyer aggression is not producing acceptance, but seller control is not confirmed yet. WAIT is best supported.
 
-[ORDERFLOW_SIM] Sellers keep hitting a refreshing bid while support holds. What's strongest?
-VISUAL: Price holds support below VWAP while a bid refreshes, seller initiated prints accelerate, and negative footprint delta produces little downward progress.
-SKILL: multi_signal_read
-Possible buyer absorption
-Seller continuation remains favored
-Seller exhaustion is proven
-WHY: Active selling makes little progress while the bid replenishes.
+[TRADE_DECISION] Seller prints continue without matching downward price progress. What's your decision?
+VISUAL: The full synchronized Trade Decision board shows Price and Context, DOM and Tape, and Footprint and Delta evolving from one market event.
+SKILL: trade_decision_quality
+SCENARIO: buyer_absorption
+LONG
+SHORT
+WAIT
+ANSWER: WAIT
+WHY: Seller aggression is failing to move price lower, but buyer control is not confirmed yet. WAIT is best supported.
 
-[ORDERFLOW_SIM] Buyers keep lifting a refreshing offer while resistance holds. What's strongest?
-VISUAL: Price stalls at resistance above VWAP while an offer refreshes, buyer initiated prints accelerate, and positive footprint delta produces little upward progress.
-SKILL: multi_signal_read
-Possible seller absorption
-Buyer continuation remains favored
-Buyer exhaustion is proven
-WHY: Active buying makes little progress while the offer replenishes.
+[TRADE_DECISION] Buyers remain aggressive, but a refreshing offer stalls price. What's your decision?
+VISUAL: The full synchronized Trade Decision board shows Price and Context, DOM and Tape, and Footprint and Delta evolving from one market event.
+SKILL: trade_decision_quality
+SCENARIO: seller_absorption
+LONG
+SHORT
+WAIT
+ANSWER: WAIT
+WHY: Buyer aggression is not producing acceptance, but seller control is not confirmed yet. WAIT is best supported.
 
 NODE 22
 TITLE: Repeated Tests & Hidden Liquidity
 TYPE: STANDARD
 CELEBRATION: Repeated Tests & Hidden Liquidity complete.
 
-[ORDERFLOW_SIM] What does the combined evidence show?
-VISUAL: Price holds support below VWAP while a bid refreshes, seller initiated prints accelerate, and negative footprint delta produces little downward progress.
-SKILL: multi_signal_read
-A level that survives tests may contain absorption
-The candle alone proves the cause
-Aggression confirms continuation
-Displayed size reveals hidden liquidity
-WHY: A level that survives tests may contain absorption.
+[TRADE_DECISION] Negative pressure builds while support holds and the bid replenishes. What's your decision?
+VISUAL: The full synchronized Trade Decision board shows Price and Context, DOM and Tape, and Footprint and Delta evolving from one market event.
+SKILL: trade_decision_quality
+SCENARIO: buyer_absorption
+LONG
+SHORT
+WAIT
+ANSWER: WAIT
+WHY: Seller aggression is failing to move price lower, but buyer control is not confirmed yet. WAIT is best supported.
 
-[ORDERFLOW_SIM] What keeps happening at the level?
-VISUAL: Price holds support below VWAP while a bid refreshes, seller initiated prints accelerate, and negative footprint delta produces little downward progress.
-SKILL: multi_signal_read
-Selling trades repeatedly while support holds
-Price accepts below support
-Seller pressure disappears before the level
-WHY: The support level, repeated selling, replenishing bid, and limited price progress are shown together.
+[TRADE_DECISION] Seller prints continue without matching downward price progress. What's your decision?
+VISUAL: The full synchronized Trade Decision board shows Price and Context, DOM and Tape, and Footprint and Delta evolving from one market event.
+SKILL: trade_decision_quality
+SCENARIO: buyer_absorption
+LONG
+SHORT
+WAIT
+ANSWER: WAIT
+WHY: Seller aggression is failing to move price lower, but buyer control is not confirmed yet. WAIT is best supported.
 
-[ORDERFLOW_SIM] What suggests hidden liquidity?
-VISUAL: Level II repeatedly shows 100 shares at the offer. Each 100 share execution clears the display, then another 100 immediately reappears at the same price while Time and Sales keeps printing buys.
-SKILL: multi_signal_read
-Displayed size keeps replenishing
-Pressure and price accelerate together
-No aggressive executions appear
-WHY: Repeated executions against displayed size that keeps replenishing can suggest hidden liquidity.
+[TRADE_DECISION] Repeated buys execute into an offer that keeps replenishing. What's your decision?
+VISUAL: The full synchronized Trade Decision board shows Price and Context, DOM and Tape, and Footprint and Delta evolving from one market event.
+SKILL: trade_decision_quality
+SCENARIO: iceberg
+LONG
+SHORT
+WAIT
+ANSWER: WAIT
+WHY: Hidden sell liquidity may be absorbing buyers, but direction is not confirmed. WAIT.
 
-[ORDERFLOW_SIM] Repeated selling tests the level, the bid replenishes, and price still holds. What's strongest?
-VISUAL: Price holds support below VWAP while a bid refreshes, seller initiated prints accelerate, and negative footprint delta produces little downward progress.
-SKILL: multi_signal_read
-Possible absorption at the defended level
-A downside break is confirmed
-The visible bid proves every hidden order
-WHY: Repeated execution with replenishment and weak downward progress supports possible absorption.
+[TRADE_DECISION] Negative pressure builds while support holds and the bid replenishes. What's your decision?
+VISUAL: The full synchronized Trade Decision board shows Price and Context, DOM and Tape, and Footprint and Delta evolving from one market event.
+SKILL: trade_decision_quality
+SCENARIO: buyer_absorption
+LONG
+SHORT
+WAIT
+ANSWER: WAIT
+WHY: Seller aggression is failing to move price lower, but buyer control is not confirmed yet. WAIT is best supported.
 
 [EVIDENCE_SELECT] Select two hidden liquidity clues.
 VISUAL: Four evidence cards separate aggression, liquidity, price response, and an irrelevant clue. The learner must select the required combination.
@@ -1282,13 +1319,15 @@ TITLE: Absorption vs. Exhaustion
 TYPE: STANDARD
 CELEBRATION: Absorption vs. Exhaustion complete.
 
-[ORDERFLOW_SIM] Buyer initiated prints remain strong, but price stalls at a replenishing offer. Which is it?
-VISUAL: Price stalls at resistance above VWAP while an offer refreshes, buyer initiated prints accelerate, and positive footprint delta produces little upward progress.
-SKILL: multi_signal_read
-Absorption
-Exhaustion
-Clean acceptance
-WHY: Aggression remains active while price makes little progress, which supports possible absorption rather than exhaustion.
+[TRADE_DECISION] Buyer prints continue without matching upward price progress. What's your decision?
+VISUAL: The full synchronized Trade Decision board shows Price and Context, DOM and Tape, and Footprint and Delta evolving from one market event.
+SKILL: trade_decision_quality
+SCENARIO: seller_absorption
+LONG
+SHORT
+WAIT
+ANSWER: WAIT
+WHY: Buyer aggression is not producing acceptance, but seller control is not confirmed yet. WAIT is best supported.
 
 [TIME_SALES] Aggressive pace now fades. Which is it?
 VISUAL: An animated Time and Sales table lists time, execution price, and trade size, with pace and trade size fading after the target row.
@@ -1329,32 +1368,35 @@ TITLE: Absorption Practice Replays
 TYPE: PRACTICE_REPLAY
 CELEBRATION: Absorption Practice Replays complete.
 
-[ORDERFLOW_SIM] Buying is aggressive but price cannot clear resistance. What is strongest?
-VISUAL: Price stalls at resistance above VWAP while an offer refreshes, buyer initiated prints accelerate, and positive footprint delta produces little upward progress.
-SKILL: multi_signal_read
-Buyers are active but may be absorbed by refreshing sellers
-The fastest evidence guarantees the next move
-Displayed size alone determines the outcome
-The candle should be read without execution context
-WHY: Aggressive buyers can be absorbed by passive sellers at resistance.
+[TRADE_DECISION] Buyers remain aggressive, but a refreshing offer stalls price. What's your decision?
+VISUAL: The full synchronized Trade Decision board shows Price and Context, DOM and Tape, and Footprint and Delta evolving from one market event.
+SKILL: trade_decision_quality
+SCENARIO: seller_absorption
+LONG
+SHORT
+WAIT
+ANSWER: WAIT
+WHY: Buyer aggression is not producing acceptance, but seller control is not confirmed yet. WAIT is best supported.
 
-[ORDERFLOW_SIM] Selling is aggressive but price cannot break support. What is strongest?
-VISUAL: Price holds support below VWAP while a bid refreshes, seller initiated prints accelerate, and negative footprint delta produces little downward progress.
-SKILL: multi_signal_read
-Sellers are active but may be absorbed by refreshing buyers
-The fastest evidence guarantees the next move
-Displayed size alone determines the outcome
-The candle should be read without execution context
-WHY: Aggressive sellers can be absorbed by passive buyers at support.
+[TRADE_DECISION] Negative pressure builds while support holds and the bid replenishes. What's your decision?
+VISUAL: The full synchronized Trade Decision board shows Price and Context, DOM and Tape, and Footprint and Delta evolving from one market event.
+SKILL: trade_decision_quality
+SCENARIO: buyer_absorption
+LONG
+SHORT
+WAIT
+ANSWER: WAIT
+WHY: Seller aggression is failing to move price lower, but buyer control is not confirmed yet. WAIT is best supported.
 
-[ORDERFLOW_SIM] What does the combined evidence show?
-VISUAL: Price holds support below VWAP while a bid refreshes, seller initiated prints accelerate, and negative footprint delta produces little downward progress.
-SKILL: multi_signal_read
-Strong pressure with little movement suggests absorption
-The candle alone proves the cause
-Aggression confirms continuation
-Displayed size reveals hidden liquidity
-WHY: Strong pressure with little movement suggests absorption.
+[TRADE_DECISION] Seller prints continue without matching downward price progress. What's your decision?
+VISUAL: The full synchronized Trade Decision board shows Price and Context, DOM and Tape, and Footprint and Delta evolving from one market event.
+SKILL: trade_decision_quality
+SCENARIO: buyer_absorption
+LONG
+SHORT
+WAIT
+ANSWER: WAIT
+WHY: Seller aggression is failing to move price lower, but buyer control is not confirmed yet. WAIT is best supported.
 
 [REPLAY_COMPARE] Which replay shows sustained pressure being contained rather than pressure fading?
 VISUAL: Replay A shows varied buy sizes continuing into an offer that replenishes while price stays pinned. Replay B shows both buy size and pace fading before price stalls.
@@ -1364,21 +1406,25 @@ Replay B
 Neither
 WHY: Replay A keeps aggression active against replenishment. Replay B shows exhaustion.
 
-[ORDERFLOW_SIM] Buying remains active, the offer refreshes, and price cannot clear resistance. What's strongest?
-VISUAL: Price stalls at resistance above VWAP while an offer refreshes, buyer initiated prints accelerate, and positive footprint delta produces little upward progress.
-SKILL: multi_signal_read
-Possible seller absorption
-Buyer continuation is confirmed
-Buying has completely stopped
-WHY: The simulation exposes active buying, replenishment, and weak upward response.
+[TRADE_DECISION] Buyers remain aggressive, but a refreshing offer stalls price. What's your decision?
+VISUAL: The full synchronized Trade Decision board shows Price and Context, DOM and Tape, and Footprint and Delta evolving from one market event.
+SKILL: trade_decision_quality
+SCENARIO: seller_absorption
+LONG
+SHORT
+WAIT
+ANSWER: WAIT
+WHY: Buyer aggression is not producing acceptance, but seller control is not confirmed yet. WAIT is best supported.
 
-[ORDERFLOW_SIM] Selling remains active, the bid refreshes, and price cannot break support. What's strongest?
-VISUAL: Price holds support below VWAP while a bid refreshes, seller initiated prints accelerate, and negative footprint delta produces little downward progress.
-SKILL: multi_signal_read
-Possible buyer absorption
-Seller continuation is confirmed
-Selling has completely stopped
-WHY: The simulation exposes active selling, replenishment, and weak downward response.
+[TRADE_DECISION] Negative pressure builds while support holds and the bid replenishes. What's your decision?
+VISUAL: The full synchronized Trade Decision board shows Price and Context, DOM and Tape, and Footprint and Delta evolving from one market event.
+SKILL: trade_decision_quality
+SCENARIO: buyer_absorption
+LONG
+SHORT
+WAIT
+ANSWER: WAIT
+WHY: Seller aggression is failing to move price lower, but buyer control is not confirmed yet. WAIT is best supported.
 
 NODE 27
 TITLE: Boss Battle: Absorption or Exhaustion?
@@ -1402,21 +1448,25 @@ Absorption
 Acceptance
 WHY: Exhaustion means aggression itself fades.
 
-[ORDERFLOW_SIM] Selling stays aggressive while support holds. What's strongest?
-VISUAL: Price holds support below VWAP while a bid refreshes, seller initiated prints accelerate, and negative footprint delta produces little downward progress.
-SKILL: multi_signal_read
-Possible buyer absorption
-Seller continuation remains favored
-Seller exhaustion is developing
-WHY: Selling remains active while support holds.
+[TRADE_DECISION] Seller prints continue without matching downward price progress. What's your decision?
+VISUAL: The full synchronized Trade Decision board shows Price and Context, DOM and Tape, and Footprint and Delta evolving from one market event.
+SKILL: trade_decision_quality
+SCENARIO: buyer_absorption
+LONG
+SHORT
+WAIT
+ANSWER: WAIT
+WHY: Seller aggression is failing to move price lower, but buyer control is not confirmed yet. WAIT is best supported.
 
-[ORDERFLOW_SIM] Buying stays aggressive while resistance holds. What's strongest?
-VISUAL: Price stalls at resistance above VWAP while an offer refreshes, buyer initiated prints accelerate, and positive footprint delta produces little upward progress.
-SKILL: multi_signal_read
-Possible seller absorption
-Buyer continuation remains favored
-Buyer exhaustion is developing
-WHY: Buying remains active while resistance holds.
+[TRADE_DECISION] Buyers remain aggressive, but a refreshing offer stalls price. What's your decision?
+VISUAL: The full synchronized Trade Decision board shows Price and Context, DOM and Tape, and Footprint and Delta evolving from one market event.
+SKILL: trade_decision_quality
+SCENARIO: seller_absorption
+LONG
+SHORT
+WAIT
+ANSWER: WAIT
+WHY: Buyer aggression is not producing acceptance, but seller control is not confirmed yet. WAIT is best supported.
 
 [TIME_SALES] Which side loses urgency?
 VISUAL: An animated Time and Sales table lists time, execution price, and trade size, with pace and trade size fading after the target row.
@@ -1437,13 +1487,15 @@ Fading buy pace
 Price accepts higher
 WHY: Replenishment and stalled response support absorption.
 
-[ORDERFLOW_SIM] Is a clear read confirmed?
-VISUAL: Price rises above VWAP with positive delta and fast buyer prints, but a large offer refreshes and upward price progress begins fading.
-SKILL: multi_signal_read
-Not enough evidence
-Buyer absorption
-Seller exhaustion
-WHY: Conflicting evidence does not confirm either interpretation.
+[TRADE_DECISION] Buyer pressure appears, but replenishment and weak price response contradict it. What's your decision?
+VISUAL: The full synchronized Trade Decision board shows Price and Context, DOM and Tape, and Footprint and Delta evolving from one market event.
+SKILL: trade_decision_quality
+SCENARIO: conflict
+LONG
+SHORT
+WAIT
+ANSWER: WAIT
+WHY: The evidence stack does not establish control in either direction, so WAIT.
 
 
 UNIT 5 — Imbalances and Momentum
@@ -1798,26 +1850,30 @@ Replay B
 Neither
 WHY: In Replay A, price and cumulative aggressive pressure move higher together.
 
-[ORDERFLOW_SIM] Price makes a new high without CVD confirmation, but offers thin and price holds above resistance. What's strongest?
-VISUAL: Price makes a new high while CVD makes a lower high, yet offers continue thinning and price holds above resistance instead of failing back inside.
-SKILL: cumulative_volume_delta
-The CVD disagreement is a warning, but price acceptance remains strong
-CVD guarantees an immediate reversal
-The breakout has already failed
-WHY: CVD disagreement deserves attention, but thinning offers and acceptance above resistance still support the current price response.
+[TRADE_DECISION] Price remains above resistance as CVD forms a lower high. What's your decision?
+VISUAL: The full synchronized Trade Decision board shows Price and Context, DOM and Tape, and Footprint and Delta evolving from one market event.
+SKILL: trade_decision_quality
+SCENARIO: cvd_warning
+LONG
+SHORT
+WAIT
+ANSWER: WAIT
+WHY: The breakout evidence and CVD disagreement conflict, so WAIT for clearer confirmation.
 
 NODE 34
 TITLE: Positive vs. Negative Delta Divergence
 TYPE: STANDARD
 CELEBRATION: Positive vs. Negative Delta Divergence complete.
 
-[ORDERFLOW_SIM] Positive delta builds while price stalls at resistance. What best explains the disagreement?
-VISUAL: Price stalls at resistance above VWAP while an offer refreshes, buyer initiated prints accelerate, and positive footprint delta produces little upward progress.
-SKILL: multi_signal_read
-Possible seller absorption or trapped buyers
-Positive delta guarantees delayed upside
-The price response should be ignored
-WHY: Aggressive buying is visible, but it is not producing the expected upward response.
+[TRADE_DECISION] Buyers remain aggressive, but a refreshing offer stalls price. What's your decision?
+VISUAL: The full synchronized Trade Decision board shows Price and Context, DOM and Tape, and Footprint and Delta evolving from one market event.
+SKILL: trade_decision_quality
+SCENARIO: seller_absorption
+LONG
+SHORT
+WAIT
+ANSWER: WAIT
+WHY: Buyer aggression is not producing acceptance, but seller control is not confirmed yet. WAIT is best supported.
 
 [FOOTPRINT] Price falls while footprint delta remains positive. What's strongest?
 VISUAL: A footprint grid places bid volume left of price and ask volume right of price, showing one row contributing the largest positive ask minus bid delta.
@@ -1864,13 +1920,15 @@ TITLE: Price and Pressure Divergence
 TYPE: STANDARD
 CELEBRATION: Price and Pressure Divergence complete.
 
-[ORDERFLOW_SIM] Positive execution pressure grows while upward price progress fades. What's strongest?
-VISUAL: Price rises above VWAP with positive delta and fast buyer prints, but a large offer refreshes and upward price progress begins fading.
-SKILL: multi_signal_read
-Price and pressure disagreement warns of weakness
-Positive delta confirms continuation
-The refreshing offer is irrelevant
-WHY: The multi source view makes the execution and price contradiction visible.
+[TRADE_DECISION] Buyer pressure appears, but replenishment and weak price response contradict it. What's your decision?
+VISUAL: The full synchronized Trade Decision board shows Price and Context, DOM and Tape, and Footprint and Delta evolving from one market event.
+SKILL: trade_decision_quality
+SCENARIO: conflict
+LONG
+SHORT
+WAIT
+ANSWER: WAIT
+WHY: The evidence stack does not establish control in either direction, so WAIT.
 
 [FOOTPRINT_TAP] Rising price is shown beside this footprint. Tap the negative delta row opposing it.
 VISUAL: A footprint grid places bid volume left of price and ask volume right of price, showing a compact rising price chart beside the grid and one row contributing the largest negative ask minus bid delta.
@@ -1953,21 +2011,25 @@ The largest footprint row determines the next move
 Price response can be ignored when delta is persistent
 WHY: Delta and the corresponding price response must be interpreted together.
 
-[ORDERFLOW_SIM] Buying accelerates, offers clear, and price holds higher. What does this show about momentum?
-VISUAL: Price approaches resistance, offers thin and are consumed, buyer initiated prints persist, stacked ask side execution appears, and price holds above the broken level.
-SKILL: multi_signal_read
-Aggression is producing confirming price progress
-One fast burst is enough without acceptance
-Displayed depth alone proves continuation
-WHY: Momentum strengthens when aggressive execution clears liquidity and receives a confirming price response.
+[TRADE_DECISION] Offers thin, buyer prints persist, and price keeps its upward progress. What's your decision?
+VISUAL: The full synchronized Trade Decision board shows Price and Context, DOM and Tape, and Footprint and Delta evolving from one market event.
+SKILL: trade_decision_quality
+SCENARIO: breakout
+LONG
+SHORT
+WAIT
+ANSWER: LONG
+WHY: Buyer aggression is producing price progress and holding beyond the level, so LONG is the best-supported decision.
 
-[ORDERFLOW_SIM] Buyer aggression remains high, but price stalls against a refreshing offer. What changed?
-VISUAL: Price stalls at resistance above VWAP while an offer refreshes, buyer initiated prints accelerate, and positive footprint delta produces little upward progress.
-SKILL: multi_signal_read
-Momentum is failing to convert pressure into progress
-Buying is gaining clean acceptance
-The tape proves buyers control the next move
-WHY: Persistent aggression without expected price progress warns that momentum is weakening or being absorbed.
+[TRADE_DECISION] Buyers remain aggressive, but a refreshing offer stalls price. What's your decision?
+VISUAL: The full synchronized Trade Decision board shows Price and Context, DOM and Tape, and Footprint and Delta evolving from one market event.
+SKILL: trade_decision_quality
+SCENARIO: seller_absorption
+LONG
+SHORT
+WAIT
+ANSWER: WAIT
+WHY: Buyer aggression is not producing acceptance, but seller control is not confirmed yet. WAIT is best supported.
 
 NODE 37
 TITLE: Boss Battle: Footprint & Momentum
@@ -2018,21 +2080,25 @@ They are identical
 Delta shows resting depth
 WHY: Delta compares ask and bid executions.
 
-[ORDERFLOW_SIM] Positive delta, stalled price. Why?
-VISUAL: Price stalls at resistance above VWAP while an offer refreshes, buyer initiated prints accelerate, and positive footprint delta produces little upward progress.
-SKILL: multi_signal_read
-Possible seller absorption
-Buyer control remains favored
-Buyer exhaustion is developing
-WHY: Buying can be absorbed despite positive delta.
+[TRADE_DECISION] Positive pressure builds while resistance holds and the offer replenishes. What's your decision?
+VISUAL: The full synchronized Trade Decision board shows Price and Context, DOM and Tape, and Footprint and Delta evolving from one market event.
+SKILL: trade_decision_quality
+SCENARIO: seller_absorption
+LONG
+SHORT
+WAIT
+ANSWER: WAIT
+WHY: Buyer aggression is not producing acceptance, but seller control is not confirmed yet. WAIT is best supported.
 
-[ORDERFLOW_SIM] Is momentum confirmed?
-VISUAL: Price rises above VWAP with positive delta and fast buyer prints, but a large offer refreshes and upward price progress begins fading.
-SKILL: multi_signal_read
-No. Price and pressure diverge
-Yes. Delta is enough
-Yes. Volume is high
-WHY: Conflicting response warns of momentum failure.
+[TRADE_DECISION] The tape is directional while the book, footprint, and price response remain conflicted. What's your decision?
+VISUAL: The full synchronized Trade Decision board shows Price and Context, DOM and Tape, and Footprint and Delta evolving from one market event.
+SKILL: trade_decision_quality
+SCENARIO: conflict
+LONG
+SHORT
+WAIT
+ANSWER: WAIT
+WHY: The evidence stack does not establish control in either direction, so WAIT.
 
 
 UNIT 6 — Liquidity and Sweeps
@@ -2357,14 +2423,15 @@ TITLE: Icebergs & Hidden Replenishment
 TYPE: STANDARD
 CELEBRATION: Icebergs & Hidden Replenishment complete.
 
-[ORDERFLOW_SIM] The offer refills after buy prints. Why?
-VISUAL: Level II repeatedly shows 100 shares at the offer. Each 100 share execution clears the display, then another 100 immediately reappears at the same price while Time and Sales keeps printing buys.
-SKILL: multi_signal_read
-A possible sell iceberg is replenishing hidden size
-Buyers have already secured a breakout
-The tape is showing canceled orders
-Displayed size cannot change after a fill
-WHY: Repeated execution against refreshing displayed size is consistent with an iceberg.
+[TRADE_DECISION] Repeated buys execute into an offer that keeps replenishing. What's your decision?
+VISUAL: The full synchronized Trade Decision board shows Price and Context, DOM and Tape, and Footprint and Delta evolving from one market event.
+SKILL: trade_decision_quality
+SCENARIO: iceberg
+LONG
+SHORT
+WAIT
+ANSWER: WAIT
+WHY: Hidden sell liquidity may be absorbing buyers, but direction is not confirmed. WAIT.
 
 [EVIDENCE_SELECT] Select clues suggesting hidden replenishment.
 VISUAL: Four evidence cards separate aggression, liquidity, price response, and an irrelevant clue. The learner must select the required combination.
@@ -2376,13 +2443,15 @@ Positive delta alone
 One large candle
 WHY: Repeated fills at one price plus displayed size that keeps replenishing can suggest hidden liquidity.
 
-[ORDERFLOW_SIM] Displayed size repeatedly refills after same price executions. What's strongest?
-VISUAL: Level II repeatedly shows 100 shares at the offer. Each 100 share execution clears the display, then another 100 immediately reappears at the same price while Time and Sales keeps printing buys.
-SKILL: multi_signal_read
-A possible iceberg is replenishing hidden size
-The candle proves a breakout
-Every cancelled order is spoofing
-WHY: Repeated fills plus replenishment may indicate hidden liquidity.
+[TRADE_DECISION] Displayed ask size refills as buyer executions accumulate at one price. What's your decision?
+VISUAL: The full synchronized Trade Decision board shows Price and Context, DOM and Tape, and Footprint and Delta evolving from one market event.
+SKILL: trade_decision_quality
+SCENARIO: iceberg
+LONG
+SHORT
+WAIT
+ANSWER: WAIT
+WHY: Hidden sell liquidity may be absorbing buyers, but direction is not confirmed. WAIT.
 
 [REPLAY_COMPARE] Which replay shows repeated execution against replenishing displayed size?
 VISUAL: Replay A shows varied buy sizes continuing into an offer that replenishes while price stays pinned. Replay B shows both buy size and pace fading before price stalls.
@@ -2404,14 +2473,15 @@ TITLE: Liquidity Challenge
 TYPE: STANDARD
 CELEBRATION: Liquidity Challenge complete.
 
-[ORDERFLOW_SIM] Price trades beyond the level and immediately returns. What is strongest?
-VISUAL: Price briefly trades above resistance as offers disappear and buy prints surge, then sell liquidity rebuilds and price immediately returns below the level.
-SKILL: multi_signal_read
-Liquidity was taken but acceptance failed
-The fastest evidence guarantees the next move
-Displayed size alone determines the outcome
-The candle should be read without execution context
-WHY: A sweep takes liquidity but fails to gain acceptance.
+[TRADE_DECISION] Liquidity is taken above the level and price returns inside. What's your decision?
+VISUAL: The full synchronized Trade Decision board shows Price and Context, DOM and Tape, and Footprint and Delta evolving from one market event.
+SKILL: trade_decision_quality
+SCENARIO: sweep
+LONG
+SHORT
+WAIT
+ANSWER: WAIT
+WHY: The failed hold weakens buyers, but a SHORT still needs confirmed seller control. WAIT.
 
 [EVIDENCE_SELECT] Select the two essential clues.
 VISUAL: Four evidence cards separate aggression, liquidity, price response, and an irrelevant clue. The learner must select the required combination.
@@ -2531,21 +2601,25 @@ Book A
 Both equally
 WHY: Thin depth lets price travel more easily.
 
-[ORDERFLOW_SIM] The offer keeps refilling. Why?
-VISUAL: Level II repeatedly shows 100 shares at the offer. Each 100 share execution clears the display, then another 100 immediately reappears at the same price while Time and Sales keeps printing buys.
-SKILL: multi_signal_read
-Possible iceberg
-Buyer exhaustion
-Breakout acceptance
-WHY: Repeated replenishment can indicate hidden size.
+[TRADE_DECISION] Repeated buys execute into an offer that keeps replenishing. What's your decision?
+VISUAL: The full synchronized Trade Decision board shows Price and Context, DOM and Tape, and Footprint and Delta evolving from one market event.
+SKILL: trade_decision_quality
+SCENARIO: iceberg
+LONG
+SHORT
+WAIT
+ANSWER: WAIT
+WHY: Hidden sell liquidity may be absorbing buyers, but direction is not confirmed. WAIT.
 
-[ORDERFLOW_SIM] What's the strongest read?
-VISUAL: Price briefly trades above resistance as offers disappear and buy prints surge, then sell liquidity rebuilds and price immediately returns below the level.
-SKILL: multi_signal_read
-Liquidity taken; acceptance failed
-Breakout confirmed
-No stops triggered
-WHY: The breach rejects instead of holding.
+[TRADE_DECISION] The upside break fails to hold while opposing control remains unconfirmed. What's your decision?
+VISUAL: The full synchronized Trade Decision board shows Price and Context, DOM and Tape, and Footprint and Delta evolving from one market event.
+SKILL: trade_decision_quality
+SCENARIO: sweep
+LONG
+SHORT
+WAIT
+ANSWER: WAIT
+WHY: The failed hold weakens buyers, but a SHORT still needs confirmed seller control. WAIT.
 
 
 UNIT 7 — Breakouts and Failures
@@ -2564,13 +2638,15 @@ Replay B
 Not enough evidence
 WHY: Acceptance needs continued execution and price holding beyond the level.
 
-[ORDERFLOW_SIM] Seller initiated prints persist as bids thin and price accepts below support. What's strongest?
-VISUAL: Seller initiated prints persist into bids that are being consumed or withdrawn, footprint execution favors sellers, and price establishes sustained trade below support.
-SKILL: multi_signal_read
-Breakdown pressure is producing acceptance
-A downside sweep has already rejected
-Buyer absorption is confirmed
-WHY: The simulation shows selling, weakening bids, and sustained trade below support.
+[TRADE_DECISION] Selling continues after the break and downside price progress holds. What's your decision?
+VISUAL: The full synchronized Trade Decision board shows Price and Context, DOM and Tape, and Footprint and Delta evolving from one market event.
+SKILL: trade_decision_quality
+SCENARIO: breakdown_pressure
+LONG
+SHORT
+WAIT
+ANSWER: SHORT
+WHY: Persistent seller aggression and acceptance below support align for SHORT.
 
 [EVIDENCE_SELECT] Select the two clues supporting breakdown pressure.
 VISUAL: Four evidence cards separate aggression, liquidity, price response, and an irrelevant clue. The learner must select the required combination.
@@ -2729,13 +2805,15 @@ Replay A
 Not enough evidence
 WHY: Acceptance needs continued execution and price holding beyond the level.
 
-[ORDERFLOW_SIM] Price breaks support, fails to hold below it, and quickly reclaims it. What's strongest?
-VISUAL: Price trades below a prior low as sell stops trigger and seller initiated prints surge, then bids rebuild, buying responds, and price immediately reclaims the breached level.
-SKILL: multi_signal_read
-The breakdown failed
-Downside acceptance is established
-The initial breach guarantees continuation
-WHY: Trading below support followed by an immediate reclaim shows failed acceptance.
+[TRADE_DECISION] Price sweeps below support and reclaims it, but buyer follow-through is still developing. What's your decision?
+VISUAL: The full synchronized Trade Decision board shows Price and Context, DOM and Tape, and Footprint and Delta evolving from one market event.
+SKILL: trade_decision_quality
+SCENARIO: downside_sweep
+LONG
+SHORT
+WAIT
+ANSWER: WAIT
+WHY: The reclaim weakens sellers, but a LONG still needs confirmed buyer control. WAIT.
 
 [LIVE_CHART] What changed in price response?
 VISUAL: A live candlestick chart adds new candles over time, with price currently building downward.
@@ -2756,13 +2834,15 @@ Price holds below support
 Seller execution accelerates lower
 WHY: A failed breakdown first trades below support, then loses seller follow through and reclaims the level.
 
-[ORDERFLOW_SIM] Price trades above resistance, fails to hold, and returns below it. What's strongest?
-VISUAL: Price briefly trades above resistance as offers disappear and buy prints surge, then sell liquidity rebuilds and price immediately returns below the level.
-SKILL: multi_signal_read
-The breakout failed
-Upside acceptance is established
-Positive delta guarantees continuation
-WHY: The visible breach and return inside show failed acceptance.
+[TRADE_DECISION] The upside break fails to hold while opposing control remains unconfirmed. What's your decision?
+VISUAL: The full synchronized Trade Decision board shows Price and Context, DOM and Tape, and Footprint and Delta evolving from one market event.
+SKILL: trade_decision_quality
+SCENARIO: sweep
+LONG
+SHORT
+WAIT
+ANSWER: WAIT
+WHY: The failed hold weakens buyers, but a SHORT still needs confirmed seller control. WAIT.
 
 [MATCH] Match each clue.
 SKILL: failed_breakouts_vs_failed_breakdowns
@@ -2890,13 +2970,15 @@ A pull in liquidity is equivalent to aggressive execution
 Slower counter pressure automatically confirms continuation
 WHY: Late entries carry worse risk and reward.
 
-[ORDERFLOW_SIM] Footprint delta stays positive while a refreshing offer prevents higher prices. What's strongest?
-VISUAL: Price stalls at resistance above VWAP while an offer refreshes, buyer initiated prints accelerate, and positive footprint delta produces little upward progress.
-SKILL: multi_signal_read
-Buying may be absorbed by passive sellers
-Positive delta guarantees delayed upside
-The execution data should be ignored
-WHY: Positive delta with weak price progress can support possible seller absorption.
+[TRADE_DECISION] Buyer prints continue without matching upward price progress. What's your decision?
+VISUAL: The full synchronized Trade Decision board shows Price and Context, DOM and Tape, and Footprint and Delta evolving from one market event.
+SKILL: trade_decision_quality
+SCENARIO: seller_absorption
+LONG
+SHORT
+WAIT
+ANSWER: WAIT
+WHY: Buyer aggression is not producing acceptance, but seller control is not confirmed yet. WAIT is best supported.
 
 [ORDER] Build the read.
 VISUAL: Price opens well above the prior trading area with little activity between the two zones.
@@ -3002,13 +3084,15 @@ Replay A
 Neither
 WHY: Replay B falls back inside.
 
-[ORDERFLOW_SIM] What supports the breakdown?
-VISUAL: Seller initiated prints persist into bids that are being consumed or withdrawn, footprint execution favors sellers, and price establishes sustained trade below support.
-SKILL: multi_signal_read
-Persistent seller execution and acceptance below support
-One bearish candle
-A distant resting offer
-WHY: Tape, Level II, footprint, and price all support sustained downside acceptance.
+[TRADE_DECISION] Sellers consume bids and price accepts below support. What's your decision?
+VISUAL: The full synchronized Trade Decision board shows Price and Context, DOM and Tape, and Footprint and Delta evolving from one market event.
+SKILL: trade_decision_quality
+SCENARIO: breakdown_pressure
+LONG
+SHORT
+WAIT
+ANSWER: SHORT
+WHY: Persistent seller aggression and acceptance below support align for SHORT.
 
 [EVIDENCE_SELECT] Select acceptance clues.
 VISUAL: Four evidence cards separate aggression, liquidity, price response, and an irrelevant clue. The learner must select the required combination.
@@ -3020,21 +3104,25 @@ Immediate return inside
 Refreshing opposition
 WHY: Execution and holding response support acceptance.
 
-[ORDERFLOW_SIM] What invalidates the breakout?
-VISUAL: Price briefly trades above resistance as offers disappear and buy prints surge, then sell liquidity rebuilds and price immediately returns below the level.
-SKILL: multi_signal_read
-Price returns below resistance after trading above it
-Buyer prints remain visible
-Positive delta appears during the breach
-WHY: The break is visible before price loses the level and returns inside.
+[TRADE_DECISION] The upside break fails to hold while opposing control remains unconfirmed. What's your decision?
+VISUAL: The full synchronized Trade Decision board shows Price and Context, DOM and Tape, and Footprint and Delta evolving from one market event.
+SKILL: trade_decision_quality
+SCENARIO: sweep
+LONG
+SHORT
+WAIT
+ANSWER: WAIT
+WHY: The failed hold weakens buyers, but a SHORT still needs confirmed seller control. WAIT.
 
-[ORDERFLOW_SIM] What invalidates the breakdown?
-VISUAL: Price trades below a prior low as sell stops trigger and seller initiated prints surge, then bids rebuild, buying responds, and price immediately reclaims the breached level.
-SKILL: multi_signal_read
-Price returns above support after trading below it
-Seller prints remain visible
-Negative delta appears during the breach
-WHY: The break below support fails when price quickly reclaims the level.
+[TRADE_DECISION] Liquidity is taken below the level and price returns inside. What's your decision?
+VISUAL: The full synchronized Trade Decision board shows Price and Context, DOM and Tape, and Footprint and Delta evolving from one market event.
+SKILL: trade_decision_quality
+SCENARIO: downside_sweep
+LONG
+SHORT
+WAIT
+ANSWER: WAIT
+WHY: The reclaim weakens sellers, but a LONG still needs confirmed buyer control. WAIT.
 
 [MC] Why wait for a retest?
 SKILL: boss_battle_breakout_or_failure
@@ -3359,13 +3447,15 @@ Tape speed confirms acceptance
 One print resolves the read
 WHY: Conflicting signals call for patience and a weaker conclusion.
 
-[ORDERFLOW_SIM] What contradicts the fast buyer tape?
-VISUAL: Price rises above VWAP with positive delta and fast buyer prints, but a large offer refreshes and upward price progress begins fading.
-SKILL: multi_signal_read
-Positive delta and price response diverge
-The largest footprint cell decides direction
-Tape speed guarantees acceptance
-WHY: The tape is aggressive, but the footprint, refreshing offer, and fading price response conflict with it.
+[TRADE_DECISION] Aggression, liquidity, and price response still disagree. What's your decision?
+VISUAL: The full synchronized Trade Decision board shows Price and Context, DOM and Tape, and Footprint and Delta evolving from one market event.
+SKILL: trade_decision_quality
+SCENARIO: conflict
+LONG
+SHORT
+WAIT
+ANSWER: WAIT
+WHY: The evidence stack does not establish control in either direction, so WAIT.
 
 [EVIDENCE_SELECT] Select the two strongest clues.
 VISUAL: Four evidence cards separate aggression, liquidity, price response, and an irrelevant clue. The learner must select the required combination.
@@ -3399,21 +3489,25 @@ TITLE: Volume Context: Chop vs. Low Volume Trend
 TYPE: STANDARD
 CELEBRATION: Volume Context: Chop vs. Low Volume Trend complete.
 
-[ORDERFLOW_SIM] What defines this high volume chop?
-VISUAL: A range shows little net progress while Time and Sales alternates rapidly between buyers and sellers and the footprint displays heavy balanced execution on both sides.
-SKILL: multi_signal_read
-Fast two sided execution with little price progress
-Measured one sided tape with efficient travel
-Sparse opposing depth and low activity
-WHY: Heavy alternating execution produces volume without directional progress.
+[TRADE_DECISION] Fast buying and selling rotate inside a range while both sides replenish. What's your decision?
+VISUAL: The full synchronized Trade Decision board shows Price and Context, DOM and Tape, and Footprint and Delta evolving from one market event.
+SKILL: trade_decision_quality
+SCENARIO: chop
+LONG
+SHORT
+WAIT
+ANSWER: WAIT
+WHY: High-volume chop does not establish directional control, so WAIT is the strongest decision.
 
-[ORDERFLOW_SIM] What defines this low volume trend?
-VISUAL: Price advances steadily as Level II shows sparse opposing offers, Time and Sales prints at a measured pace, and the footprint shows modest directional execution rather than a volume surge.
-SKILL: multi_signal_read
-Measured execution and thin opposition allow steady travel
-Fast two sided execution pins price
-Heavy opposing depth blocks every move
-WHY: Sparse opposition allows modest execution to move price efficiently.
+[TRADE_DECISION] Price responds efficiently to persistent buying while offers remain thin. What's your decision?
+VISUAL: The full synchronized Trade Decision board shows Price and Context, DOM and Tape, and Footprint and Delta evolving from one market event.
+SKILL: trade_decision_quality
+SCENARIO: low_volume_trend
+LONG
+SHORT
+WAIT
+ANSWER: LONG
+WHY: Persistent buying, efficient price response, and little opposing liquidity support LONG despite modest volume.
 
 [FOOTPRINT] What does the footprint add?
 VISUAL: A footprint grid places bid volume left of price and ask volume right of price, showing similar bid and ask volume across the price rows.
@@ -3424,29 +3518,35 @@ The largest cell decides direction
 Volume guarantees a trend
 WHY: Similar bid and ask execution across the rows shows balance; the composite questions separately establish volume and price progress.
 
-[ORDERFLOW_SIM] Is execution strongly directional?
-VISUAL: Price advances steadily as Level II shows sparse opposing offers, Time and Sales prints at a measured pace, and the footprint shows modest directional execution rather than a volume surge.
-SKILL: multi_signal_read
-No. Modest pressure travels through thin opposing depth
-Yes. A large directional footprint proves it
-No. Price is not moving
-WHY: Level II shows thin opposition while execution remains modest and price still travels.
+[TRADE_DECISION] Price trends higher through thin opposing liquidity. What's your decision?
+VISUAL: The full synchronized Trade Decision board shows Price and Context, DOM and Tape, and Footprint and Delta evolving from one market event.
+SKILL: trade_decision_quality
+SCENARIO: low_volume_trend
+LONG
+SHORT
+WAIT
+ANSWER: LONG
+WHY: Persistent buying, efficient price response, and little opposing liquidity support LONG despite modest volume.
 
-[ORDERFLOW_SIM] Heavy two sided execution produces little price progress. What's strongest?
-VISUAL: A range shows little net progress while Time and Sales alternates rapidly between buyers and sellers and the footprint displays heavy balanced execution on both sides.
-SKILL: multi_signal_read
-Possible high volume chop
-Clean directional momentum
-No meaningful trading occurred
-WHY: High execution volume without directional progress can reflect two sided absorption.
+[TRADE_DECISION] Fast buying and selling rotate inside a range while both sides replenish. What's your decision?
+VISUAL: The full synchronized Trade Decision board shows Price and Context, DOM and Tape, and Footprint and Delta evolving from one market event.
+SKILL: trade_decision_quality
+SCENARIO: chop
+LONG
+SHORT
+WAIT
+ANSWER: WAIT
+WHY: High-volume chop does not establish directional control, so WAIT is the strongest decision.
 
-[ORDERFLOW_SIM] Price trends steadily while the opposing book stays thin. What's strongest?
-VISUAL: Price advances steadily as Level II shows sparse opposing offers, Time and Sales prints at a measured pace, and the footprint shows modest directional execution rather than a volume surge.
-SKILL: multi_signal_read
-Thin opposition can allow a low volume trend
-High volume is required for every trend
-The tape proves absorption
-WHY: Price can travel efficiently when little liquidity opposes it.
+[TRADE_DECISION] Price responds efficiently to persistent buying while offers remain thin. What's your decision?
+VISUAL: The full synchronized Trade Decision board shows Price and Context, DOM and Tape, and Footprint and Delta evolving from one market event.
+SKILL: trade_decision_quality
+SCENARIO: low_volume_trend
+LONG
+SHORT
+WAIT
+ANSWER: LONG
+WHY: Persistent buying, efficient price response, and little opposing liquidity support LONG despite modest volume.
 
 [TAP_CANDLE] Tap the clearest price response.
 VISUAL: Candles rotate between clear upper and lower boundaries without sustained direction. The candles are tappable and the learner must select the requested candle.
@@ -3480,14 +3580,15 @@ Negative delta prevents price from rising
 Refreshing bids matter only after sellers stop trading
 WHY: Continuation needs structure and renewed pressure.
 
-[ORDERFLOW_SIM] Book tape and price response disagree. What is strongest?
-VISUAL: Price rises above VWAP with positive delta and fast buyer prints, but a large offer refreshes and upward price progress begins fading.
-SKILL: multi_signal_read
-The evidence conflicts so no directional read is confirmed
-The fastest evidence guarantees the next move
-Displayed size alone determines the outcome
-The candle should be read without execution context
-WHY: When evidence conflicts the strongest conclusion may be no clear read.
+[TRADE_DECISION] Aggression, liquidity, and price response still disagree. What's your decision?
+VISUAL: The full synchronized Trade Decision board shows Price and Context, DOM and Tape, and Footprint and Delta evolving from one market event.
+SKILL: trade_decision_quality
+SCENARIO: conflict
+LONG
+SHORT
+WAIT
+ANSWER: WAIT
+WHY: The evidence stack does not establish control in either direction, so WAIT.
 
 [EVIDENCE_SELECT] Select the strongest continuation evidence.
 VISUAL: Four evidence cards separate aggression, liquidity, price response, and an irrelevant clue. The learner must select the required combination.
@@ -3576,13 +3677,15 @@ Replay B
 Neither
 WHY: Replay A forms one dominant bulge around its POC, while Replay B distributes volume more evenly.
 
-[ORDERFLOW_SIM] Price reaches the POC, aggressive buying increases, but the offer replenishes and price stalls. What's strongest?
-VISUAL: Price reaches the Point of Control, buyer initiated prints increase, nearby offers repeatedly replenish, and upward price progress stalls.
-SKILL: multi_signal_read
-The POC gives location while replenishment and stalled price suggest buying is being contained
-The POC guarantees reversal
-Volume Profile alone confirms seller control
-WHY: Profile location provides context, while current execution, liquidity behavior, and price response determine the immediate read.
+[TRADE_DECISION] Price reaches a high-volume area where buyer aggression stops producing progress. What's your decision?
+VISUAL: The full synchronized Trade Decision board shows Price and Context, DOM and Tape, and Footprint and Delta evolving from one market event.
+SKILL: trade_decision_quality
+SCENARIO: volume_profile_context
+LONG
+SHORT
+WAIT
+ANSWER: WAIT
+WHY: The profile gives location, but the developing absorption does not yet confirm direction. WAIT.
 
 [EVIDENCE_SELECT] Select the three clues that make this profile level meaningful right now.
 VISUAL: Four evidence cards show profile location, active execution at the level, price response, and an irrelevant display color clue.
@@ -3646,14 +3749,15 @@ Continuation is confirmed
 Location is irrelevant
 WHY: Fading pressure weakens the continuation case.
 
-[ORDERFLOW_SIM] Heavy volume produces little progress. What best explains it?
-VISUAL: A range shows little net progress while Time and Sales alternates rapidly between buyers and sellers and the footprint displays heavy balanced execution on both sides.
-SKILL: multi_signal_read
-Possible high volume chop
-Strong directional continuation
-Confirmed liquidity sweep
-One side has uncontested control
-WHY: Heavy two sided execution with little directional price progress is consistent with high volume chop rather than clean directional control.
+[TRADE_DECISION] Volume stays high, delta stays balanced, and price remains trapped. What's your decision?
+VISUAL: The full synchronized Trade Decision board shows Price and Context, DOM and Tape, and Footprint and Delta evolving from one market event.
+SKILL: trade_decision_quality
+SCENARIO: chop
+LONG
+SHORT
+WAIT
+ANSWER: WAIT
+WHY: High-volume chop does not establish directional control, so WAIT is the strongest decision.
 
 [TRADE_DECISION] Book, tape, footprint, and price response still conflict. What's your decision?
 SKILL: trade_decision_quality
@@ -3683,13 +3787,15 @@ TITLE: Reversal Pressure
 TYPE: STANDARD
 CELEBRATION: Reversal Pressure complete.
 
-[ORDERFLOW_SIM] What changed in control?
-VISUAL: Seller initiated prints dominate into support, price stops falling, seller pace weakens, buyers begin lifting offers, and price starts responding upward.
-SKILL: multi_signal_read
-Seller aggression stopped moving price and buyer pressure emerged
-Seller control strengthened through support
-One opposing print guaranteed reversal
-WHY: The sequence shows selling, stalled downside progress, fading seller pace, and an opposing response.
+[TRADE_DECISION] Selling stops making progress and buyers begin lifting price. What's your decision?
+VISUAL: The full synchronized Trade Decision board shows Price and Context, DOM and Tape, and Footprint and Delta evolving from one market event.
+SKILL: trade_decision_quality
+SCENARIO: seller_loses_control
+LONG
+SHORT
+WAIT
+ANSWER: LONG
+WHY: Seller pressure has failed and buyers are now producing a confirming price response, supporting LONG.
 
 [FOOTPRINT] What does this ask heavy footprint show?
 VISUAL: A footprint grid places bid volume left of price and ask volume right of price, showing one target row carrying the largest ask side execution advantage.
@@ -3700,13 +3806,15 @@ A complete reversal is confirmed
 Prior seller control is still increasing
 WHY: The footprint shows stronger buyer aggression, while the surrounding lesson establishes the broader control transition.
 
-[ORDERFLOW_SIM] Which reversal read is best supported?
-VISUAL: Seller initiated prints dominate into support, price stops falling, seller pace weakens, buyers begin lifting offers, and price starts responding upward.
-SKILL: multi_signal_read
-A visible control change is developing
-The bullish candle alone confirms reversal
-Seller aggression guarantees continuation
-WHY: Tape, liquidity, and price response show the prior side losing control and opposition emerging.
+[TRADE_DECISION] Seller pace fades, support holds, and buyer pressure begins moving price. What's your decision?
+VISUAL: The full synchronized Trade Decision board shows Price and Context, DOM and Tape, and Footprint and Delta evolving from one market event.
+SKILL: trade_decision_quality
+SCENARIO: seller_loses_control
+LONG
+SHORT
+WAIT
+ANSWER: LONG
+WHY: Seller pressure has failed and buyers are now producing a confirming price response, supporting LONG.
 
 [EVIDENCE_SELECT] Which two clues support a change in reversal pressure?
 VISUAL: Four evidence cards separate aggression, liquidity, price response, and an irrelevant clue. The learner must select the required combination.
@@ -3739,29 +3847,35 @@ WAIT
 ANSWER: SHORT
 WHY: Failed acceptance and confirmed seller response align for a short decision.
 
-[ORDERFLOW_SIM] What shows sellers became trapped?
-VISUAL: Price trades below a prior low as sell stops trigger and seller initiated prints surge, then bids rebuild, buying responds, and price immediately reclaims the breached level.
-SKILL: multi_signal_read
-Selling below support fails and price reclaims above
-Seller prints appear below support
-Negative delta remains visible
-WHY: The attempted breakdown fails to hold and reverses above the level.
+[TRADE_DECISION] Liquidity is taken below the level and price returns inside. What's your decision?
+VISUAL: The full synchronized Trade Decision board shows Price and Context, DOM and Tape, and Footprint and Delta evolving from one market event.
+SKILL: trade_decision_quality
+SCENARIO: downside_sweep
+LONG
+SHORT
+WAIT
+ANSWER: WAIT
+WHY: The reclaim weakens sellers, but a LONG still needs confirmed buyer control. WAIT.
 
-[ORDERFLOW_SIM] What contradicts the positive delta?
-VISUAL: Price briefly trades above resistance as offers disappear and buy prints surge, then sell liquidity rebuilds and price immediately returns below the level.
-SKILL: multi_signal_read
-Price returns below resistance
-Buyer initiated prints appear
-Offers briefly thin
-WHY: Positive delta fails to produce acceptance and price returns inside.
+[TRADE_DECISION] Price sweeps above resistance and returns below it, but seller follow-through is still developing. What's your decision?
+VISUAL: The full synchronized Trade Decision board shows Price and Context, DOM and Tape, and Footprint and Delta evolving from one market event.
+SKILL: trade_decision_quality
+SCENARIO: sweep
+LONG
+SHORT
+WAIT
+ANSWER: WAIT
+WHY: The failed hold weakens buyers, but a SHORT still needs confirmed seller control. WAIT.
 
-[ORDERFLOW_SIM] What contradicts the negative delta?
-VISUAL: Price trades below a prior low as sell stops trigger and seller initiated prints surge, then bids rebuild, buying responds, and price immediately reclaims the breached level.
-SKILL: multi_signal_read
-Price returns above support
-Seller initiated prints appear
-Bids briefly thin
-WHY: Negative delta fails to produce acceptance and price reclaims support.
+[TRADE_DECISION] The downside break fails to hold while opposing control remains unconfirmed. What's your decision?
+VISUAL: The full synchronized Trade Decision board shows Price and Context, DOM and Tape, and Footprint and Delta evolving from one market event.
+SKILL: trade_decision_quality
+SCENARIO: downside_sweep
+LONG
+SHORT
+WAIT
+ANSWER: WAIT
+WHY: The reclaim weakens sellers, but a LONG still needs confirmed buyer control. WAIT.
 
 [REPLAY_COMPARE] Which replay trapped buyers?
 VISUAL: Replay A breaks and holds with persistent buying. Replay B breaks, fails, returns inside, and gives control to sellers.
@@ -3833,29 +3947,35 @@ TITLE: Absorption Reversals
 TYPE: STANDARD
 CELEBRATION: Absorption Reversals complete.
 
-[ORDERFLOW_SIM] What shows pressure being absorbed?
-VISUAL: Price holds support below VWAP while a bid refreshes, seller initiated prints accelerate, and negative footprint delta produces little downward progress.
-SKILL: multi_signal_read
-Heavy seller prints make little downward progress
-Seller execution disappears before support
-Negative delta guarantees a breakdown
-WHY: Strong selling is visible while price barely declines against a replenishing bid.
+[TRADE_DECISION] Seller prints continue without matching downward price progress. What's your decision?
+VISUAL: The full synchronized Trade Decision board shows Price and Context, DOM and Tape, and Footprint and Delta evolving from one market event.
+SKILL: trade_decision_quality
+SCENARIO: buyer_absorption
+LONG
+SHORT
+WAIT
+ANSWER: WAIT
+WHY: Seller aggression is failing to move price lower, but buyer control is not confirmed yet. WAIT is best supported.
 
-[ORDERFLOW_SIM] What supports possible passive defense?
-VISUAL: Price holds support below VWAP while a bid refreshes, seller initiated prints accelerate, and negative footprint delta produces little downward progress.
-SKILL: multi_signal_read
-The bid replenishes as repeated selling stalls
-One ask heavy footprint row
-A lower wick without execution evidence
-WHY: Repeated executions, replenishment, and stalled price jointly support possible passive defense.
+[TRADE_DECISION] Sellers remain aggressive, but a refreshing bid holds support. What's your decision?
+VISUAL: The full synchronized Trade Decision board shows Price and Context, DOM and Tape, and Footprint and Delta evolving from one market event.
+SKILL: trade_decision_quality
+SCENARIO: buyer_absorption
+LONG
+SHORT
+WAIT
+ANSWER: WAIT
+WHY: Seller aggression is failing to move price lower, but buyer control is not confirmed yet. WAIT is best supported.
 
-[ORDERFLOW_SIM] Which explanation fits best?
-VISUAL: Price holds support below VWAP while a bid refreshes, seller initiated prints accelerate, and negative footprint delta produces little downward progress.
-SKILL: multi_signal_read
-Possible buyer absorption can support a reversal
-The lower wick alone proves absorption
-Negative delta guarantees continuation
-WHY: Tape, Level II, and price response support possible buyer absorption without making it certain.
+[TRADE_DECISION] Negative pressure builds while support holds and the bid replenishes. What's your decision?
+VISUAL: The full synchronized Trade Decision board shows Price and Context, DOM and Tape, and Footprint and Delta evolving from one market event.
+SKILL: trade_decision_quality
+SCENARIO: buyer_absorption
+LONG
+SHORT
+WAIT
+ANSWER: WAIT
+WHY: Seller aggression is failing to move price lower, but buyer control is not confirmed yet. WAIT is best supported.
 
 [EVIDENCE_SELECT] Which two clues best support an absorption reversal?
 VISUAL: Four evidence cards separate aggression, liquidity, price response, and an irrelevant clue. The learner must select the required combination.
@@ -3932,21 +4052,25 @@ TITLE: Reversal Confirmation & Insufficient Evidence
 TYPE: STANDARD
 CELEBRATION: Reversal Confirmation & Insufficient Evidence complete.
 
-[ORDERFLOW_SIM] What confirms the reversal?
-VISUAL: Seller initiated prints dominate into support, price stops falling, seller pace weakens, buyers begin lifting offers, and price starts responding upward.
-SKILL: multi_signal_read
-The prior side stalls, opposing pressure strengthens, and price responds
-One opposing print appears
-A candle pattern forms without execution confirmation
-WHY: The full transition from prior control to opposing follow through is visible.
+[TRADE_DECISION] The prior sellers lose control as buyers produce a confirming response. What's your decision?
+VISUAL: The full synchronized Trade Decision board shows Price and Context, DOM and Tape, and Footprint and Delta evolving from one market event.
+SKILL: trade_decision_quality
+SCENARIO: seller_loses_control
+LONG
+SHORT
+WAIT
+ANSWER: LONG
+WHY: Seller pressure has failed and buyers are now producing a confirming price response, supporting LONG.
 
-[ORDERFLOW_SIM] Which evidence source prevents an immediate reversal conclusion?
-VISUAL: Price rises above VWAP with positive delta and fast buyer prints, but a large offer refreshes and upward price progress begins fading.
-SKILL: multi_signal_read
-Aggression and price response still conflict
-The candle pattern guarantees confirmation
-Positive delta makes location irrelevant
-WHY: A reversal needs a control change and confirming response.
+[TRADE_DECISION] Aggression, liquidity, and price response still disagree. What's your decision?
+VISUAL: The full synchronized Trade Decision board shows Price and Context, DOM and Tape, and Footprint and Delta evolving from one market event.
+SKILL: trade_decision_quality
+SCENARIO: conflict
+LONG
+SHORT
+WAIT
+ANSWER: WAIT
+WHY: The evidence stack does not establish control in either direction, so WAIT.
 
 [FOOTPRINT] What must execution produce?
 VISUAL: A footprint grid places bid volume left of price and ask volume right of price, showing one target row carrying the largest ask side execution advantage.
@@ -3957,38 +4081,45 @@ The pattern target is guaranteed
 Only resting liquidity matters
 WHY: Tape and footprint evidence reveal what changed beneath the candle pattern.
 
-[ORDERFLOW_SIM] Which evidence is still missing before reversal confirmation?
-VISUAL: Price rises above VWAP with positive delta and fast buyer prints, but a large offer refreshes and upward price progress begins fading.
-SKILL: multi_signal_read
-Clear alignment between opposing aggression and price response
-One opposing execution
-A familiar reversal shape
-WHY: Conflicting execution and price response mean the opposing side has not yet confirmed control.
+[TRADE_DECISION] Buyer pressure appears, but replenishment and weak price response contradict it. What's your decision?
+VISUAL: The full synchronized Trade Decision board shows Price and Context, DOM and Tape, and Footprint and Delta evolving from one market event.
+SKILL: trade_decision_quality
+SCENARIO: conflict
+LONG
+SHORT
+WAIT
+ANSWER: WAIT
+WHY: The evidence stack does not establish control in either direction, so WAIT.
 
-[ORDERFLOW_SIM] Which reversal entry needs fewer assumptions?
-VISUAL: Seller initiated prints dominate into support, price stops falling, seller pace weakens, buyers begin lifting offers, and price starts responding upward.
-SKILL: multi_signal_read
-Waiting for control change and confirming price response
-Entering from the candle pattern alone
-Entering after one opposing print
-WHY: Visible execution and price confirmation reduce reliance on pattern assumptions.
+[TRADE_DECISION] The prior sellers lose control as buyers produce a confirming response. What's your decision?
+VISUAL: The full synchronized Trade Decision board shows Price and Context, DOM and Tape, and Footprint and Delta evolving from one market event.
+SKILL: trade_decision_quality
+SCENARIO: seller_loses_control
+LONG
+SHORT
+WAIT
+ANSWER: LONG
+WHY: Seller pressure has failed and buyers are now producing a confirming price response, supporting LONG.
 
-[INVALIDATION_MARK] You are long after a bullish reversal. Tap the level whose loss invalidates the read.
+[TRADE_DECISION] Sellers consume bids and price accepts below support. What's your decision?
+VISUAL: The full synchronized Trade Decision board shows Price and Context, DOM and Tape, and Footprint and Delta evolving from one market event.
 SKILL: trade_decision_quality
 SCENARIO: breakdown_pressure
-101.35 extension
-100.90 reclaimed support
-100.45 distant swing low
-ANSWER: 100.90 reclaimed support
-WHY: Losing reclaimed support with renewed seller acceptance invalidates the bullish control change.
+LONG
+SHORT
+WAIT
+ANSWER: SHORT
+WHY: Persistent seller aggression and acceptance below support align for SHORT.
 
-[ORDERFLOW_SIM] What matters most before treating this as a reversal?
-VISUAL: Seller initiated prints dominate into support, price stops falling, seller pace weakens, buyers begin lifting offers, and price starts responding upward.
-SKILL: multi_signal_read
-Control change and confirming price response
-The chart structure alone
-One large opposing execution
-WHY: A reversal requires the prior side to lose control and the opposing side to produce a confirming response.
+[TRADE_DECISION] Selling stops making progress and buyers begin lifting price. What's your decision?
+VISUAL: The full synchronized Trade Decision board shows Price and Context, DOM and Tape, and Footprint and Delta evolving from one market event.
+SKILL: trade_decision_quality
+SCENARIO: seller_loses_control
+LONG
+SHORT
+WAIT
+ANSWER: LONG
+WHY: Seller pressure has failed and buyers are now producing a confirming price response, supporting LONG.
 
 NODE 71
 TITLE: Boss Battle: Trap or Reversal?
@@ -4020,13 +4151,15 @@ Aggression stays strong
 Price accepts lower
 WHY: Exhaustion begins with fading aggression.
 
-[ORDERFLOW_SIM] What supports buyer absorption reversal?
-VISUAL: Price holds support below VWAP while a bid refreshes, seller initiated prints accelerate, and negative footprint delta produces little downward progress.
-SKILL: multi_signal_read
-Selling stalls at support
-Selling accepts lower
-No bids replenish
-WHY: Repeated selling fails to make progress.
+[TRADE_DECISION] Negative pressure builds while support holds and the bid replenishes. What's your decision?
+VISUAL: The full synchronized Trade Decision board shows Price and Context, DOM and Tape, and Footprint and Delta evolving from one market event.
+SKILL: trade_decision_quality
+SCENARIO: buyer_absorption
+LONG
+SHORT
+WAIT
+ANSWER: WAIT
+WHY: Seller aggression is failing to move price lower, but buyer control is not confirmed yet. WAIT is best supported.
 
 [REPLAY_COMPARE] What matters on the second high test?
 VISUAL: Replay A shows the first resistance test with strong buyer execution. Replay B shows a second test with weaker buying, stronger seller response, and a return below resistance.
@@ -4054,13 +4187,15 @@ One rejection wick
 Mixed tape
 WHY: A reversal needs control change and response.
 
-[ORDERFLOW_SIM] Is a reversal confirmed?
-VISUAL: Price rises above VWAP with positive delta and fast buyer prints, but a large offer refreshes and upward price progress begins fading.
-SKILL: multi_signal_read
-Not enough evidence
-Yes. The wick is enough
-Yes. Neutral delta confirms it
-WHY: Mixed tape and balanced execution remain inconclusive.
+[TRADE_DECISION] The tape is directional while the book, footprint, and price response remain conflicted. What's your decision?
+VISUAL: The full synchronized Trade Decision board shows Price and Context, DOM and Tape, and Footprint and Delta evolving from one market event.
+SKILL: trade_decision_quality
+SCENARIO: conflict
+LONG
+SHORT
+WAIT
+ANSWER: WAIT
+WHY: The evidence stack does not establish control in either direction, so WAIT.
 
 [MC] When should entry wait?
 SKILL: boss_battle_trap_or_reversal
@@ -4088,14 +4223,15 @@ Passive absorption and fading aggression produce the same evidence
 A high volume candle reveals which side initiated every trade
 WHY: A clear trigger keeps execution disciplined.
 
-[ENTRY_SELECT] The spread widens and nearby depth becomes unstable. Which entry is best supported?
+[TRADE_DECISION] Price jumps between thin levels while fill quality becomes unstable. What's your decision?
+VISUAL: The full synchronized Trade Decision board shows Price and Context, DOM and Tape, and Footprint and Delta evolving from one market event.
 SKILL: trade_decision_quality
 SCENARIO: thin_risk
-MARKET
-LIMIT
-NO ENTRY
-ANSWER: NO ENTRY
-WHY: No entry is best while fill quality and slippage risk are unstable.
+LONG
+SHORT
+WAIT
+ANSWER: WAIT
+WHY: Unstable depth and widening execution risk make WAIT the best-supported trade decision.
 
 [EVIDENCE_SELECT] Select the two relevant clues.
 VISUAL: Four evidence cards separate aggression, liquidity, price response, and an irrelevant clue. The learner must select the required combination.
@@ -4168,13 +4304,15 @@ Book A
 Both equally
 WHY: Thin, unstable depth can increase execution risk.
 
-[ORDERFLOW_SIM] Nearby depth is sparse and the spread widens during execution. What's strongest?
-VISUAL: Level II shows small nearby size with gaps, the spread widens during a market order, Time and Sales jumps across prices, and the simulated fill lands worse than the initial quote.
-SKILL: multi_signal_read
-Slippage risk is elevated
-The fill price is guaranteed
-Delta removes execution risk
-WHY: Sparse depth and a widening spread can move the fill away from the intended price.
+[TRADE_DECISION] Nearby depth is sparse and the spread widens during execution. What's your decision?
+VISUAL: The full synchronized Trade Decision board shows Price and Context, DOM and Tape, and Footprint and Delta evolving from one market event.
+SKILL: trade_decision_quality
+SCENARIO: thin_risk
+LONG
+SHORT
+WAIT
+ANSWER: WAIT
+WHY: Unstable depth and widening execution risk make WAIT the best-supported trade decision.
 
 NODE 74
 TITLE: Order Flow Invalidation
@@ -4279,15 +4417,15 @@ TITLE: Exiting Into Liquidity
 TYPE: STANDARD
 CELEBRATION: Exiting Into Liquidity complete.
 
-[TRADE_MANAGE] You are long into resistance as buying slows and the offer replenishes. What now?
+[TRADE_DECISION] Price tests a planned liquidity area without a confirmed new directional read. What's your decision?
+VISUAL: The full synchronized Trade Decision board shows Price and Context, DOM and Tape, and Footprint and Delta evolving from one market event.
 SKILL: trade_decision_quality
 SCENARIO: exit_liquidity
-HOLD
-EXIT
-REDUCE
-WAIT FOR MORE EVIDENCE
-ANSWER: EXIT
-WHY: Exiting into available liquidity is best supported as buying weakens at the planned resistance area.
+LONG
+SHORT
+WAIT
+ANSWER: WAIT
+WHY: The liquidity can help execution planning, but it does not confirm a new directional entry. WAIT.
 
 [EVIDENCE_SELECT] Select the two relevant clues.
 VISUAL: Four evidence cards separate aggression, liquidity, price response, and an irrelevant clue. The learner must select the required combination.
@@ -4324,21 +4462,25 @@ TITLE: Reviewing the Full Order Flow Read
 TYPE: STANDARD
 CELEBRATION: Reviewing the Full Order Flow Read complete.
 
-[ORDERFLOW_SIM] After the replay ends, which review process is best?
-VISUAL: A championship replay combines price and VWAP, changing Level II liquidity, Time and Sales, and footprint delta so the learner must weigh all four evidence sources.
-SKILL: multi_signal_read
-Review each evidence source separately from the trade outcome
-Judge the read only by profit or loss
-Review only the final candle
-WHY: A multi source replay should be reviewed by separating book, tape, footprint, and price response from outcome.
+[TRADE_DECISION] Positive delta builds, but resistance holds and the offer keeps replenishing. What's your decision?
+VISUAL: The full synchronized Trade Decision board shows Price and Context, DOM and Tape, and Footprint and Delta evolving from one market event.
+SKILL: trade_decision_quality
+SCENARIO: championship
+LONG
+SHORT
+WAIT
+ANSWER: WAIT
+WHY: Possible seller absorption is visible, but no confirmed rejection or seller control supports a SHORT yet. WAIT.
 
-[ORDERFLOW_SIM] Who is aggressive?
-VISUAL: A championship replay combines price and VWAP, changing Level II liquidity, Time and Sales, and footprint delta so the learner must weigh all four evidence sources.
-SKILL: multi_signal_read
-Buyers lifting offers
-Sellers hitting bids
-Neither side trading
-WHY: Buyer initiated prints dominate the tape.
+[TRADE_DECISION] The final evidence stack shows aggression without confirming price response. What's your decision?
+VISUAL: The full synchronized Trade Decision board shows Price and Context, DOM and Tape, and Footprint and Delta evolving from one market event.
+SKILL: trade_decision_quality
+SCENARIO: championship
+LONG
+SHORT
+WAIT
+ANSWER: WAIT
+WHY: Possible seller absorption is visible, but no confirmed rejection or seller control supports a SHORT yet. WAIT.
 
 [TAP_CANDLE] Tap the clearest price response.
 VISUAL: Small mixed candles overlap inside a narrow horizontal trading area. The candles are tappable and the learner must select the requested candle.
@@ -4347,13 +4489,15 @@ CHART: sideways
 TARGET: 1
 WHY: The selected candle shows whether execution produced follow through.
 
-[ORDERFLOW_SIM] Where is liquidity defending?
-VISUAL: A championship replay combines price and VWAP, changing Level II liquidity, Time and Sales, and footprint delta so the learner must weigh all four evidence sources.
-SKILL: multi_signal_read
-At the refreshing offer
-Below the distant bid
-No liquidity is visible
-WHY: The offer repeatedly replenishes after fills.
+[TRADE_DECISION] Buyer aggression meets a refreshing offer while price makes little progress. What's your decision?
+VISUAL: The full synchronized Trade Decision board shows Price and Context, DOM and Tape, and Footprint and Delta evolving from one market event.
+SKILL: trade_decision_quality
+SCENARIO: championship
+LONG
+SHORT
+WAIT
+ANSWER: WAIT
+WHY: Possible seller absorption is visible, but no confirmed rejection or seller control supports a SHORT yet. WAIT.
 
 [REPLAY_COMPARE] Which replay shows acceptance?
 VISUAL: Replay A shows offers clearing and price holding above resistance. Replay B shows replenishment and price falling back inside.
@@ -4363,90 +4507,110 @@ Replay B
 Neither replay
 WHY: Replay A clears offers and holds above the level. Replay B refreshes and rejects.
 
-[ORDERFLOW_SIM] Is buying moving price?
-VISUAL: A championship replay combines price and VWAP, changing Level II liquidity, Time and Sales, and footprint delta so the learner must weigh all four evidence sources.
-SKILL: multi_signal_read
-No. Price is stalling
-Yes. Price is accepting higher
-Price response is irrelevant
-WHY: Aggression is strong, but upward progress remains weak.
+[TRADE_DECISION] Positive delta builds, but resistance holds and the offer keeps replenishing. What's your decision?
+VISUAL: The full synchronized Trade Decision board shows Price and Context, DOM and Tape, and Footprint and Delta evolving from one market event.
+SKILL: trade_decision_quality
+SCENARIO: championship
+LONG
+SHORT
+WAIT
+ANSWER: WAIT
+WHY: Possible seller absorption is visible, but no confirmed rejection or seller control supports a SHORT yet. WAIT.
 
-[ORDERFLOW_SIM] Which clue conflicts with delta?
-VISUAL: A championship replay combines price and VWAP, changing Level II liquidity, Time and Sales, and footprint delta so the learner must weigh all four evidence sources.
-SKILL: multi_signal_read
-Price stalls at resistance
-Buyer prints stay fast
-Ask volume stays positive
-WHY: Positive delta conflicts with the lack of upward price progress.
+[TRADE_DECISION] The final evidence stack shows aggression without confirming price response. What's your decision?
+VISUAL: The full synchronized Trade Decision board shows Price and Context, DOM and Tape, and Footprint and Delta evolving from one market event.
+SKILL: trade_decision_quality
+SCENARIO: championship
+LONG
+SHORT
+WAIT
+ANSWER: WAIT
+WHY: Possible seller absorption is visible, but no confirmed rejection or seller control supports a SHORT yet. WAIT.
 
-[ORDERFLOW_SIM] What's the strongest read?
-VISUAL: A championship replay combines price and VWAP, changing Level II liquidity, Time and Sales, and footprint delta so the learner must weigh all four evidence sources.
-SKILL: multi_signal_read
-Possible seller absorption
-Confirmed buyer continuation
-Guaranteed reversal
-WHY: Refreshing offers and stalled price support possible seller absorption.
+[TRADE_DECISION] Buyer aggression meets a refreshing offer while price makes little progress. What's your decision?
+VISUAL: The full synchronized Trade Decision board shows Price and Context, DOM and Tape, and Footprint and Delta evolving from one market event.
+SKILL: trade_decision_quality
+SCENARIO: championship
+LONG
+SHORT
+WAIT
+ANSWER: WAIT
+WHY: Possible seller absorption is visible, but no confirmed rejection or seller control supports a SHORT yet. WAIT.
 
 NODE 78
 TITLE: FINAL BOSS: The Complete Order Flow Read
 TYPE: BOSS_BATTLE
 CELEBRATION: FINAL BOSS: The Complete Order Flow Read complete.
 
-[ORDERFLOW_SIM] Who is aggressive?
-VISUAL: A championship replay combines price and VWAP, changing Level II liquidity, Time and Sales, and footprint delta so the learner must weigh all four evidence sources.
-SKILL: multi_signal_read
-Buyers
-Sellers
-Neither
-WHY: Buyer initiated prints dominate.
+[TRADE_DECISION] Positive delta builds, but resistance holds and the offer keeps replenishing. What's your decision?
+VISUAL: The full synchronized Trade Decision board shows Price and Context, DOM and Tape, and Footprint and Delta evolving from one market event.
+SKILL: trade_decision_quality
+SCENARIO: championship
+LONG
+SHORT
+WAIT
+ANSWER: WAIT
+WHY: Possible seller absorption is visible, but no confirmed rejection or seller control supports a SHORT yet. WAIT.
 
-[ORDERFLOW_SIM] Where is liquidity defending?
-VISUAL: A championship replay combines price and VWAP, changing Level II liquidity, Time and Sales, and footprint delta so the learner must weigh all four evidence sources.
-SKILL: multi_signal_read
-At the refreshing offer
-Below the distant bid
-Nowhere
-WHY: The offer replenishes after fills.
+[TRADE_DECISION] The final evidence stack shows aggression without confirming price response. What's your decision?
+VISUAL: The full synchronized Trade Decision board shows Price and Context, DOM and Tape, and Footprint and Delta evolving from one market event.
+SKILL: trade_decision_quality
+SCENARIO: championship
+LONG
+SHORT
+WAIT
+ANSWER: WAIT
+WHY: Possible seller absorption is visible, but no confirmed rejection or seller control supports a SHORT yet. WAIT.
 
-[ORDERFLOW_SIM] Is price responding?
-VISUAL: A championship replay combines price and VWAP, changing Level II liquidity, Time and Sales, and footprint delta so the learner must weigh all four evidence sources.
-SKILL: multi_signal_read
-No. Price stalls
-Yes. Price accepts higher
-Response is irrelevant
-WHY: Aggression makes little progress.
+[TRADE_DECISION] Buyer aggression meets a refreshing offer while price makes little progress. What's your decision?
+VISUAL: The full synchronized Trade Decision board shows Price and Context, DOM and Tape, and Footprint and Delta evolving from one market event.
+SKILL: trade_decision_quality
+SCENARIO: championship
+LONG
+SHORT
+WAIT
+ANSWER: WAIT
+WHY: Possible seller absorption is visible, but no confirmed rejection or seller control supports a SHORT yet. WAIT.
 
-[ORDERFLOW_SIM] Which evidence conflicts?
-VISUAL: A championship replay combines price and VWAP, changing Level II liquidity, Time and Sales, and footprint delta so the learner must weigh all four evidence sources.
-SKILL: multi_signal_read
-Positive delta and stalled price
-Fast tape and positive delta
-VWAP and resistance
-WHY: Positive delta conflicts with weak price progress.
+[TRADE_DECISION] Positive delta builds, but resistance holds and the offer keeps replenishing. What's your decision?
+VISUAL: The full synchronized Trade Decision board shows Price and Context, DOM and Tape, and Footprint and Delta evolving from one market event.
+SKILL: trade_decision_quality
+SCENARIO: championship
+LONG
+SHORT
+WAIT
+ANSWER: WAIT
+WHY: Possible seller absorption is visible, but no confirmed rejection or seller control supports a SHORT yet. WAIT.
 
-[ORDERFLOW_SIM] What's the strongest read?
-VISUAL: A championship replay combines price and VWAP, changing Level II liquidity, Time and Sales, and footprint delta so the learner must weigh all four evidence sources.
-SKILL: multi_signal_read
-Possible seller absorption
-Buyer continuation remains favored
-Buyer exhaustion is developing
-WHY: Refreshing offers and stalled price support absorption.
+[TRADE_DECISION] The final evidence stack shows aggression without confirming price response. What's your decision?
+VISUAL: The full synchronized Trade Decision board shows Price and Context, DOM and Tape, and Footprint and Delta evolving from one market event.
+SKILL: trade_decision_quality
+SCENARIO: championship
+LONG
+SHORT
+WAIT
+ANSWER: WAIT
+WHY: Possible seller absorption is visible, but no confirmed rejection or seller control supports a SHORT yet. WAIT.
 
-[ORDERFLOW_SIM] What invalidates the read?
-VISUAL: A championship replay combines price and VWAP, changing Level II liquidity, Time and Sales, and footprint delta so the learner must weigh all four evidence sources.
-SKILL: multi_signal_read
-Price accepts above resistance
-Another buy print
-Stable spread
-WHY: Acceptance higher invalidates seller absorption.
+[TRADE_DECISION] Buyer aggression meets a refreshing offer while price makes little progress. What's your decision?
+VISUAL: The full synchronized Trade Decision board shows Price and Context, DOM and Tape, and Footprint and Delta evolving from one market event.
+SKILL: trade_decision_quality
+SCENARIO: championship
+LONG
+SHORT
+WAIT
+ANSWER: WAIT
+WHY: Possible seller absorption is visible, but no confirmed rejection or seller control supports a SHORT yet. WAIT.
 
-[ORDERFLOW_SIM] What execution risk is present?
-VISUAL: A championship replay combines price and VWAP, changing Level II liquidity, Time and Sales, and footprint delta so the learner must weigh all four evidence sources.
-SKILL: multi_signal_read
-Slippage near changing depth
-Stable displayed depth should limit most slippage
-The current spread is more important than depth changes
-WHY: Fast activity and changing depth increase slippage.
+[TRADE_DECISION] Positive delta builds, but resistance holds and the offer keeps replenishing. What's your decision?
+VISUAL: The full synchronized Trade Decision board shows Price and Context, DOM and Tape, and Footprint and Delta evolving from one market event.
+SKILL: trade_decision_quality
+SCENARIO: championship
+LONG
+SHORT
+WAIT
+ANSWER: WAIT
+WHY: Possible seller absorption is visible, but no confirmed rejection or seller control supports a SHORT yet. WAIT.
 
 [BOOK_COMPARE] Which book shows thinner liquidity?
 VISUAL: Two Level II ladders appear side by side. Book A has large resting size at every nearby price. Book B has small size and gaps between levels.
