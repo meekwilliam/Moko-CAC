@@ -1,11 +1,11 @@
 import SwiftUI
 import Combine
+import UserNotifications
 
 // MARK: - Onboarding flow
 // Eight-screen Duolingo-style intake: welcome (live-chart hero) → strategy →
-// experience
-// level → goals (choose any) → daily goal → sign-up → course build → commit.
-// Finishing bursts
+// goals (choose any) → daily goal → notifications → sign-up → course build →
+// commit. Finishing bursts
 // the commit color across the screen and launches Lesson 1 directly (never the
 // home screen). Answers are stored in UserDefaults under "onboarding.*".
 
@@ -19,7 +19,6 @@ struct OnboardingView: View {
 
     // Selections
     @State private var strategy: Int? = nil
-    @State private var experience: Int? = nil
     @State private var goals: Set<Int> = []
     @State private var dailyGoal: Int? = nil
     @State private var authInFlight = false
@@ -27,41 +26,34 @@ struct OnboardingView: View {
 
     private let totalSteps = 8
     private var stepSlideDistance: CGFloat { UIScreen.main.bounds.width + 64 }
-    private var showsChoiceFooter: Bool { (1...4).contains(step) }
+    private var showsChoiceFooter: Bool { (1...3).contains(step) }
     private var currentStepCanContinue: Bool {
         switch step {
         case 1: return strategy != nil
-        case 2: return experience != nil
-        case 3: return !goals.isEmpty
-        case 4: return dailyGoal != nil
+        case 2: return !goals.isEmpty
+        case 3: return dailyGoal != nil
         default: return true
         }
     }
 
     // Only Order Flow is available today; more strategies will unlock later.
-    private let strategyOptions: [(emoji: String, label: String, detail: String)] = [
-        ("🌊", "Order Flow", "Read live buying and selling to time trades"),
+    private let strategyOptions: [(label: String, detail: String)] = [
+        ("Order Flow", "Read live buying and selling to time trades"),
     ]
 
-    private let experienceOptions: [(emoji: String, label: String)] = [
-        ("🌱", "I'm completely new"),
-        ("📈", "I've watched trading videos"),
-        ("💻", "I've placed a few trades"),
-        ("🧠", "I have trading experience"),
+    private let goalOptions: [String] = [
+        "Learn to read charts",
+        "Become a better trader",
+        "Understand price action",
+        "Learn risk management",
+        "Build my own trading strategy",
+        "Learn before risking real money",
     ]
-    private let goalOptions: [(emoji: String, label: String)] = [
-        ("📊", "Learn to read charts"),
-        ("💼", "Become a better trader"),
-        ("🧠", "Understand price action"),
-        ("🛡️", "Learn risk management"),
-        ("🎯", "Build my own trading strategy"),
-        ("📚", "Learn before risking real money"),
-    ]
-    private let dailyGoalOptions: [(emoji: String, label: String, detail: String)] = [
-        ("🐢", "Casual", "5 min/day"),
-        ("🚶", "Consistent", "10 min/day"),
-        ("🏃", "Dedicated", "20 min/day"),
-        ("🔥", "Intensive", "30 min/day"),
+    private let dailyGoalOptions: [(label: String, detail: String)] = [
+        ("Casual", "5 min/day"),
+        ("Consistent", "10 min/day"),
+        ("Dedicated", "20 min/day"),
+        ("Intensive", "30 min/day"),
     ]
 
     var body: some View {
@@ -80,9 +72,9 @@ struct OnboardingView: View {
                         switch step {
                         case 0: welcomeScreen
                         case 1: strategyScreen
-                        case 2: experienceScreen
-                        case 3: goalsScreen
-                        case 4: dailyGoalScreen
+                        case 2: goalsScreen
+                        case 3: dailyGoalScreen
+                        case 4: notificationsScreen
                         case 5: signUpScreen
                         case 6: CourseBuildView(onComplete: advance)
                         default: CommitScreen(router: router, onCommitted: persistAnswers)
@@ -197,8 +189,7 @@ struct OnboardingView: View {
         // curtain animation (see AppRouter.curtainColor).
         let d = UserDefaults.standard
         if let s = strategy { d.set(strategyOptions[s].label, forKey: "onboarding.strategy") }
-        if let e = experience { d.set(experienceOptions[e].label, forKey: "onboarding.experience") }
-        d.set(goals.sorted().map { goalOptions[$0].label }, forKey: "onboarding.goals")
+        d.set(goals.sorted().map { goalOptions[$0] }, forKey: "onboarding.goals")
         if let g = dailyGoal { d.set(dailyGoalOptions[g].label, forKey: "onboarding.dailyGoal") }
         d.set(true, forKey: "onboarding.completed")
     }
@@ -265,8 +256,7 @@ struct OnboardingView: View {
             subtitle: "More strategies coming soon."
         ) {
             ForEach(strategyOptions.indices, id: \.self) { i in
-                optionRow(emoji: strategyOptions[i].emoji,
-                          label: strategyOptions[i].label,
+                optionRow(label: strategyOptions[i].label,
                           detail: strategyOptions[i].detail,
                           selected: strategy == i) {
                     strategy = i
@@ -275,24 +265,7 @@ struct OnboardingView: View {
         }
     }
 
-    // MARK: Screen 3 — Experience
-
-    private var experienceScreen: some View {
-        chooserScreen(
-            title: "What best describes you?",
-            subtitle: nil
-        ) {
-            ForEach(experienceOptions.indices, id: \.self) { i in
-                optionRow(emoji: experienceOptions[i].emoji,
-                          label: experienceOptions[i].label,
-                          selected: experience == i) {
-                    experience = i
-                }
-            }
-        }
-    }
-
-    // MARK: Screen 4 — Goals (choose any)
+    // MARK: Screen 3 — Goals (choose any)
 
     private var goalsScreen: some View {
         chooserScreen(
@@ -300,8 +273,7 @@ struct OnboardingView: View {
             subtitle: "Choose all that apply."
         ) {
             ForEach(goalOptions.indices, id: \.self) { i in
-                optionRow(emoji: goalOptions[i].emoji,
-                          label: goalOptions[i].label,
+                optionRow(label: goalOptions[i],
                           selected: goals.contains(i)) {
                     if goals.contains(i) { goals.remove(i) } else { goals.insert(i) }
                 }
@@ -309,7 +281,7 @@ struct OnboardingView: View {
         }
     }
 
-    // MARK: Screen 5 — Daily goal
+    // MARK: Screen 4 — Daily goal
 
     private var dailyGoalScreen: some View {
         chooserScreen(
@@ -317,13 +289,61 @@ struct OnboardingView: View {
             subtitle: nil
         ) {
             ForEach(dailyGoalOptions.indices, id: \.self) { i in
-                optionRow(emoji: dailyGoalOptions[i].emoji,
-                          label: dailyGoalOptions[i].label,
+                optionRow(label: dailyGoalOptions[i].label,
                           detail: dailyGoalOptions[i].detail,
                           selected: dailyGoal == i) {
                     dailyGoal = i
                 }
             }
+        }
+    }
+
+    // MARK: Screen 5 — Notifications
+    // Ask to enable reminders so learners come back and keep their streak.
+
+    private var notificationsScreen: some View {
+        VStack(spacing: 0) {
+            Spacer()
+
+            Image(systemName: "bell.badge.fill")
+                .font(.system(size: 60, weight: .black))
+                .foregroundColor(Theme.answer)
+
+            VStack(alignment: .center, spacing: 8) {
+                Text("Turn on reminders")
+                    .font(Theme.font(26, .black))
+                    .foregroundColor(theme.palette.ink)
+                Text("A daily nudge keeps your streak alive and your practice on track.")
+                    .font(Theme.bodyFont(15))
+                    .foregroundColor(theme.palette.muted)
+                    .lineSpacing(15 * 0.32)
+            }
+            .multilineTextAlignment(.center)
+            .frame(maxWidth: .infinity)
+            .padding(.top, 24)
+
+            Spacer()
+
+            VStack(spacing: 14) {
+                Button("TURN ON REMINDERS") { requestNotifications() }
+                    .buttonStyle(Chunky3DStyle(fill: Theme.answer, slab: Theme.answerDark))
+
+                Button("Maybe later") {
+                    Haptics.selection()
+                    advance()
+                }
+                .font(Theme.font(15, .black))
+                .foregroundColor(theme.palette.muted)
+            }
+        }
+        .padding(.horizontal, 24)
+        .padding(.bottom, 26)
+    }
+
+    private func requestNotifications() {
+        Haptics.selection()
+        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound]) { _, _ in
+            DispatchQueue.main.async { advance() }
         }
     }
 
@@ -489,14 +509,13 @@ struct OnboardingView: View {
         .padding(.bottom, 10)
     }
 
-    private func optionRow(emoji: String, label: String, detail: String? = nil,
+    private func optionRow(label: String, detail: String? = nil,
                            selected: Bool, action: @escaping () -> Void) -> some View {
         Button {
             Haptics.selection()
             action()
         } label: {
             HStack(spacing: 13) {
-                Text(emoji).font(.system(size: 24))
                 VStack(alignment: .leading, spacing: 1) {
                     Text(label)
                         .font(Theme.questionFont(16, .semibold))
