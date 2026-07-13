@@ -906,25 +906,24 @@ struct FootprintPanel: View {
             }
             .overlay(candleOverlay.allowsHitTesting(false))
 
-            HStack(spacing: 0) {
-                Text(fmtVol(bidTotal)).foregroundColor(askColor).frame(maxWidth: .infinity)
-                Color.clear.frame(width: 44)
-                Text(fmtVol(askTotal)).foregroundColor(bidColor).frame(maxWidth: .infinity)
+            HStack(spacing: 4) {
+                Text(fmtVol(bidTotal)).foregroundColor(askColor)
+                    .frame(maxWidth: .infinity).lineLimit(1).minimumScaleFactor(0.6)
+                Text("Δ " + (delta >= 0 ? "+" : "") + fmtVol(delta))
+                    .font(Theme.font(12, .black))
+                    .foregroundColor(delta >= 0 ? bidColor : askColor)
+                    .lineLimit(1).fixedSize().layoutPriority(1)
+                    .padding(.horizontal, 7).padding(.vertical, 4)
+                    .background(RoundedRectangle(cornerRadius: 7)
+                        .fill((delta >= 0 ? bidColor : askColor).opacity(0.16)))
+                Text(fmtVol(askTotal)).foregroundColor(bidColor)
+                    .frame(maxWidth: .infinity).lineLimit(1).minimumScaleFactor(0.6)
             }
-            .font(Theme.font(15, .black)).lineLimit(1).minimumScaleFactor(0.6).padding(.top, 6).padding(.bottom, 8)
+            .font(Theme.font(15, .black)).padding(.top, 6).padding(.bottom, 8)
 
-            VStack(spacing: 7) {
-                HStack {
-                    Text("CANDLE DELTA").font(Theme.font(10, .black)).foregroundColor(Theme.muted)
-                    Spacer()
-                    Text((delta >= 0 ? "+" : "") + fmtVol(delta))
-                        .font(Theme.font(15, .black))
-                        .foregroundColor(delta >= 0 ? bidColor : askColor)
-                }
-                HStack(spacing: 10) {
-                    Text("CVD").font(Theme.font(10, .black)).foregroundColor(Theme.muted)
-                    cvdSparkline
-                }
+            HStack(spacing: 10) {
+                Text("CVD").font(Theme.font(10, .black)).foregroundColor(Theme.muted)
+                cvdSparkline
             }
             .padding(.horizontal, 11).padding(.vertical, 9)
             .background(RoundedRectangle(cornerRadius: 9).fill(Color.black.opacity(0.55)))
@@ -1363,7 +1362,7 @@ struct OrderFlowSimulationView: View {
             HStack {
                 Text("MULTI SIGNAL READ").font(Theme.font(10, .black)).foregroundColor(Theme.muted)
                 if player.isTestLesson {
-                    Text(renderMode.label)
+                    Text(difficultyLabel)
                         .font(Theme.font(8, .black)).foregroundColor(.purple)
                         .padding(.horizontal, 6).padding(.vertical, 3)
                         .background(Capsule().fill(Color.purple.opacity(0.12)))
@@ -1608,6 +1607,16 @@ struct OrderFlowSimulationView: View {
     }
 
     private var panelSeed: UInt64 { chartSeed(screen) }
+
+    /// The rich panels show raw candles/DOM/tape/footprint, so the difficulty
+    /// chip must never read "BEGINNER SUMMARY" here — that label belongs to the
+    /// old pre-digested evidence cards, not a raw multi-signal board.
+    private var difficultyLabel: String {
+        if useRichPanels {
+            return renderMode == .rawFull ? "ADVANCED FULL RAW" : "INTERMEDIATE RAW"
+        }
+        return renderMode.label
+    }
 
     private var panelBullish: Bool {
         let e = eventKey.lowercased()
@@ -2168,7 +2177,7 @@ struct PriceContextPanel: View {
                         .position(x: 28, y: mapY(vw.first ?? plo, geo.size.height, plo, phi) - 9)
                 }
             }
-            .frame(height: 190)
+            .frame(height: 162)
         }
         .padding(12)
         .background(RoundedRectangle(cornerRadius: 16).fill(Color.black.opacity(0.28)))
@@ -2301,6 +2310,7 @@ struct DOMTapePanel: View {
         .background(RoundedRectangle(cornerRadius: 16).fill(Color.black.opacity(0.28)))
         .overlay(RoundedRectangle(cornerRadius: 16).strokeBorder(Theme.surfaceBorder, lineWidth: 1.5))
         .onReceive(ticker) { _ in step() }
+        .onAppear { if tape.isEmpty { for _ in 0..<5 { step() } } }
     }
 
     private func domRow(_ lv: DOMLevel) -> some View {
@@ -2358,7 +2368,7 @@ struct DOMTapePanel: View {
     }
 
     private func pushTrade(_ t: Trade, flash: Double) {
-        withAnimation(.easeOut(duration: 0.2)) { tape = Array(([t] + tape).prefix(5)) }
+        withAnimation(.easeOut(duration: 0.2)) { tape = Array(([t] + tape).prefix(6)) }
         flashPrice = flash
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) { if flashPrice == flash { flashPrice = nil } }
     }
