@@ -1148,6 +1148,9 @@ struct OrderFlowSimulationView: View {
     @State private var replayID = 0
     @State private var expandedCard: Int?
     @State private var inspectedStages: [Int: Int] = [:]
+    @State private var simulationTick = 0
+    @State private var simulationPaused = false
+    @State private var loopVariant = 0
 
     var body: some View {
         VStack(alignment: .leading, spacing: 13) {
@@ -1160,13 +1163,30 @@ struct OrderFlowSimulationView: View {
                         .background(Capsule().fill(Color.purple.opacity(0.12)))
                 }
                 Spacer()
-                if sequenceFinished {
-                    Button(action: replay) {
-                        Label("Replay evidence", systemImage: "arrow.counterclockwise")
-                            .font(Theme.font(10, .black)).foregroundColor(.purple)
+                if renderMode == .summary {
+                    if sequenceFinished {
+                        Button(action: restartEvidence) {
+                            Label("Replay evidence", systemImage: "arrow.counterclockwise")
+                                .font(Theme.font(10, .black)).foregroundColor(.purple)
+                        }
+                        .buttonStyle(.plain)
+                        .accessibilityLabel("Replay evidence sequence")
+                    }
+                } else {
+                    Button(action: togglePause) {
+                        Image(systemName: simulationPaused ? "play.fill" : "pause.fill")
+                            .font(.system(size: 11, weight: .black)).foregroundColor(.purple)
+                            .frame(width: 26, height: 26)
                     }
                     .buttonStyle(.plain)
-                    .accessibilityLabel("Replay evidence sequence")
+                    .accessibilityLabel(simulationPaused ? "Resume market simulation" : "Pause market simulation")
+                    Button(action: restartEvidence) {
+                        Image(systemName: "arrow.counterclockwise")
+                            .font(.system(size: 11, weight: .black)).foregroundColor(.purple)
+                            .frame(width: 26, height: 26)
+                    }
+                    .buttonStyle(.plain)
+                    .accessibilityLabel("Restart market simulation")
                 }
             }
 
@@ -1197,10 +1217,10 @@ struct OrderFlowSimulationView: View {
             .overlay(RoundedRectangle(cornerRadius: 16).strokeBorder(Color.purple.opacity(0.55), lineWidth: 1.5))
 
             if screen.type == "orderflow_sim_tap" {
-                Label(sequenceFinished ? "Tap the evidence card that answers the question" : "Watch the evidence develop", systemImage: "hand.tap.fill")
+                Label(evidenceReady ? "Tap the evidence card that answers the question" : "Watch the evidence develop", systemImage: "hand.tap.fill")
                     .font(Theme.font(12, .bold)).foregroundColor(Theme.muted)
             } else if screen.type == "orderflow_sim_select" {
-                Label(sequenceFinished ? "Select \(screen.targets?.count ?? 2) evidence cards" : "Watch the evidence develop", systemImage: "checklist")
+                Label(evidenceReady ? "Select \(screen.targets?.count ?? 2) evidence cards" : "Watch the evidence develop", systemImage: "checklist")
                     .font(Theme.font(12, .bold)).foregroundColor(Theme.muted)
             } else {
                 VStack(spacing: 8) {
@@ -1208,19 +1228,34 @@ struct OrderFlowSimulationView: View {
                         choice(index: index, label: label)
                     }
                 }
-                .allowsHitTesting(sequenceFinished || player.revealed)
-                .opacity(sequenceFinished || player.revealed ? 1 : 0.55)
+                .allowsHitTesting(evidenceReady || player.revealed)
+                .opacity(evidenceReady || player.revealed ? 1 : 0.55)
             }
         }
-        .task(id: replayID) { await playEvidence() }
+        .task(id: replayID) {
+            if renderMode == .summary { await playEvidence() }
+            else { await playRawEvidence() }
+        }
     }
 
     private var tracks: [MultiSignalTrack] {
-        [
+        let auxiliaryTitle: String
+        let auxiliaryIcon: String
+        if screen.event == "cvd_warning" {
+            auxiliaryTitle = "CVD"
+            auxiliaryIcon = "waveform.path.ecg"
+        } else if screen.event == "volume_profile_context" {
+            auxiliaryTitle = "VOLUME PROFILE"
+            auxiliaryIcon = "chart.bar.fill"
+        } else {
+            auxiliaryTitle = "FOOTPRINT"
+            auxiliaryIcon = "square.grid.3x3.fill"
+        }
+        return [
             MultiSignalTrack(icon: "chart.xyaxis.line", title: "PRICE + VWAP", states: evidence.price, tint: .cyan),
             MultiSignalTrack(icon: "list.bullet.rectangle", title: "LEVEL II", states: evidence.book, tint: askColor),
             MultiSignalTrack(icon: "bolt.fill", title: "TIME & SALES", states: evidence.tape, tint: bidColor),
-            MultiSignalTrack(icon: "square.grid.3x3.fill", title: "FOOTPRINT", states: evidence.footprint, tint: .orange),
+            MultiSignalTrack(icon: auxiliaryIcon, title: auxiliaryTitle, states: evidence.footprint, tint: .orange),
         ]
     }
 
@@ -1238,6 +1273,8 @@ struct OrderFlowSimulationView: View {
             panelIndex: index,
             event: screen.event ?? "seller_absorption",
             renderMode: renderMode,
+            simulationTick: simulationTick,
+            loopVariant: loopVariant,
             currentStage: stages[index],
             inspectedStage: inspectedStages[index],
             expanded: expandedCard == index,
@@ -1284,25 +1321,62 @@ struct OrderFlowSimulationView: View {
         } catch { }
     }
 
-    private func replay() {
+    @MainActor private func playRawEvidence() async {
+        simulationTick = 0
+        sequenceFinished = false
+        expandedCard = nil
+        inspectedStages = [:]
+        let finalTick = renderMode == .rawFull ? 16 : 12
+        do {
+            while !Task.isCancelled && !player.revealed {
+                if simulationPaused {
+                    try await Task.sleep(nanoseconds: 120_000_000)
+                    continue
+                }
+                try await Task.sleep(nanoseconds: 750_000_000)
+                guard !Task.isCancelled, !player.revealed else { return }
+                if simulationTick >= finalTick {
+                    try await Task.sleep(nanoseconds: 300_000_000)
+                    guard !Task.isCancelled else { return }
+                    loopVariant = (loopVariant + 1) % 2
+                    withAnimation(.easeInOut(duration: 0.30)) { simulationTick = 0 }
+                } else {
+                    withAnimation(.linear(duration: 0.22)) { simulationTick += 1 }
+                }
+            }
+        } catch { }
+    }
+
+    private var evidenceReady: Bool {
+        renderMode == .summary ? sequenceFinished : simulationTick >= 3
+    }
+
+    private func restartEvidence() {
         Haptics.selection()
+        simulationPaused = false
         replayID += 1
+    }
+
+    private func togglePause() {
+        Haptics.selection()
+        simulationPaused.toggle()
     }
 
     private func cardTapped(_ index: Int) {
         guard !player.revealed else { return }
         switch screen.type {
         case "orderflow_sim_tap":
-            guard sequenceFinished else { return }
+            guard evidenceReady else { return }
             Haptics.selection()
             player.selectedIndex = index
         case "orderflow_sim_select":
-            guard sequenceFinished else { return }
+            guard evidenceReady else { return }
             Haptics.selection()
             if player.selectedSet.contains(index) { player.selectedSet.remove(index) }
             else if player.selectedSet.count < (screen.targets?.count ?? 2) { player.selectedSet.insert(index) }
         default:
-            toggleHistory(index)
+            if renderMode == .summary { toggleHistory(index) }
+            else { expandedCard = expandedCard == index ? nil : index }
         }
     }
 
@@ -1389,6 +1463,8 @@ private struct MultiSignalEvidenceCard: View {
     let panelIndex: Int
     let event: String
     let renderMode: MultiSignalRenderMode
+    let simulationTick: Int
+    let loopVariant: Int
     let currentStage: Int
     let inspectedStage: Int?
     let expanded: Bool
@@ -1407,6 +1483,7 @@ private struct MultiSignalEvidenceCard: View {
     @State private var pulse = false
 
     init(track: MultiSignalTrack, panelIndex: Int, event: String, renderMode: MultiSignalRenderMode,
+         simulationTick: Int, loopVariant: Int,
          currentStage: Int, inspectedStage: Int?, expanded: Bool,
          selected: Bool, revealed: Bool, isCorrect: Bool, replayID: Int, ink: Color,
          onTap: @escaping () -> Void, onToggleHistory: @escaping () -> Void,
@@ -1415,6 +1492,8 @@ private struct MultiSignalEvidenceCard: View {
         self.panelIndex = panelIndex
         self.event = event
         self.renderMode = renderMode
+        self.simulationTick = simulationTick
+        self.loopVariant = loopVariant
         self.currentStage = currentStage
         self.inspectedStage = inspectedStage
         self.expanded = expanded
@@ -1442,7 +1521,7 @@ private struct MultiSignalEvidenceCard: View {
                     HStack(spacing: 7) {
                         Text(track.title).font(Theme.font(9, .black)).foregroundColor(Theme.muted)
                         Spacer()
-                        if track.states.count > 1 {
+                        if renderMode == .summary && track.states.count > 1 {
                             HStack(spacing: 4) {
                                 ForEach(track.states.indices, id: \.self) { index in
                                     Circle().fill(index == currentStage ? track.tint : track.tint.opacity(0.22))
@@ -1450,10 +1529,15 @@ private struct MultiSignalEvidenceCard: View {
                                 }
                             }
                         }
-                        Image(systemName: expanded ? "chevron.up" : "clock.arrow.circlepath")
-                            .font(.system(size: 10, weight: .bold)).foregroundColor(Theme.muted)
-                            .frame(width: 22, height: 22).contentShape(Rectangle())
-                            .highPriorityGesture(TapGesture().onEnded { onToggleHistory() })
+                        if renderMode == .summary {
+                            Image(systemName: expanded ? "chevron.up" : "clock.arrow.circlepath")
+                                .font(.system(size: 10, weight: .bold)).foregroundColor(Theme.muted)
+                                .frame(width: 22, height: 22).contentShape(Rectangle())
+                                .highPriorityGesture(TapGesture().onEnded { onToggleHistory() })
+                        } else {
+                            Image(systemName: expanded ? "arrow.down.right.and.arrow.up.left" : "arrow.up.left.and.arrow.down.right")
+                                .font(.system(size: 9, weight: .bold)).foregroundColor(Theme.muted)
+                        }
                     }
                     if renderMode == .summary {
                         Text(displayedValue)
@@ -1463,21 +1547,22 @@ private struct MultiSignalEvidenceCard: View {
                             .opacity(textOpacity).offset(y: textOffset)
                     } else {
                         RawMarketEvidencePanel(panelIndex: panelIndex, event: event,
-                                               stage: effectiveStage, full: renderMode == .rawFull,
+                                               tick: simulationTick, loopVariant: loopVariant,
+                                               full: renderMode == .rawFull || expanded,
                                                tint: track.tint, ink: ink)
-                            .frame(height: renderMode == .rawFull ? 76 : 58)
+                            .frame(height: expanded ? 126 : (renderMode == .rawFull ? 76 : 58))
                     }
                 }
             }
 
-            if expanded {
+            if expanded && renderMode == .summary {
                 VStack(alignment: .leading, spacing: 5) {
                     ForEach(Array(track.states.indices.prefix(currentStage + 1)), id: \.self) { index in
                         Button(action: { onInspect(index) }) {
                             HStack(alignment: .top, spacing: 7) {
                                 Circle().fill(index == currentStage ? track.tint : track.tint.opacity(0.22))
                                     .frame(width: 7, height: 7).padding(.top, 4)
-                                Text(renderMode == .summary ? "\(index + 1). \(track.states[index])" : "Snapshot \(index + 1)")
+                                Text("\(index + 1). \(track.states[index])")
                                     .font(Theme.font(10, index == currentStage ? .black : .bold))
                                     .foregroundColor(index == effectiveStage ? ink : Theme.muted)
                                     .multilineTextAlignment(.leading)
@@ -1528,7 +1613,8 @@ private struct MultiSignalEvidenceCard: View {
 private struct RawMarketEvidencePanel: View {
     let panelIndex: Int
     let event: String
-    let stage: Int
+    let tick: Int
+    let loopVariant: Int
     let full: Bool
     let tint: Color
     let ink: Color
@@ -1542,16 +1628,38 @@ private struct RawMarketEvidencePanel: View {
         case 0: pricePanel
         case 1: domPanel
         case 2: tapePanel
-        default: footprintPanel
+        default:
+            if event == "cvd_warning" { cvdPanel }
+            else if event == "volume_profile_context" { profilePanel }
+            else { footprintPanel }
         }
     }
 
     private var pricePanel: some View {
         GeometryReader { proxy in
             let count = full ? 9 : 6
-            let heights: [CGFloat] = sellerDriven
-                ? (stage == 0 ? [48, 43, 38, 33, 28, 24, 21, 18, 16] : [48, 40, 31, 25, 20, 18, 20, 19, 21])
-                : (stage == 0 ? [18, 23, 29, 36, 43, 50, 54, 57, 60] : [18, 27, 38, 49, 55, 57, 56, 58, 57])
+            let pulse = CGFloat((tick + loopVariant) % 4)
+            let upwardMomentum = event == "breakout" || event == "low_volume_trend"
+            let downwardMomentum = event == "breakdown_pressure"
+            let sideways = event == "chop"
+            let upsideRejection = event == "sweep"
+            let downsideRejection = event == "downside_sweep"
+            let heights: [CGFloat] = (0..<count).map { index in
+                let position = CGFloat(index) / CGFloat(max(1, count - 1))
+                if sideways { return 34 + CGFloat((tick + index * 2) % 5) * 2 }
+                if upsideRejection {
+                    let turn = tick < 7 ? CGFloat(tick) * 1.5 : CGFloat(14 - min(tick, 14)) * 1.5
+                    return 20 + position * 25 + (index == count - 1 ? turn : 0)
+                }
+                if downsideRejection {
+                    let turn = tick < 7 ? CGFloat(tick) * 1.5 : CGFloat(14 - min(tick, 14)) * 1.5
+                    return 52 - position * 26 - (index == count - 1 ? turn : 0)
+                }
+                if upwardMomentum { return 18 + position * 35 + (index == count - 1 ? CGFloat(min(tick, 14)) * 1.2 : 0) }
+                if downwardMomentum { return 54 - position * 33 - (index == count - 1 ? CGFloat(min(tick, 14)) * 1.0 : 0) }
+                if sellerDriven { return 50 - position * 29 + (index >= count - 2 ? pulse : 0) }
+                return 18 + position * 38 + (index >= count - 2 ? pulse * (index == count - 1 ? 0.35 : 0.7) : 0)
+            }
             ZStack {
                 Path { path in
                     let y = sellerDriven ? proxy.size.height * 0.78 : proxy.size.height * 0.22
@@ -1583,13 +1691,17 @@ private struct RawMarketEvidencePanel: View {
     private var domPanel: some View {
         let rows = full ? 8 : 6
         let thinBook = event == "thin_risk" || event == "thin_liquidity"
+        let refreshSequence = [108, 86, 72, 45, 31, 126, 104, 68, 33, 121]
+        let consumeSequence = [142, 119, 91, 64, 38, 17, 4, 0, 0, 0]
         return VStack(spacing: 1) {
             ForEach(0..<rows, id: \.self) { index in
                 let ask = index < rows / 2
                 let highlighted = sellerDriven ? index == rows / 2 : index == rows / 2 - 1
-                let base = 70 + index * 19
+                let base = 70 + index * 19 + loopVariant * 7 + ((tick + index) % 3) * 3
+                let consumesLiquidity = event == "breakout" || event == "breakdown_pressure" || event == "low_volume_trend"
+                let activeSequence = consumesLiquidity ? consumeSequence : refreshSequence
                 let size = thinBook ? (index.isMultiple(of: 3) ? 0 : 8 + index * 4)
-                    : (highlighted && stage == 1 ? base + 260 : base)
+                    : (highlighted ? activeSequence[(tick + loopVariant) % activeSequence.count] : base)
                 HStack(spacing: 3) {
                     Text(ask ? "" : "\(size)").frame(maxWidth: .infinity, alignment: .trailing)
                     Text(String(format: "%.2f", 100.20 + Double(rows / 2 - index) * 0.05))
@@ -1599,6 +1711,7 @@ private struct RawMarketEvidencePanel: View {
                 .font(Theme.font(full ? 6 : 7, highlighted ? .black : .bold))
                 .foregroundColor(ask ? askColor : bidColor)
                 .background(highlighted ? tint.opacity(0.11) : .clear)
+                .contentTransition(.numericText())
             }
         }
     }
@@ -1606,18 +1719,22 @@ private struct RawMarketEvidencePanel: View {
     private var tapePanel: some View {
         let rows = full ? 7 : 5
         return VStack(spacing: 1) {
-            ForEach(0..<rows, id: \.self) { index in
-                let initiatedBuy = sellerDriven ? index.isMultiple(of: 3) : (stage == 1 ? index % 4 != 0 : index.isMultiple(of: 2))
+            ForEach(tick..<(tick + rows), id: \.self) { printNumber in
+                let initiatedBuy = sellerDriven ? printNumber.isMultiple(of: 3) : (tick > 2 ? printNumber % 4 != 0 : printNumber.isMultiple(of: 2))
                 HStack(spacing: 3) {
-                    Text("10:2\(index).\(stage == 1 ? index * 2 : index * 7)").foregroundColor(Theme.muted)
+                    Text("10:\(20 + printNumber / 10).\(printNumber % 10)").foregroundColor(Theme.muted)
                     Spacer(minLength: 2)
-                    Text(String(format: "%.2f", 100.15 + Double(index % 3) * 0.05))
-                    Text("\(40 + index * (stage == 1 ? 35 : 18))").frame(width: 25, alignment: .trailing)
+                    Text(String(format: "%.2f", 100.15 + Double(printNumber % 3) * 0.05))
+                    Text("\(40 + (printNumber % 6) * 35 + loopVariant * 11)").frame(width: 25, alignment: .trailing)
                 }
                 .font(Theme.font(full ? 6 : 7, .bold))
                 .foregroundColor(initiatedBuy ? bidColor : askColor)
+                .contentTransition(.numericText())
+                .transition(.asymmetric(insertion: .move(edge: .bottom).combined(with: .opacity),
+                                        removal: .move(edge: .top).combined(with: .opacity)))
             }
         }
+        .clipped()
     }
 
     private var footprintPanel: some View {
@@ -1626,8 +1743,9 @@ private struct RawMarketEvidencePanel: View {
         return VStack(spacing: 1) {
             ForEach(0..<rows, id: \.self) { index in
                 let base = 35 + index * 13
-                let bid = (sellerDriven || conflictingDelta) && stage == 1 ? base + 80 : base
-                let ask = !sellerDriven && !conflictingDelta && stage == 1 ? base + 95 : base + 8
+                let accumulated = min(145, tick * (full ? 11 : 9)) + loopVariant * 8
+                let bid = (sellerDriven || conflictingDelta) ? base + accumulated : base
+                let ask = !sellerDriven && !conflictingDelta ? base + 8 + accumulated : base + 8
                 HStack(spacing: 3) {
                     Text("\(bid)").frame(maxWidth: .infinity, alignment: .trailing)
                         .padding(.horizontal, 2).background(askColor.opacity(min(0.55, Double(bid) / 260)))
@@ -1636,11 +1754,46 @@ private struct RawMarketEvidencePanel: View {
                         .padding(.horizontal, 2).background(bidColor.opacity(min(0.55, Double(ask) / 260)))
                 }
                 .font(Theme.font(full ? 6 : 8, .black)).foregroundColor(ink)
+                .contentTransition(.numericText())
             }
             if full {
-                Text("Δ \((sellerDriven || conflictingDelta) ? "−" : "+")\(stage == 1 ? 420 : 36)")
+                Text("Δ \((sellerDriven || conflictingDelta) ? "−" : "+")\(36 + min(520, tick * 38))")
                     .font(Theme.font(7, .black)).foregroundColor((sellerDriven || conflictingDelta) ? askColor : bidColor)
                     .frame(maxWidth: .infinity, alignment: .trailing)
+            }
+        }
+    }
+
+    private var cvdPanel: some View {
+        GeometryReader { proxy in
+            let count = full ? 10 : 7
+            Path { path in
+                for index in 0..<count {
+                    let progress = CGFloat(index) / CGFloat(max(1, count - 1))
+                    let developing = min(CGFloat(tick) / 12, 1)
+                    let rise = progress < 0.62 ? progress * 0.72 : 0.45 + (progress - 0.62) * 0.15
+                    let y = proxy.size.height * (0.88 - rise * developing - progress * 0.18)
+                    let point = CGPoint(x: proxy.size.width * progress, y: y)
+                    if index == 0 { path.move(to: point) } else { path.addLine(to: point) }
+                }
+            }
+            .stroke(Color.orange, style: StrokeStyle(lineWidth: 2, lineCap: .round, lineJoin: .round))
+            Text("CVD").font(Theme.font(7, .black)).foregroundColor(.orange)
+                .position(x: 14, y: 8)
+        }
+    }
+
+    private var profilePanel: some View {
+        let bars = full ? [18, 32, 58, 104, 72, 38, 21] : [24, 52, 96, 61, 29]
+        return VStack(alignment: .leading, spacing: full ? 2 : 3) {
+            ForEach(Array(bars.enumerated()), id: \.offset) { index, width in
+                HStack(spacing: 3) {
+                    Text(String(format: "%.2f", 100.40 - Double(index) * 0.05))
+                        .font(Theme.font(6, .bold)).foregroundColor(Theme.muted).frame(width: 32)
+                    RoundedRectangle(cornerRadius: 2)
+                        .fill(index == bars.count / 2 ? Color.orange : Color.orange.opacity(0.55))
+                        .frame(width: CGFloat(width) * (full ? 0.55 : 0.45), height: full ? 5 : 7)
+                }
             }
         }
     }
