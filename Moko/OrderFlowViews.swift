@@ -1153,6 +1153,12 @@ struct OrderFlowSimulationView: View {
         VStack(alignment: .leading, spacing: 13) {
             HStack {
                 Text("MULTI SIGNAL READ").font(Theme.font(10, .black)).foregroundColor(Theme.muted)
+                if player.isTestLesson {
+                    Text(renderMode.label)
+                        .font(Theme.font(8, .black)).foregroundColor(.purple)
+                        .padding(.horizontal, 6).padding(.vertical, 3)
+                        .background(Capsule().fill(Color.purple.opacity(0.12)))
+                }
                 Spacer()
                 if sequenceFinished {
                     Button(action: replay) {
@@ -1168,21 +1174,16 @@ struct OrderFlowSimulationView: View {
                 .font(Theme.questionFont(20, .heavy)).foregroundColor(ink)
 
             VStack(spacing: 7) {
-                ForEach(Array(tracks.enumerated()), id: \.offset) { index, track in
-                    MultiSignalEvidenceCard(
-                        track: track,
-                        currentStage: stages[index],
-                        inspectedStage: inspectedStages[index],
-                        expanded: expandedCard == index,
-                        selected: isCardSelected(index),
-                        revealed: player.revealed,
-                        isCorrect: isCorrectCard(index),
-                        replayID: replayID,
-                        ink: ink,
-                        onTap: { cardTapped(index) },
-                        onToggleHistory: { toggleHistory(index) },
-                        onInspect: { inspectedStages[index] = $0 }
-                    )
+                if renderMode == .rawFull {
+                    LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible())], alignment: .leading, spacing: 7) {
+                        ForEach(Array(tracks.enumerated()), id: \.offset) { index, track in
+                            evidenceCard(index: index, track: track)
+                        }
+                    }
+                } else {
+                    ForEach(Array(tracks.enumerated()), id: \.offset) { index, track in
+                        evidenceCard(index: index, track: track)
+                    }
                 }
                 if screen.footprintPreview == true {
                     Text("EXTRA PREVIEW  Delta compares aggressive buying with selling. This clue is supplemental and is taught in Unit 5.")
@@ -1221,6 +1222,34 @@ struct OrderFlowSimulationView: View {
             MultiSignalTrack(icon: "bolt.fill", title: "TIME & SALES", states: evidence.tape, tint: bidColor),
             MultiSignalTrack(icon: "square.grid.3x3.fill", title: "FOOTPRINT", states: evidence.footprint, tint: .orange),
         ]
+    }
+
+    private var renderMode: MultiSignalRenderMode {
+        if let explicit = screen.renderMode.flatMap(MultiSignalRenderMode.init(rawValue:)) { return explicit }
+        let sourceNode = screen.sourceNode ?? player.lesson.node
+        if sourceNode <= 12 { return .summary }
+        if sourceNode <= 27 { return .rawSimplified }
+        return .rawFull
+    }
+
+    private func evidenceCard(index: Int, track: MultiSignalTrack) -> some View {
+        MultiSignalEvidenceCard(
+            track: track,
+            panelIndex: index,
+            event: screen.event ?? "seller_absorption",
+            renderMode: renderMode,
+            currentStage: stages[index],
+            inspectedStage: inspectedStages[index],
+            expanded: expandedCard == index,
+            selected: isCardSelected(index),
+            revealed: player.revealed,
+            isCorrect: isCorrectCard(index),
+            replayID: replayID,
+            ink: ink,
+            onTap: { cardTapped(index) },
+            onToggleHistory: { toggleHistory(index) },
+            onInspect: { inspectedStages[index] = $0 }
+        )
     }
 
     /// Advanced and expert scenarios should make the evidence carry the read
@@ -1334,6 +1363,20 @@ struct OrderFlowSimulationView: View {
     }
 }
 
+private enum MultiSignalRenderMode: String {
+    case summary
+    case rawSimplified = "raw_simplified"
+    case rawFull = "raw_full"
+
+    var label: String {
+        switch self {
+        case .summary: return "BEGINNER SUMMARY"
+        case .rawSimplified: return "INTERMEDIATE RAW"
+        case .rawFull: return "ADVANCED FULL RAW"
+        }
+    }
+}
+
 private struct MultiSignalTrack {
     let icon: String
     let title: String
@@ -1343,6 +1386,9 @@ private struct MultiSignalTrack {
 
 private struct MultiSignalEvidenceCard: View {
     let track: MultiSignalTrack
+    let panelIndex: Int
+    let event: String
+    let renderMode: MultiSignalRenderMode
     let currentStage: Int
     let inspectedStage: Int?
     let expanded: Bool
@@ -1360,11 +1406,15 @@ private struct MultiSignalEvidenceCard: View {
     @State private var textOffset: CGFloat = 0
     @State private var pulse = false
 
-    init(track: MultiSignalTrack, currentStage: Int, inspectedStage: Int?, expanded: Bool,
+    init(track: MultiSignalTrack, panelIndex: Int, event: String, renderMode: MultiSignalRenderMode,
+         currentStage: Int, inspectedStage: Int?, expanded: Bool,
          selected: Bool, revealed: Bool, isCorrect: Bool, replayID: Int, ink: Color,
          onTap: @escaping () -> Void, onToggleHistory: @escaping () -> Void,
          onInspect: @escaping (Int) -> Void) {
         self.track = track
+        self.panelIndex = panelIndex
+        self.event = event
+        self.renderMode = renderMode
         self.currentStage = currentStage
         self.inspectedStage = inspectedStage
         self.expanded = expanded
@@ -1405,11 +1455,18 @@ private struct MultiSignalEvidenceCard: View {
                             .frame(width: 22, height: 22).contentShape(Rectangle())
                             .highPriorityGesture(TapGesture().onEnded { onToggleHistory() })
                     }
-                    Text(displayedValue)
-                        .font(Theme.font(12, .bold)).foregroundColor(ink)
-                        .lineLimit(2).fixedSize(horizontal: false, vertical: true)
-                        .frame(maxWidth: .infinity, minHeight: 32, alignment: .topLeading)
-                        .opacity(textOpacity).offset(y: textOffset)
+                    if renderMode == .summary {
+                        Text(displayedValue)
+                            .font(Theme.font(12, .bold)).foregroundColor(ink)
+                            .lineLimit(2).fixedSize(horizontal: false, vertical: true)
+                            .frame(maxWidth: .infinity, minHeight: 32, alignment: .topLeading)
+                            .opacity(textOpacity).offset(y: textOffset)
+                    } else {
+                        RawMarketEvidencePanel(panelIndex: panelIndex, event: event,
+                                               stage: effectiveStage, full: renderMode == .rawFull,
+                                               tint: track.tint, ink: ink)
+                            .frame(height: renderMode == .rawFull ? 76 : 58)
+                    }
                 }
             }
 
@@ -1420,7 +1477,7 @@ private struct MultiSignalEvidenceCard: View {
                             HStack(alignment: .top, spacing: 7) {
                                 Circle().fill(index == currentStage ? track.tint : track.tint.opacity(0.22))
                                     .frame(width: 7, height: 7).padding(.top, 4)
-                                Text("\(index + 1). \(track.states[index])")
+                                Text(renderMode == .summary ? "\(index + 1). \(track.states[index])" : "Snapshot \(index + 1)")
                                     .font(Theme.font(10, index == currentStage ? .black : .bold))
                                     .foregroundColor(index == effectiveStage ? ink : Theme.muted)
                                     .multilineTextAlignment(.leading)
@@ -1461,6 +1518,130 @@ private struct MultiSignalEvidenceCard: View {
         withAnimation(.easeOut(duration: 0.10)) { pulse = true }
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.11) {
             withAnimation(.easeIn(duration: 0.12)) { pulse = false }
+        }
+    }
+}
+
+/// Compact raw market data used after the beginner tier. Intermediate keeps
+/// the rows sparse and readable; advanced/expert increases density and places
+/// the four panels in a synchronized board without adding conclusions.
+private struct RawMarketEvidencePanel: View {
+    let panelIndex: Int
+    let event: String
+    let stage: Int
+    let full: Bool
+    let tint: Color
+    let ink: Color
+
+    private var sellerDriven: Bool {
+        ["buyer_absorption", "downside_sweep", "breakdown_pressure", "seller_loses_control"].contains(event)
+    }
+
+    @ViewBuilder var body: some View {
+        switch panelIndex {
+        case 0: pricePanel
+        case 1: domPanel
+        case 2: tapePanel
+        default: footprintPanel
+        }
+    }
+
+    private var pricePanel: some View {
+        GeometryReader { proxy in
+            let count = full ? 9 : 6
+            let heights: [CGFloat] = sellerDriven
+                ? (stage == 0 ? [48, 43, 38, 33, 28, 24, 21, 18, 16] : [48, 40, 31, 25, 20, 18, 20, 19, 21])
+                : (stage == 0 ? [18, 23, 29, 36, 43, 50, 54, 57, 60] : [18, 27, 38, 49, 55, 57, 56, 58, 57])
+            ZStack {
+                Path { path in
+                    let y = sellerDriven ? proxy.size.height * 0.78 : proxy.size.height * 0.22
+                    path.move(to: CGPoint(x: 0, y: y)); path.addLine(to: CGPoint(x: proxy.size.width, y: y))
+                }
+                .stroke(Color.orange.opacity(0.75), style: StrokeStyle(lineWidth: 1.2, dash: [4, 3]))
+                Path { path in
+                    path.move(to: CGPoint(x: 0, y: proxy.size.height * 0.56))
+                    path.addLine(to: CGPoint(x: proxy.size.width, y: proxy.size.height * 0.46))
+                }
+                .stroke(Color.cyan.opacity(0.65), lineWidth: 1)
+                HStack(alignment: .bottom, spacing: full ? 2 : 4) {
+                    ForEach(0..<count, id: \.self) { index in
+                        let height = heights[index]
+                        ZStack {
+                            Rectangle().fill((index.isMultiple(of: 4) ? askColor : bidColor).opacity(0.82))
+                                .frame(height: max(6, height * 0.42))
+                            Rectangle().fill((index.isMultiple(of: 4) ? askColor : bidColor).opacity(0.9))
+                                .frame(width: 1.2, height: height)
+                        }
+                        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: sellerDriven ? .top : .bottom)
+                    }
+                }
+                .padding(.horizontal, 2).padding(.vertical, 3)
+            }
+        }
+    }
+
+    private var domPanel: some View {
+        let rows = full ? 8 : 6
+        let thinBook = event == "thin_risk" || event == "thin_liquidity"
+        return VStack(spacing: 1) {
+            ForEach(0..<rows, id: \.self) { index in
+                let ask = index < rows / 2
+                let highlighted = sellerDriven ? index == rows / 2 : index == rows / 2 - 1
+                let base = 70 + index * 19
+                let size = thinBook ? (index.isMultiple(of: 3) ? 0 : 8 + index * 4)
+                    : (highlighted && stage == 1 ? base + 260 : base)
+                HStack(spacing: 3) {
+                    Text(ask ? "" : "\(size)").frame(maxWidth: .infinity, alignment: .trailing)
+                    Text(String(format: "%.2f", 100.20 + Double(rows / 2 - index) * 0.05))
+                        .foregroundColor(ink).frame(width: full ? 42 : 54)
+                    Text(ask ? "\(size)" : "").frame(maxWidth: .infinity, alignment: .leading)
+                }
+                .font(Theme.font(full ? 6 : 7, highlighted ? .black : .bold))
+                .foregroundColor(ask ? askColor : bidColor)
+                .background(highlighted ? tint.opacity(0.11) : .clear)
+            }
+        }
+    }
+
+    private var tapePanel: some View {
+        let rows = full ? 7 : 5
+        return VStack(spacing: 1) {
+            ForEach(0..<rows, id: \.self) { index in
+                let initiatedBuy = sellerDriven ? index.isMultiple(of: 3) : (stage == 1 ? index % 4 != 0 : index.isMultiple(of: 2))
+                HStack(spacing: 3) {
+                    Text("10:2\(index).\(stage == 1 ? index * 2 : index * 7)").foregroundColor(Theme.muted)
+                    Spacer(minLength: 2)
+                    Text(String(format: "%.2f", 100.15 + Double(index % 3) * 0.05))
+                    Text("\(40 + index * (stage == 1 ? 35 : 18))").frame(width: 25, alignment: .trailing)
+                }
+                .font(Theme.font(full ? 6 : 7, .bold))
+                .foregroundColor(initiatedBuy ? bidColor : askColor)
+            }
+        }
+    }
+
+    private var footprintPanel: some View {
+        let rows = full ? 6 : 4
+        let conflictingDelta = event == "conflict" || event == "cvd_warning"
+        return VStack(spacing: 1) {
+            ForEach(0..<rows, id: \.self) { index in
+                let base = 35 + index * 13
+                let bid = (sellerDriven || conflictingDelta) && stage == 1 ? base + 80 : base
+                let ask = !sellerDriven && !conflictingDelta && stage == 1 ? base + 95 : base + 8
+                HStack(spacing: 3) {
+                    Text("\(bid)").frame(maxWidth: .infinity, alignment: .trailing)
+                        .padding(.horizontal, 2).background(askColor.opacity(min(0.55, Double(bid) / 260)))
+                    Text("×").foregroundColor(Theme.muted)
+                    Text("\(ask)").frame(maxWidth: .infinity, alignment: .leading)
+                        .padding(.horizontal, 2).background(bidColor.opacity(min(0.55, Double(ask) / 260)))
+                }
+                .font(Theme.font(full ? 6 : 8, .black)).foregroundColor(ink)
+            }
+            if full {
+                Text("Δ \((sellerDriven || conflictingDelta) ? "−" : "+")\(stage == 1 ? 420 : 36)")
+                    .font(Theme.font(7, .black)).foregroundColor((sellerDriven || conflictingDelta) ? askColor : bidColor)
+                    .frame(maxWidth: .infinity, alignment: .trailing)
+            }
         }
     }
 }
