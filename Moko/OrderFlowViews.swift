@@ -2097,3 +2097,133 @@ struct PriceContextPanel: View {
         return (0..<buckets).map { VPBar(lo: allLo + Double($0) * step, hi: allLo + Double($0 + 1) * step, vol: vols[$0]) }
     }
 }
+
+// MARK: - Panel 2: DOM + Tape (Level II ladder + Time & Sales, linked live)
+
+/// Combined "what liquidity exists and what is executing?" panel. A live order
+/// book (bids left / asks right) sits above a running tape. On each tick a
+/// trade fires against the best bid/ask: the DOM level flashes, its resting size
+/// falls (and replenishes when depleted), and the trade prints on the tape — so
+/// the learner sees the relationship, not two isolated cards.
+struct DOMTapePanel: View {
+    var seed: UInt64
+    var bullish: Bool = true
+
+    struct DOMLevel: Identifiable { let id = UUID(); let price: Double; var bidSize: Int?; var askSize: Int? }
+    struct Trade: Identifiable { let id = UUID(); let price: Double; let size: Int; let buy: Bool }
+
+    @State private var levels: [DOMLevel]
+    @State private var tape: [Trade] = []
+    @State private var flashPrice: Double? = nil
+    private let ticker = Timer.publish(every: 0.95, on: .main, in: .common).autoconnect()
+
+    init(seed: UInt64, bullish: Bool = true) {
+        self.seed = seed
+        self.bullish = bullish
+        _levels = State(initialValue: Self.makeDOM(seed: seed))
+    }
+
+    var body: some View {
+        VStack(alignment: .leading, spacing: 8) {
+            Text("DOM + TAPE").font(Theme.font(10, .black)).foregroundColor(Theme.muted)
+            HStack {
+                Text("BID SIZE").frame(maxWidth: .infinity, alignment: .leading)
+                Text("PRICE").frame(width: 72)
+                Text("ASK SIZE").frame(maxWidth: .infinity, alignment: .trailing)
+            }
+            .font(Theme.font(9, .black)).foregroundColor(Theme.muted).padding(.horizontal, 8)
+
+            VStack(spacing: 2) { ForEach(levels) { domRow($0) } }
+
+            Text("RECENT TRADES").font(Theme.font(9, .black)).foregroundColor(Theme.muted).padding(.top, 4)
+            VStack(spacing: 2) {
+                ForEach(tape) { tradeRow($0) }
+                if tape.isEmpty { Text("—").font(Theme.font(11, .bold)).foregroundColor(Theme.muted) }
+            }
+        }
+        .padding(12)
+        .background(RoundedRectangle(cornerRadius: 16).fill(Color.black.opacity(0.28)))
+        .overlay(RoundedRectangle(cornerRadius: 16).strokeBorder(Theme.surfaceBorder, lineWidth: 1.5))
+        .onReceive(ticker) { _ in step() }
+    }
+
+    private func domRow(_ lv: DOMLevel) -> some View {
+        let flashed = flashPrice == lv.price
+        return HStack {
+            Text(lv.bidSize.map { "\($0)" } ?? "").frame(maxWidth: .infinity, alignment: .leading).foregroundColor(bidColor)
+            Text(String(format: "%.2f", lv.price)).frame(width: 72).foregroundColor(.white)
+            Text(lv.askSize.map { "\($0)" } ?? "").frame(maxWidth: .infinity, alignment: .trailing).foregroundColor(askColor)
+        }
+        .font(Theme.font(13, .bold)).padding(.horizontal, 8).frame(height: 26)
+        .background(
+            GeometryReader { g in
+                ZStack(alignment: .leading) {
+                    if let b = lv.bidSize {
+                        Rectangle().fill(bidColor.opacity(0.16)).frame(width: g.size.width * min(1, CGFloat(b) / 240))
+                    }
+                    if let a = lv.askSize {
+                        Rectangle().fill(askColor.opacity(0.16)).frame(width: g.size.width * min(1, CGFloat(a) / 240))
+                            .frame(maxWidth: .infinity, alignment: .trailing)
+                    }
+                }
+            }
+        )
+        .background(RoundedRectangle(cornerRadius: 5).fill(Color.white.opacity(flashed ? 0.3 : 0)))
+        .animation(.easeOut(duration: 0.45), value: flashPrice)
+    }
+
+    private func tradeRow(_ t: Trade) -> some View {
+        HStack {
+            Text(String(format: "%.2f", t.price)).frame(maxWidth: .infinity, alignment: .leading)
+            Text("\(t.size)").frame(maxWidth: .infinity)
+            Text(t.buy ? "BUY" : "SELL").frame(maxWidth: .infinity, alignment: .trailing)
+        }
+        .font(Theme.font(12, .black)).foregroundColor(t.buy ? bidColor : askColor)
+        .padding(.horizontal, 8).padding(.vertical, 3)
+        .background(RoundedRectangle(cornerRadius: 5).fill((t.buy ? bidColor : askColor).opacity(0.08)))
+    }
+
+    private func step() {
+        var rng = SystemRandom()
+        let buy = rng.next01() < (bullish ? 0.62 : 0.38)
+        let size = 20 + Int(rng.next() % 55)
+        if buy, let i = levels.lastIndex(where: { $0.askSize != nil }) {
+            var a = (levels[i].askSize ?? 0) - size
+            if a <= 15 { a = 90 + Int(rng.next() % 150) }        // depleted → replenishes
+            levels[i].askSize = a
+            pushTrade(Trade(price: levels[i].price, size: size, buy: true), flash: levels[i].price)
+        } else if let i = levels.firstIndex(where: { $0.bidSize != nil }) {
+            var b = (levels[i].bidSize ?? 0) - size
+            if b <= 15 { b = 90 + Int(rng.next() % 150) }
+            levels[i].bidSize = b
+            pushTrade(Trade(price: levels[i].price, size: size, buy: false), flash: levels[i].price)
+        }
+    }
+
+    private func pushTrade(_ t: Trade, flash: Double) {
+        withAnimation(.easeOut(duration: 0.2)) { tape = Array(([t] + tape).prefix(5)) }
+        flashPrice = flash
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) { if flashPrice == flash { flashPrice = nil } }
+    }
+
+    static func makeDOM(seed: UInt64) -> [DOMLevel] {
+        var rng = SplitMix(seed: seed)
+        let mid = 100.0 + Double(rng.next() % 40) / 10.0
+        let tick = 0.05
+        var out: [DOMLevel] = []
+        for i in stride(from: 4, through: 1, by: -1) {
+            out.append(DOMLevel(price: mid + Double(i) * tick, bidSize: nil, askSize: 70 + Int(rng.next() % 150)))
+        }
+        for i in 1...4 {
+            out.append(DOMLevel(price: mid - Double(i) * tick, bidSize: 70 + Int(rng.next() % 150), askSize: nil))
+        }
+        return out
+    }
+}
+
+/// Tiny non-deterministic RNG for the live panels' trade cadence.
+private struct SystemRandom {
+    private var g = SystemRandomNumberGenerator()
+    mutating func next() -> UInt64 { UInt64.random(in: 0..<UInt64.max, using: &g) }
+    mutating func next01() -> Double { Double.random(in: 0..<1, using: &g) }
+}
