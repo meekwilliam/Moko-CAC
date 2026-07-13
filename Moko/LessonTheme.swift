@@ -148,12 +148,13 @@ struct TiltModifier: ViewModifier {
 // visibly moved). Hands `down` to a content closure that renders the button.
 struct PressSink<Content: View>: View {
     let isPressed: Bool
+    var minDown: Double = 0.11        // seconds the down state stays visible
+    var releaseResponse: Double = 0.3 // spring response on release (lower = snappier)
     @ViewBuilder let content: (_ down: Bool) -> Content
 
     @State private var down = false
     @State private var pressStart: Date?
     @State private var gen = 0
-    private let minDown: Double = 0.11   // seconds the down state stays visible
 
     var body: some View {
         content(down)
@@ -161,12 +162,12 @@ struct PressSink<Content: View>: View {
                 gen += 1
                 if pressed {
                     pressStart = Date()
-                    withAnimation(.easeOut(duration: 0.06)) { down = true }
+                    withAnimation(.easeOut(duration: 0.05)) { down = true }
                 } else {
                     let elapsed = pressStart.map { Date().timeIntervalSince($0) } ?? minDown
                     let remaining = max(0, minDown - elapsed)
                     let g = gen
-                    let release = { withAnimation(.spring(response: 0.3, dampingFraction: 0.55)) { down = false } }
+                    let release = { withAnimation(.spring(response: releaseResponse, dampingFraction: 0.6)) { down = false } }
                     if remaining <= 0 {
                         release()
                     } else {

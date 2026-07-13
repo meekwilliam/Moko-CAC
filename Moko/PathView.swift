@@ -384,9 +384,11 @@ struct PathView: View {
         let testOutAvailable = shouldShowTestOut(for: node)
         let visualState: NodeState = testOutAvailable ? .active : state
         let c = store.colors(for: node.num, state: visualState)
-        // A unit's final lesson is its review test — a hexagon instead of the
-        // usual coin, so it reads as a different kind of node at a glance.
-        let silhouette: AnyShape = node.isBoss ? AnyShape(Hexagon()) : AnyShape(Ellipse())
+        // Every node is a hexagon now (boss included); the boss still reads apart
+        // via its crown. The 3D wall uses a shade close to the face color rather
+        // than the much-darker unit `dark`, so the lip reads as the same button.
+        let silhouette = AnyShape(Hexagon())
+        let wall = c.main.brightnessShifted(-0.15)
 
         return ZStack {
             if testOutAvailable {
@@ -458,6 +460,20 @@ struct PathView: View {
                         )
                         .clipShape(silhouette)
 
+                    // Completed lessons get a glossy sheen across the top, like
+                    // a polished glass badge (reference).
+                    if visualState == .done {
+                        Ellipse()
+                            .fill(LinearGradient(
+                                colors: [Color.white.opacity(0.55), Color.white.opacity(0.0)],
+                                startPoint: .top, endPoint: .bottom))
+                            .frame(width: nodeSize * 0.72, height: nodeSize * 0.40)
+                            .offset(y: -nodeSize * 0.16)
+                            .blur(radius: 3)
+                            .clipShape(silhouette)
+                            .allowsHitTesting(false)
+                    }
+
                     if node.isBoss {
                         bossCrown(locked: visualState == .locked)
                     } else {
@@ -467,7 +483,7 @@ struct PathView: View {
                 .frame(width: nodeSize, height: nodeSize)
                 .contentShape(silhouette)
             }
-            .buttonStyle(PuckButtonStyle(slab: c.dark, size: nodeSize, ovalRatio: ovalRatio,
+            .buttonStyle(PuckButtonStyle(slab: wall, size: nodeSize, ovalRatio: ovalRatio,
                                          shape: silhouette))
         }
         .frame(width: nodeSize, height: nodeSize)
@@ -765,7 +781,7 @@ private struct PuckButtonStyle: ButtonStyle {
     var shape: AnyShape = AnyShape(Ellipse())
     func makeBody(configuration: Configuration) -> some View {
         let h = size * ovalRatio
-        return PressSink(isPressed: configuration.isPressed) { down in
+        return PressSink(isPressed: configuration.isPressed, minDown: 0.05, releaseResponse: 0.2) { down in
             ZStack {
                 // The coin's chunky side, offset straight down. Gradient-shaded
                 // (lit at the top of the wall, shadowed at the bottom) so the
