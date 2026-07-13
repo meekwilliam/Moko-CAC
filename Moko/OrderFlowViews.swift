@@ -59,6 +59,7 @@ struct OFOption: View {
     let index: Int
     let label: String
     var ink: Color
+    var dense: Bool = false   // tighter vertical padding for content-dense screens
 
     var body: some View {
         let selected = player.selectedIndex == index
@@ -84,7 +85,7 @@ struct OFOption: View {
                 if revealed && isCorrect { Image(systemName: "checkmark.circle.fill") }
                 else if revealed && selected { Image(systemName: "xmark.circle.fill") }
             }
-            .modifier(OptionSurface(fill: fill, border: border, textColor: textColor))
+            .modifier(OptionSurface(fill: fill, border: border, textColor: textColor, vpad: dense ? 11 : 16))
             .contentShape(Rectangle())
         }
         .buttonStyle(SinkButtonStyle(slab: slab, radius: 16, depth: 5))
@@ -952,9 +953,9 @@ struct FootprintQuestionView: View {
     }
 
     var body: some View {
-        VStack(alignment: .leading, spacing: 16) {
+        VStack(alignment: .leading, spacing: 12) {
             Text(screen.question ?? "Read the footprint.")
-                .font(Theme.questionFont(21, .heavy)).foregroundColor(ink)
+                .font(Theme.questionFont(20, .heavy)).foregroundColor(ink)
 
             footprintChart
 
@@ -962,7 +963,7 @@ struct FootprintQuestionView: View {
                 Label("Tap the price row that answers the question", systemImage: "hand.tap.fill")
                     .font(Theme.font(12, .bold)).foregroundColor(Theme.muted)
             } else {
-                VStack(spacing: 10) {
+                VStack(spacing: 8) {
                     ForEach(Array(player.currentOptions.enumerated()), id: \.offset) { index, label in
                         footprintChoice(index: index, label: label)
                     }
@@ -984,7 +985,7 @@ struct FootprintQuestionView: View {
                         Color.clear.frame(width: 46)
                         fpCell(level.askVolume, tint: bidColor, poc: index == maxAskIdx)
                     }
-                    .frame(height: 34)
+                    .frame(height: 22)
                     .overlay(RoundedRectangle(cornerRadius: 6, style: .continuous)
                         .strokeBorder(footprintRowColor(index), lineWidth: footprintRowWidth(index)))
                     .contentShape(Rectangle())
@@ -1001,22 +1002,19 @@ struct FootprintQuestionView: View {
                 Color.clear.frame(width: 46)
                 Text(fmtVol(askTotal)).foregroundColor(bidColor).frame(maxWidth: .infinity)
             }
-            .font(Theme.font(16, .black)).padding(.top, 7).padding(.bottom, 9)
+            .font(Theme.font(15, .black)).padding(.top, 5).padding(.bottom, 6)
 
-            VStack(spacing: 8) {
-                HStack {
-                    Text("CANDLE DELTA").font(Theme.font(10, .black)).foregroundColor(Theme.muted)
-                    Spacer()
-                    Text((delta >= 0 ? "+" : "") + fmtVol(delta))
-                        .font(Theme.font(16, .black))
-                        .foregroundColor(delta >= 0 ? bidColor : askColor)
-                }
-                HStack(spacing: 10) {
-                    Text("CVD").font(Theme.font(10, .black)).foregroundColor(Theme.muted)
-                    cvdSparkline
-                }
+            // CANDLE DELTA and CVD share one row so the choices stay above the fold.
+            HStack(spacing: 8) {
+                Text("CANDLE DELTA").font(Theme.font(9, .black)).foregroundColor(Theme.muted)
+                Text((delta >= 0 ? "+" : "") + fmtVol(delta))
+                    .font(Theme.font(14, .black)).lineLimit(1).fixedSize()
+                    .foregroundColor(delta >= 0 ? bidColor : askColor)
+                Spacer(minLength: 6)
+                Text("CVD").font(Theme.font(9, .black)).foregroundColor(Theme.muted)
+                cvdSparkline.frame(width: 96)
             }
-            .padding(.horizontal, 12).padding(.vertical, 10)
+            .padding(.horizontal, 11).padding(.vertical, 7)
             .background(RoundedRectangle(cornerRadius: 9).fill(Color.black.opacity(0.55)))
         }
         .padding(10)
@@ -1109,7 +1107,7 @@ struct FootprintQuestionView: View {
     }
 
     private func footprintChoice(index: Int, label: String) -> some View {
-        OFOption(player: player, index: index, label: label, ink: ink)
+        OFOption(player: player, index: index, label: label, ink: ink, dense: true)
     }
 
     private var risingPriceChart: some View {

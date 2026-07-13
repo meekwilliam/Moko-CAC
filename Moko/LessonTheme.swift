@@ -325,12 +325,13 @@ struct OptionSurface: ViewModifier {
     var fill: Color
     var border: Color
     var textColor: Color
+    var vpad: CGFloat = 16
 
     func body(content: Content) -> some View {
         content
             .foregroundColor(textColor)
             .frame(maxWidth: .infinity, alignment: .leading)
-            .padding(.vertical, 16)
+            .padding(.vertical, vpad)
             .padding(.horizontal, 18)
             .background(
                 RoundedRectangle(cornerRadius: 16, style: .continuous)
