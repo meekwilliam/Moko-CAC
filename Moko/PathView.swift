@@ -793,8 +793,3 @@ private struct SectionOffsetKey: PreferenceKey {
         value.merge(nextValue(), uniquingKeysWith: { _, new in new })
     }
 }
-
-
-
-
-
