@@ -42,6 +42,23 @@ struct IngredientOption: Decodable {
     }
 }
 
+/// One scored decision inside a continuous trade replay. The simulator keeps
+/// running while the prompt and grading rubric advance from stage to stage.
+struct TradeStage: Decodable {
+    let prompt: String
+    let options: [String]?
+    let correct: Int
+    let explanation: String
+    let wrongExplanations: [String?]?
+    let startTick: Int?
+
+    enum CodingKeys: String, CodingKey {
+        case prompt, options, correct, explanation
+        case wrongExplanations = "wrong_explanations"
+        case startTick = "start_tick"
+    }
+}
+
 /// A single step in a lesson. The JSON is heterogeneous (fields depend on
 /// `type`), so we decode leniently into one struct of optionals.
 struct LessonScreen: Decodable, Identifiable {
@@ -55,6 +72,11 @@ struct LessonScreen: Decodable, Identifiable {
     let questionId: String?
     let footprintPreview: Bool?
     let renderMode: String?
+    let scenarioId: String?
+    let difficulty: String?
+    let tradeStages: [TradeStage]?
+    let decisionQuality: String?
+    let tradeOutcome: String?
 
     // Set when a missed question is re-queued, so the UI can flag it.
     var isPreviousMistake = false
@@ -127,7 +149,11 @@ struct LessonScreen: Decodable, Identifiable {
     let numberUnit: String?
 
     enum CodingKeys: String, CodingKey {
-        case type, text, question, explanation, options, pairs, template, blanks, direction, event, order, skillId, competencyId, sourceLesson, sourceUnit, sourceNode, questionId, footprintPreview
+        case type, text, question, explanation, options, pairs, template, blanks, direction, event, order, skillId, competencyId, sourceLesson, sourceUnit, sourceNode, questionId, footprintPreview, difficulty
+        case scenarioId = "scenario"
+        case tradeStages = "stages"
+        case decisionQuality = "decision_quality"
+        case tradeOutcome = "trade_outcome"
         case renderMode = "render_mode"
         case concern, items, chart, target, targets, level
         case levelKind = "level_kind"
@@ -158,6 +184,11 @@ struct LessonScreen: Decodable, Identifiable {
         questionId = try c.decodeIfPresent(String.self, forKey: .questionId)
         footprintPreview = try c.decodeIfPresent(Bool.self, forKey: .footprintPreview)
         renderMode = try c.decodeIfPresent(String.self, forKey: .renderMode)
+        scenarioId = try c.decodeIfPresent(String.self, forKey: .scenarioId)
+        difficulty = try c.decodeIfPresent(String.self, forKey: .difficulty)
+        tradeStages = try c.decodeIfPresent([TradeStage].self, forKey: .tradeStages)
+        decisionQuality = try c.decodeIfPresent(String.self, forKey: .decisionQuality)
+        tradeOutcome = try c.decodeIfPresent(String.self, forKey: .tradeOutcome)
         screenTitle = try c.decodeIfPresent(String.self, forKey: .screenTitle)
         text = try c.decodeIfPresent(String.self, forKey: .text)
         chart = try c.decodeIfPresent(String.self, forKey: .chart)

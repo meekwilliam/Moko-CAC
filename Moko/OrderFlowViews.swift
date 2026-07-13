@@ -1149,6 +1149,7 @@ struct OrderFlowSimulationView: View {
     @State private var expandedCard: Int?
     @State private var inspectedStages: [Int: Int] = [:]
     @State private var simulationTick = 0
+    @State private var simulationPaused = false
     @State private var loopVariant = 0
 
     var body: some View {
@@ -1162,7 +1163,22 @@ struct OrderFlowSimulationView: View {
                         .background(Capsule().fill(Color.purple.opacity(0.12)))
                 }
                 Spacer()
-                if renderMode == .summary {
+                if isDecisionMechanic {
+                    Button(action: togglePause) {
+                        Image(systemName: simulationPaused ? "play.fill" : "pause.fill")
+                            .font(.system(size: 11, weight: .black)).foregroundColor(.purple)
+                            .frame(width: 28, height: 28)
+                    }
+                    .buttonStyle(.plain)
+                    .accessibilityLabel(simulationPaused ? "Resume market simulation" : "Pause market simulation")
+                    Button(action: restartDecisionReplay) {
+                        Image(systemName: "arrow.counterclockwise")
+                            .font(.system(size: 11, weight: .black)).foregroundColor(.purple)
+                            .frame(width: 28, height: 28)
+                    }
+                    .buttonStyle(.plain)
+                    .accessibilityLabel("Restart market simulation")
+                } else if renderMode == .summary {
                     if sequenceFinished {
                         Button(action: restartEvidence) {
                             Label("Replay evidence", systemImage: "arrow.counterclockwise")
@@ -1176,6 +1192,17 @@ struct OrderFlowSimulationView: View {
 
             Text(displayQuestion)
                 .font(Theme.questionFont(20, .heavy)).foregroundColor(ink)
+
+            if screen.type == "trade_scenario", let stages = screen.tradeStages {
+                HStack(spacing: 6) {
+                    Text("DECISION \(player.scenarioStage + 1) OF \(stages.count)")
+                        .font(Theme.font(9, .black)).foregroundColor(.purple)
+                    ForEach(stages.indices, id: \.self) { index in
+                        Capsule().fill(index <= player.scenarioStage ? Color.purple : Color.purple.opacity(0.18))
+                            .frame(maxWidth: .infinity).frame(height: 4)
+                    }
+                }
+            }
 
             VStack(spacing: 7) {
                 if renderMode == .rawFull {
@@ -1206,6 +1233,12 @@ struct OrderFlowSimulationView: View {
             } else if screen.type == "orderflow_sim_select" {
                 Label(evidenceReady ? "Select \(screen.targets?.count ?? 2) evidence cards" : "Watch the evidence develop", systemImage: "checklist")
                     .font(Theme.font(12, .bold)).foregroundColor(Theme.muted)
+            } else if isDecisionMechanic {
+                VStack(spacing: 8) {
+                    ForEach(Array(player.currentOptions.enumerated()), id: \.offset) { index, label in
+                        tradeChoice(index: index, label: label)
+                    }
+                }
             } else {
                 VStack(spacing: 8) {
                     ForEach(Array(player.currentOptions.enumerated()), id: \.offset) { index, label in
@@ -1225,10 +1258,10 @@ struct OrderFlowSimulationView: View {
     private var tracks: [MultiSignalTrack] {
         let auxiliaryTitle: String
         let auxiliaryIcon: String
-        if screen.event == "cvd_warning" {
+        if eventKey == "cvd_warning" {
             auxiliaryTitle = "CVD"
             auxiliaryIcon = "waveform.path.ecg"
-        } else if screen.event == "volume_profile_context" {
+        } else if eventKey == "volume_profile_context" {
             auxiliaryTitle = "VOLUME PROFILE"
             auxiliaryIcon = "chart.bar.fill"
         } else {
@@ -1244,6 +1277,7 @@ struct OrderFlowSimulationView: View {
     }
 
     private var renderMode: MultiSignalRenderMode {
+        if isDecisionMechanic { return .rawFull }
         if let explicit = screen.renderMode.flatMap(MultiSignalRenderMode.init(rawValue:)) { return explicit }
         let sourceNode = screen.sourceNode ?? player.lesson.node
         if sourceNode <= 12 { return .summary }
@@ -1255,10 +1289,11 @@ struct OrderFlowSimulationView: View {
         MultiSignalEvidenceCard(
             track: track,
             panelIndex: index,
-            event: screen.event ?? "seller_absorption",
+            event: eventKey,
             renderMode: renderMode,
             simulationTick: simulationTick,
             loopVariant: loopVariant,
+            scenarioPhase: player.scenarioStage,
             currentStage: stages[index],
             inspectedStage: inspectedStages[index],
             expanded: expandedCard == index,
@@ -1277,6 +1312,7 @@ struct OrderFlowSimulationView: View {
     /// instead of restating most of it in the prompt. Specific tasks such as
     /// identifying an aggressor or invalidation keep their authored wording.
     private var displayQuestion: String {
+        if let stage = player.activeTradeStage { return stage.prompt }
         let authored = screen.question ?? "What is the strongest current observation?"
         guard player.lesson.node >= 28,
               authored.localizedCaseInsensitiveContains("what's strongest") else { return authored }
@@ -1312,9 +1348,13 @@ struct OrderFlowSimulationView: View {
         inspectedStages = [:]
         let finalTick = renderMode == .rawFull ? 16 : 12
         do {
-            while !Task.isCancelled && !player.revealed {
+            while !Task.isCancelled && (isDecisionMechanic || !player.revealed) {
+                if simulationPaused {
+                    try await Task.sleep(nanoseconds: 120_000_000)
+                    continue
+                }
                 try await Task.sleep(nanoseconds: 750_000_000)
-                guard !Task.isCancelled, !player.revealed else { return }
+                guard !Task.isCancelled, isDecisionMechanic || !player.revealed else { return }
                 if simulationTick >= finalTick {
                     try await Task.sleep(nanoseconds: 300_000_000)
                     guard !Task.isCancelled else { return }
@@ -1328,12 +1368,31 @@ struct OrderFlowSimulationView: View {
     }
 
     private var evidenceReady: Bool {
-        renderMode == .summary ? sequenceFinished : simulationTick >= 3
+        isDecisionMechanic || (renderMode == .summary ? sequenceFinished : simulationTick >= 3)
     }
+
+    private var isDecisionMechanic: Bool {
+        ["trade_decision", "trade_scenario", "trade_manage", "entry_select", "invalidation_mark"].contains(screen.type)
+    }
+
+    private var eventKey: String { screen.scenarioId ?? screen.event ?? "seller_absorption" }
 
     private func restartEvidence() {
         Haptics.selection()
         replayID += 1
+    }
+
+    private func restartDecisionReplay() {
+        Haptics.selection()
+        simulationPaused = false
+        simulationTick = 0
+        loopVariant = 0
+        replayID += 1
+    }
+
+    private func togglePause() {
+        Haptics.selection()
+        simulationPaused.toggle()
     }
 
     private func cardTapped(_ index: Int) {
@@ -1354,6 +1413,41 @@ struct OrderFlowSimulationView: View {
         }
     }
 
+    private func tradeChoice(index: Int, label: String) -> some View {
+        Button {
+            guard !player.revealed else { return }
+            Haptics.selection()
+            player.selectedIndex = index
+            player.decisionTick = simulationTick
+        } label: {
+            HStack(spacing: 12) {
+                Image(systemName: decisionIcon(label))
+                    .font(.system(size: 15, weight: .black)).frame(width: 24)
+                Text(label).font(Theme.questionFont(16, .heavy))
+                Spacer()
+                if player.selectedIndex == index { Image(systemName: "checkmark.circle.fill") }
+            }
+            .foregroundColor(ink)
+            .padding(.horizontal, 16).frame(maxWidth: .infinity, minHeight: 50)
+            .background(RoundedRectangle(cornerRadius: 14).fill(Color.purple.opacity(player.selectedIndex == index ? 0.18 : 0.07)))
+            .overlay(RoundedRectangle(cornerRadius: 14).strokeBorder(player.selectedIndex == index ? Color.purple : Color.purple.opacity(0.28), lineWidth: player.selectedIndex == index ? 2 : 1))
+        }
+        .buttonStyle(.plain)
+    }
+
+    private func decisionIcon(_ label: String) -> String {
+        switch label {
+        case "LONG": return "arrow.up.right"
+        case "SHORT": return "arrow.down.right"
+        case "WAIT", "WAIT FOR MORE EVIDENCE", "NO ENTRY": return "hourglass"
+        case "EXIT": return "rectangle.portrait.and.arrow.right"
+        case "REDUCE": return "minus.circle"
+        case "MARKET": return "bolt.fill"
+        case "LIMIT": return "scope"
+        default: return "checkmark.shield"
+        }
+    }
+
     private func toggleHistory(_ index: Int) {
         Haptics.selection()
         expandedCard = expandedCard == index ? nil : index
@@ -1370,7 +1464,11 @@ struct OrderFlowSimulationView: View {
     }
 
     private var evidence: (price: [String], book: [String], tape: [String], footprint: [String]) {
-        switch screen.event {
+        switch eventKey {
+        case "breakout_acceptance_sequence":
+            return (["Approaching resistance", "Holding above resistance after a retest"], ["Normal offer depth", "Offers thin and stay thin"], ["Buyer activity increases", "Buying resumes after the pullback"], ["Small positive imbalance", "Directional ask execution returns"])
+        case "seller_absorption_developing":
+            return (["Testing resistance", "Buyer aggression makes little progress"], ["Large offer appears", "Offer repeatedly replenishes"], ["Buyer prints accelerate", "Buyers remain aggressive"], ["Positive delta builds", "Price response stays weak"])
         case "cvd_warning":
             return (["Price makes a new high", "Price holds above resistance"], ["Offers thin into the break", "No large offer rebuilds"], ["Buyer prints continue", "Buying remains effective"], ["CVD makes a lower high", "Cumulative pressure disagrees"])
         case "volume_profile_context":
@@ -1439,6 +1537,7 @@ private struct MultiSignalEvidenceCard: View {
     let renderMode: MultiSignalRenderMode
     let simulationTick: Int
     let loopVariant: Int
+    let scenarioPhase: Int
     let currentStage: Int
     let inspectedStage: Int?
     let expanded: Bool
@@ -1457,7 +1556,7 @@ private struct MultiSignalEvidenceCard: View {
     @State private var pulse = false
 
     init(track: MultiSignalTrack, panelIndex: Int, event: String, renderMode: MultiSignalRenderMode,
-         simulationTick: Int, loopVariant: Int,
+         simulationTick: Int, loopVariant: Int, scenarioPhase: Int,
          currentStage: Int, inspectedStage: Int?, expanded: Bool,
          selected: Bool, revealed: Bool, isCorrect: Bool, replayID: Int, ink: Color,
          onTap: @escaping () -> Void, onToggleHistory: @escaping () -> Void,
@@ -1468,6 +1567,7 @@ private struct MultiSignalEvidenceCard: View {
         self.renderMode = renderMode
         self.simulationTick = simulationTick
         self.loopVariant = loopVariant
+        self.scenarioPhase = scenarioPhase
         self.currentStage = currentStage
         self.inspectedStage = inspectedStage
         self.expanded = expanded
@@ -1522,6 +1622,7 @@ private struct MultiSignalEvidenceCard: View {
                     } else {
                         RawMarketEvidencePanel(panelIndex: panelIndex, event: event,
                                                tick: simulationTick, loopVariant: loopVariant,
+                                               scenarioPhase: scenarioPhase,
                                                full: renderMode == .rawFull || expanded,
                                                tint: track.tint, ink: ink)
                             .frame(height: expanded ? 126 : (renderMode == .rawFull ? 76 : 58))
@@ -1589,9 +1690,17 @@ private struct RawMarketEvidencePanel: View {
     let event: String
     let tick: Int
     let loopVariant: Int
+    let scenarioPhase: Int
     let full: Bool
     let tint: Color
     let ink: Color
+
+    /// Every panel reads the same deterministic clock. Scenario stages move
+    /// that shared clock forward, so price, DOM, tape, footprint and CVD all
+    /// tell one event rather than running unrelated animations.
+    private var marketTick: Int {
+        tick + (event == "breakout_acceptance_sequence" ? scenarioPhase * 6 : 0)
+    }
 
     private var sellerDriven: Bool {
         ["buyer_absorption", "downside_sweep", "breakdown_pressure", "seller_loses_control"].contains(event)
@@ -1612,25 +1721,25 @@ private struct RawMarketEvidencePanel: View {
     private var pricePanel: some View {
         GeometryReader { proxy in
             let count = full ? 9 : 6
-            let pulse = CGFloat((tick + loopVariant) % 4)
-            let upwardMomentum = event == "breakout" || event == "low_volume_trend"
+            let pulse = CGFloat((marketTick + loopVariant) % 4)
+            let upwardMomentum = event == "breakout" || event == "low_volume_trend" || event == "breakout_acceptance_sequence"
             let downwardMomentum = event == "breakdown_pressure"
             let sideways = event == "chop"
             let upsideRejection = event == "sweep"
             let downsideRejection = event == "downside_sweep"
             let heights: [CGFloat] = (0..<count).map { index in
                 let position = CGFloat(index) / CGFloat(max(1, count - 1))
-                if sideways { return 34 + CGFloat((tick + index * 2) % 5) * 2 }
+                if sideways { return 34 + CGFloat((marketTick + index * 2) % 5) * 2 }
                 if upsideRejection {
-                    let turn = tick < 7 ? CGFloat(tick) * 1.5 : CGFloat(14 - min(tick, 14)) * 1.5
+                    let turn = marketTick < 7 ? CGFloat(marketTick) * 1.5 : CGFloat(14 - min(marketTick, 14)) * 1.5
                     return 20 + position * 25 + (index == count - 1 ? turn : 0)
                 }
                 if downsideRejection {
-                    let turn = tick < 7 ? CGFloat(tick) * 1.5 : CGFloat(14 - min(tick, 14)) * 1.5
+                    let turn = marketTick < 7 ? CGFloat(marketTick) * 1.5 : CGFloat(14 - min(marketTick, 14)) * 1.5
                     return 52 - position * 26 - (index == count - 1 ? turn : 0)
                 }
-                if upwardMomentum { return 18 + position * 35 + (index == count - 1 ? CGFloat(min(tick, 14)) * 1.2 : 0) }
-                if downwardMomentum { return 54 - position * 33 - (index == count - 1 ? CGFloat(min(tick, 14)) * 1.0 : 0) }
+                if upwardMomentum { return 18 + position * 35 + (index == count - 1 ? CGFloat(min(marketTick, 14)) * 1.2 : 0) }
+                if downwardMomentum { return 54 - position * 33 - (index == count - 1 ? CGFloat(min(marketTick, 14)) * 1.0 : 0) }
                 if sellerDriven { return 50 - position * 29 + (index >= count - 2 ? pulse : 0) }
                 return 18 + position * 38 + (index >= count - 2 ? pulse * (index == count - 1 ? 0.35 : 0.7) : 0)
             }
@@ -1673,11 +1782,11 @@ private struct RawMarketEvidencePanel: View {
                 ForEach(0..<rows, id: \.self) { index in
                     let ask = index < rows / 2
                     let highlighted = sellerDriven ? index == rows / 2 : index == rows / 2 - 1
-                    let base = 70 + index * 19 + loopVariant * 7 + ((tick + index) % 3) * 3
-                    let consumesLiquidity = event == "breakout" || event == "breakdown_pressure" || event == "low_volume_trend"
+                    let base = 70 + index * 19 + loopVariant * 7 + ((marketTick + index) % 3) * 3
+                    let consumesLiquidity = event == "breakout" || event == "breakdown_pressure" || event == "low_volume_trend" || (event == "breakout_acceptance_sequence" && scenarioPhase > 0)
                     let activeSequence = consumesLiquidity ? consumeSequence : refreshSequence
                     let size = thinBook ? (index.isMultiple(of: 3) ? 0 : 8 + index * 4)
-                        : (highlighted ? activeSequence[(tick + loopVariant) % activeSequence.count] : base)
+                        : (highlighted ? activeSequence[(marketTick + loopVariant) % activeSequence.count] : base)
                     HStack(spacing: 3) {
                         Text(ask ? "" : "\(size)").frame(maxWidth: .infinity, alignment: .trailing)
                         Text(String(format: "%.2f", 100.20 + Double(rows / 2 - index) * 0.05))
@@ -1700,8 +1809,8 @@ private struct RawMarketEvidencePanel: View {
     private var tapePanel: some View {
         let rows = full ? 7 : 5
         return VStack(spacing: 1) {
-            ForEach(tick..<(tick + rows), id: \.self) { printNumber in
-                let initiatedBuy = sellerDriven ? printNumber.isMultiple(of: 3) : (tick > 2 ? printNumber % 4 != 0 : printNumber.isMultiple(of: 2))
+            ForEach(marketTick..<(marketTick + rows), id: \.self) { printNumber in
+                let initiatedBuy = sellerDriven ? printNumber.isMultiple(of: 3) : (marketTick > 2 ? printNumber % 4 != 0 : printNumber.isMultiple(of: 2))
                 HStack(spacing: 3) {
                     Text("10:\(20 + printNumber / 10).\(printNumber % 10)").foregroundColor(Theme.muted)
                     Spacer(minLength: 2)
@@ -1724,7 +1833,7 @@ private struct RawMarketEvidencePanel: View {
         return VStack(spacing: 1) {
             ForEach(0..<rows, id: \.self) { index in
                 let base = 35 + index * 13
-                let accumulated = min(145, tick * (full ? 11 : 9)) + loopVariant * 8
+                let accumulated = min(145, marketTick * (full ? 11 : 9)) + loopVariant * 8
                 let bid = (sellerDriven || conflictingDelta) ? base + accumulated : base
                 let ask = !sellerDriven && !conflictingDelta ? base + 8 + accumulated : base + 8
                 HStack(spacing: 3) {
@@ -1738,7 +1847,7 @@ private struct RawMarketEvidencePanel: View {
                 .contentTransition(.numericText())
             }
             if full {
-                Text("Δ \((sellerDriven || conflictingDelta) ? "−" : "+")\(36 + min(520, tick * 38))")
+                Text("Δ \((sellerDriven || conflictingDelta) ? "−" : "+")\(36 + min(520, marketTick * 38))")
                     .font(Theme.font(7, .black)).foregroundColor((sellerDriven || conflictingDelta) ? askColor : bidColor)
                     .frame(maxWidth: .infinity, alignment: .trailing)
             }
@@ -1751,7 +1860,7 @@ private struct RawMarketEvidencePanel: View {
             Path { path in
                 for index in 0..<count {
                     let progress = CGFloat(index) / CGFloat(max(1, count - 1))
-                    let developing = min(CGFloat(tick) / 12, 1)
+                    let developing = min(CGFloat(marketTick) / 12, 1)
                     let rise = progress < 0.62 ? progress * 0.72 : 0.45 + (progress - 0.62) * 0.15
                     let y = proxy.size.height * (0.88 - rise * developing - progress * 0.18)
                     let point = CGPoint(x: proxy.size.width * progress, y: y)

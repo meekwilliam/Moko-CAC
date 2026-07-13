@@ -221,7 +221,8 @@ struct LessonScreenRouter: View {
             CVDChartQuestionView(player: player, ink: ink)
         case "volume_profile", "volume_profile_tap":
             VolumeProfileQuestionView(player: player, ink: ink)
-        case "orderflow_sim", "orderflow_sim_tap", "orderflow_sim_select":
+        case "orderflow_sim", "orderflow_sim_tap", "orderflow_sim_select",
+             "trade_decision", "trade_scenario", "trade_manage", "entry_select", "invalidation_mark":
             OrderFlowSimulationView(player: player, ink: ink)
         default:
             // true_false / multiple_choice / fill_blank

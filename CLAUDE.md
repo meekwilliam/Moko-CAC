@@ -86,7 +86,8 @@ Question `type`s in use: `intro`, `multiple_choice`, `true_false`,
 `number_slider`, and order-flow-specific ones: `aggressor`, `book_drag`,
 `book_compare`, `evidence_select`, `footprint`, `footprint_tap`,
 `live_chart`, `orderflow_sim`, `replay_compare`, `time_sales`,
-`time_sales_tap`. Field names per type are in `LessonModels.swift`'s
+`time_sales_tap`, `trade_decision`, `trade_scenario`, `trade_manage`,
+`entry_select`, and `invalidation_mark`. Field names per type are in `LessonModels.swift`'s
 `LessonScreen` `CodingKeys` (~line 107-125).
 
 **Safety rule for chart-interaction questions** (`tap_candle`, `tap_candles`,

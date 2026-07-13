@@ -16,6 +16,11 @@ Interactive mechanics:
   [TRENDLINE] Connect two candles on a chart.
   [LIVE_CHART] Read pressure while candles update.
   [ORDERFLOW_SIM] Combine book, tape, footprint, and price response.
+  [TRADE_DECISION] Read synchronized raw evidence and choose LONG, SHORT, or WAIT.
+  [TRADE_SCENARIO] Make several decisions during one continuous market replay.
+  [TRADE_MANAGE] Manage an open position from evolving evidence.
+  [ENTRY_SELECT] Choose MARKET, LIMIT, or NO ENTRY from execution conditions.
+  [INVALIDATION_MARK] Tap the price level that invalidates the current hypothesis.
   [TIME_SALES] Read an animated feed of completed trades.
   [TIME_SALES_TAP] Select evidence directly from the animated tape.
   [FOOTPRINT] Compare bid and ask volume at each price.
@@ -2218,13 +2223,14 @@ Price builds acceptance above
 Offers stay cleared
 WHY: An upside sweep breaches the prior high and quickly returns below it rather than holding above.
 
-[ORDERFLOW_SIM] Price trades below the prior low and immediately reclaims it. Is this a downside sweep or acceptance?
-VISUAL: Price trades below a prior low as sell stops trigger and seller initiated prints surge, then bids rebuild, buying responds, and price immediately reclaims the breached level.
-SKILL: multi_signal_read
-Possible downside sweep
-Accepted breakdown
-Seller continuation remains favored
-WHY: The breach takes liquidity but fails to gain acceptance below.
+[TRADE_DECISION] The prior low is swept and reclaimed, but buyer control is still developing. What's your decision?
+SKILL: trade_decision_quality
+SCENARIO: downside_sweep
+LONG
+SHORT
+WAIT
+ANSWER: WAIT
+WHY: The reclaim weakens the breakdown, but stronger buyer follow through is still needed before a long.
 
 [MC] Which upside sweep interpretation is best supported?
 VISUAL: Price briefly trades above a level and closes back below it, leaving a long upper wick.
@@ -2671,14 +2677,14 @@ TITLE: Breakout Acceptance Practice Replay
 TYPE: PRACTICE_REPLAY
 CELEBRATION: Breakout Acceptance Practice Replay complete.
 
-[ORDERFLOW_SIM] Offers are consumed and price holds beyond resistance. What is strongest?
-VISUAL: Price approaches resistance, offers thin and are consumed, buyer initiated prints persist, stacked ask side execution appears, and price holds above the broken level.
-SKILL: multi_signal_read
-Aggression is receiving confirming price acceptance
-The fastest evidence guarantees the next move
-Displayed size alone determines the outcome
-The candle should be read without execution context
-WHY: A real breakout combines pressure with sustained trade beyond the level.
+[TRADE_DECISION] Price holds above resistance after offers are consumed. What's your decision?
+SKILL: trade_decision_quality
+SCENARIO: breakout
+LONG
+SHORT
+WAIT
+ANSWER: LONG
+WHY: Buyer aggression, acceptance above resistance, and continued price response align for a long decision.
 
 [MC] What's the most reasonable read?
 VISUAL: Price breaks resistance, returns to test it from above, then attempts to continue higher.
@@ -2865,13 +2871,14 @@ One fast buy print
 A single wide candle
 WHY: Without continued execution and price holding beyond the level, the initial break has not established acceptance.
 
-[ORDERFLOW_SIM] Fast buying appears, but the offer refreshes and price stalls. Is breakout acceptance confirmed?
-VISUAL: Price rises above VWAP with positive delta and fast buyer prints, but a large offer refreshes and upward price progress begins fading.
-SKILL: multi_signal_read
-No. Fast tape still needs price acceptance
-Yes. Speed alone confirms it
-Yes. Positive delta guarantees it
-WHY: Fast tape is urgency, not confirmation.
+[TRADE_DECISION] Fast buying hits a replenishing offer while price stalls. What's your decision?
+SKILL: trade_decision_quality
+SCENARIO: seller_absorption_developing
+LONG
+SHORT
+WAIT
+ANSWER: WAIT
+WHY: Buying is aggressive, but neither upside acceptance nor confirmed seller control is present.
 
 [MC] What best connects the evidence?
 VISUAL: Price opens well above the prior trading area with little activity between the two zones.
@@ -3036,13 +3043,22 @@ To guarantee profit
 To avoid all slippage
 WHY: A retest can reveal whether the level now holds.
 
-[ORDERFLOW_SIM] What's the strongest read?
-VISUAL: Price approaches resistance, offers thin and are consumed, buyer initiated prints persist, stacked ask side execution appears, and price holds above the broken level.
-SKILL: multi_signal_read
-Accepted breakout
-Liquidity sweep
-Not enough trading
-WHY: Pressure persists and price holds beyond.
+[TRADE_SCENARIO] Read the breakout as it develops.
+SKILL: trade_decision_quality
+DIFFICULTY: expert
+SCENARIO: breakout_acceptance_sequence
+STAGE 1
+PROMPT: Price reaches resistance. What's your decision?
+ANSWER: WAIT
+WHY: The setup is developing, but no breakout or rejection has occurred.
+STAGE 2
+PROMPT: Price breaks resistance but has not held. What's your decision?
+ANSWER: WAIT
+WHY: The break is visible, but acceptance beyond resistance is not confirmed.
+STAGE 3
+PROMPT: The retest holds and buyer aggression resumes. What's your decision?
+ANSWER: LONG
+WHY: Acceptance, a successful retest, renewed aggression, and price response align for a long decision.
 
 
 UNIT 8 — Pullbacks and Continuation
@@ -3639,13 +3655,14 @@ Confirmed liquidity sweep
 One side has uncontested control
 WHY: Heavy two sided execution with little directional price progress is consistent with high volume chop rather than clean directional control.
 
-[ORDERFLOW_SIM] What's the best conclusion?
-VISUAL: Price rises above VWAP with positive delta and fast buyer prints, but a large offer refreshes and upward price progress begins fading.
-SKILL: multi_signal_read
-No clear read yet
-Bullish continuation
-Bearish continuation
-WHY: The evidence conflicts.
+[TRADE_DECISION] Book, tape, footprint, and price response still conflict. What's your decision?
+SKILL: trade_decision_quality
+SCENARIO: conflict
+LONG
+SHORT
+WAIT
+ANSWER: WAIT
+WHY: Conflicting evidence leaves neither direction sufficiently confirmed.
 
 [EVIDENCE_SELECT] Select pullback failure clues.
 VISUAL: Four evidence cards separate aggression, liquidity, price response, and an irrelevant clue. The learner must select the required combination.
@@ -3713,13 +3730,14 @@ TITLE: Buyer Traps vs. Seller Traps
 TYPE: STANDARD
 CELEBRATION: Buyer Traps vs. Seller Traps complete.
 
-[ORDERFLOW_SIM] What shows buyers became trapped?
-VISUAL: Price briefly trades above resistance as offers disappear and buy prints surge, then sell liquidity rebuilds and price immediately returns below the level.
-SKILL: multi_signal_read
-Buying above resistance fails and price returns below
-Buyer prints appear above resistance
-Positive delta remains visible
-WHY: The attempted break fails to hold and reverses back below the level.
+[TRADE_DECISION] The breakout fails, price returns below resistance, and sellers begin hitting bids. What's your decision?
+SKILL: trade_decision_quality
+SCENARIO: sweep
+LONG
+SHORT
+WAIT
+ANSWER: SHORT
+WHY: Failed acceptance and confirmed seller response align for a short decision.
 
 [ORDERFLOW_SIM] What shows sellers became trapped?
 VISUAL: Price trades below a prior low as sell stops trigger and seller initiated prints surge, then bids rebuild, buying responds, and price immediately reclaims the breached level.
@@ -3955,13 +3973,14 @@ Entering from the candle pattern alone
 Entering after one opposing print
 WHY: Visible execution and price confirmation reduce reliance on pattern assumptions.
 
-[ORDERFLOW_SIM] Which event would invalidate the bullish reversal hypothesis?
-VISUAL: Seller initiated prints persist into bids that are being consumed or withdrawn, footprint execution favors sellers, and price establishes sustained trade below support.
-SKILL: multi_signal_read
-Seller pressure regains progress and price accepts below support
-Buyer prints begin appearing
-The spread stays unchanged
-WHY: Renewed seller execution with acceptance below support disproves the proposed bullish control change.
+[INVALIDATION_MARK] You are long after a bullish reversal. Tap the level whose loss invalidates the read.
+SKILL: trade_decision_quality
+SCENARIO: breakdown_pressure
+101.35 extension
+100.90 reclaimed support
+100.45 distant swing low
+ANSWER: 100.90 reclaimed support
+WHY: Losing reclaimed support with renewed seller acceptance invalidates the bullish control change.
 
 [ORDERFLOW_SIM] What matters most before treating this as a reversal?
 VISUAL: Seller initiated prints dominate into support, price stops falling, seller pace weakens, buyers begin lifting offers, and price starts responding upward.
@@ -4069,13 +4088,14 @@ Passive absorption and fading aggression produce the same evidence
 A high volume candle reveals which side initiated every trade
 WHY: A clear trigger keeps execution disciplined.
 
-[ORDERFLOW_SIM] Price approaches a trigger as the spread widens and nearby depth changes. How should order choice be interpreted?
-VISUAL: Level II shows small nearby size with gaps, the spread widens during a market order, Time and Sales jumps across prices, and the simulated fill lands worse than the initial quote.
-SKILL: multi_signal_read
-Balance execution speed with control over fill price
-The chart direction determines the order type
-Thin depth guarantees an immediate favorable fill
-WHY: Changing liquidity makes the tradeoff between urgency and price control directly relevant.
+[ENTRY_SELECT] The spread widens and nearby depth becomes unstable. Which entry is best supported?
+SKILL: trade_decision_quality
+SCENARIO: thin_risk
+MARKET
+LIMIT
+NO ENTRY
+ANSWER: NO ENTRY
+WHY: No entry is best while fill quality and slippage risk are unstable.
 
 [EVIDENCE_SELECT] Select the two relevant clues.
 VISUAL: Four evidence cards separate aggression, liquidity, price response, and an irrelevant clue. The learner must select the required combination.
@@ -4259,13 +4279,15 @@ TITLE: Exiting Into Liquidity
 TYPE: STANDARD
 CELEBRATION: Exiting Into Liquidity complete.
 
-[ORDERFLOW_SIM] What does the evidence support?
-VISUAL: Price approaches resistance while Level II shows concentrated opposing ask depth, Time and Sales remains active, and the chart identifies the planned exit area without guaranteeing the displayed liquidity will remain.
-SKILL: multi_signal_read
-Visible opposing depth can help plan an exit area
-The exit price is guaranteed
-Resistance predicts the next trend
-WHY: Level II shows potential counterparties near the planned exit, but displayed liquidity can change.
+[TRADE_MANAGE] You are long into resistance as buying slows and the offer replenishes. What now?
+SKILL: trade_decision_quality
+SCENARIO: exit_liquidity
+HOLD
+EXIT
+REDUCE
+WAIT FOR MORE EVIDENCE
+ANSWER: EXIT
+WHY: Exiting into available liquidity is best supported as buying weakens at the planned resistance area.
 
 [EVIDENCE_SELECT] Select the two relevant clues.
 VISUAL: Four evidence cards separate aggression, liquidity, price response, and an irrelevant clue. The learner must select the required combination.
@@ -4434,13 +4456,14 @@ Book A
 Both
 WHY: Book B has small size and gaps.
 
-[ORDERFLOW_SIM] Is direction confirmed?
-VISUAL: Price rises above VWAP with positive delta and fast buyer prints, but a large offer refreshes and upward price progress begins fading.
-SKILL: multi_signal_read
-Not enough evidence
-Buyers fully control
-Sellers fully control
-WHY: Conflicting evidence prevents confirmation.
+[TRADE_DECISION] The final evidence stack remains conflicted. What's your decision?
+SKILL: trade_decision_quality
+SCENARIO: conflict
+LONG
+SHORT
+WAIT
+ANSWER: WAIT
+WHY: Expert execution includes staying out when the evidence does not establish control.
 
 [EVIDENCE_SELECT] Select what to review afterward.
 VISUAL: Four evidence cards separate aggression, liquidity, price response, and an irrelevant clue. The learner must select the required combination.
