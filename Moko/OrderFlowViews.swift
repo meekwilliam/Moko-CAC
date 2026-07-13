@@ -1385,9 +1385,14 @@ struct OrderFlowSimulationView: View {
                 }
             }
 
-            // Decision scenarios (Long/Wait/Short) are just charts + buttons —
-            // no prompt text. Other sim questions keep their question.
-            if !isDecisionMechanic {
+            // Decision scenarios get a compact prompt above the live board; other
+            // sim questions keep their full question text.
+            if isDecisionMechanic {
+                VStack(alignment: .leading, spacing: 2) {
+                    Text("TRADE DECISION").font(Theme.font(10, .black)).foregroundColor(.purple)
+                    Text("What's your move?").font(Theme.questionFont(20, .heavy)).foregroundColor(ink)
+                }
+            } else {
                 Text(displayQuestion)
                     .font(Theme.questionFont(20, .heavy)).foregroundColor(ink)
             }
@@ -1451,8 +1456,8 @@ struct OrderFlowSimulationView: View {
             } else if isDecisionMechanic {
                 if useCompactDecisionRow {
                     HStack(spacing: 8) {
-                        ForEach(Array(player.currentOptions.enumerated()), id: \.offset) { index, label in
-                            compactTradeChoice(index: index, label: label)
+                        ForEach(compactDecisionOrder, id: \.index) { item in
+                            compactTradeChoice(index: item.index, label: item.label)
                         }
                     }
                 } else {
@@ -1691,6 +1696,20 @@ struct OrderFlowSimulationView: View {
     private var useCompactDecisionRow: Bool {
         let opts = player.currentOptions
         return opts.count <= 3 && opts.allSatisfy { $0.count <= 6 }
+    }
+
+    /// Display the decision buttons in a fixed, intuitive order (LONG, WAIT,
+    /// SHORT) regardless of how the options are stored/shuffled — the underlying
+    /// index is preserved so grading is unaffected. Any unrecognized options
+    /// keep their original order after these.
+    private var compactDecisionOrder: [(index: Int, label: String)] {
+        let preferred = ["LONG", "WAIT", "SHORT"]
+        let items = player.currentOptions.enumerated().map { (index: $0.offset, label: $0.element) }
+        return items.sorted { a, b in
+            let ra = preferred.firstIndex(of: a.label) ?? preferred.count + a.index
+            let rb = preferred.firstIndex(of: b.label) ?? preferred.count + b.index
+            return ra < rb
+        }
     }
 
     private func compactTradeChoice(index: Int, label: String) -> some View {
