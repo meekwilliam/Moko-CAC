@@ -126,6 +126,9 @@ final class LessonPlayer: ObservableObject {
         case "evidence_select":
             let needed = screen.targets?.count ?? 0
             return needed > 0 && selectedSet.count == needed
+        case "orderflow_sim_select":
+            let needed = screen.targets?.count ?? 0
+            return needed > 0 && selectedSet.count == needed
         case "mark_level":
             return markedLevel != nil
         case "draw_trendline":
@@ -197,11 +200,13 @@ final class LessonPlayer: ObservableObject {
             correct = (builtOrder == (screen.correctOrder ?? []))
         case "tap_candle":
             correct = (selectedIndex == screen.target)
-        case "time_sales_tap", "footprint_tap", "volume_profile_tap", "dom_tap", "cvd_tap":
+        case "time_sales_tap", "footprint_tap", "volume_profile_tap", "dom_tap", "cvd_tap", "orderflow_sim_tap":
             correct = (selectedIndex == screen.target)
         case "tap_candles":
             correct = (selectedSet == Set(screen.targets ?? []))
         case "evidence_select":
+            correct = (selectedSet == Set(screen.targets ?? []))
+        case "orderflow_sim_select":
             correct = (selectedSet == Set(screen.targets ?? []))
         case "mark_level":
             if let marked = markedLevel, let truth = markTrueLevel {

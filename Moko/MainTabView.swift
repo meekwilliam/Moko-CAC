@@ -57,6 +57,7 @@ struct MainTabView: View {
                     onUnlockAll: { router.onUnlockAll?() },
                     onGrantTestTreats: { router.onGrantTestTreats?() },
                     onTestMechanics: { router.onOpenMechanicsTest?() },
+                    onTestMultiSignal: { router.onOpenMultiSignalTest?() },
                     onPreviewStreak: { router.onPreviewStreak?() },
                     onBumpStreak: { router.onBumpStreak?() },
                     onTestOnboarding: {
