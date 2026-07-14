@@ -32,16 +32,16 @@ struct SkillMapView: View {
 
             ScrollViewReader { proxy in
                 ScrollView(showsIndicators: false) {
-                    LazyVStack(alignment: .leading, spacing: Theme.Space.xxxl) {
+                    LazyVStack(alignment: .leading, spacing: MarketDesign.Spacing.xxxl) {
                         courseOverview
                         ForEach(store.sections, id: \.index) { section in
                             unitSection(section)
                                 .id("unit-\(section.index)")
                         }
-                        Color.clear.frame(height: 128)
+                        Color.clear.frame(height: MarketDesign.Spacing.huge * 2.5)
                     }
-                    .padding(.horizontal, Theme.Space.lg)
-                    .padding(.top, Theme.Space.lg)
+                    .padding(.horizontal, MarketDesign.Spacing.lg)
+                    .padding(.top, MarketDesign.Spacing.lg)
                 }
                 .safeAreaInset(edge: .top, spacing: 0) { trainingHUD }
                 .onAppear {
@@ -66,22 +66,21 @@ struct SkillMapView: View {
     // MARK: HUD
 
     private var trainingHUD: some View {
-        VStack(spacing: Theme.Space.sm) {
-            HStack(spacing: Theme.Space.sm) {
+        VStack(spacing: MarketDesign.Spacing.sm) {
+            HStack(spacing: MarketDesign.Spacing.sm) {
                 Button {
                     guard Game.courses.count > 1 else { return }
                     Haptics.selection()
                     onOpenCourses()
                 } label: {
-                    HStack(spacing: Theme.Space.xs) {
+                    HStack(spacing: MarketDesign.Spacing.xs) {
                         MarketMark(size: 30)
-                        VStack(alignment: .leading, spacing: 1) {
+                        VStack(alignment: .leading, spacing: MarketDesign.Spacing.xxs) {
                             Text("MARKET TRAINING")
-                                .font(Theme.font(9, .black))
-                                .tracking(1.4)
-                                .foregroundColor(Theme.mastery)
+                                .marketText(.overline)
+                                .foregroundColor(MarketDesign.Colors.brandTeal)
                             Text("Order Flow Lab")
-                                .font(Theme.font(16, .bold))
+                                .marketText(.title)
                                 .foregroundColor(theme.palette.ink)
                         }
                     }
@@ -90,34 +89,34 @@ struct SkillMapView: View {
 
                 Spacer(minLength: 4)
 
-                hudMetric(icon: "bolt.fill", value: store.xp, tint: Theme.progress)
-                hudMetric(icon: "calendar.badge.clock", value: store.streak, tint: Theme.expert)
+                hudMetric(icon: "bolt.fill", value: store.xp, tint: MarketDesign.Colors.progressBlue)
+                hudMetric(icon: "calendar.badge.clock", value: store.streak, tint: MarketDesign.Colors.expertViolet)
                 Button {
                     Haptics.selection()
                     onOpenCapacity()
                 } label: {
                     hudMetricContent(icon: "shield.lefthalf.filled", value: store.isUnlimitedHearts ? nil : store.hearts,
-                                     text: store.isUnlimitedHearts ? "∞" : nil, tint: Theme.warning)
+                                     text: store.isUnlimitedHearts ? "∞" : nil, tint: MarketDesign.Colors.warning.full)
                 }
                 .buttonStyle(RowPressStyle())
             }
 
             GeometryReader { proxy in
                 ZStack(alignment: .leading) {
-                    Capsule().fill(Theme.surfaceStrong)
+                    Capsule().fill(MarketDesign.Colors.surfaceStrong)
                     Capsule()
-                        .fill(LinearGradient(colors: [Theme.mastery, Theme.progress], startPoint: .leading, endPoint: .trailing))
+                        .fill(LinearGradient(colors: [MarketDesign.Colors.brandTeal, MarketDesign.Colors.progressBlue], startPoint: .leading, endPoint: .trailing))
                         .frame(width: max(8, proxy.size.width * completion))
                 }
             }
-            .frame(height: 3)
+            .frame(height: MarketDesign.ControlSize.progressTrack)
         }
-        .padding(.horizontal, Theme.Space.lg)
-        .padding(.top, Theme.Space.xs)
-        .padding(.bottom, Theme.Space.sm)
+        .padding(.horizontal, MarketDesign.Spacing.lg)
+        .padding(.top, MarketDesign.Spacing.xs)
+        .padding(.bottom, MarketDesign.Spacing.sm)
         .background(
-            Theme.appBackground.opacity(0.96)
-                .overlay(Rectangle().fill(Theme.surfaceBorder.opacity(0.7)).frame(height: 1), alignment: .bottom)
+            MarketDesign.Colors.backgroundPrimary.opacity(0.96)
+                .overlay(Rectangle().fill(MarketDesign.Colors.borderSubtle.opacity(0.7)).frame(height: 1), alignment: .bottom)
                 .ignoresSafeArea(edges: .top)
         )
     }
@@ -127,46 +126,37 @@ struct SkillMapView: View {
     }
 
     private func hudMetricContent(icon: String, value: Int?, text: String?, tint: Color) -> some View {
-        HStack(spacing: 5) {
+        HStack(spacing: MarketDesign.Spacing.xxs) {
             Image(systemName: icon)
-                .font(.system(size: 12, weight: .semibold))
-                .foregroundColor(tint)
+                .marketIcon(size: MarketDesign.IconSize.small, color: tint)
             Text(text ?? "\(value ?? 0)")
-                .font(Theme.marketFont(12, .semibold))
+                .marketText(.marketNumber)
                 .foregroundColor(theme.palette.ink)
-                .monospacedDigit()
         }
-        .padding(.horizontal, 8)
-        .frame(height: 30)
-        .background(
-            RoundedRectangle(cornerRadius: Theme.Radius.small, style: .continuous)
-                .fill(Theme.surface)
-                .overlay(
-                    RoundedRectangle(cornerRadius: Theme.Radius.small, style: .continuous)
-                        .strokeBorder(Theme.surfaceBorder, lineWidth: 1)
-                )
-        )
+        .padding(.horizontal, MarketDesign.Spacing.xs)
+        .frame(height: MarketDesign.ControlSize.compact)
+        .marketCard(elevation: MarketDesign.Elevation.base, radius: MarketDesign.Radius.small)
     }
 
     private var courseOverview: some View {
-        HStack(alignment: .bottom, spacing: Theme.Space.md) {
-            VStack(alignment: .leading, spacing: Theme.Space.xs) {
+        HStack(alignment: .bottom, spacing: MarketDesign.Spacing.md) {
+            VStack(alignment: .leading, spacing: MarketDesign.Spacing.xs) {
                 Text("SKILL MAP")
-                    .font(Theme.font(10, .black)).tracking(1.8)
-                    .foregroundColor(Theme.subtle)
+                    .marketText(.overline)
+                    .foregroundColor(MarketDesign.Colors.textSubtle)
                 Text("Read the market.\nBuild the decision.")
-                    .font(Theme.font(28, .bold))
+                    .marketText(.displayMedium)
                     .foregroundColor(theme.palette.ink)
                     .fixedSize(horizontal: false, vertical: true)
             }
             Spacer(minLength: 8)
-            VStack(alignment: .trailing, spacing: 2) {
+            VStack(alignment: .trailing, spacing: MarketDesign.Spacing.xxs) {
                 Text("\(Int((completion * 100).rounded()))%")
-                    .font(Theme.marketFont(28, .bold))
-                    .foregroundColor(Theme.mastery)
+                    .marketText(.metricLarge)
+                    .foregroundColor(MarketDesign.Colors.brandTeal)
                 Text("COURSE MASTERY")
-                    .font(Theme.font(9, .black)).tracking(1.1)
-                    .foregroundColor(Theme.subtle)
+                    .marketText(.overline)
+                    .foregroundColor(MarketDesign.Colors.textSubtle)
             }
         }
     }
@@ -179,40 +169,39 @@ struct SkillMapView: View {
         let accent = Theme.tierColor(section.tier, index: section.index).main
         let state = store.progressionState(forSection: section.index)
 
-        return VStack(alignment: .leading, spacing: Theme.Space.md) {
-            HStack(alignment: .top, spacing: Theme.Space.sm) {
-                RoundedRectangle(cornerRadius: 2)
+        return VStack(alignment: .leading, spacing: MarketDesign.Spacing.md) {
+            HStack(alignment: .top, spacing: MarketDesign.Spacing.sm) {
+                Capsule()
                     .fill(accent)
-                    .frame(width: 4, height: 48)
-                    .shadow(color: accent.opacity(0.35), radius: 6)
+                    .frame(width: MarketDesign.Spacing.xxs, height: MarketDesign.ControlSize.standard)
 
-                VStack(alignment: .leading, spacing: 3) {
-                    HStack(spacing: Theme.Space.xs) {
+                VStack(alignment: .leading, spacing: MarketDesign.Spacing.xxs) {
+                    HStack(spacing: MarketDesign.Spacing.xs) {
                         Text("UNIT \(section.index + 1)")
                         Text("//")
                         Text((section.tier ?? "TRAINING").uppercased())
                     }
-                    .font(Theme.font(9, .black)).tracking(1.2)
+                    .marketText(.overline)
                     .foregroundColor(accent)
 
                     Text(section.title)
-                        .font(Theme.font(19, .bold))
+                        .marketText(.headlineMedium)
                         .foregroundColor(theme.palette.ink)
                 }
 
                 Spacer(minLength: 4)
 
-                VStack(alignment: .trailing, spacing: 4) {
+                VStack(alignment: .trailing, spacing: MarketDesign.Spacing.xxs) {
                     Text("\(completed)/\(nodes.count)")
-                        .font(Theme.marketFont(13, .semibold))
+                        .marketText(.marketNumber)
                         .foregroundColor(theme.palette.ink)
                     Text(unitStateLabel(state))
-                        .font(Theme.font(8, .black)).tracking(0.8)
+                        .marketText(.overline)
                         .foregroundColor(state == .locked ? Theme.subtle : accent)
                 }
             }
 
-            VStack(spacing: Theme.Space.sm) {
+            VStack(spacing: MarketDesign.Spacing.sm) {
                 ForEach(nodes) { node in
                     lessonModule(node, accent: accent)
                         .id("lesson-\(node.num)")
@@ -231,9 +220,9 @@ struct SkillMapView: View {
 
         return Button {
             if locked { Haptics.play(.locked) } else { Haptics.selection() }
-            withAnimation(.easeOut(duration: 0.18)) { selectedNodeNumber = node.num }
+            withAnimation(MarketDesign.Motion.fastEase) { selectedNodeNumber = node.num }
         } label: {
-            HStack(spacing: Theme.Space.sm) {
+            HStack(spacing: MarketDesign.Spacing.sm) {
                 ZStack {
                     RoundedRectangle(cornerRadius: Theme.Radius.control, style: .continuous)
                         .fill(active ? accent.opacity(0.16) : Theme.surfaceStrong)
@@ -242,26 +231,27 @@ struct SkillMapView: View {
                                 .strokeBorder(active ? accent.opacity(0.75) : Theme.surfaceBorder, lineWidth: 1)
                         )
                     Image(systemName: node.isBoss ? "waveform.path.ecg.rectangle" : lessonSymbol(node.num))
-                        .font(.system(size: 19, weight: .semibold))
+                        .marketIcon(size: MarketDesign.IconSize.large)
                         .foregroundColor(locked ? Theme.subtle : (done ? Theme.mastery : accent))
                 }
-                .frame(width: 48, height: 48)
+                .frame(width: MarketDesign.ControlSize.standard, height: MarketDesign.ControlSize.standard)
 
-                VStack(alignment: .leading, spacing: 4) {
-                    HStack(spacing: 7) {
+                VStack(alignment: .leading, spacing: MarketDesign.Spacing.xxs) {
+                    HStack(spacing: MarketDesign.Spacing.xs) {
                         Text(node.isBoss ? "MARKET DRILL" : String(format: "LESSON %02d", node.num))
-                            .font(Theme.font(9, .black)).tracking(1)
+                            .marketText(.overline)
                             .foregroundColor(node.isBoss ? Theme.expert : Theme.subtle)
                         if placement {
                             Text("PLACEMENT")
-                                .font(Theme.font(8, .black)).tracking(0.7)
+                                .marketText(.overline)
                                 .foregroundColor(Theme.progress)
-                                .padding(.horizontal, 7).padding(.vertical, 3)
+                                .padding(.horizontal, MarketDesign.Spacing.xs)
+                                .padding(.vertical, MarketDesign.Spacing.xxs)
                                 .background(Capsule().fill(Theme.progress.opacity(0.12)))
                         }
                     }
                     Text(node.title)
-                        .font(Theme.questionFont(15, .semibold))
+                        .marketText(.title)
                         .foregroundColor(locked ? Theme.subtle : theme.palette.ink)
                         .lineLimit(2)
                         .multilineTextAlignment(.leading)
@@ -270,22 +260,19 @@ struct SkillMapView: View {
                 Spacer(minLength: 4)
 
                 Image(systemName: done ? "checkmark.circle.fill" : (locked ? "lock.fill" : "chevron.right"))
-                    .font(.system(size: done ? 18 : 14, weight: .semibold))
+                    .marketIcon(size: done ? MarketDesign.IconSize.medium : MarketDesign.IconSize.small)
                     .foregroundColor(done ? Theme.mastery : (active ? accent : Theme.subtle))
             }
-            .padding(Theme.Space.sm)
-            .frame(maxWidth: .infinity, minHeight: 74, alignment: .leading)
-            .background(
-                RoundedRectangle(cornerRadius: Theme.Radius.card, style: .continuous)
-                    .fill(active ? Theme.surfaceRaised : Theme.surface)
-                    .overlay(
-                        RoundedRectangle(cornerRadius: Theme.Radius.card, style: .continuous)
-                            .strokeBorder(active ? accent.opacity(0.55) : Theme.surfaceBorder.opacity(locked ? 0.45 : 0.9), lineWidth: 1)
-                    )
-                    .shadow(color: active ? accent.opacity(0.10) : .black.opacity(0.10), radius: 8, y: 3)
+            .padding(MarketDesign.Spacing.sm)
+            .frame(maxWidth: .infinity, minHeight: MarketDesign.ControlSize.lessonModule, alignment: .leading)
+            .marketCard(
+                elevation: active ? MarketDesign.Elevation.focus : MarketDesign.Elevation.base,
+                border: active ? accent.opacity(0.55) : MarketDesign.Colors.borderSubtle.opacity(locked ? 0.45 : 0.9),
+                radius: MarketDesign.Radius.large,
+                accent: active ? accent : nil
             )
             .opacity(locked ? 0.62 : 1)
-            .contentShape(RoundedRectangle(cornerRadius: Theme.Radius.card, style: .continuous))
+            .contentShape(RoundedRectangle(cornerRadius: MarketDesign.Radius.large, style: .continuous))
         }
         .buttonStyle(RowPressStyle(scale: 0.992))
     }
@@ -317,36 +304,36 @@ struct SkillMapView: View {
         let placement = shouldShowTestOut(for: node)
         let locked = state == .locked && !placement
         let accent = Theme.tierColor(store.section(node.sectionIndex)?.tier, index: node.sectionIndex)
-        let action = placement ? "START PLACEMENT CHALLENGE"
-            : (locked ? "LESSON LOCKED"
-               : (store.inProgressNode == node.num ? "CONTINUE SESSION"
-                  : (state == .done ? "REPLAY LESSON" : "START LESSON")))
+        let action = placement ? "Start placement challenge"
+            : (locked ? "Lesson locked"
+               : (store.inProgressNode == node.num ? "Continue session"
+                  : (state == .done ? "Replay lesson" : "Start lesson")))
 
         return ZStack(alignment: .bottom) {
-            Color.black.opacity(0.58)
+            MarketDesign.Colors.scrim
                 .ignoresSafeArea()
                 .onTapGesture { dismissOverlay() }
 
-            VStack(alignment: .leading, spacing: Theme.Space.lg) {
+            VStack(alignment: .leading, spacing: MarketDesign.Spacing.lg) {
                 Capsule().fill(Theme.surfaceHighlight).frame(width: 38, height: 4)
                     .frame(maxWidth: .infinity)
 
-                HStack(alignment: .top, spacing: Theme.Space.sm) {
+                HStack(alignment: .top, spacing: MarketDesign.Spacing.sm) {
                     MarketMark(size: 42, accent: placement ? Theme.progress : accent.main)
-                    VStack(alignment: .leading, spacing: 5) {
+                    VStack(alignment: .leading, spacing: MarketDesign.Spacing.xs) {
                         Text(placement ? "PLACEMENT CHALLENGE" : (node.isBoss ? "SYNTHESIS DRILL" : "TRAINING MODULE"))
-                            .font(Theme.font(9, .black)).tracking(1.3)
+                            .marketText(.overline)
                             .foregroundColor(placement ? Theme.progress : accent.main)
                         Text(placement ? "Skip to Unit \(node.sectionIndex + 1)" : node.title)
-                            .font(Theme.font(21, .bold))
+                            .marketText(.headlineMedium)
                             .foregroundColor(theme.palette.ink)
                     }
                     Spacer(minLength: 0)
                     Button(action: dismissOverlay) {
                         Image(systemName: "xmark")
-                            .font(.system(size: 14, weight: .semibold))
+                            .marketIcon(size: MarketDesign.IconSize.small)
                             .foregroundColor(Theme.muted)
-                            .frame(width: 34, height: 34)
+                            .frame(width: MarketDesign.ControlSize.compact, height: MarketDesign.ControlSize.compact)
                             .background(Circle().fill(Theme.surfaceStrong))
                     }
                     .buttonStyle(RowPressStyle())
@@ -354,12 +341,12 @@ struct SkillMapView: View {
 
                 if placement {
                     Text("Demonstrate the required competencies to unlock this unit. Assessment scoring and retry rules remain unchanged.")
-                        .font(Theme.bodyFont(14))
+                        .marketText(.body)
                         .foregroundColor(Theme.muted)
                         .fixedSize(horizontal: false, vertical: true)
                 } else if locked {
                     Text("Complete the previous training modules to open this lesson.")
-                        .font(Theme.bodyFont(14))
+                        .marketText(.body)
                         .foregroundColor(Theme.muted)
                 }
 
@@ -370,23 +357,17 @@ struct SkillMapView: View {
                     if placement { onTestOut(node.sectionIndex) }
                     else { onSelectNode(node.num) }
                 }
-                .buttonStyle(Chunky3DStyle(
-                    fill: locked ? Theme.surfaceStrong : (placement ? Theme.progress : accent.main),
-                    slab: locked ? Theme.surfaceBorder : (placement ? Theme.progressDark : accent.dark),
-                    textColor: locked ? Theme.subtle : .white,
-                    radius: Theme.Radius.control,
-                    font: Theme.font(14, .bold)
-                ))
+                .buttonStyle(MarketButtonStyle(variant: placement ? .primary : .secondary))
                 .disabled(locked)
             }
-            .padding(.horizontal, Theme.Space.lg)
-            .padding(.top, Theme.Space.sm)
-            .padding(.bottom, Theme.Space.xl)
+            .padding(.horizontal, MarketDesign.Spacing.lg)
+            .padding(.top, MarketDesign.Spacing.sm)
+            .padding(.bottom, MarketDesign.Spacing.xl)
             .background(
-                UnevenRoundedRectangle(topLeadingRadius: Theme.Radius.large,
+                UnevenRoundedRectangle(topLeadingRadius: MarketDesign.Radius.extraLarge,
                                        bottomLeadingRadius: 0,
                                        bottomTrailingRadius: 0,
-                                       topTrailingRadius: Theme.Radius.large,
+                                       topTrailingRadius: MarketDesign.Radius.extraLarge,
                                        style: .continuous)
                     .fill(Theme.surfaceRaised)
                     .overlay(alignment: .top) {
@@ -399,7 +380,7 @@ struct SkillMapView: View {
     }
 
     private func dismissOverlay() {
-        withAnimation(.easeOut(duration: 0.16)) { selectedNodeNumber = nil }
+        withAnimation(MarketDesign.Motion.fastEase) { selectedNodeNumber = nil }
     }
 
     private func shouldShowTestOut(for node: PathNode) -> Bool {

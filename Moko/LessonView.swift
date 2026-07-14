@@ -429,18 +429,18 @@ struct LessonView: View {
 
             if showExitConfirm {
                 ExitDialog(
-                    onKeepGoing: { withAnimation(.easeOut(duration: 0.18)) { showExitConfirm = false } },
+                    onKeepGoing: { withAnimation(MarketDesign.Motion.fastEase) { showExitConfirm = false } },
                     onExit: { showExitConfirm = false; onClose() }
                 )
                 .transition(.opacity)
                 .zIndex(100)
             }
         }
-        .animation(.easeInOut(duration: 0.22), value: player.finished)
-        .onChange(of: player.canCheck) { ready in
+        .animation(MarketDesign.Motion.standardEase, value: player.finished)
+        .onChange(of: player.canCheck) { _, ready in
             guard ready && !player.revealed else { return }
             checkReadyPulse = true
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.16) {
+            DispatchQueue.main.asyncAfter(deadline: .now() + MarketDesign.Motion.fast) {
                 checkReadyPulse = false
             }
         }
@@ -702,8 +702,7 @@ struct FeedbackBanner: View {
     @State private var showWhy = false
 
     private var correct: Bool { player.lastCorrect }
-    private var tint: Color { correct ? Theme.correct : Theme.incorrect }
-    private var tintDark: Color { correct ? Theme.correctDark : Theme.incorrectDark }
+    private var tint: Color { correct ? MarketDesign.Colors.brandTeal : MarketDesign.Colors.warning.full }
     private var isTradeDecision: Bool {
         ["trade_decision", "trade_scenario", "trade_manage", "entry_select", "invalidation_mark"].contains(player.screen.type)
     }
@@ -761,82 +760,79 @@ struct FeedbackBanner: View {
     }
 
     var body: some View {
-        VStack(alignment: .leading, spacing: 14) {
-            HStack(spacing: 10) {
+        VStack(alignment: .leading, spacing: MarketDesign.Spacing.sm) {
+            HStack(spacing: MarketDesign.Spacing.xs) {
                 Image(systemName: correct ? "checkmark" : "exclamationmark")
-                    .font(.system(size: 13, weight: .bold))
-                    .foregroundColor(tint)
-                    .frame(width: 28, height: 28)
+                    .marketIcon(size: MarketDesign.IconSize.small, color: tint)
+                    .frame(width: MarketDesign.ControlSize.compact, height: MarketDesign.ControlSize.compact)
                     .background(
-                        RoundedRectangle(cornerRadius: 8, style: .continuous)
+                        RoundedRectangle(cornerRadius: MarketDesign.Radius.small, style: .continuous)
                             .fill(tint.opacity(0.12))
-                            .overlay(RoundedRectangle(cornerRadius: 8).strokeBorder(tint.opacity(0.32), lineWidth: 1))
+                            .overlay(RoundedRectangle(cornerRadius: MarketDesign.Radius.small).strokeBorder(tint.opacity(0.32), lineWidth: 1))
                     )
                 Text(feedbackTitle)
-                    .font(Theme.font(20, .bold)).foregroundColor(tint)
+                    .marketText(.headlineMedium).foregroundColor(tint)
                 // No XP callout when re-doing a missed question.
                 if correct && !player.screen.isPreviousMistake {
                     Text("+10 XP")
-                        .font(Theme.marketFont(13, .semibold))
+                        .marketText(.marketNumber)
                         .foregroundColor(tint.opacity(0.9))
-                        .padding(.top, 3)
+                        .padding(.top, MarketDesign.Spacing.xxs)
                 }
                 Spacer(minLength: 0)
             }
 
             if !correct, let ans = correctAnswerText {
-                VStack(alignment: .leading, spacing: 4) {
-                    Text("EXPECTED READ").font(Theme.font(10, .black)).tracking(0.8)
-                    Text(ans).font(Theme.bodyFont(15))
+                VStack(alignment: .leading, spacing: MarketDesign.Spacing.xxs) {
+                    Text("EXPECTED READ").marketText(.overline)
+                    Text(ans).marketText(.body)
                 }
                 .foregroundColor(Theme.muted)
                 .fixedSize(horizontal: false, vertical: true)
             }
 
             if isTradeDecision {
-                HStack(spacing: 8) {
+                HStack(spacing: MarketDesign.Spacing.xs) {
                     Text("DECISION QUALITY: \(correct ? "STRONG" : "WEAK")")
-                        .font(Theme.font(10, .black)).foregroundColor(tint)
+                        .marketText(.overline).foregroundColor(tint)
                     if let outcome = player.screen.tradeOutcome {
                         Text("TRADE OUTCOME: \(outcome.uppercased())")
-                            .font(Theme.font(10, .black)).foregroundColor(Theme.muted)
+                            .marketText(.overline).foregroundColor(MarketDesign.Colors.textSecondary)
                     }
                 }
             }
 
             if showWhy, let ex = explanationText {
                 Text(RichText.attributed(ex,
-                                         base: Theme.font(15, .semibold),
-                                         bold: Theme.font(15, .black),
-                                         color: Color(hex: "#cbd5e1")))
+                                         base: MarketDesign.font(.body),
+                                         bold: MarketDesign.font(.buttonLabel),
+                                         color: MarketDesign.Colors.neutral.contrastText))
                     .fixedSize(horizontal: false, vertical: true)
                     .transition(.opacity.combined(with: .move(edge: .bottom)))
             }
 
-            HStack(spacing: 12) {
+            HStack(spacing: MarketDesign.Spacing.sm) {
                 if explanationText != nil {
-                    Button(showWhy ? "HIDE" : "DEBRIEF") {
+                    Button(showWhy ? "Hide" : "Debrief") {
                         Haptics.selection()
-                        withAnimation(.easeInOut(duration: 0.2)) { showWhy.toggle() }
+                        withAnimation(MarketDesign.Motion.standardEase) { showWhy.toggle() }
                     }
-                    .buttonStyle(Chunky3DStyle(fill: Color(hex: "#4B5563"), slab: Color(hex: "#333B47"),
-                                               depth: 4, radius: 14, font: Theme.font(16, .black)))
-                    .frame(width: 108)
+                    .buttonStyle(MarketButtonStyle(variant: .secondary))
+                    .frame(width: MarketDesign.ControlSize.secondaryActionWidth)
                 }
-                Button(correct ? (player.isLastScreen ? "FINISH" : "CONTINUE") : "CONTINUE") { onContinue() }
-                    .buttonStyle(Chunky3DStyle(fill: tint, slab: tintDark, depth: 4, radius: 14,
-                                               font: Theme.font(18, .black)))
+                Button(correct ? (player.isLastScreen ? "Finish" : "Continue") : "Continue") { onContinue() }
+                    .buttonStyle(MarketButtonStyle(variant: .primary))
             }
         }
-        .padding(.horizontal, 20)
-        .padding(.top, 20)
-        .padding(.bottom, 14)
+        .padding(.horizontal, MarketDesign.Spacing.lg)
+        .padding(.top, MarketDesign.Spacing.lg)
+        .padding(.bottom, MarketDesign.Spacing.sm)
         .frame(maxWidth: .infinity)
         // Background is drawn by the footer so it fills the bottom safe area.
-        .onChange(of: player.index) { _ in
+        .onChange(of: player.index) { _, _ in
             showWhy = false
         }
-        .onChange(of: player.scenarioStage) { _ in
+        .onChange(of: player.scenarioStage) { _, _ in
             showWhy = false
         }
     }

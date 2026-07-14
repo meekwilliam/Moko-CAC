@@ -43,41 +43,41 @@ enum Theme {
     }
 
     enum Space {
-        static let xxs: CGFloat = 4
-        static let xs: CGFloat = 8
-        static let sm: CGFloat = 12
-        static let md: CGFloat = 16
-        static let lg: CGFloat = 20
-        static let xl: CGFloat = 24
-        static let xxl: CGFloat = 32
-        static let xxxl: CGFloat = 40
+        static let xxs = MarketDesign.Spacing.xxs
+        static let xs = MarketDesign.Spacing.xs
+        static let sm = MarketDesign.Spacing.sm
+        static let md = MarketDesign.Spacing.md
+        static let lg = MarketDesign.Spacing.lg
+        static let xl = MarketDesign.Spacing.xl
+        static let xxl = MarketDesign.Spacing.xxl
+        static let xxxl = MarketDesign.Spacing.xxxl
     }
 
     enum Radius {
-        static let small: CGFloat = 10
-        static let control: CGFloat = 14
-        static let card: CGFloat = 16
-        static let large: CGFloat = 20
+        static let small = MarketDesign.Radius.small
+        static let control = MarketDesign.Radius.medium
+        static let card = MarketDesign.Radius.large
+        static let large = MarketDesign.Radius.extraLarge
     }
 
-    static let ink = Color(hex: "#102737")
-    static let inkDark = Color(hex: "#ECF5FC")
-    static let muted = Color(hex: "#93A8B8")
-    static let subtle = Color(hex: "#62798B")
+    static let ink = MarketDesign.Colors.textPrimaryLight
+    static let inkDark = MarketDesign.Colors.textPrimary
+    static let muted = MarketDesign.Colors.textSecondary
+    static let subtle = MarketDesign.Colors.textSubtle
 
     // Brand accents. Green/red stay reserved for market-side meaning below.
-    static let mastery = Color(hex: "#25C7B7")
-    static let masteryDark = Color(hex: "#117D78")
-    static let progress = Color(hex: "#4B86FF")
-    static let progressDark = Color(hex: "#2855B8")
-    static let expert = Color(hex: "#8B6CFF")
-    static let premium = Color(hex: "#D75BCB")
-    static let warning = Color(hex: "#E8B45B")
-    static let warningDark = Color(hex: "#8E6225")
+    static let mastery = MarketDesign.Colors.brandTeal
+    static let masteryDark = MarketDesign.Colors.brandTealStrong
+    static let progress = MarketDesign.Colors.progressBlue
+    static let progressDark = MarketDesign.Colors.progressBlueStrong
+    static let expert = MarketDesign.Colors.expertViolet
+    static let premium = MarketDesign.Colors.premiumMagenta
+    static let warning = MarketDesign.Colors.warning.full
+    static let warningDark = MarketDesign.Colors.warningStrong
 
     // Market semantics only.
-    static let buyer = Color(hex: "#32C98A")
-    static let seller = Color(hex: "#F26472")
+    static let buyer = MarketDesign.Colors.bullish.full
+    static let seller = MarketDesign.Colors.bearish.full
 
     // Assessment feedback uses mastery/warning rather than market green/red.
     static let correct = mastery
@@ -91,46 +91,36 @@ enum Theme {
     static let answer = progress
     static let answerDark = progressDark
 
-    static let appBackground = Color(hex: "#07111B")
-    static let backgroundElevated = Color(hex: "#0A1622")
-    static let surface = Color(hex: "#0E1B28")
-    static let surfaceRaised = Color(hex: "#132333")
-    static let surfaceStrong = Color(hex: "#192C3E")
-    static let surfaceBorder = Color(hex: "#263D50")
-    static let surfaceHighlight = Color(hex: "#355067")
-    static let surfaceSlab = Color(hex: "#1A3041")
-    static let surfaceMuted = Color(hex: "#203446")
-    static let slotFill = Color(hex: "#122433")
-    static let slotBorder = Color(hex: "#355067")
-    static let chartBackground = Color(hex: "#08131D")
+    static let appBackground = MarketDesign.Colors.backgroundPrimary
+    static let backgroundElevated = MarketDesign.Colors.backgroundSecondary
+    static let surface = MarketDesign.Colors.surfaceBase
+    static let surfaceRaised = MarketDesign.Colors.surfaceRaised
+    static let surfaceStrong = MarketDesign.Colors.surfaceStrong
+    static let surfaceBorder = MarketDesign.Colors.borderSubtle
+    static let surfaceHighlight = MarketDesign.Colors.borderInnerHighlight
+    static let surfaceSlab = MarketDesign.Colors.surfaceSlab
+    static let surfaceMuted = MarketDesign.Colors.surfaceMuted
+    static let slotFill = MarketDesign.Colors.slotFill
+    static let slotBorder = MarketDesign.Colors.borderInnerHighlight
+    static let chartBackground = MarketDesign.Colors.chartSurface
 
     static func optionFill(_ scheme: ColorScheme) -> Color {
         scheme == .dark ? surface : .white
     }
 
     static func optionBorder(_ scheme: ColorScheme) -> Color {
-        scheme == .dark ? surfaceBorder : Color(hex: "#DDE3ED")
+        scheme == .dark ? surfaceBorder : MarketDesign.Colors.optionBorderLight
     }
 
     static func optionSlab(_ scheme: ColorScheme) -> Color {
-        scheme == .dark ? surfaceSlab : Color(hex: "#B8C4D8")
+        scheme == .dark ? surfaceSlab : MarketDesign.Colors.optionSlabLight
     }
 
     /// Tier palette used for progression and mastery. It deliberately avoids
     /// bullish green and bearish red.
     static func tierColor(_ tier: String?, index: Int = 0) -> (main: Color, dark: Color) {
-        switch tier?.lowercased() {
-        case "beginner":
-            return index.isMultiple(of: 2) ? (mastery, masteryDark) : (Color(hex: "#31B7C7"), Color(hex: "#176B7A"))
-        case "intermediate":
-            return (progress, progressDark)
-        case "advanced":
-            return index.isMultiple(of: 2) ? (expert, Color(hex: "#5037AA")) : (Color(hex: "#666FEA"), Color(hex: "#363D9E"))
-        case "expert":
-            return (premium, Color(hex: "#85317D"))
-        default:
-            return (progress, progressDark)
-        }
+        let accent = MarketDesign.tierAccent(tier, index: index)
+        return (accent.main, accent.strong)
     }
 
     /// Fallback when unit metadata is unavailable.
