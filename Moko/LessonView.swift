@@ -397,7 +397,7 @@ struct LessonView: View {
         self.onAssessmentComplete = onAssessmentComplete
     }
 
-    private var bg: Color { theme.palette.base }   // same source as the path background
+    private var bg: Color { Theme.appBackground }
     private var ink: Color { scheme == .dark ? Theme.inkDark : Theme.ink }
 
     // Answer-interaction accent: a fixed blue for the progress bar, Check /
@@ -408,7 +408,7 @@ struct LessonView: View {
 
     var body: some View {
         ZStack {
-            bg.ignoresSafeArea()
+            ThemedBackground()
 
             if player.finished {
                 RewardView(player: player) {
@@ -436,7 +436,7 @@ struct LessonView: View {
                 .zIndex(100)
             }
         }
-        .animation(.easeInOut(duration: 0.25), value: player.finished)
+        .animation(.easeInOut(duration: 0.22), value: player.finished)
         .onChange(of: player.canCheck) { ready in
             guard ready && !player.revealed else { return }
             checkReadyPulse = true
@@ -493,7 +493,7 @@ struct LessonView: View {
             }
             footer(for: pagePlayer)
         }
-        .background(theme.palette.base)
+        .background(Color.clear)
     }
 
     private func advanceQuestion() {
@@ -553,16 +553,22 @@ struct LessonView: View {
             Text("Second try")
                 .font(Theme.font(13, .black)).textCase(.uppercase).tracking(0.5)
         }
-        .foregroundColor(Color(hex: "#f87171"))
+        .foregroundColor(Theme.warning)
     }
 
     private var testOutBadge: some View {
-        Label("TEST OUT", systemImage: "bolt.shield.fill")
-            .font(Theme.font(12, .black)).tracking(0.7)
-            .foregroundColor(.white)
-            .padding(.horizontal, 11).padding(.vertical, 7)
-            .background(Capsule().fill(Color(hex: "#2563EB")))
-            .overlay(Capsule().strokeBorder(Color(hex: "#FBBF24"), lineWidth: 2))
+        Label("PLACEMENT CHALLENGE", systemImage: "scope")
+            .font(Theme.font(10, .black)).tracking(1.1)
+            .foregroundColor(Theme.progress)
+            .padding(.horizontal, 10).padding(.vertical, 7)
+            .background(
+                RoundedRectangle(cornerRadius: Theme.Radius.small, style: .continuous)
+                    .fill(Theme.surface)
+                    .overlay(
+                        RoundedRectangle(cornerRadius: Theme.Radius.small, style: .continuous)
+                            .strokeBorder(Theme.progress.opacity(0.45), lineWidth: 1)
+                    )
+            )
     }
 
     // MARK: Header — close, progress bar, hearts
@@ -571,33 +577,25 @@ struct LessonView: View {
         HStack(spacing: 14) {
             Button(action: { Haptics.selection(); withAnimation(.easeOut(duration: 0.18)) { showExitConfirm = true } }) {
                 Image(systemName: "xmark")
-                    .font(.system(size: 20, weight: .black))
-                    .foregroundColor(scheme == .dark ? Color(white: 0.78) : Theme.muted)
+                    .font(.system(size: 14, weight: .semibold))
+                    .foregroundColor(Theme.muted)
             }
             .buttonStyle(Circle3DStyle(
-                face: scheme == .dark ? Color(white: 0.20) : Color(white: 0.93),
-                slab: scheme == .dark ? Color.black.opacity(0.6) : Color.black.opacity(0.20),
-                size: 42, depth: 4))
+                face: Theme.surface,
+                slab: Theme.surfaceStrong,
+                size: 36, depth: 1))
 
             GeometryReader { geo in
                 ZStack(alignment: .leading) {
-                    // Brighter, more visible track.
-                    Capsule().fill(scheme == .dark ? Color.white.opacity(0.20) : Color.black.opacity(0.12))
-                    // Vibrant, glossy blue fill: a top-lit gradient plus a bright
-                    // highlight strip along the top edge.
+                    Capsule().fill(Theme.surfaceStrong)
                     Capsule().fill(
-                        LinearGradient(colors: [Color(hex: "#4CA9FF"), Color(hex: "#2B70C9")],
-                                       startPoint: .top, endPoint: .bottom))
+                        LinearGradient(colors: [Theme.mastery, Theme.progress],
+                                       startPoint: .leading, endPoint: .trailing))
                         .frame(width: max(16, geo.size.width * displayedProgress))
-                        .overlay(
-                            Capsule().fill(Color.white.opacity(0.5))
-                                .frame(height: 4).padding(.horizontal, 6).padding(.top, 4),
-                            alignment: .top
-                        )
                 }
             }
-            .frame(height: 20)
-            .animation(.spring(response: 0.36, dampingFraction: 0.82), value: displayedProgress)
+            .frame(height: 5)
+            .animation(.easeInOut(duration: 0.32), value: displayedProgress)
 
             lessonHeartBadge
         }
@@ -608,14 +606,16 @@ struct LessonView: View {
 
     private var lessonHeartBadge: some View {
         HStack(spacing: 5) {
-            HeartBadge(filled: isUnlimitedHearts || hearts > 0, size: 20)
+            Image(systemName: "shield.lefthalf.filled")
+                .font(.system(size: 16, weight: .semibold))
+                .foregroundColor((isUnlimitedHearts || hearts > 0) ? Theme.warning : Theme.subtle)
             if isUnlimitedHearts {
                 Image(systemName: "infinity")
-                    .font(.system(size: 14, weight: .black))
+                    .font(.system(size: 13, weight: .semibold))
                     .foregroundColor(ink)
             } else {
                 Text("\(hearts)")
-                    .font(Theme.font(16, .black))
+                    .font(Theme.marketFont(14, .semibold))
                     .foregroundColor(ink)
                     .monospacedDigit()
                     .contentTransition(.numericText())
@@ -640,9 +640,7 @@ struct LessonView: View {
                 // The feedback card carries its own WHY? / Got It / Continue
                 // buttons, so it replaces the primary button entirely.
                 FeedbackBanner(player: pagePlayer) { advanceQuestion() }
-                    .transition(.move(edge: .bottom)
-                        .combined(with: .opacity)
-                        .combined(with: .scale(scale: 0.9, anchor: .bottom)))
+                    .transition(.move(edge: .bottom).combined(with: .opacity))
             } else {
                 primaryButton(for: pagePlayer)
                     .padding(.horizontal, 20)
@@ -651,37 +649,38 @@ struct LessonView: View {
             }
         }
         .background(
-            // The card fill lives here (not on the banner) so it reliably
-            // extends into the bottom safe area with no base-coloured gap
-            // below it. Rounded top only while the feedback card is showing.
-            (pagePlayer.revealed && !pagePlayer.isIntro ? Color(hex: "#1A2433") : Color.clear)
+            (pagePlayer.revealed && !pagePlayer.isIntro ? Theme.backgroundElevated : Color.clear)
                 .clipShape(UnevenRoundedRectangle(
-                    topLeadingRadius: pagePlayer.revealed && !pagePlayer.isIntro ? 26 : 0,
+                    topLeadingRadius: pagePlayer.revealed && !pagePlayer.isIntro ? Theme.Radius.large : 0,
                     bottomLeadingRadius: 0, bottomTrailingRadius: 0,
-                    topTrailingRadius: pagePlayer.revealed && !pagePlayer.isIntro ? 26 : 0,
+                    topTrailingRadius: pagePlayer.revealed && !pagePlayer.isIntro ? Theme.Radius.large : 0,
                     style: .continuous))
+                .overlay(alignment: .top) {
+                    if pagePlayer.revealed && !pagePlayer.isIntro {
+                        Rectangle().fill(Theme.surfaceBorder).frame(height: 1)
+                    }
+                }
                 .ignoresSafeArea(edges: .bottom)
         )
-        // Bouncy overshoot pop, like the web's speechPop.
-        .animation(.spring(response: 0.36, dampingFraction: 0.6), value: pagePlayer.revealed)
+        .animation(.easeOut(duration: 0.22), value: pagePlayer.revealed)
     }
 
     @ViewBuilder
     private func primaryButton(for pagePlayer: LessonPlayer) -> some View {
         if pagePlayer.isIntro {
-            Button("Got It") { advanceQuestion() }
+            Button("CONTINUE") { advanceQuestion() }
                 .buttonStyle(Chunky3DStyle(fill: accent, slab: accentDark))
         } else if !pagePlayer.revealed {
             // Solid (not translucent) grays when disabled — a translucent fill
             // let the dark background bleed through unevenly at the seam
             // between the top face and the slab, showing as a stray line.
-            Button("Check") { withAnimation { pagePlayer.check() } }
+            Button("CHECK READ") { withAnimation(.easeOut(duration: 0.16)) { pagePlayer.check() } }
                 .buttonStyle(Chunky3DStyle(
                     fill: pagePlayer.canCheck ? accent : Color(hex: "#4B5563"),
                     slab: pagePlayer.canCheck ? accentDark : Color(hex: "#333B47")))
                 .disabled(!pagePlayer.canCheck)
-                .scaleEffect(checkReadyPulse ? 1.025 : 1)
-                .animation(.spring(response: 0.22, dampingFraction: 0.52), value: checkReadyPulse)
+                .scaleEffect(checkReadyPulse ? 1.01 : 1)
+                .animation(.easeOut(duration: 0.14), value: checkReadyPulse)
         } else if pagePlayer.lesson.lessonType == "TEST_OUT" {
             Button(pagePlayer.isLastScreen ? "Finish Assessment" : "Next Question") { advanceQuestion() }
                 .buttonStyle(Chunky3DStyle(fill: accent, slab: accentDark))
@@ -696,9 +695,7 @@ struct LessonView: View {
 
 // MARK: - Feedback banner
 
-// Reveal card, styled after the reference: "✨ Correct +10XP" / "💔 Oops!" with
-// the right answer called out, a WHY? toggle for the explanation, and the
-// Got It / Continue button living inside the card.
+// Analytical debrief shown after a read or decision is submitted.
 struct FeedbackBanner: View {
     @ObservedObject var player: LessonPlayer
     var onContinue: () -> Void
@@ -711,28 +708,12 @@ struct FeedbackBanner: View {
         ["trade_decision", "trade_scenario", "trade_manage", "entry_select", "invalidation_mark"].contains(player.screen.type)
     }
     private var feedbackTitle: String {
-        guard isTradeDecision else { return correct ? "Correct" : "Oops!" }
-        if correct { return "Good Decision" }
+        guard isTradeDecision else { return correct ? "Read Confirmed" : "Review the Read" }
+        if correct { return "Decision Confirmed" }
         let chosen = player.selectedIndex.flatMap { player.currentOptions[safe: $0] }
         return (chosen == "LONG" || chosen == "SHORT") && player.currentOptions[safe: player.currentCorrectIndex] == "WAIT"
-            ? "Not Yet" : "Decision Missed"
+            ? "Wait for Confirmation" : "Decision Needs Review"
     }
-
-    // Vector icons (rendered by SVGIconView) instead of emoji, so they stay
-    // crisp and match the banner tints exactly.
-    private static let sparklesSVG = SVGParser.parse("""
-        <svg viewBox="0 0 24 24" fill="#22c55e">
-          <path d="M9 2 L10.9 7.1 L16 9 L10.9 10.9 L9 16 L7.1 10.9 L2 9 L7.1 7.1 Z"/>
-          <path d="M18 11.5 L19.1 14.4 L22 15.5 L19.1 16.6 L18 19.5 L16.9 16.6 L14 15.5 L16.9 14.4 Z"/>
-          <path d="M17.5 2.5 L18.2 4.3 L20 5 L18.2 5.7 L17.5 7.5 L16.8 5.7 L15 5 L16.8 4.3 Z"/>
-        </svg>
-        """)
-    private static let brokenHeartSVG = SVGParser.parse("""
-        <svg viewBox="0 0 24 24" fill="#f43f5e">
-          <path d="M12 21 C12 21 3.5 14.6 3.5 8.8 C3.5 5.5 6 3.2 8.8 3.2 C10.1 3.2 11.3 3.8 12 4.8 C12.7 3.8 13.9 3.2 15.2 3.2 C18 3.2 20.5 5.5 20.5 8.8 C20.5 14.6 12 21 12 21 Z"/>
-          <path d="M12 4.8 L10.3 8.2 L13.2 10.8 L10.8 14.2 L12 21" fill="none" stroke="#1A2433" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-        """)
 
     private var explanationText: String? {
         let s = player.screen
@@ -782,14 +763,21 @@ struct FeedbackBanner: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 14) {
             HStack(spacing: 10) {
-                SVGIconView(svg: correct ? Self.sparklesSVG : Self.brokenHeartSVG)
-                    .frame(width: 26, height: 26)
+                Image(systemName: correct ? "checkmark" : "exclamationmark")
+                    .font(.system(size: 13, weight: .bold))
+                    .foregroundColor(tint)
+                    .frame(width: 28, height: 28)
+                    .background(
+                        RoundedRectangle(cornerRadius: 8, style: .continuous)
+                            .fill(tint.opacity(0.12))
+                            .overlay(RoundedRectangle(cornerRadius: 8).strokeBorder(tint.opacity(0.32), lineWidth: 1))
+                    )
                 Text(feedbackTitle)
-                    .font(Theme.font(24, .black)).foregroundColor(tint)
+                    .font(Theme.font(20, .bold)).foregroundColor(tint)
                 // No XP callout when re-doing a missed question.
                 if correct && !player.screen.isPreviousMistake {
                     Text("+10 XP")
-                        .font(Theme.font(19, .black))
+                        .font(Theme.marketFont(13, .semibold))
                         .foregroundColor(tint.opacity(0.9))
                         .padding(.top, 3)
                 }
@@ -797,10 +785,12 @@ struct FeedbackBanner: View {
             }
 
             if !correct, let ans = correctAnswerText {
-                (Text("Correct answer:  ").font(Theme.font(17, .black))
-                    + Text(ans).font(Theme.font(17, .bold)))
-                    .foregroundColor(tint.opacity(0.95))
-                    .fixedSize(horizontal: false, vertical: true)
+                VStack(alignment: .leading, spacing: 4) {
+                    Text("EXPECTED READ").font(Theme.font(10, .black)).tracking(0.8)
+                    Text(ans).font(Theme.bodyFont(15))
+                }
+                .foregroundColor(Theme.muted)
+                .fixedSize(horizontal: false, vertical: true)
             }
 
             if isTradeDecision {
@@ -825,15 +815,15 @@ struct FeedbackBanner: View {
 
             HStack(spacing: 12) {
                 if explanationText != nil {
-                    Button("WHY ?") {
+                    Button(showWhy ? "HIDE" : "DEBRIEF") {
                         Haptics.selection()
-                        withAnimation(.spring(response: 0.32, dampingFraction: 0.8)) { showWhy.toggle() }
+                        withAnimation(.easeInOut(duration: 0.2)) { showWhy.toggle() }
                     }
                     .buttonStyle(Chunky3DStyle(fill: Color(hex: "#4B5563"), slab: Color(hex: "#333B47"),
                                                depth: 4, radius: 14, font: Theme.font(16, .black)))
                     .frame(width: 108)
                 }
-                Button(correct ? (player.isLastScreen ? "Finish" : "Continue") : "Got It") { onContinue() }
+                Button(correct ? (player.isLastScreen ? "FINISH" : "CONTINUE") : "CONTINUE") { onContinue() }
                     .buttonStyle(Chunky3DStyle(fill: tint, slab: tintDark, depth: 4, radius: 14,
                                                font: Theme.font(18, .black)))
             }
@@ -867,12 +857,14 @@ struct ExitDialog: View {
                 .onTapGesture { onKeepGoing() }
 
             VStack(spacing: 0) {
-                Image(systemName: "info.circle")
-                    .font(.system(size: 38, weight: .regular))
-                    .foregroundColor(Color(hex: "#2B70C9"))
+                Image(systemName: "pause")
+                    .font(.system(size: 18, weight: .semibold))
+                    .foregroundColor(Theme.progress)
+                    .frame(width: 42, height: 42)
+                    .background(RoundedRectangle(cornerRadius: 12).fill(Theme.progress.opacity(0.12)))
                     .padding(.bottom, 12)
-                Text("Quit this lesson?")
-                    .font(Theme.font(18, .black)).foregroundColor(.white)
+                Text("Pause this session?")
+                    .font(Theme.font(18, .bold)).foregroundColor(.white)
                     .padding(.bottom, 8)
                 Text("Your progress so far will be saved and you can pick up where you left off.")
                     .font(Theme.font(14, .bold)).foregroundColor(Color(hex: "#94A3B8"))
@@ -880,10 +872,10 @@ struct ExitDialog: View {
                     .fixedSize(horizontal: false, vertical: true)
                     .padding(.bottom, 22)
                 VStack(spacing: 10) {
-                    Button("Keep Going") { onKeepGoing() }
+                    Button("CONTINUE SESSION") { onKeepGoing() }
                         .buttonStyle(Chunky3DStyle(fill: Color(hex: "#2B70C9"), slab: Color(hex: "#1C4A85"),
                                                    depth: 4, radius: 14, font: Theme.font(15, .black)))
-                    Button("Exit") { onExit() }
+                    Button("SAVE & EXIT") { onExit() }
                         .buttonStyle(Chunky3DStyle(fill: Theme.surface, slab: Theme.surfaceSlab,
                                                    textColor: Color(hex: "#94A3B8"),
                                                    depth: 4, radius: 14, font: Theme.font(15, .black)))
@@ -891,13 +883,17 @@ struct ExitDialog: View {
             }
             .padding(.horizontal, 24).padding(.top, 28).padding(.bottom, 20)
             .frame(maxWidth: 320)
-            .background(RoundedRectangle(cornerRadius: 24, style: .continuous).fill(Theme.surfaceRaised))
-            .shadow(color: .black.opacity(0.4), radius: 30, y: 16)
+            .background(
+                RoundedRectangle(cornerRadius: Theme.Radius.large, style: .continuous)
+                    .fill(Theme.surfaceRaised)
+                    .overlay(RoundedRectangle(cornerRadius: Theme.Radius.large).strokeBorder(Theme.surfaceBorder, lineWidth: 1))
+            )
+            .shadow(color: .black.opacity(0.28), radius: 22, y: 12)
             .padding(.horizontal, 24)
-            .scaleEffect(appear ? 1 : 0.88)
+            .scaleEffect(appear ? 1 : 0.97)
             .opacity(appear ? 1 : 0)
         }
-        .onAppear { withAnimation(.spring(response: 0.3, dampingFraction: 0.82)) { appear = true } }
+        .onAppear { withAnimation(.easeOut(duration: 0.2)) { appear = true } }
     }
 }
 
@@ -943,20 +939,15 @@ struct RewardView: View {
     var body: some View {
         VStack(spacing: 22) {
             Spacer()
-            ZStack {
-                Circle().fill(player.unit.main.opacity(0.15)).frame(width: 150, height: 150)
-                    .scaleEffect(stage >= 1 ? 1.08 : 0.65)
-                    .opacity(stage >= 1 ? 1 : 0)
-                Image(systemName: isAssessment ? (assessmentPassed ? "bolt.shield.fill" : "arrow.trianglehead.2.clockwise.rotate.90") : (player.isUnitTest ? "crown.fill" : "checkmark.seal.fill"))
-                    .font(.system(size: 92, weight: .bold))
-                    .foregroundColor(player.unit.main)
-                    .rotationEffect(.degrees(stage >= 1 ? 0 : -14))
-                    .scaleEffect(stage >= 1 ? 1 : 0.35)
-            }
+            MasteryArtifact(
+                accent: assessmentPassed || !isAssessment ? player.unit.main : Theme.warning,
+                symbol: isAssessment ? (assessmentPassed ? "scope" : "arrow.clockwise") : (player.isUnitTest ? "waveform.path.ecg" : "checkmark")
+            )
+            .scaleEffect(stage >= 1 ? 1 : 0.94)
             .opacity(stage >= 1 ? 1 : 0)
 
-            Text(isAssessment ? (assessmentPassed ? "TESTED OUT!" : "Almost there.") : (player.isUnitTest ? "Unit Complete!" : "Lesson Complete!"))
-                .font(Theme.font(28, .black))
+            Text(isAssessment ? (assessmentPassed ? "PLACEMENT CLEARED" : "CALIBRATION NEEDED") : (player.isUnitTest ? "UNIT SYNTHESIZED" : "MODULE MASTERED"))
+                .font(Theme.font(25, .bold))
                 .foregroundColor(ink)
                 .opacity(stage >= 2 ? 1 : 0)
                 .offset(y: stage >= 2 ? 0 : 12)
@@ -977,7 +968,7 @@ struct RewardView: View {
             .offset(y: stage >= 3 ? 0 : 14)
             Spacer()
 
-            Button("Continue") { onContinue() }
+            Button("CONTINUE") { onContinue() }
                 .buttonStyle(Chunky3DStyle(fill: player.unit.main, slab: player.unit.dark))
                 .padding(.horizontal, 20)
                 .padding(.bottom, 8)
@@ -991,15 +982,15 @@ struct RewardView: View {
 
     private func runRewardIntro() {
         stage = 0
-        withAnimation(.spring(response: 0.48, dampingFraction: 0.58)) { stage = 1 }
+        withAnimation(.easeOut(duration: 0.38)) { stage = 1 }
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.14) {
-            withAnimation(.spring(response: 0.38, dampingFraction: 0.86)) { stage = 2 }
+            withAnimation(.easeOut(duration: 0.3)) { stage = 2 }
         }
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.28) {
-            withAnimation(.spring(response: 0.34, dampingFraction: 0.78)) { stage = 3 }
+            withAnimation(.easeOut(duration: 0.28)) { stage = 3 }
         }
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.42) {
-            withAnimation(.spring(response: 0.34, dampingFraction: 0.84)) { stage = 4 }
+            withAnimation(.easeOut(duration: 0.26)) { stage = 4 }
         }
     }
 
@@ -1012,28 +1003,54 @@ struct RewardView: View {
     }
 
     private func xpPill(text: String) -> some View {
-        Text(text)
-            .font(Theme.font(15, .black))
-            .foregroundColor(.white)
+        Label(text, systemImage: "bolt.fill")
+            .font(Theme.marketFont(14, .semibold))
+            .foregroundColor(Theme.progress)
             .padding(.horizontal, 20).padding(.vertical, 11)
-            .background(
-                Capsule().fill(Color(hex: "#38bdf8"))
-                    .background(Capsule().fill(Color(hex: "#0369a1")).offset(y: 4))
-            )
+            .background(RoundedRectangle(cornerRadius: Theme.Radius.control).fill(Theme.surface)
+                .overlay(RoundedRectangle(cornerRadius: Theme.Radius.control).strokeBorder(Theme.progress.opacity(0.35), lineWidth: 1)))
     }
 
     private func treatPill(value: Int) -> some View {
         HStack(spacing: 8) {
-            Text("+\(value)")
-                .font(Theme.font(15, .black))
-                .foregroundColor(.white)
-            TreatIcon(height: 14)
+            Image(systemName: "diamond.fill")
+            Text("+\(value) CREDITS")
+                .font(Theme.marketFont(13, .semibold))
         }
+        .foregroundColor(Theme.warning)
         .padding(.horizontal, 20).padding(.vertical, 11)
-        .background(
-            Capsule().fill(Color(hex: "#9A5411"))
-                .background(Capsule().fill(Color(hex: "#5B3B2E")).offset(y: 4))
-        )
+        .background(RoundedRectangle(cornerRadius: Theme.Radius.control).fill(Theme.surface)
+            .overlay(RoundedRectangle(cornerRadius: Theme.Radius.control).strokeBorder(Theme.warning.opacity(0.35), lineWidth: 1)))
+    }
+}
+
+/// A restrained pseudo-3D mastery object built from market-grid geometry.
+private struct MasteryArtifact: View {
+    let accent: Color
+    let symbol: String
+
+    var body: some View {
+        ZStack {
+            RoundedRectangle(cornerRadius: 24, style: .continuous)
+                .fill(accent.opacity(0.08))
+                .frame(width: 132, height: 132)
+                .rotationEffect(.degrees(45))
+                .overlay(
+                    RoundedRectangle(cornerRadius: 24, style: .continuous)
+                        .strokeBorder(accent.opacity(0.18), lineWidth: 1)
+                        .rotationEffect(.degrees(45))
+                )
+            RoundedRectangle(cornerRadius: 20, style: .continuous)
+                .fill(LinearGradient(colors: [Theme.surfaceHighlight, Theme.surface], startPoint: .topLeading, endPoint: .bottomTrailing))
+                .frame(width: 104, height: 104)
+                .overlay(RoundedRectangle(cornerRadius: 20).strokeBorder(accent.opacity(0.5), lineWidth: 1))
+                .shadow(color: accent.opacity(0.2), radius: 16, y: 8)
+            Image(systemName: symbol)
+                .font(.system(size: 36, weight: .semibold))
+                .foregroundStyle(accent)
+        }
+        .frame(width: 170, height: 170)
+        .rotation3DEffect(.degrees(8), axis: (x: 1, y: -0.4, z: 0))
     }
 }
 

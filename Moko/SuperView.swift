@@ -1,9 +1,8 @@
 import SwiftUI
 
 // MARK: - Super (premium subscription) tab
-// A dedicated store page for the "Super" unlimited-hearts subscription, styled
-// after the reference paywall: a big gradient heart, two selectable plan tiers
-// (Monthly / Yearly), restore + legal fine print, and a pinned Buy button.
+// A dedicated premium page for unlimited session capacity, two selectable
+// plan tiers, restore + legal fine print, and a pinned purchase button.
 // Purchases run through the real StoreKit 2 flow wired in ViewController.
 
 // Shared brand gradient for everything "Super" (blue → pink → amber).
@@ -15,9 +14,8 @@ enum SuperTheme {
     static let yearlyProductID  = "com.meeko.moko.unlimitedhearts.yearly"
 }
 
-/// The subscription heart: a white-bordered, gradient-filled heart with an
-/// optional infinity glyph. Reused as the tab icon (small, no infinity) and the
-/// page header (large, with infinity).
+/// Premium access artifact. The legacy type name is retained for source
+/// compatibility, but the visible heart has been replaced by market geometry.
 struct SuperHeartIcon: View {
     var size: CGFloat
     var showInfinity: Bool = true
@@ -26,30 +24,25 @@ struct SuperHeartIcon: View {
 
     var body: some View {
         ZStack {
-            Image(systemName: "heart.fill")
-                .font(.system(size: size, weight: .black))
-                .foregroundColor(.white)
-            heartFill
+            RoundedRectangle(cornerRadius: size * 0.2, style: .continuous)
+                .fill(Theme.surface)
+                .frame(width: size, height: size)
+                .rotationEffect(.degrees(45))
+                .overlay(
+                    RoundedRectangle(cornerRadius: size * 0.2)
+                        .strokeBorder(SuperTheme.gradient, lineWidth: 2)
+                        .rotationEffect(.degrees(45))
+                )
+            MarketMark(size: size * 0.62, accent: Theme.expert)
             if showInfinity {
                 Image(systemName: "infinity")
-                    .font(.system(size: size * 0.34, weight: .black))
-                    .foregroundColor(.white)
-                    .offset(y: size * 0.02)
+                    .font(.system(size: size * 0.22, weight: .semibold))
+                    .foregroundColor(Theme.premium)
+                    .offset(y: size * 0.34)
             }
         }
-        .frame(width: size * 1.06, height: size * 1.02)
-    }
-
-    @ViewBuilder private var heartFill: some View {
-        let mask = Image(systemName: "heart.fill")
-            .font(.system(size: size * 0.84, weight: .black))
-        if animated {
-            AnimatedSuperGradient()
-                .frame(width: size, height: size)
-                .mask(mask)
-        } else {
-            mask.foregroundStyle(SuperTheme.gradient)
-        }
+        .frame(width: size * 1.28, height: size * 1.28)
+        .rotation3DEffect(.degrees(7), axis: (x: 1, y: -0.35, z: 0))
     }
 }
 
@@ -68,17 +61,14 @@ struct SuperView: View {
 
             ScrollView(showsIndicators: false) {
                 VStack(spacing: 0) {
-                    ZStack {
-                        SuperSparkles()
-                        SuperHeartIcon(size: 96, animated: true)
-                            .shadow(color: Color(hex: "#EC4899").opacity(0.35), radius: 22, y: 8)
-                    }
+                    SuperHeartIcon(size: 92, animated: true)
+                        .shadow(color: Theme.expert.opacity(0.22), radius: 20, y: 10)
                     .frame(height: 150)
                     .padding(.top, 20)
 
                     title.padding(.top, 26)
 
-                    Text("Super gives you unlimited hearts to reach every level and more.")
+                    Text("Pro unlocks unlimited session capacity for uninterrupted market training.")
                         .font(Theme.font(16, .semibold))
                         .foregroundColor(theme.palette.muted)
                         .multilineTextAlignment(.center)
@@ -114,8 +104,8 @@ struct SuperView: View {
 
     private var title: some View {
         HStack(spacing: 0) {
-            Text("Learn faster ").foregroundStyle(SuperTheme.gradient)
-            Text("with Super").foregroundColor(theme.palette.ink)
+            Text("Train without limits ").foregroundStyle(SuperTheme.gradient)
+            Text("with Pro").foregroundColor(theme.palette.ink)
         }
         .font(Theme.font(30, .black))
         .minimumScaleFactor(0.6)
@@ -201,12 +191,8 @@ struct SuperView: View {
     }
 
     private var finePrint: some View {
-        (Text("Your Super subscription will automatically renew at the same price within 24 hours before the end of your current subscription period. You can cancel anytime in your App Store settings. View our ")
+        Text("Your Pro subscription renews automatically at the same price within 24 hours before the current period ends. Cancel anytime in App Store settings. Terms of use and privacy policy apply.")
             .foregroundColor(theme.palette.muted)
-         + Text("terms of use").foregroundColor(theme.palette.ink).bold()
-         + Text(" and ").foregroundColor(theme.palette.muted)
-         + Text("privacy policy").foregroundColor(theme.palette.ink).bold()
-         + Text(" for more details.").foregroundColor(theme.palette.muted))
             .font(Theme.font(13, .semibold))
             .fixedSize(horizontal: false, vertical: true)
             .padding(.horizontal, 4)
@@ -220,7 +206,7 @@ struct SuperView: View {
                 let id = plan == .monthly ? SuperTheme.monthlyProductID : SuperTheme.yearlyProductID
                 router.onPurchaseSubscription?(id)
             }) {
-                Text(subscribed ? "You're Subscribed" : "Buy now")
+                Text(subscribed ? "PRO ACTIVE" : "ACTIVATE PRO")
                     .font(Theme.font(19, .black))
                     .foregroundColor(subscribed ? .white : .black)
                     .frame(maxWidth: .infinity)

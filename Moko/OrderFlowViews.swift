@@ -425,8 +425,8 @@ struct BookDepthCompareView: View {
                 .font(Theme.questionFont(21, .heavy)).foregroundColor(ink)
 
             HStack(spacing: 10) {
-                ladder(title: "BOOK A", sizes: bookSizes.a, tint: .cyan)
-                ladder(title: "BOOK B", sizes: bookSizes.b, tint: .orange)
+                ladder(title: "BOOK A", sizes: bookSizes.a, tint: Theme.progress)
+                ladder(title: "BOOK B", sizes: bookSizes.b, tint: Theme.expert)
             }
 
             VStack(spacing: 9) {
@@ -458,13 +458,8 @@ struct BookDepthCompareView: View {
                 .fill(Theme.surfaceRaised)
                 .overlay(
                     RoundedRectangle(cornerRadius: 15, style: .continuous)
-                        .strokeBorder(Theme.optionBorder(scheme), lineWidth: 1.5)
+                        .strokeBorder(Theme.optionBorder(scheme), lineWidth: 1)
                 )
-        )
-        .background(
-            RoundedRectangle(cornerRadius: 15, style: .continuous)
-                .fill(Theme.surfaceSlab)
-                .offset(y: 5)
         )
     }
 
@@ -511,8 +506,8 @@ struct ReplayCompareView: View {
             HStack(spacing: 10) {
                 // Neutral tints (not bid/ask green/red) — A vs. B isn't a
                 // buy/sell choice, so it shouldn't borrow that color meaning.
-                replay(title: "REPLAY A", rows: replayRows.a, tint: .cyan)
-                replay(title: "REPLAY B", rows: replayRows.b, tint: .orange)
+                replay(title: "REPLAY A", rows: replayRows.a, tint: Theme.progress)
+                replay(title: "REPLAY B", rows: replayRows.b, tint: Theme.expert)
             }
             VStack(spacing: 9) {
                 ForEach(Array(player.currentOptions.enumerated()), id: \.offset) { index, label in
@@ -586,13 +581,8 @@ struct ReplayCompareView: View {
                 .fill(Theme.optionFill(scheme))
                 .overlay(
                     RoundedRectangle(cornerRadius: 15, style: .continuous)
-                        .strokeBorder(tint.opacity(0.7), lineWidth: 1.5)
+                        .strokeBorder(tint.opacity(0.55), lineWidth: 1)
                 )
-        )
-        .background(
-            RoundedRectangle(cornerRadius: 15, style: .continuous)
-                .fill(Theme.surfaceSlab)
-                .offset(y: 5)
         )
     }
 
@@ -1147,11 +1137,11 @@ struct CVDChartQuestionView: View {
             VStack(alignment: .leading, spacing: 8) {
                 linePanel(title: "PRICE", values: priceValues, color: bidColor, interactive: false)
                 Divider().overlay(Theme.surfaceBorder)
-                linePanel(title: "CUMULATIVE VOLUME DELTA", values: cvdValues, color: .cyan, interactive: player.screen.type == "cvd_tap")
+                linePanel(title: "CUMULATIVE VOLUME DELTA", values: cvdValues, color: Theme.progress, interactive: player.screen.type == "cvd_tap")
             }
             .padding(14)
-            .background(RoundedRectangle(cornerRadius: 16).fill(Color.black.opacity(0.24)))
-            .overlay(RoundedRectangle(cornerRadius: 16).strokeBorder(Color.cyan.opacity(0.45), lineWidth: 1.5))
+            .background(RoundedRectangle(cornerRadius: Theme.Radius.card).fill(Theme.chartBackground))
+            .overlay(RoundedRectangle(cornerRadius: Theme.Radius.card).strokeBorder(Theme.progress.opacity(0.42), lineWidth: 1))
 
             if player.screen.type == "cvd_tap" {
                 Label("Tap the CVD pivot that answers the question", systemImage: "hand.tap.fill")
@@ -1262,7 +1252,7 @@ struct VolumeProfileQuestionView: View {
                         }
                         .frame(height: 23)
                         if index == 3 && player.revealed && screen.event == "poc" {
-                            Text("POC").font(Theme.font(8, .black)).foregroundColor(.cyan).frame(width: 28)
+                            Text("POC").font(Theme.font(8, .black)).foregroundColor(Theme.progress).frame(width: 28)
                         } else {
                             Color.clear.frame(width: 28, height: 1)
                         }
@@ -1285,8 +1275,8 @@ struct VolumeProfileQuestionView: View {
                 }
             }
             .padding(12)
-            .background(RoundedRectangle(cornerRadius: 16).fill(Color.black.opacity(0.24)))
-            .overlay(RoundedRectangle(cornerRadius: 16).strokeBorder(Color.cyan.opacity(0.42), lineWidth: 1.5))
+            .background(RoundedRectangle(cornerRadius: Theme.Radius.card).fill(Theme.chartBackground))
+            .overlay(RoundedRectangle(cornerRadius: Theme.Radius.card).strokeBorder(Theme.progress.opacity(0.42), lineWidth: 1))
 
             if screen.type == "volume_profile_tap" || screen.type == "mark_level" {
                 Label("Tap the price row that answers the question", systemImage: "hand.tap.fill")
@@ -1310,14 +1300,14 @@ struct VolumeProfileQuestionView: View {
     }
 
     private func barColor(_ index: Int) -> Color {
-        if screen.event == "lvn" && index == 3 { return Color.purple.opacity(0.28) }
-        if screen.event == "hvn" && index == 1 { return Color.cyan.opacity(0.85) }
-        return index == 3 && screen.event == "poc" ? Color.cyan.opacity(0.85) : Color.purple.opacity(0.62)
+        if screen.event == "lvn" && index == 3 { return Theme.expert.opacity(0.28) }
+        if screen.event == "hvn" && index == 1 { return Theme.progress.opacity(0.85) }
+        return index == 3 && screen.event == "poc" ? Theme.progress.opacity(0.85) : Theme.expert.opacity(0.62)
     }
 
     private func rowBackground(_ index: Int) -> Color {
         if index == player.selectedIndex || (screen.type == "mark_level" && player.markedLevel == prices[index]) { return Theme.answer.opacity(0.14) }
-        if screen.event == "profile_vah" || screen.event == "profile_val", (2...4).contains(index) { return Color.cyan.opacity(0.08) }
+        if screen.event == "profile_vah" || screen.event == "profile_val", (2...4).contains(index) { return Theme.progress.opacity(0.08) }
         return .clear
     }
 
@@ -1372,7 +1362,7 @@ struct OrderFlowSimulationView: View {
                     if renderMode == .summary && sequenceFinished {
                         Button(action: restartEvidence) {
                             Label("Replay evidence", systemImage: "arrow.counterclockwise")
-                                .font(Theme.font(10, .black)).foregroundColor(.purple)
+                                .font(Theme.font(10, .black)).foregroundColor(Theme.expert)
                         }
                         .buttonStyle(.plain)
                         .accessibilityLabel("Replay evidence sequence")
@@ -1384,7 +1374,7 @@ struct OrderFlowSimulationView: View {
             // sim questions keep their full question text.
             if isDecisionMechanic {
                 VStack(alignment: .leading, spacing: 2) {
-                    Text("TRADE DECISION").font(Theme.font(10, .black)).foregroundColor(.purple)
+                    Text("TRADE DECISION").font(Theme.font(10, .black)).tracking(1.2).foregroundColor(Theme.expert)
                     Text("What's your move?").font(Theme.questionFont(20, .heavy)).foregroundColor(ink)
                 }
             } else {
@@ -1395,9 +1385,9 @@ struct OrderFlowSimulationView: View {
             if screen.type == "trade_scenario", let stages = screen.tradeStages {
                 HStack(spacing: 6) {
                     Text("DECISION \(player.scenarioStage + 1) OF \(stages.count)")
-                        .font(Theme.font(9, .black)).foregroundColor(.purple)
+                        .font(Theme.marketFont(9, .semibold)).foregroundColor(Theme.expert)
                     ForEach(stages.indices, id: \.self) { index in
-                        Capsule().fill(index <= player.scenarioStage ? Color.purple : Color.purple.opacity(0.18))
+                        Capsule().fill(index <= player.scenarioStage ? Theme.expert : Theme.expert.opacity(0.18))
                             .frame(maxWidth: .infinity).frame(height: 4)
                     }
                 }
@@ -1412,7 +1402,7 @@ struct OrderFlowSimulationView: View {
                     }
                     if screen.footprintPreview == true {
                         Text("EXTRA PREVIEW  Delta compares aggressive buying with selling. This clue is supplemental and is taught in Unit 5.")
-                            .font(Theme.font(9, .bold)).foregroundColor(.orange)
+                            .font(Theme.font(9, .bold)).foregroundColor(Theme.warning)
                             .multilineTextAlignment(.leading).frame(maxWidth: .infinity, alignment: .leading)
                             .padding(.horizontal, 5)
                     }
@@ -1432,14 +1422,14 @@ struct OrderFlowSimulationView: View {
                     }
                     if screen.footprintPreview == true {
                         Text("EXTRA PREVIEW  Delta compares aggressive buying with selling. This clue is supplemental and is taught in Unit 5.")
-                            .font(Theme.font(9, .bold)).foregroundColor(.orange)
+                            .font(Theme.font(9, .bold)).foregroundColor(Theme.warning)
                             .multilineTextAlignment(.leading).frame(maxWidth: .infinity, alignment: .leading)
                             .padding(.horizontal, 5).padding(.top, 3)
                     }
                 }
                 .padding(10)
-                .background(RoundedRectangle(cornerRadius: 16).fill(Color.black.opacity(0.24)))
-                .overlay(RoundedRectangle(cornerRadius: 16).strokeBorder(Color.purple.opacity(0.55), lineWidth: 1.5))
+                .background(RoundedRectangle(cornerRadius: Theme.Radius.card).fill(Theme.chartBackground))
+                .overlay(RoundedRectangle(cornerRadius: Theme.Radius.card).strokeBorder(Theme.expert.opacity(0.45), lineWidth: 1))
             }
 
             if screen.type == "orderflow_sim_tap" {
@@ -1492,10 +1482,10 @@ struct OrderFlowSimulationView: View {
             auxiliaryIcon = "square.grid.3x3.fill"
         }
         return [
-            MultiSignalTrack(icon: "chart.xyaxis.line", title: "PRICE + VWAP", states: evidence.price, tint: .cyan),
+            MultiSignalTrack(icon: "chart.xyaxis.line", title: "PRICE + VWAP", states: evidence.price, tint: Theme.progress),
             MultiSignalTrack(icon: "list.bullet.rectangle", title: "LEVEL II", states: evidence.book, tint: askColor),
             MultiSignalTrack(icon: "bolt.fill", title: "TIME & SALES", states: evidence.tape, tint: bidColor),
-            MultiSignalTrack(icon: auxiliaryIcon, title: auxiliaryTitle, states: evidence.footprint, tint: .orange),
+            MultiSignalTrack(icon: auxiliaryIcon, title: auxiliaryTitle, states: evidence.footprint, tint: Theme.warning),
         ]
     }
 
@@ -1679,8 +1669,8 @@ struct OrderFlowSimulationView: View {
             }
             .foregroundColor(ink)
             .padding(.horizontal, 16).frame(maxWidth: .infinity, minHeight: 50)
-            .background(RoundedRectangle(cornerRadius: 14).fill(Color.purple.opacity(player.selectedIndex == index ? 0.18 : 0.07)))
-            .overlay(RoundedRectangle(cornerRadius: 14).strokeBorder(player.selectedIndex == index ? Color.purple : Color.purple.opacity(0.28), lineWidth: player.selectedIndex == index ? 2 : 1))
+            .background(RoundedRectangle(cornerRadius: Theme.Radius.control).fill(Theme.expert.opacity(player.selectedIndex == index ? 0.18 : 0.07)))
+            .overlay(RoundedRectangle(cornerRadius: Theme.Radius.control).strokeBorder(player.selectedIndex == index ? Theme.expert : Theme.expert.opacity(0.28), lineWidth: player.selectedIndex == index ? 2 : 1))
         }
         .buttonStyle(.plain)
     }
@@ -2059,12 +2049,12 @@ private struct RawMarketEvidencePanel: View {
                     let y = sellerDriven ? proxy.size.height * 0.78 : proxy.size.height * 0.22
                     path.move(to: CGPoint(x: 0, y: y)); path.addLine(to: CGPoint(x: proxy.size.width, y: y))
                 }
-                .stroke(Color.orange.opacity(0.75), style: StrokeStyle(lineWidth: 1.2, dash: [4, 3]))
+                .stroke(Theme.warning.opacity(0.75), style: StrokeStyle(lineWidth: 1.2, dash: [4, 3]))
                 Path { path in
                     path.move(to: CGPoint(x: 0, y: proxy.size.height * 0.56))
                     path.addLine(to: CGPoint(x: proxy.size.width, y: proxy.size.height * 0.46))
                 }
-                .stroke(Color.cyan.opacity(0.65), lineWidth: 1)
+                .stroke(Theme.progress.opacity(0.65), lineWidth: 1)
                 HStack(alignment: .bottom, spacing: full ? 2 : 4) {
                     ForEach(0..<count, id: \.self) { index in
                         let height = heights[index]
@@ -2104,7 +2094,7 @@ private struct RawMarketEvidencePanel: View {
                             .foregroundColor(ink).frame(width: full ? 42 : 54)
                         Text(ask ? "\(size)" : "").frame(maxWidth: .infinity, alignment: .leading)
                     }
-                    .font(Theme.font(full ? 6 : 7, highlighted ? .black : .bold))
+                    .font(Theme.marketFont(full ? 6 : 7, highlighted ? .bold : .medium))
                     .foregroundColor(ask ? askColor : bidColor)
                     .background(highlighted ? tint.opacity(0.11) : .clear)
                     .contentTransition(.numericText())
@@ -2128,7 +2118,7 @@ private struct RawMarketEvidencePanel: View {
                     Text(String(format: "%.2f", 100.15 + Double(printNumber % 3) * 0.05))
                     Text("\(40 + (printNumber % 6) * 35 + loopVariant * 11)").frame(width: 25, alignment: .trailing)
                 }
-                .font(Theme.font(full ? 6 : 7, .bold))
+                .font(Theme.marketFont(full ? 6 : 7, .medium))
                 .foregroundColor(initiatedBuy ? bidColor : askColor)
                 .contentTransition(.numericText())
                 .transition(.asymmetric(insertion: .move(edge: .bottom).combined(with: .opacity),
@@ -2154,12 +2144,12 @@ private struct RawMarketEvidencePanel: View {
                     Text("\(ask)").frame(maxWidth: .infinity, alignment: .leading)
                         .padding(.horizontal, 2).background(bidColor.opacity(min(0.55, Double(ask) / 260)))
                 }
-                .font(Theme.font(full ? 6 : 8, .black)).foregroundColor(ink)
+                .font(Theme.marketFont(full ? 6 : 8, .bold)).foregroundColor(ink)
                 .contentTransition(.numericText())
             }
             if full {
                 Text("Δ \((sellerDriven || conflictingDelta) ? "−" : "+")\(36 + min(520, marketTick * 38))")
-                    .font(Theme.font(7, .black)).foregroundColor((sellerDriven || conflictingDelta) ? askColor : bidColor)
+                    .font(Theme.marketFont(7, .bold)).foregroundColor((sellerDriven || conflictingDelta) ? askColor : bidColor)
                     .frame(maxWidth: .infinity, alignment: .trailing)
             }
         }
@@ -2178,8 +2168,8 @@ private struct RawMarketEvidencePanel: View {
                     if index == 0 { path.move(to: point) } else { path.addLine(to: point) }
                 }
             }
-            .stroke(Color.orange, style: StrokeStyle(lineWidth: 2, lineCap: .round, lineJoin: .round))
-            Text("CVD").font(Theme.font(7, .black)).foregroundColor(.orange)
+            .stroke(Theme.warning, style: StrokeStyle(lineWidth: 2, lineCap: .round, lineJoin: .round))
+            Text("CVD").font(Theme.font(7, .black)).foregroundColor(Theme.warning)
                 .position(x: 14, y: 8)
         }
     }
@@ -2190,9 +2180,9 @@ private struct RawMarketEvidencePanel: View {
             ForEach(Array(bars.enumerated()), id: \.offset) { index, width in
                 HStack(spacing: 3) {
                     Text(String(format: "%.2f", 100.40 - Double(index) * 0.05))
-                        .font(Theme.font(6, .bold)).foregroundColor(Theme.muted).frame(width: 32)
+                        .font(Theme.marketFont(6, .medium)).foregroundColor(Theme.muted).frame(width: 32)
                     RoundedRectangle(cornerRadius: 2)
-                        .fill(index == bars.count / 2 ? Color.orange : Color.orange.opacity(0.55))
+                        .fill(index == bars.count / 2 ? Theme.warning : Theme.warning.opacity(0.55))
                         .frame(width: CGFloat(width) * (full ? 0.55 : 0.45), height: full ? 5 : 7)
                 }
             }
@@ -2233,7 +2223,7 @@ struct PriceContextPanel: View {
                         candleView(cs[i], i: i, n: cs.count, geo: geo.size, plo: plo, phi: phi)
                     }
                     vwapPath(vw, geo: geo.size, plo: plo, phi: phi)
-                    Text("POC").font(Theme.font(8, .black)).foregroundColor(.cyan)
+                    Text("POC").font(Theme.font(8, .black)).foregroundColor(Theme.progress)
                         .position(x: geo.size.width - 22,
                                   y: mapY((vp[pocIdx].lo + vp[pocIdx].hi) / 2, geo.size.height, plo, phi) - 9)
                     Text("VWAP").font(Theme.font(8, .black)).foregroundColor(Color(hex: "#F59E0B"))
@@ -2256,7 +2246,7 @@ struct PriceContextPanel: View {
         let yTop = mapY(b.hi, geo.height, plo, phi)
         let yBot = mapY(b.lo, geo.height, plo, phi)
         return Rectangle()
-            .fill((isPOC ? Color.cyan : Color.white).opacity(isPOC ? 0.45 : 0.12))
+            .fill((isPOC ? Theme.progress : Color.white).opacity(isPOC ? 0.45 : 0.12))
             .frame(width: max(barW, 1), height: max(yBot - yTop - 1, 1))
             .position(x: geo.width - barW / 2, y: (yTop + yBot) / 2)
     }
