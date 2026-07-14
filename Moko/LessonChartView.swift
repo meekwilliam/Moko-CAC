@@ -19,13 +19,17 @@ struct LessonChartView: View {
 
     @State private var selectedNode: Int?
     @State private var didInitialScroll = false
+    @State private var showsExpandedChart = false
+    @State private var expandedChartIsReady = false
 
-    private let candleSlotWidth: CGFloat = 38
-    private let canvasHeight: CGFloat = 438
-    private let plotTop: CGFloat = 54
-    private let plotBottom: CGFloat = 310
-    private let volumeTop: CGFloat = 330
-    private let volumeBottom: CGFloat = 382
+    private let compactLayout = LessonChartLayout(
+        canvasHeight: 218, plotTop: 38, plotBottom: 148,
+        volumeTop: 166, volumeBottom: 194, statusY: 207
+    )
+    private let expandedLayout = LessonChartLayout(
+        canvasHeight: 438, plotTop: 54, plotBottom: 310,
+        volumeTop: 330, volumeBottom: 382, statusY: 413
+    )
 
     var body: some View {
         GeometryReader { geometry in
@@ -38,20 +42,15 @@ struct LessonChartView: View {
                             .padding(.top, geometry.safeAreaInsets.top + 6)
 
                         courseSummary
-                        lessonMarket
-
-                        if let selectedNode,
-                           let node = store.nodes.first(where: { $0.num == selectedNode }) {
-                            unavailableLessonCard(node)
-                                .transition(.move(edge: .bottom).combined(with: .opacity))
-                        }
-
-                        chartLegend
+                        compactLessonMarket
                         Color.clear.frame(height: 86)
                     }
                     .padding(.horizontal, 16)
                 }
             }
+        }
+        .fullScreenCover(isPresented: $showsExpandedChart) {
+            expandedChartScreen
         }
     }
 
@@ -215,8 +214,8 @@ struct LessonChartView: View {
 
     // MARK: Interactive chart
 
-    private var lessonMarket: some View {
-        let candles = marketCandles
+    private var compactLessonMarket: some View {
+        let candles = compactCandles
         let bounds = priceBounds(for: candles)
 
         return VStack(alignment: .leading, spacing: 12) {
@@ -226,7 +225,130 @@ struct LessonChartView: View {
                         .font(Theme.font(12, .heavy))
                         .tracking(1.2)
                         .foregroundColor(theme.palette.muted)
-                    Text("Swipe to explore all \(store.totalNodes) lessons")
+                    Text("Tap to open the five-candle lesson view")
+                        .font(Theme.bodyFont(13))
+                        .foregroundColor(theme.palette.muted)
+                }
+                Spacer()
+                Image(systemName: "arrow.up.left.and.arrow.down.right")
+                    .font(.system(size: 15, weight: .bold))
+                    .foregroundColor(Color(hex: "#38BDF8"))
+                    .frame(width: 34, height: 34)
+                    .background(Circle().fill(Color(hex: "#38BDF8").opacity(0.12)))
+            }
+
+            GeometryReader { geometry in
+                let slotWidth = geometry.size.width / CGFloat(max(1, candles.count))
+                ZStack(alignment: .leading) {
+                    chartCanvas(
+                        candles: candles, bounds: bounds, slotWidth: slotWidth,
+                        layout: compactLayout, edgePaddingSlots: 0, isInteractive: false
+                    )
+                    priceAxis(bounds: bounds, layout: compactLayout)
+                        .allowsHitTesting(false)
+                }
+                .clipShape(RoundedRectangle(cornerRadius: 14, style: .continuous))
+            }
+            .frame(height: compactLayout.canvasHeight)
+        }
+        .padding(14)
+        .background(chartCardBackground)
+        .contentShape(RoundedRectangle(cornerRadius: 18, style: .continuous))
+        .onTapGesture {
+            Haptics.selection()
+            selectedNode = nil
+            didInitialScroll = false
+            expandedChartIsReady = false
+            showsExpandedChart = true
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.45) {
+                if showsExpandedChart { expandedChartIsReady = true }
+            }
+        }
+        .accessibilityElement(children: .ignore)
+        .accessibilityLabel("Course lesson chart")
+        .accessibilityHint("Opens the enlarged five-candle lesson chart.")
+        .accessibilityAddTraits(.isButton)
+    }
+
+    private var expandedChartScreen: some View {
+        GeometryReader { geometry in
+            ZStack(alignment: .top) {
+                ThemedBackground()
+
+                ScrollView(showsIndicators: false) {
+                    VStack(spacing: 16) {
+                        HStack(spacing: 12) {
+                            Button {
+                                Haptics.selection()
+                                expandedChartIsReady = false
+                                showsExpandedChart = false
+                            } label: {
+                                Image(systemName: "xmark")
+                                    .font(.system(size: 15, weight: .black))
+                                    .foregroundColor(theme.palette.ink)
+                                    .frame(width: 42, height: 42)
+                                    .background(
+                                        RoundedRectangle(cornerRadius: 13, style: .continuous)
+                                            .fill(Theme.surface)
+                                            .overlay(
+                                                RoundedRectangle(cornerRadius: 13, style: .continuous)
+                                                    .strokeBorder(Theme.surfaceBorder, lineWidth: 1)
+                                            )
+                                    )
+                            }
+                            .buttonStyle(RowPressStyle())
+
+                            VStack(alignment: .leading, spacing: 2) {
+                                Text("LESSON CHART")
+                                    .font(Theme.font(11, .heavy))
+                                    .tracking(1.3)
+                                    .foregroundColor(Color(hex: "#38BDF8"))
+                                Text("Choose a candle")
+                                    .font(Theme.font(20, .black))
+                                    .foregroundColor(theme.palette.ink)
+                            }
+                            Spacer()
+                            Text("\(store.completed.count)/\(store.totalNodes)")
+                                .font(Theme.font(16, .black))
+                                .foregroundColor(theme.palette.ink)
+                                .monospacedDigit()
+                        }
+
+                        expandedLessonMarket
+
+                        if let selectedNode,
+                           let node = store.nodes.first(where: { $0.num == selectedNode }) {
+                            unavailableLessonCard(node)
+                                .transition(.move(edge: .bottom).combined(with: .opacity))
+                        }
+
+                        chartLegend
+                        Text("Swipe left or right to move through the course. The lesson you are on opens centered as the third candle.")
+                            .font(Theme.bodyFont(12))
+                            .foregroundColor(theme.palette.muted)
+                            .multilineTextAlignment(.center)
+                            .padding(.horizontal, 16)
+                        Color.clear.frame(height: geometry.safeAreaInsets.bottom + 12)
+                    }
+                    .padding(.top, geometry.safeAreaInsets.top + 8)
+                    .padding(.horizontal, 16)
+                }
+            }
+        }
+    }
+
+    private var expandedLessonMarket: some View {
+        let candles = marketCandles
+        let bounds = priceBounds(for: candles)
+
+        return VStack(alignment: .leading, spacing: 12) {
+            HStack {
+                VStack(alignment: .leading, spacing: 3) {
+                    Text("FIVE-CANDLE VIEW")
+                        .font(Theme.font(12, .heavy))
+                        .tracking(1.2)
+                        .foregroundColor(theme.palette.muted)
+                    Text("Tap a candle to open its lesson")
                         .font(Theme.bodyFont(13))
                         .foregroundColor(theme.palette.muted)
                 }
@@ -240,63 +362,83 @@ struct LessonChartView: View {
                 }
             }
 
-            ScrollViewReader { proxy in
-                ZStack(alignment: .leading) {
-                    ScrollView(.horizontal, showsIndicators: false) {
-                        chartCanvas(candles: candles, bounds: bounds)
-                    }
-                    .scrollClipDisabled()
+            GeometryReader { geometry in
+                let slotWidth = geometry.size.width / 5
+                ScrollViewReader { proxy in
+                    ZStack(alignment: .leading) {
+                        ScrollView(.horizontal, showsIndicators: false) {
+                            chartCanvas(
+                                candles: candles, bounds: bounds, slotWidth: slotWidth,
+                                layout: expandedLayout, edgePaddingSlots: 2,
+                                isInteractive: expandedChartIsReady
+                            )
+                        }
+                        .scrollClipDisabled()
 
-                    priceAxis(bounds: bounds)
-                        .allowsHitTesting(false)
-                }
-                .frame(height: canvasHeight)
-                .clipShape(RoundedRectangle(cornerRadius: 16, style: .continuous))
-                .onAppear {
-                    guard !didInitialScroll else { return }
-                    didInitialScroll = true
-                    let resumableNode = store.inProgressNode.flatMap { number in
-                        store.completed.contains(number) ? nil : number
+                        priceAxis(bounds: bounds, layout: expandedLayout)
+                            .allowsHitTesting(false)
                     }
-                    let target = resumableNode ?? store.activeNode ?? store.nodes.last?.num
-                    guard let target else { return }
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.08) {
-                        proxy.scrollTo("lesson-candle-\(target)", anchor: .center)
+                    .clipShape(RoundedRectangle(cornerRadius: 16, style: .continuous))
+                    .onAppear {
+                        guard !didInitialScroll else { return }
+                        didInitialScroll = true
+                        guard let target = focusNodeNumber else { return }
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.08) {
+                            proxy.scrollTo("lesson-candle-\(target)", anchor: .center)
+                        }
                     }
-                }
-                .onChange(of: store.activeNode) { active in
-                    guard let active else { return }
-                    withAnimation(.easeInOut(duration: 0.28)) {
-                        proxy.scrollTo("lesson-candle-\(active)", anchor: .center)
+                    .onChange(of: store.activeNode) { _, _ in
+                        guard let target = focusNodeNumber else { return }
+                        withAnimation(.easeInOut(duration: 0.28)) {
+                            proxy.scrollTo("lesson-candle-\(target)", anchor: .center)
+                        }
                     }
                 }
             }
+            .frame(height: expandedLayout.canvasHeight)
         }
         .padding(14)
         .background(chartCardBackground)
     }
 
-    private func chartCanvas(candles: [LessonMarketCandle], bounds: PriceBounds) -> some View {
-        let contentWidth = max(candleSlotWidth * CGFloat(candles.count), 320)
+    private func chartCanvas(
+        candles: [LessonMarketCandle], bounds: PriceBounds, slotWidth: CGFloat,
+        layout: LessonChartLayout, edgePaddingSlots: Int, isInteractive: Bool
+    ) -> some View {
+        let contentWidth = slotWidth * CGFloat(candles.count + edgePaddingSlots * 2)
         return ZStack(alignment: .topLeading) {
-            chartGrid(width: contentWidth, bounds: bounds)
+            chartGrid(
+                width: contentWidth, candles: candles, bounds: bounds,
+                slotWidth: slotWidth, layout: layout
+            )
 
             HStack(spacing: 0) {
+                if edgePaddingSlots > 0 {
+                    Color.clear.frame(width: slotWidth * CGFloat(edgePaddingSlots))
+                }
                 ForEach(candles) { candle in
-                    candleColumn(candle, bounds: bounds)
-                        .frame(width: candleSlotWidth, height: canvasHeight)
-                        .id("lesson-candle-\(candle.node.num)")
+                    candleColumn(
+                        candle, bounds: bounds, slotWidth: slotWidth,
+                        layout: layout, isInteractive: isInteractive
+                    )
+                    .id("lesson-candle-\(candle.node.num)")
+                }
+                if edgePaddingSlots > 0 {
+                    Color.clear.frame(width: slotWidth * CGFloat(edgePaddingSlots))
                 }
             }
         }
-        .frame(width: contentWidth, height: canvasHeight)
+        .frame(width: contentWidth, height: layout.canvasHeight)
         .background(Color(hex: "#101B22"))
     }
 
-    private func chartGrid(width: CGFloat, bounds: PriceBounds) -> some View {
+    private func chartGrid(
+        width: CGFloat, candles: [LessonMarketCandle], bounds: PriceBounds,
+        slotWidth: CGFloat, layout: LessonChartLayout
+    ) -> some View {
         ZStack(alignment: .topLeading) {
             ForEach(0..<5, id: \.self) { index in
-                let y = plotTop + (plotBottom - plotTop) * CGFloat(index) / 4
+                let y = layout.plotTop + (layout.plotBottom - layout.plotTop) * CGFloat(index) / 4
                 Path { path in
                     path.move(to: CGPoint(x: 0, y: y))
                     path.addLine(to: CGPoint(x: width, y: y))
@@ -304,11 +446,11 @@ struct LessonChartView: View {
                 .stroke(Color.white.opacity(0.075), style: StrokeStyle(lineWidth: 1, dash: [4, 5]))
             }
 
-            ForEach(Array(stride(from: 0, to: store.totalNodes, by: 5)), id: \.self) { index in
-                let x = CGFloat(index) * candleSlotWidth
+            ForEach(Array(stride(from: 0, to: candles.count, by: 5)), id: \.self) { index in
+                let x = CGFloat(index) * slotWidth
                 Path { path in
-                    path.move(to: CGPoint(x: x, y: plotTop))
-                    path.addLine(to: CGPoint(x: x, y: volumeBottom))
+                    path.move(to: CGPoint(x: x, y: layout.plotTop))
+                    path.addLine(to: CGPoint(x: x, y: layout.volumeBottom))
                 }
                 .stroke(Color.white.opacity(0.045), lineWidth: 1)
             }
@@ -316,10 +458,10 @@ struct LessonChartView: View {
             Rectangle()
                 .fill(Color.white.opacity(0.08))
                 .frame(width: width, height: 1)
-                .offset(y: volumeTop - 10)
+                .offset(y: layout.volumeTop - 10)
 
-            if let last = marketCandles.last {
-                let y = priceY(last.close, bounds: bounds)
+            if let last = candles.last {
+                let y = priceY(last.close, bounds: bounds, layout: layout)
                 Path { path in
                     path.move(to: CGPoint(x: 0, y: y))
                     path.addLine(to: CGPoint(x: width, y: y))
@@ -327,10 +469,13 @@ struct LessonChartView: View {
                 .stroke(Color(hex: "#38BDF8").opacity(0.34), style: StrokeStyle(lineWidth: 1, dash: [3, 4]))
             }
         }
-        .frame(width: width, height: canvasHeight)
+        .frame(width: width, height: layout.canvasHeight)
     }
 
-    private func candleColumn(_ candle: LessonMarketCandle, bounds: PriceBounds) -> some View {
+    private func candleColumn(
+        _ candle: LessonMarketCandle, bounds: PriceBounds, slotWidth: CGFloat,
+        layout: LessonChartLayout, isInteractive: Bool
+    ) -> some View {
         let node = candle.node
         let state = store.state(for: node.num)
         let testOut = shouldShowTestOut(for: node)
@@ -338,23 +483,24 @@ struct LessonChartView: View {
         let isLocked = state == .locked && !testOut
         let marketColor = candle.isBullish ? Color(hex: "#22C55E") : Color(hex: "#F43F5E")
         let stateOpacity: Double = isLocked ? 0.24 : (state == .done ? 0.72 : 1)
-        let highY = priceY(candle.high, bounds: bounds)
-        let lowY = priceY(candle.low, bounds: bounds)
-        let openY = priceY(candle.open, bounds: bounds)
-        let closeY = priceY(candle.close, bounds: bounds)
+        let highY = priceY(candle.high, bounds: bounds, layout: layout)
+        let lowY = priceY(candle.low, bounds: bounds, layout: layout)
+        let openY = priceY(candle.open, bounds: bounds, layout: layout)
+        let closeY = priceY(candle.close, bounds: bounds, layout: layout)
         let bodyTop = min(openY, closeY)
         let bodyHeight = max(5, abs(closeY - openY))
-        let volumeHeight = (volumeBottom - volumeTop) * CGFloat(candle.volume / 1_000)
+        let bodyWidth = min(26, max(12, slotWidth * 0.38))
+        let volumeHeight = (layout.volumeBottom - layout.volumeTop) * CGFloat(candle.volume / 1_000)
         let isUnitStart = store.nodes(inSection: node.sectionIndex).first?.num == node.num
 
         return Button {
-            handleTap(node)
+            if isInteractive { handleTap(node) }
         } label: {
             ZStack(alignment: .top) {
                 if isUnitStart {
                     Rectangle()
                         .fill(Color.white.opacity(node.sectionIndex == 0 ? 0 : 0.13))
-                        .frame(width: 1, height: volumeBottom - 8)
+                        .frame(width: 1, height: layout.volumeBottom - 8)
                         .frame(maxWidth: .infinity, alignment: .leading)
 
                     Text("U\(node.sectionIndex + 1)")
@@ -372,14 +518,16 @@ struct LessonChartView: View {
                             RoundedRectangle(cornerRadius: 10, style: .continuous)
                                 .strokeBorder(Color(hex: "#38BDF8").opacity(0.72), lineWidth: 1.5)
                         )
-                        .padding(.horizontal, 3)
-                        .padding(.vertical, 42)
+                        .frame(width: max(16, slotWidth - 6),
+                               height: layout.volumeBottom - layout.plotTop + 24)
+                        .position(x: slotWidth / 2,
+                                  y: (layout.plotTop + layout.volumeBottom) / 2)
                 }
 
                 Rectangle()
                     .fill(marketColor.opacity(stateOpacity))
                     .frame(width: 2, height: max(2, lowY - highY))
-                    .position(x: candleSlotWidth / 2, y: (highY + lowY) / 2)
+                    .position(x: slotWidth / 2, y: (highY + lowY) / 2)
 
                 RoundedRectangle(cornerRadius: 2, style: .continuous)
                     .fill(marketColor.opacity(stateOpacity))
@@ -387,28 +535,29 @@ struct LessonChartView: View {
                         RoundedRectangle(cornerRadius: 2, style: .continuous)
                             .strokeBorder(Color.white.opacity(isCurrent ? 0.72 : 0), lineWidth: 1)
                     )
-                    .frame(width: 18, height: bodyHeight)
-                    .position(x: candleSlotWidth / 2, y: bodyTop + bodyHeight / 2)
+                    .frame(width: bodyWidth, height: bodyHeight)
+                    .position(x: slotWidth / 2, y: bodyTop + bodyHeight / 2)
 
                 RoundedRectangle(cornerRadius: 2, style: .continuous)
                     .fill(marketColor.opacity(isLocked ? 0.12 : 0.30))
-                    .frame(width: 18, height: max(2, volumeHeight))
-                    .position(x: candleSlotWidth / 2, y: volumeBottom - volumeHeight / 2)
+                    .frame(width: bodyWidth, height: max(2, volumeHeight))
+                    .position(x: slotWidth / 2, y: layout.volumeBottom - volumeHeight / 2)
 
                 if node.isBoss {
                     Image(systemName: "crown.fill")
                         .font(.system(size: 10, weight: .black))
                         .foregroundColor(isLocked ? Color.white.opacity(0.24) : Color(hex: "#FBBF24"))
-                        .position(x: candleSlotWidth / 2, y: max(plotTop + 5, highY - 10))
+                        .position(x: slotWidth / 2, y: max(layout.plotTop + 5, highY - 10))
                 }
 
                 statusMarker(for: candle, state: state, testOut: testOut)
-                    .position(x: candleSlotWidth / 2, y: 413)
+                    .position(x: slotWidth / 2, y: layout.statusY)
             }
-            .frame(width: candleSlotWidth, height: canvasHeight)
+            .frame(width: slotWidth, height: layout.canvasHeight)
             .contentShape(Rectangle())
         }
         .buttonStyle(RowPressStyle(scale: 0.92))
+        .allowsHitTesting(isInteractive)
         .accessibilityLabel(accessibilityLabel(for: node, state: state, testOut: testOut))
         .accessibilityHint(isLocked ? "Complete the earlier lessons to unlock it." : "Opens this lesson.")
     }
@@ -435,14 +584,14 @@ struct LessonChartView: View {
         }
     }
 
-    private func priceAxis(bounds: PriceBounds) -> some View {
+    private func priceAxis(bounds: PriceBounds, layout: LessonChartLayout) -> some View {
         ZStack(alignment: .topLeading) {
             LinearGradient(
                 colors: [Color(hex: "#101B22"), Color(hex: "#101B22").opacity(0)],
                 startPoint: .leading,
                 endPoint: .trailing
             )
-            .frame(width: 47, height: canvasHeight)
+            .frame(width: 47, height: layout.canvasHeight)
 
             ForEach(0..<5, id: \.self) { index in
                 let ratio = Double(index) / 4
@@ -450,10 +599,10 @@ struct LessonChartView: View {
                 Text(value.formatted(.number.precision(.fractionLength(1))))
                     .font(.system(size: 9, weight: .semibold, design: .monospaced))
                     .foregroundColor(Color.white.opacity(0.48))
-                    .offset(x: 5, y: plotTop + (plotBottom - plotTop) * CGFloat(index) / 4 - 6)
+                    .offset(x: 5, y: layout.plotTop + (layout.plotBottom - layout.plotTop) * CGFloat(index) / 4 - 6)
             }
         }
-        .frame(width: 47, height: canvasHeight, alignment: .leading)
+        .frame(width: 47, height: layout.canvasHeight, alignment: .leading)
     }
 
     // MARK: Selection and test-out
@@ -472,7 +621,11 @@ struct LessonChartView: View {
         } else {
             Haptics.play(.puckPress)
             selectedNode = nil
-            onSelectNode(node.num)
+            expandedChartIsReady = false
+            showsExpandedChart = false
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.18) {
+                onSelectNode(node.num)
+            }
         }
     }
 
@@ -515,7 +668,11 @@ struct LessonChartView: View {
                 Button {
                     Haptics.selection()
                     selectedNode = nil
-                    onTestOut(node.sectionIndex)
+                    expandedChartIsReady = false
+                    showsExpandedChart = false
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.18) {
+                        onTestOut(node.sectionIndex)
+                    }
                 } label: {
                     Text("SKIP TO UNIT \(node.sectionIndex + 1)")
                         .font(Theme.font(13, .black))
@@ -568,6 +725,25 @@ struct LessonChartView: View {
 
     // MARK: Chart data
 
+    private var focusNodeNumber: Int? {
+        let resumableNode = store.inProgressNode.flatMap { number in
+            store.completed.contains(number) ? nil : number
+        }
+        return resumableNode ?? store.activeNode ?? store.nodes.last?.num
+    }
+
+    private var compactCandles: [LessonMarketCandle] {
+        let candles = marketCandles
+        guard !candles.isEmpty else { return [] }
+        let count = min(9, candles.count)
+        let focusIndex = focusNodeNumber.flatMap { number in
+            candles.firstIndex { $0.node.num == number }
+        } ?? 0
+        let maximumStart = max(0, candles.count - count)
+        let start = min(maximumStart, max(0, focusIndex - count / 2))
+        return Array(candles[start..<(start + count)])
+    }
+
     private var marketCandles: [LessonMarketCandle] {
         var priorClose = 100.0
         return store.nodes.enumerated().map { index, node in
@@ -596,10 +772,10 @@ struct LessonChartView: View {
         return PriceBounds(minimum: low - padding, maximum: high + padding)
     }
 
-    private func priceY(_ value: Double, bounds: PriceBounds) -> CGFloat {
+    private func priceY(_ value: Double, bounds: PriceBounds, layout: LessonChartLayout) -> CGFloat {
         let range = max(0.001, bounds.maximum - bounds.minimum)
         let normalized = (bounds.maximum - value) / range
-        return plotTop + CGFloat(normalized) * (plotBottom - plotTop)
+        return layout.plotTop + CGFloat(normalized) * (layout.plotBottom - layout.plotTop)
     }
 
     private func shouldShowTestOut(for node: PathNode) -> Bool {
@@ -635,4 +811,13 @@ private struct LessonMarketCandle: Identifiable {
 private struct PriceBounds {
     let minimum: Double
     let maximum: Double
+}
+
+private struct LessonChartLayout {
+    let canvasHeight: CGFloat
+    let plotTop: CGFloat
+    let plotBottom: CGFloat
+    let volumeTop: CGFloat
+    let volumeBottom: CGFloat
+    let statusY: CGFloat
 }
