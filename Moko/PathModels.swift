@@ -59,7 +59,7 @@ struct PathState: Decodable {
 
 // MARK: - Node model (icon parsed once)
 
-enum NodeState: Equatable { case done, active, locked }
+enum NodeState { case done, active, locked }
 
 enum UnitProgressState: String {
     case locked = "LOCKED"
@@ -84,8 +84,8 @@ struct PathNode: Identifiable {
     let isBoss: Bool
     var id: Int { num }
 
-    /// Legacy offset retained for the retired path renderer. The active skill
-    /// map is linear and does not use horizontal lesson-node sway.
+    /// Smooth continuous S-curve sway (Duolingo-style), out to the side and back
+    /// over an 8-node period — each node at a distinct horizontal position.
     var xOffset: CGFloat {
         let amplitude: CGFloat = 70
         return -amplitude * CGFloat(sin(Double(num - 1) * .pi / 4.0))
@@ -172,18 +172,18 @@ final class PathStore: ObservableObject {
         return state(for: first.num) == .locked ? .locked : .available
     }
 
-    /// Progression colors use the semantic tier palette. Course metadata can
-    /// keep its old color fields without leaking them into the active UI.
+    /// done/active nodes take their unit's own banner color (from the
+    /// section data — works for any unit size); locked nodes are muted slate.
     func colors(for num: Int, state: NodeState) -> (main: Color, dark: Color) {
         if state == .locked {
-            return (Theme.surfaceHighlight, Theme.surfaceStrong)
+            return (Color(hex: "#3a6080"), Color(hex: "#1a3a50"))
         }
         guard let node = nodes.first(where: { $0.num == num }),
               let sec = section(node.sectionIndex) else {
             let c = Theme.unitColor(num)   // fallback for any missing section data
             return (c.main, c.dark)
         }
-        return Theme.tierColor(sec.tier, index: sec.index)
+        return (Color(hex: sec.bg), Color(hex: sec.slab))
     }
 
     func section(_ index: Int) -> PathSectionData? {

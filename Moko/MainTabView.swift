@@ -1,6 +1,9 @@
 import SwiftUI
 
-// MARK: - Main market-training shell
+// MARK: - Main tabbed shell (Duolingo-style)
+// The learning path is now the home screen; a persistent bottom bar switches
+// between Home (path), Quests, Leaderboard and Profile. Lessons/legal present
+// over this from the AppRouter.
 
 struct MainTabView: View {
     @ObservedObject var router: AppRouter
@@ -8,7 +11,7 @@ struct MainTabView: View {
 
     var body: some View {
         ZStack(alignment: .bottom) {
-            ThemedBackground()
+            theme.palette.base.ignoresSafeArea()
             content
             BottomNav(router: router)
         }
@@ -18,11 +21,13 @@ struct MainTabView: View {
         switch router.selectedTab {
         case .home:
             if let store = router.pathStore {
-                SkillMapView(
+                PathView(
                     store: store,
+                    showsHomeButton: false,
                     onSelectNode: { router.onOpenLesson?($0) },
                     onTestOut: { router.onOpenTestOut?($0) },
-                    onOpenCapacity: { router.onOpenHearts?() },
+                    onHome: {},
+                    onOpenHearts: { router.onOpenHearts?() },
                     onOpenCourses: { router.onOpenCourses?() }
                 )
                 .id(router.currentCourseId)
@@ -30,17 +35,13 @@ struct MainTabView: View {
             }
         case .quest:
             PlaceholderTab(title: "Quests", subtitle: "Daily challenges are coming soon.") {
-                Image(systemName: "scope")
-                    .font(.system(size: 72, weight: .thin))
-                    .foregroundStyle(Theme.mastery)
+                TargetIcon()
             }
         case .simulation:
             SimulationComingSoonView()
         case .leaderboard:
             PlaceholderTab(title: "Leaderboard", subtitle: "Compete with others — coming soon.") {
-                Image(systemName: "chart.bar.xaxis")
-                    .font(.system(size: 68, weight: .light))
-                    .foregroundStyle(Theme.expert)
+                TrophyIcon()
             }
         case .premium:
             SuperView(router: router)
@@ -76,21 +77,23 @@ private struct BottomNav: View {
     @ObservedObject var router: AppRouter
     @EnvironmentObject var theme: ThemeManager
 
-    private let accent = Theme.mastery
+    // Every tab highlights in the same blue when selected; the icons themselves
+    // are multi-color drawings.
+    private let accent = Color(hex: "#38bdf8")
     private let tabs: [MainTab] = [.home, .quest, .simulation, .leaderboard, .premium, .profile]
 
     var body: some View {
-        HStack(spacing: 2) {
+        HStack(spacing: 6) {
             ForEach(tabs, id: \.self) { tab in
                 tabButton(tab)
             }
         }
-        .padding(.horizontal, 10)
-        .padding(.top, 8)
-        .padding(.bottom, 5)
+        .padding(.horizontal, 12)
+        .padding(.top, 10)
+        .padding(.bottom, 6)
         .background(
-            Theme.backgroundElevated.opacity(0.98)
-                .overlay(Rectangle().fill(Theme.surfaceBorder.opacity(0.9)).frame(height: 1), alignment: .top)
+            theme.palette.base
+                .overlay(Rectangle().fill(theme.palette.ink.opacity(0.08)).frame(height: 1), alignment: .top)
                 .ignoresSafeArea(edges: .bottom)
         )
     }
@@ -98,37 +101,31 @@ private struct BottomNav: View {
     private func tabButton(_ tab: MainTab) -> some View {
         let selected = router.selectedTab == tab
         return Button(action: { select(tab) }) {
-            VStack(spacing: 4) {
-                Image(systemName: tabSpec(tab).symbol)
-                    .font(.system(size: 17, weight: selected ? .semibold : .medium))
-                Text(tabSpec(tab).label)
-                    .font(Theme.font(8.5, selected ? .bold : .medium))
-                    .tracking(0.15)
-            }
-            .foregroundColor(selected ? accent : Theme.subtle)
+            icon(tab)   // icons stay full color; only the blue pill marks the active tab
                 .frame(maxWidth: .infinity)
-                .frame(height: 48)
+                .frame(height: 46)
                 .background(
-                    RoundedRectangle(cornerRadius: Theme.Radius.small, style: .continuous)
-                        .fill(accent.opacity(selected ? 0.10 : 0))
+                    RoundedRectangle(cornerRadius: 14, style: .continuous)
+                        .fill(accent.opacity(selected ? 0.16 : 0))
                         .overlay(
-                            RoundedRectangle(cornerRadius: Theme.Radius.small, style: .continuous)
-                                .strokeBorder(accent.opacity(selected ? 0.32 : 0), lineWidth: 1)
+                            RoundedRectangle(cornerRadius: 14, style: .continuous)
+                                .strokeBorder(accent.opacity(selected ? 0.55 : 0), lineWidth: 1.5)
                         )
                 )
                 .contentShape(Rectangle())
         }
-        .buttonStyle(TabPopStyle())
+        .buttonStyle(TabPopStyle())   // icon shrinks slightly on press → a tactile "pop"
     }
 
-    private func tabSpec(_ tab: MainTab) -> (symbol: String, label: String) {
+    @ViewBuilder
+    private func icon(_ tab: MainTab) -> some View {
         switch tab {
-        case .home:        return ("square.stack.3d.up", "TRAIN")
-        case .quest:       return ("scope", "DRILLS")
-        case .simulation:  return ("chart.xyaxis.line", "SIM")
-        case .leaderboard: return ("chart.bar.xaxis", "RANK")
-        case .premium:     return ("sparkles", "PRO")
-        case .profile:     return ("person.crop.circle", "PROFILE")
+        case .home:        DogHouseIcon().frame(width: 28, height: 26)
+        case .quest:       TargetIcon().frame(width: 26, height: 26)
+        case .simulation:  CandlesTabIcon().frame(width: 27, height: 26)
+        case .leaderboard: TrophyIcon().frame(width: 26, height: 26)
+        case .premium:     SuperHeartIcon(size: 26, showInfinity: false)
+        case .profile:     PersonIcon().frame(width: 25, height: 26)
         }
     }
 
@@ -140,13 +137,17 @@ private struct BottomNav: View {
     }
 }
 
-// Restrained tactile feedback for the persistent navigation.
+// Scales the icon down slightly on press/hold for a tactile "pop" (like the
+// path node pucks). No opacity dim, so the always-on colored tab icons don't
+// flicker — only the springy shrink.
 private struct TabPopStyle: ButtonStyle {
     func makeBody(configuration: Configuration) -> some View {
         configuration.label
-            .scaleEffect(configuration.isPressed ? 0.97 : 1.0)
-            .opacity(configuration.isPressed ? 0.82 : 1)
-            .animation(.easeOut(duration: 0.11), value: configuration.isPressed)
+            .scaleEffect(configuration.isPressed ? 0.84 : 1.0)
+            .animation(configuration.isPressed
+                       ? .easeIn(duration: 0.06)
+                       : .spring(response: 0.3, dampingFraction: 0.55),
+                       value: configuration.isPressed)
     }
 }
 

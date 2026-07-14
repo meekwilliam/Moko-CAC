@@ -18,8 +18,8 @@ struct Palette {
 final class ThemeManager: ObservableObject {
     let palette = Palette(scheme: .dark,
                           base: Theme.appBackground,
-                          ink: Theme.inkDark,
-                          muted: Theme.muted)
+                          ink: .white,
+                          muted: Color(hex: "#94A3B8"))
 }
 
 // MARK: - Themed full-screen background
@@ -27,37 +27,6 @@ final class ThemeManager: ObservableObject {
 struct ThemedBackground: View {
     @EnvironmentObject var theme: ThemeManager
     var body: some View {
-        ZStack {
-            theme.palette.base
-            LinearGradient(
-                colors: [MarketDesign.Colors.backgroundSecondary.opacity(0.78), MarketDesign.Colors.backgroundPrimary, MarketDesign.Colors.backdropDeep],
-                startPoint: .topLeading,
-                endPoint: .bottomTrailing
-            )
-            RadialGradient(
-                colors: [Theme.progress.opacity(0.08), .clear],
-                center: .topTrailing,
-                startRadius: 10,
-                endRadius: 420
-            )
-            Canvas { context, size in
-                var grid = Path()
-                let step: CGFloat = 32
-                var x: CGFloat = 0
-                while x <= size.width {
-                    grid.move(to: CGPoint(x: x, y: 0))
-                    grid.addLine(to: CGPoint(x: x, y: size.height))
-                    x += step
-                }
-                var y: CGFloat = 0
-                while y <= size.height {
-                    grid.move(to: CGPoint(x: 0, y: y))
-                    grid.addLine(to: CGPoint(x: size.width, y: y))
-                    y += step
-                }
-                context.stroke(grid, with: .color(Theme.surfaceBorder.opacity(0.08)), lineWidth: 0.5)
-            }
-        }
-        .ignoresSafeArea()
+        theme.palette.base.ignoresSafeArea()
     }
 }

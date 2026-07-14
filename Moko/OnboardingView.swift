@@ -3,7 +3,7 @@ import Combine
 import UserNotifications
 
 // MARK: - Onboarding flow
-// Eight-screen market-training intake: welcome (live-chart hero) → strategy →
+// Eight-screen Duolingo-style intake: welcome (live-chart hero) → strategy →
 // goals (choose any) → daily goal → notifications → sign-up → course build →
 // commit. Finishing bursts
 // the commit color across the screen and launches Lesson 1 directly (never the
@@ -115,7 +115,7 @@ struct OnboardingView: View {
     }
 
     // MARK: Header — back above full-width progress
-    // Hidden on the welcome screen so live market data remains the hero.
+    // Hidden on the welcome screen (full-bleed hero, like the reference).
 
     private var header: some View {
         VStack(spacing: 2) {
@@ -134,14 +134,21 @@ struct OnboardingView: View {
 
             GeometryReader { geo in
                 ZStack(alignment: .leading) {
-                    Capsule().fill(Theme.surfaceStrong)
+                    Capsule().fill(Color.white.opacity(0.20))
                     Capsule().fill(
-                        LinearGradient(colors: [Theme.mastery, Theme.progress],
-                                       startPoint: .leading, endPoint: .trailing))
+                        LinearGradient(colors: [Color(hex: "#4CA9FF"), Color(hex: "#2B70C9")],
+                                       startPoint: .top, endPoint: .bottom))
                         .frame(width: max(14, geo.size.width * CGFloat(step + 1) / CGFloat(totalSteps)))
+                        .overlay(
+                            Capsule().fill(Color.white.opacity(0.5))
+                                .frame(height: 4)
+                                .padding(.horizontal, 6)
+                                .padding(.top, 4),
+                            alignment: .top
+                        )
                 }
             }
-            .frame(height: 4)
+            .frame(height: 20)
         }
     }
 
@@ -212,11 +219,11 @@ struct OnboardingView: View {
                 .frame(maxHeight: .infinity)
 
             VStack(spacing: 14) {
-                Text("Learn to read the market")
-                    .font(Theme.font(32, .bold))
+                Text("Learn to trade")
+                    .font(Theme.font(34, .black))
                     .foregroundColor(theme.palette.ink)
                     .multilineTextAlignment(.center)
-                Text("Train with live charts, order flow, execution data, and simulated market decisions.")
+                Text("Master charts, price action, and risk management through short interactive lessons.")
                     .font(Theme.bodyFont(16))
                     .foregroundColor(theme.palette.muted)
                     .multilineTextAlignment(.center)
@@ -306,7 +313,7 @@ struct OnboardingView: View {
                 Text("Turn on reminders")
                     .font(Theme.font(26, .black))
                     .foregroundColor(theme.palette.ink)
-                Text("A daily nudge protects your training continuity and keeps pattern recognition sharp.")
+                Text("A daily nudge keeps your streak alive and your practice on track.")
                     .font(Theme.bodyFont(15))
                     .foregroundColor(theme.palette.muted)
                     .lineSpacing(15 * 0.32)
@@ -585,12 +592,12 @@ private struct CourseBuildView: View {
             }
             .frame(width: 148, height: 148)
 
-            Text("Calibrating your training")
-                .font(Theme.font(27, .bold))
+            Text("Building your course")
+                .font(Theme.font(28, .black))
                 .foregroundColor(theme.palette.ink)
                 .padding(.top, 30)
 
-            Text("Preparing the order flow skill map")
+            Text("Personalizing your learning path")
                 .font(Theme.bodyFont(16))
                 .foregroundColor(theme.palette.muted)
                 .padding(.top, 8)
@@ -631,10 +638,12 @@ private struct CommitScreen: View {
     @State private var holdProgress: CGFloat = 0   // 0…1 while charging
     @State private var burst = false               // curtain has been launched
     @State private var generation = 0              // cancels stale hold timers
+    @State private var pulse = false
     @State private var buttonCenter: CGPoint = .zero
 
     private let holdDuration: Double = 1.5
     private let commit = Theme.correct
+    private let commitDark = Theme.correctDark
 
     var body: some View {
         VStack(spacing: 0) {
@@ -678,29 +687,36 @@ private struct CommitScreen: View {
 
     private var holdButton: some View {
         ZStack {
-            RoundedRectangle(cornerRadius: Theme.Radius.large, style: .continuous)
-                .stroke(Theme.surfaceBorder, lineWidth: 2)
-                .frame(width: 158, height: 118)
-            RoundedRectangle(cornerRadius: Theme.Radius.large, style: .continuous)
-                .trim(from: 0, to: holdProgress)
-                .stroke(commit, style: StrokeStyle(lineWidth: 4, lineCap: .round))
-                .frame(width: 158, height: 118)
-            VStack(spacing: 7) {
-                MarketMark(size: 34, accent: commit)
-                Text("COMMIT TO TRAINING")
-                    .font(Theme.font(10, .black))
-                    .tracking(1)
-                    .foregroundColor(theme.palette.ink)
-            }
+            // Soft breathing halo, stronger while charging (and while charging,
+            // it also grows with hold progress so you still feel the charge-up
+            // without a separate ring).
+            Circle()
+                .fill(commit.opacity(holding ? 0.28 : 0.14))
+                .frame(width: 168, height: 168)
+                .scaleEffect((pulse ? 1.08 : 0.92) + holdProgress * 0.12)
+
+            // The button face itself.
+            Text("I'M\nCOMMITTED")
+                .font(Theme.font(16, .black))
+                .multilineTextAlignment(.center)
+                .foregroundColor(.white)
+                .frame(width: 120, height: 120)
+                .background(Circle().fill(commit).overlay(Circle().strokeBorder(commitDark, lineWidth: 2)))
+                .background(Circle().fill(commitDark).offset(y: 5))
+                .offset(y: holding ? 4 : 0)
+                .scaleEffect(1 + holdProgress * 0.10)
         }
-        .frame(width: 174, height: 134)
-        .background(RoundedRectangle(cornerRadius: 24).fill(Theme.surface))
-        .contentShape(RoundedRectangle(cornerRadius: 24))
+        .contentShape(Circle())
         .gesture(
             DragGesture(minimumDistance: 0)
                 .onChanged { _ in if !holding && !burst { beginHold() } }
                 .onEnded { _ in cancelHold() }
         )
+        .onAppear {
+            withAnimation(.easeInOut(duration: 1.4).repeatForever(autoreverses: true)) {
+                pulse = true
+            }
+        }
     }
 
     private func beginHold() {
@@ -720,7 +736,7 @@ private struct CommitScreen: View {
         holding = false
         generation += 1
         Haptics.endHold()
-        withAnimation(.easeOut(duration: 0.22)) { holdProgress = 0 }
+        withAnimation(.spring(response: 0.35, dampingFraction: 0.8)) { holdProgress = 0 }
     }
 
     private func completeHold() {

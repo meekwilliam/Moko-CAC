@@ -1,104 +1,119 @@
 import SwiftUI
 
-// MARK: - Training continuity
+// MARK: - Streak celebration screen
+// Shown once per day, right after the first lesson that extends the streak
+// (not on replays or a second lesson the same day). Two distinct intros:
+//   - Day 1 ("a streak is born"): a blank/white flame fast-spins and reveals
+//     the real animated FlameIcon underneath, mid-spin.
+//   - Every day after: already lit from the start (no white phase) — just a
+//     very quick spin flourish celebrating the new day.
+// Then the streak count, "day streak" label, and a Mo–Su week row (checked
+// days) pop in — Duolingo's streak screen, without the mascot.
 
-/// Shown once per day after the first session that extends continuity. The
-/// underlying streak rules are unchanged; only the presentation is market-led.
 struct StreakCelebrationView: View {
     var count: Int
     var week: [(label: String, active: Bool, isToday: Bool)]
     var onContinue: () -> Void
 
-    @EnvironmentObject private var theme: ThemeManager
+    @EnvironmentObject var theme: ThemeManager
+    @Environment(\.colorScheme) private var scheme
+
+    @State private var spinDegrees: Double = 0
     @State private var revealed = false
+    @State private var popIn = false
+
+    private var ink: Color { scheme == .dark ? Theme.inkDark : Theme.ink }
+    private let flameSize: CGFloat = 150
+    private var isFirstDay: Bool { count <= 1 }
 
     var body: some View {
         ZStack {
-            ThemedBackground()
+            theme.palette.base.ignoresSafeArea()
 
-            VStack(spacing: Theme.Space.xl) {
+            VStack(spacing: 18) {
                 Spacer()
 
-                continuityObject
-
-                VStack(spacing: 5) {
-                    Text("\(count)")
-                        .font(Theme.marketFont(62, .bold))
-                        .foregroundColor(Theme.expert)
-                        .monospacedDigit()
-                    Text("DAY TRAINING CONTINUITY")
-                        .font(Theme.font(11, .black))
-                        .tracking(1.6)
-                        .foregroundColor(theme.palette.ink)
-                    Text("Consistency compounds pattern recognition.")
-                        .font(Theme.bodyFont(14))
-                        .foregroundColor(Theme.muted)
+                ZStack {
+                    if isFirstDay {
+                        UnlitFlameIcon(size: flameSize).opacity(revealed ? 0 : 1)
+                    }
+                    FlameIcon(size: flameSize).opacity(revealed ? 1 : 0)
                 }
-                .opacity(revealed ? 1 : 0)
-                .offset(y: revealed ? 0 : 8)
+                .rotation3DEffect(.degrees(spinDegrees), axis: (x: 0, y: 1, z: 0), perspective: 0.45)
+
+                VStack(spacing: 4) {
+                    Text("\(count)")
+                        .font(Theme.font(64, .black))
+                        .foregroundColor(Color(hex: "#F59E0B"))
+                    Text("day streak")
+                        .font(Theme.font(20, .black))
+                        .foregroundColor(Color(hex: "#F59E0B"))
+                }
+                .scaleEffect(popIn ? 1 : 0.6)
+                .opacity(popIn ? 1 : 0)
 
                 weekRow
-                    .opacity(revealed ? 1 : 0)
-                    .offset(y: revealed ? 0 : 8)
+                    .opacity(popIn ? 1 : 0)
+                    .offset(y: popIn ? 0 : 8)
 
                 Spacer()
 
-                Button("CONTINUE TRAINING") {
+                Button("Continue") {
                     Haptics.selection()
                     onContinue()
                 }
-                .buttonStyle(Chunky3DStyle(fill: Theme.expert, slab: Color(hex: "#5037AA")))
-                .padding(.horizontal, Theme.Space.lg)
-                .padding(.bottom, Theme.Space.xs)
-                .opacity(revealed ? 1 : 0)
+                .buttonStyle(Chunky3DStyle(fill: Color(hex: "#F59E0B"), slab: Color(hex: "#B45309")))
+                .padding(.horizontal, 20)
+                .padding(.bottom, 8)
+                .opacity(popIn ? 1 : 0)
             }
-            .padding(.top, Theme.Space.xxl)
+            .padding(.top, 40)
         }
-        .onAppear {
-            Haptics.impact(.medium)
-            withAnimation(.easeOut(duration: 0.42)) { revealed = true }
-        }
-    }
-
-    private var continuityObject: some View {
-        ZStack {
-            ForEach(0..<3, id: \.self) { index in
-                Circle()
-                    .trim(from: CGFloat(index) * 0.08, to: 0.64 + CGFloat(index) * 0.08)
-                    .stroke(
-                        index == 0 ? Theme.expert : Theme.progress.opacity(0.42 - Double(index) * 0.1),
-                        style: StrokeStyle(lineWidth: index == 0 ? 4 : 2, lineCap: .round)
-                    )
-                    .frame(width: 136 - CGFloat(index * 26), height: 136 - CGFloat(index * 26))
-                    .rotationEffect(.degrees(revealed ? 15 + Double(index * 70) : -25))
-            }
-            MarketMark(size: 58, accent: Theme.expert)
-        }
-        .frame(width: 160, height: 160)
-        .opacity(revealed ? 1 : 0)
-        .scaleEffect(revealed ? 1 : 0.96)
+        .onAppear { runIntro() }
     }
 
     private var weekRow: some View {
-        HStack(spacing: Theme.Space.sm) {
+        HStack(spacing: 14) {
             ForEach(Array(week.enumerated()), id: \.offset) { _, day in
                 VStack(spacing: 8) {
-                    Text(day.label.uppercased())
-                        .font(Theme.font(9, .black))
-                        .foregroundColor(day.isToday ? Theme.expert : Theme.subtle)
-                    RoundedRectangle(cornerRadius: 8, style: .continuous)
-                        .fill(day.active ? Theme.expert.opacity(0.18) : Theme.surface)
-                        .frame(width: 34, height: 34)
-                        .overlay(
-                            Image(systemName: day.active ? "checkmark" : "minus")
-                                .font(.system(size: 12, weight: .semibold))
-                                .foregroundColor(day.active ? Theme.expert : Theme.subtle)
-                        )
-                        .overlay(
-                            RoundedRectangle(cornerRadius: 8)
-                                .strokeBorder(day.isToday ? Theme.expert : Theme.surfaceBorder, lineWidth: 1)
-                        )
+                    Text(day.label)
+                        .font(Theme.font(13, .heavy))
+                        .foregroundColor(day.isToday ? Color(hex: "#F59E0B") : Theme.muted)
+                    ZStack {
+                        Circle()
+                            .fill(day.active ? Color(hex: "#F59E0B") : Color(hex: "#2A3649"))
+                            .frame(width: 34, height: 34)
+                        if day.active {
+                            Image(systemName: "checkmark")
+                                .font(.system(size: 14, weight: .black))
+                                .foregroundColor(.white)
+                        }
+                    }
                 }
+            }
+        }
+    }
+
+    private func runIntro() {
+        if isFirstDay {
+            // "A streak is born": blank/white flame fast-spins and swaps to the
+            // real lit flame right as it's edge-on (mid-spin), not a crossfade.
+            withAnimation(.easeInOut(duration: 0.5)) { spinDegrees = 360 }
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.25) {
+                Haptics.impact(.medium)
+                withAnimation(.easeInOut(duration: 0.12)) { revealed = true }
+            }
+            withAnimation(.spring(response: 0.5, dampingFraction: 0.62).delay(0.55)) {
+                popIn = true
+            }
+        } else {
+            // Already lit from the start — no white phase — just a very quick
+            // spin flourish celebrating the new day.
+            revealed = true
+            withAnimation(.easeInOut(duration: 0.22)) { spinDegrees = 360 }
+            Haptics.impact(.medium)
+            withAnimation(.spring(response: 0.5, dampingFraction: 0.62).delay(0.28)) {
+                popIn = true
             }
         }
     }
