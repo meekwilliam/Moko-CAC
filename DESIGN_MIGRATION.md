@@ -96,7 +96,11 @@ Cards use 14 to 20 point corners, one-pixel borders, a faint top inner highlight
 
 ## Migration phases
 
+Implementation status: all five phases have now been applied to the active app shell. The retired `PathView` remains in source as a non-rendered compatibility fallback; `SkillMapView` is the active progression UI.
+
 ### Phase 1: Foundation
+
+Status: complete.
 
 - Add semantic brand, market, typography, spacing, radius, surface, and motion tokens.
 - Replace chunky shared button and option styling with low-depth technical controls.
@@ -106,12 +110,16 @@ Cards use 14 to 20 point corners, one-pixel borders, a faint top inner highlight
 
 ### Phase 2: Navigation and progression
 
+Status: complete.
+
 - Replace cartoon bottom navigation art with a restrained monochrome market icon system and labels.
 - Replace the winding puck path with a linear skill map made of compact lesson modules, unit progress, state rails, and synthesis checkpoints.
 - Replace rainbow units with tier-based teal, blue, violet, and magenta accents.
 - Restyle test-out as a placement challenge while preserving all availability and scoring rules.
 
 ### Phase 3: Lesson and game-state shell
+
+Status: complete.
 
 - Restyle the lesson header, progress, question cards, action area, debrief, exit dialog, completion, test-out results, and boss presentation.
 - Replace hearts visually with focus/session capacity while preserving the same count, spend, refill, unlimited, and gating logic.
@@ -120,11 +128,15 @@ Cards use 14 to 20 point corners, one-pixel borders, a faint top inner highlight
 
 ### Phase 4: Mechanics and simulation polish
 
+Status: complete for shared surfaces, technical typography, selection states, and market-semantic color usage. Existing authored mechanic layouts and grading remain unchanged.
+
 - Apply technical typography and shared market surfaces to DOM, tape, footprint, CVD, volume profile, and composite simulations.
 - Keep focused teaching visuals focused; reserve the full multi-signal board for trade decisions.
 - Improve visual density, selected states, data-driven motion, and expert-state hierarchy without changing targets or validation.
 
 ### Phase 5: Brand assets and QA
+
+Status: complete. The new market mark is installed in the launch screen, active shell, and iOS app-icon appearances. The simulator target builds and launches successfully.
 
 - Replace the mascot app logo and icon with an original market-data mark.
 - Verify onboarding, home, lesson, wrong/right feedback, completion, streak, lives, profile, test-out, boss, and trade-decision flows.

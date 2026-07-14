@@ -1,8 +1,8 @@
 import SwiftUI
 import Combine
 
-// MARK: - Hearts screen
-// Shows the current hearts, a live countdown to the next regenerated heart,
+// MARK: - Session capacity
+// Shows the current capacity, a live countdown to the next regenerated point,
 // and prototype monetization: a treats-funded refill, an invite-a-friend
 // bonus, and a mock "Super" unlimited-hearts subscription card.
 
@@ -18,7 +18,7 @@ struct HeartsView: View {
     // can't call back into the router and pop the screen right back open.
     @State private var isClosing = false
 
-    private let heartRed = Color(hex: "#FF4D6D")
+    private let capacityAccent = Theme.warning
 
     private var hearts: Int { router.hearts }
     private var seconds: Int? { router.secondsUntilNextHeart }
@@ -29,7 +29,7 @@ struct HeartsView: View {
 
     var body: some View {
         ZStack {
-            theme.palette.base.ignoresSafeArea()
+            ThemedBackground()
 
             ScrollView(showsIndicators: false) {
                 VStack(spacing: 0) {
@@ -71,8 +71,8 @@ struct HeartsView: View {
 
     private var header: some View {
         ZStack {
-            Text("Hearts")
-                .font(Theme.font(20, .black))
+            Text("Session Capacity")
+                .font(Theme.font(18, .bold))
                 .foregroundColor(theme.palette.ink)
             HStack {
                 Button(action: { Haptics.selection(); close() }) {
@@ -82,8 +82,10 @@ struct HeartsView: View {
                 }
                 Spacer()
                 HStack(spacing: 6) {
-                    TreatIcon(height: 15)
-                    Text("\(treats)").font(Theme.font(16, .heavy)).foregroundColor(theme.palette.ink)
+                    Image(systemName: "diamond.fill")
+                        .font(.system(size: 11, weight: .semibold))
+                        .foregroundColor(Theme.warning)
+                    Text("\(treats)").font(Theme.marketFont(14, .semibold)).foregroundColor(theme.palette.ink)
                 }
             }
         }
@@ -98,20 +100,23 @@ struct HeartsView: View {
             if unlimited {
                 Image(systemName: "infinity")
                     .font(.system(size: 40, weight: .black))
-                    .foregroundColor(heartRed)
+                    .foregroundColor(capacityAccent)
             } else {
                 ZStack(alignment: .bottomTrailing) {
-                    HeartBadge(filled: hearts > 0, size: 76)
+                    Image(systemName: "shield.lefthalf.filled")
+                        .font(.system(size: 70, weight: .medium))
+                        .foregroundColor(hearts > 0 ? capacityAccent : Theme.surfaceHighlight)
                     Text("\(hearts)")
-                        .font(Theme.font(18, .black))
-                        .foregroundColor(.white)
+                        .font(Theme.marketFont(16, .bold))
+                        .foregroundColor(theme.palette.ink)
                         .padding(.horizontal, 8)
                         .padding(.vertical, 3)
-                        .background(Capsule().fill(Theme.surfaceRaised))
+                        .background(RoundedRectangle(cornerRadius: 7).fill(Theme.surfaceRaised)
+                            .overlay(RoundedRectangle(cornerRadius: 7).strokeBorder(Theme.surfaceBorder, lineWidth: 1)))
                         .offset(x: 18, y: 4)
                 }
                 Text("/ \(ProgressStore.maxHearts)")
-                    .font(Theme.font(28, .black))
+                    .font(Theme.marketFont(25, .bold))
                     .foregroundColor(theme.palette.ink)
             }
         }
@@ -119,14 +124,16 @@ struct HeartsView: View {
 
     @ViewBuilder private var countdown: some View {
         if unlimited {
-            Text("UNLIMITED HEARTS ACTIVE")
+            Text("UNLIMITED CAPACITY ACTIVE")
                 .font(Theme.font(15, .black))
-                .foregroundColor(heartRed)
+                .foregroundColor(capacityAccent)
         } else if let s = seconds, hearts < ProgressStore.maxHearts {
-            (Text("NEXT HEART IN  ").font(Theme.font(15, .black)).foregroundColor(theme.palette.muted)
-             + Text(timeString(s)).font(Theme.font(15, .black)).foregroundColor(heartRed))
+            HStack(spacing: 7) {
+                Text("NEXT CAPACITY POINT").font(Theme.font(12, .black)).foregroundColor(theme.palette.muted)
+                Text(timeString(s)).font(Theme.marketFont(13, .semibold)).foregroundColor(capacityAccent)
+            }
         } else {
-            Text("HEARTS FULL")
+            Text("CAPACITY FULL")
                 .font(Theme.font(15, .black))
                 .foregroundColor(theme.palette.muted)
         }
@@ -142,15 +149,15 @@ struct HeartsView: View {
             if !unlimited {
                 offerRow(
                     badge: AnyView(heartCountBadge("+\(ProgressStore.maxHearts)")),
-                    title: "Refill",
+                    title: "Recharge capacity",
                     trailing: AnyView(
-                        HStack(spacing: 5) { TreatIcon(height: 14); Text("\(Self.refillCost)")
-                            .font(Theme.font(15, .black)).foregroundColor(theme.palette.ink) }),
+                        HStack(spacing: 5) { Image(systemName: "diamond.fill").foregroundColor(Theme.warning); Text("\(Self.refillCost)")
+                            .font(Theme.marketFont(14, .semibold)).foregroundColor(theme.palette.ink) }),
                     action: { router.onRefillHearts?() }
                 )
                 offerRow(
                     badge: AnyView(heartCountBadge("+\(Self.inviteBonus)")),
-                    title: "+\(Self.inviteBonus) hearts",
+                    title: "+\(Self.inviteBonus) capacity",
                     trailing: AnyView(Text("INVITE A FRIEND")
                         .font(Theme.font(13, .black)).foregroundColor(Color(hex: "#38bdf8"))),
                     action: { router.onInviteFriend?() }
@@ -177,7 +184,7 @@ struct HeartsView: View {
     private var superCard: some View {
         Button(action: { openSuperTab() }) {
             VStack(spacing: 0) {
-                Text("SUPER")
+                Text("PRO")
                     .font(Theme.font(13, .black)).tracking(1)
                     .foregroundColor(.white)
                     .frame(maxWidth: .infinity, alignment: .leading)
@@ -191,8 +198,8 @@ struct HeartsView: View {
                         Image(systemName: "infinity")
                             .font(.system(size: 20, weight: .black)).foregroundColor(.white)
                     }
-                    Text("Unlimited")
-                        .font(Theme.font(17, .black)).foregroundColor(theme.palette.ink)
+                    Text("Unlimited capacity")
+                        .font(Theme.font(16, .bold)).foregroundColor(theme.palette.ink)
                     Spacer(minLength: 0)
                     if unlimited {
                         HStack(spacing: 4) {
@@ -200,7 +207,7 @@ struct HeartsView: View {
                             Text("ACTIVE")
                         }
                         .font(Theme.font(13, .black))
-                        .foregroundColor(Color(hex: "#34C759"))
+                        .foregroundColor(Theme.mastery)
                     } else {
                         Text("FREE TRIAL")
                             .font(Theme.font(13, .black))
@@ -239,12 +246,14 @@ struct HeartsView: View {
 
     private func heartCountBadge(_ label: String) -> some View {
         ZStack {
-            Circle().fill(heartRed.opacity(0.16)).frame(width: 42, height: 42)
-            HeartBadge(filled: true, size: 24)
+            RoundedRectangle(cornerRadius: 12).fill(capacityAccent.opacity(0.12)).frame(width: 42, height: 42)
+            Image(systemName: "shield.lefthalf.filled")
+                .font(.system(size: 22, weight: .medium))
+                .foregroundColor(capacityAccent)
             Text(label)
-                .font(Theme.font(11, .black)).foregroundColor(.white)
+                .font(Theme.marketFont(10, .bold)).foregroundColor(theme.palette.ink)
                 .padding(.horizontal, 4).padding(.vertical, 1)
-                .background(Capsule().fill(Theme.surfaceRaised))
+                .background(RoundedRectangle(cornerRadius: 5).fill(Theme.surfaceRaised))
                 .offset(x: 14, y: 12)
         }
         .frame(width: 42, height: 42)
