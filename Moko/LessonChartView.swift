@@ -21,7 +21,6 @@ struct LessonChartView: View {
     @State private var didInitialScroll = false
     @State private var showsExpandedChart = false
     @State private var expandedChartIsReady = false
-    @Namespace private var chartZoomNamespace
 
     private let compactLayout = LessonChartLayout(
         canvasHeight: 218, plotTop: 38, plotBottom: 148,
@@ -45,14 +44,8 @@ struct LessonChartView: View {
 
                             courseSummary
 
-                            Group {
-                                if showsExpandedChart {
-                                    expandedLessonMarket
-                                } else {
-                                    compactLessonMarket
-                                }
-                            }
-                            .id("lesson-market")
+                            zoomableLessonMarket
+                                .id("lesson-market")
 
                             if showsExpandedChart,
                                let selectedNode,
@@ -250,130 +243,96 @@ struct LessonChartView: View {
 
     // MARK: Interactive chart
 
-    private var compactLessonMarket: some View {
-        let candles = compactCandles
-        let bounds = priceBounds(for: candles)
-
-        return VStack(alignment: .leading, spacing: 12) {
-            HStack {
-                VStack(alignment: .leading, spacing: 3) {
-                    Text("COURSE CHART")
-                        .font(Theme.font(12, .heavy))
-                        .tracking(1.2)
-                        .foregroundColor(theme.palette.muted)
-                    Text("Tap to open the five-candle lesson view")
-                        .font(Theme.bodyFont(13))
-                        .foregroundColor(theme.palette.muted)
-                }
-                Spacer()
-                Image(systemName: "arrow.up.left.and.arrow.down.right")
-                    .font(.system(size: 15, weight: .bold))
-                    .foregroundColor(Color(hex: "#38BDF8"))
-                    .frame(width: 34, height: 34)
-                    .background(Circle().fill(Color(hex: "#38BDF8").opacity(0.12)))
-            }
-
-            GeometryReader { geometry in
-                let slotWidth = geometry.size.width / CGFloat(max(1, candles.count))
-                ZStack(alignment: .leading) {
-                    chartCanvas(
-                        candles: candles, bounds: bounds, slotWidth: slotWidth,
-                        layout: compactLayout, edgePaddingSlots: 0, isInteractive: false
-                    )
-                    priceAxis(bounds: bounds, layout: compactLayout)
-                        .allowsHitTesting(false)
-                }
-                .clipShape(RoundedRectangle(cornerRadius: 14, style: .continuous))
-            }
-            .frame(height: compactLayout.canvasHeight)
-        }
-        .padding(14)
-        .background(chartCardBackground)
-        .matchedGeometryEffect(id: "lesson-market-card", in: chartZoomNamespace)
-        .contentShape(RoundedRectangle(cornerRadius: 18, style: .continuous))
-        .onTapGesture {
-            Haptics.selection()
-            selectedNode = nil
-            didInitialScroll = false
-            expandedChartIsReady = false
-            withAnimation(.spring(response: 0.5, dampingFraction: 0.86)) {
-                showsExpandedChart = true
-            }
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.45) {
-                if showsExpandedChart { expandedChartIsReady = true }
-            }
-        }
-        .accessibilityElement(children: .ignore)
-        .accessibilityLabel("Course lesson chart")
-        .accessibilityHint("Opens the enlarged five-candle lesson chart.")
-        .accessibilityAddTraits(.isButton)
-    }
-
-    private var expandedLessonMarket: some View {
+    private var zoomableLessonMarket: some View {
         let candles = marketCandles
         let bounds = priceBounds(for: candles)
+        let layout = showsExpandedChart ? expandedLayout : compactLayout
+        let visibleCandleCount: CGFloat = showsExpandedChart ? 5 : 9
 
         return VStack(alignment: .leading, spacing: 12) {
             HStack {
                 VStack(alignment: .leading, spacing: 3) {
-                    Text("FIVE-CANDLE VIEW")
+                    Text(showsExpandedChart ? "FIVE-CANDLE VIEW" : "COURSE CHART")
                         .font(Theme.font(12, .heavy))
                         .tracking(1.2)
                         .foregroundColor(theme.palette.muted)
-                    Text("Tap a candle to open its lesson")
+                    Text(showsExpandedChart
+                         ? "Tap a candle to open its lesson"
+                         : "Tap the chart to zoom into your lessons")
                         .font(Theme.bodyFont(13))
                         .foregroundColor(theme.palette.muted)
                 }
                 Spacer()
-                HStack(spacing: 10) {
-                    HStack(spacing: 5) {
-                        Circle().fill(Color(hex: "#22C55E")).frame(width: 7, height: 7)
-                        Text("LIVE")
-                            .font(Theme.font(10, .heavy))
-                            .tracking(1)
-                            .foregroundColor(Color(hex: "#22C55E"))
-                    }
-                    Button {
-                        Haptics.selection()
-                        expandedChartIsReady = false
-                        selectedNode = nil
-                        withAnimation(.spring(response: 0.5, dampingFraction: 0.86)) {
-                            showsExpandedChart = false
+                if showsExpandedChart {
+                    HStack(spacing: 10) {
+                        HStack(spacing: 5) {
+                            Circle().fill(Color(hex: "#22C55E")).frame(width: 7, height: 7)
+                            Text("LIVE")
+                                .font(Theme.font(10, .heavy))
+                                .tracking(1)
+                                .foregroundColor(Color(hex: "#22C55E"))
                         }
-                    } label: {
-                        Image(systemName: "arrow.down.right.and.arrow.up.left")
-                            .font(.system(size: 14, weight: .bold))
-                            .foregroundColor(Color(hex: "#38BDF8"))
-                            .frame(width: 34, height: 34)
-                            .background(Circle().fill(Color(hex: "#38BDF8").opacity(0.12)))
+                        Button {
+                            Haptics.selection()
+                            expandedChartIsReady = false
+                            selectedNode = nil
+                            withAnimation(.spring(response: 0.5, dampingFraction: 0.86)) {
+                                showsExpandedChart = false
+                            }
+                        } label: {
+                            Image(systemName: "arrow.down.right.and.arrow.up.left")
+                                .font(.system(size: 14, weight: .bold))
+                                .foregroundColor(Color(hex: "#38BDF8"))
+                                .frame(width: 34, height: 34)
+                                .background(Circle().fill(Color(hex: "#38BDF8").opacity(0.12)))
+                        }
+                        .buttonStyle(RowPressStyle())
                     }
-                    .buttonStyle(RowPressStyle())
+                    .transition(.opacity)
+                } else {
+                    Image(systemName: "plus.magnifyingglass")
+                        .font(.system(size: 15, weight: .bold))
+                        .foregroundColor(Color(hex: "#38BDF8"))
+                        .frame(width: 34, height: 34)
+                        .background(Circle().fill(Color(hex: "#38BDF8").opacity(0.12)))
+                        .transition(.opacity)
                 }
             }
 
             GeometryReader { geometry in
-                let slotWidth = geometry.size.width / 5
+                let slotWidth = geometry.size.width / visibleCandleCount
                 ScrollViewReader { proxy in
                     ZStack(alignment: .leading) {
                         ScrollView(.horizontal, showsIndicators: false) {
                             chartCanvas(
                                 candles: candles, bounds: bounds, slotWidth: slotWidth,
-                                layout: expandedLayout, edgePaddingSlots: 2,
-                                isInteractive: expandedChartIsReady
+                                layout: layout, edgePaddingSlots: 2,
+                                isInteractive: showsExpandedChart && expandedChartIsReady
                             )
                         }
+                        .scrollDisabled(!showsExpandedChart)
                         .scrollClipDisabled()
 
-                        priceAxis(bounds: bounds, layout: expandedLayout)
+                        priceAxis(bounds: bounds, layout: layout)
                             .allowsHitTesting(false)
                     }
-                    .clipShape(RoundedRectangle(cornerRadius: 16, style: .continuous))
+                    .scaleEffect(showsExpandedChart ? 1 : 0.92, anchor: .center)
+                    .clipShape(RoundedRectangle(cornerRadius: showsExpandedChart ? 16 : 14,
+                                                style: .continuous))
                     .onAppear {
                         guard !didInitialScroll else { return }
                         didInitialScroll = true
                         guard let target = focusNodeNumber else { return }
                         DispatchQueue.main.asyncAfter(deadline: .now() + 0.08) {
                             proxy.scrollTo("lesson-candle-\(target)", anchor: .center)
+                        }
+                    }
+                    .onChange(of: showsExpandedChart) { _, _ in
+                        guard let target = focusNodeNumber else { return }
+                        DispatchQueue.main.async {
+                            withAnimation(.spring(response: 0.5, dampingFraction: 0.86)) {
+                                proxy.scrollTo("lesson-candle-\(target)", anchor: .center)
+                            }
                         }
                     }
                     .onChange(of: store.activeNode) { _, _ in
@@ -384,11 +343,31 @@ struct LessonChartView: View {
                     }
                 }
             }
-            .frame(height: expandedLayout.canvasHeight)
+            .frame(height: layout.canvasHeight)
         }
         .padding(14)
         .background(chartCardBackground)
-        .matchedGeometryEffect(id: "lesson-market-card", in: chartZoomNamespace)
+        .contentShape(RoundedRectangle(cornerRadius: 18, style: .continuous))
+        .overlay {
+            if !showsExpandedChart {
+                Color.clear
+                    .contentShape(RoundedRectangle(cornerRadius: 18, style: .continuous))
+                    .onTapGesture {
+                        Haptics.selection()
+                        selectedNode = nil
+                        expandedChartIsReady = false
+                        withAnimation(.spring(response: 0.5, dampingFraction: 0.86)) {
+                            showsExpandedChart = true
+                        }
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.45) {
+                            if showsExpandedChart { expandedChartIsReady = true }
+                        }
+                    }
+                    .accessibilityLabel("Course lesson chart")
+                    .accessibilityHint("Zooms into the five-candle lesson chart.")
+                    .accessibilityAddTraits(.isButton)
+            }
+        }
     }
 
     private func chartCanvas(
@@ -720,18 +699,6 @@ struct LessonChartView: View {
             store.completed.contains(number) ? nil : number
         }
         return resumableNode ?? store.activeNode ?? store.nodes.last?.num
-    }
-
-    private var compactCandles: [LessonMarketCandle] {
-        let candles = marketCandles
-        guard !candles.isEmpty else { return [] }
-        let count = min(9, candles.count)
-        let focusIndex = focusNodeNumber.flatMap { number in
-            candles.firstIndex { $0.node.num == number }
-        } ?? 0
-        let maximumStart = max(0, candles.count - count)
-        let start = min(maximumStart, max(0, focusIndex - count / 2))
-        return Array(candles[start..<(start + count)])
     }
 
     private var marketCandles: [LessonMarketCandle] {
