@@ -1,8 +1,8 @@
 import SwiftUI
 
 // MARK: - Theme
-// Colors, fonts and the 3D "chunky" button treatment used across the app,
-// ported to native so the lesson player matches the web look & feel.
+// Semantic type, color, spacing, surface and interaction tokens for the native
+// premium market-training interface.
 
 enum Theme {
     // Sora — the app's chrome typeface (bundled + registered at launch).
@@ -37,29 +37,72 @@ enum Theme {
         .custom("PlusJakartaSans-Regular", size: size)
     }
 
-    static let ink = Color(hex: "#082f49")
-    static let inkDark = Color(hex: "#f8fafc")
-    static let muted = Color(hex: "#64748b")
+    /// Technical numbers only: DOM, tape, price, footprint, delta and CVD.
+    static func marketFont(_ size: CGFloat, _ weight: Font.Weight = .medium) -> Font {
+        .system(size: size, weight: weight, design: .monospaced)
+    }
 
-    static let correct = Color(hex: "#22c55e")
-    static let correctDark = Color(hex: "#15803d")
-    static let incorrect = Color(hex: "#f43f5e")
-    static let incorrectDark = Color(hex: "#be123c")
+    enum Space {
+        static let xxs: CGFloat = 4
+        static let xs: CGFloat = 8
+        static let sm: CGFloat = 12
+        static let md: CGFloat = 16
+        static let lg: CGFloat = 20
+        static let xl: CGFloat = 24
+        static let xxl: CGFloat = 32
+        static let xxxl: CGFloat = 40
+    }
+
+    enum Radius {
+        static let small: CGFloat = 10
+        static let control: CGFloat = 14
+        static let card: CGFloat = 16
+        static let large: CGFloat = 20
+    }
+
+    static let ink = Color(hex: "#102737")
+    static let inkDark = Color(hex: "#ECF5FC")
+    static let muted = Color(hex: "#93A8B8")
+    static let subtle = Color(hex: "#62798B")
+
+    // Brand accents. Green/red stay reserved for market-side meaning below.
+    static let mastery = Color(hex: "#25C7B7")
+    static let masteryDark = Color(hex: "#117D78")
+    static let progress = Color(hex: "#4B86FF")
+    static let progressDark = Color(hex: "#2855B8")
+    static let expert = Color(hex: "#8B6CFF")
+    static let premium = Color(hex: "#D75BCB")
+    static let warning = Color(hex: "#E8B45B")
+    static let warningDark = Color(hex: "#8E6225")
+
+    // Market semantics only.
+    static let buyer = Color(hex: "#32C98A")
+    static let seller = Color(hex: "#F26472")
+
+    // Assessment feedback uses mastery/warning rather than market green/red.
+    static let correct = mastery
+    static let correctDark = masteryDark
+    static let incorrect = warning
+    static let incorrectDark = warningDark
 
     /// The accent used for answering: selected options, the Check / Got It
     /// buttons, the progress bar, and interactive selections/drawings. Matches
     /// the "Keep Going" button blue so the whole answer flow is one blue.
-    static let answer = Color(hex: "#2B70C9")
-    static let answerDark = Color(hex: "#1C4A85")
+    static let answer = progress
+    static let answerDark = progressDark
 
-    static let appBackground = Color(hex: "#0E161A")
-    static let surface = Color(hex: "#17242B")
-    static let surfaceRaised = Color(hex: "#1E293B")
-    static let surfaceBorder = Color(hex: "#41515D")
-    static let surfaceSlab = Color(hex: "#33424D")
-    static let surfaceMuted = Color(hex: "#3A4A54")
-    static let slotFill = Color(hex: "#2B3A44")
-    static let slotBorder = Color(hex: "#536673")
+    static let appBackground = Color(hex: "#07111B")
+    static let backgroundElevated = Color(hex: "#0A1622")
+    static let surface = Color(hex: "#0E1B28")
+    static let surfaceRaised = Color(hex: "#132333")
+    static let surfaceStrong = Color(hex: "#192C3E")
+    static let surfaceBorder = Color(hex: "#263D50")
+    static let surfaceHighlight = Color(hex: "#355067")
+    static let surfaceSlab = Color(hex: "#1A3041")
+    static let surfaceMuted = Color(hex: "#203446")
+    static let slotFill = Color(hex: "#122433")
+    static let slotBorder = Color(hex: "#355067")
+    static let chartBackground = Color(hex: "#08131D")
 
     static func optionFill(_ scheme: ColorScheme) -> Color {
         scheme == .dark ? surface : .white
@@ -73,18 +116,30 @@ enum Theme {
         scheme == .dark ? surfaceSlab : Color(hex: "#B8C4D8")
     }
 
-    /// Mirrors `lessonUnitColor(nodeNum)` in index.html.
+    /// Tier palette used for progression and mastery. It deliberately avoids
+    /// bullish green and bearish red.
+    static func tierColor(_ tier: String?, index: Int = 0) -> (main: Color, dark: Color) {
+        switch tier?.lowercased() {
+        case "beginner":
+            return index.isMultiple(of: 2) ? (mastery, masteryDark) : (Color(hex: "#31B7C7"), Color(hex: "#176B7A"))
+        case "intermediate":
+            return (progress, progressDark)
+        case "advanced":
+            return index.isMultiple(of: 2) ? (expert, Color(hex: "#5037AA")) : (Color(hex: "#666FEA"), Color(hex: "#363D9E"))
+        case "expert":
+            return (premium, Color(hex: "#85317D"))
+        default:
+            return (progress, progressDark)
+        }
+    }
+
+    /// Fallback when unit metadata is unavailable.
     static func unitColor(_ node: Int) -> (main: Color, dark: Color) {
         switch node {
-        case ...5:  return (Color(hex: "#3575DD"), Color(hex: "#1A46C2"))
-        case ...10: return (Color(hex: "#12A695"), Color(hex: "#0E6A63"))
-        case ...15: return (Color(hex: "#7D53DD"), Color(hex: "#6224C3"))
-        case ...20: return (Color(hex: "#0EA674"), Color(hex: "#046C4E"))
-        case ...25: return (Color(hex: "#DC8E0A"), Color(hex: "#A24B08"))
-        case ...30: return (Color(hex: "#0A6E85"), Color(hex: "#075163"))
-        case ...35: return (Color(hex: "#595CD9"), Color(hex: "#3C32B6"))
-        case ...40: return (Color(hex: "#D4418A"), Color(hex: "#AB1654"))
-        default:    return (Color(hex: "#E06814"), Color(hex: "#AF3A0B"))
+        case ...16: return tierColor("Beginner", index: node)
+        case ...32: return tierColor("Intermediate", index: node)
+        case ...64: return tierColor("Advanced", index: node)
+        default:    return tierColor("Expert", index: node)
         }
     }
 }
@@ -121,9 +176,9 @@ extension Color {
     }
 }
 
-// MARK: - 3D chunky button
-// Solid face + a darker "slab" underneath. On press it sinks down onto the
-// slab, matching the web `box-shadow:0 Npx 0 <dark>` + translateY treatment.
+// MARK: - Shared controls
+// The compatibility names stay in place so every existing mechanic keeps its
+// behavior, but the presentation is now low-depth, restrained and technical.
 
 // A constant "tilted up toward you" perspective for the path pucks (mirrors the
 // web `perspective(560px) rotateX(15deg)`), so they read as 3D instead of flat.
@@ -193,30 +248,32 @@ struct Chunky3DStyle: ButtonStyle {
     var border: Color? = nil
 
     func makeBody(configuration: Configuration) -> some View {
-        PressSink(isPressed: configuration.isPressed) { down in
-            configuration.label
-                .font(font)
-                .foregroundColor(textColor)
-                .frame(maxWidth: .infinity)
-                .padding(.vertical, 18)
-                .background(
-                    RoundedRectangle(cornerRadius: radius, style: .continuous)
-                        .fill(fill)
-                        .overlay(
-                            RoundedRectangle(cornerRadius: radius, style: .continuous)
-                                .strokeBorder(border ?? slab, lineWidth: 2)
-                        )
-                )
-                .background(
-                    RoundedRectangle(cornerRadius: radius, style: .continuous)
-                        .fill(slab)
-                        // Counter-offset the whole-label sink so the slab stays
-                        // fixed and the face lands flush on it (the 3D lip
-                        // vanishes on press — the "goes 2D" look, like the puck).
-                        .offset(y: down ? 0 : depth)
-                )
-                .offset(y: down ? depth : 0)
-        }
+        configuration.label
+            .font(font)
+            .foregroundColor(textColor)
+            .frame(maxWidth: .infinity)
+            .padding(.vertical, 16)
+            .background(
+                RoundedRectangle(cornerRadius: radius, style: .continuous)
+                    .fill(fill)
+                    .overlay(
+                        RoundedRectangle(cornerRadius: radius, style: .continuous)
+                            .strokeBorder(border ?? Color.white.opacity(0.12), lineWidth: 1)
+                    )
+                    .overlay(alignment: .top) {
+                        RoundedRectangle(cornerRadius: radius, style: .continuous)
+                            .stroke(Color.white.opacity(0.07), lineWidth: 1)
+                            .padding(1)
+                            .mask(
+                                LinearGradient(colors: [.white, .clear], startPoint: .top, endPoint: .center)
+                            )
+                    }
+            )
+            .shadow(color: slab.opacity(configuration.isPressed ? 0.12 : 0.28),
+                    radius: configuration.isPressed ? 2 : 9, y: configuration.isPressed ? 1 : 4)
+            .scaleEffect(configuration.isPressed ? 0.985 : 1)
+            .offset(y: configuration.isPressed ? 1 : 0)
+            .animation(.easeOut(duration: 0.12), value: configuration.isPressed)
     }
 }
 
@@ -228,18 +285,15 @@ struct Circle3DStyle: ButtonStyle {
     var size: CGFloat = 34
     var depth: CGFloat = 3
     func makeBody(configuration: Configuration) -> some View {
-        PressSink(isPressed: configuration.isPressed) { down in
-            configuration.label
-                .frame(width: size, height: size)
-                .background(
-                    Circle().fill(face)
-                        .overlay(Circle().strokeBorder(slab, lineWidth: 1.5))
-                )
-                // Counter-offset so the slab stays fixed and the face sinks flush
-                // onto it (the lip vanishes on press), like the path puck.
-                .background(Circle().fill(slab).offset(y: down ? 0 : depth))
-                .offset(y: down ? depth : 0)
-        }
+        configuration.label
+            .frame(width: size, height: size)
+            .background(
+                Circle().fill(face)
+                    .overlay(Circle().strokeBorder(Color.white.opacity(0.10), lineWidth: 1))
+            )
+            .shadow(color: slab.opacity(0.30), radius: configuration.isPressed ? 2 : 7, y: 3)
+            .scaleEffect(configuration.isPressed ? 0.96 : 1)
+            .animation(.easeOut(duration: 0.12), value: configuration.isPressed)
     }
 }
 
@@ -257,30 +311,23 @@ struct SinkButtonStyle: ButtonStyle {
     var radius: CGFloat = 16
     var depth: CGFloat = 5
     func makeBody(configuration: Configuration) -> some View {
-        PressSink(isPressed: configuration.isPressed) { down in
-            configuration.label
-                .background(
-                    Group {
-                        if let slab {
-                            RoundedRectangle(cornerRadius: radius, style: .continuous)
-                                .fill(slab)
-                                .offset(y: down ? 0 : depth)
-                        }
-                    }
-                )
-                .offset(y: down ? depth : 0)
-        }
+        configuration.label
+            .shadow(color: (slab ?? .black).opacity(configuration.isPressed ? 0.05 : 0.20),
+                    radius: configuration.isPressed ? 1 : 7, y: configuration.isPressed ? 0 : 3)
+            .scaleEffect(configuration.isPressed ? 0.988 : 1)
+            .offset(y: configuration.isPressed ? 1 : 0)
+            .animation(.easeOut(duration: 0.11), value: configuration.isPressed)
     }
 }
 
 // A lighter press for flat rows/chips that have no slab: a quick squish + dim.
 struct RowPressStyle: ButtonStyle {
-    var scale: CGFloat = 0.96
+    var scale: CGFloat = 0.985
     func makeBody(configuration: Configuration) -> some View {
         configuration.label
             .scaleEffect(configuration.isPressed ? scale : 1)
-            .opacity(configuration.isPressed ? 0.82 : 1)
-            .animation(.spring(response: 0.25, dampingFraction: 0.6), value: configuration.isPressed)
+            .opacity(configuration.isPressed ? 0.88 : 1)
+            .animation(.easeOut(duration: 0.11), value: configuration.isPressed)
     }
 }
 
@@ -289,7 +336,7 @@ struct RowPressStyle: ButtonStyle {
 // `optShake` (side-to-side shake on a wrong pick) keyframe animations.
 
 struct ShakeEffect: GeometryEffect {
-    var travel: CGFloat = 7
+    var travel: CGFloat = 2.5
     var animatableData: CGFloat = 0
     func effectValue(size: CGSize) -> ProjectionTransform {
         ProjectionTransform(CGAffineTransform(
@@ -309,12 +356,12 @@ struct AnswerFeedbackFX: ViewModifier {
             .modifier(ShakeEffect(animatableData: shakes))
             .onChange(of: pop) { on in
                 guard on else { scale = 1; return }
-                scale = 1.06   // jump up, spring back — reads as the web's pop
-                withAnimation(.spring(response: 0.34, dampingFraction: 0.45)) { scale = 1 }
+                scale = 1.015
+                withAnimation(.easeOut(duration: 0.18)) { scale = 1 }
             }
             .onChange(of: shake) { on in
                 guard on else { return }
-                withAnimation(.easeInOut(duration: 0.45)) { shakes += 2 }
+                withAnimation(.easeInOut(duration: 0.24)) { shakes += 1 }
             }
     }
 }
@@ -335,12 +382,18 @@ struct OptionSurface: ViewModifier {
             .padding(.vertical, vpad)
             .padding(.horizontal, 18)
             .background(
-                RoundedRectangle(cornerRadius: 16, style: .continuous)
+                RoundedRectangle(cornerRadius: Theme.Radius.control, style: .continuous)
                     .fill(fill)
                     .overlay(
-                        RoundedRectangle(cornerRadius: 16, style: .continuous)
-                            .strokeBorder(border, lineWidth: 2)
+                        RoundedRectangle(cornerRadius: Theme.Radius.control, style: .continuous)
+                            .strokeBorder(border, lineWidth: 1.25)
                     )
+                    .overlay(alignment: .top) {
+                        Rectangle()
+                            .fill(Color.white.opacity(0.035))
+                            .frame(height: 1)
+                            .padding(.horizontal, 12)
+                    }
             )
     }
 }
@@ -360,11 +413,12 @@ struct ChartCard: ViewModifier {
             // Flat panel — a deep navy distinctly darker than the page background
             // so it reads as an opaque card, not a hazy translucent film.
             RoundedRectangle(cornerRadius: radius, style: .continuous)
-                .fill(Color(hex: "#10191E"))
+                .fill(Theme.chartBackground)
                 .overlay(
                     RoundedRectangle(cornerRadius: radius, style: .continuous)
-                        .strokeBorder(Theme.surfaceBorder.opacity(0.45), lineWidth: 1.5)
+                        .strokeBorder(Theme.surfaceBorder.opacity(0.85), lineWidth: 1)
                 )
+                .shadow(color: .black.opacity(0.18), radius: 10, y: 4)
             content
                 .padding(.horizontal, 6).padding(.vertical, 14)
                 .clipShape(RoundedRectangle(cornerRadius: radius, style: .continuous))

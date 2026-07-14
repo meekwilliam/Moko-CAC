@@ -20,7 +20,7 @@ struct QuestionPrompt: View {
 
     var body: some View {
         let face = scheme == .dark ? Theme.surfaceRaised : Color(hex: "#EEF1F6")
-        let border = scheme == .dark ? Theme.surfaceSlab : Color(hex: "#C7D0DE")
+        let border = scheme == .dark ? Theme.surfaceBorder : Color(hex: "#C7D0DE")
 
         Text(RichText.attributed(text,
                                  base: Theme.questionFont(fontSize, .heavy),
@@ -32,12 +32,13 @@ struct QuestionPrompt: View {
             .padding(.horizontal, 20)
             .padding(.vertical, 18)
             .background(
-                RoundedRectangle(cornerRadius: 20, style: .continuous)
+                RoundedRectangle(cornerRadius: Theme.Radius.card, style: .continuous)
                     .fill(face)
                     .overlay(
-                        RoundedRectangle(cornerRadius: 20, style: .continuous)
-                            .strokeBorder(border, lineWidth: 2)
+                        RoundedRectangle(cornerRadius: Theme.Radius.card, style: .continuous)
+                            .strokeBorder(border, lineWidth: 1)
                     )
+                    .shadow(color: .black.opacity(0.14), radius: 9, y: 4)
             )
     }
 }
@@ -305,14 +306,14 @@ struct MarkLevelView: View {
 
                     // The user's draggable line.
                     let userColor = player.revealed
-                        ? (abs(price(lineY, lo, range) - truth) <= tol ? Color(hex: "#22C55E") : Color(hex: "#EF4444"))
+                        ? (abs(price(lineY, lo, range) - truth) <= tol ? Theme.correct : Theme.incorrect)
                         : Theme.answer
                     levelLine(y: lineY, color: userColor, label: player.revealed ? "You" : "Drag me")
 
                     // On reveal, show the true level too.
                     if player.revealed {
                         let ty = yFor(truth, lo, range)
-                        levelLine(y: ty, color: Color(hex: "#22C55E"),
+                        levelLine(y: ty, color: Theme.correct,
                                   label: isResistance ? "Resistance" : "Support", dashed: true)
                     }
                 }
@@ -403,13 +404,13 @@ struct TrendlineView: View {
 
                         if let a = player.trendStart, let b = player.trendEnd {
                             let color: Color = player.revealed
-                                ? (correct ? Color(hex: "#22C55E") : Color(hex: "#EF4444"))
+                                ? (correct ? Theme.correct : Theme.incorrect)
                                 : Theme.answer
                             trendLine(a, b, m.candles, slot, lo, range, color: color)
                         }
 
                         if player.revealed, let ts = s.targetStart, let te = s.targetEnd, !correct {
-                            trendLine(ts, te, m.candles, slot, lo, range, color: Color(hex: "#22C55E"), dashed: true)
+                            trendLine(ts, te, m.candles, slot, lo, range, color: Theme.correct, dashed: true)
                         }
 
                         Rectangle().fill(Color.white.opacity(0.001))
@@ -509,13 +510,13 @@ struct ConsolidationView: View {
 
                         if let lo = player.consolidationLo, let hi = player.consolidationHi {
                             let color: Color = player.revealed
-                                ? (correct ? Color(hex: "#22C55E") : Color(hex: "#EF4444"))
+                                ? (correct ? Theme.correct : Theme.incorrect)
                                 : Theme.answer
                             areaRect(lo, hi, slot, geo.size.height, color: color)
                         }
 
                         if player.revealed, let tlo = s.targetLo, let thi = s.targetHi, !correct {
-                            areaRect(tlo, thi, slot, geo.size.height, color: Color(hex: "#22C55E"), dashed: true)
+                            areaRect(tlo, thi, slot, geo.size.height, color: Theme.correct, dashed: true)
                         }
 
                         Rectangle().fill(Color.white.opacity(0.001))
@@ -659,7 +660,7 @@ struct OHLCLabelView: View {
         let placed = player.ohlcPlacement[i]
         let tint: Color = {
             guard player.revealed else { return Theme.answer }
-            return player.ohlcPlacement[i] == expected[i] ? Color(hex: "#22C55E") : Color(hex: "#EF4444")
+            return player.ohlcPlacement[i] == expected[i] ? Theme.correct : Theme.incorrect
         }()
         return ZStack {
             if let label = placed {

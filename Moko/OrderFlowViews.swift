@@ -8,8 +8,8 @@ import Combine
 //                  aggressor is the buyer or the seller.
 //   • book_drag  — drag a MARKET order onto the side it fills against (bid/ask).
 
-private let askColor = Color(hex: "#E15C5C")
-private let bidColor = Color(hex: "#3FB77E")
+private let askColor = Theme.seller
+private let bidColor = Theme.buyer
 
 /// One resting price level in the book.
 private struct BookLevel: Identifiable {
@@ -187,10 +187,10 @@ private struct OrderBookLadder: View {
             }
             HStack {
                 Text(String(format: "%.2f", lv.price))
-                    .font(Theme.font(12, .heavy)).foregroundColor(c)
+                    .font(Theme.marketFont(12, .semibold)).foregroundColor(c)
                 Spacer()
                 Text("\(lv.size)")
-                    .font(Theme.font(12, .bold)).foregroundColor(Theme.muted)
+                    .font(Theme.marketFont(12, .medium)).foregroundColor(Theme.muted)
             }
             .padding(.horizontal, 8)
         }
@@ -364,7 +364,7 @@ struct DOMTapView: View {
                             .frame(maxWidth: .infinity, alignment: .leading)
                             .foregroundColor(askColor)
                     }
-                    .font(Theme.font(13, .black)).padding(.vertical, 8).padding(.horizontal, 10)
+                    .font(Theme.marketFont(13, .semibold)).padding(.vertical, 8).padding(.horizontal, 10)
                     .background(RoundedRectangle(cornerRadius: 9).fill(index == player.selectedIndex ? Theme.answer.opacity(0.14) : (isAsk ? askColor : bidColor).opacity(0.06)))
                     .overlay(RoundedRectangle(cornerRadius: 9).strokeBorder(rowColor(index), lineWidth: rowWidth(index)))
                     .contentShape(Rectangle())
@@ -443,10 +443,10 @@ struct BookDepthCompareView: View {
             ForEach(prices.indices, id: \.self) { index in
                 HStack(spacing: 5) {
                     Text(String(format: "%.2f", prices[index]))
-                        .font(Theme.font(9, .bold)).foregroundColor(Theme.muted)
+                        .font(Theme.marketFont(9, .medium)).foregroundColor(Theme.muted)
                     Spacer(minLength: 2)
                     Text(sizes[index] == 0 ? "GAP" : "\(sizes[index])")
-                        .font(Theme.font(10, .black)).foregroundColor(ink)
+                        .font(Theme.marketFont(10, .semibold)).foregroundColor(ink)
                 }
                 .padding(.horizontal, 7).padding(.vertical, 6)
                 .background(RoundedRectangle(cornerRadius: 7).fill(tint.opacity(sizes[index] == 0 ? 0.04 : 0.10 + min(0.35, Double(sizes[index]) / 3000))))
@@ -687,7 +687,7 @@ struct TimeSalesView: View {
                         Text(String(format: "%.2f", print.price)).frame(maxWidth: .infinity)
                         Text("\(print.size)").frame(maxWidth: .infinity, alignment: .trailing)
                     }
-                    .font(Theme.font(13, .bold))
+                    .font(Theme.marketFont(13, .medium))
                     .foregroundColor(print.buyerInitiated ? bidColor : askColor)
                     .padding(.horizontal, 12).padding(.vertical, 7)
                     .background((print.buyerInitiated ? bidColor : askColor).opacity(0.08))
@@ -845,7 +845,7 @@ struct FootprintPanel: View {
 
     private func fpCell(_ v: Int, tint: Color, poc: Bool) -> some View {
         Text(fmtVol(v))
-            .font(Theme.font(12, .black))
+            .font(Theme.marketFont(12, .bold))
             .lineLimit(1).minimumScaleFactor(0.6)
             .foregroundColor(poc ? .black : .white)
             .frame(maxWidth: .infinity, maxHeight: .infinity)
@@ -917,12 +917,12 @@ struct FootprintPanel: View {
                 Text(fmtVol(askTotal)).foregroundColor(bidColor)
                     .frame(maxWidth: .infinity).lineLimit(1).minimumScaleFactor(0.6)
             }
-            .font(Theme.font(15, .black)).padding(.top, 5).padding(.bottom, 6)
+            .font(Theme.marketFont(15, .bold)).padding(.top, 5).padding(.bottom, 6)
 
             // Δ and CVD share one row to keep the panel short under the board.
             HStack(spacing: 8) {
                 Text("Δ " + (delta >= 0 ? "+" : "") + fmtVol(delta))
-                    .font(Theme.font(13, .black))
+                    .font(Theme.marketFont(13, .bold))
                     .foregroundColor(delta >= 0 ? bidColor : askColor)
                     .lineLimit(1).fixedSize()
                 Text("CVD").font(Theme.font(9, .black)).foregroundColor(Theme.muted)
@@ -1254,7 +1254,7 @@ struct VolumeProfileQuestionView: View {
                 ForEach(volumes.indices, id: \.self) { index in
                     HStack(spacing: 8) {
                         Text(String(format: "%.2f", prices[index]))
-                            .font(Theme.font(11, .heavy)).foregroundColor(ink).frame(width: 64, alignment: .leading)
+                            .font(Theme.marketFont(11, .semibold)).foregroundColor(ink).frame(width: 64, alignment: .leading)
                         GeometryReader { proxy in
                             RoundedRectangle(cornerRadius: 5)
                                 .fill(barColor(index))
@@ -2385,7 +2385,7 @@ struct DOMTapePanel: View {
             Text(String(format: "%.2f", lv.price)).frame(width: 62).foregroundColor(.white).lineLimit(1).minimumScaleFactor(0.7)
             Text(lv.askSize.map { "\($0)" } ?? "").frame(maxWidth: .infinity, alignment: .trailing).foregroundColor(askColor)
         }
-        .font(Theme.font(13, .bold)).padding(.horizontal, 8).frame(height: 22)
+        .font(Theme.marketFont(13, .medium)).padding(.horizontal, 8).frame(height: 22)
         .background(
             GeometryReader { g in
                 ZStack(alignment: .leading) {
@@ -2409,7 +2409,7 @@ struct DOMTapePanel: View {
             Text("\(t.size)").frame(maxWidth: .infinity)
             Text(t.buy ? "BUY" : "SELL").frame(maxWidth: .infinity, alignment: .trailing)
         }
-        .font(Theme.font(12, .black)).foregroundColor(t.buy ? bidColor : askColor)
+        .font(Theme.marketFont(12, .bold)).foregroundColor(t.buy ? bidColor : askColor)
         .lineLimit(1).minimumScaleFactor(0.7)
         .padding(.horizontal, 8).padding(.vertical, 3)
         .background(RoundedRectangle(cornerRadius: 5).fill((t.buy ? bidColor : askColor).opacity(0.08)))
