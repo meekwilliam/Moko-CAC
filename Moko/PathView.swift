@@ -397,6 +397,11 @@ struct PathView: View {
         // shared puck's 0.78 height ratio—the shared viewBox is part of the
         // supplied silhouette.
         let buttonHeightRatio: CGFloat = 331.0 / 317.0
+        // The visible face occupies y 4.828...284.484 inside bigbutton.svg's
+        // 331-point artboard, so its optical center sits above the artboard
+        // center. Align every symbol to that face instead of the full 3D puck.
+        let faceCenterY: CGFloat = (4.82798 + 284.484) / 2
+        let iconCenterOffset = (faceCenterY - 331.0 / 2) * (nodeSize / 317.0)
 
         return ZStack {
             if testOutAvailable {
@@ -457,11 +462,15 @@ struct PathView: View {
                         .frame(width: nodeSize, height: nodeSize * buttonHeightRatio)
                         .clipShape(faceSilhouette)
 
-                    if node.isBoss {
-                        bossCrown(locked: visualState == .locked)
-                    } else {
-                        tradingNodeIcon(for: node, state: visualState)
+                    Group {
+                        if node.isBoss {
+                            bossCrown(locked: visualState == .locked)
+                        } else {
+                            tradingNodeIcon(for: node, state: visualState)
+                        }
                     }
+                    .frame(width: 40, height: 40, alignment: .center)
+                    .offset(y: iconCenterOffset)
                 }
                 .frame(width: nodeSize, height: nodeSize)
                 .contentShape(silhouette)
