@@ -21,6 +21,7 @@ struct LessonChartView: View {
     @State private var didInitialScroll = false
     @State private var showsExpandedChart = false
     @State private var expandedChartIsReady = false
+    @Namespace private var chartZoomNamespace
 
     private let compactLayout = LessonChartLayout(
         canvasHeight: 218, plotTop: 38, plotBottom: 148,
@@ -36,22 +37,57 @@ struct LessonChartView: View {
             ZStack(alignment: .top) {
                 ThemedBackground()
 
-                ScrollView(showsIndicators: false) {
-                    VStack(spacing: 18) {
-                        header
-                            .padding(.top, geometry.safeAreaInsets.top + 6)
+                ScrollViewReader { pageProxy in
+                    ScrollView(showsIndicators: false) {
+                        VStack(spacing: 18) {
+                            header
+                                .padding(.top, geometry.safeAreaInsets.top + 6)
 
-                        courseSummary
-                        compactLessonMarket
-                        Color.clear.frame(height: 86)
+                            courseSummary
+
+                            Group {
+                                if showsExpandedChart {
+                                    expandedLessonMarket
+                                } else {
+                                    compactLessonMarket
+                                }
+                            }
+                            .id("lesson-market")
+
+                            if showsExpandedChart,
+                               let selectedNode,
+                               let node = store.nodes.first(where: { $0.num == selectedNode }) {
+                                unavailableLessonCard(node)
+                                    .transition(.move(edge: .bottom).combined(with: .opacity))
+                            }
+
+                            if showsExpandedChart {
+                                chartLegend
+                                    .transition(.opacity)
+                                Text("Swipe left or right to move through the course. The lesson you are on starts as the third candle.")
+                                    .font(Theme.bodyFont(12))
+                                    .foregroundColor(theme.palette.muted)
+                                    .multilineTextAlignment(.center)
+                                    .padding(.horizontal, 16)
+                                    .transition(.opacity)
+                            }
+
+                            Color.clear.frame(height: 86)
+                        }
+                        .padding(.horizontal, 16)
                     }
-                    .padding(.horizontal, 16)
+                    .onChange(of: showsExpandedChart) { _, expanded in
+                        guard expanded else { return }
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.08) {
+                            withAnimation(.spring(response: 0.5, dampingFraction: 0.86)) {
+                                pageProxy.scrollTo("lesson-market", anchor: .top)
+                            }
+                        }
+                    }
                 }
             }
         }
-        .fullScreenCover(isPresented: $showsExpandedChart) {
-            expandedChartScreen
-        }
+        .animation(.spring(response: 0.5, dampingFraction: 0.86), value: showsExpandedChart)
     }
 
     // MARK: Header
@@ -253,13 +289,16 @@ struct LessonChartView: View {
         }
         .padding(14)
         .background(chartCardBackground)
+        .matchedGeometryEffect(id: "lesson-market-card", in: chartZoomNamespace)
         .contentShape(RoundedRectangle(cornerRadius: 18, style: .continuous))
         .onTapGesture {
             Haptics.selection()
             selectedNode = nil
             didInitialScroll = false
             expandedChartIsReady = false
-            showsExpandedChart = true
+            withAnimation(.spring(response: 0.5, dampingFraction: 0.86)) {
+                showsExpandedChart = true
+            }
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.45) {
                 if showsExpandedChart { expandedChartIsReady = true }
             }
@@ -268,73 +307,6 @@ struct LessonChartView: View {
         .accessibilityLabel("Course lesson chart")
         .accessibilityHint("Opens the enlarged five-candle lesson chart.")
         .accessibilityAddTraits(.isButton)
-    }
-
-    private var expandedChartScreen: some View {
-        GeometryReader { geometry in
-            ZStack(alignment: .top) {
-                ThemedBackground()
-
-                ScrollView(showsIndicators: false) {
-                    VStack(spacing: 16) {
-                        HStack(spacing: 12) {
-                            Button {
-                                Haptics.selection()
-                                expandedChartIsReady = false
-                                showsExpandedChart = false
-                            } label: {
-                                Image(systemName: "xmark")
-                                    .font(.system(size: 15, weight: .black))
-                                    .foregroundColor(theme.palette.ink)
-                                    .frame(width: 42, height: 42)
-                                    .background(
-                                        RoundedRectangle(cornerRadius: 13, style: .continuous)
-                                            .fill(Theme.surface)
-                                            .overlay(
-                                                RoundedRectangle(cornerRadius: 13, style: .continuous)
-                                                    .strokeBorder(Theme.surfaceBorder, lineWidth: 1)
-                                            )
-                                    )
-                            }
-                            .buttonStyle(RowPressStyle())
-
-                            VStack(alignment: .leading, spacing: 2) {
-                                Text("LESSON CHART")
-                                    .font(Theme.font(11, .heavy))
-                                    .tracking(1.3)
-                                    .foregroundColor(Color(hex: "#38BDF8"))
-                                Text("Choose a candle")
-                                    .font(Theme.font(20, .black))
-                                    .foregroundColor(theme.palette.ink)
-                            }
-                            Spacer()
-                            Text("\(store.completed.count)/\(store.totalNodes)")
-                                .font(Theme.font(16, .black))
-                                .foregroundColor(theme.palette.ink)
-                                .monospacedDigit()
-                        }
-
-                        expandedLessonMarket
-
-                        if let selectedNode,
-                           let node = store.nodes.first(where: { $0.num == selectedNode }) {
-                            unavailableLessonCard(node)
-                                .transition(.move(edge: .bottom).combined(with: .opacity))
-                        }
-
-                        chartLegend
-                        Text("Swipe left or right to move through the course. The lesson you are on opens centered as the third candle.")
-                            .font(Theme.bodyFont(12))
-                            .foregroundColor(theme.palette.muted)
-                            .multilineTextAlignment(.center)
-                            .padding(.horizontal, 16)
-                        Color.clear.frame(height: geometry.safeAreaInsets.bottom + 12)
-                    }
-                    .padding(.top, geometry.safeAreaInsets.top + 8)
-                    .padding(.horizontal, 16)
-                }
-            }
-        }
     }
 
     private var expandedLessonMarket: some View {
@@ -353,12 +325,29 @@ struct LessonChartView: View {
                         .foregroundColor(theme.palette.muted)
                 }
                 Spacer()
-                HStack(spacing: 5) {
-                    Circle().fill(Color(hex: "#22C55E")).frame(width: 7, height: 7)
-                    Text("LIVE")
-                        .font(Theme.font(10, .heavy))
-                        .tracking(1)
-                        .foregroundColor(Color(hex: "#22C55E"))
+                HStack(spacing: 10) {
+                    HStack(spacing: 5) {
+                        Circle().fill(Color(hex: "#22C55E")).frame(width: 7, height: 7)
+                        Text("LIVE")
+                            .font(Theme.font(10, .heavy))
+                            .tracking(1)
+                            .foregroundColor(Color(hex: "#22C55E"))
+                    }
+                    Button {
+                        Haptics.selection()
+                        expandedChartIsReady = false
+                        selectedNode = nil
+                        withAnimation(.spring(response: 0.5, dampingFraction: 0.86)) {
+                            showsExpandedChart = false
+                        }
+                    } label: {
+                        Image(systemName: "arrow.down.right.and.arrow.up.left")
+                            .font(.system(size: 14, weight: .bold))
+                            .foregroundColor(Color(hex: "#38BDF8"))
+                            .frame(width: 34, height: 34)
+                            .background(Circle().fill(Color(hex: "#38BDF8").opacity(0.12)))
+                    }
+                    .buttonStyle(RowPressStyle())
                 }
             }
 
@@ -399,6 +388,7 @@ struct LessonChartView: View {
         }
         .padding(14)
         .background(chartCardBackground)
+        .matchedGeometryEffect(id: "lesson-market-card", in: chartZoomNamespace)
     }
 
     private func chartCanvas(
