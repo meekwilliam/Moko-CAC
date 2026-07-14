@@ -2,25 +2,47 @@ import SwiftUI
 import Combine
 
 // MARK: - Mascot speech-bubble prompt
-// Renders the Candlewick mascot beside a speech bubble holding the question.
+// Renders Candie beside a speech bubble holding the question.
+
+enum MascotExpression: Equatable {
+    case neutral
+    case correct
+    case incorrect
+}
 
 struct MascotIcon: View {
     // The pupils (iris + highlight) are split into their own layer so they can
     // be offset independently — the eyes randomly dart around while the rest of
     // the face stays put. NOTE: if the mascot art is swapped, re-split the new
     // pupil paths here (there's no generic "find the eyes" for arbitrary SVGs).
-    @State private var eye: CGSize = .zero
+    let expression: MascotExpression
+    @State private var eyeOffset: CGSize = .zero
     private let lookTimer = Timer.publish(every: 1.7, on: .main, in: .common).autoconnect()
 
     var body: some View {
         ZStack {
             SVGIconView(svg: Self.base)
             SVGIconView(svg: Self.pupils)
-                .offset(eye)
+                .offset(eyeOffset)
+            SVGIconView(svg: Self.smile)
+                .opacity(expression == .correct ? 1 : 0)
+                .scaleEffect(expression == .correct ? 1 : 0.82, anchor: .center)
         }
         .onReceive(lookTimer) { _ in
-            withAnimation(.easeInOut(duration: 0.32)) { eye = Self.randomLook() }
+            guard expression == .neutral else { return }
+            withAnimation(.easeInOut(duration: 0.32)) {
+                eyeOffset = Self.randomLook()
+            }
         }
+        .onAppear {
+            eyeOffset = Self.eyeTarget(for: expression)
+        }
+        .onChange(of: expression) { _, newExpression in
+            withAnimation(.spring(response: 0.34, dampingFraction: 0.78)) {
+                eyeOffset = Self.eyeTarget(for: newExpression)
+            }
+        }
+        .animation(.spring(response: 0.32, dampingFraction: 0.72), value: expression)
     }
 
     // Small offset in points; kept inside the eye whites. ~1-in-4 recenters.
@@ -29,51 +51,49 @@ struct MascotIcon: View {
         return CGSize(width: .random(in: -2.5...2.5), height: .random(in: -1...1))
     }
 
-    // Candlewick mascot. The source SVG's artboard background is omitted and
-    // group styles are flattened because SVGParser intentionally stays small.
-    // Pupils and their highlights live in the separate animated layer below.
+    private static func eyeTarget(for expression: MascotExpression) -> CGSize {
+        switch expression {
+        case .neutral:
+            return .zero
+        case .correct:
+            return CGSize(width: 0, height: -0.5)
+        case .incorrect:
+            // The question bubble is to Candie's right, so looking down-left
+            // makes the wrong-answer reaction read as looking away.
+            return CGSize(width: -3, height: 1.5)
+        }
+    }
+
+    // Candie mascot. The source SVG's artboard background is omitted. Pupils
+    // and the smile live in separate layers so answer feedback can animate them.
     private static let base = SVGParser.parse("""
-    <svg viewBox="30 30 340 390" fill="none">
-    <rect x="202" y="52" width="16" height="70" rx="8" fill="#0F6B3D" stroke="#0F6B3D" stroke-width="13" stroke-linejoin="round" stroke-linecap="round"/>
-    <rect x="202" y="295" width="16" height="57" rx="8" fill="#0F6B3D" stroke="#0F6B3D" stroke-width="13" stroke-linejoin="round" stroke-linecap="round"/>
-    <rect x="164" y="295" width="32" height="82" rx="16" fill="#0F6B3D" stroke="#0F6B3D" stroke-width="13"/>
-    <rect x="224" y="295" width="32" height="82" rx="16" fill="#0F6B3D" stroke="#0F6B3D" stroke-width="13"/>
-    <path d="M 154 386 Q 154 372 180 372 Q 206 372 206 386 Q 206 402 180 402 Q 154 402 154 386 Z" fill="#0F6B3D" stroke="#0F6B3D" stroke-width="13" stroke-linejoin="round"/>
-    <path d="M 214 386 Q 214 372 240 372 Q 266 372 266 386 Q 266 402 240 402 Q 214 402 214 386 Z" fill="#0F6B3D" stroke="#0F6B3D" stroke-width="13" stroke-linejoin="round"/>
-    <path d="M 150 195 C 105 185 88 152 86 112" fill="none" stroke="#0F6B3D" stroke-width="40" stroke-linecap="round"/>
-    <circle cx="86" cy="106" r="20" fill="#0F6B3D" stroke="#0F6B3D" stroke-width="13"/>
-    <path d="M 270 192 L 334 218 L 296 260" fill="none" stroke="#0F6B3D" stroke-width="40" stroke-linejoin="round" stroke-linecap="round"/>
-    <circle cx="294" cy="262" r="20" fill="#0F6B3D" stroke="#0F6B3D" stroke-width="13"/>
-    <rect x="130" y="110" width="160" height="200" rx="26" fill="#0F6B3D" stroke="#0F6B3D" stroke-width="13" stroke-linejoin="round"/>
-    <rect x="164" y="295" width="32" height="82" rx="16" fill="#34A862"/>
-    <rect x="224" y="295" width="32" height="82" rx="16" fill="#34A862"/>
-    <path d="M 150 195 C 105 185 88 152 86 112" fill="none" stroke="#34A862" stroke-width="32" stroke-linecap="round"/>
-    <circle cx="86" cy="106" r="18" fill="#34A862"/>
-    <path d="M 270 192 L 334 218 L 296 260" fill="none" stroke="#34A862" stroke-width="32" stroke-linejoin="round" stroke-linecap="round"/>
-    <circle cx="294" cy="262" r="18" fill="#34A862"/>
-    <rect x="130" y="110" width="160" height="200" rx="26" fill="#34A862"/>
-    <path d="M 154 386 Q 154 372 180 372 Q 206 372 206 386 Q 206 402 180 402 Q 154 402 154 386 Z" fill="#1F8A4E"/>
-    <path d="M 214 386 Q 214 372 240 372 Q 266 372 266 386 Q 266 402 240 402 Q 214 402 214 386 Z" fill="#1F8A4E"/>
-    <rect x="204" y="300" width="12" height="48" rx="6" fill="#0F6B3D"/>
-    <ellipse cx="192" cy="262" rx="54" ry="36" fill="#4CBD7780"/>
-    <rect x="146" y="126" width="26" height="60" rx="13" fill="#FFFFFF40" transform="rotate(8 159 156)"/>
-    <path d="M 160 158 Q 176 148 192 154" stroke="#0F6B3D" stroke-width="9" stroke-linecap="round" fill="none"/>
-    <path d="M 228 154 Q 244 148 260 158" stroke="#0F6B3D" stroke-width="9" stroke-linecap="round" fill="none"/>
-    <ellipse cx="180" cy="192" rx="22" ry="25" fill="white"/>
-    <ellipse cx="240" cy="192" rx="22" ry="25" fill="white"/>
-    <ellipse cx="153" cy="224" rx="11" ry="7" fill="#F4A9A0CC"/>
-    <ellipse cx="267" cy="224" rx="11" ry="7" fill="#F4A9A0CC"/>
-    <path d="M 180 232 Q 210 266 240 232 Q 238 280 210 280 Q 182 280 180 232 Z" fill="#1C4A30"/>
-    <path d="M 194 258 Q 210 274 226 258 Q 222 274 210 274 Q 198 274 194 258 Z" fill="#E0766A"/>
+    <svg viewBox="65 10 230 270" fill="none">
+    <path d="M188 30C188 25.5817 184.418 22 180 22C175.582 22 172 25.5817 172 30V84C172 88.4183 175.582 92 180 92C184.418 92 188 88.4183 188 84V30Z" fill="#0F6B3D" stroke="#0F6B3D" stroke-width="13" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M234 80H126C111.641 80 100 91.6406 100 106V254C100 268.359 111.641 280 126 280H234C248.359 280 260 268.359 260 254V106C260 91.6406 248.359 80 234 80Z" fill="#0F6B3D" stroke="#0F6B3D" stroke-width="13" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M234 80H126C111.641 80 100 91.6406 100 106V254C100 268.359 111.641 280 126 280H234C248.359 280 260 268.359 260 254V106C260 91.6406 248.359 80 234 80Z" fill="#34A862"/>
+    <path d="M144.239 110.975C145.239 103.865 140.285 97.2912 133.175 96.292C126.065 95.2928 119.492 100.246 118.492 107.356L113.761 141.025C112.761 148.135 117.715 154.709 124.825 155.708C131.935 156.707 138.508 151.754 139.508 144.644L144.239 110.975Z" fill="#FFFFFF40"/>
+    <path d="M130 128C140.667 121.333 151.333 120 162 124" stroke="#0F6B3D" stroke-width="9" stroke-linecap="round"/>
+    <path d="M198 124C208.667 120 219.333 121.333 230 128" stroke="#0F6B3D" stroke-width="9" stroke-linecap="round"/>
+    <path d="M150 187C162.15 187 172 175.807 172 162C172 148.193 162.15 137 150 137C137.85 137 128 148.193 128 162C128 175.807 137.85 187 150 187Z" fill="white"/>
+    <path d="M210 187C222.15 187 232 175.807 232 162C232 148.193 222.15 137 210 137C197.85 137 188 148.193 188 162C188 175.807 197.85 187 210 187Z" fill="white"/>
+    <path d="M123 201C129.075 201 134 197.866 134 194C134 190.134 129.075 187 123 187C116.925 187 112 190.134 112 194C112 197.866 116.925 201 123 201Z" fill="#F4A9A0CC"/>
+    <path d="M237 201C243.075 201 248 197.866 248 194C248 190.134 243.075 187 237 187C230.925 187 226 190.134 226 194C226 197.866 230.925 201 237 201Z" fill="#F4A9A0CC"/>
     </svg>
     """)
 
     private static let pupils = SVGParser.parse("""
-    <svg viewBox="30 30 340 390" fill="none">
-    <ellipse cx="185" cy="196" rx="11" ry="13" fill="#1F2E33"/>
-    <ellipse cx="235" cy="196" rx="11" ry="13" fill="#1F2E33"/>
-    <circle cx="189" cy="190" r="4" fill="white"/>
-    <circle cx="239" cy="190" r="4" fill="white"/>
+    <svg viewBox="65 10 230 270" fill="none">
+    <path d="M155 179C161.075 179 166 173.18 166 166C166 158.82 161.075 153 155 153C148.925 153 144 158.82 144 166C144 173.18 148.925 179 155 179Z" fill="#1F2E33"/>
+    <path d="M205 179C211.075 179 216 173.18 216 166C216 158.82 211.075 153 205 153C198.925 153 194 158.82 194 166C194 173.18 198.925 179 205 179Z" fill="#1F2E33"/>
+    <path d="M159 164C161.209 164 163 162.209 163 160C163 157.791 161.209 156 159 156C156.791 156 155 157.791 155 160C155 162.209 156.791 164 159 164Z" fill="white"/>
+    <path d="M209 164C211.209 164 213 162.209 213 160C213 157.791 211.209 156 209 156C206.791 156 205 157.791 205 160C205 162.209 206.791 164 209 164Z" fill="white"/>
+    </svg>
+    """)
+
+    private static let smile = SVGParser.parse("""
+    <svg viewBox="65 10 230 270" fill="none">
+    <path d="M150 202C170 224.667 190 224.667 210 202C208.667 234 198.667 250 180 250C161.333 250 151.333 234 150 202Z" fill="#1C4A30"/>
+    <path d="M164 228C174.667 238.667 185.333 238.667 196 228C193.333 238.667 188 244 180 244C172 244 166.667 238.667 164 228Z" fill="#E0766A"/>
     </svg>
     """)
 }
@@ -82,6 +102,7 @@ struct MascotIcon: View {
 /// sits behind whatever follows (answer buttons / chart / etc). Used as the
 /// prompt for every question mechanic.
 struct MascotPrompt: View {
+    @ObservedObject var player: LessonPlayer
     let text: String
     var ink: Color
     // Choice questions (MC/TF/…) leave this false: the mascot tucks behind the
@@ -107,8 +128,8 @@ struct MascotPrompt: View {
         let line = scheme == .dark ? Theme.surfaceBorder : Color(hex: "#CBD5E1")
 
         let row = HStack(alignment: .center, spacing: 16) {
-            // Preserve Candlewick's 340×390 viewBox aspect ratio.
-            MascotIcon()
+            // Crop the source artboard's empty lower space so Candie fills the prompt.
+            MascotIcon(expression: expression)
                 .frame(width: 102, height: 117)
             Text(RichText.attributed(text,
                                      base: Theme.questionFont(fontSize, .heavy),
@@ -144,6 +165,11 @@ struct MascotPrompt: View {
                 row.padding(.bottom, -48).zIndex(-1)
             }
         }
+    }
+
+    private var expression: MascotExpression {
+        guard player.revealed else { return .neutral }
+        return player.lastCorrect ? .correct : .incorrect
     }
 }
 
@@ -324,7 +350,7 @@ struct TapCandleView: View {
 
     var body: some View {
         VStack(alignment: .leading, spacing: 16) {
-            MascotPrompt(text: s.question ?? "Tap the candle.", ink: ink, divider: true)
+            MascotPrompt(player: player, text: s.question ?? "Tap the candle.", ink: ink, divider: true)
 
             if let sc = scenario {
                 let m = sc.model(seed: chartSeed(s))
@@ -377,7 +403,7 @@ struct TapCandlesView: View {
 
     var body: some View {
         VStack(alignment: .leading, spacing: 16) {
-            MascotPrompt(text: s.question ?? "Tap the candles.", ink: ink, divider: true)
+            MascotPrompt(player: player, text: s.question ?? "Tap the candles.", ink: ink, divider: true)
 
             if let sc = scenario {
                 let m = sc.model(seed: chartSeed(s))
@@ -428,7 +454,7 @@ struct MarkLevelView: View {
 
     var body: some View {
         VStack(alignment: .leading, spacing: 16) {
-            MascotPrompt(text: s.question ?? "Drag the line to the level.", ink: ink, divider: true)
+            MascotPrompt(player: player, text: s.question ?? "Drag the line to the level.", ink: ink, divider: true)
 
             if let sc = scenario {
                 let m = sc.model(seed: chartSeed(s))
@@ -525,7 +551,7 @@ struct TrendlineView: View {
 
     var body: some View {
         VStack(alignment: .leading, spacing: 16) {
-            MascotPrompt(text: s.question ?? "Drag to connect the two points on the chart.", ink: ink, divider: true)
+            MascotPrompt(player: player, text: s.question ?? "Drag to connect the two points on the chart.", ink: ink, divider: true)
 
             if let sc = scenario {
                 let m = sc.model(seed: chartSeed(s))
@@ -632,7 +658,7 @@ struct ConsolidationView: View {
 
     var body: some View {
         VStack(alignment: .leading, spacing: 16) {
-            MascotPrompt(text: s.question ?? "Drag across the consolidation area.", ink: ink, divider: true)
+            MascotPrompt(player: player, text: s.question ?? "Drag across the consolidation area.", ink: ink, divider: true)
 
             if let sc = scenario {
                 let m = sc.model(seed: chartSeed(s))
@@ -740,7 +766,7 @@ struct OHLCLabelView: View {
 
     var body: some View {
         VStack(alignment: .leading, spacing: 18) {
-            MascotPrompt(text: s.question ?? "Drag each label onto the matching part of the candle.", ink: ink, divider: true)
+            MascotPrompt(player: player, text: s.question ?? "Drag each label onto the matching part of the candle.", ink: ink, divider: true)
 
             candleArea
             tray
@@ -912,7 +938,7 @@ struct NumberSliderView: View {
 
     var body: some View {
         VStack(alignment: .leading, spacing: 18) {
-            MascotPrompt(text: s.question ?? "Drag the slider to the correct value.", ink: ink, divider: true)
+            MascotPrompt(player: player, text: s.question ?? "Drag the slider to the correct value.", ink: ink, divider: true)
 
             VStack(spacing: 14) {
                 let value = player.numberValue ?? (lo + hi) / 2
@@ -1251,7 +1277,7 @@ struct ChoiceView: View {
             if s.chart != nil || s.type == "live_chart" {
                 plainPrompt
             } else {
-                MascotPrompt(text: displayQuestion(), ink: ink, divider: true)
+                MascotPrompt(player: player, text: displayQuestion(), ink: ink, divider: true)
             }
 
             VStack(spacing: 14) {
@@ -1362,7 +1388,7 @@ struct MatchingView: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 18) {
             QuestionChart(key: player.screen.chart, height: 130, seed: chartSeed(player.screen))
-            MascotPrompt(text: question.isEmpty ? "Match the pairs:" : question, ink: ink, divider: true)
+            MascotPrompt(player: player, text: question.isEmpty ? "Match the pairs:" : question, ink: ink, divider: true)
 
             HStack(alignment: .top, spacing: 12) {
                 VStack(spacing: 12) {
@@ -1845,7 +1871,7 @@ struct IngredientMatchView: View {
         VStack(alignment: .leading, spacing: 18) {
             QuestionChart(key: s.chart, height: 130, seed: chartSeed(player.screen))
 
-            MascotPrompt(text: s.question ?? "", ink: ink, divider: true)
+            MascotPrompt(player: player, text: s.question ?? "", ink: ink, divider: true)
                 .frame(maxWidth: .infinity, alignment: .leading)
 
             VStack(spacing: 14) {
@@ -1926,7 +1952,7 @@ struct OrderBuilderView: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 18) {
             QuestionChart(key: player.screen.chart, height: 130, seed: chartSeed(player.screen))
-            MascotPrompt(text: question, ink: ink, divider: true)
+            MascotPrompt(player: player, text: question, ink: ink, divider: true)
 
             // Built sequence
             VStack(spacing: 10) {
