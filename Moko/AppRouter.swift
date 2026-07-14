@@ -234,37 +234,37 @@ struct AppRouterView: View {
 }
 
 // MARK: - Launch / loading screen
-// Data-led brand splash. The market mark replaces the retired character logo.
+// Simple branded splash: the app icon on the app's dark background, gently
+// breathing while the path loads. Auto-dismisses after a short beat.
 
 struct SplashView: View {
     @EnvironmentObject var theme: ThemeManager
-    @State private var revealed = false
+    @State private var breathe = false
 
     var body: some View {
         ZStack {
-            ThemedBackground()
-            VStack(spacing: Theme.Space.lg) {
-                MarketMark(size: 92)
-                    .opacity(revealed ? 1 : 0)
-                    .scaleEffect(revealed ? 1 : 0.94)
+            theme.palette.base.ignoresSafeArea()
+            VStack(spacing: 22) {
+                Image("AppLogo")
+                    .resizable()
+                    .aspectRatio(contentMode: .fill)
+                    .frame(width: 112, height: 112)
+                    .clipShape(RoundedRectangle(cornerRadius: 26, style: .continuous))
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 26, style: .continuous)
+                            .strokeBorder(Color.white.opacity(0.08), lineWidth: 1)
+                    )
+                    .shadow(color: .black.opacity(0.4), radius: 18, y: 10)
+                    .scaleEffect(breathe ? 1.04 : 0.96)
 
-                VStack(spacing: 7) {
-                    Text("MOKO")
-                        .font(Theme.font(30, .black))
-                        .tracking(4)
-                        .foregroundColor(theme.palette.ink)
-                    Text("INTERACTIVE MARKET TRAINING")
-                        .font(Theme.font(9, .black))
-                        .tracking(2)
-                        .foregroundColor(Theme.mastery)
-                }
-                .opacity(revealed ? 1 : 0)
-                .offset(y: revealed ? 0 : 6)
+                Text("Moko")
+                    .font(Theme.font(26, .black))
+                    .foregroundColor(theme.palette.ink)
             }
         }
         .onAppear {
-            withAnimation(.easeOut(duration: 0.42)) {
-                revealed = true
+            withAnimation(.easeInOut(duration: 1.0).repeatForever(autoreverses: true)) {
+                breathe = true
             }
         }
     }

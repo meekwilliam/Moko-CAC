@@ -32,7 +32,6 @@ struct ProfileView: View {
             ScrollView(showsIndicators: false) {
                 VStack(alignment: .leading, spacing: 26) {
                     headerSection
-                    achievementSection
                     preferencesSection
                     Color.clear.frame(height: showsHomeButton ? 110 : 140)
                 }
@@ -43,89 +42,73 @@ struct ProfileView: View {
         }
     }
 
-    // MARK: Identity + performance stats
+    // MARK: Header + bento stats
 
     private var headerSection: some View {
         VStack(alignment: .leading, spacing: 18) {
             HStack(spacing: 14) {
-                MarketMark(size: 58)
+                ZStack {
+                    Circle().fill(Color(hex: "#0369a1")).frame(width: 62, height: 62).offset(y: 4)
+                    Circle().fill(Color(hex: "#38bdf8")).frame(width: 62, height: 62)
+                        .overlay(Circle().strokeBorder(Color(hex: "#0284c7"), lineWidth: 2))
+                    Image(systemName: "person.fill").font(.system(size: 28)).foregroundColor(.white)
+                }
                 VStack(alignment: .leading, spacing: 3) {
-                    Text(store.userName).font(Theme.font(21, .bold)).foregroundColor(theme.palette.ink)
-                    Text("MARKET READER // TRAINING PROFILE")
-                        .font(Theme.font(9, .black)).tracking(1.1).foregroundColor(Theme.mastery)
+                    Text(store.userName).font(Theme.font(21, .black)).foregroundColor(theme.palette.ink)
+                    Text("Order Flow Learner").font(Theme.font(14, .bold)).foregroundColor(muted)
                 }
             }
 
-            HStack(spacing: Theme.Space.sm) {
-                performanceStat(value: store.xp, label: "TOTAL XP", symbol: "bolt.fill", accent: Theme.progress)
-                performanceStat(value: store.lessons, label: "MODULES", symbol: "square.stack.3d.up.fill", accent: Theme.mastery)
-                performanceStat(value: store.streak, label: "CONTINUITY", symbol: "calendar.badge.checkmark", accent: Theme.expert)
+            // Streak hero
+            statCard(fill: "#FF9F1C", border: "#E07B00", slab: "#C2640A", radius: 22) {
+                HStack(spacing: 18) {
+                    Image(systemName: "flame.fill").font(.system(size: 26)).foregroundColor(.white)
+                        .frame(width: 54, height: 54)
+                        .background(RoundedRectangle(cornerRadius: 16, style: .continuous)
+                            .fill(Color.white.opacity(0.22))
+                            .overlay(RoundedRectangle(cornerRadius: 16, style: .continuous)
+                                .strokeBorder(Color.white.opacity(0.30), lineWidth: 2)))
+                    VStack(alignment: .leading, spacing: 2) {
+                        Text("\(store.streak)").font(Theme.font(34, .black)).foregroundColor(.white)
+                        Text("DAY STREAK").font(Theme.font(12, .black)).tracking(1)
+                            .foregroundColor(Color.white.opacity(0.92))
+                    }
+                    Spacer()
+                }
+            }
+
+            // XP + Lessons
+            HStack(spacing: 12) {
+                statCard(fill: "#FFC83D", border: "#E0A410", slab: "#C2850A", radius: 20) {
+                    smallStat(value: store.xp, label: "TOTAL XP")
+                }
+                statCard(fill: "#14B8A6", border: "#0E9485", slab: "#0B6F65", radius: 20) {
+                    smallStat(value: store.lessons, label: "LESSONS")
+                }
             }
         }
     }
 
-    private func performanceStat(value: Int, label: String, symbol: String, accent: Color) -> some View {
-        VStack(alignment: .leading, spacing: Theme.Space.xs) {
-            Image(systemName: symbol)
-                .font(.system(size: 13, weight: .semibold))
-                .foregroundColor(accent)
-            Text("\(value)").font(Theme.marketFont(24, .bold)).foregroundColor(theme.palette.ink)
-            Text(label).font(Theme.font(8, .black)).tracking(0.8).foregroundColor(muted)
+    private func smallStat(value: Int, label: String) -> some View {
+        VStack(alignment: .leading, spacing: 4) {
+            Text("\(value)").font(Theme.font(34, .black)).foregroundColor(.white)
+            Text(label).font(Theme.font(11, .black)).tracking(0.9).foregroundColor(.white)
+            Spacer(minLength: 0)
         }
-        .padding(Theme.Space.sm)
         .frame(maxWidth: .infinity, alignment: .leading)
-        .background(
-            RoundedRectangle(cornerRadius: Theme.Radius.card, style: .continuous)
-                .fill(cardBg)
-                .overlay(RoundedRectangle(cornerRadius: Theme.Radius.card).strokeBorder(cardBorder, lineWidth: 1))
-        )
     }
 
-    // MARK: Achievement objects
-
-    private var achievementSection: some View {
-        VStack(alignment: .leading, spacing: Theme.Space.sm) {
-            Text("MASTERY OBJECTS").font(Theme.font(11, .black)).tracking(1.3).foregroundColor(theme.palette.ink)
-            if store.badges.isEmpty {
-                HStack(spacing: Theme.Space.md) {
-                    AchievementObject(accent: Theme.mastery, symbol: "waveform.path.ecg", unlocked: false)
-                    VStack(alignment: .leading, spacing: 4) {
-                        Text("Your collection starts here")
-                            .font(Theme.font(14, .bold)).foregroundColor(theme.palette.ink)
-                        Text("Clear synthesis drills and placement challenges to forge mastery objects.")
-                            .font(Theme.bodyFont(13)).foregroundColor(muted)
-                            .fixedSize(horizontal: false, vertical: true)
-                    }
-                }
-                .padding(Theme.Space.md)
-                .background(RoundedRectangle(cornerRadius: Theme.Radius.card).fill(cardBg)
-                    .overlay(RoundedRectangle(cornerRadius: Theme.Radius.card).strokeBorder(cardBorder, lineWidth: 1)))
-            } else {
-                ScrollView(.horizontal, showsIndicators: false) {
-                    HStack(spacing: Theme.Space.sm) {
-                        ForEach(store.badges) { badge in
-                            VStack(spacing: 8) {
-                                AchievementObject(accent: Color(hex: badge.color), symbol: badgeSymbol(badge.icon), unlocked: badge.unlocked)
-                                Text(badge.name.uppercased())
-                                    .font(Theme.font(8, .black)).tracking(0.6)
-                                    .foregroundColor(badge.unlocked ? theme.palette.ink : muted)
-                                    .lineLimit(1)
-                            }
-                            .frame(width: 94)
-                        }
-                    }
-                }
-            }
-        }
-    }
-
-    private func badgeSymbol(_ source: String) -> String {
-        let value = source.lowercased()
-        if value.contains("book") { return "rectangle.split.3x1" }
-        if value.contains("tape") { return "list.number" }
-        if value.contains("chart") { return "chart.xyaxis.line" }
-        if value.contains("crown") { return "scope" }
-        return "waveform.path.ecg"
+    private func statCard<Content: View>(fill: String, border: String, slab: String, radius: CGFloat,
+                                          @ViewBuilder _ content: () -> Content) -> some View {
+        content()
+            .padding(.vertical, 18).padding(.horizontal, 20)
+            .frame(maxWidth: .infinity, alignment: .leading)
+            .background(
+                RoundedRectangle(cornerRadius: radius, style: .continuous).fill(Color(hex: fill))
+                    .overlay(RoundedRectangle(cornerRadius: radius, style: .continuous)
+                        .strokeBorder(Color(hex: border), lineWidth: 2))
+            )
+            .background(RoundedRectangle(cornerRadius: radius, style: .continuous).fill(Color(hex: slab)).offset(y: 4))
     }
 
     // MARK: Preferences
@@ -141,7 +124,7 @@ struct ProfileView: View {
                         get: { store.reminderOn },
                         set: { store.reminderOn = $0; Haptics.selection(); onToggleReminders($0) }))
                         .labelsHidden()
-                        .tint(Theme.mastery)
+                        .tint(Color(hex: "#34C759"))
                 }
                 prefButton(iconSystem: "shield.fill", iconColor: Color(hex: "#38bdf8"),
                            iconBg: Color(hex: "#38bdf8").opacity(0.12), label: "Privacy Policy") {
@@ -151,12 +134,12 @@ struct ProfileView: View {
                            iconBg: Color.white.opacity(0.20), label: "Terms & Legal Disclaimer") {
                     onOpenLegal("terms")
                 }
-                prefButton(iconSystem: "lock.open.fill", iconColor: Theme.mastery,
-                           iconBg: Theme.mastery.opacity(0.12), label: "Unlock All Lessons (Test)") {
+                prefButton(iconSystem: "lock.open.fill", iconColor: Color(hex: "#34C759"),
+                           iconBg: Color(hex: "#34C759").opacity(0.12), label: "Unlock All Lessons (Test)") {
                     onUnlockAll()
                 }
-                prefButton(iconSystem: "diamond.fill", iconColor: Theme.warning,
-                           iconBg: Theme.warning.opacity(0.12), label: "Give Unlimited Credits (Test)") {
+                prefButton(iconSystem: "bone.fill", iconColor: Color(hex: "#F59E0B"),
+                           iconBg: Color(hex: "#F59E0B").opacity(0.12), label: "Give Unlimited Bones (Test)") {
                     onGrantTestTreats()
                 }
                 prefButton(iconSystem: "hammer.fill", iconColor: Color(hex: "#8B5CF6"),
@@ -167,12 +150,12 @@ struct ProfileView: View {
                            iconBg: Color(hex: "#A855F7").opacity(0.12), label: "Test Multi Signal Read") {
                     onTestMultiSignal()
                 }
-                prefButton(iconSystem: "calendar.badge.checkmark", iconColor: Theme.expert,
-                           iconBg: Theme.expert.opacity(0.12), label: "Preview Continuity Screen (Test)") {
+                prefButton(iconSystem: "flame.fill", iconColor: Color(hex: "#F59E0B"),
+                           iconBg: Color(hex: "#F59E0B").opacity(0.12), label: "Preview Streak Screen (Test)") {
                     onPreviewStreak()
                 }
-                prefButton(iconSystem: "plus.circle.fill", iconColor: Theme.expert,
-                           iconBg: Theme.expert.opacity(0.12), label: "Bump Continuity +1 (Test)") {
+                prefButton(iconSystem: "plus.circle.fill", iconColor: Color(hex: "#F59E0B"),
+                           iconBg: Color(hex: "#F59E0B").opacity(0.12), label: "Bump Streak +1 & Play Animation (Test)") {
                     onBumpStreak()
                 }
                 prefButton(iconSystem: "flag.fill", iconColor: Color(hex: "#38bdf8"),
@@ -248,33 +231,6 @@ struct ProfileView: View {
         }
         .buttonStyle(SinkButtonStyle(depth: 5))
         .ignoresSafeArea(edges: .bottom)
-    }
-}
-
-private struct AchievementObject: View {
-    let accent: Color
-    let symbol: String
-    let unlocked: Bool
-
-    var body: some View {
-        ZStack {
-            RoundedRectangle(cornerRadius: 18, style: .continuous)
-                .fill(unlocked ? accent.opacity(0.12) : Theme.surface)
-                .frame(width: 70, height: 70)
-                .rotationEffect(.degrees(45))
-                .overlay(
-                    RoundedRectangle(cornerRadius: 18)
-                        .strokeBorder(unlocked ? accent.opacity(0.5) : Theme.surfaceBorder, lineWidth: 1)
-                        .rotationEffect(.degrees(45))
-                )
-            Image(systemName: unlocked ? symbol : "lock.fill")
-                .font(.system(size: 25, weight: .semibold))
-                .foregroundColor(unlocked ? accent : Theme.subtle)
-        }
-        .frame(width: 86, height: 86)
-        .rotation3DEffect(.degrees(unlocked ? 7 : 0), axis: (x: 1, y: -0.35, z: 0))
-        .shadow(color: unlocked ? accent.opacity(0.18) : .clear, radius: 10, y: 6)
-        .opacity(unlocked ? 1 : 0.72)
     }
 }
 

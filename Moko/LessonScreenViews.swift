@@ -20,7 +20,7 @@ struct QuestionPrompt: View {
 
     var body: some View {
         let face = scheme == .dark ? Theme.surfaceRaised : Color(hex: "#EEF1F6")
-        let border = scheme == .dark ? Theme.surfaceBorder : Color(hex: "#C7D0DE")
+        let border = scheme == .dark ? Theme.surfaceSlab : Color(hex: "#C7D0DE")
 
         Text(RichText.attributed(text,
                                  base: Theme.questionFont(fontSize, .heavy),
@@ -32,13 +32,12 @@ struct QuestionPrompt: View {
             .padding(.horizontal, 20)
             .padding(.vertical, 18)
             .background(
-                RoundedRectangle(cornerRadius: Theme.Radius.card, style: .continuous)
+                RoundedRectangle(cornerRadius: 20, style: .continuous)
                     .fill(face)
                     .overlay(
-                        RoundedRectangle(cornerRadius: Theme.Radius.card, style: .continuous)
-                            .strokeBorder(border, lineWidth: 1)
+                        RoundedRectangle(cornerRadius: 20, style: .continuous)
+                            .strokeBorder(border, lineWidth: 2)
                     )
-                    .shadow(color: .black.opacity(0.14), radius: 9, y: 4)
             )
     }
 }
@@ -306,14 +305,14 @@ struct MarkLevelView: View {
 
                     // The user's draggable line.
                     let userColor = player.revealed
-                        ? (abs(price(lineY, lo, range) - truth) <= tol ? Theme.correct : Theme.incorrect)
+                        ? (abs(price(lineY, lo, range) - truth) <= tol ? Color(hex: "#22C55E") : Color(hex: "#EF4444"))
                         : Theme.answer
                     levelLine(y: lineY, color: userColor, label: player.revealed ? "You" : "Drag me")
 
                     // On reveal, show the true level too.
                     if player.revealed {
                         let ty = yFor(truth, lo, range)
-                        levelLine(y: ty, color: Theme.correct,
+                        levelLine(y: ty, color: Color(hex: "#22C55E"),
                                   label: isResistance ? "Resistance" : "Support", dashed: true)
                     }
                 }
@@ -404,13 +403,13 @@ struct TrendlineView: View {
 
                         if let a = player.trendStart, let b = player.trendEnd {
                             let color: Color = player.revealed
-                                ? (correct ? Theme.correct : Theme.incorrect)
+                                ? (correct ? Color(hex: "#22C55E") : Color(hex: "#EF4444"))
                                 : Theme.answer
                             trendLine(a, b, m.candles, slot, lo, range, color: color)
                         }
 
                         if player.revealed, let ts = s.targetStart, let te = s.targetEnd, !correct {
-                            trendLine(ts, te, m.candles, slot, lo, range, color: Theme.correct, dashed: true)
+                            trendLine(ts, te, m.candles, slot, lo, range, color: Color(hex: "#22C55E"), dashed: true)
                         }
 
                         Rectangle().fill(Color.white.opacity(0.001))
@@ -510,13 +509,13 @@ struct ConsolidationView: View {
 
                         if let lo = player.consolidationLo, let hi = player.consolidationHi {
                             let color: Color = player.revealed
-                                ? (correct ? Theme.correct : Theme.incorrect)
+                                ? (correct ? Color(hex: "#22C55E") : Color(hex: "#EF4444"))
                                 : Theme.answer
                             areaRect(lo, hi, slot, geo.size.height, color: color)
                         }
 
                         if player.revealed, let tlo = s.targetLo, let thi = s.targetHi, !correct {
-                            areaRect(tlo, thi, slot, geo.size.height, color: Theme.correct, dashed: true)
+                            areaRect(tlo, thi, slot, geo.size.height, color: Color(hex: "#22C55E"), dashed: true)
                         }
 
                         Rectangle().fill(Color.white.opacity(0.001))
@@ -660,7 +659,7 @@ struct OHLCLabelView: View {
         let placed = player.ohlcPlacement[i]
         let tint: Color = {
             guard player.revealed else { return Theme.answer }
-            return player.ohlcPlacement[i] == expected[i] ? Theme.correct : Theme.incorrect
+            return player.ohlcPlacement[i] == expected[i] ? Color(hex: "#22C55E") : Color(hex: "#EF4444")
         }()
         return ZStack {
             if let label = placed {
@@ -954,7 +953,7 @@ struct FillBlankChoiceView: View {
         Button {
             guard !player.revealed, player.selectedIndex != nil else { return }
             Haptics.selection()
-            withAnimation(.easeOut(duration: 0.2)) {
+            withAnimation(.spring(response: 0.34, dampingFraction: 0.78)) {
                 player.selectedIndex = nil
             }
         } label: {
@@ -1015,20 +1014,21 @@ struct FillBlankChoiceView: View {
 
         var fill = Theme.optionFill(scheme)
         var border = Theme.optionBorder(scheme)
+        var slab = Theme.optionSlab(scheme)
         var textColor = ink
 
         if revealed {
             if isCorrect {
-                fill = Theme.correct; border = Theme.correctDark; textColor = .white
+                fill = Theme.correct; border = Theme.correctDark; slab = Theme.correctDark; textColor = .white
             } else if selected {
-                fill = Theme.incorrect; border = Theme.incorrectDark; textColor = .white
+                fill = Theme.incorrect; border = Theme.incorrectDark; slab = Theme.incorrectDark; textColor = .white
             }
         }
 
         return Button {
             guard !revealed else { return }
             Haptics.selection()
-            withAnimation(.easeOut(duration: 0.2)) {
+            withAnimation(.spring(response: 0.34, dampingFraction: 0.78)) {
                 player.selectedIndex = idx
             }
         } label: {
@@ -1036,7 +1036,9 @@ struct FillBlankChoiceView: View {
                 RoundedRectangle(cornerRadius: 18, style: .continuous)
                     .fill(unavailable ? Theme.surfaceMuted : fill)
                     .overlay(RoundedRectangle(cornerRadius: 18, style: .continuous)
-                        .strokeBorder(border.opacity(unavailable ? 0 : 1), lineWidth: 1))
+                        .strokeBorder(border.opacity(unavailable ? 0 : 1), lineWidth: 2.5))
+                    .background(RoundedRectangle(cornerRadius: 18, style: .continuous)
+                        .fill(slab.opacity(unavailable ? 0 : 1)).offset(y: 5))
 
                 if !selected {
                     Text(label)
@@ -1369,7 +1371,7 @@ struct FillBlankMultiView: View {
         return Button {
             guard !player.revealed, selected != nil else { return }
             Haptics.selection()
-            withAnimation(.easeOut(duration: 0.2)) {
+            withAnimation(.spring(response: 0.34, dampingFraction: 0.78)) {
                 if player.multiSelections.indices.contains(blankIndex) {
                     player.multiSelections[blankIndex] = nil
                 }
@@ -1427,14 +1429,15 @@ struct FillBlankMultiView: View {
         let revealed = player.revealed
         let canPlace = firstEmptyBlankIndex != nil
 
-        let fill = Theme.optionFill(scheme)
-        let border = Theme.optionBorder(scheme)
-        let textColor = ink
+        var fill = Theme.optionFill(scheme)
+        var border = Theme.optionBorder(scheme)
+        var slab = Theme.optionSlab(scheme)
+        var textColor = ink
 
         return Button {
             guard !revealed, !selected, let targetIndex = firstEmptyBlankIndex else { return }
             Haptics.selection()
-            withAnimation(.easeOut(duration: 0.2)) {
+            withAnimation(.spring(response: 0.34, dampingFraction: 0.78)) {
                 ensureMultiBlankState()
                 player.multiSelectionLabels[targetIndex] = item.label
                 player.multiSelectionIDs[targetIndex] = item.id
@@ -1445,7 +1448,9 @@ struct FillBlankMultiView: View {
                 RoundedRectangle(cornerRadius: 18, style: .continuous)
                     .fill(selected ? Theme.surfaceMuted : fill)
                     .overlay(RoundedRectangle(cornerRadius: 18, style: .continuous)
-                        .strokeBorder(border.opacity(selected ? 0 : 1), lineWidth: 1))
+                        .strokeBorder(border.opacity(selected ? 0 : 1), lineWidth: 2.5))
+                    .background(RoundedRectangle(cornerRadius: 18, style: .continuous)
+                        .fill(slab.opacity(selected ? 0 : 1)).offset(y: 5))
 
                 if !selected {
                     Text(item.label)
