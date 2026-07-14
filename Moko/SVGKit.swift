@@ -3,8 +3,8 @@ import SwiftUI
 // MARK: - Minimal SVG fragment renderer
 // The path node icons live in index.html as small inline <svg> markup. Rather
 // than re-draw all 45 by hand, JS hands us each node's <svg> outerHTML over the
-// bridge and this renders the subset of SVG they use: <path>, <circle>, <rect>,
-// <line> with fill / stroke / stroke-width / rx / rotate().
+// bridge and this renders the subset of SVG they use: <path>, <circle>,
+// <ellipse>, <rect>, <line> with fill / stroke / stroke-width / rx / rotate().
 
 struct SVGElement {
     var path: Path
@@ -29,7 +29,7 @@ enum SVGParser {
         let rootFill = parseRootAttr(svg, "fill")
 
         // Iterate over each drawable element tag.
-        let pattern = "<(path|circle|rect|line)\\b([^>]*?)/?>"
+        let pattern = "<(path|circle|ellipse|rect|line)\\b([^>]*?)/?>"
         guard let re = try? NSRegularExpression(pattern: pattern, options: [.caseInsensitive]) else {
             return SVGImage(viewBox: viewBox, elements: [])
         }
@@ -108,6 +108,10 @@ enum SVGParser {
         case "circle":
             let cx = num(attrs, "cx"), cy = num(attrs, "cy"), r = num(attrs, "r")
             return Path(ellipseIn: CGRect(x: cx - r, y: cy - r, width: r * 2, height: r * 2))
+        case "ellipse":
+            let cx = num(attrs, "cx"), cy = num(attrs, "cy")
+            let rx = num(attrs, "rx"), ry = num(attrs, "ry")
+            return Path(ellipseIn: CGRect(x: cx - rx, y: cy - ry, width: rx * 2, height: ry * 2))
         case "rect":
             let x = num(attrs, "x"), y = num(attrs, "y")
             let w = num(attrs, "width"), h = num(attrs, "height")

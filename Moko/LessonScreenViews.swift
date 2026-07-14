@@ -2,9 +2,7 @@ import SwiftUI
 import Combine
 
 // MARK: - Mascot speech-bubble prompt
-// Renders the Moko mascot (buisness.svg) beside a speech bubble holding the
-// question — a Duolingo-style character prompt. Currently wired to the very
-// first question only (see ChoiceView.isFirstEverQuestion) as a preview.
+// Renders the Candlewick mascot beside a speech bubble holding the question.
 
 struct MascotIcon: View {
     // The pupils (iris + highlight) are split into their own layer so they can
@@ -31,26 +29,51 @@ struct MascotIcon: View {
         return CGSize(width: .random(in: -2.5...2.5), height: .random(in: -1...1))
     }
 
-    // Bear mascot (bear.svg). Face minus pupils; the SVG's opaque background
-    // <rect> is dropped so it reads as a cutout. The art fills the full 141×141
-    // viewBox (frame aspect matched in MascotPrompt).
+    // Candlewick mascot. The source SVG's artboard background is omitted and
+    // group styles are flattened because SVGParser intentionally stays small.
+    // Pupils and their highlights live in the separate animated layer below.
     private static let base = SVGParser.parse("""
-    <svg viewBox="0 0 141 141" fill="none">
-    <path d="M14.5939 37.3355C16.3336 24.9992 26.8906 15.8264 39.349 15.8264H102.577C115.118 15.8264 125.719 25.1193 127.361 37.5532L141 140.826H73.7849H0L14.5939 37.3355Z" fill="#E7DFD4"/>
-    <rect x="56" y="60.8264" width="30" height="60" rx="15" fill="#F1EBE4"/>
-    <path d="M66 62.8264C66 61.1696 67.3431 59.8264 69 59.8264H73C74.6569 59.8264 76 61.1696 76 62.8264C76 64.4833 74.6569 65.8264 73 65.8264H69C67.3431 65.8264 66 64.4833 66 62.8264Z" fill="#211F1F"/>
-    <path d="M70 49.3264C70 50.3113 69.7155 51.2866 69.1627 52.1965C68.6099 53.1065 67.7996 53.9333 66.7782 54.6297C65.7567 55.3262 64.5441 55.8786 63.2095 56.2555C61.8749 56.6324 60.4445 56.8264 59 56.8264C57.5555 56.8264 56.1251 56.6324 54.7905 56.2555C53.4559 55.8786 52.2433 55.3262 51.2218 54.6297C50.2004 53.9333 49.3901 53.1065 48.8373 52.1965C48.2845 51.2866 48 50.3113 48 49.3264L59 49.3264H70Z" fill="#FEFAFA"/>
-    <path d="M72 49.3264C72 50.3113 72.2845 51.2866 72.8373 52.1965C73.3901 53.1065 74.2004 53.9333 75.2218 54.6297C76.2433 55.3262 77.4559 55.8786 78.7905 56.2555C80.1251 56.6324 81.5555 56.8264 83 56.8264C84.4445 56.8264 85.8749 56.6324 87.2095 56.2555C88.5441 55.8786 89.7567 55.3262 90.7782 54.6297C91.7996 53.9333 92.6099 53.1065 93.1627 52.1965C93.7155 51.2866 94 50.3113 94 49.3264L83 49.3264H72Z" fill="#FEFAFA"/>
-    <rect x="46" y="46.8264" width="50" height="3" rx="1.5" fill="#CDC4B7"/>
-    <rect x="4" y="6.23071" width="16" height="19" rx="8" transform="rotate(-36 4 6.23071)" fill="#E7DFD4"/>
-    <rect width="16" height="19" rx="8" transform="matrix(-0.809017 -0.587785 -0.587785 0.809017 138.112 6.23071)" fill="#E7DFD4"/>
+    <svg viewBox="30 30 340 390" fill="none">
+    <rect x="202" y="52" width="16" height="70" rx="8" fill="#0F6B3D" stroke="#0F6B3D" stroke-width="13" stroke-linejoin="round" stroke-linecap="round"/>
+    <rect x="202" y="295" width="16" height="57" rx="8" fill="#0F6B3D" stroke="#0F6B3D" stroke-width="13" stroke-linejoin="round" stroke-linecap="round"/>
+    <rect x="164" y="295" width="32" height="82" rx="16" fill="#0F6B3D" stroke="#0F6B3D" stroke-width="13"/>
+    <rect x="224" y="295" width="32" height="82" rx="16" fill="#0F6B3D" stroke="#0F6B3D" stroke-width="13"/>
+    <path d="M 154 386 Q 154 372 180 372 Q 206 372 206 386 Q 206 402 180 402 Q 154 402 154 386 Z" fill="#0F6B3D" stroke="#0F6B3D" stroke-width="13" stroke-linejoin="round"/>
+    <path d="M 214 386 Q 214 372 240 372 Q 266 372 266 386 Q 266 402 240 402 Q 214 402 214 386 Z" fill="#0F6B3D" stroke="#0F6B3D" stroke-width="13" stroke-linejoin="round"/>
+    <path d="M 150 195 C 105 185 88 152 86 112" fill="none" stroke="#0F6B3D" stroke-width="40" stroke-linecap="round"/>
+    <circle cx="86" cy="106" r="20" fill="#0F6B3D" stroke="#0F6B3D" stroke-width="13"/>
+    <path d="M 270 192 L 334 218 L 296 260" fill="none" stroke="#0F6B3D" stroke-width="40" stroke-linejoin="round" stroke-linecap="round"/>
+    <circle cx="294" cy="262" r="20" fill="#0F6B3D" stroke="#0F6B3D" stroke-width="13"/>
+    <rect x="130" y="110" width="160" height="200" rx="26" fill="#0F6B3D" stroke="#0F6B3D" stroke-width="13" stroke-linejoin="round"/>
+    <rect x="164" y="295" width="32" height="82" rx="16" fill="#34A862"/>
+    <rect x="224" y="295" width="32" height="82" rx="16" fill="#34A862"/>
+    <path d="M 150 195 C 105 185 88 152 86 112" fill="none" stroke="#34A862" stroke-width="32" stroke-linecap="round"/>
+    <circle cx="86" cy="106" r="18" fill="#34A862"/>
+    <path d="M 270 192 L 334 218 L 296 260" fill="none" stroke="#34A862" stroke-width="32" stroke-linejoin="round" stroke-linecap="round"/>
+    <circle cx="294" cy="262" r="18" fill="#34A862"/>
+    <rect x="130" y="110" width="160" height="200" rx="26" fill="#34A862"/>
+    <path d="M 154 386 Q 154 372 180 372 Q 206 372 206 386 Q 206 402 180 402 Q 154 402 154 386 Z" fill="#1F8A4E"/>
+    <path d="M 214 386 Q 214 372 240 372 Q 266 372 266 386 Q 266 402 240 402 Q 214 402 214 386 Z" fill="#1F8A4E"/>
+    <rect x="204" y="300" width="12" height="48" rx="6" fill="#0F6B3D"/>
+    <ellipse cx="192" cy="262" rx="54" ry="36" fill="#4CBD7780"/>
+    <rect x="146" y="126" width="26" height="60" rx="13" fill="#FFFFFF40" transform="rotate(8 159 156)"/>
+    <path d="M 160 158 Q 176 148 192 154" stroke="#0F6B3D" stroke-width="9" stroke-linecap="round" fill="none"/>
+    <path d="M 228 154 Q 244 148 260 158" stroke="#0F6B3D" stroke-width="9" stroke-linecap="round" fill="none"/>
+    <ellipse cx="180" cy="192" rx="22" ry="25" fill="white"/>
+    <ellipse cx="240" cy="192" rx="22" ry="25" fill="white"/>
+    <ellipse cx="153" cy="224" rx="11" ry="7" fill="#F4A9A0CC"/>
+    <ellipse cx="267" cy="224" rx="11" ry="7" fill="#F4A9A0CC"/>
+    <path d="M 180 232 Q 210 266 240 232 Q 238 280 210 280 Q 182 280 180 232 Z" fill="#1C4A30"/>
+    <path d="M 194 258 Q 210 274 226 258 Q 222 274 210 274 Q 198 274 194 258 Z" fill="#E0766A"/>
     </svg>
     """)
 
     private static let pupils = SVGParser.parse("""
-    <svg viewBox="0 0 141 141" fill="none">
-    <path d="M66 49.8264C66 50.3517 65.8965 50.8718 65.6955 51.3571C65.4945 51.8425 65.1999 52.2834 64.8284 52.6548C64.457 53.0263 64.016 53.3209 63.5307 53.5219C63.0454 53.723 62.5253 53.8264 62 53.8264C61.4747 53.8264 60.9546 53.723 60.4693 53.5219C59.984 53.3209 59.543 53.0263 59.1716 52.6548C58.8001 52.2834 58.5055 51.8425 58.3045 51.3571C58.1035 50.8718 58 50.3517 58 49.8264L62 49.8264H66Z" fill="#211F1F"/>
-    <path d="M76 49.8264C76 50.3517 76.1035 50.8718 76.3045 51.3571C76.5055 51.8425 76.8001 52.2834 77.1716 52.6548C77.543 53.0263 77.984 53.3209 78.4693 53.5219C78.9546 53.723 79.4747 53.8264 80 53.8264C80.5253 53.8264 81.0454 53.723 81.5307 53.5219C82.016 53.3209 82.457 53.0263 82.8284 52.6548C83.1999 52.2834 83.4945 51.8425 83.6955 51.3571C83.8965 50.8718 84 50.3517 84 49.8264L80 49.8264H76Z" fill="#211F1F"/>
+    <svg viewBox="30 30 340 390" fill="none">
+    <ellipse cx="185" cy="196" rx="11" ry="13" fill="#1F2E33"/>
+    <ellipse cx="235" cy="196" rx="11" ry="13" fill="#1F2E33"/>
+    <circle cx="189" cy="190" r="4" fill="white"/>
+    <circle cx="239" cy="190" r="4" fill="white"/>
     </svg>
     """)
 }
@@ -84,10 +107,9 @@ struct MascotPrompt: View {
         let line = scheme == .dark ? Theme.surfaceBorder : Color(hex: "#CBD5E1")
 
         let row = HStack(alignment: .center, spacing: 16) {
-            // Frame aspect ≈ the bear viewBox (141×141, square) so the art
-            // fills the width and sits flush-left.
+            // Preserve Candlewick's 340×390 viewBox aspect ratio.
             MascotIcon()
-                .frame(width: 112, height: 112)
+                .frame(width: 102, height: 117)
             Text(RichText.attributed(text,
                                      base: Theme.questionFont(fontSize, .heavy),
                                      bold: Theme.questionFont(fontSize, .black),
