@@ -30,7 +30,7 @@ struct ThemedBackground: View {
         ZStack {
             theme.palette.base
             LinearGradient(
-                colors: [Theme.backgroundElevated.opacity(0.78), Theme.appBackground, Color(hex: "#050C13")],
+                colors: [MarketDesign.Colors.backgroundSecondary.opacity(0.78), MarketDesign.Colors.backgroundPrimary, MarketDesign.Colors.backdropDeep],
                 startPoint: .topLeading,
                 endPoint: .bottomTrailing
             )

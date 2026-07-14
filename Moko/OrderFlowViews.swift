@@ -354,7 +354,7 @@ struct DOMTapView: View {
 
                 ForEach(prices.indices, id: \.self) { index in
                     let isAsk = index < 3
-                    HStack(spacing: 8) {
+                    HStack(spacing: MarketDesign.Spacing.xs) {
                         Text(isAsk ? "" : "\(sizes[index])")
                             .frame(maxWidth: .infinity, alignment: .trailing)
                             .foregroundColor(bidColor)
@@ -1446,7 +1446,7 @@ struct OrderFlowSimulationView: View {
                         }
                     }
                 } else {
-                    VStack(spacing: 8) {
+                    VStack(spacing: MarketDesign.Spacing.xs) {
                         ForEach(Array(player.currentOptions.enumerated()), id: \.offset) { index, label in
                             tradeChoice(index: index, label: label)
                         }
@@ -1654,25 +1654,36 @@ struct OrderFlowSimulationView: View {
     }
 
     private func tradeChoice(index: Int, label: String) -> some View {
-        Button {
+        let selected = player.selectedIndex == index
+        let correct = index == player.currentCorrectIndex
+        return Button {
             guard !player.revealed else { return }
             Haptics.selection()
             player.selectedIndex = index
             player.decisionTick = simulationTick
         } label: {
-            HStack(spacing: 12) {
+            HStack(spacing: MarketDesign.Spacing.sm) {
                 Image(systemName: decisionIcon(label))
-                    .font(.system(size: 15, weight: .black)).frame(width: 24)
-                Text(label).font(Theme.questionFont(16, .heavy))
+                    .marketIcon(size: MarketDesign.IconSize.medium).frame(width: MarketDesign.Spacing.xl)
+                Text(label).marketText(.buttonLabel)
                 Spacer()
-                if player.selectedIndex == index { Image(systemName: "checkmark.circle.fill") }
+                if player.revealed && correct {
+                    Image(systemName: "checkmark.circle.fill")
+                } else if player.revealed && selected {
+                    Image(systemName: "xmark.circle.fill")
+                } else if selected {
+                    Image(systemName: "checkmark.circle.fill")
+                }
             }
-            .foregroundColor(ink)
-            .padding(.horizontal, 16).frame(maxWidth: .infinity, minHeight: 50)
-            .background(RoundedRectangle(cornerRadius: Theme.Radius.control).fill(Theme.expert.opacity(player.selectedIndex == index ? 0.18 : 0.07)))
-            .overlay(RoundedRectangle(cornerRadius: Theme.Radius.control).strokeBorder(player.selectedIndex == index ? Theme.expert : Theme.expert.opacity(0.28), lineWidth: player.selectedIndex == index ? 2 : 1))
+            .padding(.horizontal, MarketDesign.Spacing.md)
         }
-        .buttonStyle(.plain)
+        .buttonStyle(TradeDecisionButtonStyle(
+            kind: TradeDecisionKind(label: label),
+            isSelected: selected,
+            isRevealed: player.revealed,
+            isCorrect: correct
+        ))
+        .disabled(player.revealed)
     }
 
     /// Short decision sets (LONG / WAIT / SHORT) fit on one row, which keeps the
@@ -1698,41 +1709,28 @@ struct OrderFlowSimulationView: View {
     }
 
     private func compactTradeChoice(index: Int, label: String) -> some View {
-        // Same chunky 3D slab + MCQ color language as OFOption, just a vertical
-        // icon+label face so three fit on one row.
         let selected = player.selectedIndex == index
         let revealed = player.revealed
         let isCorrect = index == player.currentCorrectIndex
-        var fill = Theme.optionFill(scheme)
-        var border = Theme.optionBorder(scheme)
-        var slab = Theme.optionSlab(scheme)
-        var textColor = ink
-        if revealed {
-            if isCorrect { fill = Theme.correct; border = Theme.correctDark; slab = Theme.correctDark; textColor = .white }
-            else if selected { fill = Theme.incorrect; border = Theme.incorrectDark; slab = Theme.incorrectDark; textColor = .white }
-        } else if selected {
-            fill = Theme.answer; border = Theme.answerDark; slab = Theme.answerDark; textColor = .white
-        }
         return Button {
             guard !revealed else { return }
             Haptics.selection()
             player.selectedIndex = index
             player.decisionTick = simulationTick
         } label: {
-            VStack(spacing: 3) {
-                Image(systemName: decisionIcon(label)).font(.system(size: 15, weight: .black))
-                Text(label).font(Theme.questionFont(14, .bold)).lineLimit(1).minimumScaleFactor(0.7)
+            VStack(spacing: MarketDesign.Spacing.xxs) {
+                Image(systemName: decisionIcon(label))
+                    .marketIcon(size: MarketDesign.IconSize.medium)
+                Text(label).marketText(.buttonLabel).lineLimit(1).minimumScaleFactor(0.7)
             }
-            .foregroundColor(textColor)
-            .frame(maxWidth: .infinity).padding(.vertical, 10)
-            .background(
-                RoundedRectangle(cornerRadius: 16, style: .continuous)
-                    .fill(fill)
-                    .overlay(RoundedRectangle(cornerRadius: 16, style: .continuous).strokeBorder(border, lineWidth: 2))
-            )
-            .contentShape(Rectangle())
+            .padding(.vertical, MarketDesign.Spacing.xs)
         }
-        .buttonStyle(SinkButtonStyle(slab: slab, radius: 16, depth: 5))
+        .buttonStyle(TradeDecisionButtonStyle(
+            kind: TradeDecisionKind(label: label),
+            isSelected: selected,
+            isRevealed: revealed,
+            isCorrect: isCorrect
+        ))
         .disabled(revealed)
     }
 
