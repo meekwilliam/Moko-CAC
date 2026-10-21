@@ -1,9 +1,9 @@
 import SwiftUI
 
-// MARK: - Main tabbed shell
-// The interactive lesson chart is the home screen; a persistent bottom bar
-// switches between the main areas. Lessons/legal present over this from the
-// AppRouter.
+// MARK: - Main tabbed shell (Duolingo-style)
+// The learning path is now the home screen; a persistent bottom bar switches
+// between Home (path), Quests, Leaderboard and Profile. Lessons/legal present
+// over this from the AppRouter.
 
 struct MainTabView: View {
     @ObservedObject var router: AppRouter
@@ -21,7 +21,7 @@ struct MainTabView: View {
         switch router.selectedTab {
         case .home:
             if let store = router.pathStore {
-                LessonChartView(
+                PathView(
                     store: store,
                     showsHomeButton: false,
                     onSelectNode: { router.onOpenLesson?($0) },
