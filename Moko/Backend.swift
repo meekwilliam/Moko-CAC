@@ -1,7 +1,7 @@
 import Foundation
 
 // MARK: - Backend seam
-// The app talks ONLY to these protocols — never to Firebase (or any vendor)
+// The app talks ONLY to these protocols — never to a vendor SDK
 // directly. The concrete backend lives in one file that conforms to them, and
 // `Backend.auth` / `Backend.store` are the single swap points. Switching
 // providers later (Supabase, a custom API, …) means writing one new conforming
@@ -43,8 +43,8 @@ protocol RemoteStore {
 
 // MARK: - Default: local-only (no cloud)
 // Lets the app build and run exactly as today. Auth reports "not configured"
-// so callers gracefully fall back to the local-first flow until Firebase is
-// wired in and assigned to `Backend.auth` / `Backend.store` at launch.
+// so callers gracefully fall back to the local-first flow until a real backend
+// is wired in and assigned to `Backend.auth` / `Backend.store` at launch.
 final class LocalOnlyBackend: AuthService, RemoteStore {
     static let shared = LocalOnlyBackend()
     private(set) var currentUser: BackendUser? = nil
@@ -67,7 +67,7 @@ enum Backend {
     static var store: RemoteStore = LocalOnlyBackend.shared
 
     /// Called once at launch after the concrete backend is created, e.g.
-    ///   Backend.install(auth: FirebaseBackend.shared, store: FirebaseBackend.shared)
+    ///   Backend.install(auth: MyBackend.shared, store: MyBackend.shared)
     static func install(auth: AuthService, store: RemoteStore) {
         self.auth = auth
         self.store = store
