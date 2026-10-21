@@ -125,23 +125,6 @@ extension Color {
 // Solid face + a darker "slab" underneath. On press it sinks down onto the
 // slab, matching the web `box-shadow:0 Npx 0 <dark>` + translateY treatment.
 
-// A constant "tilted up toward you" perspective for the path pucks (mirrors the
-// web `perspective(560px) rotateX(15deg)`), so they read as 3D instead of flat.
-struct TiltModifier: ViewModifier {
-    var isPressed: Bool
-    var base: CGFloat = 26
-
-    func body(content: Content) -> some View {
-        content
-            .rotation3DEffect(
-                .degrees(isPressed ? base + 3 : base),
-                axis: (x: 1, y: 0, z: 0),
-                anchor: .center,
-                perspective: 0.4
-            )
-    }
-}
-
 // Drives a chunky-3D press: turns the button style's `isPressed` into a `down`
 // flag that is GUARANTEED to hold for a minimum duration, so even an instant
 // tap plays a full down-then-up (fast taps used to reverse before the offset

@@ -423,19 +423,18 @@ struct OnboardingView: View {
         }
     }
 
-    // Apple + Google buttons. `proceed` is what happens after a successful
-    // sign-in (or the local-first fallback when no backend is configured):
-    // the sign-UP screen continues the intake; the sign-IN screen jumps to the app.
+    // Apple + Google buttons. `proceed` is what happens next: the sign-UP
+    // screen continues the intake; the sign-IN screen jumps to the app.
     private func authProviderButtons(proceed: @escaping () -> Void) -> some View {
         VStack(spacing: 14) {
             authButton(label: "Continue with Apple",
                       fill: .black, textColor: .white, border: Color.white.opacity(0.18),
-                      action: { try await Backend.auth.signInWithApple() }, proceed: proceed) {
+                      proceed: proceed) {
                 Image(systemName: "apple.logo").font(.system(size: 18, weight: .medium))
             }
             authButton(label: "Continue with Google",
                       fill: .white, textColor: Color(hex: "#1F1F1F"), border: Color.black.opacity(0.08),
-                      action: { try await Backend.auth.signInWithGoogle() }, proceed: proceed) {
+                      proceed: proceed) {
                 GoogleGlyph().frame(width: 18, height: 18)
             }
         }
@@ -443,25 +442,11 @@ struct OnboardingView: View {
     }
 
     private func authButton<Glyph: View>(label: String, fill: Color, textColor: Color, border: Color,
-                                         action: @escaping () async throws -> BackendUser,
                                          proceed: @escaping () -> Void,
                                          @ViewBuilder glyph: () -> Glyph) -> some View {
         Button {
             Haptics.selection()
-            guard !authInFlight else { return }
-            // Real sign-in when a backend is configured; until then it throws
-            // .notConfigured and we just proceed (local-first, unchanged).
-            Task {
-                authInFlight = true
-                defer { authInFlight = false }
-                do {
-                    let user = try await action()
-                    SyncService.shared.userDidSignIn(user)   // pull cloud progress
-                    proceed()
-                }
-                catch BackendError.cancelled { /* user backed out — stay put */ }
-                catch { proceed() }   // not configured yet → proceed
-            }
+            proceed()   // progress is saved on this device; no account needed
         } label: {
             HStack(spacing: 10) {
                 glyph()

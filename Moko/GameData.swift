@@ -21,11 +21,8 @@ struct TestOutDefinition: Decodable {
     let lessonType: String
     let questionCount: Int
     let passingScore: Int
-    let noHearts: Bool
-    let revealAnswersAtEnd: Bool
     let questionPool: [LessonScreen]
     let competencyBlueprint: [String]?
-    let competencyMappings: [String: [String]]?
     let competencyEligibleQuestionIds: [String: [String]]?
     let competencySourceUnits: [String: [Int]]?
     let competencySourceNodes: [String: [Int]]?

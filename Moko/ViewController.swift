@@ -26,14 +26,6 @@ class ViewController: UIViewController {
             appRouter.currentScreen = .onboarding
         }
 
-        // When a cloud snapshot is pulled in (sign-in / launch restore), refresh
-        // the derived UI stores so the path/profile reflect the synced state.
-        progress.onExternalReplace = { [weak self] in
-            guard let self = self else { return }
-            self.refreshPathState(); self.syncHearts(); self.syncCourses()
-        }
-        SyncService.shared.bootstrap()   // resume cloud sync if already signed in
-
         // Hold the branded loading screen for a short beat, then fade to the path.
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.3) { [weak self] in
             self?.appRouter.showSplash = false
@@ -115,8 +107,6 @@ class ViewController: UIViewController {
             self.refreshPathState()
             Haptics.impact(.medium)
         }
-        appRouter.onOpenMechanicsTest = { [weak self] in self?.openMechanicsTestLesson() }
-        appRouter.onOpenMultiSignalTest = { [weak self] in self?.openMultiSignalTestLesson() }
         appRouter.onPreviewStreak = { [weak self] in
             guard let self = self else { return }
             // Preview only — doesn't touch real streak/progress data.
@@ -224,10 +214,8 @@ class ViewController: UIViewController {
     private func syncHearts() {
         appRouter.hearts = progress.hearts
         appRouter.secondsUntilNextHeart = progress.secondsUntilNextHeart
-        appRouter.isUnlimitedHearts = progress.isUnlimitedHearts
         appRouter.treats = progress.treats
         appRouter.pathStore?.hearts = progress.hearts
-        appRouter.pathStore?.isUnlimitedHearts = progress.isUnlimitedHearts
     }
 
     private func openHearts() {
@@ -438,27 +426,6 @@ class ViewController: UIViewController {
     private func isLastNodeInUnit(_ node: Int) -> Bool {
         let group = unitNodes(forNode: node)
         return group.filter { $0 != node }.allSatisfy { progress.completed.contains($0) }
-    }
-
-    /// Debug: opens a synthetic lesson with one screen per question mechanic,
-    /// bypassing hearts/progress entirely (isTestLesson skips both on exit).
-    private func openMechanicsTestLesson() {
-        appRouter.currentLessonIsReplay = false
-        appRouter.currentLessonUnitColor = (Color(hex: "#8B5CF6"), Color(hex: "#6D28D9"))
-        appRouter.currentLessonBonusEligible = false
-        appRouter.currentLessonIsUnitTest = false
-        appRouter.isTestLesson = true
-        presentNativeLesson(lesson: MechanicsTestLesson.build(), startIndex: 0)
-    }
-
-    /// Debug: focused lab for the evolving multi-signal evidence container.
-    private func openMultiSignalTestLesson() {
-        appRouter.currentLessonIsReplay = false
-        appRouter.currentLessonUnitColor = (Color(hex: "#A855F7"), Color(hex: "#7E22CE"))
-        appRouter.currentLessonBonusEligible = false
-        appRouter.currentLessonIsUnitTest = false
-        appRouter.isTestLesson = true
-        presentNativeLesson(lesson: MultiSignalTestLesson.build(), startIndex: 0)
     }
 
     private func presentNativeLesson(lesson: Lesson, startIndex: Int) {

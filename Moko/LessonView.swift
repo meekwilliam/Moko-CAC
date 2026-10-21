@@ -57,7 +57,6 @@ final class LessonPlayer: ObservableObject {
     @Published var decisionTick: Int? = nil
     @Published var scenarioHadMistake = false
 
-    var onFinished: (() -> Void)?
     /// Called with the new screen index each time the player advances, so the
     /// native lesson can persist mid-lesson progress (resume on reopen).
     var onAdvance: ((Int) -> Void)?
@@ -91,8 +90,6 @@ final class LessonPlayer: ObservableObject {
     var progress: CGFloat { CGFloat(index + 1) / CGFloat(screens.count + 1) }
 
     var isIntro: Bool { screen.type == "intro" }
-    var isMatching: Bool { screen.type == "matching" }
-    var isOrdering: Bool { screen.type == "sequence_builder" || screen.type == "drag_order" }
     var activeTradeStage: TradeStage? {
         guard screen.type == "trade_scenario", let stages = screen.tradeStages,
               stages.indices.contains(scenarioStage) else { return nil }
@@ -363,7 +360,6 @@ struct LessonView: View {
     // which would otherwise make the bar jump.
     @State private var displayedProgress: CGFloat = 0
     let hearts: Int
-    let isUnlimitedHearts: Bool
     var onClose: () -> Void
     var onComplete: (Int) -> Void   // node number
     var onAssessmentComplete: (Int, Int, [String: Int], [String: Int]) -> Void
@@ -374,7 +370,6 @@ struct LessonView: View {
          isTestLesson: Bool = false,
          isUnitTest: Bool = false,
          hearts: Int = ProgressStore.maxHearts,
-         isUnlimitedHearts: Bool = false,
          onClose: @escaping () -> Void,
          onComplete: @escaping (Int) -> Void,
          onAssessmentComplete: @escaping (Int, Int, [String: Int], [String: Int]) -> Void = { _, _, _, _ in },
@@ -391,7 +386,6 @@ struct LessonView: View {
         // open. It only animates on advance from here.
         _displayedProgress = State(initialValue: p.progress)
         self.hearts = hearts
-        self.isUnlimitedHearts = isUnlimitedHearts
         self.onClose = onClose
         self.onComplete = onComplete
         self.onAssessmentComplete = onAssessmentComplete
@@ -608,18 +602,12 @@ struct LessonView: View {
 
     private var lessonHeartBadge: some View {
         HStack(spacing: 5) {
-            HeartBadge(filled: isUnlimitedHearts || hearts > 0, size: 20)
-            if isUnlimitedHearts {
-                Image(systemName: "infinity")
-                    .font(.system(size: 14, weight: .black))
-                    .foregroundColor(ink)
-            } else {
-                Text("\(hearts)")
-                    .font(Theme.font(16, .black))
-                    .foregroundColor(ink)
-                    .monospacedDigit()
-                    .contentTransition(.numericText())
-            }
+            HeartBadge(filled: hearts > 0, size: 20)
+            Text("\(hearts)")
+                .font(Theme.font(16, .black))
+                .foregroundColor(ink)
+                .monospacedDigit()
+                .contentTransition(.numericText())
         }
         .frame(minWidth: 52, alignment: .trailing)
     }

@@ -70,7 +70,6 @@ struct CandlestickChart: View {
     // Reference-matched candle tones: a muted leaf green / coral red.
     private let bullish = Color(hex: "#3FB77E")
     private let bearish = Color(hex: "#E15C5C")
-    private let lineColor = Color(hex: "#8B5CF6")
     private let selectBlue = Theme.answer
     // Solid line/label colors (not translucent white) so the grid doesn't read
     // as a frosted-glass mesh over the panel.
