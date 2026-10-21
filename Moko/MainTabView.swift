@@ -37,14 +37,10 @@ struct MainTabView: View {
             PlaceholderTab(title: "Quests", subtitle: "Daily challenges are coming soon.") {
                 TargetIcon()
             }
-        case .simulation:
-            SimulationComingSoonView()
         case .leaderboard:
             PlaceholderTab(title: "Leaderboard", subtitle: "Compete with others — coming soon.") {
                 TrophyIcon()
             }
-        case .premium:
-            SuperView(router: router)
         case .profile:
             if let store = router.profileStore {
                 ProfileView(
@@ -80,7 +76,7 @@ private struct BottomNav: View {
     // Every tab highlights in the same blue when selected; the icons themselves
     // are multi-color drawings.
     private let accent = Color(hex: "#38bdf8")
-    private let tabs: [MainTab] = [.home, .quest, .simulation, .leaderboard, .premium, .profile]
+    private let tabs: [MainTab] = [.home, .quest, .leaderboard, .profile]
 
     var body: some View {
         HStack(spacing: 6) {
@@ -122,9 +118,7 @@ private struct BottomNav: View {
         switch tab {
         case .home:        DogHouseIcon().frame(width: 28, height: 26)
         case .quest:       TargetIcon().frame(width: 26, height: 26)
-        case .simulation:  CandlesTabIcon().frame(width: 27, height: 26)
         case .leaderboard: TrophyIcon().frame(width: 26, height: 26)
-        case .premium:     SuperHeartIcon(size: 26, showInfinity: false)
         case .profile:     PersonIcon().frame(width: 25, height: 26)
         }
     }
@@ -393,77 +387,6 @@ struct UnlitFlameIcon: View {
     var body: some View {
         SVGIconView(svg: Self.silhouette)
             .frame(width: size * 0.86, height: size)
-    }
-}
-
-// MARK: - Candlestick tab icon (Simulation)
-
-struct CandlesTabIcon: View {
-    private let up = Color(hex: "#22C55E")
-    private let down = Color(hex: "#EF4444")
-
-    var body: some View {
-        GeometryReader { g in
-            let w = g.size.width, h = g.size.height
-            // Three little candles with wicks.
-            candle(x: 0.16 * w, bodyTop: 0.30, bodyBot: 0.66, wickTop: 0.14, wickBot: 0.80, color: up, w: w, h: h)
-            candle(x: 0.50 * w, bodyTop: 0.44, bodyBot: 0.86, wickTop: 0.24, wickBot: 0.96, color: down, w: w, h: h)
-            candle(x: 0.84 * w, bodyTop: 0.10, bodyBot: 0.50, wickTop: 0.02, wickBot: 0.64, color: up, w: w, h: h)
-        }
-    }
-
-    private func candle(x: CGFloat, bodyTop: CGFloat, bodyBot: CGFloat,
-                        wickTop: CGFloat, wickBot: CGFloat, color: Color, w: CGFloat, h: CGFloat) -> some View {
-        ZStack {
-            Path { p in
-                p.move(to: CGPoint(x: x, y: wickTop * h)); p.addLine(to: CGPoint(x: x, y: wickBot * h))
-            }.stroke(color, lineWidth: max(w * 0.05, 1.4))
-            RoundedRectangle(cornerRadius: w * 0.05, style: .continuous)
-                .fill(color)
-                .frame(width: w * 0.22, height: (bodyBot - bodyTop) * h)
-                .position(x: x, y: (bodyTop + bodyBot) / 2 * h)
-        }
-    }
-}
-
-// MARK: - Simulation mode (coming soon)
-
-struct SimulationComingSoonView: View {
-    @EnvironmentObject var theme: ThemeManager
-
-    var body: some View {
-        ZStack {
-            ThemedBackground()
-            VStack(spacing: 20) {
-                Text("COMING SOON")
-                    .font(Theme.font(12, .black)).tracking(2)
-                    .foregroundColor(.white)
-                    .padding(.horizontal, 14).padding(.vertical, 7)
-                    .background(Capsule().fill(Color(hex: "#F59E0B")))
-
-                Text("Simulation Mode")
-                    .font(Theme.font(30, .black)).foregroundColor(theme.palette.ink)
-
-                Text("Practice reading real, moving charts — spot the setups you've learned, hands-on.")
-                    .font(Theme.font(15, .semibold)).foregroundColor(theme.palette.muted)
-                    .multilineTextAlignment(.center)
-                    .fixedSize(horizontal: false, vertical: true)
-                    .padding(.horizontal, 34)
-
-                ScenarioChartView(scenario: .breakout, height: 210, seed: 42)
-                    .padding(.horizontal, 22)
-                    .padding(.top, 6)
-                    .overlay(
-                        // Subtle "locked" hint over the preview chart.
-                        Image(systemName: "lock.fill")
-                            .font(.system(size: 26, weight: .bold))
-                            .foregroundColor(.white.opacity(0.85))
-                            .padding(12)
-                            .background(Circle().fill(Color.black.opacity(0.35)))
-                    )
-            }
-            .padding(.bottom, 40)
-        }
     }
 }
 

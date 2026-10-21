@@ -3,8 +3,8 @@ import Combine
 
 // MARK: - Hearts screen
 // Shows the current hearts, a live countdown to the next regenerated heart,
-// and prototype monetization: a treats-funded refill, an invite-a-friend
-// bonus, and a mock "Super" unlimited-hearts subscription card.
+// and free ways to get more: a refill paid with treats earned in lessons,
+// and an invite-a-friend bonus. Nothing here costs real money.
 
 struct HeartsView: View {
     @ObservedObject var router: AppRouter
@@ -58,13 +58,6 @@ struct HeartsView: View {
     private func close() {
         isClosing = true
         onClose()
-    }
-
-    // Dismiss the Hearts screen and land on the Super (premium) tab.
-    private func openSuperTab() {
-        Haptics.selection()
-        router.selectedTab = .premium
-        close()
     }
 
     // MARK: Pieces
@@ -136,9 +129,6 @@ struct HeartsView: View {
 
     private var offersSection: some View {
         VStack(spacing: 14) {
-            superCard
-            // With Unlimited active, hearts never run out — no need to buy a
-            // refill or invite a friend for bonus hearts, so hide both.
             if !unlimited {
                 offerRow(
                     badge: AnyView(heartCountBadge("+\(ProgressStore.maxHearts)")),
@@ -156,66 +146,7 @@ struct HeartsView: View {
                     action: { router.onInviteFriend?() }
                 )
             }
-            restoreButton
         }
-    }
-
-    // Standard App Store requirement: a way to restore an existing subscription
-    // (e.g. after reinstalling or switching devices).
-    private var restoreButton: some View {
-        Button(action: { Haptics.selection(); router.onRestorePurchases?() }) {
-            Text("Restore Purchases")
-                .font(Theme.font(14, .black))
-                .foregroundColor(theme.palette.muted)
-                .frame(maxWidth: .infinity)
-                .padding(.vertical, 12)
-        }
-        .buttonStyle(RowPressStyle())
-        .padding(.top, 2)
-    }
-
-    private var superCard: some View {
-        Button(action: { openSuperTab() }) {
-            VStack(spacing: 0) {
-                Text("SUPER")
-                    .font(Theme.font(13, .black)).tracking(1)
-                    .foregroundColor(.white)
-                    .frame(maxWidth: .infinity, alignment: .leading)
-                    .padding(.horizontal, 18).padding(.vertical, 8)
-                    .background(AnimatedSuperGradient())
-                HStack(spacing: 14) {
-                    ZStack {
-                        AnimatedSuperGradient()
-                            .frame(width: 44, height: 44)
-                            .clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
-                        Image(systemName: "infinity")
-                            .font(.system(size: 20, weight: .black)).foregroundColor(.white)
-                    }
-                    Text("Unlimited")
-                        .font(Theme.font(17, .black)).foregroundColor(theme.palette.ink)
-                    Spacer(minLength: 0)
-                    if unlimited {
-                        HStack(spacing: 4) {
-                            Image(systemName: "checkmark.circle.fill")
-                            Text("ACTIVE")
-                        }
-                        .font(Theme.font(13, .black))
-                        .foregroundColor(Color(hex: "#34C759"))
-                    } else {
-                        Text("FREE TRIAL")
-                            .font(Theme.font(13, .black))
-                            .foregroundColor(Color(hex: "#EC4899"))
-                    }
-                }
-                .padding(16)
-            }
-        }
-        .buttonStyle(RowPressStyle())
-        .background(
-            RoundedRectangle(cornerRadius: 18, style: .continuous).fill(Theme.surface))
-        .overlay(RoundedRectangle(cornerRadius: 18, style: .continuous)
-            .strokeBorder(Theme.surfaceBorder.opacity(0.65), lineWidth: 1.5))
-        .clipShape(RoundedRectangle(cornerRadius: 18, style: .continuous))
     }
 
     private func offerRow(badge: AnyView, title: String, trailing: AnyView, action: @escaping () -> Void) -> some View {
@@ -253,27 +184,6 @@ struct HeartsView: View {
     private func timeString(_ total: Int) -> String {
         let m = total / 60, s = total % 60
         return String(format: "%02dM%02dS", m, s)
-    }
-}
-
-// A "Super" gradient that slides the same fixed palette (blue → pink →
-// orange, matching the reference) back and forth for a shimmer effect —
-// no hue-cycling, so it never drifts into other colors.
-struct AnimatedSuperGradient: View {
-    @State private var slide = false
-    private let colors = [Color(hex: "#6366F1"), Color(hex: "#EC4899"), Color(hex: "#F59E0B")]
-
-    var body: some View {
-        GeometryReader { geo in
-            LinearGradient(colors: colors + colors.reversed(), startPoint: .leading, endPoint: .trailing)
-                .frame(width: geo.size.width * 2)
-                .offset(x: slide ? -geo.size.width : 0)
-                .onAppear {
-                    withAnimation(.easeInOut(duration: 3).repeatForever(autoreverses: true)) {
-                        slide = true
-                    }
-                }
-        }
     }
 }
 

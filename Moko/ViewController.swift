@@ -1,6 +1,5 @@
 import UIKit
 import SwiftUI
-import StoreKit
 
 // Fully native host: builds the SwiftUI AppRouter and drives it from the native
 // GameData (bundled content) + ProgressStore (UserDefaults). No WebView.
@@ -153,9 +152,6 @@ class ViewController: UIViewController {
         appRouter.onSelectCourse = { [weak self] id in self?.selectCourse(id) }
         appRouter.onRefillHearts = { [weak self] in self?.refillHearts() }
         appRouter.onInviteFriend = { [weak self] in self?.presentInviteFriend() }
-        appRouter.onStartUnlimitedTrial = { [weak self] in self?.presentUnlimitedTrial() }
-        appRouter.onRestorePurchases = { [weak self] in self?.restorePurchases() }
-        appRouter.onPurchaseSubscription = { [weak self] id in self?.purchaseSubscription(productID: id) }
         // Old installs may hold a course id that no longer exists (courses were
         // restructured into levels) — fall back to the first level.
         if !Game.courses.contains(where: { $0.id == progress.currentCourse }) {
@@ -163,8 +159,6 @@ class ViewController: UIViewController {
         }
         syncHearts()
         syncCourses()
-        // Reflect any already-active subscription on launch (e.g. after reinstall).
-        refreshSubscriptionStatus()
     }
 
     // MARK: - Hearts monetization (prototype)
@@ -191,105 +185,6 @@ class ViewController: UIViewController {
             Haptics.impact(.medium)
         }
         present(sheet, animated: true)
-    }
-
-    private static let unlimitedMonthlyID = "com.meeko.moko.unlimitedhearts.monthly"
-    private static let unlimitedYearlyID = "com.meeko.moko.unlimitedhearts.yearly"
-    private static let unlimitedProductIDs: Set<String> = [unlimitedMonthlyID, unlimitedYearlyID]
-
-    /// Hearts card "Free Trial" shortcut — purchases the monthly plan.
-    private func presentUnlimitedTrial() {
-        purchaseSubscription(productID: Self.unlimitedMonthlyID)
-    }
-
-    /// Purchase a specific subscription tier (monthly or yearly). Real StoreKit 2
-    /// flow — in the simulator this presents Apple's actual purchase sheet, backed
-    /// by the local Products.storekit testing configuration (no real charges).
-    private func purchaseSubscription(productID: String) {
-        Task { [weak self] in
-            guard let self = self else { return }
-            do {
-                let products = try await Product.products(for: [productID])
-                guard let product = products.first else {
-                    self.presentStoreError("Product not found. Make sure the StoreKit configuration is enabled for this scheme (Edit Scheme → Run → Options → StoreKit Configuration).")
-                    return
-                }
-                let result = try await product.purchase()
-                switch result {
-                case .success(let verification):
-                    if case .verified(let transaction) = verification {
-                        await transaction.finish()
-                        self.progress.setUnlimitedHearts(true)
-                        self.syncHearts()
-                        Haptics.impact(.medium)
-                    }
-                case .userCancelled, .pending:
-                    break
-                @unknown default:
-                    break
-                }
-            } catch {
-                self.presentStoreError(error.localizedDescription)
-            }
-        }
-    }
-
-    private func restorePurchases() {
-        // Ask StoreKit to sync with the App Store, then re-check entitlements.
-        // In the simulator this restores any active test transaction.
-        Task { [weak self] in
-            guard let self = self else { return }
-            do {
-                try await AppStore.sync()
-                let active = await self.hasActiveUnlimitedEntitlement()
-                self.progress.setUnlimitedHearts(active)
-                self.syncHearts()
-                if active {
-                    Haptics.success()
-                    self.presentStoreInfo(title: "Restored", message: "Your Unlimited Hearts subscription is active.")
-                } else {
-                    self.presentStoreInfo(title: "Nothing to Restore", message: "No active subscription was found for this account.")
-                }
-            } catch {
-                self.presentStoreError(error.localizedDescription)
-            }
-        }
-    }
-
-    /// Reads current StoreKit entitlements and mirrors the active state into
-    /// ProgressStore. Called on launch so a valid subscription is reflected even
-    /// after a reinstall, without requiring an explicit restore tap.
-    private func refreshSubscriptionStatus() {
-        Task { [weak self] in
-            guard let self = self else { return }
-            let active = await self.hasActiveUnlimitedEntitlement()
-            if active != self.progress.isUnlimitedHearts {
-                self.progress.setUnlimitedHearts(active)
-                self.syncHearts()
-            }
-        }
-    }
-
-    /// True if there's a verified, unrevoked entitlement for any unlimited-hearts tier.
-    private func hasActiveUnlimitedEntitlement() async -> Bool {
-        for await result in Transaction.currentEntitlements {
-            guard case .verified(let transaction) = result else { continue }
-            if Self.unlimitedProductIDs.contains(transaction.productID),
-               transaction.revocationDate == nil {
-                return true
-            }
-        }
-        return false
-    }
-
-    private func presentStoreError(_ message: String) {
-        presentStoreInfo(title: "Store Error", message: message)
-    }
-
-    private func presentStoreInfo(title: String, message: String) {
-        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "OK", style: .default))
-        present(alert, animated: true)
     }
 
     // MARK: - Courses

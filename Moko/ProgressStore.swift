@@ -40,7 +40,8 @@ final class ProgressStore: ObservableObject {
         // Hearts are global too: original question answers cost 1; regen 1/hour.
         var hearts: Int = 25
         var heartAnchor: Date? = nil
-        // Prototype monetization: mock "unlimited hearts" subscription state.
+        // Unlimited hearts (no gating or regen countdown). Nothing sells this
+        // anymore — Moko is free — so it is cleared on load.
         var unlimitedHearts: Bool = false
 
         // Legacy flat fields (pre-multi-course) — used once to migrate.
@@ -77,7 +78,8 @@ final class ProgressStore: ObservableObject {
         keepOnlyKnownCourses()
         migrateCondensedOrderFlowProgressIfNeeded()
         migrateVolumeProfileOrderFlowProgressIfNeeded()
-        if !s.unlimitedHearts, s.hearts == 5, s.heartAnchor == nil {
+        s.unlimitedHearts = false   // drop any leftover test-purchase state
+        if s.hearts == 5, s.heartAnchor == nil {
             s.hearts = Self.maxHearts
         }
     }
@@ -208,7 +210,7 @@ final class ProgressStore: ObservableObject {
     /// Current hearts, after applying any regeneration that has accrued.
     var hearts: Int { reconcileHearts(); return s.hearts }
 
-    /// Prototype "Super" subscription: unlimited hearts, no gating or regen countdown.
+    /// Unlimited hearts: no gating or regen countdown.
     var isUnlimitedHearts: Bool { s.unlimitedHearts }
 
     /// Whether the user has a heart to spend on an original question answer.
@@ -245,7 +247,7 @@ final class ProgressStore: ObservableObject {
     /// clock if we were at full. Returns false if there were none to spend.
     @discardableResult
     func useHeart() -> Bool {
-        guard !isUnlimitedHearts else { return true }   // Super: never spend hearts
+        guard !isUnlimitedHearts else { return true }   // unlimited: never spend hearts
         reconcileHearts()
         guard s.hearts > 0 else { return false }
         let wasFull = s.hearts == Self.maxHearts
@@ -280,9 +282,6 @@ final class ProgressStore: ObservableObject {
         s.hearts = min(Self.maxHearts, s.hearts + n)
         if s.hearts >= Self.maxHearts { s.heartAnchor = nil }
     }
-
-    /// Toggle the mock "Super" unlimited-hearts subscription.
-    func setUnlimitedHearts(_ on: Bool) { s.unlimitedHearts = on }
 
     /// The node with saved mid-lesson progress (drives the "CONTINUE" tooltip).
     /// Note: screen 0 still counts as "in progress" so a learner who opens and
