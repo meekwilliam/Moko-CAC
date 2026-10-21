@@ -36,17 +36,17 @@ struct OnboardingView: View {
         }
     }
 
-    // Only Order Flow is available today; more strategies will unlock later.
+    // Money Basics is where everyone starts; Order Flow lives in the course menu.
     private let strategyOptions: [(label: String, detail: String)] = [
-        ("Order Flow", "Read live buying and selling to time trades"),
+        ("Money Basics", "Budgeting, saving, credit, investing & avoiding hype"),
     ]
 
     private let goalOptions: [String] = [
-        "Learn to read charts",
-        "Become a better trader",
-        "Understand price action",
-        "Learn risk management",
-        "Build my own trading strategy",
+        "Stop overspending",
+        "Save for something big",
+        "Understand credit before I get a card",
+        "Start investing the smart way",
+        "Spot scams and hype",
         "Learn before risking real money",
     ]
     private let dailyGoalOptions: [(label: String, detail: String)] = [
@@ -219,11 +219,11 @@ struct OnboardingView: View {
                 .frame(maxHeight: .infinity)
 
             VStack(spacing: 14) {
-                Text("Learn to trade")
+                Text("Master your money")
                     .font(Theme.font(34, .black))
                     .foregroundColor(theme.palette.ink)
                     .multilineTextAlignment(.center)
-                Text("Master charts, price action, and risk management through short interactive lessons.")
+                Text("Budgeting, saving, credit, investing, and spotting hype, in short game-like lessons.")
                     .font(Theme.bodyFont(16))
                     .foregroundColor(theme.palette.muted)
                     .multilineTextAlignment(.center)
@@ -247,13 +247,13 @@ struct OnboardingView: View {
     }
 
     // MARK: Screen 2 — Strategy
-    // Which day-trading strategy to learn. Order Flow is the only one available
-    // today; the list is built to grow as more strategies ship.
+    // Which course to start with. Money Basics is the starting course; the list
+    // is built to grow as more courses ship.
 
     private var strategyScreen: some View {
         chooserScreen(
-            title: "Which strategy do you want to learn?",
-            subtitle: "More strategies coming soon."
+            title: "What do you want to learn first?",
+            subtitle: "More courses in the course menu."
         ) {
             ForEach(strategyOptions.indices, id: \.self) { i in
                 optionRow(label: strategyOptions[i].label,
@@ -652,7 +652,7 @@ private struct CommitScreen: View {
                 .font(Theme.font(28, .black))
                 .foregroundColor(theme.palette.ink)
                 .multilineTextAlignment(.center)
-            Text("I will spend a few minutes a day learning to trade with discipline.")
+            Text("I will spend a few minutes a day building smart money habits.")
                 .font(Theme.bodyFont(16))
                 .foregroundColor(theme.palette.muted)
                 .multilineTextAlignment(.center)

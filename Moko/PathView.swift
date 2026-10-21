@@ -523,7 +523,7 @@ struct PathView: View {
             "arrow.triangle.2.circlepath", "scope", "chart.pie.fill",
             "line.diagonal", "checkmark.seal.fill"
         ]
-        let symbol = symbols[(node.num - 1) % symbols.count]
+        let symbol = node.symbol ?? symbols[(node.num - 1) % symbols.count]
         let color = state == .locked ? Color.white.opacity(0.40) : Color.white.opacity(0.94)
 
         return Image(systemName: symbol)

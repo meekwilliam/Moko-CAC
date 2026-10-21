@@ -771,6 +771,12 @@ struct NumberSliderView: View {
         return String(format: "%.2f", rounded)
     }
 
+    /// "$250" for money, "12 years" / "52 %" for everything else.
+    private func label(_ v: Double) -> String {
+        if unit == "dollars" { return "$\(format(v))" }
+        return "\(format(v))\(unit.isEmpty ? "" : " \(unit)")"
+    }
+
     var body: some View {
         VStack(alignment: .leading, spacing: 18) {
             QuestionPrompt(text: s.question ?? "Drag the slider to the correct value.", ink: ink)
@@ -781,7 +787,7 @@ struct NumberSliderView: View {
                     && abs(value - s.numberCorrect!) <= (s.numberTolerance ?? 0)
                 let tint: Color = player.revealed ? (correct ? Theme.correct : Theme.incorrect) : Theme.answer
 
-                Text("\(format(value))\(unit.isEmpty ? "" : " \(unit)")")
+                Text(label(value))
                     .font(Theme.font(34, .black))
                     .foregroundColor(tint)
                     .frame(maxWidth: .infinity, alignment: .center)
@@ -806,15 +812,15 @@ struct NumberSliderView: View {
                 }
 
                 HStack {
-                    Text("\(format(lo))\(unit.isEmpty ? "" : " \(unit)")")
+                    Text(label(lo))
                     Spacer()
-                    Text("\(format(hi))\(unit.isEmpty ? "" : " \(unit)")")
+                    Text(label(hi))
                 }
                 .font(Theme.font(12, .bold))
                 .foregroundColor(Theme.muted)
 
                 if player.revealed, !correct, let truth = s.numberCorrect {
-                    Text("Correct: \(format(truth))\(unit.isEmpty ? "" : " \(unit)")")
+                    Text("Correct: \(label(truth))")
                         .font(Theme.font(14, .black))
                         .foregroundColor(Theme.correct)
                 }

@@ -1,6 +1,3962 @@
 {
   "courses": [
     {
+      "id": "money",
+      "name": "Money Basics",
+      "color": "#22C55E",
+      "level": null,
+      "sections": [
+        {
+          "index": 0,
+          "eyebrow": "MONEY BASICS · UNIT 1",
+          "title": "Spending & Budgeting",
+          "bg": "#22C55E",
+          "slab": "#15803D",
+          "tier": "Beginner",
+          "unitId": "money_1",
+          "difficulty": "beginner",
+          "testOutEnabled": true,
+          "testOutQuestionCount": 8,
+          "testOutPassingScore": 7,
+          "bossLessonId": "money_1_boss",
+          "finalBossRequiredForCourseMastery": false
+        },
+        {
+          "index": 1,
+          "eyebrow": "MONEY BASICS · UNIT 2",
+          "title": "Saving & Growing Money",
+          "bg": "#14B8A6",
+          "slab": "#0F766E",
+          "tier": "Beginner",
+          "unitId": "money_2",
+          "difficulty": "beginner",
+          "testOutEnabled": true,
+          "testOutQuestionCount": 8,
+          "testOutPassingScore": 7,
+          "bossLessonId": "money_2_boss",
+          "finalBossRequiredForCourseMastery": false
+        },
+        {
+          "index": 2,
+          "eyebrow": "MONEY BASICS · UNIT 3",
+          "title": "Credit & Debt",
+          "bg": "#F59E0B",
+          "slab": "#B45309",
+          "tier": "Beginner",
+          "unitId": "money_3",
+          "difficulty": "beginner",
+          "testOutEnabled": true,
+          "testOutQuestionCount": 8,
+          "testOutPassingScore": 7,
+          "bossLessonId": "money_3_boss",
+          "finalBossRequiredForCourseMastery": false
+        },
+        {
+          "index": 3,
+          "eyebrow": "MONEY BASICS · UNIT 4",
+          "title": "Investing Basics",
+          "bg": "#3B82F6",
+          "slab": "#1D4ED8",
+          "tier": "Beginner",
+          "unitId": "money_4",
+          "difficulty": "beginner",
+          "testOutEnabled": true,
+          "testOutQuestionCount": 8,
+          "testOutPassingScore": 7,
+          "bossLessonId": "money_4_boss",
+          "finalBossRequiredForCourseMastery": false
+        },
+        {
+          "index": 4,
+          "eyebrow": "MONEY BASICS · UNIT 5",
+          "title": "Hype, Crypto & Gambling",
+          "bg": "#8B5CF6",
+          "slab": "#6D28D9",
+          "tier": "Beginner",
+          "unitId": "money_5",
+          "difficulty": "beginner",
+          "testOutEnabled": true,
+          "testOutQuestionCount": 8,
+          "testOutPassingScore": 7,
+          "bossLessonId": "money_5_boss",
+          "finalBossRequiredForCourseMastery": false
+        }
+      ],
+      "nodes": [
+        {
+          "num": 1,
+          "svg": "<svg viewBox=\"0 0 32 32\" fill=\"white\"><circle cx=\"16\" cy=\"16\" r=\"9\"/></svg>",
+          "title": "Your First Paycheck",
+          "sectionIndex": 0,
+          "symbol": "banknote.fill"
+        },
+        {
+          "num": 2,
+          "svg": "<svg viewBox=\"0 0 32 32\" fill=\"white\"><circle cx=\"16\" cy=\"16\" r=\"9\"/></svg>",
+          "title": "Needs vs. Wants",
+          "sectionIndex": 0,
+          "symbol": "cart.fill"
+        },
+        {
+          "num": 3,
+          "svg": "<svg viewBox=\"0 0 32 32\" fill=\"white\"><circle cx=\"16\" cy=\"16\" r=\"9\"/></svg>",
+          "title": "The 50/30/20 Budget",
+          "sectionIndex": 0,
+          "symbol": "percent"
+        },
+        {
+          "num": 4,
+          "svg": "<svg viewBox=\"0 0 32 32\" fill=\"white\"><circle cx=\"16\" cy=\"16\" r=\"9\"/></svg>",
+          "title": "Impulse Buys & Marketing Tricks",
+          "sectionIndex": 0,
+          "symbol": "bag.fill"
+        },
+        {
+          "num": 5,
+          "svg": "<svg viewBox=\"0 0 32 32\" fill=\"white\"><circle cx=\"16\" cy=\"16\" r=\"9\"/></svg>",
+          "title": "Boss: Spending & Budgeting",
+          "sectionIndex": 0,
+          "symbol": "crown.fill"
+        },
+        {
+          "num": 6,
+          "svg": "<svg viewBox=\"0 0 32 32\" fill=\"white\"><circle cx=\"16\" cy=\"16\" r=\"9\"/></svg>",
+          "title": "Pay Yourself First",
+          "sectionIndex": 1,
+          "symbol": "arrow.down.to.line.circle.fill"
+        },
+        {
+          "num": 7,
+          "svg": "<svg viewBox=\"0 0 32 32\" fill=\"white\"><circle cx=\"16\" cy=\"16\" r=\"9\"/></svg>",
+          "title": "Emergency Funds",
+          "sectionIndex": 1,
+          "symbol": "umbrella.fill"
+        },
+        {
+          "num": 8,
+          "svg": "<svg viewBox=\"0 0 32 32\" fill=\"white\"><circle cx=\"16\" cy=\"16\" r=\"9\"/></svg>",
+          "title": "Banks: Checking vs. Savings",
+          "sectionIndex": 1,
+          "symbol": "building.columns.fill"
+        },
+        {
+          "num": 9,
+          "svg": "<svg viewBox=\"0 0 32 32\" fill=\"white\"><circle cx=\"16\" cy=\"16\" r=\"9\"/></svg>",
+          "title": "Compound Interest",
+          "sectionIndex": 1,
+          "symbol": "chart.line.uptrend.xyaxis"
+        },
+        {
+          "num": 10,
+          "svg": "<svg viewBox=\"0 0 32 32\" fill=\"white\"><circle cx=\"16\" cy=\"16\" r=\"9\"/></svg>",
+          "title": "Boss: Saving & Growing Money",
+          "sectionIndex": 1,
+          "symbol": "crown.fill"
+        },
+        {
+          "num": 11,
+          "svg": "<svg viewBox=\"0 0 32 32\" fill=\"white\"><circle cx=\"16\" cy=\"16\" r=\"9\"/></svg>",
+          "title": "How Credit Cards Work",
+          "sectionIndex": 2,
+          "symbol": "creditcard.fill"
+        },
+        {
+          "num": 12,
+          "svg": "<svg viewBox=\"0 0 32 32\" fill=\"white\"><circle cx=\"16\" cy=\"16\" r=\"9\"/></svg>",
+          "title": "Interest & the Minimum Payment Trap",
+          "sectionIndex": 2,
+          "symbol": "percent"
+        },
+        {
+          "num": 13,
+          "svg": "<svg viewBox=\"0 0 32 32\" fill=\"white\"><circle cx=\"16\" cy=\"16\" r=\"9\"/></svg>",
+          "title": "Your Credit Score",
+          "sectionIndex": 2,
+          "symbol": "gauge.with.dots.needle.67percent"
+        },
+        {
+          "num": 14,
+          "svg": "<svg viewBox=\"0 0 32 32\" fill=\"white\"><circle cx=\"16\" cy=\"16\" r=\"9\"/></svg>",
+          "title": "Buy Now, Pay Later & Loans",
+          "sectionIndex": 2,
+          "symbol": "calendar.badge.clock"
+        },
+        {
+          "num": 15,
+          "svg": "<svg viewBox=\"0 0 32 32\" fill=\"white\"><circle cx=\"16\" cy=\"16\" r=\"9\"/></svg>",
+          "title": "Boss: Credit & Debt",
+          "sectionIndex": 2,
+          "symbol": "crown.fill"
+        },
+        {
+          "num": 16,
+          "svg": "<svg viewBox=\"0 0 32 32\" fill=\"white\"><circle cx=\"16\" cy=\"16\" r=\"9\"/></svg>",
+          "title": "What Is a Stock?",
+          "sectionIndex": 3,
+          "symbol": "chart.line.uptrend.xyaxis"
+        },
+        {
+          "num": 17,
+          "svg": "<svg viewBox=\"0 0 32 32\" fill=\"white\"><circle cx=\"16\" cy=\"16\" r=\"9\"/></svg>",
+          "title": "Index Funds & Diversification",
+          "sectionIndex": 3,
+          "symbol": "chart.pie.fill"
+        },
+        {
+          "num": 18,
+          "svg": "<svg viewBox=\"0 0 32 32\" fill=\"white\"><circle cx=\"16\" cy=\"16\" r=\"9\"/></svg>",
+          "title": "Risk, Return & Time",
+          "sectionIndex": 3,
+          "symbol": "hourglass"
+        },
+        {
+          "num": 19,
+          "svg": "<svg viewBox=\"0 0 32 32\" fill=\"white\"><circle cx=\"16\" cy=\"16\" r=\"9\"/></svg>",
+          "title": "Accounts for Teens",
+          "sectionIndex": 3,
+          "symbol": "building.columns.fill"
+        },
+        {
+          "num": 20,
+          "svg": "<svg viewBox=\"0 0 32 32\" fill=\"white\"><circle cx=\"16\" cy=\"16\" r=\"9\"/></svg>",
+          "title": "Boss: Investing Basics",
+          "sectionIndex": 3,
+          "symbol": "crown.fill"
+        },
+        {
+          "num": 21,
+          "svg": "<svg viewBox=\"0 0 32 32\" fill=\"white\"><circle cx=\"16\" cy=\"16\" r=\"9\"/></svg>",
+          "title": "Crypto: What It Is",
+          "sectionIndex": 4,
+          "symbol": "bitcoinsign.circle.fill"
+        },
+        {
+          "num": 22,
+          "svg": "<svg viewBox=\"0 0 32 32\" fill=\"white\"><circle cx=\"16\" cy=\"16\" r=\"9\"/></svg>",
+          "title": "Sports Betting & the House Edge",
+          "sectionIndex": 4,
+          "symbol": "dice.fill"
+        },
+        {
+          "num": 23,
+          "svg": "<svg viewBox=\"0 0 32 32\" fill=\"white\"><circle cx=\"16\" cy=\"16\" r=\"9\"/></svg>",
+          "title": "Hype, FOMO & Finfluencers",
+          "sectionIndex": 4,
+          "symbol": "megaphone.fill"
+        },
+        {
+          "num": 24,
+          "svg": "<svg viewBox=\"0 0 32 32\" fill=\"white\"><circle cx=\"16\" cy=\"16\" r=\"9\"/></svg>",
+          "title": "Spotting Scams",
+          "sectionIndex": 4,
+          "symbol": "exclamationmark.shield.fill"
+        },
+        {
+          "num": 25,
+          "svg": "<svg viewBox=\"0 0 32 32\" fill=\"white\"><circle cx=\"16\" cy=\"16\" r=\"9\"/></svg>",
+          "title": "Boss: Hype, Crypto & Gambling",
+          "sectionIndex": 4,
+          "symbol": "crown.fill"
+        }
+      ],
+      "lessons": [
+        {
+          "node": 1,
+          "title": "Your First Paycheck",
+          "celebration": "Your First Paycheck complete.",
+          "lessonType": "STANDARD",
+          "screens": [
+            {
+              "type": "intro",
+              "title": "Gross vs. net",
+              "text": "You worked 20 hours at $15 an hour, so you earned $300. That's your <b>gross pay</b>. What actually lands in your account is your <b>net pay</b>: gross pay minus taxes and deductions."
+            },
+            {
+              "type": "multiple_choice",
+              "question": "Which is your take-home pay?",
+              "options": [
+                "Gross pay",
+                "Net pay",
+                "Hourly rate"
+              ],
+              "correct": 1,
+              "explanation": "Net pay is what's left after taxes and deductions. It's the money you can actually spend.",
+              "skillId": "your_first_paycheck"
+            },
+            {
+              "type": "intro",
+              "title": "Where it goes",
+              "text": "Almost every paycheck pays <b>Social Security</b> (6.2%) and <b>Medicare</b> (1.45%), together called FICA. Some states also take income tax, but <b>Texas has no state income tax</b>."
+            },
+            {
+              "type": "number_slider",
+              "question": "You earn $300. FICA takes 7.65%. About how much is left before any income tax?",
+              "number_min": 200,
+              "number_max": 300,
+              "number_step": 1,
+              "number_correct": 277,
+              "number_tolerance": 2,
+              "number_unit": "dollars",
+              "explanation": "7.65% of $300 is about $23, which leaves about $277.",
+              "skillId": "your_first_paycheck"
+            },
+            {
+              "type": "true_false",
+              "question": "If a teen earns only a little in a year, they may get federal income tax that was withheld back as a refund.",
+              "correct": true,
+              "explanation": "If you earn less than the standard deduction, you usually owe no federal income tax. Filing a return gets withheld money back.",
+              "skillId": "your_first_paycheck"
+            },
+            {
+              "type": "matching",
+              "question": "Match each pay stub term.",
+              "pairs": [
+                [
+                  "Gross pay",
+                  "Total earned before taxes"
+                ],
+                [
+                  "Net pay",
+                  "What you take home"
+                ],
+                [
+                  "FICA",
+                  "Social Security + Medicare"
+                ]
+              ],
+              "explanation": "Reading your pay stub tells you exactly where your money went.",
+              "skillId": "your_first_paycheck"
+            },
+            {
+              "type": "fill_blank",
+              "question": "Your budget should be based on your [___] pay.",
+              "options": [
+                "gross",
+                "net",
+                "dream"
+              ],
+              "correct": 1,
+              "explanation": "Plan with the money you actually receive: your net pay.",
+              "skillId": "your_first_paycheck"
+            }
+          ]
+        },
+        {
+          "node": 2,
+          "title": "Needs vs. Wants",
+          "celebration": "Needs vs. Wants complete.",
+          "lessonType": "STANDARD",
+          "screens": [
+            {
+              "type": "intro",
+              "title": "Needs vs. wants",
+              "text": "A <b>need</b> is something you must have to live, work, or go to school. A <b>want</b> makes life more fun but you'd be okay without it. Most money problems start when wants get treated like needs."
+            },
+            {
+              "type": "multiple_choice",
+              "question": "Which one is a need?",
+              "options": [
+                "New $180 sneakers",
+                "Gas to get to work",
+                "A game skin"
+              ],
+              "correct": 1,
+              "explanation": "Gas gets you to your job, which pays for everything else. The others are wants.",
+              "skillId": "needs_vs_wants"
+            },
+            {
+              "type": "matching",
+              "question": "Sort each purchase.",
+              "pairs": [
+                [
+                  "Phone plan for work calls",
+                  "Need"
+                ],
+                [
+                  "Concert tickets",
+                  "Want"
+                ],
+                [
+                  "Basic groceries",
+                  "Need"
+                ]
+              ],
+              "explanation": "Some things can be either. A basic phone plan is a need, but the newest phone usually isn't.",
+              "skillId": "needs_vs_wants"
+            },
+            {
+              "type": "true_false",
+              "question": "Something can be a need but still have a \"want\" version.",
+              "correct": true,
+              "explanation": "You need shoes. You want the $200 pair. The gap between them is where you can save.",
+              "skillId": "needs_vs_wants"
+            },
+            {
+              "type": "intro",
+              "title": "The 24-hour rule",
+              "text": "Before buying a want, wait <b>24 hours</b>. If you still want it tomorrow, and it fits your budget, go for it. Lots of urges disappear overnight."
+            },
+            {
+              "type": "multiple_choice",
+              "question": "You see a hoodie you love for $65. What's the smartest first move?",
+              "options": [
+                "Buy it before it sells out",
+                "Wait a day and check your budget",
+                "Put it on a credit card"
+              ],
+              "correct": 1,
+              "explanation": "Waiting a day gives you time to decide if it's worth the money, without pressure.",
+              "skillId": "needs_vs_wants"
+            },
+            {
+              "type": "fill_blank",
+              "question": "A [___] is something you could live without, even if you'd miss it.",
+              "options": [
+                "need",
+                "bill",
+                "want"
+              ],
+              "correct": 2,
+              "explanation": "Wants are fine in a budget. They just come after needs.",
+              "skillId": "needs_vs_wants"
+            }
+          ]
+        },
+        {
+          "node": 3,
+          "title": "The 50/30/20 Budget",
+          "celebration": "The 50/30/20 Budget complete.",
+          "lessonType": "STANDARD",
+          "screens": [
+            {
+              "type": "intro",
+              "title": "A simple budget",
+              "text": "A budget is a plan for your money <b>before</b> you spend it. The 50/30/20 rule is an easy start: <b>50%</b> for needs, <b>30%</b> for wants, <b>20%</b> for savings."
+            },
+            {
+              "type": "matching",
+              "question": "Match each part of the 50/30/20 rule.",
+              "pairs": [
+                [
+                  "50%",
+                  "Needs"
+                ],
+                [
+                  "30%",
+                  "Wants"
+                ],
+                [
+                  "20%",
+                  "Savings"
+                ]
+              ],
+              "explanation": "Needs first, then fun, and always something saved.",
+              "skillId": "the_50_30_20_budget"
+            },
+            {
+              "type": "number_slider",
+              "question": "You take home $400 a month. How much goes to savings under 50/30/20?",
+              "number_min": 0,
+              "number_max": 200,
+              "number_step": 5,
+              "number_correct": 80,
+              "number_tolerance": 0,
+              "number_unit": "dollars",
+              "explanation": "20% of $400 is $80.",
+              "skillId": "the_50_30_20_budget"
+            },
+            {
+              "type": "number_slider",
+              "question": "Same $400. How much can you spend on wants?",
+              "number_min": 0,
+              "number_max": 200,
+              "number_step": 5,
+              "number_correct": 120,
+              "number_tolerance": 0,
+              "number_unit": "dollars",
+              "explanation": "30% of $400 is $120. That's your guilt-free fun money.",
+              "skillId": "the_50_30_20_budget"
+            },
+            {
+              "type": "intro",
+              "title": "Track it",
+              "text": "A budget only works if you know where your money actually goes. For one month, write down <b>every</b> purchase. Most people are surprised by small things like snacks, delivery, and subscriptions."
+            },
+            {
+              "type": "true_false",
+              "question": "Small daily purchases don't really affect a budget.",
+              "correct": false,
+              "explanation": "A $6 drink five days a week is about $120 a month. Small things add up fast.",
+              "skillId": "the_50_30_20_budget"
+            },
+            {
+              "type": "sequence_builder",
+              "question": "Put the budgeting steps in order.",
+              "items": [
+                "Figure out your net income",
+                "Plan needs, wants, and savings",
+                "Track what you spend",
+                "Adjust next month"
+              ],
+              "correct_order": [
+                "Figure out your net income",
+                "Plan needs, wants, and savings",
+                "Track what you spend",
+                "Adjust next month"
+              ],
+              "explanation": "Budgeting is a loop: plan, track, and adjust.",
+              "skillId": "the_50_30_20_budget"
+            }
+          ]
+        },
+        {
+          "node": 4,
+          "title": "Impulse Buys & Marketing Tricks",
+          "celebration": "Impulse Buys & Marketing Tricks complete.",
+          "lessonType": "STANDARD",
+          "screens": [
+            {
+              "type": "intro",
+              "title": "Designed to make you spend",
+              "text": "Apps and stores are built to make buying feel easy and urgent. Countdown timers, \"only 2 left,\" and one-tap checkout all push you to buy <b>before you think</b>."
+            },
+            {
+              "type": "multiple_choice",
+              "question": "\"Sale ends in 10:00!\" is mainly meant to…",
+              "options": [
+                "Help you compare prices",
+                "Rush your decision",
+                "Lower your taxes"
+              ],
+              "correct": 1,
+              "explanation": "Urgency is a pressure tactic. A real deal will still be a deal after you think about it.",
+              "skillId": "impulse_buys_marketing_tricks"
+            },
+            {
+              "type": "matching",
+              "question": "Match each trick to how it works.",
+              "pairs": [
+                [
+                  "Free trial",
+                  "Auto-charges if you forget"
+                ],
+                [
+                  "Free shipping over $50",
+                  "Makes you add more"
+                ],
+                [
+                  "Influencer post",
+                  "Paid ad that feels personal"
+                ]
+              ],
+              "explanation": "Knowing the trick takes away most of its power.",
+              "skillId": "impulse_buys_marketing_tricks"
+            },
+            {
+              "type": "intro",
+              "title": "Subscriptions add up",
+              "text": "Streaming, music, games, and apps often cost $5–$15 a month each. Four of them can quietly cost <b>$500+ a year</b>."
+            },
+            {
+              "type": "number_slider",
+              "question": "You pay for 3 subscriptions at $12 a month each. How much is that per year?",
+              "number_min": 0,
+              "number_max": 600,
+              "number_step": 4,
+              "number_correct": 432,
+              "number_tolerance": 4,
+              "number_unit": "dollars",
+              "explanation": "3 × $12 = $36 a month, and $36 × 12 = $432 a year.",
+              "skillId": "impulse_buys_marketing_tricks"
+            },
+            {
+              "type": "true_false",
+              "question": "Saving your card in an app makes it easier to overspend.",
+              "correct": true,
+              "explanation": "One-tap checkout removes the pause where you'd normally think twice.",
+              "skillId": "impulse_buys_marketing_tricks"
+            },
+            {
+              "type": "fill_blank",
+              "question": "Before you buy, ask: is this a [___] or am I just being rushed?",
+              "options": [
+                "real deal",
+                "free trial",
+                "flash sale"
+              ],
+              "correct": 0,
+              "explanation": "Slow down. If it's a real deal, it'll still look good after you think.",
+              "skillId": "impulse_buys_marketing_tricks"
+            }
+          ]
+        },
+        {
+          "node": 5,
+          "title": "Boss: Spending & Budgeting",
+          "celebration": "Boss: Spending & Budgeting complete.",
+          "lessonType": "BOSS_BATTLE",
+          "screens": [
+            {
+              "type": "multiple_choice",
+              "question": "Your paycheck says $500 gross, $462 net. What can you spend?",
+              "options": [
+                "$500",
+                "$462",
+                "$538"
+              ],
+              "correct": 1,
+              "explanation": "Net pay is what actually reaches your account.",
+              "skillId": "boss_spending_budgeting"
+            },
+            {
+              "type": "true_false",
+              "question": "Texas takes state income tax out of paychecks.",
+              "correct": false,
+              "explanation": "Texas has no state income tax. You still pay FICA and possibly federal income tax.",
+              "skillId": "boss_spending_budgeting"
+            },
+            {
+              "type": "matching",
+              "question": "Sort each purchase.",
+              "pairs": [
+                [
+                  "Bus pass to school",
+                  "Need"
+                ],
+                [
+                  "Limited-edition hoodie",
+                  "Want"
+                ],
+                [
+                  "Car insurance",
+                  "Need"
+                ]
+              ],
+              "explanation": "Needs keep you living, working, and learning.",
+              "skillId": "boss_spending_budgeting"
+            },
+            {
+              "type": "number_slider",
+              "question": "You take home $600 a month. How much goes to needs under 50/30/20?",
+              "number_min": 0,
+              "number_max": 600,
+              "number_step": 10,
+              "number_correct": 300,
+              "number_tolerance": 0,
+              "number_unit": "dollars",
+              "explanation": "50% of $600 is $300.",
+              "skillId": "boss_spending_budgeting"
+            },
+            {
+              "type": "multiple_choice",
+              "question": "\"Only 2 left in stock!\" Best response?",
+              "options": [
+                "Buy now",
+                "Wait and check your budget",
+                "Buy two"
+              ],
+              "correct": 1,
+              "explanation": "Scarcity messages are designed to rush you.",
+              "skillId": "boss_spending_budgeting"
+            },
+            {
+              "type": "fill_blank",
+              "question": "A budget is a plan for your money [___] you spend it.",
+              "options": [
+                "after",
+                "before",
+                "instead of"
+              ],
+              "correct": 1,
+              "explanation": "Planning first is what makes it a budget, not a receipt.",
+              "skillId": "boss_spending_budgeting"
+            },
+            {
+              "type": "sequence_builder",
+              "question": "Order the budgeting loop.",
+              "items": [
+                "Know your net income",
+                "Make a plan",
+                "Track spending",
+                "Adjust"
+              ],
+              "correct_order": [
+                "Know your net income",
+                "Make a plan",
+                "Track spending",
+                "Adjust"
+              ],
+              "explanation": "Plan, track, and adjust every month.",
+              "skillId": "boss_spending_budgeting"
+            }
+          ]
+        },
+        {
+          "node": 6,
+          "title": "Pay Yourself First",
+          "celebration": "Pay Yourself First complete.",
+          "lessonType": "STANDARD",
+          "screens": [
+            {
+              "type": "intro",
+              "title": "Save first, spend second",
+              "text": "Most people save whatever is left at the end of the month, which is usually nothing. <b>Paying yourself first</b> means moving money into savings the moment you get paid, before you spend any."
+            },
+            {
+              "type": "multiple_choice",
+              "question": "When should savings come out of your paycheck?",
+              "options": [
+                "Right when you get paid",
+                "At the end of the month",
+                "Only when you have extra"
+              ],
+              "correct": 0,
+              "explanation": "If you save first, spending adjusts to what's left, not the other way around.",
+              "skillId": "pay_yourself_first"
+            },
+            {
+              "type": "true_false",
+              "question": "Setting up an automatic transfer to savings makes saving easier.",
+              "correct": true,
+              "explanation": "Automation removes willpower from the equation. The money moves before you can spend it.",
+              "skillId": "pay_yourself_first"
+            },
+            {
+              "type": "intro",
+              "title": "Goals make it real",
+              "text": "Saving is easier with a <b>specific goal</b>: \"$1,200 for a used-car down payment by June\" beats \"save more.\" Divide the goal by the time you have to get a weekly target."
+            },
+            {
+              "type": "number_slider",
+              "question": "You want $600 for a trip in 20 weeks. How much should you save each week?",
+              "number_min": 0,
+              "number_max": 100,
+              "number_step": 1,
+              "number_correct": 30,
+              "number_tolerance": 0,
+              "number_unit": "dollars",
+              "explanation": "$600 ÷ 20 weeks = $30 a week.",
+              "skillId": "pay_yourself_first"
+            },
+            {
+              "type": "fill_blank",
+              "question": "A good savings goal is [___].",
+              "options": [
+                "specific with a deadline",
+                "\"save more someday\"",
+                "whatever's left"
+              ],
+              "correct": 0,
+              "explanation": "A clear amount and date turn a wish into a plan.",
+              "skillId": "pay_yourself_first"
+            }
+          ]
+        },
+        {
+          "node": 7,
+          "title": "Emergency Funds",
+          "celebration": "Emergency Funds complete.",
+          "lessonType": "STANDARD",
+          "screens": [
+            {
+              "type": "intro",
+              "title": "Life happens",
+              "text": "A cracked phone screen, a flat tire, a surprise bill. An <b>emergency fund</b> is money set aside only for surprises, so you don't have to borrow or panic."
+            },
+            {
+              "type": "multiple_choice",
+              "question": "Which is a real emergency-fund expense?",
+              "options": [
+                "Concert tickets on sale",
+                "Car repair to get to work",
+                "A new game release"
+              ],
+              "correct": 1,
+              "explanation": "Emergencies are unexpected and necessary. Sales and releases are wants.",
+              "skillId": "emergency_funds"
+            },
+            {
+              "type": "intro",
+              "title": "How much?",
+              "text": "Adults aim for <b>3–6 months</b> of expenses. As a teen, start with a smaller goal, like <b>$300–$500</b>, and build from there."
+            },
+            {
+              "type": "true_false",
+              "question": "Without an emergency fund, a surprise bill often ends up on a credit card.",
+              "correct": true,
+              "explanation": "And credit card interest can make that bill much more expensive.",
+              "skillId": "emergency_funds"
+            },
+            {
+              "type": "number_slider",
+              "question": "Your expenses are $1,500 a month. A 3-month emergency fund would be…",
+              "number_min": 0,
+              "number_max": 9000,
+              "number_step": 250,
+              "number_correct": 4500,
+              "number_tolerance": 0,
+              "number_unit": "dollars",
+              "explanation": "$1,500 × 3 = $4,500.",
+              "skillId": "emergency_funds"
+            },
+            {
+              "type": "sequence_builder",
+              "question": "Order these from first to last.",
+              "items": [
+                "Start a small starter fund",
+                "Refill it after you use it",
+                "Grow it to a few months of expenses"
+              ],
+              "correct_order": [
+                "Start a small starter fund",
+                "Refill it after you use it",
+                "Grow it to a few months of expenses"
+              ],
+              "explanation": "Start small, refill when used, and grow it over time.",
+              "skillId": "emergency_funds"
+            }
+          ]
+        },
+        {
+          "node": 8,
+          "title": "Banks: Checking vs. Savings",
+          "celebration": "Banks: Checking vs. Savings complete.",
+          "lessonType": "STANDARD",
+          "screens": [
+            {
+              "type": "intro",
+              "title": "Two main accounts",
+              "text": "A <b>checking account</b> is for everyday spending with a debit card. A <b>savings account</b> is for money you're keeping, and it usually pays you <b>interest</b>."
+            },
+            {
+              "type": "matching",
+              "question": "Match each account to its job.",
+              "pairs": [
+                [
+                  "Checking",
+                  "Everyday spending"
+                ],
+                [
+                  "Savings",
+                  "Money you're keeping"
+                ],
+                [
+                  "Debit card",
+                  "Spends from checking"
+                ]
+              ],
+              "explanation": "Keeping savings separate makes it harder to spend by accident.",
+              "skillId": "banks_checking_vs_savings"
+            },
+            {
+              "type": "true_false",
+              "question": "Money in an FDIC-insured bank is protected up to $250,000 if the bank fails.",
+              "correct": true,
+              "explanation": "FDIC insurance covers up to $250,000 per depositor, per bank, per account type.",
+              "skillId": "banks_checking_vs_savings"
+            },
+            {
+              "type": "intro",
+              "title": "Compare before you open",
+              "text": "Interest rates are shown as <b>APY</b>. Some savings accounts pay much more than others, so compare. Also watch for <b>monthly fees</b> and <b>overdraft fees</b>. Most teens under 18 open a joint account with a parent."
+            },
+            {
+              "type": "multiple_choice",
+              "question": "Which savings account is best, all else equal?",
+              "options": [
+                "0.01% APY, $5 monthly fee",
+                "4% APY, no fees",
+                "1% APY, $10 monthly fee"
+              ],
+              "correct": 1,
+              "explanation": "A higher APY and no fees means your money grows instead of shrinking.",
+              "skillId": "banks_checking_vs_savings"
+            },
+            {
+              "type": "fill_blank",
+              "question": "Spending more than you have in checking can trigger an [___] fee.",
+              "options": [
+                "overdraft",
+                "interest",
+                "FDIC"
+              ],
+              "correct": 0,
+              "explanation": "Overdraft fees can be $30+ each time. Turn on low-balance alerts.",
+              "skillId": "banks_checking_vs_savings"
+            }
+          ]
+        },
+        {
+          "node": 9,
+          "title": "Compound Interest",
+          "celebration": "Compound Interest complete.",
+          "lessonType": "STANDARD",
+          "screens": [
+            {
+              "type": "intro",
+              "title": "Interest on your interest",
+              "text": "With <b>compound interest</b>, you earn interest on your money <b>and</b> on the interest it already earned. Over time, growth speeds up like a snowball rolling downhill."
+            },
+            {
+              "type": "number_slider",
+              "question": "$1,000 earns 10% a year, compounded. How much after 2 years?",
+              "number_min": 1000,
+              "number_max": 1500,
+              "number_step": 1,
+              "number_correct": 1210,
+              "number_tolerance": 1,
+              "number_unit": "dollars",
+              "explanation": "Year 1: $1,000 → $1,100. Year 2: $1,100 → $1,210. The extra $10 is interest on interest.",
+              "skillId": "compound_interest"
+            },
+            {
+              "type": "intro",
+              "title": "The Rule of 72",
+              "text": "Want to know how fast money doubles? Divide <b>72 by the yearly rate</b>. At 8%, money doubles in about 72 ÷ 8 = <b>9 years</b>."
+            },
+            {
+              "type": "number_slider",
+              "question": "Using the Rule of 72, how many years to double at 6%?",
+              "number_min": 1,
+              "number_max": 30,
+              "number_step": 1,
+              "number_correct": 12,
+              "number_tolerance": 0,
+              "number_unit": "years",
+              "explanation": "72 ÷ 6 = 12 years.",
+              "skillId": "compound_interest"
+            },
+            {
+              "type": "true_false",
+              "question": "Starting to save at 16 instead of 26 can make a huge difference by retirement.",
+              "correct": true,
+              "explanation": "Ten extra years means more doublings. Time is the biggest ingredient in compounding.",
+              "skillId": "compound_interest"
+            },
+            {
+              "type": "multiple_choice",
+              "question": "What makes compound growth bigger?",
+              "options": [
+                "More time",
+                "Checking your balance daily",
+                "Smaller deposits"
+              ],
+              "correct": 0,
+              "explanation": "Time, rate, and how much you add all matter, but time is the one teens have the most of.",
+              "skillId": "compound_interest"
+            },
+            {
+              "type": "fill_blank",
+              "question": "Compound interest means earning interest on your [___].",
+              "options": [
+                "interest too",
+                "debit card",
+                "taxes"
+              ],
+              "correct": 0,
+              "explanation": "That's the snowball: your earnings start earning.",
+              "skillId": "compound_interest"
+            }
+          ]
+        },
+        {
+          "node": 10,
+          "title": "Boss: Saving & Growing Money",
+          "celebration": "Boss: Saving & Growing Money complete.",
+          "lessonType": "BOSS_BATTLE",
+          "screens": [
+            {
+              "type": "multiple_choice",
+              "question": "\"Pay yourself first\" means…",
+              "options": [
+                "Treat yourself every payday",
+                "Save as soon as you're paid",
+                "Pay bills last"
+              ],
+              "correct": 1,
+              "explanation": "Savings come out first, before spending.",
+              "skillId": "boss_saving_growing_money"
+            },
+            {
+              "type": "number_slider",
+              "question": "Save $25 a week. How much after 16 weeks?",
+              "number_min": 0,
+              "number_max": 800,
+              "number_step": 25,
+              "number_correct": 400,
+              "number_tolerance": 0,
+              "number_unit": "dollars",
+              "explanation": "$25 × 16 = $400.",
+              "skillId": "boss_saving_growing_money"
+            },
+            {
+              "type": "true_false",
+              "question": "An emergency fund is a good way to pay for a sale you don't want to miss.",
+              "correct": false,
+              "explanation": "Emergency funds are only for real, unexpected needs.",
+              "skillId": "boss_saving_growing_money"
+            },
+            {
+              "type": "matching",
+              "question": "Match each term.",
+              "pairs": [
+                [
+                  "APY",
+                  "Yearly interest rate"
+                ],
+                [
+                  "FDIC",
+                  "Protects bank deposits"
+                ],
+                [
+                  "Overdraft",
+                  "Spending more than you have"
+                ]
+              ],
+              "explanation": "These three terms show up on every bank account.",
+              "skillId": "boss_saving_growing_money"
+            },
+            {
+              "type": "number_slider",
+              "question": "Rule of 72: at 9%, about how many years to double?",
+              "number_min": 1,
+              "number_max": 20,
+              "number_step": 1,
+              "number_correct": 8,
+              "number_tolerance": 0,
+              "number_unit": "years",
+              "explanation": "72 ÷ 9 = 8 years.",
+              "skillId": "boss_saving_growing_money"
+            },
+            {
+              "type": "multiple_choice",
+              "question": "Which is the biggest advantage teens have for compounding?",
+              "options": [
+                "High income",
+                "Time",
+                "Credit cards"
+              ],
+              "correct": 1,
+              "explanation": "Starting early gives your money more years to grow.",
+              "skillId": "boss_saving_growing_money"
+            },
+            {
+              "type": "fill_blank",
+              "question": "Checking is for spending; [___] is for keeping.",
+              "options": [
+                "savings",
+                "a debit card",
+                "an overdraft"
+              ],
+              "correct": 0,
+              "explanation": "Separate accounts keep your goals safe from everyday spending.",
+              "skillId": "boss_saving_growing_money"
+            }
+          ]
+        },
+        {
+          "node": 11,
+          "title": "How Credit Cards Work",
+          "celebration": "How Credit Cards Work complete.",
+          "lessonType": "STANDARD",
+          "screens": [
+            {
+              "type": "intro",
+              "title": "Borrowed, not free",
+              "text": "A credit card lets you <b>borrow</b> money from a bank to pay now. Every swipe is a small loan you have to pay back later."
+            },
+            {
+              "type": "multiple_choice",
+              "question": "You buy $60 sneakers with a credit card. Who paid the store?",
+              "options": [
+                "You did, with your cash",
+                "The bank, as a loan to you",
+                "Nobody, it's free"
+              ],
+              "correct": 1,
+              "explanation": "The bank pays the store, and you now owe the bank $60.",
+              "skillId": "how_credit_cards_work"
+            },
+            {
+              "type": "matching",
+              "question": "Match each card to how it works.",
+              "pairs": [
+                [
+                  "Debit card",
+                  "Spends money you have"
+                ],
+                [
+                  "Credit card",
+                  "Borrows money to repay"
+                ],
+                [
+                  "Prepaid card",
+                  "Spends money loaded on it"
+                ]
+              ],
+              "explanation": "Only a credit card spends the bank's money.",
+              "skillId": "how_credit_cards_work"
+            },
+            {
+              "type": "intro",
+              "title": "The grace period",
+              "text": "Pay your <b>full statement balance</b> by the due date and you usually pay <b>no interest</b>. Leave some unpaid and interest starts adding up."
+            },
+            {
+              "type": "true_false",
+              "question": "If you pay the full balance every month, you usually pay no interest.",
+              "correct": true,
+              "explanation": "Paying in full during the grace period avoids interest.",
+              "skillId": "how_credit_cards_work"
+            },
+            {
+              "type": "fill_blank",
+              "question": "Your credit [___] is the most you're allowed to borrow on the card.",
+              "options": [
+                "limit",
+                "score",
+                "rate"
+              ],
+              "correct": 0,
+              "explanation": "A $500 limit means you can't owe more than $500.",
+              "skillId": "how_credit_cards_work"
+            },
+            {
+              "type": "sequence_builder",
+              "question": "Put a credit card month in order.",
+              "items": [
+                "Make purchases",
+                "Get your statement",
+                "Pay by the due date"
+              ],
+              "correct_order": [
+                "Make purchases",
+                "Get your statement",
+                "Pay by the due date"
+              ],
+              "explanation": "Spend, get billed, then pay on time.",
+              "skillId": "how_credit_cards_work"
+            }
+          ]
+        },
+        {
+          "node": 12,
+          "title": "Interest & the Minimum Payment Trap",
+          "celebration": "Interest & the Minimum Payment Trap complete.",
+          "lessonType": "STANDARD",
+          "screens": [
+            {
+              "type": "intro",
+              "title": "What APR means",
+              "text": "<b>APR</b> is the yearly interest rate on what you owe. Credit cards often charge <b>20% or more</b>, which is far higher than most loans."
+            },
+            {
+              "type": "number_slider",
+              "question": "You owe $1,000 at 24% APR and pay nothing for a year. About how much interest is added?",
+              "number_min": 0,
+              "number_max": 500,
+              "number_step": 10,
+              "number_correct": 240,
+              "number_tolerance": 30,
+              "number_unit": "dollars",
+              "explanation": "24% of $1,000 is $240, and compounding makes it a bit more.",
+              "skillId": "interest_the_minimum_payment_trap"
+            },
+            {
+              "type": "multiple_choice",
+              "question": "What's the minimum payment?",
+              "options": [
+                "The full balance",
+                "The smallest amount due",
+                "A fee for using the card"
+              ],
+              "correct": 1,
+              "explanation": "It's the least you can pay to avoid a late fee. It's not the whole debt.",
+              "skillId": "interest_the_minimum_payment_trap"
+            },
+            {
+              "type": "intro",
+              "title": "The trap",
+              "text": "Minimum payments are small on purpose. Pay only the minimum and most of it goes to <b>interest</b>, so the debt can take <b>years</b> to clear."
+            },
+            {
+              "type": "true_false",
+              "question": "Paying only the minimum is a fast way to get out of debt.",
+              "correct": false,
+              "explanation": "It keeps the debt alive for years and costs much more in interest.",
+              "skillId": "interest_the_minimum_payment_trap"
+            },
+            {
+              "type": "multiple_choice",
+              "question": "You owe $800. Which plan costs you the least?",
+              "options": [
+                "Pay the minimum",
+                "Pay $50 a month",
+                "Pay it all off now"
+              ],
+              "correct": 2,
+              "explanation": "The sooner you pay it off, the less interest you pay.",
+              "skillId": "interest_the_minimum_payment_trap"
+            },
+            {
+              "type": "fill_blank",
+              "question": "Missing a payment can add a late [___] on top of interest.",
+              "options": [
+                "bonus",
+                "fee",
+                "reward"
+              ],
+              "correct": 1,
+              "explanation": "Late fees, often around $30, make debt grow faster.",
+              "skillId": "interest_the_minimum_payment_trap"
+            }
+          ]
+        },
+        {
+          "node": 13,
+          "title": "Your Credit Score",
+          "celebration": "Your Credit Score complete.",
+          "lessonType": "STANDARD",
+          "screens": [
+            {
+              "type": "intro",
+              "title": "Your money report card",
+              "text": "A <b>credit score</b> is a number from <b>300 to 850</b> that shows lenders how reliably you repay. Higher is better."
+            },
+            {
+              "type": "multiple_choice",
+              "question": "What can a credit score affect?",
+              "options": [
+                "Your car loan rate",
+                "Your GPA",
+                "Your phone's speed"
+              ],
+              "correct": 0,
+              "explanation": "It affects loan rates, apartment approvals, and even some insurance.",
+              "skillId": "your_credit_score"
+            },
+            {
+              "type": "intro",
+              "title": "What goes into it",
+              "text": "The biggest factor is <b>paying on time</b>, at about 35%. Next is <b>how much you owe</b> compared with your limits, at about 30%."
+            },
+            {
+              "type": "matching",
+              "question": "Match each FICO factor to its weight.",
+              "pairs": [
+                [
+                  "Payment history",
+                  "About 35%"
+                ],
+                [
+                  "Amounts owed",
+                  "About 30%"
+                ],
+                [
+                  "Length of history",
+                  "About 15%"
+                ]
+              ],
+              "explanation": "New credit and credit mix make up the last ~20%.",
+              "skillId": "your_credit_score"
+            },
+            {
+              "type": "true_false",
+              "question": "Using a small part of your credit limit is better for your score.",
+              "correct": true,
+              "explanation": "Using less than about 30% of your limit helps your score.",
+              "skillId": "your_credit_score"
+            },
+            {
+              "type": "fill_blank",
+              "question": "Under 18? A parent can add you as an authorized [___] on their card.",
+              "options": [
+                "owner",
+                "user",
+                "lender"
+              ],
+              "correct": 1,
+              "explanation": "It can help you start building credit history early.",
+              "skillId": "your_credit_score"
+            },
+            {
+              "type": "multiple_choice",
+              "question": "Which habit builds credit best?",
+              "options": [
+                "Opening lots of cards",
+                "Maxing out your card",
+                "Paying on time, every time"
+              ],
+              "correct": 2,
+              "explanation": "On-time payments are the biggest part of your score.",
+              "skillId": "your_credit_score"
+            }
+          ]
+        },
+        {
+          "node": 14,
+          "title": "Buy Now, Pay Later & Loans",
+          "celebration": "Buy Now, Pay Later & Loans complete.",
+          "lessonType": "STANDARD",
+          "screens": [
+            {
+              "type": "intro",
+              "title": "Split it into four?",
+              "text": "<b>Buy Now, Pay Later</b> (BNPL) splits a purchase into payments, often four. It feels small, but it's still <b>debt</b>."
+            },
+            {
+              "type": "multiple_choice",
+              "question": "$200 headphones split into 4 payments. How much is each?",
+              "options": [
+                "$40",
+                "$50",
+                "$100"
+              ],
+              "correct": 1,
+              "explanation": "$200 ÷ 4 = $50, due every couple of weeks.",
+              "skillId": "buy_now_pay_later_loans"
+            },
+            {
+              "type": "true_false",
+              "question": "Missing a BNPL payment can lead to late fees.",
+              "correct": true,
+              "explanation": "Missed payments can cost fees and may hurt your credit.",
+              "skillId": "buy_now_pay_later_loans"
+            },
+            {
+              "type": "intro",
+              "title": "Bigger loans",
+              "text": "Loans for big things like a <b>car</b> or <b>college</b> are paid back over years with interest. Student loans are common, so borrow only what you need."
+            },
+            {
+              "type": "matching",
+              "question": "Match each loan to its use.",
+              "pairs": [
+                [
+                  "Auto loan",
+                  "Buying a car"
+                ],
+                [
+                  "Student loan",
+                  "Paying for college"
+                ],
+                [
+                  "Mortgage",
+                  "Buying a home"
+                ]
+              ],
+              "explanation": "Each one is borrowed money repaid with interest.",
+              "skillId": "buy_now_pay_later_loans"
+            },
+            {
+              "type": "number_slider",
+              "question": "A $10,000 car loan costs $1,500 in total interest. How much do you repay in total?",
+              "number_min": 10000,
+              "number_max": 13000,
+              "number_step": 100,
+              "number_correct": 11500,
+              "number_tolerance": 0,
+              "number_unit": "dollars",
+              "explanation": "$10,000 borrowed plus $1,500 interest = $11,500.",
+              "skillId": "buy_now_pay_later_loans"
+            },
+            {
+              "type": "sequence_builder",
+              "question": "Order the smart steps before borrowing.",
+              "items": [
+                "Ask if you really need it",
+                "Compare interest rates",
+                "Check you can afford payments",
+                "Then borrow"
+              ],
+              "correct_order": [
+                "Ask if you really need it",
+                "Compare interest rates",
+                "Check you can afford payments",
+                "Then borrow"
+              ],
+              "explanation": "Need it, shop the rate, check the budget, then borrow.",
+              "skillId": "buy_now_pay_later_loans"
+            }
+          ]
+        },
+        {
+          "node": 15,
+          "title": "Boss: Credit & Debt",
+          "celebration": "Boss: Credit & Debt complete.",
+          "lessonType": "BOSS_BATTLE",
+          "screens": [
+            {
+              "type": "multiple_choice",
+              "question": "What does using a credit card do?",
+              "options": [
+                "Borrows money",
+                "Spends your savings",
+                "Earns you interest"
+              ],
+              "correct": 0,
+              "explanation": "Every credit card purchase is a loan you repay.",
+              "skillId": "boss_credit_debt"
+            },
+            {
+              "type": "true_false",
+              "question": "A typical credit card APR is around 2%.",
+              "correct": false,
+              "explanation": "Credit card APRs are often 20% or higher.",
+              "skillId": "boss_credit_debt"
+            },
+            {
+              "type": "number_slider",
+              "question": "You owe $500 at 20% APR for a year. About how much interest is that?",
+              "number_min": 0,
+              "number_max": 300,
+              "number_step": 10,
+              "number_correct": 100,
+              "number_tolerance": 15,
+              "number_unit": "dollars",
+              "explanation": "20% of $500 is about $100.",
+              "skillId": "boss_credit_debt"
+            },
+            {
+              "type": "fill_blank",
+              "question": "Credit scores range from 300 to [___].",
+              "options": [
+                "100",
+                "850",
+                "1,000"
+              ],
+              "correct": 1,
+              "explanation": "FICO scores run from 300 to 850.",
+              "skillId": "boss_credit_debt"
+            },
+            {
+              "type": "multiple_choice",
+              "question": "Biggest factor in your credit score?",
+              "options": [
+                "How many cards you own",
+                "Your income",
+                "Paying on time"
+              ],
+              "correct": 2,
+              "explanation": "Payment history is about 35% of a FICO score.",
+              "skillId": "boss_credit_debt"
+            },
+            {
+              "type": "true_false",
+              "question": "BNPL payments are still a form of debt.",
+              "correct": true,
+              "explanation": "You're borrowing now and repaying later.",
+              "skillId": "boss_credit_debt"
+            },
+            {
+              "type": "matching",
+              "question": "Match the term.",
+              "pairs": [
+                [
+                  "APR",
+                  "Yearly interest rate"
+                ],
+                [
+                  "Minimum payment",
+                  "Least you must pay"
+                ],
+                [
+                  "Credit limit",
+                  "Most you can borrow"
+                ]
+              ],
+              "explanation": "Knowing these helps you avoid debt traps.",
+              "skillId": "boss_credit_debt"
+            }
+          ]
+        },
+        {
+          "node": 16,
+          "title": "What Is a Stock?",
+          "celebration": "What Is a Stock? complete.",
+          "lessonType": "STANDARD",
+          "screens": [
+            {
+              "type": "intro",
+              "title": "A tiny piece of a company",
+              "text": "A <b>stock</b> (or share) is a small piece of <b>ownership</b> in a company. If the company grows, your piece can be worth more."
+            },
+            {
+              "type": "multiple_choice",
+              "question": "Buying one share of a company means you…",
+              "options": [
+                "Own a small part of it",
+                "Lent it money",
+                "Work for it"
+              ],
+              "correct": 0,
+              "explanation": "Shareholders are part-owners of the company.",
+              "skillId": "what_is_a_stock"
+            },
+            {
+              "type": "intro",
+              "title": "How stocks can pay you",
+              "text": "You can earn if the <b>price rises</b> and you sell, or from <b>dividends</b>, which are cash some companies pay to owners. Prices can also <b>fall</b>."
+            },
+            {
+              "type": "true_false",
+              "question": "A stock's price can go down as well as up.",
+              "correct": true,
+              "explanation": "Stocks can lose value, and nothing is guaranteed.",
+              "skillId": "what_is_a_stock"
+            },
+            {
+              "type": "matching",
+              "question": "Match each term.",
+              "pairs": [
+                [
+                  "Stock",
+                  "Ownership in a company"
+                ],
+                [
+                  "Bond",
+                  "A loan to a company or government"
+                ],
+                [
+                  "Dividend",
+                  "Cash paid to shareholders"
+                ]
+              ],
+              "explanation": "Stocks are ownership, and bonds are loans.",
+              "skillId": "what_is_a_stock"
+            },
+            {
+              "type": "fill_blank",
+              "question": "Stocks are bought and sold on a stock [___].",
+              "options": [
+                "exchange",
+                "bank",
+                "store"
+              ],
+              "correct": 0,
+              "explanation": "Examples are the NYSE and Nasdaq.",
+              "skillId": "what_is_a_stock"
+            },
+            {
+              "type": "multiple_choice",
+              "question": "Why might a stock's price rise?",
+              "options": [
+                "The company paints its logo",
+                "Investors expect more profit",
+                "It's a holiday"
+              ],
+              "correct": 1,
+              "explanation": "Prices move with what investors expect about future profits.",
+              "skillId": "what_is_a_stock"
+            }
+          ]
+        },
+        {
+          "node": 17,
+          "title": "Index Funds & Diversification",
+          "celebration": "Index Funds & Diversification complete.",
+          "lessonType": "STANDARD",
+          "screens": [
+            {
+              "type": "intro",
+              "title": "Don't bet on one",
+              "text": "<b>Diversification</b> means spreading money across many investments. If one drops, the others can soften the hit."
+            },
+            {
+              "type": "multiple_choice",
+              "question": "Which is more diversified?",
+              "options": [
+                "All money in 1 stock",
+                "Money in 500 companies",
+                "Money in 2 friends' tips"
+              ],
+              "correct": 1,
+              "explanation": "Owning many companies spreads out the risk.",
+              "skillId": "index_funds_diversification"
+            },
+            {
+              "type": "intro",
+              "title": "Index funds",
+              "text": "An <b>index fund</b> buys every company in a market index, like the <b>S&amp;P 500</b>. One purchase gives you a slice of hundreds of companies."
+            },
+            {
+              "type": "true_false",
+              "question": "An S&P 500 index fund holds about 500 large US companies.",
+              "correct": true,
+              "explanation": "It tracks the S&P 500, which has about 500 big US companies.",
+              "skillId": "index_funds_diversification"
+            },
+            {
+              "type": "fill_blank",
+              "question": "The yearly fee a fund charges is called its expense [___].",
+              "options": [
+                "ratio",
+                "score",
+                "limit"
+              ],
+              "correct": 0,
+              "explanation": "Lower expense ratios mean more of your money stays invested.",
+              "skillId": "index_funds_diversification"
+            },
+            {
+              "type": "multiple_choice",
+              "question": "Two similar index funds: 0.05% fee vs 1% fee. Which is better?",
+              "options": [
+                "The 1% fund",
+                "They're the same",
+                "The 0.05% fund"
+              ],
+              "correct": 2,
+              "explanation": "Over many years, small fee differences add up to a lot.",
+              "skillId": "index_funds_diversification"
+            },
+            {
+              "type": "matching",
+              "question": "Match each to its risk level.",
+              "pairs": [
+                [
+                  "One single stock",
+                  "Higher risk"
+                ],
+                [
+                  "Broad index fund",
+                  "Spread-out risk"
+                ],
+                [
+                  "Savings account",
+                  "Very low risk"
+                ]
+              ],
+              "explanation": "More spread out usually means less risk from one company.",
+              "skillId": "index_funds_diversification"
+            }
+          ]
+        },
+        {
+          "node": 18,
+          "title": "Risk, Return & Time",
+          "celebration": "Risk, Return & Time complete.",
+          "lessonType": "STANDARD",
+          "screens": [
+            {
+              "type": "intro",
+              "title": "Risk and reward",
+              "text": "Investments that can earn <b>more</b> usually come with <b>more risk</b>. Stocks swing more than savings accounts but have historically grown more over long periods."
+            },
+            {
+              "type": "multiple_choice",
+              "question": "Historically, the US stock market has averaged about…",
+              "options": [
+                "1% a year",
+                "10% a year",
+                "50% a year"
+              ],
+              "correct": 1,
+              "explanation": "Historically about 10% a year on average, but it's not guaranteed and some years drop.",
+              "skillId": "risk_return_time"
+            },
+            {
+              "type": "intro",
+              "title": "Time is your superpower",
+              "text": "Growth <b>compounds</b>: your earnings start earning too. At about 10% a year, money roughly <b>doubles every 7 years</b>."
+            },
+            {
+              "type": "number_slider",
+              "question": "You invest $1,000 and it grows about 10% a year. Roughly how much after 7 years?",
+              "number_min": 1000,
+              "number_max": 4000,
+              "number_step": 100,
+              "number_correct": 2000,
+              "number_tolerance": 200,
+              "number_unit": "dollars",
+              "explanation": "At 10% a year it about doubles in 7 years, to roughly $1,950.",
+              "skillId": "risk_return_time"
+            },
+            {
+              "type": "true_false",
+              "question": "Money you need next month is a good fit for stocks.",
+              "correct": false,
+              "explanation": "Stocks can drop short term. Use them for goals years away.",
+              "skillId": "risk_return_time"
+            },
+            {
+              "type": "sequence_builder",
+              "question": "Order from lowest to highest risk.",
+              "items": [
+                "Savings account",
+                "Bond fund",
+                "Stock index fund",
+                "Single stock"
+              ],
+              "correct_order": [
+                "Savings account",
+                "Bond fund",
+                "Stock index fund",
+                "Single stock"
+              ],
+              "explanation": "Higher potential return usually comes with higher risk.",
+              "skillId": "risk_return_time"
+            },
+            {
+              "type": "multiple_choice",
+              "question": "The market drops 15% this year. A long-term investor should usually…",
+              "options": [
+                "Panic and sell it all",
+                "Stay calm and stick to the plan",
+                "Borrow money to gamble"
+              ],
+              "correct": 1,
+              "explanation": "Drops happen. Selling in a panic locks in losses.",
+              "skillId": "risk_return_time"
+            }
+          ]
+        },
+        {
+          "node": 19,
+          "title": "Accounts for Teens",
+          "celebration": "Accounts for Teens complete.",
+          "lessonType": "STANDARD",
+          "screens": [
+            {
+              "type": "intro",
+              "title": "Can teens invest?",
+              "text": "Under 18 you usually can't open your own brokerage account. A parent can open a <b>custodial account</b> that they manage for you until you're an adult."
+            },
+            {
+              "type": "fill_blank",
+              "question": "A parent manages a [___] account for a minor.",
+              "options": [
+                "custodial",
+                "credit",
+                "checking"
+              ],
+              "correct": 0,
+              "explanation": "Custodial accounts hold investments for someone under 18.",
+              "skillId": "accounts_for_teens"
+            },
+            {
+              "type": "intro",
+              "title": "The Roth IRA",
+              "text": "A <b>Roth IRA</b> is a retirement account. If you have <b>earned income</b>, like from a job, you can put money in, and qualified withdrawals in retirement are <b>tax-free</b>."
+            },
+            {
+              "type": "true_false",
+              "question": "You need earned income, like a paycheck, to put money in a Roth IRA.",
+              "correct": true,
+              "explanation": "Contributions can't be more than what you earned from work that year.",
+              "skillId": "accounts_for_teens"
+            },
+            {
+              "type": "multiple_choice",
+              "question": "You earned $2,000 at a summer job. What's the most you can put in a Roth IRA this year?",
+              "options": [
+                "$500",
+                "$2,000",
+                "$20,000"
+              ],
+              "correct": 1,
+              "explanation": "You can contribute up to what you earned, up to the yearly limit.",
+              "skillId": "accounts_for_teens"
+            },
+            {
+              "type": "matching",
+              "question": "Match the account.",
+              "pairs": [
+                [
+                  "Savings account",
+                  "Safe spot for short-term cash"
+                ],
+                [
+                  "Custodial account",
+                  "Investing for a minor"
+                ],
+                [
+                  "Roth IRA",
+                  "Tax-free retirement growth"
+                ]
+              ],
+              "explanation": "Different accounts fit different goals.",
+              "skillId": "accounts_for_teens"
+            },
+            {
+              "type": "multiple_choice",
+              "question": "Why start investing as a teen?",
+              "options": [
+                "To get rich quickly",
+                "Time lets money compound",
+                "Teens pay no taxes ever"
+              ],
+              "correct": 1,
+              "explanation": "Starting early gives compounding decades to work.",
+              "skillId": "accounts_for_teens"
+            }
+          ]
+        },
+        {
+          "node": 20,
+          "title": "Boss: Investing Basics",
+          "celebration": "Boss: Investing Basics complete.",
+          "lessonType": "BOSS_BATTLE",
+          "screens": [
+            {
+              "type": "multiple_choice",
+              "question": "Owning a stock means you own…",
+              "options": [
+                "A loan to the company",
+                "A piece of the company",
+                "The company's debt"
+              ],
+              "correct": 1,
+              "explanation": "Stocks are ownership. Bonds are loans.",
+              "skillId": "boss_investing_basics"
+            },
+            {
+              "type": "true_false",
+              "question": "Diversifying means putting all your money in one stock.",
+              "correct": false,
+              "explanation": "Diversifying means spreading money across many investments.",
+              "skillId": "boss_investing_basics"
+            },
+            {
+              "type": "fill_blank",
+              "question": "An S&P 500 [___] fund holds hundreds of big US companies.",
+              "options": [
+                "index",
+                "credit",
+                "crypto"
+              ],
+              "correct": 0,
+              "explanation": "Index funds offer instant diversification.",
+              "skillId": "boss_investing_basics"
+            },
+            {
+              "type": "number_slider",
+              "question": "At about 10% a year, roughly how many years does money take to double?",
+              "number_min": 1,
+              "number_max": 20,
+              "number_step": 1,
+              "number_correct": 7,
+              "number_tolerance": 1,
+              "number_unit": "years",
+              "explanation": "Rule of 72: 72 ÷ 10 ≈ 7 years.",
+              "skillId": "boss_investing_basics"
+            },
+            {
+              "type": "multiple_choice",
+              "question": "Which fee is best for the same fund?",
+              "options": [
+                "2%",
+                "1%",
+                "0.05%"
+              ],
+              "correct": 2,
+              "explanation": "Lower expense ratios leave more money growing.",
+              "skillId": "boss_investing_basics"
+            },
+            {
+              "type": "true_false",
+              "question": "Stock returns of about 10% a year are guaranteed.",
+              "correct": false,
+              "explanation": "That's a long-run historical average, not a promise.",
+              "skillId": "boss_investing_basics"
+            },
+            {
+              "type": "matching",
+              "question": "Match each to its use.",
+              "pairs": [
+                [
+                  "Custodial account",
+                  "Investing as a minor"
+                ],
+                [
+                  "Roth IRA",
+                  "Retirement, tax-free growth"
+                ],
+                [
+                  "Index fund",
+                  "Owning many companies"
+                ]
+              ],
+              "explanation": "You've got the investing basics down.",
+              "skillId": "boss_investing_basics"
+            }
+          ]
+        },
+        {
+          "node": 21,
+          "title": "Crypto: What It Is",
+          "celebration": "Crypto: What It Is complete.",
+          "lessonType": "STANDARD",
+          "screens": [
+            {
+              "type": "intro",
+              "title": "What Is Crypto?",
+              "text": "Cryptocurrency is digital money tracked on a <b>blockchain</b>, a shared record copied across thousands of computers. No bank runs it, so no bank can reverse a mistake."
+            },
+            {
+              "type": "multiple_choice",
+              "question": "What is a blockchain?",
+              "options": [
+                "A bank account for crypto",
+                "A shared record of transactions kept on many computers",
+                "An app that guarantees crypto prices"
+              ],
+              "correct": 1,
+              "explanation": "A blockchain is a public ledger copied across many computers, not a bank.",
+              "skillId": "crypto_what_it_is"
+            },
+            {
+              "type": "intro",
+              "title": "Big Swings",
+              "text": "Crypto prices can move fast. Bitcoin has historically <b>dropped more than 50%</b> several times. And unlike a bank account, crypto isn't <b>FDIC-insured</b>."
+            },
+            {
+              "type": "number_slider",
+              "question": "You put $1,000 into a coin. It drops 50%, then rises 50%. How much do you have now?",
+              "number_min": 500,
+              "number_max": 1500,
+              "number_step": 25,
+              "number_correct": 750,
+              "number_tolerance": 0,
+              "number_unit": "dollars",
+              "explanation": "Down 50% leaves $500. Up 50% of $500 is only +$250, so you end at $750. Losses are harder to climb back from.",
+              "skillId": "crypto_what_it_is"
+            },
+            {
+              "type": "true_false",
+              "question": "If a crypto exchange goes bankrupt, the FDIC pays back your coins.",
+              "correct": false,
+              "explanation": "FDIC insurance covers bank deposits, not crypto. When exchanges have collapsed, customers have lost money.",
+              "skillId": "crypto_what_it_is"
+            },
+            {
+              "type": "fill_blank",
+              "question": "When a meme coin's creators hype it up, then sell everything and vanish, it's called a [___].",
+              "options": [
+                "rug pull",
+                "dividend",
+                "stock split"
+              ],
+              "correct": 0,
+              "explanation": "In a rug pull, insiders cash out and the price crashes, leaving everyone else holding coins worth almost nothing.",
+              "skillId": "crypto_what_it_is"
+            },
+            {
+              "type": "matching",
+              "question": "Match each term.",
+              "pairs": [
+                [
+                  "Blockchain",
+                  "Shared public ledger"
+                ],
+                [
+                  "Volatility",
+                  "How wildly a price swings"
+                ],
+                [
+                  "Meme coin",
+                  "Coin driven mostly by hype"
+                ]
+              ],
+              "explanation": "Knowing the words helps you see what you're actually buying.",
+              "skillId": "crypto_what_it_is"
+            }
+          ]
+        },
+        {
+          "node": 22,
+          "title": "Sports Betting & the House Edge",
+          "celebration": "Sports Betting & the House Edge complete.",
+          "lessonType": "STANDARD",
+          "screens": [
+            {
+              "type": "intro",
+              "title": "The House Always Has an Edge",
+              "text": "Betting apps build a small cut, called the <b>vig</b> or <b>juice</b>, into every bet. It's small on one bet, but over many bets it adds up, which is how the house makes money."
+            },
+            {
+              "type": "intro",
+              "title": "How -110 Works",
+              "text": "At <b>-110</b> odds you risk $110 to win $100. Even if a game is a true coin flip, winning half your bets still loses money."
+            },
+            {
+              "type": "number_slider",
+              "question": "At -110 odds, about what percent of bets must you win just to break even?",
+              "number_min": 40,
+              "number_max": 70,
+              "number_step": 1,
+              "number_correct": 52,
+              "number_tolerance": 1,
+              "number_unit": "%",
+              "explanation": "110 ÷ (110 + 100) ≈ 52.4%. Picking winners half the time isn't enough. You lose slowly.",
+              "skillId": "sports_betting_the_house_edge"
+            },
+            {
+              "type": "number_slider",
+              "question": "A game has a 5% house edge. You bet $10 a hundred times. About how much do you expect to lose?",
+              "number_min": 0,
+              "number_max": 200,
+              "number_step": 5,
+              "number_correct": 50,
+              "number_tolerance": 5,
+              "number_unit": "dollars",
+              "explanation": "5% of $10 is $0.50 per bet. Over 100 bets that's about $50 on average. This is called expected value.",
+              "skillId": "sports_betting_the_house_edge"
+            },
+            {
+              "type": "multiple_choice",
+              "question": "A betting app offers a \"$200 free bet\" to sign up. What's its main goal?",
+              "options": [
+                "To give money away",
+                "To get you betting regularly",
+                "To help you learn sports"
+              ],
+              "correct": 1,
+              "explanation": "Promos are marketing. They often have strings attached and are meant to turn you into a regular bettor.",
+              "skillId": "sports_betting_the_house_edge"
+            },
+            {
+              "type": "true_false",
+              "question": "In most U.S. states that allow sports betting, you must be 21 to bet legally.",
+              "correct": true,
+              "explanation": "Most legal states set the age at 21, a few use 18. Texas currently doesn't allow sports betting at all.",
+              "skillId": "sports_betting_the_house_edge"
+            },
+            {
+              "type": "matching",
+              "question": "Match each idea.",
+              "pairs": [
+                [
+                  "Vig / juice",
+                  "The house's built-in cut"
+                ],
+                [
+                  "Expected value",
+                  "Average result over many tries"
+                ],
+                [
+                  "Loot box",
+                  "Paying for a random game reward"
+                ]
+              ],
+              "explanation": "Loot boxes use the same random-reward pull as gambling, even inside games.",
+              "skillId": "sports_betting_the_house_edge"
+            }
+          ]
+        },
+        {
+          "node": 23,
+          "title": "Hype, FOMO & Finfluencers",
+          "celebration": "Hype, FOMO & Finfluencers complete.",
+          "lessonType": "STANDARD",
+          "screens": [
+            {
+              "type": "intro",
+              "title": "Why Hype Works",
+              "text": "<b>FOMO</b>, fear of missing out, makes people buy because everyone else seems to be getting rich. By the time a stock or coin is all over TikTok, the early buyers may be getting ready to sell."
+            },
+            {
+              "type": "multiple_choice",
+              "question": "Your group chat says a stock is \"going to the moon\" and you need to buy today. What's the best first step?",
+              "options": [
+                "Buy before it's too late",
+                "Research what the company actually does and earns",
+                "Borrow money to buy more"
+              ],
+              "correct": 1,
+              "explanation": "Hype isn't a reason to buy. Find out what you'd own, and never rush because of a deadline someone else made up.",
+              "skillId": "hype_fomo_finfluencers"
+            },
+            {
+              "type": "sequence_builder",
+              "question": "Put a pump-and-dump in order.",
+              "items": [
+                "Insiders quietly buy a cheap stock or coin",
+                "They hype it online to pump the price",
+                "New buyers rush in with FOMO",
+                "Insiders sell and the price crashes"
+              ],
+              "correct_order": [
+                "Insiders quietly buy a cheap stock or coin",
+                "They hype it online to pump the price",
+                "New buyers rush in with FOMO",
+                "Insiders sell and the price crashes"
+              ],
+              "explanation": "The people hyping it profit from your buying. The late buyers are left with the losses.",
+              "skillId": "hype_fomo_finfluencers"
+            },
+            {
+              "type": "intro",
+              "title": "Finfluencers",
+              "text": "A <b>finfluencer</b> gives money advice on social media. Some are helpful, but some are <b>paid to promote</b> a product, and many never show their losses."
+            },
+            {
+              "type": "true_false",
+              "question": "If a finfluencer has millions of followers, their stock picks are probably reliable.",
+              "correct": false,
+              "explanation": "Followers measure popularity, not accuracy. Check who's paying them and whether they show their losses too.",
+              "skillId": "hype_fomo_finfluencers"
+            },
+            {
+              "type": "fill_blank",
+              "question": "Influencers who get paid to promote an investment are supposed to [___] it.",
+              "options": [
+                "hide",
+                "disclose",
+                "double"
+              ],
+              "correct": 1,
+              "explanation": "Paid promotions should be disclosed, like #ad. If someone hides that they're paid, trust them less.",
+              "skillId": "hype_fomo_finfluencers"
+            },
+            {
+              "type": "multiple_choice",
+              "question": "Which is the strongest red flag in a money video?",
+              "options": [
+                "They explain risks and losses",
+                "They cite where their numbers come from",
+                "They promise you can't lose"
+              ],
+              "correct": 2,
+              "explanation": "Every investment has risk. Anyone promising no losses is selling something.",
+              "skillId": "hype_fomo_finfluencers"
+            }
+          ]
+        },
+        {
+          "node": 24,
+          "title": "Spotting Scams",
+          "celebration": "Spotting Scams complete.",
+          "lessonType": "STANDARD",
+          "screens": [
+            {
+              "type": "intro",
+              "title": "Scams Target Teens Too",
+              "text": "Scammers use DMs, fake giveaways and \"investment\" offers. The warning signs are almost always the same: <b>guaranteed profits</b>, <b>pressure to act fast</b>, and requests for <b>codes or passwords</b>."
+            },
+            {
+              "type": "multiple_choice",
+              "question": "A stranger DMs: \"Send $50 in crypto, I'll trade it and send back $500 by Friday. Guaranteed!\" What is this?",
+              "options": [
+                "A scam",
+                "A smart side hustle",
+                "A normal investment"
+              ],
+              "correct": 0,
+              "explanation": "Guaranteed 10x returns don't exist. Once you send crypto, you usually can't get it back.",
+              "skillId": "spotting_scams"
+            },
+            {
+              "type": "true_false",
+              "question": "It's okay to share a 2FA code with someone claiming to be from your bank's support team.",
+              "correct": false,
+              "explanation": "Real companies never ask for your password or 2FA code. Anyone who does is trying to get into your account.",
+              "skillId": "spotting_scams"
+            },
+            {
+              "type": "matching",
+              "question": "Match the scam to its trick.",
+              "pairs": [
+                [
+                  "Fake giveaway",
+                  "Pay a fee to claim a prize"
+                ],
+                [
+                  "Phishing",
+                  "Fake login page steals your password"
+                ],
+                [
+                  "Investment DM",
+                  "Promises huge guaranteed returns"
+                ]
+              ],
+              "explanation": "Different stories, same goal: getting your money or your login.",
+              "skillId": "spotting_scams"
+            },
+            {
+              "type": "fill_blank",
+              "question": "If an offer sounds too good to be true, it [___] is.",
+              "options": [
+                "never",
+                "probably",
+                "legally"
+              ],
+              "correct": 1,
+              "explanation": "Huge, fast, risk-free money is the classic sign of a scam.",
+              "skillId": "spotting_scams"
+            },
+            {
+              "type": "sequence_builder",
+              "question": "You think you got scammed. What do you do, in order?",
+              "items": [
+                "Stop sending money or replying",
+                "Change your passwords and turn on 2FA",
+                "Tell a parent or trusted adult",
+                "Report it at reportfraud.ftc.gov"
+              ],
+              "correct_order": [
+                "Stop sending money or replying",
+                "Change your passwords and turn on 2FA",
+                "Tell a parent or trusted adult",
+                "Report it at reportfraud.ftc.gov"
+              ],
+              "explanation": "Stop the damage, lock down your accounts, get help, then report it so others are warned.",
+              "skillId": "spotting_scams"
+            }
+          ]
+        },
+        {
+          "node": 25,
+          "title": "Boss: Hype, Crypto & Gambling",
+          "celebration": "Boss: Hype, Crypto & Gambling complete.",
+          "lessonType": "BOSS_BATTLE",
+          "screens": [
+            {
+              "type": "multiple_choice",
+              "question": "Which is true about crypto?",
+              "options": [
+                "Its price is guaranteed by the government",
+                "It's insured by the FDIC",
+                "Its price can swing 50% or more"
+              ],
+              "correct": 2,
+              "explanation": "Crypto is volatile and not FDIC-insured. Bitcoin has historically fallen over 50% several times.",
+              "skillId": "boss_hype_crypto_gambling"
+            },
+            {
+              "type": "number_slider",
+              "question": "You bet $20 a hundred times on a game with a 5% house edge. About how much do you expect to lose?",
+              "number_min": 0,
+              "number_max": 300,
+              "number_step": 10,
+              "number_correct": 100,
+              "number_tolerance": 10,
+              "number_unit": "dollars",
+              "explanation": "5% of $20 is $1 per bet, so about $100 over 100 bets. The house edge always wins over time.",
+              "skillId": "boss_hype_crypto_gambling"
+            },
+            {
+              "type": "true_false",
+              "question": "Winning exactly half your bets at -110 odds means you break even.",
+              "correct": false,
+              "explanation": "At -110 you need about 52.4% wins to break even. At 50% you slowly lose to the vig.",
+              "skillId": "boss_hype_crypto_gambling"
+            },
+            {
+              "type": "fill_blank",
+              "question": "Buying something just because everyone online is hyping it is driven by [___].",
+              "options": [
+                "diversification",
+                "FOMO",
+                "compound interest"
+              ],
+              "correct": 1,
+              "explanation": "Fear of missing out pushes people to buy late, often near the top.",
+              "skillId": "boss_hype_crypto_gambling"
+            },
+            {
+              "type": "matching",
+              "question": "Match each red flag.",
+              "pairs": [
+                [
+                  "Rug pull",
+                  "Creators cash out and vanish"
+                ],
+                [
+                  "Pump and dump",
+                  "Hype to sell to late buyers"
+                ],
+                [
+                  "Phishing",
+                  "Fake page steals your login"
+                ]
+              ],
+              "explanation": "Each trick depends on you acting before you think.",
+              "skillId": "boss_hype_crypto_gambling"
+            },
+            {
+              "type": "multiple_choice",
+              "question": "A finfluencer pushes a new coin but doesn't say they were paid. What should you assume?",
+              "options": [
+                "It's a sure thing",
+                "They might have a hidden reason to promote it",
+                "Paid promotions are illegal, so it's fine"
+              ],
+              "correct": 1,
+              "explanation": "Undisclosed promotion is a big warning sign. Their profit can come from your buying.",
+              "skillId": "boss_hype_crypto_gambling"
+            },
+            {
+              "type": "true_false",
+              "question": "Loot boxes use the same random-reward pull as gambling.",
+              "correct": true,
+              "explanation": "Paying for a random chance at a prize is the core mechanic of gambling, even inside a game.",
+              "skillId": "boss_hype_crypto_gambling"
+            }
+          ]
+        }
+      ],
+      "testOuts": [
+        {
+          "unitIndex": 0,
+          "unitId": "money_1",
+          "lessonType": "TEST_OUT",
+          "questionCount": 8,
+          "passingScore": 7,
+          "noHearts": true,
+          "revealAnswersAtEnd": true,
+          "questionPool": [
+            {
+              "type": "multiple_choice",
+              "question": "Which is your take-home pay?",
+              "options": [
+                "Gross pay",
+                "Net pay",
+                "Hourly rate"
+              ],
+              "correct": 1,
+              "explanation": "Net pay is what's left after taxes and deductions. It's the money you can actually spend.",
+              "skillId": "your_first_paycheck",
+              "sourceLesson": "Your First Paycheck",
+              "sourceUnit": 0,
+              "sourceNode": 1,
+              "questionId": "money.u1.n1.q2"
+            },
+            {
+              "type": "number_slider",
+              "question": "You earn $300. FICA takes 7.65%. About how much is left before any income tax?",
+              "number_min": 200,
+              "number_max": 300,
+              "number_step": 1,
+              "number_correct": 277,
+              "number_tolerance": 2,
+              "number_unit": "dollars",
+              "explanation": "7.65% of $300 is about $23, which leaves about $277.",
+              "skillId": "your_first_paycheck",
+              "sourceLesson": "Your First Paycheck",
+              "sourceUnit": 0,
+              "sourceNode": 1,
+              "questionId": "money.u1.n1.q4"
+            },
+            {
+              "type": "true_false",
+              "question": "If a teen earns only a little in a year, they may get federal income tax that was withheld back as a refund.",
+              "correct": true,
+              "explanation": "If you earn less than the standard deduction, you usually owe no federal income tax. Filing a return gets withheld money back.",
+              "skillId": "your_first_paycheck",
+              "sourceLesson": "Your First Paycheck",
+              "sourceUnit": 0,
+              "sourceNode": 1,
+              "questionId": "money.u1.n1.q5"
+            },
+            {
+              "type": "matching",
+              "question": "Match each pay stub term.",
+              "pairs": [
+                [
+                  "Gross pay",
+                  "Total earned before taxes"
+                ],
+                [
+                  "Net pay",
+                  "What you take home"
+                ],
+                [
+                  "FICA",
+                  "Social Security + Medicare"
+                ]
+              ],
+              "explanation": "Reading your pay stub tells you exactly where your money went.",
+              "skillId": "your_first_paycheck",
+              "sourceLesson": "Your First Paycheck",
+              "sourceUnit": 0,
+              "sourceNode": 1,
+              "questionId": "money.u1.n1.q6"
+            },
+            {
+              "type": "fill_blank",
+              "question": "Your budget should be based on your [___] pay.",
+              "options": [
+                "gross",
+                "net",
+                "dream"
+              ],
+              "correct": 1,
+              "explanation": "Plan with the money you actually receive: your net pay.",
+              "skillId": "your_first_paycheck",
+              "sourceLesson": "Your First Paycheck",
+              "sourceUnit": 0,
+              "sourceNode": 1,
+              "questionId": "money.u1.n1.q7"
+            },
+            {
+              "type": "multiple_choice",
+              "question": "Which one is a need?",
+              "options": [
+                "New $180 sneakers",
+                "Gas to get to work",
+                "A game skin"
+              ],
+              "correct": 1,
+              "explanation": "Gas gets you to your job, which pays for everything else. The others are wants.",
+              "skillId": "needs_vs_wants",
+              "sourceLesson": "Needs vs. Wants",
+              "sourceUnit": 0,
+              "sourceNode": 2,
+              "questionId": "money.u1.n2.q2"
+            },
+            {
+              "type": "matching",
+              "question": "Sort each purchase.",
+              "pairs": [
+                [
+                  "Phone plan for work calls",
+                  "Need"
+                ],
+                [
+                  "Concert tickets",
+                  "Want"
+                ],
+                [
+                  "Basic groceries",
+                  "Need"
+                ]
+              ],
+              "explanation": "Some things can be either. A basic phone plan is a need, but the newest phone usually isn't.",
+              "skillId": "needs_vs_wants",
+              "sourceLesson": "Needs vs. Wants",
+              "sourceUnit": 0,
+              "sourceNode": 2,
+              "questionId": "money.u1.n2.q3"
+            },
+            {
+              "type": "true_false",
+              "question": "Something can be a need but still have a \"want\" version.",
+              "correct": true,
+              "explanation": "You need shoes. You want the $200 pair. The gap between them is where you can save.",
+              "skillId": "needs_vs_wants",
+              "sourceLesson": "Needs vs. Wants",
+              "sourceUnit": 0,
+              "sourceNode": 2,
+              "questionId": "money.u1.n2.q4"
+            },
+            {
+              "type": "multiple_choice",
+              "question": "You see a hoodie you love for $65. What's the smartest first move?",
+              "options": [
+                "Buy it before it sells out",
+                "Wait a day and check your budget",
+                "Put it on a credit card"
+              ],
+              "correct": 1,
+              "explanation": "Waiting a day gives you time to decide if it's worth the money, without pressure.",
+              "skillId": "needs_vs_wants",
+              "sourceLesson": "Needs vs. Wants",
+              "sourceUnit": 0,
+              "sourceNode": 2,
+              "questionId": "money.u1.n2.q6"
+            },
+            {
+              "type": "fill_blank",
+              "question": "A [___] is something you could live without, even if you'd miss it.",
+              "options": [
+                "need",
+                "bill",
+                "want"
+              ],
+              "correct": 2,
+              "explanation": "Wants are fine in a budget. They just come after needs.",
+              "skillId": "needs_vs_wants",
+              "sourceLesson": "Needs vs. Wants",
+              "sourceUnit": 0,
+              "sourceNode": 2,
+              "questionId": "money.u1.n2.q7"
+            },
+            {
+              "type": "matching",
+              "question": "Match each part of the 50/30/20 rule.",
+              "pairs": [
+                [
+                  "50%",
+                  "Needs"
+                ],
+                [
+                  "30%",
+                  "Wants"
+                ],
+                [
+                  "20%",
+                  "Savings"
+                ]
+              ],
+              "explanation": "Needs first, then fun, and always something saved.",
+              "skillId": "the_50_30_20_budget",
+              "sourceLesson": "The 50/30/20 Budget",
+              "sourceUnit": 0,
+              "sourceNode": 3,
+              "questionId": "money.u1.n3.q2"
+            },
+            {
+              "type": "number_slider",
+              "question": "You take home $400 a month. How much goes to savings under 50/30/20?",
+              "number_min": 0,
+              "number_max": 200,
+              "number_step": 5,
+              "number_correct": 80,
+              "number_tolerance": 0,
+              "number_unit": "dollars",
+              "explanation": "20% of $400 is $80.",
+              "skillId": "the_50_30_20_budget",
+              "sourceLesson": "The 50/30/20 Budget",
+              "sourceUnit": 0,
+              "sourceNode": 3,
+              "questionId": "money.u1.n3.q3"
+            },
+            {
+              "type": "number_slider",
+              "question": "Same $400. How much can you spend on wants?",
+              "number_min": 0,
+              "number_max": 200,
+              "number_step": 5,
+              "number_correct": 120,
+              "number_tolerance": 0,
+              "number_unit": "dollars",
+              "explanation": "30% of $400 is $120. That's your guilt-free fun money.",
+              "skillId": "the_50_30_20_budget",
+              "sourceLesson": "The 50/30/20 Budget",
+              "sourceUnit": 0,
+              "sourceNode": 3,
+              "questionId": "money.u1.n3.q4"
+            },
+            {
+              "type": "true_false",
+              "question": "Small daily purchases don't really affect a budget.",
+              "correct": false,
+              "explanation": "A $6 drink five days a week is about $120 a month. Small things add up fast.",
+              "skillId": "the_50_30_20_budget",
+              "sourceLesson": "The 50/30/20 Budget",
+              "sourceUnit": 0,
+              "sourceNode": 3,
+              "questionId": "money.u1.n3.q6"
+            },
+            {
+              "type": "sequence_builder",
+              "question": "Put the budgeting steps in order.",
+              "items": [
+                "Figure out your net income",
+                "Plan needs, wants, and savings",
+                "Track what you spend",
+                "Adjust next month"
+              ],
+              "correct_order": [
+                "Figure out your net income",
+                "Plan needs, wants, and savings",
+                "Track what you spend",
+                "Adjust next month"
+              ],
+              "explanation": "Budgeting is a loop: plan, track, and adjust.",
+              "skillId": "the_50_30_20_budget",
+              "sourceLesson": "The 50/30/20 Budget",
+              "sourceUnit": 0,
+              "sourceNode": 3,
+              "questionId": "money.u1.n3.q7"
+            },
+            {
+              "type": "multiple_choice",
+              "question": "\"Sale ends in 10:00!\" is mainly meant to…",
+              "options": [
+                "Help you compare prices",
+                "Rush your decision",
+                "Lower your taxes"
+              ],
+              "correct": 1,
+              "explanation": "Urgency is a pressure tactic. A real deal will still be a deal after you think about it.",
+              "skillId": "impulse_buys_marketing_tricks",
+              "sourceLesson": "Impulse Buys & Marketing Tricks",
+              "sourceUnit": 0,
+              "sourceNode": 4,
+              "questionId": "money.u1.n4.q2"
+            },
+            {
+              "type": "matching",
+              "question": "Match each trick to how it works.",
+              "pairs": [
+                [
+                  "Free trial",
+                  "Auto-charges if you forget"
+                ],
+                [
+                  "Free shipping over $50",
+                  "Makes you add more"
+                ],
+                [
+                  "Influencer post",
+                  "Paid ad that feels personal"
+                ]
+              ],
+              "explanation": "Knowing the trick takes away most of its power.",
+              "skillId": "impulse_buys_marketing_tricks",
+              "sourceLesson": "Impulse Buys & Marketing Tricks",
+              "sourceUnit": 0,
+              "sourceNode": 4,
+              "questionId": "money.u1.n4.q3"
+            },
+            {
+              "type": "number_slider",
+              "question": "You pay for 3 subscriptions at $12 a month each. How much is that per year?",
+              "number_min": 0,
+              "number_max": 600,
+              "number_step": 4,
+              "number_correct": 432,
+              "number_tolerance": 4,
+              "number_unit": "dollars",
+              "explanation": "3 × $12 = $36 a month, and $36 × 12 = $432 a year.",
+              "skillId": "impulse_buys_marketing_tricks",
+              "sourceLesson": "Impulse Buys & Marketing Tricks",
+              "sourceUnit": 0,
+              "sourceNode": 4,
+              "questionId": "money.u1.n4.q5"
+            },
+            {
+              "type": "true_false",
+              "question": "Saving your card in an app makes it easier to overspend.",
+              "correct": true,
+              "explanation": "One-tap checkout removes the pause where you'd normally think twice.",
+              "skillId": "impulse_buys_marketing_tricks",
+              "sourceLesson": "Impulse Buys & Marketing Tricks",
+              "sourceUnit": 0,
+              "sourceNode": 4,
+              "questionId": "money.u1.n4.q6"
+            },
+            {
+              "type": "fill_blank",
+              "question": "Before you buy, ask: is this a [___] or am I just being rushed?",
+              "options": [
+                "real deal",
+                "free trial",
+                "flash sale"
+              ],
+              "correct": 0,
+              "explanation": "Slow down. If it's a real deal, it'll still look good after you think.",
+              "skillId": "impulse_buys_marketing_tricks",
+              "sourceLesson": "Impulse Buys & Marketing Tricks",
+              "sourceUnit": 0,
+              "sourceNode": 4,
+              "questionId": "money.u1.n4.q7"
+            }
+          ]
+        },
+        {
+          "unitIndex": 1,
+          "unitId": "money_2",
+          "lessonType": "TEST_OUT",
+          "questionCount": 8,
+          "passingScore": 7,
+          "noHearts": true,
+          "revealAnswersAtEnd": true,
+          "questionPool": [
+            {
+              "type": "multiple_choice",
+              "question": "When should savings come out of your paycheck?",
+              "options": [
+                "Right when you get paid",
+                "At the end of the month",
+                "Only when you have extra"
+              ],
+              "correct": 0,
+              "explanation": "If you save first, spending adjusts to what's left, not the other way around.",
+              "skillId": "pay_yourself_first",
+              "sourceLesson": "Pay Yourself First",
+              "sourceUnit": 1,
+              "sourceNode": 6,
+              "questionId": "money.u2.n6.q2"
+            },
+            {
+              "type": "true_false",
+              "question": "Setting up an automatic transfer to savings makes saving easier.",
+              "correct": true,
+              "explanation": "Automation removes willpower from the equation. The money moves before you can spend it.",
+              "skillId": "pay_yourself_first",
+              "sourceLesson": "Pay Yourself First",
+              "sourceUnit": 1,
+              "sourceNode": 6,
+              "questionId": "money.u2.n6.q3"
+            },
+            {
+              "type": "number_slider",
+              "question": "You want $600 for a trip in 20 weeks. How much should you save each week?",
+              "number_min": 0,
+              "number_max": 100,
+              "number_step": 1,
+              "number_correct": 30,
+              "number_tolerance": 0,
+              "number_unit": "dollars",
+              "explanation": "$600 ÷ 20 weeks = $30 a week.",
+              "skillId": "pay_yourself_first",
+              "sourceLesson": "Pay Yourself First",
+              "sourceUnit": 1,
+              "sourceNode": 6,
+              "questionId": "money.u2.n6.q5"
+            },
+            {
+              "type": "fill_blank",
+              "question": "A good savings goal is [___].",
+              "options": [
+                "specific with a deadline",
+                "\"save more someday\"",
+                "whatever's left"
+              ],
+              "correct": 0,
+              "explanation": "A clear amount and date turn a wish into a plan.",
+              "skillId": "pay_yourself_first",
+              "sourceLesson": "Pay Yourself First",
+              "sourceUnit": 1,
+              "sourceNode": 6,
+              "questionId": "money.u2.n6.q6"
+            },
+            {
+              "type": "multiple_choice",
+              "question": "Which is a real emergency-fund expense?",
+              "options": [
+                "Concert tickets on sale",
+                "Car repair to get to work",
+                "A new game release"
+              ],
+              "correct": 1,
+              "explanation": "Emergencies are unexpected and necessary. Sales and releases are wants.",
+              "skillId": "emergency_funds",
+              "sourceLesson": "Emergency Funds",
+              "sourceUnit": 1,
+              "sourceNode": 7,
+              "questionId": "money.u2.n7.q2"
+            },
+            {
+              "type": "true_false",
+              "question": "Without an emergency fund, a surprise bill often ends up on a credit card.",
+              "correct": true,
+              "explanation": "And credit card interest can make that bill much more expensive.",
+              "skillId": "emergency_funds",
+              "sourceLesson": "Emergency Funds",
+              "sourceUnit": 1,
+              "sourceNode": 7,
+              "questionId": "money.u2.n7.q4"
+            },
+            {
+              "type": "number_slider",
+              "question": "Your expenses are $1,500 a month. A 3-month emergency fund would be…",
+              "number_min": 0,
+              "number_max": 9000,
+              "number_step": 250,
+              "number_correct": 4500,
+              "number_tolerance": 0,
+              "number_unit": "dollars",
+              "explanation": "$1,500 × 3 = $4,500.",
+              "skillId": "emergency_funds",
+              "sourceLesson": "Emergency Funds",
+              "sourceUnit": 1,
+              "sourceNode": 7,
+              "questionId": "money.u2.n7.q5"
+            },
+            {
+              "type": "sequence_builder",
+              "question": "Order these from first to last.",
+              "items": [
+                "Start a small starter fund",
+                "Refill it after you use it",
+                "Grow it to a few months of expenses"
+              ],
+              "correct_order": [
+                "Start a small starter fund",
+                "Refill it after you use it",
+                "Grow it to a few months of expenses"
+              ],
+              "explanation": "Start small, refill when used, and grow it over time.",
+              "skillId": "emergency_funds",
+              "sourceLesson": "Emergency Funds",
+              "sourceUnit": 1,
+              "sourceNode": 7,
+              "questionId": "money.u2.n7.q6"
+            },
+            {
+              "type": "matching",
+              "question": "Match each account to its job.",
+              "pairs": [
+                [
+                  "Checking",
+                  "Everyday spending"
+                ],
+                [
+                  "Savings",
+                  "Money you're keeping"
+                ],
+                [
+                  "Debit card",
+                  "Spends from checking"
+                ]
+              ],
+              "explanation": "Keeping savings separate makes it harder to spend by accident.",
+              "skillId": "banks_checking_vs_savings",
+              "sourceLesson": "Banks: Checking vs. Savings",
+              "sourceUnit": 1,
+              "sourceNode": 8,
+              "questionId": "money.u2.n8.q2"
+            },
+            {
+              "type": "true_false",
+              "question": "Money in an FDIC-insured bank is protected up to $250,000 if the bank fails.",
+              "correct": true,
+              "explanation": "FDIC insurance covers up to $250,000 per depositor, per bank, per account type.",
+              "skillId": "banks_checking_vs_savings",
+              "sourceLesson": "Banks: Checking vs. Savings",
+              "sourceUnit": 1,
+              "sourceNode": 8,
+              "questionId": "money.u2.n8.q3"
+            },
+            {
+              "type": "multiple_choice",
+              "question": "Which savings account is best, all else equal?",
+              "options": [
+                "0.01% APY, $5 monthly fee",
+                "4% APY, no fees",
+                "1% APY, $10 monthly fee"
+              ],
+              "correct": 1,
+              "explanation": "A higher APY and no fees means your money grows instead of shrinking.",
+              "skillId": "banks_checking_vs_savings",
+              "sourceLesson": "Banks: Checking vs. Savings",
+              "sourceUnit": 1,
+              "sourceNode": 8,
+              "questionId": "money.u2.n8.q5"
+            },
+            {
+              "type": "fill_blank",
+              "question": "Spending more than you have in checking can trigger an [___] fee.",
+              "options": [
+                "overdraft",
+                "interest",
+                "FDIC"
+              ],
+              "correct": 0,
+              "explanation": "Overdraft fees can be $30+ each time. Turn on low-balance alerts.",
+              "skillId": "banks_checking_vs_savings",
+              "sourceLesson": "Banks: Checking vs. Savings",
+              "sourceUnit": 1,
+              "sourceNode": 8,
+              "questionId": "money.u2.n8.q6"
+            },
+            {
+              "type": "number_slider",
+              "question": "$1,000 earns 10% a year, compounded. How much after 2 years?",
+              "number_min": 1000,
+              "number_max": 1500,
+              "number_step": 1,
+              "number_correct": 1210,
+              "number_tolerance": 1,
+              "number_unit": "dollars",
+              "explanation": "Year 1: $1,000 → $1,100. Year 2: $1,100 → $1,210. The extra $10 is interest on interest.",
+              "skillId": "compound_interest",
+              "sourceLesson": "Compound Interest",
+              "sourceUnit": 1,
+              "sourceNode": 9,
+              "questionId": "money.u2.n9.q2"
+            },
+            {
+              "type": "number_slider",
+              "question": "Using the Rule of 72, how many years to double at 6%?",
+              "number_min": 1,
+              "number_max": 30,
+              "number_step": 1,
+              "number_correct": 12,
+              "number_tolerance": 0,
+              "number_unit": "years",
+              "explanation": "72 ÷ 6 = 12 years.",
+              "skillId": "compound_interest",
+              "sourceLesson": "Compound Interest",
+              "sourceUnit": 1,
+              "sourceNode": 9,
+              "questionId": "money.u2.n9.q4"
+            },
+            {
+              "type": "true_false",
+              "question": "Starting to save at 16 instead of 26 can make a huge difference by retirement.",
+              "correct": true,
+              "explanation": "Ten extra years means more doublings. Time is the biggest ingredient in compounding.",
+              "skillId": "compound_interest",
+              "sourceLesson": "Compound Interest",
+              "sourceUnit": 1,
+              "sourceNode": 9,
+              "questionId": "money.u2.n9.q5"
+            },
+            {
+              "type": "multiple_choice",
+              "question": "What makes compound growth bigger?",
+              "options": [
+                "More time",
+                "Checking your balance daily",
+                "Smaller deposits"
+              ],
+              "correct": 0,
+              "explanation": "Time, rate, and how much you add all matter, but time is the one teens have the most of.",
+              "skillId": "compound_interest",
+              "sourceLesson": "Compound Interest",
+              "sourceUnit": 1,
+              "sourceNode": 9,
+              "questionId": "money.u2.n9.q6"
+            },
+            {
+              "type": "fill_blank",
+              "question": "Compound interest means earning interest on your [___].",
+              "options": [
+                "interest too",
+                "debit card",
+                "taxes"
+              ],
+              "correct": 0,
+              "explanation": "That's the snowball: your earnings start earning.",
+              "skillId": "compound_interest",
+              "sourceLesson": "Compound Interest",
+              "sourceUnit": 1,
+              "sourceNode": 9,
+              "questionId": "money.u2.n9.q7"
+            }
+          ]
+        },
+        {
+          "unitIndex": 2,
+          "unitId": "money_3",
+          "lessonType": "TEST_OUT",
+          "questionCount": 8,
+          "passingScore": 7,
+          "noHearts": true,
+          "revealAnswersAtEnd": true,
+          "questionPool": [
+            {
+              "type": "multiple_choice",
+              "question": "You buy $60 sneakers with a credit card. Who paid the store?",
+              "options": [
+                "You did, with your cash",
+                "The bank, as a loan to you",
+                "Nobody, it's free"
+              ],
+              "correct": 1,
+              "explanation": "The bank pays the store, and you now owe the bank $60.",
+              "skillId": "how_credit_cards_work",
+              "sourceLesson": "How Credit Cards Work",
+              "sourceUnit": 2,
+              "sourceNode": 11,
+              "questionId": "money.u3.n11.q2"
+            },
+            {
+              "type": "matching",
+              "question": "Match each card to how it works.",
+              "pairs": [
+                [
+                  "Debit card",
+                  "Spends money you have"
+                ],
+                [
+                  "Credit card",
+                  "Borrows money to repay"
+                ],
+                [
+                  "Prepaid card",
+                  "Spends money loaded on it"
+                ]
+              ],
+              "explanation": "Only a credit card spends the bank's money.",
+              "skillId": "how_credit_cards_work",
+              "sourceLesson": "How Credit Cards Work",
+              "sourceUnit": 2,
+              "sourceNode": 11,
+              "questionId": "money.u3.n11.q3"
+            },
+            {
+              "type": "true_false",
+              "question": "If you pay the full balance every month, you usually pay no interest.",
+              "correct": true,
+              "explanation": "Paying in full during the grace period avoids interest.",
+              "skillId": "how_credit_cards_work",
+              "sourceLesson": "How Credit Cards Work",
+              "sourceUnit": 2,
+              "sourceNode": 11,
+              "questionId": "money.u3.n11.q5"
+            },
+            {
+              "type": "fill_blank",
+              "question": "Your credit [___] is the most you're allowed to borrow on the card.",
+              "options": [
+                "limit",
+                "score",
+                "rate"
+              ],
+              "correct": 0,
+              "explanation": "A $500 limit means you can't owe more than $500.",
+              "skillId": "how_credit_cards_work",
+              "sourceLesson": "How Credit Cards Work",
+              "sourceUnit": 2,
+              "sourceNode": 11,
+              "questionId": "money.u3.n11.q6"
+            },
+            {
+              "type": "sequence_builder",
+              "question": "Put a credit card month in order.",
+              "items": [
+                "Make purchases",
+                "Get your statement",
+                "Pay by the due date"
+              ],
+              "correct_order": [
+                "Make purchases",
+                "Get your statement",
+                "Pay by the due date"
+              ],
+              "explanation": "Spend, get billed, then pay on time.",
+              "skillId": "how_credit_cards_work",
+              "sourceLesson": "How Credit Cards Work",
+              "sourceUnit": 2,
+              "sourceNode": 11,
+              "questionId": "money.u3.n11.q7"
+            },
+            {
+              "type": "number_slider",
+              "question": "You owe $1,000 at 24% APR and pay nothing for a year. About how much interest is added?",
+              "number_min": 0,
+              "number_max": 500,
+              "number_step": 10,
+              "number_correct": 240,
+              "number_tolerance": 30,
+              "number_unit": "dollars",
+              "explanation": "24% of $1,000 is $240, and compounding makes it a bit more.",
+              "skillId": "interest_the_minimum_payment_trap",
+              "sourceLesson": "Interest & the Minimum Payment Trap",
+              "sourceUnit": 2,
+              "sourceNode": 12,
+              "questionId": "money.u3.n12.q2"
+            },
+            {
+              "type": "multiple_choice",
+              "question": "What's the minimum payment?",
+              "options": [
+                "The full balance",
+                "The smallest amount due",
+                "A fee for using the card"
+              ],
+              "correct": 1,
+              "explanation": "It's the least you can pay to avoid a late fee. It's not the whole debt.",
+              "skillId": "interest_the_minimum_payment_trap",
+              "sourceLesson": "Interest & the Minimum Payment Trap",
+              "sourceUnit": 2,
+              "sourceNode": 12,
+              "questionId": "money.u3.n12.q3"
+            },
+            {
+              "type": "true_false",
+              "question": "Paying only the minimum is a fast way to get out of debt.",
+              "correct": false,
+              "explanation": "It keeps the debt alive for years and costs much more in interest.",
+              "skillId": "interest_the_minimum_payment_trap",
+              "sourceLesson": "Interest & the Minimum Payment Trap",
+              "sourceUnit": 2,
+              "sourceNode": 12,
+              "questionId": "money.u3.n12.q5"
+            },
+            {
+              "type": "multiple_choice",
+              "question": "You owe $800. Which plan costs you the least?",
+              "options": [
+                "Pay the minimum",
+                "Pay $50 a month",
+                "Pay it all off now"
+              ],
+              "correct": 2,
+              "explanation": "The sooner you pay it off, the less interest you pay.",
+              "skillId": "interest_the_minimum_payment_trap",
+              "sourceLesson": "Interest & the Minimum Payment Trap",
+              "sourceUnit": 2,
+              "sourceNode": 12,
+              "questionId": "money.u3.n12.q6"
+            },
+            {
+              "type": "fill_blank",
+              "question": "Missing a payment can add a late [___] on top of interest.",
+              "options": [
+                "bonus",
+                "fee",
+                "reward"
+              ],
+              "correct": 1,
+              "explanation": "Late fees, often around $30, make debt grow faster.",
+              "skillId": "interest_the_minimum_payment_trap",
+              "sourceLesson": "Interest & the Minimum Payment Trap",
+              "sourceUnit": 2,
+              "sourceNode": 12,
+              "questionId": "money.u3.n12.q7"
+            },
+            {
+              "type": "multiple_choice",
+              "question": "What can a credit score affect?",
+              "options": [
+                "Your car loan rate",
+                "Your GPA",
+                "Your phone's speed"
+              ],
+              "correct": 0,
+              "explanation": "It affects loan rates, apartment approvals, and even some insurance.",
+              "skillId": "your_credit_score",
+              "sourceLesson": "Your Credit Score",
+              "sourceUnit": 2,
+              "sourceNode": 13,
+              "questionId": "money.u3.n13.q2"
+            },
+            {
+              "type": "matching",
+              "question": "Match each FICO factor to its weight.",
+              "pairs": [
+                [
+                  "Payment history",
+                  "About 35%"
+                ],
+                [
+                  "Amounts owed",
+                  "About 30%"
+                ],
+                [
+                  "Length of history",
+                  "About 15%"
+                ]
+              ],
+              "explanation": "New credit and credit mix make up the last ~20%.",
+              "skillId": "your_credit_score",
+              "sourceLesson": "Your Credit Score",
+              "sourceUnit": 2,
+              "sourceNode": 13,
+              "questionId": "money.u3.n13.q4"
+            },
+            {
+              "type": "true_false",
+              "question": "Using a small part of your credit limit is better for your score.",
+              "correct": true,
+              "explanation": "Using less than about 30% of your limit helps your score.",
+              "skillId": "your_credit_score",
+              "sourceLesson": "Your Credit Score",
+              "sourceUnit": 2,
+              "sourceNode": 13,
+              "questionId": "money.u3.n13.q5"
+            },
+            {
+              "type": "fill_blank",
+              "question": "Under 18? A parent can add you as an authorized [___] on their card.",
+              "options": [
+                "owner",
+                "user",
+                "lender"
+              ],
+              "correct": 1,
+              "explanation": "It can help you start building credit history early.",
+              "skillId": "your_credit_score",
+              "sourceLesson": "Your Credit Score",
+              "sourceUnit": 2,
+              "sourceNode": 13,
+              "questionId": "money.u3.n13.q6"
+            },
+            {
+              "type": "multiple_choice",
+              "question": "Which habit builds credit best?",
+              "options": [
+                "Opening lots of cards",
+                "Maxing out your card",
+                "Paying on time, every time"
+              ],
+              "correct": 2,
+              "explanation": "On-time payments are the biggest part of your score.",
+              "skillId": "your_credit_score",
+              "sourceLesson": "Your Credit Score",
+              "sourceUnit": 2,
+              "sourceNode": 13,
+              "questionId": "money.u3.n13.q7"
+            },
+            {
+              "type": "multiple_choice",
+              "question": "$200 headphones split into 4 payments. How much is each?",
+              "options": [
+                "$40",
+                "$50",
+                "$100"
+              ],
+              "correct": 1,
+              "explanation": "$200 ÷ 4 = $50, due every couple of weeks.",
+              "skillId": "buy_now_pay_later_loans",
+              "sourceLesson": "Buy Now, Pay Later & Loans",
+              "sourceUnit": 2,
+              "sourceNode": 14,
+              "questionId": "money.u3.n14.q2"
+            },
+            {
+              "type": "true_false",
+              "question": "Missing a BNPL payment can lead to late fees.",
+              "correct": true,
+              "explanation": "Missed payments can cost fees and may hurt your credit.",
+              "skillId": "buy_now_pay_later_loans",
+              "sourceLesson": "Buy Now, Pay Later & Loans",
+              "sourceUnit": 2,
+              "sourceNode": 14,
+              "questionId": "money.u3.n14.q3"
+            },
+            {
+              "type": "matching",
+              "question": "Match each loan to its use.",
+              "pairs": [
+                [
+                  "Auto loan",
+                  "Buying a car"
+                ],
+                [
+                  "Student loan",
+                  "Paying for college"
+                ],
+                [
+                  "Mortgage",
+                  "Buying a home"
+                ]
+              ],
+              "explanation": "Each one is borrowed money repaid with interest.",
+              "skillId": "buy_now_pay_later_loans",
+              "sourceLesson": "Buy Now, Pay Later & Loans",
+              "sourceUnit": 2,
+              "sourceNode": 14,
+              "questionId": "money.u3.n14.q5"
+            },
+            {
+              "type": "number_slider",
+              "question": "A $10,000 car loan costs $1,500 in total interest. How much do you repay in total?",
+              "number_min": 10000,
+              "number_max": 13000,
+              "number_step": 100,
+              "number_correct": 11500,
+              "number_tolerance": 0,
+              "number_unit": "dollars",
+              "explanation": "$10,000 borrowed plus $1,500 interest = $11,500.",
+              "skillId": "buy_now_pay_later_loans",
+              "sourceLesson": "Buy Now, Pay Later & Loans",
+              "sourceUnit": 2,
+              "sourceNode": 14,
+              "questionId": "money.u3.n14.q6"
+            },
+            {
+              "type": "sequence_builder",
+              "question": "Order the smart steps before borrowing.",
+              "items": [
+                "Ask if you really need it",
+                "Compare interest rates",
+                "Check you can afford payments",
+                "Then borrow"
+              ],
+              "correct_order": [
+                "Ask if you really need it",
+                "Compare interest rates",
+                "Check you can afford payments",
+                "Then borrow"
+              ],
+              "explanation": "Need it, shop the rate, check the budget, then borrow.",
+              "skillId": "buy_now_pay_later_loans",
+              "sourceLesson": "Buy Now, Pay Later & Loans",
+              "sourceUnit": 2,
+              "sourceNode": 14,
+              "questionId": "money.u3.n14.q7"
+            }
+          ]
+        },
+        {
+          "unitIndex": 3,
+          "unitId": "money_4",
+          "lessonType": "TEST_OUT",
+          "questionCount": 8,
+          "passingScore": 7,
+          "noHearts": true,
+          "revealAnswersAtEnd": true,
+          "questionPool": [
+            {
+              "type": "multiple_choice",
+              "question": "Buying one share of a company means you…",
+              "options": [
+                "Own a small part of it",
+                "Lent it money",
+                "Work for it"
+              ],
+              "correct": 0,
+              "explanation": "Shareholders are part-owners of the company.",
+              "skillId": "what_is_a_stock",
+              "sourceLesson": "What Is a Stock?",
+              "sourceUnit": 3,
+              "sourceNode": 16,
+              "questionId": "money.u4.n16.q2"
+            },
+            {
+              "type": "true_false",
+              "question": "A stock's price can go down as well as up.",
+              "correct": true,
+              "explanation": "Stocks can lose value, and nothing is guaranteed.",
+              "skillId": "what_is_a_stock",
+              "sourceLesson": "What Is a Stock?",
+              "sourceUnit": 3,
+              "sourceNode": 16,
+              "questionId": "money.u4.n16.q4"
+            },
+            {
+              "type": "matching",
+              "question": "Match each term.",
+              "pairs": [
+                [
+                  "Stock",
+                  "Ownership in a company"
+                ],
+                [
+                  "Bond",
+                  "A loan to a company or government"
+                ],
+                [
+                  "Dividend",
+                  "Cash paid to shareholders"
+                ]
+              ],
+              "explanation": "Stocks are ownership, and bonds are loans.",
+              "skillId": "what_is_a_stock",
+              "sourceLesson": "What Is a Stock?",
+              "sourceUnit": 3,
+              "sourceNode": 16,
+              "questionId": "money.u4.n16.q5"
+            },
+            {
+              "type": "fill_blank",
+              "question": "Stocks are bought and sold on a stock [___].",
+              "options": [
+                "exchange",
+                "bank",
+                "store"
+              ],
+              "correct": 0,
+              "explanation": "Examples are the NYSE and Nasdaq.",
+              "skillId": "what_is_a_stock",
+              "sourceLesson": "What Is a Stock?",
+              "sourceUnit": 3,
+              "sourceNode": 16,
+              "questionId": "money.u4.n16.q6"
+            },
+            {
+              "type": "multiple_choice",
+              "question": "Why might a stock's price rise?",
+              "options": [
+                "The company paints its logo",
+                "Investors expect more profit",
+                "It's a holiday"
+              ],
+              "correct": 1,
+              "explanation": "Prices move with what investors expect about future profits.",
+              "skillId": "what_is_a_stock",
+              "sourceLesson": "What Is a Stock?",
+              "sourceUnit": 3,
+              "sourceNode": 16,
+              "questionId": "money.u4.n16.q7"
+            },
+            {
+              "type": "multiple_choice",
+              "question": "Which is more diversified?",
+              "options": [
+                "All money in 1 stock",
+                "Money in 500 companies",
+                "Money in 2 friends' tips"
+              ],
+              "correct": 1,
+              "explanation": "Owning many companies spreads out the risk.",
+              "skillId": "index_funds_diversification",
+              "sourceLesson": "Index Funds & Diversification",
+              "sourceUnit": 3,
+              "sourceNode": 17,
+              "questionId": "money.u4.n17.q2"
+            },
+            {
+              "type": "true_false",
+              "question": "An S&P 500 index fund holds about 500 large US companies.",
+              "correct": true,
+              "explanation": "It tracks the S&P 500, which has about 500 big US companies.",
+              "skillId": "index_funds_diversification",
+              "sourceLesson": "Index Funds & Diversification",
+              "sourceUnit": 3,
+              "sourceNode": 17,
+              "questionId": "money.u4.n17.q4"
+            },
+            {
+              "type": "fill_blank",
+              "question": "The yearly fee a fund charges is called its expense [___].",
+              "options": [
+                "ratio",
+                "score",
+                "limit"
+              ],
+              "correct": 0,
+              "explanation": "Lower expense ratios mean more of your money stays invested.",
+              "skillId": "index_funds_diversification",
+              "sourceLesson": "Index Funds & Diversification",
+              "sourceUnit": 3,
+              "sourceNode": 17,
+              "questionId": "money.u4.n17.q5"
+            },
+            {
+              "type": "multiple_choice",
+              "question": "Two similar index funds: 0.05% fee vs 1% fee. Which is better?",
+              "options": [
+                "The 1% fund",
+                "They're the same",
+                "The 0.05% fund"
+              ],
+              "correct": 2,
+              "explanation": "Over many years, small fee differences add up to a lot.",
+              "skillId": "index_funds_diversification",
+              "sourceLesson": "Index Funds & Diversification",
+              "sourceUnit": 3,
+              "sourceNode": 17,
+              "questionId": "money.u4.n17.q6"
+            },
+            {
+              "type": "matching",
+              "question": "Match each to its risk level.",
+              "pairs": [
+                [
+                  "One single stock",
+                  "Higher risk"
+                ],
+                [
+                  "Broad index fund",
+                  "Spread-out risk"
+                ],
+                [
+                  "Savings account",
+                  "Very low risk"
+                ]
+              ],
+              "explanation": "More spread out usually means less risk from one company.",
+              "skillId": "index_funds_diversification",
+              "sourceLesson": "Index Funds & Diversification",
+              "sourceUnit": 3,
+              "sourceNode": 17,
+              "questionId": "money.u4.n17.q7"
+            },
+            {
+              "type": "multiple_choice",
+              "question": "Historically, the US stock market has averaged about…",
+              "options": [
+                "1% a year",
+                "10% a year",
+                "50% a year"
+              ],
+              "correct": 1,
+              "explanation": "Historically about 10% a year on average, but it's not guaranteed and some years drop.",
+              "skillId": "risk_return_time",
+              "sourceLesson": "Risk, Return & Time",
+              "sourceUnit": 3,
+              "sourceNode": 18,
+              "questionId": "money.u4.n18.q2"
+            },
+            {
+              "type": "number_slider",
+              "question": "You invest $1,000 and it grows about 10% a year. Roughly how much after 7 years?",
+              "number_min": 1000,
+              "number_max": 4000,
+              "number_step": 100,
+              "number_correct": 2000,
+              "number_tolerance": 200,
+              "number_unit": "dollars",
+              "explanation": "At 10% a year it about doubles in 7 years, to roughly $1,950.",
+              "skillId": "risk_return_time",
+              "sourceLesson": "Risk, Return & Time",
+              "sourceUnit": 3,
+              "sourceNode": 18,
+              "questionId": "money.u4.n18.q4"
+            },
+            {
+              "type": "true_false",
+              "question": "Money you need next month is a good fit for stocks.",
+              "correct": false,
+              "explanation": "Stocks can drop short term. Use them for goals years away.",
+              "skillId": "risk_return_time",
+              "sourceLesson": "Risk, Return & Time",
+              "sourceUnit": 3,
+              "sourceNode": 18,
+              "questionId": "money.u4.n18.q5"
+            },
+            {
+              "type": "sequence_builder",
+              "question": "Order from lowest to highest risk.",
+              "items": [
+                "Savings account",
+                "Bond fund",
+                "Stock index fund",
+                "Single stock"
+              ],
+              "correct_order": [
+                "Savings account",
+                "Bond fund",
+                "Stock index fund",
+                "Single stock"
+              ],
+              "explanation": "Higher potential return usually comes with higher risk.",
+              "skillId": "risk_return_time",
+              "sourceLesson": "Risk, Return & Time",
+              "sourceUnit": 3,
+              "sourceNode": 18,
+              "questionId": "money.u4.n18.q6"
+            },
+            {
+              "type": "multiple_choice",
+              "question": "The market drops 15% this year. A long-term investor should usually…",
+              "options": [
+                "Panic and sell it all",
+                "Stay calm and stick to the plan",
+                "Borrow money to gamble"
+              ],
+              "correct": 1,
+              "explanation": "Drops happen. Selling in a panic locks in losses.",
+              "skillId": "risk_return_time",
+              "sourceLesson": "Risk, Return & Time",
+              "sourceUnit": 3,
+              "sourceNode": 18,
+              "questionId": "money.u4.n18.q7"
+            },
+            {
+              "type": "fill_blank",
+              "question": "A parent manages a [___] account for a minor.",
+              "options": [
+                "custodial",
+                "credit",
+                "checking"
+              ],
+              "correct": 0,
+              "explanation": "Custodial accounts hold investments for someone under 18.",
+              "skillId": "accounts_for_teens",
+              "sourceLesson": "Accounts for Teens",
+              "sourceUnit": 3,
+              "sourceNode": 19,
+              "questionId": "money.u4.n19.q2"
+            },
+            {
+              "type": "true_false",
+              "question": "You need earned income, like a paycheck, to put money in a Roth IRA.",
+              "correct": true,
+              "explanation": "Contributions can't be more than what you earned from work that year.",
+              "skillId": "accounts_for_teens",
+              "sourceLesson": "Accounts for Teens",
+              "sourceUnit": 3,
+              "sourceNode": 19,
+              "questionId": "money.u4.n19.q4"
+            },
+            {
+              "type": "multiple_choice",
+              "question": "You earned $2,000 at a summer job. What's the most you can put in a Roth IRA this year?",
+              "options": [
+                "$500",
+                "$2,000",
+                "$20,000"
+              ],
+              "correct": 1,
+              "explanation": "You can contribute up to what you earned, up to the yearly limit.",
+              "skillId": "accounts_for_teens",
+              "sourceLesson": "Accounts for Teens",
+              "sourceUnit": 3,
+              "sourceNode": 19,
+              "questionId": "money.u4.n19.q5"
+            },
+            {
+              "type": "matching",
+              "question": "Match the account.",
+              "pairs": [
+                [
+                  "Savings account",
+                  "Safe spot for short-term cash"
+                ],
+                [
+                  "Custodial account",
+                  "Investing for a minor"
+                ],
+                [
+                  "Roth IRA",
+                  "Tax-free retirement growth"
+                ]
+              ],
+              "explanation": "Different accounts fit different goals.",
+              "skillId": "accounts_for_teens",
+              "sourceLesson": "Accounts for Teens",
+              "sourceUnit": 3,
+              "sourceNode": 19,
+              "questionId": "money.u4.n19.q6"
+            },
+            {
+              "type": "multiple_choice",
+              "question": "Why start investing as a teen?",
+              "options": [
+                "To get rich quickly",
+                "Time lets money compound",
+                "Teens pay no taxes ever"
+              ],
+              "correct": 1,
+              "explanation": "Starting early gives compounding decades to work.",
+              "skillId": "accounts_for_teens",
+              "sourceLesson": "Accounts for Teens",
+              "sourceUnit": 3,
+              "sourceNode": 19,
+              "questionId": "money.u4.n19.q7"
+            }
+          ]
+        },
+        {
+          "unitIndex": 4,
+          "unitId": "money_5",
+          "lessonType": "TEST_OUT",
+          "questionCount": 8,
+          "passingScore": 7,
+          "noHearts": true,
+          "revealAnswersAtEnd": true,
+          "questionPool": [
+            {
+              "type": "multiple_choice",
+              "question": "What is a blockchain?",
+              "options": [
+                "A bank account for crypto",
+                "A shared record of transactions kept on many computers",
+                "An app that guarantees crypto prices"
+              ],
+              "correct": 1,
+              "explanation": "A blockchain is a public ledger copied across many computers, not a bank.",
+              "skillId": "crypto_what_it_is",
+              "sourceLesson": "Crypto: What It Is",
+              "sourceUnit": 4,
+              "sourceNode": 21,
+              "questionId": "money.u5.n21.q2"
+            },
+            {
+              "type": "number_slider",
+              "question": "You put $1,000 into a coin. It drops 50%, then rises 50%. How much do you have now?",
+              "number_min": 500,
+              "number_max": 1500,
+              "number_step": 25,
+              "number_correct": 750,
+              "number_tolerance": 0,
+              "number_unit": "dollars",
+              "explanation": "Down 50% leaves $500. Up 50% of $500 is only +$250, so you end at $750. Losses are harder to climb back from.",
+              "skillId": "crypto_what_it_is",
+              "sourceLesson": "Crypto: What It Is",
+              "sourceUnit": 4,
+              "sourceNode": 21,
+              "questionId": "money.u5.n21.q4"
+            },
+            {
+              "type": "true_false",
+              "question": "If a crypto exchange goes bankrupt, the FDIC pays back your coins.",
+              "correct": false,
+              "explanation": "FDIC insurance covers bank deposits, not crypto. When exchanges have collapsed, customers have lost money.",
+              "skillId": "crypto_what_it_is",
+              "sourceLesson": "Crypto: What It Is",
+              "sourceUnit": 4,
+              "sourceNode": 21,
+              "questionId": "money.u5.n21.q5"
+            },
+            {
+              "type": "fill_blank",
+              "question": "When a meme coin's creators hype it up, then sell everything and vanish, it's called a [___].",
+              "options": [
+                "rug pull",
+                "dividend",
+                "stock split"
+              ],
+              "correct": 0,
+              "explanation": "In a rug pull, insiders cash out and the price crashes, leaving everyone else holding coins worth almost nothing.",
+              "skillId": "crypto_what_it_is",
+              "sourceLesson": "Crypto: What It Is",
+              "sourceUnit": 4,
+              "sourceNode": 21,
+              "questionId": "money.u5.n21.q6"
+            },
+            {
+              "type": "matching",
+              "question": "Match each term.",
+              "pairs": [
+                [
+                  "Blockchain",
+                  "Shared public ledger"
+                ],
+                [
+                  "Volatility",
+                  "How wildly a price swings"
+                ],
+                [
+                  "Meme coin",
+                  "Coin driven mostly by hype"
+                ]
+              ],
+              "explanation": "Knowing the words helps you see what you're actually buying.",
+              "skillId": "crypto_what_it_is",
+              "sourceLesson": "Crypto: What It Is",
+              "sourceUnit": 4,
+              "sourceNode": 21,
+              "questionId": "money.u5.n21.q7"
+            },
+            {
+              "type": "number_slider",
+              "question": "At -110 odds, about what percent of bets must you win just to break even?",
+              "number_min": 40,
+              "number_max": 70,
+              "number_step": 1,
+              "number_correct": 52,
+              "number_tolerance": 1,
+              "number_unit": "%",
+              "explanation": "110 ÷ (110 + 100) ≈ 52.4%. Picking winners half the time isn't enough. You lose slowly.",
+              "skillId": "sports_betting_the_house_edge",
+              "sourceLesson": "Sports Betting & the House Edge",
+              "sourceUnit": 4,
+              "sourceNode": 22,
+              "questionId": "money.u5.n22.q3"
+            },
+            {
+              "type": "number_slider",
+              "question": "A game has a 5% house edge. You bet $10 a hundred times. About how much do you expect to lose?",
+              "number_min": 0,
+              "number_max": 200,
+              "number_step": 5,
+              "number_correct": 50,
+              "number_tolerance": 5,
+              "number_unit": "dollars",
+              "explanation": "5% of $10 is $0.50 per bet. Over 100 bets that's about $50 on average. This is called expected value.",
+              "skillId": "sports_betting_the_house_edge",
+              "sourceLesson": "Sports Betting & the House Edge",
+              "sourceUnit": 4,
+              "sourceNode": 22,
+              "questionId": "money.u5.n22.q4"
+            },
+            {
+              "type": "multiple_choice",
+              "question": "A betting app offers a \"$200 free bet\" to sign up. What's its main goal?",
+              "options": [
+                "To give money away",
+                "To get you betting regularly",
+                "To help you learn sports"
+              ],
+              "correct": 1,
+              "explanation": "Promos are marketing. They often have strings attached and are meant to turn you into a regular bettor.",
+              "skillId": "sports_betting_the_house_edge",
+              "sourceLesson": "Sports Betting & the House Edge",
+              "sourceUnit": 4,
+              "sourceNode": 22,
+              "questionId": "money.u5.n22.q5"
+            },
+            {
+              "type": "true_false",
+              "question": "In most U.S. states that allow sports betting, you must be 21 to bet legally.",
+              "correct": true,
+              "explanation": "Most legal states set the age at 21, a few use 18. Texas currently doesn't allow sports betting at all.",
+              "skillId": "sports_betting_the_house_edge",
+              "sourceLesson": "Sports Betting & the House Edge",
+              "sourceUnit": 4,
+              "sourceNode": 22,
+              "questionId": "money.u5.n22.q6"
+            },
+            {
+              "type": "matching",
+              "question": "Match each idea.",
+              "pairs": [
+                [
+                  "Vig / juice",
+                  "The house's built-in cut"
+                ],
+                [
+                  "Expected value",
+                  "Average result over many tries"
+                ],
+                [
+                  "Loot box",
+                  "Paying for a random game reward"
+                ]
+              ],
+              "explanation": "Loot boxes use the same random-reward pull as gambling, even inside games.",
+              "skillId": "sports_betting_the_house_edge",
+              "sourceLesson": "Sports Betting & the House Edge",
+              "sourceUnit": 4,
+              "sourceNode": 22,
+              "questionId": "money.u5.n22.q7"
+            },
+            {
+              "type": "multiple_choice",
+              "question": "Your group chat says a stock is \"going to the moon\" and you need to buy today. What's the best first step?",
+              "options": [
+                "Buy before it's too late",
+                "Research what the company actually does and earns",
+                "Borrow money to buy more"
+              ],
+              "correct": 1,
+              "explanation": "Hype isn't a reason to buy. Find out what you'd own, and never rush because of a deadline someone else made up.",
+              "skillId": "hype_fomo_finfluencers",
+              "sourceLesson": "Hype, FOMO & Finfluencers",
+              "sourceUnit": 4,
+              "sourceNode": 23,
+              "questionId": "money.u5.n23.q2"
+            },
+            {
+              "type": "sequence_builder",
+              "question": "Put a pump-and-dump in order.",
+              "items": [
+                "Insiders quietly buy a cheap stock or coin",
+                "They hype it online to pump the price",
+                "New buyers rush in with FOMO",
+                "Insiders sell and the price crashes"
+              ],
+              "correct_order": [
+                "Insiders quietly buy a cheap stock or coin",
+                "They hype it online to pump the price",
+                "New buyers rush in with FOMO",
+                "Insiders sell and the price crashes"
+              ],
+              "explanation": "The people hyping it profit from your buying. The late buyers are left with the losses.",
+              "skillId": "hype_fomo_finfluencers",
+              "sourceLesson": "Hype, FOMO & Finfluencers",
+              "sourceUnit": 4,
+              "sourceNode": 23,
+              "questionId": "money.u5.n23.q3"
+            },
+            {
+              "type": "true_false",
+              "question": "If a finfluencer has millions of followers, their stock picks are probably reliable.",
+              "correct": false,
+              "explanation": "Followers measure popularity, not accuracy. Check who's paying them and whether they show their losses too.",
+              "skillId": "hype_fomo_finfluencers",
+              "sourceLesson": "Hype, FOMO & Finfluencers",
+              "sourceUnit": 4,
+              "sourceNode": 23,
+              "questionId": "money.u5.n23.q5"
+            },
+            {
+              "type": "fill_blank",
+              "question": "Influencers who get paid to promote an investment are supposed to [___] it.",
+              "options": [
+                "hide",
+                "disclose",
+                "double"
+              ],
+              "correct": 1,
+              "explanation": "Paid promotions should be disclosed, like #ad. If someone hides that they're paid, trust them less.",
+              "skillId": "hype_fomo_finfluencers",
+              "sourceLesson": "Hype, FOMO & Finfluencers",
+              "sourceUnit": 4,
+              "sourceNode": 23,
+              "questionId": "money.u5.n23.q6"
+            },
+            {
+              "type": "multiple_choice",
+              "question": "Which is the strongest red flag in a money video?",
+              "options": [
+                "They explain risks and losses",
+                "They cite where their numbers come from",
+                "They promise you can't lose"
+              ],
+              "correct": 2,
+              "explanation": "Every investment has risk. Anyone promising no losses is selling something.",
+              "skillId": "hype_fomo_finfluencers",
+              "sourceLesson": "Hype, FOMO & Finfluencers",
+              "sourceUnit": 4,
+              "sourceNode": 23,
+              "questionId": "money.u5.n23.q7"
+            },
+            {
+              "type": "multiple_choice",
+              "question": "A stranger DMs: \"Send $50 in crypto, I'll trade it and send back $500 by Friday. Guaranteed!\" What is this?",
+              "options": [
+                "A scam",
+                "A smart side hustle",
+                "A normal investment"
+              ],
+              "correct": 0,
+              "explanation": "Guaranteed 10x returns don't exist. Once you send crypto, you usually can't get it back.",
+              "skillId": "spotting_scams",
+              "sourceLesson": "Spotting Scams",
+              "sourceUnit": 4,
+              "sourceNode": 24,
+              "questionId": "money.u5.n24.q2"
+            },
+            {
+              "type": "true_false",
+              "question": "It's okay to share a 2FA code with someone claiming to be from your bank's support team.",
+              "correct": false,
+              "explanation": "Real companies never ask for your password or 2FA code. Anyone who does is trying to get into your account.",
+              "skillId": "spotting_scams",
+              "sourceLesson": "Spotting Scams",
+              "sourceUnit": 4,
+              "sourceNode": 24,
+              "questionId": "money.u5.n24.q3"
+            },
+            {
+              "type": "matching",
+              "question": "Match the scam to its trick.",
+              "pairs": [
+                [
+                  "Fake giveaway",
+                  "Pay a fee to claim a prize"
+                ],
+                [
+                  "Phishing",
+                  "Fake login page steals your password"
+                ],
+                [
+                  "Investment DM",
+                  "Promises huge guaranteed returns"
+                ]
+              ],
+              "explanation": "Different stories, same goal: getting your money or your login.",
+              "skillId": "spotting_scams",
+              "sourceLesson": "Spotting Scams",
+              "sourceUnit": 4,
+              "sourceNode": 24,
+              "questionId": "money.u5.n24.q4"
+            },
+            {
+              "type": "fill_blank",
+              "question": "If an offer sounds too good to be true, it [___] is.",
+              "options": [
+                "never",
+                "probably",
+                "legally"
+              ],
+              "correct": 1,
+              "explanation": "Huge, fast, risk-free money is the classic sign of a scam.",
+              "skillId": "spotting_scams",
+              "sourceLesson": "Spotting Scams",
+              "sourceUnit": 4,
+              "sourceNode": 24,
+              "questionId": "money.u5.n24.q5"
+            },
+            {
+              "type": "sequence_builder",
+              "question": "You think you got scammed. What do you do, in order?",
+              "items": [
+                "Stop sending money or replying",
+                "Change your passwords and turn on 2FA",
+                "Tell a parent or trusted adult",
+                "Report it at reportfraud.ftc.gov"
+              ],
+              "correct_order": [
+                "Stop sending money or replying",
+                "Change your passwords and turn on 2FA",
+                "Tell a parent or trusted adult",
+                "Report it at reportfraud.ftc.gov"
+              ],
+              "explanation": "Stop the damage, lock down your accounts, get help, then report it so others are warned.",
+              "skillId": "spotting_scams",
+              "sourceLesson": "Spotting Scams",
+              "sourceUnit": 4,
+              "sourceNode": 24,
+              "questionId": "money.u5.n24.q6"
+            }
+          ]
+        }
+      ]
+    },
+    {
       "id": "orderflow",
       "name": "Order Flow",
       "color": "#14B8A6",
