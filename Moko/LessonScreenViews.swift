@@ -1653,51 +1653,6 @@ private struct MultiBlankSentenceLayout: Layout {
     }
 }
 
-struct FlowChips: View {
-    var options: [String]
-    var selected: Int?
-    var revealed: Bool
-    var correctIndex: Int
-    var ink: Color
-    var scheme: ColorScheme
-    var onTap: (Int) -> Void
-
-    var body: some View {
-        HStack(spacing: 10) {
-            ForEach(Array(options.enumerated()), id: \.offset) { idx, opt in
-                chip(idx: idx, label: opt)
-            }
-        }
-    }
-
-    private func chip(idx: Int, label: String) -> some View {
-        let isSel = selected == idx
-        var fill = Theme.optionFill(scheme)
-        var border = Theme.optionBorder(scheme)
-        var slab = Theme.optionSlab(scheme)
-        var textColor = ink
-        if revealed && idx == correctIndex {
-            fill = Theme.correct; border = Theme.correctDark; slab = Theme.correctDark; textColor = .white
-        } else if revealed && isSel {
-            fill = Theme.incorrect; border = Theme.incorrectDark; slab = Theme.incorrectDark; textColor = .white
-        } else if isSel {
-            fill = Theme.answer; border = Theme.answerDark; slab = Theme.answerDark; textColor = .white
-        }
-        return Button { onTap(idx) } label: {
-            Text(label).font(Theme.questionFont(14, .bold)).foregroundColor(textColor)
-                .padding(.vertical, 10).padding(.horizontal, 14)
-                .background(
-                    RoundedRectangle(cornerRadius: 12, style: .continuous).fill(fill)
-                        .overlay(RoundedRectangle(cornerRadius: 12, style: .continuous).strokeBorder(border, lineWidth: 2))
-                )
-                .contentShape(Rectangle())
-        }
-        .buttonStyle(SinkButtonStyle(slab: slab, radius: 12, depth: 4))
-        .modifier(AnswerFeedbackFX(pop: revealed && idx == correctIndex,
-                                   shake: revealed && isSel && idx != correctIndex))
-    }
-}
-
 // MARK: - Ingredient match (single choice with label + detail)
 
 struct IngredientMatchView: View {

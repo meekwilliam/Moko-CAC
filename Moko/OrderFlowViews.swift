@@ -1102,35 +1102,10 @@ struct FootprintQuestionView: View {
         index == player.selectedIndex || (player.revealed && index == screen.target) ? 2 : 0
     }
 
-    private func volumeCell(_ volume: Int, color: Color) -> some View {
-        Text("\(volume)").font(Theme.font(13, .black)).foregroundColor(.white)
-            .frame(maxWidth: .infinity).padding(.vertical, 7)
-            .background(RoundedRectangle(cornerRadius: 7).fill(color.opacity(min(0.75, 0.16 + Double(volume) / 360.0))))
-    }
-
     private func footprintChoice(index: Int, label: String) -> some View {
         OFOption(player: player, index: index, label: label, ink: ink, dense: true)
     }
 
-    private var risingPriceChart: some View {
-        VStack(spacing: 6) {
-            Text("PRICE").font(Theme.font(8, .black)).foregroundColor(Theme.muted)
-            HStack(alignment: .bottom, spacing: 3) {
-                ForEach(Array([12.0, 18.0, 16.0, 25.0, 32.0].enumerated()), id: \.offset) { _, height in
-                    RoundedRectangle(cornerRadius: 2).fill(bidColor.opacity(0.85))
-                        .frame(width: 7, height: height)
-                }
-            }
-            .frame(height: 36, alignment: .bottom)
-            Image(systemName: "arrow.up.right")
-                .font(.system(size: 11, weight: .black)).foregroundColor(bidColor)
-            Text("RISING").font(Theme.font(7, .black)).foregroundColor(bidColor)
-        }
-        .frame(width: 58)
-        .padding(.vertical, 9)
-        .background(RoundedRectangle(cornerRadius: 10).fill(bidColor.opacity(0.09)))
-        .overlay(RoundedRectangle(cornerRadius: 10).strokeBorder(bidColor.opacity(0.35), lineWidth: 1))
-    }
 }
 
 // MARK: - Cumulative Volume Delta
@@ -1610,16 +1585,6 @@ struct OrderFlowSimulationView: View {
 
     private var panelSeed: UInt64 { chartSeed(screen) }
 
-    /// The rich panels show raw candles/DOM/tape/footprint, so the difficulty
-    /// chip must never read "BEGINNER SUMMARY" here — that label belongs to the
-    /// old pre-digested evidence cards, not a raw multi-signal board.
-    private var difficultyLabel: String {
-        if useRichPanels {
-            return renderMode == .rawFull ? "ADVANCED FULL RAW" : "INTERMEDIATE RAW"
-        }
-        return renderMode.label
-    }
-
     private var panelBullish: Bool {
         let e = eventKey.lowercased()
         if e.contains("lift") || e.contains("positive") || e.contains("bull") || e.contains("bid") || e.contains("stacked_bid") { return true }
@@ -1630,19 +1595,6 @@ struct OrderFlowSimulationView: View {
     private func restartEvidence() {
         Haptics.selection()
         replayID += 1
-    }
-
-    private func restartDecisionReplay() {
-        Haptics.selection()
-        simulationPaused = false
-        simulationTick = 0
-        loopVariant = 0
-        replayID += 1
-    }
-
-    private func togglePause() {
-        Haptics.selection()
-        simulationPaused.toggle()
     }
 
     private func cardTapped(_ index: Int) {

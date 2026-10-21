@@ -50,8 +50,6 @@ final class AppRouter: ObservableObject {
     var onRequestProfile: (() -> Void)?
     var onOpenHearts: (() -> Void)?
     var onUnlockAll: (() -> Void)?
-    var onOpenMechanicsTest: (() -> Void)?
-    var onOpenMultiSignalTest: (() -> Void)?
     var onPreviewStreak: (() -> Void)?
     var onBumpStreak: (() -> Void)?
     var onGrantTestTreats: (() -> Void)?
@@ -65,7 +63,6 @@ final class AppRouter: ObservableObject {
     // Live heart state for the UI (mirrors ProgressStore).
     @Published var hearts: Int = ProgressStore.maxHearts
     @Published var secondsUntilNextHeart: Int? = nil
-    @Published var isUnlimitedHearts: Bool = false
     @Published var treats: Int = 0
     // Which course is active (mirrors ProgressStore.currentCourse).
     @Published var currentCourseId: String = Game.defaultCourseId
@@ -90,7 +87,6 @@ final class AppRouter: ObservableObject {
 struct AppRouterView: View {
     @ObservedObject var router: AppRouter
     @ObservedObject var theme: ThemeManager
-    @Namespace var heroNamespace
 
     var body: some View {
         content
@@ -123,7 +119,6 @@ struct AppRouterView: View {
                         isTestLesson: router.isTestLesson,
                         isUnitTest: router.currentLessonIsUnitTest,
                         hearts: router.hearts,
-                        isUnlimitedHearts: router.isUnlimitedHearts,
                         onClose: {
                             if router.isTestLesson {
                                 router.isTestLesson = false

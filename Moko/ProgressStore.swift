@@ -40,9 +40,6 @@ final class ProgressStore: ObservableObject {
         // Hearts are global too: original question answers cost 1; regen 1/hour.
         var hearts: Int = 25
         var heartAnchor: Date? = nil
-        // Unlimited hearts (no gating or regen countdown). Nothing sells this
-        // anymore — Moko is free — so it is cleared on load.
-        var unlimitedHearts: Bool = false
 
         // Legacy flat fields (pre-multi-course) — used once to migrate.
         var completed: [Int]? = nil
@@ -56,14 +53,6 @@ final class ProgressStore: ObservableObject {
     private var s: Snapshot { didSet { persist() } }
     private static let key = "moko_progress_v1"
 
-    // Cloud-sync hooks (wired by SyncService / ViewController; nil when local-only).
-    /// Fires after any local change so the syncer can push to the cloud.
-    var onChange: (() -> Void)?
-    /// Fires after a cloud snapshot is adopted so the UI (path/profile) refreshes.
-    var onExternalReplace: (() -> Void)?
-    /// While true, local persists don't trigger `onChange` (used when adopting a
-    /// pulled cloud snapshot, so we don't immediately push it straight back).
-    private var suppressChange = false
 
     private init() {
         if let data = UserDefaults.standard.data(forKey: Self.key),
@@ -78,7 +67,6 @@ final class ProgressStore: ObservableObject {
         keepOnlyKnownCourses()
         migrateCondensedOrderFlowProgressIfNeeded()
         migrateVolumeProfileOrderFlowProgressIfNeeded()
-        s.unlimitedHearts = false   // drop any leftover test-purchase state
         if s.hearts == 5, s.heartAnchor == nil {
             s.hearts = Self.maxHearts
         }
@@ -169,25 +157,6 @@ final class ProgressStore: ObservableObject {
         if let data = try? JSONEncoder().encode(s) {
             UserDefaults.standard.set(data, forKey: Self.key)
         }
-        if !suppressChange { onChange?() }
-    }
-
-    // MARK: Cloud sync (portable snapshot in/out — see Backend/SyncService)
-
-    /// The full state as portable JSON (what gets stored in the cloud).
-    func currentSnapshotData() -> Data? { try? JSONEncoder().encode(s) }
-
-    /// Adopt a snapshot pulled from the cloud, replacing local state. Persists
-    /// locally but does NOT re-trigger a push, then asks the UI to refresh.
-    func replaceSnapshot(with data: Data) {
-        guard let decoded = try? JSONDecoder().decode(Snapshot.self, from: data) else { return }
-        suppressChange = true
-        s = decoded
-        keepOnlyKnownCourses()
-        migrateCondensedOrderFlowProgressIfNeeded()
-        migrateVolumeProfileOrderFlowProgressIfNeeded()
-        suppressChange = false
-        onExternalReplace?()
     }
 
     // MARK: Reads
@@ -210,11 +179,6 @@ final class ProgressStore: ObservableObject {
     /// Current hearts, after applying any regeneration that has accrued.
     var hearts: Int { reconcileHearts(); return s.hearts }
 
-    /// Unlimited hearts: no gating or regen countdown.
-    var isUnlimitedHearts: Bool { s.unlimitedHearts }
-
-    /// Whether the user has a heart to spend on an original question answer.
-    var canAnswerQuestion: Bool { isUnlimitedHearts || hearts > 0 }
 
     /// Seconds until the next heart regenerates, or nil when already full.
     var secondsUntilNextHeart: Int? {
@@ -247,7 +211,6 @@ final class ProgressStore: ObservableObject {
     /// clock if we were at full. Returns false if there were none to spend.
     @discardableResult
     func useHeart() -> Bool {
-        guard !isUnlimitedHearts else { return true }   // unlimited: never spend hearts
         reconcileHearts()
         guard s.hearts > 0 else { return false }
         let wasFull = s.hearts == Self.maxHearts
@@ -410,7 +373,6 @@ final class ProgressStore: ObservableObject {
     }
 
     func setReminder(_ on: Bool) { s.reminderOn = on }
-    func setUserName(_ name: String) { s.userName = name }
 
     func reset() {
         s = Snapshot()

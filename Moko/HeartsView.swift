@@ -22,7 +22,6 @@ struct HeartsView: View {
 
     private var hearts: Int { router.hearts }
     private var seconds: Int? { router.secondsUntilNextHeart }
-    private var unlimited: Bool { router.isUnlimitedHearts }
     private var treats: Int { router.treats }
     private static let refillCost = 50
     private static let inviteBonus = 5
@@ -88,34 +87,24 @@ struct HeartsView: View {
 
     private var heartRow: some View {
         HStack(spacing: 12) {
-            if unlimited {
-                Image(systemName: "infinity")
-                    .font(.system(size: 40, weight: .black))
-                    .foregroundColor(heartRed)
-            } else {
-                ZStack(alignment: .bottomTrailing) {
-                    HeartBadge(filled: hearts > 0, size: 76)
-                    Text("\(hearts)")
-                        .font(Theme.font(18, .black))
-                        .foregroundColor(.white)
-                        .padding(.horizontal, 8)
-                        .padding(.vertical, 3)
-                        .background(Capsule().fill(Theme.surfaceRaised))
-                        .offset(x: 18, y: 4)
-                }
-                Text("/ \(ProgressStore.maxHearts)")
-                    .font(Theme.font(28, .black))
-                    .foregroundColor(theme.palette.ink)
+            ZStack(alignment: .bottomTrailing) {
+                HeartBadge(filled: hearts > 0, size: 76)
+                Text("\(hearts)")
+                    .font(Theme.font(18, .black))
+                    .foregroundColor(.white)
+                    .padding(.horizontal, 8)
+                    .padding(.vertical, 3)
+                    .background(Capsule().fill(Theme.surfaceRaised))
+                    .offset(x: 18, y: 4)
             }
+            Text("/ \(ProgressStore.maxHearts)")
+                .font(Theme.font(28, .black))
+                .foregroundColor(theme.palette.ink)
         }
     }
 
     @ViewBuilder private var countdown: some View {
-        if unlimited {
-            Text("UNLIMITED HEARTS ACTIVE")
-                .font(Theme.font(15, .black))
-                .foregroundColor(heartRed)
-        } else if let s = seconds, hearts < ProgressStore.maxHearts {
+        if let s = seconds, hearts < ProgressStore.maxHearts {
             (Text("NEXT HEART IN  ").font(Theme.font(15, .black)).foregroundColor(theme.palette.muted)
              + Text(timeString(s)).font(Theme.font(15, .black)).foregroundColor(heartRed))
         } else {
@@ -129,23 +118,21 @@ struct HeartsView: View {
 
     private var offersSection: some View {
         VStack(spacing: 14) {
-            if !unlimited {
-                offerRow(
-                    badge: AnyView(heartCountBadge("+\(ProgressStore.maxHearts)")),
-                    title: "Refill",
-                    trailing: AnyView(
-                        HStack(spacing: 5) { TreatIcon(height: 14); Text("\(Self.refillCost)")
-                            .font(Theme.font(15, .black)).foregroundColor(theme.palette.ink) }),
-                    action: { router.onRefillHearts?() }
-                )
-                offerRow(
-                    badge: AnyView(heartCountBadge("+\(Self.inviteBonus)")),
-                    title: "+\(Self.inviteBonus) hearts",
-                    trailing: AnyView(Text("INVITE A FRIEND")
-                        .font(Theme.font(13, .black)).foregroundColor(Color(hex: "#38bdf8"))),
-                    action: { router.onInviteFriend?() }
-                )
-            }
+            offerRow(
+                badge: AnyView(heartCountBadge("+\(ProgressStore.maxHearts)")),
+                title: "Refill",
+                trailing: AnyView(
+                    HStack(spacing: 5) { TreatIcon(height: 14); Text("\(Self.refillCost)")
+                        .font(Theme.font(15, .black)).foregroundColor(theme.palette.ink) }),
+                action: { router.onRefillHearts?() }
+            )
+            offerRow(
+                badge: AnyView(heartCountBadge("+\(Self.inviteBonus)")),
+                title: "+\(Self.inviteBonus) hearts",
+                trailing: AnyView(Text("INVITE A FRIEND")
+                    .font(Theme.font(13, .black)).foregroundColor(Color(hex: "#38bdf8"))),
+                action: { router.onInviteFriend?() }
+            )
         }
     }
 

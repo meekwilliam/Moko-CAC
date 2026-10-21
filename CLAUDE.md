@@ -36,10 +36,9 @@ python3 -c "import json; json.load(open('GameData.json'))"
 
 - **`AppDelegate.swift`** — registers bundled fonts (`.otf`/`.ttf` in
   `Moko/fonts/`) at launch and starts Haptics.
-- **`Backend.swift`** — protocol seam for auth/sync. No backend is wired in:
-  `LocalOnlyBackend` is the default, so sign-in buttons fall through to the
-  local-first flow. Firebase was removed; a future backend conforms to the
-  protocols and is installed via `Backend.install(...)`.
+- **No backend.** Progress lives on-device (`ProgressStore`, UserDefaults).
+  Firebase and the cloud-sync layer were removed; the onboarding Apple/Google
+  buttons just continue. The app is completely free — no purchases.
 - **`ProgressStore.swift`** — the game loop: XP, treats, streak (weekly
   Mo–Su calendar), hearts (25 to start, 1 spent per wrong original answer,
   regenerates hourly, mock "unlimited hearts" subscription).
