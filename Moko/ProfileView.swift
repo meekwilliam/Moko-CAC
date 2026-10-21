@@ -134,6 +134,8 @@ struct ProfileView: View {
                            iconBg: Color.white.opacity(0.20), label: "Terms & Legal Disclaimer") {
                     onOpenLegal("terms")
                 }
+                // Developer shortcuts — Debug builds only, so they never ship.
+                #if DEBUG
                 prefButton(iconSystem: "lock.open.fill", iconColor: Color(hex: "#34C759"),
                            iconBg: Color(hex: "#34C759").opacity(0.12), label: "Unlock All Lessons (Test)") {
                     onUnlockAll()
@@ -162,6 +164,7 @@ struct ProfileView: View {
                            iconBg: Color(hex: "#38bdf8").opacity(0.12), label: "Preview Onboarding (Test)") {
                     onTestOnboarding()
                 }
+                #endif
                 prefButton(iconSystem: "trash.fill", iconColor: Color(hex: "#D6536D"),
                            iconBg: Color(hex: "#D6536D").opacity(0.12), label: "Clear Application Data",
                            labelColor: Color(hex: "#D6536D")) {

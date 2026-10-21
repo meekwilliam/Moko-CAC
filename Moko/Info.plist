@@ -6,10 +6,6 @@
 	<string>Moko</string>
 	<key>CFBundleName</key>
 	<string>Moko</string>
-	<key>NSCameraUsageDescription</key>
-	<string>We need camera access to scan your skin for analysis.</string>
-	<key>NSMicrophoneUsageDescription</key>
-	<string>We need microphone access for media permissions.</string>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>
