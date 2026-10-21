@@ -3,9 +3,9 @@ import Combine
 import UserNotifications
 
 // MARK: - Onboarding flow
-// Eight-screen Duolingo-style intake: welcome (live-chart hero) → strategy →
-// goals (choose any) → daily goal → notifications → sign-up → course build →
-// commit. Finishing bursts
+// Seven-screen Duolingo-style intake: welcome (live-chart hero) → course →
+// goals (choose any) → daily goal → notifications → course build → commit.
+// No account: progress is saved on this device. Finishing bursts
 // the commit color across the screen and launches Lesson 1 directly (never the
 // home screen). Answers are stored in UserDefaults under "onboarding.*".
 
@@ -21,10 +21,8 @@ struct OnboardingView: View {
     @State private var strategy: Int? = nil
     @State private var goals: Set<Int> = []
     @State private var dailyGoal: Int? = nil
-    @State private var authInFlight = false
-    @State private var showingSignIn = false   // returning-user login overlay
 
-    private let totalSteps = 8
+    private let totalSteps = 7
     private var stepSlideDistance: CGFloat { UIScreen.main.bounds.width + 64 }
     private var showsChoiceFooter: Bool { (1...3).contains(step) }
     private var currentStepCanContinue: Bool {
@@ -75,8 +73,7 @@ struct OnboardingView: View {
                         case 2: goalsScreen
                         case 3: dailyGoalScreen
                         case 4: notificationsScreen
-                        case 5: signUpScreen
-                        case 6: CourseBuildView(onComplete: advance)
+                        case 5: CourseBuildView(onComplete: advance)
                         default: CommitScreen(router: router, onCommitted: persistAnswers)
                         }
                     }
@@ -91,15 +88,7 @@ struct OnboardingView: View {
                     choiceFooter
                 }
             }
-
-            // Returning-user login, slides over the welcome screen.
-            if showingSignIn {
-                signInScreen
-                    .transition(.move(edge: .trailing))
-                    .zIndex(5)
-            }
         }
-        .animation(.easeInOut(duration: 0.3), value: showingSignIn)
         .onAppear { hasPresentedInitialStep = true }
     }
 
@@ -196,10 +185,8 @@ struct OnboardingView: View {
 
     // MARK: Screen 1 — Welcome
     // Finelo-style landing, Moko'd: a live candlestick chart fills the hero (in
-    // place of orbiting company logos), then a headline, a primary GET STARTED
-    // (-> goes into the intake, ending at sign-up right before the commit
-    // screen) and a secondary "I already have an account" (-> skips straight
-    // into the app for a returning user).
+    // place of orbiting company logos), then a headline and GET STARTED, which
+    // goes into the intake.
 
     private var welcomeScreen: some View {
         VStack(spacing: 0) {
@@ -232,14 +219,6 @@ struct OnboardingView: View {
                 Button("GET STARTED") { advance() }
                     .buttonStyle(Chunky3DStyle(fill: Theme.answer, slab: Theme.answerDark))
                     .padding(.top, 8)
-
-                Button("I already have an account") {
-                    Haptics.selection()
-                    withAnimation(.easeInOut(duration: 0.3)) { showingSignIn = true }
-                }
-                .font(Theme.font(15, .black))
-                .foregroundColor(theme.palette.muted)
-                .padding(.top, 4)
             }
             .padding(.horizontal, 24)
             .padding(.bottom, 26)
@@ -347,124 +326,6 @@ struct OnboardingView: View {
         }
     }
 
-    // MARK: Screen 6 — Sign up
-    // Sits right before the commit screen — reached only via GET STARTED on
-    // the welcome screen (returning users skip all of this via "I already
-    // have an account").
-
-    private var signUpScreen: some View {
-        VStack(spacing: 0) {
-            Spacer()
-
-            VStack(alignment: .center, spacing: 6) {
-                Text("Create your account")
-                    .font(Theme.font(26, .black))
-                    .foregroundColor(theme.palette.ink)
-                Text("So your progress and streak are saved.")
-                    .font(Theme.bodyFont(15))
-                    .foregroundColor(theme.palette.muted)
-            }
-            .multilineTextAlignment(.center)
-            .frame(maxWidth: .infinity)
-
-            authProviderButtons(proceed: { advance() })
-                .padding(.top, 32)
-
-            Spacer()
-            Spacer()
-        }
-        .padding(.horizontal, 24)
-        .padding(.bottom, 26)
-    }
-
-    // MARK: Returning-user sign in
-    // Reached from "I already have an account". Same providers, but a successful
-    // sign-in pulls the user's cloud progress and drops straight into the app
-    // (no intake). Backed by its own full-bleed layer over the welcome screen.
-
-    private var signInScreen: some View {
-        ZStack {
-            ThemedBackground()
-            VStack(spacing: 0) {
-                HStack {
-                    Button(action: { Haptics.selection(); withAnimation(.easeInOut(duration: 0.3)) { showingSignIn = false } }) {
-                        Image(systemName: "chevron.left")
-                            .font(.system(size: 19, weight: .black))
-                            .foregroundColor(Theme.muted)
-                            .frame(width: 40, height: 40)
-                    }
-                    Spacer()
-                }
-                .padding(.horizontal, 14).padding(.top, 8)
-
-                Spacer()
-
-                VStack(alignment: .center, spacing: 6) {
-                    Text("Welcome back")
-                        .font(Theme.font(26, .black))
-                        .foregroundColor(theme.palette.ink)
-                    Text("Sign in to pick up where you left off.")
-                        .font(Theme.bodyFont(15))
-                        .foregroundColor(theme.palette.muted)
-                }
-                .multilineTextAlignment(.center)
-                .frame(maxWidth: .infinity)
-
-                authProviderButtons(proceed: {
-                    withAnimation(.easeInOut(duration: 0.28)) { router.currentScreen = .main }
-                })
-                .padding(.top, 32)
-                .padding(.horizontal, 24)
-
-                Spacer()
-                Spacer()
-            }
-            .padding(.bottom, 26)
-        }
-    }
-
-    // Apple + Google buttons. `proceed` is what happens next: the sign-UP
-    // screen continues the intake; the sign-IN screen jumps to the app.
-    private func authProviderButtons(proceed: @escaping () -> Void) -> some View {
-        VStack(spacing: 14) {
-            authButton(label: "Continue with Apple",
-                      fill: .black, textColor: .white, border: Color.white.opacity(0.18),
-                      proceed: proceed) {
-                Image(systemName: "apple.logo").font(.system(size: 18, weight: .medium))
-            }
-            authButton(label: "Continue with Google",
-                      fill: .white, textColor: Color(hex: "#1F1F1F"), border: Color.black.opacity(0.08),
-                      proceed: proceed) {
-                GoogleGlyph().frame(width: 18, height: 18)
-            }
-        }
-        .disabled(authInFlight)
-    }
-
-    private func authButton<Glyph: View>(label: String, fill: Color, textColor: Color, border: Color,
-                                         proceed: @escaping () -> Void,
-                                         @ViewBuilder glyph: () -> Glyph) -> some View {
-        Button {
-            Haptics.selection()
-            proceed()   // progress is saved on this device; no account needed
-        } label: {
-            HStack(spacing: 10) {
-                glyph()
-                Text(label).font(Theme.font(16, .black))
-            }
-            .foregroundColor(textColor)
-            .frame(maxWidth: .infinity)
-            .padding(.vertical, 15)
-            .background(
-                RoundedRectangle(cornerRadius: 14, style: .continuous)
-                    .fill(fill)
-                    .overlay(RoundedRectangle(cornerRadius: 14, style: .continuous)
-                        .strokeBorder(border, lineWidth: 1.5))
-            )
-        }
-        .buttonStyle(RowPressStyle())
-    }
-
     // MARK: Shared chooser scaffolding
 
     private func chooserScreen<Rows: View>(title: String, subtitle: String?,
@@ -532,7 +393,7 @@ struct OnboardingView: View {
     }
 }
 
-// MARK: - Screen 7 — Course build
+// MARK: - Screen 6 — Course build
 
 /// Plain `Text` only reads `progress` once per state change — the number
 /// would jump straight to 100% while the ring animates smoothly. Conforming
@@ -607,7 +468,7 @@ private struct CourseBuildView: View {
     }
 }
 
-// MARK: - Screen 8 — Hold-to-commit
+// MARK: - Screen 7 — Hold-to-commit
 // "Make yourself a promise": press and hold the button; it charges up with a
 // pulse, then the commit color bursts outward FROM THE BUTTON'S OWN SCREEN
 // POSITION (via the router-level curtain, not a locally-centered circle),
@@ -754,36 +615,5 @@ private struct CommitScreen: View {
                 }
             }
         }
-    }
-}
-
-/// A lightweight approximation of the Google "G" mark (four quarter-arcs in
-/// Google's brand colors) — used on the "Continue with Google" button since
-/// there's no SF Symbol equivalent.
-private struct GoogleGlyph: View {
-    var body: some View {
-        ZStack {
-            GoogleArc(start: -45, end: 45).stroke(Color(hex: "#4285F4"), lineWidth: 3.2)
-            GoogleArc(start: 45, end: 135).stroke(Color(hex: "#34A853"), lineWidth: 3.2)
-            GoogleArc(start: 135, end: 225).stroke(Color(hex: "#FBBC05"), lineWidth: 3.2)
-            GoogleArc(start: 225, end: 315).stroke(Color(hex: "#EA4335"), lineWidth: 3.2)
-            // The crossbar stub, like the real mark.
-            Rectangle()
-                .fill(Color(hex: "#4285F4"))
-                .frame(width: 7, height: 3.2)
-                .offset(x: 2)
-        }
-    }
-}
-
-private struct GoogleArc: Shape {
-    let start: Double
-    let end: Double
-    func path(in rect: CGRect) -> Path {
-        var p = Path()
-        p.addArc(center: CGPoint(x: rect.midX, y: rect.midY),
-                 radius: rect.width / 2 - 1.6,
-                 startAngle: .degrees(start), endAngle: .degrees(end), clockwise: false)
-        return p
     }
 }
