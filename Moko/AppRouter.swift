@@ -13,7 +13,7 @@ enum AppScreen {
 }
 
 enum MainTab: Hashable {
-    case home, quest, simulation, leaderboard, premium, profile
+    case home, quest, leaderboard, profile
 }
 
 final class AppRouter: ObservableObject {
@@ -60,9 +60,6 @@ final class AppRouter: ObservableObject {
     var onSelectCourse: ((String) -> Void)?
     var onRefillHearts: (() -> Void)?
     var onInviteFriend: (() -> Void)?
-    var onStartUnlimitedTrial: (() -> Void)?
-    var onRestorePurchases: (() -> Void)?
-    var onPurchaseSubscription: ((String) -> Void)?
     var requestLegalDoc: ((String) -> Void)?
 
     // Live heart state for the UI (mirrors ProgressStore).
