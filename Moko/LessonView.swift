@@ -73,10 +73,10 @@ final class LessonPlayer: ObservableObject {
         self.unitBonusEligible = unitBonusEligible
         self.isTestLesson = isTestLesson
         self.isUnitTest = isUnitTest
-        // Drop the lesson-opening "intro" reading screen — straight into the
-        // first question. Attention spans are short and it read as dead air.
-        let screens = lesson.screens.filter { $0.type != "intro" }
-        self.screens = screens.isEmpty ? lesson.screens : screens
+        // Intro cards are kept as short "tip" cards (2–3 sentences) that teach
+        // the fact the next questions use. Long reading screens don't belong
+        // in content — attention spans are short and they read as dead air.
+        self.screens = lesson.screens
         // Prefer the caller-supplied unit color (the lesson's real unit banner
         // color, works for any unit size); fall back to the legacy node-range
         // guess only if the caller doesn't have section data on hand.

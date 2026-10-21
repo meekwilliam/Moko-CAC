@@ -25,7 +25,7 @@ final class ProgressStore: ObservableObject {
 
     private struct Snapshot: Codable {
         var courses: [String: CourseProgress] = [:]
-        var currentCourse: String = "orderflow"
+        var currentCourse: String = Game.defaultCourseId
         var userName: String = "Guest"
         var reminderOn: Bool = true
 
@@ -71,10 +71,10 @@ final class ProgressStore: ObservableObject {
         } else {
             s = Snapshot()
         }
-        // Retired flat-course progress is intentionally discarded. Order Flow
-        // keeps its own keyed progress bucket when one already exists.
+        // Retired flat-course progress is intentionally discarded. Each live
+        // course keeps its own keyed progress bucket when one already exists.
         s.completed = nil; s.inProgressNode = nil; s.inProgressScreen = nil
-        keepOnlyOrderFlowCourse()
+        keepOnlyKnownCourses()
         migrateCondensedOrderFlowProgressIfNeeded()
         migrateVolumeProfileOrderFlowProgressIfNeeded()
         if !s.unlimitedHearts, s.hearts == 5, s.heartAnchor == nil {
@@ -87,17 +87,17 @@ final class ProgressStore: ObservableObject {
     var currentCourse: String { s.currentCourse }
 
     func switchCourse(_ id: String) {
-        guard id == "orderflow" else { return }
+        guard Game.courses.contains(where: { $0.id == id }) else { return }
         s.currentCourse = id
     }
 
-    /// Drop retired local course buckets and make Order Flow authoritative.
-    /// This also normalizes older cloud snapshots after they are downloaded.
-    private func keepOnlyOrderFlowCourse() {
+    /// Drop progress buckets for retired courses, and fall back to the default
+    /// course if the saved one no longer exists.
+    private func keepOnlyKnownCourses() {
         var snapshot = s
-        let orderFlow = snapshot.courses["orderflow"] ?? CourseProgress()
-        snapshot.courses = ["orderflow": orderFlow]
-        snapshot.currentCourse = "orderflow"
+        let known = Set(Game.courses.map(\.id))
+        snapshot.courses = snapshot.courses.filter { known.contains($0.key) }
+        if !known.contains(snapshot.currentCourse) { snapshot.currentCourse = Game.defaultCourseId }
         s = snapshot
     }
 
@@ -181,7 +181,7 @@ final class ProgressStore: ObservableObject {
         guard let decoded = try? JSONDecoder().decode(Snapshot.self, from: data) else { return }
         suppressChange = true
         s = decoded
-        keepOnlyOrderFlowCourse()
+        keepOnlyKnownCourses()
         migrateCondensedOrderFlowProgressIfNeeded()
         migrateVolumeProfileOrderFlowProgressIfNeeded()
         suppressChange = false

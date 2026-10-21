@@ -35,6 +35,7 @@ struct PathNodeData: Decodable {
     let svg: String
     let title: String?
     let sectionIndex: Int   // which unit this node belongs to — units can be any size
+    var symbol: String? = nil  // optional SF Symbol for the node face
 }
 
 struct PathPayload: Decodable {
@@ -82,6 +83,7 @@ struct PathNode: Identifiable {
     /// `unitBonusEligible`, which only asks whether the *rest* of the unit
     /// happens to be done already.
     let isBoss: Bool
+    var symbol: String? = nil
     var id: Int { num }
 
     /// Smooth continuous S-curve sway (Duolingo-style), out to the side and back
@@ -134,7 +136,7 @@ final class PathStore: ObservableObject {
             .sorted { $0.num < $1.num }
             .map { PathNode(num: $0.num, icon: SVGParser.parse($0.svg),
                             title: $0.title ?? "Lesson \($0.num)", sectionIndex: $0.sectionIndex,
-                            isBoss: lastInUnit[$0.sectionIndex] == $0.num) }
+                            isBoss: lastInUnit[$0.sectionIndex] == $0.num, symbol: $0.symbol) }
         self.totalNodes = self.nodes.count
     }
 

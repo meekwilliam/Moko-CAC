@@ -70,9 +70,12 @@ python3 -c "import json; json.load(open('GameData.json'))"
 
 ## Content: `Moko/GameData.json`
 
-The bundled catalog currently contains one course: `orderflow`, with 10
-units, 77 lessons, and 479 questions. Retired course sources and generated
-lesson data have been removed; do not restore them when regenerating content.
+The bundled catalog has two courses. **`money` (Money Basics)** is first, so it
+is the default: 5 units, 25 lessons on budgeting, saving, credit, investing,
+and hype/crypto/gambling for teens. It is generated, never hand-edited:
+edit `tools/money_course/unit*.py` and run `python3 tools/build_money_course.py`.
+**`orderflow`** (10 units, 78 lessons) is the advanced course, reachable from
+the course switcher.
 
 Shape: `{ "courses": [Course...], "legal": {...} }`. Each course has
 `sections` (unit banners: `index`, `title`, `bg`/`slab` hex, `tier`, plus
