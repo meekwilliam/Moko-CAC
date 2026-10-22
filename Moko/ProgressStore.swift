@@ -20,7 +20,6 @@ final class ProgressStore: ObservableObject {
         var testedOutUnits: [Int]? = nil
         var testOutReviewNodes: [String: [Int]]? = nil
         var testOutRetryUnits: [Int]? = nil
-        var contentVersion: Int? = nil
     }
 
     private struct Snapshot: Codable {
@@ -65,8 +64,6 @@ final class ProgressStore: ObservableObject {
         // course keeps its own keyed progress bucket when one already exists.
         s.completed = nil; s.inProgressNode = nil; s.inProgressScreen = nil
         keepOnlyKnownCourses()
-        migrateCondensedOrderFlowProgressIfNeeded()
-        migrateVolumeProfileOrderFlowProgressIfNeeded()
         if s.hearts == 5, s.heartAnchor == nil {
             s.hearts = Self.maxHearts
         }
@@ -96,55 +93,8 @@ final class ProgressStore: ObservableObject {
         get { s.courses[s.currentCourse] ?? CourseProgress() }
         set {
             var value = newValue
-            if s.currentCourse == "orderflow" { value.contentVersion = 3 }
             s.courses[s.currentCourse] = value
         }
-    }
-
-    /// Version 2 condenses Order Flow from 111 to 77 nodes. Preserve the user's
-    /// approximate progress by unit instead of letting old node numbers point at
-    /// unrelated new lessons.
-    private func migrateCondensedOrderFlowProgressIfNeeded() {
-        guard var progress = s.courses["orderflow"], (progress.contentVersion ?? 0) < 2 else { return }
-        let oldCounts = [5, 8, 11, 13, 15, 14, 12, 14, 10, 9]
-        let newCounts = [5, 7, 7, 8, 10, 9, 8, 9, 7, 7]
-        var oldStart = 1
-        var newStart = 1
-        var remapped: [Int] = []
-        for unit in oldCounts.indices {
-            let oldRange = oldStart..<(oldStart + oldCounts[unit])
-            let completedInUnit = progress.completed.filter { oldRange.contains($0) }.count
-            let testedOut = progress.testedOutUnits?.contains(unit) == true
-            var newCompleted = testedOut ? newCounts[unit]
-                : Int(floor(Double(completedInUnit) / Double(oldCounts[unit]) * Double(newCounts[unit])))
-            if unit == 9 && testedOut { newCompleted = max(0, newCompleted - 1) }
-            remapped.append(contentsOf: newStart..<(newStart + newCompleted))
-            if let active = progress.inProgressNode, oldRange.contains(active) {
-                let fraction = Double(active - oldStart) / Double(max(1, oldCounts[unit] - 1))
-                progress.inProgressNode = newStart + Int(round(fraction * Double(max(0, newCounts[unit] - 1))))
-            }
-            oldStart += oldCounts[unit]
-            newStart += newCounts[unit]
-        }
-        progress.completed = Array(Set(remapped)).sorted()
-        progress.contentVersion = 2
-        s.courses["orderflow"] = progress
-    }
-
-    /// Version 3 inserts Volume Profile at node 63, shifting the former Unit 8
-    /// boss and all Unit 9 and 10 lessons by one. Keep saved lesson identity
-    /// intact instead of attaching completion to the next lesson.
-    private func migrateVolumeProfileOrderFlowProgressIfNeeded() {
-        guard var progress = s.courses["orderflow"], (progress.contentVersion ?? 0) < 3 else { return }
-        func shifted(_ node: Int) -> Int { node >= 63 ? node + 1 : node }
-        progress.completed = Array(Set(progress.completed.map(shifted))).sorted()
-        if let active = progress.inProgressNode { progress.inProgressNode = shifted(active) }
-        if var reviews = progress.testOutReviewNodes {
-            for (unit, nodes) in reviews { reviews[unit] = nodes.map(shifted) }
-            progress.testOutReviewNodes = reviews
-        }
-        progress.contentVersion = 3
-        s.courses["orderflow"] = progress
     }
 
     /// Completed-lesson count for any single course (drives the switcher's progress text).

@@ -570,13 +570,16 @@ struct ScenarioChartView: View {
     let scenario: ChartScenario
     var height: CGFloat = 160
     var seed: UInt64 = UInt64.random(in: .min ... .max)
+    /// Dim every candle but the scenario's key one. Off for teaching cards,
+    /// where all candles need their real colors.
+    var showsHighlight = true
 
     var body: some View {
         let m = scenario.model(seed: seed)
         CandlestickChart(candles: m.candles,
                          supportLevel: m.support,
                          resistanceLevel: m.resistance,
-                         highlightIndex: m.highlight,
+                         highlightIndex: showsHighlight ? m.highlight : nil,
                          maLine: m.maLine,
                          maLineLabel: scenario.maLabel,
                          maLine2: m.maLine2,

@@ -67,11 +67,7 @@ struct LessonScreenRouter: View {
         case "tap_candles":
             TapCandlesView(player: player, ink: ink)
         case "mark_level":
-            if player.screen.event == "profile_vah" || player.screen.event == "profile_val" {
-                VolumeProfileQuestionView(player: player, ink: ink)
-            } else {
-                MarkLevelView(player: player, ink: ink)
-            }
+            MarkLevelView(player: player, ink: ink)
         case "draw_trendline":
             TrendlineView(player: player, ink: ink)
         case "mark_consolidation":
@@ -80,33 +76,6 @@ struct LessonScreenRouter: View {
             OHLCLabelView(player: player, ink: ink)
         case "number_slider":
             NumberSliderView(player: player, ink: ink)
-        case "aggressor":
-            AggressorView(player: player, ink: ink)
-        case "book_drag":
-            BookDragView(player: player, ink: ink)
-        case "book_compare":
-            BookDepthCompareView(player: player, ink: ink)
-        case "dom_tap":
-            DOMTapView(player: player, ink: ink)
-        case "evidence_select":
-            EvidenceSelectView(player: player, ink: ink)
-        case "replay_compare":
-            ReplayCompareView(player: player, ink: ink)
-        case "time_sales":
-            TimeSalesView(player: player, ink: ink)
-        case "time_sales_tap":
-            TimeSalesView(player: player, ink: ink)
-        case "footprint":
-            FootprintQuestionView(player: player, ink: ink)
-        case "footprint_tap":
-            FootprintQuestionView(player: player, ink: ink)
-        case "cvd_chart", "cvd_tap":
-            CVDChartQuestionView(player: player, ink: ink)
-        case "volume_profile", "volume_profile_tap":
-            VolumeProfileQuestionView(player: player, ink: ink)
-        case "orderflow_sim", "orderflow_sim_tap", "orderflow_sim_select",
-             "trade_decision", "trade_scenario", "trade_manage", "entry_select", "invalidation_mark":
-            OrderFlowSimulationView(player: player, ink: ink)
         default:
             // true_false / multiple_choice / fill_blank
             ChoiceView(player: player, ink: ink)
@@ -164,7 +133,7 @@ struct IntroView: View {
             }
 
             if let key = player.screen.chart, let scenario = ChartScenario(rawValue: key) {
-                ScenarioChartView(scenario: scenario, seed: chartSeed(player.screen))
+                ScenarioChartView(scenario: scenario, seed: chartSeed(player.screen), showsHighlight: false)
             }
         }
         .frame(maxWidth: .infinity, alignment: .leading)
@@ -284,6 +253,10 @@ struct MarkLevelView: View {
     @State private var didInit = false
 
     private let chartHeight: CGFloat = 210
+    // CandlestickChart (showsAxes) reserves a 15pt strip under the plot for the
+    // day labels; prices must map over the plot only, or the line drifts off
+    // the candles and a visually-correct mark is graded wrong.
+    private var plotHeight: CGFloat { chartHeight - 15 }
     private var s: LessonScreen { player.screen }
     private var scenario: ChartScenario? { s.chart.flatMap { ChartScenario(rawValue: $0) } }
 
@@ -321,7 +294,7 @@ struct MarkLevelView: View {
                 .gesture(
                     DragGesture(minimumDistance: 0).onChanged { g in
                         guard !player.revealed else { return }
-                        lineY = min(max(g.location.y, 0), chartHeight)
+                        lineY = min(max(g.location.y, 0), plotHeight)
                         player.markedLevel = price(lineY, lo, range)
                     }
                 )
@@ -351,10 +324,10 @@ struct MarkLevelView: View {
         return (lo, max(hi - lo, 0.0001))
     }
     private func price(_ y: CGFloat, _ lo: Double, _ range: Double) -> Double {
-        lo + (1 - Double(y / chartHeight)) * range
+        lo + (1 - Double(y / plotHeight)) * range
     }
     private func yFor(_ v: Double, _ lo: Double, _ range: Double) -> CGFloat {
-        chartHeight * CGFloat(1 - (v - lo) / range)
+        plotHeight * CGFloat(1 - (v - lo) / range)
     }
 
     private func levelLine(y: CGFloat, color: Color, label: String, dashed: Bool = false) -> some View {
