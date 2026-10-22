@@ -17,6 +17,7 @@ UNIT = {
                  "correct": 1,
                  "explanation": "A blockchain is a public ledger copied across many computers, not a bank."},
                 {"type": "intro", "title": "Big Swings",
+                 "chart": "volatile",
                  "text": "Crypto prices can move fast. Bitcoin has historically <b>dropped more than 50%</b> several times. And unlike a bank account, crypto isn't <b>FDIC-insured</b>."},
                 {"type": "number_slider",
                  "question": "You put $1,000 into a coin. It drops 50%, then rises 50%. How much do you have now?",

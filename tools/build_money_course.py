@@ -27,7 +27,16 @@ COURSE_COLOR = "#22C55E"
 CIRCLE_SVG = '<svg viewBox="0 0 32 32" fill="white"><circle cx="16" cy="16" r="9"/></svg>'
 
 QUESTION_TYPES = {"multiple_choice", "true_false", "matching", "sequence_builder",
-                  "fill_blank", "number_slider"}
+                  "fill_blank", "number_slider", "tap_candle", "mark_level"}
+
+# Chart questions may only use answers that CandlestickChart.model(seed:) fixes
+# by construction, so a correct tap is never graded wrong:
+#   pullbackUptrend[2] is the only red candle, marubozu[1] the big green one,
+#   gapUp[2] the gap candle; supportBounce always carries a support level.
+SAFE_TAPS = {("pullbackUptrend", 2), ("marubozu", 1), ("gapUp", 2)}
+SAFE_LEVELS = {("supportBounce", "support")}
+KNOWN_CHARTS = {"pullbackUptrend", "marubozu", "gapUp", "supportBounce",
+                "uptrend", "downtrend", "volatile"}
 
 
 def load_units():
@@ -46,6 +55,8 @@ def slug(text):
 
 def check_screen(screen, where):
     t = screen["type"]
+    if "chart" in screen:
+        assert screen["chart"] in KNOWN_CHARTS, f"{where}: unvetted chart {screen['chart']}"
     if t == "intro":
         assert screen.get("text"), where
         return
@@ -64,6 +75,10 @@ def check_screen(screen, where):
             assert len(set(labels)) == len(labels), f"{where}: duplicate matching card"
     elif t == "sequence_builder":
         assert sorted(screen["items"]) == sorted(screen["correct_order"]), where
+    elif t == "tap_candle":
+        assert (screen["chart"], screen["target"]) in SAFE_TAPS, f"{where}: unverified tap target"
+    elif t == "mark_level":
+        assert (screen["chart"], screen["level_kind"]) in SAFE_LEVELS, f"{where}: unverified level"
     elif t == "number_slider":
         lo, hi, ans = screen["number_min"], screen["number_max"], screen["number_correct"]
         assert lo <= ans <= hi, where
