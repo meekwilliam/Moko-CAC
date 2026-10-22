@@ -48,10 +48,10 @@ struct OnboardingView: View {
         "Learn before risking real money",
     ]
     private let dailyGoalOptions: [(label: String, detail: String)] = [
-        ("Casual", "5 min/day"),
-        ("Consistent", "10 min/day"),
-        ("Dedicated", "20 min/day"),
-        ("Intensive", "30 min/day"),
+        ("Casual", "1 lesson a day · about 3 min"),
+        ("Regular", "2 lessons a day · about 6 min"),
+        ("Serious", "3 lessons a day · about 10 min"),
+        ("Intense", "5 lessons a day · about 15 min"),
     ]
 
     var body: some View {
@@ -459,8 +459,8 @@ private struct CourseBuildView: View {
     private func startBuilding() {
         generation += 1
         let currentGeneration = generation
-        withAnimation(.easeOut(duration: 9)) { progress = 1 }
-        DispatchQueue.main.asyncAfter(deadline: .now() + 9.08) {
+        withAnimation(.easeOut(duration: 2.5)) { progress = 1 }
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2.58) {
             guard currentGeneration == generation else { return }
             Haptics.success()
             onComplete()

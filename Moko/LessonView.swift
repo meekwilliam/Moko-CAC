@@ -19,6 +19,10 @@ final class LessonPlayer: ObservableObject {
     @Published var revealed = false      // an answer has been graded / step resolved
     @Published var lastCorrect = false
     @Published var correctCount = 0
+    // First attempts only (requeued retries don't count) — the score shown
+    // on the Lesson Complete screen.
+    @Published var firstTryTotal = 0
+    @Published var firstTryCorrect = 0
     @Published var answeredCount = 0
     @Published var missedSkills: [String: Int] = [:]
     @Published var correctCompetencies: [String: Int] = [:]
@@ -188,7 +192,7 @@ final class LessonPlayer: ObservableObject {
 
     private func configureOptionOrder() {
         let options = screen.options ?? []
-        let shuffleTypes: Set<String> = ["multiple_choice", "time_sales", "footprint", "orderflow_sim", "book_compare", "replay_compare"]
+        let shuffleTypes: Set<String> = ["multiple_choice", "fill_blank", "time_sales", "footprint", "orderflow_sim", "book_compare", "replay_compare"]
         optionOrder = shuffleTypes.contains(screen.type) ? Array(options.indices).shuffled() : Array(options.indices)
     }
 
@@ -249,6 +253,10 @@ final class LessonPlayer: ObservableObject {
         }
         lastCorrect = correct
         answeredCount += 1
+        if !screen.isPreviousMistake {
+            firstTryTotal += 1
+            if correct { firstTryCorrect += 1 }
+        }
         if correct {
             correctCount += 1
             if let competency = screen.competencyId { correctCompetencies[competency, default: 0] += 1 }
@@ -313,6 +321,8 @@ final class LessonPlayer: ObservableObject {
         copy.lastCorrect = lastCorrect
         copy.correctCount = correctCount
         copy.answeredCount = answeredCount
+        copy.firstTryTotal = firstTryTotal
+        copy.firstTryCorrect = firstTryCorrect
         copy.missedSkills = missedSkills
         copy.correctCompetencies = correctCompetencies
         copy.missedCompetencies = missedCompetencies
@@ -913,6 +923,12 @@ struct RewardView: View {
             .map { $0.prefix(1).uppercased() + $0.dropFirst() }
             .joined(separator: " ")
     }
+    private var scoreSummary: String {
+        let total = player.firstTryTotal, right = player.firstTryCorrect
+        guard total > 0 else { return player.lesson.title }
+        if right == total { return "Perfect! All \(total) correct on the first try." }
+        return "\(right) of \(total) correct on the first try."
+    }
     private var assessmentSummary: String {
         let isJump = player.lesson.assessmentPrerequisiteMinimum != nil
         if assessmentPassed {
@@ -949,7 +965,7 @@ struct RewardView: View {
                 .opacity(stage >= 2 ? 1 : 0)
                 .offset(y: stage >= 2 ? 0 : 12)
 
-            Text(isAssessment ? assessmentSummary : (player.lesson.celebration ?? "\(player.lesson.title) mastered"))
+            Text(isAssessment ? assessmentSummary : scoreSummary)
                 .font(Theme.font(15, .semibold))
                 .foregroundColor(Theme.muted)
                 .multilineTextAlignment(.center)

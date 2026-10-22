@@ -7,6 +7,7 @@ import SwiftUI
 
 struct ProfileView: View {
     @ObservedObject var store: ProfileStore
+    var courseName: String = "Money Basics"   // the course shown under the name
     var showsHomeButton: Bool = true    // false when hosted inside the tab bar
     var onHome: () -> Void
     var onToggleReminders: (Bool) -> Void
@@ -53,7 +54,7 @@ struct ProfileView: View {
                 }
                 VStack(alignment: .leading, spacing: 3) {
                     Text(store.userName).font(Theme.font(21, .black)).foregroundColor(theme.palette.ink)
-                    Text("Order Flow Learner").font(Theme.font(14, .bold)).foregroundColor(muted)
+                    Text("\(courseName) Learner").font(Theme.font(14, .bold)).foregroundColor(muted)
                 }
             }
 
