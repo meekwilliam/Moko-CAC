@@ -377,11 +377,11 @@
                   "Want"
                 ],
                 [
-                  "Basic groceries",
-                  "Need"
+                  "$20 into your savings",
+                  "Saving"
                 ]
               ],
-              "explanation": "Some things can be either. A basic phone plan is a need, but the newest phone usually isn't.",
+              "explanation": "Needs, wants, and saving are the three buckets every budget uses.",
               "skillId": "needs_vs_wants"
             },
             {
@@ -628,11 +628,11 @@
                   "Want"
                 ],
                 [
-                  "Car insurance",
-                  "Need"
+                  "Emergency fund deposit",
+                  "Saving"
                 ]
               ],
-              "explanation": "Needs keep you living, working, and learning.",
+              "explanation": "Needs keep you going, wants are fun, and saving protects your future.",
               "skillId": "boss_spending_budgeting"
             },
             {
@@ -740,11 +740,11 @@
             },
             {
               "type": "fill_blank",
-              "question": "A good savings goal is [___].",
+              "question": "A good savings goal has a clear amount and a [___].",
               "options": [
-                "specific with a deadline",
-                "\"save more someday\"",
-                "whatever's left"
+                "deadline",
+                "credit card",
+                "budget app"
               ],
               "correct": 0,
               "explanation": "A clear amount and date turn a wish into a plan.",
@@ -2418,11 +2418,11 @@
                   "Want"
                 ],
                 [
-                  "Basic groceries",
-                  "Need"
+                  "$20 into your savings",
+                  "Saving"
                 ]
               ],
-              "explanation": "Some things can be either. A basic phone plan is a need, but the newest phone usually isn't.",
+              "explanation": "Needs, wants, and saving are the three buckets every budget uses.",
               "skillId": "needs_vs_wants",
               "sourceLesson": "Needs vs. Wants",
               "sourceUnit": 0,
@@ -2700,11 +2700,11 @@
             },
             {
               "type": "fill_blank",
-              "question": "A good savings goal is [___].",
+              "question": "A good savings goal has a clear amount and a [___].",
               "options": [
-                "specific with a deadline",
-                "\"save more someday\"",
-                "whatever's left"
+                "deadline",
+                "credit card",
+                "budget app"
               ],
               "correct": 0,
               "explanation": "A clear amount and date turn a wish into a plan.",

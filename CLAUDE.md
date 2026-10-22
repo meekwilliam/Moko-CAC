@@ -1,24 +1,20 @@
 # Moko — context for AI assistants
 
-Moko is a Duolingo-style day-trading education app for iOS: SwiftUI hosted in a
-UIKit shell. You learn to read candlestick charts and order flow by answering
-questions on a gamified path — hearts, streaks, XP, treats (currency).
+Moko is a Duolingo-style money-management app for teens on iOS: SwiftUI hosted
+in a UIKit shell. Lessons on budgeting, saving, credit, investing, and spotting
+hype/scams sit on a gamified path — hearts, streaks, XP, treats (currency). An
+advanced Order Flow course (charts and order books) is in the course menu.
 
 ## Repo location — read this first
 
-The **live repo** is `/Users/williammeek/Moko/` (git-tracked, remote
-`github.com/xoshr/Moko`). The user pushes via **GitHub Desktop**, not `git
-push` from the CLI (CLI push will fail — no credentials configured there).
-Commit locally after every change; don't try to push.
-
-If you ever see a similarly-named directory elsewhere (e.g. under
-`~/Derm/`), treat it as a stale scratch copy unless proven otherwise — verify
-`git remote -v` and `git log` before trusting any location.
+The repo is `/Users/williammeek/CongressionalAppChallenge/Moko/` (remote
+`github.com/meekwilliam/Moko`). `gh` is authenticated, so `git push` works
+from the CLI. Commit locally after every change; push only when asked.
 
 ## Build & validate
 
 ```bash
-cd /Users/williammeek/Moko
+cd /Users/williammeek/CongressionalAppChallenge/Moko
 xcodebuild -project Moko.xcodeproj -scheme Moko \
   -destination 'generic/platform=iOS Simulator' -configuration Debug build \
   2>&1 | grep -E "BUILD SUCCEEDED|BUILD FAILED|error:"
@@ -28,7 +24,7 @@ Content lives in one big JSON file, not compiled — always validate it after
 editing:
 
 ```bash
-cd /Users/williammeek/Moko/Moko
+cd /Users/williammeek/CongressionalAppChallenge/Moko/Moko
 python3 -c "import json; json.load(open('GameData.json'))"
 ```
 
@@ -41,7 +37,7 @@ python3 -c "import json; json.load(open('GameData.json'))"
   buttons just continue. The app is completely free — no purchases.
 - **`ProgressStore.swift`** — the game loop: XP, treats, streak (weekly
   Mo–Su calendar), hearts (25 to start, 1 spent per wrong original answer,
-  regenerates hourly, mock "unlimited hearts" subscription).
+  regenerates hourly; refill with treats or by inviting a friend).
 - **`PathStore` / `PathModels.swift`** — the home learning-path map: sections
   (units) and nodes (lessons), decoded from `GameData.json`. `PathStore` is
   an `ObservableObject`; node colors come from each section's `bg`/`slab` hex
@@ -146,8 +142,8 @@ you've verified determinism.
 
 ## Working conventions
 
-- **Always commit after code changes** (project house rule) — on `main`,
-  don't push (user pushes via GitHub Desktop).
+- **Always commit after code changes** (project house rule). Push only when
+  the user asks.
 - Validate `GameData.json` with `python3 -c "import json; json.load(...)"`
   after every edit, and run the `xcodebuild` command above before
   considering a change done — must see `BUILD SUCCEEDED`.

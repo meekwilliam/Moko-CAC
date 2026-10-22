@@ -45,6 +45,7 @@ struct MainTabView: View {
             if let store = router.profileStore {
                 ProfileView(
                     store: store,
+                    courseName: Game.course(router.currentCourseId).name,
                     showsHomeButton: false,
                     onHome: {},
                     onToggleReminders: { router.onToggleReminders?($0) },

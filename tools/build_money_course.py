@@ -59,6 +59,9 @@ def check_screen(screen, where):
         assert isinstance(screen["correct"], bool), where
     elif t == "matching":
         assert all(len(p) == 2 for p in screen["pairs"]), where
+        for side in (0, 1):   # duplicate cards make matching ambiguous
+            labels = [p[side] for p in screen["pairs"]]
+            assert len(set(labels)) == len(labels), f"{where}: duplicate matching card"
     elif t == "sequence_builder":
         assert sorted(screen["items"]) == sorted(screen["correct_order"]), where
     elif t == "number_slider":

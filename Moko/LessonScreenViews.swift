@@ -901,11 +901,10 @@ struct FillBlankChoiceView: View {
     @Namespace private var wordNamespace
 
     private var s: LessonScreen { player.screen }
-    private var options: [String] { s.options ?? [] }
+    // Display order (shuffled by the player); indices match selectedIndex.
+    private var options: [String] { player.currentOptions }
     private var answerOptions: [(idx: Int, label: String)] {
-        let correct = player.currentCorrectIndex
-        guard options.indices.contains(correct) else { return [] }
-        return [(correct, options[correct])]
+        options.enumerated().map { ($0.offset, $0.element) }
     }
     private var selectedWord: String? {
         guard let idx = player.selectedIndex, options.indices.contains(idx) else { return nil }
@@ -980,6 +979,8 @@ struct FillBlankChoiceView: View {
                     Text(selectedWord)
                         .font(Theme.questionFont(19, .black))
                         .foregroundColor(.white)
+                        .lineLimit(1)
+                        .minimumScaleFactor(0.7)
                         .padding(.horizontal, 18)
                         .matchedGeometryEffect(id: "fill-word-\(player.selectedIndex ?? -1)", in: wordNamespace)
                         .transition(.asymmetric(
@@ -1004,7 +1005,7 @@ struct FillBlankChoiceView: View {
     }
 
     private var wordBank: some View {
-        HStack(spacing: 12) {
+        MultiBlankSentenceLayout(horizontalSpacing: 12, verticalSpacing: 12, rowAlignment: .center) {
             ForEach(answerOptions, id: \.idx) { item in
                 wordOption(idx: item.idx, label: item.label)
             }
@@ -1064,7 +1065,7 @@ struct FillBlankChoiceView: View {
 
     private var slotWidth: CGFloat {
         let longest = max((selectedWord ?? "").count, answerOptions.map { $0.label.count }.max() ?? 6)
-        return max(88, min(156, CGFloat(longest) * 13 + 34))
+        return max(88, min(230, CGFloat(longest) * 13 + 34))
     }
 
     private func textParts(_ text: String) -> [SingleBlankSentencePart] {
