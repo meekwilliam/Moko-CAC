@@ -52,9 +52,9 @@ struct CourseSwitcherView: View {
     private var header: some View {
         ZStack {
             VStack(spacing: 2) {
-                Text("Choose Your Level")
+                Text("Courses")
                     .font(Theme.font(20, .black)).foregroundColor(theme.palette.ink)
-                Text("Finish a level to unlock the next")
+                Text("Switch anytime. Your progress is saved.")
                     .font(Theme.font(12, .bold)).foregroundColor(theme.palette.muted)
             }
             HStack {
@@ -103,7 +103,7 @@ struct CourseSwitcherView: View {
                         .font(Theme.font(18, .black))
                         .foregroundColor(unlocked ? theme.palette.ink : theme.palette.muted)
                     Text(unlocked
-                         ? "Section \(course.level ?? index + 1) · \(done(course)) / \(total(course)) lessons"
+                         ? "\(index == 0 ? "Beginner" : "Advanced") · \(done(course)) / \(total(course)) lessons"
                          : "Finish \(Game.courses[index - 1].name) to unlock")
                         .font(Theme.font(13, .bold)).foregroundColor(theme.palette.muted)
                 }

@@ -67,11 +67,7 @@ struct LessonScreenRouter: View {
         case "tap_candles":
             TapCandlesView(player: player, ink: ink)
         case "mark_level":
-            if player.screen.event == "profile_vah" || player.screen.event == "profile_val" {
-                VolumeProfileQuestionView(player: player, ink: ink)
-            } else {
-                MarkLevelView(player: player, ink: ink)
-            }
+            MarkLevelView(player: player, ink: ink)
         case "draw_trendline":
             TrendlineView(player: player, ink: ink)
         case "mark_consolidation":
@@ -80,33 +76,6 @@ struct LessonScreenRouter: View {
             OHLCLabelView(player: player, ink: ink)
         case "number_slider":
             NumberSliderView(player: player, ink: ink)
-        case "aggressor":
-            AggressorView(player: player, ink: ink)
-        case "book_drag":
-            BookDragView(player: player, ink: ink)
-        case "book_compare":
-            BookDepthCompareView(player: player, ink: ink)
-        case "dom_tap":
-            DOMTapView(player: player, ink: ink)
-        case "evidence_select":
-            EvidenceSelectView(player: player, ink: ink)
-        case "replay_compare":
-            ReplayCompareView(player: player, ink: ink)
-        case "time_sales":
-            TimeSalesView(player: player, ink: ink)
-        case "time_sales_tap":
-            TimeSalesView(player: player, ink: ink)
-        case "footprint":
-            FootprintQuestionView(player: player, ink: ink)
-        case "footprint_tap":
-            FootprintQuestionView(player: player, ink: ink)
-        case "cvd_chart", "cvd_tap":
-            CVDChartQuestionView(player: player, ink: ink)
-        case "volume_profile", "volume_profile_tap":
-            VolumeProfileQuestionView(player: player, ink: ink)
-        case "orderflow_sim", "orderflow_sim_tap", "orderflow_sim_select",
-             "trade_decision", "trade_scenario", "trade_manage", "entry_select", "invalidation_mark":
-            OrderFlowSimulationView(player: player, ink: ink)
         default:
             // true_false / multiple_choice / fill_blank
             ChoiceView(player: player, ink: ink)
@@ -164,7 +133,7 @@ struct IntroView: View {
             }
 
             if let key = player.screen.chart, let scenario = ChartScenario(rawValue: key) {
-                ScenarioChartView(scenario: scenario, seed: chartSeed(player.screen))
+                ScenarioChartView(scenario: scenario, seed: chartSeed(player.screen), showsHighlight: false)
             }
         }
         .frame(maxWidth: .infinity, alignment: .leading)
@@ -284,6 +253,10 @@ struct MarkLevelView: View {
     @State private var didInit = false
 
     private let chartHeight: CGFloat = 210
+    // CandlestickChart (showsAxes) reserves a 15pt strip under the plot for the
+    // day labels; prices must map over the plot only, or the line drifts off
+    // the candles and a visually-correct mark is graded wrong.
+    private var plotHeight: CGFloat { chartHeight - 15 }
     private var s: LessonScreen { player.screen }
     private var scenario: ChartScenario? { s.chart.flatMap { ChartScenario(rawValue: $0) } }
 
@@ -321,7 +294,7 @@ struct MarkLevelView: View {
                 .gesture(
                     DragGesture(minimumDistance: 0).onChanged { g in
                         guard !player.revealed else { return }
-                        lineY = min(max(g.location.y, 0), chartHeight)
+                        lineY = min(max(g.location.y, 0), plotHeight)
                         player.markedLevel = price(lineY, lo, range)
                     }
                 )
@@ -351,10 +324,10 @@ struct MarkLevelView: View {
         return (lo, max(hi - lo, 0.0001))
     }
     private func price(_ y: CGFloat, _ lo: Double, _ range: Double) -> Double {
-        lo + (1 - Double(y / chartHeight)) * range
+        lo + (1 - Double(y / plotHeight)) * range
     }
     private func yFor(_ v: Double, _ lo: Double, _ range: Double) -> CGFloat {
-        chartHeight * CGFloat(1 - (v - lo) / range)
+        plotHeight * CGFloat(1 - (v - lo) / range)
     }
 
     private func levelLine(y: CGFloat, color: Color, label: String, dashed: Bool = false) -> some View {
@@ -771,6 +744,12 @@ struct NumberSliderView: View {
         return String(format: "%.2f", rounded)
     }
 
+    /// "$250" for money, "12 years" / "52 %" for everything else.
+    private func label(_ v: Double) -> String {
+        if unit == "dollars" { return "$\(format(v))" }
+        return "\(format(v))\(unit.isEmpty ? "" : " \(unit)")"
+    }
+
     var body: some View {
         VStack(alignment: .leading, spacing: 18) {
             QuestionPrompt(text: s.question ?? "Drag the slider to the correct value.", ink: ink)
@@ -781,7 +760,7 @@ struct NumberSliderView: View {
                     && abs(value - s.numberCorrect!) <= (s.numberTolerance ?? 0)
                 let tint: Color = player.revealed ? (correct ? Theme.correct : Theme.incorrect) : Theme.answer
 
-                Text("\(format(value))\(unit.isEmpty ? "" : " \(unit)")")
+                Text(label(value))
                     .font(Theme.font(34, .black))
                     .foregroundColor(tint)
                     .frame(maxWidth: .infinity, alignment: .center)
@@ -806,15 +785,15 @@ struct NumberSliderView: View {
                 }
 
                 HStack {
-                    Text("\(format(lo))\(unit.isEmpty ? "" : " \(unit)")")
+                    Text(label(lo))
                     Spacer()
-                    Text("\(format(hi))\(unit.isEmpty ? "" : " \(unit)")")
+                    Text(label(hi))
                 }
                 .font(Theme.font(12, .bold))
                 .foregroundColor(Theme.muted)
 
                 if player.revealed, !correct, let truth = s.numberCorrect {
-                    Text("Correct: \(format(truth))\(unit.isEmpty ? "" : " \(unit)")")
+                    Text("Correct: \(label(truth))")
                         .font(Theme.font(14, .black))
                         .foregroundColor(Theme.correct)
                 }
@@ -895,11 +874,10 @@ struct FillBlankChoiceView: View {
     @Namespace private var wordNamespace
 
     private var s: LessonScreen { player.screen }
-    private var options: [String] { s.options ?? [] }
+    // Display order (shuffled by the player); indices match selectedIndex.
+    private var options: [String] { player.currentOptions }
     private var answerOptions: [(idx: Int, label: String)] {
-        let correct = player.currentCorrectIndex
-        guard options.indices.contains(correct) else { return [] }
-        return [(correct, options[correct])]
+        options.enumerated().map { ($0.offset, $0.element) }
     }
     private var selectedWord: String? {
         guard let idx = player.selectedIndex, options.indices.contains(idx) else { return nil }
@@ -974,6 +952,8 @@ struct FillBlankChoiceView: View {
                     Text(selectedWord)
                         .font(Theme.questionFont(19, .black))
                         .foregroundColor(.white)
+                        .lineLimit(1)
+                        .minimumScaleFactor(0.7)
                         .padding(.horizontal, 18)
                         .matchedGeometryEffect(id: "fill-word-\(player.selectedIndex ?? -1)", in: wordNamespace)
                         .transition(.asymmetric(
@@ -998,7 +978,7 @@ struct FillBlankChoiceView: View {
     }
 
     private var wordBank: some View {
-        HStack(spacing: 12) {
+        MultiBlankSentenceLayout(horizontalSpacing: 12, verticalSpacing: 12, rowAlignment: .center) {
             ForEach(answerOptions, id: \.idx) { item in
                 wordOption(idx: item.idx, label: item.label)
             }
@@ -1058,7 +1038,7 @@ struct FillBlankChoiceView: View {
 
     private var slotWidth: CGFloat {
         let longest = max((selectedWord ?? "").count, answerOptions.map { $0.label.count }.max() ?? 6)
-        return max(88, min(156, CGFloat(longest) * 13 + 34))
+        return max(88, min(230, CGFloat(longest) * 13 + 34))
     }
 
     private func textParts(_ text: String) -> [SingleBlankSentencePart] {
@@ -1644,51 +1624,6 @@ private struct MultiBlankSentenceLayout: Layout {
     private struct Item {
         let index: Int
         let size: CGSize
-    }
-}
-
-struct FlowChips: View {
-    var options: [String]
-    var selected: Int?
-    var revealed: Bool
-    var correctIndex: Int
-    var ink: Color
-    var scheme: ColorScheme
-    var onTap: (Int) -> Void
-
-    var body: some View {
-        HStack(spacing: 10) {
-            ForEach(Array(options.enumerated()), id: \.offset) { idx, opt in
-                chip(idx: idx, label: opt)
-            }
-        }
-    }
-
-    private func chip(idx: Int, label: String) -> some View {
-        let isSel = selected == idx
-        var fill = Theme.optionFill(scheme)
-        var border = Theme.optionBorder(scheme)
-        var slab = Theme.optionSlab(scheme)
-        var textColor = ink
-        if revealed && idx == correctIndex {
-            fill = Theme.correct; border = Theme.correctDark; slab = Theme.correctDark; textColor = .white
-        } else if revealed && isSel {
-            fill = Theme.incorrect; border = Theme.incorrectDark; slab = Theme.incorrectDark; textColor = .white
-        } else if isSel {
-            fill = Theme.answer; border = Theme.answerDark; slab = Theme.answerDark; textColor = .white
-        }
-        return Button { onTap(idx) } label: {
-            Text(label).font(Theme.questionFont(14, .bold)).foregroundColor(textColor)
-                .padding(.vertical, 10).padding(.horizontal, 14)
-                .background(
-                    RoundedRectangle(cornerRadius: 12, style: .continuous).fill(fill)
-                        .overlay(RoundedRectangle(cornerRadius: 12, style: .continuous).strokeBorder(border, lineWidth: 2))
-                )
-                .contentShape(Rectangle())
-        }
-        .buttonStyle(SinkButtonStyle(slab: slab, radius: 12, depth: 4))
-        .modifier(AnswerFeedbackFX(pop: revealed && idx == correctIndex,
-                                   shake: revealed && isSel && idx != correctIndex))
     }
 }
 

@@ -159,21 +159,15 @@ struct PathView: View {
             Button(action: { Haptics.selection(); onOpenHearts() }) {
                 HStack(spacing: 6) {
                     HeartBadge(filled: true, size: 22)
-                    if store.isUnlimitedHearts {
-                        Image(systemName: "infinity")
-                            .font(.system(size: 16, weight: .black))
-                            .foregroundColor(theme.palette.ink)
-                    } else {
-                        Text("\(store.hearts)")
-                            .font(Theme.font(18, .heavy))
-                            .foregroundColor(theme.palette.ink)
-                            .monospacedDigit()
-                            .contentTransition(.numericText())
-                    }
+                    Text("\(store.hearts)")
+                        .font(Theme.font(18, .heavy))
+                        .foregroundColor(theme.palette.ink)
+                        .monospacedDigit()
+                        .contentTransition(.numericText())
                 }
             }
             .buttonStyle(RowPressStyle())
-            .modifier(StatPulse(value: store.isUnlimitedHearts ? -1 : store.hearts))
+            .modifier(StatPulse(value: store.hearts))
         }
     }
 
@@ -523,7 +517,7 @@ struct PathView: View {
             "arrow.triangle.2.circlepath", "scope", "chart.pie.fill",
             "line.diagonal", "checkmark.seal.fill"
         ]
-        let symbol = symbols[(node.num - 1) % symbols.count]
+        let symbol = node.symbol ?? symbols[(node.num - 1) % symbols.count]
         let color = state == .locked ? Color.white.opacity(0.40) : Color.white.opacity(0.94)
 
         return Image(systemName: symbol)
@@ -594,22 +588,6 @@ struct PathView: View {
             }
         }
         .shadow(color: .black.opacity(0.28), radius: 16, y: flipped ? -10 : 10)
-    }
-
-    // Recolor a parsed icon so white/translucent-white parts follow the node state.
-    private func recolored(_ img: SVGImage, to color: Color) -> SVGImage {
-        var copy = img
-        copy.elements = img.elements.map { el in
-            var e = el
-            if let f = el.fill, isWhitish(f) { e.fill = color }
-            if let s = el.stroke, isWhitish(s) { e.stroke = color }
-            return e
-        }
-        return copy
-    }
-    private func isWhitish(_ c: Color) -> Bool {
-        // Heuristic: treat near-white icon fills/strokes as "the icon color".
-        UIColor(c).cgColor.components.map { comps in comps.prefix(3).allSatisfy { $0 > 0.6 } } ?? false
     }
 
     // MARK: Scroll → visible section
@@ -699,38 +677,6 @@ struct BigButtonBack: Shape {
         p.addCurve(to: pt(-0.0000152588, 229.039), control1: pt(11.119, 265.932), control2: pt(-0.0000152588, 248.349))
         p.addLine(to: pt(-0.0000152588, 142.273))
         p.addCurve(to: pt(28.5643, 97.1013), control1: pt(-0.0000152588, 122.963), control2: pt(11.119, 105.38))
-        p.closeSubpath()
-        return p
-    }
-}
-
-struct Hexagon: Shape {
-    // Generously rounded: the sharp side points otherwise leave a hard vertical
-    // step where the offset-down slab peeks out, reading as a doubled outline.
-    // Rounding them makes the side rim taper to nothing like the ellipse coin.
-    var cornerRadius: CGFloat = 15
-
-    func path(in rect: CGRect) -> Path {
-        let inset = rect.width * 0.25   // how far the top/bottom edges pull in
-        let pts = [
-            CGPoint(x: rect.minX, y: rect.midY),
-            CGPoint(x: rect.minX + inset, y: rect.minY),
-            CGPoint(x: rect.maxX - inset, y: rect.minY),
-            CGPoint(x: rect.maxX, y: rect.midY),
-            CGPoint(x: rect.maxX - inset, y: rect.maxY),
-            CGPoint(x: rect.minX + inset, y: rect.maxY),
-        ]
-        var p = Path()
-        // Walk the corners, arcing between each pair of edges.
-        for i in pts.indices {
-            let prev = pts[(i + pts.count - 1) % pts.count]
-            let corner = pts[i]
-            let next = pts[(i + 1) % pts.count]
-            if i == 0 {
-                p.move(to: CGPoint(x: (prev.x + corner.x) / 2, y: (prev.y + corner.y) / 2))
-            }
-            p.addArc(tangent1End: corner, tangent2End: next, radius: cornerRadius)
-        }
         p.closeSubpath()
         return p
     }

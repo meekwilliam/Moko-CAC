@@ -19,6 +19,10 @@ final class LessonPlayer: ObservableObject {
     @Published var revealed = false      // an answer has been graded / step resolved
     @Published var lastCorrect = false
     @Published var correctCount = 0
+    // First attempts only (requeued retries don't count) — the score shown
+    // on the Lesson Complete screen.
+    @Published var firstTryTotal = 0
+    @Published var firstTryCorrect = 0
     @Published var answeredCount = 0
     @Published var missedSkills: [String: Int] = [:]
     @Published var correctCompetencies: [String: Int] = [:]
@@ -57,7 +61,6 @@ final class LessonPlayer: ObservableObject {
     @Published var decisionTick: Int? = nil
     @Published var scenarioHadMistake = false
 
-    var onFinished: (() -> Void)?
     /// Called with the new screen index each time the player advances, so the
     /// native lesson can persist mid-lesson progress (resume on reopen).
     var onAdvance: ((Int) -> Void)?
@@ -73,10 +76,10 @@ final class LessonPlayer: ObservableObject {
         self.unitBonusEligible = unitBonusEligible
         self.isTestLesson = isTestLesson
         self.isUnitTest = isUnitTest
-        // Drop the lesson-opening "intro" reading screen — straight into the
-        // first question. Attention spans are short and it read as dead air.
-        let screens = lesson.screens.filter { $0.type != "intro" }
-        self.screens = screens.isEmpty ? lesson.screens : screens
+        // Intro cards are kept as short "tip" cards (2–3 sentences) that teach
+        // the fact the next questions use. Long reading screens don't belong
+        // in content — attention spans are short and they read as dead air.
+        self.screens = lesson.screens
         // Prefer the caller-supplied unit color (the lesson's real unit banner
         // color, works for any unit size); fall back to the legacy node-range
         // guess only if the caller doesn't have section data on hand.
@@ -91,8 +94,6 @@ final class LessonPlayer: ObservableObject {
     var progress: CGFloat { CGFloat(index + 1) / CGFloat(screens.count + 1) }
 
     var isIntro: Bool { screen.type == "intro" }
-    var isMatching: Bool { screen.type == "matching" }
-    var isOrdering: Bool { screen.type == "sequence_builder" || screen.type == "drag_order" }
     var activeTradeStage: TradeStage? {
         guard screen.type == "trade_scenario", let stages = screen.tradeStages,
               stages.indices.contains(scenarioStage) else { return nil }
@@ -191,7 +192,7 @@ final class LessonPlayer: ObservableObject {
 
     private func configureOptionOrder() {
         let options = screen.options ?? []
-        let shuffleTypes: Set<String> = ["multiple_choice", "time_sales", "footprint", "orderflow_sim", "book_compare", "replay_compare"]
+        let shuffleTypes: Set<String> = ["multiple_choice", "fill_blank", "time_sales", "footprint", "orderflow_sim", "book_compare", "replay_compare"]
         optionOrder = shuffleTypes.contains(screen.type) ? Array(options.indices).shuffled() : Array(options.indices)
     }
 
@@ -252,6 +253,10 @@ final class LessonPlayer: ObservableObject {
         }
         lastCorrect = correct
         answeredCount += 1
+        if !screen.isPreviousMistake {
+            firstTryTotal += 1
+            if correct { firstTryCorrect += 1 }
+        }
         if correct {
             correctCount += 1
             if let competency = screen.competencyId { correctCompetencies[competency, default: 0] += 1 }
@@ -316,6 +321,8 @@ final class LessonPlayer: ObservableObject {
         copy.lastCorrect = lastCorrect
         copy.correctCount = correctCount
         copy.answeredCount = answeredCount
+        copy.firstTryTotal = firstTryTotal
+        copy.firstTryCorrect = firstTryCorrect
         copy.missedSkills = missedSkills
         copy.correctCompetencies = correctCompetencies
         copy.missedCompetencies = missedCompetencies
@@ -363,7 +370,6 @@ struct LessonView: View {
     // which would otherwise make the bar jump.
     @State private var displayedProgress: CGFloat = 0
     let hearts: Int
-    let isUnlimitedHearts: Bool
     var onClose: () -> Void
     var onComplete: (Int) -> Void   // node number
     var onAssessmentComplete: (Int, Int, [String: Int], [String: Int]) -> Void
@@ -374,7 +380,6 @@ struct LessonView: View {
          isTestLesson: Bool = false,
          isUnitTest: Bool = false,
          hearts: Int = ProgressStore.maxHearts,
-         isUnlimitedHearts: Bool = false,
          onClose: @escaping () -> Void,
          onComplete: @escaping (Int) -> Void,
          onAssessmentComplete: @escaping (Int, Int, [String: Int], [String: Int]) -> Void = { _, _, _, _ in },
@@ -391,7 +396,6 @@ struct LessonView: View {
         // open. It only animates on advance from here.
         _displayedProgress = State(initialValue: p.progress)
         self.hearts = hearts
-        self.isUnlimitedHearts = isUnlimitedHearts
         self.onClose = onClose
         self.onComplete = onComplete
         self.onAssessmentComplete = onAssessmentComplete
@@ -608,18 +612,12 @@ struct LessonView: View {
 
     private var lessonHeartBadge: some View {
         HStack(spacing: 5) {
-            HeartBadge(filled: isUnlimitedHearts || hearts > 0, size: 20)
-            if isUnlimitedHearts {
-                Image(systemName: "infinity")
-                    .font(.system(size: 14, weight: .black))
-                    .foregroundColor(ink)
-            } else {
-                Text("\(hearts)")
-                    .font(Theme.font(16, .black))
-                    .foregroundColor(ink)
-                    .monospacedDigit()
-                    .contentTransition(.numericText())
-            }
+            HeartBadge(filled: hearts > 0, size: 20)
+            Text("\(hearts)")
+                .font(Theme.font(16, .black))
+                .foregroundColor(ink)
+                .monospacedDigit()
+                .contentTransition(.numericText())
         }
         .frame(minWidth: 52, alignment: .trailing)
     }
@@ -925,6 +923,12 @@ struct RewardView: View {
             .map { $0.prefix(1).uppercased() + $0.dropFirst() }
             .joined(separator: " ")
     }
+    private var scoreSummary: String {
+        let total = player.firstTryTotal, right = player.firstTryCorrect
+        guard total > 0 else { return player.lesson.title }
+        if right == total { return "Perfect! All \(total) correct on the first try." }
+        return "\(right) of \(total) correct on the first try."
+    }
     private var assessmentSummary: String {
         let isJump = player.lesson.assessmentPrerequisiteMinimum != nil
         if assessmentPassed {
@@ -961,7 +965,7 @@ struct RewardView: View {
                 .opacity(stage >= 2 ? 1 : 0)
                 .offset(y: stage >= 2 ? 0 : 12)
 
-            Text(isAssessment ? assessmentSummary : (player.lesson.celebration ?? "\(player.lesson.title) mastered"))
+            Text(isAssessment ? assessmentSummary : scoreSummary)
                 .font(Theme.font(15, .semibold))
                 .foregroundColor(Theme.muted)
                 .multilineTextAlignment(.center)
