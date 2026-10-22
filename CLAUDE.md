@@ -1,24 +1,20 @@
 # Moko — context for AI assistants
 
-Moko is a Duolingo-style day-trading education app for iOS: SwiftUI hosted in a
-UIKit shell. You learn to read candlestick charts and order flow by answering
-questions on a gamified path — hearts, streaks, XP, treats (currency).
+Moko is a Duolingo-style money-management app for teens on iOS: SwiftUI hosted
+in a UIKit shell. Lessons on budgeting, saving, credit, investing, and spotting
+hype/scams sit on a gamified path — hearts, streaks, XP, treats (currency). It
+is the user's 2026 Congressional App Challenge entry (TX-26).
 
 ## Repo location — read this first
 
-The **live repo** is `/Users/williammeek/Moko/` (git-tracked, remote
-`github.com/xoshr/Moko`). The user pushes via **GitHub Desktop**, not `git
-push` from the CLI (CLI push will fail — no credentials configured there).
-Commit locally after every change; don't try to push.
-
-If you ever see a similarly-named directory elsewhere (e.g. under
-`~/Derm/`), treat it as a stale scratch copy unless proven otherwise — verify
-`git remote -v` and `git log` before trusting any location.
+The repo is `/Users/williammeek/CongressionalAppChallenge/Moko/` (remote
+`github.com/meekwilliam/Moko`). `gh` is authenticated, so `git push` works
+from the CLI. Commit locally after every change; push only when asked.
 
 ## Build & validate
 
 ```bash
-cd /Users/williammeek/Moko
+cd /Users/williammeek/CongressionalAppChallenge/Moko
 xcodebuild -project Moko.xcodeproj -scheme Moko \
   -destination 'generic/platform=iOS Simulator' -configuration Debug build \
   2>&1 | grep -E "BUILD SUCCEEDED|BUILD FAILED|error:"
@@ -28,20 +24,20 @@ Content lives in one big JSON file, not compiled — always validate it after
 editing:
 
 ```bash
-cd /Users/williammeek/Moko/Moko
+cd /Users/williammeek/CongressionalAppChallenge/Moko/Moko
 python3 -c "import json; json.load(open('GameData.json'))"
 ```
 
 ## Architecture
 
 - **`AppDelegate.swift`** — registers bundled fonts (`.otf`/`.ttf` in
-  `Moko/fonts/`) at launch, wires Firebase, starts Haptics.
-- **`Backend.swift`** — protocol seam for auth/sync. `FirebaseBackend.swift`
-  is the *only* file that imports Firebase; everything else talks to the
-  protocol so the backend could be swapped wholesale.
+  `Moko/fonts/`) at launch and starts Haptics.
+- **No backend.** Progress lives on-device (`ProgressStore`, UserDefaults).
+  Firebase and the cloud-sync layer were removed; the onboarding Apple/Google
+  buttons just continue. The app is completely free — no purchases.
 - **`ProgressStore.swift`** — the game loop: XP, treats, streak (weekly
   Mo–Su calendar), hearts (25 to start, 1 spent per wrong original answer,
-  regenerates hourly, mock "unlimited hearts" subscription).
+  regenerates hourly; refill with treats or by inviting a friend).
 - **`PathStore` / `PathModels.swift`** — the home learning-path map: sections
   (units) and nodes (lessons), decoded from `GameData.json`. `PathStore` is
   an `ObservableObject`; node colors come from each section's `bg`/`slab` hex
@@ -60,65 +56,44 @@ python3 -c "import json; json.load(open('GameData.json'))"
   are seeded-random, but which candle is up/down/the-answer is fixed by
   index for most scenarios — this is what makes `tap_candle` targets safe to
   reuse).
-- **`OrderFlowViews.swift`** — order-book mechanics (`aggressor`,
-  `book_drag`, and other order-flow-specific interactions), separate from
-  the candlestick chart mechanics.
 - **`LessonTheme.swift`** (`Theme` enum) — fonts, colors, the 3D "chunky
   button" style used everywhere (`Chunky3DStyle`, `SinkButtonStyle`,
   `OptionSurface`).
 
 ## Content: `Moko/GameData.json`
 
-The bundled catalog currently contains one course: `orderflow`, with 10
-units, 77 lessons, and 479 questions. Retired course sources and generated
-lesson data have been removed; do not restore them when regenerating content.
+One course: **`money` (Money Basics)** — 5 units, 27 lessons, 142 questions
+on budgeting, saving, credit, investing (including reading stock charts),
+and hype/crypto/gambling for teens. It is generated, never hand-edited:
+edit `tools/money_course/unit*.py` and run `python3 tools/build_money_course.py`.
+The builder validates every screen and derives node numbers, unit banners,
+boss lessons and Test Out pools. (The old Order Flow day-trading course was
+removed for the CAC pitch; its leftover trade-decision code paths in
+`LessonView.swift` are unreachable.)
 
-Shape: `{ "courses": [Course...], "legal": {...} }`. Each course has
-`sections` (unit banners: `index`, `title`, `bg`/`slab` hex, `tier`, plus
-newer `testOutEnabled`/`testOutQuestionCount`/`testOutPassingScore`/
-`bossLessonId` fields) and `lessons` (each: `node`, `title`, `celebration`,
-`screens[]`).
+Question `type`s used: `intro` (optional `chart`), `multiple_choice`,
+`true_false`, `fill_blank`, `matching`, `sequence_builder`, `number_slider`,
+`tap_candle`, `mark_level`. Any question can show a `chart` above it. The
+engine also supports `tap_candles`, `draw_trendline`, `mark_consolidation`,
+`ohlc_label`, `fill_blank_multi`, `ingredient_match`. Field names per type
+are in `LessonModels.swift`'s `LessonScreen` `CodingKeys`.
 
-Question `type`s in use: `intro`, `multiple_choice`, `true_false`,
-`fill_blank`, `fill_blank_multi`, `matching`, `ingredient_match`,
-`sequence_builder`/`drag_order`, `tap_candle`, `tap_candles`,
-`draw_trendline`, `mark_level`, `mark_consolidation`, `ohlc_label`,
-`number_slider`, and order-flow-specific ones: `aggressor`, `book_drag`,
-`book_compare`, `evidence_select`, `footprint`, `footprint_tap`,
-`live_chart`, `orderflow_sim`, `replay_compare`, `time_sales`,
-`time_sales_tap`, `trade_decision`, `trade_scenario`, `trade_manage`,
-`entry_select`, and `invalidation_mark`. Field names per type are in `LessonModels.swift`'s
-`LessonScreen` `CodingKeys` (~line 107-125).
+**Chart-question safety:** only use `(chart, target/level_kind)` pairs whose
+answer `CandlestickChart.model(seed:)` fixes by construction. The builder
+enforces an allow-list (`SAFE_TAPS`, `SAFE_LEVELS`, `KNOWN_CHARTS`); verify
+against `model(seed:)` before adding to it. `sideways`/`volatile` have no
+deterministic target. `draw_trendline` grading is ±1 candle per end, so
+avoid it unless any reasonable line passes.
 
-**Safety rule for chart-interaction questions** (`tap_candle`, `tap_candles`,
-`mark_level`, `draw_trendline`, `mark_consolidation`): only use
-`(chart, target/level_kind)` combos that are already proven correct
-elsewhere in the file (grep for existing usages of that `chart` scenario
-with that interaction type), or verify fresh against `CandlestickChart.swift`
-`model(seed:)`/`highlightIndex` before inventing a new one. Getting this
-wrong marks a genuinely-correct tap as wrong for real users. `sideways` and
-`volatile`-style scenarios with randomized candle direction generally have
-NO safe deterministic target — don't use them for new tap questions unless
-you've verified determinism.
+## Content style
 
-## Content style (established through user feedback this session)
-
-- **Questions must be short instructions/questions only** — no restated
-  teaching, no parenthetical hints like "(green)" or "(tiny body, wicks on
-  both sides)". Any "why" belongs in the `explanation` field (shown after
-  answering), never in the question.
-- **Distractors must be plausible confusables**, not nonsense a learner can
-  eliminate without understanding the concept. Banned family: "the color of
-  the candles", "calendar", "company earnings", "guaranteed profit", "market
-  is closed". "Overstates certainty" traps ARE legitimate (the course
-  deliberately teaches "descriptive, not a guarantee").
-- **Question-type mix targets** (current, as of 2026-07-10): Multiple Choice
-  ~35%, Chart interactions "the rest" (top priority, keep growing — was
-  ~29.3% last measured), Matching ~8% cap (don't grow), Fill in Blank ~10%
-  (shrink further when safe), True/False and PICK/ingredient_match: keep at
-  current levels, don't touch. Order-book mechanics (`aggressor`/
-  `book_drag`) are a growth area the user wants expanded into the main 4
-  courses (currently siloed in the small `orderflow` course).
+- **Questions are short instructions/questions only** — no restated
+  teaching or parenthetical hints. Any "why" goes in `explanation`.
+- **Distractors must be plausible confusables**, not nonsense.
+- **Matching cards must be unique** on each side (the builder rejects
+  duplicates).
+- Audience is teens; plain words, concrete teen examples, factually careful
+  ("historically", "most states"); educational, not financial advice.
 
 ## Design system
 
@@ -143,8 +118,8 @@ you've verified determinism.
 
 ## Working conventions
 
-- **Always commit after code changes** (project house rule) — on `main`,
-  don't push (user pushes via GitHub Desktop).
+- **Always commit after code changes** (project house rule). Push only when
+  the user asks.
 - Validate `GameData.json` with `python3 -c "import json; json.load(...)"`
   after every edit, and run the `xcodebuild` command above before
   considering a change done — must see `BUILD SUCCEEDED`.

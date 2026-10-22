@@ -7,6 +7,7 @@ import SwiftUI
 
 struct ProfileView: View {
     @ObservedObject var store: ProfileStore
+    var courseName: String = "Money Basics"   // the course shown under the name
     var showsHomeButton: Bool = true    // false when hosted inside the tab bar
     var onHome: () -> Void
     var onToggleReminders: (Bool) -> Void
@@ -14,8 +15,6 @@ struct ProfileView: View {
     var onClearData: () -> Void
     var onUnlockAll: () -> Void = {}
     var onGrantTestTreats: () -> Void = {}
-    var onTestMechanics: () -> Void = {}
-    var onTestMultiSignal: () -> Void = {}
     var onPreviewStreak: () -> Void = {}
     var onBumpStreak: () -> Void = {}
     var onTestOnboarding: () -> Void = {}
@@ -55,7 +54,7 @@ struct ProfileView: View {
                 }
                 VStack(alignment: .leading, spacing: 3) {
                     Text(store.userName).font(Theme.font(21, .black)).foregroundColor(theme.palette.ink)
-                    Text("Order Flow Learner").font(Theme.font(14, .bold)).foregroundColor(muted)
+                    Text("\(courseName) Learner").font(Theme.font(14, .bold)).foregroundColor(muted)
                 }
             }
 
@@ -134,6 +133,8 @@ struct ProfileView: View {
                            iconBg: Color.white.opacity(0.20), label: "Terms & Legal Disclaimer") {
                     onOpenLegal("terms")
                 }
+                // Developer shortcuts — Debug builds only, so they never ship.
+                #if DEBUG
                 prefButton(iconSystem: "lock.open.fill", iconColor: Color(hex: "#34C759"),
                            iconBg: Color(hex: "#34C759").opacity(0.12), label: "Unlock All Lessons (Test)") {
                     onUnlockAll()
@@ -141,14 +142,6 @@ struct ProfileView: View {
                 prefButton(iconSystem: "bone.fill", iconColor: Color(hex: "#F59E0B"),
                            iconBg: Color(hex: "#F59E0B").opacity(0.12), label: "Give Unlimited Bones (Test)") {
                     onGrantTestTreats()
-                }
-                prefButton(iconSystem: "hammer.fill", iconColor: Color(hex: "#8B5CF6"),
-                           iconBg: Color(hex: "#8B5CF6").opacity(0.12), label: "Test All Question Mechanics") {
-                    onTestMechanics()
-                }
-                prefButton(iconSystem: "square.stack.3d.up.fill", iconColor: Color(hex: "#A855F7"),
-                           iconBg: Color(hex: "#A855F7").opacity(0.12), label: "Test Multi Signal Read") {
-                    onTestMultiSignal()
                 }
                 prefButton(iconSystem: "flame.fill", iconColor: Color(hex: "#F59E0B"),
                            iconBg: Color(hex: "#F59E0B").opacity(0.12), label: "Preview Streak Screen (Test)") {
@@ -162,6 +155,7 @@ struct ProfileView: View {
                            iconBg: Color(hex: "#38bdf8").opacity(0.12), label: "Preview Onboarding (Test)") {
                     onTestOnboarding()
                 }
+                #endif
                 prefButton(iconSystem: "trash.fill", iconColor: Color(hex: "#D6536D"),
                            iconBg: Color(hex: "#D6536D").opacity(0.12), label: "Clear Application Data",
                            labelColor: Color(hex: "#D6536D")) {

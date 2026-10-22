@@ -20,12 +20,11 @@ final class ProgressStore: ObservableObject {
         var testedOutUnits: [Int]? = nil
         var testOutReviewNodes: [String: [Int]]? = nil
         var testOutRetryUnits: [Int]? = nil
-        var contentVersion: Int? = nil
     }
 
     private struct Snapshot: Codable {
         var courses: [String: CourseProgress] = [:]
-        var currentCourse: String = "orderflow"
+        var currentCourse: String = Game.defaultCourseId
         var userName: String = "Guest"
         var reminderOn: Bool = true
 
@@ -40,8 +39,6 @@ final class ProgressStore: ObservableObject {
         // Hearts are global too: original question answers cost 1; regen 1/hour.
         var hearts: Int = 25
         var heartAnchor: Date? = nil
-        // Prototype monetization: mock "unlimited hearts" subscription state.
-        var unlimitedHearts: Bool = false
 
         // Legacy flat fields (pre-multi-course) — used once to migrate.
         var completed: [Int]? = nil
@@ -55,14 +52,6 @@ final class ProgressStore: ObservableObject {
     private var s: Snapshot { didSet { persist() } }
     private static let key = "moko_progress_v1"
 
-    // Cloud-sync hooks (wired by SyncService / ViewController; nil when local-only).
-    /// Fires after any local change so the syncer can push to the cloud.
-    var onChange: (() -> Void)?
-    /// Fires after a cloud snapshot is adopted so the UI (path/profile) refreshes.
-    var onExternalReplace: (() -> Void)?
-    /// While true, local persists don't trigger `onChange` (used when adopting a
-    /// pulled cloud snapshot, so we don't immediately push it straight back).
-    private var suppressChange = false
 
     private init() {
         if let data = UserDefaults.standard.data(forKey: Self.key),
@@ -71,13 +60,11 @@ final class ProgressStore: ObservableObject {
         } else {
             s = Snapshot()
         }
-        // Retired flat-course progress is intentionally discarded. Order Flow
-        // keeps its own keyed progress bucket when one already exists.
+        // Retired flat-course progress is intentionally discarded. Each live
+        // course keeps its own keyed progress bucket when one already exists.
         s.completed = nil; s.inProgressNode = nil; s.inProgressScreen = nil
-        keepOnlyOrderFlowCourse()
-        migrateCondensedOrderFlowProgressIfNeeded()
-        migrateVolumeProfileOrderFlowProgressIfNeeded()
-        if !s.unlimitedHearts, s.hearts == 5, s.heartAnchor == nil {
+        keepOnlyKnownCourses()
+        if s.hearts == 5, s.heartAnchor == nil {
             s.hearts = Self.maxHearts
         }
     }
@@ -87,17 +74,17 @@ final class ProgressStore: ObservableObject {
     var currentCourse: String { s.currentCourse }
 
     func switchCourse(_ id: String) {
-        guard id == "orderflow" else { return }
+        guard Game.courses.contains(where: { $0.id == id }) else { return }
         s.currentCourse = id
     }
 
-    /// Drop retired local course buckets and make Order Flow authoritative.
-    /// This also normalizes older cloud snapshots after they are downloaded.
-    private func keepOnlyOrderFlowCourse() {
+    /// Drop progress buckets for retired courses, and fall back to the default
+    /// course if the saved one no longer exists.
+    private func keepOnlyKnownCourses() {
         var snapshot = s
-        let orderFlow = snapshot.courses["orderflow"] ?? CourseProgress()
-        snapshot.courses = ["orderflow": orderFlow]
-        snapshot.currentCourse = "orderflow"
+        let known = Set(Game.courses.map(\.id))
+        snapshot.courses = snapshot.courses.filter { known.contains($0.key) }
+        if !known.contains(snapshot.currentCourse) { snapshot.currentCourse = Game.defaultCourseId }
         s = snapshot
     }
 
@@ -106,55 +93,8 @@ final class ProgressStore: ObservableObject {
         get { s.courses[s.currentCourse] ?? CourseProgress() }
         set {
             var value = newValue
-            if s.currentCourse == "orderflow" { value.contentVersion = 3 }
             s.courses[s.currentCourse] = value
         }
-    }
-
-    /// Version 2 condenses Order Flow from 111 to 77 nodes. Preserve the user's
-    /// approximate progress by unit instead of letting old node numbers point at
-    /// unrelated new lessons.
-    private func migrateCondensedOrderFlowProgressIfNeeded() {
-        guard var progress = s.courses["orderflow"], (progress.contentVersion ?? 0) < 2 else { return }
-        let oldCounts = [5, 8, 11, 13, 15, 14, 12, 14, 10, 9]
-        let newCounts = [5, 7, 7, 8, 10, 9, 8, 9, 7, 7]
-        var oldStart = 1
-        var newStart = 1
-        var remapped: [Int] = []
-        for unit in oldCounts.indices {
-            let oldRange = oldStart..<(oldStart + oldCounts[unit])
-            let completedInUnit = progress.completed.filter { oldRange.contains($0) }.count
-            let testedOut = progress.testedOutUnits?.contains(unit) == true
-            var newCompleted = testedOut ? newCounts[unit]
-                : Int(floor(Double(completedInUnit) / Double(oldCounts[unit]) * Double(newCounts[unit])))
-            if unit == 9 && testedOut { newCompleted = max(0, newCompleted - 1) }
-            remapped.append(contentsOf: newStart..<(newStart + newCompleted))
-            if let active = progress.inProgressNode, oldRange.contains(active) {
-                let fraction = Double(active - oldStart) / Double(max(1, oldCounts[unit] - 1))
-                progress.inProgressNode = newStart + Int(round(fraction * Double(max(0, newCounts[unit] - 1))))
-            }
-            oldStart += oldCounts[unit]
-            newStart += newCounts[unit]
-        }
-        progress.completed = Array(Set(remapped)).sorted()
-        progress.contentVersion = 2
-        s.courses["orderflow"] = progress
-    }
-
-    /// Version 3 inserts Volume Profile at node 63, shifting the former Unit 8
-    /// boss and all Unit 9 and 10 lessons by one. Keep saved lesson identity
-    /// intact instead of attaching completion to the next lesson.
-    private func migrateVolumeProfileOrderFlowProgressIfNeeded() {
-        guard var progress = s.courses["orderflow"], (progress.contentVersion ?? 0) < 3 else { return }
-        func shifted(_ node: Int) -> Int { node >= 63 ? node + 1 : node }
-        progress.completed = Array(Set(progress.completed.map(shifted))).sorted()
-        if let active = progress.inProgressNode { progress.inProgressNode = shifted(active) }
-        if var reviews = progress.testOutReviewNodes {
-            for (unit, nodes) in reviews { reviews[unit] = nodes.map(shifted) }
-            progress.testOutReviewNodes = reviews
-        }
-        progress.contentVersion = 3
-        s.courses["orderflow"] = progress
     }
 
     /// Completed-lesson count for any single course (drives the switcher's progress text).
@@ -167,25 +107,6 @@ final class ProgressStore: ObservableObject {
         if let data = try? JSONEncoder().encode(s) {
             UserDefaults.standard.set(data, forKey: Self.key)
         }
-        if !suppressChange { onChange?() }
-    }
-
-    // MARK: Cloud sync (portable snapshot in/out — see Backend/SyncService)
-
-    /// The full state as portable JSON (what gets stored in the cloud).
-    func currentSnapshotData() -> Data? { try? JSONEncoder().encode(s) }
-
-    /// Adopt a snapshot pulled from the cloud, replacing local state. Persists
-    /// locally but does NOT re-trigger a push, then asks the UI to refresh.
-    func replaceSnapshot(with data: Data) {
-        guard let decoded = try? JSONDecoder().decode(Snapshot.self, from: data) else { return }
-        suppressChange = true
-        s = decoded
-        keepOnlyOrderFlowCourse()
-        migrateCondensedOrderFlowProgressIfNeeded()
-        migrateVolumeProfileOrderFlowProgressIfNeeded()
-        suppressChange = false
-        onExternalReplace?()
     }
 
     // MARK: Reads
@@ -208,11 +129,6 @@ final class ProgressStore: ObservableObject {
     /// Current hearts, after applying any regeneration that has accrued.
     var hearts: Int { reconcileHearts(); return s.hearts }
 
-    /// Prototype "Super" subscription: unlimited hearts, no gating or regen countdown.
-    var isUnlimitedHearts: Bool { s.unlimitedHearts }
-
-    /// Whether the user has a heart to spend on an original question answer.
-    var canAnswerQuestion: Bool { isUnlimitedHearts || hearts > 0 }
 
     /// Seconds until the next heart regenerates, or nil when already full.
     var secondsUntilNextHeart: Int? {
@@ -245,7 +161,6 @@ final class ProgressStore: ObservableObject {
     /// clock if we were at full. Returns false if there were none to spend.
     @discardableResult
     func useHeart() -> Bool {
-        guard !isUnlimitedHearts else { return true }   // Super: never spend hearts
         reconcileHearts()
         guard s.hearts > 0 else { return false }
         let wasFull = s.hearts == Self.maxHearts
@@ -280,9 +195,6 @@ final class ProgressStore: ObservableObject {
         s.hearts = min(Self.maxHearts, s.hearts + n)
         if s.hearts >= Self.maxHearts { s.heartAnchor = nil }
     }
-
-    /// Toggle the mock "Super" unlimited-hearts subscription.
-    func setUnlimitedHearts(_ on: Bool) { s.unlimitedHearts = on }
 
     /// The node with saved mid-lesson progress (drives the "CONTINUE" tooltip).
     /// Note: screen 0 still counts as "in progress" so a learner who opens and
@@ -411,7 +323,6 @@ final class ProgressStore: ObservableObject {
     }
 
     func setReminder(_ on: Bool) { s.reminderOn = on }
-    func setUserName(_ name: String) { s.userName = name }
 
     func reset() {
         s = Snapshot()

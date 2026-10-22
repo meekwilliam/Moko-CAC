@@ -24,10 +24,6 @@ struct PathSectionData: Decodable {
     let unitId: String?
     let difficulty: String?
     let testOutEnabled: Bool?
-    let testOutQuestionCount: Int?
-    let testOutPassingScore: Int?
-    let bossLessonId: String?
-    let finalBossRequiredForCourseMastery: Bool?
 }
 
 struct PathNodeData: Decodable {
@@ -35,6 +31,7 @@ struct PathNodeData: Decodable {
     let svg: String
     let title: String?
     let sectionIndex: Int   // which unit this node belongs to — units can be any size
+    var symbol: String? = nil  // optional SF Symbol for the node face
 }
 
 struct PathPayload: Decodable {
@@ -49,26 +46,9 @@ struct PathPayload: Decodable {
     let testOutRetryUnits: [Int]
 }
 
-/// Lightweight progress refresh pushed back after a lesson completes.
-struct PathState: Decodable {
-    let completed: [Int]
-    let xp: Int
-    let streak: Int
-    let inProgressNode: Int?
-}
-
 // MARK: - Node model (icon parsed once)
 
 enum NodeState { case done, active, locked }
-
-enum UnitProgressState: String {
-    case locked = "LOCKED"
-    case available = "AVAILABLE"
-    case inProgress = "IN_PROGRESS"
-    case testedOut = "TESTED_OUT"
-    case completed = "COMPLETED"
-    case mastered = "MASTERED"
-}
 
 struct PathNode: Identifiable {
     let num: Int
@@ -82,6 +62,7 @@ struct PathNode: Identifiable {
     /// `unitBonusEligible`, which only asks whether the *rest* of the unit
     /// happens to be done already.
     let isBoss: Bool
+    var symbol: String? = nil
     var id: Int { num }
 
     /// Smooth continuous S-curve sway (Duolingo-style), out to the side and back
@@ -100,7 +81,6 @@ final class PathStore: ObservableObject {
     @Published var treats: Int
     @Published var streak: Int
     @Published var hearts: Int
-    @Published var isUnlimitedHearts: Bool = false
     @Published var energy: Int
     @Published var inProgressNode: Int?
     @Published var testedOutUnits: Set<Int>
@@ -134,7 +114,7 @@ final class PathStore: ObservableObject {
             .sorted { $0.num < $1.num }
             .map { PathNode(num: $0.num, icon: SVGParser.parse($0.svg),
                             title: $0.title ?? "Lesson \($0.num)", sectionIndex: $0.sectionIndex,
-                            isBoss: lastInUnit[$0.sectionIndex] == $0.num) }
+                            isBoss: lastInUnit[$0.sectionIndex] == $0.num, symbol: $0.symbol) }
         self.totalNodes = self.nodes.count
     }
 
@@ -157,19 +137,6 @@ final class PathStore: ObservableObject {
         if num <= f { return .done }
         if num == activeNode { return .active }
         return .locked
-    }
-
-    func progressionState(forSection index: Int) -> UnitProgressState {
-        let unitNodes = nodes(inSection: index)
-        guard let first = unitNodes.first else { return .locked }
-        if index == sections.last?.index && unitNodes.allSatisfy({ completed.contains($0.num) }) { return .mastered }
-        if testedOutUnits.contains(index) { return .testedOut }
-        if unitNodes.allSatisfy({ completed.contains($0.num) }) {
-            return .completed
-        }
-        if unitNodes.contains(where: { completed.contains($0.num) }) ||
-            unitNodes.contains(where: { recommendedReviewNodes.contains($0.num) }) { return .inProgress }
-        return state(for: first.num) == .locked ? .locked : .available
     }
 
     /// done/active nodes take their unit's own banner color (from the

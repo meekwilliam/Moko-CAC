@@ -21,11 +21,8 @@ struct TestOutDefinition: Decodable {
     let lessonType: String
     let questionCount: Int
     let passingScore: Int
-    let noHearts: Bool
-    let revealAnswersAtEnd: Bool
     let questionPool: [LessonScreen]
     let competencyBlueprint: [String]?
-    let competencyMappings: [String: [String]]?
     let competencyEligibleQuestionIds: [String: [String]]?
     let competencySourceUnits: [String: [Int]]?
     let competencySourceNodes: [String: [Int]]?
@@ -58,7 +55,7 @@ enum Game {
     }()
 
     static var courses: [Course] { data.courses }
-    static var defaultCourseId: String { data.courses.first?.id ?? "orderflow" }
+    static var defaultCourseId: String { data.courses.first?.id ?? "money" }
 
     static func course(_ id: String) -> Course {
         data.courses.first { $0.id == id } ?? data.courses[0]
