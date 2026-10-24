@@ -190,8 +190,8 @@ struct OnboardingView: View {
 
     private var welcomeScreen: some View {
         VStack(spacing: 0) {
-            LiveChart(direction: .volatile, committedCount: 15, ticksPerCandle: 14,
-                      paused: step != 0, showsAxes: false)   // hero: fast, jumpy; freeze while sliding away
+            LiveChart(direction: .up, committedCount: 15, ticksPerCandle: 14,
+                      paused: step != 0, showsAxes: false)   // hero: a steady climb (long-term growth); freeze while sliding away
                 .opacity(0.85)
                 .mask(
                     // Fade the grid-and-candles hero out at both ends so it
