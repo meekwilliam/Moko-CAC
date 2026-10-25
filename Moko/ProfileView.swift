@@ -1,14 +1,11 @@
 import SwiftUI
 
 // MARK: - Native Profile screen
-// Rebuild of the web #screen-profile: progress header (avatar + bento stats),
-// the badge trophy room, preferences (reminders / privacy / terms / clear data),
-// and a bottom Home button. Presented as a modal stacked over the native home.
 
 struct ProfileView: View {
     @ObservedObject var store: ProfileStore
-    var courseName: String = "Money Basics"   // the course shown under the name
-    var showsHomeButton: Bool = true    // false when hosted inside the tab bar
+    var courseName: String = "Money Basics"
+    var showsHomeButton: Bool = true
     var onHome: () -> Void
     var onToggleReminders: (Bool) -> Void
     var onOpenLegal: (String) -> Void
@@ -58,7 +55,6 @@ struct ProfileView: View {
                 }
             }
 
-            // Streak hero
             statCard(fill: "#FF9F1C", border: "#E07B00", slab: "#C2640A", radius: 22) {
                 HStack(spacing: 18) {
                     Image(systemName: "flame.fill").font(.system(size: 26)).foregroundColor(.white)
@@ -76,7 +72,6 @@ struct ProfileView: View {
                 }
             }
 
-            // XP + Lessons
             HStack(spacing: 12) {
                 statCard(fill: "#FFC83D", border: "#E0A410", slab: "#C2850A", radius: 20) {
                     smallStat(value: store.xp, label: "TOTAL XP")
@@ -116,7 +111,6 @@ struct ProfileView: View {
         VStack(alignment: .leading, spacing: 14) {
             Text("Preferences").font(Theme.font(15, .black)).foregroundColor(theme.palette.ink)
             VStack(spacing: 12) {
-                // Daily reminders (toggle)
                 prefRow(iconSystem: "bell.fill", iconColor: Color(hex: "#F5A623"),
                         iconBg: Color.white.opacity(0.20), label: "Daily Reminders") {
                     Toggle("", isOn: Binding(
@@ -133,7 +127,6 @@ struct ProfileView: View {
                            iconBg: Color.white.opacity(0.20), label: "Terms & Legal Disclaimer") {
                     onOpenLegal("terms")
                 }
-                // Developer shortcuts — Debug builds only, so they never ship.
                 #if DEBUG
                 prefButton(iconSystem: "lock.open.fill", iconColor: Color(hex: "#34C759"),
                            iconBg: Color(hex: "#34C759").opacity(0.12), label: "Unlock All Lessons (Test)") {
@@ -165,9 +158,6 @@ struct ProfileView: View {
         }
     }
 
-    // `sunk`: static rows (a toggle) draw their own fixed slab lip. Buttons pass
-    // sunk:true so the slab is instead drawn by SinkButtonStyle and vanishes on
-    // press (the tactile 2D press).
     private func prefRowSurface<Trailing: View>(iconSystem: String, iconColor: Color, iconBg: Color,
                                                 label: String, labelColor: Color = .white, sunk: Bool = false,
                                                 @ViewBuilder trailing: () -> Trailing) -> some View {

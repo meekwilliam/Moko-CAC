@@ -3,11 +3,6 @@ import Combine
 import UserNotifications
 
 // MARK: - Onboarding flow
-// Seven-screen Duolingo-style intake: welcome (live-chart hero) → course →
-// goals (choose any) → daily goal → notifications → course build → commit.
-// No account: progress is saved on this device. Finishing bursts
-// the commit color across the screen and launches Lesson 1 directly (never the
-// home screen). Answers are stored in UserDefaults under "onboarding.*".
 
 struct OnboardingView: View {
     @ObservedObject var router: AppRouter
@@ -17,7 +12,6 @@ struct OnboardingView: View {
     @State private var stepDirection: CGFloat = 1
     @State private var hasPresentedInitialStep = false
 
-    // Selections
     @State private var strategy: Int? = nil
     @State private var goals: Set<Int> = []
     @State private var dailyGoal: Int? = nil
@@ -34,7 +28,6 @@ struct OnboardingView: View {
         }
     }
 
-    // Money Basics is where everyone starts; Order Flow lives in the course menu.
     private let strategyOptions: [(label: String, detail: String)] = [
         ("Money Basics", "Budgeting, saving, credit, investing & avoiding hype"),
     ]
@@ -104,7 +97,6 @@ struct OnboardingView: View {
     }
 
     // MARK: Header — back above full-width progress
-    // Hidden on the welcome screen (full-bleed hero, like the reference).
 
     private var header: some View {
         VStack(spacing: 2) {
@@ -142,9 +134,6 @@ struct OnboardingView: View {
     }
 
     private var stepTransition: AnyTransition {
-        // The welcome screen is a stable reset point. Animating it back in
-        // after step one leaves two full-screen scenes in the transition tree,
-        // so a following Get Started tap can inherit the stale direction.
         guard hasPresentedInitialStep, step > 0 else { return .identity }
         return .asymmetric(
             insertion: .offset(x: stepDirection * stepSlideDistance),
@@ -173,9 +162,6 @@ struct OnboardingView: View {
     }
 
     private func persistAnswers() {
-        // Persist the intake answers for personalization/analytics. The actual
-        // screen swap to the lesson is driven by CommitScreen, timed with the
-        // curtain animation (see AppRouter.curtainColor).
         let d = UserDefaults.standard
         if let s = strategy { d.set(strategyOptions[s].label, forKey: "onboarding.strategy") }
         d.set(goals.sorted().map { goalOptions[$0] }, forKey: "onboarding.goals")
@@ -184,18 +170,13 @@ struct OnboardingView: View {
     }
 
     // MARK: Screen 1 — Welcome
-    // Finelo-style landing, Moko'd: a live candlestick chart fills the hero (in
-    // place of orbiting company logos), then a headline and GET STARTED, which
-    // goes into the intake.
 
     private var welcomeScreen: some View {
         VStack(spacing: 0) {
             LiveChart(direction: .up, committedCount: 15, ticksPerCandle: 14,
-                      paused: step != 0, showsAxes: false)   // hero: a steady climb (long-term growth); freeze while sliding away
+                      paused: step != 0, showsAxes: false)
                 .opacity(0.85)
                 .mask(
-                    // Fade the grid-and-candles hero out at both ends so it
-                    // melts into the page instead of ending on a hard edge.
                     LinearGradient(stops: [
                         .init(color: .black.opacity(0), location: 0.0),
                         .init(color: .black, location: 0.14),
@@ -226,8 +207,6 @@ struct OnboardingView: View {
     }
 
     // MARK: Screen 2 — Strategy
-    // Which course to start with. Money Basics is the starting course; the list
-    // is built to grow as more courses ship.
 
     private var strategyScreen: some View {
         chooserScreen(
@@ -278,7 +257,6 @@ struct OnboardingView: View {
     }
 
     // MARK: Screen 5 — Notifications
-    // Ask to enable reminders so learners come back and keep their streak.
 
     private var notificationsScreen: some View {
         VStack(spacing: 0) {
@@ -395,11 +373,6 @@ struct OnboardingView: View {
 
 // MARK: - Screen 6 — Course build
 
-/// Plain `Text` only reads `progress` once per state change — the number
-/// would jump straight to 100% while the ring animates smoothly. Conforming
-/// to `Animatable` makes SwiftUI interpolate `progress` frame-by-frame through
-/// the same `withAnimation` block driving the ring's `trim`, so the two stay
-/// in sync.
 private struct AnimatedPercentText: View, Animatable {
     var progress: CGFloat
     var animatableData: CGFloat {
@@ -469,11 +442,6 @@ private struct CourseBuildView: View {
 }
 
 // MARK: - Screen 7 — Hold-to-commit
-// "Make yourself a promise": press and hold the button; it charges up with a
-// pulse, then the commit color bursts outward FROM THE BUTTON'S OWN SCREEN
-// POSITION (via the router-level curtain, not a locally-centered circle),
-// covers the screen, swaps in the already-loaded lesson underneath, and fades
-// away to reveal it — seamless, no flash/jump to a blank or home screen.
 
 private struct CommitScreen: View {
     @ObservedObject var router: AppRouter
@@ -481,9 +449,9 @@ private struct CommitScreen: View {
 
     @EnvironmentObject var theme: ThemeManager
     @State private var holding = false
-    @State private var holdProgress: CGFloat = 0   // 0…1 while charging
-    @State private var burst = false               // curtain has been launched
-    @State private var generation = 0              // cancels stale hold timers
+    @State private var holdProgress: CGFloat = 0
+    @State private var burst = false
+    @State private var generation = 0
     @State private var pulse = false
     @State private var buttonCenter: CGPoint = .zero
 
@@ -509,9 +477,6 @@ private struct CommitScreen: View {
 
             holdButton
                 .background(
-                    // Track the button's actual on-screen position (global
-                    // coordinates match the router-level curtain's coordinate
-                    // space), so the burst can originate exactly from it.
                     GeometryReader { g in
                         Color.clear
                             .onAppear { buttonCenter = CGPoint(x: g.frame(in: .global).midX,
@@ -533,15 +498,11 @@ private struct CommitScreen: View {
 
     private var holdButton: some View {
         ZStack {
-            // Soft breathing halo, stronger while charging (and while charging,
-            // it also grows with hold progress so you still feel the charge-up
-            // without a separate ring).
             Circle()
                 .fill(commit.opacity(holding ? 0.28 : 0.14))
                 .frame(width: 168, height: 168)
                 .scaleEffect((pulse ? 1.08 : 0.92) + holdProgress * 0.12)
 
-            // The button face itself.
             Text("I'M\nCOMMITTED")
                 .font(Theme.font(16, .black))
                 .multilineTextAlignment(.center)
@@ -569,7 +530,7 @@ private struct CommitScreen: View {
         holding = true
         generation += 1
         let gen = generation
-        Haptics.beginHold(duration: holdDuration)   // buzz climbs as the ring fills
+        Haptics.beginHold(duration: holdDuration)
         withAnimation(.linear(duration: holdDuration)) { holdProgress = 1 }
         DispatchQueue.main.asyncAfter(deadline: .now() + holdDuration) {
             guard gen == generation, holding, !burst else { return }
@@ -589,10 +550,8 @@ private struct CommitScreen: View {
         Haptics.endHold()
         Haptics.play(.celebrate)
         burst = true
-        onCommitted()   // persist onboarding answers
+        onCommitted()
 
-        // Launch the curtain from the button's own position and expand it to
-        // cover the whole screen.
         router.curtainColor = commit
         router.curtainOrigin = buttonCenter
         router.curtainOpacity = 1
@@ -601,9 +560,6 @@ private struct CommitScreen: View {
             router.curtainScale = 34
         }
 
-        // Once fully covered, swap in the lesson UNDERNEATH the still-opaque
-        // curtain — invisible to the user — then fade the curtain away to
-        // reveal it already loaded.
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
             router.onOnboardingFinished?()
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.15) {

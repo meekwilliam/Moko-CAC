@@ -2,8 +2,6 @@ import SwiftUI
 
 // MARK: - Question prompt
 
-/// A clean, full-width question card used by mechanics that do not place the
-/// prompt directly beside a chart.
 struct QuestionPrompt: View {
     let text: String
     var ink: Color
@@ -77,17 +75,11 @@ struct LessonScreenRouter: View {
         case "number_slider":
             NumberSliderView(player: player, ink: ink)
         default:
-            // true_false / multiple_choice / fill_blank
             ChoiceView(player: player, ink: ink)
         }
-        // Re-key so per-screen @State resets when the step changes.
-        // (id applied by parent via player.index)
     }
 }
 
-// A stable, per-screen seed so each question's chart is its own variation of the
-// pattern (different from the intro's and from other questions), but consistent
-// across redraws of the same screen. Derived from the screen's UUID (FNV-1a).
 func chartSeed(_ screen: LessonScreen) -> UInt64 {
     let u = screen.id.uuid
     let bytes = [u.0, u.1, u.2, u.3, u.4, u.5, u.6, u.7, u.8, u.9, u.10, u.11, u.12, u.13, u.14, u.15]
@@ -97,8 +89,6 @@ func chartSeed(_ screen: LessonScreen) -> UInt64 {
 }
 
 // MARK: - Shared question chart
-// Any question type can attach a `CHART: <scenario>` line; this renders it above
-// the prompt so the learner reads the chart to answer (used by every view below).
 struct QuestionChart: View {
     let key: String?
     var height: CGFloat = 150
@@ -142,8 +132,6 @@ struct IntroView: View {
 }
 
 // MARK: - Tap the candle (interactive)
-// Shows a chart and asks the learner to tap a specific candle. The tapped candle
-// gets a blue ring; on reveal the correct candle rings green (and a wrong pick red).
 
 struct TapCandleView: View {
     @ObservedObject var player: LessonPlayer
@@ -162,7 +150,7 @@ struct TapCandleView: View {
                     candles: m.candles,
                     supportLevel: m.support,
                     resistanceLevel: m.resistance,
-                    highlightIndex: nil,   // never pre-highlight — that's the answer
+                    highlightIndex: nil,
                     maLine: m.maLine,
                     maLineLabel: sc.maLabel,
                     maLine2: m.maLine2,
@@ -194,9 +182,6 @@ struct TapCandleView: View {
 }
 
 // MARK: - Tap multiple candles (interactive multi-select)
-// "Tap every bearish candle / both peaks." Tapping toggles a candle in/out of the
-// selection; Check compares the set to the targets (green = right, orange = missed,
-// red = wrong).
 
 struct TapCandlesView: View {
     @ObservedObject var player: LessonPlayer
@@ -249,13 +234,10 @@ struct TapCandlesView: View {
 struct MarkLevelView: View {
     @ObservedObject var player: LessonPlayer
     var ink: Color
-    @State private var lineY: CGFloat = 105   // starts mid-chart
+    @State private var lineY: CGFloat = 105
     @State private var didInit = false
 
     private let chartHeight: CGFloat = 210
-    // CandlestickChart (showsAxes) reserves a 15pt strip under the plot for the
-    // day labels; prices must map over the plot only, or the line drifts off
-    // the candles and a visually-correct mark is graded wrong.
     private var plotHeight: CGFloat { chartHeight - 15 }
     private var s: LessonScreen { player.screen }
     private var scenario: ChartScenario? { s.chart.flatMap { ChartScenario(rawValue: $0) } }
@@ -272,17 +254,14 @@ struct MarkLevelView: View {
                 let tol = range * 0.06
 
                 ZStack(alignment: .topLeading) {
-                    // Chart WITHOUT the level drawn (that's the answer).
                     CandlestickChart(candles: m.candles, highlightIndex: nil, showsAxes: true)
                         .frame(height: chartHeight)
 
-                    // The user's draggable line.
                     let userColor = player.revealed
                         ? (abs(price(lineY, lo, range) - truth) <= tol ? Color(hex: "#22C55E") : Color(hex: "#EF4444"))
                         : Theme.answer
                     levelLine(y: lineY, color: userColor, label: player.revealed ? "You" : "Drag me")
 
-                    // On reveal, show the true level too.
                     if player.revealed {
                         let ty = yFor(truth, lo, range)
                         levelLine(y: ty, color: Color(hex: "#22C55E"),
@@ -315,7 +294,6 @@ struct MarkLevelView: View {
         .frame(maxWidth: .infinity, alignment: .leading)
     }
 
-    // Chart's exact price↔y mapping (candles only, matching CandlestickChart).
     private func priceRange(_ candles: [Candle]) -> (lo: Double, range: Double) {
         let values = candles.flatMap { [$0.high, $0.low] }
         let maxV = values.max() ?? 1, minV = values.min() ?? 0
@@ -541,9 +519,6 @@ struct ConsolidationView: View {
 }
 
 // MARK: - Label the candle (interactive) — drag Open/High/Low/Close onto a candle
-// Four draggable chips, four slots at the candle's key levels (top wick, body
-// top, body bottom, bottom wick). Which label belongs to which body edge depends
-// on whether the candle is bullish or bearish (chosen by the screen's seed).
 
 struct OHLCLabelView: View {
     @ObservedObject var player: LessonPlayer
@@ -551,22 +526,17 @@ struct OHLCLabelView: View {
 
     private var s: LessonScreen { player.screen }
     private let areaH: CGFloat = 250
-    // Label ids: 0 = Open, 1 = High, 2 = Low, 3 = Close.
     private let labelNames = ["Open", "High", "Low", "Close"]
-    // Slots: 0 = top wick, 1 = body top, 2 = body bottom, 3 = bottom wick.
 
     @State private var slotFrames: [Int: CGRect] = [:]
     @State private var dragging: Int? = nil
     @State private var dragPoint: CGPoint = .zero
     @State private var didInit = false
 
-    /// Bullish (green) candle chosen by the stable per-screen seed. On a bullish
-    /// candle the close is the body top and the open is the body bottom; bearish
-    /// is the reverse. High is always the top wick, Low always the bottom wick.
     private var bullish: Bool { chartSeed(s) % 2 == 0 }
     private var expected: [Int: Int] {
-        bullish ? [0: 1, 1: 3, 2: 0, 3: 2]    // top=High, bodyTop=Close, bodyBot=Open, bottom=Low
-                : [0: 1, 1: 0, 2: 3, 3: 2]    // top=High, bodyTop=Open,  bodyBot=Close, bottom=Low
+        bullish ? [0: 1, 1: 3, 2: 0, 3: 2]
+                : [0: 1, 1: 0, 2: 3, 3: 2]
     }
     private var trayLabels: [Int] {
         (0..<4).filter { lbl in !player.ohlcPlacement.values.contains(lbl) }
@@ -603,21 +573,16 @@ struct OHLCLabelView: View {
             let candleColor = bullish ? Color(hex: "#22C55E") : Color(hex: "#EF4444")
 
             ZStack(alignment: .topLeading) {
-                // Wick — filled bar, matching the body's own rendering exactly
-                // (a stroked Path of the same color still shows a seam at the
-                // body edge due to differing anti-aliasing).
                 Rectangle()
                     .fill(candleColor)
                     .frame(width: 3, height: ys[3] - ys[0])
                     .position(x: cx, y: (ys[0] + ys[3]) / 2)
-                // Body
                 RoundedRectangle(cornerRadius: 3, style: .continuous)
                     .fill(candleColor)
                     .frame(width: 48, height: ys[2] - ys[1])
                     .position(x: cx, y: (ys[1] + ys[2]) / 2)
 
                 ForEach(0..<4, id: \.self) { i in
-                    // Dashed connector from the candle level to its slot.
                     Path { p in p.move(to: CGPoint(x: cx + 26, y: ys[i])); p.addLine(to: CGPoint(x: slotX - 42, y: ys[i])) }
                         .stroke(Color.white.opacity(0.25), style: StrokeStyle(lineWidth: 1.5, dash: [4, 3]))
                     slotBox(i).position(x: slotX, y: ys[i])
@@ -698,12 +663,10 @@ struct OHLCLabelView: View {
     }
 
     private func drop(label: Int, at pt: CGPoint) {
-        // Lift the label out of any slot it currently occupies.
         var placement = player.ohlcPlacement.filter { $0.value != label }
-        // Snap to the nearest slot within range; otherwise it returns to the tray.
         if let nearest = slotFrames.min(by: { dist($0.value, pt) < dist($1.value, pt) }),
            dist(nearest.value, pt) < 64 {
-            placement[nearest.key] = label   // any displaced label falls back to the tray
+            placement[nearest.key] = label
         }
         player.ohlcPlacement = placement
     }
@@ -722,8 +685,6 @@ private struct OHLCSlotKey: PreferenceKey {
 }
 
 // MARK: - Number slider (interactive) — drag to the calculated answer
-// Used for the quantitative units (position sizing, expectancy, drawdowns, …)
-// where the question has one correct number rather than a chart target.
 
 struct NumberSliderView: View {
     @ObservedObject var player: LessonPlayer
@@ -744,7 +705,6 @@ struct NumberSliderView: View {
         return String(format: "%.2f", rounded)
     }
 
-    /// "$250" for money, "12 years" / "52 %" for everything else.
     private func label(_ v: Double) -> String {
         if unit == "dollars" { return "$\(format(v))" }
         return "\(format(v))\(unit.isEmpty ? "" : " \(unit)")"
@@ -810,9 +770,6 @@ struct NumberSliderView: View {
     }
 }
 
-/// A chunky, 3D-styled slider matching the app's slab button language: a
-/// raised capsule track with a filled portion up to a raised circular thumb.
-/// Replaces the native SwiftUI Slider, which renders flat.
 private struct ChunkySlider: View {
     @Binding var value: Double
     var range: ClosedRange<Double>
@@ -830,16 +787,13 @@ private struct ChunkySlider: View {
             let thumbX = min(max(frac, 0), 1) * w
 
             ZStack(alignment: .leading) {
-                // Track base (slab beneath, like every other chunky control).
                 Capsule().fill(Color.black.opacity(0.35)).offset(y: 3)
                 Capsule().fill(Color.white.opacity(0.10))
                     .overlay(Capsule().strokeBorder(Color.white.opacity(0.12), lineWidth: 1))
 
-                // Filled portion up to the thumb.
                 Capsule().fill(tint)
                     .frame(width: thumbX)
 
-                // Thumb.
                 Circle().fill(Color.black.opacity(0.4))
                     .frame(width: thumbSize, height: thumbSize)
                     .offset(x: thumbX - thumbSize / 2, y: 3)
@@ -874,7 +828,6 @@ struct FillBlankChoiceView: View {
     @Namespace private var wordNamespace
 
     private var s: LessonScreen { player.screen }
-    // Display order (shuffled by the player); indices match selectedIndex.
     private var options: [String] { player.currentOptions }
     private var answerOptions: [(idx: Int, label: String)] {
         options.enumerated().map { ($0.offset, $0.element) }
@@ -1073,22 +1026,14 @@ struct ChoiceView: View {
 
     var body: some View {
         VStack(alignment: .leading, spacing: 18) {
-            // A question can attach a chart (e.g. "what's the trend here?")
-            // regardless of its underlying type (MC / TF / etc).
             if let key = s.chart, let scenario = ChartScenario(rawValue: key) {
                 ScenarioChartView(scenario: scenario, height: 130, seed: chartSeed(player.screen))
             }
 
-            // A live tape: candles form and roll in real time. The forming
-            // candle ticks up and down; the walk is biased by `direction` so
-            // the answer stays stable.
             if s.type == "live_chart" {
                 LiveChart(direction: LiveDirection(s.direction), height: 150)
             }
 
-            // Chart-analysis questions (read the chart, then answer) keep the
-            // plain-text prompt so the chart stays the focus; questions
-            // without a chart get the full question card.
             if s.chart != nil || s.type == "live_chart" {
                 plainPrompt
             } else {
@@ -1105,8 +1050,6 @@ struct ChoiceView: View {
         .frame(maxWidth: .infinity, alignment: .leading)
     }
 
-    // Old-style prompt: plain question text above the answers (used for
-    // chart-analysis questions where the chart is the focus).
     private var plainPrompt: some View {
         Text(RichText.attributed(displayQuestion(),
                                  base: Theme.questionFont(21, .heavy),
@@ -1117,7 +1060,6 @@ struct ChoiceView: View {
             .frame(maxWidth: .infinity, alignment: .leading)
     }
 
-    /// For fill_blank, fill the [___] with the chosen option (or a blank).
     private func displayQuestion() -> String {
         var q = s.question ?? ""
         if s.type == "fill_blank" {
@@ -1183,8 +1125,6 @@ struct MatchingView: View {
     var ink: Color
     @Environment(\.colorScheme) private var scheme
 
-    // Snapshot the pairs/question locally so they can't change out from under
-    // `rightOrder` when the player advances to the next (non-matching) screen.
     @State private var pairs: [[String]] = []
     @State private var question: String = ""
     @State private var rightOrder: [Int] = []
@@ -1680,9 +1620,6 @@ struct IngredientMatchView: View {
             HStack(alignment: .top, spacing: 10) {
                 VStack(alignment: .leading, spacing: 3) {
                     Text(opt.label).font(Theme.questionFont(16, .black)).foregroundColor(textColor)
-                    // Only reveal the detail subtitle after checking — showing it up
-                    // front (e.g. "Overstates certainty" on a wrong option) gives
-                    // away the answer before the learner picks.
                     if revealed, let detail = opt.detail {
                         Text(detail).font(Theme.bodyFont(13)).foregroundColor(subColor)
                     }
@@ -1724,7 +1661,6 @@ struct OrderBuilderView: View {
             QuestionChart(key: player.screen.chart, height: 130, seed: chartSeed(player.screen))
             QuestionPrompt(text: question, ink: ink)
 
-            // Built sequence
             VStack(spacing: 10) {
                 ForEach(Array(player.builtOrder.enumerated()), id: \.offset) { i, item in
                     builtRow(i: i, item: item)
@@ -1738,7 +1674,6 @@ struct OrderBuilderView: View {
                 }
             }
 
-            // Pool
             if !pool.isEmpty {
                 VStack(spacing: 10) {
                     ForEach(pool, id: \.self) { item in

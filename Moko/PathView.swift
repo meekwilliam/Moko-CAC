@@ -2,14 +2,8 @@ import SwiftUI
 import UIKit
 
 extension Color {
-    // Memoize: the node gradients call this 5× per puck, every render, and a
-    // section change re-renders the whole path. The UIColor↔Color bridge + HSB
-    // extraction is surprisingly costly to repeat per frame; the inputs are a
-    // handful of fixed unit colors, so a tiny cache makes it free.
     private static var shiftCache: [String: Color] = [:]
 
-    /// Same hue, shifted brightness — for deriving the lighter top / darker
-    /// bottom of a 3D surface from one base color.
     func brightnessShifted(_ delta: CGFloat) -> Color {
         let key = "\(self.hashValue):\(delta)"
         if let cached = Color.shiftCache[key] { return cached }
@@ -23,14 +17,11 @@ extension Color {
 }
 
 // MARK: - Native learning path (learn map)
-// A native re-build of the web #screen-progress: a snaking column of 3D node
-// pucks grouped into 9 sections, with a dotted trail, a sticky metrics bar +
-// floating section banner, a jump-to-section picker, and a home button.
 
 struct PathView: View {
     @ObservedObject var store: PathStore
     @EnvironmentObject var theme: ThemeManager
-    var showsHomeButton: Bool = true    // false when it's the home tab
+    var showsHomeButton: Bool = true
     var onSelectNode: (Int) -> Void
     var onTestOut: (Int) -> Void = { _ in }
     var onHome: () -> Void
@@ -41,16 +32,13 @@ struct PathView: View {
     @State private var didInitialScroll = false
     @State private var pulse: Bool = false
     @State private var tooltipNode: Int? = nil
-    // Nodes keep their raised z-order until each callout has fully collapsed.
-    // When switching menus, this temporarily contains both nodes so the old
-    // callout cannot slide underneath its neighbours on the way out.
     @State private var elevatedNodes: Set<Int> = []
     @State private var tooltipRequest = 0
     @State private var testOutBob = false
 
     private let nodeSize: CGFloat = 82
-    private let ovalRatio: CGFloat = 0.9      // puck height / width (badge is near-square)
-    private let vStep: CGFloat = 106          // node center-to-center spacing
+    private let ovalRatio: CGFloat = 0.9
+    private let vStep: CGFloat = 106
 
     var body: some View {
         GeometryReader { geo in
@@ -62,27 +50,17 @@ struct PathView: View {
                 ZStack(alignment: .top) {
                     ThemedBackground()
 
-                    // ── Scrolling path ──
                     ScrollView(showsIndicators: false) {
-                        // Lazy so only on-screen sections build their nodes. A
-                        // plain VStack rebuilds every node (54–145 of them) on
-                        // any state change — banner recolor, node tap, button
-                        // press — which drops frames and reads as lag.
                         LazyVStack(spacing: 0) {
                             Color.clear.frame(height: headerHeight - 8)
                             ForEach(0..<store.sectionCount, id: \.self) { s in
                                 if s > 0 {
                                     sectionDivider(s)
-                                        // Always draw below node content, so an overflowing
-                                        // tooltip from the previous section's last node (which
-                                        // sits just above this divider) never gets painted over.
                                         .zIndex(-1)
                                 }
                                 sectionColumn(s, width: width)
                                     .id("sec-\(s)")
                                     .background(sectionAnchor(s))
-                                    // Raise the whole section holding the open tooltip so the
-                                    // callout draws above nodes in adjacent sections.
                                     .zIndex(elevatedSections.contains(s) ? 100 : 0)
                             }
                             Color.clear.frame(height: 260)
@@ -93,7 +71,6 @@ struct PathView: View {
                         updateVisibleSection(offsets, headerHeight: headerHeight)
                     }
 
-                    // ── Sticky header ──
                     header(width: width, topInset: topInset)
 
                 }
@@ -116,17 +93,13 @@ struct PathView: View {
         VStack(spacing: 8) {
             metricsBar
                 .padding(.horizontal, 24)
-                .padding(.leading, showsHomeButton ? 44 : 0)   // clear the home button
+                .padding(.leading, showsHomeButton ? 44 : 0)
             floatingBanner
-                .frame(width: width * 0.886)  // widened ~3%
-                .padding(.top, 5)              // nudge down a few px
+                .frame(width: width * 0.886)
+                .padding(.top, 5)
         }
-        // The VStack already sits below the safe area — just a hair of breathing
-        // room so the stats tuck right under the dynamic island.
         .padding(.top, 6)
         .padding(.bottom, 10)
-        // Solid header backing (no gradient) so the stats/banner sit on a flat
-        // fill that matches the path background.
         .background(
             theme.palette.base.ignoresSafeArea(edges: .top)
         )
@@ -171,7 +144,6 @@ struct PathView: View {
         }
     }
 
-    // Top-left slot — opens the course switcher (like Duolingo's flag).
     private var placeholderButton: some View {
         Button(action: {
             guard Game.courses.count > 1 else { return }
@@ -192,14 +164,9 @@ struct PathView: View {
     }
 
     private func metric(system: String, color: Color, value: Int) -> some View {
-        // A 0 streak reads as inactive: greyed flame + muted count. No flicker
-        // animation on the home screen (only the streak celebration animates).
         let inactive = system == "flame.fill" && value == 0
         return HStack(spacing: 6) {
             if system == "flame.fill" {
-                // Custom-drawn flame instead of the SF Symbol — guarantees the
-                // inner layer renders as a lighter orange/yellow, rather than
-                // relying on SF Symbols' inconsistent multicolor fallback.
                 FlameIcon(size: 34, animated: false, greyed: inactive, showsGlow: false)
             } else {
                 Image(systemName: system).font(.system(size: 22)).foregroundColor(color)
@@ -252,16 +219,11 @@ struct PathView: View {
                 }
             }
             .frame(maxWidth: .infinity, alignment: .leading)
-            .padding(.vertical, 18).padding(.horizontal, 20)   // ~12% taller
+            .padding(.vertical, 18).padding(.horizontal, 20)
             .background(RoundedRectangle(cornerRadius: 18, style: .continuous).fill(bgc))
             .contentShape(RoundedRectangle(cornerRadius: 18, style: .continuous))
         }
         .buttonStyle(SinkButtonStyle(slab: slab, radius: 18, depth: 5))
-        // Section changes are driven by a scroll preference callback. Never
-        // inherit the scroll view's continuous transaction here: interpolating
-        // both the face and 3D slab colors forces extra compositing work while
-        // the path is already moving. A crisp swap is visually cleaner and
-        // keeps the scroll frame lightweight.
         .transaction { transaction in
             transaction.animation = nil
             transaction.disablesAnimations = true
@@ -281,10 +243,6 @@ struct PathView: View {
             line
         }
         .padding(.horizontal, 20)
-        // Extra bottom room: the floating "TEST OUT?" callout on a section's
-        // first node reaches ~90pt above the node (card + pointer + bob), and
-        // was colliding with this divider's title text — the old 32pt wasn't
-        // enough clearance.
         .padding(.top, 44).padding(.bottom, 70)
     }
 
@@ -319,7 +277,6 @@ struct PathView: View {
         })
     }
 
-    /// Open or close a callout while preserving every closing card's z-order.
     private func setTooltip(_ node: Int?) {
         let previous = tooltipNode
         tooltipRequest += 1
@@ -331,8 +288,6 @@ struct PathView: View {
         }
 
         if previous != nil {
-            // Do not insert one card while another is still crossing nearby
-            // nodes. Close the old card, then open the next one above the path.
             revealTooltip(nil, replacing: previous)
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.26) {
                 guard request == tooltipRequest else { return }
@@ -362,14 +317,9 @@ struct PathView: View {
         }
     }
 
-    /// Gold crown on the unit's final node. Muted while the node is locked so
-    /// it reads as "there's a test here", not "this is available".
-    /// Crown sitting on the face of a unit's review-test node. Muted while the
-    /// node is locked, so it reads as "there's a test here", not "available".
     private func bossCrown(locked: Bool) -> some View {
         Image(systemName: "crown.fill")
             .font(.system(size: 30, weight: .black))
-            // White like every other node symbol; dimmed on a locked node.
             .foregroundColor(.white.opacity(locked ? 0.55 : 1))
     }
 
@@ -378,22 +328,11 @@ struct PathView: View {
         let testOutAvailable = shouldShowTestOut(for: node)
         let visualState: NodeState = testOutAvailable ? .active : state
         let c = store.colors(for: node.num, state: visualState)
-        // Every node uses the same large SVG silhouette (boss included); the
-        // boss still reads apart via its crown.
-        // Every unit uses the exact bigbutton.svg geometry. The section's own
-        // bg/slab pair supplies the face and rear-layer colors, preserving the
-        // distinct palette for each unit and the muted locked state.
         let silhouette = AnyShape(BigButtonBack())
         let faceSilhouette = AnyShape(BigButtonFace())
         let face = c.main
         let wall = c.dark
-        // bigbutton.svg is nearly square (317×331). Do not squash it into the
-        // shared puck's 0.78 height ratio—the shared viewBox is part of the
-        // supplied silhouette.
         let buttonHeightRatio: CGFloat = 331.0 / 317.0
-        // The visible face occupies y 4.828...284.484 inside bigbutton.svg's
-        // 331-point artboard, so its optical center sits above the artboard
-        // center. Align every symbol to that face instead of the full 3D puck.
         let faceCenterY: CGFloat = (4.82798 + 284.484) / 2
         let iconCenterOffset = (faceCenterY - 331.0 / 2) * (nodeSize / 317.0)
 
@@ -403,17 +342,10 @@ struct PathView: View {
                     Haptics.selection()
                     setTooltip(tooltipNode == node.num ? nil : node.num)
                 } label: {
-                    // Speech-bubble callout in the app's own colors (dark slate
-                    // + blue accent), not the unit color: solid fills, a crisp
-                    // edge, and a downward pointer to the node. The card and
-                    // its pointer share one continuous outline (the pointer
-                    // tucks up under the card far enough to hide its own top
-                    // edge, so only the seamless V of its two outer sides
-                    // shows, unbroken from the card's corners).
                     Text("TEST OUT?")
                         .font(Theme.font(14, .black))
                         .foregroundColor(.white)
-                        .fixedSize()          // keep it on one line
+                        .fixedSize()
                         .padding(.horizontal, 18).padding(.top, 11).padding(.bottom, 20)
                         .background(SpeechBubbleDown().fill(Theme.surfaceRaised))
                         .overlay(SpeechBubbleDown().stroke(Theme.surfaceBorder, lineWidth: 2))
@@ -427,9 +359,6 @@ struct PathView: View {
                 }
                 .zIndex(20)
             }
-            // Animated halo around the lesson you're on. Offset down + tilted
-            // into the puck's 3D plane so it looks like it emerges from the
-            // button's base rather than floating flat in front of it.
             if state == .active && !testOutAvailable {
                 PulseRing(color: face, size: nodeSize, heightRatio: buttonHeightRatio, shape: silhouette)
                     .offset(y: 5)
@@ -442,15 +371,10 @@ struct PathView: View {
                     setTooltip(tooltipNode == node.num ? nil : node.num)
                     return
                 }
-                // Locked nodes still open a callout — it just says "Locked".
                 if state == .locked { Haptics.play(.locked) } else { Haptics.play(.puckPress) }
                 setTooltip(tooltipNode == node.num ? nil : node.num)
             }) {
-                // Just the face (+ icon + badge); the slab is drawn fixed by the
-                // button style so the face sinks onto it on press.
                 ZStack {
-                    // Exact flat face from bigbutton.svg. Its separate darker
-                    // rear layer is drawn by PuckButtonStyle.
                     faceSilhouette
                         .fill(face)
                         .frame(width: nodeSize, height: nodeSize * buttonHeightRatio)
@@ -477,9 +401,6 @@ struct PathView: View {
             ))
         }
         .frame(width: nodeSize, height: nodeSize)
-        // Tap callout: title + Start / Continue / Replay button, anchored below.
-        // Boss (last node of a unit) shows its callout ABOVE, so it stays inside
-        // its own section instead of spilling down into the next unit's nodes.
         .overlay(alignment: node.isBoss ? .bottom : .top) {
             if tooltipNode == node.num {
                 let anchor: UnitPoint = node.isBoss ? .bottom : .top
@@ -537,7 +458,6 @@ struct PathView: View {
             : (store.inProgressNode == node.num ? "CONTINUE"
                : (state == .done ? (store.testedOutUnits.contains(node.sectionIndex) ? "TESTED OUT · REPLAY" : "REPLAY +25 XP")
                   : (isRecommendedReview ? "RECOMMENDED REVIEW" : "START +100 XP"))))
-        // Locked callout is greyed: slate card + muted title, matching the node.
         let cardFill = locked ? Color(hex: "#26364A") : Color.white
         let cardStroke = locked ? Color.white.opacity(0.08) : Color.black.opacity(0.07)
         let titleColor = locked ? Color.white.opacity(0.55) : Color(hex: "#0D1C3F")
@@ -552,7 +472,7 @@ struct PathView: View {
                         setTooltip(nil)
                         onTestOut(node.sectionIndex)
                     } else if locked {
-                        Haptics.play(.locked)      // can't start a locked lesson
+                        Haptics.play(.locked)
                     } else {
                         Haptics.selection()
                         setTooltip(nil)
@@ -576,14 +496,12 @@ struct PathView: View {
                 .overlay(RoundedRectangle(cornerRadius: 18, style: .continuous)
                     .strokeBorder(cardStroke, lineWidth: 2))
         )
-        // `flipped` = callout sits ABOVE the node (a unit's last / boss node,
-        // so it doesn't spill down into the next unit); pointer faces down.
         return VStack(spacing: 0) {
             if flipped {
                 card
                 pointer
             } else {
-                pointer.rotationEffect(.degrees(180))   // point up toward the node
+                pointer.rotationEffect(.degrees(180))
                 card
             }
         }
@@ -601,18 +519,12 @@ struct PathView: View {
     }
 
     private func updateVisibleSection(_ offsets: [Int: CGFloat], headerHeight: CGFloat) {
-        // The visible section is the last one whose top has scrolled above the
-        // bottom edge of the sticky header.
         let threshold = headerHeight
         var best = 0
         for s in 0..<store.sectionCount {
             if let y = offsets[s], y <= threshold { best = s }
         }
         if best != visibleSection {
-            // This callback runs during scrolling. Starting the custom haptic
-            // engine here can block the same main-thread frame in which the
-            // banner colors update, which presents as a small hitch. Section
-            // changes are passive scroll feedback, so update state only.
             var transaction = Transaction(animation: nil)
             transaction.disablesAnimations = true
             withTransaction(transaction) {
@@ -624,15 +536,6 @@ struct PathView: View {
 
 // MARK: - Supporting shapes / styles
 
-/// Halo for the active node: a solid, darker enlarged silhouette sitting
-/// behind the whole 3D button (face + slab) that gently breathes in and out —
-/// the Duolingo-style "you are here" plate.
-/// Flat-topped hexagon with points at the left and right. The flat bottom edge
-/// gives the 3D slab a clean seam, the way the ellipse's bottom arc does.
-/// Corners are rounded so it sits with the app's soft, chunky geometry rather
-/// than reading as a spiky badge.
-/// The lighter face from bigbutton.svg, mapped in its original shared 317×331
-/// viewBox so its position remains exact relative to the darker rear layer.
 struct BigButtonFace: Shape {
     func path(in rect: CGRect) -> Path {
         func pt(_ x: CGFloat, _ y: CGFloat) -> CGPoint {
@@ -657,7 +560,6 @@ struct BigButtonFace: Shape {
     }
 }
 
-/// The darker rear path from bigbutton.svg.
 struct BigButtonBack: Shape {
     func path(in rect: CGRect) -> Path {
         func pt(_ x: CGFloat, _ y: CGFloat) -> CGPoint {
@@ -713,10 +615,6 @@ private struct Triangle: Shape {
     }
 }
 
-/// A rounded card with a downward pointer traced as ONE continuous path, so the
-/// card and its tail share a single unbroken outline (the tail is cut into the
-/// bottom edge rather than stroked as a separate shape). The tail occupies the
-/// bottom `tailH` of the frame — give the content that much extra bottom padding.
 private struct SpeechBubbleDown: Shape {
     var corner: CGFloat = 15
     var tailW: CGFloat = 18
@@ -765,8 +663,6 @@ private struct StatPulse<Value: Equatable>: ViewModifier {
     }
 }
 
-/// The circular node puck: a fixed dark slab with the face sinking onto it on
-/// press (mirrors the web `.learn-node.is-pressed` translateY + shrinking shadow).
 private struct PuckButtonStyle: ButtonStyle {
     var slab: Color
     var size: CGFloat
@@ -778,10 +674,6 @@ private struct PuckButtonStyle: ButtonStyle {
         let h = size * ovalRatio
         return PressSink(isPressed: configuration.isPressed, minDown: 0.05, releaseResponse: 0.2) { down in
             ZStack {
-                // The coin's chunky side, offset straight down. Gradient-shaded
-                // (lit at the top of the wall, shadowed at the bottom) so the
-                // exposed rim reads as a real vertical surface instead of a
-                // flat block of colour sitting under the face.
                 if let exactBackShape {
                     exactBackShape
                         .fill(slab)
@@ -794,9 +686,6 @@ private struct PuckButtonStyle: ButtonStyle {
                         .frame(width: size, height: h).offset(y: depth)
                 }
                 configuration.label
-                    // Full depth on press — the face lands flush on the slab so
-                    // there's no visible lip (fully flat/2D). PressSink holds the
-                    // down state a minimum time so even an instant tap shows it.
                     .offset(y: down ? depth : 0)
             }
             .frame(width: size, height: size)

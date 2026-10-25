@@ -1,14 +1,12 @@
  import Foundation
 
 // MARK: - Bundled game content
-// GameData.json currently contains the standalone Order Flow course. The array
-// shape remains future-ready if another course is intentionally added later.
 
 struct Course: Decodable, Identifiable {
     let id: String
     let name: String
-    let color: String            // accent hex for the course
-    let level: Int?              // difficulty level (1=Beginner … 4=Expert), if tiered
+    let color: String
+    let level: Int?
     let sections: [PathSectionData]
     let nodes: [PathNodeData]
     let lessons: [Lesson]

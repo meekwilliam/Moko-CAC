@@ -2,20 +2,14 @@ import SwiftUI
 import Combine
 
 // MARK: - Hearts screen
-// Shows the current hearts, a live countdown to the next regenerated heart,
-// and free ways to get more: a refill paid with treats earned in lessons,
-// and an invite-a-friend bonus. Nothing here costs real money.
 
 struct HeartsView: View {
     @ObservedObject var router: AppRouter
     @EnvironmentObject var theme: ThemeManager
     var onClose: () -> Void
 
-    // Drives the 1-second countdown tick.
     @State private var now = Date()
     private let ticker = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
-    // Set the instant the user taps close, so a ticker fire mid-dismiss-animation
-    // can't call back into the router and pop the screen right back open.
     @State private var isClosing = false
 
     private let heartRed = Color(hex: "#FF4D6D")
@@ -42,15 +36,12 @@ struct HeartsView: View {
                         .padding(.bottom, 30)
                 }
             }
-            // safeAreaInset reserves real layout space for the header, instead
-            // of overlaying it — so scroll content (and the hearts) never sit
-            // underneath it and get visually clipped.
             .safeAreaInset(edge: .top, spacing: 0) { header }
         }
         .onReceive(ticker) { t in
             guard !isClosing else { return }
             now = t
-            router.onOpenHearts?()   // ask the VC to refresh hearts/seconds/treats from the store
+            router.onOpenHearts?()
         }
     }
 
@@ -174,7 +165,6 @@ struct HeartsView: View {
     }
 }
 
-// A filled/empty heart with a deep red and a glossy shine highlight.
 struct HeartBadge: View {
     var filled: Bool
     var size: CGFloat
