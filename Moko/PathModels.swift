@@ -2,9 +2,6 @@ import SwiftUI
 import Combine
 
 // MARK: - Path payload (decoded from the JS bridge)
-// index.html serializes the current progress, the 9 section banners, and the
-// 45 node icons (as inline SVG) so the native path stays visually identical and
-// content stays single-sourced in the web layer.
 
 struct PathStats: Decodable {
     let xp: Int
@@ -15,12 +12,12 @@ struct PathStats: Decodable {
 }
 
 struct PathSectionData: Decodable {
-    let index: Int      // 0-based section order
-    let eyebrow: String // "SECTION 1"
+    let index: Int
+    let eyebrow: String
     let title: String
-    let bg: String      // hex
-    let slab: String    // hex (darker slab / shadow)
-    let tier: String?   // "Beginner" / "Intermediate" / … (optional grouping)
+    let bg: String
+    let slab: String
+    let tier: String?
     let unitId: String?
     let difficulty: String?
     let testOutEnabled: Bool?
@@ -30,8 +27,8 @@ struct PathNodeData: Decodable {
     let num: Int
     let svg: String
     let title: String?
-    let sectionIndex: Int   // which unit this node belongs to — units can be any size
-    var symbol: String? = nil  // optional SF Symbol for the node face
+    let sectionIndex: Int
+    var symbol: String? = nil
 }
 
 struct PathPayload: Decodable {
@@ -54,19 +51,11 @@ struct PathNode: Identifiable {
     let num: Int
     let icon: SVGImage
     let title: String
-    /// 0-based unit this node belongs to — units can be any size, this comes
-    /// straight from the content data, not a fixed node-count assumption.
     let sectionIndex: Int
-    /// The final node of its unit — a review test covering everything the unit
-    /// taught. Structural (the highest node number in the section), unlike
-    /// `unitBonusEligible`, which only asks whether the *rest* of the unit
-    /// happens to be done already.
     let isBoss: Bool
     var symbol: String? = nil
     var id: Int { num }
 
-    /// Smooth continuous S-curve sway (Duolingo-style), out to the side and back
-    /// over an 8-node period — each node at a distinct horizontal position.
     var xOffset: CGFloat {
         let amplitude: CGFloat = 70
         return -amplitude * CGFloat(sin(Double(num - 1) * .pi / 4.0))
@@ -105,7 +94,6 @@ final class PathStore: ObservableObject {
         self.testOutBlockedUnits = Set(payload.testOutBlockedUnits)
         self.testOutRetryUnits = Set(payload.testOutRetryUnits)
         self.sections = payload.sections.sorted { $0.index < $1.index }
-        // The last node of each unit is that unit's review test.
         var lastInUnit: [Int: Int] = [:]
         for n in payload.nodes {
             lastInUnit[n.sectionIndex] = max(lastInUnit[n.sectionIndex] ?? n.num, n.num)
@@ -118,14 +106,12 @@ final class PathStore: ObservableObject {
         self.totalNodes = self.nodes.count
     }
 
-    /// Longest unbroken completed run from node 1 — the unlock frontier.
     var frontier: Int {
         var f = 0
         while completed.contains(f + 1) { f += 1 }
         return f
     }
 
-    /// The single unlocked-but-unfinished node, or nil if everything is done.
     var activeNode: Int? {
         let f = frontier
         return f < totalNodes ? f + 1 : nil
@@ -139,15 +125,13 @@ final class PathStore: ObservableObject {
         return .locked
     }
 
-    /// done/active nodes take their unit's own banner color (from the
-    /// section data — works for any unit size); locked nodes are muted slate.
     func colors(for num: Int, state: NodeState) -> (main: Color, dark: Color) {
         if state == .locked {
             return (Color(hex: "#3a6080"), Color(hex: "#1a3a50"))
         }
         guard let node = nodes.first(where: { $0.num == num }),
               let sec = section(node.sectionIndex) else {
-            let c = Theme.unitColor(num)   // fallback for any missing section data
+            let c = Theme.unitColor(num)
             return (c.main, c.dark)
         }
         return (Color(hex: sec.bg), Color(hex: sec.slab))

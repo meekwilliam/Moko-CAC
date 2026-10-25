@@ -1,9 +1,6 @@
 import UIKit
 import SwiftUI
 
-// Fully native host: builds the SwiftUI AppRouter and drives it from the native
-// GameData (bundled content) + ProgressStore (UserDefaults). No WebView.
-
 class ViewController: UIViewController {
     private var appRouter = AppRouter()
     private var themeManager = ThemeManager()
@@ -16,7 +13,6 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Let button press-states fire instantly inside SwiftUI ScrollViews.
         UIScrollView.appearance().delaysContentTouches = false
         view.backgroundColor = UIColor(red: 0x0E/255.0, green: 0x16/255.0, blue: 0x1A/255.0, alpha: 1)
 
@@ -26,7 +22,6 @@ class ViewController: UIViewController {
             appRouter.currentScreen = .onboarding
         }
 
-        // Hold the branded loading screen for a short beat, then fade to the path.
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.3) { [weak self] in
             self?.appRouter.showSplash = false
         }
@@ -91,7 +86,7 @@ class ViewController: UIViewController {
         }
 
         appRouter.onExitLesson = { [weak self] in
-            self?.refreshPathState()   // pull in saved in-progress so the tooltip shows "CONTINUE"
+            self?.refreshPathState()
             withAnimation(.easeOut(duration: 0.22)) { self?.appRouter.currentScreen = .main }
         }
 
@@ -109,7 +104,6 @@ class ViewController: UIViewController {
         }
         appRouter.onPreviewStreak = { [weak self] in
             guard let self = self else { return }
-            // Preview only — doesn't touch real streak/progress data.
             self.appRouter.streakCount = max(1, self.progress.streak)
             self.appRouter.streakWeek = self.progress.weekActivity()
             withAnimation(.spring(response: 0.42, dampingFraction: 0.86)) {
@@ -134,16 +128,12 @@ class ViewController: UIViewController {
             Haptics.impact(.medium)
         }
         appRouter.onOnboardingFinished = { [weak self] in
-            // Never land on the home screen after onboarding — go straight
-            // into the first lesson (completing one immediately drives retention).
             self?.openLesson(node: 1)
         }
         appRouter.onOpenCourses = { [weak self] in self?.openCourses() }
         appRouter.onSelectCourse = { [weak self] id in self?.selectCourse(id) }
         appRouter.onRefillHearts = { [weak self] in self?.refillHearts() }
         appRouter.onInviteFriend = { [weak self] in self?.presentInviteFriend() }
-        // Old installs may hold a course id that no longer exists (courses were
-        // restructured into levels) — fall back to the first level.
         if !Game.courses.contains(where: { $0.id == progress.currentCourse }) {
             progress.switchCourse(Game.defaultCourseId)
         }
@@ -160,7 +150,7 @@ class ViewController: UIViewController {
         if progress.refillHearts(cost: Self.heartRefillCost) {
             Haptics.impact(.medium)
         } else {
-            Haptics.rigid()   // not enough treats, or already full
+            Haptics.rigid()
         }
         syncHearts()
     }
@@ -200,7 +190,6 @@ class ViewController: UIViewController {
         syncCourses()
         Haptics.impact(.medium)
         withAnimation(.spring(response: 0.38, dampingFraction: 0.86)) {
-            // Rebuild the path for the new course (different nodes/units) and show it.
             appRouter.pathStore = PathStore(payload: makePathPayload())
             syncHearts()
             appRouter.selectedTab = .home
@@ -210,7 +199,6 @@ class ViewController: UIViewController {
 
     // MARK: - Hearts
 
-    /// Push the current heart count + regen countdown into the router for the UI.
     private func syncHearts() {
         appRouter.hearts = progress.hearts
         appRouter.secondsUntilNextHeart = progress.secondsUntilNextHeart
@@ -220,7 +208,7 @@ class ViewController: UIViewController {
 
     private func openHearts() {
         syncHearts()
-        if case .hearts = appRouter.currentScreen { return }   // already showing → just synced
+        if case .hearts = appRouter.currentScreen { return }
         withAnimation(.spring(response: 0.42, dampingFraction: 0.86)) {
             appRouter.currentScreen = .hearts
         }
@@ -357,7 +345,6 @@ class ViewController: UIViewController {
         if passed {
             let testedUnits = isJump ? Array(0...unit) : [unit]
             var nodes = course.nodes.filter { testedUnits.contains($0.sectionIndex) }.map(\.num).sorted()
-            // Unit 10's Final Boss remains required for full course mastery.
             if unit == 9, let finalBoss = course.nodes.filter({ $0.sectionIndex == 9 }).map(\.num).max() {
                 nodes.removeAll { $0 == finalBoss }
             }
@@ -394,8 +381,6 @@ class ViewController: UIViewController {
         presentNativeLesson(lesson: lesson, startIndex: resumeAt)
     }
 
-    /// The (main, dark) banner color for whichever unit a node belongs to,
-    /// looked up from the course's real section data — works for any unit size.
     private func unitColor(forNode node: Int) -> (main: Color, dark: Color)? {
         let course = Game.course(progress.currentCourse)
         guard let nodeData = course.nodes.first(where: { $0.num == node }),
@@ -405,20 +390,12 @@ class ViewController: UIViewController {
         return (Color(hex: sec.bg), Color(hex: sec.slab))
     }
 
-    /// All node numbers sharing this node's unit — used to detect "finished a
-    /// unit" for the treats bonus, regardless of that unit's actual size.
     private func unitNodes(forNode node: Int) -> [Int] {
         let course = Game.course(progress.currentCourse)
         guard let nodeData = course.nodes.first(where: { $0.num == node }) else { return [node] }
         return course.nodes.filter { $0.sectionIndex == nodeData.sectionIndex }.map { $0.num }
     }
 
-    /// Whether completing this node right now would finish its whole unit —
-    /// i.e. every other node in the unit is already done. Computed up front
-    /// so the reward screen can predict the unit bonus before completion is
-    /// actually recorded.
-    /// Structurally the unit's last node — its review test. Unlike
-    /// `isLastNodeInUnit`, this doesn't depend on what's been completed.
     private func isFinalNodeOfUnit(_ node: Int) -> Bool {
         unitNodes(forNode: node).max() == node
     }

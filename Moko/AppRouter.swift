@@ -3,13 +3,13 @@ import Combine
 
 enum AppScreen {
     case none
-    case main          // the tabbed shell (path / quest / leaderboard / profile)
+    case main
     case lesson
     case legal(LegalDoc)
-    case hearts        // hearts / regeneration screen
-    case courses       // course picker (like Duolingo's language switcher)
-    case streak        // full-screen streak celebration (first lesson of the day)
-    case onboarding    // first-run intake flow (also previewable from Profile)
+    case hearts
+    case courses
+    case streak
+    case onboarding
 }
 
 enum MainTab: Hashable {
@@ -18,25 +18,18 @@ enum MainTab: Hashable {
 
 final class AppRouter: ObservableObject {
     @Published var currentScreen: AppScreen = .none
-    @Published var showSplash: Bool = true      // brief branded loading screen at launch
+    @Published var showSplash: Bool = true
     @Published var selectedTab: MainTab = .home
     @Published var pathStore: PathStore?
     @Published var profileStore: ProfileStore?
     @Published var currentLesson: Lesson?
     @Published var currentLessonStartIndex: Int = 0
     @Published var currentLessonIsReplay: Bool = false
-    // The lesson's own unit banner color (from section data) — works for any
-    // unit size, rather than guessing from the node number.
     @Published var currentLessonUnitColor: (main: Color, dark: Color)? = nil
-    // Whether completing the current lesson finishes its whole unit (any size).
     @Published var currentLessonBonusEligible: Bool = false
-    // Whether this is the unit's final lesson — presented as a unit review test.
     @Published var currentLessonIsUnitTest: Bool = false
-    // True while a debug/mechanics-test lesson is open — completing or exiting
-    // it must NOT touch real progress (no recordCompletion, no saveInProgress).
     @Published var isTestLesson: Bool = false
 
-    // Callbacks to JS bridge
     var onToggleReminders: ((Bool) -> Void)?
     var onClearData: (() -> Void)?
     var onCompleteLesson: ((Int) -> Void)?
@@ -60,24 +53,15 @@ final class AppRouter: ObservableObject {
     var onInviteFriend: (() -> Void)?
     var requestLegalDoc: ((String) -> Void)?
 
-    // Live heart state for the UI (mirrors ProgressStore).
     @Published var hearts: Int = ProgressStore.maxHearts
     @Published var secondsUntilNextHeart: Int? = nil
     @Published var treats: Int = 0
-    // Which course is active (mirrors ProgressStore.currentCourse).
     @Published var currentCourseId: String = Game.defaultCourseId
-    // Completed-lesson count per course id (for the switcher).
     @Published var courseLessonsDone: [String: Int] = [:]
 
-    // Streak celebration screen data (set right before currentScreen = .streak).
     @Published var streakCount: Int = 0
     @Published var streakWeek: [(label: String, active: Bool, isToday: Bool)] = []
 
-    // A full-screen color "curtain" that expands from a given screen point and
-    // covers everything, independent of whatever's in `currentScreen` — used by
-    // onboarding's hold-to-commit so the color visibly comes from the button
-    // and stays on top through the screen swap to the lesson underneath, then
-    // fades to reveal it already loaded (seamless, no flash/jump).
     @Published var curtainColor: Color? = nil
     @Published var curtainOrigin: CGPoint = .zero
     @Published var curtainScale: CGFloat = 0.0001
@@ -91,13 +75,12 @@ struct AppRouterView: View {
     var body: some View {
         content
             .environmentObject(theme)
-            .environment(\.colorScheme, theme.palette.scheme)   // force views (e.g. the lesson) to the theme scheme
+            .environment(\.colorScheme, theme.palette.scheme)
             .preferredColorScheme(theme.palette.scheme)
     }
 
     private var content: some View {
         ZStack {
-            // Background is technically clear so webview shows through if no screen
             Color.clear.ignoresSafeArea()
 
             switch router.currentScreen {
@@ -201,8 +184,6 @@ struct AppRouterView: View {
                     .zIndex(30)
             }
 
-            // Commit-burst curtain (see AppRouter.curtainColor) — sits above
-            // every screen so it can persist through a screen swap underneath it.
             if let color = router.curtainColor {
                 Circle()
                     .fill(color)
@@ -226,8 +207,6 @@ struct AppRouterView: View {
 }
 
 // MARK: - Launch / loading screen
-// Simple branded splash: the app icon on the app's dark background, gently
-// breathing while the path loads. Auto-dismisses after a short beat.
 
 struct SplashView: View {
     @EnvironmentObject var theme: ThemeManager

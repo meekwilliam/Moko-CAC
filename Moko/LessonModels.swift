@@ -2,9 +2,6 @@ import Foundation
 import SwiftUI
 
 // MARK: - Lesson data models
-// These decode the exact JSON shape that the web app already stores in
-// ALL_LESSONS_DATA and hands to the native player over the JS→Swift bridge,
-// so the lesson content stays single-sourced in index.html.
 
 struct Lesson: Decodable {
     let node: Int
@@ -30,7 +27,6 @@ struct Blank: Decodable {
     let correct: Int
 }
 
-/// An option for the ingredient_match type (label + detail subtitle).
 struct IngredientOption: Decodable {
     let label: String
     let detail: String?
@@ -42,8 +38,6 @@ struct IngredientOption: Decodable {
     }
 }
 
-/// One scored decision inside a continuous trade replay. The simulator keeps
-/// running while the prompt and grading rubric advance from stage to stage.
 struct TradeStage: Decodable {
     let prompt: String
     let options: [String]?
@@ -59,8 +53,6 @@ struct TradeStage: Decodable {
     }
 }
 
-/// A single step in a lesson. The JSON is heterogeneous (fields depend on
-/// `type`), so we decode leniently into one struct of optionals.
 struct LessonScreen: Decodable, Identifiable {
     let id = UUID()
     let type: String
@@ -78,69 +70,46 @@ struct LessonScreen: Decodable, Identifiable {
     let decisionQuality: String?
     let tradeOutcome: String?
 
-    // Set when a missed question is re-queued, so the UI can flag it.
     var isPreviousMistake = false
 
-    // intro
     let screenTitle: String?
     let text: String?
-    // Optional named ChartScenario key (e.g. "doji", "uptrend") to illustrate
-    // an intro card with a small candlestick chart.
     let chart: String?
-    // live_chart → the direction the live tape walks ("up"/"down"/"sideways"/
-    // "volatile"), so the forming candle biases toward a stable answer.
     let direction: String?
-    // aggressor → which side hit the book ("lift" = buyers took the offer,
-    // "hit" = sellers took the bid); drives the ladder consume animation.
     let event: String?
-    // book_drag → the order to route ("market_buy" / "market_sell").
     let order: String?
 
-    // shared question fields
     let question: String?
     let explanation: String?
 
-    // true_false → correct is a Bool
     let correctBool: Bool?
 
-    // multiple_choice / fill_blank → correct is an index
     let options: [String]?
     let correctIndex: Int?
     let wrongExplanations: [String?]?
 
-    // matching
     let pairs: [[String]]?
 
-    // ingredient_match
     let concern: String?
 
-    // fill_blank_multi
     let template: String?
     let blanks: [Blank]?
 
-    // ingredient_match
     let ingredientOptions: [IngredientOption]?
 
-    // sequence_builder / drag_order
     let items: [String]?
     let correctOrder: [String]?
 
-    // tap_candle → index of the candle the learner must tap on the attached chart
     let target: Int?
-    // tap_candles → set of candle indices the learner must select (multi-tap)
     let targets: [Int]?
-    // mark_level → the price level to mark, and whether it's support/resistance
     let level: Double?
     let levelKind: String?
 
-    // draw_trendline → the two candle indices the learner must connect
     let targetStart: Int?
     let targetEnd: Int?
-    // mark_consolidation → the contiguous candle-index range the learner must select
     let targetLo: Int?
     let targetHi: Int?
 
-    // number_slider → drag a slider to the calculated answer
     let numberMin: Double?
     let numberMax: Double?
     let numberStep: Double?
@@ -197,8 +166,6 @@ struct LessonScreen: Decodable, Identifiable {
         order = try c.decodeIfPresent(String.self, forKey: .order)
         question = try c.decodeIfPresent(String.self, forKey: .question)
         explanation = try c.decodeIfPresent(String.self, forKey: .explanation)
-        // `options` is [String] for most types, but [IngredientOption] for
-        // ingredient_match — decode leniently into whichever matches.
         options = (try? c.decodeIfPresent([String].self, forKey: .options)) ?? nil
         ingredientOptions = (try? c.decodeIfPresent([IngredientOption].self, forKey: .options)) ?? nil
         pairs = try c.decodeIfPresent([[String]].self, forKey: .pairs)
@@ -222,10 +189,8 @@ struct LessonScreen: Decodable, Identifiable {
         numberTolerance = try c.decodeIfPresent(Double.self, forKey: .numberTolerance)
         numberUnit = try c.decodeIfPresent(String.self, forKey: .numberUnit)
 
-        // wrong_explanations may contain nulls
         wrongExplanations = (try? c.decodeIfPresent([String?].self, forKey: .wrongExplanations)) ?? nil
 
-        // `correct` is a Bool for true_false, an Int otherwise.
         if let b = try? c.decodeIfPresent(Bool.self, forKey: .correct) {
             correctBool = b
             correctIndex = nil
@@ -240,8 +205,6 @@ struct LessonScreen: Decodable, Identifiable {
 }
 
 // MARK: - Lightweight <b> markup → AttributedString
-// The web content uses <b>…</b> inside questions/explanations. Render those
-// as bold runs so the native text keeps the same emphasis.
 
 enum RichText {
     static func attributed(_ raw: String, base: Font, bold: Font, color: Color) -> AttributedString {
@@ -249,7 +212,6 @@ enum RichText {
         var remaining = Substring(raw)
 
         while let open = remaining.range(of: "<b>") {
-            // plain text before <b>
             let before = remaining[remaining.startIndex..<open.lowerBound]
             if !before.isEmpty {
                 var seg = AttributedString(decodeEntities(String(before)))

@@ -1,10 +1,7 @@
 import SwiftUI
 
 // MARK: - Treat currency icon
-// The in-app currency ("treats") — a solid emerald-green gem with a glossy
-// shine highlight, matching the simple flat treatment used for HeartBadge.
 
-/// A classic emerald-cut gem outline: an octagon with clipped corners.
 struct GemShape: Shape {
     func path(in r: CGRect) -> Path {
         let w = r.width, h = r.height
