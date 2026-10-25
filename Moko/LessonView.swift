@@ -6,21 +6,17 @@ import Combine
 final class LessonPlayer: ObservableObject {
     let lesson: Lesson
     let unit: (main: Color, dark: Color)
-    let isReplay: Bool                   // already completed → reward shows +25 XP
-    let unitBonusEligible: Bool          // completing this lesson finishes its whole unit
-    let isTestLesson: Bool               // debug mechanics-test lesson → shows a Skip button
-    let isUnitTest: Bool                 // last lesson of a unit → a review test over the whole unit
+    let isReplay: Bool
+    let unitBonusEligible: Bool
+    let isTestLesson: Bool
+    let isUnitTest: Bool
 
-    /// Live queue of screens; a missed question is re-appended so you must get
-    /// it right to finish (mirrors the web LessonEngine).
     @Published var screens: [LessonScreen]
 
     @Published var index = 0
-    @Published var revealed = false      // an answer has been graded / step resolved
+    @Published var revealed = false
     @Published var lastCorrect = false
     @Published var correctCount = 0
-    // First attempts only (requeued retries don't count) — the score shown
-    // on the Lesson Complete screen.
     @Published var firstTryTotal = 0
     @Published var firstTryCorrect = 0
     @Published var answeredCount = 0
@@ -28,44 +24,31 @@ final class LessonPlayer: ObservableObject {
     @Published var correctCompetencies: [String: Int] = [:]
     @Published var missedCompetencies: [String: Int] = [:]
     @Published var missedSourceLessons: [String: Int] = [:]
-    @Published var finished = false      // reward screen
+    @Published var finished = false
 
-    // Single-choice selection (true_false / multiple_choice / fill_blank / ingredient_match)
     @Published var selectedIndex: Int? = nil
-    @Published var selectedSet: Set<Int> = []          // tap_candles multi-select
-    @Published var markedLevel: Double? = nil          // mark_level: the price the user marked
-    var markTrueLevel: Double? = nil                   // the correct level (set by the view)
-    var markTolerance: Double = 0                      // acceptable distance for mark_level
-    // draw_trendline: the two candle indices the learner dragged between
+    @Published var selectedSet: Set<Int> = []
+    @Published var markedLevel: Double? = nil
+    var markTrueLevel: Double? = nil
+    var markTolerance: Double = 0
     @Published var trendStart: Int? = nil
     @Published var trendEnd: Int? = nil
-    // mark_consolidation: the contiguous candle-index range the learner dragged across
     @Published var consolidationLo: Int? = nil
     @Published var consolidationHi: Int? = nil
-    // ohlc_label: which label (0=Open,1=High,2=Low,3=Close) sits in each slot
-    // (0=top wick, 1=body top, 2=body bottom, 3=bottom wick), and the correct map.
     @Published var ohlcPlacement: [Int: Int] = [:]
     var ohlcExpected: [Int: Int] = [:]
-    // number_slider: the value the learner dragged to
     @Published var numberValue: Double? = nil
-    // fill_blank_multi
     @Published var multiSelections: [Int?] = []
     @Published var multiSelectionLabels: [String?] = []
     @Published var multiSelectionIDs: [String?] = []
-    // matching: original left-pair index -> original right-pair index
     @Published var matchingSelections: [Int: Int] = [:]
-    // sequence_builder / drag_order
     @Published var builtOrder: [String] = []
     @Published var optionOrder: [Int] = []
     @Published var scenarioStage = 0
     @Published var decisionTick: Int? = nil
     @Published var scenarioHadMistake = false
 
-    /// Called with the new screen index each time the player advances, so the
-    /// native lesson can persist mid-lesson progress (resume on reopen).
     var onAdvance: ((Int) -> Void)?
-    /// Called before revealing an original question's result. Returns false
-    /// when the learner is out of hearts, so the answer stays ungraded.
     var onSpendHeart: (() -> Bool)?
 
     init(lesson: Lesson, startIndex: Int = 0, isReplay: Bool = false,
@@ -76,13 +59,7 @@ final class LessonPlayer: ObservableObject {
         self.unitBonusEligible = unitBonusEligible
         self.isTestLesson = isTestLesson
         self.isUnitTest = isUnitTest
-        // Intro cards are kept as short "tip" cards (2–3 sentences) that teach
-        // the fact the next questions use. Long reading screens don't belong
-        // in content — attention spans are short and they read as dead air.
         self.screens = lesson.screens
-        // Prefer the caller-supplied unit color (the lesson's real unit banner
-        // color, works for any unit size); fall back to the legacy node-range
-        // guess only if the caller doesn't have section data on hand.
         self.unit = unitColor ?? Theme.unitColor(lesson.node)
         self.index = min(max(0, startIndex), max(0, self.screens.count - 1))
         configureOptionOrder()
@@ -125,7 +102,6 @@ final class LessonPlayer: ObservableObject {
         return optionOrder.firstIndex(of: original) ?? original
     }
 
-    /// Whether the primary button can be tapped in the "check" phase.
     var canCheck: Bool {
         switch screen.type {
         case "matching":
@@ -270,11 +246,10 @@ final class LessonPlayer: ObservableObject {
         let shouldRequeueScenario = screen.type == "trade_scenario" && !hasMoreScenarioStages && scenarioHadMistake
         let shouldRequeueQuestion = screen.type != "trade_scenario" && !correct
         if (shouldRequeueQuestion || shouldRequeueScenario) && lesson.lessonType != "TEST_OUT" {
-            var missed = screen          // requeue the missed question to the end
+            var missed = screen
             missed.isPreviousMistake = true
             screens.append(missed)
         }
-        // Outcome haptic to match the reveal banner: success buzz / error buzz.
         if correct { Haptics.success() } else { Haptics.error() }
     }
 
@@ -284,7 +259,7 @@ final class LessonPlayer: ObservableObject {
     }
 
     func advance() {
-        if isIntro { revealed = true } // intro has nothing to grade
+        if isIntro { revealed = true }
         if hasMoreScenarioStages {
             scenarioStage += 1
             resetForScreen()
@@ -302,9 +277,6 @@ final class LessonPlayer: ObservableObject {
         onAdvance?(index)
     }
 
-    /// A detached copy of the current question state. SwiftUI keeps outgoing
-    /// transition views alive, but an `ObservedObject` would otherwise make the
-    /// old page immediately render the new question as soon as `index` changes.
     func frozenCopy() -> LessonPlayer {
         let copy = LessonPlayer(
             lesson: lesson,
@@ -364,14 +336,10 @@ struct LessonView: View {
     @State private var outgoingPlayer: LessonPlayer?
     @State private var questionSlideProgress: CGFloat = 0
     @State private var questionSlideGeneration = 0
-    // The progress bar reads this instead of player.progress directly, so it can
-    // ease forward on its own timing. Advancing changes player.progress inside a
-    // disablesAnimations transaction (to install the slide pages instantly),
-    // which would otherwise make the bar jump.
     @State private var displayedProgress: CGFloat = 0
     let hearts: Int
     var onClose: () -> Void
-    var onComplete: (Int) -> Void   // node number
+    var onComplete: (Int) -> Void
     var onAssessmentComplete: (Int, Int, [String: Int], [String: Int]) -> Void
 
     init(lesson: Lesson, startIndex: Int = 0, isReplay: Bool = false,
@@ -391,9 +359,6 @@ struct LessonView: View {
         p.onAdvance = onSaveProgress
         p.onSpendHeart = onSpendHeart
         _player = StateObject(wrappedValue: p)
-        // Start at the right width so the bar slides in already-filled with the
-        // rest of the lesson, rather than doing a separate fill-from-empty on
-        // open. It only animates on advance from here.
         _displayedProgress = State(initialValue: p.progress)
         self.hearts = hearts
         self.onClose = onClose
@@ -401,12 +366,9 @@ struct LessonView: View {
         self.onAssessmentComplete = onAssessmentComplete
     }
 
-    private var bg: Color { theme.palette.base }   // same source as the path background
+    private var bg: Color { theme.palette.base }
     private var ink: Color { scheme == .dark ? Theme.inkDark : Theme.ink }
 
-    // Answer-interaction accent: a fixed blue for the progress bar, Check /
-    // Got It buttons and selected options — consistent regardless of the unit's
-    // own (now per-unit) button color on the path.
     private let accent = Theme.answer
     private let accentDark = Theme.answerDark
 
@@ -469,14 +431,9 @@ struct LessonView: View {
                     .offset(x: outgoingPlayer == nil ? 0 : width * (1 - questionSlideProgress))
                     .allowsHitTesting(outgoingPlayer == nil)
             }
-            // The app window already clips the horizontal page offsets. Do not
-            // clip this container vertically: the feedback footer deliberately
-            // bleeds through the bottom safe area to the physical screen edge.
         }
     }
 
-    /// The order-flow simulation/decision boards are meant to read as a clean
-    /// live chart with just answer buttons — no TEST OUT badge on top.
     private func isCleanBoard(_ type: String) -> Bool {
         ["trade_decision", "trade_scenario", "trade_manage", "entry_select",
          "invalidation_mark", "orderflow_sim", "orderflow_sim_tap", "orderflow_sim_select"].contains(type)
@@ -503,15 +460,11 @@ struct LessonView: View {
     private func advanceQuestion() {
         guard outgoingPlayer == nil else { return }
 
-        // A trade scenario is one uninterrupted replay. Move its decision
-        // point forward without replacing or sliding the simulation view.
         if player.hasMoreScenarioStages {
             withAnimation(.easeInOut(duration: 0.22)) { player.advance() }
             return
         }
 
-        // The reward screen has its own transition; only question changes use
-        // the horizontal pager.
         guard !player.isLastScreen else {
             withAnimation(.easeInOut(duration: 0.25)) { player.advance() }
             return
@@ -521,8 +474,6 @@ struct LessonView: View {
         let generation = questionSlideGeneration
         let frozenOutgoing = player.frozenCopy()
 
-        // Install both pages without animation first. The outgoing copy keeps
-        // the answered state while the live player advances and resets.
         var transaction = Transaction(animation: nil)
         transaction.disablesAnimations = true
         withTransaction(transaction) {
@@ -532,8 +483,6 @@ struct LessonView: View {
         }
 
         DispatchQueue.main.async {
-            // Set outside the disablesAnimations transaction so the bar's
-            // .animation(value: displayedProgress) eases it forward.
             displayedProgress = player.progress
             withAnimation(.easeInOut(duration: 0.32)) {
                 questionSlideProgress = 1
@@ -585,10 +534,7 @@ struct LessonView: View {
 
             GeometryReader { geo in
                 ZStack(alignment: .leading) {
-                    // Brighter, more visible track.
                     Capsule().fill(scheme == .dark ? Color.white.opacity(0.20) : Color.black.opacity(0.12))
-                    // Vibrant, glossy blue fill: a top-lit gradient plus a bright
-                    // highlight strip along the top edge.
                     Capsule().fill(
                         LinearGradient(colors: [Color(hex: "#4CA9FF"), Color(hex: "#2B70C9")],
                                        startPoint: .top, endPoint: .bottom))
@@ -635,8 +581,6 @@ struct LessonView: View {
                     .padding(.horizontal, 20)
             }
             if pagePlayer.revealed && !pagePlayer.isIntro && pagePlayer.lesson.lessonType != "TEST_OUT" {
-                // The feedback card carries its own WHY? / Got It / Continue
-                // buttons, so it replaces the primary button entirely.
                 FeedbackBanner(player: pagePlayer) { advanceQuestion() }
                     .transition(.move(edge: .bottom)
                         .combined(with: .opacity)
@@ -649,9 +593,6 @@ struct LessonView: View {
             }
         }
         .background(
-            // The card fill lives here (not on the banner) so it reliably
-            // extends into the bottom safe area with no base-coloured gap
-            // below it. Rounded top only while the feedback card is showing.
             (pagePlayer.revealed && !pagePlayer.isIntro ? Color(hex: "#1A2433") : Color.clear)
                 .clipShape(UnevenRoundedRectangle(
                     topLeadingRadius: pagePlayer.revealed && !pagePlayer.isIntro ? 26 : 0,
@@ -660,7 +601,6 @@ struct LessonView: View {
                     style: .continuous))
                 .ignoresSafeArea(edges: .bottom)
         )
-        // Bouncy overshoot pop, like the web's speechPop.
         .animation(.spring(response: 0.36, dampingFraction: 0.6), value: pagePlayer.revealed)
     }
 
@@ -670,9 +610,6 @@ struct LessonView: View {
             Button("Got It") { advanceQuestion() }
                 .buttonStyle(Chunky3DStyle(fill: accent, slab: accentDark))
         } else if !pagePlayer.revealed {
-            // Solid (not translucent) grays when disabled — a translucent fill
-            // let the dark background bleed through unevenly at the seam
-            // between the top face and the slab, showing as a stray line.
             Button("Check") { withAnimation { pagePlayer.check() } }
                 .buttonStyle(Chunky3DStyle(
                     fill: pagePlayer.canCheck ? accent : Color(hex: "#4B5563"),
@@ -694,9 +631,6 @@ struct LessonView: View {
 
 // MARK: - Feedback banner
 
-// Reveal card, styled after the reference: "✨ Correct +10XP" / "💔 Oops!" with
-// the right answer called out, a WHY? toggle for the explanation, and the
-// Got It / Continue button living inside the card.
 struct FeedbackBanner: View {
     @ObservedObject var player: LessonPlayer
     var onContinue: () -> Void
@@ -716,8 +650,6 @@ struct FeedbackBanner: View {
             ? "Not Yet" : "Decision Missed"
     }
 
-    // Vector icons (rendered by SVGIconView) instead of emoji, so they stay
-    // crisp and match the banner tints exactly.
     private static let sparklesSVG = SVGParser.parse("""
         <svg viewBox="0 0 24 24" fill="#22c55e">
           <path d="M9 2 L10.9 7.1 L16 9 L10.9 10.9 L9 16 L7.1 10.9 L2 9 L7.1 7.1 Z"/>
@@ -739,7 +671,6 @@ struct FeedbackBanner: View {
                let wrong = stage.wrongExplanations?[safe: idx] ?? nil { return wrong }
             return stage.explanation
         }
-        // Prefer a targeted wrong-explanation for the chosen option, else the general one.
         if !correct, let idx = player.selectedIndex {
             if s.type == "ingredient_match", let opt = s.ingredientOptions?[safe: idx],
                let wrong = opt.wrongExplanation {
@@ -752,7 +683,6 @@ struct FeedbackBanner: View {
         return s.explanation
     }
 
-    /// The right answer, spelled out for the "Oops!" state.
     private var correctAnswerText: String? {
         let s = player.screen
         switch s.type {
@@ -784,7 +714,6 @@ struct FeedbackBanner: View {
                     .frame(width: 26, height: 26)
                 Text(feedbackTitle)
                     .font(Theme.font(24, .black)).foregroundColor(tint)
-                // No XP callout when re-doing a missed question.
                 if correct && !player.screen.isPreviousMistake {
                     Text("+10 XP")
                         .font(Theme.font(19, .black))
@@ -840,7 +769,6 @@ struct FeedbackBanner: View {
         .padding(.top, 20)
         .padding(.bottom, 14)
         .frame(maxWidth: .infinity)
-        // Background is drawn by the footer so it fills the bottom safe area.
         .onChange(of: player.index) { _ in
             showWhy = false
         }
@@ -1007,8 +935,6 @@ struct RewardView: View {
         }
     }
 
-    // Treats earned this completion: 1 per new lesson, +3 more when it finishes
-    // the whole unit (any unit size); replays award none.
     private var treatsEarned: Int {
         if isAssessment { return 0 }
         guard !player.isReplay else { return 0 }
@@ -1048,5 +974,3 @@ extension Array {
         indices.contains(index) ? self[index] : nil
     }
 }
-
-// Haptics moved to Haptics.swift — same API, custom Core Haptics patterns.

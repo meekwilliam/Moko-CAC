@@ -1,9 +1,6 @@
 import SwiftUI
 
 // MARK: - Main tabbed shell (Duolingo-style)
-// The learning path is now the home screen; a persistent bottom bar switches
-// between Home (path), Quests, Leaderboard and Profile. Lessons/legal present
-// over this from the AppRouter.
 
 struct MainTabView: View {
     @ObservedObject var router: AppRouter
@@ -72,8 +69,6 @@ private struct BottomNav: View {
     @ObservedObject var router: AppRouter
     @EnvironmentObject var theme: ThemeManager
 
-    // Every tab highlights in the same blue when selected; the icons themselves
-    // are multi-color drawings.
     private let accent = Color(hex: "#38bdf8")
     private let tabs: [MainTab] = [.home, .quest, .leaderboard, .profile]
 
@@ -96,7 +91,7 @@ private struct BottomNav: View {
     private func tabButton(_ tab: MainTab) -> some View {
         let selected = router.selectedTab == tab
         return Button(action: { select(tab) }) {
-            icon(tab)   // icons stay full color; only the blue pill marks the active tab
+            icon(tab)
                 .frame(maxWidth: .infinity)
                 .frame(height: 46)
                 .background(
@@ -109,7 +104,7 @@ private struct BottomNav: View {
                 )
                 .contentShape(Rectangle())
         }
-        .buttonStyle(TabPopStyle())   // icon shrinks slightly on press → a tactile "pop"
+        .buttonStyle(TabPopStyle())
     }
 
     @ViewBuilder
@@ -124,15 +119,12 @@ private struct BottomNav: View {
 
     private func select(_ tab: MainTab) {
         Haptics.selection()
-        withAnimation(.easeInOut(duration: 0.2)) { router.selectedTab = tab }   // animates only the pill
+        withAnimation(.easeInOut(duration: 0.2)) { router.selectedTab = tab }
 
-        if tab == .profile { router.onRequestProfile?() }   // refresh stats
+        if tab == .profile { router.onRequestProfile?() }
     }
 }
 
-// Scales the icon down slightly on press/hold for a tactile "pop" (like the
-// path node pucks). No opacity dim, so the always-on colored tab icons don't
-// flicker — only the springy shrink.
 private struct TabPopStyle: ButtonStyle {
     func makeBody(configuration: Configuration) -> some View {
         configuration.label
@@ -146,7 +138,6 @@ private struct TabPopStyle: ButtonStyle {
 
 // MARK: - Multi-color tab icons (custom drawings)
 
-/// Maps unit (0…1) coordinates into a Shape's rect.
 private func unitPath(_ rect: CGRect, _ build: (inout Path, (CGFloat, CGFloat) -> CGPoint) -> Void) -> Path {
     let w = rect.width, h = rect.height
     func p(_ x: CGFloat, _ y: CGFloat) -> CGPoint { CGPoint(x: rect.minX + x * w, y: rect.minY + y * h) }
@@ -155,7 +146,6 @@ private func unitPath(_ rect: CGRect, _ build: (inout Path, (CGFloat, CGFloat) -
     return path
 }
 
-/// The roofline: a rounded peak (caret) stroked thick with round caps.
 private struct RoofChevron: Shape {
     func path(in r: CGRect) -> Path { unitPath(r) { pth, p in
         pth.move(to: p(0.12, 0.44))
@@ -164,7 +154,6 @@ private struct RoofChevron: Shape {
     } }
 }
 
-/// A big arched dog-house doorway, open at the body base.
 private struct DogDoor: Shape {
     func path(in r: CGRect) -> Path { unitPath(r) { pth, p in
         pth.move(to: p(0.38, 0.905))
@@ -175,9 +164,6 @@ private struct DogDoor: Shape {
     } }
 }
 
-/// Fills the full silhouette under the roofline (peak down to the base, at the
-/// eave width) so no background shows through between the roof stroke and the
-/// narrower body block underneath — sits behind both.
 private struct HouseBacking: Shape {
     func path(in r: CGRect) -> Path { unitPath(r) { pth, p in
         pth.move(to: p(0.12, 0.44))
@@ -189,36 +175,28 @@ private struct HouseBacking: Shape {
     } }
 }
 
-/// Friendly rounded dog house: soft yellow body, chunky rounded red roof, and a
-/// big arched doorway — rounded style, but clearly a dog house.
 struct DogHouseIcon: View {
     var body: some View {
         GeometryReader { g in
             let w = g.size.width, h = g.size.height
             ZStack {
-                // Backing — fills the whole under-roof silhouette so no gap
-                // shows at the peak or eaves before the body/roof are drawn.
                 HouseBacking().fill(Color(hex: "#FBD24B"))
 
-                // Body — rounded yellow block
                 RoundedRectangle(cornerRadius: w * 0.16, style: .continuous)
                     .fill(Color(hex: "#FBD24B"))
                     .frame(width: w * 0.66, height: h * 0.5)
                     .position(x: w * 0.5, y: h * 0.66)
 
-                // Roof — thick rounded red chevron, overhanging the body
                 RoofChevron()
                     .stroke(Color(hex: "#EF4444"),
                             style: StrokeStyle(lineWidth: w * 0.17, lineCap: .round, lineJoin: .round))
 
-                // Arched doorway
                 DogDoor().fill(Color(hex: "#8A4B23"))
             }
         }
     }
 }
 
-/// Concentric target: alternating red / white rings with a red bullseye.
 struct TargetIcon: View {
     var body: some View {
         ZStack {
@@ -255,10 +233,7 @@ private struct TrophyBase: Shape {
     } }
 }
 
-/// Gold trophy cup on a dark base.
 struct TrophyIcon: View {
-    // One gold tone for the trophy itself (handles, bowl, stem) — the base
-    // stays its original brown/wood tone, not gold.
     private let gold = Color(hex: "#FFC83D")
 
     var body: some View {
@@ -275,7 +250,6 @@ struct TrophyIcon: View {
     }
 }
 
-/// Simple person: head + shoulders in two greens.
 struct PersonIcon: View {
     var body: some View {
         GeometryReader { g in
@@ -300,16 +274,9 @@ private struct PersonShoulders: Shape {
 }
 
 // MARK: - Flame (streak icon)
-// Rendered from the provided streak.svg (three layered flame paths, deep
-// orange body with a brighter yellow core) via the shared SVG renderer.
-// Each path is parsed as its own layer (rather than one flattened SVGIconView)
-// so it can flicker independently — different scale/tilt/timing per layer,
-// like Duolingo's animated streak flame — plus a soft pulsing glow behind it.
 
 struct FlameIcon: View {
     var size: CGFloat
-    // Home screen passes animated: false (no flicker) and greyed: true when the
-    // streak is 0. The streak-celebration keeps the defaults (animated, lit).
     var animated: Bool = true
     var greyed: Bool = false
     var showsGlow: Bool = true
@@ -336,7 +303,6 @@ struct FlameIcon: View {
     var body: some View {
         ZStack {
             if showsGlow {
-                // Soft warm glow pulsing behind the flame.
                 Circle()
                     .fill(Color(hex: "#FF9500"))
                     .opacity(flickerA ? 0.32 : 0.16)
@@ -356,7 +322,6 @@ struct FlameIcon: View {
                 .scaleEffect(flickerCore ? 1.05 : 0.93, anchor: .bottom)
         }
         .frame(width: size * 0.86, height: size)
-        // Greyed (streak == 0): desaturate to grey and dim.
         .grayscale(greyed ? 1 : 0)
         .opacity(greyed ? 0.4 : 1)
         .onAppear {
@@ -368,10 +333,6 @@ struct FlameIcon: View {
     }
 }
 
-/// The same flame artwork rendered blank/white — used ONLY for the very first
-/// streak day ("a streak is born"), which fast-spins and reveals the real
-/// animated FlameIcon underneath. Every day after the first is already lit
-/// from the start (see StreakCelebrationView.isFirstDay).
 struct UnlitFlameIcon: View {
     var size: CGFloat
 

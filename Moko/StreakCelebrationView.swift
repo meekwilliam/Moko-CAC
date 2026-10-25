@@ -1,14 +1,6 @@
 import SwiftUI
 
 // MARK: - Streak celebration screen
-// Shown once per day, right after the first lesson that extends the streak
-// (not on replays or a second lesson the same day). Two distinct intros:
-//   - Day 1 ("a streak is born"): a blank/white flame fast-spins and reveals
-//     the real animated FlameIcon underneath, mid-spin.
-//   - Every day after: already lit from the start (no white phase) — just a
-//     very quick spin flourish celebrating the new day.
-// Then the streak count, "day streak" label, and a Mo–Su week row (checked
-// days) pop in — Duolingo's streak screen, without the mascot.
 
 struct StreakCelebrationView: View {
     var count: Int
@@ -96,8 +88,6 @@ struct StreakCelebrationView: View {
 
     private func runIntro() {
         if isFirstDay {
-            // "A streak is born": blank/white flame fast-spins and swaps to the
-            // real lit flame right as it's edge-on (mid-spin), not a crossfade.
             withAnimation(.easeInOut(duration: 0.5)) { spinDegrees = 360 }
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.25) {
                 Haptics.impact(.medium)
@@ -107,8 +97,6 @@ struct StreakCelebrationView: View {
                 popIn = true
             }
         } else {
-            // Already lit from the start — no white phase — just a very quick
-            // spin flourish celebrating the new day.
             revealed = true
             withAnimation(.easeInOut(duration: 0.22)) { spinDegrees = 360 }
             Haptics.impact(.medium)

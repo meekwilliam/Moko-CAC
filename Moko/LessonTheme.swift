@@ -1,13 +1,8 @@
 import SwiftUI
 
 // MARK: - Theme
-// Colors, fonts and the 3D "chunky" button treatment used across the app,
-// ported to native so the lesson player matches the web look & feel.
 
 enum Theme {
-    // Sora — the app's chrome typeface (bundled + registered at launch).
-    // Keep the weight mapping explicit: SwiftUI cannot reliably select a
-    // custom face from `.weight(...)` when fonts are registered at runtime.
     static func font(_ size: CGFloat, _ weight: Font.Weight = .heavy) -> Font {
         switch weight {
         case .ultraLight, .thin, .light, .regular:
@@ -19,20 +14,14 @@ enum Theme {
         case .bold:
             return .custom("Sora-Bold", size: size)
         default:
-            // Sora tops out at 800, so ExtraBold is the closest native face
-            // for SwiftUI's Heavy (800) and Black (900) semantics.
             return .custom("Sora-ExtraBold", size: size)
         }
     }
 
-    // Plus Jakarta Sans SemiBold — section titles and quiz questions (the
-    // prompt itself and its answer choices).
     static func questionFont(_ size: CGFloat, _ weight: Font.Weight = .regular) -> Font {
         .custom("PlusJakartaSans-SemiBold", size: size)
     }
 
-    // Plus Jakarta Sans Regular — body copy and supporting/secondary text
-    // (subtitles, descriptions, detail captions under a choice).
     static func bodyFont(_ size: CGFloat, _ weight: Font.Weight = .regular) -> Font {
         .custom("PlusJakartaSans-Regular", size: size)
     }
@@ -46,9 +35,6 @@ enum Theme {
     static let incorrect = Color(hex: "#f43f5e")
     static let incorrectDark = Color(hex: "#be123c")
 
-    /// The accent used for answering: selected options, the Check / Got It
-    /// buttons, the progress bar, and interactive selections/drawings. Matches
-    /// the "Keep Going" button blue so the whole answer flow is one blue.
     static let answer = Color(hex: "#2B70C9")
     static let answerDark = Color(hex: "#1C4A85")
 
@@ -73,7 +59,6 @@ enum Theme {
         scheme == .dark ? surfaceSlab : Color(hex: "#B8C4D8")
     }
 
-    /// Mirrors `lessonUnitColor(nodeNum)` in index.html.
     static func unitColor(_ node: Int) -> (main: Color, dark: Color) {
         switch node {
         case ...5:  return (Color(hex: "#3575DD"), Color(hex: "#1A46C2"))
@@ -90,9 +75,6 @@ enum Theme {
 }
 
 extension Color {
-    // Called in view bodies all over the app, often with the same literal
-    // hex, and re-run on every render. The Scanner parse is the costly part, so
-    // cache the parsed RGBA per string; constructing the Color value is cheap.
     private static var hexCache: [String: (Double, Double, Double, Double)] = [:]
 
     init(hex: String) {
@@ -122,17 +104,11 @@ extension Color {
 }
 
 // MARK: - 3D chunky button
-// Solid face + a darker "slab" underneath. On press it sinks down onto the
-// slab, matching the web `box-shadow:0 Npx 0 <dark>` + translateY treatment.
 
-// Drives a chunky-3D press: turns the button style's `isPressed` into a `down`
-// flag that is GUARANTEED to hold for a minimum duration, so even an instant
-// tap plays a full down-then-up (fast taps used to reverse before the offset
-// visibly moved). Hands `down` to a content closure that renders the button.
 struct PressSink<Content: View>: View {
     let isPressed: Bool
-    var minDown: Double = 0.11        // seconds the down state stays visible
-    var releaseResponse: Double = 0.3 // spring response on release (lower = snappier)
+    var minDown: Double = 0.11
+    var releaseResponse: Double = 0.3
     @ViewBuilder let content: (_ down: Bool) -> Content
 
     @State private var down = false
@@ -170,9 +146,6 @@ struct Chunky3DStyle: ButtonStyle {
     var depth: CGFloat = 6
     var radius: CGFloat = 18
     var font: Font = Theme.font(19, .black)
-    // A crisp rim around the top face, like OptionSurface's answer chips —
-    // without it the button reads flatter than the answer options next to it.
-    // Defaults to the slab color, matching how tinted OptionSurface states work.
     var border: Color? = nil
 
     func makeBody(configuration: Configuration) -> some View {
@@ -193,9 +166,6 @@ struct Chunky3DStyle: ButtonStyle {
                 .background(
                     RoundedRectangle(cornerRadius: radius, style: .continuous)
                         .fill(slab)
-                        // Counter-offset the whole-label sink so the slab stays
-                        // fixed and the face lands flush on it (the 3D lip
-                        // vanishes on press — the "goes 2D" look, like the puck).
                         .offset(y: down ? 0 : depth)
                 )
                 .offset(y: down ? depth : 0)
@@ -203,8 +173,6 @@ struct Chunky3DStyle: ButtonStyle {
     }
 }
 
-// A circular chunky-3D button (same raised-face-over-slab feel as Chunky3DStyle,
-// round). Used for the lesson close (X) button so it reads as a tactile 3D chip.
 struct Circle3DStyle: ButtonStyle {
     var face: Color
     var slab: Color
@@ -218,24 +186,13 @@ struct Circle3DStyle: ButtonStyle {
                     Circle().fill(face)
                         .overlay(Circle().strokeBorder(slab, lineWidth: 1.5))
                 )
-                // Counter-offset so the slab stays fixed and the face sinks flush
-                // onto it (the lip vanishes on press), like the path puck.
                 .background(Circle().fill(slab).offset(y: down ? 0 : depth))
                 .offset(y: down ? depth : 0)
         }
     }
 }
 
-// Sinks the label straight down onto its slab on touch-down (the tactile 3D
-// press). Use `depth` = the slab offset of whatever it's applied to. Because it
-// reacts to `isPressed`, pair it with `delaysContentTouches = false` so the
-// press shows instantly inside scroll views.
 struct SinkButtonStyle: ButtonStyle {
-    // When `slab` is provided the style draws its own fixed 3D lip beneath the
-    // face and counter-offsets it, so on press the face sinks flush onto the
-    // slab and the lip vanishes (same tactile "goes flat" feel as the path
-    // puck). When nil it just offsets the label (legacy behavior, for buttons
-    // that draw no slab lip).
     var slab: Color? = nil
     var radius: CGFloat = 16
     var depth: CGFloat = 5
@@ -256,7 +213,6 @@ struct SinkButtonStyle: ButtonStyle {
     }
 }
 
-// A lighter press for flat rows/chips that have no slab: a quick squish + dim.
 struct RowPressStyle: ButtonStyle {
     var scale: CGFloat = 0.96
     func makeBody(configuration: Configuration) -> some View {
@@ -268,8 +224,6 @@ struct RowPressStyle: ButtonStyle {
 }
 
 // MARK: - Answer reveal effects
-// Mirrors the web `optCorrectPop` (springy scale on the right answer) and
-// `optShake` (side-to-side shake on a wrong pick) keyframe animations.
 
 struct ShakeEffect: GeometryEffect {
     var travel: CGFloat = 7
@@ -281,8 +235,8 @@ struct ShakeEffect: GeometryEffect {
 }
 
 struct AnswerFeedbackFX: ViewModifier {
-    var pop: Bool    // revealed & this is the correct option
-    var shake: Bool  // revealed & this was the (wrong) pick
+    var pop: Bool
+    var shake: Bool
     @State private var scale: CGFloat = 1
     @State private var shakes: CGFloat = 0
 
@@ -292,7 +246,7 @@ struct AnswerFeedbackFX: ViewModifier {
             .modifier(ShakeEffect(animatableData: shakes))
             .onChange(of: pop) { on in
                 guard on else { scale = 1; return }
-                scale = 1.06   // jump up, spring back — reads as the web's pop
+                scale = 1.06
                 withAnimation(.spring(response: 0.34, dampingFraction: 0.45)) { scale = 1 }
             }
             .onChange(of: shake) { on in
@@ -302,9 +256,6 @@ struct AnswerFeedbackFX: ViewModifier {
     }
 }
 
-// The rounded answer-option face (fill + border). The 3D lip beneath is drawn
-// by SinkButtonStyle(slab:radius:16) so it stays fixed and the face sinks flush
-// onto it on press.
 struct OptionSurface: ViewModifier {
     var fill: Color
     var border: Color
@@ -328,20 +279,10 @@ struct OptionSurface: ViewModifier {
     }
 }
 
-/// The raised card panel a chart sits in, matching the app's chunky-button
-/// slab language (a darker copy offset downward) instead of a flat translucent
-/// rectangle. Used by every chart-attached view (tap/mark/draw/consolidation
-/// screens, question charts, the intro card).
 struct ChartCard: ViewModifier {
     var radius: CGFloat = 16
     func body(content: Content) -> some View {
-        // A plain ZStack instead of chained .background/.clipShape/.overlay —
-        // that chain rendered an extra ghosted rounded-rect edge at the top
-        // corners. Layer order here is explicit: the flat card fill+border, and
-        // the chart's own content clipped to the same rounded shape on top.
         ZStack {
-            // Flat panel — a deep navy distinctly darker than the page background
-            // so it reads as an opaque card, not a hazy translucent film.
             RoundedRectangle(cornerRadius: radius, style: .continuous)
                 .fill(Color(hex: "#10191E"))
                 .overlay(

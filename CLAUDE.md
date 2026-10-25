@@ -63,7 +63,7 @@ python3 -c "import json; json.load(open('GameData.json'))"
 ## Content: `Moko/GameData.json`
 
 One course: **`money` (Money Basics)** — 5 units, 27 lessons, 142 questions
-on budgeting, saving, credit, investing (including reading stock charts),
+on budgeting, saving, credit, long-term investing (trends, dips, volatility),
 and hype/crypto/gambling for teens. It is generated, never hand-edited:
 edit `tools/money_course/unit*.py` and run `python3 tools/build_money_course.py`.
 The builder validates every screen and derives node numbers, unit banners,
@@ -73,7 +73,8 @@ removed for the CAC pitch; its leftover trade-decision code paths in
 
 Question `type`s used: `intro` (optional `chart`), `multiple_choice`,
 `true_false`, `fill_blank`, `matching`, `sequence_builder`, `number_slider`,
-`tap_candle`, `mark_level`. Any question can show a `chart` above it. The
+`tap_candle`. No trading concepts (support/resistance, gaps, patterns) — the
+pitch is long-term wealth and avoiding gambling-style behavior. Any question can show a `chart` above it. The
 engine also supports `tap_candles`, `draw_trendline`, `mark_consolidation`,
 `ohlc_label`, `fill_blank_multi`, `ingredient_match`. Field names per type
 are in `LessonModels.swift`'s `LessonScreen` `CodingKeys`.

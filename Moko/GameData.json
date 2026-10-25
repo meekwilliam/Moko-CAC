@@ -198,7 +198,7 @@
         {
           "num": 17,
           "svg": "<svg viewBox=\"0 0 32 32\" fill=\"white\"><circle cx=\"16\" cy=\"16\" r=\"9\"/></svg>",
-          "title": "Reading a Stock Chart",
+          "title": "Ups, Downs & the Long Run",
           "sectionIndex": 3,
           "symbol": "chart.bar.xaxis"
         },
@@ -219,7 +219,7 @@
         {
           "num": 20,
           "svg": "<svg viewBox=\"0 0 32 32\" fill=\"white\"><circle cx=\"16\" cy=\"16\" r=\"9\"/></svg>",
-          "title": "Dips, Support & Patience",
+          "title": "Dips, Volatility & Patience",
           "sectionIndex": 3,
           "symbol": "arrow.up.right.circle.fill"
         },
@@ -1567,31 +1567,23 @@
         },
         {
           "node": 17,
-          "title": "Reading a Stock Chart",
-          "celebration": "Reading a Stock Chart complete.",
+          "title": "Ups, Downs & the Long Run",
+          "celebration": "Ups, Downs & the Long Run complete.",
           "lessonType": "STANDARD",
           "screens": [
             {
               "type": "intro",
-              "title": "One candle = one day",
+              "title": "Reading a price chart",
               "chart": "pullbackUptrend",
-              "text": "A stock chart shows price over time. Each bar is a <b>candle</b>. A <b>green</b> candle means the price ended the day higher. A <b>red</b> candle means it ended lower."
+              "text": "A stock chart shows price over time. Each bar is one day: <b>green</b> means the price ended higher, <b>red</b> means lower. Long-term investors care about the <b>overall direction</b>, not any single day."
             },
             {
               "type": "tap_candle",
               "chart": "pullbackUptrend",
               "target": 2,
               "question": "Tap the day the price fell.",
-              "explanation": "Red candles close lower than they opened. Even rising stocks have down days.",
-              "skillId": "reading_a_stock_chart"
-            },
-            {
-              "type": "tap_candle",
-              "chart": "marubozu",
-              "target": 1,
-              "question": "Tap the day the stock rose the most.",
-              "explanation": "The tallest green candle is the biggest gain. A long body means price moved a lot that day.",
-              "skillId": "reading_a_stock_chart"
+              "explanation": "Even stocks that rise over time have down days. One red day doesn't change the long-term trend.",
+              "skillId": "ups_downs_the_long_run"
             },
             {
               "type": "multiple_choice",
@@ -1603,8 +1595,8 @@
                 "Sideways"
               ],
               "correct": 1,
-              "explanation": "Each candle closes higher than the last. That's an uptrend.",
-              "skillId": "reading_a_stock_chart"
+              "explanation": "Each day closes higher than the last. That's an uptrend.",
+              "skillId": "ups_downs_the_long_run"
             },
             {
               "type": "multiple_choice",
@@ -1617,21 +1609,31 @@
               ],
               "correct": 2,
               "explanation": "Lower and lower closes make a downtrend.",
-              "skillId": "reading_a_stock_chart"
+              "skillId": "ups_downs_the_long_run"
             },
             {
               "type": "intro",
-              "title": "News moves prices",
-              "chart": "gapUp",
-              "text": "When big news comes out while the market is closed, like strong <b>earnings</b>, a stock can open far above where it closed. That jump is called a <b>gap</b>."
+              "title": "Time in the market",
+              "text": "Guessing tomorrow's price is close to a coin flip. Historically, the US stock market has risen over most long periods, even though it falls in some years. Long-term investors focus on <b>time in the market</b>, not <b>timing the market</b>."
             },
             {
-              "type": "tap_candle",
-              "chart": "gapUp",
-              "target": 2,
-              "question": "Tap the day the stock gapped up.",
-              "explanation": "It opened well above the day before, leaving empty space on the chart.",
-              "skillId": "reading_a_stock_chart"
+              "type": "multiple_choice",
+              "question": "What matters most to a long-term investor?",
+              "options": [
+                "Tomorrow's price",
+                "The trend over many years",
+                "One red day"
+              ],
+              "correct": 1,
+              "explanation": "Long-term wealth comes from years of growth, not from any single day.",
+              "skillId": "ups_downs_the_long_run"
+            },
+            {
+              "type": "true_false",
+              "question": "Buying and selling every day to catch small moves is a reliable way to build wealth.",
+              "correct": false,
+              "explanation": "Studies have found most frequent traders earn less than people who just hold an index fund. Constant trading works more like gambling than investing.",
+              "skillId": "ups_downs_the_long_run"
             }
           ]
         },
@@ -1797,8 +1799,8 @@
         },
         {
           "node": 20,
-          "title": "Dips, Support & Patience",
-          "celebration": "Dips, Support & Patience complete.",
+          "title": "Dips, Volatility & Patience",
+          "celebration": "Dips, Volatility & Patience complete.",
           "lessonType": "STANDARD",
           "screens": [
             {
@@ -1818,37 +1820,45 @@
               ],
               "correct": 1,
               "explanation": "One red day doesn't change a long-term plan. Panic-selling locks in losses.",
-              "skillId": "dips_support_patience"
+              "skillId": "dips_volatility_patience"
             },
             {
               "type": "intro",
-              "title": "Support",
-              "chart": "supportBounce",
-              "text": "<b>Support</b> is a price where buyers have stepped in before, so the price stopped falling and bounced."
-            },
-            {
-              "type": "mark_level",
-              "chart": "supportBounce",
-              "level_kind": "support",
-              "question": "Mark the support level.",
-              "explanation": "Price fell to this level, buyers stepped in, and it bounced back up.",
-              "skillId": "dips_support_patience"
-            },
-            {
-              "type": "true_false",
-              "chart": "supportBounce",
-              "question": "Support guarantees the price will never fall below it.",
-              "correct": false,
-              "explanation": "Support is where buyers showed up before. Prices can still break through.",
-              "skillId": "dips_support_patience"
+              "title": "Volatility",
+              "chart": "volatile",
+              "text": "Some investments swing wildly up and down. That's <b>volatility</b>, and it means more risk. One hyped stock or coin can drop 50% fast, while a broad index fund usually moves more gently because it holds hundreds of companies."
             },
             {
               "type": "true_false",
               "chart": "volatile",
-              "question": "This stock's price is steady and predictable.",
+              "question": "This price is steady and predictable.",
               "correct": false,
               "explanation": "Big swings in both directions mean high volatility, which means more risk.",
-              "skillId": "dips_support_patience"
+              "skillId": "dips_volatility_patience"
+            },
+            {
+              "type": "multiple_choice",
+              "question": "For money you won't need for 10+ years, what's usually the smarter base?",
+              "options": [
+                "One hyped stock",
+                "A broad, low-cost index fund",
+                "Whatever's trending online"
+              ],
+              "correct": 1,
+              "explanation": "Spreading money across many companies lowers risk, and low fees mean more of the growth stays yours.",
+              "skillId": "dips_volatility_patience"
+            },
+            {
+              "type": "number_slider",
+              "question": "You invest $50 a month from age 16 to 66. How much money did you put in yourself?",
+              "number_min": 0,
+              "number_max": 60000,
+              "number_step": 1000,
+              "number_correct": 30000,
+              "number_tolerance": 0,
+              "number_unit": "dollars",
+              "explanation": "$50 × 12 months × 50 years = $30,000. At a 7% average yearly return, compounding could grow it to over $250,000. Time does most of the work.",
+              "skillId": "dips_volatility_patience"
             }
           ]
         },
@@ -3513,24 +3523,12 @@
               "chart": "pullbackUptrend",
               "target": 2,
               "question": "Tap the day the price fell.",
-              "explanation": "Red candles close lower than they opened. Even rising stocks have down days.",
-              "skillId": "reading_a_stock_chart",
-              "sourceLesson": "Reading a Stock Chart",
+              "explanation": "Even stocks that rise over time have down days. One red day doesn't change the long-term trend.",
+              "skillId": "ups_downs_the_long_run",
+              "sourceLesson": "Ups, Downs & the Long Run",
               "sourceUnit": 3,
               "sourceNode": 17,
               "questionId": "money.u4.n17.q2"
-            },
-            {
-              "type": "tap_candle",
-              "chart": "marubozu",
-              "target": 1,
-              "question": "Tap the day the stock rose the most.",
-              "explanation": "The tallest green candle is the biggest gain. A long body means price moved a lot that day.",
-              "skillId": "reading_a_stock_chart",
-              "sourceLesson": "Reading a Stock Chart",
-              "sourceUnit": 3,
-              "sourceNode": 17,
-              "questionId": "money.u4.n17.q3"
             },
             {
               "type": "multiple_choice",
@@ -3542,12 +3540,12 @@
                 "Sideways"
               ],
               "correct": 1,
-              "explanation": "Each candle closes higher than the last. That's an uptrend.",
-              "skillId": "reading_a_stock_chart",
-              "sourceLesson": "Reading a Stock Chart",
+              "explanation": "Each day closes higher than the last. That's an uptrend.",
+              "skillId": "ups_downs_the_long_run",
+              "sourceLesson": "Ups, Downs & the Long Run",
               "sourceUnit": 3,
               "sourceNode": 17,
-              "questionId": "money.u4.n17.q4"
+              "questionId": "money.u4.n17.q3"
             },
             {
               "type": "multiple_choice",
@@ -3560,20 +3558,35 @@
               ],
               "correct": 2,
               "explanation": "Lower and lower closes make a downtrend.",
-              "skillId": "reading_a_stock_chart",
-              "sourceLesson": "Reading a Stock Chart",
+              "skillId": "ups_downs_the_long_run",
+              "sourceLesson": "Ups, Downs & the Long Run",
               "sourceUnit": 3,
               "sourceNode": 17,
-              "questionId": "money.u4.n17.q5"
+              "questionId": "money.u4.n17.q4"
             },
             {
-              "type": "tap_candle",
-              "chart": "gapUp",
-              "target": 2,
-              "question": "Tap the day the stock gapped up.",
-              "explanation": "It opened well above the day before, leaving empty space on the chart.",
-              "skillId": "reading_a_stock_chart",
-              "sourceLesson": "Reading a Stock Chart",
+              "type": "multiple_choice",
+              "question": "What matters most to a long-term investor?",
+              "options": [
+                "Tomorrow's price",
+                "The trend over many years",
+                "One red day"
+              ],
+              "correct": 1,
+              "explanation": "Long-term wealth comes from years of growth, not from any single day.",
+              "skillId": "ups_downs_the_long_run",
+              "sourceLesson": "Ups, Downs & the Long Run",
+              "sourceUnit": 3,
+              "sourceNode": 17,
+              "questionId": "money.u4.n17.q6"
+            },
+            {
+              "type": "true_false",
+              "question": "Buying and selling every day to catch small moves is a reliable way to build wealth.",
+              "correct": false,
+              "explanation": "Studies have found most frequent traders earn less than people who just hold an index fund. Constant trading works more like gambling than investing.",
+              "skillId": "ups_downs_the_long_run",
+              "sourceLesson": "Ups, Downs & the Long Run",
               "sourceUnit": 3,
               "sourceNode": 17,
               "questionId": "money.u4.n17.q7"
@@ -3753,44 +3766,52 @@
               ],
               "correct": 1,
               "explanation": "One red day doesn't change a long-term plan. Panic-selling locks in losses.",
-              "skillId": "dips_support_patience",
-              "sourceLesson": "Dips, Support & Patience",
+              "skillId": "dips_volatility_patience",
+              "sourceLesson": "Dips, Volatility & Patience",
               "sourceUnit": 3,
               "sourceNode": 20,
               "questionId": "money.u4.n20.q2"
             },
             {
-              "type": "mark_level",
-              "chart": "supportBounce",
-              "level_kind": "support",
-              "question": "Mark the support level.",
-              "explanation": "Price fell to this level, buyers stepped in, and it bounced back up.",
-              "skillId": "dips_support_patience",
-              "sourceLesson": "Dips, Support & Patience",
+              "type": "true_false",
+              "chart": "volatile",
+              "question": "This price is steady and predictable.",
+              "correct": false,
+              "explanation": "Big swings in both directions mean high volatility, which means more risk.",
+              "skillId": "dips_volatility_patience",
+              "sourceLesson": "Dips, Volatility & Patience",
               "sourceUnit": 3,
               "sourceNode": 20,
               "questionId": "money.u4.n20.q4"
             },
             {
-              "type": "true_false",
-              "chart": "supportBounce",
-              "question": "Support guarantees the price will never fall below it.",
-              "correct": false,
-              "explanation": "Support is where buyers showed up before. Prices can still break through.",
-              "skillId": "dips_support_patience",
-              "sourceLesson": "Dips, Support & Patience",
+              "type": "multiple_choice",
+              "question": "For money you won't need for 10+ years, what's usually the smarter base?",
+              "options": [
+                "One hyped stock",
+                "A broad, low-cost index fund",
+                "Whatever's trending online"
+              ],
+              "correct": 1,
+              "explanation": "Spreading money across many companies lowers risk, and low fees mean more of the growth stays yours.",
+              "skillId": "dips_volatility_patience",
+              "sourceLesson": "Dips, Volatility & Patience",
               "sourceUnit": 3,
               "sourceNode": 20,
               "questionId": "money.u4.n20.q5"
             },
             {
-              "type": "true_false",
-              "chart": "volatile",
-              "question": "This stock's price is steady and predictable.",
-              "correct": false,
-              "explanation": "Big swings in both directions mean high volatility, which means more risk.",
-              "skillId": "dips_support_patience",
-              "sourceLesson": "Dips, Support & Patience",
+              "type": "number_slider",
+              "question": "You invest $50 a month from age 16 to 66. How much money did you put in yourself?",
+              "number_min": 0,
+              "number_max": 60000,
+              "number_step": 1000,
+              "number_correct": 30000,
+              "number_tolerance": 0,
+              "number_unit": "dollars",
+              "explanation": "$50 × 12 months × 50 years = $30,000. At a 7% average yearly return, compounding could grow it to over $250,000. Time does most of the work.",
+              "skillId": "dips_volatility_patience",
+              "sourceLesson": "Dips, Volatility & Patience",
               "sourceUnit": 3,
               "sourceNode": 20,
               "questionId": "money.u4.n20.q6"

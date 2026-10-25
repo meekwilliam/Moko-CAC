@@ -10,15 +10,12 @@ import CoreText
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
-
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         registerBundledFonts()
-        Haptics.prepare()   // warm the engine so the first tap isn't late
+        Haptics.prepare()
         return true
     }
 
-    /// Register every bundled app font so SwiftUI can resolve each custom face
-    /// by its PostScript name, including the separate Sora weight files.
     private func registerBundledFonts() {
         var urls: [URL] = []
         for ext in ["otf", "ttf"] {

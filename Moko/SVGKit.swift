@@ -1,17 +1,13 @@
 import SwiftUI
 
 // MARK: - Minimal SVG fragment renderer
-// The path node icons live in index.html as small inline <svg> markup. Rather
-// than re-draw all 45 by hand, JS hands us each node's <svg> outerHTML over the
-// bridge and this renders the subset of SVG they use: <path>, <circle>,
-// <ellipse>, <rect>, <line> with fill / stroke / stroke-width / rx / rotate().
 
 struct SVGElement {
     var path: Path
     var fill: Color?
     var stroke: Color?
     var strokeWidth: CGFloat
-    var rounded: Bool          // stroke-linecap:round / linejoin:round
+    var rounded: Bool
 }
 
 struct SVGImage {
@@ -24,11 +20,8 @@ enum SVGParser {
         let viewBox = parseViewBox(svg) ?? CGRect(x: 0, y: 0, width: 32, height: 32)
         var elements: [SVGElement] = []
 
-        // The root <svg> may set a `fill` that child elements inherit when they
-        // don't declare their own (e.g. <svg fill="white"><path d=.../></svg>).
         let rootFill = parseRootAttr(svg, "fill")
 
-        // Iterate over each drawable element tag.
         let pattern = "<(path|circle|ellipse|rect|line)\\b([^>]*?)/?>"
         guard let re = try? NSRegularExpression(pattern: pattern, options: [.caseInsensitive]) else {
             return SVGImage(viewBox: viewBox, elements: [])
@@ -43,7 +36,6 @@ enum SVGParser {
             guard let path = buildPath(tag: tag, attrs: attrs) else { continue }
 
             let rounded = (attrs["stroke-linecap"] == "round") || (attrs["stroke-linejoin"] == "round")
-            // Inherit the root svg fill when the element declares none.
             let fillRaw = attrs["fill"] ?? rootFill
             var el = SVGElement(
                 path: path,
@@ -52,7 +44,6 @@ enum SVGParser {
                 strokeWidth: CGFloat(Double(attrs["stroke-width"] ?? "") ?? 1),
                 rounded: rounded
             )
-            // Apply a rotate()/matrix() transform if present.
             if let t = attrs["transform"], let tf = parseTransform(t) {
                 el.path = el.path.applying(tf)
             }
@@ -72,7 +63,6 @@ enum SVGParser {
         return CGRect(x: nums[0], y: nums[1], width: nums[2], height: nums[3])
     }
 
-    /// Read an attribute off the opening `<svg ...>` tag.
     private static func parseRootAttr(_ svg: String, _ name: String) -> String? {
         guard let open = svg.range(of: "<svg") else { return nil }
         let rest = svg[open.upperBound...]
@@ -129,8 +119,6 @@ enum SVGParser {
     }
 
     private static func parseTransform(_ t: String) -> CGAffineTransform? {
-        // matrix(a b c d e f) — a general affine transform (also covers the
-        // rotate+reflect forms that mirrored elements use).
         if let r = t.range(of: "matrix(") {
             let rest = t[r.upperBound...]
             if let end = rest.firstIndex(of: ")") {
@@ -157,8 +145,6 @@ enum SVGParser {
         return CGAffineTransform(rotationAngle: rad)
     }
 
-    /// Parse a CSS/SVG color. `defaultFill` distinguishes fill (defaults to
-    /// black when absent) from stroke (defaults to none when absent).
     static func colorFrom(_ raw: String?, defaultFill: Bool) -> Color? {
         guard let raw = raw?.trimmingCharacters(in: .whitespaces) else {
             return defaultFill ? .black : nil
@@ -191,11 +177,11 @@ enum PathData {
         var i = 0
         var current = CGPoint.zero
         var start = CGPoint.zero
-        var lastCtrl: CGPoint? = nil        // for S / T smoothing
+        var lastCtrl: CGPoint? = nil
         var lastCmd: Character = " "
 
         func nextNum() -> CGFloat? {
-            while i < tokens.count, case .command = tokens[i] { i += 1 } // shouldn't happen mid-args
+            while i < tokens.count, case .command = tokens[i] { i += 1 }
             guard i < tokens.count, case let .number(n) = tokens[i] else { return nil }
             i += 1
             return CGFloat(n)
@@ -211,7 +197,6 @@ enum PathData {
                 cmd = c
                 i += 1
             } else {
-                // Implicit repeat of previous command (SVG allows this).
                 cmd = (lastCmd == "M") ? "L" : (lastCmd == "m") ? "l" : lastCmd
             }
             let rel = cmd.isLowercase
@@ -303,7 +288,6 @@ enum PathData {
         return tokens
     }
 
-    // Endpoint → center parameterization, emitted as cubic bezier segments.
     private static func addArc(_ path: inout Path, from: CGPoint, to: CGPoint,
                                rx rxIn: CGFloat, ry ryIn: CGFloat, xRotDeg: CGFloat,
                                largeArc: Bool, sweep: Bool) {
@@ -314,7 +298,6 @@ enum PathData {
         let dx = (from.x - to.x) / 2, dy = (from.y - to.y) / 2
         let x1p =  cosPhi * dx + sinPhi * dy
         let y1p = -sinPhi * dx + cosPhi * dy
-        // Correct out-of-range radii.
         let lambda = (x1p * x1p) / (rx * rx) + (y1p * y1p) / (ry * ry)
         if lambda > 1 { let s = sqrt(lambda); rx *= s; ry *= s }
         var num = rx*rx*ry*ry - rx*rx*y1p*y1p - ry*ry*x1p*x1p

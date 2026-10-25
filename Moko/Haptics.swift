@@ -4,22 +4,16 @@ import CoreHaptics
 
 // MARK: - Cues
 
-/// The app's vocabulary of feels. Each cue is a hand-authored Core Haptics
-/// pattern rather than one of UIKit's five canned generators, so a correct
-/// answer, a locked node and a routine tap are distinguishable by touch alone.
-///
-/// Intensity = how hard it hits. Sharpness = timbre: 0 is a dull thud, 1 is a
-/// crisp click. Most of the character lives in sharpness.
 enum HapticCue: Hashable {
-    case selection          // crisp tick — routine taps, toggles, drag steps
+    case selection
     case soft, light, medium, rigid, heavy
-    case success            // rising double tap — correct answer, lesson cleared
-    case error              // dull double thud — wrong answer
+    case success
+    case error
     case warning
-    case puckPress          // sharp click as a 3D face sinks onto its slab
-    case puckRelease        // softer pop as it springs back
-    case locked             // short decaying buzz — "you can't do that"
-    case celebrate          // ascending four-tap flourish over a swell
+    case puckPress
+    case puckRelease
+    case locked
+    case celebrate
 }
 
 private func tap(_ intensity: Float, _ sharpness: Float, at t: TimeInterval = 0) -> CHHapticEvent {
@@ -46,10 +40,8 @@ extension HapticCue {
         case .rigid:        return [tap(0.70, 1.00)]
         case .heavy:        return [tap(1.00, 0.65)]
 
-        // Two taps climbing in pitch — the haptic equivalent of a rising chime.
         case .success:      return [tap(0.60, 0.45), tap(1.00, 0.90, at: 0.085)]
 
-        // Blunt and falling. Low sharpness reads as a thud, not a click.
         case .error:        return [tap(0.95, 0.18), tap(0.70, 0.10, at: 0.13)]
 
         case .warning:      return [tap(0.80, 0.50), tap(0.50, 0.30, at: 0.11)]
@@ -72,7 +64,6 @@ extension HapticCue {
 
     var curves: [CHHapticParameterCurve] {
         switch self {
-        // Decay the buzz so it dies away instead of cutting off square.
         case .locked:
             return [CHHapticParameterCurve(parameterID: .hapticIntensityControl, controlPoints: [
                 .init(relativeTime: 0, value: 1.0),
@@ -92,17 +83,9 @@ extension HapticCue {
 
 // MARK: - Engine
 
-/// Owns the single `CHHapticEngine` and a cache of compiled pattern players.
-///
-/// The engine is lazy, auto-shuts-down when idle, and is torn down in the
-/// background — so it costs nothing when the app isn't buzzing. Both of the
-/// engine's failure paths (idle stop, and a media-services reset) invalidate
-/// the cached players, so both handlers clear the cache; `play` also retries
-/// once from scratch if a player start throws.
 final class HapticEngine {
     static let shared = HapticEngine()
 
-    /// iPhone 8 and later. iPad, simulator and older phones fall back to UIKit.
     let supportsHaptics = CHHapticEngine.capabilitiesForHardware().supportsHaptics
 
     private var engine: CHHapticEngine?
@@ -112,18 +95,11 @@ final class HapticEngine {
 
     private init() {}
 
-    /// Warm the engine so the first tap of the session isn't late. Safe to
-    /// call repeatedly; a running engine is left alone.
     func prepare() {
         guard supportsHaptics, engine == nil else { return }
         do {
             let e = try CHHapticEngine()
-            e.playsHapticsOnly = true        // don't touch the audio session
-            // Keep the engine warm while the app is foregrounded. Auto-shutdown
-            // idles it out after a few seconds, so the NEXT haptic has to
-            // cold-restart it (and recompile players) on the main thread — a
-            // visible hitch on the first tap after any pause. We stop it on
-            // background and restart on foreground instead (see observeLifecycle).
+            e.playsHapticsOnly = true
             e.isAutoShutdownEnabled = false
             e.stoppedHandler = { [weak self] _ in
                 DispatchQueue.main.async { self?.invalidatePlayers() }
@@ -152,7 +128,6 @@ final class HapticEngine {
         guard !observing else { return }
         observing = true
         let nc = NotificationCenter.default
-        // Release the engine in the background…
         nc.addObserver(forName: UIApplication.didEnterBackgroundNotification,
                        object: nil, queue: .main) { [weak self] _ in
             guard let self else { return }
@@ -160,8 +135,6 @@ final class HapticEngine {
             self.engine?.stop()
             self.invalidatePlayers()
         }
-        // …and warm it again on the way back, so the first haptic after
-        // returning is instant rather than cold-starting mid-tap.
         nc.addObserver(forName: UIApplication.willEnterForegroundNotification,
                        object: nil, queue: .main) { [weak self] _ in
             try? self?.engine?.start()
@@ -173,7 +146,6 @@ final class HapticEngine {
         do {
             try start(cue)
         } catch {
-            // Engine died out from under us (reset, idle shutdown). Rebuild once.
             invalidatePlayers()
             try? engine?.start()
             try? start(cue)
@@ -183,7 +155,7 @@ final class HapticEngine {
     private func start(_ cue: HapticCue) throws {
         prepare()
         guard let engine else { throw CHHapticError(.engineNotRunning) }
-        try engine.start()   // no-op when already running
+        try engine.start()
 
         let player: CHHapticPatternPlayer
         if let cached = players[cue] {
@@ -198,9 +170,6 @@ final class HapticEngine {
 
     // MARK: Hold-to-commit ramp
 
-    /// A flat, continuous buzz for as long as the finger is down — no ramp, no
-    /// ticks. `duration` only caps it; `endHold()` is what normally stops it.
-    /// This is the thing UIKit's generators simply cannot do.
     func beginHold(duration: TimeInterval) {
         guard supportsHaptics else { return }
         prepare()
@@ -218,7 +187,6 @@ final class HapticEngine {
         }
     }
 
-    /// Cut the ramp short — the finger lifted, or the hold completed.
     func endHold() {
         try? holdPlayer?.stop(atTime: CHHapticTimeImmediate)
         holdPlayer = nil
@@ -227,13 +195,9 @@ final class HapticEngine {
 
 // MARK: - Facade
 
-/// What the rest of the app calls. Routes to the custom engine on capable
-/// hardware and degrades to UIKit's generators everywhere else, so no call
-/// site has to care which it got.
 enum Haptics {
     private static let enabledKey = "haptics.enabled"
 
-    /// User-facing kill switch. Defaults on; nothing plays when off.
     static var isEnabled: Bool {
         get { UserDefaults.standard.object(forKey: enabledKey) as? Bool ?? true }
         set { UserDefaults.standard.set(newValue, forKey: enabledKey) }
@@ -261,13 +225,11 @@ enum Haptics {
 
     static func endHold() { HapticEngine.shared.endHold() }
 
-    // Legacy surface — the names the app already calls, now custom-patterned.
     static func impact(_ style: UIImpactFeedbackGenerator.FeedbackStyle) { play(cue(for: style)) }
     static func selection() { play(.selection) }
     static func light()     { play(.light) }
     static func rigid()     { play(.rigid) }
 
-    // Outcome cues — reserved for answer reveals, not routine taps.
     static func success()   { play(.success) }
     static func error()     { play(.error) }
 

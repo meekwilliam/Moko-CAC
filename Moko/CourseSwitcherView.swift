@@ -1,10 +1,6 @@
 import SwiftUI
 
 // MARK: - Level picker
-// The Day Trading course is split into 4 difficulty levels (Beginner →
-// Intermediate → Advanced → Expert). This picker — opened by tapping the top
-// path banner — lets you switch levels, but each level stays locked until the
-// previous one is fully completed.
 
 struct CourseSwitcherView: View {
     @ObservedObject var router: AppRouter
@@ -17,9 +13,6 @@ struct CourseSwitcherView: View {
     private func total(_ c: Course) -> Int { c.nodes.count }
     private func isComplete(_ c: Course) -> Bool { done(c) >= total(c) && total(c) > 0 }
 
-    /// A level is unlocked if it's the first, or the previous level is finished.
-    /// Standalone strategy tracks (no difficulty `level`) sit outside the
-    /// Beginner→Expert ladder and are always open.
     private func isUnlocked(_ index: Int) -> Bool {
         guard index > 0 else { return true }
         if Game.courses[index].level == nil { return true }
@@ -81,7 +74,6 @@ struct CourseSwitcherView: View {
             onPick(course.id)
         }) {
             HStack(spacing: 16) {
-                // Level badge — number when unlocked, lock when not.
                 RoundedRectangle(cornerRadius: 14, style: .continuous)
                     .fill(unlocked ? accent.opacity(0.18) : Theme.surfaceRaised.opacity(0.55))
                     .frame(width: 54, height: 54)
